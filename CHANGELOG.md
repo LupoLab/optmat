@@ -7,6 +7,11 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+## 0.8.1 (2026-10-16)
+
+Fixes for a downstream propagation code. No value at a positive wavelength, model or
+stored fit changed.
+
 ### Added
 
 - optmat's DOI, 10.5281/zenodo.23422879 (Zenodo; every version), in `CITATION.cff`
