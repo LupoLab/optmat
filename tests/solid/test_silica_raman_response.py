@@ -95,7 +95,8 @@ def test_the_field_and_the_envelope_forms_add_up_to_n2():
 
 
 def test_blow_and_woods_share_of_the_envelope():
-    # alpha = 0.7 on E^2, and 2/3 of 1 - alpha in the envelope (their Eqs. (2), (8)).
+    # alpha = 0.7 is the Kerr weight; 1 - alpha on E^2, and 2/3 of it in the envelope
+    # (their Eqs. (2), (5), (8)).
     assert silica_raman_response("blow_1989").raman_fraction == pytest.approx(0.2 / 0.9)
 
 

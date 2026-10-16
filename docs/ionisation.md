@@ -58,8 +58,8 @@ argon.reasons  # why each value was chosen
     orbitals; N2O has Zhao et al.'s 2017 table (TC-681, TC-684, TC-675). These are
     available by name, but `default_structure` is unset because their independent
     validation is limited. The molecular rate models state which set they use.
-- **The derived quantities of ADK and PPT:** n* = Z/κ and l* = n* − 1 (Ammosov et al.,
-  eq. 17), and the Hartree coefficient |C_n*l*|^2 of their eq. (19).
+- **The derived quantities of ADK and PPT:** n* = Z/κ (Ammosov et al., eq. 2) and
+  l* = n* − 1 (their eq. 17), and the Hartree coefficient |C_n*l*|^2 of their eq. (19).
   {func}`~optmat.gas.ionisation.adk_coefficient_squared` is the Stirling form, their
   eq. (20), which is misprinted in the paper and corrected here (TC-441).
 - **The static polarizabilities:**
