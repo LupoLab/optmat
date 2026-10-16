@@ -20,7 +20,7 @@ import math
 from dataclasses import dataclass
 from typing import Final
 
-from optmat.datasets import datasets
+from optmat._catalogue import quantity_datasets
 from optmat.exceptions import OptmatError
 
 __all__ = ["MIXTURES", "REDUCED", "Constituent", "composition"]
@@ -109,9 +109,8 @@ def composition(mixture: str = "dry air") -> tuple[Constituent, ...]:
         )
     name = MIXTURES.get(mixture, mixture)
     found = []
-    for dataset in datasets():
-        if dataset.quantity != "mole_fraction":
-            continue
+    # Only the records with mole fractions are read: the whole catalogue takes seconds.
+    for dataset in quantity_datasets("mole_fraction"):
         if dataset.parameters.get("mixture") != name:
             continue
         (value,) = dataset.scaled_values()

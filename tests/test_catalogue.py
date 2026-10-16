@@ -117,3 +117,39 @@ print(optmat.datasets.sources.cache_info().currsize)
         [sys.executable, "-c", code], capture_output=True, text=True, check=True
     )
     assert result.stdout.strip() == "0"
+
+
+@pytest.mark.parametrize(
+    "quantity", ["mole_fraction", "refractivity", "mixture_compressibility_factor"]
+)
+def test_the_datasets_of_a_quantity_are_the_catalogues(quantity):
+    # Only the records whose text sets the quantity are read; they must hold exactly
+    # the catalogue's datasets of it, in its order.
+    expected = [d.key for d in datasets(quantity=quantity)]
+    assert [d.key for d in _catalogue.quantity_datasets(quantity)] == expected
+
+
+def test_croaks_entry_points_read_only_their_own_records():
+    # croak (pulse retrieval) asks for the recommended solids and gases and for air;
+    # each reads its own records, neither the catalogue nor every formula record.
+    code = """
+import numpy as np
+import optmat._catalogue
+import optmat.datasets
+from optmat.conditions import State
+from optmat.gas.air import air_model
+from optmat.gas.models.registry import default_model as gas_model
+from optmat.solid.models.registry import default_model as solid_model
+wavelength = np.array([800e-9])
+for name in ("SiO2", "N-BK7", "CaF2", "BaF2", "Si"):
+    solid_model(name).refractive_index(wavelength)
+solid_model("MgF2", axis="o").refractive_index(wavelength)
+gas_model("He").refractive_index(wavelength, State(1e5, 293.15), ideal=True)
+air_model().refractive_index(wavelength, State(1e5, 293.15), ideal=True)
+print(optmat.datasets.sources.cache_info().currsize,
+      optmat._catalogue.formula_sources.cache_info().currsize)
+"""
+    result = subprocess.run(
+        [sys.executable, "-c", code], capture_output=True, text=True, check=True
+    )
+    assert result.stdout.split() == ["0", "0"]

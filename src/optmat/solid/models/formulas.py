@@ -47,7 +47,7 @@ from typing import Any, ClassVar
 import numpy as np
 from jaxtyping import Complex, Float
 
-from optmat._catalogue import formula_sources
+from optmat._catalogue import formula_sources, source
 from optmat.conditions import State, air_refractivity, standard_air_refractivity
 from optmat.constants import E_CHARGE, HBAR, STD_ATMOSPHERE, C
 from optmat.exceptions import DataError, ModelRangeWarning
@@ -57,7 +57,7 @@ from optmat.solid.models.base import Model
 from optmat.solid.udm import UniversalDispersionModel, parse_attributes
 from optmat.solid.udm import from_parameters as udm_from_parameters
 
-__all__ = ["FORMS", "FormulaModel", "UdmModel", "published_models"]
+__all__ = ["FORMS", "FormulaModel", "UdmModel", "published_model", "published_models"]
 
 FORMS = frozenset(
     {"n2_sellmeier", "n2_sellmeier_wavelength", "n2_sellmeier_temperature", "udm"}
@@ -692,6 +692,49 @@ def _temperature(
         msg = f"{where}: reference_temperature_k must lie in temperature_range_k"
         raise DataError(msg)
     return reference, (low, high)
+
+
+@functools.cache
+def published_model(name: str) -> Model:
+    """Return one solid formula model, reading only its source's record.
+
+    :func:`published_models` reads every record with formulas, which takes seconds; a
+    lookup by name needs one.
+
+    Parameters
+    ----------
+    name : str
+        ``<source>/<formula>``.
+
+    Returns
+    -------
+    Model
+        The model, the same as :func:`published_models` holds under that name.
+
+    Raises
+    ------
+    KeyError
+        If no solid formula has that name.
+
+    Examples
+    --------
+    >>> published_model("malitson_1965/sellmeier").material
+    'SiO2'
+    """
+    source_id, _, formula_id = name.partition("/")
+    try:
+        record = source(source_id)
+    except KeyError:
+        raise KeyError(name) from None
+    solids = {key for key, value in materials().items() if value.is_solid}
+    for entry in record.formulas:
+        if (
+            entry.get("id") == formula_id
+            and entry.get("form") in FORMS
+            and str(entry.get("material")) in solids
+        ):
+            return curated({name: _model(record.id, record.citation, entry)})[name]
+    raise KeyError(name)
 
 
 @functools.cache

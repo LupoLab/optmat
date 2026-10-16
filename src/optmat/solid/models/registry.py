@@ -21,7 +21,7 @@ from optmat.solid.models._defaults import DEFAULTS_FILE
 from optmat.solid.models._defaults import defaults as _defaults
 from optmat.solid.models.base import Model
 from optmat.solid.models.fitted import fitted_models
-from optmat.solid.models.formulas import published_models
+from optmat.solid.models.formulas import published_model, published_models
 from optmat.solid.models.tabulated import tabulated_models
 
 __all__ = ["DEFAULTS_FILE", "default_model", "default_reason", "model", "models"]
@@ -82,10 +82,11 @@ def model(name: str) -> Model:
     OptmatError
         If no model has that name.
     """
-    # Only the registry that holds the name is built (as for the gases, TC-810).
-    registry = _REGISTRIES.get(name.split("/", 1)[0], published_models)
+    # Only the registry that holds the name is built (as for the gases, TC-810), and
+    # a published formula reads only its own source's record.
+    registry = _REGISTRIES.get(name.split("/", 1)[0])
     try:
-        return registry()[name]
+        return registry()[name] if registry else published_model(name)
     except KeyError as exc:
         msg = f"no solid model named {name!r}"
         raise OptmatError(msg) from exc
