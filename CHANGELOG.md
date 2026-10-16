@@ -21,10 +21,6 @@ All notable changes are recorded here, in the style of
 - A model refuses a wavelength at or below zero, and a solid model refuses inf, with
   `ArgumentError`; before, a negative wavelength returned a finite, meaningless value
   (TC-1091). A gas and air keep inf as the static limit; NaN still gives NaN.
-- `gas.air.air_model` works without CoolProp: its `equation_of_state` is None
-  there, the ideal-gas index is available, and only the real-gas density asks for
-  the `gas` extra (TC-1092). Before, building air raised `ImportError` in a base
-  install.
 - Faster lookups for a propagation code. `solid.models.registry.model` (and so
   `default_model`) builds a published formula from its own record, not from every
   record with formulas (N-BK7, BaF2, MgF2: 0.3 s from about 2 s in a fresh process),

@@ -29465,19 +29465,3 @@ tabulate (the table model clamps outside its range, so only in-range points coun
   as a missing value and gives NaN (`test_a_gap_between_intervals_warns`,
   `tests/test_solid_tables.py`). No value at a positive wavelength changes.
 - **Status:** decided (2026-10-16).
-
-## TC-1092 Air without CoolProp: the ideal-gas index stays available (2026-10-16)
-
-- **Where:** `src/optmat/gas/air.py` (`AirModel.equation_of_state`,
-  `_equation_of_state`), `docs/conventions.md`; `tests/test_air.py`.
-- **Finding:** `air_model()` built the pseudo-pure dry air's equation of state
-  (CoolProp, the `gas` extra) when it built the model, so without CoolProp it raised
-  `ImportError` even for the ideal-gas index, which needs no equation of state. The
-  pure gases already deferred CoolProp to the real-gas density.
-- **Decision:** `AirModel.equation_of_state` is None where CoolProp is not
-  installed; the polarizability and the ideal-gas index are unchanged, and the
-  real-gas density raises the `ImportError` that names the extra. With CoolProp
-  installed the model, its fields and its digest are as before. Without it the
-  identity records the missing equation (a None field), so two installs that would
-  give different real-gas results do not share a digest.
-- **Status:** decided (2026-10-16).
