@@ -228,13 +228,16 @@ def temporary_registry(tmp_path, monkeypatch):
 def test_registry_rejects_ambiguous_aliases_and_unknown_fields(temporary_registry):
     temporary_registry.write_text(
         '[A]\nname="a"\nkind="gas"\naliases=["shared"]\n'
-        '[B]\nname="b"\nkind="gas"\naliases=["shared"]\n'
+        '[B]\nname="b"\nkind="gas"\naliases=["shared"]\n',
+        encoding="utf-8",
     )
     with pytest.raises(OptmatError, match="claimed by A and B"):
         registry.as_material("shared")
     registry.materials.cache_clear()
     registry._names.cache_clear()
-    temporary_registry.write_text('[A]\nname="a"\nkind="gas"\nmisspelled="field"\n')
+    temporary_registry.write_text(
+        '[A]\nname="a"\nkind="gas"\nmisspelled="field"\n', encoding="utf-8"
+    )
     with pytest.raises(OptmatError, match=r"unknown keys.*misspelled"):
         registry.materials()
 

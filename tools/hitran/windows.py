@@ -128,7 +128,7 @@ def load_lines(gas: str) -> Lines:
     path = CACHE / f"{gas}_0_11000.par"
     index: dict[tuple[str, str, str], int] = {}
     nu, strength, gamma, band = [], [], [], []
-    with path.open() as handle:
+    with path.open(encoding="utf-8") as handle:
         for line in handle:
             record, *extra = line.rstrip("\r\n").split(",")
             if len(record) < 160:
@@ -1198,7 +1198,7 @@ def provenance(analysis: Analysis) -> list[str]:
         f"on {datetime.datetime.now(datetime.UTC).date().isoformat()}; OEP 3.",
         f"# input {par.name}: sha256 {_sha256(par)}",
         f"# input {query.name}: sha256 {_sha256(query)}; "
-        f"query {query.read_text().strip()}",
+        f"query {query.read_text(encoding='utf-8').strip()}",
         f"# parent {parent.name}: config_sha256 {parent.config_sha256}",
         f"# settings {settings}",
     ]
@@ -1214,7 +1214,7 @@ def _up(value: float) -> str:
 
 def _write(path: Path, header: list[str], fields: list[str], rows: list[dict]) -> None:
     """Write a derived table with its provenance lines."""
-    with path.open("w", newline="") as handle:
+    with path.open("w", newline="", encoding="utf-8") as handle:
         handle.write("\n".join(header) + "\n")
         writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()

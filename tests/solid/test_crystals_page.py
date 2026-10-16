@@ -13,7 +13,7 @@ import pytest
 
 from optmat.solid.models.registry import default_model
 
-PAGE = (Path(__file__).parents[2] / "docs" / "crystals.md").read_text()
+PAGE = (Path(__file__).parents[2] / "docs" / "crystals.md").read_text(encoding="utf-8")
 _BLOCK = PAGE.split("<!-- crystals:start -->")[1].split("<!-- crystals:end -->")[0]
 _ROWS = [
     [c.strip() for c in line.strip("|").split("|")]
@@ -22,7 +22,7 @@ _ROWS = [
 
 _HISTORY = (
     Path(__file__).parents[1] / "data/historical_documentation_tables.md"
-).read_text()
+).read_text(encoding="utf-8")
 _HISTORY_BLOCK = _HISTORY.split("<!-- crystals:start -->")[1].split(
     "<!-- crystals:end -->"
 )[0]
@@ -39,7 +39,7 @@ def _solprop(material, source):
     path = Path(__file__).parents[1] / "data" / "solprop_solids.json"
     entry = next(
         e
-        for e in json.loads(path.read_text())["models"]
+        for e in json.loads(path.read_text(encoding="utf-8"))["models"]
         if (e["material"], e["source"]) == (material, source)
     )
     square = 1.0  # lambda = 1 um

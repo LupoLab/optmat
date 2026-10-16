@@ -970,7 +970,9 @@ def main(argv: Sequence[str] | None = None) -> None:
     result = {gas: analyse(gas) for gas in args.gases}
     result["cases"] = [case(*c) for c in CASES]  # pyright: ignore[reportArgumentType]
     args.json.parent.mkdir(parents=True, exist_ok=True)
-    args.json.write_text(json.dumps(result, indent=1, default=float) + "\n")
+    args.json.write_text(
+        json.dumps(result, indent=1, default=float) + "\n", encoding="utf-8"
+    )
     print(f"wrote {args.json}")
     # JSON round trip: the tables read the result as the page tests do.
     tables = render(json.loads(json.dumps(result, default=float)))

@@ -53,7 +53,7 @@ sigma = 0.1
 @pytest.fixture(scope="module")
 def result(tmp_path_factory):
     path = tmp_path_factory.mktemp("fits") / "recover.toml"
-    path.write_text(CONFIG)
+    path.write_text(CONFIG, encoding="utf-8")
     return fit(load_config(path))
 
 
@@ -217,7 +217,7 @@ FITTED = ("SiO2", "Si")
 
 def _stored(name):
     path = SOLID_DATA_DIRECTORY / "models" / "fitted" / f"{name}.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _unknowns(config, record):

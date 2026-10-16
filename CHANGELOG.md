@@ -41,6 +41,10 @@ changed.
   (`LICENSES/LicenseRef-optmat-third-party.txt`) so that the package is self-contained;
   each external directory's `PROVENANCE.md` states its publisher's terms.
 - `CITATION.cff` and `.zenodo.json`.
+- Windows: every text file is read and written as UTF-8, whatever the platform's
+  default (Windows decoded the curated records with its code page, which failed on
+  their author names and unit signs); `tests/test_encoding.py` keeps it so, and CI
+  runs the tests on Windows.
 
 ## 0.7.0 (2026-10-15)
 

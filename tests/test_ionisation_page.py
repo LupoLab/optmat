@@ -18,7 +18,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).parents[1]
-PAGE = (ROOT / "docs" / "ionisation.md").read_text()
+PAGE = (ROOT / "docs" / "ionisation.md").read_text(encoding="utf-8")
 
 
 def _tables():
@@ -33,7 +33,9 @@ def _tables():
 
 def _block(name: str) -> str:
     text = (
-        (ROOT / "tests/data/historical_documentation_tables.md").read_text()
+        (ROOT / "tests/data/historical_documentation_tables.md").read_text(
+            encoding="utf-8"
+        )
         if name in ("ionisation-solprop",)
         else PAGE
     )

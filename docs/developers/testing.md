@@ -10,8 +10,8 @@ It runs formatting and lint checks, basedpyright, numpydoc, spelling, the copyri
 licence check (`reuse lint`), the tests under the coverage gate, and Sphinx with
 warnings treated as errors. The gallery executes during the build. CI
 (`.github/workflows/ci.yml`) runs the same gate on Linux and macOS for every push and
-pull request, and the tests on Python 3.12 with the lowest versions of the package's
-direct dependencies, the floors in `pyproject.toml`.
+pull request, the tests on Windows, and the tests on Python 3.12 with the lowest
+versions of the package's direct dependencies, the floors in `pyproject.toml`.
 The commands and requirements in
 [AGENTS.md](https://github.com/LupoLab/optmat/blob/main/AGENTS.md) are the project policy.
 

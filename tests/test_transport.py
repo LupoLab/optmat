@@ -121,7 +121,7 @@ def test_huber_form_reproduces_his_check_values(gas, temperature, check):
 def _webbook(gas):
     rows = []
     for name in (f"{gas}_0.1MPa_200-400K.tsv", f"{gas}_0.1MPa_293.15-298.15K.tsv"):
-        with (WEBBOOK / name).open(newline="") as handle:
+        with (WEBBOOK / name).open(newline="", encoding="utf-8") as handle:
             rows += list(csv.DictReader(handle, delimiter="\t"))
     t = np.array([float(r["Temperature (K)"]) for r in rows])
     eta = np.array([float(r["Viscosity (uPa*s)"]) for r in rows]) * 1e-6

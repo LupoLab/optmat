@@ -25,7 +25,8 @@ def sample(tmp_path):
     path.write_text(
         'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="sigma"\n'
         'material="Ar"\nquantity="absorption_cross_section"\nunit="Mb"\n'
-        'abscissa_unit="nm"\npoints=[["b","500","2"],["a","400","1"]]\n'
+        'abscissa_unit="nm"\npoints=[["b","500","2"],["a","400","1"]]\n',
+        encoding="utf-8",
     )
     return load_source(path).datasets[0]
 
@@ -58,7 +59,7 @@ def test_absorption_configuration_requires_a_known_variant_and_complete_pieces(
             ("pieces=[{}]\n", "a piece lacks"),
             ("pieces=[]\ntemperature_k=300\n", "no variant"),
         ]:
-            path.write_text(text)
+            path.write_text(text, encoding="utf-8")
             with pytest.raises(DataError, match=message):
                 absorption.measured_absorption("Ar", variant="missing")
     finally:
@@ -120,7 +121,7 @@ def test_missing_gas_extra_has_an_actionable_error_and_ideal_density_still_works
 
 def test_unknown_virial_dataset_is_rejected(tmp_path, monkeypatch):
     path = tmp_path / "virial.toml"
-    path.write_text('[Ar]\nB_R="missing"\nA_R="missing"\n')
+    path.write_text('[Ar]\nB_R="missing"\nA_R="missing"\n', encoding="utf-8")
     monkeypatch.setattr(virial, "VIRIAL_FILE", path)
     virial.virial_sources.cache_clear()
     try:
@@ -157,7 +158,8 @@ def test_nist_lines_skip_excited_lower_states_and_use_observed_wavelength(
     path.write_text(
         "fik\tJ_k\tEi(cm-1)\tritz_wl_vac(nm)\tobs_wl_vac(nm)\tconf_k\n"
         "0.2\t1\t10\t100\t\texcited\n"
-        "0.3\t1\t0\t\t200\tground\n"
+        "0.3\t1\t0\t\t200\tground\n",
+        encoding="utf-8",
     )
     monkeypatch.setattr(euv, "DATA_DIRECTORY", tmp_path)
     lines = euv.nist_resonance_lines(Gas.Ar)

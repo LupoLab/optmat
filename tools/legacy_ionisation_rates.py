@@ -264,11 +264,11 @@ def main() -> None:
     sections = {"solprop": _solprop, "optmat": _optmat}
     if mode not in sections:
         sys.exit("usage: legacy_ionisation_rates.py solprop|optmat")
-    data = json.loads(FIXTURE.read_text())
+    data = json.loads(FIXTURE.read_text(encoding="utf-8"))
     if "luna" not in data:
         sys.exit(f"{FIXTURE} has no Luna section: run legacy_ionisation_rates.jl first")
     data[mode] = sections[mode](data)
-    FIXTURE.write_text(json.dumps(data, indent=1) + "\n")
+    FIXTURE.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

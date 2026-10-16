@@ -59,7 +59,7 @@ points = [["1", "inf", "0.28125"]]
 @pytest.fixture
 def by_key(tmp_path):
     path = tmp_path / "demo_2000.toml"
-    path.write_text(RECORD)
+    path.write_text(RECORD, encoding="utf-8")
     return {d.key: d for d in load_source(path).datasets}
 
 

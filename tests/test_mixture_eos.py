@@ -263,7 +263,10 @@ def test_the_truncation_bound_warns():
 
 def test_the_pair_file_is_checked(monkeypatch, tmp_path):
     path = tmp_path / "pairs.toml"
-    path.write_text('[pairs.He-Ar]\nmodel = "x"\nsource = "x"\nqualified = false\n')
+    path.write_text(
+        '[pairs.He-Ar]\nmodel = "x"\nsource = "x"\nqualified = false\n',
+        encoding="utf-8",
+    )
     monkeypatch.setattr(mixture_eos, "PAIRS_FILE", path)
     mixture_eos._pair_records.cache_clear()
     try:
@@ -271,14 +274,16 @@ def test_the_pair_file_is_checked(monkeypatch, tmp_path):
             mixture_eos._pair_records()
         path.write_text(
             '[pairs.Ar-He]\nmodel = "x"\nsource = "x"\nqualified = false\n'
-            'reason = "r"\ncross_virial = "achtermann_1991/A_R_this_work_Ar"\n'
+            'reason = "r"\ncross_virial = "achtermann_1991/A_R_this_work_Ar"\n',
+            encoding="utf-8",
         )
         mixture_eos._pair_records.cache_clear()
         with pytest.raises(DataError, match="not a cross virial of it"):
             mixture_eos._pair_records()
         path.write_text(
             '[pairs.Ar-He]\nmodel = "x"\nsource = "x"\nqualified = false\n'
-            'reason = "r"\n'
+            'reason = "r"\n',
+            encoding="utf-8",
         )
         mixture_eos._pair_records.cache_clear()
         with pytest.raises(DataError, match="but CoolProp's is 'Tkaczuk-JPCRD-2020'"):

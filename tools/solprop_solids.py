@@ -99,7 +99,10 @@ def main() -> None:
     entries.append(_entry(silver(), "Ag", "stitched"))
     entries.append(_entry(aluminium(), "Al", "stitched"))
     OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps({"solprop_commit": commit, "models": entries}, indent=1))
+    OUT.write_text(
+        json.dumps({"solprop_commit": commit, "models": entries}, indent=1),
+        encoding="utf-8",
+    )
     print(f"wrote {len(entries)} models from solprop {commit[:8]} to {OUT}")
 
 

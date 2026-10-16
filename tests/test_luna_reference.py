@@ -24,7 +24,9 @@ from optmat.gas.models.registry import model
 from optmat.gas.molecular_ionisation_rates import molecular_rate_model
 
 ROOT = Path(__file__).parents[1]
-LUNA = json.loads((ROOT / "tests" / "data" / "luna_master.json").read_text())
+LUNA = json.loads(
+    (ROOT / "tests" / "data" / "luna_master.json").read_text(encoding="utf-8")
+)
 STATE = State(LUNA["pressure_bar"] * 1e5, LUNA["temperature_k"])
 # Luna's dispersion formulas whose reference state optmat's copy shares (Börzsönyi's
 # are referred to the ideal-gas density here and to the real-gas one in Luna).
@@ -80,7 +82,9 @@ def test_lunas_adk_rate_is_adk_hydrogenic(gas):
 
 
 def test_lunas_third_order_coefficients_are_solprops():
-    solprop = json.loads((ROOT / "tests" / "data" / "solprop_gamma3.json").read_text())
+    solprop = json.loads(
+        (ROOT / "tests" / "data" / "solprop_gamma3.json").read_text(encoding="utf-8")
+    )
     for gas, entry in LUNA["gases"].items():
         theirs = solprop["gamma3"][gas]["gamma3"]
         assert entry["gamma3"] == pytest.approx(theirs, rel=1e-7), gas
@@ -89,7 +93,9 @@ def test_lunas_third_order_coefficients_are_solprops():
 @pytest.mark.parametrize("gas", ["H2", "D2"])
 def test_lunas_raman_parameters_are_solprops(gas):
     luna = LUNA["gases"][gas]["raman"]
-    solprop = json.loads((ROOT / "tests" / "data" / "solprop_raman.json").read_text())
+    solprop = json.loads(
+        (ROOT / "tests" / "data" / "solprop_raman.json").read_text(encoding="utf-8")
+    )
     rotational = solprop["raman"][gas]["rotational"]
     vibrational = solprop["raman"][gas]["vibrational"]
     pairs = [

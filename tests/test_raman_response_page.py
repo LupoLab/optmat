@@ -19,7 +19,7 @@ import pytest
 from optmat.exceptions import ModelRangeWarning
 
 ROOT = Path(__file__).parents[1]
-PAGE = (ROOT / "docs" / "raman_response.md").read_text()
+PAGE = (ROOT / "docs" / "raman_response.md").read_text(encoding="utf-8")
 
 
 def _tables():
@@ -38,7 +38,7 @@ def _block(name: str) -> str:
         if name == "response-solprop"
         else "docs/user-guide/raman-validation.md"
     )
-    page = (ROOT / location).read_text()
+    page = (ROOT / location).read_text(encoding="utf-8")
     # Some response tables describe the interface and stay with its usage chapter.
     if f"<!-- {name}:start -->" not in page:
         page = PAGE

@@ -32,8 +32,8 @@ from optmat.gas.nonlinear import (
 )
 
 ROOT = Path(__file__).parents[1]
-PAGE = (ROOT / "docs" / "nonlinear_accuracy.md").read_text()
-MANUAL = (ROOT / "docs/user-guide/nonlinear-models.md").read_text()
+PAGE = (ROOT / "docs" / "nonlinear_accuracy.md").read_text(encoding="utf-8")
+MANUAL = (ROOT / "docs/user-guide/nonlinear-models.md").read_text(encoding="utf-8")
 MODELS = {gas.value: model for gas, model in hyperpolarizability_models().items()}
 # The working estimate is the largest measure rounded up to the next of these (%).
 STEPS = (0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.5, 2, 3, 4, 5, 7, 10, 15, 20, 30, 50)
@@ -55,12 +55,12 @@ def _percent(cell):
 
 def _record(gas):
     path = GAS_DATA_DIRECTORY / "models" / "nonlinear_robustness" / f"{gas}.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _stored(gas):
     path = GAS_DATA_DIRECTORY / "models" / "nonlinear" / f"{gas}.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _measures(gas, index, floor):
@@ -145,7 +145,7 @@ def test_the_band_rows_are_current(gas, index, column):
 def test_the_gallery_estimates_are_the_pages():
     source = (
         ROOT / "docs" / "gallery" / "nonlinear" / "plot_nonlinear_accuracy.py"
-    ).read_text()
+    ).read_text(encoding="utf-8")
     node = next(
         n
         for n in ast.parse(source).body
@@ -189,10 +189,14 @@ def test_the_validator_ratios_are_current():
 
 def test_solprops_ratios_are_current():
     rows = _table(
-        (ROOT / "tests/data/historical_documentation_tables.md").read_text(),
+        (ROOT / "tests/data/historical_documentation_tables.md").read_text(
+            encoding="utf-8"
+        ),
         "nonlinear-solprop",
     )
-    fixture = json.loads((ROOT / "tests" / "data" / "solprop_gamma3.json").read_text())
+    fixture = json.loads(
+        (ROOT / "tests" / "data" / "solprop_gamma3.json").read_text(encoding="utf-8")
+    )
     solprop = fixture["gamma3"]
     assert set(rows) == set(MODELS)
     for gas, cells in rows.items():

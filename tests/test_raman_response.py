@@ -279,8 +279,8 @@ def _solprop():
 
     data = Path(__file__).parent / "data"
     return (
-        json.loads((data / "solprop_raman_response.json").read_text()),
-        json.loads((data / "solprop_raman.json").read_text())["raman"],
+        json.loads((data / "solprop_raman_response.json").read_text(encoding="utf-8")),
+        json.loads((data / "solprop_raman.json").read_text(encoding="utf-8"))["raman"],
     )
 
 

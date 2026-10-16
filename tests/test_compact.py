@@ -196,7 +196,9 @@ def test_sf6_keeps_its_parents_poles():
 
 
 def test_the_fitting_page_table_is_the_stored_reductions():
-    page = (Path(__file__).parents[1] / "docs" / "fitting.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "fitting.md").read_text(
+        encoding="utf-8"
+    )
     rows = {
         cells[0].strip("`"): cells[1:]
         for line in page.splitlines()
@@ -360,16 +362,20 @@ def test_a_compact_record_names_the_gap_between_two_intervals():
 def test_a_configuration_is_checked(tmp_path):
     path = tmp_path / "X.toml"
     head = 'gas = "CO"\ndescription = ""\nparent = "fit/CO"\n'
-    path.write_text(head + "poles = [2]\nlongest_nm = 1500\n")
+    path.write_text(head + "poles = [2]\nlongest_nm = 1500\n", encoding="utf-8")
     config = load_compact_config(path)
     assert config.longest_nm == 1500.0
     assert config.poles == (2,)
     assert load_compact_config("CO").longest_nm is None
-    path.write_text('gas = "CO"\ndescription = ""\nparent = "fit/CO"\npoles = [-1]\n')
+    path.write_text(
+        'gas = "CO"\ndescription = ""\nparent = "fit/CO"\npoles = [-1]\n',
+        encoding="utf-8",
+    )
     with pytest.raises(DataError, match="cannot have -1 poles"):
         load_compact_config(path)
     path.write_text(
-        'gas = "CO"\ndescription = ""\nparent = "fit/CO"\npoles = [1]\nK = 2\n'
+        'gas = "CO"\ndescription = ""\nparent = "fit/CO"\npoles = [1]\nK = 2\n',
+        encoding="utf-8",
     )
     with pytest.raises(DataError, match="unknown keys"):
         load_compact_config(path)
@@ -533,7 +539,9 @@ def test_the_printed_forms_are_refused_where_there_is_none():
 
 
 def test_the_gas_models_page_prints_the_coefficients():
-    page = (Path(__file__).parents[1] / "docs" / "gas_models.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "gas_models.md").read_text(
+        encoding="utf-8"
+    )
     block = page.split("<!-- compact-coefficients:start -->\n")[1]
     block = block.split("\n<!-- compact-coefficients:end -->")[0]
     state = ONE_ATM_20C

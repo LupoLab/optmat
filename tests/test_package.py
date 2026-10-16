@@ -72,7 +72,7 @@ def test_the_core_imports_no_medium():
     media = {path.name for path in package.iterdir() if (path / "__init__.py").exists()}
     assert "gas" in media
     for path in package.glob("*.py"):
-        for node in ast.walk(ast.parse(path.read_text())):
+        for node in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
             if isinstance(node, ast.ImportFrom) and node.module:
                 names = {node.module}
             elif isinstance(node, ast.Import):

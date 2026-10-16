@@ -173,7 +173,9 @@ def main() -> None:
         ("refractiveindex_info_solid.json", _solid_entries()),
     ):
         out = DATA / "external" / name
-        out.write_text(json.dumps(records, indent=1, ensure_ascii=False) + "\n")
+        out.write_text(
+            json.dumps(records, indent=1, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
         print(f"wrote {out.relative_to(DATA)} ({len(records)} entries)")
 
 

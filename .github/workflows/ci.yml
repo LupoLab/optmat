@@ -36,6 +36,23 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
 
+  windows:
+    # The tests only: the lint, type, licence and docs steps of the gate are the same on
+    # every platform and run above. Windows decodes a file without a stated encoding
+    # with its code page, and its arithmetic moves last bits as Linux's does.
+    name: tests (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv python install 3.14
+      - run: uv sync --locked
+      - run: uv run poe test
+
   oldest:
     # The floors in pyproject.toml are claims: test them. The package at its oldest
     # supported Python and the lowest versions of its direct dependencies; the test

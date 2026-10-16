@@ -114,7 +114,7 @@ def test_the_documentation_table_is_current():
 
     page = (
         Path(__file__).parents[1] / "docs/user-guide/nonlinear-models.md"
-    ).read_text()
+    ).read_text(encoding="utf-8")
     rows = {
         cells[0]: cells
         for line in page.splitlines()

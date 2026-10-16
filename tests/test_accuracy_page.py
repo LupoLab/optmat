@@ -22,7 +22,7 @@ from optmat.gas.fitting import HARTREE_NM
 from optmat.gas.models.fitted import fitted_models
 
 ROOT = Path(__file__).parents[1]
-PAGE = (ROOT / "docs" / "accuracy.md").read_text()
+PAGE = (ROOT / "docs" / "accuracy.md").read_text(encoding="utf-8")
 TABLE = PAGE.split("<!-- accuracy-table:start -->")[1].split(
     "<!-- accuracy-table:end -->"
 )[0]
@@ -39,7 +39,7 @@ def _percent(cell):
 
 def _record(gas):
     path = GAS_DATA_DIRECTORY / "models" / "robustness" / f"{gas}.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_the_table_covers_every_fit():
@@ -70,7 +70,9 @@ def test_leave_one_out_shift_is_current(gas):
 
 @pytest.mark.parametrize("gas", sorted(ROWS))
 def test_solprop_formula_deviation_is_current(gas):
-    historical = (ROOT / "tests/data/historical_documentation_tables.md").read_text()
+    historical = (ROOT / "tests/data/historical_documentation_tables.md").read_text(
+        encoding="utf-8"
+    )
     block = historical.split("<!-- accuracy-table:start -->")[1].split(
         "<!-- accuracy-table:end -->"
     )[0]

@@ -107,7 +107,7 @@ def main() -> None:
         "molecules": {name: _molecule(name) for name in MOLECULES},
     }
     (TESTS / "solprop_molecular_rates.json").write_text(
-        json.dumps(fixture, indent=1) + "\n"
+        json.dumps(fixture, indent=1) + "\n", encoding="utf-8"
     )
 
 

@@ -171,9 +171,11 @@ def test_ratios_in_either_orientation_are_met_by_the_true_model():
 
 
 def test_fit_configuration_rejects_unknown_model_keys(tmp_path):
-    text = (FIT_DIRECTORY / "He.toml").read_text()
+    text = (FIT_DIRECTORY / "He.toml").read_text(encoding="utf-8")
     path = tmp_path / "bad.toml"
-    path.write_text(text.replace("[model]\n", "[model]\nstart = 3\n", 1))
+    path.write_text(
+        text.replace("[model]\n", "[model]\nstart = 3\n", 1), encoding="utf-8"
+    )
     with pytest.raises(DataError, match=r"unknown \[model\] keys \['start'\]"):
         load_config(path)
 
@@ -382,12 +384,17 @@ def test_fit_configuration_reads_a_temperature_option(tmp_path):
         "[model]\neffective = 1\neffective_min_energy_hartree = 0.4\n"
         "reference_temperature_k = 293.15\n"
         '[[fitted]]\nkey = "egan_2026/A_R_CO2"\n'
-        "temperature = { measured_k = 303.0, coefficient = 4.22e-6, sigma = 0.34e-6 }\n"
+        "temperature = { measured_k = 303.0, coefficient = 4.22e-6, "
+        "sigma = 0.34e-6 }\n",
+        encoding="utf-8",
     )
     config = load_config(path)
     assert config.reference_temperature == 293.15
     assert config.fitted[0].temperature == (303.0, 4.22e-6, 0.34e-6)
-    path.write_text(path.read_text().replace(", sigma = 0.34e-6", ""))
+    path.write_text(
+        path.read_text(encoding="utf-8").replace(", sigma = 0.34e-6", ""),
+        encoding="utf-8",
+    )
     with pytest.raises(DataError, match="temperature needs"):
         load_config(path)
 

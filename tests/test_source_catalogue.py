@@ -24,14 +24,15 @@ SPEC.loader.exec_module(catalogue)
 def test_every_source_and_entry_appears_once(tmp_path):
     records_dir = ROOT / "src/optmat/data/sources"
     records = {
-        p.stem: tomllib.loads(p.read_text()) for p in sorted(records_dir.glob("*.toml"))
+        p.stem: tomllib.loads(p.read_text(encoding="utf-8"))
+        for p in sorted(records_dir.glob("*.toml"))
     }
     assert catalogue.generate_catalogue(records_dir, tmp_path) == tuple(records)
     assert {p.stem for p in tmp_path.glob("*.rst")} == {*records, "index"}
-    index = (tmp_path / "index.rst").read_text()
+    index = (tmp_path / "index.rst").read_text(encoding="utf-8")
     assert re.findall(r"^   ([a-z0-9_]+)$", index, re.MULTILINE) == list(records)
     for source_id, record in records.items():
-        page = (tmp_path / f"{source_id}.rst").read_text()
+        page = (tmp_path / f"{source_id}.rst").read_text(encoding="utf-8")
         # These blocks retain structured metadata exactly, including corrections;
         # code blocks do not reinterpret punctuation as Markdown or mathematics.
         blocks = re.findall(r"\.\. code-block:: text\n\n((?:   .*\n?)+)", page)
@@ -58,7 +59,9 @@ def test_generation_is_incremental_and_removes_stale_pages(tmp_path):
     records = tmp_path / "records"
     records.mkdir()
     source = records / "demo_2026.toml"
-    source.write_text('citation = "D. Démo (2026)"\nnotes = "Only notes."\n')
+    source.write_text(
+        'citation = "D. Démo (2026)"\nnotes = "Only notes."\n', encoding="utf-8"
+    )
     out = tmp_path / "generated"
     catalogue.generate_catalogue(records, out)
     before = {p.name: (p.read_bytes(), p.stat().st_mtime_ns) for p in out.iterdir()}
@@ -66,7 +69,7 @@ def test_generation_is_incremental_and_removes_stale_pages(tmp_path):
     assert before == {
         p.name: (p.read_bytes(), p.stat().st_mtime_ns) for p in out.iterdir()
     }
-    page = (out / "demo_2026.rst").read_text()
+    page = (out / "demo_2026.rst").read_text(encoding="utf-8")
     assert "No datasets are recorded." in page
     assert "No formulas are recorded." in page
     assert "Only notes" in page

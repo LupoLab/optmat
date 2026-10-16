@@ -60,7 +60,7 @@ def _key() -> str:
     if key := os.environ.get("HITRAN_API_KEY"):
         return key.strip()
     if file := os.environ.get("HITRAN_API_KEY_FILE"):
-        return Path(file).expanduser().read_text().strip()
+        return Path(file).expanduser().read_text(encoding="utf-8").strip()
     msg = "set HITRAN_API_KEY or HITRAN_API_KEY_FILE (a HITRAN API key)"
     raise SystemExit(msg)
 
@@ -104,7 +104,8 @@ def _download(gas: str) -> Path:
     with urllib.request.urlopen(url, timeout=3600) as response:
         path.write_bytes(response.read())
     (CACHE / f"{gas}_0_{NU_MAX:.0f}.json").write_text(
-        json.dumps({"message": header["message"], "timestamp": header["timestamp"]})
+        json.dumps({"message": header["message"], "timestamp": header["timestamp"]}),
+        encoding="utf-8",
     )
     return path
 
@@ -118,7 +119,7 @@ def _cross_section(name: str) -> tuple[list[float], list[float]]:
         url = f"{HOST}/{info['xsec_dir']}/{name}"
         with urllib.request.urlopen(url, timeout=600) as response:
             path.write_bytes(response.read())
-    header, *body = path.read_text().splitlines()
+    header, *body = path.read_text(encoding="utf-8").splitlines()
     fields = header.split()
     numin, numax, count = float(fields[1]), float(fields[2]), int(fields[3])
     sigma = [float(v) for line in body for v in line.split()][:count]
@@ -173,7 +174,7 @@ def _write(gas: str, rows: list[list]) -> None:
     """Write a band table, strongest band first."""
     OUT.mkdir(parents=True, exist_ok=True)
     rows = sorted(rows, key=lambda row: -row[7])
-    with (OUT / f"{gas}_bands.csv").open("w", newline="") as handle:
+    with (OUT / f"{gas}_bands.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow(
             [
@@ -224,7 +225,7 @@ def main(gas: str) -> None:
             "refs": set(),
         }
     )
-    with path.open() as lines:
+    with path.open(encoding="utf-8") as lines:
         for line in lines:
             record, *extra = line.rstrip("\r\n").split(",")
             if len(record) < 160:

@@ -39,7 +39,9 @@ COLOURS = [
 ]
 records = {
     gas: json.loads(
-        (GAS_DATA_DIRECTORY / "models" / "robustness" / f"{gas}.json").read_text()
+        (GAS_DATA_DIRECTORY / "models" / "robustness" / f"{gas}.json").read_text(
+            encoding="utf-8"
+        )
     )
     for gas in GASES
 }

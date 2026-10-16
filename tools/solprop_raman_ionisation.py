@@ -118,10 +118,12 @@ def main() -> None:
     commit = _commit()
     TESTS.mkdir(exist_ok=True)
     (TESTS / "solprop_raman.json").write_text(
-        json.dumps({"solprop_commit": commit, "raman": _raman()}, indent=1) + "\n"
+        json.dumps({"solprop_commit": commit, "raman": _raman()}, indent=1) + "\n",
+        encoding="utf-8",
     )
     (TESTS / "solprop_ionisation.json").write_text(
-        json.dumps({"solprop_commit": commit, **_ionisation()}, indent=1) + "\n"
+        json.dumps({"solprop_commit": commit, **_ionisation()}, indent=1) + "\n",
+        encoding="utf-8",
     )
 
 

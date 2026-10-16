@@ -23,9 +23,13 @@ import pytest
 from optmat.identity import sha256_digest
 
 ROOT = Path(__file__).parents[1]
-RECORDED = json.loads((ROOT / "tests" / "data" / "golden_models.json").read_text())
+RECORDED = json.loads(
+    (ROOT / "tests" / "data" / "golden_models.json").read_text(encoding="utf-8")
+)
 RAMAN_IDENTITIES = json.loads(
-    (ROOT / "tests" / "data" / "golden_raman_identities.json").read_text()
+    (ROOT / "tests" / "data" / "golden_raman_identities.json").read_text(
+        encoding="utf-8"
+    )
 )
 # Arithmetic tolerance, not experimental uncertainty. Different libm/BLAS arithmetic
 # changes the derived Raman widths: the investigated decay-rate difference was below
@@ -203,8 +207,8 @@ def test_generator_writes_values_and_deduplicated_identities(
     monkeypatch.setattr(tool, "RAMAN_OUTPUT", tmp_path / "identities.json")
     monkeypatch.setattr(tool, "records", lambda: copy.deepcopy(list(fresh.values())))
     tool.main()
-    values = json.loads(tool.OUTPUT.read_text())
-    identities = json.loads(tool.RAMAN_OUTPUT.read_text())
+    values = json.loads(tool.OUTPUT.read_text(encoding="utf-8"))
+    identities = json.loads(tool.RAMAN_OUTPUT.read_text(encoding="utf-8"))
     assert set(identities) == set(RAMAN_IDENTITIES)
     assert len(values) == len(fresh)
     for record in values:

@@ -29,7 +29,8 @@ def sample(tmp_path, monkeypatch):
         'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="n2"\n'
         'material="SiO2"\nquantity="nonlinear_index"\nunit="m2/W"\nabscissa_unit="nm"\n'
         f"points={json.dumps(points)}\nuncertainty={{relative=0.01}}\n"
-        'parameters={part="total",coefficient="self"}\n'
+        'parameters={part="total",coefficient="self"}\n',
+        encoding="utf-8",
     )
     sample = load_source(path).datasets[0]
     monkeypatch.setattr(kerr, "datasets", lambda: (sample,))
@@ -97,7 +98,7 @@ def test_synthetic_kerr_fit_with_fraction_prior_round_trips(
         f"quartic={str(quartic).lower()}\n"
         'fitted=[{key="synthetic/n2",raman="full",group="synthetic",scale_sigma=0.01}]\n'
     )
-    path.write_text(text)
+    path.write_text(text, encoding="utf-8")
     result = kerr.fit(kerr.load_config(path))
     record = json.loads(kerr.dumps(result))
     # Exact noiseless quadratic-in-energy data: solver rounding, including log scale.
@@ -113,7 +114,7 @@ def test_synthetic_kerr_fit_with_fraction_prior_round_trips(
         atol=0,
     )
     assert record["config_sha256"] == result.config.digest
-    (tmp_path / "synthetic.json").write_text(kerr.dumps(result))
+    (tmp_path / "synthetic.json").write_text(kerr.dumps(result), encoding="utf-8")
     monkeypatch.setattr(kerr, "KERR_DIRECTORY", tmp_path)
     kerr.kerr_models.cache_clear()
     try:
@@ -128,7 +129,7 @@ def test_synthetic_kerr_fit_with_fraction_prior_round_trips(
         (text.replace("synthetic/n2", "missing"), "unknown dataset"),
         (text + 'raman_gains=[{key="synthetic/n2",typo=1}]\n', "unknown keys"),
     ]:
-        path.write_text(invalid)
+        path.write_text(invalid, encoding="utf-8")
         with pytest.raises(DataError, match=message):
             kerr.load_config(path)
 

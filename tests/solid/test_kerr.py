@@ -49,7 +49,7 @@ def test_eta_goes_from_zero_for_short_pulses_to_one_for_long():
 
 def test_the_stored_fit_is_current_and_reproduces():
     config = kerr.load_config("SiO2")
-    record = json.loads(STORED.read_text())
+    record = json.loads(STORED.read_text(encoding="utf-8"))
     assert record["config_sha256"] == config.digest
     result = kerr.fit(config)
     fitted = result.model.parameters
@@ -91,9 +91,9 @@ def test_the_fitted_gain_is_the_silica_responses():
 
 
 def test_a_config_needs_a_prior_or_a_gain(tmp_path):
-    text = (kerr.KERR_DIRECTORY / "SiO2.toml").read_text()
+    text = (kerr.KERR_DIRECTORY / "SiO2.toml").read_text(encoding="utf-8")
     head = text.split("[[raman_gains]]")[0]
     path = tmp_path / "bare.toml"
-    path.write_text(head)
+    path.write_text(head, encoding="utf-8")
     with pytest.raises(DataError, match="needs a prior"):
         kerr.load_config(path)

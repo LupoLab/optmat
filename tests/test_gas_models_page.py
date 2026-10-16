@@ -15,7 +15,9 @@ from optmat.constants import AU_POLARIZABILITY
 from optmat.gas.fitting import HARTREE_NM
 from optmat.gas.models.fitted import fitted_models
 
-PAGE = (Path(__file__).parents[1] / "docs" / "gas_models.md").read_text()
+PAGE = (Path(__file__).parents[1] / "docs" / "gas_models.md").read_text(
+    encoding="utf-8"
+)
 TABLE = PAGE.split("<!-- gas-models:start -->")[1].split("<!-- gas-models:end -->")[0]
 ROWS = {
     cells[0]: cells

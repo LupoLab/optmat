@@ -197,18 +197,20 @@ def test_stored_record_errors(stored):
         two_photon_bound_levels("Ar")
     two_photon_bound._stored.cache_clear()
     (stored / "Ar.json").write_text(
-        two_photon_bound._dumps(derivation.derive_bound("Ne"))
+        two_photon_bound._dumps(derivation.derive_bound("Ne")), encoding="utf-8"
     )
     with pytest.raises(DataError, match="holds the record of Ne"):
         two_photon_bound_levels("Ar")
     two_photon_bound._stored.cache_clear()
     raw = json.loads(two_photon_bound._dumps(derivation.derive_bound("Ar")))
-    (stored / "Ar.json").write_text(json.dumps(raw | {"derivation_version": 0}))
+    (stored / "Ar.json").write_text(
+        json.dumps(raw | {"derivation_version": 0}), encoding="utf-8"
+    )
     with pytest.raises(DataError, match="re-derive"):
         two_photon_bound_levels("Ar")
     two_photon_bound._stored.cache_clear()
     del raw["levels"]
-    (stored / "Ar.json").write_text(json.dumps(raw))
+    (stored / "Ar.json").write_text(json.dumps(raw), encoding="utf-8")
     with pytest.raises(DataError, match="needs exactly the fields"):
         two_photon_bound_levels("Ar")
 

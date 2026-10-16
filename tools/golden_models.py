@@ -427,8 +427,8 @@ def main() -> None:
         if "identity_record" in entry:
             identities[entry["id"]] = entry.pop("identity_record")
         entry["values"] = _finite(entry["values"])
-    OUTPUT.write_text(json.dumps(data, indent=1) + "\n")
-    RAMAN_OUTPUT.write_text(json.dumps(identities, indent=1) + "\n")
+    OUTPUT.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
+    RAMAN_OUTPUT.write_text(json.dumps(identities, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {len(data)} records to {OUTPUT.relative_to(ROOT)}")
     print(f"wrote {len(identities)} identities to {RAMAN_OUTPUT.relative_to(ROOT)}")
 

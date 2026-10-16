@@ -48,7 +48,8 @@ def sample(tmp_path):
         'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="alpha"\n'
         'material="He"\nquantity="polarizability"\nunit="au"\n'
         'abscissa_unit="nm"\npoints=[["a","500","2.2","0.1"],'
-        '["b","1000","2.3","0.2"]]\nuncertainty={column=true}\n'
+        '["b","1000","2.3","0.2"]]\nuncertainty={column=true}\n',
+        encoding="utf-8",
     )
     return load_source(path).datasets[0]
 
@@ -214,7 +215,7 @@ def test_invalid_fit_configuration_is_rejected_before_optimisation(
 ):
     monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
     path = tmp_path / "fit.toml"
-    path.write_text(text)
+    path.write_text(text, encoding="utf-8")
     with pytest.raises(DataError, match=message):
         fitting.load_config(path)
 
@@ -224,7 +225,7 @@ def test_serialised_fit_preserves_provenance_prediction_and_uncertainty(
 ):
     monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
     path = tmp_path / "synthetic.toml"
-    path.write_text(CONFIG + '[[fitted]]\nkey="synthetic/alpha"\n')
+    path.write_text(CONFIG + '[[fitted]]\nkey="synthetic/alpha"\n', encoding="utf-8")
     config = fitting.load_config(path)
     result = fit(config, starts=1)
     record = json.loads(fitting.dumps(result))
@@ -235,7 +236,7 @@ def test_serialised_fit_preserves_provenance_prediction_and_uncertainty(
     assert record["dataset_chi2"][sample.key][0] == 2
     root = tmp_path / "models" / "fitted"
     root.mkdir(parents=True)
-    (root / "synthetic.json").write_text(fitting.dumps(result))
+    (root / "synthetic.json").write_text(fitting.dumps(result), encoding="utf-8")
     monkeypatch.setattr(stored, "GAS_DATA_DIRECTORY", tmp_path)
     stored.fitted_models.cache_clear()
     try:

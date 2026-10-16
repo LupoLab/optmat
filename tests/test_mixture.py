@@ -384,7 +384,9 @@ def test_the_pages_sensitivity_table():
     from optmat.constants import K_B  # noqa: PLC0415
     from optmat.gas.composition import composition  # noqa: PLC0415
 
-    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text(
+        encoding="utf-8"
+    )
     mixtures = {
         "He/Ar": {"He": 0.5, "Ar": 0.5},
         "Ne/Ar": {"Ne": 0.5, "Ar": 0.5},
@@ -454,7 +456,9 @@ def test_the_pages_he_ar_sensitivity_table():
     from optmat.gas.eos import equation_of_state  # noqa: PLC0415
     from optmat.gas.mixture_eos import mixture_equation_of_state  # noqa: PLC0415
 
-    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text(
+        encoding="utf-8"
+    )
     rows = [
         [c.strip() for c in line.split("|")[1:-1]]
         for line in page.splitlines()

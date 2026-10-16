@@ -37,7 +37,7 @@ REASONS = {"absorption", "representation", "representation: kept band", "width"}
 
 def _band_totals(gas):
     path = DATA_DIRECTORY / "external" / "hitran" / f"{gas}_bands.csv"
-    with path.open(newline="") as handle:
+    with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     m0 = sum(float(r["strength_cm_per_molecule"]) for r in rows) / PI_RE_CM
     m_minus2 = (
@@ -136,7 +136,11 @@ def test_the_tables_of_a_gas_share_one_derivation(gas):
     assert any(line.startswith("# settings") for line in lines)
     for table in ("windows", "bound", "absorption"):
         path = DATA_DIRECTORY / "external" / "hitran" / f"{gas}_{table}.csv"
-        head = [x for x in path.read_text().splitlines() if x.startswith("#")]
+        head = [
+            x
+            for x in path.read_text(encoding="utf-8").splitlines()
+            if x.startswith("#")
+        ]
         assert head[: len(lines)] == list(lines)
 
 

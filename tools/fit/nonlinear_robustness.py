@@ -72,7 +72,9 @@ def main(gas: str) -> None:
         "dropped": dropped,
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / f"{gas}.json").write_text(json.dumps(record, indent=1) + "\n")
+    (OUT / f"{gas}.json").write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
     worst = max(
         (max(abs(x) for x in e["shift_relative"]) for e in dropped.values()),
         default=0.0,

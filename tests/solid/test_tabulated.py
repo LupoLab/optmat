@@ -28,7 +28,7 @@ def _config(tmp_path, segments):
             f'[[segments]]\nreal = "{real}"\nimaginary = "{imaginary}"\n'
             f'range_nm = [{low}, {high}]\nreason = "test"\n'
         )
-    path.write_text(body)
+    path.write_text(body, encoding="utf-8")
     return path
 
 
@@ -83,7 +83,8 @@ def test_a_decrement_pairs_with_k_on_the_wavelengths_they_share(tmp_path):
     path = tmp_path / "Al.toml"
     path.write_text(
         'material = "Al"\n[[segments]]\nreal = "hagemann_1974/delta_Al"\n'
-        'imaginary = "hagemann_1974/k_Al"\nrange_nm = [1, 11]\nreason = "test"\n'
+        'imaginary = "hagemann_1974/k_Al"\nrange_nm = [1, 11]\nreason = "test"\n',
+        encoding="utf-8",
     )
     model = load_table(path)
     delta, k = _dataset("hagemann_1974/delta_Al"), _dataset("hagemann_1974/k_Al")
@@ -105,7 +106,8 @@ def test_henke_segment_follows_the_x_ray_limit(tmp_path):
     path.write_text(
         'material = "Al"\n[[segments]]\nhenke = "al"\n'
         'atom_density = "rakic_1995/atom_density_Al"\nrange_nm = [0.5, 3]\n'
-        'reason = "test"\n'
+        'reason = "test"\n',
+        encoding="utf-8",
     )
     model = load_table(path)
     assert "Henke" in model.citation
@@ -117,6 +119,7 @@ def test_henke_segment_follows_the_x_ray_limit(tmp_path):
     with pytest.raises(DataError, match="atom_density"):
         path.write_text(
             'material = "Al"\n[[segments]]\nhenke = "al"\nrange_nm = [0.5, 3]\n'
-            'reason = "test"\n'
+            'reason = "test"\n',
+            encoding="utf-8",
         )
         load_table(path)

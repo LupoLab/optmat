@@ -259,7 +259,10 @@ def test_the_source_records_hold_the_parameter_files_values(name):
 
 def test_an_unsupported_attribute_is_refused(tmp_path):
     par = tmp_path / "x.par"
-    par.write_text("dEg:ut\nNvc = 1\nEg = 5\nEh = 20\nEp = 0.1\nNut = 1\nEu = 0.1\n")
+    par.write_text(
+        "dEg:ut\nNvc = 1\nEg = 5\nEh = 20\nEp = 0.1\nNut = 1\nEu = 0.1\n",
+        encoding="utf-8",
+    )
     with pytest.raises(DataError, match="not supported"):
         udm.read_parameter_file(par)
 

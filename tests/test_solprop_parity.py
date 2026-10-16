@@ -21,7 +21,9 @@ import pytest
 from optmat.gas.models.formulas import published_models
 
 FIXTURE = json.loads(
-    (Path(__file__).parent / "data" / "solprop_sellmeier.json").read_text()
+    (Path(__file__).parent / "data" / "solprop_sellmeier.json").read_text(
+        encoding="utf-8"
+    )
 )
 
 # solprop (gas, source) -> this package's model, and the relative agreement expected.

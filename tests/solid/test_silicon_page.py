@@ -11,7 +11,7 @@ from optmat.datasets import datasets
 from optmat.solid.models.formulas import FormulaModel
 from optmat.solid.models.registry import default_model, models
 
-PAGE = (Path(__file__).parents[2] / "docs" / "silicon.md").read_text()
+PAGE = (Path(__file__).parents[2] / "docs" / "silicon.md").read_text(encoding="utf-8")
 KEYED = {d.key: d for d in datasets()}
 EV_NM = 1239.84198  # hc in eV nm
 

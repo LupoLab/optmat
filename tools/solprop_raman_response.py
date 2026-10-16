@@ -104,7 +104,7 @@ def main() -> None:
         },
     }
     path = TESTS / "solprop_raman_response.json"
-    path.write_text(json.dumps(data) + "\n")
+    path.write_text(json.dumps(data) + "\n", encoding="utf-8")
     print(f"wrote {path}")
 
 

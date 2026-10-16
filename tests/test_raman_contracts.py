@@ -28,7 +28,8 @@ def source(tmp_path, monkeypatch):
         '[[formulas]]\nid="law"\n[formulas.coefficients]\n'
         'constant_MHz="2"\nB_MHz_per_amagat="3"\n'
         'alpha="0.02"\nbeta="1.5"\ndelta="1.2"\na="1.0"\n'
-        'n_experiment="1.3"\nT0_experiment="300"\nrange="descriptive text"\n'
+        'n_experiment="1.3"\nT0_experiment="300"\nrange="descriptive text"\n',
+        encoding="utf-8",
     )
     source = load_source(path)
     monkeypatch.setattr(raman, "sources_of", lambda: {source.id: source})

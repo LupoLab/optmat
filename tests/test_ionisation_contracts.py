@@ -27,7 +27,8 @@ def sample(tmp_path):
         'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="levels"\n'
         'material="Ar+"\nquantity="level_energy"\nunit="eV"\nabscissa="label"\n'
         'points=[["ground","0","0"],["upper","1","2"]]\n'
-        'parameters={configuration="synthetic",term="synthetic",j="various"}\n'
+        'parameters={configuration="synthetic",term="synthetic",j="various"}\n',
+        encoding="utf-8",
     )
     return load_source(path).datasets[0]
 

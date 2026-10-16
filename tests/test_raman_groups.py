@@ -75,7 +75,7 @@ def test_the_groups_sum_to_the_response(response):
 def test_the_line_identifiers_are_unique_and_stable(response):
     ids = response.line_id
     assert len(set(ids)) == len(ids)
-    recorded = json.loads(SNAPSHOT.read_text())
+    recorded = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     gas = next(
         g for g in GASES if raman_response(g, 295.0).material == response.material
     )
@@ -89,7 +89,7 @@ def test_the_snapshot_is_the_tools():
     module = importlib.util.module_from_spec(spec)
     sys.modules["raman_line_ids"] = module
     spec.loader.exec_module(module)
-    assert module.snapshot() == json.loads(SNAPSHOT.read_text())
+    assert module.snapshot() == json.loads(SNAPSHOT.read_text(encoding="utf-8"))
 
 
 def test_the_zero_density_limit(response):

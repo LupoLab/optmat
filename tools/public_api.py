@@ -165,7 +165,9 @@ def snapshot() -> dict[str, dict[str, Any]]:
 
 def main() -> None:
     """Write the snapshot."""
-    OUTPUT.write_text(json.dumps(snapshot(), indent=1, sort_keys=True) + "\n")
+    OUTPUT.write_text(
+        json.dumps(snapshot(), indent=1, sort_keys=True) + "\n", encoding="utf-8"
+    )
     print(f"wrote {OUTPUT.relative_to(ROOT)}")
 
 

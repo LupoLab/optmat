@@ -417,7 +417,7 @@ def solprop_gamma() -> dict[str, float]:
         By gas name, atomic units.
     """
     path = Path(__file__).parents[2] / "tests" / "data" / "solprop_gamma3.json"
-    record = json.loads(path.read_text())["gamma3"]
+    record = json.loads(path.read_text(encoding="utf-8"))["gamma3"]
     return {
         gas: 6 * EPS0 * entry["gamma3"] / AU_HYPERPOLARIZABILITY
         for gas, entry in record.items()
@@ -470,7 +470,7 @@ LUNA_MOLECULES = ("H2", "D2")
 def luna() -> dict:
     """Return the fixture of Luna's values (``tools/luna_reference.jl``)."""
     path = Path(__file__).parents[2] / "tests" / "data" / "luna_master.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _luna_at(entry: dict, key: str, wavelength: np.ndarray) -> np.ndarray:

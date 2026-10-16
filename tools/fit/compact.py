@@ -75,7 +75,8 @@ def main(gas: str, *, fewer: bool = False) -> None:
     out = COMPACT_MODEL_DIRECTORY / f"{gas}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(
-        json.dumps(compact_record(parent, config, reduction), indent=1) + "\n"
+        json.dumps(compact_record(parent, config, reduction), indent=1) + "\n",
+        encoding="utf-8",
     )
     print(f"wrote {out.relative_to(DATA_DIRECTORY)}")
     # The reproduction needs the stored model; load it afresh.

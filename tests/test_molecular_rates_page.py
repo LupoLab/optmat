@@ -20,10 +20,10 @@ import pytest
 from optmat.exceptions import ModelRangeWarning
 
 ROOT = Path(__file__).parents[1]
-PAGE = (ROOT / "docs" / "molecular_ionisation_rates.md").read_text()
-PAGE += (
-    ROOT / "docs" / "user-guide" / "molecular-ionisation-validation.md"
-).read_text()
+PAGE = (ROOT / "docs" / "molecular_ionisation_rates.md").read_text(encoding="utf-8")
+PAGE += (ROOT / "docs" / "user-guide" / "molecular-ionisation-validation.md").read_text(
+    encoding="utf-8"
+)
 NAMES = (
     "molecular-rate-constants",
     "molecular-rate-models",
@@ -47,7 +47,9 @@ def _tables():
 
 def _block(name: str) -> str:
     text = (
-        (ROOT / "tests/data/historical_documentation_tables.md").read_text()
+        (ROOT / "tests/data/historical_documentation_tables.md").read_text(
+            encoding="utf-8"
+        )
         if name in ("molecular-rate-solprop",)
         else PAGE
     )

@@ -320,7 +320,7 @@ def test_a_missing_stored_model_is_an_error(stored):
 
 def test_a_stored_model_of_another_gas_is_an_error(stored):
     text = two_photon._dumps(derivation.derive("Ne", "linear"))
-    (stored / "Ar_linear.json").write_text(text)
+    (stored / "Ar_linear.json").write_text(text, encoding="utf-8")
     with pytest.raises(DataError, match="holds the model of Ne"):
         two_photon_ionisation_model("Ar")
 
@@ -328,13 +328,13 @@ def test_a_stored_model_of_another_gas_is_an_error(stored):
 def test_an_old_or_malformed_stored_model_is_an_error(stored):
     record = json.loads(two_photon._dumps(derivation.derive("Ar", "linear")))
     (stored / "Ar_linear.json").write_text(
-        json.dumps(record | {"derivation_version": 0})
+        json.dumps(record | {"derivation_version": 0}), encoding="utf-8"
     )
     with pytest.raises(DataError, match="re-derive"):
         two_photon_ionisation_model("Ar")
     two_photon._stored.cache_clear()
     del record["e1"]
-    (stored / "Ar_linear.json").write_text(json.dumps(record))
+    (stored / "Ar_linear.json").write_text(json.dumps(record), encoding="utf-8")
     with pytest.raises(DataError, match="needs exactly the fields"):
         two_photon_ionisation_model("Ar")
 

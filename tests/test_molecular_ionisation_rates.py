@@ -33,7 +33,9 @@ from optmat.gas.molecular_ionisation_validation import (
 )
 
 FIXTURE = json.loads(
-    (Path(__file__).parent / "data" / "solprop_molecular_rates.json").read_text()
+    (Path(__file__).parent / "data" / "solprop_molecular_rates.json").read_text(
+        encoding="utf-8"
+    )
 )
 FIELDS = np.array(FIXTURE["fields_v_per_m"])
 # solprop's names of the tabulations, and the models they are here.

@@ -30,7 +30,7 @@ def snapshot() -> dict[str, list[str]]:
 
 def main() -> None:
     """Write the snapshot."""
-    OUTPUT.write_text(json.dumps(snapshot(), indent=1) + "\n")
+    OUTPUT.write_text(json.dumps(snapshot(), indent=1) + "\n", encoding="utf-8")
     print(f"wrote {OUTPUT.relative_to(ROOT)}")
 
 

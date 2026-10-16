@@ -122,9 +122,11 @@ def test_a_clean_install_runs_the_quickstart_and_the_surface(artifacts, kind, tm
         f"{artifacts[kind]}[gas]", cwd=tmp_path,
     )  # fmt: skip
     script = tmp_path / "check.py"
-    script.write_text(CHECK)
+    script.write_text(CHECK, encoding="utf-8")
     out = _run(str(python), str(script), str(ROOT), cwd=tmp_path)
     modules, names = (int(x) for x in out.split())
-    assert modules == len(json.loads((ROOT / "tests/data/public_api.json").read_text()))
+    assert modules == len(
+        json.loads((ROOT / "tests/data/public_api.json").read_text(encoding="utf-8"))
+    )
     assert names > 0
     assert re.fullmatch(r"\d+ \d+\n", out)

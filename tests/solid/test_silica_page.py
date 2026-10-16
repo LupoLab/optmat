@@ -12,7 +12,7 @@ from optmat.solid.kerr import kerr_models
 from optmat.solid.models.formulas import FormulaModel
 from optmat.solid.models.registry import default_model, models
 
-PAGE = (Path(__file__).parents[2] / "docs" / "silica.md").read_text()
+PAGE = (Path(__file__).parents[2] / "docs" / "silica.md").read_text(encoding="utf-8")
 
 
 def _table(name):

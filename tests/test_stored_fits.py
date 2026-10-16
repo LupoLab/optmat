@@ -194,7 +194,7 @@ def test_stored_fit_uncertainty_is_positive_over_its_range(name):
 @pytest.mark.parametrize("name", CONFIGS)
 def test_robustness_record_is_current_and_complete(name):
     path = GAS_DATA_DIRECTORY / "models" / "robustness" / f"{name}.json"
-    record = json.loads(path.read_text())
+    record = json.loads(path.read_text(encoding="utf-8"))
     config = load_config(name)
     # Regenerate with tools/fit/robustness.py after changing a fit.
     assert record["config_sha256"] == config.digest

@@ -56,7 +56,8 @@ def main() -> None:
             "heat_capacity_ratio": [heat_capacity_ratio(gas, t) for t in temperatures],
         }
     OUT.write_text(
-        json.dumps({"solprop_commit": commit, "gases": gases}, indent=1) + "\n"
+        json.dumps({"solprop_commit": commit, "gases": gases}, indent=1) + "\n",
+        encoding="utf-8",
     )
 
 
