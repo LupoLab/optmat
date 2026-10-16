@@ -1,0 +1,58 @@
+# Methane: effective electronic oscillators plus the HITRAN infrared bands (fixed).
+gas = "CH4"
+description = "Methane: two effective electronic oscillators fitted to the Cuthbertsons' (1920) and Watson & Ramaswamy's visible dispersion, Achtermann's 633 nm and Burns et al.'s 458-633 nm molar refractivities, Zhao et al.'s 1566 nm value, Hohm's 325-633 nm dispersion (1993; its shape at 4e-5, the level free) and Shelton's N2/CH4 phase-matching ratios (477-1319 nm, harmonics to 238 nm), with the HITRAN vibrational bands below 4500 cm^-1 fixed (the overtones above, 1.8 % of the infrared strength, left out). Valid from 240 nm to 1.31 um, except where the pure gas absorbs (1123-1137, 1149-1177 and 1187.4-1187.9 nm), and at 11.1-12.1 um, with HITRAN's bands as derived Gaussian rules (OEP 3)."
+range_nm = [240.0, 1400.0]
+
+validators = [
+    { key = "bose_1972/A_eps_best_CH4", electric = true },   # static dielectric (TC-400)
+    { key = "schmidt_2003/A_eps_four_CH4", electric = true },
+    "kerl_1984/A_R_mean_CH4",
+    "sneep_2005/rayleigh_CH4",   # Rayleigh scattering (TC-150)
+    "ityaksov_2008/rayleigh_CH4",   # Rayleigh scattering (TC-150)
+    "cuthbertson_1920/fit_CH4",
+    "watson_1936/zero_celsius_CH4",
+    { key = "reinsch_1985/mcscf_CH4", electric = true, infrared = false },
+    "thomas_1977/moments",   # Thomas & Meath's DOSD: S(-2), S(-4) (TC-606)
+    # 1.68-14.8 um by the prism method, the one broadband mid-infrared set: qualified
+    # only at 11.46 and 11.89 um, in the 11.1-12.1 um window; compared elsewhere, as
+    # TC-752 (TC-802; OEP 3, Q20).
+    "rollefson_1940/experiment_CH4",
+]
+
+[model]
+effective = 2
+# Above the highest photon energy of the data (238 nm = 0.191 hartree): a modelling bound.
+effective_min_energy_hartree = 0.25
+chi0_au = 0.0
+starts = 12
+band_nodes = 8   # every band as derived rules, and the windows between them (OEP 3)
+windows = true   # the derived windows are the qualified intervals (TC-749)
+
+[[fitted]]
+key = "cuthbertson_1920/experiment_CH4"
+free_scale = true             # state and density not stated (TC-129): shape only
+
+[[fitted]]
+key = "watson_1936/dispersion_CH4"
+free_scale = true             # 25 C, ideal-gas reduction: shape here, level from the metrology
+
+[[fitted]]
+key = "achtermann_1991/A_R_this_work_CH4"
+
+[[fitted]]
+key = "zhao_2026/A_R_1566_CH4"   # 1566 nm, 44 ppm (reconstructed from the
+                                 # authors' static value by their own Eq. 2, TC-151)
+
+[[fitted]]
+key = "shelton_1986_ch4/density_N2_over_CH4"
+
+[[fitted]]
+key = "shelton_1990/density_N2_over_CH4"
+
+[[fitted]]
+key = "burns_1986/A_R_CH4"   # 458-633 nm molar refractivity, 0.1 %
+
+[[fitted]]
+key = "hohm_1993/alpha_CH4"   # 325-633 nm dispersion
+free_scale = true             # level free: Hohm's absolute levels scatter by 0.1-0.5 % (TC-400)
+shape_relative = 4e-5         # the shape's precision, from his argon against theory (TC-400)

@@ -1,0 +1,135 @@
+citation = "R. Santra, R. W. Dunford and L. Young, \"Spin-orbit effect on strong-field ionization of krypton\", Phys. Rev. A 74, 043403 (2006)"
+doi = "10.1103/PhysRevA.74.043403"
+library = "Santra_2006_SpinOrbitEffect"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field tunnel ionisation rates of the Kr 4p orbitals in an effective \
+one-electron model with spin-orbit coupling: H = -nabla^2/2 + V_HS(r) + (alpha^2/2)(1/r) \
+dV_HS/dr l.s - z E - i eta W(r) (Eq. (1), p. 043403-2). V_HS is the Hartree-Fock-Slater \
+potential of Herman and Skillman's code, its exchange parameter chosen as 1.1035 so that \
+the spin-orbit-free 4p level is E_4p = -14.222 eV, and the 4p fine-structure splitting \
+is set to 0.666 eV (higher levels by the hydrogenic formula, Eq. (7), constant 85.248 \
+eV), so that the model's 4p_3/2 and 4p_1/2 binding energies are the measured ones \
+(14.0 and 14.7 eV, p. -2); spin-orbit coupling in first-order degenerate perturbation \
+theory within each n, l subshell (Eqs. (4)-(6)). Radial finite elements (3001 \
+functions, quadratic grid to 60 a.u.), l = 0-11, the 75 lowest radial functions per l; \
+the field couples them by Eq. (8); a complex absorbing potential W = (r - c)^2 beyond c \
+= 4 a.u. (Eq. (2)), its strength eta optimised; the complex Siegert energy E of each \
+resonance from the matrix of H in a subspace of 300 eigenvectors, 'the ionization rate \
+gamma = -2 Im(E)' (p. -3). Only m, the projection of the total angular momentum, is \
+conserved; each resonance is labelled by m and by the field-free j it overlaps most. \
+'All numerical parameters here and in the following are chosen such as to ensure \
+converged tunnel ionization rates' (p. -3)."""
+notes = """Journal pp. 043403-1 to -9 = PDF pages 1-9. Identity checked against the first \
+page (Robin Santra, Robert W. Dunford, and Linda Young, Phys. Rev. A 74, 043403 (2006)).
+
+WHAT IS TAKEN. Table I (p. -3, tbl_f7044803390d; every cell checked against the table \
+image and the PDF text): the tunnel ionisation rates gamma (au) of the three 4p \
+resonance states at the static field E = 0.10 au (the caption), one dataset per \
+channel: 4p_1/2 with |m| = 1/2 (gamma = 4.89e-3 au), 4p_3/2 with |m| = 1/2 (1.18e-2) and \
+4p_3/2 with |m| = 3/2 (1.41e-3). The rows print m only (+1/2, +1/2, +3/2); j is read from \
+the squared overlaps with the field-free 4p_j states (0.976 with j = 1/2; 0.957 and \
+0.970 with j = 3/2), as the text names them: 'gamma_{3/2,+-1/2} is greater than \
+gamma_{3/2,+-3/2} by more than a factor of 8 and greater than gamma_{1/2,+-1/2} by 2.4' \
+(p. -4; the table gives 8.37 and 2.41). 'Data were calculated for positive m. Replacing \
+m with -m yields identical results' (caption). And the total of the atom, a text value \
+(total_Kr, p. -4).
+
+WHAT THE RATES COUNT. Each gamma is the rate of ONE electron, the one in the 4p_j, m \
+spin-orbital (an effective one-electron model: no factor for the other electrons). \
+'The total atomic ionization rate is obtained as the sum over all gamma_{j,m} weighted \
+by the number of electrons in the respective j,m subshell. Combining the data in Table \
+I, the ionization rate of Kr, at E = 0.10 a.u., is 0.036 a.u., which corresponds to a \
+tunneling lifetime of 0.67 fs' (p. -4). Each (j, m) state holds one electron and m and \
+-m have the same rate, so the six 4p electrons give 2 x (4.89e-3 + 1.18e-2 + 1.41e-3) = \
+2 x 0.01810 = 0.03620 au: the printed 0.036 au (checked 2026-10-01), and 1/0.0362 au = \
+27.6 au of time = 0.668 fs, the printed 0.67 fs. The 4s electrons are not included. \
+The rates are static (a field, not a laser intensity): 'E in Eq. (1) represents a \
+static field along the z axis' (p. -2); the paper's cycle averages (Eq. (10), Fig. 1) are \
+not taken. As a laser amplitude, 0.10 au is 3.5e14 W/cm^2 (p. -3).
+
+ACCURACY. No uncertainty is stated; the numerical parameters were 'chosen such as to \
+ensure converged tunnel ionization rates' (p. -3). The model's approximations are the \
+Hartree-Fock-Slater mean field, which the field is assumed not to modify ('At field \
+strengths of 0.1 a.u. or less, this approximation should be reasonable', p. -2), and the \
+first-order spin-orbit coupling within a subshell. Printed to three digits.
+
+NOT TAKEN. The Stark shifts and the overlaps of Table I (no quantity; kept in the \
+printed cells). Table II (p. -7: spin-orbit periods and x-ray transition energies of \
+the Ne-Xe ions, reproduced from refs. [79-84]). Fig. 1 (cycle-averaged rates against \
+intensity) and Fig. 2 (Kr+ state populations): figures."""
+
+[[datasets]]
+id = "tableI_j12_m12_Kr"
+material = "Kr"
+file = "Kr/santra_2006__tableI_j12_m12_Kr.csv"
+table = "tbl_f7044803390d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table I (p. 043403-3), row 1 (m = +1/2, |c(j=1/2)|^2 = 0.976), column gamma (au): the static-field tunnel ionisation rate gamma = -2 Im E of the 4p_1/2 resonance state with |m| = 1/2 at E = 0.10 au (the caption), in the Herman-Skillman potential with spin-orbit coupling. The rate of the ONE electron in that spin-orbital; m = -1/2 has the same rate (caption), so the 4p_1/2 subshell's two electrons give twice it. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "4p_1/2"
+m_j = "+-1/2"
+potential = "Herman-Skillman (Hartree-Fock-Slater, exchange parameter 1.1035) with spin-orbit coupling, 4p_j energies tuned to the measured ones"
+method = "complex absorbing potential, finite-element basis"
+
+[[datasets]]
+id = "tableI_j32_m12_Kr"
+material = "Kr"
+file = "Kr/santra_2006__tableI_j32_m12_Kr.csv"
+table = "tbl_f7044803390d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table I (p. 043403-3), row 2 (m = +1/2, |c(j=3/2)|^2 = 0.957), column gamma (au): the static-field tunnel ionisation rate gamma = -2 Im E of the 4p_3/2 resonance state with |m| = 1/2 at E = 0.10 au (the caption), in the Herman-Skillman potential with spin-orbit coupling. The rate of the ONE electron in that spin-orbital; m = -1/2 has the same rate (caption). The fastest channel: 8.37 times the |m| = 3/2 rate and 2.41 times the 4p_1/2 rate ('more than a factor of 8' and '2.4', p. -4). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "4p_3/2"
+m_j = "+-1/2"
+potential = "Herman-Skillman (Hartree-Fock-Slater, exchange parameter 1.1035) with spin-orbit coupling, 4p_j energies tuned to the measured ones"
+method = "complex absorbing potential, finite-element basis"
+
+[[datasets]]
+id = "tableI_j32_m32_Kr"
+material = "Kr"
+file = "Kr/santra_2006__tableI_j32_m32_Kr.csv"
+table = "tbl_f7044803390d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table I (p. 043403-3), row 3 (m = +3/2, |c(j=3/2)|^2 = 0.970, |c(j=1/2)|^2 printed 0), column gamma (au): the static-field tunnel ionisation rate gamma = -2 Im E of the 4p_3/2 resonance state with |m| = 3/2 at E = 0.10 au (the caption), in the Herman-Skillman potential with spin-orbit coupling. The rate of the ONE electron in that spin-orbital (no m_l = 0 component: 'has no overlap with |4p, m_l = 0, m_s>', p. -4); m = -3/2 has the same rate (caption). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "4p_3/2"
+m_j = "+-3/2"
+potential = "Herman-Skillman (Hartree-Fock-Slater, exchange parameter 1.1035) with spin-orbit coupling, 4p_j energies tuned to the measured ones"
+method = "complex absorbing potential, finite-element basis"
+
+[[datasets]]
+id = "total_Kr"
+material = "Kr"
+table = "text"
+points = [["0.10", "0.10", "0.036"]]
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Text, p. 043403-4: 'the ionization rate of Kr, at E = 0.10 a.u., is 0.036 a.u., which corresponds to a tunneling lifetime of 0.67 fs': the rate of the atom, the sum of the Table I rates over the six 4p electrons, 2 x (4.89e-3 + 1.18e-2 + 1.41e-3) = 0.03620 au (checked 2026-10-01). Static field. Printed to two significant digits; no uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "4p (all six electrons)"
+potential = "Herman-Skillman (Hartree-Fock-Slater, exchange parameter 1.1035) with spin-orbit coupling, 4p_j energies tuned to the measured ones"
+method = "complex absorbing potential, finite-element basis"

@@ -1,0 +1,112 @@
+citation = "M. G. J. Fink and P. Zoller, \"Quantum-defect parametrization of perturbative two-photon ionization cross sections\", Phys. Rev. A 39, 2933-2947 (1989)"
+doi = "10.1103/PhysRevA.39.2933"
+library = "Fink_1989_QuantumDefectParametrization"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """A multichannel quantum-defect (MQDT) parametrisation of two-photon ionisation \
+amplitudes in lowest-order perturbation theory (Eqs. 2.1-2.5; the intermediate sum done \
+as a Dalgarno-Lewis inhomogeneous equation), in which the rapid energy dependence of \
+intermediate and final Rydberg resonances is carried by elementary functions (cot(pi \
+nu), Coulomb phases) and the rest by parameters that are smooth across the series and \
+the thresholds: reaction matrices R^b, R^f of the intermediate and final channels and \
+smooth dipole matrices (Secs. IV-V). Worked numerically only for atomic hydrogen 1s, \
+2s and 3s with circularly polarised light (Sec. III): the acceleration-form amplitude \
+(Eq. 3.2) split into a standing-wave part t^s, an on-shell part t^o and a first-order \
+term t_3, computed with a cutoff radius r1 = 100 a0 of the 1/r^2 interaction, \
+converged to 'about one part in 10^4 or better' for intermediate effective quantum \
+numbers above 10 (p. 2939)."""
+notes = """Journal pp. 2933-2947 = PDF pages 1-15 (journal page = PDF page + 2932). \
+Identity checked on the first page (PDF p. 1: 'PHYSICAL REVIEW A VOLUME 39, NUMBER 6 \
+MARCH 15, 1989', footer '39 2933'; Michael G. J. Fink and Peter Zoller, JILA, Boulder; \
+received 26 September 1988) on 2026-10-09. The PDF is a scan: every page one embedded \
+1-bit image, 5169 x 7129 pixels (about 600 dpi).
+
+WHAT THE PAPER GIVES. It is a method paper. Its only numbers are for atomic hydrogen: \
+Tables I-III (pp. 2939-2940), the 2PI of H 1s, 2s and 3s with circularly polarised \
+light at nine wavelengths each, with the parameters t^s, t^o, t_3 (a.u.), this paper's \
+total sigma^(2) (cm4 s) and 'the same from Ref. 13' (M. Aymar and M. Crance, J. Phys. \
+B 13, L287 (1980); S. Klarsfeld and A. Maquet, Phys. Lett. 73A, 100 (1979) and J. \
+Phys. B 12, L553 (1979); which of them for which value is not said). Figs. 2 and 3 \
+(H 1s, 2s: sigma^(2), the amplitude and the smooth parameters against the \
+intermediate-state energy near threshold) and Figs. 4 and 5 (a hypothetical \
+two-channel model in arbitrary units, Eqs. 5.5-5.7) are raster figures. There are NO \
+values for any noble gas: krypton and xenon (and He, Ne, Ar) appear in neither a \
+table, a figure nor the text, apart from the remark that for 'the rare gases, for \
+example' the matrix diagonalising R 'may often be approximated satisfactorily by the \
+analytically known recoupling matrix from jj to LS coupling' (p. 2945).
+
+THE CROSS SECTION (Eq. 2.1, p. 2934): sigma^(2) = 2 pi (2 pi alpha)^2 omega^2 sum_f \
+|T^(2)_f<-a|^2 a0^4 t0 in atomic units, T^(2) the second-order dipole matrix element \
+in length form (Eq. 2.2) for the field E(t) = E0 eps exp(-i omega t) + c.c., converted \
+with a0 = 5.29177e-11 m and t0 = 2.41888e-17 s (printed); the paper does not write the \
+rate, but this is the usual generalised cross section, rate = sigma^(2) F^2, F the \
+photon flux. For s states and circular light T^(2) = Omega (t^(2) + t_3) / omega^4 \
+(Eq. 3.2, acceleration form), Omega = [2/(3 x 5)]^(1/2) (p. 2937), and t^(2) = t^s + \
+i t^o above the one-photon threshold, t^s - cot(pi nu) t^o below it (Eq. 3.9), nu the \
+effective quantum number of the intermediate energy E_a + omega.
+
+CAN A CROSS SECTION BE REPRODUCED FROM THE PARAMETERS? Yes, for hydrogen, by \
+Eqs. 2.1, 3.2 and 3.9 above: the script recomputes every row of Tables I-III from the \
+printed t^s, t^o, t_3 and the wavelength (omega = 2 pi c / lambda in hartree, infinite \
+nuclear mass: 911.25 angstrom is omega = 0.50001, the 1s threshold) and reproduces the \
+printed sigma^(2) within 2e-4 (Table I), 1.2e-3 (II) and 2.0e-3 (III) above the \
+one-photon threshold, and within 0.6 % at the first row of each table, just below it \
+(nu = 8.50). For many-electron atoms the general formulas are Eqs. 4.21, 4.22 and 4.24 \
+(pp. 2942-2943; final-state resonances Sec. IV C, Eqs. 4.25-4.27) and, for two \
+intermediate channels, Eqs. 5.5-5.7 (p. 2944, parameters delta, alpha, tau, q, q', \
+Q and the thresholds); the parameters are reaction matrices, which the paper says may \
+come from experimental energy levels, and smooth dipole matrices, from one-photon \
+studies, a Coulomb approximation or a fit to ab initio two-photon amplitudes (p. \
+2945). The paper gives no such parameters for any atom but hydrogen, so for Kr and Xe \
+it provides a formula, not values.
+
+EXTRACTED (tools/extract/fink_1989.py): Table I's sigma^(2) (H 1s, circular), from the \
+library's table (tbl_790c596397dd), every cell checked against the table image (all \
+agree, as do Tables II and III's). The row ids and x are the wavelengths as printed; \
+value the printed number with its bracketed power of ten written as an exponent \
+(printed '5.530[-52]', value 5.530e-52).
+
+THE CHECKS (the script fails if one is missed): the reproduction above; this paper's \
+sigma^(2) against Ref. 13's within 1 % wherever both are printed (worst 0.7 % in Table \
+I, 0.9 % in II, 0.4 % in III: Ref. 13 is printed to three digits).
+
+NOT TAKEN: Table I's t^s, t^o, t_3 (amplitude parameters, no quantity of the \
+vocabulary; they are in the library table and reproduce sigma^(2) as above) and Ref. \
+13's column (another paper's values, used as a check); Tables II and III (2PI from the \
+excited 2s and 3s states: multiphoton_ionization_cross_section is for the ground \
+state and has no initial-level parameter; not bent to hold them); Figs. 2 and 3 (raster \
+figures of H 1s and 2s near the intermediate-state threshold, the resonance structure \
+'obtained by interpolation [of the smooth parameters, about 30 grid points] and \
+insertion into Eq. (3.9)', p. 2939: model curves that Tables I-III's parameters \
+underlie); Figs. 4 and 5 (a hypothetical two-channel model, arbitrary units); Fig. 1 \
+(a schematic).
+
+TWO-PHOTON REFERENCES the paper cites (data not in this record): A. F. Starace and \
+T. F. Jiang, Phys. Rev. A 36, 1705 (1987) (starace_1987, TC-878); P. Gangopadhyay, X. \
+Tang, P. Lambropoulos and R. Shakeshaft, Phys. Rev. A 37, 2998 (1986) (printed so; \
+the paper is Phys. Rev. A 34, 2998 (1986), gangopadhyay_1986); H: M. Aymar and M. \
+Crance, J. Phys. B 13, L287 (1980); S. Klarsfeld and A. Maquet, Phys. Lett. 73A, 100 \
+(1979), J. Phys. B 12, L553 (1979); E. Karule, J. Phys. B 21, 1997 (1988); B. Gao and \
+A. F. Starace, Phys. Rev. Lett. 61, 404 (1988); none of the H papers is in the \
+library."""
+
+[[datasets]]
+id = "tab1_sigma2_1s"
+material = "H"
+file = "H/fink_1989__tab1_sigma2_1s.csv"
+table = "tbl_790c596397dd"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table I (p. 2939), column sigma^(2): two-photon ionisation of atomic hydrogen 1s, circular polarisation, at nine wavelengths from 924.06 to 300 angstrom (photon energy 0.493 to 1.519 hartree). 924.06 angstrom is just below the one-photon threshold (the intermediate state at nu = 8.5); the other eight, 911.25 (the threshold) to 300 angstrom, are above it: two-photon above-threshold ionisation. The wavelengths are omega = 2 pi c / lambda with omega in hartree for an infinitely heavy nucleus (911.25 angstrom is 0.50001 hartree). Uncertainty: the paper's convergence, 'about one part in 10^4 or better' for nu > 10 (p. 2939), and the four printed digits."
+[datasets.uncertainty]
+relative = 0.001
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "circular"
+gauge = "acceleration"
+method = "lowest-order perturbation theory, exact one-electron (hydrogen) Green function decomposed into a standing-wave part, an on-shell part (Coulomb functions) and a first-order term, acceleration form, interaction cut off at r1 = 100 a0 (Sec. III)"
+definition = "sigma^(2) = 2 pi (2 pi alpha)^2 omega^2 sum_f |T^(2)|^2 a0^4 t0 (Eq. 2.1), T^(2) the second-order dipole matrix element; the rate is sigma^(2) F^2, F the photon flux in photons cm^-2 s^-1 (the usual generalised cross section; the paper does not write the rate)"
+wavelength_definition = "lambda = 2 pi c / omega, omega in hartree for an infinitely heavy nucleus"

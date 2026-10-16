@@ -1,0 +1,154 @@
+citation = "R. Mahon, T. J. McIlrath, V. P. Myerscough and D. W. Koopman, IEEE J. Quantum Electron. 15, 444 (1979)"
+doi = "10.1109/jqe.1979.1070036"
+library = "Mahon_1979_ThirdHarmonicGeneration"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Refractive index of Ar, Kr and Xe from the near infrared to the first ionization \
+limit, summing a Sellmeier term per allowed transition (oscillator strengths of Natali \
+et al. for Ar and Kr, Geiger for Xe; r_e = 2.818e-13 cm) and a principal-value integral \
+over photoionization cross sections (Marr and West; West and Morton; Huffman et al. \
+between the Xe 2P3/2 and 2P1/2 limits, taken as 7.8e-17 cm^2); phase mismatch per atom \
+for frequency tripling, C = Delta k / N = 2 pi (n_1 - n_3) / (lambda N)."""
+notes = """The calculated values are given per atom, (n - 1)/N in cm^3 (printed as, e.g., \
+'n - 1 = 1.417 x 10^-23 N'), stored as refractivity per density; state nominal (0 \
+degrees C, 1 atm) since the quantity does not depend on it to first order. The \
+calculation is checked against Leonard's compilation: 'offset, being 1 percent above \
+the experimental data in Ar, 5 percent below the data in Kr, and in Xe our predictions \
+are 2 percent higher' (p. 3), and 4 % below Smith et al.'s krypton data to 1680 A. \
+Wavelengths are vacuum wavelengths in A.
+
+Not extracted as datasets (the package has no quantity for a phase mismatch per atom, \
+and a negative refractivity cannot be a dataset): Figs. 1-3 (C_Ar, C_Kr, C_Xe against \
+the harmonic wavelength); Table I (krypton around 1215.67 A, (n-1)_lines x 10^23/N = \
+-1.9198 ... -2.4193, (n-1)_cont x 10^23/N = +1.3854 ... +1.3831, total (n-1) x 10^24/N = \
+-5.3439, -6.5221, -7.7486, -9.0272, -10.362 at 1214.67, 1215.17, 1215.67, 1216.17, 1216.67 \
+A; the library lost the caption 'Refractive index contribution for Kr around 1215.67 \
+A', read from the page); Table II (C_Ar x 10^18 = 4.330 ... 4.279, C_Kr x 10^17 = -1.092 \
+... -1.352, C_Xe x 10^17 = 3.937 ... 3.599 over the same wavelengths). Text values of C \
+(p. 4-5), in cm^2 (Delta k in cm^-1 over N in cm^-3; the unit is printed only once, \
+'C_Ar = 2.38 x 10^-17 cm^2' at 887 A): measured in pure Kr at 1216 A (3647 A tightly \
+focused, b = 0.25 cm, optimum 40 Torr) C_Kr = -1.13e-17; from Bjorklund's Xe tripling \
+at 1182.44 A (b = 0.755 cm, 2.5 Torr) C_Xe = -5.99e-17 and, phase-matched with 77 Torr \
+Ar, C_Ar = 5.54e-18; calculated C_Xe = -6.12e-17 (1182.44 A), -6.71e-17 (1181.95 A), \
+-5.64e-17 (1182.95 A), C_Ar = 5.33e-18 (1182.44 A). The measured C values follow from the \
+optimum pressure through b Delta k = -2 and constrain n(lambda) - n(3 lambda); they \
+would need a phase-mismatch quantity. Calculated negative values: xenon at 1450 A, \
+n - 1 = -4.57e-23 N ('3 percent more negative than the experiment'); krypton at \
+1215.67 A, -7.75e-24 N.
+
+The text also restates Heddle et al.'s argon values per atom ((2.08 +- 0.04)e-23 at \
+1210 +- 30 A, (1.21 +- 0.01)e-23 at 1850 A, (1.22 +- 0.01)e-23 at 1805 A; see \
+heddle_1963) and discusses Chopra and Heddle's Xe Rayleigh scattering, dominated by \
+Xe2 (a cross section 3e5 times the atom's), and their krypton value's wrong sign. The \
+library PDF begins with the reference list of the preceding article in the journal.
+
+Third-order data (added 2026-09-26): only the two calculated THG \
+susceptibilities per atom at 1216 A (Kr -1.1e-36, Xe 2.0e-35 esu, PDF p. 5), whose \
+'details ... will be reported later'; Ar's is 'sufficiently smaller that we can ignore \
+its contribution'. They are near-resonant values for VUV tripling, in Bjorklund's \
+convention (Eq. (1), PDF p. 2; Bjorklund's paper is not in the library), recorded as \
+check. No measured third-order values."""
+
+[[datasets]]
+id = "theory_Ar"
+material = "Ar"
+points = [["1500", "1500", "1.417e-23"], ["1215.67", "1215.67", "1.92e-23"], ["1210", "1210", "1.95e-23", "0.16e-23"], ["1850", "1850", "1.26e-23", "0.03e-23"], ["1805", "1805", "1.25e-23", "0.03e-23"]]
+table = "text"
+quantity = "refractivity_per_density"
+unit = "cm3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "pp. 3-4: calculated n - 1 per atom for argon: 1.417e-23 at 1500 A ('1.2 percent above the experimental point of Chashchina'; 3.4 % at 1140 A, 2.5 % at 1100 A), 1.92e-23 at 1215.67 A, and 'over this finite wavelength range' of Heddle et al.'s detectors (1.95 +- 0.16)e-23 at 1210 +- 30 A, (1.26 +- 0.03)e-23 at 1850 A, (1.25 +- 0.03)e-23 at 1805 A; the +- (sigma column, not declared) is the spread over the band. At 1850 A the text prints '(1.26 +- 0.03) +- 10^-23', a misprint for 'x 10^-23'."
+
+[[datasets]]
+id = "theory_Kr"
+material = "Kr"
+points = [["1500", "1500", "2.411e-23"], ["1300", "1300", "4.028e-23"]]
+table = "text"
+quantity = "refractivity_per_density"
+unit = "cm3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "p. 4: calculated n - 1 per atom for krypton, 2.411e-23 at 1500 A ('5 percent below the experimental data' of Chashchina and Shreider; 2.5 % at 1350 A) and 4.028e-23 at 1300 A ('0.5 percent above')."
+
+[[datasets]]
+id = "theory_Xe"
+material = "Xe"
+points = [["1500", "1500", "1.057e-22"]]
+table = "text"
+quantity = "refractivity_per_density"
+unit = "cm3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "p. 4: calculated n - 1 per atom for xenon at 1500 A, 1.057e-22, '2 percent above the experimental value' (Chashchina and Shreider). At 1400 A the calculation is 7.5 % higher, 5 % at 1350 A (no values printed)."
+
+[[datasets]]
+id = "chashchina_1968_Ar"
+material = "Ar"
+points = [["1216", "1216", "1.87e-23"]]
+table = "text"
+quantity = "refractivity_per_density"
+unit = "cm3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. I. Chashchina, V. I. Gladushchak and E. Ya. Shreider, Opt. Spektrosk. 24, 1008 (1968)"]
+notes = "p. 4: 'The line displacement work of Chashchina gives n - 1 = 1.87 x 10^-23 N' in the vicinity of 1216 A. Also quoted by Ferrell et al. 1987. The original is not in the library."
+
+[[datasets]]
+id = "chopra_heddle_1974_Ar"
+material = "Ar"
+points = [["1216", "1216", "1.90e-23"]]
+table = "text"
+quantity = "refractivity_per_density"
+unit = "cm3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["P. D. Chopra and D. W. O. Heddle, J. Phys. B 7, 2421 (1974)"]
+notes = "p. 4: 'The Rayleigh scattering technique used by Chopra and Heddle implies n - 1 = 1.90 x 10^-23 N' for argon at Lyman alpha (a magnitude; positive for argon). Also quoted by Ferrell et al. 1987. The original is not in the library, so this reproduction may be fitted."
+
+[[datasets]]
+id = "chi3_1216_Kr"
+material = "Kr"
+table = "text"
+points = [["1216", "3647", "-1.1e-36"]]
+quantity = "hyperpolarizability"
+unit = "esu"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "PDF p. 5 (journal p. 448), and repeated with Figs. 4-6 (PDF p. 6): 'We have calculated third-order susceptibilities for Xe and Kr at 1216 A in order to obtain conversion efficiencies; details of the calculations will be reported later. We will use values chi_Kr(3)(1216 A) = -1.1 x 10^-36 ESU and chi_Xe(3)(1216 A) = 2.0 x 10^-35 ESU.' The THG susceptibility per atom (it multiplies N in Eq. (1)) for tripling 3647 A to 1215.67 A (the wavelength column is the fundamental, 3647 A as printed in the abstract; the row is the harmonic, 1216 A). Near-resonant; the sign is negative: at 1215.67 A krypton is negatively dispersive (n - 1 = -7.75e-24 N, PDF p. 4), i.e. the harmonic lies above a Kr resonance. Convention Bjorklund's (Eq. (1), PDF p. 2: P_3 = 8.215e-2 / (3 lambda)^4 [chi(3)(lambda)]^2 N^2 P_1^3 F_1, P in W, N in cm^-3, lambda the harmonic wavelength in cm, chi in esu); Bjorklund's definition of chi (IEEE J. Quantum Electron. 11, 287 (1975)) is not in the library, so the factor to gamma_T is not established here. A calculation used only for relative conversion efficiencies ('our results are not dependent on the accuracy of chi(3)'): check. Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "bjorklund_1975"
+part = "electronic"
+beyond_resonance = true
+
+[[datasets]]
+id = "chi3_1216_Xe"
+material = "Xe"
+table = "text"
+points = [["1216", "3647", "2.0e-35"]]
+quantity = "hyperpolarizability"
+unit = "esu"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "PDF p. 5 (journal p. 448), and repeated with Figs. 4-6 (PDF p. 6): 'We have calculated third-order susceptibilities for Xe and Kr at 1216 A in order to obtain conversion efficiencies; details of the calculations will be reported later. We will use values chi_Kr(3)(1216 A) = -1.1 x 10^-36 ESU and chi_Xe(3)(1216 A) = 2.0 x 10^-35 ESU.' The THG susceptibility per atom (it multiplies N in Eq. (1)) for tripling 3647 A to 1215.67 A (the wavelength column is the fundamental, 3647 A as printed in the abstract; the row is the harmonic, 1216 A). Near-resonant; the sign is positive. Convention Bjorklund's (Eq. (1), PDF p. 2: P_3 = 8.215e-2 / (3 lambda)^4 [chi(3)(lambda)]^2 N^2 P_1^3 F_1, P in W, N in cm^-3, lambda the harmonic wavelength in cm, chi in esu); Bjorklund's definition of chi (IEEE J. Quantum Electron. 11, 287 (1975)) is not in the library, so the factor to gamma_T is not established here. A calculation used only for relative conversion efficiencies ('our results are not dependent on the accuracy of chi(3)'): check. Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "bjorklund_1975"
+part = "electronic"
+

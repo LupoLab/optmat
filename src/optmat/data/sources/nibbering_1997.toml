@@ -1,0 +1,552 @@
+citation = "E. T. J. Nibbering, G. Grillon, M. A. Franco, B. S. Prade and A. Mysyrowicz, \"Determination of the inertial contribution to the nonlinear refractive index of air, N2, and O2 by use of unfocused high-intensity femtosecond laser pulses\", J. Opt. Soc. Am. B 14, 650 (1997)"
+doi = "10.1364/JOSAB.14.000650"
+library = "Nibbering_1997_DeterminationInertialContribution"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Spectral analysis after nonlinear propagation: unfocused 120-fs, 800-nm, 45-mJ \
+Ti:sapphire pulses (~200 GW/cm2 at the beam centre) through a 2.5-m tube of gas at \
+0.2-3 bar (MgF2 windows, their SPM removed by using the empty-tube spectrum as \
+reference); the centre of the beam (1-mm diaphragm) is analysed by an iterative \
+phase-retrieval algorithm with an instantaneous nonlinearity (Ar, Xe, SF6) or an \
+instantaneous plus rotational-Raman response (N2, O2, air) as free parameters (pp. \
+650-658)."""
+notes = """Journal pages 650-660 = PDF pages 1-11. Identity checked against the first page. \
+Air is not curated (its values are skipped); SF6 is curated.
+
+DEFINITIONS (pp. 653-655; SI-style, not stated explicitly). Eq. (1): P(3)(t) = E(t) int_0^inf \
+|E(t - tau)|^2 R(tau) dtau, E(t) = A(t) exp(-i omega t) (Eq. (2), complex field); Eq. (3): \
+R(t) = sigma(omega) delta(t) + <(2 pi/h)[alpha(omega, t), alpha(omega, 0)]>, sigma the \
+electronic hyperpolarizability tensor. Eq. (10): phi_NL(t, z) = (2 pi / lambda) z \
+int n2(tau) |E(t - tau, 0)|^2 dtau. Eqs. (11)-(12): Delta n_total = Delta n_instant + Delta \
+n_rot-Raman, Delta n_instant = n2,instant I(t), 'The electronic and the rotational \
+Rayleigh contributions give rise to an instantaneous nonlinearity' (p. 654): \
+n2,instant is NOT purely electronic for N2 and O2 (it includes the rotational Rayleigh, \
+Delta J = 0, part). Eq. (13): Delta n_2,rot-Raman(t) = Im[n2,rot-Raman sum_J F_J int I(t - \
+tau) exp(-i omega_J tau) dtau]; Eq. (14): n2,rot-Raman = 32 pi^2 N beta(omega) / (n0 h c), \
+beta = alpha_par - alpha_perp (Eq. (15)); Eqs. (16)-(20): F_J = (rho_(J+2) - rho_J) Z_J \
+(J + 2)(J + 1)/(2J + 3), thermal rho_J, Z_J = 1 (odd), 2 (even) for N2, 1 (odd), 0 (even) for \
+O2, omega_J = 4 pi c B (2J + 3). Single-beam self-phase modulation: n2 is the SELF \
+coefficient.
+
+TABLE 3 (p. 658; JSON cells, image checked; tools/extract/nibbering_1997.py): 'Values of \
+the Nonlinear Refractive-Index Parameters of Gases Obtained with the Nonlinear \
+Propagation Method by Use of 120-fs Pulses at 800 nm', gas at '1.0 bar/300 K': \
+n2,instant (1e-23 m2/W) Ar 1.4 +- 0.2, Xe 8.1 +- 0.8, SF6 1.6 +- 0.3, N2 2.3 +- 0.3, O2 5.1 +- \
+0.7 (air 2.9 +- 0.4, an 'effective value calculated from the data for N2, O2, and Ar'); \
+n2,rot-Raman (1e-28 m2/J; not extracted, no quantity) N2 2.3 +- 0.4, O2 8.5 +- 2 (air 3.6 +- \
+0.8); beta(omega) (1e-40 C2 m2/J) derived N2 0.74, O2 1.4, literature (Ref. 20 = lin_1976) \
+1.0, 1.27. The phase-retrieval ambiguity made the algorithm find a 60-70-fs pulse instead \
+of 120 fs (p. 657); 'Note added in revision' (p. 659): the ambiguity was later solved and \
+the relative values confirmed. Effective n2 for 120-fs pulses (p. 658, text, 'n2,effective'): \
+N2 3 x 10^-23, O2 8 x 10^-23 m2/W (air 4 x 10^-23).
+
+PART. Ar, Xe: 'electronic' (atoms, instantaneous only). SF6: 'electronic_vibrational' \
+(spherical top, no rotational Raman; the adiabatic vibrational part is inside). N2, O2: \
+'instantaneous' (electronic plus rotational Rayleigh, as the paper defines it; the \
+common trap: 'instantaneous' is not 'electronic'; wahlstrand_2012 finds 7.4 and 9.5 x \
+1e-20 cm2/W against 23 and 51 here).
+
+TABLE 1 (p. 651; image checked): literature values at 1.0 bar, reproduced: Shaw et al. \
+(Ref. 9, Opt. Commun. 103, 153 (1993) = shaw_1993) at 248 nm with 10-ps pulses, 300 K: N2 \
+7.5 +- 2.5, O2 30 +- 12, Ar 2.9 +- 1.0, CH4 11 +- 4, Ne 0.06 +- 0.02, He -0.02 +- 0.01; Lehmberg \
+et al. (Ref. 8, Opt. Commun. 121, 78 (1995), not in the library) Xe -963 +- 112 (SPA, SSPM; \
+'the large negative value for Xe is due to a two-photon resonance at 249.6 nm', p. 657). \
+Air rows (Refs. 5, 6, 7, 9) skipped (Ref. 6 = pennington_1989: 4.2 +- 1.1, 1 ns, 1053 nm, \
+293 K). Structural fixes in the script: the symbol font's '6' for +- and '2' for the \
+minus sign (He '20.02 6 0.01' = -0.02 +- 0.01, Xe '2963 6 112' = -963 +- 112; image checked).
+
+TABLE 2 (p. 653; image checked): 'Values of the Nonlinear Refractive Index n2,total \
+Together with the Electronic Contribution n2,electronic of Gases, Both Estimated from \
+Published Data on the dc Kerr Effect [Carusotto] and Electric-Field-Induced \
+Second-Harmonic Generation [Mizrahi and Shelton] (Taken from Ref. 1 [hellwarth_1990])', \
+1 atm, 293 K, 800 nm; electronic 'Estimated for the long-wavelength limit (i.e., no \
+dispersion effects included)'. Check (2026-09-26): n2,electronic = (4 pi / c) 12 pi \
+(sigma / 8) x 1e7 with hellwarth_1990's sigma gives N2 0.721 (0.720 printed), O2 0.747 \
+(0.746), Ar 0.936 (0.936), H2 0.551, He 0.0348 x 1e-23 m2/W: Table 2's electronic column is \
+Hellwarth's Table II converted. The total column (N2 4.52) lies between Hellwarth's c1111 \
+at 694 nm (4.63) and 1053 nm (4.44) converted likewise: formula-B values near 800 nm. \
+Reproduced (converted) from hellwarth_1990."""
+
+[[datasets]]
+id = "n2_instant_Ar"
+material = "Ar"
+file = "Ar/nibbering_1997__n2_instant_Ar.csv"
+table = "tbl_e8b12922f707"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "primary"
+notes = "Table 3, n2,instant (1e-23 m2/W) at 1.0 bar, 300 K, 120-fs pulses at 800 nm. Part 'electronic' (source notes). Self coefficient."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "n2_instant_Xe"
+material = "Xe"
+file = "Xe/nibbering_1997__n2_instant_Xe.csv"
+table = "tbl_e8b12922f707"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "primary"
+notes = "Table 3, n2,instant (1e-23 m2/W) at 1.0 bar, 300 K, 120-fs pulses at 800 nm. Part 'electronic' (source notes). Self coefficient."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "n2_instant_SF6"
+material = "SF6"
+file = "SF6/nibbering_1997__n2_instant_SF6.csv"
+table = "tbl_e8b12922f707"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "primary"
+notes = "Table 3, n2,instant (1e-23 m2/W) at 1.0 bar, 300 K, 120-fs pulses at 800 nm. Part 'electronic_vibrational' (source notes). Self coefficient."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "n2_instant_N2"
+material = "N2"
+file = "N2/nibbering_1997__n2_instant_N2.csv"
+table = "tbl_e8b12922f707"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "primary"
+notes = "Table 3, n2,instant (1e-23 m2/W) at 1.0 bar, 300 K, 120-fs pulses at 800 nm. Part 'instantaneous' (source notes): includes the rotational Rayleigh contribution. Self coefficient."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "n2_instant_O2"
+material = "O2"
+file = "O2/nibbering_1997__n2_instant_O2.csv"
+table = "tbl_e8b12922f707"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "primary"
+notes = "Table 3, n2,instant (1e-23 m2/W) at 1.0 bar, 300 K, 120-fs pulses at 800 nm. Part 'instantaneous' (source notes): includes the rotational Rayleigh contribution. Self coefficient."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "beta_derived_N2"
+material = "N2"
+file = "N2/nibbering_1997__beta_derived_N2.csv"
+table = "tbl_e8b12922f707"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3, beta(omega) 'Derived' (1e-40 C2 m2/J = C m2/V, SI polarizability): from the fitted n2,rot-Raman through Eq. (14). 'reasonable agreement' with the literature (p. 658); no uncertainty stated."
+
+[[datasets]]
+id = "beta_lin_N2"
+material = "N2"
+file = "N2/nibbering_1997__beta_lin_N2.csv"
+table = "tbl_e8b12922f707"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table 3, beta(omega) 'Literature' (footnote a: Ref. 20 = lin_1976), i.e. Lin et al.'s 9.3 and 11.4 x 1e-25 cm3 converted to SI. Wavelength not stated."
+
+[[datasets]]
+id = "beta_derived_O2"
+material = "O2"
+file = "O2/nibbering_1997__beta_derived_O2.csv"
+table = "tbl_e8b12922f707"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3, beta(omega) 'Derived' (1e-40 C2 m2/J = C m2/V, SI polarizability): from the fitted n2,rot-Raman through Eq. (14). 'reasonable agreement' with the literature (p. 658); no uncertainty stated."
+
+[[datasets]]
+id = "beta_lin_O2"
+material = "O2"
+file = "O2/nibbering_1997__beta_lin_O2.csv"
+table = "tbl_e8b12922f707"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table 3, beta(omega) 'Literature' (footnote a: Ref. 20 = lin_1976), i.e. Lin et al.'s 9.3 and 11.4 x 1e-25 cm3 converted to SI. Wavelength not stated."
+
+[[datasets]]
+id = "literature_N2"
+material = "N2"
+file = "N2/nibbering_1997__literature_N2.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["shaw_1993"]
+notes = "Table 1, Ref. 9 (Shaw et al. 1993 = shaw_1993): SSPM at 248 nm, 10-ps pulses, 1.0 bar, 300 K. The 10-ps pulses include the adiabatic rotational response of molecules: part 'total'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "literature_O2"
+material = "O2"
+file = "O2/nibbering_1997__literature_O2.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["shaw_1993"]
+notes = "Table 1, Ref. 9 (Shaw et al. 1993 = shaw_1993): SSPM at 248 nm, 10-ps pulses, 1.0 bar, 300 K. The 10-ps pulses include the adiabatic rotational response of molecules: part 'total'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "literature_Ar"
+material = "Ar"
+file = "Ar/nibbering_1997__literature_Ar.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["shaw_1993"]
+notes = "Table 1, Ref. 9 (Shaw et al. 1993 = shaw_1993): SSPM at 248 nm, 10-ps pulses, 1.0 bar, 300 K. The 10-ps pulses include the adiabatic rotational response of molecules: part 'total'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "literature_CH4"
+material = "CH4"
+file = "CH4/nibbering_1997__literature_CH4.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["shaw_1993"]
+notes = "Table 1, Ref. 9 (Shaw et al. 1993 = shaw_1993): SSPM at 248 nm, 10-ps pulses, 1.0 bar, 300 K. The 10-ps pulses include the adiabatic rotational response of molecules: part 'total'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "literature_Ne"
+material = "Ne"
+file = "Ne/nibbering_1997__literature_Ne.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["shaw_1993"]
+notes = "Table 1, Ref. 9 (Shaw et al. 1993 = shaw_1993): SSPM at 248 nm, 10-ps pulses, 1.0 bar, 300 K. The 10-ps pulses include the adiabatic rotational response of molecules: part 'total'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "literature_He"
+material = "He"
+file = "He/nibbering_1997__literature_He.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["shaw_1993"]
+notes = "Table 1, Ref. 9 (Shaw et al. 1993 = shaw_1993): SSPM at 248 nm, 10-ps pulses, 1.0 bar, 300 K. The 10-ps pulses include the adiabatic rotational response of molecules: part 'total'. He: -0.02 +- 0.01 (minus sign restored from the image)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "literature_Xe"
+material = "Xe"
+file = "Xe/nibbering_1997__literature_Xe.csv"
+table = "tbl_5f0a7a95fe44"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["R. H. Lehmberg, C. J. Pawley, A. V. Deniz, M. Klapisch and Y. Leng, Opt. Commun. 121, 78 (1995)"]
+notes = "Table 1, Ref. 8 (R. H. Lehmberg et al., Opt. Commun. 121, 78 (1995), not in the library): -963 +- 112 (minus sign restored from the image), 248 nm, 10 ps, two-photon resonance of Xe at 249.6 nm (p. 657): resonantly enhanced and negative."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 10000
+
+[[datasets]]
+id = "hellwarth_total_N2"
+material = "N2"
+file = "N2/nibbering_1997__hellwarth_total_N2.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,total (1e-23 m2/W) at 1 atm, 293 K, 800 nm, 'Taken from Ref. 1' (hellwarth_1990), converted from Hellwarth's c coefficients (source notes): the long-pulse total (electronic + adiabatic rotation and vibration)."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_total_O2"
+material = "O2"
+file = "O2/nibbering_1997__hellwarth_total_O2.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,total (1e-23 m2/W) at 1 atm, 293 K, 800 nm, 'Taken from Ref. 1' (hellwarth_1990), converted from Hellwarth's c coefficients (source notes): the long-pulse total (electronic + adiabatic rotation and vibration)."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_total_Ar"
+material = "Ar"
+file = "Ar/nibbering_1997__hellwarth_total_Ar.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,total (1e-23 m2/W) at 1 atm, 293 K, 800 nm, 'Taken from Ref. 1' (hellwarth_1990), converted from Hellwarth's c coefficients (source notes): the long-pulse total (electronic + adiabatic rotation and vibration)."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_total_H2"
+material = "H2"
+file = "H2/nibbering_1997__hellwarth_total_H2.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,total (1e-23 m2/W) at 1 atm, 293 K, 800 nm, 'Taken from Ref. 1' (hellwarth_1990), converted from Hellwarth's c coefficients (source notes): the long-pulse total (electronic + adiabatic rotation and vibration)."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_electronic_N2"
+material = "N2"
+file = "N2/nibbering_1997__hellwarth_electronic_N2.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,electronic (1e-23 m2/W), 'Estimated for the long-wavelength limit (i.e., no dispersion effects included)': hellwarth_1990's sigma converted (checked, source notes). The table's 800-nm column does not apply to it: row LWL, wavelength inf (the long-wavelength limit; set in the script)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_electronic_O2"
+material = "O2"
+file = "O2/nibbering_1997__hellwarth_electronic_O2.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,electronic (1e-23 m2/W), 'Estimated for the long-wavelength limit (i.e., no dispersion effects included)': hellwarth_1990's sigma converted (checked, source notes). The table's 800-nm column does not apply to it: row LWL, wavelength inf (the long-wavelength limit; set in the script)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_electronic_Ar"
+material = "Ar"
+file = "Ar/nibbering_1997__hellwarth_electronic_Ar.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,electronic (1e-23 m2/W), 'Estimated for the long-wavelength limit (i.e., no dispersion effects included)': hellwarth_1990's sigma converted (checked, source notes). The table's 800-nm column does not apply to it: row LWL, wavelength inf (the long-wavelength limit; set in the script)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_electronic_H2"
+material = "H2"
+file = "H2/nibbering_1997__hellwarth_electronic_H2.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,electronic (1e-23 m2/W), 'Estimated for the long-wavelength limit (i.e., no dispersion effects included)': hellwarth_1990's sigma converted (checked, source notes). The table's 800-nm column does not apply to it: row LWL, wavelength inf (the long-wavelength limit; set in the script)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "hellwarth_electronic_He"
+material = "He"
+file = "He/nibbering_1997__hellwarth_electronic_He.csv"
+table = "tbl_aa252cc4e383"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Table 2, n2,electronic (1e-23 m2/W), 'Estimated for the long-wavelength limit (i.e., no dispersion effects included)': hellwarth_1990's sigma converted (checked, source notes). The table's 800-nm column does not apply to it: row LWL, wavelength inf (the long-wavelength limit; set in the script)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_effective_N2"
+material = "N2"
+table = "text"
+points = [["800", "800", "3"]]
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "check"
+notes = "p. 658: 'one can estimate an overall effective value n2,effective for 120-fs pulses at 800 nm, which is equal to 3 x 10^-23 m2/W for N2'. An estimate for this pulse duration (electronic plus rotational), one significant figure: 'check'."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "n2_effective_O2"
+material = "O2"
+table = "text"
+points = [["800", "800", "8"]]
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-23
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "check"
+notes = "p. 658: '8 x 10^-23 m2/W for O2' (n2,effective, 120-fs pulses). As n2_effective_N2."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 120

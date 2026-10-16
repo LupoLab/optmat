@@ -1,0 +1,40 @@
+citation = "M. Tarazkar, D. A. Romanov and R. J. Levis, \"Theoretical study of second-order hyperpolarizability for nitrogen radical cation\", J. Phys. B: At. Mol. Opt. Phys. 48, 094019 (2015)"
+doi = "10.1088/0953-4075/48/9/094019"
+library = "Tarazkar_2015_TheoreticalStudySecond"
+identity = "VALIDATED"
+kind = "theory"
+technique = "DFT (PBE0, mPW1PW91) and MCSCF (DALTON) static and dynamic gamma of the N2+ radical cation at the neutral (2.07432 a0) and relaxed (2.11098 a0) geometries, x-aug-cc-pVXZ basis sets."
+notes = """Pdf page 1 is the publisher's cover; the article is pdf pages 2-11 (094019, \
+10 pp). The subject is N2+ (not a curated species): its gamma is negative (static about \
+-11.5 x 10^3 a.u. at the neutral geometry, MCSCF; Table 2, pdf page 6) and its n2 \
+negative below resonance (Fig. 1), which the authors suggest 'may contribute to \
+filamentation'. N2+ values are not extracted (notes only).
+
+THE ONE CURATED VALUE: 'The static second-order hyperpolarizability calculated for the \
+ion, -11.5 x 10^3, is one order of magnitude larger than that calculated for the neutral \
+molecule, 1.17 x 10^3 a.u. using the same level of theory (MCSCF/t-aug-cc-pV5Z)' (pdf \
+pages 8-9): dataset static_N2 (gamma_zzzz, the component of Table 2, presumably; the \
+text does not say which component). Convention T (their 'second-order hyperpolarizability \
+gamma^(2)' with the same expansion as tarazkar_2014). 1 a.u. = 6.235378e-65 C^4 m^4 J^-3.
+
+RELATIONS: Eq. (9), the DFWM from ESHG, dc Kerr and static (tarazkar_2014b Eq. 19); Eq. \
+(10), 'n2 (cm^2/W) = 8.28 x 10^-23 gamma_DFWM (a.u.)' (citing Refs. 62, 63), with no \
+density or temperature stated. With n2 = N gamma / (8 eps0^2 c n0^2) (the \
+relation, 8.91e-23 cm^2/W per a.u. at 1 atm and 0 C) the factor corresponds to N = \
+2.50e25 m^-3, i.e. 1 atm at about 294 K (computed here; an inference, TC-255)."""
+
+[[datasets]]
+id = "static_N2"
+material = "N2"
+points = [["mcscf", "inf", "1.17", ""]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+scale = 1000
+abscissa_unit = "nm"
+use = "check"
+notes = "pdf pages 8-9: the neutral N2 static gamma, '1.17 x 10^3 a.u.', MCSCF/t-aug-cc-pV5Z at the experimental bond length; component not stated (Table 2 of the ion is gamma_zzzz). A benchmark aside; far below the CC values (e.g. hattig_1998: 903-915)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"

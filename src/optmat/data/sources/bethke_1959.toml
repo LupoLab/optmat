@@ -1,0 +1,108 @@
+citation = "G. W. Bethke, \"Oscillator strengths in the far ultraviolet. II. Oxygen Schumann-Runge bands\", J. Chem. Phys. 31, 669 (1959)"
+doi = "10.1063/1.1730444"
+library = "Bethke_1959_OscillatorStrengthsFar"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photoelectric absorption of pressure-broadened O2 spectra, 1750-2000 A: \
+grating vacuum-ultraviolet spectrometer (resolution about 0.4 A), stabilised hydrogen \
+discharge, sodium-salicylate phosphor and photomultiplier; a 0.702 cm (+-2 %) cell with \
+fused-silica windows; O2 (99.6 %, distilled below 1 atm) broadened by argon to 0-1975 \
+psia, O2 partial pressures giving 20-50 % peak absorption (p. 669). Band intensities \
+planimetered between vertical lines through the transmission maxima nearest each head \
+(Fig. 1); K extrapolated from the straight high-pressure part of K against total \
+pressure to zero total pressure (K_0, Fig. 3); for v' < 11 also extrapolated to zero O2 \
+pressure to remove the O4 continuum (p. 670)."""
+notes = """Journal pages 669-673 = PDF pages 2-6 (page 1 is the publisher's cover). O2 \
+only. Values per molecule, from the ground vibrational level (bands (v', 0)); the \
+temperature is not stated (room temperature; F(v'') is the vibrational fraction).
+
+Table I (image checked): K_0 = integral k_nu dnu (cm^-2 atm^-1, nu in cm^-1, P the O2 \
+partial pressure in atmospheres at 0 C, Eq. 1) and f(v', v'') = (m c^2 / (pi e^2 N_0)) \
+K_0 / F(v'') = 4.203e-8 K_0 / F(v'') (Eq. 2, N_0 the number density at 1 atm and 0 C). \
+Check (2026-09-25): 4.203e-8 K_0 reproduces every printed f within the rounding of K_0 \
+(at most 0.2 %; F(v'' = 0) = 1 to this precision); the bands and the remainder sum to \
+31.38e-5 against the printed total 31.4e-5, the K_0 to 7468.6 against 7469. K_0 is \
+not extracted (no vocabulary quantity; f carries the same information).
+
+Accuracy (p. 671): 'The values of K_0 and f(v', v'') given in Table I are all accurate to \
+within about +-8 % except for the very weak (4, 0), (3, 0), and (2, 0) bands which are \
+accurate to about +-12 %, +-18 %, and +-30 %, respectively. Overlapping errors are not \
+included'; overlap makes the band values 'increasingly too large as v' is increased \
+until at about v' = 13 the intensities become decreasingly too large and then too small \
+as v' approaches twenty', negligible below v' = 8; the total is not affected. The \
+bands also include the weak X 3Sigma_g^- -> 3Pi_u continuum of Wilkinson and Mulliken \
+(about 15 % of the absorption near 1781-1796 A, where they measured k = 0.44 and 0.28 \
+cm^-1), not subtracted: 'the true f(v', 0) sum for the S-R band system is probably \
+between 0.00027 and 0.00031 (+-8 %)' against the observed 0.000314 +- 8 % (all \
+absorption above the dissociation limit 1750.46 A) (p. 671).
+
+Not extracted: q(v', v'') (Franck-Condon factors reproduced from Jarmain, Fraser and \
+Nicholls 1955) and f(v', v'')_el (the electronic oscillator strength derived from each \
+band with q and nu-bar = 68 380 cm^-1, Eqs. 3-5), whose extrapolation to v' = 0 gives \
+f_el = 0.163 +- 10 % (p. 673), for r = 1.37 A. The continuum oscillator strengths \
+quoted (p. 673): Ladenburg and Van Voorhis 0.193, Ditchburn and Heddle 0.215 +- 0.02 \
+(plus 0.0445 for their band sum), Watanabe et al. 0.161 (watanabe_1953); Wilkinson and \
+Mulliken's 3Pi_u f_el about 0.01.
+
+Ditchburn and Heddle's band strengths (column six, Proc. Roy. Soc. A 226, 509 (1954)) \
+are 80 to 110 times larger than these for (2,0)-(8,0) and their sum (0.0445) 140 times \
+(p. 671); Matsui et al. (2003, matsui_2003) find (12,0)-(17,0) 15-28 % below this work. \
+Wavelengths of the bands are not tabulated (the abscissa is the index v')."""
+
+[[datasets]]
+id = "band_f"
+material = "O2"
+file = "O2/bethke_1959__band_f.csv"
+table = "tbl_172bb90e7da2"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "primary"
+notes = "Table I column f(v', v''): the absorption oscillator strengths of the Schumann-Runge bands (v', 0), v' = 2-17 (index v'), in units of 1e-5 (the printed '(-5)'). +-8 %, (4,0) 12 %, (3,0) 18 %, (2,0) 30 % (level not stated); band-overlap errors, significant above v' = 8, are not included, and the weak 3Pi_u continuum (up to 15 % near 1780-1800 A) is not subtracted. The (9,0) value is printed 1.07 with a subscript guard digit 1."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+[datasets.uncertainty.relative_rows]
+"(4,0)" = 0.12
+"(3,0)" = 0.18
+"(2,0)" = 0.30
+
+[[datasets]]
+id = "remainder"
+material = "O2"
+file = "O2/bethke_1959__remainder.csv"
+table = "tbl_172bb90e7da2"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "primary"
+notes = "Table I row 'Remainder' (note d): the summed oscillator strength of the band system beyond (17,0) to the dissociation limit (1750.46 A), i.e. v' >= 18; index 18 marks its first band. Unresolved overlapping bands. +-8 % (level not stated)."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+
+[[datasets]]
+id = "total"
+material = "O2"
+file = "O2/bethke_1959__total.csv"
+table = "tbl_172bb90e7da2"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "check"
+notes = "Table I row 'Total': 31.4e-5, the whole Schumann-Runge band system above 1750.46 A (bands (2,0)-(17,0) and the remainder; index 2, its first band). The sum of band_f and remainder: a check. The text (p. 671) puts the true band sum at 0.00027-0.00031 once the underlying 3Pi_u continuum is allowed for."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+
+[[datasets]]
+id = "ditchburn_heddle"
+material = "O2"
+file = "O2/bethke_1959__ditchburn_heddle.csv"
+table = "tbl_172bb90e7da2"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "excluded"
+reproduced_from = ["ditchburn_1954"]
+notes = "Table I column six (note b): Ditchburn and Heddle's band oscillator strengths (v', 0), v' = 2-17, from photographic spectra without pressure broadening, reproduced for comparison; 80-110 times this work's values for (2,0)-(8,0) and not consistent with f_el (0.8 to 16 from them against 0.030-0.55 expected, p. 669). Their 'Remainder' 2276e-5 (note e: f(18,0)+f(19,0)+f(20,0) extrapolated) and total 4450e-5 are not extracted. Excluded: kept for the record, not usable (Bethke's own verdict and Matsui et al.'s values)."

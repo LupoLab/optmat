@@ -1,0 +1,394 @@
+citation = "D. P. Shelton, J. Chem. Phys. 85, 4234 (1986)"
+doi = "10.1063/1.451794"
+library = "Shelton_1986_HyperpolarizabilityDispersionMeasured"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """ESHG with periodic phase matching as in shelton_1985_sf6 (electrode spacing \
+2.69 mm, 1.2-6.5 atm at 19-22 C), cw dye or argon-ion laser, 0.2-1.0 W; dye-laser \
+wavelengths set to Na or Ne lines; sample CO2 (99.99 %) and reference N2 (99.999 %) \
+in triplets; densities from the virial equation of state (p. 2)."""
+notes = """The by-product ratio Delta alpha_CO2 / Delta alpha_N2 (Delta alpha = \
+alpha(2 omega) - alpha(omega)) is the phase-match density ratio rho_N2 / rho_CO2, filed \
+under N2 with CO2 as reference_material as in shelton_1990. Table I gives the air \
+wavelength and the vacuum wavenumber of the fundamental; the wavenumber is the \
+abscissa.
+
+Uncertainty (p. 2): the ratio accuracy 'has been given as +-0.20%, a conservative \
+estimate based on the absolute pressure gauge accuracy of +-0.15%. If the gauge is \
+linear, the dispersion ratio accuracy will instead be set by the +-0.04% density \
+ratio reproducibility'; Table I note c: 'The tabulated error bars may be too \
+pessimistic by as much as a factor of 5.'
+
+The ratio has a minimum near 16 000 cm^-1: 'in the red end of the visible the \
+dispersion due to low frequency vibrational resonances becomes comparable to that \
+due to high frequency electronic resonances' (p. 6). The paper separates the \
+vibrational part with the two infrared fundamentals (Eq. 14) and fits the electronic \
+remainder (formulas below).
+
+Table III lists CO2 infrared transition dipole moments (from Rothman's intensities) \
+and Raman transition polarizabilities used for the vibrational Kerr hyperpolarizability, \
+and alpha = 293.3 x 10^-42 C^2 m^2 J^-1 at 632.8 nm 'from the refractive index' \
+(Landolt-Bornstein; reproduced): not extracted (the infrared module uses HITRAN). The \
+gamma values and Table II are hyperpolarizabilities and are not extracted.
+
+THIRD-ORDER DATA (added 2026-09-26; supersedes the last sentence above). \
+gamma is the ESHG <gamma>_ZZZZ of Shelton's series (Taylor convention, SI C^4 m^4 \
+J^-3), calibrated through Mizrahi & Shelton's gamma_N2/gamma_He = 20.30 [1 + 6.55e-10 \
+nu^2] (Eq. 2) and Sitz & Yaris's gamma_He = 42.6 au [1 + 2.94e-10 nu^2] (Eq. 3, 1 au = \
+6.2360e-65 C^4 m^4 J^-3), nu the fundamental wavenumber in cm^-1: the old He \
+calibration (shelton_1990 Table III(c) rescales these values; Shelton & Rice's warning \
+that the A, B of the 1985-86 papers are against nu^2 of ESHG, not nu_L^2, and on this \
+He value, applies to the formulas below). The electronic dispersion of all processes \
+is written gamma^e(-omega_s; omega_1, omega_2, omega_3) = gamma^e(0; 0, 0, 0) [1 + C \
+omega_L^2] (Eq. 4), omega_L^2 = omega_s^2 + omega_1^2 + omega_2^2 + omega_3^2 (Eq. 5). \
+The dc Kerr gamma is gamma_Kerr = (3/2)[<gamma>_ZZZZ - <gamma>_XZZX] (Eq. 9). Parts: the \
+vibrational gamma^v_Kerr is calculated (Eqs. 6-11, Table III matrix elements) and \
+found small (0 +- 2e-63); 'the vibrational contributions to gamma_CO2 appear to be \
+insignificant for ESHG and THG, but not for FWM and the dc Kerr effect' (p. 4238). The \
+literature dc Kerr value (558 +- 120e-63) is shown to be spurious (excluded; the \
+reanalysis gives -61 +- 200e-63). Table III (transition dipoles and polarizabilities of \
+12C16O2, incl. the mean polarizability 293.3e-42 and anisotropy 235e-42 C^2 m^2 J^-1 at \
+632.8 nm, reproduced from refractive-index and depolarized-scattering literature) is \
+not extracted (no quantity for transition matrix elements; the anisotropy is a \
+reproduction of Bogaard et al. / Alms et al.)."""
+
+[[datasets]]
+id = "density_N2_over_CO2"
+material = "N2"
+file = "N2/shelton_1986_co2__density_N2_over_CO2.csv"
+table = "tbl_ba9d1caa914e"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+density = "real"
+use = "primary"
+notes = "Table I, Delta alpha_CO2 / Delta alpha_N2 = rho_N2 / rho_CO2 as printed, 5 fundamentals 488.0-692.9 nm (air), abscissa the printed vacuum wavenumber."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "CO2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "CO2"
+shelton_reference_gas = "N2"
+printed_as = "Delta alpha_CO2 / Delta alpha_N2"
+
+[[formulas]]
+id = "vibrational_eq14"
+material = "CO2"
+equation = "Eq. (14), p. 6"
+printed = "Delta alpha_CO2^v (C^2 m^2 J^-1) = +0.70 x 10^-34 nu^-2"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+range = "optical frequencies (Omega_mg << omega)"
+coefficients = { a = "0.70e-34" }
+check = "With Eq. (15) and the fit below it reproduces the five measured ratios to 0.0006 (see electronic_fit). Checked 2026-09-25."
+notes = "The vibrational part of alpha(2 omega) - alpha(omega), from the two infrared-active fundamentals (Eq. 13)."
+
+[[formulas]]
+id = "n2_eq15"
+material = "N2"
+equation = "Eq. (15), p. 6"
+printed = "Delta alpha_N2 (C^2 m^2 J^-1) = 3.117 x 10^-50 nu^2 [1 + 3.076 x 10^-10 nu^2 + 17.58 x 10^-20 nu^4]"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+range = "the visible (shelton_1986's measurements, 458-700 nm)"
+coefficients = { a = "3.117e-50", b = "3.076e-10", c = "17.58e-20" }
+reproduced_from = ["shelton_1986"]
+check = "Used with Eq. (14) and electronic_fit to reproduce Table I (see there). Not checked against shelton_1986's own fit here."
+notes = "alpha(2 omega) - alpha(omega) of N2 in SI, from Shelton and Mizrahi, Phys. Rev. A 33, 72 (1986)."
+
+[[formulas]]
+id = "electronic_fit"
+material = "CO2"
+equation = "Fig. 3 caption, p. 6"
+printed = "Delta alpha_CO2^e / Delta alpha_N2 = A [1 + B nu^2 + C nu^4]; A = 1.7087, B = 0.0266 x 10^-10 cm^2, C = 14.5 x 10^-20 cm^4"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+range = "14427-20487 cm^-1 (488.0-692.9 nm)"
+coefficients = { A = "1.7087", B = "0.0266e-10", C = "14.5e-20" }
+check = "Adding back Eq. (14) / Eq. (15) it gives 1.7688, 1.7608, 1.7567, 1.7595, 1.7652 against the measured 1.7689, 1.7603, 1.7573, 1.7593, 1.7654 (within 0.0006). Checked 2026-09-25."
+notes = "Fitted to the measured ratios minus the vibrational part."
+
+[[formulas]]
+id = "electronic_eq16a"
+material = "CO2"
+equation = "Eq. (16a), p. 6"
+printed = "Delta alpha_CO2^e (C^2 m^2 J^-1) = 5.33 x 10^-50 nu^2 [1 + 3.1 x 10^-10 nu^2 + 32 x 10^-20 nu^4]"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+range = "488-693 nm"
+coefficients = { a = "5.33e-50", b = "3.1e-10", c = "32e-20" }
+check = "Divided by Eq. (15) it gives 1.7207 at 14427.1 cm^-1 and 1.7489 at 20486.7 against electronic_fit's 1.7204 and 1.7543 (0.3 % at the blue end). Checked 2026-09-25."
+notes = "The electronic dispersion alpha^e(2 omega) - alpha^e(omega) of CO2 from this experiment."
+
+[[formulas]]
+id = "landolt_eq16b"
+material = "CO2"
+equation = "Eq. (16b), p. 6"
+printed = "Delta alpha_CO2^LB (C^2 m^2 J^-1) = 5.37 x 10^-50 nu^2 [1 + 3.6 x 10^-10 nu^2 + 16 x 10^-20 nu^4]"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+range = "derived from refractive indices at 237.9-546.2 nm"
+coefficients = { a = "5.37e-50", b = "3.6e-10", c = "16e-20" }
+reproduced_from = ["Landolt-Bornstein, Zahlenwerte und Funktionen (Springer, Berlin, 1962), Band II, Teil 8"]
+check = "Not checked (the tabulated refractive indices are not in the library)."
+notes = "Derived by the author from Landolt-Bornstein's CO2 refractive indices, for comparison with Eq. (16a) ('in good agreement')."
+
+[[datasets]]
+id = "gamma_CO2_over_N2"
+material = "CO2"
+file = "CO2/shelton_1986_co2__gamma_CO2_over_N2.csv"
+table = "tbl_ba9d1caa914e"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table I (p. 4235): gamma_CO2/gamma_N2 by ESHG, as printed (Eq. 1, gamma_B/gamma_A = (S_B/S_A)^(1/2) (rho_B n'_B / rho_A n'_A)^-1, n' = (n_0^4 n_omega^3 n_2omega)^(1/6); ZZZZ component, fields parallel). 'The accuracy of the ratio is about +-0.3%' (p. 4234). The raw measurement behind gamma_CO2."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "gamma_CO2"
+material = "CO2"
+file = "CO2/shelton_1986_co2__gamma_CO2.csv"
+table = "tbl_ba9d1caa914e"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table I (p. 4235): gamma_CO2 in 1e-63 C^4 m^4 J^-3 at five wavelengths (row: air wavelength; abscissa: vacuum wavenumber), 'Obtained using Refs. 14 and 20 for calibration' (note d): gamma_N2/gamma_He from Mizrahi & Shelton (mizrahi_1985_arn2o2; formula calibration_N2_over_He) and Sitz & Yaris's gamma_He (formula calibration_He, 42.6 au static). 'An uncertainty of +-0.4% due to the gamma_N2/gamma_He calibration has been assumed in assigning the error bars'; 'No allowance has been made for the uncertainty of gamma_He' (~1 %) (p. 4235). Total ESHG gamma. shelton_1990 Table III(c) reproduces these on the new He calibration (e.g. 85.27 at 692.9 nm against 84.1 here)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table2_dc_kerr"
+material = "CO2"
+file = "CO2/shelton_1986_co2__table2_dc_kerr.csv"
+table = "tbl_c8ef15b5d66e"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "excluded"
+reproduced_from = ["buckingham_1970"]
+notes = "Table II (p. 4235): 'Hyperpolarizability of CO2 measured by several nonlinear optical processes', in 1e-63 C^4 m^4 J^-3, 'Conversion factor 1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used' (note b: this includes the factor 6 between Ward's per-molecule esu chi and Shelton's gamma, since 1 au = 6.235377e-65 SI = 5.0367e-40 esu). nu_L^2 as printed: 4.99, 8.64, 14.47, 12.44, 22.65, 24.88 x 10^8 cm^-2. Reproduced (converted by the author). Note c: gamma(-omega; 0, 0, omega), from Ref. 21 (Buckingham et al. 1970), the zero-temperature intercept of the first Kerr virial coefficient against 1/T. EXCLUDED: the author shows it is 'spurious, the result of a single bad data point': dropping the lowest-temperature point changes the intercept to -61 x 10^-63 (dataset text_dc_kerr_reanalysed) (pp. 4237-4238). The original is now in the library (buckingham_1970, Table 2: gamma = 5.6 +- 1.2 x 10^-61 C^4 m^4 J^-3; 558 here is 81 eps0/N x the intercept 4.7 x 10^-28 at more digits, or a conversion through esu: not digit-identical). Recomputed from its Table 1: without the 252 K point the intercept is -0.53 x 10^-28, i.e. gamma = -63 x 10^-63, as the author found."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table2_cars"
+material = "CO2"
+file = "CO2/shelton_1986_co2__table2_cars.csv"
+table = "tbl_c8ef15b5d66e"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)", "lundeen_1983"]
+notes = "Table II (p. 4235): 'Hyperpolarizability of CO2 measured by several nonlinear optical processes', in 1e-63 C^4 m^4 J^-3, 'Conversion factor 1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used' (note b: this includes the factor 6 between Ward's per-molecule esu chi and Shelton's gamma, since 1 au = 6.235377e-65 SI = 5.0367e-40 esu). nu_L^2 as printed: 4.99, 8.64, 14.47, 12.44, 22.65, 24.88 x 10^8 cm^-2. Reproduced (converted by the author). Four-wave mixing gamma(-2 omega_1 + omega_2; omega_1, omega_1, -omega_2) (CARS-type), rows: note d, 'from Ref. 23 [Rado 1967], as corrected and given in Ref. 24 [Lundeen et al. 1983]', at 694 and 975 nm (the abscissa is the pump, 694 nm; Stokes 975 nm); note e, 'From Ref. 24', at 532 and 683 nm (pump 532 nm, Stokes 683 nm). The wavelengths are printed to three figures."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "total"
+stokes_nm = "975 (row 1), 683 (row 2)"
+
+[[datasets]]
+id = "table2_eshg"
+material = "CO2"
+file = "CO2/shelton_1986_co2__table2_eshg.csv"
+table = "tbl_c8ef15b5d66e"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["ward_1979", "shelton_1982"]
+notes = "Table II (p. 4235): 'Hyperpolarizability of CO2 measured by several nonlinear optical processes', in 1e-63 C^4 m^4 J^-3, 'Conversion factor 1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used' (note b: this includes the factor 6 between Ward's per-molecule esu chi and Shelton's gamma, since 1 au = 6.235377e-65 SI = 5.0367e-40 esu). nu_L^2 as printed: 4.99, 8.64, 14.47, 12.44, 22.65, 24.88 x 10^8 cm^-2. Reproduced (converted by the author). Rows: note f, gamma(-2 omega; omega, omega, 0) 'from Ref. 22' (Ward & Miller 1979) at 694.3 nm; note g, 'From Ref. 13' (Shelton & Buckingham 1982) at 514.5 nm (99.0 +- 0.5 as in shelton_1982 Table II)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table2_thg"
+material = "CO2"
+file = "CO2/shelton_1986_co2__table2_thg.csv"
+table = "tbl_c8ef15b5d66e"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table II (p. 4235): 'Hyperpolarizability of CO2 measured by several nonlinear optical processes', in 1e-63 C^4 m^4 J^-3, 'Conversion factor 1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used' (note b: this includes the factor 6 between Ward's per-molecule esu chi and Shelton's gamma, since 1 au = 6.235377e-65 SI = 5.0367e-40 esu). nu_L^2 as printed: 4.99, 8.64, 14.47, 12.44, 22.65, 24.88 x 10^8 cm^-2. Reproduced (converted by the author). Note h: gamma(-3 omega; omega, omega, omega), 'from Ref. 25' (Ward & New 1969), 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "text_dc_kerr_reanalysed"
+material = "CO2"
+points = [
+    ["reanalysis of ref 21", "632.8", "-61", "200"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+reproduced_from = ["buckingham_1970"]
+notes = "pp. 4237-4238: excluding the lowest-temperature point of Buckingham et al.'s nine measurements (252-337 K) 'changes the intercept from gamma_Kerr = 558 x 10^-63 to -61 x 10^-63 C^4 m^4 J^-3 ... giving the revised estimate gamma_Kerr = -61 +- 200 x 10^-63' (error: statistical uncertainty of the fit plus the systematic uncertainty of the total birefringence). The author's reanalysis of another group's data."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "text_dc_kerr_gentle"
+material = "CO2"
+points = [
+    ["Gentle, Laver and Ritchie (unpublished)", "632.8", "110", "39"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["gentle_1989"]
+notes = "Note added in proof (p. 4238): 'As yet unpublished measurements by I. R. Gentle, D. R. Laver, and G. L. D. Ritchie ... give gamma_Kerr = +110 +- 39 x 10^-63 C^4 m^4 J^-3'. A pre-publication value of gentle_1989 (J. Phys. Chem. 93, 3035 (1989)), which publishes gamma^K = (0.125 +- 0.032) x 10^-60 C m^4 V^-3, i.e. 125 +- 32 x 10^-63 (gentle_1989/table2_gamma_K_CO2): not the same number; the published one supersedes this. The wavelength is not stated here; gentle_1989 measured at 632.8 nm (its Fig. 1 and Table I captions), which confirms the 632.8 nm recorded here (TC-233). Shelton & Rice 1994 quote the published value as 2005 +- 513 au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "text_dc_kerr_electronic"
+material = "CO2"
+points = [
+    ["from ESHG via Eq. (4)", "632.8", "72.6"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "p. 4237: 'Equation (4) and our measurements of gamma_ESHG may be combined to estimate gamma^e_Kerr = +72.6 x 10^-63 C^4 m^4 J^-3 at lambda = 632.8 nm for CO2' (the electronic dc Kerr gamma predicted from the ESHG dispersion with a common C omega_L^2 law); with gamma^v_Kerr the prediction is gamma_Kerr = +73 +- 2 x 10^-63."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_dc_kerr_vibrational"
+material = "CO2"
+points = [
+    ["best estimate", "632.8", "0", "2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "p. 4237: the vibrational dc Kerr hyperpolarizability of CO2 from the doubly enhanced terms (Eq. 11, Table III matrix elements, all positive): -1.1 x 10^-63; alpha^2/hbar Omega terms +0.4 x 10^-63; mu^4/(hbar omega)^3 terms ~1e-65; mu beta/hbar Omega terms 2 x 10^-63 if CO2's hyper-Raman beta is as large as CH4's. 'Our best estimate of gamma^v_Kerr from the incomplete data at our disposal is 0 +- 2 x 10^-63 C^4 m^4/J^-3' (sic). Wavelength: the dc Kerr comparison is at 632.8 nm; the doubly enhanced terms are frequency independent."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+
+
+[[formulas]]
+id = "gamma_fit"
+material = "CO2"
+equation = "Fig. 1 caption, p. 4235"
+printed = "gamma = A[1 + B nu^2]; A = 65.0 x 10^-63 C^4 m^4 J^-3 and B = 14.07 x 10^-10 cm^2, where nu is given in cm^-1"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2; for ESHG nu_L^2 = 6 nu^2, so B/6 = 2.345e-10 cm^2 is the nu_L^2 coefficient)"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "14427-20487 cm^-1 (488.0-692.9 nm, Table I)"
+coefficients = { A = "65.0e-63", B = "14.07e-10" }
+coefficient_units = { A = "C^4 m^4 J^-3", B = "cm^2" }
+calibration = "N2 (Eq. 2) and He (Sitz & Yaris, Eq. 3): the old calibration"
+check = "Gives 84.04 at 14427.1 cm^-1 and 99.53 at 19429.8 cm^-1 against Table I's 84.1 +- 0.5 and 99.4 +- 0.5. Checked 2026-09-26."
+notes = "Least-squares straight line of gamma against nu^2. Superseded by shelton_1990 Table IV (gamma_0 = 71.50e-63, A = 1.252e-10, B = 2.405e-20 against nu_L^2, with 1064 and 1319 nm and the new He calibration)."
+
+[[formulas]]
+id = "calibration_N2_over_He"
+material = "N2"
+equation = "Eq. (2), p. 4234"
+printed = "gamma_N2/gamma_He = 20.30 [1 + (6.55 x 10^-10 cm^2) nu^2]"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "'Over the range of frequencies employed in the present measurements' (488-693 nm)"
+coefficients = { ratio0 = "20.30", B = "6.55e-10" }
+coefficient_units = { ratio0 = "1", B = "cm^2" }
+reproduced_from = ["mizrahi_1985_arn2o2"]
+check = "Not checked against mizrahi_1985_arn2o2 here."
+notes = "The N2/He ESHG ratio 'adequately represented by' this line, from Ref. 14 (Mizrahi & Shelton, Phys. Rev. Lett. 55, 696 (1985)); the calibration of gamma_CO2."
+
+[[formulas]]
+id = "calibration_He"
+material = "He"
+equation = "Eq. (3), p. 4235"
+printed = "gamma_He = 42.6 a.u. [1 + (2.94 x 10^-10 cm^2) nu^2], where nu is given in cm^-1 and 1 a.u. = 6.2360 x 10^-65 C^4 m^4 J^-3"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (ESHG)"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the visible (the measurements)"
+coefficients = { gamma0 = "42.6", B = "2.94e-10" }
+coefficient_units = { gamma0 = "au (1 au = 6.2360e-65 C^4 m^4 J^-3)", B = "cm^2" }
+reproduced_from = ["P. Sitz and R. Yaris, J. Chem. Phys. 49, 3546 (1968)"]
+check = "At 514.5 nm (19430 cm^-1) it gives 47.33 au = 2.951e-63 C^4 m^4 J^-3, shelton_1982's calibrant 2.950e-63. Checked 2026-09-26."
+notes = "Sitz & Yaris's ab initio He (Ref. 20), the old calibration of the 1982-86 papers; 'thought to be accurate to 1%' (p. 4235). Bishop & Pipin's later value (bishop_1989; shelton_1990 Table II) is 43.104 au static, about 1.3 % higher at 514.5 nm."

@@ -1,0 +1,192 @@
+citation = "T. K. Bose, J. S. Sochanski and R. H. Cole, \"Dielectric and Pressure Virial Coefficients of Imperfect Gases. V. Octopole Moments of CH4 and CF4\", J. Chem. Phys. 57, 3592 (1972)"
+doi = "10.1063/1.1678813"
+library = "Bose_1972_DielectricPressureVirial"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Static dielectric constants of CH4 (and CF4) from three-terminal parallel-plate \
+capacitance cells and a decade transformer bridge (Orcutt and Cole 1967; Sutter and \
+Cole 1970). B_eps and C_eps from the cyclic expansion technique (Sutter and Cole): \
+f = (eps - 1)/(eps + 2) at densities in the accurately known ratio R = d_(i+3)/d_i, \
+Delta f_i = f_i - R^-1 f_(i+3) fitted as a polynomial in f_i (Eq. 3), giving \
+B_eps/A_eps^2 and the f_i^3 coefficient; A_eps and B_eps - A_eps B_p from a quadratic \
+fit of f against P/RT at known pressures below 14 atm (Eqs. 1-2). At 6.6, 49 and 100 \
+degrees C (Table I: 279.8, 322.5, 373.4 K), 1-100 atm. Matheson research-grade CH4: \
+CO2 < 10 ppm, O2 6 ppm, N2 19 ppm, C2H6 34 ppm, C3H8 < 5 ppm (mass spectrometry) \
+(pp. 2-3)."""
+notes = """Identity checked against the first page (pdf page 1 is the publisher's cover; \
+journal p. 3592 is pdf page 2). Page numbers below are pdf pages.
+
+WHAT THE VALUES ARE. f = (eps - 1)/(eps + 2) = A_eps d + B_eps d^2 + C_eps d^3 + ... \
+(Eq. 1, d the molar density): A_eps is the static (audio-frequency) molar \
+polarization, for non-polar CH4 the static polarizability, electronic plus the \
+vibrational ('atomic') part; B_eps and C_eps are the STATIC DIELECTRIC second and third \
+virial coefficients, not the optical refractivity virials. B_eps = B_ind + B_or (p. 3): \
+B_or, the orientation polarization from the dipole induced in one molecule by the \
+octopole moment of the other (Eq. 4), varies as 1/T; from B_eps against 1/T (Fig. 3) the \
+authors derive B_ind = 2.5 cm^6 mol^-2 for CH4 ('necessarily somewhat crude and \
+uncertain', about one-third of B_eps) and the octopole moment Omega = 3.0e-34 esu (CF4: \
+4.4e-34), with Lennard-Jones 12-6 parameters eps_0/k = 137 K, sigma_0 = 3.88 Angstrom \
+(pp. 3-4); 'trusting them to within, say 20 %' (p. 5). So the B_eps here are \
+orientation-dominated and exceed the optical B_R: they are stored as \
+refractivity_virial_coefficient (order 2, and C_eps order 3) at infinite wavelength, \
+use = check, never as an optical virial.
+
+Uncertainty: 'Derived values of A_eps, B_eps, and C_eps are given in Table I, the error \
+figures being three standard deviations from the least squares fit' (p. 3); stored as \
+'3 sigma'. Fig. 3's error bars are also three standard deviations.
+
+Text (p. 3): 'The values of A_eps from this work which we consider best are 6.541 +- \
+0.003 cm^3 mol^-1 for CH4 and 9.678 +- 0.003 cm^3 mol^-1 for CF4, corresponding to \
+polarizabilities 2.593e-24 cm^3 for CH4 and 3.838e-24 cm^3 for CF4' (6.541 = the 322.5 \
+K value and near the three-temperature mean 6.541; 3 A_eps/(4 pi N_A) = 2.5928e-24 cm^3, \
+checked 2026-09-26). Earlier values cited by Maryott and Buckley: 6.53 (CH4); 9.7, \
+9.73, 10.1 (CF4). The best CH4 value is entered inline (A_eps_best_CH4).
+
+Not extracted: CF4 (not a curated species): A_eps 9.678 +- 0.002, 9.679 +- 0.004, \
+9.690 +- 0.002; B_eps 11.35 +- 0.44, 10.54 +- 0.64, 9.17 +- 0.75; C_eps -836 +- 92, -764 \
++- 218, -735 +- 237 at 279.8, 322.5, 373.4 K (Table I); B_ind(CF4) = 3.5. Table II, the \
+pressure second virial coefficients -B_p (cm^3 mol^-1) from the low-pressure \
+dielectric data (errors three standard deviations, p. 3) with values interpolated from \
+Dymond and Smith (1969): CH4 52.9 +- 1.4 (lit. 50.9), 35.8 +- 2.3 (34.8), 21.8 +- 1.0 \
+(21.0); CF4 104.6 +- 1.7 (105.0), 74.0 +- 1.4 (70.9), 43.0 +- 1.0 (43.4) at the three \
+temperatures: an equation-of-state quantity with no optmat quantity. The octopole \
+moments and the octopole-octopole correction (_1B_OmegaOmega = 0.1 cm^6 mol^-2 for CH4 \
+at 6.6 degrees C, p. 4) are not optical quantities.
+
+Reproductions: achtermann_1991's B_eps_bose_1972_279.8_CH4, _322.5_CH4 and _373.4_CH4 \
+(its Table III, Ref. 45) reprint this paper's B_eps digit for digit; hohm_2013 cites it \
+(its Ref. 173) in the CH4 dielectric mean."""
+
+[[datasets]]
+id = "A_eps_CH4"
+material = "CH4"
+file = "CH4/bose_1972__A_eps_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I A_eps (cm^3 mol^-1) of CH4 at 279.8, 322.5, 373.4 K (rows = temperature, K): the static (audio-frequency) molar polarization, the electronic plus vibrational static polarizability of non-polar CH4 (the vibrational part is about 0.09 cm^3/mol, HITRAN's 0.24 au). Rises by 0.006 (0.09 %) from 279.8 to 373.4 K, 1.7 times the combined three-sigma errors; as the slope A_tau of schmidt_2003's Eq. (9) that is 0.0175 cm^3/mol, the 'A_tau ~ 17e-3' Schmidt and Moldover attribute to this paper (their p. 22; their own 0.006 to 0.011). A check on the static limit (its use is decided at review)."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (row = temperature, K)"
+
+[[datasets]]
+id = "A_eps_best_CH4"
+material = "CH4"
+table = "text"
+points = [["best", "inf", "6.541", "0.003"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 3: 'The values of A_eps from this work which we consider best are 6.541 +- 0.003 cm^3 mol^-1 for CH4', corresponding to 2.593e-24 cm^3. The authors' choice from Table I (the 322.5 K value; the three-temperature mean is also 6.541): not independent of A_eps_CH4. No temperature is attached. Error level as Table I's (three standard deviations)."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability"
+
+[[datasets]]
+id = "B_eps_279.8_CH4"
+material = "CH4"
+file = "CH4/bose_1972__B_eps_279.8_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I B_eps = 8.14 +- 0.29 cm^6 mol^-2 at 279.8 K: the STATIC DIELECTRIC second virial coefficient, B_ind + B_or with the octopole-induced orientation term B_or (about two-thirds by the authors' B_ind = 2.5). Not the optical refractivity virial B_R: a check only (B_eps - B_R measures B_or)."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 2
+temperature_k = 279.8
+
+[[datasets]]
+id = "B_eps_322.5_CH4"
+material = "CH4"
+file = "CH4/bose_1972__B_eps_322.5_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I B_eps = 7.29 +- 0.32 cm^6 mol^-2 at 322.5 K: static dielectric, as B_eps_279.8_CH4."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 2
+temperature_k = 322.5
+
+[[datasets]]
+id = "B_eps_373.4_CH4"
+material = "CH4"
+file = "CH4/bose_1972__B_eps_373.4_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I B_eps = 6.75 +- 0.29 cm^6 mol^-2 at 373.4 K: static dielectric, as B_eps_279.8_CH4."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 2
+temperature_k = 373.4
+
+[[datasets]]
+id = "C_eps_279.8_CH4"
+material = "CH4"
+file = "CH4/bose_1972__C_eps_279.8_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "refractivity_virial_coefficient"
+unit = "cm9/mol3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I C_eps = -297 +- 48 cm^9 mol^-3 at 279.8 K (the header's unit extracts as 'cm9 mol-8'; the image prints mol^-3): the static dielectric third virial coefficient, from the f_i^3 term of the cyclic-expansion fit (Eq. 3) and the quadratic low-pressure fit. Not an optical C_R: a check only."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 3
+temperature_k = 279.8
+
+[[datasets]]
+id = "C_eps_322.5_CH4"
+material = "CH4"
+file = "CH4/bose_1972__C_eps_322.5_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "refractivity_virial_coefficient"
+unit = "cm9/mol3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I C_eps = -268 +- 50 cm^9 mol^-3 at 322.5 K: static dielectric, as C_eps_279.8_CH4."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 3
+temperature_k = 322.5
+
+[[datasets]]
+id = "C_eps_373.4_CH4"
+material = "CH4"
+file = "CH4/bose_1972__C_eps_373.4_CH4.csv"
+table = "tbl_36d8a70060d0"
+quantity = "refractivity_virial_coefficient"
+unit = "cm9/mol3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I C_eps = -238 +- 48 cm^9 mol^-3 at 373.4 K: static dielectric, as C_eps_279.8_CH4."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 3
+temperature_k = 373.4

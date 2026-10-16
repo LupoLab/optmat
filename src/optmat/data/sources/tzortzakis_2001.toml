@@ -1,0 +1,178 @@
+citation = "S. Tzortzakis, L. Sudrie, M. Franco, B. Prade, A. Mysyrowicz, A. Couairon and L. Berge, \"Self-Guided Propagation of Ultrashort IR Laser Pulses in Fused Silica\", Phys. Rev. Lett. 87, 213902 (2001)"
+doi = "10.1103/physrevlett.87.213902"
+library = "Tzortzakis_2001_SelfGuidedPropagation"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """160-fs, 800-nm pulses (200 kHz) focused by an f = 80 mm lens near the entrance \
+face of moving fused-silica plates (2, 5, 10 mm); filament diameter imaged along z with \
+a 20x objective and CCD, autocorrelation (BBO) and spectrum of the output. Simulated \
+with an extended nonlinear Schrodinger equation for the envelope coupled to a \
+multiphoton-plus-avalanche rate equation (Eqs. 1-2)."""
+notes = """Journal pages 213902-1 to -4 = PDF pages 1-4. Identity validated. The library \
+text's 'mJ' for the input energy is 'uJ' in the pdf (a Symbol-font mu): 'E_in = 2 uJ' \
+(Fig. 1 caption, p. 213902-2); 2 uJ in 160 fs is 12.5 MW, about 5 P_cr as stated.
+
+MEASURED (no curated quantity): filamentation requires P > ~3 P_cr; filament diameter \
+10-40 um over several mm (Fig. 1c); peak intensity 'of the order of 10^13 W/cm2' \
+inferred from the size; the 160-fs pulse splits into two ~60-fs subpulses 120 fs apart \
+(autocorrelation, Fig. 2a; spectral fringes 16 nm apart, Fig. 2b); less than 1 % of the \
+energy in the visible continuum (p. 213902-2).
+
+SIMULATION INPUTS (p. 213902-1 and -3; datasets assumed): P_cr = lambda0^2/(2 pi n0 n2) \
+~ 2.3 MW 'with n0 = 1.453 being the linear refraction index and n2 = 3.2 x 10^-16 cm2/W the \
+nonlinear refraction index for fused silica' (no source); k'' = 361 fs2/cm; the \
+inverse-bremsstrahlung cross section sigma = 2.78 x 10^-18 cm2 [5] (Mlejnek, Wright and \
+Moloney, Opt. Lett. 23, 382 (1998), which the paper's introduction lists among the \
+atmospheric-filamentation references [1-7]); rho_at = 2.1 x 10^22 atoms/cm3, \
+rho_at/rho_c ~ 12; U_i = 7.6 eV [24] (Tohmon et al., Phys. Rev. B 39, 1337 (1989)), so \
+K = 5; sigma_K = 1.3 x 10^-55 s^-1 cm^2K/W^K (no source); alpha = sigma/(n0^2 U_i); \
+tau_r ~ 150 fs [23] (Audebert et al. 1994); input waist 30 um (measured), FWHM 160 fs. The \
+Kerr term is instantaneous (no Raman response in Eq. 1).
+
+CHECKS (2026-09-26): lambda0^2/(2 pi n0 n2) = 2.19 MW with the printed n0 and n2, not \
+'~2.3 MW' (5 % high; hamam_2018 gets 2.19 MW from the same n2); rho_at/rho_c = 12.06 with \
+rho_c = omega0^2 eps0 m_e/e^2 (printed ~12); 7.6 eV/1.55 eV = 4.90, K = 5; the Drude cross \
+section e^2 tau_c/(m_e n0 eps0 c (1 + omega0^2 tau_c^2)) equals 2.78e-18 cm2 for tau_c = \
+4.69 fs (or 0.038 fs) with n0 = 1.453, the paper states no tau_c.
+
+MODEL RESULTS: I_max = 1.5e13 W/cm2 computed; filament length Delta z ~ 1 cm from \
+Delta z ~ ln[P_in/P(z)]/(beta^(K) I_max^(K-1)) (p. 213902-3); figures only otherwise.
+
+REPRODUCED BY: hamam_2018 (tau_rec = 1.5e-13 s, ref. 23 there); couairon_2005 and \
+berge_2010 cite it for the loose-focusing filament."""
+
+[[datasets]]
+id = "model_n2"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "3.2e-16"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 213902-1: 'n2 = 3.2 x 10^-16 cm2/W the nonlinear refraction index for fused silica'; no source, no pulse duration; the model's Kerr response is instantaneous."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+assumed = true
+
+[[datasets]]
+id = "model_refractive_index"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "1.453"]]
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 213902-1: 'n0 = 1.453 being the linear refraction index'; no source."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_critical_power"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "2.3"]]
+quantity = "critical_power"
+unit = "MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 213902-1: 'P_cr = lambda0^2/2 pi n0 n2 ~ 2.3 MW'. The printed n0 and n2 give 2.19 MW (source notes)."
+[datasets.parameters]
+definition = "P_cr = lambda0^2/(2 pi n0 n2), n0 = 1.453, n2 = 3.2e-16 cm2/W"
+
+[[datasets]]
+id = "model_gvd"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "361"]]
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+scale = 100
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 213902-3: 'normal GVD with coefficient k'' = 361 fs2/cm' (scale 100 to fs2/m); no source (couairon_2005 computes the same from Malitson's formula)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_avalanche_cross_section"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "2.78e-18"]]
+quantity = "avalanche_coefficient"
+unit = "cm2"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["M. Mlejnek, E. M. Wright and J. V. Moloney, Opt. Lett. 23, 382 (1998)"]
+notes = "p. 213902-3: 'plasma absorption with inverse Bremsstrahlung cross section sigma = 2.78 x 10^-18 cm2 [5]'; ref. 5 is among the paper's atmospheric-filamentation references. The avalanche coefficient of Eq. (2) is alpha = sigma/(n0^2 U_i). Equal to the Drude value with tau_c = 4.69 fs (source notes)."
+[datasets.parameters]
+definition = "sigma, the inverse-bremsstrahlung cross section of Eq. (1); Eq. (2) avalanche term alpha rho |E|^2 with alpha = sigma/(n0^2 U_i)"
+assumed = true
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "7.6"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["R. Tohmon, H. Mizuno, Y. Ohki, K. Sasagane, K. Nagasawa and Y. Hama, Phys. Rev. B 39, 1337 (1989)"]
+notes = "p. 213902-3: 'Band-to-band transitions are induced in silica through the gap potential U_i = 7.6 eV [24], yielding the number of photons K = 5 required for ionization.'"
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_sigma5"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "1.3e-55"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm10/W5"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 213902-3: 'The MPI coefficient then reads as sigma_K = 1.3 x 10^-55 s^-1 cm^2K/W^K' with K = 5 (printed cm^2K/W^K); per atom, the rate being sigma_K |E|^2K (rho_at - rho) (Eq. 2). No source; the multiphoton absorption coefficient is beta^(K) = K hbar omega0 sigma_K rho_at."
+[datasets.parameters]
+photons = 5
+assumed = true
+
+[[datasets]]
+id = "model_atom_density"
+material = "SiO2"
+table = "text"
+points = [["1", "", "2.1e22"]]
+quantity = "atom_density"
+unit = "cm-3"
+abscissa = "none"
+use = "check"
+notes = "p. 213902-3: 'rho_at is the background atom density (rho_at/rho_c ~ 12 where rho_at = 2.1 x 10^22 atoms/cm3)'."
+[datasets.parameters]
+counts = "atoms"
+assumed = true
+
+[[datasets]]
+id = "model_recombination_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "150"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["P. Audebert et al., Phys. Rev. Lett. 73, 1990 (1994)"]
+notes = "p. 213902-3: 'electron recombination with a characteristic time tau_r ~ 150 fs in fused silica [23]'."
+[datasets.parameters]
+assumed = true
+
+[[formulas]]
+id = "propagation_model"
+material = "SiO2"
+equation = "Eqs. (1)-(2), p. 213902-3"
+printed = "dE/dz = (i/(2k)) T^-1 (d^2/dr^2 + (1/r) d/dr) E - (i k''/2) d^2E/dtau^2 + i k0 n2 T(|E|^2 E) - (sigma/2 + i k0/(2 rho_c)) T^-1 (rho E) - (beta^(K)/2) |E|^(2K-2) E (1); d rho/dtau = sigma_K |E|^2K (rho_at - rho) + alpha rho |E|^2 - rho/tau_r (2); beta^(K) = K hbar omega0 sigma_K rho_at; alpha = sigma/(n0^2 U_i); T = 1 + (i/omega0) d/dtau"
+variable = "E: envelope (|E|^2 an intensity); tau = t - z/v_g; k = n0 k0"
+coefficients = { n0 = "1.453", n2 = "3.2e-16 cm^2/W", k2 = "361 fs^2/cm", sigma = "2.78e-18 cm^2", rho_at = "2.1e22 atoms/cm^3", U_i = "7.6 eV", K = "5", sigma_K = "1.3e-55 s^-1 cm^10/W^5", tau_r = "150 fs" }
+check = "rho_at/rho_c = 12.06 (printed ~12); K = 5 (7.6/1.55 = 4.90) (checked 2026-09-26). The filament-length estimate Delta z ~ ln[P_in/P(z)]/(beta^(K) I_max^(K-1)) ~ 1 cm with I_max = 1.5e13 W/cm2 is not recomputed (P(z) not given)."
+notes = "Solved with a Fourier decomposition in time and Crank-Nicholson in space; Gaussian input, waist 30 um, 160 fs FWHM, E_in = 2 uJ (P_in ~ 5 P_cr)."

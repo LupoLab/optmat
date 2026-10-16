@@ -1,0 +1,514 @@
+citation = "M. Mero, J. Liu, W. Rudolph, D. Ristau, and K. Starke, \"Scaling laws of femtosecond laser pulse induced breakdown in oxide films\", Phys. Rev. B 71, 115109 (2005)"
+doi = "10.1103/physrevb.71.115109"
+library = "Mero_2005_ScalingLawsFemtosecond"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single-pulse (1-on-1) surface damage of oxide films (TiO2, Ta2O5, HfO2, Al2O3, SiO2) \
+at 800 nm, pulse duration 25 fs to 1.3 ps (prism compressor and glass slabs; \
+up-chirped except the shortest; down-chirped pulses gave the same thresholds), beam \
+waist w0 ~ 20 um (knife edge), fluence F = 2W/(pi w0^2) of the measured pulse energy W. \
+Films made by ion-beam sputtering (Laser Zentrum Hannover), 'dense and nearly \
+amorphous', 6 lambda/4n0 thick at 800 nm, on 6.35-mm fused-silica substrates. Damage \
+detected by the change of the scattered amplified-spontaneous-emission light seen by \
+a CCD camera-microscope (checked off line by optical microscopy); the sample moved \
+after each pulse; the threshold is the 50 % point of the damage-probability curve. The \
+thresholds are fitted with the rate equation Eq. (1) (multiphoton, avalanche and a \
+decay term) for the figures of merit of Table II."""
+notes = """Journal pages 115109-1 to -7 = pdf pages 1-7. Identity checked against the first \
+page. Surface damage of films (parameters form = film; the site is the film, where \
+'two of the standing wave maxima are located at the air-coating and the \
+coating-substrate interface').
+
+WHAT WAS MEASURED (figures). Fig. 1 (p. 115109-2): the incident breakdown fluence \
+against pulse duration for the five films; Fig. 2: Al2O3 with the Eq. (1) fits (with \
+and without the decay term); Fig. 3 (p. 115109-5): breakdown fluence against band gap \
+at 30 fs and 1.2 ps, normalised to the 5.1-eV film, with Stuart et al.'s bulk \
+fluorides; Fig. 4: contour plot of kappa against alpha and beta_6 (T = 300 fs); Fig. 5 \
+(p. 115109-6): calculated F_th against E_g for alpha = 0, 10 cm^2/J and alpha = (30/E_g + \
+5) cm^2/J. No threshold is printed: the data are figures only (not digitised). 'The \
+threshold fluences refer to the incident fluences ... The maximum fluence in all of \
+the films is about 0.7 times the incident fluence independent of the material' \
+(p. 115109-2). Accuracy: single-pulse thresholds 'determined by different groups ... \
+fall within a +-15% range' in a round robin (Ref. 21); 'the absolute threshold values \
+are also affected by calibration errors of the energy detectors and uncertainties in \
+the spot size measurements' (p. 115109-2).
+
+TABLES (images checked). Table I (tbl_2091d43cd8a8): n0 at 800 nm, thickness D (nm; \
+TiO2 496, Ta2O5 546, HfO2 568, Al2O3 716, SiO2 790) and E_g. Table II \
+(tbl_e839fc341559): m, alpha (cm^2/J), beta_m^fit (cm^(2m-3) fs^(m-1)/J^m), T (fs), \
+m_r^MPA/m0; the beta_m cells are garbled by the extraction (structural fix in the \
+script). Table III (tbl_0042c8ee1160, p. 115109-4): kappa of F_th proportional to \
+tau_p^kappa with its +-: TiO2 0.28 +- 0.02, Ta2O5 0.33 +- 0.02, HfO2 0.30 +- 0.01, Al2O3 \
+0.27 +- 0.01, SiO2 0.33 +- 0.01 (no quantity: in the formula scaling_law and the \
+avalanche datasets' notes). Materials: the TiO2 film is registered as TiO2_amorphous, \
+the Al2O3 film as Al2O3_amorphous; Ta2O5 and HfO2 are registered as films; the SiO2 \
+film is SiO2 with form = film.
+
+MODEL (p. 115109-3). Eq. (1): dN/dt = alpha N xi I + beta_m (xi I)^m - N/T, xi ~ 0.66 \
+(Refs. 9, 26), breakdown at N_max = N_cr ~ 1e21 cm^-3 (the critical density at 800 nm), \
+solved for Gaussian pulses; 'a fit of the data with the MPA or the avalanche term alone \
+is not successful'. The alphas 'agree well with the results of the numerical \
+simulations in Ref. 2 and the fit results obtained in Ref. 6 for bulk fused silica' \
+(Stuart et al. 1996; lenzner_1998's 4 cm^2/J). The text's 'beta_3/beta_6 ~ 10^42 \
+(J/cm^2 s)^3' is TiO2's beta_3 over SiO2's beta_6: 1.5e23/9.9e25 x 1e45 = 1.5e42 \
+(Ta2O5's gives 6.8e43; computed 2026-09-27). With the exact Keldysh rate in place of \
+the MPA term and (alpha, m_r, T) free, 'The so obtained values for alpha and T were \
+essentially the same'. Pure multiphoton ionization gives kappa = (m - 1)/m >= 0.67; \
+'the CB electron density at threshold should vary by more than three orders of \
+magnitude when increasing tau_p from 80 fs to 1.2 ps' for SiO2 (Eq. 4), against Quere \
+et al.'s factor 20 (p. 115109-5).
+
+CHECKS (computed 2026-09-27). Eq. (2) (formula keldysh_mpa) with Table I's n0 and E_g \
+and 800 nm reproduces Table II's reduced masses from its beta_m: solving for m_r gives \
+26.9, 1.96, 1.56, 5.47, 2.24 against the printed 27.0, 1.9, 1.6, 5.4, 2.2 (TiO2, Ta2O5, \
+HfO2, Al2O3, SiO2), i.e. within the rounding of the two-digit beta_m. Fig. 5's alpha = \
+(30/E_g + 5) cm^2/J gives 14.1 at 3.3 eV and 8.6 at 8.3 eV ('decreases from 14 to 9').
+
+REPRODUCTIONS OF THIS PAPER: dubietis_2019 (its Eq. 4.1 is Eq. (3) here, with kappa \
+printed 0.3; coefficients equal)."""
+
+[[formulas]]
+id = "scaling_law"
+equation = "Eq. (3), p. 115109-5"
+printed = "F_{th}(E_g, \\tau_p) = (c_1 + c_2 E_g) \\tau_p^\\kappa, c_1 = -0.16 \\pm 0.02 J cm^{-2} fs^{-\\kappa}, c_2 = 0.074 \\pm 0.004 J cm^{-2} fs^{-\\kappa} eV^{-1}, \\kappa = 0.30 \\pm 0.03"
+variable = "E_g: band gap (eV); tau_p: pulse duration (fs); F_th: threshold fluence in J/cm^2 at the maximum of the internal field; for the incident fluence of a film divide by xi (~0.66-0.7)"
+range = "oxide films, 3.3-8.3 eV, 25 fs - 1.3 ps, 800 nm (single pulse)"
+coefficients = { c1 = "-0.16", c2 = "0.074", kappa = "0.30", c1_error = "0.02", c2_error = "0.004", kappa_error = "0.03" }
+check = "No threshold is printed (Figs. 1 and 3 only). Evaluated (computed 2026-09-27): SiO2 film (8.3 eV) 1.26, 1.81 and 3.81 J/cm^2 at 30, 100 and 1200 fs; TiO2 film (3.3 eV) 0.23, 0.34, 0.71 J/cm^2. Per-material kappa (Table III): TiO2 0.28 +- 0.02, Ta2O5 0.33 +- 0.02, HfO2 0.30 +- 0.01, Al2O3 0.27 +- 0.01, SiO2 0.33 +- 0.01."
+notes = "'The error bars on c1 and c2 refer to the standard deviation of the best fit values obtained at different pulse durations. The error bar on kappa is the uncertainty of the best fit values for the different materials' (p. 115109-5). 'To obtain the critical incident fluence when dealing with thin films, Eq. (3) has to be divided by the correction factor xi that takes into account interference effects.' Stuart et al.'s fluorides follow the same E_g trend, suggesting a constant material-type factor."
+
+[[formulas]]
+id = "keldysh_mpa"
+equation = "Eq. (2), p. 115109-4"
+printed = "\\beta_m \\approx \\frac{\\omega}{9\\pi} \\left(\\frac{m_r \\omega}{\\hbar}\\right)^{3/2} \\left(\\frac{e^2}{8 \\omega^2 m_r c \\varepsilon_0}\\right)^m \\frac{\\exp(2m)}{(n_0 E_g)^m}"
+variable = "SI units: omega the laser angular frequency (800 nm), m_r the reduced mass, n0 the index, E_g the gap; m = mod(E_g/hbar omega) as printed (the next integer above E_g/hbar omega: 3, 3, 4, 5, 6 for the five films); beta_m in m^(2m-3) s^(m-1) J^-m"
+range = "the multiphoton limit of Keldysh's rate 'for our sample parameters and the range of intensities involved'"
+coefficients = { prefactor = "1/(9 pi)", exponent = "2m" }
+check = "With Table I's n0 and E_g and Table II's beta_m, solving for m_r gives 26.9, 1.96, 1.56, 5.47, 2.24 (printed 27.0, 1.9, 1.6, 5.4, 2.2); forward, the printed m_r give beta_m within -6 % to +8 % of Table II (computed 2026-09-27)."
+notes = "Keldysh (Ref. 33). The same weak-field limit as liu_1978's Eq. (4) written in SI units with the intensity (it carries the 1/c that liu_1978's printed form lacks)."
+
+[[datasets]]
+id = "n_TiO2_amorphous"
+material = "TiO2_amorphous"
+file = "TiO2_amorphous/mero_2005__n_TiO2_amorphous.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 115109-2), 'TiO2': 'n0, index of refraction at lambda = 800 nm' of the film (D = 496 nm); how it was obtained is not stated (the film design, 6 lambda/4n0)."
+[datasets.parameters]
+index_medium = "not stated"
+form = "film"
+
+[[datasets]]
+id = "band_gap_TiO2_amorphous"
+material = "TiO2_amorphous"
+file = "TiO2_amorphous/mero_2005__band_gap_TiO2_amorphous.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table I (p. 115109-2), 'TiO2': 'E_g, band gap energy' of the film; the method is not stated. It sets m = 3 at 800 nm and enters Eqs. (2)-(3)."
+[datasets.parameters]
+kind = "not stated"
+form = "film"
+
+[[datasets]]
+id = "avalanche_TiO2_amorphous"
+material = "TiO2_amorphous"
+file = "TiO2_amorphous/mero_2005__avalanche_TiO2_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "avalanche_coefficient"
+unit = "cm2/J"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'TiO2': the avalanche coefficient alpha of the fit (with beta_m and T), a figure of merit of the film; no uncertainty stated. Kappa of F_th proportional to tau^kappa (Table III): 0.28 +- 0.02."
+[datasets.parameters]
+definition = "Eq. (1): dN/dt = alpha N xi I(t) + beta_m [xi I(t)]^m - N/T, xi ~ 0.66 the ratio of the maximum internal to the incident intensity; breakdown at N_max = N_cr ~ 1e21 cm^-3"
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "beta_m_TiO2_amorphous"
+material = "TiO2_amorphous"
+file = "TiO2_amorphous/mero_2005__beta_m_TiO2_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm3 fs2/J3"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'TiO2': beta_m, which the paper calls the 'multiphoton absorption (MPA) coefficient of order m' (m = 3), in cm^(2m-3) fs^(m-1)/J^m: the carrier generation term beta_m (xi I)^m of Eq. (1), a rate per unit volume (as lenzner_1998's sigma_k), not the dI/dz coefficient of a multiphoton_absorption_coefficient. It 'represents nonlinear excitation from both the valence band and the laser-induced trap states'. Printed '1.5 x 10^23' (the extraction garbles it; script)."
+[datasets.parameters]
+photons = 3
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "decay_time_TiO2_amorphous"
+material = "TiO2_amorphous"
+file = "TiO2_amorphous/mero_2005__decay_time_TiO2_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "primary"
+notes = "Table II (p. 115109-3), 'TiO2': the 'effective decay constant T' of Eq. (1), 'to represent both the electrons leaving the conduction band and the possible ionization of STEs (re-excitation) by the still present laser pulse'; 'T as used in Eq. (1) is not a relaxation time in the usual meaning, as it includes effects of reexcitation' (p. 115109-4). Attributed to self-trapped exciton formation. 'The quality of the fit does not depend on the functional form of the decay law.'"
+[datasets.parameters]
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "reduced_mass_TiO2_amorphous"
+material = "TiO2_amorphous"
+file = "TiO2_amorphous/mero_2005__reduced_mass_TiO2_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "Table II (p. 115109-3), 'TiO2': 'the reduced effective mass obtained from Eq. (2) corresponding to the beta_m^fit value' (m_r^MPA/m0): a derived number, not a measurement. For bulk TiO2 'the CB electron effective mass varies from 20 m0 for the rutile phase to m0 for the anatase phase' (p. 115109-4). Check: Eq. (2) with this row's beta_m, n0 and E_g gives m_r (formula keldysh_mpa)."
+[datasets.parameters]
+carrier = "reduced"
+form = "film"
+
+[[datasets]]
+id = "n_Ta2O5"
+material = "Ta2O5"
+file = "Ta2O5/mero_2005__n_Ta2O5.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 115109-2), 'Ta2O5': 'n0, index of refraction at lambda = 800 nm' of the film (D = 546 nm); how it was obtained is not stated (the film design, 6 lambda/4n0)."
+[datasets.parameters]
+index_medium = "not stated"
+form = "film"
+
+[[datasets]]
+id = "band_gap_Ta2O5"
+material = "Ta2O5"
+file = "Ta2O5/mero_2005__band_gap_Ta2O5.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table I (p. 115109-2), 'Ta2O5': 'E_g, band gap energy' of the film; the method is not stated. It sets m = 3 at 800 nm and enters Eqs. (2)-(3)."
+[datasets.parameters]
+kind = "not stated"
+form = "film"
+
+[[datasets]]
+id = "avalanche_Ta2O5"
+material = "Ta2O5"
+file = "Ta2O5/mero_2005__avalanche_Ta2O5.csv"
+table = "tbl_e839fc341559"
+quantity = "avalanche_coefficient"
+unit = "cm2/J"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'Ta2O5': the avalanche coefficient alpha of the fit (with beta_m and T), a figure of merit of the film; no uncertainty stated. Kappa of F_th proportional to tau^kappa (Table III): 0.33 +- 0.02."
+[datasets.parameters]
+definition = "Eq. (1): dN/dt = alpha N xi I(t) + beta_m [xi I(t)]^m - N/T, xi ~ 0.66 the ratio of the maximum internal to the incident intensity; breakdown at N_max = N_cr ~ 1e21 cm^-3"
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "beta_m_Ta2O5"
+material = "Ta2O5"
+file = "Ta2O5/mero_2005__beta_m_Ta2O5.csv"
+table = "tbl_e839fc341559"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm3 fs2/J3"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'Ta2O5': beta_m, which the paper calls the 'multiphoton absorption (MPA) coefficient of order m' (m = 3), in cm^(2m-3) fs^(m-1)/J^m: the carrier generation term beta_m (xi I)^m of Eq. (1), a rate per unit volume (as lenzner_1998's sigma_k), not the dI/dz coefficient of a multiphoton_absorption_coefficient. It 'represents nonlinear excitation from both the valence band and the laser-induced trap states'. Printed '6.7 x 10^24' (the extraction garbles it; script)."
+[datasets.parameters]
+photons = 3
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "decay_time_Ta2O5"
+material = "Ta2O5"
+file = "Ta2O5/mero_2005__decay_time_Ta2O5.csv"
+table = "tbl_e839fc341559"
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "primary"
+notes = "Table II (p. 115109-3), 'Ta2O5': the 'effective decay constant T' of Eq. (1), 'to represent both the electrons leaving the conduction band and the possible ionization of STEs (re-excitation) by the still present laser pulse'; 'T as used in Eq. (1) is not a relaxation time in the usual meaning, as it includes effects of reexcitation' (p. 115109-4). Attributed to self-trapped exciton formation. 'The quality of the fit does not depend on the functional form of the decay law.'"
+[datasets.parameters]
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "reduced_mass_Ta2O5"
+material = "Ta2O5"
+file = "Ta2O5/mero_2005__reduced_mass_Ta2O5.csv"
+table = "tbl_e839fc341559"
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "Table II (p. 115109-3), 'Ta2O5': 'the reduced effective mass obtained from Eq. (2) corresponding to the beta_m^fit value' (m_r^MPA/m0): a derived number, not a measurement. For bulk Ta2O5 the CB electron effective mass is 0.1 m0 (Ref. 35). Check: Eq. (2) with this row's beta_m, n0 and E_g gives m_r (formula keldysh_mpa)."
+[datasets.parameters]
+carrier = "reduced"
+form = "film"
+
+[[datasets]]
+id = "n_HfO2"
+material = "HfO2"
+file = "HfO2/mero_2005__n_HfO2.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 115109-2), 'HfO2': 'n0, index of refraction at lambda = 800 nm' of the film (D = 568 nm); how it was obtained is not stated (the film design, 6 lambda/4n0)."
+[datasets.parameters]
+index_medium = "not stated"
+form = "film"
+
+[[datasets]]
+id = "band_gap_HfO2"
+material = "HfO2"
+file = "HfO2/mero_2005__band_gap_HfO2.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table I (p. 115109-2), 'HfO2': 'E_g, band gap energy' of the film; the method is not stated. It sets m = 4 at 800 nm and enters Eqs. (2)-(3)."
+[datasets.parameters]
+kind = "not stated"
+form = "film"
+
+[[datasets]]
+id = "avalanche_HfO2"
+material = "HfO2"
+file = "HfO2/mero_2005__avalanche_HfO2.csv"
+table = "tbl_e839fc341559"
+quantity = "avalanche_coefficient"
+unit = "cm2/J"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'HfO2': the avalanche coefficient alpha of the fit (with beta_m and T), a figure of merit of the film; no uncertainty stated. Kappa of F_th proportional to tau^kappa (Table III): 0.30 +- 0.01."
+[datasets.parameters]
+definition = "Eq. (1): dN/dt = alpha N xi I(t) + beta_m [xi I(t)]^m - N/T, xi ~ 0.66 the ratio of the maximum internal to the incident intensity; breakdown at N_max = N_cr ~ 1e21 cm^-3"
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "beta_m_HfO2"
+material = "HfO2"
+file = "HfO2/mero_2005__beta_m_HfO2.csv"
+table = "tbl_e839fc341559"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm5 fs3/J4"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'HfO2': beta_m, which the paper calls the 'multiphoton absorption (MPA) coefficient of order m' (m = 4), in cm^(2m-3) fs^(m-1)/J^m: the carrier generation term beta_m (xi I)^m of Eq. (1), a rate per unit volume (as lenzner_1998's sigma_k), not the dI/dz coefficient of a multiphoton_absorption_coefficient. It 'represents nonlinear excitation from both the valence band and the laser-induced trap states'. Printed '2.9 x 10^25' (the extraction garbles it; script)."
+[datasets.parameters]
+photons = 4
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "decay_time_HfO2"
+material = "HfO2"
+file = "HfO2/mero_2005__decay_time_HfO2.csv"
+table = "tbl_e839fc341559"
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "primary"
+notes = "Table II (p. 115109-3), 'HfO2': the 'effective decay constant T' of Eq. (1), 'to represent both the electrons leaving the conduction band and the possible ionization of STEs (re-excitation) by the still present laser pulse'; 'T as used in Eq. (1) is not a relaxation time in the usual meaning, as it includes effects of reexcitation' (p. 115109-4). Attributed to self-trapped exciton formation. 'The quality of the fit does not depend on the functional form of the decay law.'"
+[datasets.parameters]
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "reduced_mass_HfO2"
+material = "HfO2"
+file = "HfO2/mero_2005__reduced_mass_HfO2.csv"
+table = "tbl_e839fc341559"
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "Table II (p. 115109-3), 'HfO2': 'the reduced effective mass obtained from Eq. (2) corresponding to the beta_m^fit value' (m_r^MPA/m0): a derived number, not a measurement. For bulk HfO2 the CB electron effective mass is 0.3-0.6 m0 (Ref. 36). Check: Eq. (2) with this row's beta_m, n0 and E_g gives m_r (formula keldysh_mpa)."
+[datasets.parameters]
+carrier = "reduced"
+form = "film"
+
+[[datasets]]
+id = "n_Al2O3_amorphous"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/mero_2005__n_Al2O3_amorphous.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 115109-2), 'Al2O3': 'n0, index of refraction at lambda = 800 nm' of the film (D = 716 nm); how it was obtained is not stated (the film design, 6 lambda/4n0)."
+[datasets.parameters]
+index_medium = "not stated"
+form = "film"
+
+[[datasets]]
+id = "band_gap_Al2O3_amorphous"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/mero_2005__band_gap_Al2O3_amorphous.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table I (p. 115109-2), 'Al2O3': 'E_g, band gap energy' of the film; the method is not stated. It sets m = 5 at 800 nm and enters Eqs. (2)-(3)."
+[datasets.parameters]
+kind = "not stated"
+form = "film"
+
+[[datasets]]
+id = "avalanche_Al2O3_amorphous"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/mero_2005__avalanche_Al2O3_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "avalanche_coefficient"
+unit = "cm2/J"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'Al2O3': the avalanche coefficient alpha of the fit (with beta_m and T), a figure of merit of the film; no uncertainty stated. Kappa of F_th proportional to tau^kappa (Table III): 0.27 +- 0.01."
+[datasets.parameters]
+definition = "Eq. (1): dN/dt = alpha N xi I(t) + beta_m [xi I(t)]^m - N/T, xi ~ 0.66 the ratio of the maximum internal to the incident intensity; breakdown at N_max = N_cr ~ 1e21 cm^-3"
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "beta_m_Al2O3_amorphous"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/mero_2005__beta_m_Al2O3_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm7 fs4/J5"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'Al2O3': beta_m, which the paper calls the 'multiphoton absorption (MPA) coefficient of order m' (m = 5), in cm^(2m-3) fs^(m-1)/J^m: the carrier generation term beta_m (xi I)^m of Eq. (1), a rate per unit volume (as lenzner_1998's sigma_k), not the dI/dz coefficient of a multiphoton_absorption_coefficient. It 'represents nonlinear excitation from both the valence band and the laser-induced trap states'. Printed '2.3 x 10^24' (the extraction garbles it; script)."
+[datasets.parameters]
+photons = 5
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "decay_time_Al2O3_amorphous"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/mero_2005__decay_time_Al2O3_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "primary"
+notes = "Table II (p. 115109-3), 'Al2O3': the 'effective decay constant T' of Eq. (1), 'to represent both the electrons leaving the conduction band and the possible ionization of STEs (re-excitation) by the still present laser pulse'; 'T as used in Eq. (1) is not a relaxation time in the usual meaning, as it includes effects of reexcitation' (p. 115109-4). Attributed to self-trapped exciton formation. 'The quality of the fit does not depend on the functional form of the decay law.'"
+[datasets.parameters]
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "reduced_mass_Al2O3_amorphous"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/mero_2005__reduced_mass_Al2O3_amorphous.csv"
+table = "tbl_e839fc341559"
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "Table II (p. 115109-3), 'Al2O3': 'the reduced effective mass obtained from Eq. (2) corresponding to the beta_m^fit value' (m_r^MPA/m0): a derived number, not a measurement. The Al2O3 film's gap differs from the crystal's by 'as large as a few 10%' (p. 115109-4); a CB trapping time of ~100 ps was measured in crystalline Al2O3 (Ref. 32). Check: Eq. (2) with this row's beta_m, n0 and E_g gives m_r (formula keldysh_mpa)."
+[datasets.parameters]
+carrier = "reduced"
+form = "film"
+
+[[datasets]]
+id = "n_SiO2"
+material = "SiO2"
+file = "SiO2/mero_2005__n_SiO2.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 115109-2), 'SiO2': 'n0, index of refraction at lambda = 800 nm' of the film (D = 790 nm); how it was obtained is not stated (the film design, 6 lambda/4n0)."
+[datasets.parameters]
+index_medium = "not stated"
+form = "film"
+
+[[datasets]]
+id = "band_gap_SiO2"
+material = "SiO2"
+file = "SiO2/mero_2005__band_gap_SiO2.csv"
+table = "tbl_2091d43cd8a8"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table I (p. 115109-2), 'SiO2': 'E_g, band gap energy' of the film; the method is not stated. It sets m = 6 at 800 nm and enters Eqs. (2)-(3)."
+[datasets.parameters]
+kind = "not stated"
+form = "film"
+
+[[datasets]]
+id = "avalanche_SiO2"
+material = "SiO2"
+file = "SiO2/mero_2005__avalanche_SiO2.csv"
+table = "tbl_e839fc341559"
+quantity = "avalanche_coefficient"
+unit = "cm2/J"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'SiO2': the avalanche coefficient alpha of the fit (with beta_m and T), a figure of merit of the film; no uncertainty stated. Kappa of F_th proportional to tau^kappa (Table III): 0.33 +- 0.01."
+[datasets.parameters]
+definition = "Eq. (1): dN/dt = alpha N xi I(t) + beta_m [xi I(t)]^m - N/T, xi ~ 0.66 the ratio of the maximum internal to the incident intensity; breakdown at N_max = N_cr ~ 1e21 cm^-3"
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "beta_m_SiO2"
+material = "SiO2"
+file = "SiO2/mero_2005__beta_m_SiO2.csv"
+table = "tbl_e839fc341559"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm9 fs5/J6"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 115109-3), 'SiO2': beta_m, which the paper calls the 'multiphoton absorption (MPA) coefficient of order m' (m = 6), in cm^(2m-3) fs^(m-1)/J^m: the carrier generation term beta_m (xi I)^m of Eq. (1), a rate per unit volume (as lenzner_1998's sigma_k), not the dI/dz coefficient of a multiphoton_absorption_coefficient. It 'represents nonlinear excitation from both the valence band and the laser-induced trap states'. Printed '9.9 x 10^25' (the extraction garbles it; script)."
+[datasets.parameters]
+photons = 6
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "decay_time_SiO2"
+material = "SiO2"
+file = "SiO2/mero_2005__decay_time_SiO2.csv"
+table = "tbl_e839fc341559"
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "primary"
+notes = "Table II (p. 115109-3), 'SiO2': the 'effective decay constant T' of Eq. (1), 'to represent both the electrons leaving the conduction band and the possible ionization of STEs (re-excitation) by the still present laser pulse'; 'T as used in Eq. (1) is not a relaxation time in the usual meaning, as it includes effects of reexcitation' (p. 115109-4). Attributed to self-trapped exciton formation. 'The quality of the fit does not depend on the functional form of the decay law.'"
+[datasets.parameters]
+technique = "fit of Eq. (1) to the single-shot damage thresholds against pulse duration (25 fs - 1.3 ps, 800 nm)"
+form = "film"
+
+[[datasets]]
+id = "reduced_mass_SiO2"
+material = "SiO2"
+file = "SiO2/mero_2005__reduced_mass_SiO2.csv"
+table = "tbl_e839fc341559"
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "Table II (p. 115109-3), 'SiO2': 'the reduced effective mass obtained from Eq. (2) corresponding to the beta_m^fit value' (m_r^MPA/m0): a derived number, not a measurement. For SiO2, m_r 'is assumed to be in the range of 0.5-1.0 m0' (Refs. 2, 18). Check: Eq. (2) with this row's beta_m, n0 and E_g gives m_r (formula keldysh_mpa)."
+[datasets.parameters]
+carrier = "reduced"
+form = "film"
+

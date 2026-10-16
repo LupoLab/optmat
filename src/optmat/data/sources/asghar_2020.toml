@@ -1,0 +1,160 @@
+citation = "H. Asghar, N. K. Piracha, R. Ali and M. A. Baig, \"Measurements of experimental transition probabilities of 3p5 4p -> 3p5 4s arrays in neutral argon\", Appl. Opt. 59, 4240-4246 (2020)"
+doi = "10.1364/ao.393053"
+library = "Asghar_2020_MeasurementsExperimentalTransition"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Emission branching fractions of the Ar I 4p-4s lines (650-1100 nm) from a \
+commercial argon hollow-cathode lamp (Photron; 3 mm cathode, 5-8 Torr, 1-10 mA DC), \
+recorded with an Ocean Optics HR4000 CCD spectrometer (0.2 nm FWHM at 600 nm, intensity \
+calibrated by the manufacturer); absolute A_ik = BF_i / tau_i (Eq. 2) with upper-level \
+lifetimes quoted from Chang and Setser (eight levels) and Erman and Huldt (4p'[1/2]0, \
+4p[1/2]0)."""
+notes = """Identity: Applied Optics, volume 59, number 14, 10 May 2020, pp. 4240-4246, \
+H. Asghar, N. K. Piracha, R. Ali, M. A. Baig (Quaid-i-Azam University, Islamabad; John \
+Carroll University), "Measurements of experimental transition probabilities of \
+3p5 4p -> 3p5 4s arrays in neutral argon", received 18 March 2020 (first page of the \
+vector PDF).
+
+Taken (TC-1011's quantities): Table 1's measured A of the 27 lines with a value \
+(transition_probability, primary) and the two sets of upper-level lifetimes the A are \
+normalised to, quoted from Chang and Setser and from Erman and Huldt \
+(radiative_lifetime, reproduced). tools/extract/asghar_2020.py.
+
+NOT TAKEN: Table 1's comparison columns (NIST, which is wiese_1989's set, TC-1012; \
+Garstang and Van Blerkom's LS, JcK and IC calculations, J. Opt. Soc. Am. 55, 1054 \
+(1965)): other works' values. Table 2's (p. 4245) line strengths S (a.u.) and absorption f: \
+conversions of Table 1's A by Eqs. (3) and (4) (S = 4.935e-19 lambda^3 g_k A, f = \
+1.499e-16 (g_k/g_i) lambda^2 A, lambda in angstrom), no new information; the script \
+checks them, and all S and all but three f follow from Table 1's A within 3 % with the \
+printed air wavelengths: f of 714.71 nm (0.003 printed; 0.0055 from the paper's A, \
+0.0029 from NIST's), 751.47 nm (0.111; 0.134 from the paper's A, 0.113 from NIST's) and \
+747.2 nm (2.09E-4 printed for a line with no A; NIST's A gives 1.84e-4) follow NIST's A \
+rather than the paper's. Table 3 (J-file sum rule): sums of Table 2's S; its 4p[1/2]1 \
+row prints S = 0 for 1148.81 nm, which Tables 1 and 2 leave empty (the library's cells \
+of Table 3's first block are merged and unusable; read from the image).
+
+Levels: the paper's JcK labels nl[K]_J (a prime for the 2P1/2 core) are NIST's \
+configuration 3s2.3p5.(2P*<3/2>).nl or (2P*<1/2>).nl, term 2[K] and J; Paschen as \
+printed, 1s5, 1s4, 1s3, 1s2 = 4s[3/2]2, 4s[3/2]1, 4s'[1/2]0, 4s'[1/2]1 and 2p1-2p10 = \
+4p'[1/2]0, 4p'[1/2]1, 4p'[3/2]2, 4p'[3/2]1, 4p[1/2]0, 4p[3/2]2, 4p[3/2]1, 4p[5/2]2, \
+4p[5/2]3, 4p[1/2]1 (the same mapping as wiese_1989). Every row's printed wavelength \
+(air, two decimals) is NIST's air wavelength of its labelled pair within 0.006 nm, but \
+747.2 nm (NIST 747.117 nm). Two lower levels are misprinted, both in rows without a \
+value (not taken): 747.2 nm prints 4s'[3/2]1 (no such level; 4s[3/2]1, Paschen 1s4 as \
+printed) and 857.8 nm prints 4s[1/2]1 (4s'[1/2]1, 1s2 as printed).
+
+Comparison with wiese_1989 (Table IV, TC-1012) and NIST ASD (Ar_I_lines_nir.tsv, \
+TC-985), all 27 lines: ratio paper / Wiese mean 1.058, median 1.010, mean |deviation| \
+12.8 %, from 0.817 (922.45 nm) to 1.92 (714.71 nm, 1.20 against 0.625e6 s-1); against \
+NIST mean 1.058, 0.822 to 1.905 (NIST's 4p-4s A are Wiese's, rounded). 16 of 27 agree \
+with Wiese within the paper's uncertainty, 22 within twice it; outside twice it: \
+772.42 nm (17.68 against 11.7; the paper blames the unresolved 772.38 nm), 727.29, \
+706.72, 714.71 and 922.45 nm. The 12 lines with A >= 1e7 s-1: mean 1.060, 0.905 \
+(912.30 nm) to 1.511 (772.42 nm). The column "NIST [24]" is NIST's A to the printed \
+digits for all 29 rows that print one.
+
+Radiative widths: 1/sum A of the printed A per 4p level is 23.00 (2p1), 23.00, 29.40, \
+30.82, 21.00, 27.01, 29.31, 32.80, 30.10, 42.18 ns (2p10), against wiese_1989's 22.35, \
+28.39, 28.93, 30.17, 24.88, 29.04, 29.70, 31.01, 30.21, 39.22 ns. The lines the paper \
+lacks are weak (NIST: 747.117 nm 0.022e6, 1148.811 nm 0.19e6 s-1, 857.806 nm < 0.001e6 \
+s-1), so Eq. (2) requires sum A tau = 1: it holds within 2 % for 2p5-2p10 (1.017 for \
+2p7, the rest within 0.1 %) but is 0.870, 1.152, 0.939 and 1.077 for 2p1-2p4 with the printed lifetimes \
+(20, 26.5, 27.6, 33.2 ns); 2p1's and 2p2's printed A both sum to 1/(23.00 ns). The \
+paper does not say why; for 2p2 the printed 26.5 ns would give A 13 % lower (772.42 nm \
+15.3, nearer NIST's 11.7 but still off). The per-level widths therefore carry no \
+information of their own: for 2p5-2p10 they are the quoted lifetimes, for 2p1-2p4 an \
+unexplained scale. Only the branching fractions are the paper's measurement.
+
+Independence: the branching fractions are an independent measurement (own lamp, \
+spectrometer and manufacturer's intensity calibration) of the quantities Wiese et al. \
+averaged from Nick and Helbig and from Shumaker and Popenoe. The normalisation is not \
+Wiese's: Chang and Setser's lifetimes (J. Chem. Phys. 69, 3885 (1978)) for eight \
+levels, Erman and Huldt's (Phys. Scr. 17, 473 (1978)) for 2p1 and 2p5, where Wiese \
+et al. scaled to Quadfasel and Helbig's; but Chang and Setser's eight values are the \
+same as those wiese_1989 lists in its Table II (26.5, 27.6, 33.2, 27.0, 29.8, 32.8, \
+30.1, 42.2 ns), which Wiese et al. compared and did not adopt. The A of 2p5-2p10 are \
+therefore independent of Wiese in their branching and in their scale; 2p1-2p4 are \
+independent in their branching, with an unstated scale.
+
+Other data the paper cites, not in the library: R. S. F. Chang and D. W. Setser, J. \
+Chem. Phys. 69, 3885 (1978) (radiative lifetimes and two-body deactivation rate \
+constants of Ar 4p and 4p' levels: quenching data relevant to OEP 8); P. Erman and S. \
+Huldt, Phys. Scr. 17, 473 (1978) (4p and 5p lifetimes and radiation trapping); \
+R. A. Nodwell, J. Meyer and T. Jacobson, JQSRT 10, 335 (1970) (absolute 4p-4s A); \
+O. Zatsarinny and K. Bartschat, Phys. Scr. T134, 014020 (2009) (B-spline f values). \
+The cells of Table 1 were checked against the table image (2026-10-12)."""
+
+[[datasets]]
+id = "A_4p_4s"
+material = "Ar"
+file = "Ar/asghar_2020__A_4p_4s.csv"
+table = "tbl_8164cd4b15b2"
+quantity = "transition_probability"
+unit = "1/s"
+scale = 1e6
+abscissa = "label"
+use = "primary"
+notes = """Table 1 (p. 4243), column 'Present Work', A (1e6 s-1): the 27 Ar I 4p-4s lines \
+with a value (747.2, 857.8 and 1148.81 nm print '-'). A = BF / tau (Eq. 2), the \
+branching fractions measured in a hollow-cathode lamp (5-8 Torr, 1-10 mA), the \
+lifetimes quoted (datasets lifetime_chang_1978, lifetime_erman_1978). Each row's \
+uncertainty is the printed absolute +- (738.40 nm prints '8.23 0.68', the +- lost): \
+'The uncertainties in the measured line intensities [5-7 %] and reported lifetimes \
+have been added' (p. 4243), level not stated. Rows are the printed air wavelengths \
+(nm); x is upper-lower in the paper's Racah notation. Eq. (2) fails for 2p1-2p4 with \
+the printed lifetimes (record notes); the paper attributes the 51 % excess of 772.42 nm \
+over NIST to its blend with 772.38 nm at 0.2 nm resolution (p. 4243), so 772.42 and \
+772.38 nm are doubtful."""
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[datasets.parameters]
+notation = "racah"
+
+[[datasets]]
+id = "lifetime_chang_1978"
+material = "Ar"
+file = "Ar/asghar_2020__lifetime_chang_1978.csv"
+table = "tbl_8164cd4b15b2"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. S. F. Chang and D. W. Setser, J. Chem. Phys. 69, 3885 (1978)"]
+notes = """Table 1 (p. 4243), column 'Lifetimes tau (ns)', footnote b (Chang and Setser, \
+Ref. 22): the lifetimes of 4p'[1/2]1, 4p'[3/2]2, 4p'[3/2]1, 4p[3/2]2, 4p[3/2]1, \
+4p[5/2]2, 4p[5/2]3 and 4p[1/2]1 (2p2-2p4, 2p6-2p10), 26.5-42.2 ns, with the printed \
+absolute uncertainties (the percentage printed in parentheses is their ratio). The \
+same values as wiese_1989's Table II column 'Chang and Setser' (not taken there). \
+Rows and x are the levels."""
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[datasets.parameters]
+method = "measured: time-resolved laser-induced fluorescence (as the citing paper describes Chang and Setser's work)"
+
+[[datasets]]
+id = "lifetime_erman_1978"
+material = "Ar"
+file = "Ar/asghar_2020__lifetime_erman_1978.csv"
+table = "tbl_8164cd4b15b2"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["P. Erman and S. Huldt, Phys. Scr. 17, 473 (1978)"]
+notes = """Table 1 (p. 4243), column 'Lifetimes tau (ns)', footnote a (Erman and Huldt, \
+Ref. 21), for the two levels Chang and Setser lack: 4p'[1/2]0 (2p1) 20 +- 2 ns and \
+4p[1/2]0 (2p5) 21 +- 3 ns. wiese_1989's Table II gives 21.7 and 24.4 ns (Quadfasel \
+and Helbig) for these levels. Rows and x are the levels."""
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[datasets.parameters]
+method = "measured: high-frequency deflection technique (the citing paper's words, p. 4242, which also say Erman and Huldt 'calculated' them)"

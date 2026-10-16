@@ -1,0 +1,263 @@
+citation = "K. Yoshino and D. E. Freeman, \"Absorption spectrum of xenon in the vacuum-ultraviolet region\", J. Opt. Soc. Am. B 2, 1268 (1985)"
+doi = "10.1364/JOSAB.2.001268"
+library = "Yoshino_1985_AbsorptionSpectrumXenon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photographic absorption spectroscopy of atomic xenon (below 1 mTorr, in the \
+windowless spectrograph) from 922 to 1296 A with a 6.65-m normal-incidence vacuum \
+spectrograph (McPherson 265) in the second order of a 1200 mm^-1 grating, 0.010 mm slit; \
+background continua from helium (below 1070 A) and argon discharges; wavelengths \
+calibrated against the CO fourth positive bands and Cu I and Cu II lines from a hollow \
+cathode. The five odd J = 1 Rydberg series from the 5p6 1S0 ground level ('224 lines \
+are identified', p. 1268; the tables hold 223 measured rows); \
+the series limits from the Rydberg formula with a fitted quantum defect (Fig. 3)."""
+notes = """J. Opt. Soc. Am. B 2(8), 1268-1274 (August 1985) = PDF pages 1-7 (journal page = \
+PDF page + 1267); a scan with a text layer. Identity checked against the first page \
+(journal, volume, number, date, page, title, authors). Wavelengths are in vacuum (the \
+VUV; the printed wave numbers are 1e8 over them, checked for every row by the script).
+
+ABSORPTION: no cross section, oscillator strength or absorption coefficient is \
+printed. Fig. 1 reproduces the photographic plates and Fig. 2 densitometer traces near \
+925 A (relative, the ns' and nd' autoionising lines; raster): no absolute scale, not \
+digitised. The paper's own references for xenon absorption coefficients in this region \
+(R. E. Huffman, Y. Tanaka and J. C. Larrabee, J. Chem. Phys. 39, 902 (1963); P. H. \
+Metzger and G. R. Cook, J. Opt. Soc. Am. 55, 516 (1965); F. M. Matsunaga, R. S. \
+Jackson and K. Watanabe, J. Quant. Spectrosc. Radiat. Transfer 5, 329 (1965)) are not \
+in the library.
+
+WHAT IS TAKEN (tools/extract/yoshino_1985.py). The five series tables, each row n, the \
+wavelength (A), the wave number (cm^-1) and n*: the wave number of an absorption line \
+from the ground level is the energy of its upper level, so each table is a \
+level_energy dataset (cm^-1), rows by n, x the level in NIST's notation: Table 1 (p. \
+1270) 5p5(2P3/2) nd 2[3/2]1, n = 5-66; Table 2 (p. 1270) nd 2[1/2]1, n = 5-34; Table 3 \
+(p. 1271) ns 2[3/2]1, n = 7-47; Table 4 (p. 1271) 5p5(2P1/2) nd' 2[3/2]1, n = 5-65; \
+Table 5 (p. 1272) ns' 2[1/2]1, n = 6-39. Tables 4 and 5 above the first limit (nd' n \
+>= 6, ns' n >= 8) are the autoionising resonances between the 2P3/2 and 2P1/2 limits \
+(12.13-13.44 eV), the region two photons of 6.065-6.718 eV (184.6-204.4 nm, vacuum) reach; they \
+are odd J = 1 levels, reached by one photon (two photons from the ground level reach \
+even J = 0 and 2). Rows in parentheses are 'estimated wavelengths ... calculated from \
+the quantum defects' (p. 1269), not measurements: ns n = 22 (blended with Lyman beta), \
+nd' n = 6, 7 and ns' n = 8, 9 ('so diffuse that we could not make measurements'); kept \
+in the files and excluded. The series limits, from the text, as inline points: 97 \
+833.75 +- 0.05 cm^-1 (2P3/2, '12.12994 +- 0.00001 eV') and 108 370.8 +- 0.2 cm^-1 \
+(2P1/2, '13.43637 +- 0.00002 eV') (p. 1271); the abstract rounds the first to 97 \
+833.7, as Table 7 does (p. 1273).
+
+ACCURACY. 'The final accuracy of measurements for each line was estimated to be better \
+than 0.002 A' (p. 1268); 'the experimental error of 0.2 cm^-1 in the line \
+measurements' (p. 1271); 'For the absolute accuracy, we can safely claim 0.2 cm^-1' and \
+the relative accuracy is 0.1 cm^-1 from the comparison with Humphreys and Paul (p. \
+1273), with the laser measurements of the companion paper (Bonin, McIlrath and \
+Yoshino, J. Opt. Soc. Am. B 2, 1275 (1985); not in the library): 12 lines, mean \
+difference -0.017 +- 0.15 cm^-1. Taken as 0.2 cm^-1, level not stated. The diffuse \
+nd' lines n = 8-13 (Table 4) print wavelengths to 0.01 A and wave numbers to 1 cm^-1, \
+and are less precise than that (0.01 A is 1.1 cm^-1 there).
+
+CHECKED (the script). Every row's wave number against 1e8 over its wavelength, and its \
+n* against the Rydberg formula with the paper's limits and xenon's mass-corrected \
+Rydberg constant (109 736.857 cm^-1), within the printed rounding; the four-decimal n* \
+of the lowest members reproduce to 1-2 units of the last digit (the authors' R and \
+rounding are not stated). Six wave numbers fail both and are corrected by errata \
+below; two wavelengths and one n* are misprinted with the wave number right (Table 1 \
+n = 14 prints 1030.453 A for 1030.435; Table 5 n = 12 prints '3937.650' for 937.650; \
+Table 4 n = 23 prints n* = 20.74 for 20.72, its neighbours 19.72 and 21.72): not in a \
+value column, so not errata. Against NIST (data/external/nist_asd/Xe_I_levels.tsv, n \
+<= 20): 28 levels NIST cites by the bibliographic key L6449 are this paper's values to \
+every printed digit (including the corrected 11s' and 11d'); the other NIST levels \
+differ by -0.26 to +0.23 cm^-1. All table cells were checked against the table images; \
+the misprinted cells also on the rendered pages. The limits: 97 833.75 / 8065.479 \
+(CODATA 1973, cm^-1 per eV) = 12.129937 eV and 108 370.8 / 8065.479 = 13.436375 eV, \
+as printed; NIST's first ionisation energy (nist_asd_2026 ie_Xe_I, 12.1298437 eV) is 97 \
+833.787 cm^-1, 0.037 above this paper's (within its +-0.05); the interval, 10 537.05 \
+cm^-1 (Table 7 prints 10 537.1), against NIST's 2P1/2 level of Xe II (nist_asd_2026 \
+level_Xe+_2P12) 10 537.01.
+
+NOT TAKEN. Table 6 (p. 1272): Humphreys and Paul's interferometric term values (HP-70) \
+of 14 levels with the differences of NBS-58, Petersson and this work, and 'reevaluated' \
+term values = HP-70 - 0.4754 cm^-1 (the mean present - HP difference, +- 0.0926): \
+others' values shifted, reproduced or derived. Table 7: the limits again, rounded, \
+with NBS 1958 and 1970 and Edlén's interval, reproduced. Fig. 3 (the limit against \
+the assumed quantum defect): not a quantity.
+
+FURTHER TWO-PHOTON DATA CITED: none."""
+
+[[datasets]]
+id = "levels_nd32"
+material = "Xe"
+file = "Xe/yoshino_1985__levels_nd32.csv"
+table = "tbl_fc5223dd7155"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 1270), 5p5 nd[3/2]1 - 5p6 1S0, n = 5-66. Rows by n; x the level; the value the printed wave number of the line from the ground level (vacuum), its digit-group spaces removed. Uncertainty 0.2 cm^-1, the paper's absolute accuracy (record notes)."
+[datasets.uncertainty]
+absolute = 0.2
+level = "not stated"
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).nd, n the row"
+term = "2[3/2]*"
+j = "1"
+
+[[datasets]]
+id = "levels_nd12"
+material = "Xe"
+file = "Xe/yoshino_1985__levels_nd12.csv"
+table = "tbl_8f0a90e1d919"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 1270), 5p5 nd[1/2]1 - 5p6 1S0, n = 5-34. Rows by n; x the level; the value the printed wave number of the line from the ground level (vacuum), its digit-group spaces removed. Uncertainty 0.2 cm^-1, the paper's absolute accuracy (record notes)."
+[datasets.uncertainty]
+absolute = 0.2
+level = "not stated"
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).nd, n the row"
+term = "2[1/2]*"
+j = "1"
+
+[[datasets]]
+id = "levels_ns32"
+material = "Xe"
+file = "Xe/yoshino_1985__levels_ns32.csv"
+table = "tbl_0c56a9f6ed72"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table 3 (p. 1271), 5p5 ns[3/2]1 - 5p6 1S0, n = 7-47 (the 6s resonance line, 1469.612 A, was not measured). Rows by n; x the level; the value the printed wave number of the line from the ground level (vacuum), its digit-group spaces removed. Uncertainty 0.2 cm^-1, the paper's absolute accuracy (record notes)."
+excluded_rows = { "22" = "printed in parentheses: the position calculated from the quantum defect, the line being blended with Lyman beta of H I at 1025.722 A (p. 1269); not a measurement" }
+[datasets.uncertainty]
+absolute = 0.2
+level = "not stated"
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).ns, n the row"
+term = "2[3/2]*"
+j = "1"
+
+[[datasets]]
+id = "levels_ndp32"
+material = "Xe"
+file = "Xe/yoshino_1985__levels_ndp32.csv"
+table = "tbl_60d55d81bd56"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table 4 (p. 1271), 5p5 nd'[3/2]1 - 5p6 1S0, n = 5-65; autoionising for n >= 6. Rows n = 8-13 print wave numbers to 1 cm^-1 (diffuse lines; record notes). Rows by n; x the level; the value the printed wave number of the line from the ground level (vacuum), its digit-group spaces removed. Uncertainty 0.2 cm^-1, the paper's absolute accuracy (record notes)."
+excluded_rows = { "6" = "printed in parentheses: estimated from the quantum defect, the line too diffuse to measure (p. 1269)", "7" = "printed in parentheses: estimated from the quantum defect, the line too diffuse to measure (p. 1269)" }
+[datasets.uncertainty]
+absolute = 0.2
+level = "not stated"
+[datasets.parameters]
+configuration = "5p5.(2P*<1/2>).nd, n the row"
+term = "2[3/2]*"
+j = "1"
+
+[[datasets]]
+id = "levels_nsp12"
+material = "Xe"
+file = "Xe/yoshino_1985__levels_nsp12.csv"
+table = "tbl_ca7c8f0fa582"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1272), 5p5 ns'[1/2]1 - 5p6 1S0, n = 6-39; autoionising for n >= 8. Rows by n; x the level; the value the printed wave number of the line from the ground level (vacuum), its digit-group spaces removed. Uncertainty 0.2 cm^-1, the paper's absolute accuracy (record notes)."
+excluded_rows = { "8" = "printed in parentheses: estimated from the quantum defect, not measured (p. 1269)", "9" = "printed in parentheses: estimated from the quantum defect, not measured (p. 1269)" }
+[datasets.uncertainty]
+absolute = 0.2
+level = "not stated"
+[datasets.parameters]
+configuration = "5p5.(2P*<1/2>).ns, n the row"
+term = "2[1/2]*"
+j = "1"
+
+[[datasets]]
+id = "limit_2P32"
+material = "Xe"
+table = "text"
+quantity = "ionization_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "97833.75", "0.05"]]
+notes = "p. 1271: the first ionisation limit 'was found to be 97 833.75 +- 0.05 cm^-1 (or 12.12994 +- 0.00001 eV)', from the nd[3/2]1 series, m = 25-36 and 45-61, with a = 0.79 in T = T_obs + R / (m + a)^2 (Eq. 1). The abstract and Table 7 round it to 97 833.7. Level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "5p5 2P*<3/2> (the Xe II ground level)"
+
+[[datasets]]
+id = "limit_2P12"
+material = "Xe"
+table = "text"
+quantity = "ionization_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "108370.8", "0.2"]]
+notes = "p. 1271: the second ionisation limit 'was found to be 108 370.8 +- 0.2 cm^-1 (or 13.43637 +- 0.00002 eV)', from the nd'[3/2]1 series, n = 52-65, with a = 0.72. The ionisation energy to the excited 2P1/2 level of the ion, not the first ionisation energy. Level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "5p5 2P*<1/2> (the excited fine-structure level of Xe II)"
+
+[[errata]]
+dataset = "levels_nd12"
+row = "10"
+column = "value"
+printed = "95912.98"
+corrected = "95912.87"
+reason = "Table 2, nd[1/2] n = 10: the printed 95 912.98 cm^-1 is not 1e8 / 1042.613 A = 95 912.87, and gives n* = 7.5586 against the printed 7.5583, which 95 912.87 reproduces."
+evidence = "The row's own wavelength and n* (script checks); NIST's 5p5(2P3/2) 10d 2[1/2]1, 95 912.880 cm^-1 (another source, key L3466). Table image and rendered page show 95 912.98."
+
+[[errata]]
+dataset = "levels_nd12"
+row = "31"
+column = "value"
+printed = "97798.4"
+corrected = "97698.4"
+reason = "Table 2, nd[1/2] n = 31: 97 798.4 cm^-1 lies above the series limit (97 833.75 is 35 cm^-1 higher, n* would be 56) and out of order (n = 30 is 97 688.8, n = 32 97 707.5); 1e8 / 1023.558 A = 97 698.42 and gives n* = 28.47 as printed: a 7 misprinted for a 6."
+evidence = "The row's own wavelength and n*, and the series order (script checks). Beyond NIST's list (n <= 20). Table image shows 97 798.4."
+
+[[errata]]
+dataset = "levels_ns32"
+row = "10"
+column = "value"
+printed = "94487.09"
+corrected = "94787.09"
+reason = "Table 3, ns[3/2] n = 10: 94 487.09 cm^-1 is not 1e8 / 1054.996 A = 94 787.09, which reproduces the printed n* = 6.0016: a 4 misprinted for a 7."
+evidence = "The row's own wavelength and n* (script checks); NIST's 5p5(2P3/2) 10s 2[3/2]1, 94 787.084 cm^-1 (key L763). Table image shows 94 487.09."
+
+[[errata]]
+dataset = "levels_ns32"
+row = "23"
+column = "value"
+printed = "97350.0"
+corrected = "97530.0"
+reason = "Table 3, ns[3/2] n = 23: 97 350.0 cm^-1 is out of order (n = 21 is 97 454.3, n = 24 97 559.5) and is not 1e8 / 1025.326 A = 97 529.96, which gives the printed n* = 19.01: two digits transposed."
+evidence = "The row's own wavelength and n*, and the series order (script checks). Beyond NIST's list. Table image shows 97 350.0."
+
+[[errata]]
+dataset = "levels_ndp32"
+row = "11"
+column = "value"
+printed = "107209."
+corrected = "106929."
+reason = "Table 4, nd'[3/2] n = 11: the wave number repeats the next row's (n = 12, 107 209.); 1e8 / 935.20 A = 106 929.0, which gives the printed n* = 8.724."
+evidence = "The row's own wavelength and n* (script checks); NIST's 5p5(2P1/2) 11d 2[3/2]1 is 106 929. cm^-1 with the key L6449 (this paper), i.e. NIST carries the corrected value. Table image shows 107 209. twice."
+
+[[errata]]
+dataset = "levels_nsp12"
+row = "11"
+column = "value"
+printed = "1061208"
+corrected = "106120.8"
+reason = "Table 5, ns'[1/2] n = 11: printed '106 120 8', the decimal point missing (rendered page and text layer agree); 1e8 / 942.322 A = 106 120.84, n* = 6.9837 as printed."
+evidence = "The row's own wavelength and n* (script checks); NIST's 5p5(2P1/2) 11s 2[1/2]1 is 106 120.8 cm^-1 with the key L6449 (this paper). Rendered page p. 1272 checked."

@@ -1,0 +1,21 @@
+Title:
+eig_ar_m1_b120 - ar m=1 Tong-Lin SAE field-free spectrum; Eta=10; BOX=120
+
+#define BOX 120
+#define TongLinV (1.0+16.039*exp(-2.007*Q)-25.543*Q*exp(-4.525*Q)+0.961*exp(-0.443*Q))/Q
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1,0.,6.28318530718,expIm[1]
+ Eta,10,-1,1,assocLegendre{Phi}
+ Rn,14,0.,2.,polynomial,3
+ Rn,12,2.,20.,RpowL*polynomial,4
+ Rn,12,20.,40.,RpowL*polynomial,5
+ Rn,12,40.,BOX,RpowL*polynomial,18
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.3,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinV>
+
+Eigen: select=SmallReal[80]

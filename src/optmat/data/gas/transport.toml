@@ -1,0 +1,125 @@
+# The dilute gases' transport properties (OEP 1, sections 4.3 and 6.5): the source of
+# each gas's viscosity and ideal-gas heat capacity. optmat.gas.transport builds one
+# TransportModel per gas from this file; tests/test_transport.py checks every entry.
+#
+# [gases.<gas>]
+#   viscosity              how the dilute viscosity is evaluated:
+#                          "coolprop"       CoolProp's correlation, at 1e-6 mol/m^3
+#                          "chapman_enskog" Huber's dilute form, from the formula below
+#                          "assael"         Assael et al.'s D2 correlation: the
+#                                           collision integral of collision_formula
+#                                           (collision_source) times formula's f
+#   viscosity_source       the source record of the correlation (empty: none in hand)
+#   formula                the formula of that record that is evaluated
+#   viscosity_range_k      the correlation's temperatures, where its paper states them;
+#                          otherwise the equation of state's (within Eq. 7's 0.3 < T* <
+#                          100 for "chapman_enskog")
+#   viscosity_uncertainty  the stated uncertainty, as the source states it
+#   heat_capacity_source   the source record of the equation of state's ideal part
+#                          (empty: none in hand); c_p0 and M are CoolProp's
+#   heat_capacity_range_k  where CoolProp's ideal part meets its source only over part
+#                          of the equation's temperatures; otherwise the equation's
+#   status, status_reason  where the model is not "validated"
+
+[gases.He]
+viscosity = "coolprop"
+viscosity_source = "arp_1998"
+viscosity_range_k = [110.0, 1500.0]
+viscosity_uncertainty = "at most 10 % above 100 K, for the correlation as a whole (Arp et al., section 4.2.3)"
+heat_capacity_source = "harvey_2023"
+
+[gases.Ne]
+viscosity = "chapman_enskog"
+viscosity_source = "huber_2018"
+formula = "eq6_eq7_Ne"
+viscosity_uncertainty = "2 % (k = 2) in the gas at atmospheric pressure (Huber, section 6.9.1)"
+# Thol et al. (2019), CoolProp's neon equation, is not in hand; its ideal part is the
+# monatomic gas's (5/2) R, which CoolProp gives to 1 ulp.
+heat_capacity_source = ""
+
+[gases.Ar]
+viscosity = "coolprop"
+viscosity_source = "lemmon_2004"
+viscosity_uncertainty = "0.5 % in the dilute gas (Lemmon and Jacobsen, section 5)"
+heat_capacity_source = "tegeler_1999"
+
+[gases.Kr]
+viscosity = "chapman_enskog"
+viscosity_source = "huber_2018"
+formula = "eq6_eq7_Kr"
+viscosity_uncertainty = "3 % (k = 2) in the gas at atmospheric pressure (Huber, section 6.9.2)"
+heat_capacity_source = "lemmon_2006"
+
+[gases.Xe]
+viscosity = "chapman_enskog"
+viscosity_source = "huber_2018"
+formula = "eq6_eq7_Xe"
+viscosity_uncertainty = "0.7 % (k = 2) in the vapour (Huber, section 6.9.3)"
+heat_capacity_source = "lemmon_2006"
+
+[gases.H2]
+viscosity = "coolprop"
+viscosity_source = "muzny_2013"
+viscosity_range_k = [13.957, 1000.0]
+viscosity_uncertainty = "0.1 % from 200 K to 400 K up to 0.1 MPa (Muzny et al., abstract)"
+heat_capacity_source = "leachman_2009"
+
+[gases.D2]
+# The correlation, not its Table 2 interpolated: the table's four-digit rounding (2e-4)
+# and its degraded 90 K cell made a spline through it wiggle at 1e-4, so a smooth
+# representation of it could not reach 1e-6; the correlation reproduces the table
+# within 1.5 units of its last digit (5.1e-4) except at 90 K (TC-765, TC-839).
+viscosity = "assael"
+viscosity_source = "assael_1987"
+formula = "eq1_eq4_eq7"
+collision_source = "assael_1986"
+collision_formula = "eq1_eq3"
+viscosity_range_k = [30.0, 2200.0]
+viscosity_uncertainty = "1 % from 250 K to 350 K, 2 % below, at most 4 % at the highest temperatures (Assael et al., p. 191)"
+heat_capacity_source = "richardson_2014"
+
+[gases.N2]
+viscosity = "coolprop"
+viscosity_source = "lemmon_2004"
+viscosity_uncertainty = "0.5 % in the dilute gas (Lemmon and Jacobsen, section 5)"
+heat_capacity_source = "span_2000"
+
+[gases.O2]
+viscosity = "coolprop"
+viscosity_source = "lemmon_2004"
+viscosity_uncertainty = "1 % in the dilute gas above 200 K, 5 % below (Lemmon and Jacobsen, section 5)"
+# CoolProp's ideal part is a refit of Wagner, Ewers and Schmidt's equation (Schmidt and
+# Wagner 1985; Stewart et al. 1991, Eq. 11), within 3.3e-6 to 1500 K; beyond 1700 K it
+# departs by more than the equation's stated 0.003 J/(mol K) (TC-765).
+heat_capacity_source = "schmidt_1985"
+heat_capacity_range_k = [54.361, 1700.0]
+
+[gases.CH4]
+viscosity = "coolprop"
+viscosity_source = "quinones_cisneros_2006"
+viscosity_range_k = [95.0, 600.0]
+viscosity_uncertainty = "not stated; the fit's average absolute deviation is 0.31 % over 95-600 K (Quinones-Cisneros and Deiters, Table 1)"
+heat_capacity_source = "setzmann_1991"
+status = "provisional"
+status_reason = "Quinones-Cisneros and Deiters state no uncertainty for the dilute-gas term, only the fit's 0.31 % average deviation over 95-600 K; a validated model needs a stated uncertainty (TC-763)."
+
+[gases.SF6]
+viscosity = "coolprop"
+viscosity_source = "quinones_cisneros_2012"
+viscosity_range_k = [223.555, 1000.0]
+viscosity_uncertainty = "0.3 % (k = 2) from 298 K to 700 K, rising to 1.5 % at the triple point and at 1000 K (Quinones-Cisneros et al.)"
+heat_capacity_source = "guder_2009"
+
+[gases.N2O]
+viscosity = "chapman_enskog"
+viscosity_source = "huber_2018"
+formula = "eq6_eq7_N2O"
+viscosity_uncertainty = "5 % (k = 2) in the gas (Huber, section 6.11.2)"
+heat_capacity_source = "lemmon_2006"
+
+[gases.CO2]
+viscosity = "coolprop"
+viscosity_source = "laesecke_2017"
+viscosity_range_k = [200.0, 2000.0]
+viscosity_uncertainty = "0.2 % from 200 K to 700 K and 1 % to 2000 K below the triple-point pressure (Laesecke and Muzny)"
+heat_capacity_source = "span_1996"

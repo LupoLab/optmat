@@ -1,0 +1,104 @@
+citation = "P. L. Smith, W. H. Parkinson and M. C. E. Huber, \"The refractive index of krypton for 168 nm <= lambda <= 288 nm\", Opt. Commun. 14, 374 (1975)"
+doi = "10.1016/0030-4018(75)90339-9"
+library = "Smith_1975_RefractiveIndexKrypton"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Evacuated Mach-Zehnder interferometer (Banfield et al. 1973) with a \
+water-jacketed absorption cell (water within 1 K of ambient, measured to +-0.2 K). \
+Fringes counted photoelectrically at 288.2 nm while the cell was filled to about 5 Torr \
+above ambient, then at constant pressure while the wavelength was scanned to 221.7 nm, \
+photographed for 165-245 nm, and counted again at 221.7 nm while the cell was \
+evacuated; counts at Si I and H2 emission lines on the H2 continuum, drift corrected. \
+Pressure by Baratron differential and a calibrated mercury barometer (+-0.2 Torr). \
+Airco research-grade krypton, 99.995 %, analysed twice (Table 2). pp. 374-376."""
+notes = """The library's DOI and title; page numbers are counted from 374 on the pdf.
+
+SUPERSEDED: the same measurements, with 'slight changes ... from an improved \
+calculation of the drift correction', are in smith_1976 (Phys. Rev. A 13, 1422, p. \
+1433 there), whose krypton values differ from these by up to 0.4e-6 (212.48 nm: 503.2 \
+against 502.8). smith_1976/experiment_Kr is the one to fit; every dataset here is \
+excluded or reproduced.
+
+State: not stated in the paper; Table 3 is headed '(n - 1) [in 10^-6] for krypton'. \
+The values agree with smith_1976's (0 C, 760 Torr, real gas) to 0.4e-6 and with \
+Leonard's adjusted Kronjager and Koch values to 0.1 %, so they are recorded at 0 C \
+and 1 atm, density unknown.
+
+Uncertainty (p. 376, Table 1): the probable errors of the fringe count (+-0.06 %), \
+pressure (0.03 %), length (0.02 %) and temperature (0.07 %) give 'Total +-0.1%'; the \
+abstract: 'The probable error of each measurement is +-0.1%'. At least two \
+measurements per wavelength; 'the mean absolute difference between pairs of results \
+was 0.1 x 10^-6 (0.02%)'. A gas sample collected during a run at 243.59 nm gave (479.0 \
++- 0.5)e-6 against the other results (479.2 +- 0.5)e-6 and (478.9 +- 0.5)e-6 (p. 376). \
+Wavelengths are vacuum ('lambda_vac', Si I and H2 lines known to better than 0.01 %).
+
+Conclusion (pp. 376-377): 'On the average, our data are about 0.1% smaller than those \
+of Kronjager and Koch as adjusted by Leonard', and 'about 3.8% smaller than those of \
+Abjean et al.', whose data 'are incorrect' (abjean_1971; withdrawn by its authors in \
+bideau_mehu_1976). The three-term Sellmeier interpolation ('calc.') has no printed \
+coefficients: no formula.
+
+Reproductions elsewhere: bideau_mehu_1981/smith_1975_Kr and bideau_mehu_1976/smith_1975_Kr \
+(values at the Brest wavelengths: bideau_mehu_1976's 488.8 at 228.8 nm and 501.6 at \
+213.9 nm are this paper's 'calc.' interpolation there)."""
+
+[[datasets]]
+id = "experiment_Kr"
+material = "Kr"
+file = "Kr/smith_1975__experiment_Kr.csv"
+table = "tbl_bb31b7ebfefd"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+notes = "Table 3, 'this work' (27 points). Superseded by smith_1976/experiment_Kr: the same measurements with an improved drift correction."
+[datasets.uncertainty]
+relative = 0.001
+level = "probable error"
+
+[[datasets]]
+id = "interpolated_Kr"
+material = "Kr"
+file = "Kr/smith_1975__interpolated_Kr.csv"
+table = "tbl_bb31b7ebfefd"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+notes = "Table 3, 'calc.': the three-term Sellmeier interpolation of this work (probable error +-0.1e-6, p. 376), 168.46-298.06 nm (above 288.24 nm an extrapolation). Superseded by smith_1976/interpolated_Kr."
+
+[[datasets]]
+id = "abjean_1971_Kr"
+material = "Kr"
+file = "Kr/smith_1975__abjean_1971_Kr.csv"
+table = "tbl_bb31b7ebfefd"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+reproduced_from = ["abjean_1971"]
+notes = "Table 3, 'Abjean et al. [1] data': abjean_1971's Table 2 measured column (492.7 ... 570.7) at 253.7-180.7 nm; withdrawn by its authors."
+
+[[datasets]]
+id = "kronjager_koch_Kr"
+material = "Kr"
+file = "Kr/smith_1975__kronjager_koch_Kr.csv"
+table = "tbl_bb31b7ebfefd"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["leonard_1974", "W. Kronjager, Z. Physik 98, 17 (1935)", "J. Koch, Kgl. Fysiograf. Sallskap. Lund. Forh. 19, 15 (1949)"]
+notes = "Table 3, 'Kronjager [2] and Koch [3]' as adjusted by Leonard (footnote d), 298.06-202.55 nm; which value is whose is not said."

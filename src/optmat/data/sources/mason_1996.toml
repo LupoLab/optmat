@@ -1,0 +1,213 @@
+citation = "N. J. Mason, J. M. Gingell, J. A. Davies, H. Zhao, I. C. Walker and M. R. F. Siggel, \"VUV optical absorption and electron energy-loss spectroscopy of ozone\", J. Phys. B: At. Mol. Opt. Phys. 29, 3075 (1996)"
+doi = "10.1088/0953-4075/29/14/019"
+library = "Mason_1996_VUVOpticalAbsorption"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Synchrotron-radiation absorption at the SERC Daresbury source, Beam Line 3.1, with \
+the Daresbury Laboratory molecular science absorption apparatus: a 16 cm cell between LiF \
+windows, a sodium-salicylate-coated exit window and photomultiplier; low-energy grating, \
+2.3 eV (540 nm) to the LiF cut-off 11.3 eV (110 nm), covered in sections of about 20 nm \
+scanned in steps of 0.05 nm; fixed sample pressure 10 mTorr - 1 Torr (Baratron), ring \
+current monitored, I0 from the evacuated cell; Beer-Lambert law (Eq. 1); checked for line \
+saturation (pp. 3077-3078). Sample: an ozone/oxygen mixture (about 45 % O3) from a \
+calibrated storage bulb (Davies et al. 1993). Also near-threshold electron energy-loss \
+spectra (trapped-electron spectrometer), not optical data."""
+notes = """Identity checked against the first page (PDF page 2, journal p. 3075): Mason, \
+Gingell, Davies, Zhao, Walker and Siggel, J. Phys. B 29, 3075 (1996). Journal pages \
+3075-3089 = PDF pages 2-16 (page 1 is the publisher's cover). O3 only.
+
+The cross sections are given only in figures: Fig. 5 (105-480 nm, 3.5-11.3 eV, in Mb \
+against photon energy), Fig. 6 (the Hartley and Huggins bands), Fig. 7 (the Rydberg \
+region); 'The final VUV absorption cross sections for ozone for 354 > lambda > 110 nm \
+(3.5 < E < 11.3 eV) are given in figures 5-7' (p. 3079). No table of cross sections \
+(the Mainz atlas's Mason data are a digitisation of Fig. 5).
+
+Facts for the data files (pages checked on the page images):
+- Absolute scale (pp. 3079-3080): the O2 part of the mixture was removed by normalising \
+the mixture's spectrum to a pure-O2 spectrum at the O2 band at 9.96 eV, 'fully \
+consistent with the previously calibrated concentrations' (about 45 % O3, less than 2 % \
+degradation in the cell); a CO impurity (A 1Pi bands, 6-8 eV, from ozone attacking the \
+viton seals) was also subtracted. 'By normalizing the present data at lambda = 253 nm \
+to the value of Mauersberger [Mauersberger et al. 1987], it was possible to reconfirm \
+the ozone partial pressures within the gas cell and monitor any degradation': the \
+Hartley peak is tied to Mauersberger et al.'s 253 nm cross section.
+- Uncertainty: not stated for ozone. 'Having measured cross sections for many other \
+molecular targets in this region with excellent (<= 5%) agreement to current standards \
+and with no indication of wavelength dependence in the detection efficiencies, we are \
+confident that the present results are the most reliable ozone VUV absorption cross \
+sections for 185 > lambda > 110 nm (6.7 < E < 11.3 eV) currently available' (p. 3085).
+- Wavelengths: vacuum (a vacuum-ultraviolet synchrotron monochromator; not stated \
+explicitly); the figures are in photon energy.
+- Temperature: not stated (room temperature; the atlas's 298 K is not in the paper).
+- Resolution: not stated; sampling 0.05 nm steps (p. 3077); 'the higher resolution in \
+the present data reveals fine structure within features 4-7' (p. 3079).
+
+Datasets: Table 3 (image checked), the oscillator strengths of band structures: the \
+present values ('Integration of the cross section over all wavelengths (3.75 < E < \
+6.25 eV) of the Hartley band', p. 3084) and those of other experiments and theories \
+(reproduced). Format need, as kumar_2010_supplement: an interval-integrated oscillator \
+strength has no quantity of its own; oscillator_strength at the interval's lower edge E_1 \
+(eV) is used, the interval in the row id. Check (2026-09-25): the present values over \
+the contiguous intervals 3.75-6.25, 6.25-7.50, 7.50-8.90, 8.90-9.76, 9.76-10.70 and \
+10.70-11.25 eV sum to 0.3692, the total oscillator strength below 11.25 eV.
+
+Not extracted: Table 1 (band centres in eV of features 1-7, present and four earlier \
+works) and Table 2 (Rydberg states: energies, assignments, quantum defects, term \
+values): no vocabulary quantity. The first three vertical ionisation energies quoted, \
+12.75, 13.03 and 13.57 eV, and the adiabatic 12.52 eV used (p. 3083), are reproduced \
+from photoelectron work."""
+
+[[datasets]]
+id = "present"
+material = "O3"
+file = "O3/mason_1996__present.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table 3 'Present': oscillator strengths integrated from this paper's cross section over 8 intervals (3.675-3.956 eV, the Huggins band; 4.13-6.20 and 3.75-6.25 eV, the Hartley band; then 6.25-11.25 eV). The last interval ends at 11.25 eV (note a), not 11.30. Abscissa: the interval's lower edge E_1 (eV), row id the interval. Integrated band strengths: a check (the cross section itself is only in figures). Uncertainty not stated."
+
+[[datasets]]
+id = "johnstone_1992"
+material = "O3"
+file = "O3/mason_1996__johnstone_1992.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["W. M. Johnstone, N. J. Mason, W. R. Newell, P. Biggs, G. Marston and R. P. Wayne, J. Phys. B: At. Mol. Opt. Phys. 25, 1 (1992)"]
+notes = "Table 3 'Johnstone et al': electron energy-loss (EEL) oscillator strengths, 3.75-11.30 eV (6 intervals). The paper prefers Davies et al.'s corrected values (p. 3084). Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "davies_1993"
+material = "O3"
+file = "O3/mason_1996__davies_1993.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["J. A. Davies, W. M. Johnstone, N. J. Mason, P. Biggs and R. P. Wayne, J. Phys. B: At. Mol. Opt. Phys. 26, L767 (1993)"]
+notes = "Table 3 'Davies': EEL oscillator strengths corrected for background effects, 'to be preferred' to Johnstone et al.'s (p. 3084); 6 intervals, 3.75-11.30 eV. Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "tanaka_1953"
+material = "O3"
+file = "O3/mason_1996__tanaka_1953.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["tanaka_1953"]
+notes = "Table 3 'Tanaka et al': oscillator strengths of Tanaka, Inn and Watanabe's (1953) absorption, 6.25-11.30 eV (5 intervals). tanaka_1953 prints no f values: these are integrals of their Fig. 1 made by Mason et al. or an earlier author (not stated). Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "brion_1984"
+material = "O3"
+file = "O3/mason_1996__brion_1984.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["J. Brion, D. Daumont and J. Malicet, J. Physique Lett. 45, L57 (1984)"]
+notes = "Table 3 'Brion et al (1984)': 5.02e-5 over 3.675-3.956 eV (the Huggins band), 'Measured at 294 K' (note b). Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "inn_tanaka_1953"
+material = "O3"
+file = "O3/mason_1996__inn_tanaka_1953.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["inn_1953_ozone"]
+notes = "Table 3 'Inn & Tanaka': 8.8e-2 over 4.13-6.20 eV, Inn and Tanaka's Hartley continuum f = 0.088 (inn_1953_ozone/f_hartley), placed here on 4.13-6.20 eV (200-300 nm). Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "molina_1986"
+material = "O3"
+file = "O3/mason_1996__molina_1986.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["Molina L J and Molina M J 1986 J. Geophys. Res. 91 14501"]
+notes = "Table 3 'Molina & Molina': 9.08e-2 over 3.75-6.25 eV (the Hartley band; 'the NASA standard', p. 3085). Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "borowski_1995"
+material = "O3"
+file = "O3/mason_1996__borowski_1995.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["Borowski P, Fulsher M, Malmqvist P A and Ross B O 1995 Chem. Phys. Lett. 23 7195 (as printed; volume and page run together)"]
+notes = "Table 3 theory 'Borowski et al': Hartley band 8.9e-2 (4.13-6.20 eV). The reference's volume and page are run together in print ('23 7195'); cited as printed. Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "tsuneda_1995"
+material = "O3"
+file = "O3/mason_1996__tsuneda_1995.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["T. Tsuneda, H. Nakano and K. Hirao, J. Chem. Phys. 103, 6520 (1995)"]
+notes = "Table 3 theory 'Tsuneda et al': Hartley band (4.13-6.20 eV), CASPT2(g2) 8.9e-2 and MRMP 8.0e-2 (note c), two rows. Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "hay_dunning_1977"
+material = "O3"
+file = "O3/mason_1996__hay_dunning_1977.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["P. J. Hay and T. H. Dunning, J. Chem. Phys. 67, 2290 (1977)"]
+notes = "Table 3 theory 'Hay & Dunning': 23.0e-2 over 3.75-6.25 eV (2.5 times the measured Hartley strength). Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "thunemann_1978"
+material = "O3"
+file = "O3/mason_1996__thunemann_1978.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["K. H. Thunemann, S. D. Peyerimhoff and R. J. Buenker, J. Mol. Spectrosc. 70, 432 (1978)"]
+notes = "Table 3 theory 'Thunemann et al': 5 intervals. Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "nordfors_1991"
+material = "O3"
+file = "O3/mason_1996__nordfors_1991.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["Nordfors D, Agren H and Jensen J H 1991 Int. J. Quantum Chem. 40 475 (as printed)"]
+notes = "Table 3 theory 'Nordfors et al': 4 intervals. Abscissa: the interval's lower edge E_1 (eV), row id the interval."
+
+[[datasets]]
+id = "padial_1981"
+material = "O3"
+file = "O3/mason_1996__padial_1981.csv"
+table = "tbl_cf055268b405"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "reproduced"
+reproduced_from = ["N. Padial, G. Csanak, B. V. McKoy and P. W. Langhoff, J. Chem. Phys. 74, 4581 (1981)"]
+notes = "Table 3 theory 'Padial et al': 4 intervals, 7.50-11.30 eV (up to 10 times the measured values). Abscissa: the interval's lower edge E_1 (eV), row id the interval."

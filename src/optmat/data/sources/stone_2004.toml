@@ -1,0 +1,230 @@
+citation = "J. A. Stone and A. Stejskal, Metrologia 41, 189 (2004)"
+doi = "10.1088/0026-1394/41/3/012"
+library = "Stone_2004_UsingHeliumAs"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Helium: the refractive index computed ab initio (Lorentz-Lorenz with the \
+molar polarizability from Bhatia and Drachman's dynamic polarizability, its static \
+term replaced by Lach, Jeziorski and Szalewicz's QED value, plus the density and \
+refractivity virial coefficients). Nitrogen: measured with two Fabry-Perot \
+refractometers (Zerodur spacers of 452 and 94 mm, lasers locked to transmission \
+maxima at 633 nm), their pressure distortion calibrated with helium's calculated \
+index (pp. 189-194)."""
+notes = """Formulas (pp. 191-192): Eq. (5) alpha(omega) in reduced atomic units, Eq. (6) \
+A_R = 0.37395692 alpha (cm^3/mol, 4He, 2002 CODATA), Eq. (7) omega = 91.13919792/lambda \
+(lambda in nm), Eq. (8) A_R(lambda), Eq. (9) B(T) (Hurly and Moldover), Eq. (10) B_R \
+near 633 nm, Eq. (12) n = 1 + 3z/2 + 3z^2/8 with z = (n^2-1)/(n^2+2) = A_R rho + B_R \
+rho^2. The paper's A_R is (4 pi/3) N_A alpha in Gaussian units, i.e. the package's \
+molar refractivity. Wavelengths are vacuum wavelengths (omega from lambda through \
+a0 and the fine-structure constant). The uncertainty of Eq. (8) is 'an estimated \
+relative uncertainty of 1e-6 at optical frequencies' (p. 191), dominated by an \
+arbitrary allowance for QED in the dynamic terms.
+
+The paper argues (p. 191) that the two direct He measurements (Achtermann et al. \
+1991, Birch 1991) are 'seriously inconsistent' with the theory, high by 7e-8 and \
+1.1e-7 in n at 1 atm, and that indirect evidence (dielectric-constant measurements, \
+Mansfield and Peck's and Velsko and Eimerl's dispersion) supports the theory to \
+4e-9 at 633 nm.
+
+Nitrogen (p. 195): two sets, 105-109 kPa at 19.97 degrees C and 97-101 kPa at 23.4 \
+degrees C, reduced to the molar refractivity 'from our measurements, plus known values of the \
+virial coefficients B(T) [15] and B_R [10]' (the paper's [15] is Hurly and Moldover's \
+helium calculation; for nitrogen this looks like a wrong reference); 'expanded (k = 2) \
+uncertainty (0.0007 cm^3 mol^-1) arises primarily from the measurement of the \
+pressure and temperature'. Nitrogen of 99.9993 % purity (Scott)."""
+
+[[datasets]]
+id = "theory_molar_refractivity_He"
+material = "He"
+table = "text"
+points = [["633", "633", "0.5202634", "0.0000005"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Eq. (8) evaluated at 633 nm, '0.520 263 4(5) cm3 mol-1' (p. 191); the formula itself is recorded (eq8)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "theory_refractivity_He"
+material = "He"
+table = "text"
+points = [["633", "633", "3.242600e-5", "0.000008e-5"]]
+quantity = "refractivity"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 101325, temperature_c = 20 }
+density = "real"
+use = "check"
+notes = "'the refractive index of helium for 633 nm radiation, at 101 325 Pa pressure and 20 degrees C, is 1.000 032 426 00(8)' (p. 192), standard uncertainty 8e-11; entered as n - 1 = 3.242600e-5. Recomputed with the paper's procedure and today's CODATA k: 1.00003242604 (the 4e-11 difference is the change in k since 2002)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1991_He"
+material = "He"
+table = "text"
+points = [["633", "633", "0.5213", "0.0001"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, G. Magnus and T. K. Bose, J. Chem. Phys. 94, 5669 (1991)"]
+notes = "'0.5213(1)' (p. 191); the paper judges it high by 7e-8 in n at 1 atm. The uncertainty's level is not stated here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "birch_1991_He"
+material = "He"
+table = "text"
+points = [["633", "633", "0.5220", "0.0003"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "'0.5220(3)' (p. 191); judged high by 1.1e-7 in n at 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "experiment_N2"
+material = "N2"
+table = "text"
+points = [["633", "633", "4.4454", "0.0007"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "'our best estimate of the molar refractivity at 633 nm is 4.4454(7) cm3 mol-1', expanded (k = 2) uncertainty (p. 195). 633 nm is the nominal He-Ne (and diode) laser wavelength."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "birch_1991_N2"
+material = "N2"
+table = "text"
+points = [["633", "633", "4.4457", "0.0008"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "'4.4457(8)' (p. 195)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "hou_thalmann_1994_N2"
+material = "N2"
+table = "text"
+points = [["633", "633", "4.4456", "0.0006"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["W. Hou and R. Thalmann, Measurement 13, 307 (1994)"]
+notes = "'4.4456(6)' (p. 195)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "montixi_1983_N2"
+material = "N2"
+table = "text"
+points = [["633", "633", "4.4454", "0.0005"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["G. Montixi, G. Coulon and R. Occelli, Can. J. Phys. 61, 473 (1983)"]
+notes = "'4.4454(5)' (p. 195)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "achtermann_1991_N2"
+material = "N2"
+table = "text"
+points = [["633", "633", "4.4464", "0.0005"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, G. Magnus and T. K. Bose, J. Chem. Phys. 94, 5669 (1991)"]
+notes = "'4.4464(5)' (p. 195); 'at best only marginally consistent' with this paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[formulas]]
+id = "eq5"
+material = "He"
+equation = "Eq. (5), p. 191"
+printed = "alpha = 1.3831916 + 0.385530216 omega^2 + 0.12753895 omega^4 + 0.04573114 omega^6"
+variable = "omega: photon energy in reduced Rydberg units, omega = 91.13919792/lambda with lambda the vacuum wavelength in nm (Eq. 7); alpha in reduced atomic units (4He)"
+state = "none (per atom)"
+density = "none"
+range = "visible and near infrared (the series in omega^2 is for omega well below the first resonance; checked by the authors at 532-1064 nm)"
+coefficients = { a0 = "1.3831916", a2 = "0.385530216", a4 = "0.12753895", a6 = "0.04573114" }
+check = "With Eqs. (6) and (7) its four terms become 0.51725407, 1197.5410, 3.290677e6 and 9.800874e9, Eq. (8)'s coefficients to all printed digits. Checked 2026-09-24."
+notes = "Static term from Lach, Jeziorski and Szalewicz (QED included); the dynamic terms from Bhatia and Drachman, Phys. Rev. A 58, 4470 (1998). Reduced units carry the (1 + m_e/m_alpha) factors of Eqs. (6)-(7)."
+
+[[formulas]]
+id = "eq8"
+form = "molar_refractivity_series"
+terms = { a = ["0.51725407", "1197.5410", "3.290677e6", "9.800874e9"] }
+range_nm = [300.0, "inf"]
+material = "He"
+equation = "Eq. (8), p. 191"
+printed = "A_R = 0.51725407 + 1197.5410/lambda^2 + 3.290677 x 10^6/lambda^4 + 9.800874 x 10^9/lambda^6"
+variable = "lambda: vacuum wavelength in nm; A_R in cm^3/mol"
+state = "none (molar refractivity)"
+density = "none"
+range = "optical frequencies ('estimated relative uncertainty of 1e-6 at optical frequencies')"
+coefficients = { a0 = "0.51725407", a2 = "1197.5410", a4 = "3.290677e6", a6 = "9.800874e9" }
+check = "Gives 0.5202634 at 633 nm, the paper's 0.520 263 4(5); with Eqs. (9), (10), (12) at 101325 Pa, 293.15 K it gives n = 1.00003242604 against the printed 1.000 032 426 00(8). Checked 2026-09-24."
+
+[[formulas]]
+id = "eq9"
+material = "He"
+equation = "Eq. (9), p. 192"
+printed = "B(T) = 13.028 - 0.0041 T"
+variable = "T in K; B in cm^3/mol"
+state = "none"
+density = "none"
+range = "275-325 K (within 0.001 cm^3/mol of Hurly and Moldover; their uncertainty 0.03)"
+coefficients = { b0 = "13.028", b1 = "-0.0041" }
+check = "Used in the n(633 nm) check above."
+notes = "Second density virial coefficient of helium, a linear fit to J. J. Hurly and M. R. Moldover, J. Res. NIST 105, 667 (2000)."
+
+[[formulas]]
+id = "eq10"
+material = "He"
+equation = "Eq. (10), p. 192"
+printed = "B_R = -0.032 - 0.0001 T"
+variable = "T in K; B_R in cm^6/mol^2, at 633 nm"
+state = "none"
+density = "none"
+range = "273-323 K; uncertainty 0.007 cm^6/mol^2"
+coefficients = { b0 = "-0.032", b1 = "-0.0001" }
+check = "Used in the n(633 nm) check above; changes n by less than 2e-10."
+notes = "Refractivity virial coefficient, based on Koch et al., J. Chem. Phys. 111, 10108 (1999)."

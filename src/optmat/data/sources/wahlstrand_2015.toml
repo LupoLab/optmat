@@ -1,0 +1,289 @@
+citation = "J. K. Wahlstrand, S. Zahedpour, Y.-H. Cheng, J. P. Palastro and H. M. Milchberg, \"Absolute measurement of the ultrafast nonlinear electronic and rovibrational response in H2 and D2\", Phys. Rev. A 92, 063828 (2015)"
+doi = "10.1103/PhysRevA.92.063828"
+library = "Wahlstrand_2015_AbsoluteMeasurementUltrafast"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Single-shot supercontinuum spectral interferometry: 3-mJ, 40-fs pump near 800 \
+nm; supercontinuum probe and reference (500-700 nm, from ~2.5 atm SF6 or Xe; chirp beta2 \
+= 1675 fs^2, beta3 = 396 fs^3, omega0 = 3.05 fs^-1), collinear with the pump; thin \
+laser-drilled gas-flow tube (absolute, calibrated as in wahlstrand_2012) or backfilled \
+chamber (~0.3 atm). Rotational parameters (B, D, Delta alpha) from the delayed \
+response (pulse widths varied at fixed 34 uJ); the vibrational part separated from the \
+electronic one through the resonant two-beam-coupling phase shift as a function of the \
+pump-probe beat frequency Delta omega (chirped probe), fitted with a one-mode \
+rovibrational density-matrix model (pp. 2-5)."""
+notes = """Journal pages 063828-1 to -10 = PDF pages 1-10. Identity checked against the \
+first page. H2 and D2.
+
+DEFINING EQUATIONS (Gaussian). p. 1: Delta n(x, t) = (k0 L_eff)^-1 Delta Phi(x, t), k0 the \
+probe central wavenumber. p. 4: the probe's instantaneous polarization P_p^inst = \
+chi_eff A_p exp[i(k_p.r - omega_p t)] with '2 pi chi_eff = Delta n = n2 I_e', n2 = n2,elec \
++ n2,vib, n2,vib = n2,vib^s + n2,vib^g; 'for a nonresonant electronic response, the \
+smooth and grating terms are the same, so n2,elec = n2,elec^s + n2,elec^g = 2 n2,elec^s. The \
+nonlinear refractive index for a weak probe pulse is a factor of 2 larger than for a \
+pulse acting on itself [19]' (p. 4). So the tabulated n2,elec^s is the SELF coefficient. \
+Eqs. (8)-(9), p. 4 (cw limit): n2,vib^s = 4 pi^2 N (d alpha/dQ)^2 / (n0 c mu Omega_v^2), \
+n2,vib^g = 4 pi^2 N (d alpha/dQ)^2 / [n0 c mu (Omega_v^2 - Delta omega^2)], alpha = \
+alpha_par/3 + 2 alpha_perp/3, mu the reduced mass; Eq. (10) the finite-pulse grating term \
+(Dawson function). Probe prompt index n2,prompt = 2 n2,elec^s + n2,vib^s + n2,vib^g (p. \
+5). Effective n2 of a pulse I(t) = I0 g(t), Eq. (11), p. 6. Long-pulse total (p. 6): \
+n2,tot = n2,elec^s + n2,rot + n2,vib; the rotational adiabatic n2,rot as in [22] = \
+wahlstrand_2012. No chi(3) or gamma is defined.
+
+TABLE I (p. 5; image checked, the cells file matches; extracted by \
+tools/extract/wahlstrand_2015.py). Caption: 'Measured electronic Kerr coefficient \
+n2,elec^s at 1 atm (at probe wavelength of 600 nm and pump wavelength of 800 nm), \
+polarizability anisotropy Delta alpha, and polarizability derivative d alpha/dQ ... The \
+rightmost column shows n2 estimates at 1 atm based on our experimental results for a \
+long pulse at 800 nm.' d alpha/dQ (1e-16 cm2), not extracted (no quantity): this \
+experiment H2 1.3 +- 0.2, D2 1.4 +- 0.3; Ref. [31] (Bishop and Pipin 1993) H2 1.24; Ref. \
+[39] (Raman scattering) H2 1.30 +- 0.10, D2 1.22 +- 0.10. Check: n2,elec^s + n2,rot + \
+n2,vib = n2,tot (H2 6.5 + 2.7 + 1.0 = 10.2; D2 5.8 + 3.9 + 1.2 = 10.9). Which vibrational \
+coefficient (smooth or smooth + grating) the long-pulse n2,vib is, is not stated; for a \
+pulse acting on itself it should be the smooth one (TC-279).
+
+PART. n2,elec^s is electronic: the vibrational part is separated through the resonant \
+two-beam coupling (not by pulse duration), the rotational part by its delay. The \
+vibrational response is effectively instantaneous for pulses longer than ~8 fs (H2) and \
+~12 fs (D2); the rotational one adiabatic above ~100 fs (H2) and ~200 fs (D2) (p. 6).
+
+REFERENCE STATE. 1 atm (Table I caption), no temperature. The measurements are \
+'calibrated as in wahlstrand_2012', whose N2 flow calibration corresponds to 290.9 K at 1 \
+atm (TC-316): this paper's own values are recorded at 101325 Pa, 290.9 K; the Shelton \
+and Rice column, the authors' computation, at 293.15 K (assumed). Normal (thermal ortho/para) H2 and D2 at room temperature assumed.
+
+TEXT (not extracted). Fits (p. 2): B = 58.9 (+- 3.0) cm^-1, D = 0.05 (+- 0.02) cm^-1 for H2; \
+B = 29.3 (+- 1.5), D = 0.021 (+- 0.008) cm^-1 for D2 ('in good agreement with the \
+literature values'). Vibrational constants used (p. 5): H2 omega_e = 0.829 fs^-1, \
+omega_e x_e = 0.023 fs^-1; D2 0.567, 0.012 fs^-1 (Huber and Herzberg); Omega_v = 0.783 \
+(H2), 0.543 fs^-1 (D2). The prompt response of H2 and D2 is linear in intensity up to \
+the ionization threshold (~80 TW/cm2 used; ~1e14 W/cm2). Uncertainty: 'The most \
+important source of error is the determination of the pump laser intensity' (p. 5)."""
+
+[[datasets]]
+id = "n2_elec_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__n2_elec_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Table I, n2,elec^s 'This expt.': the electronic self coefficient at 1 atm (290.9 K, the density of the N2 flow calibration, as wahlstrand_2012; TC-316), pump 800 nm, probe 600 nm; vibrational part separated by resonant two-beam coupling, rotational part by its delay."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+probe_nm = 600
+
+[[datasets]]
+id = "n2_shelton_rice_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__n2_shelton_rice_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["shelton_1994"]
+notes = "Table I, n2,elec^s 'Ref. [35]' (Shelton and Rice, Chem. Rev. 94, 3 (1994)): an n2 the authors derived from Shelton and Rice's electronic hyperpolarizability; the computation (dispersion, density) is not stated. Comparison value."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "dalpha_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__dalpha_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I, Delta alpha 'This expt.' (1e-25 cm3): fitted to the absolute rotational response (t > 200 fs) with density-matrix simulations using the measured B and D. The rotational signal scales as Delta alpha(pump) x Delta alpha(probe): wavelength recorded as the pump's (800 nm), probe 600 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dalpha_bridge_buckingham_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__dalpha_bridge_buckingham_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["N. J. Bridge and A. D. Buckingham, Proc. R. Soc. London, Ser. A 295, 334 (1966)"]
+notes = "Table I, Delta alpha 'Ref. [30]': N. J. Bridge and A. D. Buckingham, Proc. R. Soc. London, Ser. A 295, 334 (1966) (light-scattering depolarization; not in the library). Its wavelength is not stated here."
+
+[[datasets]]
+id = "n2_rot_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__n2_rot_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+notes = "Table I, rightmost columns ('n2 at 800 nm ... for a long pulse'): n2,rot: the adiabatic (long-pulse) rotational coefficient computed from the measured Delta alpha (expression as in wahlstrand_2012); 1 atm (290.9 K, as the measured values). Derived from this paper's measured parameters, not measured directly: 'check'. Applies to pulses longer than ~100 fs (H2) or ~200 fs (D2) for the rotational part."
+[datasets.parameters]
+part = "rotational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_vib_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__n2_vib_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+notes = "Table I, rightmost columns ('n2 at 800 nm ... for a long pulse'): n2,vib: the adiabatic vibrational coefficient computed from the measured d alpha/dQ (Eq. (8)); 1 atm (290.9 K, as the measured values). Derived from this paper's measured parameters, not measured directly: 'check'. Applies to pulses longer than ~100 fs (H2) or ~200 fs (D2) for the rotational part."
+[datasets.parameters]
+part = "vibrational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_tot_H2"
+material = "H2"
+file = "H2/wahlstrand_2015__n2_tot_H2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+notes = "Table I, rightmost columns ('n2 at 800 nm ... for a long pulse'): n2,tot = n2,elec^s + n2,rot + n2,vib, the long-pulse total; 1 atm (290.9 K, as the measured values). Derived from this paper's measured parameters, not measured directly: 'check'. Applies to pulses longer than ~100 fs (H2) or ~200 fs (D2) for the rotational part."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_elec_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__n2_elec_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Table I, n2,elec^s 'This expt.': the electronic self coefficient at 1 atm (290.9 K, the density of the N2 flow calibration, as wahlstrand_2012; TC-316), pump 800 nm, probe 600 nm; vibrational part separated by resonant two-beam coupling, rotational part by its delay."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+probe_nm = 600
+
+[[datasets]]
+id = "n2_shelton_rice_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__n2_shelton_rice_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["shelton_1994"]
+notes = "Table I, n2,elec^s 'Ref. [35]' (Shelton and Rice, Chem. Rev. 94, 3 (1994)): an n2 the authors derived from Shelton and Rice's electronic hyperpolarizability; the computation (dispersion, density) is not stated. Comparison value."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "dalpha_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__dalpha_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I, Delta alpha 'This expt.' (1e-25 cm3): fitted to the absolute rotational response (t > 200 fs) with density-matrix simulations using the measured B and D. The rotational signal scales as Delta alpha(pump) x Delta alpha(probe): wavelength recorded as the pump's (800 nm), probe 600 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dalpha_bridge_buckingham_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__dalpha_bridge_buckingham_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["N. J. Bridge and A. D. Buckingham, Proc. R. Soc. London, Ser. A 295, 334 (1966)"]
+notes = "Table I, Delta alpha 'Ref. [30]': N. J. Bridge and A. D. Buckingham, Proc. R. Soc. London, Ser. A 295, 334 (1966) (light-scattering depolarization; not in the library). Its wavelength is not stated here."
+
+[[datasets]]
+id = "n2_rot_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__n2_rot_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+notes = "Table I, rightmost columns ('n2 at 800 nm ... for a long pulse'): n2,rot: the adiabatic (long-pulse) rotational coefficient computed from the measured Delta alpha (expression as in wahlstrand_2012); 1 atm (290.9 K, as the measured values). Derived from this paper's measured parameters, not measured directly: 'check'. Applies to pulses longer than ~100 fs (H2) or ~200 fs (D2) for the rotational part."
+[datasets.parameters]
+part = "rotational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_vib_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__n2_vib_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+notes = "Table I, rightmost columns ('n2 at 800 nm ... for a long pulse'): n2,vib: the adiabatic vibrational coefficient computed from the measured d alpha/dQ (Eq. (8)); 1 atm (290.9 K, as the measured values). Derived from this paper's measured parameters, not measured directly: 'check'. Applies to pulses longer than ~100 fs (H2) or ~200 fs (D2) for the rotational part."
+[datasets.parameters]
+part = "vibrational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_tot_D2"
+material = "D2"
+file = "D2/wahlstrand_2015__n2_tot_D2.csv"
+table = "tbl_64c4c34f908d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+notes = "Table I, rightmost columns ('n2 at 800 nm ... for a long pulse'): n2,tot = n2,elec^s + n2,rot + n2,vib, the long-pulse total; 1 atm (290.9 K, as the measured values). Derived from this paper's measured parameters, not measured directly: 'check'. Applies to pulses longer than ~100 fs (H2) or ~200 fs (D2) for the rotational part."
+[datasets.parameters]
+part = "total"
+coefficient = "self"

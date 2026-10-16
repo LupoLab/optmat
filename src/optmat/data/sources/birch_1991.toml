@@ -1,0 +1,695 @@
+citation = "K. P. Birch, \"Precise determination of refractometric parameters for atmospheric gases\", J. Opt. Soc. Am. A 8, 647 (1991)"
+doi = "10.1364/JOSAA.8.000647"
+library = "Birch_1991_PreciseDeterminationRefractometric"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """NPL automatic fringe-counting air refractometer at 633 nm (He-Ne laser; \
+632.99 nm in the Table 2 caption) with a dual-compartment Pyrex cell in a stirred \
+water bath (four calibrated platinum resistance thermometers), quadrature signals \
+analysed by Heydemann's method; each gas flowed through the cell and was measured \
+repeatedly near atmospheric pressure (99.8-103.7 kPa) at about 14.66 and 19.5 degrees \
+C; pressure from a Ruska DDR6000 barometer; the refractometer checked against Edlen's \
+equation with dry air before each gas (pp. 647-648)."""
+notes = """Reduction (p. 648): the density d = p m/(Z R T) (Eq. 2.1) with the \
+compressibility factor Z from Dymond and Smith's compilation of virial coefficients \
+(real gas; the virial contribution to the uncertainty 'of the order of 4 parts per \
+1e5'), molar masses from the BIPM; the molar refraction [R] = R' M from the \
+Lorentz-Lorenz formula (Eqs. 2.2-2.3), printed in 1e-30 m^3, i.e. per molecule (M the \
+molecular mass): [R] = N_A alpha/(3 eps0) / N_A; alpha-bar = 3 [R]/(4 pi) (Eq. 2.4) is \
+a polarizability volume in 1e-30 m^3 = A^3. 'The uncertainty at the 99 % level in the \
+values given for density, molar refraction, and molecular polarizability was calculated \
+to be <= +-2.0 parts per 1e4 for all the gases except for nitrous oxide, for which it \
+was found to be +-2.5 parts per 1e4' (p. 648). Table 2's n - 1 at 101 325 Pa and 15 \
+degrees C follow from Eq. (2.5) with the same densities, 'shown with the estimated \
+uncertainty at the 99 % level' (p. 649). Wavelength: 632.99 nm, a vacuum wavelength \
+(the He-Ne line); refractivities are not reduced with Edlen's air formula.
+
+Checks (2026-09-24): every run's [R] follows from its printed n - 1 and density to 1e-4 \
+or better except helium, whose printed densities 0.17071 and 0.17070 kg/m^3 give [R] \
+0.8671 and 0.8675 instead of the printed 0.8666 and 0.8670; the printed [R] follow \
+from densities 0.17081 and 0.17080, which is also what the ideal gas with B = 11.9 \
+cm^3/mol gives at the run's p and T. So the helium density column is probably \
+misprinted (1e-4 kg/m^3) and [R] right; the density is not extracted (printed cells \
+only). The means and alpha-bar follow from the runs; Table 2's own values follow from \
+the means with virial densities to within the rough second virial coefficients used \
+for the check (1-3e-4). The first CO2 run's pressure is printed '10 1188.6' (image), \
+i.e. 101 188.6 Pa.
+
+Helium: Birch's [R] = 0.8668e-30 m^3 (A_R = 0.52200 cm^3/mol) is 3.4e-3 above the ab \
+initio value (puchalski_2016: 0.52026369 cm^3/mol at 632.99 nm), '1.1e-7 in n at 1 \
+atm' (stone_2004, which calls it 'seriously inconsistent'); puchalski_2016 reproduces \
+it as 0.5220(3) with an uncertainty it assumes. Neon: 'the range of the derived values \
+for the molar refraction of neon was larger than that expected ... may have been \
+attributable to a low-level contamination' (p. 649). The paper gives no refractivity \
+virial coefficients (none are measured). N2O: [R] 12.4506 vs the additive estimate 10.7 \
+(p. 649, discussion only). The CO2 correction to air refractivity, 1.45 (measured) and \
+1.48 (Edlen) x 1e-10 per ppm of excess CO2 (p. 649). Air (Table 3: specific \
+refraction 1.5040e-4 m^3/kg, molar refraction 7.2338e-30 m^3; the composition table) is \
+not a curated species; the Lorentz-Lorenz formula and additivity are found valid for \
+air at 20-115 kPa, 10-30 degrees C."""
+
+[[datasets]]
+id = "alpha_N2"
+material = "N2"
+file = "N2/birch_1991__alpha_N2.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.998 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_N2"
+material = "N2"
+file = "N2/birch_1991__runs_N2.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_N2 (primary); a check."
+
+[[datasets]]
+id = "kerl_1982_N2"
+material = "N2"
+file = "N2/birch_1991__kerl_1982_N2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Neue Folge 129, 129 (1982)"]
+notes = "Table 2, reference [21] Kerl (1982), scanning-wavelength interferometry; 'always systematically higher' (p. 649), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "peck_1966_N2"
+material = "N2"
+file = "N2/birch_1991__peck_1966_N2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["peck_1966"]
+notes = "Table 2, reference [16] Peck and Khanna (1966), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_N2"
+material = "N2"
+file = "N2/birch_1991__refractivity_N2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_N2: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "alpha_O2"
+material = "O2"
+file = "O2/birch_1991__alpha_O2.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.97 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_O2"
+material = "O2"
+file = "O2/birch_1991__runs_O2.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_O2 (primary); a check."
+
+[[datasets]]
+id = "kerl_1982_O2"
+material = "O2"
+file = "O2/birch_1991__kerl_1982_O2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Neue Folge 129, 129 (1982)"]
+notes = "Table 2, reference [21] Kerl (1982), scanning-wavelength interferometry; 'always systematically higher' (p. 649), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_O2"
+material = "O2"
+file = "O2/birch_1991__refractivity_O2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_O2: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "alpha_Ar"
+material = "Ar"
+file = "Ar/birch_1991__alpha_Ar.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.998 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_Ar"
+material = "Ar"
+file = "Ar/birch_1991__runs_Ar.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_Ar (primary); a check."
+
+[[datasets]]
+id = "cuthbertson_1910_Ar"
+material = "Ar"
+file = "Ar/birch_1991__cuthbertson_1910_Ar.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table 2, reference [14] Cuthbertson and Cuthbertson, Proc. R. Soc. London A 84, 13 (printed 1911), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "kerl_1982_Ar"
+material = "Ar"
+file = "Ar/birch_1991__kerl_1982_Ar.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Neue Folge 129, 129 (1982)"]
+notes = "Table 2, reference [21] Kerl (1982), scanning-wavelength interferometry; 'always systematically higher' (p. 649), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "peck_1964_Ar"
+material = "Ar"
+file = "Ar/birch_1991__peck_1964_Ar.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["peck_1964"]
+notes = "Table 2, reference [17] Peck and Fisher (1964), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_Ar"
+material = "Ar"
+file = "Ar/birch_1991__refractivity_Ar.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_Ar: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "alpha_CO2"
+material = "CO2"
+file = "CO2/birch_1991__alpha_CO2.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.995 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_CO2"
+material = "CO2"
+file = "CO2/birch_1991__runs_CO2.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_CO2 (primary); a check."
+
+[[datasets]]
+id = "edlen_1966_CO2"
+material = "CO2"
+file = "CO2/birch_1991__edlen_1966_CO2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["edlen_1966"]
+notes = "Table 2, reference [9] Edlen (1966): the CO2 refractivity 'predicted by Edlen' (p. 649), derived by Birch from Edlen's air formula, not a value Edlen prints, as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "refractivity_CO2"
+material = "CO2"
+file = "CO2/birch_1991__refractivity_CO2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_CO2: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "simmons_1978_CO2"
+material = "CO2"
+file = "CO2/birch_1991__simmons_1978_CO2.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["A. C. Simmons, Opt. Commun. 25, 211 (1978)"]
+notes = "Table 2, reference [20] Simmons (1978), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_Ne"
+material = "Ne"
+file = "Ne/birch_1991__alpha_Ne.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.995 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_Ne"
+material = "Ne"
+file = "Ne/birch_1991__runs_Ne.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_Ne (primary); a check."
+
+[[datasets]]
+id = "cuthbertson_1910_Ne"
+material = "Ne"
+file = "Ne/birch_1991__cuthbertson_1910_Ne.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table 2, reference [14] Cuthbertson and Cuthbertson, Proc. R. Soc. London A 84, 13 (printed 1911), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "cuthbertson_1932_Ne"
+material = "Ne"
+file = "Ne/birch_1991__cuthbertson_1932_Ne.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = "Table 2, reference [15] Cuthbertson and Cuthbertson, Proc. R. Soc. London A 135, 40 (1932), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "kerl_1982_Ne"
+material = "Ne"
+file = "Ne/birch_1991__kerl_1982_Ne.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Neue Folge 129, 129 (1982)"]
+notes = "Table 2, reference [21] Kerl (1982), scanning-wavelength interferometry; 'always systematically higher' (p. 649), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_Ne"
+material = "Ne"
+file = "Ne/birch_1991__refractivity_Ne.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_Ne: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "alpha_He"
+material = "He"
+file = "He/birch_1991__alpha_He.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.995 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_He"
+material = "He"
+file = "He/birch_1991__runs_He.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_He (primary); a check."
+
+[[datasets]]
+id = "cuthbertson_1910_He"
+material = "He"
+file = "He/birch_1991__cuthbertson_1910_He.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table 2, reference [14] Cuthbertson and Cuthbertson, Proc. R. Soc. London A 84, 13 (printed 1911), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "cuthbertson_1932_He"
+material = "He"
+file = "He/birch_1991__cuthbertson_1932_He.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = "Table 2, reference [15] Cuthbertson and Cuthbertson, Proc. R. Soc. London A 135, 40 (1932), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "hey_1988_He"
+material = "He"
+file = "He/birch_1991__hey_1988_He.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. D. Hey, H. S. T. Driver and D. B. Fish, Am. J. Phys. 56, 646 (1988)"]
+notes = "Table 2, reference [19] Hey, Driver and Fish (1988), laser interferometry, as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kerl_1982_He"
+material = "He"
+file = "He/birch_1991__kerl_1982_He.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Neue Folge 129, 129 (1982)"]
+notes = "Table 2, reference [21] Kerl (1982), scanning-wavelength interferometry; 'always systematically higher' (p. 649), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "mansfield_peck_1969_He"
+material = "He"
+file = "He/birch_1991__mansfield_peck_1969_He.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["mansfield_peck_1969"]
+notes = "Table 2, reference [18] Mansfield and Peck (1969), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated); +- level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_He"
+material = "He"
+file = "He/birch_1991__refractivity_He.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_He: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "alpha_N2O"
+material = "N2O"
+file = "N2O/birch_1991__alpha_N2O.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.997 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (nitrous oxide +-2.5) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.00025
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_N2O"
+material = "N2O"
+file = "N2O/birch_1991__runs_N2O.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_N2O (primary); a check."
+
+[[datasets]]
+id = "refractivity_N2O"
+material = "N2O"
+file = "N2O/birch_1991__refractivity_N2O.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_N2O: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+
+[[datasets]]
+id = "alpha_Kr"
+material = "Kr"
+file = "Kr/birch_1991__alpha_Kr.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, alpha-bar = 3 [R]/(4 pi) (1e-30 m^3, a polarizability volume) from the mean molar refraction (printed in the same row) of the runs; 99.99 % purity. Uncertainty '<= +-2.0 parts per 1e4' at the 99 % level (p. 648) (level: 99 % confidence)."
+[datasets.uncertainty]
+relative = 0.0002
+level = "99 % confidence"
+
+[[datasets]]
+id = "runs_Kr"
+material = "Kr"
+file = "Kr/birch_1991__runs_Kr.csv"
+table = "tbl_6072c809ac8e"
+quantity = "polarizability"
+unit = "angstrom3"
+scale = 0.238732414637843
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, the molar refraction [R] of each run (1e-30 m^3 per molecule; scale 3/(4 pi) gives the polarizability volume), rows numbered in print order; each run's temperature (degrees C), pressure (Pa), measured (n - 1) x 1e8 and real-gas density (kg/m^3) are in the printed cells. Their mean is alpha_Kr (primary); a check."
+
+[[datasets]]
+id = "cuthbertson_1910_Kr"
+material = "Kr"
+file = "Kr/birch_1991__cuthbertson_1910_Kr.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table 2, reference [14] Cuthbertson and Cuthbertson, Proc. R. Soc. London A 84, 13 (printed 1911), as given by Birch at 632.99 nm, 101 325 Pa, 15 degrees C (how it was brought to these conditions is not stated)."
+
+[[datasets]]
+id = "refractivity_Kr"
+material = "Kr"
+file = "Kr/birch_1991__refractivity_Kr.csv"
+table = "tbl_10576f9abc2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table 2, first row: Birch's 10^6 (n - 1) at 632.99 nm, 101 325 Pa, 15 degrees C, computed from the mean molar refraction and the real-gas density (Eq. 2.5; reproduced to rounding with virial densities, checked 2026-09-24), uncertainty at the 99 % level (level: 99 % confidence). The same information as alpha_Kr: a check."
+[datasets.uncertainty]
+column = true
+level = "99 % confidence"
+

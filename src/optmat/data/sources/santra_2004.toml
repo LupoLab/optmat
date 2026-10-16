@@ -1,0 +1,139 @@
+citation = "R. Santra and C. H. Greene, \"Multiphoton ionization of xenon in the vuv regime\", arXiv:physics/0407010v2 [physics.atom-ph] (2004); published as Phys. Rev. A 70, 053401 (2004)"
+doi = "10.48550/arxiv.physics/0407010"
+library = "Santra_2004_MultiphotonIonizationXenon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Independent-particle Floquet calculation with a complex absorbing potential \
+(pp. 3-6 of the preprint). The one-electron potential is Herman and Skillman's \
+Hartree-Fock-Slater (X-alpha) potential, its X-alpha parameter adjusted per charge \
+state so that the calculated 5p binding energy equals the experimental ionisation \
+potential (Table I: Xe 12.1 eV, Xe+ 21.0 eV, ...; Xe4+ and Xe5+ from a CASSCF \
+calculation); central, no multiplet structure, no spin-orbit splitting (pp. 3-4). \
+Radial finite-element basis (4801 functions, r up to 80 bohr; for each l the first 50 \
+eigenfunctions above the 5s level). The CAP -i eta W(r), W = (r - 4)^2 outside 4 bohr \
+(Eq. 4), the Siegert energy from the stabilised eta trajectory (Eq. 5 and p. 5). \
+Electric-dipole coupling 'in length gauge' (p. 5) to a quantised single mode, \
+'assuming linear polarization' (p. 5), Floquet blocks mu = 0 to mu_max, the minimum \
+number of photons to ionise, the CAP only in the last block (p. 6). The rate of the \
+5p, m level, averaged over m (Eq. 15) and multiplied by the number of 5p electrons, 6 \
+- q (Eq. 16); the N-photon cross section sigma_N from the rate in the lowest-order law \
+of the rate equations, Eq. (24): dn/dt = -sigma_N (I / omega)^N n (atomic units, so \
+I / omega is the photon flux). A crude estimate of a 5s-mediated (Auger-like) \
+contribution, an autoionisation width of 65 meV on the final block's states that the \
+5p -> 5s energy can ionise (Eq. 26, p. 10), added to the 5p cross sections without \
+interference (Eqs. 27-31)."""
+notes = """The library copy is the arXiv preprint physics/0407010v2 (13 August 2004 in the \
+margin; the 'Dated' line shows the date the PDF was generated), 21 pages; identity \
+checked against its first page on 2026-10-08. The journal version, Phys. Rev. A 70, \
+053401 (2004), doi:10.1103/PhysRevA.70.053401, is linked from the arXiv abstract page \
+(the library's provenance file) but is not in the library and was not checked: the \
+citation and the page numbers are the preprint's (PDF pages).
+
+THE CROSS SECTIONS. The rate of the m-averaged 5p level times the number of 5p \
+electrons (Eqs. 15-16), and sigma_N the coefficient of the lowest-order rate, \
+dn/dt = sigma_N (I/omega)^N n (Eq. 24, atomic units: the photon flux Phi = I / hbar \
+omega; the convention of uiterwaal_1998 and mckenna_2004). The intensity at which the \
+multiphoton rates were computed is not stated; the one-photon rate was computed at 1 \
+x 10^11 W/cm2 and checked to be linear in I there (p. 7).
+
+CHECKED (p. 7). The one-photon rate gamma_5p averaged over m, 2.35 x 10^-5 a.u. at 1 \
+x 10^11 W/cm2 (Eq. 15; gamma_5p,0 = 3.05 x 10^-5, gamma_5p,+-1 = 2.01 x 10^-5), times \
+6 electrons, is 5.83 x 10^12 s^-1; over the photon flux at 12.7 eV (4.91 x 10^28 cm^-2 \
+s^-1) it is 118.6 Mb, the printed 119 Mb.
+
+THE ENERGY AXIS. Photon energies as printed: 12.7 eV (the DESY VUV-FEL experiment's) \
+and 6.42 eV (ArF, 193 nm). The model's thresholds are single (no spin-orbit, no \
+multiplets) and fixed to the experimental ionisation potentials by the X-alpha \
+parameter (Table I). In particular, neutral Xe's two-photon threshold is one limit at \
+12.1 eV: the model has no 2P3/2-2P1/2 splitting and none of the autoionising \
+resonances between them, where the 193 nm two-photon energy (12.83 eV) lies and \
+where mccown_1982's measurement averages over a resonance.
+
+WHAT IS TAKEN, as inline points (table = 'text'): sigma_2 of Xe+ at 12.7 eV, without \
+(Eq. 17) and with (Eq. 27) the 5s-mediated estimate; sigma_2 of neutral Xe at 6.42 \
+eV (p. 7), the authors' test against experiment ('Experimentally, this is known to be \
+about 4 x 10^-50 cm^4 s [89]', Ref. 89 being mccown_1982; 'Other calculations of this \
+quantity, which are similarly accurate, are reported in Refs. [90, 91, 92]'); the \
+one-photon cross section of neutral Xe at 12.7 eV (p. 7), which 'differs from the \
+experimental cross section [87] by a little more than a factor of 2' (Samson 1966) \
+and was confirmed with an R-matrix code in the same potential. All theory, use = \
+check.
+
+NOT TAKEN. sigma_3 to sigma_6 of Xe2+ to Xe5+ (Eqs. 18-21, 28-31): no such \
+materials in the registry (only Xe+), and the vocabulary does not need them. Table I's \
+ionisation potentials (taken from Refs. 41-47 or computed, and used to tune the \
+model) and X-alpha parameters: model inputs. The quoted experimental 4 x 10^-50 cm4 \
+s: McCown et al.'s alpha converted by hbar omega (mccown_1982 holds the original). \
+The charge-state yields of Figs. 4 and 6 (a model of one experiment's pulses, \
+figures only). No figure is digitised."""
+
+[[datasets]]
+id = "sigma2_Xe+"
+material = "Xe+"
+table = "text"
+points = [["eq17", "12.7", "4.5"]]
+scale = 1e-49
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Eq. (17), preprint p. 7: sigma_2(Xe+) = 4.5 x 10^-49 cm4 s at a photon energy of 12.7 eV, the 5p electrons only (Hartree-Fock-Slater CAP-Floquet; the record's technique). No uncertainty stated; the same model's one-photon cross section of Xe is about a factor of 2 from experiment (p. 7)."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "length"
+method = "independent-particle (Hartree-Fock-Slater, X-alpha tuned to the 5p binding energy) Floquet with a complex absorbing potential, 5p ionisation, m-averaged rate times 6 - q electrons (Eqs. 15-16)"
+definition = "dn/dt = -sigma_N (I / omega)^N n (Eq. 24, atomic units): Gamma = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1"
+contribution = "5p only (Eq. 17)"
+
+[[datasets]]
+id = "sigma2_5s_Xe+"
+material = "Xe+"
+table = "text"
+points = [["eq27", "12.7", "4.6"]]
+scale = 1e-49
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Eq. (27), preprint p. 10: sigma_2(Xe+) = 4.6 x 10^-49 cm4 s at 12.7 eV, Eq. (17) plus the crude estimate of the 5s-mediated (Auger-like) path (autoionisation width 65 meV, Eq. 26), added without interference. The authors' estimate, 'crudely' made (p. 10)."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "length"
+method = "as Eq. (17), plus a 5s-excitation path with an assigned autoionisation width of 65 meV (Eq. 26)"
+definition = "dn/dt = -sigma_N (I / omega)^N n (Eq. 24, atomic units): Gamma = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1"
+contribution = "5p plus the 5s-mediated estimate (Eq. 27)"
+
+[[datasets]]
+id = "sigma2_Xe"
+material = "Xe"
+table = "text"
+points = [["p7", "6.42", "6.2"]]
+scale = 1e-50
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Preprint p. 7: 'we investigated the two-photon ionization cross section of neutral Xe at 6.42 eV ... With atomic s through f waves and mu_max = 2, we calculated a cross section of 6.2 x 10^-50 cm4 s', against the experimental 'about 4 x 10^-50' (mccown_1982 converted). The model's single threshold at 12.1 eV has no autoionising structure between the Xe+ 2P3/2 and 2P1/2 limits, where 2 x 6.42 eV lies (the record's notes)."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "length"
+method = "independent-particle (Hartree-Fock-Slater, X-alpha tuned to the 5p binding energy) Floquet with a complex absorbing potential, s to f waves, mu_max = 2"
+definition = "dn/dt = -sigma_N (I / omega)^N n (Eq. 24, atomic units): Gamma = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1"
+wavelength_nm = 193
+
+[[datasets]]
+id = "sigma1_Xe"
+material = "Xe"
+table = "text"
+points = [["p7", "12.7", "119"]]
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Preprint p. 7: 'within the Herman-Skillman-based independent-particle model, the one-photon ionization cross section of neutral Xe, at a photon energy of 12.7 eV, is 119 Mb', from the m-averaged 5p rate at 1 x 10^11 W/cm2 (reproduced, the record's notes); 'differs from the experimental cross section [87] by a little more than a factor of 2' (Samson 1966), confirmed with an R-matrix code in the same potential. s, p and d waves, mu_max = 1. A model test, not a recommended value."
+[datasets.parameters]
+method = "independent-particle (Hartree-Fock-Slater) Floquet with a complex absorbing potential, length gauge, linear polarisation, s to d waves, mu_max = 1"
+intensity_w_cm2 = 1e11

@@ -1,0 +1,258 @@
+citation = "M. Awasthi, Y. V. Vanne, A. Saenz, A. Castro and P. Decleva, \"Single-active-electron approximation for describing molecules in ultrashort laser pulses and its application to molecular hydrogen\", Phys. Rev. A 77, 063403 (2008)"
+doi = "10.1103/PhysRevA.77.063403"
+library = "Awasthi_2008_SingleActiveElectron"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Single-active-electron time-dependent Schrodinger equation (SAE-TDSE) for \
+H2 at fixed R = 1.40 a0, the active electron's Kohn-Sham or Hartree-Fock Hamiltonian in \
+a B-spline and STO basis (ADF), with several exchange-correlation potentials (HF, LDA, \
+TSLDA, LB94), compared with full two-electron CI-TDSE and a pseudo-SAE CI, and with the \
+MO-ADK and molecular strong-field approximations; linear polarisation parallel to the \
+axis, cos^2 pulses."""
+notes = """PDF pages 1-17, page n = journal page 063403-n. Authors checked on the first \
+page.
+
+EXTRACTED. Table I (p. 6): for H2 at R = 1.4 a0, the vertical ionisation potential of \
+each method (HF, LB94, TSLDA, LDA, SAE-CI, CI: this work; HF [6] Kjeldsen et al. and \
+'X alpha [17]' Tong et al. 2002: reproduced) and, for the independent-particle models, \
+C_0, C_2, C_4 with m = 0 ('In the present case of H2 only the values for m = 0 are \
+required', p. 6). The coefficients are defined by Eq. (19), p. 4: phi(r) ~ sum_l C_l \
+r^(nu - 1) e^(-kappa r) Y_l0, nu = Z/kappa, kappa = sqrt(2 I_p): Tong et al.'s \
+normalisation. The paper states no numerical accuracy for them beyond 'expected to be \
+numerically accurate' (p. 11), and warns that 'the obtained coefficients depend quite \
+strongly on the model and the numerical quality of the electronic-structure \
+calculation' (p. 11): the HF and LB94 C_0 differ by a factor of 2, which the different \
+I_p largely compensate in the MO-ADK yields (Fig. 9, p. 11).
+
+FINDINGS. (1) The 'X alpha [17]' row quotes Tong et al.'s coefficients correctly but \
+its I_p as 15.70 eV, which is Tong's F2 value; Tong's hydrogen row has 15.47 (see \
+ip_xalpha_tong, excluded). (2) zhao_2010's Table III reprints the LB94 row rounded as \
+its reference [30].
+
+EQUIVALENT ELECTRONS (bearing on solprop's occupancy factor, TC-439): 'An intrinsic \
+problem of the SAE is the question how equivalent electrons should be treated. In the \
+present example of H2 there are evidently two equivalent electrons that could be \
+ionized (within the SAE model) independently of each other. Therefore it appears \
+natural to scale the SAE yields by a factor of 2' (p. 7); with the factor the HF and \
+LB94 SAE yields agree very well with the CI yield up to about 2 x 10^14 W/cm^2 at 800 \
+nm, and overestimate it above (Fig. 4); 'at least for H2 and 800 nm wavelength the SAE \
+results should be multiplied with a factor of 2 for ionization yields below 10%' (p. \
+7), while the unscaled SAE agrees with CI above about 20 % yield. The MO-ADK \
+comparison of Fig. 9 notes that an earlier agreement at 10^14 W/cm^2 'ignores the \
+factor of 2 for the two equivalent electrons' (p. 12). The rates themselves (the SAE \
+and MO-ADK results of Table I's parameters) are per active electron.
+
+FIGURES (not digitised; all H2 at R = 1.4 a0, polarisation parallel to the axis): Fig. \
+1 ionisation yield against photon energy, 2 x 10^12 W/cm^2, 15 fs; Figs. 2-8 yields \
+against peak intensity at 800 nm (12 cycles, about 32 fs), 400 nm and 266 nm for CI, \
+SAE-CI and SAE-TDSE (HF, LB94, LDA, TSLDA), and excitation yields; Fig. 9 MO-ADK yields \
+with the Table I parameters (800 nm); Fig. 10 molecular SFA in velocity and length \
+gauge."""
+
+[[datasets]]
+id = "ip_hf"
+material = "H2"
+file = "H2/awasthi_2008__ip_hf.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row HF: Hartree-Fock, the Hartree (static) potential of the HF 1 sigma_g orbital (this work, B-spline/STO SAE code). 'the vertical ionization potentials I_p (at the equilibrium distance R = 1.40 a0 at which all calculations in this work were performed)' (p. 6)."
+[datasets.parameters]
+kind = "vertical"
+method = "HF"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "cl_hf"
+material = "H2"
+file = "H2/awasthi_2008__cl_hf.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I, row HF: C_0, C_2, C_4 (m = 0) fitted to the asymptotic tail of the HF HOMO at R = 1.4 a0; 'in the present approach the long-range asymptotic tail of the highest occupied molecular orbital (HOMO) should be accurately described by the long-range B-spline expansion, so that the C_l coefficients extracted are expected to be numerically accurate' (p. 11). No C_l for LDA, whose asymptotic HOMO is too wrong to fit (p. 6)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Awasthi et al. 2008 Eq. (19), p. 4: phi(r) ~ sum_l C_l r^(nu - 1) exp(-kappa r) Y_l0(r^) for large r, nu = Z/kappa, kappa = sqrt(2 I_p), atomic units, one-centre expansion (Tong et al. 2002's convention)"
+method = "HF"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_lb94"
+material = "H2"
+file = "H2/awasthi_2008__ip_lb94.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row LB94: density-functional SAE potential with the van Leeuwen-Baerends 1994 functional (this work). 'the vertical ionization potentials I_p (at the equilibrium distance R = 1.40 a0 at which all calculations in this work were performed)' (p. 6)."
+[datasets.parameters]
+kind = "vertical"
+method = "LB94"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "cl_lb94"
+material = "H2"
+file = "H2/awasthi_2008__cl_lb94.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I, row LB94: C_0, C_2, C_4 (m = 0) fitted to the asymptotic tail of the LB94 HOMO at R = 1.4 a0; 'in the present approach the long-range asymptotic tail of the highest occupied molecular orbital (HOMO) should be accurately described by the long-range B-spline expansion, so that the C_l coefficients extracted are expected to be numerically accurate' (p. 11). No C_l for LDA, whose asymptotic HOMO is too wrong to fit (p. 6). zhao_2010 reprints this row rounded (1.15, 0.067, 0.001) as its reference [30]."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Awasthi et al. 2008 Eq. (19), p. 4: phi(r) ~ sum_l C_l r^(nu - 1) exp(-kappa r) Y_l0(r^) for large r, nu = Z/kappa, kappa = sqrt(2 I_p), atomic units, one-centre expansion (Tong et al. 2002's convention)"
+method = "LB94"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_tslda"
+material = "H2"
+file = "H2/awasthi_2008__ip_tslda.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row TSLDA: transition-state LDA (Slater's transition state, half an electron removed) (this work). 'the vertical ionization potentials I_p (at the equilibrium distance R = 1.40 a0 at which all calculations in this work were performed)' (p. 6)."
+[datasets.parameters]
+kind = "vertical"
+method = "TSLDA"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "cl_tslda"
+material = "H2"
+file = "H2/awasthi_2008__cl_tslda.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I, row TSLDA: C_0, C_2, C_4 (m = 0) fitted to the asymptotic tail of the TSLDA HOMO at R = 1.4 a0; 'in the present approach the long-range asymptotic tail of the highest occupied molecular orbital (HOMO) should be accurately described by the long-range B-spline expansion, so that the C_l coefficients extracted are expected to be numerically accurate' (p. 11). No C_l for LDA, whose asymptotic HOMO is too wrong to fit (p. 6)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Awasthi et al. 2008 Eq. (19), p. 4: phi(r) ~ sum_l C_l r^(nu - 1) exp(-kappa r) Y_l0(r^) for large r, nu = Z/kappa, kappa = sqrt(2 I_p), atomic units, one-centre expansion (Tong et al. 2002's convention)"
+method = "TSLDA"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_lda"
+material = "H2"
+file = "H2/awasthi_2008__ip_lda.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row LDA: ground-state LDA (VWN) (this work). 'the vertical ionization potentials I_p (at the equilibrium distance R = 1.40 a0 at which all calculations in this work were performed)' (p. 6)."
+[datasets.parameters]
+kind = "vertical"
+method = "LDA"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_sae_ci"
+material = "H2"
+file = "H2/awasthi_2008__ip_sae_ci.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row SAE-CI: pseudo-SAE configuration interaction: configurations with one electron in the lowest sigma_g orbital of H2+ (this work, ~4200 configurations). 'the vertical ionization potentials I_p (at the equilibrium distance R = 1.40 a0 at which all calculations in this work were performed)' (p. 6)."
+[datasets.parameters]
+kind = "vertical"
+method = "SAE-CI"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_ci"
+material = "H2"
+file = "H2/awasthi_2008__ip_ci.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row CI: full two-electron configuration interaction (this work, ~6000 configurations). 'the vertical ionization potentials I_p (at the equilibrium distance R = 1.40 a0 at which all calculations in this work were performed)' (p. 6)."
+[datasets.parameters]
+kind = "vertical"
+method = "CI"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_hf_kjeldsen"
+material = "H2"
+file = "H2/awasthi_2008__ip_hf_kjeldsen.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["T. K. Kjeldsen, C. Z. Bisgaard, L. B. Madsen and H. Stapelfeldt, Phys. Rev. A 71, 013418 (2005)"]
+notes = "Table I, row 'HF [6]': the numerical Hartree-Fock value of Kjeldsen et al. (ref. 6), a literature value 'used previously for MO-ADK and MO-SFA-LG calculations' (p. 6). The text calls this work's rows vertical; the kind of the quoted value is not stated."
+[datasets.parameters]
+kind = "not stated"
+method = "HF [6]"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "cl_hf_kjeldsen"
+material = "H2"
+file = "H2/awasthi_2008__cl_hf_kjeldsen.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["T. K. Kjeldsen, C. Z. Bisgaard, L. B. Madsen and H. Stapelfeldt, Phys. Rev. A 71, 013418 (2005)"]
+notes = "Table I, row 'HF [6]': C_0, C_2 of Kjeldsen et al.'s numerical Hartree-Fock orbital (no C_4 printed); 'the HF parameters found in the present approach are quite similar' (p. 6)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Awasthi et al. 2008 Eq. (19), p. 4: phi(r) ~ sum_l C_l r^(nu - 1) exp(-kappa r) Y_l0(r^) for large r, nu = Z/kappa, kappa = sqrt(2 I_p), atomic units, one-centre expansion (Tong et al. 2002's convention)"
+method = "HF [6]"
+internuclear_distance_bohr = 1.4
+
+[[datasets]]
+id = "ip_xalpha_tong"
+material = "H2"
+file = "H2/awasthi_2008__ip_xalpha_tong.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "excluded"
+reproduced_from = ["tong_2002"]
+notes = "Table I, row 'X alpha [17]' (Tong et al. 2002, the multiple-scattering X-alpha calculation): I_p printed 15.70, which is not Tong's hydrogen value (tong_2002 Table I: 'D_2' 15.47 eV) but Tong's F2 value (15.70): a misquotation. Excluded; kept as printed."
+[datasets.parameters]
+kind = "not stated"
+method = "X alpha [17]"
+
+[[datasets]]
+id = "cl_xalpha_tong"
+material = "H2"
+file = "H2/awasthi_2008__cl_xalpha_tong.csv"
+table = "tbl_4bbfbf50c79d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table I, row 'X alpha [17]': Tong et al.'s C_0, C_2, C_4 for the hydrogen row (printed 'D_2' there), 2.51, 0.06, 0.00 as in tong_2002."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+method = "X alpha [17]"
+

@@ -1,0 +1,746 @@
+citation = "R. C. Burns, C. Graham and A. R. M. Weller, \"Direct measurement and calculation of the second refractivity virial coefficients of gases\", Mol. Phys. 59, 41 (1986)"
+doi = "10.1080/00268978600101901"
+library = "Burns_1986_DirectMeasurementCalculation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """The differential decompression method of Buckingham, Cole and Sutter on the \
+apparatus of Buckingham and Graham (1974), moved to Natal: a vibration-compensated \
+interferometer (stability better than 1e-3 fringe) compares a reference beam with a \
+beam through two matched cells A and B; the phase change when gas in A expands into \
+the evacuated B gives B_n (Eq. 2.3), and two successive decompressions cancel the cell \
+mismatch. A_n from separate absolute refractive-index measurements, several hundred \
+fringes counted, phases to better than 1e-2 fringe, MKS Baratron pressures (+-0.05 %), \
+water-jacket temperature to +-0.05 K, densities from Dymond and Smith's second virial \
+coefficients. He-Ne 632.8 nm and argon-ion 514.5, 488.0 and 457.9 nm (pp. 42-46)."""
+notes = """Page numbers are the journal's (41-64); pdf page 1 is a cover, so p. = pdf \
+page + 39.
+
+Definitions (p. 41, Eq. 1.1): R_m = (n^2 - 1)/((n^2 + 2) rho) = A_R + B_R rho + ..., \
+rho in mol per volume, so A_R is the package's molar refractivity and B_R its \
+refractivity_virial_coefficient; A_R = 2 A_n/3 and B_R = 2 B_n/3 - A_n^2/9 (Eqs. \
+2.4-2.5). Units: Table 2 prints 10^6 A_R/m^3 mol^-1 (= cm^3/mol) and Table 3 10^12 \
+B_R/m^6 mol^-2 (= cm^6/mol^2).
+
+Temperature: not stated with Tables 2 and 3; Tables 6 and 12 compare the 632.8 nm \
+observed values 'at room temperature (298.2 K)' (pp. 58, 63), which the B_R datasets \
+take (achtermann_1991 lists them at 298 K).
+
+Wavelengths: the laser lines' conventional labels, 632.8 nm (He-Ne) and 514.5, 488.0, \
+457.9 nm (Ar+), which are air wavelengths (the He-Ne line is 632.99 nm in vacuum; \
+quoted from memory, not from a library source): standard_air. The difference changes \
+A_R by about 1e-5 of itself.
+
+Uncertainties (p. 46): A_R, 'For each gas at least three separate measurements were \
+made at each wavelength. In all cases the standard deviation was less than 0.1 per \
+cent' (taken as one sigma; pressure +-0.05 %). B_R (p. 46): 'the quoted uncertainties \
+are obtained by taking the sum of three uncertainties, namely the standard deviation, \
+the variation in B_R due to a +-30 per cent error in the calculated correction for \
+the effects of cell distortion due to gas pressure, and an uncertainty due to drift \
+in the end-point after a decompression. In most cases the standard deviation accounts \
+for roughly half the quoted uncertainty.' The per-point column is that sum (level not \
+a standard one: 'not stated'). The authors report 'evidence of a possible wavelength \
+dependence of B_R' (abstract, pp. 46-47) beyond the dispersion of alpha, which theory \
+does not predict; B_R of Xe falls from 25.5 at 632.8 nm to 14.9 at 488.0 nm.
+
+The literature values in parentheses in Tables 2 and 3 are extracted as reproduced \
+datasets. Table 2 references: [9] Buckingham and Graham, Proc. R. Soc. A 336, 275 \
+(1974); [12] St-Arnaud and Bose, J. Chem. Phys. 65, 4854 (1976); [19] cuthbertson_1932; \
+[20] cuthbertson_1914 (printed 1913); [21] 'Proc. R. Soc. A 88, 13 (1910)', which is \
+cuthbertson_1910 (volume 84) by page and year; [22] dalgarno_1960 (a calculation); [23] \
+watson_1936; [27] cuthbertson_1920; [28] C. and M. Cuthbertson, Proc. R. Soc. A 83, \
+151, 171 (1909), not in the library. Table 3: [9], [12], [14] St-Arnaud and Bose, J. \
+Chem. Phys. 71, 4951 (1979), [15] Coulon, Montixi and Occelli, Can. J. Phys. 59, 1555 \
+(1981).
+
+Tables 6 and 12 give the calculated B_R (classical dipole-induced-dipole theory with \
+Lennard-Jones 6:12 potentials and, for the atoms and CH4, the C-tensor term; for CO2 \
+and N2 the quadrupole and shape terms, without the C-tensor), extracted as 'check' \
+datasets. Not extracted: the fluorinated methanes (not curated species), Table 4 \
+(NH3, Beaume and Coulon), Table 5 and 11's alpha(nu) (derived from this work's A_R at \
+632.8 nm, via Burns's thesis) and other molecular inputs, Tables 7 and 8 (the \
+sensitivity of the calculation to the potential).
+
+Reproductions elsewhere: achtermann_1991's A_R_burns_1986_{CH4,CO2,SF6,N2,Ar}, \
+B_R_burns_1986_298_{CO2,SF6,N2,Ar}, B_R_burns_1986_unknown_CH4 and \
+B_R_theory_burns_1986_298_{CH4,CO2,SF6,N2,Ar}; egan_2019's burns_1986_Ne and \
+burns_1986_Xe (A_R at 633 nm)."""
+
+[[datasets]]
+id = "A_R_He"
+material = "He"
+file = "He/burns_1986__A_R_He.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_He"
+material = "He"
+file = "He/burns_1986__A_R_literature_He.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932", "cuthbertson_1914"]
+notes = "Table 2, the literature values in parentheses: all rows [19, 20]."
+
+[[datasets]]
+id = "A_R_Ne"
+material = "Ne"
+file = "Ne/burns_1986__A_R_Ne.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_Ne"
+material = "Ne"
+file = "Ne/burns_1986__A_R_literature_Ne.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)", "cuthbertson_1932", "cuthbertson_1914"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [9]; the others [19, 20]."
+
+[[datasets]]
+id = "A_R_Ar"
+material = "Ar"
+file = "Ar/burns_1986__A_R_Ar.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_Ar"
+material = "Ar"
+file = "Ar/burns_1986__A_R_literature_Ar.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)", "cuthbertson_1914", "cuthbertson_1910"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [9]; the others [20, 21]."
+
+[[datasets]]
+id = "A_R_Kr"
+material = "Kr"
+file = "Kr/burns_1986__A_R_Kr.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_Kr"
+material = "Kr"
+file = "Kr/burns_1986__A_R_literature_Kr.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960", "cuthbertson_1910"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [22] (a calculation); the others [21]."
+
+[[datasets]]
+id = "A_R_Xe"
+material = "Xe"
+file = "Xe/burns_1986__A_R_Xe.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_Xe"
+material = "Xe"
+file = "Xe/burns_1986__A_R_literature_Xe.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960", "cuthbertson_1910"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [22] (a calculation); the others [21]."
+
+[[datasets]]
+id = "A_R_CH4"
+material = "CH4"
+file = "CH4/burns_1986__A_R_CH4.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_CH4"
+material = "CH4"
+file = "CH4/burns_1986__A_R_literature_CH4.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. M. St-Arnaud and T. K. Bose, J. Chem. Phys. 65, 4854 (1976)", "watson_1936"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [12]; the others [23]."
+
+[[datasets]]
+id = "A_R_CO2"
+material = "CO2"
+file = "CO2/burns_1986__A_R_CO2.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_CO2"
+material = "CO2"
+file = "CO2/burns_1986__A_R_literature_CO2.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)", "cuthbertson_1920"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [9]; the others [27]."
+
+[[datasets]]
+id = "A_R_N2"
+material = "N2"
+file = "N2/burns_1986__A_R_N2.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_N2"
+material = "N2"
+file = "N2/burns_1986__A_R_literature_N2.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)", "C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. A 83, 151, 171 (1909)"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [9]; the others [28]."
+
+[[datasets]]
+id = "A_R_SF6"
+material = "SF6"
+file = "SF6/burns_1986__A_R_SF6.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 2 (p. 44), this work: A_R at the four laser lines."
+[datasets.uncertainty]
+relative = 0.001
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_literature_SF6"
+material = "SF6"
+file = "SF6/burns_1986__A_R_literature_SF6.csv"
+table = "tbl_f1e1a8af1bc0"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)", "watson_1936"]
+notes = "Table 2, the literature values in parentheses: 632.8 nm [9]; the others [23]."
+
+[[datasets]]
+id = "B_R_Ne"
+material = "Ne"
+file = "Ne/burns_1986__B_R_Ne.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work; no measurement at 514.5 and 488.0 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_Ar"
+material = "Ar"
+file = "Ar/burns_1986__B_R_Ar.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_Kr"
+material = "Kr"
+file = "Kr/burns_1986__B_R_Kr.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_Xe"
+material = "Xe"
+file = "Xe/burns_1986__B_R_Xe.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_CH4"
+material = "CH4"
+file = "CH4/burns_1986__B_R_CH4.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_CO2"
+material = "CO2"
+file = "CO2/burns_1986__B_R_CO2.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_N2"
+material = "N2"
+file = "N2/burns_1986__B_R_N2.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_SF6"
+material = "SF6"
+file = "SF6/burns_1986__B_R_SF6.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 3 (p. 45), this work."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref9_Ne"
+material = "Ne"
+file = "Ne/burns_1986__B_R_ref9_Ne.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 3, the literature value [9] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref9_Ar"
+material = "Ar"
+file = "Ar/burns_1986__B_R_ref9_Ar.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 3, the literature value [9] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref15_Ar"
+material = "Ar"
+file = "Ar/burns_1986__B_R_ref15_Ar.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["R. Coulon, G. Montixi and R. Occelli, Can. J. Phys. 59, 1555 (1981)"]
+notes = "Table 3, the literature value [15] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref9_CH4"
+material = "CH4"
+file = "CH4/burns_1986__B_R_ref9_CH4.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 3, the literature value [9] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref12_CH4"
+material = "CH4"
+file = "CH4/burns_1986__B_R_ref12_CH4.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. M. St-Arnaud and T. K. Bose, J. Chem. Phys. 65, 4854 (1976)"]
+notes = "Table 3, the literature value [12] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref9_CO2"
+material = "CO2"
+file = "CO2/burns_1986__B_R_ref9_CO2.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 3, the literature value [9] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref14_CO2"
+material = "CO2"
+file = "CO2/burns_1986__B_R_ref14_CO2.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. M. St-Arnaud and T. K. Bose, J. Chem. Phys. 71, 4951 (1979)"]
+notes = "Table 3, the literature value [14] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref9_N2"
+material = "N2"
+file = "N2/burns_1986__B_R_ref9_N2.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 3, the literature value [9] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref9_SF6"
+material = "SF6"
+file = "SF6/burns_1986__B_R_ref9_SF6.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 3, the literature value [9] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_ref14_SF6"
+material = "SF6"
+file = "SF6/burns_1986__B_R_ref14_SF6.csv"
+table = "tbl_04b95e2c3c8c"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. M. St-Arnaud and T. K. Bose, J. Chem. Phys. 71, 4951 (1979)"]
+notes = "Table 3, the literature value [14] in parentheses under this work's 632.8 nm value; its own wavelength and temperature are not given here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_Ne"
+material = "Ne"
+file = "Ne/burns_1986__B_R_theory_Ne.csv"
+table = "tbl_e61576675901"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 6, p. 58, 'Calc.': the classical calculation at 632.8 nm and 298.2 K; theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_Ar"
+material = "Ar"
+file = "Ar/burns_1986__B_R_theory_Ar.csv"
+table = "tbl_e61576675901"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 6, p. 58, 'Calc.': the classical calculation at 632.8 nm and 298.2 K; theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_Kr"
+material = "Kr"
+file = "Kr/burns_1986__B_R_theory_Kr.csv"
+table = "tbl_e61576675901"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 6, p. 58, 'Calc.': the classical calculation at 632.8 nm and 298.2 K; theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_Xe"
+material = "Xe"
+file = "Xe/burns_1986__B_R_theory_Xe.csv"
+table = "tbl_e61576675901"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 6, p. 58, 'Calc.': the classical calculation at 632.8 nm and 298.2 K; theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_CH4"
+material = "CH4"
+file = "CH4/burns_1986__B_R_theory_CH4.csv"
+table = "tbl_e61576675901"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 6, p. 58, 'Calc.': the classical calculation at 632.8 nm and 298.2 K; theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_CO2"
+material = "CO2"
+file = "CO2/burns_1986__B_R_theory_CO2.csv"
+table = "tbl_b91da9afcf21"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 12, p. 63, 'Calc.': the classical calculation at 632.8 nm and 298.2 K (C-tensor term omitted, no data); theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_N2"
+material = "N2"
+file = "N2/burns_1986__B_R_theory_N2.csv"
+table = "tbl_b91da9afcf21"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 12, p. 63, 'Calc.': the classical calculation at 632.8 nm and 298.2 K (C-tensor term omitted, no data); theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2
+
+[[datasets]]
+id = "B_R_theory_SF6"
+material = "SF6"
+file = "SF6/burns_1986__B_R_theory_SF6.csv"
+table = "tbl_e61576675901"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 6, p. 58, 'Calc.': the classical calculation at 632.8 nm and 298.2 K (C-tensor term omitted, no data); theory, not a measurement."
+[datasets.parameters]
+temperature_k = 298.2

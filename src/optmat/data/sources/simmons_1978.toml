@@ -1,0 +1,106 @@
+citation = "A. C. Simmons, \"The refractive index and Lorentz-Lorenz functions of propane, nitrogen and carbon-dioxide in the spectral range 15803-22002 cm-1 and at 944 cm-1\", Opt. Commun. 25, 211 (1978)"
+doi = "10.1016/0030-4018(78)90309-7"
+library = "Simmons_1978_RefractiveIndexLorentz"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Mach-Zehnder interferometry with He-Ne (SL10), tuneable argon-ion (CR2) and \
+tuneable CO2 (Sylvania 941P) lasers; brass test cells of 1.016 m and 0.493 m with \
+optical flats, evacuated below 0.01 Torr; pressure by MacLeod gauge, Bourdon test \
+gauge and mercury manometer, gas temperature by two chromel-alumel thermocouples; \
+fringes counted while the filled cell was slowly evacuated, dn = m lambda/l (p. 211). \
+N2 99.9 %, CO2 99.8 %."""
+notes = """Page numbers are the journal's (211-214; pdf page 1 = p. 211).
+
+Two reductions of the same measurements (Table, p. 213): the Lorentz-Lorenz function at \
+300 K, the molar refraction (n^2 - 1)/((n^2 + 2) rho) = A_R with the higher virial \
+terms neglected (Eq. 2, p. 213), in cm^3/mol, with densities from published data \
+(Kay and Laby; Din's thermodynamic functions): a real-gas reduction; and the \
+refractive index at 'NTP', printed as n. NTP is not defined in the paper; with the \
+LL function and the real-gas density at 0 C and 1 atm, 1.5 A_R rho gives N2 299.9, \
+297.9, 287.9 and CO2 454.8, 440.0, 432.6 (x 1e-6) against the printed 302, 295, 290 \
+and 455, 442, 435, while 15 C or 20 C would be 5-7 % lower: NTP is taken as 0 C, 1 \
+atm (checked 2026-09-25). The LL datasets are primary; the NTP refractivities, the \
+same data, are 'check'.
+
+Uncertainties: the +- values of the table, level not stated. Measurements 'at a \
+temperature of 300 +- 1 K' (abstract).
+
+Discrepancy (p. 211 against p. 213): the abstract gives the LL function at 944 cm^-1 \
+as 4.32 +- 0.09 (N2) and 6.37 +- 0.09 (CO2) cm^3/mol, the table 4.30 +- 0.10 and 6.42 \
++- 0.10 (propane agrees, 15.77 +- 0.18). Which is right cannot be decided from the \
+paper; the table's values are extracted (TC-176).
+
+Wave numbers: 15803 cm^-1 is 1/(632.8 nm) and 22002 cm^-1 1/(454.5 nm), the He-Ne and \
+Ar+ lines' air-wavelength labels inverted (the He-Ne line's vacuum wave number, \
+1/632.99 nm = 15798 cm^-1, is quoted from memory): 'air wave numbers', stored as vacuum \
+wave numbers (the format has no air wave number); the 3e-4 relative error of the \
+abscissa changes the LL function by less than 1e-5 of itself, far below the stated \
+uncertainty. 944 cm^-1 is the CO2 laser's 10.6 um line.
+
+Fig. 3 (n - 1 at NTP against wave number, also for He, Ar, CO and propane) and Fig. 4 \
+(the LL function) hold further points, including values 'obtained from published \
+data' (the CRC Handbook), only as figures: not extracted. Propane is not a curated \
+species; the He, Ar and CO measurements appear only in Fig. 3 (no CO value is printed \
+in the text or tables; checked)."""
+
+[[datasets]]
+id = "LL_N2"
+material = "N2"
+file = "N2/simmons_1978__LL_N2.csv"
+table = "tbl_fe193a93ae5a"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table, 'LL function at 300 K' at 22002, 15803 and 944 cm^-1 (air wave numbers, see the source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "LL_CO2"
+material = "CO2"
+file = "CO2/simmons_1978__LL_CO2.csv"
+table = "tbl_fe193a93ae5a"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table, 'LL function at 300 K' at 22002, 15803 and 944 cm^-1. The 944 cm^-1 value (10.6 um) includes CO2's infrared (vibrational) contribution from its bands."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ntp_N2"
+material = "N2"
+file = "N2/simmons_1978__ntp_N2.csv"
+table = "tbl_fe193a93ae5a"
+quantity = "refractivity"
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table, 'Refractive index at NTP', stored as n - 1: the same measurements as LL_N2; NTP read as 0 C, 1 atm (see the source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ntp_CO2"
+material = "CO2"
+file = "CO2/simmons_1978__ntp_CO2.csv"
+table = "tbl_fe193a93ae5a"
+quantity = "refractivity"
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table, 'Refractive index at NTP', stored as n - 1: the same measurements as LL_CO2; NTP read as 0 C, 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"

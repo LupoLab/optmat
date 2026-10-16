@@ -1,0 +1,201 @@
+citation = "D. Vukovic, G. A. Woolsey and G. B. Scelsi, J. Phys. D: Appl. Phys. 29, 634 (1996)"
+doi = "10.1088/0022-3727/29/3/023"
+library = "Vukovic_1996_RefractivitiesWavelengths632"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Lee-Woolsey polarization interferometer (prisms only), gas in a thermally \
+insulated invar tube of internal length 486.42 mm, He-Ne laser at 632.99 nm or a \
+1300 nm laser diode (wavelength known to 0.03 %). Fringe shift (to 0.01 fringe at \
+632.99 nm, 0.05 at 1300 nm; over 100 fringes in total) recorded against pressure \
+(Vaisala PTB200, to 15 Pa) from 60 to 110 kPa on filling and on pumping out, at \
+20-25 degrees C (to 0.1 K); n - 1 = A (p/RT) + B(T) (p/RT)^2 (Eq. 3) fitted \
+(pp. 3-4). SF6 99.9 % pure."""
+notes = """n - 1 = m lambda0 / L (Eq. 6), lambda0 the vacuum wavelength: the wavelengths \
+are vacuum (632.99 nm He-Ne; 1300 nm nominal). The refractivity 'at 101 325 Pa' at \
+the measurement temperature and the value 'converted to 25 degrees C and 1 atm' with \
+Eq. (3) (B(T) held constant, an error of 2.5e-7, p. 4) refer to the real gas at that \
+pressure and temperature: density real. A_R = 2 A / 3 (Eq. 4) is the first \
+refractivity virial coefficient (the package's molar refractivity; 10^-6 m^3/mol = \
+cm^3/mol).
+
+Which values are independent: all three (refractivity at T, at 25 C, and A_R) come \
+from one fit per wavelength. The 25 C refractivities are taken as primary: they are \
+the paper's comparison values and agree with Eq. (3) and the printed A and B (632.99 \
+nm: 703.00 against 702.96; 1300 nm: 693.8 against 694.0). The values at the \
+measurement temperature and A_R are checks. The 1300 nm value 'at 21.8 C', 698.7, is \
+inconsistent with the printed A and B at 21.8 C (they give 701.4) but consistent \
+with them at 22.9 C (698.75), the temperature of the 632.99 nm measurement; either \
+the temperature or the value is misprinted, which cannot be decided, so no correction \
+is made (that dataset is a check).
+
+Uncertainty (p. 4-5): 'the interferometric contributions to uncertainties are less \
+than 0.01% and 0.05%'; the laser-diode wavelength 0.03 %; tube length 0.01 %; \
+pressure 0.03 %; temperature 0.03 %; the tabulated +- (level not stated) are 0.5 and \
+1 x 10^-6. B(T) is uncertain 'as high as 100%' and not used here. B_R is not given for \
+this work (it depends on B_p, which varies by more than 10 % between authors).
+
+Table 3 compares SF6 at 632.99 nm with Buckingham and Graham (1974), Watson and \
+Ramaswamy (1936, curated as watson_1936; 699.39 at 644.024 nm, an ideal-gas value, \
+compared here with a real-gas one) and St-Arnaud and Bose (1979). Their A_R and B_R \
+are extracted as reproduced values; the same values are reproduced by achtermann_1991 \
+(which prints Buckingham and Graham's B_R as 29 +- 5, here 29 +- 3). Table 3's A_R \
+header reads 10^-5 m^3/mol, a misprint for 10^-6 (the values are Table 1's). The \
+refractivity 704.005 and A 1.701, 1.7022 'calculated' by the authors from others' \
+A_R, B_R with Hamann et al.'s B_p = -284.45e-6 m^3/mol are derived and not extracted.
+
+Thionyl fluoride (SOF2) is not a curated species and is skipped."""
+
+[[datasets]]
+id = "refractivity_25C"
+material = "SF6"
+file = "SF6/vukovic_1996__refractivity_25C.csv"
+table = "tbl_dc762adbe049"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 101325.0, temperature_c = 25.0 }
+density = "real"
+use = "primary"
+notes = "Tables 1 (632.99 nm) and 2 (1300 nm, tbl_786fca828745), refractivity x 10^6 at 25 C and 101 325 Pa, converted from the measurement temperature with Eq. (3)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "measured_632"
+material = "SF6"
+file = "SF6/vukovic_1996__measured_632.csv"
+table = "tbl_dc762adbe049"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 101325.0, temperature_c = 22.9 }
+density = "real"
+use = "check"
+notes = "Table 1, refractivity at 101 325 Pa and the measurement temperature 22.9 C (the same fit as refractivity_25C)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "measured_1300"
+material = "SF6"
+file = "SF6/vukovic_1996__measured_1300.csv"
+table = "tbl_786fca828745"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 101325.0, temperature_c = 21.8 }
+density = "real"
+use = "check"
+notes = "Table 2, refractivity at 101 325 Pa 'at 21.8 C'; inconsistent with the printed A and B at 21.8 C by 2.7e-6 (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "A_R"
+material = "SF6"
+file = "SF6/vukovic_1996__A_R.csv"
+table = "tbl_dc762adbe049"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Tables 1 and 2, A_R = 2A/3 (10^-6 m^3/mol) from the same fits as the refractivities. At 1300 nm 2A/3 = 11.173 against the printed 11.18 (A printed to four figures)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "buckingham_graham_A_R"
+material = "SF6"
+file = "SF6/vukovic_1996__buckingham_graham_A_R.csv"
+table = "tbl_d5adcde5ec76"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 337, 275 (1974)"]
+notes = "Table 3, A_R (printed header 10^-5, values 10^-6 m^3/mol); wavelength not stated, taken as the table's 632.99 nm. Also reproduced by achtermann_1991 (A_R_buckingham_graham_1974_SF6)."
+
+[[datasets]]
+id = "buckingham_graham_B_R"
+material = "SF6"
+file = "SF6/vukovic_1996__buckingham_graham_B_R.csv"
+table = "tbl_d5adcde5ec76"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 337, 275 (1974)"]
+notes = "Table 3, B_R = 29 +- 3 (10^-12 m^6/mol^2 = cm^6/mol^2) at 299 K; achtermann_1991 prints the same value as 29 +- 5."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 299.0
+
+[[datasets]]
+id = "st_arnaud_bose_A_R"
+material = "SF6"
+file = "SF6/vukovic_1996__st_arnaud_bose_A_R.csv"
+table = "tbl_d5adcde5ec76"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["J. M. St-Arnaud and T. K. Bose, J. Chem. Phys. 71, 4951 (1979)"]
+notes = "Table 3, A_R at 323 K (header misprinted 10^-5). Also reproduced by achtermann_1991."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "st_arnaud_bose_B_R"
+material = "SF6"
+file = "SF6/vukovic_1996__st_arnaud_bose_B_R.csv"
+table = "tbl_d5adcde5ec76"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["J. M. St-Arnaud and T. K. Bose, J. Chem. Phys. 71, 4951 (1979)"]
+notes = "Table 3, B_R = 36 +- 1.8 cm^6/mol^2 at 323 K. Also reproduced by achtermann_1991."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 323.0
+
+[[formulas]]
+id = "virial_632"
+material = "SF6"
+equation = "Eq. (3), p. 3, with Table 1, p. 4"
+printed = "n - 1 = A (p/RT) + B(T) (p/RT)^2; A = 1.7005 +- 0.0012 x 10^-5 m^3/mol, B = 47.3 x 10^-10 m^6/mol^2 at 22.9 C"
+variable = "p in Pa, T in K, R the gas constant; lambda = 632.99 nm (vacuum)"
+density = "real"
+range = "632.99 nm; 60-110 kPa, 20-25 C"
+coefficients = { A = "1.7005e-5", B = "47.3e-10" }
+check = "With R = 8.314 J/(mol K) it gives 708.05e-6 at 101 325 Pa and 22.9 C (printed 708.05) and 703.00e-6 at 25 C (printed 702.96). Checked 2026-09-25."
+notes = "A density expansion at one wavelength, not a dispersion formula. B is uncertain 'as high as 100%' (p. 5)."
+
+[[formulas]]
+id = "virial_1300"
+material = "SF6"
+equation = "Eq. (3), p. 3, with Table 2, p. 4"
+printed = "n - 1 = A (p/RT) + B(T) (p/RT)^2; A = 1.676 +- 0.0024 x 10^-5 m^3/mol, B = 52 x 10^-10 m^6/mol^2 at 21.8 C"
+variable = "p in Pa, T in K; lambda = 1300 nm"
+density = "real"
+range = "1300 nm; 60-110 kPa, 20-25 C"
+coefficients = { A = "1.676e-5", B = "52e-10" }
+check = "Gives 693.8e-6 at 25 C (printed 694.0) but 701.4e-6 at 21.8 C against the printed 698.7 (698.75 at 22.9 C). Checked 2026-09-25."
+notes = "See the source notes on the 21.8 C value."

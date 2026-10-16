@@ -1,0 +1,72 @@
+citation = "P. Decleva, N. Quadri, A. Perveaux, D. Lauvergnat, F. Gatti, B. Lasorne, G. J. Halasz and A. Vibok, \"Attosecond electronic and nuclear quantum photodynamics of ozone monitored with time and angle resolved photoelectron spectra\", arXiv:1610.06913 (2016)"
+doi = "10.48550/arxiv.1610.06913"
+library = "Decleva_2016_AttosecondElectronicNuclear"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Ab initio vertical ionisation potentials of O3 to 19 cation states at \
+the Franck-Condon point (the neutral's X equilibrium), MRCI-SD(Q) with Davidson \
+correction on CASSCF references (CASSCF(18,12)/aug-cc-pVQZ for the neutral, \
+CASSCF(17,12)/aug-cc-pVQZ for the cation, no state averaging; MOLPRO), and the squares \
+of the Dyson norms from the X and the B (Hartley) states; then wave-packet dynamics of \
+a UV-pumped X/B superposition probed by 95 eV, 500 as XUV pulses, with static-DFT \
+photoionisation cross sections and asymmetry parameters (PDF pp. 6-13)."""
+notes = """Identity checked on the first page: the eight authors of the citation; the \
+library copy is the arXiv preprint (v1, 21 October 2016; 'preprint' in the library \
+metadata). A later journal version, if any, is not in hand; the page numbers are the \
+preprint's PDF pages. O3 only.
+
+TABLE 1 (PDF p. 18; CSV, image checked, all cells agree): 'Ab initio ionization \
+potentials (MRCI-SD(Q) level of theory) and I_ik, the squares of the Dyson norms \
+(CASSCF/aug-cc-pVQZ level of theory) with respect to either X or B at the FC point. The \
+energy difference between the X and B states is 5.78 eV.' Both energy columns are \
+written; the two differ by 5.77-5.79 eV in every row (checked by the extraction). The \
+states are numbered 'according to the order given in Ref. 35' (Ohtsuka, Hasegawa and \
+Nakatsuji, Chem. Phys. 332, 262 (2007)); the paper notes that its own energies put \
+E_15 < E_14 and E_18 < E_17 (Fig. 2 caption). The FC geometry is not stated \
+numerically; Fig. 1's cut fixes R2 = 2.43 a.u. and alpha = 117 deg.
+
+SQUARED DYSON NORMS (Table 1; not a curated quantity, recorded here), I(X), I(B) by \
+state: 1 2A1 0.72, 0.08; 1 2B2 0.69, 0.09; 1 2A2 0.71, 0.41; 1 2B1 0.00, 0.00; 2 2A2 \
+0.00, 0.00; 2 2B2 0.01, 0.01; 2 2A1 0.00, 0.02; 2 2B1 0.29, 0.24; 3 2A2 0.00, 0.00; 3 \
+2B1 0.06, 0.02; 3 2A1 0.27, 0.32; 3 2B2 0.13, 0.41; 4 2B2 0.01, 0.03; 4 2A2 0.00, 0.00; \
+4 2B1 0.00, 0.00; 4 2A1 0.01, 0.01; 5 2B2 0.04, 0.02; 5 2A1 0.26, 0.11; 6 2B2 0.42, 0.04. \
+'If a sudden approximation is assumed, the squares of the Dyson norms ... are \
+proportional to the relative ionization probabilities' (PDF p. 10).
+
+Against experiment (mahla_2025 holds the photoelectron values): the three lowest \
+calculated vertical energies, 12.38 (2A1), 12.51 (2B2) and 13.20 eV (2A2), lie 0.35, \
+0.49 and 0.34 eV below the photoelectron values Mahla & Mehnen tabulate (12.73, 13.00, \
+13.54 eV; mahla_2025/expt_katsumata_O3); the paper itself compares nothing \
+('Experimental ionization potentials ... can be found ... in Ref. 35').
+
+Register: TC-978."""
+
+[[datasets]]
+id = "vertical_from_X"
+material = "O3"
+file = "O3/decleva_2016__vertical_from_X.csv"
+table = "tbl_873f20c6cf53"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (PDF p. 18), column E_j - E_X: the vertical ionisation energy from the ground state X 1A1 to cation state j at the FC point, MRCI-SD(Q). Rows labelled by the C2v cation state. Uncertainty not stated."
+[datasets.parameters]
+kind = "vertical"
+final_state = "the row label (the O3+ state, C2v, numbered as Ohtsuka et al. 2007)"
+initial_state = "X 1A1, at its equilibrium geometry"
+
+[[datasets]]
+id = "vertical_from_B"
+material = "O3"
+file = "O3/decleva_2016__vertical_from_B.csv"
+table = "tbl_873f20c6cf53"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (PDF p. 18), column E_j - E_B: the vertical ionisation energy from the excited B (Hartley, 1B2 / 3 1A') state at the X state's FC geometry, 5.78 eV above X there. Rows labelled by the C2v cation state."
+[datasets.parameters]
+kind = "vertical"
+final_state = "the row label (the O3+ state, C2v, numbered as Ohtsuka et al. 2007)"
+initial_state = "B (the Hartley state, 1B2), at the X state's Franck-Condon geometry"

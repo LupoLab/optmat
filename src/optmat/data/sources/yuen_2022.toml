@@ -1,0 +1,162 @@
+citation = "C. H. Yuen and C. D. Lin, \"Density-matrix approach for sequential dissociative double ionization of molecules\", Phys. Rev. A 106, 023120 (2022)"
+doi = "10.1103/PhysRevA.106.023120"
+library = "Yuen_2022_DensityMatrixApproach"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Density-matrix model of sequential double ionisation (DM-SDI), Eqs. (1): \
+the neutral, the cation and the dication are separate open systems. The neutral \
+population decays by rate equations into the N2+ X 2Sigma_g+, A 2Pi_u and B \
+2Sigma_u+ states (ionisation of the HOMO 3sigma_g, HOMO-1 1pi_u and HOMO-2 2sigma_u); \
+the three cation states are coupled by the field through the von Neumann equation with \
+a source term; the cation states ionise by rate equations into the eleven N2^2+ states \
+with two valence holes (Table I), which are not coupled to each other. All rates are \
+MO-ADK (Tong et al. 2002), with the structure parameters of N2 from Zhao et al. 2010 \
+(zhao_2010) for the neutral and the same parameters for the cation's orbitals; the \
+second ionisation energy is Table I's I_p minus the cation state's ionisation energy. \
+Nuclei fixed at the neutral's equilibrium, R = 1.09 angstrom (p. 3); no coherence \
+between charge states or between states populated by tunnelling. Solved by the \
+classic Runge-Kutta method, averaged over isotropic alignment (Eq. 2) and convolved \
+with a Gaussian of sigma = 0.28 eV for the KER spectrum (Eq. 3)."""
+notes = """The library holds the accepted manuscript (CHORUS, 11 PDF pages; dated 23 \
+August 2022, published 31 August 2022); pages are cited as PDF pages. Identity checked \
+on PDF pp. 1-2 (C. H. Yuen and C. D. Lin, J. R. Macdonald Laboratory, Kansas State \
+University) on 2026-10-09. The register entry is TC-955.
+
+THE PULSE OF THE MODEL (p. 4): E(t) = E0 exp(-2 ln 2 t^2 / Gamma^2) cos(omega t), \
+Gamma the intensity FWHM, fixed at 8 fs throughout ('a longer pulse would allow the \
+nuclei to move appreciably'); linear polarisation in the xz plane, the molecular axis \
+along z. Main results (Figs. 2, 3, 6-8): 800 nm, 1.2e15 W/cm^2 peak, to compare with \
+Voss et al. 2004 (800 nm, 8 fs, 1.2e15 W/cm^2). Fig. 4 also 391 and 918 nm; Fig. 5 \
+the intensity dependence; Fig. 7 a Gaussian-beam volume average (Eq. 4). 'the ratio \
+between the 1st to 2nd peak in the spectrum changes by at most 2% and 1% for different \
+pulse durations (5 - 8 fs) and carrier-envelop phases (0 - pi)' (p. 7).
+
+TABLE I (p. 5): taken. I_p 'taken from Bhattacharya et al [28]' (J. Phys. Chem. A 125, \
+7778 (2021)), measured from the neutral N2 ground state ('Vertical ionization energy \
+to the N2^2+ states'); limits 'taken from Iwayama et al [25]' (J. Chem. Phys. 145, \
+034305 (2016)), those of states 10 and 11 'identified from the PEC' of ref. 28; KER \
+the model's. The limits are named, not given as energies: I_p - KER is 38.96 eV for \
+every 3P + 3P row and 42.76 eV for both 1D + 1D rows (checked by the script), so no \
+dissociation_energy dataset is made. State 10 is printed 'm.s. / N+(1D) + N+(1D)' \
+with a KER of 7.81 eV; it is put with the 1D + 1D limit. The text names the KER peaks \
+of the spectrum: 6.77 eV (mostly state 5), 7.58 eV (states 6-8), 10.16 eV (state 9) \
+(p. 6).
+
+TEXT VALUES (taken as points): the 'experimental ionization energy of 15.58, 16.93, and \
+18.75 eV for HOMO, HOMO-1, and HOMO-2' (p. 4), no reference given; the dipole \
+couplings of the cation, 'd_x = 0.25 a0 [29]' between X and A and 'd_z = 0.75 a0 [30]' \
+between X and B (p. 3; refs. 29-30 Langhoff, Bauschlicher and Partridge 1987, \
+Langhoff and Bauschlicher 1988). Also on p. 4, not taken (they are Table I's \
+differences): 'The ionization energy to state 6 from the A and from the B state are \
+then 29.49 and 27.67 eV' = 46.42 - 16.93 and 46.42 - 18.75.
+
+THE STRUCTURE PARAMETERS are not printed: the paper uses zhao_2010's for N2 and the \
+same for the cation.
+
+NO COUPLINGS BETWEEN DICATION STATES in this model; Jia et al. 2024 (jia_2024) add them \
+and the vibrational spread of R.
+
+FIGURES (not digitised; vector drawings except Fig. 1): Fig. 2 bottom, the \
+angle-averaged yields of the dissociative N2^2+ states 5-11 with and without the \
+cation couplings (800 nm, 8 fs, 1.2e15 W/cm^2), the populations of the dication left \
+by the pulse; Fig. 5, the angle-averaged yield of states 1-9 against peak intensity; \
+Fig. 3, the X, A, B populations against time at 45 degrees; Figs. 2 top, 4, 6-8, KER \
+spectra (wavelength, volume and alignment). Fig. 1 (potential curves, from ref. 28) is \
+a raster image."""
+
+[[datasets]]
+id = "table1_ip"
+material = "N2"
+file = "N2/yuen_2022__table1_ip_N2.csv"
+table = "tbl_076ba83089ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["D. Bhattacharya, K. R. Shamasundar and A. Emmanouilidou, J. Phys. Chem. A 125, 7778 (2021)"]
+notes = "Table I, 'I_p (eV)': the vertical double-ionisation energy from the neutral ground state to each N2^2+ state with two valence holes, at the neutral's equilibrium geometry (R = 1.09 angstrom, p. 3); rows are the table's index (states 1-11, used throughout the paper), x the state; the configuration is in the printed cells. States 1-4 are metastable. No uncertainty is stated."
+[datasets.parameters]
+kind = "vertical"
+initial_state = "N2 X 1Sigma_g+"
+final_state = "the N2^2+ state of the row"
+
+[[datasets]]
+id = "table1_ker_3p3p"
+material = "N2"
+file = "N2/yuen_2022__table1_ker_3p3p_N2.csv"
+table = "tbl_076ba83089ee"
+quantity = "kinetic_energy_release"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, 'KER (eV)' of states 5-9 (rows: the table's index), which dissociate to N+(3P) + N+(3P) (limit from Iwayama et al. 2016). The KER is the model's: I_p of the row less the limit, 38.96 eV above the neutral as implied by every row (the limit's energy is not printed). Vertical at R = 1.09 angstrom; the KER of a dication channel is filed under the neutral, N2, with the dication state in the channel (TC-954)."
+[datasets.parameters]
+channel = "N2 -> N2^2+ (the state of the row) -> N+(3P) + N+(3P)"
+kind = "calculated"
+state = "the N2^2+ state of the row"
+
+[[datasets]]
+id = "table1_ker_1d1d"
+material = "N2"
+file = "N2/yuen_2022__table1_ker_1d1d_N2.csv"
+table = "tbl_076ba83089ee"
+quantity = "kinetic_energy_release"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, 'KER (eV)' of states 10 (printed 'm.s. / N+(1D) + N+(1D)') and 11, whose limit N+(1D) + N+(1D) was 'identified from the PEC from Ref. [28]'. I_p less KER is 42.76 eV for both. As table1_ker_3p3p otherwise."
+[datasets.parameters]
+channel = "N2 -> N2^2+ (the state of the row) -> N+(1D) + N+(1D)"
+kind = "calculated"
+state = "the N2^2+ state of the row"
+
+[[datasets]]
+id = "text_ip"
+material = "N2"
+table = "text"
+points = [
+    ["X", "X 2Sigma_g+ (HOMO 3sigma_g)", "15.58"],
+    ["A", "A 2Pi_u (HOMO-1 1pi_u)", "16.93"],
+    ["B", "B 2Sigma_u+ (HOMO-2 2sigma_u)", "18.75"],
+]
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "p. 4: 'experimental ionization energy of 15.58, 16.93, and 18.75 eV for HOMO, HOMO-1, and HOMO-2 were used' for the first ionisation, with no reference and no statement of vertical or adiabatic; the inputs of the model's MO-ADK rates to the X, A and B states. zhao_2010's Table IV prints 15.6, 17.2 and 18.7 eV as the experimental vertical values for the same orbitals."
+[datasets.parameters]
+kind = "not stated"
+initial_state = "N2 X 1Sigma_g+"
+final_state = "the N2+ state of the row"
+
+[[datasets]]
+id = "text_dipole_xa"
+material = "N2+"
+table = "text"
+points = [["X-A", "X 2Sigma_g+ - A 2Pi_u", "0.25"]]
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. R. Langhoff, C. W. Bauschlicher Jr. and H. Partridge, J. Chem. Phys. 87, 4716 (1987)"]
+notes = "p. 3: 'The X and A state ... are coupled by a dipole moment of d_x = 0.25 a0 [29]'; the model's coupling at the neutral's equilibrium geometry. jia_2024's Table III (the same reference) gives 0.271 at R = 2.00 a0 and 0.262 at 2.10 a0, so about 0.265 at 1.09 angstrom (2.06 a0)."
+[datasets.parameters]
+states = "X 2Sigma_g+ - A 2Pi_u"
+component = "perpendicular (x)"
+geometry = "the neutral's equilibrium, R = 1.09 angstrom"
+
+[[datasets]]
+id = "text_dipole_xb"
+material = "N2+"
+table = "text"
+points = [["X-B", "X 2Sigma_g+ - B 2Sigma_u+", "0.75"]]
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. R. Langhoff and C. W. Bauschlicher Jr., J. Chem. Phys. 88, 329 (1988)"]
+notes = "p. 3: 'the X and B state are coupled by a dipole moment of ... d_z = 0.75 a0 [30]'; the model's coupling at the neutral's equilibrium geometry. jia_2024's Table III (the same reference) gives 0.764 at R = 2.00 a0 and 0.729 at 2.10 a0, so about 0.74 at 1.09 angstrom (2.06 a0)."
+[datasets.parameters]
+states = "X 2Sigma_g+ - B 2Sigma_u+"
+component = "parallel (z)"
+geometry = "the neutral's equilibrium, R = 1.09 angstrom"

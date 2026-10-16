@@ -1,0 +1,292 @@
+citation = "E. Stoll, Ann. Phys. (Leipzig) 374 (4. Folge 69), 81 (1922)"
+doi = "10.1002/andp.19223741802"
+library = "Stoll_1922_DieDispersionDer"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Jamin refractometer (Hilger) with two tubes of length L = 499.96 mm, in the \
+spectrally resolved method of Puccianti and Koch: an absolute fringe count at the He \
+line 5875.64 A (and Ar 7067 A for the infrared) and, from photographs of the spectrally \
+dispersed interference pattern (white light plus He or Ar line spectra), the fractional \
+fringe shifts at every line, so that one photograph gives the whole dispersion \
+(pp. 5-13). Gas filled from vacuum to about atmospheric pressure (p0 reduced to 0 C, \
+717-765 mm Hg), tube temperature 18-20 C to 0.02 C. Wavelengths 4388-9224 A (He and \
+Ar lines; the infrared on dicyanin plates). Zurich (text in German)."""
+notes = """Reduction (p. 5): (n0 - 1) 10^7 = N lambda / (p0 L) 760 (1 + alpha t_i), N the \
+number of fringes, lambda the vacuum wavelength, p0 the manometer reading reduced to \
+0 C, t_i the tube temperature and alpha the gas's own expansion coefficient (air and \
+O2 0.003670 after Jolly, N2 0.003675 after Jolly, CO2 0.003716 after Chappuis): the \
+values are for 0 C and 760 mm Hg with the real gas's thermal expansion and a linear \
+pressure scaling over at most 6 %: state 1 atm, 0 C, density real. The text defines \
+(n0 - 1) 'fur Luft von 0 C und 750 mm Hg' (p. 5, page image checked), a misprint for \
+760 (the formula, Table IIIa and IIIb say 760). The gas tables label the lines by \
+rounded air wavelengths; the extraction gives each its Table II wavelength (air, \
+International Angstrom), and the Cauchy formulas use those air wavelengths (they \
+reproduce the calculated columns only so).
+
+Accuracy (pp. 28-30): maximum error of a single absolute determination 5e-8 in \
+n0 - 1; 'die erhaltenen Resultate sind richtig bis auf 4-5 Einheiten in der achten \
+Dezimale'; for relative values (dispersion) at most 2.9e-8, 0.01 %; summary: about \
+0.02 % absolute, 0.01 % relative. Per-point: 0.01 % as a bound; scale: the 0.02 % as \
+a bound, 0.0115 % one sigma.
+
+Gases: electrolytic oxygen, freed from ozone, 2 L reservoir (Table V); oxygen from a \
+cylinder, 96 % O2 and 4 % N2 by the maker's analysis and the mixing rule (Table VI); \
+nitrogen from a cylinder purified over pyrogallol and hot copper into a gasometer \
+(Table VII); nitrogen straight from a cylinder, 99.5-99.9 % (99.5 % N2 and 0.5 % O2 by \
+the mixing rule), 1.3 units below Table VII (Table VIII); carbon dioxide from a \
+cylinder (Table IX). The cylinder O2 and N2 are excluded as impure. Air (Tables I-IV, \
+IIIa, IIIb) is not a curated species and is skipped; argon appears only as a line \
+source.
+
+NITROGEN IS EXCLUDED: its dispersion is inconsistent. Between 4388 and 9224 A \
+Stoll's N2 falls by 91.1 x 10^-7 (3024.89 to 2933.80), against 65.7 x 10^-7 for \
+peck_1966's 0 C formula (3021.93 to 2956.23; Stoll is +0.10 % at 4388 A, -0.37 % at \
+5876 A, -0.76 % at 9224 A). His own air contradicts it: the Cauchy dispersion \
+coefficient of air (16.170, Table IIIb) is below those of both his N2 (22.65) and his \
+O2 (20.074), impossible for a mixture mostly of the two; peck_1966's N2 has an \
+effective coefficient of 16.4 over the same range. Wilkinson (wilkinson_1960) \
+notes that Stoll's N2 'differs by as much as 0.7% in n-1' from all other observers. \
+Scheel's (1907) N2 formula, which Stoll finds parallel to his, has the same large \
+dispersion (22.47). O2 and CO2 agree with the Cuthbertsons' formulas in dispersion \
+to about 3 % and 1 %.
+
+Misprints in the single determinations (not extracted; the means are consistent): \
+Table V 7383 A, columns 1-5 printed 2686.xx where the mean 2687.72 and the formula \
+need 2687.xx; Table VII 7030 A column 3 '3953,12' and 8265 A column 1 '9240,42' \
+(2953.12, 2940.42). Table IX's printed differences at 7635 A (+0.25) and 9224 A \
+(-0.23) do not match mean - calc (+0.27, -0.29); the means match their single values. \
+The library misread two cells (see the extraction script).
+
+Koch's four CO2 values (p. 27, 'ebenfalls sehr zuverlassigen Messungen von J. Koch') \
+are extracted as reproduced; the 'Stoll' column beside them is Stoll's formula at \
+Koch's wavelengths. The columns computed from Cuthbertson's and Scheel's formulas in \
+Tables V, VII and IX are not extracted; their formulas are recorded."""
+
+[[datasets]]
+id = "electrolytic_O2"
+material = "O2"
+file = "O2/stoll_1922__electrolytic_O2.csv"
+table = "tbl_6ed4c184eeb4"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table V, mean of 4-6 determinations, electrolytic oxygen (absolute count at 5875.64 A: 210.77 fringes at 743.78 mm, 19.98 C). Koch's values (1909, cylinder oxygen) are about 14 units lower at 4360-6708 A, which Stoll attributes to hydrogen in electrolytic gas (p. 23)."
+[datasets.uncertainty]
+relative = 0.0001
+level = "bound"
+systematic_relative = 0.000115
+
+[[datasets]]
+id = "fit_electrolytic_O2"
+material = "O2"
+file = "O2/stoll_1922__fit_electrolytic_O2.csv"
+table = "tbl_6ed4c184eeb4"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table V, 'berechnet' (formula o2)."
+
+[[datasets]]
+id = "cylinder_O2"
+material = "O2"
+file = "O2/stoll_1922__cylinder_O2.csv"
+table = "tbl_1b1b829fe025"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = "Table VI, means, oxygen from a cylinder: 'ca. 96 proz. reinen Sauerstoff und ca 4 proz. reinen Stickstoff' (p. 23). Excluded: impure."
+
+[[datasets]]
+id = "gasometer_N2"
+material = "N2"
+file = "N2/stoll_1922__gasometer_N2.csv"
+table = "tbl_af469b918b2b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = "Table VII, mean of 3 determinations, purified nitrogen (220.20 fringes at 5875 A, 716.83 mm, 19.47 C). Excluded: the dispersion is about 40 % larger than peck_1966's and inconsistent with the author's own air and oxygen (source notes); the absolute value is 0.37 % below peck_1966 at 5876 A."
+[datasets.uncertainty]
+relative = 0.0001
+level = "bound"
+systematic_relative = 0.000115
+
+[[datasets]]
+id = "fit_gasometer_N2"
+material = "N2"
+file = "N2/stoll_1922__fit_gasometer_N2.csv"
+table = "tbl_af469b918b2b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table VII, 'berechnet' (formula n2)."
+
+[[datasets]]
+id = "cylinder_N2"
+material = "N2"
+file = "N2/stoll_1922__cylinder_N2.csv"
+table = "tbl_91f9a85c75b4"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = "Table VIII, means, nitrogen straight from a cylinder (about 0.5 % O2), 1.3 units below Table VII. Excluded: impure, and as gasometer_N2."
+
+[[datasets]]
+id = "cylinder_CO2"
+material = "CO2"
+file = "CO2/stoll_1922__cylinder_CO2.csv"
+table = "tbl_098034e2fc60"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table IX, mean of 3-4 determinations, carbon dioxide from a cylinder (357.74 fringes at 5875.64 A, 762.11 mm, 19.19 C; alpha 0.003716). Agrees with cuthbertson_1920's formula to 1-1.5 units."
+[datasets.uncertainty]
+relative = 0.0001
+level = "bound"
+systematic_relative = 0.000115
+
+[[datasets]]
+id = "fit_cylinder_CO2"
+material = "CO2"
+file = "CO2/stoll_1922__fit_cylinder_CO2.csv"
+table = "tbl_098034e2fc60"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table IX, 'berechnet' (formula co2); the 6678 A value is the image's 4473,31 (the library read 4473,91)."
+
+[[datasets]]
+id = "koch_CO2"
+material = "CO2"
+file = "CO2/stoll_1922__koch_CO2.csv"
+table = "tbl_9e61e81d2f8d"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Koch, Arkiv for Mat., Astr. och Fysik 8, No. 20 (1912)"]
+notes = "Unlabelled table, p. 28: Koch's (n0 - 1) x 10^7 of CO2 at the Hg, Na and Li lines 4359, 5461, 5896, 6708 A."
+
+[[formulas]]
+id = "o2"
+material = "O2"
+equation = "p. 21"
+printed = "(n0 - 1) 10^7 = 2650,86 + 20,074 / lambda^2"
+variable = "lambda: air wavelength in micrometres"
+state = "1atm_0C"
+density = "real"
+range = "4388-9224 A"
+coefficients = { A = "2650.86", B = "20.074" }
+check = "With the Table II wavelengths it reproduces Table V's calculated column to 0.03 except at 4713 A (2741.23 against the printed 2741.28) and 7273 A (2688.81 against 2688.99; the printed difference -0.09 follows the printed value). Checked 2026-09-25."
+
+[[formulas]]
+id = "n2"
+material = "N2"
+equation = "p. 24"
+printed = "(n0 - 1) 10^7 = 2907,27 + 22,65 / lambda^2"
+variable = "lambda: air wavelength in micrometres"
+state = "1atm_0C"
+density = "real"
+range = "4388-9224 A"
+coefficients = { A = "2907.27", B = "22.65" }
+check = "Reproduces Table VII's calculated column to 0.025 at all 24 lines. Checked 2026-09-25."
+notes = "The data it represents are excluded (see the source notes)."
+
+[[formulas]]
+id = "co2"
+material = "CO2"
+equation = "p. 27"
+printed = "(n0 - 1) 10^7 = 4406,97 + 29,584 / lambda^2"
+variable = "lambda: air wavelength in micrometres"
+state = "1atm_0C"
+density = "real"
+range = "4388-9224 A"
+coefficients = { A = "4406.97", B = "29.584" }
+check = "Reproduces Table IX's calculated column to 0.01 except at 5015 A (4524.57 against 4524.65), 8521 A (4447.71 against 4447.41) and 8667 A (4446.35 against 4446.25); the printed differences follow the printed values, so these are the author's arithmetic, not typesetting. At Koch's wavelengths it gives the 'Stoll' column of p. 28 (4562.67 at 4359 A). Checked 2026-09-25."
+
+[[formulas]]
+id = "scheel_n2"
+material = "N2"
+equation = "p. 24"
+printed = "(n0 - 1) 10^7 = 2906,10 + 22,47 / lambda^2"
+variable = "lambda: wavelength in micrometres"
+state = "1atm_0C"
+density = "unknown"
+range = "not stated"
+coefficients = { A = "2906.10", B = "22.47" }
+reproduced_from = ["K. Scheel, Verhandlungen der Deutschen Physikalischen Gesellschaft 9, 24 (1907)"]
+check = "Gives Table VII's 'Scheel berechnet' column (3022.80 at 4388 A). Checked 2026-09-25."
+
+[[formulas]]
+id = "cuthbertson_o2"
+material = "O2"
+equation = "p. 21"
+printed = "(n0 - 1) = 3,397 10^27 / (12807 10^27 - n^2)"
+variable = "n: frequency in s^-1"
+state = "1atm_0C"
+density = "unknown"
+range = "4861-6563 A (Cuthbertson's)"
+coefficients = { C = "3.397e27", n0_squared = "12807e27" }
+reproduced_from = ["C. and M. Cuthbertson, Proc. R. Soc. London A 83, 164 (1909)"]
+check = "cuthbertson_1920 quotes the same formula with n0^2 = 12,804e27 (o2_1909); which is right cannot be decided here."
+notes = "Stoll's 'Cuthbertson berechnet' column of Table V is not extracted."
+
+[[formulas]]
+id = "cuthbertson_n2"
+material = "N2"
+equation = "p. 26"
+printed = "(n0 - 1) = 5,0345 10^27 / (17095 10^27 - n^2)"
+variable = "n: frequency in s^-1"
+state = "1atm_0C"
+density = "unknown"
+range = "Cuthbertson's"
+coefficients = { C = "5.0345e27", n0_squared = "17095e27" }
+reproduced_from = ["C. and M. Cuthbertson, Proc. R. Soc. London A 83, 151 (1909)"]
+check = "Same as cuthbertson_1920's n2_1909."
+
+[[formulas]]
+id = "cuthbertson_co2"
+material = "CO2"
+equation = "p. 27"
+printed = "(n0 - 1) = 6,2144 10^27 / (14097 10^27 - n^2)"
+variable = "n: frequency in s^-1"
+state = "1atm_0C"
+density = "real"
+range = "4800-6708 A"
+coefficients = { C = "6.2144e27", n0_squared = "14097e27" }
+reproduced_from = ["cuthbertson_1920"]
+check = "Same as cuthbertson_1920's co2_1920."

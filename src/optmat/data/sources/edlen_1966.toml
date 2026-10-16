@@ -1,0 +1,92 @@
+citation = "B. Edlen, \"The Refractive Index of Air\", Metrologia 2, 71 (1966)"
+library = "Edlen_1966_RefractiveIndexAir"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """Review and refit of the refractivity of air: the absolute level from Barrell \
+and Sears (1939) as adopted in 1953; the dispersion from Erickson's (1961) visible \
+data (normalized at 6058 A) with Rank et al. (1958), Peck and Khanna (1962), Svensson \
+(1960) and Traub (1920) normalized to it (Table 2), fitted by a Sellmeier-type formula \
+with a constant term; the temperature and pressure dependence from the Lorentz-Lorenz \
+equation and the density equation of air, checked on Barrell and Sears's 320 values; \
+corrections for CO2 and water vapour (pp. 71-80)."""
+notes = """Identity: unverified by the library; the pdf's cover sheet reads 'To cite this \
+article: Bengt Edlen 1966 Metrologia 2 71' and the running heads 'Vol. 2, No. 2, 1966 \
+... BENGT EDLEN: The Refractive Index of Air' with page numbers 71-80 (pdf page N is \
+journal page 69 + N). No DOI is recorded in the library. Air is not a curated species: \
+the record holds no datasets, and the air formulas are given here verbatim.
+
+The dispersion formula for standard air, Eq. (1), p. 76 (also in the abstract, p. 71), \
+checked on the page image:
+  (n - 1)_s x 10^8 = 8342.13 + 2406030 (130 - sigma^2)^-1 + 15997 (38.9 - sigma^2)^-1,
+'where sigma is the vacuum wave-number in reciprocal micrometres (um^-1)'; it \
+represents the observations 'from 2000 A through the visible region in a very \
+satisfactory way' (p. 76), the infrared data to 20 587 A falling 'below the formula by \
+an average of about 0.7e-8' (p. 76). Standard air (pp. 72, 79): 'dry air at 760 torr \
+and 15 degrees C', 'defined as containing CO2 to 0.0003 parts by volume'. The absolute \
+level is uncertain by about +-5e-8 (abstract; the dispersion, i.e. relative values, is \
+known far better). Check (2026-09-24): Eq. (1) minus Table 2's '1953 formula' column \
+reproduces Table 2's printed '1965-1953' column at all 53 wavelengths to within 0.1e-8, \
+the rounding of the printed columns. The formula agrees exactly with the package's \
+conditions.standard_air_refractivity (1e8 (n - 1) = 8342.13 + 2406030/(130 - s^2) + \
+15997/(38.9 - s^2), s the vacuum wavenumber in um^-1; standard air dry, 0.03 % CO2, \
+15 degrees C, 101 325 Pa = 760 torr), which was transcribed from memory (TC-2): \
+the coefficients, the variable and the reference state all agree.
+
+Other formulas, verbatim (not datasets; air and water are not species):
+- Table 4, approximations to (1): 0.0472300 (173.3 - sigma^2)^-1 for 4050-7050 A (max. \
+error 1.2e-8); 0.0480877 (176.4 - sigma^2)^-1 for lambda > 5800 A (0.7e-8); (27260.6 + \
+155.7 sigma^2) x 10^-8 for lambda > 7050 A (0.8e-8); (27261.1 + 154.3 sigma^2) x 10^-8 \
+for lambda > 10000 A (0.2e-8).
+- Eq. (12), p. 78, dry air 5-30 degrees C: (n - 1)_tp = p (n - 1)_s/720.775 x [1 + p \
+(0.817 - 0.0133 t) x 10^-6]/(1 + 0.0036610 t), t in degrees C, p in torr; D_s = 720.775 \
+the density factor of standard air. Eq. (15), p. 78: (n - 1)_tp = (n - 1)_s x \
+0.00138823 p/(1 + 0.003671 t), within 1.0e-8 of (12) at 15-30 degrees C and 700-800 torr.
+- Eq. (17), p. 79: (n - 1)_x = [1 + 0.540 (x - 0.0003)] (n - 1)_s for x parts by volume \
+of CO2.
+- Eq. (22), p. 80: n_tpf - n_tp = -f (5.722_4 - 0.0457 sigma^2) x 10^-8 for f torr of \
+water vapour (visible; near 20 degrees C, 760 torr, f = 10 torr); Eq. (21), p. 79, K'_lambda = \
+(31.59 + 0.2963 sigma^2) x 10^-8; Eq. (23) Delta lambda x 10^5 = 0.457 lambda_2 \
+(sigma_2^2 - sigma_1^2) f.
+
+Carbon dioxide (p. 79): 'The best information on the refractivity of CO2 appears to be \
+obtained from KOCH (1914) and the CUTHBERTSONS (1920)'; Edlen transferred their 0 \
+degrees C figures to 15 degrees C with alpha = 0.00371 'and recalculated their \
+refractivities for different wavelengths on the common basis of (n - 1) = 42676 x \
+10^-8 for 5462 A at 15 degrees and 760 torr', giving Eqs. (16) and (18) (formulas \
+below). The 42676e-8 is a normalization chosen by Edlen, not a measurement here; the \
+originals are not in the library.
+
+The temperature and pressure dependence, Eq. (12), p. 78, checked on the page \
+(2026-09-26): '(n - 1)_tp = p (n - 1)_s / 720.775 . [1 + p (0.817 - 0.0133 t) x 10^-6] \
+/ (1 + 0.0036610 t), where t is in degrees C, p in torr, and (n - 1)_s is given by the \
+dispersion formula for standard air', for dry air from 5 to 30 degrees C; D_s = 720.775 \
+is the density factor of standard air (Eq. 11), and the formula follows from the \
+Lorentz-Lorenz relation and the equation of state of dry air (Eqs. 3-10). It is the \
+package's conditions.air_refractivity, used to take solid indices measured relative to \
+room air to vacuum (TC-398)."""
+
+[[formulas]]
+id = "eq16_CO2"
+material = "CO2"
+equation = "Eq. (16), p. 79"
+printed = "r = (n_CO2 - n_s)/(n - 1)_s = 0.5291 + 0.00360 sigma"
+variable = "sigma: vacuum wavenumber in um^-1; (n - 1)_s the standard-air refractivity of Eq. (1)"
+state = "1atm_15C"
+density = "unknown"
+range = "the wavelengths of Koch's (1914) and the Cuthbertsons' (1920) CO2 data (Fig. 3: visible and near ultraviolet); r varies 'within +-1 %' over the range of interest"
+coefficients = { r0 = "0.5291", r1 = "0.00360" }
+check = "Not checked against printed CO2 values (the paper prints none but the normalization 42676e-8 at 5462 A): at 5462 A (sigma = 1.8308) r = 0.53569 and (n - 1)_CO2 = 1.53569 x 27789.9e-8 = 42677e-8 (computed here), consistent with the normalization."
+notes = "n_CO2 - 1 = (1 + r) (n - 1)_s at 15 degrees C, 760 torr: a CO2 dispersion formula derived from Koch (1914) and C. and M. Cuthbertson (1920) (not in the library), transferred from 0 to 15 degrees C with alpha = 0.00371 and normalized to (n - 1) = 42676e-8 at 5462 A. Reproduced, not a measurement of this paper. No form fits (a ratio to the air formula); the ratio is taken 'as independent of t and p'."
+
+[[formulas]]
+id = "eq18_CO2"
+material = "CO2"
+equation = "Eq. (18), p. 79"
+printed = "(n_CO2 - n_s) = (14485 + 117.8 sigma^2) x 10^-8"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_15C"
+density = "unknown"
+range = "as Eq. (16) (Fig. 4)"
+coefficients = { a = "14485", b = "117.8" }
+check = "At 5462 A (sigma^2 = 3.3517) it gives 14880e-8, and with Eq. (1) (n - 1)_CO2 = 42670e-8 (computed here), 6e-8 below the normalization 42676e-8; the equivalent form of Eq. (16)."
+notes = "The same CO2 correction as Eq. (16) in the form n_CO2 - n_s (cf. Fig. 4); 'gives 0.1178 for the coefficient that MASUI (1957) gave as 0.11'. Reproduced from Koch and the Cuthbertsons as for eq16_CO2."

@@ -1,0 +1,893 @@
+citation = "D. M. Bishop, J. Pipin and S. M. Cybulski, \"Theoretical investigation of the nonlinear optical properties of H2 and D2: Extended basis set\", Phys. Rev. A 43, 4845 (1991)"
+doi = "10.1103/physreva.43.4845"
+library = "Bishop_1991_TheoreticalInvestigationNonlinear"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Sum-over-states (Orr-Ward) evaluation of the electronic gamma components of H2 \
+with explicitly correlated (r12-dependent, elliptical-coordinate) wave functions for \
+the Sigma, Pi and Delta intermediate states, with new 'primed' Delta geminals that pass \
+closure tests; 14 internuclear distances R = 0.6-3.0 a0, averaged over the rovibrational \
+levels of the ground vibrational state with a Maxwell-Boltzmann rotational population at \
+295 K; the pure vibrational contributions taken unchanged from Bishop, Pipin and Rerat, \
+J. Chem. Phys. 92, 1902 (1990) (pp. 4845-4847, 4851)."""
+notes = """Identity: journal pages 4845-4853 = pdf pages 1-9 (page = pdf page + 4844). \
+H2 and D2 only.
+
+DEFINITIONS (p. 4846, Eq. 1): gamma_abgd(-w_s; w1, w2, w3) = hbar^-3 sum over the 24 \
+permutations of (mu_a, -w_s), (mu_b, w1), (mu_g, w2), (mu_d, w3) of the Orr-Ward terms \
+(Buckingham's and Bogaard and Orr's definitions): the Taylor-series (T) convention, the \
+same as bishop_1989 (whose He values these papers use as the reference; T = H2/He \
+below). Processes (p. 4850): dc Kerr w1 = w, w2 = w3 = 0; ESHG w1 = 0, w2 = w3 = w; \
+THG all w. The laboratory-frame gamma_par and gamma_perp are the isotropic averages 'for \
+radiation transmitted parallel and perpendicular to the applied electric field' (p. \
+4851), Shelton's gamma_par and gamma_perp; the dc Kerr gamma^K = (3/2)[gamma_par^Kerr - \
+gamma_perp^Kerr] (Eq. 19). 'We do not list the gamma_perp^THG values since they are \
+exactly one-third of gamma_par^THG.' Atomic units: 'gamma = e^4 a0^4 E_h^-3 = 6.23538 x \
+10^-65 C^4 m^4 J^-3' (p. 4845), the standard unit (the Born-Oppenheimer calculation has \
+no reduced-mass rescaling).
+
+PARTS. elec: the electronic gamma, rovibrationally averaged (v = 0) over a 295 K rotational \
+population (overline gamma), recorded as part 'electronic' with parameters.temperature_k \
+= 295. vib: the pure vibrational contribution of Bishop, Pipin and Rerat (1990), part \
+'vibrational'; near omega = 0.01-0.02 a.u. it passes the vibrational resonance (H2 \
+fundamental about 0.019 a.u.), where the values are large and of either sign. total = \
+elec + vib ('electronic_vibrational'); no rotational (orientational) term is included \
+(p. 4847). 'The values of gamma_par^ESHG(vib) are very similar to the values of gamma^vR \
+reported in Table III(a) of Ref. 4' (Shelton 1990; p. 4851).
+
+DATASETS: Tables VI-XI (H2 dc Kerr, ESHG, THG; D2 the same), 30 datasets x 13 omegas; \
+Table XIV ratios S (H2/D2) and T (H2/He), theory, experiment (reproduced) and 'fitted \
+experiment'; Table XVI gamma^K(total) of H2 and D2 at seven wavelengths. Checks: \
+gamma^K(H2, 6328 A) = 1.5 (786.6 - 302.5) = 726.15 (printed 726); T(13 190 A) = 661.1 / \
+43.788 = 15.098 (15.10); T(6943 A) = 798.1 / 45.647 (bishop_1989 Table II) = 17.484 \
+(17.48); S(13 190 A) = 661.1 / 669.1 = 0.988 (checked 2026-09-26). The wavelengths of \
+Table II pair omega and lambda as vacuum values (0.03454 a.u. = 13 190 A).
+
+NOT EXTRACTED: Table IV (the molecular-frame components gamma_xxxx ... gamma_zzzz of H2 \
+at R = 1.4 a0, before averaging; the ESHG and THG blocks print a column 'gamma_xzzz', \
+evidently gamma_xxzz), Table III (alpha), Tables V and XII (B, C), Table XIII (the ratio R \
+= gamma_par/gamma_perp of ESHG, theory against Mizrahi and Shelton 1985 and Shelton and \
+Lu 1988, e.g. H2 at 5145 A 2.873 against 2.867(2)). The electronic values rose by 1.3-1.8 \
+% from Bishop, Pipin and Rerat (1990) (p. 4851).
+
+TEXT VALUES (datasets below): He ESHG gamma_par 'calculated expressly for this work' at \
+13 190, 10 640 and 5900 A (p. 4851); experimental dc Kerr gamma^K of H2 and D2 (p. \
+4852); the ac Kerr estimate and experiment (p. 4853); Shelton's static electronic H2 \
+686 +- 4 and D2 669 (pp. 4845, 4852)."""
+
+[[datasets]]
+id = "dc_kerr_par_elec_H2"
+material = "H2"
+file = "H2/bishop_1991__dc_kerr_par_elec_H2.csv"
+table = "tbl_7138422de0e9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, gamma_par of the dc Kerr gamma(-w; w, 0, 0): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_par_vib_H2"
+material = "H2"
+file = "H2/bishop_1991__dc_kerr_par_vib_H2.csv"
+table = "tbl_7138422de0e9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table VI, gamma_par of the dc Kerr gamma(-w; w, 0, 0): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_par_total_H2"
+material = "H2"
+file = "H2/bishop_1991__dc_kerr_par_total_H2.csv"
+table = "tbl_7138422de0e9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, gamma_par of the dc Kerr gamma(-w; w, 0, 0): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_perp_elec_H2"
+material = "H2"
+file = "H2/bishop_1991__dc_kerr_perp_elec_H2.csv"
+table = "tbl_7138422de0e9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, gamma_perp of the dc Kerr gamma(-w; w, 0, 0): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_perp_vib_H2"
+material = "H2"
+file = "H2/bishop_1991__dc_kerr_perp_vib_H2.csv"
+table = "tbl_7138422de0e9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table VI, gamma_perp of the dc Kerr gamma(-w; w, 0, 0): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_perp_total_H2"
+material = "H2"
+file = "H2/bishop_1991__dc_kerr_perp_total_H2.csv"
+table = "tbl_7138422de0e9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, gamma_perp of the dc Kerr gamma(-w; w, 0, 0): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_par_elec_H2"
+material = "H2"
+file = "H2/bishop_1991__eshg_par_elec_H2.csv"
+table = "tbl_a26e8934041a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, gamma_par of the ESHG gamma(-2w; 0, w, w): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_par_vib_H2"
+material = "H2"
+file = "H2/bishop_1991__eshg_par_vib_H2.csv"
+table = "tbl_a26e8934041a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table VII, gamma_par of the ESHG gamma(-2w; 0, w, w): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_par_total_H2"
+material = "H2"
+file = "H2/bishop_1991__eshg_par_total_H2.csv"
+table = "tbl_a26e8934041a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, gamma_par of the ESHG gamma(-2w; 0, w, w): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_perp_elec_H2"
+material = "H2"
+file = "H2/bishop_1991__eshg_perp_elec_H2.csv"
+table = "tbl_a26e8934041a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, gamma_perp of the ESHG gamma(-2w; 0, w, w): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_perp_vib_H2"
+material = "H2"
+file = "H2/bishop_1991__eshg_perp_vib_H2.csv"
+table = "tbl_a26e8934041a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table VII, gamma_perp of the ESHG gamma(-2w; 0, w, w): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_perp_total_H2"
+material = "H2"
+file = "H2/bishop_1991__eshg_perp_total_H2.csv"
+table = "tbl_a26e8934041a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, gamma_perp of the ESHG gamma(-2w; 0, w, w): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic_vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "thg_par_elec_H2"
+material = "H2"
+file = "H2/bishop_1991__thg_par_elec_H2.csv"
+table = "tbl_4827aae9526c"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VIII, gamma_par of the THG gamma(-3w; w, w, w): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "thg_par_vib_H2"
+material = "H2"
+file = "H2/bishop_1991__thg_par_vib_H2.csv"
+table = "tbl_4827aae9526c"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table VIII, gamma_par of the THG gamma(-3w; w, w, w): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "thg_par_total_H2"
+material = "H2"
+file = "H2/bishop_1991__thg_par_total_H2.csv"
+table = "tbl_4827aae9526c"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VIII, gamma_par of the THG gamma(-3w; w, w, w): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_par_elec_D2"
+material = "D2"
+file = "D2/bishop_1991__dc_kerr_par_elec_D2.csv"
+table = "tbl_25f1365d9669"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX, gamma_par of the dc Kerr gamma(-w; w, 0, 0): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_par_vib_D2"
+material = "D2"
+file = "D2/bishop_1991__dc_kerr_par_vib_D2.csv"
+table = "tbl_25f1365d9669"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table IX, gamma_par of the dc Kerr gamma(-w; w, 0, 0): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_par_total_D2"
+material = "D2"
+file = "D2/bishop_1991__dc_kerr_par_total_D2.csv"
+table = "tbl_25f1365d9669"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX, gamma_par of the dc Kerr gamma(-w; w, 0, 0): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_perp_elec_D2"
+material = "D2"
+file = "D2/bishop_1991__dc_kerr_perp_elec_D2.csv"
+table = "tbl_25f1365d9669"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX, gamma_perp of the dc Kerr gamma(-w; w, 0, 0): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_perp_vib_D2"
+material = "D2"
+file = "D2/bishop_1991__dc_kerr_perp_vib_D2.csv"
+table = "tbl_25f1365d9669"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table IX, gamma_perp of the dc Kerr gamma(-w; w, 0, 0): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "dc_kerr_perp_total_D2"
+material = "D2"
+file = "D2/bishop_1991__dc_kerr_perp_total_D2.csv"
+table = "tbl_25f1365d9669"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX, gamma_perp of the dc Kerr gamma(-w; w, 0, 0): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_par_elec_D2"
+material = "D2"
+file = "D2/bishop_1991__eshg_par_elec_D2.csv"
+table = "tbl_cdf929a9c5ce"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X, gamma_par of the ESHG gamma(-2w; 0, w, w): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_par_vib_D2"
+material = "D2"
+file = "D2/bishop_1991__eshg_par_vib_D2.csv"
+table = "tbl_cdf929a9c5ce"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table X, gamma_par of the ESHG gamma(-2w; 0, w, w): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_par_total_D2"
+material = "D2"
+file = "D2/bishop_1991__eshg_par_total_D2.csv"
+table = "tbl_cdf929a9c5ce"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X, gamma_par of the ESHG gamma(-2w; 0, w, w): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_perp_elec_D2"
+material = "D2"
+file = "D2/bishop_1991__eshg_perp_elec_D2.csv"
+table = "tbl_cdf929a9c5ce"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X, gamma_perp of the ESHG gamma(-2w; 0, w, w): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_perp_vib_D2"
+material = "D2"
+file = "D2/bishop_1991__eshg_perp_vib_D2.csv"
+table = "tbl_cdf929a9c5ce"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table X, gamma_perp of the ESHG gamma(-2w; 0, w, w): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "eshg_perp_total_D2"
+material = "D2"
+file = "D2/bishop_1991__eshg_perp_total_D2.csv"
+table = "tbl_cdf929a9c5ce"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X, gamma_perp of the ESHG gamma(-2w; 0, w, w): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic_vibrational"
+component = "perpendicular"
+temperature_k = 295
+
+[[datasets]]
+id = "thg_par_elec_D2"
+material = "D2"
+file = "D2/bishop_1991__thg_par_elec_D2.csv"
+table = "tbl_b3b2cb2c1406"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, gamma_par of the THG gamma(-3w; w, w, w): the electronic gamma averaged over the v = 0 rovibrational states at 295 K; hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "thg_par_vib_D2"
+material = "D2"
+file = "D2/bishop_1991__thg_par_vib_D2.csv"
+table = "tbl_b3b2cb2c1406"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1990b"]
+notes = "Table XI, gamma_par of the THG gamma(-3w; w, w, w): the pure vibrational contribution (from Bishop, Pipin and Rerat 1990; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "thg_par_total_D2"
+material = "D2"
+file = "D2/bishop_1991__thg_par_total_D2.csv"
+table = "tbl_b3b2cb2c1406"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, gamma_par of the THG gamma(-3w; w, w, w): electronic plus pure vibrational (no rotational term; resonant near omega = 0.01-0.02 a.u.); hbar omega = 0-0.05 a.u. and seven laser frequencies (Table II)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "ratio_s_theory"
+material = "H2"
+file = "H2/bishop_1991__ratio_s_theory_H2.csv"
+table = "tbl_fad13f7ef088"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table XIV 'S Theory': gamma_par^ESHG(total, H2) / gamma_par^ESHG(total, D2) (Eq. 17), electronic plus pure vibrational at 295 K; lambda in angstrom (vacuum)."
+[datasets.parameters]
+reference_material = "D2"
+process = "eshg"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "ratio_s_expt"
+material = "H2"
+file = "H2/bishop_1991__ratio_s_expt_H2.csv"
+table = "tbl_fad13f7ef088"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "mizrahi_1985_h2d2"]
+notes = "Table XIV 'S Expt.' (Refs. 4, 12: Shelton 1990; Mizrahi and Shelton, Phys. Rev. A 32, 3454 (1985)), with the printed uncertainty on the last digits. Measured ratio of the total ESHG gammas."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "D2"
+process = "eshg"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "ratio_t_theory"
+material = "H2"
+file = "H2/bishop_1991__ratio_t_theory_H2.csv"
+table = "tbl_fad13f7ef088"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table XIV 'T Theory': gamma_par^ESHG(total, H2) / gamma_par^ESHG(He) (Eq. 18), with Bishop and Pipin's He (bishop_1989 and the three values of dataset he_eshg)."
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "ratio_t_expt"
+material = "H2"
+file = "H2/bishop_1991__ratio_t_expt_H2.csv"
+table = "tbl_fad13f7ef088"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "Table XIV 'T Expt.' (Shelton 1990, Ref. 4), with the printed uncertainty on the last digits. Measured ratio of the total ESHG gammas (He calibration)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "ratio_t_fitted"
+material = "H2"
+file = "H2/bishop_1991__ratio_t_fitted_H2.csv"
+table = "tbl_fad13f7ef088"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "Table XIV 'Fitted Expt.' (footnote a, 'See text'): T reconstructed from the fit of Eq. (20) to Shelton's 'experimental' gamma_par(elec) (Table XV) plus the theoretical vibrational part, which 'smooths out' experimental noise (p. 4852). Derived from shelton_1990's data."
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "electronic_vibrational"
+component = "parallel"
+temperature_k = 295
+
+[[datasets]]
+id = "gamma_k_total_H2"
+material = "H2"
+file = "H2/bishop_1991__gamma_k_total_H2.csv"
+table = "tbl_60de52729ff9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table XVI: gamma^K = (3/2)[gamma_par^Kerr(total) - gamma_perp^Kerr(total)] (Eq. 19) from Tables VI, electronic plus pure vibrational at 295 K; lambda in angstrom (vacuum). No orientational (Delta alpha) term."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "K"
+temperature_k = 295
+
+[[datasets]]
+id = "gamma_k_total_D2"
+material = "D2"
+file = "D2/bishop_1991__gamma_k_total_D2.csv"
+table = "tbl_60de52729ff9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table XVI: gamma^K = (3/2)[gamma_par^Kerr(total) - gamma_perp^Kerr(total)] (Eq. 19) from Tables IX, electronic plus pure vibrational at 295 K; lambda in angstrom (vacuum). No orientational (Delta alpha) term."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "K"
+temperature_k = 295
+
+[[datasets]]
+id = "he_eshg"
+material = "He"
+points = [["13190", "13190", "43.788"], ["10640", "10640", "44.161"], ["5900", "5900", "46.684"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "p. 4851: 'For T, we have used the values of gamma_par^ESHG(He) that we reported in Ref. 13 [bishop_1989], as well as further ones calculated expressly for this work, namely 43.788, 44.161, and 46.684 e^4 a0^4 E_h^-3 for lambda = 13 190, 10 640, and 5900 A': the bishop_1989 method (infinite-mass atomic units, see bishop_1989), ESHG gamma_zzzz of He at three more wavelengths."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "expt_dc_kerr_H2"
+material = "H2"
+points = [["buckingham_orr_1968", "6328", "550", "60"], ["carusotto_1985", "5145", "820", "49"], ["tammer_huttner_1990", "6328", "666", "19"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["buckingham_1968b", "carusotto_1985", "tammer_1990"]
+notes = "pp. 4852-4853: experimental gamma^K of H2, 'A rather old experimental value for H2 at lambda = 6328 A is 550 +- 60' (Ref. 14), 'a more recent value at lambda = 5145 A is 820 +- 49' (Ref. 15), and Tammer and Huttner's '666(19)' at 6328 A (Ref. 16), against the theory's 726 (Table XVI). Level of the uncertainties not stated. Re-pointed to the originals now in the library (2026-09-26): row buckingham_orr_1968 = buckingham_1968b's gamma = 0.277 (+-0.03, a bound) x 10^-36 esu = 550 au; row carusotto_1985 is Bishop's conversion to gamma^K of carusotto_1985's K(H2) = 4.32 +- 0.14 x 10^-17 cm^2 statV^-2 amagat^-1 at 514.5 nm (no gamma is printed there); row tammer_huttner_1990 = tammer_1990's 4.15(12) x 10^-62 C^4 m^4 J^-3 = 666 au. That last value rests on a field integral that tammer_1992 found wrong: every K, mK and A_K of tammer_1990 is to be multiplied by 1.0637 +- 0.0031, and the recalibrated gamma is 4.68(14) x 10^-62 = 751 +- 22 au (tammer_1992/table2_gamma_H2), above the theory's 726 rather than below it."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+component = "K"
+
+[[datasets]]
+id = "expt_dc_kerr_D2"
+material = "D2"
+points = [["tammer_huttner_1990", "6328", "669", "26"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["tammer_1990"]
+notes = "p. 4852: Tammer and Huttner's D2 gamma^K '669(26)' at 6328 A, against the theory's 712. = tammer_1990's 4.17(16) x 10^-62 C^4 m^4 J^-3 (re-pointed 2026-09-26). Superseded calibration: tammer_1992 multiplies every K, mK and A_K of tammer_1990 by 1.0637 +- 0.0031 but did not re-evaluate D2; with that factor alone the D2 gamma would be about 4.73 x 10^-62 = 758 au (computed, not a published value; see tammer_1990's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+component = "K"
+
+[[datasets]]
+id = "ac_kerr_estimate"
+material = "H2"
+points = [["theory", "6758", "796.7"], ["rosasco_hurst", "6758", "789", "38"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "p. 4853: the ac (optical) Kerr gamma^K for 'w1 = 14797, w2 = 17751 cm^-1, and w_L^2 = 0.02215 a.u.', gamma(-w_s; w1, w2, -w2), estimated from the dc Kerr fits (Eqs. 20, 22) with the vibrational part ignored: 796.7 (H2); experiment (Ref. 18, Rosasco and Hurst, J. Opt. Soc. Am. B 3, 1251 (1986) = rosasco_1986) 789 +- 38 (row rosasco_hurst, a reproduction). Process 'other' (two-frequency optical Kerr); the wavelength column is the w1 beam, 1/14797 cm^-1 = 6758 A (computed here); the w2 beam is 5633 A."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "other"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "ac_kerr_estimate_D2"
+material = "D2"
+points = [["theory", "6758", "771.9"], ["rosasco_hurst", "6758", "774", "39"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "p. 4853: as ac_kerr_estimate, D2: 771.9 (theory), 774 +- 39 (Rosasco and Hurst 1986, row rosasco_hurst, a reproduction)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "other"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "shelton_static_H2"
+material = "H2"
+points = [["shelton", "inf", "686", "4"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "pp. 4845, 4852: 'the experimentally derived static, averaged, gamma_par (electronic) for H2 is 686 +- 4', from Shelton's ESHG data with the theoretical vibrational-rotational part removed (21-point weighted fit, Table XV); the theory's static value is 682.7 (683)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "shelton_static_D2"
+material = "D2"
+points = [["shelton", "inf", "669"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "p. 4852: 'the corresponding values for D2 are 669 and 663.1' (Shelton's experimental static electronic value and the theory's)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[formulas]]
+id = "fit_theory"
+material = "H2"
+equation = "Eq. (20), p. 4852, with Table XV (tbl_b2bf2e0b7efa), row 'Theory, 7 points (unweighted)'"
+printed = "gamma_par(elec) = gamma_0 (1 + A w_L^2 + B w_L^4); Theory, 7 points (unweighted): gamma_0 684.4, A 6.034, B 44.27"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 = 6 w^2 for ESHG, w in atomic units (hartree); gamma in atomic units. Process eshg (fitted), convention T, part electronic (rovibrationally averaged, 295 K), component parallel."
+state = "none (per molecule)"
+density = "none"
+range = "the seven laser wavelengths 13 190-4880 A (footnote a)"
+coefficients = { gamma_0 = "684.4", A = "6.034", B = "44.27" }
+check = "Reproduces Table VII's elec column: 715.5 against 715.3 at 0.03454 a.u. and 983.3 against 983.6 at 0.09337 a.u. (checked 2026-09-26)."
+notes = "The authors' fit to their own gamma_par^ESHG(elec) of H2 (Table VII) at the seven laser frequencies (footnote a); 'Our actual theoretical value (unfitted) is 682.7' (footnote b). Same form as Shelton's gamma_0 [1 + A nu_L^2 + B nu_L^4] with the frequency in hartree instead of cm^-1 (A_cm2 = A / 219474.63^2, B_cm4 = B / 219474.63^4)."
+
+[[formulas]]
+id = "fit_expt_7u"
+material = "H2"
+equation = "Eq. (20), p. 4852, with Table XV (tbl_b2bf2e0b7efa), row 'Expt., 7 points (unweighted)'"
+printed = "gamma_par(elec) = gamma_0 (1 + A w_L^2 + B w_L^4); Expt., 7 points (unweighted): gamma_0 685.7, A 5.953, B 48.84"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 = 6 w^2 for ESHG, w in atomic units (hartree); gamma in atomic units. Process eshg (fitted), convention T, part electronic (rovibrationally averaged, 295 K), component parallel."
+state = "none (per molecule)"
+density = "none"
+range = "the seven laser wavelengths 13 190-4880 A (footnote a)"
+coefficients = { gamma_0 = "685.7", A = "5.953", B = "48.84" }
+check = "Not checked against data (the experimental points are not tabulated here)."
+notes = "Fit to 'experimental' gamma_par^ESHG(elec, H2) = T(expt) x gamma(He, theory) minus the theoretical vibrational-rotational part (p. 4852) at the seven frequencies. Same form as Shelton's gamma_0 [1 + A nu_L^2 + B nu_L^4] with the frequency in hartree instead of cm^-1 (A_cm2 = A / 219474.63^2, B_cm4 = B / 219474.63^4)."
+
+[[formulas]]
+id = "fit_expt_7w"
+material = "H2"
+equation = "Eq. (20), p. 4852, with Table XV (tbl_b2bf2e0b7efa), row 'Expt., 7 points (weighted)'"
+printed = "gamma_par(elec) = gamma_0 (1 + A w_L^2 + B w_L^4); Expt., 7 points (weighted): gamma_0 686.6, A 5.746, B 53.27"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 = 6 w^2 for ESHG, w in atomic units (hartree); gamma in atomic units. Process eshg (fitted), convention T, part electronic (rovibrationally averaged, 295 K), component parallel."
+state = "none (per molecule)"
+density = "none"
+range = "the seven laser wavelengths 13 190-4880 A (footnote a)"
+coefficients = { gamma_0 = "686.6", A = "5.746", B = "53.27" }
+check = "Not checked against data (the experimental points are not tabulated here)."
+notes = "As fit_expt_7u, 'Values at lambda = 13 190 and 10 640 A weighted by a factor of 4' (footnote c). Same form as Shelton's gamma_0 [1 + A nu_L^2 + B nu_L^4] with the frequency in hartree instead of cm^-1 (A_cm2 = A / 219474.63^2, B_cm4 = B / 219474.63^4)."
+
+[[formulas]]
+id = "fit_expt_21u"
+material = "H2"
+equation = "Eq. (20), p. 4852, with Table XV (tbl_b2bf2e0b7efa), row 'Expt., 21 points (unweighted)'"
+printed = "gamma_par(elec) = gamma_0 (1 + A w_L^2 + B w_L^4); Expt., 21 points (unweighted): gamma_0 685.2, A 6.026, B 47.57"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 = 6 w^2 for ESHG, w in atomic units (hartree); gamma in atomic units. Process eshg (fitted), convention T, part electronic (rovibrationally averaged, 295 K), component parallel."
+state = "none (per molecule)"
+density = "none"
+range = "the seven laser wavelengths 13 190-4880 A (footnote a) or Sheltons 21 frequencies"
+coefficients = { gamma_0 = "685.2", A = "6.026", B = "47.57" }
+check = "Not checked against data (the experimental points are not tabulated here)."
+notes = "As fit_expt_7u with 'All the frequencies used in Ref. 4' (Shelton 1990). Same form as Shelton's gamma_0 [1 + A nu_L^2 + B nu_L^4] with the frequency in hartree instead of cm^-1 (A_cm2 = A / 219474.63^2, B_cm4 = B / 219474.63^4)."
+
+[[formulas]]
+id = "fit_expt_21w"
+material = "H2"
+equation = "Eq. (20), p. 4852, with Table XV (tbl_b2bf2e0b7efa), row 'Expt., 21 points (weighted)'"
+printed = "gamma_par(elec) = gamma_0 (1 + A w_L^2 + B w_L^4); Expt., 21 points (weighted): gamma_0 686.4, A 5.780, B 52.30"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 = 6 w^2 for ESHG, w in atomic units (hartree); gamma in atomic units. Process eshg (fitted), convention T, part electronic (rovibrationally averaged, 295 K), component parallel."
+state = "none (per molecule)"
+density = "none"
+range = "the seven laser wavelengths 13 190-4880 A (footnote a) or Sheltons 21 frequencies"
+coefficients = { gamma_0 = "686.4", A = "5.780", B = "52.30" }
+check = "Not checked against data (the experimental points are not tabulated here)."
+notes = "'This was the fit published in Ref. 4' (footnote e): Shelton's H2 fit, reproduced; in Shelton's units A = 5.780 / 219474.63^2 = 1.200e-10 cm^2 and B = 52.30 / 219474.63^4 = 2.254e-20 cm^4 (computed here). Same form as Shelton's gamma_0 [1 + A nu_L^2 + B nu_L^4] with the frequency in hartree instead of cm^-1 (A_cm2 = A / 219474.63^2, B_cm4 = B / 219474.63^4)."

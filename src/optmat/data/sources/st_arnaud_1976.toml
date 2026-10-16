@@ -1,0 +1,159 @@
+citation = "J. M. St-Arnaud and T. K. Bose, \"Direct determination of the second refractivity virial coefficient of CH4\", J. Chem. Phys. 65, 4854 (1976)"
+doi = "10.1063/1.432959"
+library = "StArnaud_1976_DirectDeterminationSecond"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Direct (differential) determination of the second refractivity virial \
+coefficient after Buckingham et al.: two nearly equal stainless-steel optical cells \
+(path lengths 6.3238 and 6.3030 cm, 1.75 cm quartz windows) joined by a valve; the gas \
+in one cell is expanded into the other (density nearly halved) and the change of the \
+summed optical path is measured with a Hewlett-Packard 5525A heterodyne He-Ne laser \
+interferometer (6328 A), Eq. (8); seven expansions from 120-180 atm. A_R and B_P from \
+the absolute refractive index against pressure below 12 atm (Eq. 9; quartz Bourdon \
+gauge calibrated against a pressure standard). Bath at 29.72 C (+-0.01 C). Matheson \
+methane, 99.97 % minimum (pp. 4854-4855)."""
+notes = """Identity: VALIDATED_WITH_WARNINGS in the library (a caption warning only); first \
+page checked (pdf page 2: J. Chem. Phys. 65, 4854 (1976), received 23 June 1976; pdf \
+page 1 is the publisher's cover). Page numbers are journal pages (pdf page + 4852).
+
+DEFINITIONS (Eqs. 1-5, p. 4854): R_m = (n^2 - 1)/(n^2 + 2)/d = A_R + B_R d + C_R d^2, \
+d the molar density; (n - 1)/d = A_n + B_n d + ...; A_R = 2 A_n/3, B_R = 2 B_n/3 - \
+A_n^2/9. A_R is the package's molar_refractivity and B_R its \
+refractivity_virial_coefficient.
+
+TEMPERATURE: 'measurements were made for methane at 29.72 C' (p. 4855), i.e. \
+302.87 K; the table prints 302 K; the theory at 302.7 K (p. 4856). The B_R dataset \
+takes 302.87 K.
+
+ACCURACY: 'Our estimated error for A_R and B_R is one standard deviation for a least \
+squares fit' (p. 4856); no C_R was detected up to 180 atm; the window-distortion \
+correction to B_R, -0.08 cm^6/mol^2, was applied; path-length and volume changes \
+with pressure were neglected.
+
+A_R IS LOW: 6.533 +- 0.002 cm^3/mol at 6328 A is 0.62 % below the curated CH4 \
+dispersion at 632.99 nm (fit/CH4 default model, 6.574 cm^3/mol, computed \
+2026-09-25), 1.0 % below Buckingham and Graham's 6.600 at the same wavelength, and \
+the authors note it 'agrees well with the value of A_eps obtained from the dielectric \
+measurements' (p. 4855), a static value that should lie about 2 % lower. Olson's \
+6.614 at 5462 A is 0.07 % below the curated value there (6.618). The A_R dataset is \
+therefore excluded; B_R, measured differentially and independent of the absolute \
+pressure scale, is kept.
+
+Not extracted: B_P = -42.0 +- 0.4 cm^3/mol (this work) and -44.0 +- 3.0 (Olson), \
+density virial coefficients (no quantity); the Lennard-Jones parameters of the \
+theory row (epsilon/k = 148.6 K, sigma = 3.758 A, from viscosity; footnote a)."""
+
+[[datasets]]
+id = "B_R_this_work"
+material = "CH4"
+file = "CH4/st_arnaud_1976__B_R_this_work_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 1 'Our work': B_R = 6.60 +- 0.38 cm^6/mol^2 at 6328 A (He-Ne, air wavelength) and 29.72 C, the mean of seven direct (expansion) measurements from 120-180 atm; one standard deviation. The paper's rounded 302 K in the table."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 302.87
+
+[[datasets]]
+id = "A_R_this_work"
+material = "CH4"
+file = "CH4/st_arnaud_1976__A_R_this_work_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "excluded"
+notes = "Table 1 'Our work': A_R = 6.533 +- 0.002 cm^3/mol at 6328 A, 302 K, from the absolute refractive index below 12 atm (Eq. 9). EXCLUDED: 0.62 % below the curated CH4 dispersion at 632.99 nm and 1.0 % below Buckingham and Graham at the same wavelength, far beyond the stated one-sigma 0.002 (source notes)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_buckingham_graham_1974"
+material = "CH4"
+file = "CH4/st_arnaud_1976__A_R_buckingham_graham_1974_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["buckingham_1974"]
+notes = "Table 1 'Buckingham and Graham', 299 K, 6328 A: A_R = 6.600 +- 0.002 cm^3/mol (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "B_R_buckingham_graham_1974"
+material = "CH4"
+file = "CH4/st_arnaud_1976__B_R_buckingham_graham_1974_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["buckingham_1974"]
+notes = "Table 1 'Buckingham and Graham', 299 K, 6328 A: B_R = 7.15 +- 0.35 cm^6/mol^2, 'slightly higher than ours' (p. 4855)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 299.0
+
+[[datasets]]
+id = "A_R_olson_1975"
+material = "CH4"
+file = "CH4/st_arnaud_1976__A_R_olson_1975_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. D. Olson, J. Chem. Phys. 63, 474 (1975)"]
+notes = "Table 1 'Olson', 300 K, 5462 A: A_R = 6.614 +- 0.002 cm^3/mol (Ref. 9). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "B_R_olson_1975"
+material = "CH4"
+file = "CH4/st_arnaud_1976__B_R_olson_1975_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. D. Olson, J. Chem. Phys. 63, 474 (1975)"]
+notes = "Table 1 'Olson', 300 K, 5462 A: B_R = 5.5 +- 1.0 cm^6/mol^2, from refractive index against density (not a direct measurement). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 300.0
+
+[[datasets]]
+id = "B_R_kirkwood_theory"
+material = "CH4"
+file = "CH4/st_arnaud_1976__B_R_kirkwood_theory_CH4.csv"
+table = "tbl_e86bfa5ea90a"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1 'Kirkwood (theory)', 302 K: B_R = 6.11 cm^6/mol^2 (text: 6.1 at 302.7 K, p. 4856), the classical dipole-induced-dipole term B_DID = (2/3)(4 pi N_0 alpha)^2 alpha <R^-6> with a Lennard-Jones potential from viscosity (footnote a: epsilon/k = 148.6 K, sigma = 3.758 A). No wavelength is printed (filed at 'inf'; the alpha used is not stated). The authors' calculation, a check."
+[datasets.parameters]
+temperature_k = 302.7
+

@@ -1,0 +1,105 @@
+citation = "H. W. van der Hart, \"Ionization rates for He, Ne, and Ar subjected to laser light with wavelengths between 248.6 and 390 nm\", Phys. Rev. A 73, 023417 (2006)"
+doi = "10.1103/PhysRevA.73.023417"
+library = "VanderHart_2006_IonizationRatesHe"
+identity = "VALIDATED"
+kind = "theory"
+technique = """R-matrix Floquet theory: the Floquet Hamiltonian of the atom in a \
+monochromatic, constant-intensity field diagonalised in an R-matrix inner region, \
+with the ground state followed as a complex quasi-energy whose imaginary part gives \
+the ionisation rate (pp. 2-3). The residual ions are described by one target state, \
+the ground state of He+, Ne+ or Ar+ ('this single target state provides a good \
+description of the Ne+ and Ar+ ground states, as it is obtained through a CI \
+expansion', p. 2). He, Ne and Ar at 390 nm, intensities up to 2.5e14 W/cm2, and \
+multiphoton rates from 248.6 to 390 nm."""
+notes = """Journal pp. 023417-1 to -9 = PDF pages 1-9. Identity checked on the first \
+page (single author H. W. van der Hart, Queen's University Belfast) on 2026-09-29.
+
+EXTRACTED (tools/extract/vanderhart_2006.py), by data rule 8 (TC-699, TC-701): the \
+rates are printed in figures only. Fig. 6 (p. 8, library figure fig_1efe76bb16f6) draws \
+He (solid line), Ne (dashed) and Ar (dot-dashed) at 390 nm against the intensity, on \
+log-rate axes from 1e8 to 1e14 s-1 (the frame's bottom edge is unlabelled). It is an \
+image embedded in the PDF, 900 x 635 pixels at 300 dpi, read from those native pixels: \
+the axes calibrated from the frame's lines and inward ticks (every tick within 0.3 \
+pixel of the scale); each curve traced column by column from its crossing of the 1.30e14 \
+W/cm2 column and sampled every 0.05e14 W/cm2 on its smooth part (He 1.05-2.45, Ne \
+0.90-2.10, Ar 0.65-1.90), the peaks of Ne's resonances at 1.01 and 1.45e14 and of Ar's 3s2 3p5 3d left \
+out; a sample in a gap of the dashes interpolated between the nearest traced columns \
+within 10 pixels. One pixel is 3.4 % in the rate and 0.0033e14 W/cm2 in the intensity.
+
+THE CHECK of the reading: van der Hart 2007's Fig. 4 redraws the Ar curve as a vector \
+drawing (vanderhart_2007/fig4_floquet_Ar, TC-700). At the Ar samples this image's \
+reading is 0.97 to 1.04 times it (median 1.004), and 1.37 on the 3d resonance's peak \
+(0.90e14, left out). The overlay of the samples on the image was inspected \
+(2026-09-29). Hence 5 %.
+
+STATED IN THE TEXT (p. 8): 'The ADK rates are in best agreement with the R-matrix \
+Floquet rates for Ar, with a difference of about a factor 3 at an intensity of 2 x \
+10^14 W/cm2. At the same intensity, the difference is a factor 17 for Ne, while the \
+difference is a factor 150 for He.' Seven-photon ionisation rates of He between 280 \
+and 315 nm are '30% below those obtained using a time-dependent Hartree-Fock approach, \
+and 15% below previous density-matrix calculations'. The calculated ionisation \
+energies are not stated. Ionisation of Ar at 390 nm needs 5 photons in zero field and \
+6 at 1e14 W/cm2 (p. 3).
+
+POLARISATION: not stated in words; the Floquet channels are those of a linearly \
+polarised field (van der Hart 2007, the record's polarisation note)."""
+
+[[datasets]]
+id = "fig6_floquet_He"
+material = "He"
+file = "He/vanderhart_2006__fig6_floquet_He.csv"
+table = "fig_1efe76bb16f6"
+digitised = "raster"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6, He (solid line): the R-matrix Floquet rate at 390 nm, s-1, against W/cm2, read from the image (the record's notes), 1.05 to 2.45e14 W/cm2. The broad peaks near 1.6 and 1.9e14 are resonances of the Floquet calculation. 5 %: the reading, checked on Ar against the vector copy."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "R-matrix Floquet, one He+ target state"
+
+[[datasets]]
+id = "fig6_floquet_Ne"
+material = "Ne"
+file = "Ne/vanderhart_2006__fig6_floquet_Ne.csv"
+table = "fig_1efe76bb16f6"
+digitised = "raster"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6, Ne (dashed line, dotted beyond 1.75e14 W/cm2): the R-matrix Floquet rate at 390 nm, s-1, against W/cm2, read from the image (the record's notes), 0.90 to 2.10e14 W/cm2 without the peaks of its resonances at 1.01 and 1.45e14 (2p5 4s). 5 %: the reading, checked on Ar against the vector copy."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "R-matrix Floquet, one Ne+ target state"
+
+[[datasets]]
+id = "fig6_floquet_Ar"
+material = "Ar"
+file = "Ar/vanderhart_2006__fig6_floquet_Ar.csv"
+table = "fig_1efe76bb16f6"
+digitised = "raster"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6, Ar (dot-dashed line): the R-matrix Floquet rate at 390 nm, s-1, against W/cm2, read from the image (the record's notes), 0.65 to 1.90e14 W/cm2 without the 3d resonance's peak (0.90e14). The same curve as vanderhart_2007/fig4_floquet_Ar, the vector copy, which it matches within 4 %. 5 %."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "R-matrix Floquet, one Ar+ target state"

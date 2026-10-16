@@ -1,0 +1,1311 @@
+citation = "N. L. Boling, A. J. Glass and A. Owyoung, \"Empirical relationships for predicting nonlinear refractive index changes in optical solids\", IEEE J. Quantum Electron. QE-14, 601-608 (1978)"
+doi = "10.1109/jqe.1978.1069847"
+library = "Boling_1978_EmpiricalRelationshipsPredicting"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A model (the 'BGO formula'): a classical anharmonic (Duffing) oscillator with Wang's \
+conjecture gamma = q alpha^2 and the Lorentz local field gives n2 from the linear index \
+and its dispersion (Eq. 25, with the Clausius-Mossotti one-oscillator fit, Eq. 26), and \
+in terms of n_d and the Abbe number (Eq. 38). Compared with n2 measured by others: \
+ellipse rotation (Owyoung, Refs. 11-12; Table I) and time-resolved interferometry \
+(Milam and Weber, Refs. 14-15; Table III). No measurement of its own."""
+notes = """Journal pages 601-608 = pdf pages 1-8 (the pdf's page 8 continues with the start of \
+an unrelated paper, Kawakami and Ikeda, 'Transmission characteristics of a two-mode \
+optical waveguide', not extracted). Identity checked against the first page.
+
+DEFINITIONS (Gaussian units). p = alpha E_l cos(wt) + (1/6) gamma (E_l cos wt)^3 (Eq. 1, \
+p. 601); local field f = (n^2 + 2)/3 (Eq. 3); P(w) = chi(1) E + 3 chi(3)_1111(-w; w, w, -w) \
+E^3 with chi(3)_1111 = (f^4/24) sum N gamma (Eqs. 5-6, pp. 601-602); (n^2 - 1)/4 pi = f sum \
+N alpha (Eq. 7) and n2 = (12 pi/n) chi(3)_1111 = (f^4 pi/2n) sum N gamma (Eq. 8, p. 602). \
+The n2 of the tables are in esu ('10^13 n2 (esu)'), for n = n0 + n2 <E^2> as used by \
+Adair et al. 1989 (adair_1989, whose Eq. (6) is this paper's Eq. (38) with K = 68).
+
+N2 IN ESU (datasets, nonlinear_index_field). The n2 columns of Tables I and III, in \
+units of 1e-13 esu, converted to nothing: Table I (tbl_1104b7cc486c, p. 603), '10^13 \
+n2 measured (esu)*', reproduced from Owyoung's ellipse rotation (Refs. 11, 12, 'by \
+assuming that n2 is purely electronic in origin', part unknown), and '10^13 n2 \
+calculated' (Eqs. 25-26 with gs = 3; check); Table III (tbl_6d8d3f9d443b, p. 606), 'n2 \
+calc' (Eq. 38; check) and 'n2 exper' (Milam and Weber's TRI, Refs. 14-15, part total; \
+reproduced) with +-. The paper never writes n = n0 + n2 <E^2>: it defines n2 = (12 pi/n) \
+chi(3)_1111 (Eq. 8) with P(w) = chi(1) E + 3 chi(3)_1111 E^3 for the field E cos(wt) \
+(Eqs. 1-5), which is n = n0 + n2 <E^2> with <E^2> = E^2/2 (derived here, not stated); \
+Adair et al. 1989 (adair_1989) use the same n2 and Eq. (38). Fused silica: Table I n \
+1.456, measured 1.00, calculated 0.91; Table III n_d 1.458, nu_d 70, calculated 0.87, \
+measured 0.95 +- 0.10 (x 1e-13 esu). All cells checked against the table images \
+(2026-09-26). Errata: Table III's header '10^23' for the calculated column is a \
+misprint for 10^13 (a scale erratum per dataset; Eq. 38, in 10^-13 esu, reproduces the \
+column, and Fig. 2's axis is 'n2 (10^-13) CALCULATED'); EV-1's '0.91 +- 0.9' is 0.91 +- \
+0.09 (Fig. 2 draws its error bar from about 0.83 to 1.01). The silicate row's n_d \
+prints as '1:769' in the image (a speck; 1.769). Fig. 2 also plots CaF2, LiF, MgF2 and \
+KH2PO4, which Table III does not list (not digitised). Neither table states the \
+wavelength of its n2 ('not stated'); adair_1989's Table III lists the same TRI \
+references at 1.06 um.
+
+PART. Table I's values assume a purely electronic n2; Hellwarth, Cherlow and Yang (Ref. \
+16) found nuclear contributions of '29, 21, 15, 19, and 21 percent' for LaSF-7, SF-7, \
+ED-4, LSO and fused silica, 'all to within +-3 percent', and 'the n2's of Table I should \
+be multiplied by the factor (3 sigma + 4 A0 + 4 B0)/(3 sigma + 6 B0) to obtain the true \
+values, including both nuclear and electronic components ... this factor is 0.98, 1.00, \
+1.07, 1.08, and 1.16' for those glasses (p. 604). 'These interferometric measurements \
+[Table III] yield total values of n2, including both electronic and nuclear components' \
+(p. 606). The formula's constant gs = 3 was fitted to the ellipse-rotation values, so \
+'our equation also partially accounts for the Raman component' (p. 606).
+
+LINEAR INDICES (datasets). Table I's n (p. 603; wavelength not stated: the ellipse \
+rotation experiments' index is presumably meant, but the paper does not say) and \
+Table III's n_d (p. 606; at lambda_d = 0.58756 um, Eq. 32; 'the parameters customarily \
+used in glass manufacture [22]', the Schott catalogue, 1972, cited generally). Both are \
+inputs of the formulas: use 'check', assumed. Table III's Abbe numbers nu_d = (n_d - 1)/ \
+(n_F - n_C) (Eq. 31; lambda_F = 0.48613, lambda_C = 0.65627 um) have no quantity: silicate \
+27, EY-1 48, FR-5 52, ED-2 54, LHG-5 63, BK-7 64, LHG-6 66, EV-1 69, fused silica 70, \
+FK-5 70, fluoro-phosphate 81, FK-51 84 (image checked). Whether the wavelengths are in \
+air (as glass catalogues' are) is not said; the difference changes n_d by < 1e-5.
+
+OSCILLATOR PARAMETERS (Table II, p. 604; no quantity: the densities are those of the \
+dominant polarizable ion, not of particles available for ionisation). Columns N (10^22 \
+cm^-3, 'Calculated from composition'), Ns (10^22 cm^-3, 'Calculated from \
+Clausius-Mossotti equation') and s = Ns/N. a) oxide glasses and YAG, N = N_ox: fused silica 4.4, 13.2, 3.0; BK-7 4.5, 14.3, 3.1; LSO 3.9, 12.5, 3.2; FD-2 4.5, 13.4, 3.0; SF-7 4.1, 9.35, 2.3; YAG 5.5, 18.6, 3.4; EY-1 4.7, 14.1, 3.0. b) crystalline fluorides, N = N_F: LiF 6.12, 17.0, 2.78; NaF 3.67, 11.0, 3.00; MgF2 6.09, 18.0, 2.96; CaF2 5.24, 18.1, 3.45; BaF2 3.36, 17.1, 5.09; PbF2 4.05, 9.7, 2.40; SrF2 4.07, 18.0, 4.43 (image checked; 'FD-2' is printed in a) and appears nowhere else: ED-2 of Table III? Not decidable; registered as printed). 'For most of these materials, s ~ 3. Significant deviation is observed for the lead glass, SF-7' (p. 604); for oxide glasses g = 1 (gs = 3); for the fluorides 'most values of s were determined to lie between 3 and 4.5' and g = 1 'yielded an excellent fit' (Ref. 15). The omega0 of the fits are not given.
+
+OTHER RELATIONS (notes, not formulas with numbers). Fournier and Snitzer (Ref. 17) used \
+Wemple and DiDomenico's Sellmeier fits, n^2 - 1 = 4 pi (e^2/m) sN/(w0bar^2 - w^2) (Eq. \
+27), whose resonance relates to the Clausius-Mossotti one by w0bar^2 = 3 w0^2/(n^2 + 2) \
+(Eq. 28): 'For n = 1.5, this leads to values of n2 20 percent larger than those \
+predicted by (25)'. Wang's expression (Eq. 29, Ref. 5) with g = 1.2 and s = 4 differs from \
+Eq. (25) by the factor (n^2 + 2)^(3/2)/3.25 (Eq. 30), 2.7 for n = 1.5 (p. 605). Ns in terms \
+of Wemple's parameters: Ns = (E_d E_0/R_y^2)/(16 pi r0^3) (Eq. 41; R_y = 13.6 eV, r0 = \
+5.29e-11 m), with E_d E_0 ~ 150 eV^2 for most oxide glasses (p. 607). Accuracy claimed \
+(p. 607): 'one can be fairly confident of a calculated value of n2 to within about +-20 \
+percent for low dispersion, low index materials of cubic or amorphous structure'. \
+Ellipse rotation 'measured with +-7 percent precision' (p. 603).
+
+FIGURES. Fig. 1 (p. 603): measured against calculated n2 of Table I. Fig. 2 (p. 606): the \
+same for Table III (Eq. 38). Fig. 3 (p. 607): measured n2 against Eq. (39). Not \
+digitised.
+
+REPRODUCTIONS. white_1984 predicts the 1064-nm gamma of BK-10 'from Eq. (38) of Ref. 10' \
+(this paper) as 2.8 x 10^-16 cm^2/W. adair_1989 uses Eq. (38) as its Eq. (6) (K = 68, and \
+refits K = 48). santran_2004 cites the formula. refractiveindex.info has no page for this \
+source; its 'Milam' pages for BaF2, CaF2, LiF, MgF2 cite Milam, Weber and Glass (Appl. \
+Phys. Lett. 31, 822 (1977)), this paper's Ref. 15."""
+
+[[datasets]]
+id = "n_table1_FK-6"
+material = "FK-6"
+file = "FK-6/boling_1978__n_table1_FK-6.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_SiO2"
+material = "SiO2"
+file = "SiO2/boling_1978__n_table1_SiO2.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_BK7"
+material = "BK7"
+file = "BK7/boling_1978__n_table1_BK7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_LSO"
+material = "LSO"
+file = "LSO/boling_1978__n_table1_LSO.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_ED-4"
+material = "ED-4"
+file = "ED-4/boling_1978__n_table1_ED-4.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_EY-1"
+material = "EY-1"
+file = "EY-1/boling_1978__n_table1_EY-1.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_SF-7"
+material = "SF-7"
+file = "SF-7/boling_1978__n_table1_SF-7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_LaK-3"
+material = "LaK-3"
+file = "LaK-3/boling_1978__n_table1_LaK-3.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_YAG"
+material = "YAG"
+file = "YAG/boling_1978__n_table1_YAG.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n_table1_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/boling_1978__n_table1_LaSF-7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, column n (p. 603): the index listed with the ellipse-rotation n2 and used in Eq. (25); its wavelength and source are not stated."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_silicate_boling_1978"
+material = "silicate_boling_1978"
+file = "silicate_boling_1978/boling_1978__nd_table3_silicate_boling_1978.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_EY-1"
+material = "EY-1"
+file = "EY-1/boling_1978__nd_table3_EY-1.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_FR-5"
+material = "FR-5"
+file = "FR-5/boling_1978__nd_table3_FR-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_ED-2"
+material = "ED-2"
+file = "ED-2/boling_1978__nd_table3_ED-2.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_LHG-5"
+material = "LHG-5"
+file = "LHG-5/boling_1978__nd_table3_LHG-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_BK7"
+material = "BK7"
+file = "BK7/boling_1978__nd_table3_BK7.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_LHG-6"
+material = "LHG-6"
+file = "LHG-6/boling_1978__nd_table3_LHG-6.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_EV-1"
+material = "EV-1"
+file = "EV-1/boling_1978__nd_table3_EV-1.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_SiO2"
+material = "SiO2"
+file = "SiO2/boling_1978__nd_table3_SiO2.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_FK-5"
+material = "FK-5"
+file = "FK-5/boling_1978__nd_table3_FK-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_fluorophosphate_boling_1978"
+material = "fluorophosphate_boling_1978"
+file = "fluorophosphate_boling_1978/boling_1978__nd_table3_fluorophosphate_boling_1978.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "nd_table3_FK-51"
+material = "FK-51"
+file = "FK-51/boling_1978__nd_table3_FK-51.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table III, column n_d (p. 606), at the d line (0.58756 um, Eq. 32; air or vacuum not stated): the input of Eq. (38), with the Abbe number (source notes); its source is not stated per glass (the Schott catalogue, Ref. 22, is cited for the parameters in general)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n2_measured_table1_FK-6"
+material = "FK-6"
+file = "FK-6/boling_1978__n2_measured_table1_FK-6.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_FK-6"
+material = "FK-6"
+file = "FK-6/boling_1978__n2_calculated_table1_FK-6.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_SiO2"
+material = "SiO2"
+file = "SiO2/boling_1978__n2_measured_table1_SiO2.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_SiO2"
+material = "SiO2"
+file = "SiO2/boling_1978__n2_calculated_table1_SiO2.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_BK7"
+material = "BK7"
+file = "BK7/boling_1978__n2_measured_table1_BK7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_BK7"
+material = "BK7"
+file = "BK7/boling_1978__n2_calculated_table1_BK7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_LSO"
+material = "LSO"
+file = "LSO/boling_1978__n2_measured_table1_LSO.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_LSO"
+material = "LSO"
+file = "LSO/boling_1978__n2_calculated_table1_LSO.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_ED-4"
+material = "ED-4"
+file = "ED-4/boling_1978__n2_measured_table1_ED-4.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_ED-4"
+material = "ED-4"
+file = "ED-4/boling_1978__n2_calculated_table1_ED-4.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_EY-1"
+material = "EY-1"
+file = "EY-1/boling_1978__n2_measured_table1_EY-1.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_EY-1"
+material = "EY-1"
+file = "EY-1/boling_1978__n2_calculated_table1_EY-1.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_SF-7"
+material = "SF-7"
+file = "SF-7/boling_1978__n2_measured_table1_SF-7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_SF-7"
+material = "SF-7"
+file = "SF-7/boling_1978__n2_calculated_table1_SF-7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_LaK-3"
+material = "LaK-3"
+file = "LaK-3/boling_1978__n2_measured_table1_LaK-3.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_LaK-3"
+material = "LaK-3"
+file = "LaK-3/boling_1978__n2_calculated_table1_LaK-3.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_YAG"
+material = "YAG"
+file = "YAG/boling_1978__n2_measured_table1_YAG.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_YAG"
+material = "YAG"
+file = "YAG/boling_1978__n2_calculated_table1_YAG.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table1_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/boling_1978__n2_measured_table1_LaSF-7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, R. W. Hellwarth, and N. George, \"Intensity induced changes in optical polarizations in glasses,\" Phys. Rev. B5, pp. 628-633, 1972; and A. Owyoung, \"Ellipse rotation studies in laser host materials,\" IEEE J. Quantum Electron., vol. QE-9, pp. 1064-1069, 1973", "A. Owyoung, \"Nonlinear refractive index measurements in laser media,\" in Laser Induced Damage in Optical Materials, NBS Special Publication 387, A. J. Glass and A. H. Guenther, Eds. U.S. Govt. Printing Office: 1973"]
+notes = "Table I, '10^13 n2 measured (esu)*' (p. 603): 'Calculated from results of ellipse rotation experiments [11],[12] by assuming that n2 is purely electronic in origin' (footnote *). The experiments measured the symmetric combination (chi1111 + chi1221 + 2 chi1122)/6 'with +-7 percent precision' (p. 603); these values are 'neither the true values of n2, including all nuclear components, nor are they solely the electronic portion' (p. 604): part unknown (source notes give the correction factors for five glasses). Wavelength not stated."
+[datasets.uncertainty]
+relative = 0.07
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "unknown"
+coefficient = "self"
+technique = "ellipse rotation"
+
+[[datasets]]
+id = "n2_calculated_table1_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/boling_1978__n2_calculated_table1_LaSF-7.csv"
+table = "tbl_1104b7cc486c"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, '10^13 n2 calculated' (p. 603): 'From equations (25) and (26), with (gs) = 3 and using a curve fitting procedure to obtain Ns and omega0' (footnote dagger); the model's 'electronic contribution to n2', whose fitted gs 'partially accounts for the Raman component' (p. 606). Formula bgo_oscillator; wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_calculated_table3_silicate_boling_1978"
+material = "silicate_boling_1978"
+file = "silicate_boling_1978/boling_1978__n2_calculated_table3_silicate_boling_1978.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_silicate_boling_1978"
+material = "silicate_boling_1978"
+file = "silicate_boling_1978/boling_1978__n2_measured_table3_silicate_boling_1978.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam and M. J. Weber, \"Measurement of nonlinear refractive index coefficients using time resolved interferometry: Application to optical materials for high power neodymium lasers,\" J. Appl. Phys., vol. 47, pp. 2497-2501, 1976", "D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett., to be published"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_EY-1"
+material = "EY-1"
+file = "EY-1/boling_1978__n2_calculated_table3_EY-1.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_EY-1"
+material = "EY-1"
+file = "EY-1/boling_1978__n2_measured_table3_EY-1.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam and M. J. Weber, \"Measurement of nonlinear refractive index coefficients using time resolved interferometry: Application to optical materials for high power neodymium lasers,\" J. Appl. Phys., vol. 47, pp. 2497-2501, 1976", "D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett., to be published"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The same value is in weber_1978 Table 1: EY-1 4.57 +- 0.77 x 10^-20 m^2/W, n_D 1.626, reference d (Bliss, Speck and Simmons, Appl. Phys. Lett. 25, 728 (1974)): 1.773 +- 0.299 x 10^-13 esu by Eq. (18), so this row is Bliss et al.'s measurement, not Milam and Weber's (computed 2026-09-27)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_FR-5"
+material = "FR-5"
+file = "FR-5/boling_1978__n2_calculated_table3_FR-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_FR-5"
+material = "FR-5"
+file = "FR-5/boling_1978__n2_measured_table3_FR-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1976"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The original is milam_1976 Table I (Hoya FR-5, 2.1 +- 0.4 x 10^-13 esu at 1064 nm, 125-ps pulses, linear polarization): agrees with the printed 2.1 +- 0.4."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_ED-2"
+material = "ED-2"
+file = "ED-2/boling_1978__n2_calculated_table3_ED-2.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_ED-2"
+material = "ED-2"
+file = "ED-2/boling_1978__n2_measured_table3_ED-2.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1976"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The original is milam_1976 Table I (Owens-Illinois ED-2, 1.41 +- 0.14 x 10^-13 esu at 1064 nm, 125-ps pulses, linear polarization): agrees with the printed 1.41 +- 0.14."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_LHG-5"
+material = "LHG-5"
+file = "LHG-5/boling_1978__n2_calculated_table3_LHG-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_LHG-5"
+material = "LHG-5"
+file = "LHG-5/boling_1978__n2_measured_table3_LHG-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam and M. J. Weber, \"Measurement of nonlinear refractive index coefficients using time resolved interferometry: Application to optical materials for high power neodymium lasers,\" J. Appl. Phys., vol. 47, pp. 2497-2501, 1976", "D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett., to be published"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The same value is in weber_1978 Table 1: LHG-5 3.15 +- 0.32 x 10^-20 m^2/W, n_D 1.541, reference e (Milam and Weber, IEEE J. Quantum Electron. QE-12, 512 (1976)): 1.158 +- 0.118 x 10^-13 esu by Eq. (18) (computed 2026-09-27)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_BK7"
+material = "BK7"
+file = "BK7/boling_1978__n2_calculated_table3_BK7.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_BK7"
+material = "BK7"
+file = "BK7/boling_1978__n2_measured_table3_BK7.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1976"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The original is milam_1976 Table I (Schott BK 7, 1.24 +- 0.12 x 10^-13 esu at 1064 nm, 125-ps pulses, linear polarization): agrees with the printed 1.24 +- 0.12."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_LHG-6"
+material = "LHG-6"
+file = "LHG-6/boling_1978__n2_calculated_table3_LHG-6.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_LHG-6"
+material = "LHG-6"
+file = "LHG-6/boling_1978__n2_measured_table3_LHG-6.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam and M. J. Weber, \"Measurement of nonlinear refractive index coefficients using time resolved interferometry: Application to optical materials for high power neodymium lasers,\" J. Appl. Phys., vol. 47, pp. 2497-2501, 1976", "D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett., to be published"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The same value is in weber_1978 Table 1: LHG-6 2.76 +- 0.28 x 10^-20 m^2/W, n_D 1.532, reference e (Milam and Weber, IEEE J. Quantum Electron. QE-12, 512 (1976)): 1.009 +- 0.102 x 10^-13 esu by Eq. (18) (computed 2026-09-27)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_EV-1"
+material = "EV-1"
+file = "EV-1/boling_1978__n2_calculated_table3_EV-1.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_EV-1"
+material = "EV-1"
+file = "EV-1/boling_1978__n2_measured_table3_EV-1.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam and M. J. Weber, \"Measurement of nonlinear refractive index coefficients using time resolved interferometry: Application to optical materials for high power neodymium lasers,\" J. Appl. Phys., vol. 47, pp. 2497-2501, 1976", "D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett., to be published"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The same value is in weber_1978 Table 1: EV-1 2.53 +- 0.25 x 10^-20 m^2/W, n_D 1.507, reference e (Milam and Weber, IEEE J. Quantum Electron. QE-12, 512 (1976)): 0.910 +- 0.090 x 10^-13 esu by Eq. (18), which confirms the erratum 0.9 -> 0.09 (computed 2026-09-27)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_SiO2"
+material = "SiO2"
+file = "SiO2/boling_1978__n2_calculated_table3_SiO2.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_SiO2"
+material = "SiO2"
+file = "SiO2/boling_1978__n2_measured_table3_SiO2.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1976"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The original is milam_1976 Table I (Dynasil 4000, 0.95 +- 0.10 x 10^-13 esu at 1064 nm, 125-ps pulses, linear polarization): agrees with the printed 0.95 +- 0.10."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_FK-5"
+material = "FK-5"
+file = "FK-5/boling_1978__n2_calculated_table3_FK-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_FK-5"
+material = "FK-5"
+file = "FK-5/boling_1978__n2_measured_table3_FK-5.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1976"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The original is milam_1976 Table I (Hoya 'FC 5', 1.07 +- 0.11 x 10^-13 esu at 1064 nm, 125-ps pulses, linear polarization): agrees with the printed 1.07 +- 0.11."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_fluorophosphate_boling_1978"
+material = "fluorophosphate_boling_1978"
+file = "fluorophosphate_boling_1978/boling_1978__n2_calculated_table3_fluorophosphate_boling_1978.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_fluorophosphate_boling_1978"
+material = "fluorophosphate_boling_1978"
+file = "fluorophosphate_boling_1978/boling_1978__n2_measured_table3_fluorophosphate_boling_1978.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam and M. J. Weber, \"Measurement of nonlinear refractive index coefficients using time resolved interferometry: Application to optical materials for high power neodymium lasers,\" J. Appl. Phys., vol. 47, pp. 2497-2501, 1976", "D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett., to be published"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The same value is in weber_1978 Table 1: A86-82 (fluorophosphate, n_D 1.492) 2.0 +- 0.4 x 10^-20 m^2/W, reference e (Milam and Weber, IEEE J. Quantum Electron. QE-12, 512 (1976)): 0.712 +- 0.142 x 10^-13 esu by Eq. (18), so this 'fluoro-phosphate' (n_d 1.492, nu_d 81) is presumably A86-82 (computed 2026-09-27)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[datasets]]
+id = "n2_calculated_table3_FK-51"
+material = "FK-51"
+file = "FK-51/boling_1978__n2_calculated_table3_FK-51.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-23
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III, 'n2 calc x 10^23*' (p. 606): 'Calculated using the Abbe number formula (38)' (footnote *), formula bgo_abbe, from the n_d and nu_d of the same row. The header's 10^23 is a misprint for 10^13 (scale erratum). Wavelength not stated (the long-wavelength limit)."
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_measured_table3_FK-51"
+material = "FK-51"
+file = "FK-51/boling_1978__n2_measured_table3_FK-51.csv"
+table = "tbl_6d8d3f9d443b"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1976"]
+notes = "Table III, 'n2 exper x 10^13 dagger' with its +- (p. 606): 'Measured by interferometric technique [14],[15]' (footnote dagger), Milam and Weber's time-resolved interferometry, which 'yield total values of n2, including both electronic and nuclear components' (p. 606): part total. Wavelength not stated here (adair_1989's Table III gives the same TRI references at 1.06 um). The original is milam_1976 Table I (Schott FK 51, 0.69 +- 0.07 x 10^-13 esu at 1064 nm, 125-ps pulses, linear polarization): agrees with the printed 0.69 +- 0.07."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n2 = (12 pi/n) chi(3)_1111 for the field E cos(wt) (Eqs. 1-8, pp. 601-602); n = n0 + n2 <E^2> is implied, not written"
+part = "total"
+coefficient = "self"
+technique = "time-resolved interferometry"
+
+[[formulas]]
+id = "bgo_oscillator"
+equation = "Eqs. (25)-(26), p. 603"
+printed = "n2 = (gs) (n^2 + 2)^2 (n^2 - 1)^2 / (48 pi n hbar omega0 (Ns)), with (4 pi/3) (n^2 + 2)/(n^2 - 1) = 1/(N alpha) = (omega0^2 - omega^2) / ((e^2/m) (Ns))"
+variable = "n the linear index; omega0 and Ns the resonance frequency and the product of the number density and oscillator strength of the one dominant constituent, from a least-squares Clausius-Mossotti fit of the dispersion (Eq. 26); Gaussian units, n2 in esu"
+coefficients = { gs = "3" }
+check = "Not reproducible here: Table I's calculated column needs each glass's fitted omega0, which the paper does not give (Ns is in Table II for six of them) (checked 2026-09-26)."
+notes = "gs = 3 'was determined to yield the best fit' to the oxide-glass ellipse-rotation n2 (p. 603); with s ~ 3 (Table II) this is g = 1. The n2 it gives is 'the electronic contribution', though the fitted gs absorbs part of the Raman one (p. 606)."
+
+[[formulas]]
+id = "bgo_abbe"
+equation = "Eq. (38), p. 605"
+printed = "n2 (10^-13 ESU) = 68 (n_d - 1) (n_d^2 + 2)^2 / ( nu_d [1.517 + (n_d^2 + 2)(n_d + 1) nu_d / (6 n_d)]^(1/2) )"
+variable = "n_d the index at the d line (0.58756 um), nu_d = (n_d - 1)/(n_F - n_C) the Abbe number (Eqs. 31-32); n2 in 10^-13 esu"
+coefficients = { K = "68", constant = "1.517" }
+check = "Reproduces Table III's calculated column (p. 606) from its printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (e.g. FK-51 0.699 vs 0.70, silicate 8.305 vs 8.31); fused silica gives 0.833 against the printed 0.87 (-4.3 %): the printed nu_d = 70 does not reproduce it, a nu_d of about 68 would (computed 2026-09-26; which input the authors used is not known)."
+notes = "The 'Abbe number formula', from Eq. (37) with the standard wavelengths and gs = 3 (Ref. 21, Glass, UCRL-50021-72, 1975). Adair et al. 1989 print it as their Eq. (6) with K = 68 and refit K = 48 for crystals (adair_1989); White et al. 1984 used it for BK-10 (white_1984). The general form, Eq. (37): n2 = (gs)(e^2/6m)/(omega_F^2 - omega_C^2) (n_d^2 + 2)^2 (n_d - 1)/(hbar nu_d) [omega_d^2 + (nu/6)(omega_F^2 - omega_C^2)(n_d^2 + 2)(n_d + 1)/n_d]^(-1/2)."
+
+[[formulas]]
+id = "empirical_39"
+equation = "Eq. (39), p. 606"
+printed = "n2 (10^-13 ESU) = 391 (n_d - 1) / nu_d^(5/4)"
+variable = "n_d, nu_d as in Eq. (38); n2 in 10^-13 esu"
+coefficients = { A = "391" }
+check = "No value computed from it is printed (only Fig. 3). Against Table III's measured values it gives, e.g., fused silica 0.88 (measured 0.95 +- 0.10), BK-7 1.12 (1.24 +- 0.12), silicate 4.89 (4.4 +- 0.7) (computed 2026-09-26)."
+notes = "'it is not difficult to generate, by simple examination of data, a function of nu_d and n_d involving only one constant that fits experimental data better than any of the derived expressions. One such function is' (p. 606): a fit, not a model."
+
+[[errata]]
+dataset = "n2_calculated_table3_silicate_boling_1978"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_EY-1"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_FR-5"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_ED-2"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_LHG-5"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_BK7"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_LHG-6"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_EV-1"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_SiO2"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_FK-5"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_fluorophosphate_boling_1978"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_calculated_table3_FK-51"
+row = ""
+column = "scale"
+printed = "1e-23"
+corrected = "1e-13"
+reason = "Table III's header prints 'n2 calc x 10^23' (checked on the table image); the column is n2 in units of 1e-13 esu, like the measured column 'n2 exper x 10^13'."
+evidence = "Eq. (38), which gives 'n2 (10^-13 ESU)' (p. 605), reproduces the column from the printed n_d and nu_d to within 0.4 % for eleven of the twelve glasses (computed 2026-09-26); Fig. 2 (p. 606) plots these values on the axis 'n2 (10^-13) CALCULATED'."
+
+[[errata]]
+dataset = "n2_measured_table3_EV-1"
+row = "1"
+column = "sigma"
+printed = "0.9"
+corrected = "0.09"
+reason = "Table III prints EV-1's measured n2 as '0.91 +- 0.9' (checked on the image): a misplaced decimal point of the uncertainty."
+evidence = "Fig. 2 (p. 606) plots EV-1 at a calculated 1.00 and a measured 0.91 with an error bar from about 0.83 to 1.01, i.e. +-0.09, not +-0.9 (which would run from 0.01 to 1.81 and is not drawn); every other row of the column carries about 10-20 %."

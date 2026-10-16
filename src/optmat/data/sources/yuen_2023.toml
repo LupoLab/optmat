@@ -1,0 +1,374 @@
+citation = "C. H. Yuen, P. Modak, Y. Song, S.-F. Zhao and C. D. Lin, \"Modeling the sequential dissociative double ionization of O2 by ultrashort intense infrared laser pulses\", Phys. Rev. A 107, 013112 (2023)"
+doi = "10.1103/PhysRevA.107.013112"
+library = "Yuen_2023_ModelingSequentialDissociative"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The density-matrix model of sequential double ionisation (DM-SDI; Yuen and \
+Lin 2022, yuen_2022) extended to O2, Eqs. (1): MO-ADK rates (Tong et al. 2002) from \
+O2 to the O2+ X 2Pi_g, a 4Pi_u and b 4Sigma_g- states and from these to eight O2^2+ \
+states (Table II); the a and b states coupled by the field, and, new here, couplings \
+between the dication states (Table IV); fixed nuclei at R = 1.21 angstrom, isotropic \
+alignment average, KER spectra convolved with Gaussians of 0.4 eV resolution. Where \
+one orbital leads to several dication states of one configuration (states 1-3, \
+states 4-5), one effective binding energy is used, the multiplicity-weighted mean of \
+the state energies (E_b = dE1/2 + dE2/4 + dE3/4; dE4/3 + 2 dE5/3), with rate weights \
+(p. 3). Electronic structure: SA-CASSCF/CASPT2 with the ANO-L basis in OpenMolcas \
+at R = 1.21 angstrom, 1sigma_g and 1sigma_u frozen, active space 2sigma_g, 2sigma_u, \
+3sigma_g, 1pi_u, 1pi_g and 3sigma_u; SA3-CASSCF(11,8) for the O2+ a-b dipole, SA8- \
+and SA6-CASSCF(10,8)/CASPT2 for the triplet and singlet O2^2+ states. Structure \
+parameters by the method of Zhao et al. 2010 (zhao_2010)."""
+notes = """Journal pages 013112-1 to -10 = PDF pages 1-10; the library copy is the version \
+of record. Identity checked on PDF p. 1 (C. H. Yuen, P. Modak, Yan Song, Song-Feng \
+Zhao and C. D. Lin; received 19 October 2022, published 24 January 2023) on \
+2026-10-09. The register entry is TC-956.
+
+THE PULSE OF THE MODEL (p. 4): 'a linearly polarized Gaussian laser pulse with peak \
+intensity at 1.2 x 10^15 W/cm2, central wavelength of 800 nm, and pulse duration of 8 \
+fs' (Fig. 2, against Voss et al. 2004 and Wu et al. 2010, the latter's spectrum \
+shifted by 0.8 eV; Wu et al. used 780 nm, 1e15 W/cm^2). The pulse form is that of \
+yuen_2022 (the duration an intensity FWHM). Also 564 and 1675 nm (Fig. 7), aligned and \
+antialigned distributions (Fig. 8), intensities around 12 x 10^14 W/cm^2 and a volume \
+average (Figs. 9-10). 'the ratios between the peaks could vary by about +-20% when the \
+peak intensities vary also by +-20%' (p. 8).
+
+TABLE I (p. 2): taken. I_p 'Experimental vertical ionization potential ... to the O2+ \
+states [36]' (Baltzer et al. 1992): 12.3, 16.7 and 18.2 eV, the same as zhao_2010's \
+Table IV (also Baltzer et al.); a copy, not fitted beside it. The C_lm are captioned \
+'structure parameters of the O2 orbitals for MO-ADK tunnel ionization rates [37]' \
+(ref. 37 = Zhao et al. 2010) but are not zhao_2010's printed values (TC-956): HOMO \
+1pi_g {0.69, 0.06} against zhao_2010's {0.52, 0.03} (Table III) and zhao_2017's {0.64, \
+0.04}; 1pi_u {1.86, 0.36, 0.02} against {2.04, 0.33, 0.01}; 3sigma_g {3.49, 2.06, \
+0.25} against {3.05, 1.59, 0.08} (Table V). The ratios differ by orbital and by l, so \
+it is not a change of normalisation. They are recorded as this paper's (use = check).
+
+TABLE II (p. 2): taken. Calculated vertical I_p to the O2^2+ states with two valence \
+holes; 'The zero of energy is set to be the zero-point energy of O2', and 'The \
+calculated energies were systematically shifted such that the B 3Pi_g state has I_p = \
+43.46 eV' (the value of Bao et al.'s fit of the O2 normal Auger spectrum, p. 4); states \
+1 and 2 agree with Bao et al.'s 43.05 and 44.2 eV (p. 4). 'The indexes are arranged \
+according to the KER, which are obtained by subtracting the I_p by the dissociation \
+limit': I_p - KER is 35.68 eV for O+(4S) + O+(2D) and 32.35 eV for O+(4S) + O+(4S) \
+(checked by the script); the limits' energies are not printed, so no \
+dissociation_energy dataset is made. Fig. 1's caption: 'dissociation limits of states \
+2 and 4-7 are different from Table II since these states dissociate through spin-orbit \
+interactions with other states'; Table II's limit is the one each state reaches. The \
+parent O2+ states of each row are in the printed cells.
+
+TABLE III (p. 3): taken. 'Effective binding energies of the spin-up orbitals of the X \
+state and its structure parameters, assuming the remaining electron in the 1pi_g \
+orbital is spin down'; the same C_lm 'were also used for ionization from the a and b \
+states, as well as for the spin-down orbitals' (p. 3). The binding energies are model \
+inputs (multiplicity-weighted means), so ionization_model_parameter, not \
+ionization_energy.
+
+TABLE IV (p. 4): taken, material O2++ (registered in TC-954). Calculated transition \
+dipoles (au) between O2^2+ states, all along x (perpendicular to the axis): W 3Delta_u \
+- B 3Pi_g, B 3Sigma_u- - B 3Pi_g, A 3Sigma_u+ - B 3Pi_g, 1 1Sigma_u- - 1 1Pi_g ('the \
+dipole moment between W 3Delta_u and B 3Pi_g is double counted since both states are \
+doubly degenerate').
+
+TEXT VALUES (taken as points): the O2+ a-b transition dipole, '0.29 x atomic units' \
+(SA3-CASSCF(11,8)/CASPT2, p. 4, agreeing 'with the result from Ref. [35]', Marian et \
+al. 1982), with the calculated a-b excitation energy 1.42 eV against the experimental \
+1.5 eV; the quintet states 1 5Sigma_g+ and 1 5Pi_u at 45.5 and 46.9 eV (SA3-CASSCF(10,8) \
+/CASPT2) with KER 13.2 and 11.2 eV to O+(4S) + O+(4S) and O+(4S) + O+(2D) (p. 5); \
+footnote 41 (p. 10): 'The binding energies for the 1pi_g orbital of the a and b state \
+are 26.2 and 25.3 eV. Their structure parameters C_lm are {1.83, 0.23} and {1.72, \
+0.24}'. Not taken: the two lowest 2Pi_u states of O2+, 5.56 and 6.98 eV above X (p. 4, \
+unreachable by tunnelling, no state energy needed by any model here).
+
+FIGURES (not digitised; all vector drawings): Fig. 3, the populations of the O2^2+ \
+states 0-7 left by the 800 nm, 8 fs, 1.2e15 W/cm^2 pulse with the KER spectrum; Fig. 9, \
+the angle-averaged yield of states 0-3 and 6 against peak intensity; Fig. 7, the \
+yields at 800, 564 and 1675 nm; Figs. 2, 4-6, 8, 10, KER spectra. Fig. 1 (potential \
+curves) from Refs. 25 and 34."""
+
+[[datasets]]
+id = "table1_ip"
+material = "O2"
+file = "O2/yuen_2023__table1_ip_O2.csv"
+table = "tbl_8972394235c5"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["P. Baltzer, B. Wannberg, L. Karlsson, M. Carlsson Gothe and M. Larsson, Phys. Rev. A 45, 4374 (1992)"]
+notes = "Table I, 'I_p (eV)': 'Experimental vertical ionization potential' of O2 to the O2+ X, a and b states (rows), the hole in the configuration column. Equal to zhao_2010's table4_expt_O2 (the same reference); never fitted beside it."
+[datasets.parameters]
+kind = "vertical"
+initial_state = "O2 X 3Sigma_g-"
+final_state = "the O2+ state of the row"
+
+[[datasets]]
+id = "table1_cl_x"
+material = "O2"
+file = "O2/yuen_2023__table1_cl_x_O2.csv"
+table = "tbl_8972394235c5"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I, X 2Pi_g row: C_lm of the O2 HOMO (rows l = 2, 4). Captioned with ref. 37 (Zhao et al. 2010) but not zhao_2010's printed {0.52, 0.03} nor zhao_2017's {0.64, 0.04} (TC-956). R = 1.21 angstrom (p. 2)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1pi_g"
+m = 1
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table1_cl_a"
+material = "O2"
+file = "O2/yuen_2023__table1_cl_a_O2.csv"
+table = "tbl_8972394235c5"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I, a 4Pi_u row: C_lm of the O2 HOMO-1 (rows l = 1, 3, 5). zhao_2010's Table V prints {2.04, 0.33, 0.01} (TC-956). R = 1.21 angstrom."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table1_cl_b"
+material = "O2"
+file = "O2/yuen_2023__table1_cl_b_O2.csv"
+table = "tbl_8972394235c5"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I, b 4Sigma_g- row: C_lm of the O2 HOMO-2 (rows l = 0, 2, 4). zhao_2010's Table V prints {3.05, 1.59, 0.08} (TC-956). R = 1.21 angstrom."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_ip"
+material = "O2"
+file = "O2/yuen_2023__table2_ip_O2.csv"
+table = "tbl_4676ff61cd02"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table II, 'I_p (eV)': calculated (CASPT2) vertical double-ionisation energy of O2 to each O2^2+ state (rows: the table's index 0-7, x the state; the configuration, limit, KER and parents in the printed cells), from the zero-point level of O2 at R = 1.21 angstrom, shifted as a whole so that state 6 (B 3Pi_g) is 43.46 eV, Bao et al.'s fitted Auger value. So only the spacings are this calculation's. No uncertainty is stated."
+[datasets.parameters]
+kind = "vertical"
+initial_state = "O2 X 3Sigma_g- (v = 0)"
+final_state = "the O2^2+ state of the row"
+
+[[datasets]]
+id = "table2_ker_4s2d"
+material = "O2"
+file = "O2/yuen_2023__table2_ker_4s2d_O2.csv"
+table = "tbl_4676ff61cd02"
+quantity = "kinetic_energy_release"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table II, 'KER (eV)' of states 1, 2, 4 and 5 (rows: the table's index), limit O+(4S) + O+(2D): I_p less the limit, 35.68 eV above the zero-point level of O2 as implied by every row. States 2, 4 and 5 reach this limit through spin-orbit coupling to other states (Fig. 1 caption). The KER of a dication channel is filed under the neutral, O2, with the dication state in the channel (TC-954)."
+[datasets.parameters]
+channel = "O2 -> O2^2+ (the state of the row) -> O+(4S) + O+(2D)"
+kind = "calculated"
+state = "the O2^2+ state of the row"
+
+[[datasets]]
+id = "table2_ker_4s4s"
+material = "O2"
+file = "O2/yuen_2023__table2_ker_4s4s_O2.csv"
+table = "tbl_4676ff61cd02"
+quantity = "kinetic_energy_release"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table II, 'KER (eV)' of states 3, 6 and 7, limit O+(4S) + O+(4S): I_p less 32.35 eV. States 6 and 7 reach it through spin-orbit coupling (Fig. 1 caption). As table2_ker_4s2d otherwise."
+[datasets.parameters]
+channel = "O2 -> O2^2+ (the state of the row) -> O+(4S) + O+(4S)"
+kind = "calculated"
+state = "the O2^2+ state of the row"
+
+[[datasets]]
+id = "table3_eb"
+material = "O2+"
+file = "O2+/yuen_2023__table3_eb_O2+.csv"
+table = "tbl_4b5f5b8c6a36"
+quantity = "ionization_model_parameter"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table III, 'I_p (eV)': the effective binding energies of the spin-up 1pi_g, 1pi_u and 3sigma_g orbitals of O2+ X 2Pi_g (rows), the multiplicity-weighted means of the energies of the dication states each orbital leads to (p. 3), used in the MO-ADK rates of the second ionisation. Not ionisation energies of O2+ to any one state."
+[datasets.parameters]
+model = "moadk (DM-SDI, effective binding energy)"
+parameter = "E_b"
+
+[[datasets]]
+id = "table3_cl_1pig"
+material = "O2+"
+file = "O2+/yuen_2023__table3_cl_1pig_O2+.csv"
+table = "tbl_4b5f5b8c6a36"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III: C_lm of the spin-up 1pi_g orbital of O2+ X 2Pi_g (rows l = 2, 4), the remaining 1pi_g electron spin down, at R = 1.21 angstrom; obtained 'using the method in Ref. [37]' (Zhao et al. 2010). Larger than the neutral's (table1_cl_x): 1.63 against 0.69 for l = 2."
+[datasets.parameters]
+model = "moadk"
+orbital = "O2+ X 2Pi_g, spin-up 1pi_g"
+m = 1
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites, with the ion's asymptotic charge; the paper prints no definition"
+
+[[datasets]]
+id = "table3_cl_1piu"
+material = "O2+"
+file = "O2+/yuen_2023__table3_cl_1piu_O2+.csv"
+table = "tbl_4b5f5b8c6a36"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III: C_lm of the spin-up 1pi_u orbital of O2+ X 2Pi_g (rows l = 1, 3, 5). As table3_cl_1pig otherwise."
+[datasets.parameters]
+model = "moadk"
+orbital = "O2+ X 2Pi_g, spin-up 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites, with the ion's asymptotic charge; the paper prints no definition"
+
+[[datasets]]
+id = "table3_cl_3sigmag"
+material = "O2+"
+file = "O2+/yuen_2023__table3_cl_3sigmag_O2+.csv"
+table = "tbl_4b5f5b8c6a36"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III: C_lm of the spin-up 3sigma_g orbital of O2+ X 2Pi_g (rows l = 0, 2, 4). As table3_cl_1pig otherwise."
+[datasets.parameters]
+model = "moadk"
+orbital = "O2+ X 2Pi_g, spin-up 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites, with the ion's asymptotic charge; the paper prints no definition"
+
+[[datasets]]
+id = "note41_eb"
+material = "O2+"
+table = "text"
+points = [
+    ["a", "a 4Pi_u, 1pi_g", "26.2"],
+    ["b", "b 4Sigma_g-, 1pi_g", "25.3"],
+]
+quantity = "ionization_model_parameter"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Footnote 41 (reference list, p. 10): 'The binding energies for the 1pi_g orbital of the a and b state are 26.2 and 25.3 eV'; used only to test the effect of orbital relaxation after excitation, which changes the KER peak ratios by less than 5 % (p. 6)."
+[datasets.parameters]
+model = "moadk (DM-SDI, effective binding energy)"
+parameter = "E_b"
+
+[[datasets]]
+id = "note41_cl_a"
+material = "O2+"
+table = "text"
+points = [["2", "2", "1.83"], ["4", "4", "0.23"]]
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Footnote 41 (p. 10): C_lm {1.83, 0.23} of the 1pi_g orbital of O2+ a 4Pi_u (cf. Table III), obtained by changing only the occupation numbers (p. 6). l = 2, 4 as Table III's 1pi_g."
+[datasets.parameters]
+model = "moadk"
+orbital = "O2+ a 4Pi_u, 1pi_g"
+m = 1
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites, with the ion's asymptotic charge; the paper prints no definition"
+
+[[datasets]]
+id = "note41_cl_b"
+material = "O2+"
+table = "text"
+points = [["2", "2", "1.72"], ["4", "4", "0.24"]]
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Footnote 41 (p. 10): C_lm {1.72, 0.24} of the 1pi_g orbital of O2+ b 4Sigma_g-. As note41_cl_a otherwise."
+[datasets.parameters]
+model = "moadk"
+orbital = "O2+ b 4Sigma_g-, 1pi_g"
+m = 1
+normalisation = "as Zhao et al. 2010 (zhao_2010, Eqs. (19)-(20)), the method the paper cites, with the ion's asymptotic charge; the paper prints no definition"
+
+[[datasets]]
+id = "text_dipole_ab"
+material = "O2+"
+table = "text"
+points = [["a-b", "a 4Pi_u - b 4Sigma_g-", "0.29"]]
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "p. 4: 'The transition dipole moment between these two states is found to be 0.29 x atomic units (a.u.)', SA3-CASSCF(11,8)/CASPT2 at R = 1.21 angstrom; 'we used the d_x component to represent the transition from both Pi_+- states to a Sigma state'."
+[datasets.parameters]
+states = "a 4Pi_u - b 4Sigma_g-"
+component = "perpendicular (x)"
+geometry = "R = 1.21 angstrom"
+
+[[datasets]]
+id = "text_ip_quintet"
+material = "O2"
+table = "text"
+points = [
+    ["1 5Sigma_g+", "1 5Sigma_g+", "45.5"],
+    ["1 5Pi_u", "1 5Pi_u", "46.9"],
+]
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "p. 5: 'from our SA3-CASSCF(10,8)/CASPT2 calculations for the quintet states, the 1 5Sigma_g+ and 1 5Pi_u states have vertical ionization potentials of 45.5 and 46.9 eV', from O2, presumably with Table II's shift (not stated). Not in the model."
+[datasets.parameters]
+kind = "vertical"
+initial_state = "O2 X 3Sigma_g- (v = 0)"
+final_state = "the O2^2+ state of the row"
+
+[[datasets]]
+id = "text_ker_quintet_4s4s"
+material = "O2"
+table = "text"
+points = [["1 5Sigma_g+", "1 5Sigma_g+", "13.2"]]
+quantity = "kinetic_energy_release"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "p. 5: the KER of the 1 5Sigma_g+ state, 13.2 eV (its I_p 45.5 eV less the 4S + 4S limit; 45.5 - 32.35 = 13.15)."
+[datasets.parameters]
+channel = "O2 -> O2^2+ (1 5Sigma_g+) -> O+(4S) + O+(4S)"
+kind = "calculated"
+state = "1 5Sigma_g+"
+
+[[datasets]]
+id = "text_ker_quintet_4s2d"
+material = "O2"
+table = "text"
+points = [["1 5Pi_u", "1 5Pi_u", "11.2"]]
+quantity = "kinetic_energy_release"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "p. 5: the KER of the 1 5Pi_u state, 11.2 eV (46.9 eV less the 4S + 2D limit; 46.9 - 35.68 = 11.22)."
+[datasets.parameters]
+channel = "O2 -> O2^2+ (1 5Pi_u) -> O+(4S) + O+(2D)"
+kind = "calculated"
+state = "1 5Pi_u"
+
+[[datasets]]
+id = "table4_dipole"
+material = "O2++"
+file = "O2++/yuen_2023__table4_dipole_O2++.csv"
+table = "tbl_c2f42888899a"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV: the calculated transition dipoles between O2^2+ states (rows: the pair; Table II's states 1, 2, 3 and 4 with 6 and 7), SA8-/SA6-CASSCF(10,8)/CASPT2 at R = 1.21 angstrom, each printed with x-hat. The caption: 'the dipole moment between W 3Delta_u and B 3Pi_g is double counted since both states are doubly degenerate', so the W-B row is the value the model uses, not a single-component matrix element. No uncertainty stated."
+[datasets.parameters]
+states = "the pair of O2^2+ states of the row"
+component = "perpendicular (x)"
+geometry = "R = 1.21 angstrom"

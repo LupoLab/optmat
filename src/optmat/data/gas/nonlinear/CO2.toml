@@ -1,0 +1,48 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "CO2"
+description = "Carbon dioxide: Shelton's 1990 ESHG (total: the vibrational part of ESHG is small and not subtracted), with Sekino & Bartlett's CCSD(T) THG, ESHG, Kerr and dc Kerr at 694.6 nm (one free scale) for the process dependence."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 0.7]
+validators = [
+    "gentle_1989/table2_gamma_K_CO2",   # absolute dc Kerr (TC-401)
+    "ward_1969/chi_i_CO2",
+    "lundeen_1983/fwm_532_CO2",
+    "ward_1979/chi3_CO2",
+    "hahn_1995/electronic_CO2",
+    "geints_2025/sp_CO2",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_CO2_present"
+
+[[fitted]]
+key = "shelton_1990/table3_CO2_literature"
+
+[[fitted]]
+key = "sekino_1993/thg_CO2"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.02
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/eshg_CO2"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.02
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/kerr_CO2"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.02
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/dc_kerr_CO2"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.02
+rows = ["ccsd_t"]

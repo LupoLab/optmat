@@ -1,0 +1,51 @@
+citation = "P. Bejot, B. E. Schmidt, J. Kasparian, J.-P. Wolf and F. Legare, Phys. Rev. A 81, 063828 (2010)"
+doi = "10.1103/physreva.81.063828"
+library = "Bejot_2010_MechanismHollowCore"
+identity = "VALIDATED"
+kind = "theory"
+technique = """One-dimensional NLSE simulation (dispersion from an argon Sellmeier at 1 \
+bar scaled by n(p) = sqrt(1 + p [n(p = 1)^2 - 1]), self-steepening, instantaneous Kerr \
+terms n2 ... n10, fibre loss) of hollow-core-fibre compression of 1.83 um, 73 fs, 0.82 \
+mJ OPA pulses in 1.4 bar of argon (400 um core, 1 m), compared with the experiment of \
+their ref. 12."""
+notes = """Table I ('Nonlinear indexes of argon at 1.83 um used in the model (p accounts \
+for the relative gas pressure: p = P / 1 bar)'; tbl_0df301bb6004, checked against the \
+image): n2 9.73p x 10^-24 m^2/W, n4 -3.55p x 10^-42 m^4/W^2, n6 3.78p x 10^-58 m^6/W^3, n8 \
+-1.59p x 10^-75 m^8/W^4, n10 8.10p x 10^-94 m^10/W^5, fibre loss alpha 0.43p m^-1. \
+Source (p. 2): 'The n_2m coefficients ... have been reported in a recent article [17] \
+(Loriot et al. 2009 with erratum) at 800 nm. We then extrapolated these indexes at 1.83 \
+um by using generalized Miller formulas [18] (Ettoumi et al. 2010)'. Eq. (1): Delta n = \
+sum_(m=1..5) n_2m |eps|^(2m), with |eps|^2 the intensity (self coefficients).
+
+Check (2026-09-26): Ettoumi's Eq. (29), n_2p(w)/n_2p(w') = [(n0^2(w) - 1)/(n0^2(w') - 1)]^(2p \
++ 2), with optmat's default Ar dispersion ((n^2 - 1) ratio 1830/800 nm = 0.99334), \
+turns Bejot et al. 2010 PRL's Ar values (bejot_2010 Table II: n2 1.0, n4 -0.37, n6 0.4, \
+n8 -1.7, n10 8.8 in their units) into 9.74, -3.56, 3.79, -1.59, 8.12 in the units above, \
+against 9.73, -3.55, 3.78, -1.59, 8.10 printed: the table is those 800 nm values carried \
+to 1.83 um by the Miller rule, to within 0.3 % (the paper's own Sellmeier is Weber's \
+handbook). The n2 dataset is therefore marked reproduced (from loriot_2009 through \
+ettoumi_2010's formula); it is not an independent value at 1.83 um.
+
+Higher-order claim (notes only): the simulations need the higher-order terms to \
+reproduce the measured spectral asymmetry and compression ('the higher-order Kerr \
+terms have to be included in order to quantitatively reproduce experiments', p. 5), \
+with saturation at 19 TW/cm^2 and a negative index above 27 TW/cm^2. The terms come \
+from the refuted Loriot/Bejot coefficients (see loriot_2009) and are not to be used. \
+Ionisation is checked negligible (PPT plasma density below 1e11 cm^-3)."""
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+file = "Ar/bejot_2010_hollow__n2_Ar.csv"
+table = "tbl_0df301bb6004"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "um"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009", "ettoumi_2010"]
+notes = "Table I, n2 = 9.73 p x 10^-24 m^2/W with p = P / 1 bar: the value per bar (temperature not stated; 293.15 K as for the Loriot measurement it comes from). Loriot's corrected 800 nm value carried to 1.83 um with Ettoumi's generalized Miller formula (reproduced to 0.1 %, see the record's notes). Wavelength 1.83 um as printed (the OPA idler), medium not stated."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"

@@ -1,0 +1,198 @@
+citation = "A. Kumar and A. J. Thakkar, J. Chem. Phys. 132, 074301 (2010), supplementary material"
+doi = "10.1063/1.3315418"
+library = "Kumar_2010_DipoleOscillatorStrength/supplement_01"
+identity = "VALIDATED"
+kind = "compilation"
+technique = """Supplementary material (EPAPS, Ref. 84 of the paper) of Kumar and Thakkar's \
+constrained dipole oscillator strength distributions (the paper is kumar_2010): the \
+integrated DOS of the adopted DOSDs per energy interval (Table I, p. 2) and the \
+ten-term pseudospectra {f_i, E_i} reproducing the dipole sums (p. 3)."""
+notes = """The library record is UNVERIFIED and untitled; the first page names it: \
+'Supplementary material for the paper "Dipole oscillator strength distributions with \
+improved high-energy behavior. Dipole sum rules and dispersion coefficients for Ne, Ar, \
+Kr, and Xe revisited" by Ashok Kumar and Ajit J. Thakkar' (kumar_2010; file name \
+KumarMeathSupplementary.pdf). 'The reference numbers are the same as in the paper.'
+
+Table I (IDOS): E_j in eV; the IDOS entries are for [E_j, E_j+1], the last interval \
+ending at infinity; the 'Discrete' row sums 17, 20, 25 and 28 discrete transitions for \
+Ne, Ar, Kr, Xe (note e; initial data from Refs. 50, 51, 74, 78, 83 and Natali et al., \
+unpublished). Datasets 'idos_<gas>' (rows j, abscissa E_j the LOWER edge of the \
+interval; FORMAT NEED: an integrated oscillator strength over an interval has no \
+quantity of its own, so oscillator_strength at the lower edge is used) and \
+'discrete_<gas>' (index abscissa). Check (2026-09-25): discrete + IDOS sums to 9.99956 \
+(Ne), 18.0006 (Ar), 35.9994 (Kr), 53.9990 (Xe), the electron numbers (S(0) = N).
+
+Constraints and initial data (Table I notes a-d; Refs. of kumar_2010): Ne: initial DOSD \
+from Refs. 50 (Chan et al. 1992, neon = chan_1992_neon), 58 (Samson and Stolte 2002), 73 \
+(Marr and West 1976), 60 (Suzuki and Saito 2003), 71 (Veigele 1973), 56 (Chantler \
+1995), above E_48 Eq. (9) with b = 3.373(6); scaling spread 100 a-bar = 0.451, 100 s = \
+0.601; refractivity constraints at 302.2 and 546.2 nm from Ref. 79 (Cuthbertson and \
+Cuthbertson 1932 = cuthbertson_1932). Ar: Refs. 51 (Chan et al. 1992 = chan_1992), 73, \
+58, 61 (Suzuki and Saito 2005), 69 (Watson 1972), 71; Eq. (9) above E_47 with b = \
+-1.710(7), 100 a-bar = 0.337, 100 s = 0.512; refractivity at 325.1 and 633.0 nm from \
+Ref. 62 (Hohm 1994, not in the library). Kr: Refs. 51, 72 (Lang and Watson 1975), 59 \
+(Suzuki and Saito 2002), 52 (Henke et al. 1993 = henke_1993), 56; Eq. (9) above E_54 with \
+b = -2.594(9), 100 a-bar = 0.147, 100 s = 0.262; refractivity at 177.1 and 263.2 nm from \
+Ref. 81 (Smith et al. 1976 = smith_1976). Xe: Refs. 51, 58, 60, 71; Eq. (9) above E_60 \
+with b = -2.702(10), 100 a-bar = 0.255, 100 s = 0.342; refractivity at 170.2 and 253.7 nm \
+from Ref. 82 (Bideau-Mehu et al. 1981 = bideau_mehu_1981). The constraint values \
+themselves are not printed. So the DOSDs (and the pseudospectra and kumar_2010's S_k) \
+are tied to those refractivities at two wavelengths each: use as checks, not beside \
+those data in a fit (as kumar_2010, TC-72).
+
+Pseudospectra (p. 3, 'in a form suitable for cut-and-paste'): recorded as oscillator \
+formulas. The columns are headed 'f' and 'E' ('The symbols f and E stand for f and \
+epsilon respectively', p. 1), but the 'f' column holds the energies and the 'E' column \
+the strengths (see the formulas' notes and TC-119). The Kr list is not a library \
+table (the extraction turned it into a line of text on page 3); its numbers were \
+checked against the pdf page image. Energies are in hartree: S(k) with the energies in \
+hartree reproduces kumar_2010's moments."""
+
+[[datasets]]
+id = "idos_Ne"
+material = "Ne"
+file = "Ne/kumar_2010_supplement__idos_Ne.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table I: integrated oscillator strength of the adopted constrained DOSD over [E_j, E_j+1] (the last to infinity), rows j = 18-48, abscissa E_j (eV, the lower edge; 21.56 eV - 100 keV), 31 intervals. Not a line: an interval integral (format need, source notes). Constrained to refractivity data (source notes): a check."
+
+[[datasets]]
+id = "discrete_Ne"
+material = "Ne"
+file = "Ne/kumar_2010_supplement__discrete_Ne.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table I row 'Discrete': 2.800(-1), the summed strength of the 17 discrete transitions of the adopted DOSD (note e), index abscissa. A check."
+
+[[datasets]]
+id = "idos_Ar"
+material = "Ar"
+file = "Ar/kumar_2010_supplement__idos_Ar.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table I: integrated oscillator strength of the adopted constrained DOSD over [E_j, E_j+1] (the last to infinity), rows j = 21-47, abscissa E_j (eV, the lower edge; 15.76 eV - 100 keV), 27 intervals. Not a line: an interval integral (format need, source notes). Constrained to refractivity data (source notes): a check."
+
+[[datasets]]
+id = "discrete_Ar"
+material = "Ar"
+file = "Ar/kumar_2010_supplement__discrete_Ar.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table I row 'Discrete': 7.623(-1), the summed strength of the 20 discrete transitions of the adopted DOSD (note e), index abscissa. A check."
+
+[[datasets]]
+id = "idos_Kr"
+material = "Kr"
+file = "Kr/kumar_2010_supplement__idos_Kr.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table I: integrated oscillator strength of the adopted constrained DOSD over [E_j, E_j+1] (the last to infinity), rows j = 26-54, abscissa E_j (eV, the lower edge; 14.03 eV - 100 keV), 29 intervals. Not a line: an interval integral (format need, source notes). Constrained to refractivity data (source notes): a check."
+
+[[datasets]]
+id = "discrete_Kr"
+material = "Kr"
+file = "Kr/kumar_2010_supplement__discrete_Kr.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table I row 'Discrete': 1.092, the summed strength of the 25 discrete transitions of the adopted DOSD (note e), index abscissa. A check."
+
+[[datasets]]
+id = "idos_Xe"
+material = "Xe"
+file = "Xe/kumar_2010_supplement__idos_Xe.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table I: integrated oscillator strength of the adopted constrained DOSD over [E_j, E_j+1] (the last to infinity), rows j = 29-60, abscissa E_j (eV, the lower edge; 12.17 eV - 100 keV), 32 intervals. Not a line: an interval integral (format need, source notes). Constrained to refractivity data (source notes): a check."
+
+[[datasets]]
+id = "discrete_Xe"
+material = "Xe"
+file = "Xe/kumar_2010_supplement__discrete_Xe.csv"
+table = "tbl_8fedf8f12d10"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table I row 'Discrete': 1.597, the summed strength of the 28 discrete transitions of the adopted DOSD (note e), index abscissa. A check."
+
+[[formulas]]
+id = "pseudospectrum_Ne"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["1.72761e-1", "7.05592e-2", "2.39565e-1", "5.90543e-1", "1.10197", "1.80237", "2.34931", "1.71152", "1.90122", "6.01847e-2"], E = ["6.18514e-1", "7.25160e-1", "8.27158e-1", "1.02722", "1.39273", "2.10855", "3.68085", "8.11069", "4.74204e+1", "5.96639e+2"] }
+range_nm = [81.0, "inf"]
+material = "Ne"
+equation = "Ten-term pseudospectrum, page 3, tbl_ef48d8ee5ced"
+printed = "columns headed f, E: 6.18514e-1 1.72761e-1; 7.25160e-1 7.05592e-2; 8.27158e-1 2.39565e-1; 1.02722 5.90543e-1; 1.39273 1.10197; 2.10855 1.80237; 3.68085 2.34931; 8.11069 1.71152; 4.74204e+1 1.90122; 5.96639e+2 6.01847e-2"
+variable = "omega: photon energy in hartree; alpha(omega) = sum_i f_i / (E_i^2 - omega^2) in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "The pseudospectrum represents the constrained DOSD below the first resonance; its lowest pole is at 0.618514 hartree (73.67 nm). range_nm lower bound = 1.1 x that wavelength is the extractor's choice (TC-119), not the paper's."
+check = "S(k) = sum f_i E_i^k reproduces kumar_2010's Table I for every integer k from 2 to -10 to 3e-4 (the table's rounding), S(0) = 10.0000; S(-2) = 2.66934 against 2.669. Half-integer k are not constrained: S(-0.5) is 3e-4 off (checked 2026-09-25)."
+notes = "COLUMNS SWAPPED IN THE ORIGINAL: the column headed f holds the excitation energies (hartree) and the column headed E the oscillator strengths. Evidence: the E column sums to the electron number (the TRK sum rule S(0) = N), the f column's smallest entry is at the first resonance, and only this reading reproduces kumar_2010's S(k) (check). terms.f is therefore the printed E column and terms.E the printed f column (a structural relabelling, like a wrong caption; each coefficient is as printed). Not independent of the refractivity data used as constraints (source notes): a check against those data, not a fit to them."
+
+[[formulas]]
+id = "pseudospectrum_Ar"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["3.18677e-1", "5.02810e-2", "5.84382e-1", "1.45663", "2.30431", "1.46024", "8.33644e-1", "5.68760", "4.96822", "3.36019e-1"], E = ["4.32014e-1", "4.61341e-1", "5.48086e-1", "6.79814e-1", "8.90090e-1", "1.22282", "2.92264", "1.04118e+1", "4.39529e+1", "9.13390e+2"] }
+range_nm = [116.0, "inf"]
+material = "Ar"
+equation = "Ten-term pseudospectrum, page 3, tbl_bdf9d0b1140e"
+printed = "columns headed f, E: 4.32014e-1 3.18677e-1; 4.61341e-1 5.02810e-2; 5.48086e-1 5.84382e-1; 6.79814e-1 1.45663; 8.90090e-1 2.30431; 1.22282 1.46024; 2.92264 8.33644e-1; 1.04118e+1 5.68760; 4.39529e+1 4.96822; 9.13390e+2 3.36019e-1"
+variable = "omega: photon energy in hartree; alpha(omega) = sum_i f_i / (E_i^2 - omega^2) in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "The pseudospectrum represents the constrained DOSD below the first resonance; its lowest pole is at 0.432014 hartree (105.47 nm). range_nm lower bound = 1.1 x that wavelength is the extractor's choice (TC-119), not the paper's."
+check = "S(k) reproduces kumar_2010's Table I for every integer k from 2 to -10 to 3e-4, S(0) = 18.0000, S(-2) = 11.0787 against 11.08; S(-0.5) is 1.5e-3 off (half-integer k not constrained) (checked 2026-09-25)."
+notes = "COLUMNS SWAPPED IN THE ORIGINAL: the column headed f holds the excitation energies (hartree) and the column headed E the oscillator strengths. Evidence: the E column sums to the electron number (the TRK sum rule S(0) = N), the f column's smallest entry is at the first resonance, and only this reading reproduces kumar_2010's S(k) (check). terms.f is therefore the printed E column and terms.E the printed f column (a structural relabelling, like a wrong caption; each coefficient is as printed). Not independent of the refractivity data used as constraints (source notes): a check against those data, not a fit to them."
+
+[[formulas]]
+id = "pseudospectrum_Kr"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["2.30481e-1", "2.04092e-1", "7.97974e-1", "1.66947", "2.45289", "1.93397", "1.05176", "1.20500e+1", "1.48626e+1", "7.46743e-1"], E = ["3.69130e-1", "3.95530e-1", "4.80849e-1", "5.95979e-1", "7.93650e-1", "1.15661", "2.76628", "8.56933", "5.46172e+1", "2.53759e+3"] }
+range_nm = [136.0, "inf"]
+material = "Kr"
+equation = "Ten-term pseudospectrum, page 3 (text: the Kr list is not a library table; checked against the pdf page image)"
+printed = "columns headed f, E: 3.69130e-1 2.30481e-1; 3.95530e-1 2.04092e-1; 4.80849e-1 7.97974e-1; 5.95979e-1 1.66947; 7.93650e-1 2.45289; 1.15661 1.93397; 2.76628 1.05176; 8.56933 1.20500e+1; 5.46172e+1 1.48626e+1; 2.53759e+3 7.46743e-1"
+variable = "omega: photon energy in hartree; alpha(omega) = sum_i f_i / (E_i^2 - omega^2) in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "The pseudospectrum represents the constrained DOSD below the first resonance; its lowest pole is at 0.36913 hartree (123.43 nm). range_nm lower bound = 1.1 x that wavelength is the extractor's choice (TC-119), not the paper's."
+check = "S(k) reproduces kumar_2010's Table I for every integer k from 2 to -10 to 2.5e-4, S(0) = 36.0000, S(-2) = 16.7939 against 16.79; S(-0.5) is 4.8e-3 off (half-integer k not constrained) (checked 2026-09-25)."
+notes = "COLUMNS SWAPPED IN THE ORIGINAL: the column headed f holds the excitation energies (hartree) and the column headed E the oscillator strengths. Evidence: the E column sums to the electron number (the TRK sum rule S(0) = N), the f column's smallest entry is at the first resonance, and only this reading reproduces kumar_2010's S(k) (check). terms.f is therefore the printed E column and terms.E the printed f column (a structural relabelling, like a wrong caption; each coefficient is as printed). Not independent of the refractivity data used as constraints (source notes): a check against those data, not a fit to them."
+
+[[formulas]]
+id = "pseudospectrum_Xe"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["2.76315e-1", "3.60490e-1", "1.01180", "1.97196", "2.43455", "1.59870", "6.57194", "8.39325", "3.03664e+1", "1.01457"], E = ["3.10093e-1", "3.58976e-1", "4.13159e-1", "5.08407e-1", "6.74362e-1", "9.90276e-1", "3.02203", "6.13092", "5.62237e+1", "4.90145e+3"] }
+range_nm = [162.0, "inf"]
+material = "Xe"
+equation = "Ten-term pseudospectrum, page 3, tbl_38b4d6bcc5ce"
+printed = "columns headed f, E: 3.10093e-1 2.76315e-1; 3.58976e-1 3.60490e-1; 4.13159e-1 1.01180; 5.08407e-1 1.97196; 6.74362e-1 2.43455; 9.90276e-1 1.59870; 3.02203 6.57194; 6.13092 8.39325; 5.62237e+1 3.03664e+1; 4.90145e+3 1.01457"
+variable = "omega: photon energy in hartree; alpha(omega) = sum_i f_i / (E_i^2 - omega^2) in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "The pseudospectrum represents the constrained DOSD below the first resonance; its lowest pole is at 0.310093 hartree (146.93 nm). range_nm lower bound = 1.1 x that wavelength is the extractor's choice (TC-119), not the paper's."
+check = "S(k) reproduces kumar_2010's Table I for every integer k from 2 to -10 to 3.8e-4, S(0) = 54.0000, S(-2) = 27.1637 against 27.16; S(-0.5) is 7.3e-3 off (half-integer k not constrained) (checked 2026-09-25)."
+notes = "COLUMNS SWAPPED IN THE ORIGINAL: the column headed f holds the excitation energies (hartree) and the column headed E the oscillator strengths. Evidence: the E column sums to the electron number (the TRK sum rule S(0) = N), the f column's smallest entry is at the first resonance, and only this reading reproduces kumar_2010's S(k) (check). terms.f is therefore the printed E column and terms.E the printed f column (a structural relabelling, like a wrong caption; each coefficient is as printed). Not independent of the refractivity data used as constraints (source notes): a check against those data, not a fit to them."
+

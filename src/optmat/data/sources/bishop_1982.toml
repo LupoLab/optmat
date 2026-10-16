@@ -1,0 +1,133 @@
+citation = "D. M. Bishop and L. M. Cheung, \"Vibrational Contributions to Molecular Dipole Polarizabilities\", J. Phys. Chem. Ref. Data 11, 119 (1982)"
+doi = "10.1063/1.555658"
+library = "Bishop_1982_VibrationalContributionsMolecular"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Static vibrational polarizabilities of about a hundred molecules in the \
+vibrational ground state, computed from experimental infrared band intensities: \
+alpha = (2/3) sum_n g_n mu_n^2/(h c omega_n) over the fundamentals (Eq. 1), the \
+transition moments from the absolute integrated intensities A_n (Eqs. 2, 3), and \
+alpha = 3 eps0 P/N_A = 0.441 P x 10^-40 C^2 m^2 J^-1 with P in cm^3/mol (Eq. 4). \
+Harmonic approximation (overtones and combination bands 'discarded as being \
+inconsequentially small'), closure over rotation, excited vibrational states \
+unpopulated (pp. 119-120). Intensity survey to the end of 1980, 'a major source' Pugh \
+and Narahari Rao (1976) [9]."""
+notes = """First page checked (pdf page 2; pdf page 1 is the publisher's cover): J. Phys. \
+Chem. Ref. Data 11, No. 1, 1982; page numbers here are journal pages (pdf page + 117). \
+This is the 'Bishop and Cheung' of zhao_2026 (Ref. 44) and sharipov_2017 (Table 2).
+
+WHAT THE VALUES ARE. The pure vibrational (formerly 'atomic') static dipole \
+polarizability alpha_vib, the infrared response that a dielectric measurement sees \
+and an optical one does not; not a total polarizability, and without the orientation \
+term of polar molecules. Units 10^-40 C^2 m^2 J^-1 (1 au = 1.64878e-41 C^2 m^2 J^-1 \
+with the package's constants).
+
+NO DATASETS: the vocabulary has no quantity for a vibrational contribution to the \
+polarizability (the same format gap as sharipov_2017; reported). Storing these as \
+'polarizability' would make them total polarizabilities. Instead each curated \
+molecule's bands (omega_n, A_n, P_n) and total alpha are recorded as a formula entry \
+(co, co2, n2o, o3, ch4, sf6), the printed numbers as strings, each checked against \
+Eqs. (1)-(4): every P_n recomputes from A_n and omega_n as P_n = 1e5 A_n/(3 pi^2 \
+omega_n^2) (cm^3/mol, A in km/mol, omega in cm^-1; the degeneracy cancels) to the \
+printed digits, and every total as 0.441 sum P_n. Table images checked (Tables 1, 2, \
+4, 6; the library's Table 4 cells shift columns across the page break, and the totals \
+of Tables 2, 4 and 6 sit on a separate line in the images).
+
+THE DIRECT CHECK OF THE HITRAN INFRARED TERMS (optmat.gas.infrared.static_infrared_\
+polarizability_au, computed 2026-09-25): Bishop and Cheung against HITRAN, au: CO2 \
+1.759 / 2.121 (-17 %), N2O 1.092 / 1.186 (-8 %), CH4 0.2305 / 0.2401 (-4 %), SF6 \
+15.16 / 13.94 (+8.7 %); CO 0.1213 and O3 0.788 have no HITRAN bands in \
+data/external/hitran yet. H2, D2, N2, O2 and the noble gases have no infrared-active \
+fundamentals and are not listed.
+
+ACCURACY. Error classes from the authors' stated intensity errors: (a) <= 5 %, (b) \
+5-10 %, (c) > 10 % (p. 120) - but the footnote letters are not the same in every \
+table (Tables 1, 2: b 5 %, c 5-10 %, d > 10 %; Table 4: d 5 %, e 5-10 %, f > 10 %; \
+Table 6: b 5 %, c 5-10 %). 'It is almost certainly true that the error limits on the \
+intensities ... are unduly optimistic ... it is not unusual for the results from two \
+different laboratories to differ by 100%'; realistic classes are (a) <= 10 %, (b) \
+10-50 %, (c) > 50 % (p. 120), and 'these estimates should be at least doubled' (p. \
+120). Curated: CO 5 %, CO2 5-10 %, N2O 5 %, O3 none given, CH4 5 %, SF6 5 % (as \
+stated; double them).
+
+Not recorded: the non-curated molecules (about a hundred), the isotopologues (CD4, \
+CH3D, ...; not curated species), the anisotropic contributions (derivable from the \
+per-band P_n)."""
+
+[[formulas]]
+id = "co"
+material = "CO"
+equation = "Eqs. (1)-(4), pp. 119-120, with Table 1, p. 121"
+printed = "CO: omega 2143 [9], A 61.2 [12] km/mol, P 0.045 cm^3/mol, alpha 0.020^b x 10^-40 C^2 m^2 J^-1"
+variable = "omega_n: harmonic band frequency in cm^-1 (as printed, the observed fundamentals); A_n: absolute integrated band intensity in km/mol; P_n: molar vibrational polarization in cm^3/mol; alpha: static isotropic vibrational polarizability in 10^-40 C^2 m^2 J^-1. Only static values are printed; a dispersion model (not in the paper) would take one harmonic oscillator per band, alpha_vib(omega) = sum_n (3 eps0 / N_A) P_n omega_n^2 / (omega_n^2 - omega^2)"
+state = "none (per molecule, vibrational ground state)"
+density = "none"
+range = "static (the paper treats static fields only, p. 119); the oscillator form extends it below the electronic resonances"
+coefficients = { omega = "2143", A = "61.2", P = "0.045", alpha = "0.020" }
+check = "P = 1e5 A/(3 pi^2 omega^2) (Eqs. 1-4, A in km/mol, omega in cm^-1) gives 0.04501 (printed 0.045); alpha = 0.441 P = 0.0198 (printed 0.020). Checked 2026-09-25."
+notes = "Error class b (Table 1): 'The estimated error is 5%' (the authors' own class; 'these estimates should be at least doubled', p. 120). Intensity from Varanasi and Sarangi, JQSRT 15, 473 (1975) [12]; frequency from Pugh and Narahari Rao [9]. 0.020e-40 = 0.1213 au (1 au = 1.64878e-41 C^2 m^2 J^-1): the value zhao_2026 quotes as '20(1) x 10^-43'; christiansen_1998's CCSD(T) pure vibrational mean is 0.1246 au (+3 %). HITRAN's CO bands are not yet in data/external/hitran."
+
+[[formulas]]
+id = "co2"
+material = "CO2"
+equation = "Eqs. (1)-(4), pp. 119-120, with Table 2, p. 122"
+printed = "CO2: nu_2(pi_u) omega 667 [9], A 47.8 [22], P 0.36; nu_3(sigma_u+) 2349, 498.7 [23], 0.31; alpha 0.29^c"
+variable = "omega_n: harmonic band frequency in cm^-1 (as printed, the observed fundamentals); A_n: absolute integrated band intensity in km/mol; P_n: molar vibrational polarization in cm^3/mol; alpha: static isotropic vibrational polarizability in 10^-40 C^2 m^2 J^-1. Only static values are printed; a dispersion model (not in the paper) would take one harmonic oscillator per band, alpha_vib(omega) = sum_n (3 eps0 / N_A) P_n omega_n^2 / (omega_n^2 - omega^2)"
+state = "none (per molecule, vibrational ground state)"
+density = "none"
+range = "static (the paper treats static fields only, p. 119); the oscillator form extends it below the electronic resonances"
+coefficients = { omega_2 = "667", A_2 = "47.8", P_2 = "0.36", omega_3 = "2349", A_3 = "498.7", P_3 = "0.31", alpha = "0.29" }
+check = "P_n from A_n: 0.36287, 0.30525 (printed 0.36, 0.31); alpha = 0.441 x 0.6681 = 0.2946 (printed 0.29). Checked 2026-09-25."
+notes = "Error class c (Table 2): 'between 5 and 10%'. Intensities: Madden 1961 [22] (nu_2), Tubbs and Williams 1972 [23] (nu_3). 0.29e-40 = 1.759 au, 17 % below the HITRAN-derived static infrared polarizability of optmat.gas.infrared (2.121 au; HITRAN sums every band, including hot bands and isotopologues, which Eq. (1) omits). sharipov_2017 quotes it as 0.26 A^3."
+
+[[formulas]]
+id = "n2o"
+material = "N2O"
+equation = "Eqs. (1)-(4), pp. 119-120, with Table 2, p. 122"
+printed = "N2O: nu_1(sigma+) 1285 [9], 59.1 [30], 0.12; nu_2(pi) 589, 8.20 [31], 0.080; nu_3(sigma+) 2224, 289. [32], 0.20; alpha 0.18^b"
+variable = "omega_n: harmonic band frequency in cm^-1 (as printed, the observed fundamentals); A_n: absolute integrated band intensity in km/mol; P_n: molar vibrational polarization in cm^3/mol; alpha: static isotropic vibrational polarizability in 10^-40 C^2 m^2 J^-1. Only static values are printed; a dispersion model (not in the paper) would take one harmonic oscillator per band, alpha_vib(omega) = sum_n (3 eps0 / N_A) P_n omega_n^2 / (omega_n^2 - omega^2)"
+state = "none (per molecule, vibrational ground state)"
+density = "none"
+range = "static (the paper treats static fields only, p. 119); the oscillator form extends it below the electronic resonances"
+coefficients = { omega_1 = "1285", A_1 = "59.1", P_1 = "0.12", omega_2 = "589", A_2 = "8.20", P_2 = "0.080", omega_3 = "2224", A_3 = "289.", P_3 = "0.20", alpha = "0.18" }
+check = "P_n: 0.12088, 0.07983, 0.19734 (printed 0.12, 0.080, 0.20); alpha = 0.441 x 0.3980 = 0.1755 (printed 0.18). Checked 2026-09-25."
+notes = "Error class b: 5 %. Intensities: Goody and Wormell 1951 [30], Yamada and Person 1966 [31], Boissy et al. 1975 [32]. 0.18e-40 = 1.092 au, 8 % below optmat.gas.infrared's HITRAN value (1.186 au). A static value without the orientation term of N2O's small dipole moment."
+
+[[formulas]]
+id = "o3"
+material = "O3"
+equation = "Eqs. (1)-(4), pp. 119-120, with Table 2, p. 122"
+printed = "O3: nu_1(a_1) 1103 [9], 2.38 [33], 0.0066; nu_2(a_1) 701, 4.4 [34], 0.030; nu_3(b_1) 1042, 85.7 [34], 0.27; alpha 0.13"
+variable = "omega_n: harmonic band frequency in cm^-1 (as printed, the observed fundamentals); A_n: absolute integrated band intensity in km/mol; P_n: molar vibrational polarization in cm^3/mol; alpha: static isotropic vibrational polarizability in 10^-40 C^2 m^2 J^-1. Only static values are printed; a dispersion model (not in the paper) would take one harmonic oscillator per band, alpha_vib(omega) = sum_n (3 eps0 / N_A) P_n omega_n^2 / (omega_n^2 - omega^2)"
+state = "none (per molecule, vibrational ground state)"
+density = "none"
+range = "static (the paper treats static fields only, p. 119); the oscillator form extends it below the electronic resonances"
+coefficients = { omega_1 = "1103", A_1 = "2.38", P_1 = "0.0066", omega_2 = "701", A_2 = "4.4", P_2 = "0.030", omega_3 = "1042", A_3 = "85.7", P_3 = "0.27", alpha = "0.13" }
+check = "P_n: 0.00661, 0.03024, 0.26658 (printed 0.0066, 0.030, 0.27); alpha = 0.441 x 0.3034 = 0.1338 (printed 0.13). Checked 2026-09-25."
+notes = "No error class printed for O3. Intensities: Clough and Kneizys 1966 [33], McCaa and Shaw 1968 [34]. 0.13e-40 = 0.788 au (0.117 A^3); sharipov_2017's computed pure vibrational value is 0.208 or 0.312 A^3 and Naves et al.'s 0.209 A^3 (as sharipov_2017 quotes them): Bishop and Cheung's is 40-60 % lower. For the ozone plan's static polarizability."
+
+[[formulas]]
+id = "ch4"
+material = "CH4"
+equation = "Eqs. (1)-(4), pp. 119-120, with Table 4, p. 125"
+printed = "CH4: nu_3(t_2) 3019 [57], 65.5 [58], 0.024; nu_4(t_2) 1311, 31.8, 0.062; alpha 0.038^d"
+variable = "omega_n: harmonic band frequency in cm^-1 (as printed, the observed fundamentals); A_n: absolute integrated band intensity in km/mol; P_n: molar vibrational polarization in cm^3/mol; alpha: static isotropic vibrational polarizability in 10^-40 C^2 m^2 J^-1. Only static values are printed; a dispersion model (not in the paper) would take one harmonic oscillator per band, alpha_vib(omega) = sum_n (3 eps0 / N_A) P_n omega_n^2 / (omega_n^2 - omega^2)"
+state = "none (per molecule, vibrational ground state)"
+density = "none"
+range = "static (the paper treats static fields only, p. 119); the oscillator form extends it below the electronic resonances"
+coefficients = { omega_3 = "3019", A_3 = "65.5", P_3 = "0.024", omega_4 = "1311", A_4 = "31.8", P_4 = "0.062", alpha = "0.038" }
+check = "P_n: 0.02427, 0.06249 (printed 0.024, 0.062); alpha = 0.441 x 0.0868 = 0.0383 (printed 0.038). Checked 2026-09-25."
+notes = "Footnote d of Table 4 is 'The estimated error is 5%' (Table 4's own lettering, page image of p. 128 checked; in Tables 1 and 2 d means more than 10 %). Frequencies Gray and Robiette 1979 [57], intensities Bode and Smit 1980 [58]. 0.038e-40 = 0.2305 au, 4 % below optmat.gas.infrared's HITRAN value (0.2401 au); sharipov_2017 computes 0.236 au."
+
+[[formulas]]
+id = "sf6"
+material = "SF6"
+equation = "Eqs. (1)-(4), pp. 119-120, with Table 6, p. 130"
+printed = "SF6: nu_3(t_1u) 948 [83], 1361 [83], 5.1; nu_4(t_1u) 615, 74, 0.66; alpha 2.5^b"
+variable = "omega_n: harmonic band frequency in cm^-1 (as printed, the observed fundamentals); A_n: absolute integrated band intensity in km/mol; P_n: molar vibrational polarization in cm^3/mol; alpha: static isotropic vibrational polarizability in 10^-40 C^2 m^2 J^-1. Only static values are printed; a dispersion model (not in the paper) would take one harmonic oscillator per band, alpha_vib(omega) = sum_n (3 eps0 / N_A) P_n omega_n^2 / (omega_n^2 - omega^2)"
+state = "none (per molecule, vibrational ground state)"
+density = "none"
+range = "static (the paper treats static fields only, p. 119); the oscillator form extends it below the electronic resonances"
+coefficients = { omega_3 = "948", A_3 = "1361", P_3 = "5.1", omega_4 = "615", A_4 = "74", P_4 = "0.66", alpha = "2.5" }
+check = "P_n: 5.1147, 0.66079 (printed 5.1, 0.66); alpha = 0.441 x 5.7755 = 2.547 (printed 2.5). Checked 2026-09-25."
+notes = "Footnote b of Table 6 is 'The estimated error is 5%' (Table 6's lettering: a estimated value, b 5 %, c 5-10 %, d overlap average). Kim, McDowell and King 1980 [83]. 2.5e-40 = 15.16 au, 8.7 % above optmat.gas.infrared's HITRAN value (13.94 au, from measured cross sections); sharipov_2017 computes 12.77 au and quotes Hohm 2013's 2.035 A^3 (13.73 au)."

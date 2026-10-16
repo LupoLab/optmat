@@ -1,0 +1,878 @@
+citation = "V. P. Majety and A. Scrinzi, \"Static field ionization rates for multi-electron atoms and small molecules\", J. Phys. B: At. Mol. Opt. Phys. 48, 245603 (2015)"
+doi = "10.1088/0953-4075/48/24/245603"
+library = "Majety_2015_StaticFieldIonization"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field ionisation rates from the hybrid anti-symmetrized coupled \
+channels (haCC) method with exterior complex scaling (tRecX): the N-electron wave \
+function is expanded in anti-symmetrized products of CI ionic states |I> (COLUMBUS, \
+atom-centred Gaussian basis) and a numerical one-electron basis (finite elements \
+radially, single-centre real spherical harmonics), plus the fully correlated CI neutral \
+ground state (Eq. (1), p. 3). haCC(n): the lowest n ionic states (degenerate states \
+counted separately). Fixed nuclei; the complex eigenvalue E = r - i Gamma/2 of the \
+field-free ground state, followed adiabatically in F with ARPACK, gives the rate Gamma \
+(pp. 3-4); scaling radius R0 = 25-40 au, nuclear and Hartree potentials switched off \
+over 5-10 au before R0 (p. 4). Linear systems only: He, Ne, Ar, H2, N2, CO."""
+notes = """Pages are pdf pages: pdf page 1 is the IOP download cover, so the article's \
+own page number is one less (pdf p. 11 is the article's p. 10). Identity checked against \
+pdf p. 2.
+
+WHAT IS TAKEN. Tables 1-3 and A1-A2 (static-field rates, au, against F in au) and \
+Tables 4-5 (vertical energies of the ionic states of N2 and CO, eV). Every table image \
+was checked against the extracted cells (2026-09-26): they agree. Rates are \
+wavelength_nm = inf, polarization = static. A cell printed '<10^-k' (He at F = 0.06 \
+au; N2 and CO at F = 0.02 au) is an upper bound: kept in the file as 1e-k and excluded \
+from its dataset. One structural fix in the script (Table A2's last row carries the \
+continuation's header); no erratum.
+
+WHAT THE RATES COUNT. Each rate is the total single-ionisation rate of the atom or \
+molecule: the width Gamma of the complex-scaled N-electron ground state (p. 4), with \
+all the ionic channels of the basis together, not a per-orbital rate. The paper cannot \
+separate channels: 'This fact can only be established by calculating partial ionization \
+rates corresponding to each channel. Such a channel analysis is not trivial in the \
+current setup due to non-orthogonality' (p. 7). For comparison with single-electron \
+(SAE) models the paper multiplies those by 2: Fig. 1 caption (p. 6), 'All single \
+electron values include multiplication by a factor 2 for the double occupancy of the \
+ionizing orbital.' So a haCC rate of Ne or Ar corresponds to twice a per-orbital SAE rate \
+(the bearing on solprop's occupancy question, TC-439).
+
+ANGLES. H2: Table 2 is the field parallel to the molecular axis (angle_deg = 0), Table \
+3 perpendicular (90). N2 (Table A1) and CO (Table A2): the column angle is 'Angle \
+between the molecular axis and the field vector' (table header). For CO, '0 deg when the \
+field points from O atom to C atom' (Fig. 5 caption, p. 9, and p. 7); the rates are \
+largest at 180 deg (field from C to O): 'maximum emission occurs when the field point \
+from C to O which means the preferred emission end is toward the C atom' (p. 8). N2 is \
+symmetric, so 0-90 deg covers it. The internuclear distances of N2 and CO are \
+'equilibrium' (Tables A1, A2 captions), not printed; H2 is at 1.4 au (p. 4).
+
+ACCURACY (quoted; the level of confidence is never stated). General: 'the haCC method \
+can produce rates accurate on the level of 5%-10%' (p. 3); conclusions, 'the haCC scheme \
+is capable of providing rates accurate on the level of 5%-10%' (p. 9). He (p. 4): 10 % \
+below F = 0.1 au and 5 % above against the full-dimensional literature; haCC(5) within 1 \
+% of [17] above 0.1 au. H2 parallel (p. 4): haCC(5) 'accurate below 4%' against [18]; \
+perpendicular: 'converge systematically to less than a few percent'. N2 (p. 7): the \
+one-electron parameters (R0, l_max) 'converged to 2%'; 'Changing the gaussian basis to \
+a quadruple zeta basis however changes the rates by about 10% at low field strengths (F \
+< 0.5 a.u), but only by less than 5% at higher field strengths' (0.5 as printed: the \
+tabulated fields end at 0.14 au and Fig. 2 compares at 0.04, 0.08 and 0.12, so 0.05 is \
+probably meant); 'we are only looking for rates accurate on the level of 10%', 'we limit \
+our accuracy requirement to <~10%' (p. 6); adding the D 2Pi_g channel changes the rates by \
+'less than 2% with respect to the haCC(5) scheme' (p. 7). CO (p. 7): 'The single \
+electron parameters used are converged to below 10%'; 'the first four bound states are \
+sufficient for convergence'; adding the 3 2Sigma+ channel changes the rates by 'less \
+than 2% with respect to the haCC(6) scheme'. Recorded as the dataset uncertainty for the \
+converged schemes only (He haCC(5) 10 %/5 %, H2 parallel haCC(5) 4 %, N2 haCC(5) and CO \
+haCC(6) 10 %; level not stated); the lower schemes are convergence steps (use = check), \
+and haCC(5)/(6) are marked primary as the paper's converged results (their role \
+against the full-dimensional He and H2 benchmarks is decided at review). The \
+limitation (p. 4): core polarization is restricted to ionic bound states; 'all \
+continuum contributions to polarization are still missing'.
+
+LITERATURE COLUMNS (reproduced): Table 1 [11] = parker_2009 (digit-identical), [17] = \
+Scrinzi, Geissler and Brabec, Phys. Rev. Lett. 83, 706 (1999) (scrinzi_1999), [32] = Themelis, \
+Mercouris and Nicolaides, Phys. Rev. A 61, 024101 (1999) (both also printed in \
+parker_2009 Table 1, identical); Table 2 [18] = Saenz, Phys. Rev. A 61, 051402 (2000) (saenz_2000, which prints no rate); \
+Tables 4-5: Svensson et al., Phys. Scr. 44, 184 (1991) [35] (the pdf itself prints the \
+names 'Carlsson-Gthe' and 'Mrtensson', p. 11) and Baltzer et al., J. Phys. B 27, 4915 \
+(1994) [36]. None of these originals is in the library. The ADK column of Table 1 is an \
+unexplained formula evaluation, digit-identical to parker_2009's ADK column (use = \
+check).
+
+NOT TAKEN (figures only). Ne and Ar (Sect. 4, Fig. 1, p. 6): haCC(4) rates against F \
+with ADK, E-ADK (Tong and Lin 2005) and three SAE \
+models (Batishchev et al. 2010 = batishchev_2010, Fabrikant and Zhao 2015); no values in the text, only \
+'results from the two schemes [haCC(3) and haCC(4)] differ by less than 2%' and E-ADK \
+'still over-estimates by at least a factor 2' (p. 6). N2: Fig. 2 (convergence), Fig. 3 \
+(rates and Stark shift against F, haCC(1)-(7), MO-ADK), Fig. 4 (polar plots, F = \
+0.04-0.14 au). CO: Fig. 5 (polar plots, F = 0.03-0.09 au), Fig. 6 (the asymmetry \
+parameter against intensity); each polar panel of Figs. 4 and 5 prints one number (a radial scale), not taken. Text values (p. 8): the yield asymmetry (Y_0 - Y_180)/(Y_0 \
++ Y_180) (printed with a minus in the denominator, a misprint of the definition given \
+for the rates on p. 8) for cos^2 pulses at the parameters of Li et al. 2011 [22], -0.25 \
++- 0.02 (haCC(6); the 0.02 from a 10 fs pulse-duration uncertainty) against the measured \
+-0.30; haCC(1) predicts a swap of the preferred direction near 1.0e14 W/cm^2 (p. 8). No \
+quantity holds an asymmetry: notes only. Quasi-static yield formula Eq. (5), p. 8: Y = 1 \
+- exp(-int dt Gamma(F(t))).
+
+VERTICAL ENERGIES. Tables 4 (N2, p. 6) and 5 (CO, p. 8): computed with MRCIS ('the \
+ionic and the neutral states were computed using the multi-reference CI singles level', \
+p. 6), use = check; the experimental columns reproduced. As ionization_energy of the \
+neutral (kind = vertical), the row label the final ionic state; the single-row pvqz \
+dataset also states final_state. Against solprop (tests/data/solprop_ionisation.json): \
+N2 potential_j 2.49639e-18 J = 15.581 eV, the Svensson X value 15.58 printed here; the \
+paper's own 15.5 (tz) and 15.60 (qz). CO is not in solprop."""
+
+[[datasets]]
+id = "table1_hacc5_He"
+material = "He"
+file = "He/majety_2015__table1_hacc5_He.csv"
+table = "tbl_f4022cb09486"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.06" = "printed '<10^-10': an upper bound, not a value (written 1e-10 for the record)" }
+notes = "Table 1 (p. 5), haCC(5) column: the basis with the first- and second-shell He+ channels (1s, 2s, 2p) and the fully correlated neutral ground state. Rate of the atom (the width Gamma of the complex-scaled neutral ground state followed adiabatically in F; both electrons in the calculation), in au, against F in au. Accuracy (p. 4): 'For field strengths, F < 0.1 a.u, we obtain agreement with literature values on the level of 10%. Above 0.1 a.u, the agreement improves and the largest difference is on the level of 5%. Notably, above 0.1 a.u field strength, the haCC(5) rates differ from rates in [17] by less than 1%.' Recorded as 10 % below F = 0.1 au and 5 % from 0.1 au, level not stated."
+[datasets.uncertainty]
+relative = 0.10
+relative_rows = { "0.10" = 0.05, "0.11" = 0.05, "0.12" = 0.05, "0.13" = 0.05, "0.14" = 0.05, "0.15" = 0.05, "0.16" = 0.05, "0.18" = 0.05, "0.20" = 0.05 }
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "haCC(5)"
+
+[[datasets]]
+id = "table1_hacc1_He"
+material = "He"
+file = "He/majety_2015__table1_hacc1_He.csv"
+table = "tbl_f4022cb09486"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+excluded_rows = { "0.06" = "printed '<10^-10': an upper bound, not a value (written 1e-10 for the record)" }
+notes = "Table 1 (p. 5), haCC(1) column: only the 1s He+ channel (with the correlated neutral ground state), the single-channel limit of the convergence study; 2-4 % below haCC(5). Rate of the atom (the width Gamma of the complex-scaled neutral ground state followed adiabatically in F; both electrons in the calculation), in au, against F in au."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "haCC(1)"
+
+[[datasets]]
+id = "table1_parker_2009_He"
+material = "He"
+file = "He/majety_2015__table1_parker_2009_He.csv"
+table = "tbl_f4022cb09486"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "reproduced"
+reproduced_from = ["parker_2009"]
+notes = "Table 1 (p. 5), column [11] = Parker, Armstrong, Boca and Taylor 2009 (parker_2009): full-dimensional time-dependent He rates. Every cell is digit-identical to parker_2009 Table 1 'Present work' at the same F (checked 2026-09-26)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional TDSE (Parker et al. 2009)"
+
+[[datasets]]
+id = "table1_scrinzi_1999_He"
+material = "He"
+file = "He/majety_2015__table1_scrinzi_1999_He.csv"
+table = "tbl_f4022cb09486"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "reproduced"
+reproduced_from = ["scrinzi_1999"]
+notes = "Table 1 (p. 5), column [17] = Scrinzi, Geissler and Brabec 1999: full-dimensional time-independent (complex-scaling) He rates, F = 0.08-0.20 au (blank at 0.06 and 0.07). parker_2009 Table 1 prints the same values (its column 'Scrinzi et al [3]', checked 2026-09-26). The original, scrinzi_1999/table1_He (Table I, 60 fields 0.08-1.70 au), prints every one of these 11 values identically (checked 2026-09-27)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional complex scaling (Scrinzi et al. 1999)"
+
+[[datasets]]
+id = "table1_themelis_1999_He"
+material = "He"
+file = "He/majety_2015__table1_themelis_1999_He.csv"
+table = "tbl_f4022cb09486"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "reproduced"
+reproduced_from = ["S. I. Themelis, T. Mercouris and C. A. Nicolaides, Phys. Rev. A 61, 024101 (1999)"]
+notes = "Table 1 (p. 5), column [32] = Themelis, Mercouris and Nicolaides 1999: full-dimensional time-independent He rates, F = 0.07-0.20 au (blank at 0.06). parker_2009 Table 1 prints the same values (its column 'Themelis et al [4]', checked 2026-09-26)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional state-specific (Themelis et al. 1999)"
+
+[[datasets]]
+id = "table1_adk_He"
+material = "He"
+file = "He/majety_2015__table1_adk_He.csv"
+table = "tbl_f4022cb09486"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 1 (p. 5), 'ADK theory' column: an evaluation of the ADK formula; the paper does not say with which Ip, quantum numbers or occupancy. Every cell is digit-identical to the 'ADK theory [9]' column of parker_2009 Table 1 (checked 2026-09-26). A formula evaluation, not data."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "ADK formula"
+
+[[datasets]]
+id = "table2_parallel_hacc5_H2"
+material = "H2"
+file = "H2/majety_2015__table2_parallel_hacc5_H2.csv"
+table = "tbl_111da5b2e5e8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table 2 (p. 5), haCC(5) column: basis with the lowest 5 ionic states, plus the fully correlated neutral ground state. Field parallel to the molecular axis (angle_deg = 0). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au. Accuracy (p. 4): 'The rates from the haCC(5) scheme are accurate below 4% with respect to the full dimensional calculations' (Saenz 2000, dataset table2_parallel_saenz_2000_H2); recorded as 4 %, level not stated."
+[datasets.uncertainty]
+relative = 0.04
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "haCC(5)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table2_parallel_hacc1_H2"
+material = "H2"
+file = "H2/majety_2015__table2_parallel_hacc1_H2.csv"
+table = "tbl_111da5b2e5e8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 2 (p. 5), haCC(1) column: basis with only the 1sigma_g H2+ channel (the single-channel limit), plus the fully correlated neutral ground state. Field parallel to the molecular axis (angle_deg = 0). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au. p. 4: 'the single ionic state calculations, haCC(1), yield rates that differ from the benchmark calculations by about 10%.'"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "haCC(1)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table2_parallel_hacc2_H2"
+material = "H2"
+file = "H2/majety_2015__table2_parallel_hacc2_H2.csv"
+table = "tbl_111da5b2e5e8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 2 (p. 5), haCC(2) column: basis with the lowest 2 ionic states, plus the fully correlated neutral ground state. Field parallel to the molecular axis (angle_deg = 0). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "haCC(2)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table2_parallel_hacc4_H2"
+material = "H2"
+file = "H2/majety_2015__table2_parallel_hacc4_H2.csv"
+table = "tbl_111da5b2e5e8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 2 (p. 5), haCC(4) column: basis with the lowest 4 ionic states (degenerate states counted separately), plus the fully correlated neutral ground state. Field parallel to the molecular axis (angle_deg = 0). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "haCC(4)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table3_perpendicular_hacc5_H2"
+material = "H2"
+file = "H2/majety_2015__table3_perpendicular_hacc5_H2.csv"
+table = "tbl_73f51612f76d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table 3 (p. 5), haCC(5) column: basis with the lowest 5 ionic states, plus the fully correlated neutral ground state. Field perpendicular to the molecular axis (angle_deg = 90). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au. p. 4: 'For the case where the field is perpendicular to the molecular axis, the rates converge systematically to less than a few percent within the haCC schemes' (no number: uncertainty left unstated). No full-dimensional benchmark exists for this orientation."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 90
+method = "haCC(5)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table3_perpendicular_hacc1_H2"
+material = "H2"
+file = "H2/majety_2015__table3_perpendicular_hacc1_H2.csv"
+table = "tbl_73f51612f76d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 3 (p. 5), haCC(1) column: basis with only the 1sigma_g H2+ channel (the single-channel limit), plus the fully correlated neutral ground state. Field perpendicular to the molecular axis (angle_deg = 90). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 90
+method = "haCC(1)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table3_perpendicular_hacc2_H2"
+material = "H2"
+file = "H2/majety_2015__table3_perpendicular_hacc2_H2.csv"
+table = "tbl_73f51612f76d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 3 (p. 5), haCC(2) column: basis with the lowest 2 ionic states, plus the fully correlated neutral ground state. Field perpendicular to the molecular axis (angle_deg = 90). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 90
+method = "haCC(2)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table3_perpendicular_hacc4_H2"
+material = "H2"
+file = "H2/majety_2015__table3_perpendicular_hacc4_H2.csv"
+table = "tbl_73f51612f76d"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 3 (p. 5), haCC(4) column: basis with the lowest 4 ionic states (degenerate states counted separately), plus the fully correlated neutral ground state. Field perpendicular to the molecular axis (angle_deg = 90). H2 at the equilibrium internuclear distance R = 1.4 au (p. 4), fixed nuclei; rate of the molecule (the width of the complex-scaled neutral ground state), au, against F in au."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 90
+method = "haCC(4)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table2_parallel_saenz_2000_H2"
+material = "H2"
+file = "H2/majety_2015__table2_parallel_saenz_2000_H2.csv"
+table = "tbl_111da5b2e5e8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "reproduced"
+reproduced_from = ["saenz_2000"]
+notes = "Table 2 (p. 5), column [18] = Saenz, Phys. Rev. A 61, 051402 (2000): the full-dimensional benchmark for H2 with the field parallel to the axis, R = 1.4 au, fixed nuclei ('Full dimensional benchmark data is only available in literature for the case where the field is parallel to the molecular axis [18]', p. 4). Not saenz_2002 (Phys. Rev. A 66, 063408), whose Table I holds vibrationally averaged frozen-nuclei rates (5.248e-5 at F = 0.06 au for v = 0, against 3.36e-5 here). The cited original, saenz_2000, prints no rate: its fixed-nuclei rates against R are in Figs. 2-4 only (Fig. 3: F = 0.053 38-0.12 au), so these four values cannot be checked against it; they are of the magnitude its Fig. 3 shows at R = 1.4 a0 (checked 2026-09-27)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "full-dimensional complex scaling (Saenz 2000)"
+internuclear_distance_au = 1.4
+
+[[datasets]]
+id = "table4_tz_N2"
+material = "N2"
+file = "N2/majety_2015__table4_tz_N2.csv"
+table = "tbl_c324d8092e8b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table 4 (p. 6), m-aug-cc-pvtz column: the paper's own vertical energies of the N2+ states, multi-reference CI singles (COLUMBUS) with the minimally augmented cc-pVTZ Gaussian basis: the ionic states of the haCC basis. Rows are the final ionic states, labelled as printed (the X row is the first vertical ionisation energy): energies of the ionic states 'with respect to the neutral' ground state at the equilibrium geometry, in eV. p. 6: 'The first ionization potential, that is crucial for total ionization rates varies on the level of 10^-3 a.u within different haCC schemes and the experimental value.' The X row is printed with one decimal (15.5) and C (26.0) above D (25.45), as in the image."
+[datasets.parameters]
+kind = "vertical"
+method = "MRCIS/m-aug-cc-pvtz"
+
+[[datasets]]
+id = "table4_qz_N2"
+material = "N2"
+file = "N2/majety_2015__table4_qz_N2.csv"
+table = "tbl_c324d8092e8b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table 4 (p. 6), m-aug-cc-pvqz column: the X state only (the other rows printed as dashes), the paper's own MRCIS vertical energy with the minimally augmented cc-pVQZ basis. Rows are the final ionic states, labelled as printed (the X row is the first vertical ionisation energy): energies of the ionic states 'with respect to the neutral' ground state at the equilibrium geometry, in eV."
+[datasets.parameters]
+kind = "vertical"
+final_state = "X2Sigma_g+"
+method = "MRCIS/m-aug-cc-pvqz"
+
+[[datasets]]
+id = "table4_svensson_1991_N2"
+material = "N2"
+file = "N2/majety_2015__table4_svensson_1991_N2.csv"
+table = "tbl_c324d8092e8b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Svensson, M. Carlsson-Gthe, L. Karlsson, A. Nilsson, N. Mrtensson and U. Gelius, Phys. Scr. 44, 184 (1991) (names as printed)"]
+notes = "Table 4 (p. 6), column 'Svensson et al [35]': the experimental (photoelectron) vertical energies the paper compares with. Rows are the final ionic states, labelled as printed (the X row is the first vertical ionisation energy): energies of the ionic states 'with respect to the neutral' ground state at the equilibrium geometry, in eV."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "table5_tz_CO"
+material = "CO"
+file = "CO/majety_2015__table5_tz_CO.csv"
+table = "tbl_80132d1acc1b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table 5 (p. 8), m-aug-cc-pvtz column: the paper's own vertical energies of the CO+ states (MRCIS, m-aug-cc-pvtz); 'the first ionization potential from different haCC schemes vary on the level of 10^-3 a.u' (p. 7). Rows are the final ionic states, labelled as printed (the X row is the first vertical ionisation energy): energies of the ionic states 'with respect to the neutral' ground state at the equilibrium geometry, in eV. The fourth state is printed D^2Pi_u (image checked): a g/u label has no meaning for the heteronuclear CO, a misprint of the label, kept as printed in the row id."
+[datasets.parameters]
+kind = "vertical"
+method = "MRCIS/m-aug-cc-pvtz"
+
+[[datasets]]
+id = "table5_baltzer_1994_CO"
+material = "CO"
+file = "CO/majety_2015__table5_baltzer_1994_CO.csv"
+table = "tbl_80132d1acc1b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["P. Baltzer, M. Lundqvist, B. Wannberg, L. Karlsson, M. Larsson, M. A. Hayes, J. B. West, M. R. F. Siggel, A. C. Parr and J. L. Dehmer, J. Phys. B 27, 4915 (1994)"]
+notes = "Table 5 (p. 8), column 'Baltzer et al [36]': earlier (photoelectron) vertical energies; no value for D (a dash). Rows are the final ionic states, labelled as printed (the X row is the first vertical ionisation energy): energies of the ionic states 'with respect to the neutral' ground state at the equilibrium geometry, in eV."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "table5_svensson_1991_CO"
+material = "CO"
+file = "CO/majety_2015__table5_svensson_1991_CO.csv"
+table = "tbl_80132d1acc1b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Svensson, M. Carlsson-Gthe, L. Karlsson, A. Nilsson, N. Mrtensson and U. Gelius, Phys. Scr. 44, 184 (1991) (names as printed)"]
+notes = "Table 5 (p. 8), column 'Svensson et al [35]': experimental (photoelectron) vertical energies. Rows are the final ionic states, labelled as printed (the X row is the first vertical ionisation energy): energies of the ionic states 'with respect to the neutral' ground state at the equilibrium geometry, in eV."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "tableA1_N2_0deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_0deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 0 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA1_N2_15deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_15deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 15 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 15
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA1_N2_30deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_30deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 30 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 30
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA1_N2_45deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_45deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 45 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 45
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA1_N2_60deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_60deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 60 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 60
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA1_N2_75deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_75deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 75 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 75
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA1_N2_90deg"
+material = "N2"
+file = "N2/majety_2015__tableA1_N2_90deg.csv"
+table = "tbl_8edc6fedf30a"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.02" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A1 (p. 10), haCC(5), angle 90 deg between the molecular axis and the field vector. N2 at its equilibrium internuclear distance (not printed); total rate of the molecule (the width of the complex-scaled neutral ground state: all channels of the basis together, not per orbital), au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 90
+method = "haCC(5)"
+
+[[datasets]]
+id = "tableA2_CO_0deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_0deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 0 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 0
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_15deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_15deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 15 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 15
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_30deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_30deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 30 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 30
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_45deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_45deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 45 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 45
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_60deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_60deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 60 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 60
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_75deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_75deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 75 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 75
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_90deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_90deg.csv"
+table = "tbl_4299943f807c"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 90 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 90
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_105deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_105deg.csv"
+table = "tbl_141c6c5af7dd"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 105 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes). Columns 105-180 deg are the table's continuation, a separate unlabelled table in the library."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 105
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_120deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_120deg.csv"
+table = "tbl_141c6c5af7dd"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 120 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes). Columns 105-180 deg are the table's continuation, a separate unlabelled table in the library."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 120
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_135deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_135deg.csv"
+table = "tbl_141c6c5af7dd"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 135 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes). Columns 105-180 deg are the table's continuation, a separate unlabelled table in the library."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 135
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_150deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_150deg.csv"
+table = "tbl_141c6c5af7dd"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 150 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes). Columns 105-180 deg are the table's continuation, a separate unlabelled table in the library."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 150
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_165deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_165deg.csv"
+table = "tbl_141c6c5af7dd"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 165 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes). Columns 105-180 deg are the table's continuation, a separate unlabelled table in the library."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 165
+method = "haCC(6)"
+
+[[datasets]]
+id = "tableA2_CO_180deg"
+material = "CO"
+file = "CO/majety_2015__tableA2_CO_180deg.csv"
+table = "tbl_141c6c5af7dd"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.020" = "printed '<10^-12': an upper bound, not a value (written 1e-12 for the record)" }
+notes = "Table A2 (p. 10), haCC(6), angle 180 deg between the molecular axis and the field vector; 0 deg is the field pointing from the O atom to the C atom (Fig. 5 caption, p. 9). CO at its equilibrium internuclear distance (not printed); total rate of the molecule, au, against F in au. Accuracy about 10 %, level not stated (see the record's notes). Columns 105-180 deg are the table's continuation, a separate unlabelled table in the library."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+angle_deg = 180
+method = "haCC(6)"

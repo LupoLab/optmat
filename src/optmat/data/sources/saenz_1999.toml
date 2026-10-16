@@ -1,0 +1,451 @@
+citation = "A. Saenz and P. Lambropoulos, \"Theoretical two-, three- and four-photon ionization cross sections of helium in the XUV range\", J. Phys. B: At. Mol. Opt. Phys. 32, 5629-5637 (1999)"
+doi = "10.1088/0953-4075/32/23/316"
+library = "Saenz_1999_TheoreticalTwoThree"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Lowest-order perturbation theory (LOPT) for N = 2, 3, 4: the (N - 1)-fold \
+sum over intermediate states of Eq. (1), with no pole in it below the threshold \
+('only the last photon reaches into the continuum', p. 5630), evaluated in a \
+discretised basis of two-electron (antisymmetrised, LS-coupled, singlet, L = 0 to N) \
+eigenstates of He built from B-splines in a radial box (Lambropoulos, Maragakis and \
+Zhang 1998): 'converged results were obtained when employing R_max ~ 300 au and 602 \
+B-splines of order nine for all orbital angular momenta l = 0-6' (p. 5631). The \
+discretised continuum states are renormalised to final states by two methods, from \
+the density of states and from matching to the asymptotic solution, which 'gave \
+results that deviate from each other by less than 1%' (p. 5631); to resolve sharp \
+resonances, 'R_max has been varied in between 280 and 320 au in steps of 2.5 au' and \
+the resulting spectra added (p. 5631). The number of configurations is limited, a \
+compromise that costs the accuracy of the ground-state energy (pp. 5631-5632). Gauges: \
+length and velocity (Fig. 4); a separate complex-scaled CI calculation in Slater-type \
+orbitals, length gauge, at 13.5 eV (p. 5634)."""
+notes = """Journal pp. 5629-5637 = PDF pages 2-10 (PDF page 1 is the IOPscience download \
+banner, its only image); journal page = PDF page + 5627. Identity checked on the first \
+page (PDF p. 2): J. Phys. B: At. Mol. Opt. Phys. 32 (1999) 5629-5637, Alejandro Saenz \
+and P Lambropoulos, Max-Planck-Institut fur Quantenoptik, Garching, and FORTH-IESL, \
+Heraklion; received 23 August 1999 (checked 2026-10-08).
+
+THE CROSS SECTION (p. 5632, Eq. 2): 'Given the photon flux F in photons cm^-2 s^-1, \
+the quantity W_N = sigma^(N) F^N gives the transition probability per second for \
+N-photon ionization', sigma^(N) in cm^2N s^(N-1); the definition of uiterwaal_1998 \
+and mckenna_2004. The cross sections are partial, by the symmetry of the final \
+continuum: two-photon 1S and 1D (Fig. 1), three-photon 1P and 1F (Fig. 2), \
+four-photon 1S, 1D and 1G (Fig. 3). No total is drawn. The polarisation is not named; \
+it is linear: the 1S, 1P and lower-L final states the figures draw are reachable only \
+by linearly polarised light (circular polarisation reaches L = N alone).
+
+THE PHOTON-ENERGY AXES ARE SHIFTED BY THE AUTHORS, differently for each order (p. \
+5632): 'Since our ground-state energy is off by about 0.69 eV, one way to present \
+results of generalized cross sections sigma^(N) as a function of photon energy is to \
+scale the latter so as to reach the same energy above the ionization threshold. This \
+is what has been done in figures 1-4. Needless to say, this scaling changes with the \
+order N of the process in the calculation.' The paper gives neither the computed \
+ground-state energy nor the formula of the scaling; read literally, N times the \
+plotted photon energy minus the true threshold equals N times the computed photon \
+energy minus the computed threshold, so the axes put the N-photon threshold at its \
+true value. The values here are on the axes as drawn; nothing is shifted back or \
+again. The text's values at 13.5 eV (below) are taken to be on the same axis (they \
+agree with Figs. 1 and 4 there within 4 %, where the curves are flat). The axes are \
+photon energies (not the total N-photon energy). Resonance positions in the figures \
+are those of the LS-coupled calculation on these axes (drawn peaks: two-photon 21.25 \
+and 23.06-23.10 eV; three-photon 10.333, 11.468, 11.842 eV (1P) and 11.539, 11.867 \
+eV (1F); four-photon 7.08, 7.70 eV (1S, 1D) and 7.913, 8.014 eV (1G)); the 1S \
+two-photon cross section passes through zero near 18.53 eV and 22.55 eV, the \
+three-photon 1P near 10.98 eV.
+
+EXTRACTED (tools/extract/saenz_1999.py). The paper prints no table and no supplement \
+exists; the cross sections are only in figures, all vector drawings, read from the \
+PDF by data rule 8 (TC-699): Fig. 1(a), (b) (p. 5633), Fig. 2(a), (b) (p. 5634), Fig. \
+3(a), (b) (p. 5635) and (c) (p. 5636), Fig. 4 (p. 5636). Every path is a straight \
+stroked segment of two vertices (frames, ticks, curves and the label glyphs); the \
+curve of each panel is a chain of segments in drawing order, broken where the frame \
+clips it. Axes calibrated from the drawing's own tick marks (every tick, short and \
+long, on the fitted scale, linear in photon energy, logarithmic in the value): the \
+worst residuals are 0.017/0.017 pt (Fig. 1(a), x/y), 0.015/0.016 (1(b)), 0.016/0.016 \
+(2(a)), 0.016/0.017 (2(b)), 0.015/0.018 (3(a)), 0.001/0.019 (3(b)), 0.012/0.013 \
+(3(c)), 0.015/0.016 (4). The panels' scales differ slightly: Fig. 1(a) runs from \
+12.651 to 23.799 eV, Fig. 1(b) and Fig. 4 to 23.884 eV. Every vertex of each drawn \
+line is taken, less those on the frame's top or bottom edge (where the frame clips a \
+resonance peak or a zero: there the value is only bounded); a peak cut by the frame \
+(two-photon 21.25 eV in Fig. 1, three-photon 11.47 eV in Fig. 2(a), four-photon 7.08 \
+eV in Fig. 3) is drawn to the frame and its height is not given. Between about 8.8 \
+and 9.1 eV (Fig. 2(a)) and 6.6 and 6.7 eV (Fig. 3(a), (b)) the drawn line is jagged \
+on a scale of a few per cent, an artefact of the summed boxes (not smoothed here). \
+Above the second resonance of each figure the calculation's energy grid is sparse \
+(straight segments of up to 0.2 eV in Fig. 1): the curve between vertices is the \
+drawing's interpolation, not the calculation's.
+
+GAUGES. Fig. 4 draws the 1D two-photon cross section in the length (dashed) and \
+velocity (solid) gauges: 'The smallness of the discrepancy between the two is rather \
+reassuring' (pp. 5632-5633). The gauge of Figs. 1-3 is not stated. Fig. 1 is the \
+velocity gauge: Fig. 1(b) and the solid line of Fig. 4 agree within 0.32 % from 13 to \
+22 eV (one calculation drawn twice), and Fig. 1(a) at 13.5 eV reads 0.192e-51 cm4 s, \
+the text's velocity value 0.2e-51 (-4 %), not its length value 0.15e-51 (+28 %). \
+Figs. 2 and 3 are presumably the velocity gauge too (not established).
+
+THE CHECKS (the script fails if one is missed), against every number the text prints \
+for these curves: at 13.5 eV, 1D velocity 1.3e-51 cm4 s (Fig. 4 solid 1.295e-51, \
+-0.4 %; Fig. 1(b) 1.294e-51, -0.4 %), 1D length 1.35e-51 (Fig. 4 dashed, nearest \
+vertex, 1.340e-51, -0.7 %), 1S velocity 0.2e-51 (Fig. 1(a) 0.192e-51, -4 %; the text \
+gives one figure); four-photon: 'According to figure 3 the generalized cross section \
+is sigma^(4) ~ 10^-118 cm8 s3, or perhaps larger by a factor of about two' at 7.5 eV \
+(p. 5635): the sum of Fig. 3(a), (b), (c) at 7.5 eV is 2.65e-118 (1S 0.24e-118, 1D \
+1.70e-118, 1G 0.72e-118), consistent. Reported, not a pass/fail check: 'From figure 1 \
+... the partial wave of D symmetry dominates ... yielding the value sigma^(2) ~ \
+10^-51 cm4 s' (p. 5632), at the ninth harmonic of Ti:sapphire, '13.5 eV' (p. 5630): \
+Fig. 1(a) + 1(b) at 13.5 eV is 1.49e-51. The extracted values, mapped back through \
+the calibrations and overlaid on the rendered pages, follow every drawn line, its \
+resonances, zeros and the dashes of Fig. 4 (inspected 2026-10-08).
+
+DIGITISING UNCERTAINTY: the drawing's coordinates are given to about 0.001 pt and the \
+tick residuals are at most 0.019 pt, against 21 to 62 pt per decade: 0.2 % of a value \
+at worst. The same calculation drawn twice (Figs. 1(b), 4) agrees within 0.32 %. 0.5 \
+% is taken for the value at a drawn vertex; in photon energy 0.001 eV (Fig. 1, 24.5 pt \
+per eV), less in Figs. 2 and 3; on a resonance's flank the value at a given energy is \
+uncertain by the slope times that. The paper states no uncertainty of the \
+calculation; the two normalisations agree within 1 %, the gauges within the \
+difference of Fig. 4 (the length gauge within 5 % of the velocity gauge below 16 eV, \
+10 % above it at 17 eV, 25 % at 20 eV), and the complex-scaling calculation gives 1.15e-51 (1D) and 0.1e-51 (1S) at \
+13.5 eV against the B-spline 1.3 and 1.35e-51 and 0.2 and 0.15e-51.
+
+THE VALUES AT 13.5 eV (p. 5634) are taken as text (datasets text_*): the B-spline \
+values in each gauge and the complex-scaling values. The complex-scaling calculation \
+is the authors' own ('a separate calculation of the two-photon ionization cross \
+section has been performed that is based on a completely different approach ... a \
+complex-scaled CI calculation in a basis of Slater-type orbitals', the cross section \
+'(in the length gauge) ... extracted from the corresponding complex-scaled resolvent \
+in a similar way as has been described for the case of atomic hydrogen by Froelich and \
+Flores-Riveros (1986)', pp. 5633-5634): Froelich and Flores-Riveros, J. Chem. Phys. \
+84, 6732 (1986) is the method's reference for hydrogen, not the source of the values, \
+so they are not reproduced_from.
+
+NOT TAKEN: the total cross sections (not drawn; the sum of the partial ones is not \
+the authors' figure); the ion-yield estimates (Y_2 ~ 85 ions per shot at 115 GW/cm2 \
+for Kobayashi et al.'s experiment, p. 5632; about 3e12 W/cm2 for one ion per pulse in \
+four-photon ionisation at 7.5 eV, p. 5636), which no quantity holds and which depend \
+on assumed volumes and densities. The paper cites the experiments of Kobayashi, \
+Sekikawa, Nabekawa and Watanabe, Opt. Lett. 23, 64 (1998) (He two-photon at the ninth \
+harmonic) and Xenakis et al., J. Phys. B 29, L457 (1996) (Ar two-photon at 15 eV), \
+and Watanabe 1999 (private communication, four-photon), whose values it does not \
+print. mihelic_2021 and nikolopoulos_2001 reproduce these curves (Fig. 3 in each) as \
+comparisons; those copies are not taken there."""
+
+[[datasets]]
+id = "fig1a_sigma2_1S"
+material = "He"
+file = "He/saenz_1999__fig1a_sigma2_1S_He.csv"
+table = "fig_c3ccd1aa8c7b"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 1(a) (p. 5633): the generalised two-photon ionisation cross section of the He ground state to the 1S continuum (W = sigma F^2), cm4 s (the axis prints 10^-52 cm4 sec), against the photon energy on the authors' shifted axis (the record's notes), 12.651 to 23.799 eV: every vertex of the drawn line, 1832 vertices. Through zero near 18.53 and 22.55 eV (drawn to the frame's bottom, 1e-56 to 2e-57 at the last vertices); the 1s2p resonance peak at 21.25 eV runs off the frame. 0.192e-51 at 13.5 eV, the text's velocity value 0.2e-51. Velocity gauge (established, the record's notes). 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1S (L = 0)"
+gauge = "velocity (not stated; established by Fig. 4 and the text, the record's notes)"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated two-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig1b_sigma2_1D"
+material = "He"
+file = "He/saenz_1999__fig1b_sigma2_1D_He.csv"
+table = "fig_c3ccd1aa8c7b"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 1(b) (p. 5633): the generalised two-photon ionisation cross section of the He ground state to the 1D continuum (W = sigma F^2), cm4 s, against the photon energy on the authors' shifted axis (the record's notes), 12.650 to 23.884 eV: every vertex of the drawn line, 1729 vertices. 1.2 to 1.3e-51 from 13 to 15 eV, 0.73e-51 at 20 eV; the 1s2p (drawn peak 21.245 eV, 6.7e-49) and 1s3p (23.104 eV) resonances with the asymmetric dips after them (21.424 eV). 1.294e-51 at 13.5 eV, the text's velocity value 1.3e-51 (-0.4 %). The same calculation as Fig. 4's solid (velocity) line, within 0.32 %. 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "velocity (not stated; established by Fig. 4 and the text, the record's notes)"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated two-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig2a_sigma3_1P"
+material = "He"
+file = "He/saenz_1999__fig2a_sigma3_1P_He.csv"
+table = "fig_4538c5a2639e"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 2(a) (p. 5634): the generalised three-photon ionisation cross section of the He ground state to the 1P continuum (W = sigma F^3), cm6 s2 (the axis prints 10^-84 cm6 sec2), against the photon energy on the authors' shifted axis (the record's notes), 8.496 to 11.944 eV: every vertex of the drawn line, 1044 vertices. Two-photon resonances at 10.333 eV (1.5e-79) and 11.468 eV (runs off the frame), 11.842 eV; zero near 10.98 eV; jagged by a few per cent from 8.8 to 9.1 eV (the record's notes). The text prints no value of this curve. Gauge not stated. 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "1P (L = 1)"
+gauge = "not stated"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_3 = sigma^(3) F^3 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated three-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig2b_sigma3_1F"
+material = "He"
+file = "He/saenz_1999__fig2b_sigma3_1F_He.csv"
+table = "fig_4538c5a2639e"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 2(b) (p. 5634): the generalised three-photon ionisation cross section of the He ground state to the 1F continuum (W = sigma F^3), cm6 s2, against the photon energy on the authors' shifted axis (the record's notes), 8.496 to 11.953 eV: every vertex of the drawn line, 1034 vertices. Flat at 0.13 to 0.29e-84 below 11.3 eV; resonances at 11.539 and 11.867 eV. The text prints no value of this curve. Gauge not stated. 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "1F (L = 3)"
+gauge = "not stated"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_3 = sigma^(3) F^3 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated three-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig3a_sigma4_1S"
+material = "He"
+file = "He/saenz_1999__fig3a_sigma4_1S_He.csv"
+table = "fig_f558c85055c3"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(a) (p. 5635): the generalised four-photon ionisation cross section of the He ground state to the 1S continuum (W = sigma F^4), cm8 s3 (the axis prints 10^-116 cm8 sec3), against the photon energy on the authors' shifted axis (the record's notes), 6.343 to 8.140 eV: every vertex of the drawn line, 634 vertices. Resonances at 7.08 eV (runs off the frame) and 7.699 eV, a zero near 7.64 eV, structure above 7.9 eV. 0.24e-118 at 7.5 eV (the record's notes: the text's sigma^(4) ~ 1e-118). Gauge not stated. 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "1S (L = 0)"
+gauge = "not stated"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_4 = sigma^(4) F^4 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated four-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig3b_sigma4_1D"
+material = "He"
+file = "He/saenz_1999__fig3b_sigma4_1D_He.csv"
+table = "fig_f558c85055c3"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(b) (p. 5635): the generalised four-photon ionisation cross section of the He ground state to the 1D continuum (W = sigma F^4), cm8 s3, against the photon energy on the authors' shifted axis (the record's notes), 6.343 to 8.139 eV: every vertex of the drawn line, 640 vertices. Resonances at 7.081 eV (runs off the frame) and 7.696 eV, a zero near 7.67 eV. 1.70e-118 at 7.5 eV, the largest of the three partial cross sections there. Gauge not stated. 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "not stated"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_4 = sigma^(4) F^4 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated four-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig3c_sigma4_1G"
+material = "He"
+file = "He/saenz_1999__fig3c_sigma4_1G_He.csv"
+table = "fig_38efdb3d55c0"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(c) (p. 5636, 'Figure 3. Continued.'): the generalised four-photon ionisation cross section of the He ground state to the 1G continuum (W = sigma F^4), cm8 s3, against the photon energy on the authors' shifted axis (the record's notes), 6.343 to 8.141 eV: every vertex of the drawn line, 637 vertices. Smooth from 1.3e-119 to 8e-119 below 7.85 eV; three-photon resonances at 7.913 and 8.014 eV. 0.72e-118 at 7.5 eV. Gauge not stated. 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "1G (L = 4)"
+gauge = "not stated"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_4 = sigma^(4) F^4 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated four-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig4_sigma2_1D_velocity"
+material = "He"
+file = "He/saenz_1999__fig4_sigma2_1D_velocity_He.csv"
+table = "fig_f06112f44e83"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 5636), solid line: the 1D two-photon cross section in the velocity gauge (caption), cm4 s, against the photon energy on the authors' shifted axis, 12.650 to 23.884 eV: every vertex of the drawn line, 1733 vertices (one chain). The same calculation as Fig. 1(b) within 0.32 %. 1.295e-51 at 13.5 eV, the text's 1.3e-51 (-0.4 %). 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "velocity"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated two-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "fig4_sigma2_1D_length"
+material = "He"
+file = "He/saenz_1999__fig4_sigma2_1D_length_He.csv"
+table = "fig_f06112f44e83"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 5636), dashed line: the 1D two-photon cross section in the length gauge (caption), cm4 s, against the photon energy on the authors' shifted axis, 12.650 to 23.884 eV: every vertex of the 80 drawn dashes (1030 vertices; nothing between dashes, about 6 pt of line each, gaps as long; the printed cell names the dash). Within 5 % of the velocity gauge below 16 eV, 10 % above it at 17 eV, 25 % at 20 eV (nearest vertices); the 1s2p peak drawn to 1.27e-48 at 21.245 eV. At 13.5 eV the nearest vertex reads 1.340e-51, the text's 1.35e-51 (-0.7 %). 0.5 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "length"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+energy_axis = "photon energy, shifted by the authors so the calculated two-photon threshold falls at the true one (ground state 0.69 eV off; p. 5632); as drawn"
+
+[[datasets]]
+id = "text_sigma2_1D_velocity"
+material = "He"
+table = "text"
+points = [["13.5 eV, B-spline, velocity", "13.5", "1.3"]]
+scale = 1e-51
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 5634: 'the B-spline approach yields for a photon energy of 13.5 eV and transitions into the 1D continuum the cross sections sigma_D^(2) = 1.3 x 10^-51 cm4 s (velocity gauge)'. The calculation of Figs. 1 and 4; 13.5 eV on the authors' shifted axis (the record's notes). No uncertainty is stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "velocity"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+
+[[datasets]]
+id = "text_sigma2_1D_length"
+material = "He"
+table = "text"
+points = [["13.5 eV, B-spline, length", "13.5", "1.35"]]
+scale = 1e-51
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 5634: '... and 1.35 x 10^-51 cm4 s (length gauge)', the 1D continuum at 13.5 eV, B-spline basis. No uncertainty is stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "length"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+
+[[datasets]]
+id = "text_sigma2_1S_velocity"
+material = "He"
+table = "text"
+points = [["13.5 eV, B-spline, velocity", "13.5", "0.2"]]
+scale = 1e-51
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 5634: 'For transitions into the 1S continuum one finds at this energy with the B-spline method sigma_S^(2) = 0.2 x 10^-51 cm4 s (velocity)', at 13.5 eV; printed to one figure. No uncertainty is stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1S (L = 0)"
+gauge = "velocity"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+
+[[datasets]]
+id = "text_sigma2_1S_length"
+material = "He"
+table = "text"
+points = [["13.5 eV, B-spline, length", "13.5", "0.15"]]
+scale = 1e-51
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 5634: '... and 0.15 x 10^-51 cm4 s (length)', the 1S continuum at 13.5 eV, B-spline basis. No uncertainty is stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1S (L = 0)"
+gauge = "length"
+method = "LOPT, discretised two-electron B-spline basis (602 B-splines of order 9, l = 0-6, R_max 280-320 au, spectra added), singlet LS-coupled states"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+
+[[datasets]]
+id = "text_sigma2_1D_complex_scaling"
+material = "He"
+table = "text"
+points = [["13.5 eV, complex-scaled CI", "13.5", "1.15"]]
+scale = 1e-51
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 5634: 'the complex-scaling approach gives sigma_D^(2) = 1.15 x 10^-51 cm4 s', the 1D continuum at 13.5 eV: the authors' own separate calculation (not reproduced from another paper; the record's notes), length gauge. The paper does not say whether its photon energy is shifted as the figures' are. No uncertainty is stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1D (L = 2)"
+gauge = "length"
+method = "LOPT, complex-scaled CI in Slater-type orbitals, the cross section from the complex-scaled resolvent (as Froelich and Flores-Riveros 1986 for H)"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"
+
+[[datasets]]
+id = "text_sigma2_1S_complex_scaling"
+material = "He"
+table = "text"
+points = [["13.5 eV, complex-scaled CI", "13.5", "0.1"]]
+scale = 1e-51
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 5634: '... compared to the value of 0.1 x 10^-51 cm4 s obtained with the complex-scaling approach', the 1S continuum at 13.5 eV: the authors' own calculation, length gauge; printed to one figure. No uncertainty is stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "1S (L = 0)"
+gauge = "length"
+method = "LOPT, complex-scaled CI in Slater-type orbitals, the cross section from the complex-scaled resolvent (as Froelich and Flores-Riveros 1986 for H)"
+definition = "W_2 = sigma^(2) F^2 (Eq. 2), W the ionisation probability per second, F the photon flux in photons cm^-2 s^-1"

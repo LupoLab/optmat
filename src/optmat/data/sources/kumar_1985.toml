@@ -1,0 +1,280 @@
+citation = "A. Kumar and W. J. Meath, Can. J. Chem. 63, 1616 (1985)"
+doi = "10.1139/v85-272"
+library = "Kumar_1985_IntegratedDipoleOscillator"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Constrained dipole oscillator strength distributions (DOSDs): measured \
+photoabsorption and fast-electron energy-loss oscillator-strength data (discrete lines \
+from Moore's levels and several f-value sources; continuum from the references in \
+Tables 8-11; Henke et al. and Veigele's photoelectric cross sections at high energy; \
+the Stobbe formula above 100 keV), each spectral region scaled by (1 + a_j) (Eq. [5]) so \
+that the whole distribution satisfies the Thomas-Reiche-Kuhn sum rule S_0 = Z and two \
+molar refractivities R_lambda = (4 pi/3) N_A alpha_d(lambda) (Eq. [6]); the adopted \
+DOSD is the one of least overall adjustment (STD, about 0.5). Starting distributions \
+followed Berkowitz's (1979) analysis of the rare-gas spectra (pp. 1616-1618, 1623)."""
+notes = """Only the rare gases are curated: HF, HCl and HBr (Tables 1-7, and their columns \
+in Table 2) are not species of the package and are skipped.
+
+Dipole sums S_k = sum_i (E_i/2R)^k f_i + integral (E/2R)^k (df/dE) dE (Eqs. [1], [4]), \
+atomic units (energies in hartree); S_-2 = alpha_d/a0^3 is the static polarizability, \
+S_0 = Z by construction, and S_-2, S_-4, S_-6, ... are the Cauchy coefficients of \
+alpha(omega).
+
+Refractivity constraints (captions of Tables 8-11 and p. 1623): Ne R(5462.25 A) = \
+1.00537 and R(2894.44 A) = 1.02573 cm^3/mol from Cuthbertson and Cuthbertson (1932) \
+'correcting for non-ideal behaviour by using the second virial coefficient of Michels \
+et al.'; Ar R(6329.9 A) = 4.1973 and R(4766.2 A) = 4.2407 from Coulon, Montixi and \
+Occelli (1981); Kr R(2632.1 A) = 7.0106 and R(1770.9 A) = 8.3522 from Smith, Huber and \
+Parkinson (1976); Xe R(2537.0 A) = 12.1423 and R(1702.0 A) = 17.7290 from Bideau-Mehu \
+et al. (1981). These are extracted as reproduced molar refractivities (constraint_*); \
+the S_k (k < 0) are therefore not independent of those refractivity data. Wavelengths \
+are vacuum wavelengths (they are those sources' vacuum values: 5462.23/2894.44 A, \
+263.21/177.09 nm, 253.7/170.2 nm).
+
+Uncertainties (p. 1628): 'For the rare gases the estimated errors in the S_k, for -6 \
+<~ k <~ 0, are <~1%. L_0 and S_1 are uncertain by ~2%'; S_k for k >= 1, 'particularly \
+for k = 2, can have uncertainties of ~3%'; all 'under the assumption that the values of \
+the molar refractivity constraints ... are reliable (errors <~0.5%)'. No level stated.
+
+Table 12 misprint: Leonard and Barker's krypton S_-4 is printed '5.665' without its \
+power of ten (image checked); 56.65 fits between S_-3 = 29.44 and S_-5 = 116.4 and the \
+adopted 56.32 (erratum).
+
+Integrated oscillator strengths (Tables 8-11): the format has no quantity for an \
+oscillator strength integrated over a photon-energy interval (it needs two energies). \
+They are stored as oscillator_strength with an index abscissa (the row's position) and \
+the interval in eV as the row id, e.g. '21.47-21.57' or 'discrete:16.67-21.48' (the \
+whole discrete spectrum); the reference number of each cell's data is in the printed \
+cell. Only the 'Adopted DOSD' column is extracted; the other columns are the \
+integrated initial input data of individual references (one reference per cell, \
+several references per column), not extracted. Table 9 (image checked): \
+Ar initial-data column 2 prints '7.374 (81)' at 30.0-35.0 eV, apparently for 7.374(-1); \
+not extracted.
+
+No pseudo-spectrum is given: 'The pseudo-DOSDs for the hydrogen halides and the rare \
+gases will be presented elsewhere' (p. 1628; Kumar and Meath, Mol. Phys. 54, 823 \
+(1985), not in the library). Not extracted: the logarithmic sums L_k (no quantity), \
+Table 12's footnotes (Hartree-Fock S_2, S_1, S_-1 of Cummings 1975 and CI of Saxon \
+1973, Naon et al. 1975; the Ne CI S_2 '2.599' and HF S_1 '1.514(3)' are misprinted \
+for 2.599(4) and 1.514(2), compare kumar_2010)."""
+
+[[datasets]]
+id = "dosd_Ne"
+material = "Ne"
+file = "Ne/kumar_1985__dosd_Ne.csv"
+table = "tbl_9594b1549318"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table 8 'Adopted DOSD': the integrated dipole oscillator strength over each photon-energy interval (eV, the row id; first row the whole discrete spectrum, 16.67-21.48 eV); the index abscissa is the row's position (the format has no integrated-oscillator-strength quantity, source notes). Absorption edges 48.5 eV (L1) and 866.9 eV (K). Data sources of the adopted cells (reference numbers in the printed cells): Radler and Berkowitz 1979, Samson 1966, Ederer and Tomboulian 1964, Henke et al. (33), Veigele (34) and the Stobbe formula; discrete part from Moore's levels and refs. 60-65. The column sums to 10.0003 (S_0 = 10 by construction)."
+
+[[datasets]]
+id = "dosd_Ar"
+material = "Ar"
+file = "Ar/kumar_1985__dosd_Ar.csv"
+table = "tbl_be26a24107d8"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table 9 'Adopted DOSD': the integrated dipole oscillator strength over each photon-energy interval (eV, the row id; first row the whole discrete spectrum, 11.62-15.60 eV); the index abscissa is the row's position (the format has no integrated-oscillator-strength quantity, source notes). Absorption edges 245.2 (L3), 247.3 (L2), 320.0 (L1) and 3202.9 eV (K). Data sources of the adopted cells (reference numbers in the printed cells): Huffman et al. 1963, Carlson et al. 1973, West and Marr 1976, Hubbell 1977 and the Stobbe formula; discrete part from refs. 11, 60 and 62. The column sums to 17.9994 (S_0 = 18 by construction)."
+
+[[datasets]]
+id = "dosd_Kr"
+material = "Kr"
+file = "Kr/kumar_1985__dosd_Kr.csv"
+table = "tbl_d6de19f0cf8e"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table 10 'Adopted DOSD': the integrated dipole oscillator strength over each photon-energy interval (eV, the row id; first row the whole discrete spectrum, 10.03-13.85 eV); the index abscissa is the row's position (the format has no integrated-oscillator-strength quantity, source notes). Absorption edges 1675 (L3), 1727 (L2), 1921 (L1) and 14330 eV (K). Data sources of the adopted cells (reference numbers in the printed cells): Carter and Hudson 1973, Rustgi et al. 1964, West and Marr 1976, Veigele (34) and the Stobbe formula; discrete part from refs. 60, 89 and 90. The column sums to 35.9987 (S_0 = 36 by construction)."
+
+[[datasets]]
+id = "dosd_Xe"
+material = "Xe"
+file = "Xe/kumar_1985__dosd_Xe.csv"
+table = "tbl_b6cd2000760f"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "eV"
+columns = { x_upper = "eV" }
+use = "check"
+notes = "Table 11 'Adopted DOSD': the integrated dipole oscillator strength over each photon-energy interval (eV, the row id; first row the whole discrete spectrum, 8.44-11.99 eV); the index abscissa is the row's position (the format has no integrated-oscillator-strength quantity, source notes). Absorption edges 4782 (L3), 5104 (L2), 5453 (L1) and 34560 eV (K). Data sources of the adopted cells (reference numbers in the printed cells): Matsunaga et al. 1965, Rustgi et al. 1964, Cairns et al. 1969, Lang and Watson 1975, Lukirskii et al. 1964/1966, Veigele (34) and the Stobbe formula; discrete part from refs. 60 and 89. The column sums to 53.9976 (S_0 = 54 by construction)."
+
+[[datasets]]
+id = "moments_Ne"
+material = "Ne"
+file = "Ne/kumar_1985__moments_Ne.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 12 'Adopted': S_k for k = 2, 1, 0, -1/2, -1, ..., -10 (rows by k, -0.5 for -1/2) from the adopted constrained DOSD, atomic units (E in units of 2R, Eq. [1]). Superseded by kumar_2010 (the same method with improved high-energy behaviour): a check. Estimated errors '<~1%' for -6 <~ k <~ 0, S_1 '~2%', S_2 '~3%' (p. 1628); none stated below k = -6 (dominated by the lowest excitation energies, 'largely unaffected by the constraints')."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0 }
+
+[[datasets]]
+id = "moments_Ar"
+material = "Ar"
+file = "Ar/kumar_1985__moments_Ar.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 12 'Adopted': S_k for k = 2, 1, 0, -1/2, -1, ..., -10 (rows by k, -0.5 for -1/2) from the adopted constrained DOSD, atomic units (E in units of 2R, Eq. [1]). Superseded by kumar_2010 (the same method with improved high-energy behaviour): a check. Estimated errors '<~1%' for -6 <~ k <~ 0, S_1 '~2%', S_2 '~3%' (p. 1628); none stated below k = -6 (dominated by the lowest excitation energies, 'largely unaffected by the constraints')."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0 }
+
+[[datasets]]
+id = "moments_Kr"
+material = "Kr"
+file = "Kr/kumar_1985__moments_Kr.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 12 'Adopted': S_k for k = 2, 1, 0, -1/2, -1, ..., -10 (rows by k, -0.5 for -1/2) from the adopted constrained DOSD, atomic units (E in units of 2R, Eq. [1]). Superseded by kumar_2010 (the same method with improved high-energy behaviour): a check. Estimated errors '<~1%' for -6 <~ k <~ 0, S_1 '~2%', S_2 '~3%' (p. 1628); none stated below k = -6 (dominated by the lowest excitation energies, 'largely unaffected by the constraints')."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0 }
+
+[[datasets]]
+id = "moments_Xe"
+material = "Xe"
+file = "Xe/kumar_1985__moments_Xe.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 12 'Adopted': S_k for k = 2, 1, 0, -1/2, -1, ..., -10 (rows by k, -0.5 for -1/2) from the adopted constrained DOSD, atomic units (E in units of 2R, Eq. [1]). Superseded by kumar_2010 (the same method with improved high-energy behaviour): a check. Estimated errors '<~1%' for -6 <~ k <~ 0, S_1 '~2%', S_2 '~3%' (p. 1628); none stated below k = -6 (dominated by the lowest excitation energies, 'largely unaffected by the constraints')."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0 }
+
+[[datasets]]
+id = "leonard_barker_Ne"
+material = "Ne"
+file = "Ne/kumar_1985__leonard_barker_Ne.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. J. Leonard and J. A. Barker, in Theoretical Chemistry, Advances and Perspectives, Vol. 1 (1975), p. 117", "P. J. Leonard, M.Sc. Thesis, Melbourne, Australia (1968)"]
+notes = "Table 12 'Leonard and Barker': S_k (k = 2 ... -8, integer k only) of Leonard and Barker's DOSD (Stobbe formula above the K edge, hence S_2, S_1 8-11 % and 2-4 % low, p. 1627)."
+
+[[datasets]]
+id = "leonard_barker_Ar"
+material = "Ar"
+file = "Ar/kumar_1985__leonard_barker_Ar.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. J. Leonard and J. A. Barker, in Theoretical Chemistry, Advances and Perspectives, Vol. 1 (1975), p. 117", "P. J. Leonard, M.Sc. Thesis, Melbourne, Australia (1968)"]
+notes = "Table 12 'Leonard and Barker': S_k (k = 2 ... -8, integer k only) of Leonard and Barker's DOSD (Stobbe formula above the K edge, hence S_2, S_1 8-11 % and 2-4 % low, p. 1627)."
+
+[[datasets]]
+id = "leonard_barker_Kr"
+material = "Kr"
+file = "Kr/kumar_1985__leonard_barker_Kr.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. J. Leonard and J. A. Barker, in Theoretical Chemistry, Advances and Perspectives, Vol. 1 (1975), p. 117", "P. J. Leonard, M.Sc. Thesis, Melbourne, Australia (1968)"]
+notes = "Table 12 'Leonard and Barker': S_k (k = 2 ... -8, integer k only) of Leonard and Barker's DOSD (Stobbe formula above the K edge, hence S_2, S_1 8-11 % and 2-4 % low, p. 1627)."
+
+[[datasets]]
+id = "leonard_barker_Xe"
+material = "Xe"
+file = "Xe/kumar_1985__leonard_barker_Xe.csv"
+table = "tbl_1b74f66df9be"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. J. Leonard and J. A. Barker, in Theoretical Chemistry, Advances and Perspectives, Vol. 1 (1975), p. 117", "P. J. Leonard, M.Sc. Thesis, Melbourne, Australia (1968)"]
+notes = "Table 12 'Leonard and Barker': S_k (k = 2 ... -8, integer k only) of Leonard and Barker's DOSD (Stobbe formula above the K edge, hence S_2, S_1 8-11 % and 2-4 % low, p. 1627)."
+
+[[datasets]]
+id = "constraint_Ne"
+material = "Ne"
+table = "text"
+points = [["5462.25", "5462.25", "1.00537"], ["2894.44", "2894.44", "1.02573"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = "Table 8 caption and p. 1623: the molar-refractivity constraints, from Cuthbertson and Cuthbertson (1932) corrected for non-ideality with Michels et al.'s (1960) second virial coefficient (by Kumar and Meath)."
+
+[[datasets]]
+id = "constraint_Ar"
+material = "Ar"
+table = "text"
+points = [["6329.9", "6329.9", "4.1973"], ["4766.2", "4766.2", "4.2407"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. Coulon, G. Montixi and R. Occelli, Can. J. Phys. 59, 1555 (1981)"]
+notes = "Table 9 caption and p. 1623: the molar-refractivity constraints from Coulon et al. (1981), not in the library (so this reproduction may be fitted). The vacuum medium is inferred from the values (the He-Ne 6328.2 A and Ar+ 4764.9 A air lines)."
+
+[[datasets]]
+id = "constraint_Kr"
+material = "Kr"
+table = "text"
+points = [["2632.1", "2632.1", "7.0106"], ["1770.9", "1770.9", "8.3522"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["smith_1976"]
+notes = "Table 10 caption and p. 1623: the molar-refractivity constraints from Smith, Huber and Parkinson (1976) at their 263.21 and 177.09 nm (vacuum)."
+
+[[datasets]]
+id = "constraint_Xe"
+material = "Xe"
+table = "text"
+points = [["2537.0", "2537.0", "12.1423"], ["1702.0", "1702.0", "17.7290"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["bideau_mehu_1981"]
+notes = "Table 11 caption and p. 1623: the molar-refractivity constraints from Bideau-Mehu et al. (1981), whose table lists 253.7 and 170.2 nm; the paper prints 2537.0 and 1702.0 A."
+
+[[errata]]
+dataset = "leonard_barker_Kr"
+row = "-4"
+column = "value"
+printed = "5.665"
+corrected = "5.665e1"
+reason = "The power of ten '(1)' is missing: S_-4 of krypton is about 56 (the adopted value is 5.632(1) = 56.32), and the column rises monotonically from S_-3 = 29.44 to S_-5 = 116.4."
+evidence = "Table image tbl_1b74f66df9be.jpg prints '5.665' with no exponent in the Leonard and Barker krypton column, beside '5.632(1)' adopted; every other entry of the S_-3 ... S_-8 rows carries (1) or (2) for krypton. Checked 2026-09-24."

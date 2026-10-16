@@ -1,0 +1,902 @@
+citation = "D. P. Shelton, \"Vibrational contributions to the hyperpolarizabilities of homonuclear diatomic molecules\", Mol. Phys. 60, 65 (1987)"
+doi = "10.1080/00268978700100051"
+library = "Shelton_1987_VibrationalContributionsHyperpolarizabilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Perturbation theory (Orr & Ward's expression for gamma, Eq. 1) for the \
+off-resonance vibrational hyperpolarizability gamma^v of a homonuclear diatomic molecule, \
+with each pair of electronic sums replaced by the static Raman transition polarizability \
+(Eqs. 3-4; exact in the static limit, underestimating gamma^v at optical frequencies by \
+about 4 %, p. 67), the isotropic and rotational averages done with spherical tensors \
+(Eqs. 5-17), and a simplified form (Eq. 18) for the ground vibrational state, J-averaged \
+transition polarizabilities, neglected rotational frequencies and J >> 1. Evaluated for \
+H2, D2 (ab initio transition polarizabilities of Hunt, Poll & Wolniewicz 1984), N2 and O2 \
+(Raman intensities and depolarisation ratios) (pp. 66-74)."""
+notes = """Pages are the journal's (65-76); pdf page 1 is the publisher's cover, so p. = \
+pdf page + 63. The library's validation notes an unmatched figure (the cover) and a \
+table without caption (Table 3, whose caption, 'Table 3. Calculated values of the \
+static gamma^v at 293 K', and unit line are extracted as text before it); the tables \
+agree with their images, except that Table 2's D2 row mark (a double dagger on the \
+image) is read as a dagger.
+
+DEFINITIONS. gamma^v is 'the sum of all terms which may exhibit vibrational resonances' \
+(p. 66), the pure vibrational part (not the zero-point vibrational averaging of gamma^e, \
+which is part of the observed gamma^e, p. 67). The gamma of Orr & Ward, in the \
+convention p = ... + gamma E^3/6 used by Shelton & Rice (shelton_1994 Table VIII \
+reproduces these values in au: static N2 81 = 0.506e-62/6.2354e-65). The lab-frame \
+components are those of the isotropic (orientation-averaged) tensor: gamma_xxxx is the \
+parallel (mean) gamma, recorded as component 'parallel'; the dc Kerr gamma is \
+3/2[gamma_xxxx - gamma_xyyx](-w; 0, 0, w) (Eq. 23), component 'K'. Units C^4 m^4 J^-3 \
+(the SI unit of gamma in optmat).
+
+TABLE 2 (p. 72), 'Molecular parameter values used to evaluate gamma^v': nu_01 and \
+B_0/2 pi c (datasets), the nuclear-spin weights g_ns(J) for J even/odd (H2 1/3, D2 2/1, \
+N2 2/1, O2 0/1) and the Raman transition polarizabilities ((alpha_par + 2 alpha_perp)/3)_01 \
+and (alpha_par - alpha_perp)_01 in 10^-42 C^2 m^2 J^-1: H2 12.21 and 10.09, D2 10.18 and \
+8.28, N2 6.13 and 4.04, O2 5.89 and 5.89. The transition polarizabilities are not stored \
+as datasets: no quantity of the vocabulary holds a Raman transition polarizability (a \
+matrix element <0|alpha|1>, not a derivative; FORMAT GAP). Sources: H2 'Ab initio values \
+for the J = 1 state', D2 'for the J = 2 state', from Hunt, Poll & Wolniewicz, Can. J. \
+Phys. 62, 1719 (1984); N2 and O2 'From Raman intensity measurements of [11] (Klöckner & \
+Schrötter 1979, curated as schrotter_1979) and depolarization ratios of [21] (Murphy, \
+Holzer & Bernstein 1969)'.
+
+TABLE 3 (p. 72): static gamma^v_xxxx at 293 K from Eq. (17) and Eq. (18) (datasets); \
+the ratio Eq. (18)/Eq. (17) (0.993, 0.994, 1.000, 1.000: 'a measure of the size of \
+quantum effects'), the ratio (4/45)(alpha_par - alpha_perp)_01^2/((alpha_par + 2 \
+alpha_perp)/3)_01^2 (0.061, 0.059, 0.039, 0.089) and gamma^v/gamma^e static (0.292, \
+0.286, 0.094, 0.141; gamma^e from Mizrahi & Shelton 1985) are in these notes only. \
+Checked (2026-09-26): Eq. (21) with Table 2 reproduces the Eq. (18) column: 1.149, \
+1.109 (printed 1.110), 0.506, 0.734, and the ratio column 0.061, 0.059, 0.039, 0.089.
+
+TABLE 4 (p. 74): gamma^v at nu_1 = 15800 cm^-1 ('lambda = 633 nm'; a wavenumber, so \
+vacuum) for the dc Kerr effect, DFWM (the Kerr effect gamma(-w; w, w, -w)), CARS at nu_2 \
+= nu_1 - 2500 cm^-1, ESHG and THG, from Eq. (18); 'For comparison, gamma^e ~ 5 x 10^-62 \
+C^4 m^4 J^-3 for the molecules considered'. ERRATA: 'Table 4 of Ref. 9 contains several \
+numerical errors. Line 2 should read D2, 2988, +0.007*, +0.737, +2.464, -0.031, -0.010. \
+Column 6 should read ESHG, -0.064, -0.031, -0.008, -0.005' (Shelton, Phys. Rev. A 36, \
+3461 (1987), ref. 10 = shelton_1987b; page image checked). Corrected by errata below: \
+D2 CARS, and the four ESHG values; D2's nu_01, printed 2998 in Table 4 (2988 in Table \
+2), is not stored from Table 4. CHECKED (2026-09-26) by recomputing Table 4 from Table \
+2 with Eqs. (21)-(23) at nu_1 = 15800 cm^-1: dc Kerr -0.032, +0.007, +0.003, +0.038; \
+DFWM 0.759, 0.736, 0.336, 0.489; CARS 1.194, 2.462 (2.464 with Table 3's 1.110), -2.245 \
+(printed -2.231, 0.6 %, the CARS difference frequency being 170 cm^-1 from N2's \
+resonance), -0.309; ESHG -0.0637, -0.0308, -0.0084, -0.0054; THG -0.0202, -0.0100, \
+-0.0028, -0.0018. So the corrected values are right; the printed ESHG column is not \
+reproduced by any single factor, and the printed D2 CARS 2.426 is what nu_01 = 2998 \
+gives (2.416-2.427): the misprinted frequency was used. The Eq. (17) dc Kerr values of \
+note * are the text_dc_kerr_eq17_<gas> datasets.
+
+Reproductions elsewhere: shelton_1994 Table VIII gives the N2 and O2 gamma^v in au 'with \
+corrections given in ref 133' (shelton_1987b): static 81 and 118, dc Kerr 0.5 and 6.1, \
+DFWM 54 and 78 at 632.8 nm (= this paper's 0.506, 0.734, 0.003, 0.038, 0.336, 0.489 x \
+10^-62 / 6.2354e-65), ESHG -1.6 and -1.0 and THG -0.6 and -0.4 at 694.3 nm (Eq. 22 at \
+694.3 nm gives -1.63 and -1.04, -0.54 and -0.34 au: recomputed at the other wavelength). \
+H2 and D2 in that table come from another calculation (its note e)."""
+
+[[datasets]]
+id = "table2_nu01_H2"
+material = "H2"
+file = "H2/shelton_1987__table2_nu01_H2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): 'Molecular parameter values used to evaluate gamma^v': the fundamental vibrational frequency nu_01 (v = 0 -> 1) of H2, in cm^-1, an input of the calculation (its source is not stated; the table's footnote on this row marked with a dagger ('Ab initio values for the J = 1 state, from [20]', Hunt, Poll & Wolniewicz 1984) concerns the transition polarizabilities). Table 4 reprints it (D2 there as 2998, a misprint: see the record's errata notes)."
+[datasets.parameters]
+transition = "v = 0 -> 1 (nu_01)"
+assumed = true
+
+[[datasets]]
+id = "table2_B0_H2"
+material = "H2"
+file = "H2/shelton_1987__table2_B0_H2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): B_0/2 pi c of H2, the ground-state rotational constant in cm^-1, an input of Eq. (20) (source not stated)."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+assumed = true
+
+[[datasets]]
+id = "table2_nu01_D2"
+material = "D2"
+file = "D2/shelton_1987__table2_nu01_D2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): 'Molecular parameter values used to evaluate gamma^v': the fundamental vibrational frequency nu_01 (v = 0 -> 1) of D2, in cm^-1, an input of the calculation (its source is not stated; the table's footnote on this row marked with a double dagger ('Ab initio values for the J = 2 state, from [20]', Hunt, Poll & Wolniewicz 1984; the extraction reads the mark as a dagger) concerns the transition polarizabilities). Table 4 reprints it (D2 there as 2998, a misprint: see the record's errata notes)."
+[datasets.parameters]
+transition = "v = 0 -> 1 (nu_01)"
+assumed = true
+
+[[datasets]]
+id = "table2_B0_D2"
+material = "D2"
+file = "D2/shelton_1987__table2_B0_D2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): B_0/2 pi c of D2, the ground-state rotational constant in cm^-1, an input of Eq. (20) (source not stated)."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+assumed = true
+
+[[datasets]]
+id = "table2_nu01_N2"
+material = "N2"
+file = "N2/shelton_1987__table2_nu01_N2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): 'Molecular parameter values used to evaluate gamma^v': the fundamental vibrational frequency nu_01 (v = 0 -> 1) of N2, in cm^-1, an input of the calculation (its source is not stated; the table's footnote on this row marked with a section sign ('From Raman intensity measurements of [11] and depolarization ratios of [21]', Klöckner & Schrötter 1979; Murphy, Holzer & Bernstein 1969) concerns the transition polarizabilities). Table 4 reprints it (D2 there as 2998, a misprint: see the record's errata notes)."
+[datasets.parameters]
+transition = "v = 0 -> 1 (nu_01)"
+assumed = true
+
+[[datasets]]
+id = "table2_B0_N2"
+material = "N2"
+file = "N2/shelton_1987__table2_B0_N2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): B_0/2 pi c of N2, the ground-state rotational constant in cm^-1, an input of Eq. (20) (source not stated)."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+assumed = true
+
+[[datasets]]
+id = "table2_nu01_O2"
+material = "O2"
+file = "O2/shelton_1987__table2_nu01_O2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): 'Molecular parameter values used to evaluate gamma^v': the fundamental vibrational frequency nu_01 (v = 0 -> 1) of O2, in cm^-1, an input of the calculation (its source is not stated; the table's footnote on this row marked with a section sign ('From Raman intensity measurements of [11] and depolarization ratios of [21]', Klöckner & Schrötter 1979; Murphy, Holzer & Bernstein 1969) concerns the transition polarizabilities). Table 4 reprints it (D2 there as 2998, a misprint: see the record's errata notes)."
+[datasets.parameters]
+transition = "v = 0 -> 1 (nu_01)"
+assumed = true
+
+[[datasets]]
+id = "table2_B0_O2"
+material = "O2"
+file = "O2/shelton_1987__table2_B0_O2.csv"
+table = "tbl_6c3a7b517193"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 72): B_0/2 pi c of O2, the ground-state rotational constant in cm^-1, an input of Eq. (20) (source not stated)."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+assumed = true
+
+[[datasets]]
+id = "table3_eq17_H2"
+material = "H2"
+file = "H2/shelton_1987__table3_eq17_H2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 72), 'Calculated values of the static gamma^v at 293 K', gamma^v_xxxx(0; 0, 0, 0) / 10^-62 C^4 m^4 J^-3, column 'Equation (17)': the explicit sum over rotational levels (the ab initio J-dependent transition polarizabilities of [20], note ||), fundamental v = 0 -> 1 only. The pure vibrational static gamma (the isotropic gamma_xxxx, i.e. the mean gamma; the static limit has one independent component, Eq. 19). Theory; no uncertainty stated (Eq. 4, the transition-polarizability approximation, is exact in the static limit, p. 67)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 293.0
+
+[[datasets]]
+id = "table3_eq18_H2"
+material = "H2"
+file = "H2/shelton_1987__table3_eq18_H2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 (p. 72), column 'Equation (18)': the static gamma^v_xxxx of H2 from the approximate Eq. (18) = Eq. (21) (ground vibrational state, J-averaged transition polarizabilities of Table 2, rotational frequencies neglected, J >> 1: 'essentially the classical limit', note dagger), in 10^-62 C^4 m^4 J^-3. Reproduced here from Table 2 by Eq. (21) (see the formula eq21_static)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table3_eq17_D2"
+material = "D2"
+file = "D2/shelton_1987__table3_eq17_D2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 72), 'Calculated values of the static gamma^v at 293 K', gamma^v_xxxx(0; 0, 0, 0) / 10^-62 C^4 m^4 J^-3, column 'Equation (17)': the explicit sum over rotational levels (the ab initio J-dependent transition polarizabilities of [20], note ||), fundamental v = 0 -> 1 only. The pure vibrational static gamma (the isotropic gamma_xxxx, i.e. the mean gamma; the static limit has one independent component, Eq. 19). Theory; no uncertainty stated (Eq. 4, the transition-polarizability approximation, is exact in the static limit, p. 67)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 293.0
+
+[[datasets]]
+id = "table3_eq18_D2"
+material = "D2"
+file = "D2/shelton_1987__table3_eq18_D2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 (p. 72), column 'Equation (18)': the static gamma^v_xxxx of D2 from the approximate Eq. (18) = Eq. (21) (ground vibrational state, J-averaged transition polarizabilities of Table 2, rotational frequencies neglected, J >> 1: 'essentially the classical limit', note dagger), in 10^-62 C^4 m^4 J^-3. Reproduced here from Table 2 by Eq. (21) (see the formula eq21_static)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table3_eq17_N2"
+material = "N2"
+file = "N2/shelton_1987__table3_eq17_N2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 72), 'Calculated values of the static gamma^v at 293 K', gamma^v_xxxx(0; 0, 0, 0) / 10^-62 C^4 m^4 J^-3, column 'Equation (17)': the explicit sum over rotational levels (the J-averaged transition polarizabilities of Table 2, note pilcrow), fundamental v = 0 -> 1 only. The pure vibrational static gamma (the isotropic gamma_xxxx, i.e. the mean gamma; the static limit has one independent component, Eq. 19). Theory; no uncertainty stated (Eq. 4, the transition-polarizability approximation, is exact in the static limit, p. 67)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 293.0
+
+[[datasets]]
+id = "table3_eq18_N2"
+material = "N2"
+file = "N2/shelton_1987__table3_eq18_N2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 (p. 72), column 'Equation (18)': the static gamma^v_xxxx of N2 from the approximate Eq. (18) = Eq. (21) (ground vibrational state, J-averaged transition polarizabilities of Table 2, rotational frequencies neglected, J >> 1: 'essentially the classical limit', note dagger), in 10^-62 C^4 m^4 J^-3. Reproduced here from Table 2 by Eq. (21) (see the formula eq21_static)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table3_eq17_O2"
+material = "O2"
+file = "O2/shelton_1987__table3_eq17_O2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 72), 'Calculated values of the static gamma^v at 293 K', gamma^v_xxxx(0; 0, 0, 0) / 10^-62 C^4 m^4 J^-3, column 'Equation (17)': the explicit sum over rotational levels (the J-averaged transition polarizabilities of Table 2, note pilcrow), fundamental v = 0 -> 1 only. The pure vibrational static gamma (the isotropic gamma_xxxx, i.e. the mean gamma; the static limit has one independent component, Eq. 19). Theory; no uncertainty stated (Eq. 4, the transition-polarizability approximation, is exact in the static limit, p. 67)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+temperature_k = 293.0
+
+[[datasets]]
+id = "table3_eq18_O2"
+material = "O2"
+file = "O2/shelton_1987__table3_eq18_O2.csv"
+table = "tbl_d9a1dad537c6"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 (p. 72), column 'Equation (18)': the static gamma^v_xxxx of O2 from the approximate Eq. (18) = Eq. (21) (ground vibrational state, J-averaged transition polarizabilities of Table 2, rotational frequencies neglected, J >> 1: 'essentially the classical limit', note dagger), in 10^-62 C^4 m^4 J^-3. Reproduced here from Table 2 by Eq. (21) (see the formula eq21_static)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_H2_dc_kerr"
+material = "H2"
+file = "H2/shelton_1987__table4_H2_dc_kerr.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of H2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), dc Kerr, 3/2[gamma^v_xxxx(-w; 0, 0, w) - gamma^v_xyyx(-w; 0, 0, w)], Eq. (23) (note dagger), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. 'The dc Kerr hyperpolarizability is particularly sensitive to the approximations made in order to obtain equation (18) from equation (17)' (note *): the Eq. (17) value is text_dc_kerr_eq17_H2 (use that one). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+
+[[datasets]]
+id = "table4_H2_dfwm"
+material = "H2"
+file = "H2/shelton_1987__table4_H2_dfwm.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of H2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), DFWM, gamma^v_xxxx(-w; w, w, -w), Eq. (22) (the nonlinear refractive index), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_H2_cars"
+material = "H2"
+file = "H2/shelton_1987__table4_H2_cars.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of H2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), CARS, gamma^v_xxxx(-2w1 + w2; w1, w1, -w2), Eq. (22), with nu_2 = nu_1 - 2500 cm^-1 = 13300 cm^-1 (stokes_nm = 1e7/13300 = 751.88 nm, vacuum, computed here), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+stokes_nm = 751.88
+
+[[datasets]]
+id = "table4_H2_eshg"
+material = "H2"
+file = "H2/shelton_1987__table4_H2_eshg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of H2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), ESHG, gamma^v_xxxx(-2w; w, w, 0), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Printed -0.042; corrected to -0.064 (erratum below). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_H2_thg"
+material = "H2"
+file = "H2/shelton_1987__table4_H2_thg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of H2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), THG, gamma^v_xxxx(-3w; w, w, w), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_D2_dc_kerr"
+material = "D2"
+file = "D2/shelton_1987__table4_D2_dc_kerr.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of D2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), dc Kerr, 3/2[gamma^v_xxxx(-w; 0, 0, w) - gamma^v_xyyx(-w; 0, 0, w)], Eq. (23) (note dagger), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. 'The dc Kerr hyperpolarizability is particularly sensitive to the approximations made in order to obtain equation (18) from equation (17)' (note *): the Eq. (17) value is text_dc_kerr_eq17_D2 (use that one). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+
+[[datasets]]
+id = "table4_D2_dfwm"
+material = "D2"
+file = "D2/shelton_1987__table4_D2_dfwm.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of D2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), DFWM, gamma^v_xxxx(-w; w, w, -w), Eq. (22) (the nonlinear refractive index), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_D2_cars"
+material = "D2"
+file = "D2/shelton_1987__table4_D2_cars.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of D2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), CARS, gamma^v_xxxx(-2w1 + w2; w1, w1, -w2), Eq. (22), with nu_2 = nu_1 - 2500 cm^-1 = 13300 cm^-1 (stokes_nm = 1e7/13300 = 751.88 nm, vacuum, computed here), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Printed +2.426; corrected to +2.464 by Shelton's Phys. Rev. A 36, 3461 ref. 10 (erratum below). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+stokes_nm = 751.88
+
+[[datasets]]
+id = "table4_D2_eshg"
+material = "D2"
+file = "D2/shelton_1987__table4_D2_eshg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of D2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), ESHG, gamma^v_xxxx(-2w; w, w, 0), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Printed -0.020; corrected to -0.031 (erratum below). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_D2_thg"
+material = "D2"
+file = "D2/shelton_1987__table4_D2_thg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of D2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), THG, gamma^v_xxxx(-3w; w, w, w), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_N2_dc_kerr"
+material = "N2"
+file = "N2/shelton_1987__table4_N2_dc_kerr.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of N2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), dc Kerr, 3/2[gamma^v_xxxx(-w; 0, 0, w) - gamma^v_xyyx(-w; 0, 0, w)], Eq. (23) (note dagger), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. 'The dc Kerr hyperpolarizability is particularly sensitive to the approximations made in order to obtain equation (18) from equation (17)' (note *): the Eq. (17) value is text_dc_kerr_eq17_N2 (use that one). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+
+[[datasets]]
+id = "table4_N2_dfwm"
+material = "N2"
+file = "N2/shelton_1987__table4_N2_dfwm.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of N2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), DFWM, gamma^v_xxxx(-w; w, w, -w), Eq. (22) (the nonlinear refractive index), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_N2_cars"
+material = "N2"
+file = "N2/shelton_1987__table4_N2_cars.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of N2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), CARS, gamma^v_xxxx(-2w1 + w2; w1, w1, -w2), Eq. (22), with nu_2 = nu_1 - 2500 cm^-1 = 13300 cm^-1 (stokes_nm = 1e7/13300 = 751.88 nm, vacuum, computed here), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+stokes_nm = 751.88
+
+[[datasets]]
+id = "table4_N2_eshg"
+material = "N2"
+file = "N2/shelton_1987__table4_N2_eshg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of N2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), ESHG, gamma^v_xxxx(-2w; w, w, 0), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Printed -0.006; corrected to -0.008 (erratum below). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_N2_thg"
+material = "N2"
+file = "N2/shelton_1987__table4_N2_thg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of N2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), THG, gamma^v_xxxx(-3w; w, w, w), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_O2_dc_kerr"
+material = "O2"
+file = "O2/shelton_1987__table4_O2_dc_kerr.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of O2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), dc Kerr, 3/2[gamma^v_xxxx(-w; 0, 0, w) - gamma^v_xyyx(-w; 0, 0, w)], Eq. (23) (note dagger), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. 'The dc Kerr hyperpolarizability is particularly sensitive to the approximations made in order to obtain equation (18) from equation (17)' (note *): the Eq. (17) value is text_dc_kerr_eq17_O2 (use that one). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+
+[[datasets]]
+id = "table4_O2_dfwm"
+material = "O2"
+file = "O2/shelton_1987__table4_O2_dfwm.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of O2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), DFWM, gamma^v_xxxx(-w; w, w, -w), Eq. (22) (the nonlinear refractive index), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_O2_cars"
+material = "O2"
+file = "O2/shelton_1987__table4_O2_cars.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of O2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), CARS, gamma^v_xxxx(-2w1 + w2; w1, w1, -w2), Eq. (22), with nu_2 = nu_1 - 2500 cm^-1 = 13300 cm^-1 (stokes_nm = 1e7/13300 = 751.88 nm, vacuum, computed here), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+stokes_nm = 751.88
+
+[[datasets]]
+id = "table4_O2_eshg"
+material = "O2"
+file = "O2/shelton_1987__table4_O2_eshg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of O2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), ESHG, gamma^v_xxxx(-2w; w, w, 0), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Printed -0.004; corrected to -0.005 (erratum below). Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "table4_O2_thg"
+material = "O2"
+file = "O2/shelton_1987__table4_O2_thg.csv"
+table = "tbl_a48923e63b94"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 (p. 74), 'Vibrational contributions to the hyperpolarizability at optical frequencies', gamma^v of O2 in 10^-62 C^4 m^4 J^-3 at nu_1 = 15800 cm^-1 ('lambda = 633 nm'), THG, gamma^v_xxxx(-3w; w, w, w), Eq. (22), calculated with Eq. (18) (the J-averaged, classical-limit expression) and Table 2's inputs; the fundamental v = 0 -> 1 only. Theory; no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "text_dc_kerr_eq17_H2"
+material = "H2"
+points = [
+    ["dc_kerr, Eq. (17)", "15800", "-0.041"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 note * (p. 74): 'Using equation (17) one obtains gamma^v / 10^-62 C^4 m^4 J^-3 = -0.041, +0.001, +0.003 and +0.038 for H2, D2, N2 and O2 respectively, at 293 K. The calculation uses the ab initio alpha_vJ,v'J' and omega_vJ,v'J' of [20] for H2 and D2 and the J-averaged transition polarizabilities given in table 2 for N2 and O2.' The dc Kerr gamma^v = 3/2[gamma^v_xxxx - gamma^v_xyyx](-w; 0, 0, w) of H2 (-0.041) at nu_1 = 15800 cm^-1, the full rotational sum, which the paper prefers for the dc Kerr effect ('if an accurate estimate of gamma^v_dcKerr is desired one must use equation (17)', p. 73)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+temperature_k = 293.0
+
+[[datasets]]
+id = "text_dc_kerr_eq17_D2"
+material = "D2"
+points = [
+    ["dc_kerr, Eq. (17)", "15800", "0.001"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 note * (p. 74): 'Using equation (17) one obtains gamma^v / 10^-62 C^4 m^4 J^-3 = -0.041, +0.001, +0.003 and +0.038 for H2, D2, N2 and O2 respectively, at 293 K. The calculation uses the ab initio alpha_vJ,v'J' and omega_vJ,v'J' of [20] for H2 and D2 and the J-averaged transition polarizabilities given in table 2 for N2 and O2.' The dc Kerr gamma^v = 3/2[gamma^v_xxxx - gamma^v_xyyx](-w; 0, 0, w) of D2 (+0.001) at nu_1 = 15800 cm^-1, the full rotational sum, which the paper prefers for the dc Kerr effect ('if an accurate estimate of gamma^v_dcKerr is desired one must use equation (17)', p. 73)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+temperature_k = 293.0
+
+[[datasets]]
+id = "text_dc_kerr_eq17_N2"
+material = "N2"
+points = [
+    ["dc_kerr, Eq. (17)", "15800", "0.003"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 note * (p. 74): 'Using equation (17) one obtains gamma^v / 10^-62 C^4 m^4 J^-3 = -0.041, +0.001, +0.003 and +0.038 for H2, D2, N2 and O2 respectively, at 293 K. The calculation uses the ab initio alpha_vJ,v'J' and omega_vJ,v'J' of [20] for H2 and D2 and the J-averaged transition polarizabilities given in table 2 for N2 and O2.' The dc Kerr gamma^v = 3/2[gamma^v_xxxx - gamma^v_xyyx](-w; 0, 0, w) of N2 (+0.003) at nu_1 = 15800 cm^-1, the full rotational sum, which the paper prefers for the dc Kerr effect ('if an accurate estimate of gamma^v_dcKerr is desired one must use equation (17)', p. 73)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+temperature_k = 293.0
+
+[[datasets]]
+id = "text_dc_kerr_eq17_O2"
+material = "O2"
+points = [
+    ["dc_kerr, Eq. (17)", "15800", "0.038"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 4 note * (p. 74): 'Using equation (17) one obtains gamma^v / 10^-62 C^4 m^4 J^-3 = -0.041, +0.001, +0.003 and +0.038 for H2, D2, N2 and O2 respectively, at 293 K. The calculation uses the ab initio alpha_vJ,v'J' and omega_vJ,v'J' of [20] for H2 and D2 and the J-averaged transition polarizabilities given in table 2 for N2 and O2.' The dc Kerr gamma^v = 3/2[gamma^v_xxxx - gamma^v_xyyx](-w; 0, 0, w) of O2 (+0.038) at nu_1 = 15800 cm^-1, the full rotational sum, which the paper prefers for the dc Kerr effect ('if an accurate estimate of gamma^v_dcKerr is desired one must use equation (17)', p. 73)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"
+temperature_k = 293.0
+
+[[formulas]]
+id = "eq21_static"
+equation = "Eq. (21), p. 72"
+printed = "gamma^v_xxxx(0; 0, 0, 0) = (6/(hbar omega_01)) [(4/45)(alpha_par - alpha_perp)_01^2 + ((alpha_par + 2 alpha_perp)/3)_01^2]"
+variable = "omega_01 = 2 pi c nu_01, the fundamental vibrational frequency; (alpha)_01 the static Raman transition polarizabilities (Table 2)"
+process = "static"
+convention = "T"
+part = "vibrational"
+range = "the static limit; H2, D2, N2, O2 with Table 2's inputs"
+coefficients = { nu01_H2 = "4156", nu01_D2 = "2988", nu01_N2 = "2331", nu01_O2 = "1555", mean01_H2 = "12.21", mean01_D2 = "10.18", mean01_N2 = "6.13", mean01_O2 = "5.89", aniso01_H2 = "10.09", aniso01_D2 = "8.28", aniso01_N2 = "4.04", aniso01_O2 = "5.89" }
+coefficient_units = { nu01 = "cm^-1", mean01 = "1e-42 C^2 m^2 J^-1 ((alpha_par + 2 alpha_perp)/3)_01", aniso01 = "1e-42 C^2 m^2 J^-1 (alpha_par - alpha_perp)_01" }
+check = "Reproduces Table 3's Eq. (18) column (checked 2026-09-26): 1.149, 1.109 (printed 1.110), 0.506, 0.734 x 10^-62 C^4 m^4 J^-3 for H2, D2, N2, O2."
+notes = "The static limit of Eq. (18), for the four molecules of Table 2 (the formula applies to each; the coefficients are Table 2's). Its D^2 (anisotropy) terms carry the approximations of Eq. (18) (+8, +5, +0.5, +0.3 % against Eq. (17), p. 73)."
+
+[[formulas]]
+id = "eq22_optical"
+equation = "Eq. (22), p. 73"
+printed = "gamma^v_xxxx(-2 omega_1 + omega_2; omega_1, omega_1, -omega_2) = gamma^v_xxxx(0; 0, 0, 0) (1/3){2 [1 - ((omega_1 - omega_2)/omega_01)^2]^-1 + [1 - (2 omega_1/omega_01)^2]^-1}"
+variable = "omega_1, omega_2 the optical frequencies (CARS as written; ESHG: omega_2 = 0; THG: omega_2 = -omega_1; DFWM: omega_2 = omega_1); omega_01 the vibrational frequency; gamma^v(0) from Eq. (21)"
+process = "other"
+convention = "T"
+part = "vibrational"
+range = "frequencies well below electronic resonance; not for the dc Kerr effect (Eq. 23)"
+check = "With Table 2 and Eq. (21), reproduces Table 4's DFWM, CARS and THG columns and the corrected ESHG column of shelton_1987b ref. 10 at nu_1 = 15800 cm^-1 (checked 2026-09-26; N2 CARS -2.245 against the printed -2.231)."
+notes = "The classical-limit (Eq. 18) frequency dependence of gamma^v for every process whose frequencies pair as written; Table 4's source."
+
+[[formulas]]
+id = "eq23_dc_kerr"
+equation = "Eq. (23), p. 73"
+printed = "gamma^v_dcKerr = (3/2)[gamma^v_xxxx(-omega; 0, 0, omega) - gamma^v_xyyx(-omega; 0, 0, omega)] = (6/(hbar omega_01)) {((alpha_par - alpha_perp)_01^2/45) [3 + [1 - (omega/omega_01)^2]^-1] + ((alpha_par + 2 alpha_perp)/3)_01^2 [1 - (omega/omega_01)^2]^-1}"
+variable = "omega the optical frequency; omega_01 the vibrational frequency; (alpha)_01 as in Table 2"
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+range = "below electronic resonance; 'particularly sensitive to the approximations' of Eq. (18): use Eq. (17) for an accurate value (p. 73)"
+check = "With Table 2, reproduces Table 4's dc Kerr column at nu_1 = 15800 cm^-1 (checked 2026-09-26): -0.032, +0.007, +0.003, +0.038."
+notes = "A small difference of large terms; at optical frequencies the anisotropy term dominates (p. 73). The Eq. (17) values are in note * of Table 4 (text_dc_kerr_eq17_<gas>)."
+
+[[errata]]
+dataset = "table4_D2_cars"
+row = "cars"
+column = "value"
+printed = "2.426"
+corrected = "2.464"
+reason = "Shelton's own correction: 'Table 4 of Ref. 9 contains several numerical errors. Line 2 should read D2, 2988, +0.007*, +0.737, +2.464, -0.031, -0.010' (Phys. Rev. A 36, 3461 (1987), ref. 10). The printed value follows from the misprinted nu_01 = 2998 of Table 4's line 2 (Table 2 gives 2988)."
+evidence = "shelton_1987b p. 3463, ref. 10 (page image checked). Recomputed here with Eq. (22), Table 2 and Table 3's Eq. (18) gamma^v(0) = 1.110: 2.464 with nu_01 = 2988; 2.42-2.43 with 2998. Checked 2026-09-26."
+
+[[errata]]
+dataset = "table4_H2_eshg"
+row = "eshg"
+column = "value"
+printed = "-0.042"
+corrected = "-0.064"
+reason = "Shelton's own correction: 'Column 6 should read ESHG, -0.064, -0.031, -0.008, -0.005' (Phys. Rev. A 36, 3461 (1987), ref. 10)."
+evidence = "shelton_1987b p. 3463, ref. 10 (page image checked). Recomputed here with Eq. (22) (omega_2 = 0), Table 2 and Eq. (21): -0.0637. Checked 2026-09-26."
+
+[[errata]]
+dataset = "table4_D2_eshg"
+row = "eshg"
+column = "value"
+printed = "-0.020"
+corrected = "-0.031"
+reason = "Shelton's own correction: 'Column 6 should read ESHG, -0.064, -0.031, -0.008, -0.005' (Phys. Rev. A 36, 3461 (1987), ref. 10)."
+evidence = "shelton_1987b p. 3463, ref. 10 (page image checked). Recomputed here with Eq. (22), Table 2 (nu_01 = 2988) and Eq. (21): -0.0308. Checked 2026-09-26."
+
+[[errata]]
+dataset = "table4_N2_eshg"
+row = "eshg"
+column = "value"
+printed = "-0.006"
+corrected = "-0.008"
+reason = "Shelton's own correction: 'Column 6 should read ESHG, -0.064, -0.031, -0.008, -0.005' (Phys. Rev. A 36, 3461 (1987), ref. 10)."
+evidence = "shelton_1987b p. 3463, ref. 10 (page image checked). Recomputed here with Eq. (22), Table 2 and Eq. (21): -0.0084. Checked 2026-09-26."
+
+[[errata]]
+dataset = "table4_O2_eshg"
+row = "eshg"
+column = "value"
+printed = "-0.004"
+corrected = "-0.005"
+reason = "Shelton's own correction: 'Column 6 should read ESHG, -0.064, -0.031, -0.008, -0.005' (Phys. Rev. A 36, 3461 (1987), ref. 10)."
+evidence = "shelton_1987b p. 3463, ref. 10 (page image checked). Recomputed here with Eq. (22), Table 2 and Eq. (21): -0.0054. Checked 2026-09-26."

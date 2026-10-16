@@ -1,0 +1,348 @@
+citation = "D. A. Dunmur and N. E. Jessup, \"The influence of intermolecular interactions on the Kerr effect in gases. I. Statistical theory for spherical top molecules\", Mol. Phys. 37, 697 (1979)"
+doi = "10.1080/00268977900103131"
+library = "Dunmur_1979_InfluenceIntermolecularInteractions"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Statistical theory of the second and third Kerr virial coefficients B_K and \
+C_K of spherical top molecules in terms of irreducible cluster (pair, triplet) \
+polarizabilities (Eqs. 16, 25), evaluated with the dipole-induced-dipole (DID) model \
+for the cluster polarizabilities (Eqs. 26-27) and a Lennard-Jones 6-12 pair potential; \
+the second hyperpolarizability's contribution to B_K is omitted (2 % of the DID B_K for \
+the rare gases, 0.3 % for SF6, p. 700) (pp. 697-708)."""
+notes = """PART I ONLY. This is Part I, the statistical theory. The requested Part II, \
+Dunmur, Hunt & Jessup, Mol. Phys. 37, 713 (1979), which reports the measured dc Kerr \
+effect (A_K, B_K, C_K) of CH4, SF6 and the other spherical tops, is not in the library \
+(missing); its B_K and C_K appear here only as Table 2's and Table 4's 'expt [19]' \
+comparison values (reproduced datasets). No A_K or gamma is given in this paper. Pages \
+are the journal's (697-711); pdf page 1 is the publisher's cover, so p. = pdf page + 695. \
+The library's validation warnings concern only the cover's images.
+
+DEFINITIONS (pp. 697-698). mK = lim_(E -> 0) 6 n (n_par - n_perp) V_m/[(n^2 + 2)^2 (eps \
++ 2)^2 E^2] (Eq. 1) = A_K + B_K V_m^-1 + C_K V_m^-2 + ... (Eq. 2); for spherical tops A_K = \
+(N_A/(810 eps0))[3 gamma_abab(-w; w, 0, 0) - gamma_aabb(-w; w, 0, 0)] (Eq. 3). B_K in the \
+DID model: B_K = (N_A^2 alpha_0^2 a_0^2/(90 pi eps0^3 kT)) integral R^-4 g_0(R) dR (Eq. \
+28), alpha_0 and a_0 the static and optical polarizabilities. The paper's C_K \
+decomposition (Table 4): C_K^(2-2) from the density dependence of g(R), C_K^(2-2') from \
+pairs within a triplet, C_K^(2-3) + C_K^(3-2) with the triplet polarizability, and C_K^(3-3) \
+(p. 704).
+
+TABLE 1 (p. 705), the inputs (static alpha, optical a in 10^-40 C^2 m^2 J^-1; Lennard-Jones \
+u0/k, R0 from Hirschfelder, Curtiss & Bird [41]): Ar: alpha = 1.827 [7, Orcutt & Cole 1967], a = 1.850 [44, Dalgarno & Kingston 1960] x 10^-40 C^2 m^2 J^-1, u0/k = 119.8 K, R0 = 0.3405 nm [41]; Kr: alpha = 2.764 [7], a = 2.801 [44], u0/k = 171 K, R0 = 0.360 nm [41]; Xe: alpha = 4.510 [44], a = 4.576 [44], u0/k = 221 K, R0 = 0.410 nm [41]; CH4: alpha = 2.885 [45, Bose, Sochanski & Cole 1972], a = 2.901 [48, Landolt-Bornstein], u0/k = 148.2 K, R0 = 0.382 nm [41]; SF6: alpha = 7.24 [47, Buckingham & Raab 1961], a = 4.974 [49, Watson & Ramaswamy 1936], u0/k = 200.9 K, R0 = 0.551 nm [41]. CF4 and \
+neopentane (C(CH3)4) are also computed throughout: out of scope, not transcribed.
+
+ACCURACY. No uncertainties are given; 'the DID model ... is known to be inaccurate for \
+small intermolecular separations, and so it is not surprising that our calculated values \
+for B_K and C_K do not agree with the experimental results' (p. 708); 'The second Kerr \
+virial coefficients calculated for the rare gases are larger than the experimental \
+measurements, while those calculated for polyatomic spherical top molecules are smaller' \
+(p. 709). Fig. 2 (argon, eight pair potentials) shows 'a significant dependence of \
+calculated second Kerr virial coefficients on the potential' (p. 706). The C_K integrals \
+agree with Levine & McQuarrie's to better than 5 % (truncation errors, p. 708).
+
+TABLE 3 (p. 707), not transcribed: DID B_K of the mixtures Ar/Kr and Ar/Xe with the \
+collision-induced-dipole terms (Levine's dispersion dipole and Bar-Ziv & Weiss's), 'likely \
+to be negligible'.
+
+Comparisons (computed here): buckingham_1969 measured B_K(CH4) = 0.245 x 10^-31 C^2 m^8 \
+J^-2 at 303.7 K, against this paper's DID 27.3 x 10^-33 at 300 K and Part II's 37 x 10^-33 \
+at 302 K; buckingham_1968 Table 2 gives B_K(Ar) = 4.1 +- 0.6 x 10^-12 e.s.u. (4.6 x \
+10^-33 C^2 m^8 J^-2 with Buckingham & Orr's 0.89876 x 10^21 e.s.u. per S.I. unit) against \
+Part II's 3.8 x 10^-33. The B_K and C_K are pair and triplet properties, not \
+hyperpolarizabilities; they bear on the density dependence of dc Kerr data (the pair \
+term of tammer_1992's He, buckingham_1968's quadratic fits)."""
+
+[[datasets]]
+id = "table2_B_K_Ar"
+material = "Ar"
+file = "Ar/dunmur_1979__table2_B_K_Ar.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 2 (p. 705): the second Kerr virial coefficient B_K of Ar calculated with the dipole-induced-dipole pair polarizability and a Lennard-Jones 6-12 potential (Eq. 28; inputs alpha = 1.827 [7, Orcutt & Cole 1967], a = 1.850 [44, Dalgarno & Kingston 1960] x 10^-40 C^2 m^2 J^-1, u0/k = 119.8 K, R0 = 0.3405 nm [41]), 250-330 K. Theory, no uncertainty stated; the DID model is known to fail at short range (see the record's notes). The measured value of Part II is table2_expt_Ar."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_B_K_Kr"
+material = "Kr"
+file = "Kr/dunmur_1979__table2_B_K_Kr.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 2 (p. 705): the second Kerr virial coefficient B_K of Kr calculated with the dipole-induced-dipole pair polarizability and a Lennard-Jones 6-12 potential (Eq. 28; inputs alpha = 2.764 [7], a = 2.801 [44], u0/k = 171 K, R0 = 0.360 nm [41]), 250-330 K. Theory, no uncertainty stated; the DID model is known to fail at short range (see the record's notes). The measured value of Part II is table2_expt_Kr."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_B_K_Xe"
+material = "Xe"
+file = "Xe/dunmur_1979__table2_B_K_Xe.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 2 (p. 705): the second Kerr virial coefficient B_K of Xe calculated with the dipole-induced-dipole pair polarizability and a Lennard-Jones 6-12 potential (Eq. 28; inputs alpha = 4.510 [44], a = 4.576 [44], u0/k = 221 K, R0 = 0.410 nm [41]), 250-330 K. Theory, no uncertainty stated; the DID model is known to fail at short range (see the record's notes). The measured value of Part II is table2_expt_Xe."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_B_K_CH4"
+material = "CH4"
+file = "CH4/dunmur_1979__table2_B_K_CH4.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 2 (p. 705): the second Kerr virial coefficient B_K of CH4 calculated with the dipole-induced-dipole pair polarizability and a Lennard-Jones 6-12 potential (Eq. 28; inputs alpha = 2.885 [45, Bose, Sochanski & Cole 1972], a = 2.901 [48, Landolt-Bornstein], u0/k = 148.2 K, R0 = 0.382 nm [41]), 250-330 K. Theory, no uncertainty stated; the DID model is known to fail at short range (see the record's notes). The measured value of Part II is table2_expt_CH4."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_B_K_SF6"
+material = "SF6"
+file = "SF6/dunmur_1979__table2_B_K_SF6.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 2 (p. 705): the second Kerr virial coefficient B_K of SF6 calculated with the dipole-induced-dipole pair polarizability and a Lennard-Jones 6-12 potential (Eq. 28; inputs alpha = 7.24 [47, Buckingham & Raab 1961], a = 4.974 [49, Watson & Ramaswamy 1936], u0/k = 200.9 K, R0 = 0.551 nm [41]), 250-330 K. Theory, no uncertainty stated; the DID model is known to fail at short range (see the record's notes). The measured value of Part II is table2_expt_SF6."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_expt_Ar"
+material = "Ar"
+file = "Ar/dunmur_1979__table2_expt_Ar.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 2 (p. 705), row 'expt [19]': the measured B_K of Ar from Part II (Dunmur, Hunt & Jessup 1979, not in the library) at 305 K ('Temperatures given in brackets below results'). The wavelength of the measurement is not stated here. No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_expt_Kr"
+material = "Kr"
+file = "Kr/dunmur_1979__table2_expt_Kr.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 2 (p. 705), row 'expt [19]': the measured B_K of Kr from Part II (Dunmur, Hunt & Jessup 1979, not in the library) at 303 K ('Temperatures given in brackets below results'). The wavelength of the measurement is not stated here. No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_expt_Xe"
+material = "Xe"
+file = "Xe/dunmur_1979__table2_expt_Xe.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 2 (p. 705), row 'expt [19]': the measured B_K of Xe from Part II (Dunmur, Hunt & Jessup 1979, not in the library) at 302 K ('Temperatures given in brackets below results'). The wavelength of the measurement is not stated here. No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_expt_CH4"
+material = "CH4"
+file = "CH4/dunmur_1979__table2_expt_CH4.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 2 (p. 705), row 'expt [19]': the measured B_K of CH4 from Part II (Dunmur, Hunt & Jessup 1979, not in the library) at 302 K ('Temperatures given in brackets below results'). The wavelength of the measurement is not stated here. No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table2_expt_SF6"
+material = "SF6"
+file = "SF6/dunmur_1979__table2_expt_SF6.csv"
+table = "tbl_02b495d28eaa"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m8 J-2"
+scale = 1e-33
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 2 (p. 705), row 'expt [19]': the measured B_K of SF6 from Part II (Dunmur, Hunt & Jessup 1979, not in the library) at 303 K ('Temperatures given in brackets below results'). The wavelength of the measurement is not stated here. No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 2
+
+[[datasets]]
+id = "table4_C_K_Ar"
+material = "Ar"
+file = "Ar/dunmur_1979__table4_C_K_Ar.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 4 (p. 708), 'Third Kerr virial coefficients at 300 K': C_K^TOTAL of Ar, DID model and Lennard-Jones potential. The contributions C_K^(2-2), C_K^(2-2'), C_K^(2-3) + C_K^(3-2), C_K^(3-3): -0.59, -42, -4.06, 0.000018 (total -47) x 10^-38 C^2 m^11 J^-2 (their sum reproduces the total, checked). Theory, no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3
+
+[[datasets]]
+id = "table4_C_K_Kr"
+material = "Kr"
+file = "Kr/dunmur_1979__table4_C_K_Kr.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 4 (p. 708), 'Third Kerr virial coefficients at 300 K': C_K^TOTAL of Kr, DID model and Lennard-Jones potential. The contributions C_K^(2-2), C_K^(2-2'), C_K^(2-3) + C_K^(3-2), C_K^(3-3): -8.70, -229, -40.2, 0.00019 (total -278) x 10^-38 C^2 m^11 J^-2 (their sum reproduces the total, checked). Theory, no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3
+
+[[datasets]]
+id = "table4_C_K_Xe"
+material = "Xe"
+file = "Xe/dunmur_1979__table4_C_K_Xe.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 4 (p. 708), 'Third Kerr virial coefficients at 300 K': C_K^TOTAL of Xe, DID model and Lennard-Jones potential. The contributions C_K^(2-2), C_K^(2-2'), C_K^(2-3) + C_K^(3-2), C_K^(3-3): -19.6, -1731, -586, 0.0019 (total -2337) x 10^-38 C^2 m^11 J^-2 (their sum reproduces the total, checked). Theory, no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3
+
+[[datasets]]
+id = "table4_C_K_CH4"
+material = "CH4"
+file = "CH4/dunmur_1979__table4_C_K_CH4.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 4 (p. 708), 'Third Kerr virial coefficients at 300 K': C_K^TOTAL of CH4, DID model and Lennard-Jones potential. The contributions C_K^(2-2), C_K^(2-2'), C_K^(2-3) + C_K^(3-2), C_K^(3-3): -8.72, -260, -44.0, 0.00014 (total -313) x 10^-38 C^2 m^11 J^-2 (their sum reproduces the total, checked). Theory, no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3
+
+[[datasets]]
+id = "table4_C_K_SF6"
+material = "SF6"
+file = "SF6/dunmur_1979__table4_C_K_SF6.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "check"
+notes = "Table 4 (p. 708), 'Third Kerr virial coefficients at 300 K': C_K^TOTAL of SF6, DID model and Lennard-Jones potential. The contributions C_K^(2-2), C_K^(2-2'), C_K^(2-3) + C_K^(3-2), C_K^(3-3): -152, -5171, -2187, 0.0015 (total -7510) x 10^-38 C^2 m^11 J^-2 (their sum reproduces the total, checked). Theory, no uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3
+
+[[datasets]]
+id = "table4_expt_CH4"
+material = "CH4"
+file = "CH4/dunmur_1979__table4_expt_CH4.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 4 (p. 708), column 'Expt. [19]': the measured third Kerr virial coefficient C_K of CH4 from Part II (not in the library), -450 x 10^-38 C^2 m^11 J^-2, listed under the table's '300 K' (the measurement's temperature is not stated here). 'Experimental measurements of the third Kerr virial coefficient are rather limited and imprecise' (p. 709). No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3
+
+[[datasets]]
+id = "table4_expt_SF6"
+material = "SF6"
+file = "SF6/dunmur_1979__table4_expt_SF6.csv"
+table = "tbl_63fdb7ad5cff"
+quantity = "kerr_virial_coefficient"
+unit = "C2 m11 J-2"
+scale = 1e-38
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "reproduced"
+reproduced_from = ["dunmur_1979b"]
+notes = "Table 4 (p. 708), column 'Expt. [19]': the measured third Kerr virial coefficient C_K of SF6 from Part II (not in the library), -10000 x 10^-38 C^2 m^11 J^-2, listed under the table's '300 K' (the measurement's temperature is not stated here). 'Experimental measurements of the third Kerr virial coefficient are rather limited and imprecise' (p. 709). No uncertainty printed."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+order = 3

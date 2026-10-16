@@ -1,0 +1,355 @@
+citation = "P. L. Smith, M. C. E. Huber and W. H. Parkinson, \"Refractivities of H2, He, O2, CO, and Kr for 168 <= lambda <= 288 nm\", Phys. Rev. A 13, 1422 (1976)"
+library = "Smith_1976_RefractivitiesH2He"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Mach-Zehnder interferometer in vacuo with fused-silica optics (so lambda >= \
+167 nm), a 117.18 +- 0.01 cm test cell in a water jacket, a molecular-hydrogen \
+continuum source with Si I, Si II, N I and H2 emission lines as wavelength markers. \
+The cell was filled to about 1 atm + 5 Torr at a fixed wavelength, the wavelength \
+scanned at constant pressure (fringes counted photoelectrically; photographed below \
+about 250 nm), and the cell evacuated at fixed wavelength; corrections for 'quartz' \
+fringes and drift (pp. 1422-1425). Pressure by Baratron and mercury barometer \
+(+-0.053 %), temperature by thermistors (+-0.067 %). Airco gases (He grade 6, H2 \
+grade 6, O2 grade 4.7, Kr grade 4.5), analyses in Table I."""
+notes = """Identity unverified by the library: observed title 'Refractivities of H2, He, \
+O2, CO, and Kr for 168 <= lambda <= 288 nm', P. L. Smith, M. C. E. Huber, W. H. \
+Parkinson, received 18 November 1975; the citation (Phys. Rev. A 13, 1422 (1976)) is the curators', not confirmed by the paper. No DOI recorded. Page numbers are counted from 1422 on the pdf.
+
+Reduction (p. 1424, Eq. 4): to T0 = 273.15 K, P0 = 760 Torr with Mansfield and Peck's \
+Lorentz-Lorenz form and compressibilities from Hilsenrath (NBS Circ. 564) or virial \
+coefficients from Sengers, Klein and Gallagher: a real-gas reduction; measurements \
+were made near standard conditions, so the correction terms are small. Wavelengths \
+are vacuum wavelengths (Moore's air wavelengths above 200 nm converted with Coleman, \
+Bozman and Meggers; lines marked * in Table IV computed from a polynomial fit, \
++-0.02 nm).
+
+Uncertainties (Table III, p. 1427, '90% confidence limit'): He 1.1 % below and 0.65 % \
+above 220 nm at 1 atm, 0.58 % and 0.35 % at 2 atm; the helium discussion (p. 1433) \
+quotes 'about +-0.6% at short wavelengths to +-0.35% at longer wavelengths', so the \
+2 atm values are used. H2 0.22 / 0.17 %. O2 0.24 / 0.11 %, and 1.0 % below 197 nm \
+(191.85 and 184.30 nm, pressure from Eq. 3a, about 250 Torr, in windows of the \
+Schumann-Runge bands). Kr 0.11 / 0.10 %, 0.13 % below 190 nm at 1 atm (0.3 % for the \
+0.25 atm photographic run, normalised to the 1 atm data at 197-244 nm). For a given \
+gas, ratios are better: 'given essentially by the uncertainties in the fringe counts' \
+(the Delta N/N columns of Table III). A check against Edlen's standard air (p. 1428) \
+agrees to 0.048 %, and the authors think their results 'probably more accurate than \
+is indicated'. Helium values are typically the average of two measurements, mean \
+absolute deviation 0.27 % (p. 1431).
+
+The krypton values supersede Smith, Parkinson and Huber, Opt. Commun. 14, 374 (1975) \
+('slight changes ... from an improved calculation of the drift correction', p. 1433), \
+which bideau_mehu_1981 reproduces. The paper's two-term Sellmeier interpolations \
+(H2, Kr) are tabulated but their coefficients are not printed: no formulas. CO \
+(Table VII, grade 4): below 220 nm fringes could not be obtained at 1 atm 'because of \
+absorption by the bands of the fourth positive system'; photographic measurements at \
+about 100 Torr were 'put onto the absolute scale' as for Kr (p. 1425); uncertainty \
+0.10 % above and 0.58 % below 220 nm (Table III, 90 % confidence), 'from +-0.1% to \
++-0.6%' (p. 1433); a three-term Lagrange interpolation, not a Sellmeier, was fitted \
+(p. 1429). Table IV's Delta (%) for the \
+'other measurements' has the sign of theory minus measurement, against its footnote."""
+
+[[datasets]]
+id = "experiment_He"
+material = "He"
+file = "He/smith_1976__experiment_He.csv"
+table = "tbl_e2f6e80b5c2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table IV, 'This experiment'. The 174.27 and 185.07 nm values measured at fixed wavelength agree better with theory (p. 1433)."
+[datasets.uncertainty]
+relative = 0.0035
+level = "90 % confidence"
+relative_rows = { "212.48" = 0.0058, "205.88" = 0.0058, "198.90" = 0.0058, "198.32" = 0.0058, "190.13" = 0.0058, "185.07" = 0.0058, "184.75" = 0.0058, "177.09" = 0.0058, "174.27" = 0.0058, "172.26" = 0.0058, "171.34" = 0.0058, "170.44" = 0.0058, "170.16" = 0.0058, "169.91" = 0.0058, "168.46" = 0.0058, "167.96" = 0.0058 }
+
+[[datasets]]
+id = "victor_theory_He"
+material = "He"
+file = "He/smith_1976__victor_theory_He.csv"
+table = "tbl_e2f6e80b5c2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. A. Victor, private communication (Ref. 28)"]
+notes = "Table IV 'Theory', uncertainty +-0.1 % (p. 1430). The same calculation as huber_1974's victor_theory, at other wavelengths."
+[datasets.uncertainty]
+relative = 0.001
+level = "not stated"
+
+[[datasets]]
+id = "abjean_1970_He"
+material = "He"
+file = "He/smith_1976__abjean_1970_He.csv"
+table = "tbl_e2f6e80b5c2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. Abjean, A. Mehu and A. Johannin-Gilles, C. R. Acad. Sci. B 271, 835 (1970)"]
+notes = "Table IV 'Other measurements', footnote d; uncertainty +-2 % (p. 1430). The original is not in the library; this is the best copy available."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+
+[[datasets]]
+id = "huber_tondello_1974_He"
+material = "He"
+file = "He/smith_1976__huber_tondello_1974_He.csv"
+table = "tbl_e2f6e80b5c2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["huber_1974"]
+notes = "Table IV, footnote e: huber_1974's 190, 180 and 170 nm values (3.77, 3.73, 3.74 e-5), identical."
+
+[[datasets]]
+id = "bideau_mehu_unpublished_He"
+material = "He"
+file = "He/smith_1976__bideau_mehu_unpublished_He.csv"
+table = "tbl_e2f6e80b5c2b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["A. Bideau-Mehu, Y. Guern, R. Abjean and A. Johannin-Gilles (unpublished) (Ref. 18)"]
+notes = "Table IV, footnote f, 170.2 nm. bideau_mehu_1981 has no helium; the original publication is not in the library, so this copy may be fitted."
+
+[[datasets]]
+id = "experiment_H2"
+material = "H2"
+file = "H2/smith_1976__experiment_H2.csv"
+table = "tbl_5b5868c91642"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table V 'This expt.'; normal hydrogen (ortho:para 3:1 per the supplier). About 1 % above Ford's theory and 0.2 % below Koch and Kirn (p. 1433)."
+[datasets.uncertainty]
+relative = 0.0017
+level = "90 % confidence"
+relative_rows = { "212.48" = 0.0022, "205.88" = 0.0022, "198.90" = 0.0022, "198.32" = 0.0022, "197.76" = 0.0022, "190.13" = 0.0022, "185.07" = 0.0022, "184.75" = 0.0022, "181.69" = 0.0022, "177.09" = 0.0022, "172.23" = 0.0022, "171.34" = 0.0022, "170.45" = 0.0022, "169.91" = 0.0022, "169.79" = 0.0022, "168.46" = 0.0022, "167.97" = 0.0022 }
+
+[[datasets]]
+id = "interpolated_H2"
+material = "H2"
+file = "H2/smith_1976__interpolated_H2.csv"
+table = "tbl_5b5868c91642"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table V 'Interpolated value': the paper's two-term Sellmeier fit to its data (coefficients not printed)."
+
+[[datasets]]
+id = "ford_theory_H2"
+material = "H2"
+file = "H2/smith_1976__ford_theory_H2.csv"
+table = "tbl_5b5868c91642"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["A. L. Ford, private communication (Ref. 29), based on A. L. Ford and J. C. Browne, Phys. Rev. A 7, 418 (1973)"]
+notes = "Table V 'Theory', 'calculated for a population distribution corresponding to 300 K' (p. 1433)."
+
+[[datasets]]
+id = "koch_1913_H2"
+material = "H2"
+file = "H2/smith_1976__koch_1913_H2.csv"
+table = "tbl_5b5868c91642"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Koch, Ark. Mat. Astron. Fys. 8 (No. 20), 1 (1913)"]
+notes = "Table V, footnote f. The four cells marked h ('Extrapolated values', 185-199 nm) are not extracted. The original is not in the library."
+
+[[datasets]]
+id = "kirn_1921_H2"
+material = "H2"
+file = "H2/smith_1976__kirn_1921_H2.csv"
+table = "tbl_5b5868c91642"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["M. Kirn, Ann. Phys. (Leipz.) 64, 566 (1921)"]
+notes = "Table V, footnote g; Kirn's work reaches down to 185 nm (p. 1433). Identical to Koch at the five longest wavelengths. The original is not in the library."
+
+[[datasets]]
+id = "experiment_O2"
+material = "O2"
+file = "O2/smith_1976__experiment_O2.csv"
+table = "tbl_1bad6e7f544c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = """Table VI. 191.85 and 184.30 nm (footnote b, stripped by the script): 'do not \
+correspond to spectral lines', +-0.1 nm, measured at about 250 Torr in windows of \
+the Schumann-Runge absorption, pressure from the fringe count between two known \
+wavelengths (Eq. 3a), 1.0 % uncertainty. The International Critical Tables values at \
+275.3 and 289.4 nm are 10 % and 0.8 % higher (p. 1433)."""
+[datasets.uncertainty]
+relative = 0.0011
+level = "90 % confidence"
+relative_rows = { "212.48" = 0.0024, "205.88" = 0.0024, "198.90" = 0.0024, "198.64" = 0.0024, "198.32" = 0.0024, "198.06" = 0.0024, "197.92" = 0.0024, "197.76" = 0.0024, "191.85" = 0.01, "184.30" = 0.01 }
+
+[[datasets]]
+id = "experiment_Kr"
+material = "Kr"
+file = "Kr/smith_1976__experiment_Kr.csv"
+table = "tbl_8156b916136f"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table VIII 'This experiment'. Below 244 nm partly from a 0.2 atm photographic run normalised to the 1 atm data at 197-244 nm (p. 1425)."
+[datasets.uncertainty]
+relative = 0.001
+level = "90 % confidence"
+relative_rows = { "212.48" = 0.0011, "205.88" = 0.0011, "198.90" = 0.0011, "198.32" = 0.0011, "197.76" = 0.0011, "190.13" = 0.0011, "185.07" = 0.0013, "184.75" = 0.0013, "183.65" = 0.0013, "181.69" = 0.0013, "180.80" = 0.0013, "177.09" = 0.0013, "174.27" = 0.0013, "172.26" = 0.0013, "171.34" = 0.0013, "170.44" = 0.0013, "169.91" = 0.0013, "168.46" = 0.0013, "167.96" = 0.0013 }
+
+[[datasets]]
+id = "interpolated_Kr"
+material = "Kr"
+file = "Kr/smith_1976__interpolated_Kr.csv"
+table = "tbl_8156b916136f"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table VIII 'Interpolated value': the paper's two-term Sellmeier fit (coefficients not printed), 164-298 nm; outside 168-288 nm an extrapolation."
+
+[[datasets]]
+id = "bideau_mehu_1981_Kr"
+material = "Kr"
+file = "Kr/smith_1976__bideau_mehu_1981_Kr.csv"
+table = "tbl_8156b916136f"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["bideau_mehu_1976"]
+notes = "Table VIII, footnote d (then unpublished): identical to bideau_mehu_1976's revised krypton (Table 3) at all six wavelengths, which bideau_mehu_1981's experiment_Kr also reprints."
+
+[[datasets]]
+id = "kronjager_koch_Kr"
+material = "Kr"
+file = "Kr/smith_1976__kronjager_koch_Kr.csv"
+table = "tbl_8156b916136f"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = [
+    "W. Kronjager, Z. Phys. 98, 17 (1936); dissertation, Technische Hochschule Braunschweig (1934)",
+    "J. Koch, K. Fysiogr. Saellsk. Lund. Forh. 19, 173 (1949)",
+    "leonard_1974",
+]
+notes = "Table VIII, footnote f: 'cited by Leonard'; the table does not say which value is whose. Take the originals from leonard_1974 if it separates them."
+
+[[datasets]]
+id = "experiment_CO"
+material = "CO"
+file = "CO/smith_1976__experiment_CO.csv"
+table = "tbl_a6e86bb4461b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = """Table VII 'This expt.', the unmarked cells (measurements at Si I, Si II, N I \
+and H2 lines; 167.20 nm is an interpolated line wavelength, +-0.02 nm). Below 220 nm \
+from photographic runs at about 100 Torr normalised to the 1 atm data (p. 1425). The \
+fitted curve 'cannot be used to obtain accurate refractivity values in the region of \
+the bands belonging to the fourth positive system' (Fig. 6 caption, p. 1429); the \
+paper does not say which rows lie near bands."""
+[datasets.uncertainty]
+relative = 0.001
+level = "90 % confidence"
+relative_rows = { "212.48" = 0.0058, "205.88" = 0.0058, "198.90" = 0.0058, "198.32" = 0.0058, "190.13" = 0.0058, "185.07" = 0.0058, "184.75" = 0.0058, "181.69" = 0.0058, "180.80" = 0.0058, "177.09" = 0.0058, "174.27" = 0.0058, "172.26" = 0.0058, "171.34" = 0.0058, "170.44" = 0.0058, "169.91" = 0.0058, "168.46" = 0.0058, "167.96" = 0.0058, "167.44" = 0.0058, "167.20" = 0.0058 }
+
+[[datasets]]
+id = "interpolated_CO"
+material = "CO"
+file = "CO/smith_1976__interpolated_CO.csv"
+table = "tbl_a6e86bb4461b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table VII 'This expt.' cells marked d: 'Refractivity computed from three-term Lagrange fit to our data', at Koch's ten wavelengths (237.9-289.4 nm), for the comparison in the Delta (%) column."
+
+[[datasets]]
+id = "koch_1914_CO"
+material = "CO"
+file = "CO/smith_1976__koch_1914_CO.csv"
+table = "tbl_a6e86bb4461b"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Koch, Ark. Mat. Astron. Fys. 10 (1914), as listed in International Critical Tables, edited by E. W. Washburn (McGraw-Hill, New York, 1930), Vol. VII, pp. 2-11"]
+notes = """Table VII 'Prev. expt.' (footnote b). Neither Koch nor the International \
+Critical Tables is in the library, so this copy is the best available. The column \
+sits under the table's 'lambda_vac' heading, but the wavelengths are printed to 0.1 nm \
+(about the size of the air-vacuum difference here) and the paper does not say whether \
+Koch's or the ICT's air wavelengths were converted; the uncertainty of the wavelength \
+is about +-0.1 nm. Agrees with Smith's interpolation to 0.08 % or better (p. 1433)."""

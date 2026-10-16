@@ -1,0 +1,490 @@
+citation = "J. F. Ward and C. K. Miller, Phys. Rev. A 19, 826 (1979)"
+doi = "10.1103/physreva.19.826"
+library = "Ward_1979_MeasurementsNonlinearOptical"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """dc-electric-field-induced second-harmonic generation (dcSHG, ESHG) of a \
+1 MW Q-switched ruby laser (694.3 nm -> 347.2 nm) in gases at the density of maximum \
+harmonic (Loschmidt units), dc fields 21-58 esu on the beam axis, room temperature \
+(~20 C) for the nonpolar molecules and 293-419 K scans for the polar ones. Signals \
+alternated with helium; absolute scale from Sitz and Yaris's calculated helium value. \
+Delta k_0 from two-quartz-plate interference with real-gas (virial) densities."""
+notes = """ESHG hyperpolarizabilities of H2, N2, O2, CO2, SF6 (Table I, nonpolar) and CO \
+(Table II, polar), and Table III's comparison. NO, H2S, NH3, H2O, (CH3)2O and CH3OH are \
+not curated species (skipped).
+
+Defining equations, exactly (pp. 826-827; conventions 'discussed in Refs. 4 and 5', \
+Ward and New 1969 and Orr and Ward 1971):
+- Eq. (1): p_F^2w (bar, the average induced dipole amplitude per molecule at 2w) = \
+(3/2) chi^e_FGHM(-2w; 0, w, w) E^0_G E^w_H E^w_M, 'the E's are electric-field \
+amplitudes' (Ward's complex amplitudes with the 1/2 convention: K(-2w; 0, w, w) = \
+3/2, as K(-w; w, 0, 0) = 3 and K(-3w; w, w, w) = 1/4 in ward_1969). So chi = \
+gamma_T/6, the Ward and New convention: per molecule in Taylor terms p(2w) = \
+(gamma_T/4) E0 E_w^2 = (3/2)(gamma_T/6) E0 E_w^2.
+- parallel = FGHM YYYY (optical field parallel to the dc field), perpendicular = YYXX.
+- Eq. (2): chi^e = chi(3)(-2w; 0, w, w) + (mu/9kT) chi(2)(-2w; w, w): the \
+orientational (dipolar) term, temperature dependent, removed for polar molecules by \
+the T^-1 -> 0 limit (Table II). Eqs. (3)-(6): orientational averages; R(3) = \
+chi_par(3)/chi_perp(3) = 3 without dispersion (Eq. (12)).
+- Eq. (8): S = const x |chi^e/Delta k_0|^2 at the optimum density; ratios to helium.
+- Eq. (10): absolute scale chi_par^e(He) = chi(3)(-2w; 0, w, w) = 3.79 x 10^-39 \
+esu/atom (Sitz and Yaris, 'thought to be good to 1 %'); sign from helium's (positive) \
+calculated value. Every value here is therefore a measured ratio to helium times \
+3.79 x 10^-39 esu. (Shelton and Rice rescale these to a later helium value.)
+- chi_par(3) of a gas is the orientational average of the molecular tensor, i.e. the \
+isotropic gamma_T/6 (for an isotropic medium with R = 3).
+
+Uncertainties: 'The uncertainties listed for Delta k_0, chi^e, and R^e are standard \
+deviations' (p. 828). They do not include the 1 % of the helium calibration.
+
+Part: ESHG has no rotational part for a nonpolar molecule (the paper: chi^e 'do not \
+depend on temperature for these molecules', p. 828) and a small vibrational one, not \
+separated: recorded total. CO's chi(3) is the infinite-temperature limit, which removes \
+the dipolar orientational term: recorded electronic_vibrational.
+
+Other tables (not datasets): Table I -Delta k_0 at Loschmidt density (cm^-1, 694.3 -> \
+347.2 nm, virial densities: H2 1.27 +- 0.01, N2 1.89 +- 0.02, O2 2.41 +- 0.02, CO2 3.36 \
++- 0.03, SF6 3.47 +- 0.03), E_0, rho_opt and R^e (H2 2.86 +- 0.03, N2 3.00 +- 0.06, O2 \
+2.97 +- 0.07, CO2 2.81 +- 0.06, SF6 2.97 +- 0.07); Table II for CO: T_0 = 293 K, \
+rho_opt 1.05, -Delta k_0 = 3.35 +- 0.03 cm^-1, lim chi_par^e = 144 +- 4, d chi_par^e/dT^-1 = \
++11.6 +- 1.2 x 10^-36 esu K, R^e(T_0) = 2.94 +- 0.03 (chi_perp not measurable for CO); \
+Table III R(3): H2 2.86 +- 0.03, N2 3.00 +- 0.06, O2 3.12 +- 0.07 (Table I's R^e for O2 \
+is 2.97 +- 0.07, which for a nonpolar molecule should equal R(3): one of the two is \
+misprinted, unresolved), SF6 2.97 +- 0.07, CO2 2.81 +- 0.08 (R^e +- 0.06), CO 2.92 +- \
+0.15 (derived assuming R(2) = 3.0 +- 0.3); Table IV: CO mu = 0.112 +- 0.005 D, \
+chi_par(2) = +129 +- 14 x 10^-33 esu/molecule (second order, not curated here). The \
+-Delta k_0 values are linear-dispersion data for the refractive phase (phase mismatch at \
+694.3/347.2 nm per Loschmidt density)."""
+
+
+[[datasets]]
+id = "chi3_H2"
+material = "H2"
+file = "H2/ward_1979__chi3_H2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, the paper's ESHG chi_par(3)(-2w; 0, w, w) at 694.3 nm (ruby), Ward's convention chi = gamma_T/6, normalized to helium's 3.79 x 10^-39 esu (Eq. (10)); +- one standard deviation (p. 828). Nonpolar: chi^e = chi(3), measured at room temperature (~20 C) and the optimum density (Table I, the same value); total (electronic plus the small vibrational ESHG part)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 3.79e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi3_N2"
+material = "N2"
+file = "N2/ward_1979__chi3_N2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, the paper's ESHG chi_par(3)(-2w; 0, w, w) at 694.3 nm (ruby), Ward's convention chi = gamma_T/6, normalized to helium's 3.79 x 10^-39 esu (Eq. (10)); +- one standard deviation (p. 828). Nonpolar: chi^e = chi(3), measured at room temperature (~20 C) and the optimum density (Table I, the same value); total (electronic plus the small vibrational ESHG part)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 3.79e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi3_O2"
+material = "O2"
+file = "O2/ward_1979__chi3_O2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, the paper's ESHG chi_par(3)(-2w; 0, w, w) at 694.3 nm (ruby), Ward's convention chi = gamma_T/6, normalized to helium's 3.79 x 10^-39 esu (Eq. (10)); +- one standard deviation (p. 828). Nonpolar: chi^e = chi(3), measured at room temperature (~20 C) and the optimum density (Table I, the same value); total (electronic plus the small vibrational ESHG part)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 3.79e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi3_SF6"
+material = "SF6"
+file = "SF6/ward_1979__chi3_SF6.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, the paper's ESHG chi_par(3)(-2w; 0, w, w) at 694.3 nm (ruby), Ward's convention chi = gamma_T/6, normalized to helium's 3.79 x 10^-39 esu (Eq. (10)); +- one standard deviation (p. 828). Nonpolar: chi^e = chi(3), measured at room temperature (~20 C) and the optimum density (Table I, the same value); total (electronic plus the small vibrational ESHG part)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 3.79e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi3_CO2"
+material = "CO2"
+file = "CO2/ward_1979__chi3_CO2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, the paper's ESHG chi_par(3)(-2w; 0, w, w) at 694.3 nm (ruby), Ward's convention chi = gamma_T/6, normalized to helium's 3.79 x 10^-39 esu (Eq. (10)); +- one standard deviation (p. 828). Nonpolar: chi^e = chi(3), measured at room temperature (~20 C) and the optimum density (Table I, the same value); total (electronic plus the small vibrational ESHG part)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 3.79e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi3_CO"
+material = "CO"
+file = "CO/ward_1979__chi3_CO.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, the paper's ESHG chi_par(3)(-2w; 0, w, w) at 694.3 nm (ruby), Ward's convention chi = gamma_T/6, normalized to helium's 3.79 x 10^-39 esu (Eq. (10)); +- one standard deviation (p. 828). CO is polar: the value is the T^-1 -> 0 limit of chi_par^e (Table II, 144 +- 4), which removes the (mu/9kT) chi(2) term of Eq. (2); electronic plus vibrational."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "electronic_vibrational"
+normalized_to = "He = 3.79e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "dcshg_mayer_H2"
+material = "H2"
+file = "H2/ward_1979__dcshg_mayer_H2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. Mayer, C. R. Acad. Sci. B 276, 54 (1968)", "G. Hauchecorne, F. Kerherve and G. Mayer, J. Phys. (Paris) 32, 47 (1971)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column dcSHG (note a): other dcSHG data, 'normalized using the dcSHG coefficient for argon from Ref. 14' (Finn and Ward, Phys. Rev. Lett. 26, 285 (1971)). Reproduced and rescaled; the wavelength is not stated (recorded at the ruby line). No uncertainty given. Ward's convention; part total (as chi3)."
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "dcshg_mayer_O2"
+material = "O2"
+file = "O2/ward_1979__dcshg_mayer_O2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. Mayer, C. R. Acad. Sci. B 276, 54 (1968)", "G. Hauchecorne, F. Kerherve and G. Mayer, J. Phys. (Paris) 32, 47 (1971)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column dcSHG (note a): other dcSHG data, 'normalized using the dcSHG coefficient for argon from Ref. 14' (Finn and Ward, Phys. Rev. Lett. 26, 285 (1971)). Reproduced and rescaled; the wavelength is not stated (recorded at the ruby line). No uncertainty given. Ward's convention; part total (as chi3)."
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "dcshg_mayer_SF6"
+material = "SF6"
+file = "SF6/ward_1979__dcshg_mayer_SF6.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. Mayer, C. R. Acad. Sci. B 276, 54 (1968)", "G. Hauchecorne, F. Kerherve and G. Mayer, J. Phys. (Paris) 32, 47 (1971)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column dcSHG (note a): other dcSHG data, 'normalized using the dcSHG coefficient for argon from Ref. 14' (Finn and Ward, Phys. Rev. Lett. 26, 285 (1971)). Reproduced and rescaled; the wavelength is not stated (recorded at the ruby line). No uncertainty given. Ward's convention; part total (as chi3)."
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "twm_rado_N2"
+material = "N2"
+file = "N2/ward_1979__twm_rado_N2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. G. Rado, Phys. Lett. 11, 123 (1967)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column TWM (note b): Rado's three-wave-mixing data, 'normalized using the dcSHG coefficient for argon from Ref. 14'. Rado's frequencies are not given here (recorded at the ruby line); the process is an optical four-wave mix, not ESHG: process other. (Lehmeier et al. cite the same work as W. G. Rado, Appl. Phys. Letters 11 (1967) 123.) Reproduced and rescaled; no uncertainty; part unknown."
+[datasets.parameters]
+process = "other"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "twm_rado_O2"
+material = "O2"
+file = "O2/ward_1979__twm_rado_O2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. G. Rado, Phys. Lett. 11, 123 (1967)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column TWM (note b): Rado's three-wave-mixing data, 'normalized using the dcSHG coefficient for argon from Ref. 14'. Rado's frequencies are not given here (recorded at the ruby line); the process is an optical four-wave mix, not ESHG: process other. (Lehmeier et al. cite the same work as W. G. Rado, Appl. Phys. Letters 11 (1967) 123.) Reproduced and rescaled; no uncertainty; part unknown."
+[datasets.parameters]
+process = "other"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "twm_rado_SF6"
+material = "SF6"
+file = "SF6/ward_1979__twm_rado_SF6.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. G. Rado, Phys. Lett. 11, 123 (1967)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column TWM (note b): Rado's three-wave-mixing data, 'normalized using the dcSHG coefficient for argon from Ref. 14'. Rado's frequencies are not given here (recorded at the ruby line); the process is an optical four-wave mix, not ESHG: process other. (Lehmeier et al. cite the same work as W. G. Rado, Appl. Phys. Letters 11 (1967) 123.) Reproduced and rescaled; no uncertainty; part unknown."
+[datasets.parameters]
+process = "other"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "twm_rado_CO2"
+material = "CO2"
+file = "CO2/ward_1979__twm_rado_CO2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. G. Rado, Phys. Lett. 11, 123 (1967)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column TWM (note b): Rado's three-wave-mixing data, 'normalized using the dcSHG coefficient for argon from Ref. 14'. Rado's frequencies are not given here (recorded at the ruby line); the process is an optical four-wave mix, not ESHG: process other. (Lehmeier et al. cite the same work as W. G. Rado, Appl. Phys. Letters 11 (1967) 123.) Reproduced and rescaled; no uncertainty; part unknown."
+[datasets.parameters]
+process = "other"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "twm_rado_CO"
+material = "CO"
+file = "CO/ward_1979__twm_rado_CO.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. G. Rado, Phys. Lett. 11, 123 (1967)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column TWM (note b): Rado's three-wave-mixing data, 'normalized using the dcSHG coefficient for argon from Ref. 14'. Rado's frequencies are not given here (recorded at the ruby line); the process is an optical four-wave mix, not ESHG: process other. (Lehmeier et al. cite the same work as W. G. Rado, Appl. Phys. Letters 11 (1967) 123.) Reproduced and rescaled; no uncertainty; part unknown."
+[datasets.parameters]
+process = "other"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "kerr_buckingham_orr_H2"
+material = "H2"
+file = "H2/ward_1979__kerr_buckingham_orr_H2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and B. J. Orr, Proc. R. Soc. (Lond.) A 305, 259 (1968)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column Kerr, note d, Buckingham and Orr: the dc Kerr chi(-w; w, 0, 0) in Ward's convention (gamma_T/6). How the orientational (Langevin) part was separated for H2, N2 and CO2 is not stated here: part unknown. Wavelength recorded at the ruby line unless known."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "kerr_buckingham_1970_N2"
+material = "N2"
+file = "N2/ward_1979__kerr_buckingham_1970_N2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham, M. P. Bogaard, D. A. Dunmur, C. P. Hobbs and B. J. Orr, Trans. Faraday Soc. 66, 1548 (1970)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column Kerr, note f, Buckingham et al. 1970 (Ref. 15): the dc Kerr chi(-w; w, 0, 0) in Ward's convention (gamma_T/6). How the orientational (Langevin) part was separated for H2, N2 and CO2 is not stated here: part unknown. Wavelength recorded at the ruby line unless known."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "kerr_buckingham_1970_CO2"
+material = "CO2"
+file = "CO2/ward_1979__kerr_buckingham_1970_CO2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham, M. P. Bogaard, D. A. Dunmur, C. P. Hobbs and B. J. Orr, Trans. Faraday Soc. 66, 1548 (1970)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column Kerr, note f, Buckingham et al. 1970 (Ref. 15); 'four times larger than other values' (p. 829), an outlier the paper flags: the dc Kerr chi(-w; w, 0, 0) in Ward's convention (gamma_T/6). How the orientational (Langevin) part was separated for H2, N2 and CO2 is not stated here: part unknown. Wavelength recorded at the ruby line unless known."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_SF6"
+material = "SF6"
+file = "SF6/ward_1979__kerr_buckingham_dunmur_SF6.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column Kerr, note h, Buckingham and Dunmur 1968 (Ref. 10): their gamma 1.2 +- 0.1 x 10^-36 esu divided by 6 (= 200 +- 17, printed +-20); at 632.8 nm: the dc Kerr chi(-w; w, 0, 0) in Ward's convention (gamma_T/6). How the orientational (Langevin) part was separated for H2, N2 and CO2 is not stated here: part unknown. Wavelength recorded at the ruby line unless known."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "thg_ward_new_H2"
+material = "H2"
+file = "H2/ward_1979__thg_ward_new_H2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column THG (note c, Ref. 4 = Ward and New 1969): the same numbers as ward_1969 chi_i (set (i), normalized to He = 4.0), THG chi(-3w; w, w, w) at 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "thg_ward_new_N2"
+material = "N2"
+file = "N2/ward_1979__thg_ward_new_N2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column THG (note c, Ref. 4 = Ward and New 1969): the same numbers as ward_1969 chi_i (set (i), normalized to He = 4.0), THG chi(-3w; w, w, w) at 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "thg_ward_new_CO2"
+material = "CO2"
+file = "CO2/ward_1979__thg_ward_new_CO2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column THG (note c, Ref. 4 = Ward and New 1969): the same numbers as ward_1969 chi_i (set (i), normalized to He = 4.0), THG chi(-3w; w, w, w) at 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "theory_mclean_yoshimine_H2"
+material = "H2"
+file = "H2/ward_1979__theory_mclean_yoshimine_H2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. D. McLean and M. Yoshimine, J. Chem. Phys. 46, 3682 (1967)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column Theory, note e: chi_zzzz(0; 0, 0, 0) from McLean and Yoshimine (Ref. 16). The molecular zzzz component only (p. 829), not the orientational average, in Ward's convention. Static, electronic."
+[datasets.parameters]
+process = "static"
+convention = "ward_1969"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "theory_bartlett_purvis_N2"
+material = "N2"
+file = "N2/ward_1979__theory_bartlett_purvis_N2.csv"
+table = "tbl_d1cb8fd65ca1"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. J. Bartlett and G. D. Purvis (private communication)"]
+notes = "Table III (p. 829), chi_parallel(3) in 10^-39 esu/molecule, column Theory, note g: chi_zzzz(0; 0, 0, 0) from Bartlett and Purvis (Ref. 17, private communication), 'preliminary' (p. 829). The molecular zzzz component only (p. 829), not the orientational average, in Ward's convention. Static, electronic."
+[datasets.parameters]
+process = "static"
+convention = "ward_1969"
+part = "electronic"
+component = "zzzz"

@@ -1,0 +1,260 @@
+citation = "R. Thalman, K. J. Zarzana, M. A. Tolbert and R. Volkamer, J. Quant. Spectrosc. Radiat. Transfer 147, 171 (2014); erratum J. Quant. Spectrosc. Radiat. Transfer 189, 281 (2017)"
+doi = "10.1016/j.jqsrt.2014.05.030"
+library = "Thalman_2014_RayleighScatteringCross"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Two cavity methods at Boulder (630 Torr ambient), room temperature. (1) Cavity \
+ring-down spectroscopy (CRDS) of N2 at 405.8 and 532.2 nm (mirrors R = 0.99993 and \
+0.99998): the loss rate 1/(tau c) against density over pressure steps of 80-100 % of \
+ambient, whose slope is the absolute cross section; 'a limited number of sets of \
+data' (p. 5). (2) Broadband cavity-enhanced spectroscopy (BBCES), 350-700 nm, six \
+mirror sets (365, 405, 455, 532, 580, 630 nm), 87 cm cavity, LED sources, Acton 2300i \
+spectrometer: the mirror reflectivity from the N2-He difference (Eq. 3) with the \
+n-based N2 cross section and Washenfelder's He fit, then Ar, O2 and air against N2 \
+(Eq. 4), each at a single density. O2 and air only between the O4 (O2-O2) bands."""
+notes = """The PDF in the library carries the paper (pp. 171-177, PDF pages 1-7) and the \
+authors' erratum (JQSRT 189, 281-282 (2017), PDF pages 8-10); both are cited here, the \
+erratum's corrections applied as [[errata]] (TC-711).
+
+Cross sections per molecule, from Eq. (1), sigma = 24 pi^3 nu^4 / N^2 ((n^2 - 1)/(n^2 \
++ 2))^2 F_k(nu), as Sneep & Ubachs. Table 2 (tbl_576e4a7df80e) prints, at 370.0, 405.8, \
+532.2 and 660.0 nm ('selected wavelengths' of the continuous BBCES data), the n-based \
+('Theory') and measured ('Exp') values of N2, Ar, O2 and air in 10^-27 cm^2 (the \
+caption's 'cm^-3 x 10^27' is corrected to cm^2 by the erratum). Note c: 'Number in () \
+is the 1-sigma error in the reported value of the last digit for BBCES and the range for \
+CRDS'. Wavelengths are vacuum: Table 2's corrected Theory values are reproduced to the \
+printed digits from Table 1 with nu = 1/lambda(vacuum) (with standard-air wavelengths \
+they would be 0.1 % lower).
+
+Uncertainty (pp. 4, 6-7): BBCES 'measurement uncertainty of +-1.3 % at the center of the \
+mirror and +-2 % at the far extremes' (pressure 0.1 %, temperature 0.3 %, cavity length \
+87 +- 0.1 cm, the N2 (+-1 %) and He (+-5 %) reference cross sections); the Ar data \
+agree with n-based theory to 0.2 +- 0.4 % (the mean over all cavities, Fig. 5; the \
+per-cavity biases UV -0.64 %, near-UV +0.865 %, blue +0.3 %, red, amber, green within \
+0.2 %, p. 5); O2 within 1 % outside the O4 bands (370-420 nm, 660 nm), < 4 % between \
+adjacent bands; air within 1 %. The BBCES values are relative to the n-based N2 cross \
+section (Table 1), not independent absolute measurements (p. 3): Ar, O2 and air share \
+that scale.
+
+Table 1 (tbl_e8dbeaabf242; the erratum's reprint tbl_03101fb7ffc0) gives the \
+(n - 1) x 10^8 = A + B/(C - nu^2) and F_k formulas behind the Theory columns: Sneep & \
+Ubachs's (sneep_2005 n2_eq10, n2_eq11 (Bates), ar_eq9 (Peck & Fisher), o2_eq23 with \
+Bates's F_k), N = 2.546899e19 cm^-3 for N2, Ar and He, 2.68678e19 cm^-3 for O2; air \
+from Bodhaine et al. (1999) at 288.15 K and 1013.25 hPa with 360 ppm CO2. Not recorded \
+as formulas: they are sneep_2005's. The erratum corrects them (p. 9): the second N2 \
+branch's B is 307.43305 x 10^12 (printed 307.4335 x 10^13), and both N2 King factors \
+are 1.034 + 3.17 x 10^-12 nu^2 (printed '... nu'); the reprint also prints the O2 King \
+factor's constant 1.096 (the 2014 table: 1.09) without saying so, and adds, for nu < \
+18315 cm^-1, the O2 branch A = 21351.1, B = 2.18567 x 10^13 (Bates). With these (and \
+only these) the corrected Theory column reproduces: N2 23.7092, 16.1455, 5.2998, \
+2.2099; Ar 20.3614, 13.8807, 4.5633, 1.9038; O2 21.2685, 14.3728, 4.6600, 1.9378 \
+(computed 2026-09-29).
+
+Air (not a registered material; not extracted): Theory 23.183, 15.765, 5.159, 2.148 and \
+BBCES 23.0(3), 15.7(2), -, 2.15(3) at 370.0, 405.8, 532.2, 660.0 nm (1 sigma).
+
+Not extracted: the continuous BBCES spectra (Figs. 3-5, figures only; Table 2 prints \
+the selected values) and the He comparison (Fig. 4A, literature only)."""
+
+[[datasets]]
+id = "crds_N2_405"
+material = "N2"
+file = "N2/thalman_2014__crds_N2_405.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, CRDS at 405.8 nm: the slope of the loss rate against density, absolute. The parenthesis is 'the range' of the repeat runs (note c); taken as a bound (half-width), which may overstate it if the printed number is the full range. king_factor: Bates's F_k = 1.034 + 3.17e-12 nu^2 of the corrected Table 1 at nu = 1e7/405.8 cm^-1 (1.035925), the factor of the paper's n-based comparison."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+king_factor = 1.03593
+
+[[datasets]]
+id = "crds_N2_532"
+material = "N2"
+file = "N2/thalman_2014__crds_N2_532.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, CRDS at 532.2 nm (Fig. 2 shows the loss-rate fit): absolute. The parenthesis is 'the range' of the repeat runs (note c); taken as a bound (half-width). king_factor: Bates's F_k = 1.034 + 3.17e-12 nu^2 at nu = 1e7/532.2 cm^-1 (1.035119)."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+king_factor = 1.03512
+
+[[datasets]]
+id = "bbces_Ar"
+material = "Ar"
+file = "Ar/thalman_2014__bbces_Ar.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, BBCES at 370.0, 405.8, 532.2 and 660.0 nm, relative to the n-based N2 cross section of Table 1 (so on the N2 formula's scale, which is 0.06-0.10 % above fit/N2 in alpha); one sigma in parentheses (note c). king_factor 1: 'unity for mono-atomic gases' (p. 2)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "bbces_O2_370"
+material = "O2"
+file = "O2/thalman_2014__bbces_O2_370.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, BBCES at 370.0 nm, relative to the n-based N2 cross section; one sigma. Between O4 bands, from a single density: O4 absorption is not separated but avoided (p. 5). king_factor: Bates's F_k = 1.096 + 1.385e-11 nu^2 + 1.448e-20 nu^4 (the erratum's constant; the 2014 table prints 1.09; the corrected Theory column needs 1.096) at nu = 1e7/370.0 cm^-1 (1.113844)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.11384
+
+[[datasets]]
+id = "bbces_O2_405"
+material = "O2"
+file = "O2/thalman_2014__bbces_O2_405.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, BBCES at 405.8 nm, relative to the n-based N2 cross section; one sigma; between O4 bands. king_factor: Bates's O2 F_k (constant 1.096) at nu = 1e7/405.8 cm^-1 (1.109752)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.10975
+
+[[datasets]]
+id = "bbces_O2_660"
+material = "O2"
+file = "O2/thalman_2014__bbces_O2_660.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, BBCES at 660.0 nm, relative to the n-based N2 cross section; one sigma; between O4 bands (the 630 nm band's edge; the B band of O2 is at 687 nm). king_factor: Bates's O2 F_k (constant 1.096) at nu = 1e7/660.0 cm^-1 (1.099943)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.09994
+
+[[datasets]]
+id = "theory_N2"
+material = "N2"
+file = "N2/thalman_2014__theory_N2.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2 'Theory': n-based from Table 1 (Peck & Khanna / Bates formulas as Sneep & Ubachs, F_k = 1.034 + 3.17e-12 nu^2 varying with wavelength, so no single king_factor), N = 2.546899e19 cm^-3. All four cells corrected by the erratum (errata below); corrected, they reproduce from Table 1 to the printed digits."
+
+[[datasets]]
+id = "theory_Ar"
+material = "Ar"
+file = "Ar/thalman_2014__theory_Ar.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2 'Theory': n-based from Peck & Fisher's formula (Table 1, as Sneep & Ubachs Eq. 9), N = 2.546899e19 cm^-3 (15 C ideal), F_k = 1. Reproduced to the printed digits (20.3614, 13.8807, 4.5633, 1.9038); unchanged by the erratum. It lies 0.11 % above fit/Ar in alpha."
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "theory_O2"
+material = "O2"
+file = "O2/thalman_2014__theory_O2.csv"
+table = "tbl_576e4a7df80e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2 'Theory': n-based from Bates's O2 formula (Table 1, two branches split at 18315 cm^-1), N = 2.68678e19 cm^-3, F_k = 1.096 + 1.385e-11 nu^2 + 1.448e-20 nu^4 (no single king_factor). The 532.2 and 660.0 nm cells are corrected by the erratum (errata below)."
+
+[[errata]]
+dataset = "theory_N2"
+row = "370.0"
+column = "value"
+printed = "23.698"
+corrected = "23.709"
+reason = "The authors' erratum reprints Table 2 with the N2 Theory values recomputed; its text names only the 660 nm cell, but the reprint also changes 370.0, 405.8 and 532.2 nm. The corrected value is Eq. (1) with the corrected Table 1 (23.7092 computed); the printed 23.698 is 0.05 % lower and is not reproduced by either King-factor reading."
+evidence = "Erratum, JQSRT 189, 281 (2017), reprinted Table 2 (library tbl_c363d0a7b75b, PDF p. 9, image checked 2026-09-29): 23.709. Computed from Table 1 with nu = 1e7/370.0 cm^-1, N = 2.546899e19: 23.7092."
+
+[[errata]]
+dataset = "theory_N2"
+row = "405.8"
+column = "value"
+printed = "16.146"
+corrected = "16.145"
+reason = "Recomputed in the erratum's reprinted Table 2 (a last-digit rounding: 16.1455 computed from the corrected Table 1)."
+evidence = "Erratum reprinted Table 2 (tbl_c363d0a7b75b, PDF p. 9, image checked 2026-09-29): 16.145. Computed: 16.1455."
+
+[[errata]]
+dataset = "theory_N2"
+row = "532.2"
+column = "value"
+printed = "5.302"
+corrected = "5.300"
+reason = "Recomputed in the erratum's reprinted Table 2 (5.2998 computed from the corrected Table 1)."
+evidence = "Erratum reprinted Table 2 (tbl_c363d0a7b75b, PDF p. 9, image checked 2026-09-29): 5.300. Computed: 5.2998."
+
+[[errata]]
+dataset = "theory_N2"
+row = "660.0"
+column = "value"
+printed = "2.988"
+corrected = "2.210"
+reason = "The authors' erratum: 'the calculation at 660.0 nm is 2.21 x 10^-27 cm^2'. The printed 2.988 is larger than Ar's 1.904 by 57 %, where N2 exceeds Ar by 16 % at every other wavelength."
+evidence = "Erratum, JQSRT 189, 281 (2017), text p. 10 and reprinted Table 2 (tbl_c363d0a7b75b, PDF p. 9, image checked 2026-09-29): 2.210. Computed from the corrected Table 1: 2.2099."
+
+[[errata]]
+dataset = "theory_O2"
+row = "532.2"
+column = "value"
+printed = "4.740"
+corrected = "4.660"
+reason = "The authors' erratum: 'the O2 calculation at 532.2 nm is 4.66 x 10^-27 cm^2'."
+evidence = "Erratum, JQSRT 189, 281 (2017), text p. 10 and reprinted Table 2 (tbl_c363d0a7b75b, PDF p. 9, image checked 2026-09-29): 4.660. Computed from the corrected Table 1 (F_k constant 1.096): 4.6600."
+
+[[errata]]
+dataset = "theory_O2"
+row = "660.0"
+column = "value"
+printed = "1.935"
+corrected = "1.938"
+reason = "Recomputed in the erratum's reprinted Table 2, not named in its text: 1.9378 from Bates's low-wavenumber O2 branch (A = 21351.1, B = 2.18567e13, the erratum's added note) with F_k constant 1.096."
+evidence = "Erratum reprinted Table 2 (tbl_c363d0a7b75b, PDF p. 9, image checked 2026-09-29): 1.938. Computed: 1.9378."

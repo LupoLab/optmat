@@ -1,0 +1,265 @@
+# The curated ionisation parameters of each gas (optmat.gas.ionisation, TC-439, TC-441).
+#
+# Each entry names the datasets its values come from (`source/dataset`, or
+# `source/dataset#row` for one row of a table) and says why each was chosen. The neutral's
+# static polarizability is not named here: it is the static limit of the electronic part
+# of the gas's fitted dispersion model (`fit/<gas>`, TC-441).
+#
+# Keys:
+#   ionization_energy          an `ionization_energy` dataset of the gas
+#   orbital                    the ionising orbital, as the sources name it
+#   orbital_l, orbital_m       an atom's valence l (the ADK/PPT angular factor) and m;
+#                              a molecule's m along its axis
+#   structure                  named `tunnelling_structure_coefficient` datasets
+#   default_structure          the recommended one of them
+#   ion_polarizability         a `polarizability` dataset of the cation
+#   barrier_suppression_alpha  Tong & Lin's alpha (an `ionization_model_parameter`)
+#   reasons                    why, per choice
+
+[He]
+barrier_suppression_zhang = "zhang_2014/tableXI_He"
+ionization_energy = "nist_asd_2026/ie_He_I"
+orbital = "1s"
+orbital_l = 0
+orbital_m = 0
+ion_polarizability = "wang_2021/ccsdt_He+"
+barrier_suppression_alpha = "tong_2005/alpha_He"
+default_structure = "tong_2002"
+[He.structure]
+tong_2002 = "tong_2002/cl_He"
+[He.reasons]
+barrier_suppression_zhang = "Zhang, Lan & Lu 2014 Table XI, fitted to their SAE static rates; eq. (8) read with the + sign, which reproduces their own Table IX (TC-542)."
+structure = "Tong, Zhao & Lin 2002 Table II: C_l from a self-interaction-free density-functional calculation, the atomic counterpart of the MO-ADK coefficients (their ADK row is kept in tong_2002 as a check)."
+ion_polarizability = "Wang et al. 2021, CCSD(T) (solprop took the Hartree-Fock column, TC-441)."
+barrier_suppression_alpha = "Tong & Lin 2005 Table 2, fitted to their TDSE rates."
+ionization_energy = "NIST ASD 5.12, to He+ 1s 2S1/2 (TC-443)."
+
+[Ne]
+barrier_suppression_zhang = "zhang_2014/tableXI_Ne"
+ionization_energy = "nist_asd_2026/ie_Ne_I"
+orbital = "2p"
+orbital_l = 1
+orbital_m = 0
+ion_polarizability = "wang_2021/ccsdt_Ne+"
+barrier_suppression_alpha = "tong_2005/alpha_Ne"
+default_structure = "tong_2002"
+[Ne.structure]
+tong_2002 = "tong_2002/cl_Ne"
+[Ne.reasons]
+barrier_suppression_zhang = "Zhang, Lan & Lu 2014 Table XI, fitted to their SAE static rates; eq. (8) read with the + sign, which reproduces their own Table IX (TC-542)."
+structure = "Tong, Zhao & Lin 2002 Table II: C_l from a self-interaction-free density-functional calculation, the atomic counterpart of the MO-ADK coefficients (their ADK row is kept in tong_2002 as a check)."
+ion_polarizability = "Wang et al. 2021, CCSD(T) (solprop took the Hartree-Fock column, TC-441)."
+barrier_suppression_alpha = "Tong & Lin 2005 Table 2, fitted to their TDSE rates."
+ionization_energy = "NIST ASD 5.12, to Ne+ 2p5 2P3/2 (TC-443)."
+orbital = "The m = 0 member of the p shell ionises fastest in a linearly polarised field (Ammosov et al. 1986, eq. 14)."
+
+[Ar]
+barrier_suppression_zhang = "zhang_2014/tableXI_Ar"
+ionization_energy = "nist_asd_2026/ie_Ar_I"
+orbital = "3p"
+orbital_l = 1
+orbital_m = 0
+ion_polarizability = "wang_2021/ccsdt_Ar+"
+barrier_suppression_alpha = "tong_2005/alpha_Ar"
+default_structure = "tong_2002"
+[Ar.structure]
+tong_2002 = "tong_2002/cl_Ar"
+[Ar.reasons]
+barrier_suppression_zhang = "Zhang, Lan & Lu 2014 Table XI, fitted to their SAE static rates; eq. (8) read with the + sign, which reproduces their own Table IX (TC-542)."
+structure = "Tong, Zhao & Lin 2002 Table II: C_l from a self-interaction-free density-functional calculation, the atomic counterpart of the MO-ADK coefficients (their ADK row is kept in tong_2002 as a check)."
+ion_polarizability = "Wang et al. 2021, CCSD(T) (solprop took the Hartree-Fock column, TC-441)."
+barrier_suppression_alpha = "Tong & Lin 2005 Table 2, fitted to their TDSE rates."
+ionization_energy = "NIST ASD 5.12, to Ar+ 3p5 2P3/2 (TC-443)."
+orbital = "The m = 0 member of the p shell ionises fastest in a linearly polarised field (Ammosov et al. 1986, eq. 14)."
+
+[Kr]
+barrier_suppression_zhang = "zhang_2014/tableXI_Kr"
+ionization_energy = "nist_asd_2026/ie_Kr_I"
+orbital = "4p"
+orbital_l = 1
+orbital_m = 0
+default_structure = "tong_2002"
+[Kr.structure]
+tong_2002 = "tong_2002/cl_Kr"
+[Kr.reasons]
+barrier_suppression_zhang = "Zhang, Lan & Lu 2014 Table XI, fitted to their SAE static rates; eq. (8) read with the + sign, which reproduces their own Table IX (TC-542)."
+structure = "Tong, Zhao & Lin 2002 Table II: C_l from a self-interaction-free density-functional calculation, the atomic counterpart of the MO-ADK coefficients (their ADK row is kept in tong_2002 as a check)."
+ion_polarizability = "None curated for Kr+: requested (roadmap)."
+barrier_suppression_alpha = "Tong & Lin 2005 fit He, Ne and Ar only; solprop's 9.0 for Kr is their suggested value for p states, not a fit (TC-444)."
+ionization_energy = "NIST ASD 5.12, to Kr+ 4p5 2P3/2 (TC-443)."
+orbital = "The m = 0 member of the p shell ionises fastest in a linearly polarised field (Ammosov et al. 1986, eq. 14)."
+
+[Xe]
+barrier_suppression_zhang = "zhang_2014/tableXI_Xe"
+ionization_energy = "nist_asd_2026/ie_Xe_I"
+orbital = "5p"
+orbital_l = 1
+orbital_m = 0
+default_structure = "tong_2002"
+[Xe.structure]
+tong_2002 = "tong_2002/cl_Xe"
+[Xe.reasons]
+barrier_suppression_zhang = "Zhang, Lan & Lu 2014 Table XI, fitted to their SAE static rates; eq. (8) read with the + sign, which reproduces their own Table IX (TC-542)."
+structure = "Tong, Zhao & Lin 2002 Table II: C_l from a self-interaction-free density-functional calculation, the atomic counterpart of the MO-ADK coefficients (their ADK row is kept in tong_2002 as a check)."
+ion_polarizability = "None curated for Xe+: requested (roadmap)."
+barrier_suppression_alpha = "Tong & Lin 2005 fit He, Ne and Ar only; solprop's 9.0 for Xe is their suggested value for p states, not a fit (TC-444)."
+ionization_energy = "NIST ASD 5.12, to Xe+ 5p5 2P3/2 (TC-443)."
+orbital = "The m = 0 member of the p shell ionises fastest in a linearly polarised field (Ammosov et al. 1986, eq. 14)."
+
+# The molecules. The ionisation energies are the primary determinations (TC-542); the
+# N2O and CO2 vertical energies are Potts & Williams 1974's reprints of Turner et al.
+# 1970, the best copies in the library (TC-547). The recommended energy is the adiabatic one;
+# the vertical one is given where it differs.
+
+[H2]
+ionization_energy = "liu_2009/ie_para_H2"
+orbital = "HOMO 1 sigma_g"
+orbital_m = 0
+default_structure = "zhao_2010"
+[H2.structure]
+zhao_2010 = "zhao_2010/table3_H2"
+zhao_2017 = "zhao_2017/table2_H2"
+tong_2002 = "tong_2002/cl_D2"
+[H2.reasons]
+ionization_energy = "Liu et al. 2009, the N = 0 -> N+ = 0 value, 124 417.491 13(37) cm-1 (TC-547; before, as Liu et al. 2010 reprint it, TC-542); Shiner et al. 1993's combination with McCormack et al. is 0.016 cm-1 higher."
+structure = "Zhao et al. 2010 Table III (their 'D2/H2' row), which revises Tong et al. 2002 (printed 'D2'): the same electronic structure for both isotopes at fixed geometry."
+
+[D2]
+effective_charge = "talebpour_1998/zeff_D2"
+ionization_energy = "liu_2010/ie_ortho_D2"
+orbital = "HOMO 1 sigma_g"
+orbital_m = 0
+default_structure = "zhao_2010"
+[D2.structure]
+zhao_2010 = "zhao_2010/table3_H2"
+zhao_2017 = "zhao_2017/table2_H2"
+tong_2002 = "tong_2002/cl_D2"
+[D2.reasons]
+ionization_energy = "Liu et al. 2010, N = 0 -> N+ = 0 (124 745.394 07(58) cm-1)."
+effective_charge = "Talebpour, Larochelle & Chin 1998: 0.72, computed (not fitted) for PPT at 1.5e14 W/cm2 and 800 nm from an orientation-averaged quasi-classical barrier; a model constant of their PPT form, which lacks Ilkov et al.'s factor (1 + gamma^2)^(-n*) (TC-547). solprop has none for D2."
+structure = "Zhao et al. 2010's 'D2/H2' row: the electronic structure at fixed geometry is the same for both isotopes."
+
+[N2]
+effective_charge = "talebpour_1999/zeff_N2"
+ionization_energy = "trickl_1989/ie_N2"
+orbital = "HOMO 3 sigma_g"
+orbital_m = 0
+default_structure = "zhao_2010"
+[N2.structure]
+zhao_2010 = "zhao_2010/table3_N2"
+zhao_2017 = "zhao_2017/table2_N2"
+tong_2002 = "tong_2002/cl_N2"
+[N2.reasons]
+ionization_energy = "Trickl et al. 1989, rotationless to rotationless (125 666.959(67) cm-1); the vertical energy is within 0.01 eV (N2+ X has nearly the neutral's geometry)."
+structure = "Zhao et al. 2010 Table III, revised from Tong et al. 2002 (the erratum leaves it unchanged, TC-542)."
+effective_charge = "Talebpour, Yang & Chin 1999: fitted within PPT with l = m = 0 to N2+ yields (solprop's 0.9); a model constant, not a property of N2."
+
+[O2]
+effective_charge = "talebpour_1999/zeff_O2"
+ionization_energy = "tonkyn_1989/ie_O2"
+vertical_ionization_energy = "mahla_2025/expt_baltzer_O2#X 2Pi_g"
+orbital = "HOMO 1 pi_g"
+orbital_m = 1
+default_structure = "zhao_2010"
+[O2.structure]
+zhao_2010 = "zhao_2010/table3_O2"
+zhao_2017 = "zhao_2017/table2_O2"
+tong_2002 = "tong_2002/cl_O2"
+[O2.reasons]
+ionization_energy = "Tonkyn et al. 1989, to X 2Pi_(1/2)g J+ = 1/2 (97 348(2) cm-1); vertical 12.307 eV (Baltzer et al., as Mahla 2025 reprint it)."
+orbital = "The pi_g HOMO has m = 1 along the axis (solprop's ADK uses l = 0, TC-439)."
+effective_charge = "Talebpour, Yang & Chin 1999: fitted within PPT with l = m = 0 and I_p = 12.55 eV (O2+ v+ = 1, a Franck-Condon average); solprop pairs the 0.53 with 12.07 eV, a faster rate than the one fitted (TC-542)."
+structure = "Zhao et al. 2010 Table III, revised from Tong et al. 2002."
+
+[CH4]
+ionization_energy = "berkowitz_1987/adiabatic_CH4"
+vertical_ionization_energy = "heilbronner_1977/vertical_CH4#1t2_1"
+orbital = "HOMO 1 t2"
+orbital_m = 0
+[CH4.structure]
+zhao_2011 = [
+    "zhao_2011/table1_CH4_homo1_mp1",
+    "zhao_2011/table1_CH4_homo1_mm1",
+    "zhao_2011/table1_CH4_homo1_mp3",
+    "zhao_2011/table1_CH4_homo1_mm3",
+    "zhao_2011/table1_CH4_homo2_mp1",
+    "zhao_2011/table1_CH4_homo2_mm1",
+    "zhao_2011/table1_CH4_homo2_mp3",
+    "zhao_2011/table1_CH4_homo2_mm3",
+    "zhao_2011/table1_CH4_homo3_m0",
+    "zhao_2011/table1_CH4_homo3_mp2",
+    "zhao_2011/table1_CH4_homo3_mm2",
+]
+[CH4.reasons]
+ionization_energy = "Berkowitz et al. 1987, the photoion onset at 78 K (their rotational model puts the rotationless value 0.005 eV higher); vertical 13.6 eV, the first Jahn-Teller maximum of the 1t2 band (Heilbronner et al. 1977, TC-547), 1 eV higher."
+structure = "Zhao et al. 2011 Table 1: the three degenerate 1t2 orbitals, complex C_lm at several m, one dataset per orbital and m; combined for the average over orientations, which needs only sum_m |C_lm|^2 per l (11.34, 11.34 and 11.38 for the three orbitals: equal to the table's rounding). No default is named: the one tabulation (TC-681)."
+
+[SF6]
+ionization_energy = "frost_1967/first_threshold_SF6"
+vertical_ionization_energy = "potts_1970/vertical_SF6#3t1u"
+orbital = "HOMO 1 t1g"
+orbital_m = 0
+[SF6.structure]
+zhao_2011 = [
+    "zhao_2011/table1_SF6_homo1_mp1",
+    "zhao_2011/table1_SF6_homo1_mm1",
+    "zhao_2011/table1_SF6_homo1_mp3",
+    "zhao_2011/table1_SF6_homo1_mm3",
+    "zhao_2011/table1_SF6_homo1_mp5",
+    "zhao_2011/table1_SF6_homo1_mm5",
+    "zhao_2011/table1_SF6_homo1_mp7",
+    "zhao_2011/table1_SF6_homo1_mm7",
+    "zhao_2011/table1_SF6_homo2_mp1",
+    "zhao_2011/table1_SF6_homo2_mm1",
+    "zhao_2011/table1_SF6_homo2_mp3",
+    "zhao_2011/table1_SF6_homo2_mm3",
+    "zhao_2011/table1_SF6_homo2_mp5",
+    "zhao_2011/table1_SF6_homo2_mm5",
+    "zhao_2011/table1_SF6_homo2_mp7",
+    "zhao_2011/table1_SF6_homo2_mm7",
+    "zhao_2011/table1_SF6_homo3_mp4",
+    "zhao_2011/table1_SF6_homo3_mm4",
+    "zhao_2011/table1_SF6_homo3_mp8",
+    "zhao_2011/table1_SF6_homo3_mm8",
+]
+[SF6.reasons]
+ionization_energy = "Frost et al. 1967, the first retarding-potential threshold (15.35 +- 0.02 eV, kind not stated by the paper); vertical 15.69 eV (Potts et al. 1970, the 3t1u band maximum). solprop's 15.32 eV lies between Delwiche's 15.30 and Frost's 15.35."
+structure = "Zhao et al. 2011 Table 1 (continued, p. 8): the three degenerate 1t1g orbitals, complex C_lm with l = 4 to 10, combined for the average over orientations (sum_m |C_lm|^2 per l: 145.5 at l = 4 in all three). Read on the page by the maintainer's exception, the library's cells of the table being unusable (TC-684). No default is named: the one tabulation."
+
+[N2O]
+ionization_energy = "berkowitz_1977/adiabatic_N2O"
+vertical_ionization_energy = "potts_1974/hei_N2O#2pi"
+orbital = "HOMO 2 pi"
+orbital_m = 1
+[N2O.structure]
+zhao_2017 = "zhao_2017/table2_N2O"
+[N2O.reasons]
+ionization_energy = "Berkowitz & Eland 1977, to X 2Pi_3/2 (12.886(2) eV); vertical 12.89 eV, the 2pi band maximum (Turner et al. 1970, as Potts & Williams 1974 reprint it; TC-547)."
+structure = "Zhao et al. 2017 Table 2 (the row is also Wang et al. 2014's): the one tabulation, from the LB-alpha potential. No default is named: the same group's coefficients of N2 and O2 changed by 25 % between 2010 and 2017, and nothing tests N2O's (TC-675)."
+
+[CO2]
+ionization_energy = "wang_1988/adiabatic_CO2#X"
+vertical_ionization_energy = "potts_1974/hei_CO2#1pi_g"
+orbital = "HOMO 1 pi_g"
+orbital_m = 1
+default_structure = "zhao_2010"
+[CO2.structure]
+zhao_2010 = "zhao_2010/table3_CO2"
+zhao_2017 = "zhao_2017/table2_CO2"
+[CO2.reasons]
+ionization_energy = "Wang et al. 1988, to X 2Pi_3/2g (000) (13.778(2) eV); vertical 13.79 eV, the 1pi_g band maximum (Turner et al. 1970, as Potts & Williams 1974 reprint it; TC-547; Wang et al. print none)."
+structure = "Zhao et al. 2010 Table III."
+
+[CO]
+ionization_energy = "potts_1974/hei_CO#3sigma"
+vertical_ionization_energy = "potts_1974/hei_CO#3sigma"
+orbital = "HOMO 5 sigma"
+orbital_m = 0
+default_structure = "zhao_2010"
+[CO.structure]
+zhao_2010 = "zhao_2010/table3_CO"
+zhao_2017 = "zhao_2017/table2_CO"
+tong_2002 = "tong_2002/cl_CO"
+[CO.reasons]
+ionization_energy = "No adiabatic energy of CO is curated: the vertical 14.01 eV, the 3sigma (HOMO 5 sigma) band maximum (Turner et al. 1970, as Potts & Williams 1974 reprint it), stands for both. It is the value of Svensson et al. 1991 as Majety & Scrinzi 2015 reprint it, and of Tong et al. 2002 and Zhao et al. 2010 (TC-683)."
+structure = "Zhao et al. 2010 Table III, all coefficients positive; Zhao et al. 2017 give them with alternating signs (the oxygen atom on +z). The average over orientations needs only C_l^2, which the signs leave alone."

@@ -1,0 +1,83 @@
+citation = "S. Augst, D. D. Meyerhofer, D. Strickland and S. L. Chin, \"Laser ionization of noble gases by Coulomb-barrier suppression\", J. Opt. Soc. Am. B 8, 858 (1991)"
+doi = "10.1364/josab.8.000858"
+library = "Augst_1991_LaserIonizationNoble"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Ion yields of He, Ne, Ar, Kr and Xe (charge states up to Xe12+) against \
+peak intensity, mid-1e13 to mid-1e16 W/cm^2: chirped-pulse-amplified Nd:glass laser, \
+1.053 um, ~1 ps (bandwidth ~20 A), f/5 focusing (20 cm lens), effective focal spot 14 um \
+diameter; gas backfilled to ~5e-6 Torr; time-of-flight spectrometer (800 V/cm \
+extraction, 30 cm drift) and microchannel plates; 150-200 shots per run, each point a \
+moving average of three shots (pp. 1-4). Compared with rate-equation integrations over \
+the focal volume (temporally Lorentzian, spatially Gaussian, Eq. (3); sequential \
+ionisation only) for BSI, ADK, 3D dc tunnelling, Keldysh, KFR and Szoke's modified KFR \
+(pp. 4-8)."""
+notes = """Identity checked against pdf p. 1 (the citation.bib author field reads \
+'Chint', the paper 'Chin'). Pages are pdf pages (1-10 = journal pp. 858-867).
+
+WHY NOTHING IS TAKEN AS A DATASET. The yields are in Figs. 1-5 and 8-12 only (number of \
+ions detected against peak intensity, 1.053 um, ~1 ps, linear polarization implied, not \
+stated); no yield or appearance intensity is printed. The number of ions is not \
+calibrated ('No attempt is made to calibrate the collection efficiency ... the data \
+presented here represent the number of ions detected, not the number of ions produced', \
+p. 2); the detector saturates at ~2000 ions (p. 2). Intensity uncertainty (p. 2): \
+relative 'a relative intensity difference of 25% or less' over 4 months, and 'absolute \
+or systematic errors ... We estimate this uncertainty to be approximately a factor of 2'. \
+Appearance intensity: the intensity at which 10 ions are detected (p. 4).
+
+TABLE 1 (tbl_dbd19bc6b44f, p. 5; image checked), 'Shift in Theoretical Curves Needed to \
+Match Experimental Data': 'The intensities for the theoretical curves are multiplied by \
+the shift factor to fit the experimental data' (note a). BSI (all gases) 1.0 (no shift); \
+ADK: xenon 1.0 (no shift), krypton 1.2, argon 1.7, neon 1.8, helium 2.0; \
+three-dimensional dc tunneling (xenon) 1.7; Keldysh (xenon) 0.7; KFR (xenon) 0.6; KFR \
+(helium) 1.0 (no shift); Szoke (xenon) 4.2. Not recorded as ionization_model_parameter: \
+the factor is not a constant of any rate model but a comparison offset, 'We introduce \
+this shift factor simply to facilitate the comparison between theory and experiment' \
+(p. 5), fitted by eye to the first charge state where the spacing is wrong (p. 5), and \
+'this intensity shift is never larger than the experimental uncertainty that is present \
+in our absolute intensity measurements (a factor of 2)' (p. 6): it mixes the model's \
+error with the intensity calibration. It does say that at 1.053 um, ~1 ps, ADK needs \
+the intensity scaled by 1.2 (Kr) to 2.0 (He) relative to Xe, with the relative intensity \
+between gases good to 25 % (mixed-gas targets, p. 2). Inconsistencies: Fig. 10's caption \
+gives the KFR (xenon) shift as 0.63 against Table 1's 0.6; the 3D dc tunnelling text \
+(p. 7) says the curves 'need to be shifted higher in intensity by a factor of 1.7 to \
+match the curves shown in Fig. 9', i.e. relative to the Keldysh curves, not the data.
+
+TEXT. The theory curves are also scaled vertically, a detection efficiency of '1-5%, \
+depending on the species' (p. 5). All charge states appear with Keldysh gamma < 1 (Fig. \
+6, p. 4). ADK is 'expected to be best for xenon and worst for helium' as n* grows (p. 6, \
+Fig. 7). Conversion (note 28, p. 10): field (V/cm) = 27.5 [I (W/cm^2)]^(1/2). \
+Ponderomotive energy, Eq. (2): Phi (eV) = 9.33 x 10^-14 I (W/cm^2) lambda^2 (um); Keldysh \
+gamma = (E/(2 Phi))^(1/2), Eq. (1). omega_A = 4.134 x 10^16 s^-1, E_A = 5.142 x 10^9 V/cm \
+(p. 6). The appearance intensities themselves are in Augst et al. 1989 (augst_1989, \
+their ref. 18), in a figure only.
+
+FORMULAS (below): the BSI critical field and threshold intensity, Eqs. (5)-(6), and the \
+ADK rate as used, Eqs. (8)-(10). Eq. (8) names the ionisation potential E and the field \
+script-E, but the text after it calls 'E' 'the electric field of the laser in atomic \
+units' (p. 6), a slip of notation. Eq. (11) (3D dc tunnelling, W = 4 omega_A (2E)^(5/2) \
+/script-E exp[-2(2E)^(3/2)/(3 script-E)]) and Eq. (12) (Keldysh's small-gamma limit) are \
+not recorded: they carry no species dependence beyond Ip."""
+
+[[formulas]]
+id = "bsi_threshold"
+material = "He"
+equation = "Eqs. (4)-(7), pp. 5-6"
+printed = "script-E = E^2/(4Z) (5); I_th = E^4/(16 Z^2), I_th (W/cm^2) = 4.00 x 10^9 E^4 (eV)/Z^2 (6); n* = n - delta_l = Z/(2E)^(1/2) (7)"
+variable = "E: ionisation potential of the atom or ion (au in Eq. (5); eV in the numerical form of Eq. (6)); Z: the charge of the ion created; script-E: the critical field (au)"
+range = "Any atom or ion; the barrier of V(x) = -Z/|x| - script-E x (Eq. (4)) suppressed to the ionisation potential"
+coefficients = { I_th_W_per_cm2 = "4.00e9" }
+check = "The numerical constant follows from I (W/cm^2) = 3.50945e16 F^2 (F in au) and 1 hartree = 27.2114 eV: 3.50945e16/(16 x 27.2114^4) = 4.0005e9 (computed 2026-09-26). The material is nominal: the formula is for any atom or ion (He, Ne, Ar, Kr, Xe and their ions here). The paper uses it with probability 1 above I_th, 0 below (p. 6)."
+notes = "'Threshold intensities calculated in this manner are compared with the experimentally determined appearance intensities of Ref. 18. In all cases the theory and experiment agree within the experimental error bars' (p. 6); the curves of Figs. 1-5 use no shift in intensity."
+
+[[formulas]]
+id = "adk"
+material = "Xe"
+equation = "Eqs. (8)-(10), p. 6"
+printed = "W = omega_A C_n*l^2 f(l, m) E (3 script-E/(pi (2E)^(3/2)))^(1/2) [2 (2E)^(3/2)/script-E]^(2n* - |m| - 1) exp[-2 (2E)^(3/2)/(3 script-E)] (8); f(l, m) = (2l + 1)(l + |m|)!/(2^|m| (|m|)! (l - |m|)!) (9); C_n,l = (2e/n*)^n* (2 pi n*)^(-1/2) (10)"
+variable = "E: ionisation potential (au); script-E: laser field amplitude (au); n* = Z/(2E)^(1/2); l, m: orbital quantum numbers; omega_A = 4.134e16 s^-1; e = 2.71828"
+range = "'valid for n* >> 1, E << 1, and omega << E' (p. 6)"
+coefficients = { omega_A = "4.134e16 s^-1" }
+reproduced_from = ["M. V. Ammosov, N. B. Delone and V. P. Krainov, Sov. Phys. JETP 64, 1191 (1986)"]
+check = "Not checkable: the rates are in figures only. Eq. (10) is the Stirling-approximated, l-independent ADK coefficient; its square is the C^2 = (2e/n*)^(2n*)/(2 pi n*) that reproduces parker_2007's AC-ADK prefactor. The factor (3 script-E/(pi (2E)^(3/2)))^(1/2) 'results from averaging over one period of the laser' (p. 6): W is the cycle-averaged rate for linear polarization."
+notes = "Occupancy (p. 6): 'For ionization rate calculations, we use the ground-state values for n* and l and a summation over the degenerate m states.' The material is nominal (the paper applies it to all five gases and their ions)."

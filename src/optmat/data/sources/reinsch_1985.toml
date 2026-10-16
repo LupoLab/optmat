@@ -1,0 +1,295 @@
+citation = "E.-A. Reinsch, J. Chem. Phys. 83, 5784 (1985)"
+doi = "10.1063/1.449657"
+library = "Reinsch_1985_CalculationDynamicPolarizabilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Time-dependent perturbation theory for multiconfiguration SCF (MC-SCF) wave \
+functions (a multiconfigurational time-dependent Hartree-Fock linear response, solved \
+through the MC-SCF Hessian), nonrelativistic, clamped nuclei. He and H2: five-configuration \
+MC-SCF in Huzinaga-based Gaussian basis sets; Ne, HF, H2O, NH3, CH4: 45-configuration \
+MC-SCF (all double excitations from the four valence orbitals into the first four \
+virtuals of the same symmetry) in Werner and Meyer's basis B with d sets; for Ne also an \
+extended basis (one more s, p and d set, zeta = 0.055). CH4 at r_CH = 2.061 bohr. H2 at \
+R = 1.2-1.6 bohr, with vibrational averaging by P. Botschwina (pp. 5788-5790)."""
+notes = """omega is in hartree (Table I note a: 'all omega values in this paper are given \
+in hartree', p. 5788), polarizabilities in atomic units (bohr^3). Electronic \
+polarizabilities only (no vibrational contribution, no magnetic susceptibility). Journal \
+pages 5784-5791 = pdf pages 2-9 (pdf page 1 is a cover sheet).
+
+Accuracy (the author's): for He 'agreement within 1% up to omega = 0.65' with Chung's \
+and Starkschall and Gordon's values; the correlation contribution at omega = 0 is 4.6 % \
+(p. 5788). For the ten-electron systems the 45-configuration MC-SCF recovers 65-90 % of \
+the correlation contribution at omega = 0 (Table VI); for Ne 'the error in the \
+polarizability increases from 4% (omega = 0) to 7.5% (omega = 0.35)', reduced with the \
+extended basis (p. 5790); 'the absolute accuracy for the latter case is in the range of \
+4% to 9.5%' (abstract). All of this work's values are therefore stored as checks, not \
+for fitting (the He MC-SCF column could be promoted).
+
+Reproduced comparison values: He Chung (Ref. 6 as cited by Ref. 20), Starkschall and \
+Gordon (Ref. 20, moment theory from experiment), 'Expt' as fitted by Pade approximants \
+(Ref. 21, Langhoff and Karplus 1969 = langhoff_1969); Ne 'Expt' (Table III note a: 'as \
+cited by Ref. 20', while the text p. 5790 says 'the experimental values for Ne as given \
+by Langhoff and Karplus (Ref. 21)'); Ne static SCF, PNO-CI and CEPA of Werner and Meyer \
+(Ref. 5; Table VI, 'without vibrational correction'); CH4 'Exp' computed by the author \
+from Landolt-Bornstein's two-term fits C_1/(nu_1^2 - nu^2) + C_2/(nu_2^2 - nu^2) (Table \
+V note c), so an evaluation of a dispersion formula, not measurements; CH4 PNO-CI/CEPA \
+16.39/16.53 of Werner and Meyer (Table V note f).
+
+H2 (Table II): the upper block gives alpha_parallel and alpha_perp at fixed \
+internuclear distances R = 1.2-1.6 bohr (not extracted: tensor components at fixed R; \
+anisotropies are for later). The lower block (the mean at R = 1.4 bohr, this work and \
+Victor, Browne and Dalgarno; the vibrationally averaged alpha_parallel, alpha_perp and \
+mean for v = 0, the mean for v = 1 and the 0-1 transition; experiment) is MISSING from \
+the library's cells file; its values are entered inline, read from the table image and \
+checked on the pdf page (p. 5789): the printed means equal (alpha_parallel + 2 \
+alpha_perp)/3 of the printed components to the last digit (R = 1.4: 5.203, 5.392, \
+6.061, 7.740; v = 0: 5.438, 5.646, 6.399, 8.370), which confirms the reading. Table II \
+notes: b, c Kolos and Wolniewicz (Ref. 22) static alpha_parallel 6.3805 and alpha_perp \
+4.5777 at R = 1.4; f their vibrationally averaged mean 5.414 (v = 0, static). Anisotropy \
+kappa 0.125 against the experimental 0.128 (p. 5789).
+
+Not extracted: HF, H2O, NH3 (not curated species); the He excitation energies and C_6 \
+(p. 5789), the Ne C_6 6.158 (p. 5790)."""
+
+[[datasets]]
+id = "mcscf_He"
+material = "He"
+file = "He/reinsch_1985__mcscf_He.csv"
+table = "tbl_26de7c6c1f20"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I 'This work MC-SCF': alpha(omega), omega = 0-0.75 hartree, 11 points; within 1 % of Chung up to omega = 0.65 (p. 5788)."
+
+[[datasets]]
+id = "scf_He"
+material = "He"
+file = "He/reinsch_1985__scf_He.csv"
+table = "tbl_26de7c6c1f20"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "excluded"
+notes = "Table I 'This work SCF' (coupled Hartree-Fock level): 4.6 % low at omega = 0 (no correlation). Kept for the record; excluded."
+
+[[datasets]]
+id = "chung_He"
+material = "He"
+file = "He/reinsch_1985__chung_He.csv"
+table = "tbl_26de7c6c1f20"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["K. T. Chung, Phys. Rev. 166, 1 (1968), as cited by G. Starkschall and R. G. Gordon, J. Chem. Phys. 54, 663 (1971)"]
+notes = "Table I 'Chung' (note b: Ref. 6 cited in Ref. 20): variational theory, 'the best theoretical values available' (p. 5788), 11 points."
+
+[[datasets]]
+id = "starkschall_gordon_He"
+material = "He"
+file = "He/reinsch_1985__starkschall_gordon_He.csv"
+table = "tbl_26de7c6c1f20"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["G. Starkschall and R. G. Gordon, J. Chem. Phys. 54, 663 (1971)"]
+notes = "Table I 'St&G' (note c): 'obtained from experimental values by the moment theory' (p. 5788), 11 points; the 0.75 hartree value is printed with three digits (8.38)."
+
+[[datasets]]
+id = "expt_He"
+material = "He"
+file = "He/reinsch_1985__expt_He.csv"
+table = "tbl_26de7c6c1f20"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "Table I 'Expt' (note d: 'As fitted by Pade approximants (Ref. 21)'), 8 points: Langhoff and Karplus's Pade representation of experimental refractivity, evaluated by the author."
+
+[[datasets]]
+id = "mcscf_standard_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__mcscf_standard_Ne.csv"
+table = "tbl_e741f654ef3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III 'This work Sbs.' (standard basis), omega = 0-0.40 hartree, 9 points; 4 % low at omega = 0, 7.5 % at 0.35 (p. 5790)."
+
+[[datasets]]
+id = "mcscf_extended_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__mcscf_extended_Ne.csv"
+table = "tbl_e741f654ef3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III 'This work Ebs.' (extended basis, one more s, p, d set with zeta = 0.055), 9 points."
+
+[[datasets]]
+id = "expt_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__expt_Ne.csv"
+table = "tbl_e741f654ef3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["G. Starkschall and R. G. Gordon, J. Chem. Phys. 54, 663 (1971)", "langhoff_1969"]
+notes = "Table III 'Expt' (note a: 'as cited by Ref. 20'; the text, p. 5790, attributes the experimental Ne values to Langhoff and Karplus, Ref. 21), omega = 0.20-0.35 hartree, 4 points."
+
+[[datasets]]
+id = "mcscf_static_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__mcscf_static_Ne.csv"
+table = "tbl_c3d0b718917c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "excluded"
+notes = "Table VI 'MC-SCF' (this work) 2.567 at omega = 0: the Table III standard-basis value 2.5671 rounded (duplicate; excluded)."
+
+[[datasets]]
+id = "werner_meyer_scf_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__werner_meyer_scf_Ne.csv"
+table = "tbl_c3d0b718917c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["H.-J. Werner and W. Meyer, Mol. Phys. 31, 855 (1976)"]
+notes = "Table VI 'SCF' (note a: Werner and Meyer, without vibrational correction): static 2.365."
+
+[[datasets]]
+id = "werner_meyer_pno_ci_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__werner_meyer_pno_ci_Ne.csv"
+table = "tbl_c3d0b718917c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["H.-J. Werner and W. Meyer, Mol. Phys. 31, 855 (1976)"]
+notes = "Table VI 'PNO-CI' (Werner and Meyer): static 2.616."
+
+[[datasets]]
+id = "werner_meyer_cepa_Ne"
+material = "Ne"
+file = "Ne/reinsch_1985__werner_meyer_cepa_Ne.csv"
+table = "tbl_c3d0b718917c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["H.-J. Werner and W. Meyer, Mol. Phys. 31, 855 (1976)"]
+notes = "Table VI 'CEPA' (Werner and Meyer): static 2.676."
+
+[[datasets]]
+id = "mcscf_CH4"
+material = "CH4"
+file = "CH4/reinsch_1985__mcscf_CH4.csv"
+table = "tbl_eecb6e4f851f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table V 'CH4 alpha' (this work, r_CH = 2.061 bohr, no vibrational averaging), omega = 0-0.30 hartree, 7 points; 9.6 % below 'Exp' at omega = 0, 20 % at 0.30."
+
+[[datasets]]
+id = "expt_CH4"
+material = "CH4"
+file = "CH4/reinsch_1985__expt_CH4.csv"
+table = "tbl_eecb6e4f851f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["Landolt-Bornstein, Zahlenwerte und Funktionen, 6. Aufl., Band II/8, S. 6-871 ff."]
+notes = "Table V 'alpha(Exp)' (note c: C_1/(nu_1^2 - nu^2) + C_2/(nu_2^2 - nu^2) with values taken from Landolt-Bornstein): the author's evaluation of a two-term refractivity fit, not measurements; at omega = 0.25-0.30 hartree (182-152 nm) an extrapolation of a fit to longer-wavelength data is likely (the fit's range is not given). 7 points."
+
+[[datasets]]
+id = "werner_meyer_CH4"
+material = "CH4"
+table = "text"
+points = [["pno_ci", "0", "16.39"], ["cepa", "0", "16.53"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["H.-J. Werner and W. Meyer, Mol. Phys. 31, 855 (1976)"]
+notes = "Table V note f (p. 5790, on the static CH4 value; the note's wording follows note d, 'Werner and Meyer (Ref. 5) for omega = 0 PNO-CI/CEPA'): '16.39/16.53'. Rows pno_ci and cepa, static."
+
+[[datasets]]
+id = "mean_R14_H2"
+material = "H2"
+table = "text"
+points = [["0", "0", "5.203"], ["0.1", "0.1", "5.392"], ["0.2", "0.2", "6.061"], ["0.3", "0.3", "7.740"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "excluded"
+notes = "Table II lower block, 'alpha-bar for R = 1.4 bohr, This work' (read from the table image, p. 5789; the cells file lost this block; the values equal (alpha_par + 2 alpha_perp)/3 of the upper block's R = 1.4 components). Fixed internuclear distance, not vibrationally averaged: excluded (use v0_mean_H2)."
+
+[[datasets]]
+id = "victor_browne_dalgarno_R14_H2"
+material = "H2"
+table = "text"
+points = [["0", "0", "5.223"], ["0.1", "0.1", "5.394"], ["0.2", "0.2", "5.988"], ["0.3", "0.3", "7.315"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "excluded"
+reproduced_from = ["G. A. Victor, J. C. Browne, and A. Dalgarno, Proc. Phys. Soc. (London) 92, 42 (1967), as cited by P. W. Langhoff and M. Karplus, J. Chem. Phys. 52, 1435 (1970)"]
+notes = "Table II lower block, 'VBD' (note d), mean at R = 1.4 bohr (read from the table image, p. 5789). Fixed R: excluded."
+
+[[datasets]]
+id = "v0_mean_H2"
+material = "H2"
+table = "text"
+points = [["0", "0", "5.438"], ["0.1", "0.1", "5.646"], ["0.2", "0.2", "6.399"], ["0.3", "0.3", "8.370"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II lower block, vibrationally averaged mean alpha-bar for v = 0 (note e) (read from the table image, p. 5789; equals (alpha_par + 2 alpha_perp)/3 of the v = 0 components 6.798/4.758, 7.090/4.924, 8.166/5.516, 11.108/7.001). The ground vibrational level of H2 (the rotational state is not stated); 'excellent' agreement with experiment up to omega = 0.2 (p. 5789). Kolos and Wolniewicz's static value is 5.414 (note f)."
+
+[[datasets]]
+id = "v1_mean_H2"
+material = "H2"
+table = "text"
+points = [["0", "0", "5.918"], ["0.1", "0.1", "6.171"], ["0.2", "0.2", "7.104"], ["0.3", "0.3", "9.717"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "excluded"
+notes = "Table II lower block, vibrationally averaged mean for v = 1 (read from the table image, p. 5789): the first excited vibrational level, not the gas at ordinary temperatures; excluded. The 0-1 transition polarizabilities 0.743, 0.799, 1.019, 1.732 (Raman) are not extracted."
+
+[[datasets]]
+id = "langhoff_karplus_v0_H2"
+material = "H2"
+table = "text"
+points = [["0", "0", "5.440"], ["0.1", "0.1", "5.648"], ["0.2", "0.2", "6.398"], ["0.3", "0.3", "8.362"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "Table II lower block, 'Expt' for v = 0 (note g: 'As fitted by Pade approximants (Ref. 21)') (read from the table image, p. 5789)."
+
+[[datasets]]
+id = "kolos_wolniewicz_v0_H2"
+material = "H2"
+table = "text"
+points = [["0", "0", "5.414"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["W. Kolos and L. Wolniewicz, J. Chem. Phys. 46, 1426 (1967)"]
+notes = "Table II note f (p. 5789): 'Value given by Ref. 22: 5.414', the vibrationally averaged static mean for v = 0 (Kolos and Wolniewicz; curated as kolos_1967)."

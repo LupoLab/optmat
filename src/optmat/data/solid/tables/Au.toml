@@ -1,0 +1,28 @@
+# The complex index of gold from curated tables, joined by range (TC-619, TC-646). Each
+# range is one source's pair of tables; nothing is averaged. The joins are placed where
+# neighbouring sources agree best (docs/metals.md).
+material = "Au"
+
+[[segments]]
+real = "hagemann_1974/delta_Au_table6"
+imaginary = "hagemann_1974/k_Au_table6"
+range_nm = [3.54, 13.9]
+reason = "Hagemann, Gudat & Kunz's DESY report SR-74/7, Table 6, 91-350 eV, which prints 1 - n (three decimals) instead of n from 91 eV, to the table's end: the version the n below continues."
+
+[[segments]]
+real = "hagemann_1974/n_Au_table6"
+imaginary = "hagemann_1974/k_Au_table6"
+range_nm = [14.0, 24.9]
+reason = "Hagemann, Gudat & Kunz's DESY report SR-74/7, Table 6, 50-90 eV: their own transmission of evaporated films joined to Canfield et al.'s measured reflectance. At the join (25 nm) it meets Werner et al.'s REELS to 6 % in n and 2 % in k (0.828 + 0.204i against 0.877 + 0.208i), and to 5-16 % in k at 17.6-20 nm; the report's Table 5, fitted to the transmission alone, is 30-40 % higher in k and further from the energy-loss data, as the report itself says."
+
+[[segments]]
+real = "werner_2009/eps1_reels_Au"
+imaginary = "werner_2009/eps2_reels_Au"
+range_nm = [25.0, 70.0]
+reason = "Werner, Glantschnig & Ambrosch-Draxl's permittivity from reflection electron energy-loss spectra, 17.5-49.5 eV (about 10 %). Babar & Weaver's values meet it to 5-16 % in n and k at 45-70 nm (4 % at the join, 70 nm); the DESY tables are 10-100 % higher in k at 41-50 nm."
+
+[[segments]]
+real = "babar_2015/web_n_Au"
+imaginary = "babar_2015/web_k_Au"
+range_nm = [70.5, 12400.0]
+reason = "Babar & Weaver's Kramers-Kronig analysis of the reflectance of electropolished Au(110) (Weaver, 0.2-4 eV; Olson & Lynch, 4-30 eV, the 1981 compilation's), as published on Weaver's website: 0.1-17.5 eV. One analysis from the vacuum ultraviolet to the mid infrared; Weaver et al.'s 1981 table of the same reflectance agrees with it to 1-3 %. In the near infrared Johnson & Christy's films are 1-4 % higher in k with 2-3 times the n, and McPeak et al.'s template-stripped film 8-9 % higher in k and 25-32 % in n: a mirror's evaporated coating is closer to them (docs/metals.md)."

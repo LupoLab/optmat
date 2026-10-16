@@ -1,0 +1,194 @@
+citation = "R. Migneron and J. S. Levinger, Phys. Rev. 139, A646 (1965)"
+doi = "10.1103/physrev.139.a646"
+library = "Migneron_1965_IndexRefractionSum"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Dispersion relation n - 1 = (N c/pi) Int sigma(w') dw'/(w'^2 - w^2) (Eq. 2) \
+with the measured photoabsorption cross section of Lowry et al. (threshold to 8.82 Ry) \
+and Lukirskii et al. (to 20.6 Ry, with his 10 % correction), Schiff and Pekeris's \
+discrete oscillator strengths, Stewart and Webb's calculation to 130 Ry and Salpeter \
+and Zaidi's above, including double excitation (pp. A646-A647)."""
+notes = """Table I: n - 1 'at 1 atm and 0 degrees C calculated from Eq. (2)', with N 'the \
+number of helium atoms per cm^3 at standard conditions' (Loschmidt's number: an \
+ideal-gas density). Wavelengths in A, from photon energies (vacuum). The authors find \
+their values about 2 % above Cuthbertson and Cuthbertson's measurements in the \
+visible, and 0.3-2.8 % above Chan and Dalgarno's variational values at 60-250 nm; \
+'the experimental values of the cross sections have errors of 5% or more, so a 2% \
+discrepancy ... is to be anticipated' (p. A647). Being semi-empirical and 2-5 % \
+uncertain, the values are kept as a check, not fitted.
+
+Table II: sums S(p) = Sum f W^p with W the photon energy in Ry (Eq. 1), 'given in \
+units of Ry^p'; the totals are extracted per p with scale 2^-p to give atomic units \
+(hartree^p): S(-2) = 0.348 Ry^-2 is 1.392 a.u., i.e. the static polarizability. The \
+per-region contributions are not extracted. 'The discrepancies are never as large as \
+5%' (p. A648).
+
+Also in the text (p. A648): Chan and Dalgarno's n - 1 = 36.4e-6 at 2000 A (their Table \
+II), against this paper's 37.4e-6 there; extracted as a reproduced text point."""
+
+[[datasets]]
+id = "theory"
+material = "He"
+file = "He/migneron_1965__theory.csv"
+table = "tbl_a097df9cffbb"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, 25 values at 600-7000 A (the two printed column pairs merged, sorted by wavelength)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "chan_dalgarno_1965"
+material = "He"
+points = [["2000", "2000", "36.4"]]
+table = "text"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["Y. M. Chan and A. Dalgarno, Proc. Phys. Soc. (London) 85, 227 (1965)"]
+notes = "'At 2000 A they find n-1 = 36.4e-6' (p. A648); from their Table II."
+
+[[datasets]]
+id = "sum_rule_m2"
+material = "He"
+file = "He/migneron_1965__sum_rule_m2.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 4
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table II total S(-2) in Ry^-2; scale 4 = 2^(2) converts to atomic units."
+
+[[datasets]]
+id = "essen_sum_rule_m2"
+material = "He"
+file = "He/migneron_1965__essen_sum_rule_m2.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 4
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["L. Essen, Proc. Phys. Soc. (London) B66, 189 (1953)", "D. R. Johnston, G. J. Oudemans and R. H. Cole, J. Chem. Phys. 33, 1310 (1960)"]
+notes = "Table II 'Other calculation', footnote e: S(-2) from the measured microwave polarizability."
+
+[[datasets]]
+id = "sum_rule_m1"
+material = "He"
+file = "He/migneron_1965__sum_rule_m1.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 2
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table II total S(-1) in Ry^-1; scale 2 = 2^(1) converts to atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_m1"
+material = "He"
+file = "He/migneron_1965__pekeris_sum_rule_m1.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 2
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table II 'Other calculation', footnote f: S(-1) from Pekeris's ground-state wave function."
+
+[[datasets]]
+id = "sum_rule_0"
+material = "He"
+file = "He/migneron_1965__sum_rule_0.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 1
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table II total S(0) in Ry^0; scale 1 = 2^(0) converts to atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_0"
+material = "He"
+file = "He/migneron_1965__pekeris_sum_rule_0.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 1
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table II 'Other calculation', footnote f: S(0) from Pekeris's ground-state wave function."
+
+[[datasets]]
+id = "sum_rule_1"
+material = "He"
+file = "He/migneron_1965__sum_rule_1.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.5
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table II total S(1) in Ry^1; scale 0.5 = 2^(-1) converts to atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_1"
+material = "He"
+file = "He/migneron_1965__pekeris_sum_rule_1.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.5
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table II 'Other calculation', footnote f: S(1) from Pekeris's ground-state wave function."
+
+[[datasets]]
+id = "sum_rule_2"
+material = "He"
+file = "He/migneron_1965__sum_rule_2.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.25
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table II total S(2) in Ry^2; scale 0.25 = 2^(-2) converts to atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_2"
+material = "He"
+file = "He/migneron_1965__pekeris_sum_rule_2.csv"
+table = "tbl_f60413766558"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.25
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table II 'Other calculation', footnote f: S(2) from Pekeris's ground-state wave function."

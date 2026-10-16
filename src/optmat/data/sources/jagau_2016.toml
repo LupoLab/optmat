@@ -1,0 +1,217 @@
+citation = "T.-C. Jagau, \"Investigating tunnel and above-barrier ionization using complex-scaled coupled-cluster theory\", J. Chem. Phys. 145, 204115 (2016)"
+doi = "10.1063/1.4967961"
+library = "Jagau_2016_InvestigatingTunnelAbove"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field ionisation rates from complex-scaled quantum chemistry in \
+Gaussian basis sets (Q-Chem): the Hamiltonian with the static field F is complex \
+scaled, and the ground state becomes a resonance of energy E_res = E - i Gamma/2 \
+(Eq. (4), p. 3); Gamma is the ionisation rate. Levels of theory: complex-scaled \
+Hartree-Fock (cs-HF), second-order perturbation theory (cs-MP2) and coupled cluster \
+with singles and doubles (cs-CCSD), which for helium is full configuration interaction \
+(cs-FCI). 'In the cs-MP2 and cs-CCSD calculations, all electrons were always included \
+in the correlation treatment' (p. 6). Basis sets: aug-cc-pVQZ+3s3p3d3f for He, \
+aug-cc-pCVQZ+3s3p3d3f for Ne and Ar (p. 6), the added diffuse functions even-tempered \
+with a factor of 2.0 (ref. 94). The resonance energy is taken at the scaling angle of \
+the stationary point of the trajectory E(theta), after the correction of Eq. (12) for \
+the imaginary part that the field-free energy acquires in a finite basis (pp. 5-6). \
+Non-relativistic: the ion has one threshold."""
+notes = """Pages are the article's pdf pages (pdf page 1 is the publisher's cover) and, \
+for the supplementary material, its own pdf pages ('SM p.'). The supplement is in the \
+library as supplement_01 of the paper's directory; the tables named by the datasets are \
+under its tables/.
+
+WHAT IS TAKEN. The rates Gamma (au) against the field F (au) of Tables S3 (He, SM p. \
+6), S4 (Ne, SM p. 7) and S5 (Ar, SM p. 7), at the three levels of theory: nine \
+datasets. Every cell of the three tables was checked against the table images \
+(2026-09-28): they agree. 'See supplementary material for numerical values \
+corresponding to Figures 3-8' (p. 13): the tables are the numbers of Figs. 3, 6 and 7. \
+A dash is printed where no value was obtained (HF for He at 0.10 au, for Ne at 0.08 au \
+and for Ar at 0.05 au; MP2 for Ne at 0.08 au) and is skipped. Rates are wavelength_nm = \
+inf, polarization = static.
+
+WHAT THE RATES COUNT. The width of the N-electron ground state: the total rate of \
+single ionisation of the atom, all electrons and all channels together, not a \
+per-orbital rate. To compare with a one-electron rate, the latter is to be multiplied \
+by the number of electrons that ionise (optmat's effective number of electrons, TC-658).
+
+ACCURACY (quoted; no uncertainty is given for any tabulated value). Conclusions (p. \
+13): 'strong-field ionization rates from complex-scaled CCSD calculations are in \
+excellent agreement with reference data if appropriate Gaussian basis sets are used. \
+Only for ionization rates below ca. 10^-6 a.u., the current approach becomes \
+impractical as more and more diffuse basis functions are required'. Basis set, from \
+hydrogen and helium (p. 6): 'Ionization rates are more sensitive towards the basis set \
+than Stark shifts'; for helium 'aug-cc-pVQZ+6s6p6d6f matches reference data obtained \
+with cs-FCI in a Hylleraas basis set [Scrinzi et al. 1999] and from a time-dependent \
+approach [Parker et al. 2009] within 1%-2%, whereas aug-cc-pVTZ+6s6p6d values deviate \
+by ~5%'; 'limiting the diffuse part of the basis set to 3 instead of 6 s, p, d, and f \
+functions hardly makes an impact on the ionization rate'. The correction of Eq. (12) \
+(p. 6): 'the computation of ionization rates below ~10^-3 a.u. is often impossible \
+without applying Eq. (12)'; at F = 0.2 au for He it 'amounts to 5%' and at 0.3 au 'it \
+is below 1%'. Table S2 (SM p. 5; not taken) shows what this means at low field for \
+helium: at F = 0.10 au the basis of Table S3 gives 0.00000232 and the one with six \
+diffuse functions 0.00000348, against 0.00000288 (Scrinzi et al.) and 0.00000294 \
+(Parker et al.); at 0.12 au 0.00003234 and 0.00003144 against 0.0000362 and \
+0.00003683; at 0.14 au and from 0.20 to 0.50 au the basis of Table S3 is within 2.5 % of \
+Scrinzi et al., and 8 % and 6 % above them at 0.16 and 0.18 au. No such comparison of basis sets is given for Ne or Ar. For \
+Ne and Ar (p. 10): 'good agreement is obtained for both Ne and Ar between CCSD \
+ionization rates and values from the haCC approach' (majety_2015, whose Ne and Ar rates \
+are in a figure only).
+
+DOUBT. The low-field rates of Ne and Ar are not smooth in F: the CCSD rate of Ne \
+rises by 3.8 from 0.10 to 0.11 au and by 2.1 from 0.11 to 0.12 au, where \
+optmat's default model gives 3.0 and 2.5 (computed 2026-09-28); the CCSD rate of Ar at \
+0.05 au, 0.00004270, is 3.7 times the haCC(4) rate read from majety_2015's Fig. 1. \
+These are rates of 1e-5 au and below, near the limit of 1e-6 au that the paper states, \
+and optmat's comparison gives them no weight below 0.14 au (Ne) and 0.07 au (Ar) \
+(TC-669). The values are as printed; nothing is corrected.
+
+NOT TAKEN. The Stark shifts of the same tables (no quantity holds them; they are in \
+the files' printed cells). Table S1 (H) and Table S2 (He, four basis sets, with the \
+rates of Scrinzi et al. 1999 and Parker et al. 2009 reproduced): a study of basis \
+sets, quoted above. Tables S6-S8 (Li, Be, C: not optmat's gases). Tables S9-S14 \
+(dipole and second moments)."""
+
+[[datasets]]
+id = "tableS3_hf_He"
+material = "He"
+file = "He/jagau_2016__tableS3_hf_He.csv"
+table = "tbl_835beff31b7f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S3 (SM p. 6), column Gamma, cs-HF, basis aug-cc-pVQZ+3s3p3d3f: complex-scaled Hartree-Fock: no electron correlation. A step of the paper's study of correlation, not a reference. Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.10 to 0.50 au. No value at 0.10 au (a dash). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-HF/aug-cc-pVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS3_mp2_He"
+material = "He"
+file = "He/jagau_2016__tableS3_mp2_He.csv"
+table = "tbl_835beff31b7f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S3 (SM p. 6), column Gamma, cs-MP2, basis aug-cc-pVQZ+3s3p3d3f: complex-scaled second-order perturbation theory. 'MP2 overestimates the correlation contribution at all field strengths' (p. 10, of Ne and Ar). A step of the paper's study of correlation, not a reference. Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.10 to 0.50 au. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-MP2/aug-cc-pVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS3_fci_He"
+material = "He"
+file = "He/jagau_2016__tableS3_fci_He.csv"
+table = "tbl_835beff31b7f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S3 (SM p. 6), column Gamma, cs-FCI, basis aug-cc-pVQZ+3s3p3d3f: complex-scaled full configuration interaction ('For He, CCSD is equivalent to FCI', p. 7): exact in the basis. In this basis the rate is within 2.5 % of Scrinzi et al.'s (1999) at 0.14 au and from 0.20 to 0.50 au, 8 % and 6 % above it at 0.16 and 0.18 au, and 19 % and 11 % below it at 0.10 and 0.12 au (Table S2; see the record's notes). Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.10 to 0.50 au. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-FCI/aug-cc-pVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS4_hf_Ne"
+material = "Ne"
+file = "Ne/jagau_2016__tableS4_hf_Ne.csv"
+table = "tbl_bdfc58139762"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S4 (SM p. 7), column Gamma, cs-HF, basis aug-cc-pCVQZ+3s3p3d3f: complex-scaled Hartree-Fock: no electron correlation. A step of the paper's study of correlation, not a reference. Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.08 to 0.24 au. No value at 0.08 au (a dash). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-HF/aug-cc-pCVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS4_mp2_Ne"
+material = "Ne"
+file = "Ne/jagau_2016__tableS4_mp2_Ne.csv"
+table = "tbl_bdfc58139762"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S4 (SM p. 7), column Gamma, cs-MP2, basis aug-cc-pCVQZ+3s3p3d3f: complex-scaled second-order perturbation theory. 'MP2 overestimates the correlation contribution at all field strengths' (p. 10, of Ne and Ar). A step of the paper's study of correlation, not a reference. Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.08 to 0.24 au. No value at 0.08 au (a dash). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-MP2/aug-cc-pCVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS4_ccsd_Ne"
+material = "Ne"
+file = "Ne/jagau_2016__tableS4_ccsd_Ne.csv"
+table = "tbl_bdfc58139762"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S4 (SM p. 7), column Gamma, cs-CCSD, basis aug-cc-pCVQZ+3s3p3d3f: complex-scaled coupled cluster with singles and doubles, all electrons correlated: the paper's result for the atom. Not smooth in F below 0.14 au (see the record's notes, DOUBT). Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.08 to 0.24 au. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-CCSD/aug-cc-pCVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS5_hf_Ar"
+material = "Ar"
+file = "Ar/jagau_2016__tableS5_hf_Ar.csv"
+table = "tbl_e8cea2aae6b7"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S5 (SM p. 7), column Gamma, cs-HF, basis aug-cc-pCVQZ+3s3p3d3f: complex-scaled Hartree-Fock: no electron correlation. A step of the paper's study of correlation, not a reference. Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.05 to 0.20 au. No value at 0.05 au (a dash). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-HF/aug-cc-pCVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS5_mp2_Ar"
+material = "Ar"
+file = "Ar/jagau_2016__tableS5_mp2_Ar.csv"
+table = "tbl_e8cea2aae6b7"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S5 (SM p. 7), column Gamma, cs-MP2, basis aug-cc-pCVQZ+3s3p3d3f: complex-scaled second-order perturbation theory. 'MP2 overestimates the correlation contribution at all field strengths' (p. 10, of Ne and Ar). A step of the paper's study of correlation, not a reference. Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.05 to 0.20 au. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-MP2/aug-cc-pCVQZ+3s3p3d3f"
+
+[[datasets]]
+id = "tableS5_ccsd_Ar"
+material = "Ar"
+file = "Ar/jagau_2016__tableS5_ccsd_Ar.csv"
+table = "tbl_e8cea2aae6b7"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S5 (SM p. 7), column Gamma, cs-CCSD, basis aug-cc-pCVQZ+3s3p3d3f: complex-scaled coupled cluster with singles and doubles, all electrons correlated: the paper's result for the atom. The value at 0.05 au is 3.7 times majety_2015's haCC(4) rate read from its figure (see the record's notes, DOUBT). Rate of the atom (the width Gamma of the complex-scaled ground state, E_res = E - i Gamma/2), au, against F in au, 0.05 to 0.20 au. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "cs-CCSD/aug-cc-pCVQZ+3s3p3d3f"

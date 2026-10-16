@@ -1,0 +1,244 @@
+citation = "E. R. Peck and B. N. Khanna, J. Opt. Soc. Am. 56, 1059 (1966)"
+library = "Peck_1966_DispersionNitrogen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Corner-reflector interferometer with a 24 cm gas cell in one arm and two \
+light sources at once (a visible reference line and a second line), fringes counted \
+as the gas is admitted and pumped out and interpolated to 0.001 order; refractivity \
+ratios independent of cell length and density. Pressure by wide-bore mercury \
+manometer (local g = 980.302 cm/s^2), temperature by thermocouple. Matheson N2, \
+99.996 %, through a dry-ice cold trap."""
+notes = """Identity: the library record is UNVERIFIED; the text is 'Dispersion of Nitrogen' \
+by Edson R. Peck and Baij Nath Khanna (Northwestern University, received 3 December \
+1965), file josa-56-8-1059.pdf, which matches the citation J. Opt. Soc. Am. 56, \
+1059-1063 (1966) given for it by Griesmann (1999) and Peck & Huang (1977). No DOI is \
+recorded (the library has none).
+
+Reduction: to one atmosphere at T0 with the factor K of Eq. (2), the real-gas \
+compressibility Z = 1 - p (317.60 - T) 1e-5 (Eq. 1, p in atm, from Hilsenrath's \
+tables, 'developed under the old convention of 0 C = 273.16 K') and a small \
+Lorentz-Lorenz correction: density = real. Wavelengths are vacuum (Table I heading).
+
+Table I gives relative values: 'a nominal value of 10^8 (n - 1) = 28 352.40 at 15 C is \
+taken for the mercury green line at vacuum wavelength 5462.258 A; other values of \
+refractivity are expressed in terms of this as a standard' (p. 1060). The absolute \
+measurement at 5462.258 A is 28 352.4 +- 1.6 at 15 C and 1 atm (statistical standard \
+deviation of 22 sets of runs), 'significant only to about four digits'; with 'a \
+realistic estimate of total error', 10^6 (n - 1) = 299.14 +- 0.10 at 0 C (p. 1060). \
+The relative values are about two orders of magnitude more precise: the rms deviation \
+of the 16 fitted points from Eq. (3) is 0.083e-8, 'considered to be a better \
+representation of precision than the individual standard deviations' (p. 1061). \
+Hence per point absolute = 0.083 (rms) and systematic_relative = 3.3e-4 (0.10 / \
+299.14, the realistic total error, level not stated, taken as one sigma). The 0 C \
+absolute value is the same measurement converted, so it is not a separate dataset.
+
+Three points (5087.242, 7034.352, 13507.884 A) are printed in parentheses and were \
+omitted from the fit as 'excessively far from the trend' (the 7034 A neon line has an \
+unresolved weak neighbour, p. 1061). Table II gives the dispersion of the Verdet \
+constant as ratios to its value at 5780 A (air wavelengths), computed from Eq. (3) \
+and measured by Ingersoll & Liebenberg (1954); the computed column is a check of the \
+formula, the measured one a reproduction. Other results: n_inf - 1 = 293.77e-6 at \
+0 C from Eq. (4) (p. 1062; all formulas agree within 0.01e-6); Verdet factor \
+r = 0.636 at 5462 A; the Rayleigh cross section 0.5182e-28 cm^2 at 30 degrees, \
+6945.165 A in vacuo (p. 1063). Svensson's air formula (p. 1061) is skipped (air is \
+not a species)."""
+
+[[datasets]]
+id = "experiment"
+material = "N2"
+file = "N2/peck_1966__experiment.csv"
+table = "tbl_c2970086b7ad"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "primary"
+notes = "The 16 fitted points, standardised to 28352.40 at 5462.258 A (the absolute scale, +-3.3e-4, is the systematic uncertainty)."
+[datasets.uncertainty]
+absolute = 0.083
+level = "rms"
+systematic_relative = 0.00033
+
+[[datasets]]
+id = "experiment_excluded"
+material = "N2"
+file = "N2/peck_1966__experiment_excluded.csv"
+table = "tbl_c2970086b7ad"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "excluded"
+notes = "The three values printed in parentheses, 0.42, 1.44 and 0.65 (x 1e-8) from Eq. (3), omitted from the fit; 'the more correct value is given by the formula' (p. 1061)."
+
+[[datasets]]
+id = "eq3"
+material = "N2"
+file = "N2/peck_1966__eq3.csv"
+table = "tbl_c2970086b7ad"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table I 'Calculated refractivity': Eq. (3) at the measured wavelengths."
+
+[[datasets]]
+id = "verdet_ratio_eq3"
+material = "N2"
+file = "N2/peck_1966__verdet_ratio_eq3.csv"
+table = "tbl_029c38d597ef"
+quantity = "verdet_constant_ratio"
+unit = "1"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table II 'Computed ratio': V(lambda)/V(5780 A) from Eq. (3) through V/r proportional to sigma dn/dsigma (p. 1062), with r constant. The ratio is independent of the state to first order; the state is Eq. (3)'s. Row '5460-61' placed at 5460.5 A."
+[datasets.parameters]
+reference_wavelength_nm = 578.0
+
+[[datasets]]
+id = "verdet_ratio_ingersoll_liebenberg"
+material = "N2"
+file = "N2/peck_1966__verdet_ratio_ingersoll_liebenberg.csv"
+table = "tbl_029c38d597ef"
+quantity = "verdet_constant_ratio"
+unit = "1"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. Ingersoll and D. Liebenberg, J. Opt. Soc. Am. 44, 566 (1954)"]
+notes = "Table II 'Ratio measured by Ingersoll and Liebenberg': V(lambda)/V(5780 A). The ratio to the dispersion formula (the factor r of the Becquerel-Serber relation) is constant within 4.4 % over 3635-9875 A (p. 1063); r itself is 0.636 at 5462 A, so these ratios constrain dn/dsigma only through an assumed constant r. The state is nominal (the ratio does not depend on it to first order)."
+[datasets.parameters]
+reference_wavelength_nm = 578.0
+
+[[formulas]]
+id = "eq3"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "6497.378", B = ["3073864.9"], C = ["144"] }
+range_nm = [467.9, 2058.7]
+material = "N2"
+equation = "Eq. (3), p. 1061"
+printed = "10^8 (n - 1) = 6497.378 + 3073864.9/(144 - sigma^2) (15 C)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_15C"
+density = "real"
+range = "4679-20587 A (the data)"
+coefficients = { A = "6497.378", B = "3073864.9", C = "144" }
+check = "Reproduces Table I's calculated column to 0.01 at all 19 wavelengths; rms 0.083 over the 16 fitted points as stated (checked 2026-09-24)."
+notes = "The paper's representation of its data. 'A slightly better statistical fit is obtained by using a constant of 143.647215' (p. 1061), not given in full."
+
+[[formulas]]
+id = "eq4"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "6855.200", B = ["3243157.0"], C = ["144"] }
+range_nm = [467.9, 2058.7]
+material = "N2"
+equation = "Eq. (4), p. 1061"
+printed = "10^8 (n - 1) = 6855.200 + 3243157.0/(144 - sigma^2) (0 C)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "4679-20587 A"
+coefficients = { A = "6855.200", B = "3243157.0", C = "144" }
+check = "Eq. (3) times 1.05507 in both coefficients, the real-gas density ratio 288.16/273.16 x Z(15 C)/Z(0 C) = 1.055071 from Eq. (1); n_inf - 1 = 293.77e-6 as stated (checked 2026-09-24)."
+notes = "Eq. (3) referred to 0 C: not independent."
+
+[[formulas]]
+id = "eq5"
+material = "N2"
+equation = "Eq. (5), p. 1061"
+printed = "10^8 (n - 1) = 5109702.9/(183.69459 - sigma^2) + 212.949/(7.74396 + sigma^2) (15 C)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_15C"
+density = "real"
+range = "4679-20587 A"
+coefficients = { B1 = "5109702.9", C1 = "183.69459", B2 = "212.949", C2 = "-7.74396" }
+check = "rms 0.075 over the 16 fitted points as stated (checked 2026-09-24)."
+notes = "The second term has '+ sigma^2' in its denominator as printed (a pole at imaginary wavenumber); coefficient C2 is given with the sign that makes it a standard B/(C - sigma^2) term."
+
+[[formulas]]
+id = "eq6"
+material = "N2"
+equation = "Eq. (6), p. 1061"
+printed = "10^8 (n - 1) = 5189259.2/(186.3764 - sigma^2) (15 C)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_15C"
+density = "real"
+range = "4679-20587 A"
+coefficients = { B = "5189259.2", C = "186.3764" }
+check = "rms 0.364 over the 16 points (paper: 0.363) (checked 2026-09-24)."
+notes = "Single-term fit, systematic trend; used for the effective oscillator (732.5 A, f = 4.54)."
+
+[[formulas]]
+id = "eq7"
+material = "N2"
+equation = "Eq. (7), p. 1061"
+printed = "10^8 (n - 1) = 5475062.8/(186.3764 - sigma^2) (0 C)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "4679-20587 A"
+coefficients = { B = "5475062.8", C = "186.3764" }
+check = "Eq. (6) times 1.05508 (checked 2026-09-24)."
+notes = "Eq. (6) referred to 0 C."
+
+[[formulas]]
+id = "cuthbertson_1910"
+material = "N2"
+equation = "p. 1062 (text)"
+printed = "10^8 (n - 1) = 5.5939 x 10^6/(189.944 - sigma^2) (Cuthbertson and Cuthbertson)"
+variable = "sigma: vacuum wavenumber in um^-1 (converted by Peck & Khanna assuming c = 3e10 cm/s in the original)"
+state = "1atm_0C"
+range = "not stated"
+coefficients = { B = "5.5939e6", C = "189.944" }
+reproduced_from = ["C. Cuthbertson and M. Cuthbertson, Proc. Roy. Soc. (London) 83A, 151 (1910)"]
+check = "Not checked."
+notes = "Converted by Peck & Khanna from the original frequency form; state as for their comparison with Eq. (7) (0 C), not stated explicitly."
+
+[[formulas]]
+id = "tausz_1931"
+material = "N2"
+equation = "p. 1062 (text)"
+printed = "10^8 (n - 1) = 5.3607 x 10^6/(182.585 - sigma^2) (Tausz and Gorlacher)"
+variable = "sigma: vacuum wavenumber in um^-1 (converted with the modern c)"
+state = "1atm_0C"
+range = "not stated"
+coefficients = { B = "5.3607e6", C = "182.585" }
+reproduced_from = ["J. Tausz and H. Gorlacher, Z. Tekhn. Phys. 12, 19, 123 (1931)"]
+check = "Not checked."
+notes = "Converted by Peck & Khanna; state not stated explicitly (compared with Eq. 7)."
+
+[[formulas]]
+id = "koch_1913"
+material = "N2"
+equation = "p. 1062 (text)"
+printed = "(3/2) 10^8 (n^2 - 1)/(n^2 + 2) = 3953450/(152.294 - sigma^2) + 837340/(240.651 + sigma^2) (Koch)"
+variable = "sigma: wavenumber in um^-1"
+range = "not stated"
+coefficients = { B1 = "3953450", C1 = "152.294", B2 = "837340", C2 = "-240.651" }
+reproduced_from = ["J. Koch, Arkiv Math. Astron. Fysik 9 (No. 6), 1 (1913)"]
+check = "Not checked."
+notes = "Fits the Lorentz-Lorenz function, not n - 1; '+ sigma^2' in the second denominator as printed."
+
+[[formulas]]
+id = "wilkinson_1960"
+material = "N2"
+equation = "p. 1062 (text)"
+printed = "10^8 (n - 1) = 6.3622 x 10^4/(45.989 - sigma^2) + 32453 x 10^6/(1065.11 - sigma^2) (Wilkinson)"
+variable = "sigma: vacuum wavenumber in um^-1 (converted by Peck & Khanna)"
+range = "Wilkinson's far-ultraviolet data"
+coefficients = { B1 = "6.3622e4", C1 = "45.989", B2 = "32453e6", C2 = "1065.11" }
+reproduced_from = ["P. G. Wilkinson, J. Opt. Soc. Am. 50, 1002 (1960)"]
+check = "Not checked. Griesmann & Burnett (1999) find it valid only between 180 and 200 nm."
+notes = "Peck & Khanna also give a refit of Wilkinson's data, 10^8 (n - 1) = 3.76527e5/(58.0332 - sigma^2) + 2.48645e6/(83.7400 + sigma^2), which lowers the rms and mean absolute deviations to 87 % and 92 % (p. 1062)."

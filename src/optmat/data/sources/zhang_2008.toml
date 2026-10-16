@@ -1,0 +1,434 @@
+citation = "J. Zhang, Z. H. Lu and L. J. Wang, Appl. Opt. 47, 3143 (2008)"
+library = "Zhang_2008_PrecisionRefractiveIndex"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Mach-Zehnder interferometer with a Ti:sapphire frequency comb (800 nm, 50 nm \
+bandwidth) and a 30 m multipass cell in a temperature-stabilized box (0.6 mK rms); \
+spectral phase from frequency-domain interferograms (optical spectrum analyzer) with \
+the cell filled and evacuated, cell length calibrated with standard dry air; pressure \
+by a PTB-calibrated gauge (2 Pa); 50 measurements per gas near 1e5 Pa."""
+notes = """The library record is unverified; the citation is from the article's own \
+footer ('Appl. Opt. 47, 3143', OSA code 0003-6935/08/173143-09, published 2 June \
+2008) and Kren 2011's reference 1 ('Appl. Opt. 47, 3143-3151 (2008)'); no DOI is given \
+here. Values are reduced to 'standard conditions (20 degrees C, 101 325 Pa) with the \
+help of gas density factors ... calculated through the gas compressibility factor' \
+(NIST database; for O2 the older NBS tables), Eqs. (15)-(29): a real-gas reduction. \
+Sensitivity 5.6e-9, uncertainty limit 7.7e-9 including temperature and pressure (p. 8). \
+Dispersion formulas valid 740-860 nm; lambda in micrometers, taken as vacuum \
+wavelengths (the comb is referenced in frequency; the Edlen-type form uses the vacuum \
+wavenumber). Standard dry air (Table 1, Eqs. (10)-(14), (31)) is skipped: air is not a \
+species of the package. The library reports no warnings for this record.
+
+Table 1 also prints Old et al.'s CO2, Peck and Khanna's N2 and Peck and Fisher's Ar \
+formulas 'after conversion to the standard conditions' (recorded below as reproduced \
+formulas) and Bonsch and Potulski's air formula (skipped). Table 1 prints the CO2 \
+formula with its two resonance terms in the opposite order to Eq. (30) (the same \
+formula). Kren 2011 argues that the O2 formula is distorted by fitting across the \
+oxygen A band (760 nm) and derives another (kren_2011)."""
+
+[[datasets]]
+id = "birch_1991_N2"
+material = "N2"
+file = "N2/zhang_2008__birch_1991_N2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "Table 2 [Ref.]: Birch's value at 632.99 nm, converted to 20 degrees C with Zhang et al.'s density factors. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "extrapolated_N2"
+material = "N2"
+file = "N2/zhang_2008__extrapolated_N2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 2, the paper's value at 632.99 nm: 'extrapolated from the derived dispersion formulas that are valid only from 740 to 860 nm. As a consequence, the uncertainties are not given' (p. 7)."
+
+[[datasets]]
+id = "griesmann_1999_N2"
+material = "N2"
+file = "N2/zhang_2008__griesmann_1999_N2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "excluded"
+reproduced_from = ["griesmann_1999"]
+notes = "Table 2 [Ref.]: Griesmann and Burnett's N2 values at 800 and 632.99 nm, converted to 20 degrees C: their formula is for 145-270 nm (their abstract), so these are extrapolations, excluded. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "measured_N2"
+material = "N2"
+file = "N2/zhang_2008__measured_N2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "primary"
+notes = "Table 2, the paper's n - 1 at 800 nm, the centre of its 740-860 nm measurements (50 measurements near 1e5 Pa per gas, reduced to 20 degrees C and 101 325 Pa with density factors from NIST compressibilities), with the standard error (1.8e-8 in n - 1, text p. 5-6). A value of the fitted formula at the band centre; the individual measurements are shown only in Figs. 5-8."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "peck_khanna_1966_N2"
+material = "N2"
+file = "N2/zhang_2008__peck_khanna_1966_N2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["E. R. Peck and B. N. Khanna, J. Opt. Soc. Am. 56, 1059 (1966)"]
+notes = "Table 2 [Ref.]: Peck and Khanna's N2 dispersion (formula valid 468-2059 nm, Table 1 note e) at 800 and 632.99 nm, converted to 20 degrees C. Their formula as printed in Zhang et al.'s Table 1 gives 2759.752 and 2773.742, 0.10-0.11e-7 below these values (unexplained). The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "birch_1991_O2"
+material = "O2"
+file = "O2/zhang_2008__birch_1991_O2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "Table 2 [Ref.]: Birch's value at 632.99 nm, converted to 20 degrees C with Zhang et al.'s density factors. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "extrapolated_O2"
+material = "O2"
+file = "O2/zhang_2008__extrapolated_O2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 2, the paper's value at 632.99 nm: 'extrapolated from the derived dispersion formulas that are valid only from 740 to 860 nm. As a consequence, the uncertainties are not given' (p. 7)."
+
+[[datasets]]
+id = "measured_O2"
+material = "O2"
+file = "O2/zhang_2008__measured_O2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "primary"
+notes = "Table 2, the paper's n - 1 at 800 nm, the centre of its 740-860 nm measurements (50 measurements near 1e5 Pa per gas, reduced to 20 degrees C and 101 325 Pa with density factors from NIST compressibilities), with the standard error (1.0e-8 in n - 1, text p. 5-6). A value of the fitted formula at the band centre; the individual measurements are shown only in Figs. 5-8."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "birch_1991_Ar"
+material = "Ar"
+file = "Ar/zhang_2008__birch_1991_Ar.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "Table 2 [Ref.]: Birch's value at 632.99 nm, converted to 20 degrees C with Zhang et al.'s density factors. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "extrapolated_Ar"
+material = "Ar"
+file = "Ar/zhang_2008__extrapolated_Ar.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 2, the paper's value at 632.99 nm: 'extrapolated from the derived dispersion formulas that are valid only from 740 to 860 nm. As a consequence, the uncertainties are not given' (p. 7)."
+
+[[datasets]]
+id = "measured_Ar"
+material = "Ar"
+file = "Ar/zhang_2008__measured_Ar.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "primary"
+notes = "Table 2, the paper's n - 1 at 800 nm, the centre of its 740-860 nm measurements (50 measurements near 1e5 Pa per gas, reduced to 20 degrees C and 101 325 Pa with density factors from NIST compressibilities), with the standard error (6.1e-9 in n - 1, text p. 5-6). A value of the fitted formula at the band centre; the individual measurements are shown only in Figs. 5-8."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "peck_fisher_1964_Ar"
+material = "Ar"
+file = "Ar/zhang_2008__peck_fisher_1964_Ar.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["peck_1964"]
+notes = "Table 2 [Ref.]: Peck and Fisher's argon formula (Table 1 note f) at 800 and 632.99 nm, converted to 20 degrees C; the converted formula of Table 1 reproduces both (2606.153, 2619.172) to 0.002e-7. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "bideau_mehu_1973_CO2"
+material = "CO2"
+file = "CO2/zhang_2008__bideau_mehu_1973_CO2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["A. Bideau-Mehu, Y. Guern, R. Abjean and A. Johannin-Gilles, Opt. Commun. 9, 432 (1973)"]
+notes = "Table 2 [Ref.]: Bideau-Mehu et al.'s CO2 values (interferometry, UV) at 800 and 632.99 nm, converted to 20 degrees C. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "birch_1991_CO2"
+material = "CO2"
+file = "CO2/zhang_2008__birch_1991_CO2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "Table 2 [Ref.]: Birch's value at 632.99 nm, converted to 20 degrees C with Zhang et al.'s density factors. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "extrapolated_CO2"
+material = "CO2"
+file = "CO2/zhang_2008__extrapolated_CO2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 2, the paper's value at 632.99 nm: 'extrapolated from the derived dispersion formulas that are valid only from 740 to 860 nm. As a consequence, the uncertainties are not given' (p. 7)."
+
+[[datasets]]
+id = "measured_CO2"
+material = "CO2"
+file = "CO2/zhang_2008__measured_CO2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "real"
+use = "primary"
+notes = "Table 2, the paper's n - 1 at 800 nm, the centre of its 740-860 nm measurements (50 measurements near 1e5 Pa per gas, reduced to 20 degrees C and 101 325 Pa with density factors from NIST compressibilities), with the standard error (7.8e-8 in n - 1, text p. 5-6). A value of the fitted formula at the band centre; the individual measurements are shown only in Figs. 5-8."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "old_1971_CO2"
+material = "CO2"
+file = "CO2/zhang_2008__old_1971_CO2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. G. Old, K. L. Gentili and E. R. Peck, J. Opt. Soc. Am. 61, 89 (1971)"]
+notes = "Table 2 [Ref.]: Old et al.'s CO2 dispersion (formula valid 480-1817 nm, Table 1 note d) at 800 and 632.99 nm, converted by Zhang et al. to 20 degrees C with their density factors. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "simmons_1978_CO2"
+material = "CO2"
+file = "CO2/zhang_2008__simmons_1978_CO2.csv"
+table = "tbl_8d9995b38d24"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["A. C. Simmons, Opt. Commun. 25, 211 (1978)"]
+notes = "Table 2 [Ref.]: Simmons's CO2 value at 632.99 nm (measured 15 803-22 002 cm^-1 and 944 cm^-1), converted to 20 degrees C. The +- are the uncertainties as quoted by Zhang et al. (level not stated). 'The data are converted to the standard conditions with our density factors' (note a)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[formulas]]
+id = "zhang_N2"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "8736.28", B = ["2398095.2"], C = ["128.7"] }
+range_nm = [740.0, 860.0]
+material = "N2"
+equation = "Eq. (18), p. 5; Table 1"
+printed = "(n_N2 - 1)_s x 10^8 = 8736.28 + 2,398,095.2/(128.7 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "740-860 nm"
+coefficients = { A0 = "8736.28", A1 = "2398095.2", B1 = "128.7" }
+check = "Gives 2759.850e-7 at 800 nm and 2773.798e-7 at 632.99 nm, Table 2's values to the printed digits. Checked 2026-09-24."
+notes = "B1 fixed at 128.7, 'to be consistent with our air measurement results' (p. 5)."
+
+[[formulas]]
+id = "zhang_O2"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "15532.45", B = ["456402.97"], C = ["50.0"] }
+range_nm = [740.0, 860.0]
+material = "O2"
+equation = "Eq. (22), p. 5; Table 1"
+printed = "(n_O2 - 1)_s x 10^8 = 15,532.45 + 456,402.97/(50.0 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "740-860 nm (extended to 630 nm for the comparison with Birch, p. 5)"
+coefficients = { A0 = "15532.45", A1 = "456402.97", B1 = "50.0" }
+check = "Gives 2495.496e-7 at 800 nm and 2514.008e-7 at 632.99 nm, Table 2's values. At 633 nm it gives 1.000251401, the value Kren 2011 quotes. Checked 2026-09-24."
+notes = "B1 fixed at 50.0, 'corresponding to the third term in the air dispersion formula'. Kren 2011 shows its dispersion between 633 and 800 nm (1851 ppb) disagrees with the air formula and Lorentz-Lorenz summation (1683 ppb) and attributes it to fitting across the O2 A band (near 760 nm)."
+
+[[formulas]]
+id = "zhang_Ar"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "12236.13", B = ["1232158.1"], C = ["90.7"] }
+range_nm = [740.0, 860.0]
+material = "Ar"
+equation = "Eq. (26), p. 6; Table 1"
+printed = "(n_Ar - 1)_s x 10^8 = 12,236.13 + 1,232,158.1/(90.7 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "740-860 nm"
+coefficients = { A0 = "12236.13", A1 = "1232158.1", B1 = "90.7" }
+check = "Gives 2605.925e-7 at 800 nm and 2620.551e-7 at 632.99 nm, Table 2's values. Checked 2026-09-24."
+notes = "Table 1 prints the numerator as '12,32158.1' (a misplaced thousands separator; image tbl_0bfec498fd89.jpg); Eq. (26) prints 1,232,158.1, which is the value that reproduces Table 2. B1 fixed at 90.7, 'corresponding to a strong absorption of Ar at 105 nm'."
+
+[[formulas]]
+id = "zhang_CO2"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "7137.238", B = ["341712.4", "6946980"], C = ["57.75340", "248.5560"] }
+range_nm = [740.0, 860.0]
+material = "CO2"
+equation = "Eq. (30), p. 6; Table 1"
+printed = "(n_CO2 - 1)_s x 10^8 = 7137.238 + 341,712.4/(57.75340 - 1/lambda^2) + 6,946,980/(248.5560 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "740-860 nm"
+coefficients = { A0 = "7137.238", A1 = "341712.4", B1 = "57.75340", A2 = "6946980", B2 = "248.5560" }
+check = "Gives 4134.468e-7 at 800 nm and 4155.407e-7 at 632.99 nm, Table 2's values. Checked 2026-09-24."
+notes = "Updates the authors' earlier CO2 result (Opt. Lett. 32, 3212 (2007)) for the changed standard conditions."
+
+[[formulas]]
+id = "old_1971_CO2"
+material = "CO2"
+equation = "Table 1, note d"
+printed = "(n - 1)_s x 10^8 = 143.753/(0.0584738 - 1/lambda^2) + 7,731,746/(210.92417 - 1/lambda^2) + 267,652.26/(60.122959 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "480-1817 nm"
+coefficients = { A1 = "143.753", B1 = "0.0584738", A2 = "7731746", B2 = "210.92417", A3 = "267652.26", B3 = "60.122959" }
+check = "Gives 4140.50e-7 at 800 nm and 4168.10e-7 at 632.99 nm, 0.13e-7 above the Old et al. values of Table 2 (4140.37, 4167.97); unexplained. Checked 2026-09-24."
+notes = "Old, Gentili and Peck's CO2 formula as converted by Zhang et al. to 20 degrees C and 101 325 Pa (reproduced from J. G. Old, K. L. Gentili and E. R. Peck, J. Opt. Soc. Am. 61, 89 (1971), not in the library). Zhang et al.'s value at 800 nm differs from it by 5.9e-7, which they attribute to their more accurate density factor (p. 6-8)."
+
+[[formulas]]
+id = "peck_khanna_1966_N2"
+material = "N2"
+equation = "Table 1, note e"
+printed = "(n - 1)_s x 10^8 = 6386.23 + 3,021,283.0/(144 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "468-2059 nm"
+coefficients = { A0 = "6386.23", A1 = "3021283.0", B1 = "144" }
+check = "Gives 2759.752e-7 at 800 nm and 2773.742e-7 at 632.99 nm, 0.10-0.11e-7 below the Peck and Khanna values of Table 2 (2759.855, 2773.855); unexplained. Checked 2026-09-24."
+notes = "Peck and Khanna's N2 formula as converted by Zhang et al. to 20 degrees C and 101 325 Pa (reproduced from E. R. Peck and B. N. Khanna, J. Opt. Soc. Am. 56, 1059 (1966), not in the library)."
+
+[[formulas]]
+id = "peck_fisher_1964_Ar"
+material = "Ar"
+equation = "Table 1, note f"
+printed = "(n - 1)_s x 10^8 = 6322.05 + 2,811,641.7/(144 - 1/lambda^2)"
+variable = "lambda: wavelength in micrometers (vacuum)"
+state = "1atm_20C"
+density = "real"
+range = "486-2059 nm (as stated by Zhang et al.; Peck and Fisher measured 468-2059 nm)"
+coefficients = { A0 = "6322.05", A1 = "2811641.7", B1 = "144" }
+check = "Gives 2606.153e-7 at 800 nm and 2619.172e-7 at 632.99 nm against Table 2's 2606.155 and 2619.174. Its coefficients are Peck and Fisher's 15 degrees C ones (643.2135, 286060.21 x 10^-7) times 0.98288 (both), a real-gas 15-to-20 degrees C density ratio. Checked 2026-09-24."
+notes = "Peck and Fisher's argon formula (peck_1964) as converted by Zhang et al. to 20 degrees C and 101 325 Pa with their density factor."

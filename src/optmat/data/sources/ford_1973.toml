@@ -1,0 +1,196 @@
+citation = "A. L. Ford and J. C. Browne, Phys. Rev. A 7, 418 (1973)"
+doi = "10.1103/physreva.7.418"
+library = "Ford_1973_DirectResolventOperator"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Sum-over-states (Dalgarno-Epstein finite-set resolvent) calculation of the \
+dynamic polarizability of H2: configuration-interaction wave functions for the \
+X 1Sigma_g+ ground state (14 and 24 configurations) and the 1Sigma_u+ and 1Pi_u \
+manifolds (26-52 and 28-40 configurations, including r times the ground state so that \
+S(0) and S(-1) are satisfied), R = 0.5-8 a0; oscillator strengths averaged over the \
+vibrational functions with explicit summation over the vibrational levels (and the \
+nuclear continuum) of the B and C states; Eq. (7) alpha(omega) = sum f/(E^2 - \
+omega^2), thermally averaged over rotational levels (pp. 418-424)."""
+notes = """Units: a0^3; wavelengths in angstroms (vacuum: omega and lambda are related \
+for the computation), the static limit printed as an infinity sign (stored inf). The \
+'set 1' and 'set 2' wave-function sets give slightly different values (Table II \
+footnotes: set 2 gives alpha_00^00 = 5.411 against set 1's 5.3981).
+
+Accuracy (p. 424): 'The results are generally in agreement with experiment to \
+approximately 1%' (Table VII: this work lies 0.6-1.1 % below Victor & Dalgarno's \
+experimental values). Superseded for refraction by bishop_1980, rychlewski_1983 and \
+raj_2018 (all about 0.5-1 % higher); everything here is kept as a check.
+
+Table VII (p. 424): 'This work' (footnote a: set 1, 'thermal average (T = 293 K) over \
+rotational levels', explicit vibrational summation for B and C); the 'Semi-empirical' \
+and 'Expt.' columns are Victor & Dalgarno's (the text, p. 423: 'compared with \
+semiempirical results of Dalgarno and Victor [Ref. 17] and the experimental results \
+(also as compiled by Dalgarno and Victor)'). The table's footnote b reads 'Reference \
+20', which in the paper's list is Golden & Crawford: the table notes' reference \
+numbers do not match the list (also c 'Reference 21' for the 12.2 at 1215.7 A, which \
+the text attributes to Gill & Heddle, Ref. 18, re-reduced with Ford's rho_u^T = \
+0.0558). The 'Expt.' values are identical to bishop_1980/victor_dalgarno at its 16 \
+wavelengths (checked 2026-09-25) and are not extracted again; the 12.2 is derived from \
+gill_1963 and not extracted. The semi-empirical column is extracted as a reproduction \
+(22 wavelengths; bishop_1980 has five of them, identical). The gamma block and the \
+'% diff.' column are not extracted.
+
+Table VII continued (p. 424): Cauchy coefficients alpha_k of alpha(omega) = sum_k \
+alpha_k (omega^2)^k, k = 0-3, 'This work' (footnotes a, f: 'Integration over nuclear \
+continuum for B and C not included', hence alpha_0 = 5.379 against Table VII's static \
+5.406) and 'From experimental refractive index data' (footnote g 'Reference 12', \
+Nelissen, Reuss and Dymanus, a static anisotropy paper: again a mismatched note; the \
+origin of these coefficients is unresolved). Since alpha_k = S(-2k-2), they are stored \
+as Cauchy moments of orders -2, -4, -6, -8. Check: this work's series at 6328 A gives \
+5.4815, 0.0275 below Table VII's 5.509 (the static offset 0.027); the refractive one \
+gives 5.5450 against Victor & Dalgarno's 5.554 (computed 2026-09-25).
+
+Table II (p. 422): static alpha_00^JJ for J = 0-4 and the thermal average at 300 K \
+(5.4144), 'This work' (set 1). The 'KW results' column (Kolos & Wolniewicz, J. Chem. \
+Phys. 51, 5002 (1969), not in the library) equals kolos_1967's Table III for J = 0-3, \
+but prints 5.4292 at J = 4, the value of its own 300 K average; kolos_1967 has 5.5096 \
+(image checked; a misprint in that column, which is not extracted).
+
+Table XI (p. 425): Lyman alpha (1215.7 A), 'thermal average over rotational and \
+vibrational states at 300 K', exact rather than approximate formulas: alpha_00 = \
+12.538 (Table VII's 293 K value is 12.603, set 1 with the continuum; the difference \
+is not explained) and the cross sections Q_00^c (Rayleigh, elastic) = 2.129e-24 cm^2 \
+and Q_00^T (Rayleigh plus rotational Raman) = 2.265e-24 cm^2. Not extracted: the \
+depolarization ratios, alpha_01, gamma, Q_01^T.
+
+Not extracted: Table I (sum rules at fixed R = 1.4), Tables III-IV (convergence of \
+S(1), S(2) at fixed R), Table V (mean excitation energies), Table VI (alpha(omega) at \
+fixed R = 1.4, clamped nuclei, with other calculations), Table VIII (Raman alpha_01), \
+Table IX (depolarization), Table X (dispersion-force coefficients)."""
+
+[[datasets]]
+id = "thermal_293K"
+material = "H2"
+file = "H2/ford_1973__thermal_293K.csv"
+table = "tbl_8218ee3b07f5"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VII alpha(omega) 'This work': v = 0, thermal average over rotational levels at 293 K, 24 wavelengths 1215.7 A to static (image checked). About 1 % below experiment (p. 424)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293
+average = "thermal average over rotational levels (normal H2 not stated)"
+
+[[datasets]]
+id = "victor_dalgarno_semiempirical"
+material = "H2"
+file = "H2/ford_1973__victor_dalgarno_semiempirical.csv"
+table = "tbl_8218ee3b07f5"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["G. A. Victor and A. Dalgarno, J. Chem. Phys. 50, 2535 (1969)"]
+notes = "Table VII 'Semi-empirical' column, 22 wavelengths (none at 6943.0 and 4880.0 A): Victor & Dalgarno's model-spectrum values (source notes on the table's footnote numbering). Model values, not measurements; the five at 1300-1700 A equal bishop_1980/victor_dalgarno_semiempirical."
+
+[[datasets]]
+id = "cauchy_this_work"
+material = "H2"
+file = "H2/ford_1973__cauchy_this_work.csv"
+table = "tbl_f90a64648330"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table VII continued, alpha_k 'This work' for k = 0-3, stored as S(-2k-2) (rows -2, -4, -6, -8). Without the B and C nuclear continuum (footnote f): alpha_0 = 5.379 is 0.027 below Table VII's static value."
+
+[[datasets]]
+id = "cauchy_refractive"
+material = "H2"
+file = "H2/ford_1973__cauchy_refractive.csv"
+table = "tbl_f90a64648330"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["'From experimental refractive index data', footnote g 'Reference 12' (the paper's Ref. 12 is L. Nelissen, J. Reuss, and A. Dymanus, Physica 42, 619 (1969), which does not fit; origin unresolved)"]
+notes = "Table VII continued, alpha_k 'From experimental refractive index data' for k = 0-3, stored as S(-2k-2) (rows -2, -4, -6, -8). Origin unresolved (source notes)."
+
+[[datasets]]
+id = "static_states"
+material = "H2"
+file = "H2/ford_1973__static_states.csv"
+table = "tbl_8a57694d1337"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table II static alpha_00^JJ 'This work' (set 1) for v = 0, J = 0-4, rows J0-J4, every row static (wavelength inf): each row is a different rotational state, not a wavelength series. The J = 0 cell prints the unit a0^3 (stripped)."
+[datasets.parameters]
+rows = "rotational states J<J> of v = 0, all static"
+
+[[datasets]]
+id = "static_300K"
+material = "H2"
+file = "H2/ford_1973__static_300K.csv"
+table = "tbl_8a57694d1337"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table II 'thermal average over rotational levels for T = 300 K', static, 'This work' (set 1): 5.4144."
+[datasets.parameters]
+temperature_k = 300
+average = "thermal average over rotational levels"
+
+[[datasets]]
+id = "lyman_alpha_300K"
+material = "H2"
+file = "H2/ford_1973__lyman_alpha_300K.csv"
+table = "tbl_31dd70cf3437"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table XI alpha_00 at Lyman alpha (1215.7 A), thermal average over rotational and vibrational states at 300 K: 12.538 (Table VII's 293 K value is 12.603)."
+[datasets.parameters]
+temperature_k = 300
+average = "thermal average over rotational and vibrational states"
+
+[[datasets]]
+id = "rayleigh_elastic_lyman_alpha"
+material = "H2"
+file = "H2/ford_1973__rayleigh_elastic.csv"
+table = "tbl_31dd70cf3437"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table XI Q_00^c = 2.129 x 10^-24 cm^2 at Lyman alpha, 300 K: the elastically scattered (Rayleigh, Cabannes) photons only, from Eq. (18) with exact rotational sums."
+[datasets.parameters]
+king_factor = "not applicable: computed from alpha and gamma with exact rotational sums (Eq. (18)); elastic part only"
+temperature_k = 300
+
+[[datasets]]
+id = "rayleigh_total_lyman_alpha"
+material = "H2"
+file = "H2/ford_1973__rayleigh_total.csv"
+table = "tbl_31dd70cf3437"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table XI Q_00^T = 2.265 x 10^-24 cm^2 at Lyman alpha, 300 K: Rayleigh plus rotational Raman (the total that a King-factor formula describes), exact rotational sums."
+[datasets.parameters]
+king_factor = "not applicable: computed from alpha and gamma with exact rotational sums (Eq. (18)); includes the rotational Raman lines"
+temperature_k = 300

@@ -1,0 +1,271 @@
+citation = "T. D. Nguyen and N. Sadeghi, \"Rate coefficients for collisional population transfer between 3p54p argon levels at 300 K\", Phys. Rev. A 18, 1388-1395 (1978)"
+doi = "10.1103/PhysRevA.18.1388"
+library = "Nguyen_1978_RateCoefficientsCollisional"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Pulsed-discharge afterglow (dc or rf, ~100 Hz, ~100 us pulses, some mA) in \
+0.2-1 Torr of research-grade argon at room temperature, cylindrical cell 7 cm x 30 cm; \
+one Ar 3p5 4p level (Paschen 2p_i) populated from the 3P2 metastable (2p5 from the \
+long-lived 3P1) by a krypton-ion-pumped cw dye laser (0.03 Angstrom with an etalon, \
+~100 mW, chopped so that alternate afterglows are pumped). The fluorescence of the \
+excited level and the sensitized fluorescence of the collisionally populated levels \
+(Table I's lines) recorded simultaneously by two 0.6 m monochromators with photon \
+counting, one calibrated with a tungsten-ribbon lamp; steady-state population ratios \
+N_i / N_j against 1 / [Ar] (Eq. 5): the slope gives k_ij with the radiative decay rate \
+of level j from Wiese, Smith and Miles (1969); the intercept (k_j) could not be \
+determined. Metastable densities by optical absorption; laser polarisation varied \
+without effect."""
+notes = """Phys. Rev. A 18(4), 1388-1395 (October 1978) = PDF pages 1-8 (no cover page; \
+journal page = PDF page + 1387). Identity checked on the first page (PDF p. 1: \
+running head PHYSICAL REVIEW A VOLUME 18, NUMBER 4 OCTOBER 1978, title, authors, \
+Grenoble, received 5 May 1978, footer 1388) on 2026-10-12. Table II checked cell by \
+cell against the table image and the rendered page (p. 1392).
+
+LEVELS. Paschen 2p1-2p10 (Fig. 1, which also gives the Racah labels) are NIST's \
+3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 0 (2p1, 108722.62 cm-1), 2[1/2] J = 1 (2p2), 2[3/2] \
+J = 2 (2p3), 2[3/2] J = 1 (2p4) and (2P*<3/2>).4p 2[1/2] J = 0 (2p5, 107054.27), \
+2[3/2] J = 2 (2p6), 2[3/2] J = 1 (2p7), 2[5/2] J = 2 (2p8), 2[5/2] J = 3 (2p9), \
+2[1/2] J = 1 (2p10, 104102.10) (chang_1978's notes list every energy). Evidence: the \
+pump and fluorescence lines of Table I (e.g. 7635.11 Angstrom 3P2-2p6, 8424.65 \
+3P1-2p8, 8115.31 3P2-2p9, 9122.97 3P2-2p10) are NIST's air wavelengths of those \
+transitions; Table III's detailed-balance ratios follow from these levels' energies \
+and 2J + 1 within 3 % (script check, Eq. 6 at 300 K); the text's gap of '>= 1361 \
+cm-1' above 2p10 is NIST's 2p9 - 2p10 = 1360.7 cm-1 (script).
+
+TAKEN (collisional_quenching_rate_coefficient, TC-1011; extraction script \
+tools/extract/nguyen_1978.py): Table II (p. 1392), all 28 k_ij in 10^-12 cm3 s-1, \
+perturber self (ground-state Ar), order 2, temperature_k 300 (title; 'T = 300 K' in \
+N_0 = p_0 / kT, p. 1391), one dataset per product level j (k_to_2p3 ... k_to_2p10, \
+channel = the product), rows the initial level i, 0.3 (2p3 -> 2p5, 2p8 -> 2p6) to 44 \
+(2p3 -> 2p6). The cells left of the diagonal (i > j) are measured endothermic \
+transfers, not detailed-balance values (p. 1394). 'Their determination was achieved \
+with an uncertainty better than 20%', at least half from the transition probabilities \
+used (p. 1394): relative 0.2, level not stated. Not measured: 2p1 and 2p10 as \
+initial levels ('The laser excitation of the 2p1 and 2p10 levels was not possible', \
+p. 1391), k57 (too weak), and the totals k_j (the intercepts 'were within the \
+experimental error bars', p. 1394). No transfer into 2p1 or 2p2 is listed.
+NOT TAKEN: Table III (k_ij / k_ji, experimental from Table II and theoretical from \
+Eq. 6: derived; checked); Table I (lines used); Figs. 3-5 (signals, the Eq. 5 plot of \
+2p7 -> 2p8, 2p9); the text's k3 = sum_j k3j = 0.76 x 10^-10 cm3 s-1 (p. 1395; the sum \
+of Table II's row, script check) and Catherinot's k3 = 1.1 x 10^-10 (another paper).
+
+FINDING (sadeghi_2001's caveats, TC-1066; its kq_self in 10^-10 cm3/s: 2p1 0.16, 2p5 \
+0.12, 2p6 0.13, 2p8 0.24). 2p1: not resolved; neither this paper nor chang_1978 has \
+any 2p1 data (sadeghi_2001, p. 3147: 'State-to-state data do not exist for the \
+reaction of 2p1'), so the excluded 2p1 -> 2p5 channel remains unmeasured. 2p5: the \
+transfers out of 2p5 sum to 1.7 + 11.3 + 9.5 = 22.5 x 10^-12 (to 2p4, 2p6, 2p8; \
+sadeghi_2001 quotes 0.22 x 10^-10), 1.9 times sadeghi_2001's total of 0.12, which is \
+therefore a lower limit by a factor of about two, not 'close to the total'; the \
+largest channel, 2p5 -> 2p6 (11.3), is the one whose 763.5 nm emission the 750 nm \
+filter may pass, and 0.12 + 0.113 = 0.23 matches the sum. The true total is at least \
+0.225 x 10^-10 (the 4s, 4s' products are not measured here). 2p8: k89 = 18.2 x 10^-12 \
+(sadeghi_2001 quotes 0.18 x 10^-10; chang_1978 1.7 x 10^-11) is 90 % of the \
+transfers out of 2p8 (20.3); sadeghi_2001's 0.24 (the 2p8 + 2p9 pair to other states) \
+plus 0.182 is 0.42 x 10^-10, inside chang_1978's total 0.47 +- 0.07: with the 2p9 \
+channel added, the three papers agree, and the 2p8 total is about twice Sadeghi's \
+Table II value. 2p6: transfers 4.1 + 6 + 1 = 11.1 x 10^-12 (sadeghi_2001 quotes 0.11), \
+against sadeghi_2001's total 0.13 and chang_1978's upper limit 0.18: consistent, the \
+4s, 4s' channel at most ~0.02-0.07.
+
+FINDING (chang_1978, the same process, one-photon LIF in a flowing afterglow). In \
+10^-11 cm3/s, this paper / Chang and Setser: k34 2.75 / 2.2, k36 4.4 / 4.1, k43 2.3 / \
+1.7 (theirs by detailed balance), k67 0.41 / 0.8, k68 0.6 / 0.8, k69 0.1 / 0.2, k78 \
+1.43 / 1.6, k79 2.33 / not seen, k89 1.82 / 1.7, k98 0.68 / 0.6 (detailed balance), \
+k9,10 0.51 / '> 1.8' (a disagreement of more than a factor 3.5); the 2p3 sum, 0.76 x \
+10^-10, against Chang and Setser's total k_Q 1.10 +- 0.12 x 10^-10, the difference \
+their intermultiplet 0.47. Chang and Setser's note added in proof quotes this paper's \
+preprint as k78 1.4, k79 2.3, k56 1.1, k58 0.9: Table II's 14.3, 23.3, 11.3, 9.5 \
+(10^-12), the last rounding to 1.0.
+
+DOUBTS (printed inconsistencies; no taken value affected). Table III's experimental \
+ratios agree with Table II within the rounding of its cells (script); k68 / k86 = 21.3 \
+against 6 / 0.3 = 20.0 requires k86 near 0.28, so Table II's 0.3 is rounded. Table I lists the 2p9 row's sensitized line as '8424.65 (3P1-2p9)': 8424.65 Angstrom is \
+3P1-2p8, the product it heads; and 2p5's fluorescence line as '7514.18', the laser \
+line being 7514.65 (NIST 751.465 nm air), one line printed twice. Neither table is \
+taken.
+
+BEARING ON OEP 8 (for scale). The J = 0 level 2p5 (4p[1/2]0) transfers to 2p6 and 2p8 \
+(J = 2) at 1.1 and 0.95 x 10^-11 cm3/s per argon atom: at 1 bar (2.45e19 cm-3 at 296 \
+K) about 2.8e8 and 2.3e8 s-1, so a two-photon excited J = 0 population feeds the J = \
+2 levels within nanoseconds. Transfer, not pure dephasing.
+
+DATA CITED, NOT IN THE LIBRARY: A. Catherinot, J. Phys. B (to be published, 1978) \
+(lifetime-based k3 of Ar 2p3); J. P. Grandin et al., J. Phys. (Paris) 36, 787 (1975) \
+(Ne 2p5 3p transfer); N. Sadeghi and J. Sabbagh, Phys. Rev. A 16, 2336 (1977) (Xe 6s' \
+- 6p[1/2]1 transfer)."""
+
+[[datasets]]
+id = "k_to_2p3"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p3.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p3 (4p'[3/2]2) from: 2p2 0.5, 2p4 23. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated. Endothermic (i > j, the energy from the collision): 2p4."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p3"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p4"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p4.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p4 (4p'[3/2]1) from: 2p3 27.5, 2p5 1.7. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated. Endothermic (i > j, the energy from the collision): 2p5."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p4"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p5"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p5.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p5 (4p[1/2]0) from: 2p3 0.3, 2p4 0.7. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p5"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p6"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p6.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p6 (4p[3/2]2) from: 2p3 44, 2p4 4.8, 2p5 11.3, 2p7 2.5, 2p8 0.3. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated. Endothermic (i > j, the energy from the collision): 2p7, 2p8."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p6"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p7"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p7.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p7 (4p[3/2]1) from: 2p3 1.4, 2p4 3.2, 2p6 4.1, 2p8 0.8. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated. Endothermic (i > j, the energy from the collision): 2p8."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p7"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p8"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p8.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p8 (4p[5/2]2) from: 2p3 1.9, 2p4 1.4, 2p5 9.5, 2p6 6, 2p7 14.3, 2p9 6.8. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated. Endothermic (i > j, the energy from the collision): 2p9."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p8"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p9"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p9.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p9 (4p[5/2]3) from: 2p3 0.8, 2p4 3.3, 2p6 1, 2p7 23.3, 2p8 18.2. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p9"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "k_to_2p10"
+material = "Ar"
+file = "Ar/nguyen_1978__k_to_2p10.csv"
+table = "tbl_c96ebe695f0d"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-12
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 1392), k_ij (10^-12 cm3 s-1) of collisional transfer by ground-state argon at 300 K into 2p10 (4p[1/2]1) from: 2p8 1, 2p9 5.1. Rows are the initial levels (Paschen). 'Uncertainty better than 20%', at least half from the A values used (p. 1394), level not stated."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p10"
+temperature_k = 300
+method = "cw dye-laser excitation of one 4p level from a 4s metastable (or 1s4) in a pulsed-discharge afterglow (0.2-1 Torr), steady-state ratio of the fluorescence of the excited level to the sensitized fluorescence of the product against 1/[Ar] (Eq. 5), slope with the A values of Wiese et al. (1969)"
+
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"

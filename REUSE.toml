@@ -1,0 +1,75 @@
+version = 1
+SPDX-PackageName = "optmat"
+SPDX-PackageSupplier = "John C. Travers <jtravs@gmail.com>"
+SPDX-PackageDownloadLocation = "https://github.com/LupoLab/optmat"
+
+# Copyright and licence for the files that cannot carry an inline SPDX header. Code
+# carries its own header, which takes precedence over these entries; where more than
+# one entry matches a file, the last one applies.
+
+# Everything else is part of the package and its tests: the curated data (source
+# records, values, configurations, stored fits), our own calculations (the tRecX runs),
+# test fixtures and the lock file.
+[[annotations]]
+path = "**"
+SPDX-FileCopyrightText = "2026 John C. Travers and contributors"
+SPDX-License-Identifier = "MIT"
+
+# Prose documentation and figures: the manual, the register, the changelog and the
+# repository's guides.
+[[annotations]]
+path = ["*.md", "docs/**/*.md", "docs/**/*.rst", "docs/**/*.svg", "docs/**/*.png", "docs/_static/**", "docs/_templates/**"]
+SPDX-FileCopyrightText = "2026 John C. Travers and contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Values transcribed from publications (papers, books, data sheets, data services): the
+# publishers' data, each cited in its source record (data/sources/), included under the
+# notice in LICENSES/LicenseRef-optmat-third-party.txt. The source records, the fits and
+# our own calculations stay MIT.
+[[annotations]]
+path = "src/optmat/data/values/**"
+SPDX-FileCopyrightText = "The authors and publishers of the source each file's name begins with (src/optmat/data/sources/<source>.toml)"
+SPDX-License-Identifier = "LicenseRef-optmat-third-party"
+
+# Third-party files, each described (source, retrieval, terms) in its PROVENANCE.md.
+# Our own PROVENANCE.md files stay MIT.
+[[annotations]]
+path = "src/optmat/data/external/refractiveindex_info/**"
+SPDX-FileCopyrightText = "Mikhail N. Polyanskiy and the contributors to refractiveindex.info"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "src/optmat/data/external/henke/*.nff"
+SPDX-FileCopyrightText = "Center for X-Ray Optics, Lawrence Berkeley National Laboratory"
+SPDX-License-Identifier = "LicenseRef-optmat-third-party"
+
+[[annotations]]
+path = ["src/optmat/data/external/nist_asd/**", "src/optmat/data/external/nist_webbook/**"]
+SPDX-FileCopyrightText = "U.S. Secretary of Commerce on behalf of the United States of America (NIST Standard Reference Data)"
+SPDX-License-Identifier = "LicenseRef-optmat-third-party"
+
+[[annotations]]
+path = "src/optmat/data/external/mainz_uvvis/**"
+SPDX-FileCopyrightText = "The original authors, via the MPI-Mainz UV/VIS Spectral Atlas (Keller-Rudek et al., Earth Syst. Sci. Data 5, 365 (2013))"
+SPDX-License-Identifier = "LicenseRef-optmat-third-party"
+
+[[annotations]]
+path = "src/optmat/data/external/*/PROVENANCE.md"
+SPDX-FileCopyrightText = "2026 John C. Travers and contributors"
+SPDX-License-Identifier = "MIT"
+
+# Sphinx inventories of the projects the manual links to, kept for offline builds.
+[[annotations]]
+path = "docs/_inventories/python.inv"
+SPDX-FileCopyrightText = "Python Software Foundation"
+SPDX-License-Identifier = "PSF-2.0"
+
+[[annotations]]
+path = ["docs/_inventories/numpy.inv", "docs/_inventories/scipy.inv"]
+SPDX-FileCopyrightText = "NumPy and SciPy Developers"
+SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = "docs/_inventories/matplotlib.inv"
+SPDX-FileCopyrightText = "Matplotlib Development Team"
+SPDX-License-Identifier = "LicenseRef-Matplotlib"

@@ -1,0 +1,43 @@
+# Carbon monoxide: effective electronic oscillators plus the HITRAN infrared bands (fixed).
+# Taken up on 2026-09-25.
+gas = "CO"
+description = "Carbon monoxide: two effective electronic oscillators fitted to Smith, Huber & Parkinson's 167-288 nm interferometry (0.1-0.6 %), the Cuthbertsons' 1920 visible dispersion (level free), Watson & Ramaswamy's green-line value and Zhao et al.'s 2026 molar refractivity at 1566 nm (38 ppm), with HITRAN's bands and the pure rotational band fixed as derived Gaussian rules (OEP 3; reduced chi-squared 0.37). The lower oscillator lands at 147 nm with f = 0.185, where the A-X band system is. Validators: Christiansen et al.'s electronic polarizabilities (-0.18 %), Zhao's derived static value (-0.11 %, 23 sigma: its dispersion reduction differs), Tsankova et al.'s dielectric static value (+0.01 %), Kumar & Meath's dipole sums and Sneep & Ubachs's Rayleigh cross section. Valid from 167 nm to 2.29 um and in the windows at 2.56-4.34 and 5.19-12.5 um (OEP 3); nothing is measured between 290 and 480 nm."
+range_nm = [167.0, 2000.0]
+
+validators = [
+    # electronic (no vibrational part): compared without the infrared terms
+    { key = "christiansen_1998/electronic_CO", infrared = false },
+    # electronic plus vibrational, without the orientation (rotational) part (OEP 3)
+    { key = "christiansen_1998/total_static_CO", electric = true },
+    # Dielectric, electronic plus vibrational without the orientation term (TC-804;
+    # OEP 3, Q20)
+    { key = "tsankova_2018/alpha_e_CO", electric = true },
+    { key = "zhao_2026/static_CO", infrared = false },
+    "zhao_2026/kumar_meath_1994_moments_CO",
+    "sneep_2005/rayleigh_CO",
+    "smith_1976/koch_1914_CO",
+    "watson_1936/zero_celsius_CO",
+]
+
+[model]
+effective = 2
+# Above the data's highest photon energy (167.2 nm = 0.2725 hartree) and at or above the
+# first strong absorption, the A-X band system from 154.5 nm (a modelling bound).
+effective_min_energy_hartree = 0.295
+chi0_au = 0.0
+starts = 12
+band_nodes = 8   # the fundamental, the overtones and the rotational band as derived rules (OEP 3)
+windows = true   # the derived windows are the qualified intervals (TC-749)
+
+[[fitted]]
+key = "smith_1976/experiment_CO"
+
+[[fitted]]
+key = "cuthbertson_1920/experiment_CO"
+free_scale = true
+
+[[fitted]]
+key = "watson_1936/green_CO"
+
+[[fitted]]
+key = "zhao_2026/A_R_1566_CO"

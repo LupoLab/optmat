@@ -1,0 +1,105 @@
+citation = "W. Kolos and L. Wolniewicz, J. Chem. Phys. 46, 1426 (1967)"
+doi = "10.1063/1.1840870"
+library = "Kolos_1967_PolarizabilityHydrogenMolecule"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Variation-perturbation calculation of the static clamped-nucleus \
+polarizabilities alpha_par(R) and alpha_perp(R) of H2 (54-term James-Coolidge-type \
+ground state in elliptic coordinates with r12, 34-term first-order functions of \
+Sigma_u and Pi_u symmetry) for R = 0.4-4.0 a0 (Table II), averaged over the \
+rovibrational wave functions of the adiabatic potential (diagonal corrections for \
+nuclear motion included) for H2, HD and D2 (Eq. (14), Table III)."""
+notes = """Static only: the paper has no frequency-dependent values. Units: atomic \
+units (a0^3) in Table III; cubic angstroms in Table VI. HD is not a curated species; \
+the anisotropies gamma, the clamped-nucleus alpha(R) of Table II, the off-diagonal \
+elements of Table IV and the relative isotope effects of Table V (H2 - D2: 1.27 % \
+calculated, 1.26 % measured by Hermans et al. 1965) have no vocabulary quantity and \
+are not extracted.
+
+Table III's per-state values are stored one dataset per gas with each row a \
+rovibrational state (row id v<v>J<J>, all at wavelength inf): the format has no state \
+axis, so these check datasets must not be read as a wavelength series. 'The \
+polarizabilities computed in the Born-Oppenheimer approximation ... differed by less \
+than 0.1 % from the values given in Table III' (p. 1429). No other accuracy is stated.
+
+Table VI (p. 1430): alpha_00 'This calculation' 0.8023 A^3 (J = 0; Table III's 5.4139 \
+a.u.) and 0.8045 A^3 (footnote d, 'Rotational average for 293 K', 'assuming normal H2 \
+and T = 293 K', p. 1430). Check: the normal-H2 average of Table III's v = 0, J = 0-10 \
+values at 293 K with the spin weights 1 and 3 and Raj et al.'s (2018) rotational \
+energies gives 5.42905 a.u. = 0.80450 A^3 (checked 2026-09-25). The same procedure \
+gives 5.36081 a.u. for normal D2 (with the J = 14 erratum; J = 14 does not enter).
+
+'Experimental' alpha_00 = 0.8056 A^3 (footnote c, Reference 19): the static limit of \
+Schueler and Wolf's (1925) dispersion formula (Eq. (17), recorded below) with n - 1 = \
+1.3600e-4 and Eq. (16), n - 1 = 2 pi N0 alpha, N0 = 2.6867e19 cm^-3; a reproduction \
+of an extrapolated formula, not extracted as a dataset. (The library's JSON marks \
+it '^{e}'; the image prints c, and footnote c is 'Reference 19'.) The Ishiguro et al. (1952) \
+column and the anisotropy and Raman values are not extracted.
+
+Table III is superseded for refraction by the dynamic, more accurate \
+calculations (bishop_1980, rychlewski_1983, raj_2018); kept as checks."""
+
+[[datasets]]
+id = "static_states_H2"
+material = "H2"
+file = "H2/kolos_1967__static_states.csv"
+table = "tbl_008b76c50f4e"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table III alpha_{vJ,vJ} of H2, static, for v = 0, J = 0-31 and J = 0, v = 1-8 (40 states; row id v<v>J<J>, every row at wavelength inf; image checked). Not a wavelength series: each row is a different rovibrational state."
+[datasets.parameters]
+rows = "rovibrational states v<v>J<J>, all static"
+
+[[datasets]]
+id = "static_states_D2"
+material = "D2"
+file = "D2/kolos_1967__static_states.csv"
+table = "tbl_008b76c50f4e"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table III alpha_{vJ,vJ} of D2, static, for v = 0, J = 0-31 and J = 0, v = 1-8 (40 states; row id v<v>J<J>, every row at wavelength inf; image checked). Row v0J14 is corrected by an erratum. Not a wavelength series."
+[datasets.parameters]
+rows = "rovibrational states v<v>J<J>, all static"
+
+[[datasets]]
+id = "normal_293K_H2"
+material = "H2"
+file = "H2/kolos_1967__normal_293K.csv"
+table = "tbl_3187f42a4fee"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VI alpha_00 'This calculation', second value of the merged cell, footnote d 'Rotational average for 293 K' (normal H2): 0.8045 A^3, static. Reproduced from Table III (source notes)."
+[datasets.parameters]
+temperature_k = 293
+average = "rotational average, normal H2 (p. 1430)"
+
+[[errata]]
+dataset = "static_states_D2"
+row = "v0J14"
+column = "value"
+printed = "9.8344"
+corrected = "5.8344"
+reason = "Misprinted leading digit: D2's alpha_{0 14, 0 14} lies between J = 13 (5.7703) and J = 15 (5.9027)."
+evidence = "Table image checked: the cell prints 9.8344. With 5.8344 the column's first differences run 0.0598, 0.0641, 0.0683, 0.0725 (J = 12-16), second differences 0.0043, 0.0042, 0.0042 as along the whole column (0.0039-0.0048); 9.8344 gives 4.0043 and -7.9958."
+
+[[formulas]]
+id = "schuler_wolf"
+material = "H2"
+equation = "Eq. (17), p. 1430"
+printed = "n - 1 = 0.91997 x 10^27 / (1.01305 x 10^31 - nu^2) + 0.75379 x 10^27 / (1.66813 x 10^31 - nu^2)"
+variable = "nu: frequency of the light in s^-1 (cycles per second: the poles lie at c/nu = 94.2 and 73.4 nm)"
+state = "1atm_0C"
+density = "ideal"
+range = "not stated (Schueler and Wolf's data; used by Kolos for the static limit only)"
+coefficients = { B1 = "0.91997e27", C1 = "1.01305e31", B2 = "0.75379e27", C2 = "1.66813e31" }
+check = "Static limit n - 1 = 1.35999963e-4 against the printed 1.3600e-4, and alpha = (n - 1)/(2 pi N0) = 0.80564 A^3 with N0 = 2.6867e19 cm^-3 against the printed 0.8056 (checked 2026-09-25)."
+notes = "Reproduced: H. Schueler and K. L. Wolf, Z. Physik 34, 343 (1925) (Ref. 19), as used by Karplus (1964) (Ref. 20); not in the library. The state is inferred from Kolos's use of the Loschmidt number N0 = 2.6867e19 cm^-3 (0 degrees C, 1 atm, ideal gas) with it; Schueler and Wolf's own reference state and wavelength range are not given. No form is assigned: in wavenumbers (cm^-1) it is dn_wavenumber2 with B_i/c^2 and C_i/c^2 (c in cm/s), i.e. converted coefficients."

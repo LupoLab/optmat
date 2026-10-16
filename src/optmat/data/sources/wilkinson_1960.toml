@@ -1,0 +1,78 @@
+citation = "P. G. Wilkinson, J. Opt. Soc. Am. 50, 1002 (1960)"
+doi = "10.1364/josa.50.001002"
+library = "Wilkinson_1960_RefractiveDispersionNitrogen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Refractive line shifts in a 21 ft vacuum Eagle concave-grating spectrograph \
+(third order, resolving power about 270 000, 0.4 A/mm) filled with nitrogen: a \
+germanium hollow-cathode line spectrum photographed in vacuum and then in the gas \
+without moving the plate; n - 1 = Delta lambda / lambda_g (Eq. 2). An instrumental \
+(mechanical strain) shift appears when gas is admitted; it is measured on second-order \
+lines whose index is calculated from Koch's data (Eq. 5) and removed (Eq. 6). Gas \
+temperature to 0.03 C, pressure to 0.01 mm (mercury manometer, reduced to standard \
+gravity and 0 C). Matheson nitrogen with O2 about 2e-4 % and CO 1e-5 % (pp. 1-2)."""
+notes = """'Refractive indices are then obtained at standard conditions (0 C and 760 mm). \
+The use of the perfect gas law is valid within the accuracy of the measurements' \
+(p. 2): state 1 atm, 0 C, density ideal. Wavelengths are vacuum wavelengths (Table II \
+heading). The oxygen impurity limited the measurements to 1649 A and longer \
+(Schumann-Runge absorption).
+
+Accuracy: 'The data fit the following equation to +-0.13%' (abstract), which is the \
+mean absolute obs - calc of Table II (4.7 x 10^-7 against n - 1 of about 3.5 x 10^-4); \
+the rms of the printed obs - calc, 5.9 x 10^-7, is taken as the per-point uncertainty. \
+'The data are too inaccurate' for the resonance parameters to be meaningful (p. 4). \
+The absolute level rests on the instrumental-shift correction, which uses Koch's \
+refractive indices at 2398-3058 A (Eq. 5). Heddle et al. (heddle_1963) and Langhoff \
+and Karplus (langhoff_1969) suspect oxygen contamination in the values near \
+1650-1750 A, which lie above their calculations.
+
+Reproductions: langhoff_1969 (Table V, dataset wilkinson_1960_N2) reproduces all 22 \
+values, identically but for 1938.89 A, printed there 3.445 x 10^-4 against the \
+original's 3455 x 10^-7 (Table II image checked: 3455). It should now be marked \
+reproduced of this record. heddle_1963 (wilkinson_formula_N2) and peck_1966 \
+(formula wilkinson_1960) reproduce Eq. (7).
+
+Koch's formula (Eq. 8), quoted for comparison, is recorded as a reproduced formula."""
+
+[[datasets]]
+id = "experiment_N2"
+material = "N2"
+file = "N2/wilkinson_1960__experiment_N2.csv"
+table = "tbl_12497a3674f3"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table II, (n - 1) x 10^7 at 0 C and 760 mm, 22 lines of Ge I, Ge II, Ne II and one unidentified emitter ('?', 2042.484 A). Per-point uncertainty: the rms of the printed obs - calc (5.9 x 10^-7)."
+[datasets.uncertainty]
+absolute = 5.9
+level = "rms"
+
+[[formulas]]
+id = "eq7"
+material = "N2"
+equation = "Eq. (7), p. 3 (also the abstract)"
+printed = "n - 1 = 6.3622 x 10^4 / (45.989 x 10^8 - nu^2) + 32.453 x 10^6 / (1065.11 x 10^8 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_0C"
+density = "ideal"
+range = "1649-2042 A (vacuum)"
+coefficients = { B1 = "6.3622e4", C1 = "45.989e8", B2 = "32.453e6", C2 = "1065.11e8" }
+check = "Reproduces Table II's obs - calc column to within 1.1 x 10^-7 at 19 of the 22 lines; at 1938.890 A it gives +1.9 against the printed +7 (the reproduction's 3.445 would give -8.1), at 1824.2994 A +3.5 against +1, and at 1649.1918 A -11.7 against -3. Resonances at 1474.6 and 306.4 A with oscillator strengths 0.053 and 27 (p. 4), 'which have no real significance'. Checked 2026-09-25."
+
+[[formulas]]
+id = "koch_eq8"
+material = "N2"
+equation = "Eq. (8), p. 3"
+printed = "n - 1 = 39.5345 x 10^5 / (152.274 x 10^8 - nu^2) + 8.3734 x 10^5 / (240.651 x 10^8 + nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1 (presumably, as Eq. 7)"
+state = "1atm_0C"
+density = "unknown"
+range = "2380-5460 A"
+coefficients = { B1 = "39.5345e5", C1 = "152.274e8", B2 = "8.3734e5", C2 = "240.651e8" }
+reproduced_from = ["J. Koch, Arkiv Mat. 8, No. 20 (1912); 9, No. 6 (1913); 10, No. 1 (1914); 18, No. 3 (1924)"]
+check = "Gives 3397.8 x 10^-7 at 2042.484 A and 3724.5 at 1649.19 A (extrapolated), below the present data as Fig. 2 shows. Not checked against Koch's values (not in the library). Checked 2026-09-25."
+notes = "The '+ nu^2' in the second denominator is as printed; Wilkinson remarks that 'Eq. (8) is not of the proper form owing to inclusion of a + nu^2 term in the denominator of the second term' (p. 3)."

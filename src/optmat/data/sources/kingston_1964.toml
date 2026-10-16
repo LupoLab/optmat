@@ -1,0 +1,157 @@
+citation = "A. E. Kingston, J. Opt. Soc. Am. 54, 1145 (1964)"
+doi = "10.1364/josa.54.001145"
+library = "Kingston_1964_RefractiveIndicesVerdet"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Kramers-Heisenberg sum over discrete oscillator strengths and an integral \
+over photoabsorption cross sections (Huffman et al., Samson), the discrete strengths \
+(Knox's Hartree-Fock values for Ar, Koch's for the Kr and Xe resonance lines) adjusted \
+so that the set reproduces the visible Verdet constants (Ingersoll and Liebenberg) to 2 \
+% and the visible refractivity (Koch 1949, Larsen 1939) to 0.01 %."""
+notes = """Eq. (1): n - 1 = 1.0007e-4 sum' f_m / ((E_m - E_0)^2 - E^2) at NTP, energies in \
+rydbergs; the constant is 2 pi N_L a_0^3 x 4 with Loschmidt's number, so the values \
+refer to the ideal-gas density at 0 degrees C and 1 atm (density 'ideal'). Eq. (2): V = \
+5.871e-8 sum' E^2 f_m / ((E_m - E_0)^2 - E^2)^2 in rad/(Oe cm atm). The paper gives no \
+uncertainty for Tables I and II; the uncertainties of Table III's calculated values 'are \
+due to the uncertainties in the measured wavelengths' (p. 2). Wavelengths are nominal \
+vacuum wavelengths.
+
+All calculated datasets are theory, kept as checks (use 'check'); Bideau-Mehu et al. \
+1981, Langhoff and Karplus 1969 and Tang and Poon 1974 reproduce Table I. Tang and \
+Poon's Table VI prints Kingston's xenon value at 1900 A as 9.984; Kingston's Table I \
+prints 9.884 (table image checked 2026-09-24).
+
+The text (p. 2) argues from the calculation that Gill and Heddle's 1216 A values for Kr \
+(|n - 1| = 53e-4) and Xe (172e-4) are 'much too high'; they are not extracted here (see \
+gill_1963)."""
+
+[[datasets]]
+id = "theory_Ar"
+material = "Ar"
+file = "Ar/kingston_1964__theory_Ar.csv"
+table = "tbl_368145603687"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, calculated n - 1, 1100-2200 A. Not calculated between discrete lines (p. 2)."
+
+[[datasets]]
+id = "theory_Kr"
+material = "Kr"
+file = "Kr/kingston_1964__theory_Kr.csv"
+table = "tbl_368145603687"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, calculated n - 1, 1300-2200 A."
+
+[[datasets]]
+id = "theory_Xe"
+material = "Xe"
+file = "Xe/kingston_1964__theory_Xe.csv"
+table = "tbl_368145603687"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, calculated n - 1, 1500-2200 A (1900 A: 9.884 as printed and in the table image)."
+
+[[datasets]]
+id = "verdet_theory_Ar"
+material = "Ar"
+file = "Ar/kingston_1964__verdet_theory_Ar.csv"
+table = "tbl_2ffb8b888ca1"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table II, calculated Verdet constant in micro-min/(Oe cm atm), i.e. per atmosphere at 0 degrees C; the printed mantissa(power) cells are stored as mantissa e power."
+
+[[datasets]]
+id = "verdet_theory_Kr"
+material = "Kr"
+file = "Kr/kingston_1964__verdet_theory_Kr.csv"
+table = "tbl_2ffb8b888ca1"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table II, as for argon."
+
+[[datasets]]
+id = "verdet_theory_Xe"
+material = "Xe"
+file = "Xe/kingston_1964__verdet_theory_Xe.csv"
+table = "tbl_2ffb8b888ca1"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table II, as for argon."
+
+[[datasets]]
+id = "theory_table3_Ar"
+material = "Ar"
+file = "Ar/kingston_1964__theory_table3_Ar.csv"
+table = "tbl_ff52cd5ab774"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, calculated n - 1 at the effective wavelengths of Heddle et al. (1850 +- 80, 1805 +- 80, 1210 +- 30 A) and at 1216 A; the sigma column is the spread over the wavelength band (not a statistical uncertainty; not declared as one)."
+
+[[datasets]]
+id = "heddle_1963_Ar"
+material = "Ar"
+file = "Ar/kingston_1964__heddle_1963_Ar.csv"
+table = "tbl_ff52cd5ab774"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["heddle_1963"]
+notes = "Table III, 'Measured': Heddle et al.'s Cerenkov values, identical to heddle_1963 (x 1e-5 there)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "gill_1963_Ar"
+material = "Ar"
+file = "Ar/kingston_1964__gill_1963_Ar.csv"
+table = "tbl_ff52cd5ab774"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["gill_1963"]
+notes = "Table III, 'Measured' at 1216 A: Gill and Heddle's Rayleigh-scattering value, identical to gill_1963."

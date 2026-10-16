@@ -1,0 +1,132 @@
+citation = "D. M. Wilmouth and D. S. Sayres, J. Quant. Spectrosc. Radiat. Transfer 234, 32 (2019)"
+doi = "10.1016/j.jqsrt.2019.05.031"
+library = "Wilmouth_2019_RayleighScatteringCross"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Broadband cavity-enhanced spectroscopy (BBCES), 333-363 nm: laser-driven Xe arc \
+lamp (Energetiq EQ-99X-FC), 35 cm cavity of two plano-concave mirrors (peak reflectivity \
+0.998732 +- 0.000017 at 349.1 nm), 0.3 m Czerny-Turner spectrograph with CCD, calibrated \
+on Hg lines. Pure gas filling the cavity, static, 1020-1060 hPa. Mirror reflectivity \
+from N2 against He (Eq. 2, the n-based N2 cross section, +-1 %), then each sample's \
+extinction against He (Eq. 3). Purity 99.999 % (He, N2, Ar), 99.99 % (CO2, CH4), 99.8 % \
+(SF6)."""
+notes = """The first of the authors' two BBCES papers: this one covers 333-363 nm, \
+wilmouth_2020 (JQSRT 255, 107224) 264-297 nm with the same apparatus and method. They \
+are different papers and different data; wilmouth_2020's Eqs. (5) and (7) for CH4 and \
+(4) and (6) for SF6 are fitted to both papers' data together, so they are not \
+independent of this record's Eq. (4) and of its ratios.
+
+The measured cross sections are shown only in figures (Fig. 2b, 218 wavelengths over \
+333-363 nm per gas; Fig. 3, as 1-nm moving averages and as ratios to the n-based values; \
+Fig. 4a, CH4's n from them), never tabulated. The text prints (p. 37) the mean ratio of \
+the measured to the n-based cross section over 333-363 nm, the n-based values from \
+Table 1: Ar 0.998, CO2 0.990, SF6 0.978, CH4 0.778; and (p. 35) the mean 1-sigma \
+uncertainty 2.5 % (Ar), 1.9 % (CO2), 1.6 % (SF6), 1.6 % (CH4): the root sum of squares \
+of the run-to-run standard deviation, the effective path length (1.3 %, mostly the N2 \
+reference cross section), temperature (0.3 %) and pressure (0.1 %). These are common to \
+all four gases (one N2 reference) and to wilmouth_2020. The SF6 cross sections were \
+raised by 0.1 % (and their uncertainty by 0.1 %) for the 99.8 % purity (air and CF4 \
+impurities, p. 35). F_k = 1 for Ar, CH4 and SF6 (spherical, Bridge and Buckingham); CO2 \
+F_k = 1.1364 + 2.53e-11 nu^2 (Table 1).
+
+Table 1 (tbl_309d15b8e0de, image checked) gives the n-based formulas at N = 2.5469e19 \
+cm^-3 (288.15 K, 101325 Pa, ideal): He, N2 (Bates's UV branch, F_k 1.034 + 3.17e-12 \
+nu^2), Ar (Peck & Fisher), CO2 (Bideau-Mehu with Alms's F_k, the corrected 10^3 scale of \
+Sneep & Ubachs's Eq. 13), CH4 46662 + 4.02e-6 nu^2 and SF6 71517 + 4.996e-6 nu^2 \
+(Sneep & Ubachs's Eqs. 18 and 21). Identical to wilmouth_2020's Table 1, where they \
+are recorded as reproduced formulas; not repeated here. The authors correct 'typographical \
+errors in several papers in the literature' in them (p. 33) without naming them.
+
+RECONSTRUCTED, NOT PRINTED: the datasets below are band-centre cross sections at 348.0 \
+nm, each the printed mean ratio times the n-based cross section of Table 1 at 348.0 nm \
+(nu = 28735.6 cm^-1), computed here (2026-09-29): n-based Ar 2.6300e-26, CO2 7.8390e-26 \
+(F_k 1.1573), SF6 1.9887e-25, CH4 8.6833e-26 cm^2. They assume the ratio is flat across \
+the 30 nm band; for CH4 the ratio of Eq. (4)'s cross section to the n-based one runs \
+0.781-0.775 over 333-363 nm (mean 0.778, as printed), so the centre value stands for the \
+band to 0.4 %; Eq. (4) itself gives 6.7552e-26 at 348.0 nm against the reconstruction's \
+6.7556e-26. They are checks (validators), never fitted (TC-712)."""
+
+[[datasets]]
+id = "band_Ar"
+material = "Ar"
+points = [["348.0", "348.0", "2.625"]]
+table = "text"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-26
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Reconstructed, not printed (see the record's notes): mean ratio 0.998 (p. 37) times the n-based 2.6300e-26 cm^2 of Table 1 (Peck & Fisher) at 348.0 nm; mean 1-sigma 2.5 % (p. 35). king_factor 1 (Table 1)."
+[datasets.uncertainty]
+relative = 0.025
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "band_CO2"
+material = "CO2"
+points = [["348.0", "348.0", "7.761"]]
+table = "text"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-26
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Reconstructed, not printed: mean ratio 0.990 (p. 37) times the n-based 7.8390e-26 cm^2 of Table 1 (Bideau-Mehu's formula, extrapolated from 181-254 nm, with Alms's F_k) at 348.0 nm; mean 1-sigma 1.9 % (p. 35). king_factor: Table 1's F_k = 1.1364 + 2.53e-11 nu^2 at 28735.6 cm^-1 (1.157291)."
+[datasets.uncertainty]
+relative = 0.019
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.1573
+
+[[datasets]]
+id = "band_SF6"
+material = "SF6"
+points = [["348.0", "348.0", "19.45"]]
+table = "text"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-26
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Reconstructed, not printed: mean ratio 0.978 (p. 37) times the n-based 1.9887e-25 cm^2 of Table 1 (Sneep & Ubachs's Eq. 21, from Vukovic's 633 and 1300 nm values) at 348.0 nm; mean 1-sigma 1.6 % (p. 35), including the 0.1 % purity term. king_factor 1."
+[datasets.uncertainty]
+relative = 0.016
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "band_CH4"
+material = "CH4"
+points = [["348.0", "348.0", "6.756"]]
+table = "text"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-26
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Reconstructed, not printed: mean ratio 0.778 (p. 37) times the n-based 8.6833e-26 cm^2 of Table 1 (Sneep & Ubachs's Eq. 18, from Hohm's polarizabilities) at 348.0 nm; mean 1-sigma 1.6 % (p. 35). Eq. (4) gives 6.7552e-26 here. Reproducible over different days and with a second cylinder from another supplier (p. 37). king_factor 1 (assumed, Bridge and Buckingham, p. 37)."
+[datasets.uncertainty]
+relative = 0.016
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[formulas]]
+id = "CH4_eq4"
+material = "CH4"
+equation = "Eq. (4), p. 37"
+printed = "(n - 1) x 10^8 = 40161.8 + 4.75 x 10^-6 nu^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "333-363 nm (the data; 'increasing uncertainties' outside, p. 37)"
+coefficients = { A = "40161.8", B = "4.75e-6" }
+check = "Through Eq. (1) (N = 2.5469e19 cm^-3, F_k = 1) its cross sections are 0.7780 of Table 1's CH4 n-based ones on average over 333-363 nm (0.781-0.775): the printed mean ratio 0.778 (p. 37). Against wilmouth_2020's Eq. (5) (UV only) the cross sections differ by -0.6 to +0.4 %, against its Eq. (7) by -1.1 to -0.4 % (computed 2026-09-29). Equation image eq_44add8785b39 checked."
+notes = "The authors' fit, A + B nu^2 by non-linear least squares (R^2 = 0.993), to n from their CH4 cross sections, Eq. (1) solved for n with F_k = 1, 'scaled to 288.15 K and 101,325 Pa' (p. 37): an ideal-gas density (N = 2.5469e19 cm^-3, Table 1 note a). A scattering-derived n, not a refractive-index measurement. Superseded for 250-650 nm by wilmouth_2020's Eq. (7), which includes these data. 'We recommend using the dispersion relation derived in this work (Eq. (4)) for CH4 in the UV-A spectral region' (p. 39); uncertainty about 1.6 % in cross section."

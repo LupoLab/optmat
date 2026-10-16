@@ -1,0 +1,253 @@
+citation = "R. L. Farrow and L. A. Rahn, J. Opt. Soc. Am. B 2, 903 (1985)"
+doi = "10.1364/josab.2.000903"
+library = "Farrow_1985_InterpretingCoherentAnti"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Crossed-beam, polarization-resolved CARS with a frequency-doubled Nd:YAG pump \
+(532 nm; single axial mode <= 0.01 cm^-1, or multimode 0.7 cm^-1) and a pulsed dye \
+probe (Stokes, <= 0.03 cm^-1); fully resolved N2 Q-branch spectra in 1.00 % N2 in Ar \
+and the O(18) line of pure N2, 297 K, 200-1000 Torr, fitted with theoretical spectra \
+(Schrotter and Klockner's Q-branch cross section, argon-broadened linewidths measured \
+by inverse Raman spectroscopy, Table 1) to find the nonresonant susceptibility \
+relative to the N2 resonant one."""
+notes = """Nonresonant CARS susceptibilities of Ar and N2 referenced to the N2 Raman \
+resonance (the paper's main subject is the convolution of CARS spectra with multimode \
+pumps; Table 3's concentration errors are not extracted). Table 1's N2-Ar \
+collisional-broadening coefficients are the Raman dataset table1_Ar (added 2026-09-26, \
+TC-439; see its notes).
+
+Definition: Table 2's caption: 'chi_nr measurements expressed using the definition of \
+relation (1)', Yuratich's expression, relation (1), p. 903: I_4 proportional to the \
+integral of |sum_j K_j L_j(w1 - w3) + chi_nr|^2 I_1 I_2 I_3, with L_j = gamma_j/(w_j - w + \
+w_3 - i gamma_j) and K_j = c^4 Delta N_j (d sigma/d Omega)_j / (hbar w_3^4 gamma_j), i.e. \
+the CARS-literature susceptibility per unit volume, chi^CARS (Rosasco and Hurst's Eq. \
+(A4), whose P(w_as) = (1/4) chi^CARS E_L^2 E_s*, Eq. (A5), with the E/2 amplitude \
+convention). The paper does not print the density; the values are per amagat \
+(2.687e19 cm^-3): Table 2's Ref. 13 column equals 3 x Lundeen et al.'s per-molecule \
+chi x 2.687e19 (Ar 131e-39 -> 10.56, N2 105e-39 -> 8.46, N2 +-14 -> +-1.13, printed 10.6, \
+8.5 +- 1.1) and its Ref. 12 column equals 12 x Rosasco and Hurst's 3 sigma/24 at 1 amagat \
+(Ar 0.788 -> 9.46, printed 9.5), as Rosasco and Hurst's (A6)-(A7) and (A26)-(A28) \
+require (checked 2026-09-26). Hence chi^CARS = 12 chi_1111 = 3 sigma/2 = N0 gamma_T/2 at \
+1 amagat: gamma_T = 2 chi^CARS/N0 (1e-18 cm^3/erg per amagat = 7.443e-38 esu = 147.8 au). \
+These are nonlinear susceptibilities per amagat, without a state (unit recorded as \
+cm3/(erg amagat), as Farrow et al. 1987 and Hahn and Lee 1995 print it; this paper \
+prints only 'cm^3/erg').
+
+Results (p. 904): fitting the resolved spectra required reducing Hall and Eckbreth's \
+chi_nr (Rado rescaled: Ar 11.6, N2 10.1, Figs. 1, 2) by 17 % for Ar (+-6 % from the fit) \
+and 16 +- 8 % for N2: chi_nr = 9.6 +- 1.0 (Ar) and 8.5 +- 0.9 (N2) x 10^-18 cm^3/erg in \
+the text, but Table 2 prints N2 8.5 +- 1.3 (image checked): the uncertainties disagree, \
+unresolved; the table's is recorded. The N2 value comes from the O(18) line (linewidth \
+0.05 +- 0.007 cm^-1 HWHM at 1000 Torr, inferred from the CARS spectrum), the Ar value \
+from the Q branch of 1 % N2 in Ar with IRS-measured widths. 'Our error bounds for the \
+chi_nr of nitrogen arise predominantly from uncertainties in linewidth, the dependence \
+of chi_r on the Raman depolarization ratio as well as the cross section, and the \
+moderate temperature sensitivity of the J = 18 state' (p. 904).
+
+Part: the CARS nonresonant background; for Ar electronic; for N2 the background near \
+its Raman lines, i.e. electronic plus small off-resonant Raman contributions not \
+separated (Lundeen et al. compute -3 and +3 of 105 for the vibrational and rotational \
+tails at 4155 cm^-1): recorded electronic, with that caveat. The orientational term \
+does not enter CARS at these detunings."""
+
+
+[[datasets]]
+id = "this_work_Ar"
+material = "Ar"
+file = "Ar/farrow_1985__this_work_Ar.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column This Work: 9.6 +- 1.0 (Q branch of 1 % N2 in Ar, 532 nm pump). CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "this_work_N2"
+material = "N2"
+file = "N2/farrow_1985__this_work_N2.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column This Work: 8.5 +- 1.3 (the text, p. 904, says +- 0.9; O(18) of pure N2, 532 nm pump). CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "hall_eckbreth_Ar"
+material = "Ar"
+file = "Ar/farrow_1985__hall_eckbreth_Ar.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. J. Hall and A. C. Eckbreth, in Laser Applications, Vol. 5, edited by J. F. Ready and R. K. Erf (Academic, New York, 1984), p. 213"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 1 (Hall and Eckbreth): 'scaled from the results of Rado and thus simply represent a correction factor different from that discussed in Ref. 13', 'currently the most widely used values' (note a). Rado's ruby experiment (694.3 nm); no uncertainty. CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "hall_eckbreth_N2"
+material = "N2"
+file = "N2/farrow_1985__hall_eckbreth_N2.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. J. Hall and A. C. Eckbreth, in Laser Applications, Vol. 5, edited by J. F. Ready and R. K. Erf (Academic, New York, 1984), p. 213"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 1 (Hall and Eckbreth), Rado rescaled (note a); 694.3 nm; no uncertainty. CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "rosasco_hurst_Ar"
+material = "Ar"
+file = "Ar/farrow_1985__rosasco_hurst_Ar.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["rosasco_1985"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 12 (Rosasco and Hurst, 'to be published'; = rosasco_1985, whose Table IV 3 sigma/24 = 0.788 x 12 = 9.46): phase-modulated cw coherent Raman, 676.4 nm pump (Kr-ion line, standard air). CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "lundeen_Ar"
+material = "Ar"
+file = "Ar/farrow_1985__lundeen_Ar.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 13 (Lundeen et al.): their 131e-39 cm^6/(erg molecule) x 3 x 2.687e19 = 10.56; 532 nm pump. CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "lundeen_N2"
+material = "N2"
+file = "N2/farrow_1985__lundeen_N2.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 13 (Lundeen et al.): their (105 +- 14)e-39 x 3 x 2.687e19 = 8.46 +- 1.13; 532 nm pump. CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "rado_lundeen_Ar"
+material = "Ar"
+file = "Ar/farrow_1985__rado_lundeen_Ar.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 11 (Rado) 'as scaled by' Lundeen et al. (p. 905): Lundeen's Rado column (Ar 118) x 3 x 2.687e19 = 9.51; ruby 694.3 nm. CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "rado_lundeen_N2"
+material = "N2"
+file = "N2/farrow_1985__rado_lundeen_N2.csv"
+table = "tbl_0abf9a86f7ed"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 2 (p. 904), chi_nr in 10^-18 cm^3/erg per amagat (the CARS chi^CARS of relation (1); gamma_T = 2 chi^CARS/N0, about 148 au per unit; see the source notes), column Ref. 11 (Rado) as scaled by Lundeen et al.: N2 is that scaling's reference (105 +- 14 -> 8.46); the +- 0.8 is not Lundeen's +- 1.1: unexplained; ruby 694.3 nm. CARS chi(-w_as; w_p, w_p, -w_s)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "table1_Ar"
+material = "N2"
+file = "N2/farrow_1985__table1_Ar.csv"
+table = "tbl_da579f77cd0b"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+excluded_rows = { "Q(0)" = "printed '55^a', note a 'Extrapolated' (the paper's extrapolation, not a measurement)", "Q(1)" = "printed '46^a', note a 'Extrapolated' (the paper's extrapolation, not a measurement)" }
+notes = "Table 1 (p. 904), 'Argon Collisional-Broadening Coefficients for Nitrogen Q-Branch Transitions (HWHM x 10^3 cm^-1)': the HALF width at half maximum of the N2 Q(J) lines (v = 0 -> 1) per unit pressure of Ar, 'pressure-broadening coefficients' (p. 904). The caption prints only 'cm^-1'; per atm is inferred: the text (p. 906) gives HWHM 'of the order of 0.015 cm^-1' for 1-5 % N2 in Ar at 300 Torr (0.395 atm), i.e. about 0.038 cm^-1/atm, as the table's mid-J values. Measured by high-resolution inverse Raman spectroscopy (Ref. 8) in a 25 % N2-in-Ar mixture, 'correcting for the nitrogen-nitrogen broadening using the nitrogen self-broadening coefficients reported by Rosasco' (Ref. 9: Rosasco, Lempert, Hurst and Fein, Chem. Phys. Lett. 97, 435 (1983) = rosasco_1983, whose Table 1 gives the N2 self-broadening HWHM per atm at 298 K, J = 0-18; curated 2026-09-27), p. 904. The IRS temperature is not stated (the CARS measurements are at 297 K). The '(n)' is the error in the last digit, its level not stated. J = 0, 1 are extrapolated (excluded). Added 2026-09-26 (TC-439)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "Q(J), v = 0 -> 1, per row"
+width = "hwhm"
+perturber = "Ar"

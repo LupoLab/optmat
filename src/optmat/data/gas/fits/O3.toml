@@ -1,0 +1,37 @@
+# Ozone: the measured absorption (Kramers-Kronig, data/gas/absorption/O3.toml, 293 K, 50 cm^-1
+# smoothing) to 12 eV, Kumar & Thakkar's distribution C above 20.6 eV (fixed), one fitted
+# oscillator for 12-20.6 eV (the band their refractivity constraint rescales), and the
+# HITRAN vibrational bands. Taken up on 2026-09-25 (TC-218).
+gas = "O3"
+description = "Ozone: the measured absorption spectrum to 12 eV as a fixed Kramers-Kronig term (Serdyuchenko et al. 2014 at 293 K from 213 nm, Yoshino et al. 1993 to 185 nm, Mason et al. 1996 and Ogawa & Cook 1958 to 12 eV; Gaussian smoothing 50 cm^-1 FWHM), Kumar & Thakkar's distribution C above 20.6 eV (fixed), one oscillator for 12-20.6 eV fitted to Swift et al.'s 458-1315 nm polarizabilities (10 %), the Cuthbertsons' adopted 546.1 nm refractivity (1-2 %) and Kalugina & Thakkar's electronic static value plus Naves et al.'s zero-point vibrational correction (1.46 +- 0.4 a.u.; Sharipov's 0.088 would lower n - 1 by 2.5 %), and HITRAN's vibrational bands below 7000 cm^-1. Complex: the imaginary part is the measured absorption. The Cuthbertsons' visible dispersion is a validator: its shape is 20 % steeper than the absorption spectrum allows (TC-218). Valid from 185 nm to 3.8 um at 293 K; the Huggins and Wulf bands depend on temperature."
+range_nm = [185.0, 3800.0]
+
+validators = [
+    "cuthbertson_1914/ozone_dispersion",
+]
+
+[model]
+effective = 0
+effective_min_energy_hartree = 0.5
+chi0_au = 0.0
+starts = 2
+absorption = true
+infrared_max_wavenumber = 2500.0   # 99.99 % of the vibrational static; weaker bands above
+fixed_intervals = { dataset = "kumar_2011_supplement/idos_C", from_ev = 20.6 }
+
+[[model.lines]]
+label = "12-20.6 eV (Kumar & Thakkar's interval 18)"
+wavelength_nm = 76.79   # the effective energy of Ogawa & Cook's 12-20.6 eV shape, 16.15 eV
+f_prior = 2.179         # distribution C
+f_sigma = 1.0           # weak: A gives 1.83, B1 2.48
+
+[[fitted]]
+key = "swift_1988/experiment_O3"
+
+[[fitted]]
+key = "cuthbertson_1914/ozone_adopted"
+
+[[fitted]]
+key = "kalugina_2015/best_estimate"
+infrared = false
+correction_au = [1.46, 0.4]

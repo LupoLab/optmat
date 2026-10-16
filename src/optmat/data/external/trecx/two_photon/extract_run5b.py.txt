@@ -1,0 +1,158 @@
+"""Two-photon TDSE campaign, addendum 3: the run 5 checks (haCC He 1s2s) -> run5b/results.csv, run5b/scan_fit.csv, run5b/pop_<name>.csv
+
+    python extract_run5b.py        (on the cluster, in tdse_two_photon/; reads manifest_run5b.csv and the run 5 rows of
+                                    manifest_runs2to6.csv)
+
+For every run5b run and every run 5 run (haCC, 1 channel, lMax 10, rMax 40; occE build, so `occupation_energies`):
+- P(1s2s)(t) = OccDual{H0:1} (state 1 of the Occupation set, -0.1435 au relative to He+, 20.636 eV above state 0).
+- After the pulse, t > t_post = 2 T_eff (T_eff the chirped intensity FWHM; field envelope < 4e-3 of its peak):
+  mean, end value, (max - min)/mean, rms of the deviation from the mean, the relative slope per 1000 au (linear fit),
+  and the dominant beat frequency of the deviation (non-uniform DFT; meaningful only at the 1 au print step of run5b;
+  run 5 printed every 10 au, so its beat is aliased).
+- The no-field run: the same statistics over its whole window (the OccDual floor).
+- Lowest order: S2(Omega) = int E+(t)^2 exp(i Omega t) dt, E+ ~ exp(-i omega t) the positive-frequency part of the field
+  as run (A = peakA x the pulse file, dt 0.01 au; E = -dA/dt), Omega_f = E(state 1) - E(state 0) of haCC's Occupation
+  set. K = P_mean / |S2(Omega_f)|^2 is the effective two-photon strength |M|^2/4 (au) if lowest order holds; it is
+  independent of duration, chirp and carrier only if Omega_f is where the propagation puts the resonance.
+- Scan fit: the seven 10 fs, 1e12 carrier points fitted by P_i = K |S2_i(Omega)|^2 with K and Omega free (least squares
+  in P, Omega on a 0.1 meV grid +-0.3 eV around Omega_f). K and the TDSE/PT ratios are then also given at the fitted
+  Omega (K_fit).
+"""
+import csv, os, re
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+HA = 27.211386245988
+FS = 41.341373335
+TR = getattr(np, "trapezoid", getattr(np, "trapz", None))
+_cache = {}
+
+
+def expec(f):
+    hdr = [l[2:].strip() for l in open(f) if l.startswith("# ") and not l.startswith("#  ")]
+    a = np.loadtxt(f, comments="#", ndmin=2)
+    a = a[: int(np.argmax(a[:, 0])) + 1]
+    return {n: j for j, n in enumerate(["Time", "CPU"] + hdr[: a.shape[1] - 2])}, a
+
+
+def eplus(inp):
+    """t, E+(t) of the pulse as run (None for a run with intensity 0)."""
+    pf = re.search(r"^file, (\S+), (\S+), peakA", open(inp).read(), re.M)
+    if pf is None:
+        return None
+    key = (pf.group(1), pf.group(2))
+    if key not in _cache:
+        P = np.loadtxt(pf.group(1), comments="#")
+        t, A = P[:, 0], P[:, 1] * float(pf.group(2))
+        E = -np.gradient(A, t, edge_order=2)
+        X = np.fft.fft(E); fq = np.fft.fftfreq(len(t)); X[fq < 0] = 0; X[fq > 0] *= 2
+        _cache[key] = (t, np.conj(np.fft.ifft(X)) / 2)
+    return _cache[key]
+
+
+def S2(tE, Om):
+    t, Ep = tE
+    return complex(TR(Ep ** 2 * np.exp(1j * Om * t), t))
+
+
+def post_stats(t, p, t0):
+    s = t > t0
+    ts, ps = t[s], p[s]
+    m = float(ps.mean())
+    o = dict(t_post=t0, n_post=int(s.sum()), P_mean=m, P_end=float(ps[-1]), P_min=float(ps.min()), P_max=float(ps.max()),
+             spread=float((ps.max() - ps.min()) / m), rms_rel=float(np.sqrt(np.mean((ps - m) ** 2)) / m))
+    c = np.polyfit(ts - ts.mean(), ps, 1)
+    o["slope_rel_per_1000au"] = float(c[0] * 1000 / m)
+    o["dt_print"] = float(np.median(np.diff(ts)))
+    if len(ts) < 20:
+        o["beat_omega_au"] = o["beat_period_au"] = float("nan")
+        return o
+    # dominant beat: non-uniform DFT (expec has a few irregular rows), Hann window, omega 0.2-3 au (0.0001 au grid)
+    d = (ps - np.polyval(c, ts - ts.mean())) * np.hanning(len(ps))
+    w = np.linspace(0.2, 3.0, 28001)
+    F = np.concatenate([np.abs(np.exp(-1j * np.outer(wc, ts)) @ d) for wc in np.array_split(w, 28)])
+    o["beat_omega_au"] = float(w[int(np.argmax(F))]); o["beat_period_au"] = 2 * np.pi / o["beat_omega_au"]
+    o["beat_eV"] = o["beat_omega_au"] * HA
+    return o
+
+
+def main():
+    man = [r for r in csv.DictReader(open(f"{HERE}/manifest_run5b.csv"))]
+    man += [r for r in csv.DictReader(open(f"{HERE}/manifest_runs2to6.csv")) if r["run"] == "run5"]
+    rows = []
+    for r in man:
+        name, run = r["name"], r["run"]
+        d = f"{HERE}/{run}/hacc/{name}"; rd = f"{d}/{name}/0000"
+        o = dict(run=run, name=name, done=os.path.isfile(f"{d}/{name}.done"), fwhm_fs=float(r["fwhm_fs"]),
+                 chirp_fs2=float(r.get("chirp_fs2") or 0), T_eff_fs=float(r["T_eff_fs"]), omega1_eV=float(r["omega1_eV"]),
+                 I_Wcm2=float(r["I_per_colour"]), detuning_meV=1000 * float(r["detuning_eV"]) if r.get("detuning_eV") else "",
+                 accuracy=r.get("accuracy") or "1e-7")
+        col, a = expec(f"{rd}/expec")
+        occ = [j for n, j in col.items() if n.startswith("OccDual")]
+        jn = col["Overlap"]
+        en = [l.split() for l in open(f"{rd}/occupation_energies") if not l.startswith("#")]
+        E0, E1 = float(en[0][1]), float(en[1][1])
+        o["E_state0"], o["E_state1"] = E0, E1
+        o["Omega_f_eV"] = (E1 - E0) * HA
+        o["t_end"] = float(a[-1, 0]); o["norm_loss_end"] = float(1 - a[-1, jn])
+        t, p = a[:, 0], a[:, occ[1]]
+        nofield = o["I_Wcm2"] == 0
+        o.update(post_stats(t, p, t[0] - 1 if nofield else 2 * o["T_eff_fs"] * FS))
+        o["P_ground_end"] = float(a[-1, occ[0]])
+        if run == "run5b":
+            with open(f"{HERE}/run5b/pop_{name}.csv", "w") as fo:
+                fo.write("t_au,P_ground,P_1s2s,P_1s2p,P_1s3s,P_1s3d,norm\n")
+                for row in a:
+                    fo.write(",".join(f"{x:.10e}" for x in (row[0], row[occ[0]], row[occ[1]], row[occ[2]], row[occ[4]], row[occ[5]], row[jn])) + "\n")
+        if not nofield:
+            tE = eplus(f"{d}/{name}.inp")
+            o["S2_abs2"] = abs(S2(tE, E1 - E0)) ** 2
+            o["K"] = o["P_mean"] / o["S2_abs2"]
+            o["_tE"] = tE
+        st = f"{d}/{name}.stderr"
+        if os.path.isfile(st):
+            mm = re.search(r"Elapsed \(wall clock\) time.*: (\S+)", open(st).read())
+            if mm:
+                q = [float(x) for x in mm.group(1).split(":")]
+                o["wall_s"] = sum(x * 60 ** i for i, x in enumerate(reversed(q)))
+            mm = re.search(r"Exit status: (\d+)", open(st).read())
+            o["exit"] = mm.group(1) if mm else ""
+        rows.append(o)
+
+    # scan fit
+    scan = sorted([o for o in rows if "_scan_" in o["name"]], key=lambda o: o["detuning_meV"])
+    Om0 = scan[0]["E_state1"] - scan[0]["E_state0"]
+    grid = Om0 + np.arange(-3000, 3001) * 1e-4 / HA
+    P = np.array([o["P_mean"] for o in scan])
+    best = None
+    fitrows = []
+    for Om in grid:
+        s = np.array([abs(S2(o["_tE"], Om)) ** 2 for o in scan])
+        K = float(P @ s / (s @ s)); res = float(np.sum((P - K * s) ** 2) / np.sum(P ** 2))
+        fitrows.append((Om, K, res))
+        if best is None or res < best[2]:
+            best = (Om, K, res)
+    Omf, Kf, resf = best
+    with open(f"{HERE}/run5b/scan_fit.csv", "w") as f:
+        f.write("Omega_eV,K,rel_residual\n")
+        for Om, K, res in fitrows[::10]:
+            f.write(f"{Om * HA:.5f},{K:.6e},{res:.6e}\n")
+    print(f"scan fit: Omega = {Omf * HA:.5f} eV (Omega_f {Om0 * HA:.5f}, shift {1000 * (Omf - Om0) * HA:+.1f} meV), K = {Kf:.5e}, rel residual {resf:.2e}")
+    for o in rows:
+        if "_tE" in o:
+            s = abs(S2(o["_tE"], Omf)) ** 2
+            o["S2_abs2_fit"] = s; o["K_fit"] = o["P_mean"] / s; o["ratio_fit"] = o["P_mean"] / (Kf * s)
+            del o["_tE"]
+    keys = []
+    for o in rows:
+        keys += [k for k in o if k not in keys]
+    with open(f"{HERE}/run5b/results.csv", "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=keys); w.writeheader(); w.writerows(rows)
+    for o in rows:
+        print(f"{o['name']:28s} Pmean {o['P_mean']:.4e} end {o['P_end']:.4e} spread {o['spread']:.3f} rms {o['rms_rel']:.4f} "
+              f"slope {o['slope_rel_per_1000au']:+.4f} beat {o['beat_omega_au']:.4f} K {o.get('K', float('nan')):.4e} "
+              f"Kfit {o.get('K_fit', float('nan')):.4e} r {o.get('ratio_fit', float('nan')):.3f}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,297 @@
+citation = "D. C. Hanna, D. J. Pointer and D. J. Pratt, \"Stimulated Raman scattering of picosecond light pulses in hydrogen, deuterium, and methane\", IEEE J. Quantum Electron. 22, 332 (1986)"
+doi = "10.1109/jqe.1986.1072945"
+library = "Hanna_1986_StimulatedRamanScattering"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Stimulated Raman scattering thresholds of about 100 ps pulses (mode-locked, \
+Q-switched Nd:YAG at 1.06 um, about 70 ps at 0.53 um after doubling; also a \
+mode-locked dye laser near 560 nm) in H2, D2 and CH4 at 30 atm, in 0.5 and 1 m cells \
+(tight focusing) and in fused-silica capillaries of 200 um bore, 40 and 78 cm long \
+(pp. 332-335). The measured quantities are threshold energies (1 % conversion, Tables \
+II-III); the Raman parameters of Table I are calculated from published cross sections \
+and linewidths (Eqs. 1-2, p. 332-333)."""
+notes = """Journal pages 332-336 = PDF pages 1-5 (page n of the PDF is p. 331 + n). \
+Identity checked on the first page (IEEE J. Quantum Electron. QE-22, No. 2).
+
+NOTHING IN TABLE I IS MEASURED HERE. Table I (p. 333), 'Steady-state Raman gain g_R and \
+dephasing time T2, both calculated at 30 atm pressure':
+- dsigma/dOmega (m^2/sr, the intensity definition: 'defined here in terms of the ratio \
+of scattered and incident intensities', p. 332; (dsigma/dOmega)_photons = (omega_p/ \
+omega_s)(dsigma/dOmega)_intensity): for H2 and CH4 converted by Eq. (2) from Schrotter \
+and Klockner's tabulated relative normalized cross sections [17] (curated as \
+schrotter_1979, Table 4.2) to the pumps used, \
+with a single intermediate level at nu_ig = 90000 cm-1 (H2, D2) or 70000 cm-1 (CH4) \
+[18] (p. 333); for D2 '* Scaled from the measured value at 694nm reported by Devir \
+[22]'. Reproduced (converted), use = "reproduced".
+- g_R (m/W): calculated by Eq. (1), g_R = 16 pi^2 c^2 Delta N dsigma/dOmega/(n_s^2 hbar \
+omega_s^3 Delta omega_R), Delta omega_R the FWHM linewidth (angular frequency), Delta N \
+= N_tot (CH4, the Q branch unresolved at 30 atm), 0.66 N_tot (H2, J = 1) and 0.38 N_tot \
+(D2, J = 2) [21] (p. 333). The paper's own calculation: use = "check".
+- T2 (ps) = 2/Delta omega_R (p. 333), from the linewidths below at 30 atm: use = \
+"check".
+- the shifts (4155, 2987, 2917 cm-1) as printed, source not stated (use = "check"). \
+solprop's D2 vibrational frequency cites this paper: 2987 cm-1.
+The pump wavelengths are printed as 1.06 um (9,391 cm-1) and 0.53 um (18,782 cm-1), \
+nominal Nd:YAG values; the abscissa is the printed um value (1/9391 cm = 1.0648 um).
+
+LINEWIDTHS USED (p. 333, reproduced; quoted): 'Delta omega_R is the Raman linewidth \
+(angular frequency, FWHM)' (p. 332). 'For CH4, Delta nu_R = 0.32 + 0.012p cm-1 where p is \
+in atmospheres [19] (Taira, Ide and Takuma, Chem. Phys. Lett. 91, 299 (1982)); for H2 \
+and D2 [Q(1) and Q(2) transitions, respectively] since we operate at pressures where \
+the linewidth is proportional to pressure (>10 atmospheres) we use the line broadening \
+coefficients of 51 MHz/atm [16], and 70 MHz/atm [20], respectively' ([16] Bischel and \
+Black 1983 with Owyoung 1983; [20] Murray and Javan, J. Mol. Spectrosc. 42, 1 (1972)). \
+The H2 and D2 coefficients are the datasets linewidth_H2 and linewidth_D2, the CH4 law \
+the formula linewidth_CH4; all three are FWHM as this paper uses them (the cited papers \
+are not in the library: their own FWHM/HWHM statements are unchecked). Temperature not \
+stated (room temperature). Since 2026-09-27 [20] is curated (murray_1972): its widths \
+are FWHM in its own words, and its D2 Q_1(2) coefficient, 2.2e-3 cm-1/amagat, does not \
+give 70 MHz/atm (see linewidth_D2).
+
+REPRODUCTION (2026-09-26, scratch): T2 = 2/Delta omega_R gives 208.0 ps (H2, 51 MHz/atm x \
+30), 151.6 ps (D2, printed 150) and 15.6 ps (CH4, printed 16). Eq. (1) with n_s = 1 \
+reproduces the printed g_R to 1-4 % (H2 0.960 and 1.019, D2 0.962 at 1.06 um, CH4 0.991 \
+and 0.996 of the printed values) only with N_tot the density of 30 atm at 273.15 K (30 \
+amagat); at 293-300 K the calculation falls 5-13 % below. The temperature is not stated: \
+the state 30 atm, 273.15 K is this inference, not a printed statement. D2 at 0.53 um is \
+off by a factor 10.5 with the printed cross section: see the erratum.
+
+ERRATUM (D2, 0.53 um cross section): printed 8.0 x 10^-36, read 8.0 x 10^-35. Both D2 \
+values are scaled from one Devir value by Eq. (2); the ratio of Eq. (2) between the two \
+pumps is (15795/6404)^4 x [(1/71218 + 1/105795)/(1/80609 + 1/96404)]^2 = 37.0 x 1.064 = \
+39.4, so 2.0e-36 at 1.06 um gives 7.9e-35 at 0.53 um; and Eq. (1) with the printed g_R = \
+1.0e-11 m/W needs 8.4e-35 (at 30 amagat). The printed g_R ratio 0.53/1.06 um (2.7) \
+matches H2's (2.85) and CH4's (2.6). The table image was checked: it prints 10^-36.
+
+TABLES II AND III (pp. 334-335; notes only, no quantity): measured and calculated \
+threshold energies (1 % conversion to the first Stokes) for tight focusing (Table II) \
+and capillary waveguides (Table III), 30 atm, with the geometry (l/b, l, l_eff) and \
+pulse length of each; measured and calculated agree to within a factor of two (p. 334). \
+E.g. CH4 in a 0.78 m capillary at 0.53 um: measured 14 uJ (T_p = 67 ps), calculated 13 \
+uJ. Dye-laser pumped CH4 (35 cm cell, l/b ~ 10): thresholds 120, 170 and 200 uJ at 30, 20 \
+and 15 atm (p. 335). Fig. 2: D2 threshold energy against pressure (a figure only).
+
+ISOTOPOLOGUES: natural H2 and D2 (normal hydrogen and deuterium: the J = 1 and J = 2 \
+fractions 0.66 and 0.38 are room-temperature populations [21]); 12CH4."""
+
+[[datasets]]
+id = "shift_H2"
+material = "H2"
+file = "H2/hanna_1986__shift_H2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 333), 'Shift 4155cm-1' of H2 Q(1), as used in the calculation; source not stated."
+[datasets.parameters]
+transition = "v=0-1 Q(1)"
+
+[[datasets]]
+id = "shift_D2"
+material = "D2"
+file = "D2/hanna_1986__shift_D2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 333), 'Shift 2987cm-1' of D2 Q(2), as used in the calculation; source not stated. solprop's D2 vibrational frequency (2987.0 cm-1) cites this paper."
+[datasets.parameters]
+transition = "v=0-1 Q(2)"
+
+[[datasets]]
+id = "shift_CH4"
+material = "CH4"
+file = "CH4/hanna_1986__shift_CH4.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 333), 'Shift 2917cm-1' of the CH4 (nu1) Q branch, as used in the calculation; source not stated."
+[datasets.parameters]
+transition = "nu1 Q branch"
+
+[[datasets]]
+id = "dsigma_H2"
+material = "H2"
+file = "H2/hanna_1986__dsigma_H2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_cross_section"
+unit = "m2/sr"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["schrotter_1979"]
+notes = "Table I (p. 333), dsigma/dOmega of H2 Q(1) at the pumps 1.06 and 0.53 um (nominal), converted by Eq. (2) from Schrotter and Klockner's relative normalized cross sections (nu_ig = 90000 cm-1); intensity definition (p. 332). Checked against the original (schrotter_1979 Table 4.2): Eq. (2) with Sigma_j = 3.45 at 514.5 nm (sigma_H2_b, Fouche and Chang) gives 1.23e-36 and 7.93e-35 m^2/sr (printed 1.2e-36 and 7.9e-35); the values back out Sigma_j = 3.38-3.44 (from 514.5 nm) or 3.41-3.47 (from 488 nm), so Hanna et al. used H2's 514.5 nm value 3.45."
+[datasets.parameters]
+transition = "v=0-1 Q(1)"
+
+[[datasets]]
+id = "dsigma_D2"
+material = "D2"
+file = "D2/hanna_1986__dsigma_D2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_cross_section"
+unit = "m2/sr"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["A. D. Devir, J. Appl. Phys. 49, 3110 (1978)"]
+notes = "Table I (p. 333), dsigma/dOmega of D2 Q(2) at 1.06 and 0.53 um, '* Scaled from the measured value at 694nm reported by Devir [22]' (by Eq. 2, nu_ig = 90000 cm-1); intensity definition. The 0.53 um value is printed 8.0 x 10^-36, corrected to 8.0 x 10^-35 by the erratum."
+[datasets.parameters]
+transition = "v=0-1 Q(2)"
+
+[[datasets]]
+id = "dsigma_CH4"
+material = "CH4"
+file = "CH4/hanna_1986__dsigma_CH4.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_cross_section"
+unit = "m2/sr"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["schrotter_1979"]
+notes = "Table I (p. 333), dsigma/dOmega of the CH4 nu1 Q branch at 1.06 and 0.53 um, converted by Eq. (2) from Schrotter and Klockner (nu_ig = 70000 cm-1); intensity definition. Checked against the original (schrotter_1979 Table 4.2): the printed values back out Sigma_j = 8.86 (1.06 um) and 8.53 (0.53 um) from 514.5 nm, or 9.02 and 8.68 from 488 nm; Table 4.2's CH4 values are 9.1, 8.7 and 9.3 at 515 nm and 6.8, 9.2 and 8.7 at 488 nm (mean of all thirteen 8.55, Table 4.4's 8.56). Consistent to 2-4 %, but no single printed Sigma_j reproduces both pumps (the one-digit rounding of 7.0 and 2.7 allows 1-2 %)."
+[datasets.parameters]
+transition = "nu1 Q branch"
+
+[[datasets]]
+id = "gain_H2"
+material = "H2"
+file = "H2/hanna_1986__gain_H2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_gain"
+unit = "m/W"
+abscissa_unit = "um"
+state = { pressure_atm = 30.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "Table I (p. 333), steady-state g_R of H2 Q(1) at 30 atm, calculated by Eq. (1) with dsigma_H2, Delta N = 0.66 N_tot and the FWHM 51 MHz/atm x 30 atm. The temperature is not stated: 273.15 K is inferred (Eq. (1) reproduces the printed values to 1-4 % only with the 30 atm, 0 C density; the record's notes)."
+[datasets.parameters]
+transition = "v=0-1 Q(1)"
+
+[[datasets]]
+id = "gain_D2"
+material = "D2"
+file = "D2/hanna_1986__gain_D2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_gain"
+unit = "m/W"
+abscissa_unit = "um"
+state = { pressure_atm = 30.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "Table I (p. 333), steady-state g_R of D2 Q(2) at 30 atm, Eq. (1) with dsigma_D2, Delta N = 0.38 N_tot and the FWHM 70 MHz/atm x 30 atm. Temperature inferred as for gain_H2."
+[datasets.parameters]
+transition = "v=0-1 Q(2)"
+
+[[datasets]]
+id = "gain_CH4"
+material = "CH4"
+file = "CH4/hanna_1986__gain_CH4.csv"
+table = "tbl_555a4008bd8a"
+quantity = "raman_gain"
+unit = "m/W"
+abscissa_unit = "um"
+state = { pressure_atm = 30.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "Table I (p. 333), steady-state g_R of the CH4 Q branch at 30 atm, Eq. (1) with dsigma_CH4, Delta N = N_tot and the FWHM 0.32 + 0.012 x 30 = 0.68 cm-1. Temperature inferred as for gain_H2."
+[datasets.parameters]
+transition = "nu1 Q branch"
+
+[[datasets]]
+id = "T2_H2"
+material = "H2"
+file = "H2/hanna_1986__T2_H2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table I (p. 333), T2 = 2/Delta omega_R of H2 Q(1) at 30 atm from the FWHM coefficient 51 MHz/atm (reproduced 208.0 ps). Calculated, not measured."
+[datasets.parameters]
+transition = "v=0-1 Q(1)"
+
+[[datasets]]
+id = "T2_D2"
+material = "D2"
+file = "D2/hanna_1986__T2_D2.csv"
+table = "tbl_555a4008bd8a"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table I (p. 333), T2 = 2/Delta omega_R of D2 Q(2) at 30 atm from 70 MHz/atm (reproduced 151.6 ps, printed 150). Calculated."
+[datasets.parameters]
+transition = "v=0-1 Q(2)"
+
+[[datasets]]
+id = "T2_CH4"
+material = "CH4"
+file = "CH4/hanna_1986__T2_CH4.csv"
+table = "tbl_555a4008bd8a"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table I (p. 333), T2 = 2/Delta omega_R of the CH4 Q branch at 30 atm from 0.32 + 0.012p cm-1 (reproduced 15.6 ps, printed 16). Calculated."
+[datasets.parameters]
+transition = "nu1 Q branch"
+
+[[datasets]]
+id = "linewidth_H2"
+material = "H2"
+table = "text"
+points = [["self", "", "51"]]
+quantity = "raman_linewidth"
+unit = "MHz/atm"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["W. K. Bischel and G. Black, in Excimer Lasers, C. K. Rhodes, H. Egger and H. Plummer, Eds. (American Institute of Physics, New York, 1983), pp. 181-187; A. Owyoung, Opt. Lett. 2, 91 (1983)"]
+notes = "p. 333: 'for H2 and D2 [Q(1) and Q(2) transitions, respectively] since we operate at pressures where the linewidth is proportional to pressure (>10 atmospheres) we use the line broadening coefficients of 51 MHz/atm [16], and 70 MHz/atm [20]'. Used as the FWHM Delta omega_R/2 pi ('Delta omega_R is the Raman linewidth (angular frequency, FWHM)', p. 332). No Dicke term (A/rho) is used: the law is linear, for p > 10 atm. Temperature not stated (room temperature)."
+[datasets.parameters]
+transition = "v=0-1 Q(1)"
+width = "fwhm"
+perturber = "self"
+
+[[datasets]]
+id = "linewidth_D2"
+material = "D2"
+table = "text"
+points = [["self", "", "70"]]
+quantity = "raman_linewidth"
+unit = "MHz/atm"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["murray_1972"]
+notes = "p. 333, as linewidth_H2: the D2 Q(2) broadening coefficient 70 MHz/atm [20], used as the FWHM, linear in pressure above 10 atm, no Dicke term. Temperature not stated. Re-pointed to murray_1972 (2026-09-27): its Table II D2 Q_1(2) is 2.2 +- 0.2 x 10^-3 cm-1 per amagat at 25 C (FWHM in its words) = 66.0 MHz/amagat, i.e. 60.4 MHz/atm at 25 C (1 atm = 0.916 amagat): 70 MHz/atm does not follow from it (it is within the error only as MHz/amagat, 66 +- 6); how Hanna et al. converted is not said."
+[datasets.parameters]
+transition = "v=0-1 Q(2)"
+width = "fwhm"
+perturber = "self"
+
+[[formulas]]
+id = "linewidth_CH4"
+material = "CH4"
+equation = "text, p. 333"
+printed = "Delta nu_R = 0.32 + 0.012p cm-1 where p is in atmospheres"
+variable = "p: the pressure of CH4 in atm"
+state = "not stated (room temperature)"
+density = "unknown"
+range = "not stated here (Taira et al.'s title: 1-50 atm)"
+coefficients = { constant_cm1 = "0.32", slope_cm1_per_atm = "0.012" }
+check = "At 30 atm, 0.68 cm-1, whose T2 = 2/(2 pi c Delta nu) = 15.6 ps reproduces Table I's 16 ps (2026-09-26)."
+notes = "The CH4 nu1 Q-branch linewidth (FWHM, as this paper uses it for Delta omega_R), reproduced from Y. Taira, K. Ide and H. Takuma, Chem. Phys. Lett. 91, 299 (1982) [19] (not in the library): a model input. The constant term is the unresolved Q-branch width at zero pressure, not a collision width."
+
+[[errata]]
+dataset = "dsigma_D2"
+row = "0.53 um pump"
+column = "value"
+printed = "8.0e-36"
+corrected = "8.0e-35"
+reason = "Both D2 values are scaled by Eq. (2) from one 694 nm value (Devir); Eq. (2) makes the 0.53 um value 39.4 times the 1.06 um one (2.0e-36 -> 7.9e-35), and Eq. (1) with the printed g_R = 1.0e-11 m/W needs 8.4e-35 m^2/sr. The exponent -36 is a misprint for -35."
+evidence = "Table I image checked: '8.0x10-36*'. Ratio of Eq. (2) between the pumps: (15795/6404)^4 x [(1/71218 + 1/105795)/(1/80609 + 1/96404)]^2 = 37.0 x 1.064 = 39.4; H2's printed ratio (66) and CH4's (39) are of the same order, D2's printed 4.0 is not; the printed g_R ratio 0.53/1.06 um of D2 (2.7) matches H2 (2.85) and CH4 (2.6). Recomputed 2026-09-26."

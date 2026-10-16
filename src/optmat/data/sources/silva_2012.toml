@@ -1,0 +1,123 @@
+citation = "F. Silva, D. R. Austin, A. Thai, M. Baudisch, M. Hemmer, D. Faccio, A. Couairon and J. Biegert, \"Multi-octave supercontinuum generation from mid-infrared filamentation in a bulk crystal\", Nat. Commun. 3, 807 (2012)"
+doi = "10.1038/ncomms1816"
+library = "Silva_2012_MultiOctaveSupercontinuum"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Filamentation of CEP-stable 85-fs, 3.1-um pulses (OPCPA, 160 kHz, 6.9 uJ, 76 MW) \
+in a 2-mm YAG plate; angularly resolved spectra 450-4500 nm with three spectrometers, \
+f-2f stability. Simulated with a carrier-resolving forward Maxwell equation (Eqs. 1-3) \
+with Keldysh ionization and Drude avalanche (Methods)."""
+notes = """Article pages 1-6 (Nat. Commun. 3:807). Identity validated with warnings (the \
+library's caption-layout check); title, authors and journal checked against page 1.
+
+MEASURED (no curated quantity): the continuum spans 450-4500 nm; 'The peak power was \
+76 MW, which is approximately three times above the critical power for YAG' (p. 2), so \
+P_cr ~ 25 MW is implied but not printed; induced ellipticity below 0.1; f-2f phase \
+standard deviation 259 mrad over 10 min. FOCUSING (finding): the text says 'focussed by a \
+75-mm focal length CaF2 lens to a 1/e2 diameter of 50 um', Fig. 1's caption 'a 50-mm \
+focal length CaF2 lens' (p. 2; pdf text layer checked). Crystal orientation not stated \
+(the anisotropy of chi(3) 'with a weak dependence on the crystal orientation').
+
+SIMULATION INPUTS (Methods, pp. 4-5; datasets assumed): 'n2 = 7 x 10^-16 cm2 W^-1 (refs \
+28-30)' (Kushida et al., Phys. Rev. 167, 289 (1968); Powell et al., Opt. Lett. 14, 1204 \
+(1989); Krupke et al., J. Opt. Soc. Am. B 3, 102 (1986)); 'ionization potential U_i = \
+6.5 eV'; 'an estimated collision time of tau_c = 3 fs, which yields an inverse \
+Bremsstrahlung cross-section sigma = 2.6 x 10^-20 cm2'; chromatic dispersion 'via a \
+Sellmeier relation (27)' (Filer et al., Advanced Solid State Lasers 1990, not printed); \
+the alternative multiphoton rate: 'changing Keldysh's ionization rates into their \
+multiphoton ionization counterparts ... leads to a fishtail at 550 nm when the \
+cross-section coefficient is decreased below sigma_17 = 1 x 10^-209 s^-1 cm34 W^-17' \
+(p. 5; 6.5 eV/0.400 eV = 16.3, so 17 photons: checked). The ionization rates are 'shown in \
+Supplementary Fig. S2': the supplementary information is not in the library.
+
+FINDINGS (2026-09-26). (1) sigma = 2.6e-20 cm2 is not the Drude cross section for \
+tau_c = 3 fs at 3.1 um: e^2 tau_c/(m_e n0 eps0 c (1 + omega0^2 tau_c^2)) = 7.37e-17/n0 \
+cm2, so 2.6e-20 would need n0 ~ 2800; cheng_2018 takes the same tau_c = 3 fs 'from [4]' \
+(this paper) and gets 2.06e-17 cm2 at 2.05 um, which is the Drude value for n0 = 1.80. The \
+evolution equation is printed d_t rho = W(I) + (sigma/U_i) rho E, with E (not I) in the \
+avalanche term, which may be why (a different normalization), but it is not explained. \
+(2) P_cr = lambda^2/(2 pi n0 n2) with n2 = 7e-16 cm2/W at 3.1 um is 21.9/n0 MW, at most \
+21.9 MW for any n0 >= 1, so 76 MW is at least 3.5 P_cr, not 'approximately three times', \
+unless P_cr is defined differently (not stated)."""
+
+[[datasets]]
+id = "model_n2"
+material = "YAG"
+table = "text"
+points = [["3100", "3100", "7e-16"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["T. Kushida, H. M. Marcos and J. E. Geusic, Phys. Rev. 167, 289 (1968)", "R. C. Powell, S. A. Payne, L. L. Chase and G. D. Wilke, Opt. Lett. 14, 1204 (1989)", "W. F. Krupke, M. D. Shinn, J. E. Marion, J. A. Caird and S. E. Stokowski, J. Opt. Soc. Am. B 3, 102 (1986)"]
+notes = "Methods, p. 4: 'n2 = 7 x 10^-16 cm2 W^-1 (refs 28-30)', the Kerr coefficient behind chi(3) = (4/3) eps0 c n0^2 n2 in the simulations at 3.1 um; the wavelength and conditions of the originals are not stated here."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+assumed = true
+
+[[datasets]]
+id = "model_band_gap"
+material = "YAG"
+table = "text"
+points = [["1", "", "6.5"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Methods, p. 4: 'YAG, considered as a condensed medium with ionization potential U_i = 6.5 eV'; no source."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_collision_time"
+material = "YAG"
+table = "text"
+points = [["1", "", "3"]]
+quantity = "electron_collision_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+notes = "Methods, p. 4: 'The avalanche rate follows the Drude model with an estimated collision time of tau_c = 3 fs'."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_avalanche_cross_section"
+material = "YAG"
+table = "text"
+points = [["3100", "3100", "2.6e-20"]]
+quantity = "avalanche_coefficient"
+unit = "cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Methods, p. 4: tau_c = 3 fs 'yields an inverse Bremsstrahlung cross-section sigma = 2.6 x 10^-20 cm2'. Not the Drude value (source notes, finding 1)."
+[datasets.parameters]
+definition = "sigma in d_t rho = W(I) + (sigma/U_i) rho E (Methods, as printed)"
+assumed = true
+
+[[datasets]]
+id = "model_sigma17"
+material = "YAG"
+table = "text"
+points = [["3100", "3100", "1e-209"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm34 W-17"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 5: a bound, not a fitted value: with multiphoton instead of Keldysh rates the 550-nm fishtail appears 'when the cross-section coefficient is decreased below sigma_17 = 1 x 10^-209 s^-1 cm34 W^-17'. Whether per atom or per volume is not stated."
+[datasets.parameters]
+photons = 17
+assumed = true
+
+[[formulas]]
+id = "propagation_model"
+material = "YAG"
+equation = "Eqs. (1)-(3) and Methods text, p. 4"
+printed = "dE(z, omega, r)/dz = i [k(omega) - omega/v_g] E + (i/(2 k(omega))) nabla_perp^2 E + i (omega/(n(omega) c)) P/(2 eps0) (1); P = eps0 chi(3) E^3 + P_plasma (2); d_t J + J/tau_c = (q_e^2/m_e) rho E (3); chi(3) = (4/3) eps0 c n0^2 n2; d_t rho = W(I) + (sigma/U_i) rho E"
+variable = "E: the real carrier-resolved field; J = -i omega P_plasma; W(I) Keldysh's rate for a condensed medium (Supplementary Fig. S2, not in the library)"
+coefficients = { n2 = "7e-16 cm^2/W", U_i = "6.5 eV", tau_c = "3 fs", sigma = "2.6e-20 cm^2" }
+reproduced_from = ["couairon_2005", "A. Couairon and A. Mysyrowicz, Phys. Rep. 441, 47 (2007)"]
+check = "sigma does not follow from the Drude formula with tau_c = 3 fs at 3.1 um (source notes, finding 1)."
+notes = "The complete formulas are referred to ref. 33 (Couairon and Mysyrowicz 2007) and the method to ref. 34 (Couairon et al. 2011), neither in the library."

@@ -1,0 +1,99 @@
+# Crystalline silicon: Franta et al.'s universal dispersion model of float-zone c-Si
+# (newAD2's parameter file, franta_2017/udm_c_si), refitted to the absolute refractometry
+# of the transparent window and to the measured absorption edge (TC-1088). The published
+# parameter file is 0.015 high in n in the near infrared and 2.6 times high in k at
+# 633 nm; the fit moves the interband, higher-energy, Urbach and localised-state
+# strengths, the excitons, and one factor on the phonon bands.
+material = "Si"
+description = "Float-zone crystalline silicon at 20 degrees C from 31 nm to 143 um: Franta et al.'s universal dispersion model (newAD2's c-Si parameter file) refitted to Frey, Leviton & Madison's absolute CHARMS indices (taken from 295 K to 293.15 K with their own dn/dT), Schinke et al.'s absorption coefficient with its stated uncertainty, and Franta et al.'s temperature-dependent model at 20 degrees C (their 2017/2018 tables) outside the range of those measurements."
+range_nm = [31.0, 142663.0]
+
+[model]
+start = "franta_2017/udm_c_si"
+free = [
+    "Nvc", "Eg", "Eh", "Nvx", "Ex", "Nut", "Eu",
+    "Nloc1", "Eloc1", "Bloc1",
+    "Nloc2", "Nloc3", "Nloc4", "Nloc5", "Nloc6", "Nloc7", "Nloc8", "Nloc9", "Nloc10", "Nloc11",
+    "Aex1", "Eex1", "Bex1", "Aex2", "Eex2", "Bex2", "Aex3", "Eex3", "Bex3", "Aex4", "Eex4", "Bex4",
+]
+
+[model.scales]
+phonons = [
+    "Nph1", "Nph2", "Nph3", "Nph4", "Nph5", "Nph6", "Nph7", "Nph8", "Nph9", "Nph10",
+    "Nph11", "Nph12", "Nph13", "Nph14", "Nph15", "Nph16", "Nph17", "Nph18", "Nph19", "Nph20",
+    "Nph21", "Nph22", "Nph23", "Nph24", "Nph25", "Nph26", "Nph27", "Nph28", "Nph29", "Nph30",
+    "Nph31", "Nph32", "Nph33", "Nph34", "Nph35", "Nph36",
+]
+
+# The transparent window: Frey et al.'s absolute indices at 295 K, taken to 20 C with
+# their own dn/dT. The 1.1 um row lies on the absorption edge, where their tables and
+# their own Sellmeier formula differ by 1e-3, and is left out.
+[[fitted]]
+key = "frey_2006/n_Si_295K"
+range_nm = [1150.0, 5600.0]
+sigma = 1e-4                 # the stated +-1e-4
+thermo_optic = "frey_2006/dndt_Si_295K"
+temperature_k = 293.15
+
+# The absorption edge: Schinke et al.'s alpha (k = 2 uncertainties, as recorded).
+[[fitted]]
+key = "schinke_2015/alpha_295K"
+range_nm = [250.0, 1200.0]    # beyond, alpha < 0.1 cm-1: below what the model's tail can follow
+extra = 0.01                 # 295 K against 20 C, and the model's shape (see the register)
+
+# Franta et al.'s model at 20 C outside the measured ranges above: the ultraviolet and
+# vacuum ultraviolet (their ellipsometry and BEAR reflectance) and the infrared phonon
+# bands. Its window n is tied to Frey's, so it is not fitted beside Frey's there.
+[[fitted]]
+key = "franta_2017/rii_20C_n"
+range_nm = [31.0, 1150.0]
+sigma = 5e-3
+
+[[fitted]]
+key = "franta_2017/rii_20C_n"
+range_nm = [5600.0, 142663.0]
+sigma = 1e-3                 # dense, and tied to Frey's: one soft curve
+
+[[fitted]]
+key = "franta_2017/rii_20C_k"
+range_nm = [31.0, 250.0]
+sigma = 0.05
+
+[[fitted]]
+key = "franta_2017/rii_20C_k"
+range_nm = [6000.0, 64000.0]   # the lattice bands; beyond, the sample's free carriers
+sigma = 0.2
+
+[[validators]]
+key = "jellison_1992/n_100"
+sigma = 0.02
+[[validators]]
+key = "jellison_1992/k_100"
+sigma = 0.05
+[[validators]]
+key = "aspnes_1983/n_Si"
+sigma = 0.01
+[[validators]]
+key = "aspnes_1983/k_Si"
+sigma = 0.05
+[[validators]]
+key = "green_2008/n_300K"
+sigma = 5e-3
+[[validators]]
+key = "green_2008/alpha_300K"
+range_nm = [250.0, 1200.0]
+sigma = 0.05
+[[validators]]
+key = "li_1980/n_293K"
+sigma = 2e-3
+[[validators]]
+key = "franta_2017/rii_20C_n"
+range_nm = [1150.0, 5600.0]
+sigma = 1e-4
+[[validators]]
+key = "franta_2017/rii_20C_k"
+range_nm = [250.0, 1200.0]
+sigma = 0.05
+[[validators]]
+key = "franta_2017/newad2_n"
+sigma = 1e-3

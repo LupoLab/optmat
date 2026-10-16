@@ -1,0 +1,142 @@
+citation = "S. Cheng, G. Chatterjee, F. Tellkamp, A. Ruehl and R. J. D. Miller, \"Multi-octave supercontinuum generation in YAG pumped by mid-infrared, multi-picosecond pulses\", Opt. Lett. 43, 4329 (2018)"
+doi = "10.1364/ol.43.004329"
+library = "Cheng_2018_MultiOctaveSupercontinuum"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Supercontinuum generation in 5-15-cm YAG crystals by near-transform-limited \
+3.0-ps pulses at 2.05 um (Ho:YLF regenerative amplifier, 1 kHz) focused with NA \
+0.001-0.005 (50-100 cm lenses and an iris); spectra 200 nm - 4.3 um, SHG-FROG of the \
+output. A simple rate-equation estimate (Keldysh ionization seeding a Drude avalanche) \
+sets the breakdown intensity and so the NA."""
+notes = """Journal pages 4329-4332 = PDF pages 1-4. Identity validated.
+
+MEASURED: 'The filament formation was initiated at the rear end of the 15 cm YAG crystal \
+for a pump energy of ~17 uJ and was found to shift towards the front end of the crystal \
+upon increasing the pump energy until ~175 uJ, which was determined as the threshold for \
+irreversible crystal damage. At this energy, the filament started ~5 cm from the front \
+end of the crystal' (p. 4330): recorded as a bulk damage-threshold energy (15-cm crystal, \
+NA ~0.005, 3.0 ps, 2.05 um, 1 kHz; the damage criterion and the number of shots are not \
+stated). The continuum at 150 uJ spans 500 nm - 3.5 um at -30 dB (to 4.5 um), 1.9 % rms \
+over 20 min, >60 % efficiency with ~1 uJ above 2.4 um at 120 uJ (no curated quantity). \
+Crystal orientation and polarization not stated.
+
+RATE-EQUATION ESTIMATE (p. 4330, inputs assumed): 'YAG with a bandgap energy of U_i = \
+6.5 eV [4,18]' (silva_2012; Xu and Ching, Phys. Rev. B 59, 10530 (1999)); the \
+multiphoton asymptote 'W_MPI = sigma_11 I^11, where sigma_11 = 1.3 x 10^-126 s^-1 \
+(W/cm2)^-11 for rho_0 = 7 x 10^22 cm^-3 [4]': silva_2012 prints neither (its rates are in \
+the supplementary information, not in the library); 'an estimated collision time tau_c = \
+3 fs [4] yields an inverse Bremsstrahlung coefficient of sigma_IB = 2.06 x 10^-17 cm2'; \
+the result, a threshold I_th ~ 3 x 10^11 W/cm2 for the 3-ps pulse, where the density \
+reaches 'the plasma critical density rho_c = 2.6 x 10^20 cm^-3', so the NA must be \
+<~ 0.005 for ~10 P_cr at <~ 1e11 W/cm2. The background neutral density rho_0 = 7e22 cm^-3 \
+is not recorded as an atom_density dataset: 'neutral density' does not say whether atoms \
+or formula units are counted (a vocabulary gap, reported).
+
+CHECKS (2026-09-26): sigma_IB = e^2 tau_c/(m_e n0 eps0 c (1 + omega0^2 tau_c^2)) = \
+3.70e-17/n0 cm2 at 2.05 um, 2.06e-17 for n0 = 1.80 (n0 not stated); rho_c = omega0^2 \
+eps0 m_e/e^2 = 2.65e20 cm^-3 (printed 2.6e20); 6.5 eV/0.605 eV = 10.7, so 11 photons. \
+silva_2012 gives sigma = 2.6e-20 cm2 at 3.1 um for the same tau_c, which is not the Drude \
+value (see silva_2012)."""
+
+[[datasets]]
+id = "damage_energy"
+material = "YAG"
+table = "text"
+points = [["1", "3.0", "175"]]
+quantity = "damage_threshold_energy"
+unit = "uJ"
+abscissa = "duration"
+abscissa_unit = "ps"
+use = "primary"
+notes = "p. 4330: '~175 uJ, which was determined as the threshold for irreversible crystal damage' in the 15-cm crystal with NA ~0.005 (Rayleigh length ~12 cm); pulse 3.0 ps FWHM (FROG, Fig. 5). Approximate ('~'); uncertainty not stated."
+[datasets.parameters]
+site = "bulk"
+criterion = "irreversible crystal damage (not further specified)"
+wavelength_nm = 2050
+numerical_aperture = 0.005
+shots = "not stated (1 kHz)"
+
+[[datasets]]
+id = "model_band_gap"
+material = "YAG"
+table = "text"
+points = [["1", "", "6.5"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["silva_2012", "Y.-N. Xu and W. Y. Ching, Phys. Rev. B 59, 10530 (1999)"]
+notes = "p. 4330: 'for YAG with a bandgap energy of U_i = 6.5 eV [4,18]'."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_sigma11"
+material = "YAG"
+table = "text"
+points = [["2050", "2050", "1.3e-126"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 (W/cm2)-11"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["silva_2012"]
+notes = "p. 4330: 'W_MPI = sigma_11 I^11, where sigma_11 = 1.3 x 10^-126 s^-1 (W/cm2)^-11 for rho_0 = 7 x 10^22 cm^-3 [4]', the low-intensity asymptote of their Keldysh rate at 2.05 um (Fig. 1a). The printed unit makes it a rate per atom; 'for rho_0' says the per-volume rate uses rho_0 = 7e22 cm^-3. silva_2012's main text does not print it (its Supplementary Fig. S2 may)."
+[datasets.parameters]
+photons = 11
+assumed = true
+
+[[datasets]]
+id = "model_collision_time"
+material = "YAG"
+table = "text"
+points = [["1", "", "3"]]
+quantity = "electron_collision_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["silva_2012"]
+notes = "p. 4330: 'an estimated collision time tau_c = 3 fs [4]'."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_avalanche_cross_section"
+material = "YAG"
+table = "text"
+points = [["2050", "2050", "2.06e-17"]]
+quantity = "avalanche_coefficient"
+unit = "cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 4330: 'W_AI = sigma_IB I/U_i ... according to the Drude model, where an estimated collision time tau_c = 3 fs [4] yields an inverse Bremsstrahlung coefficient of sigma_IB = 2.06 x 10^-17 cm2'; the Drude value for n0 = 1.80 (source notes)."
+[datasets.parameters]
+definition = "sigma_IB in W_AI = sigma_IB I/U_i, d rho/dt = W_OFI(I)(rho_0 - rho) + W_AI(I) rho"
+assumed = true
+
+[[datasets]]
+id = "model_breakdown_intensity"
+material = "YAG"
+table = "text"
+points = [["1", "3.0", "3e11"]]
+quantity = "damage_threshold_intensity"
+unit = "W/cm2"
+abscissa = "duration"
+abscissa_unit = "ps"
+use = "check"
+notes = "p. 4330 (Fig. 1b): calculated, 'beyond a threshold intensity of I_th ~ 3 x 10^11 W/cm2 the electron density rho(t) rapidly reaches the plasma critical density rho_c = 2.6 x 10^20 cm^-3 for the duration of our pump pulse'. A model estimate."
+[datasets.parameters]
+site = "bulk"
+criterion = "calculated: electron density reaching rho_c = 2.6e20 cm^-3"
+wavelength_nm = 2050
+
+[[formulas]]
+id = "rate_equation"
+material = "YAG"
+equation = "p. 4330 (text)"
+printed = "d rho/dt = W_OFI(I)(rho_0 - rho) + W_AI(I) rho; W_MPI = sigma_11 I^11; W_AI = sigma_IB I/U_i"
+variable = "rho: electron density; rho_0 the background neutral density; W_OFI the Keldysh optical-field-ionization rate (refs. 1, 17)"
+coefficients = { U_i = "6.5 eV", sigma_11 = "1.3e-126 s^-1 (W/cm^2)^-11", rho_0 = "7e22 cm^-3", tau_c = "3 fs", sigma_IB = "2.06e-17 cm^2", rho_c = "2.6e20 cm^-3" }
+reproduced_from = ["silva_2012", "couairon_2005"]
+check = "sigma_IB and rho_c checked (source notes); I_th ~ 3e11 W/cm2 not recomputed (the Keldysh rate is a figure)."
+notes = "The library text renders the avalanche term as W_AI(I) rho~ (a lost glyph)."

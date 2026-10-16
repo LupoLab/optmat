@@ -1,0 +1,72 @@
+citation = "M. J. Assael, S. Mixafendi and W. A. Wakeham, \"The Viscosity of Normal Deuterium in the Limit of Zero Density\", J. Phys. Chem. Ref. Data 16, 189 (1987)"
+doi = "10.1063/1.555778"
+library = "Assael_1987_ViscosityNormalDeuterium"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A correlation of the zero-density viscosity of normal deuterium from 30 K to \
+2200 K. Above 350 K, hydrogen's correlation (the authors' earlier work, their ref. 2) \
+scaled by the square root of the mass ratio (Eq. 3), expected to hold to better than \
+0.1 % above 300 K; below 350 K, the same form times a function f(T*) fitted to four \
+primary sets of oscillating-disc and capillary measurements (Table 1: Kestin et al. \
+200-300 K, +-0.2 %; Coremans et al. 30-80 K, +-2 %; Menabde 80-300 K, +-2 %; Michels \
+et al. 290-350 K, +-0.2 %). Table 2 tabulates the correlation."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library. Printed pp. 189-192 (pdf pages \
+1-4).
+
+THE CORRELATION (pp. 190-191, checked against a 400 dpi rendering of the pages, \
+2026-09-30): Eq. (1), eta = (5/16) (m k T / pi)^(1/2) / (sigma^2 Omega*(T*)); Eq. (4), \
+ln Omega* = 0.46649 - 0.57015 ln T* + 0.19164 (ln T*)^2 - 0.03708 (ln T*)^3 + 0.00241 \
+(ln T*)^4 (0.6 < T* < 66), T* = kT/epsilon (Eq. 5) with sigma = 0.2968 nm and \
+epsilon/k = 33.3 K; below 350 K, eta_D2 (m_H2/m_D2)^(1/2) / eta_H2 = f(T*) (Eq. 6), \
+f = 1 - exp(-2.8105 T*^(1/3)) (Eq. 7, 0.9 < T* < 10.5). Valid 30-2200 K (p. 191).
+
+EQUATION AND TABLE DISAGREE. Eqs. (1) and (4)-(7) as printed, with m the D2 molecular \
+mass, do not reproduce Table 2: -12 % at 30 K, -0.6 % at 100 K, +1.5 % at 250 K, +1.3 % \
+at 300 and 350 K, -1.9 % at 1000 K, -2.9 % at 2200 K (computed 2026-09-30). The table is \
+smooth.
+
+RESOLVED (TC-760). The printed Eq. (4) is the authors' universal corresponding-states \
+functional (assael_1986, Eq. 13), not their hydrogen correlation (assael_1986, Eq. 3 \
+with its Table 2). With the latter, the D2 mass and Eq. (7)'s f(T*) applied at every \
+temperature (not only below 350 K, as the text says: f departs from 1 by 2e-3 at 360 K \
+and 1e-4 at 1000 K), Table 2 is reproduced within 1.5 units of its last printed digit \
+(5.1e-4 relative, 140 of 224 cells within half a unit), except at 90 K (6.5 units, \
+1.2e-3; computed 2026-09-30). The 90 K cell is degraded \
+in the scan and reads 5.410 where the correlation and its neighbours give 5.416; it \
+is kept as printed. Against a modern normal-hydrogen dilute viscosity (Muzny et al. 2013, muzny_2013) \
+times (m_D2/m_H2)^(1/2), Eq. (3)'s scaling, it lies 0.1-1.1 % below from 350 K to \
+2000 K and 0.04 % above at 300 K; lower down, where the scaling is not expected to hold \
+(Eq. 6), it departs by up to +0.8 % (120 K) and -2.8 % (30 K). optmat serves Table 2 (TC-760).
+
+UNCERTAINTY (p. 191): +-1 % from 250 K to 350 K, from the errors of the experimental \
+data; +-2 % below; above 350 K, where the correlation rests on corresponding states, \
+'no more than +-4 % at the highest temperatures'. The dataset takes 4 % throughout \
+350-2200 K, a bound. The primary data depart from the correlation by no more than \
++-0.7 % over the whole range (p. 191)."""
+
+[[formulas]]
+id = "eq1_eq4_eq7"
+material = "D2"
+equation = "Eqs. (1), (4)-(7), pp. 190-191"
+printed = "eta = (5/16)(m k T/pi)^(1/2)/(sigma^2 Omega*(T*)); ln Omega* = sum_i a_i (ln T*)^i; f(T*) = 1 - exp(-2.8105 T*^(1/3)) below 350 K"
+variable = "T* = k T / epsilon; eta in Pa s with m in kg, sigma in m"
+range = "30-2200 K"
+coefficients = { a0 = "0.46649", a1 = "-0.57015", a2 = "0.19164", a3 = "-0.03708", a4 = "0.00241", sigma_nm = "0.2968", epsilon_k = "33.3", f = "2.8105" }
+check = "Does not reproduce Table 2 (notes); Table 2 is the dataset."
+
+[[datasets]]
+id = "table2"
+material = "D2"
+file = "D2/assael_1987__table2.csv"
+table = "tbl_8b226138c853"
+quantity = "dilute_viscosity"
+unit = "Pa s"
+scale = 1e-6
+abscissa = "temperature"
+abscissa_unit = "K"
+use = "primary"
+notes = "Table 2 (p. 191): the viscosity of normal deuterium in the limit of zero density, eta/(uPa s), 30-2200 K (5 K steps to 100 K, 10 K above). Four cells of the extracted table corrected from the page image (the extraction script)."
+[datasets.uncertainty]
+relative = 0.04
+level = "not stated"
+relative_rows = { "30" = 0.02, "35" = 0.02, "40" = 0.02, "45" = 0.02, "50" = 0.02, "55" = 0.02, "60" = 0.02, "65" = 0.02, "70" = 0.02, "75" = 0.02, "80" = 0.02, "85" = 0.02, "90" = 0.02, "95" = 0.02, "100" = 0.02, "110" = 0.02, "120" = 0.02, "130" = 0.02, "140" = 0.02, "150" = 0.02, "160" = 0.02, "170" = 0.02, "180" = 0.02, "190" = 0.02, "200" = 0.02, "210" = 0.02, "220" = 0.02, "230" = 0.02, "240" = 0.02, "250" = 0.01, "260" = 0.01, "270" = 0.01, "280" = 0.01, "290" = 0.01, "300" = 0.01, "310" = 0.01, "320" = 0.01, "330" = 0.01, "340" = 0.01, "350" = 0.01 }

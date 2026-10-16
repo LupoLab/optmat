@@ -1,0 +1,243 @@
+citation = "A. Borzsonyi, Z. Heiner, A. P. Kovacs, M. P. Kalashnikov and K. Osvay, \"Measurement of pressure dependent nonlinear refractive index of inert gases\", Opt. Express 18, 25847 (2010)"
+doi = "10.1364/OE.18.025847"
+library = "Borzsonyi_2010_MeasurementPressureDependent"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Spectrally and spatially resolved interferometry (SSRI): a Mach-Zehnder \
+interferometer inside a ~9-m vacuum tube filled with the gas (0.05 mbar to 1020 mbar), \
+800-nm pulses of 40-nm bandwidth left stretched to 200 fs (at least 8 times the \
+transform limit, so that the spectral shape of the nonlinear phase follows the \
+spectrum), < 1 mJ, 2-mm super-Gaussian beam; the sample arm carries 10 times the \
+intensity of the reference arm, both attenuated to equal intensity before leaving the \
+tube; the spectral phase difference gives n2 through Eq. (4); nine interferograms per \
+pressure, five pressures per decade, up and down (pp. 25849-25852)."""
+notes = """Journal pages 25847-25854 = PDF pages 1-8. Identity checked against the first page. \
+Ar, Ne, Xe, N2 (air, a Table 1 column, is not curated).
+
+DEFINITIONS (p. 25850): Eqs. (2)-(3) phi_S = (omega/c)[(n^Med + n2^Med int I_S d omega) \
+l_S,Med + (n^Obj + n2^Obj int I_S d omega) l_Obj], phi_R likewise; Eq. (4), p. 25851: Delta \
+phi(y, omega) = (omega/c)(n2 [int I_S d omega l_tube - int I_R d omega (l_tube - l_corr)] - \
+(n^air - n) l_corr), l_corr = 47 cm; n^air from borzsonyi_2008. A single pulse's own \
+intensity changes its phase: n2 is the SELF coefficient, and 'the total value of n2 \
+experienced by a laser pulse' ('the collective contribution of all possible laser \
+induced elementary processes in the gases', pp. 25848, 25853): part 'total' for the 200-fs \
+pulses.
+
+TABLE 1 (p. 25853; CSV and image checked; tools/extract/borzsonyi_2010.py): 'Pressure \
+dependent n2 [x 10^-19 cm2/W at 1bar]': Ar 19.4 +- 1.9, Ne 1.8 +- 1.5, Xe 84.3 +- 42.0, N2 \
+6.7 +- 2.0 (air 5.7 +- 2.5). 'The measurements were carried out at an ambient temperature \
+of 20 C' (p. 25851); 'within the conditions of 1000 mbar and 293 K, except for xenon with a \
+peak pressure of 100 mbar' (p. 25853). The dependence on pressure is linear (Fig. 5). \
+The error is larger than expected; the likely reason, the imperfect match of the \
+spectral phase to the spectrum (p. 25853). Level not stated.
+
+HEADER MISPRINT (erratum, 2026-09-26): the measured row's header reads 'x 10^-19 cm2/W at \
+1bar'. Read so, Ar 19.4, Ne 1.8 and Xe 84.3 (x 1e-19) lie 2.4, 2.1 and 1.5 times above the \
+largest literature value the same table prints in the same unit (Ar 7.96, Ne 0.85, Xe \
+54.8; N2's 6.7 lies within 1.36-12.7), and 8-20 times above the ESHG-based gamma of the \
+fits here (TC-314), although the text says 'the measured n2 values at 1 bar pressure are \
+in agreement with the measured and theoretically deducted values from earlier works' (p. \
+25853). Read as x 10^-20, Ar 1.94 and Ne 0.18 lie within the table's literature ranges, \
+Xe 8.4 and N2 0.67 below them (0.75 and 0.5 times the smallest), and the values are 0.8-2 \
+times the fits'. The measured rows carry a scale erratum 1e-19 -> 1e-20 (the literature \
+row keeps its printed 1e-19); the evidence is circumstantial (the text's claim, and the \
+physical implausibility of an order of magnitude), not a statement by the authors. \
+Even so, Ar and Ne are about twice the other groups' electronic n2; the stated errors \
+are 10-80 %.
+
+LITERATURE ROW ('Values from the literature at 1 bar', reproduced; wavelengths and \
+states as the paper gives none: wavelength not stated, 1 bar as the table heads it): Ar 0.98 [16], \
+7.96 [17], 2.0 [24], 7.3 [32], 1.74 [19, 44]; Ne 0.85 [17], 0.14 [19, 44]; Xe 54.8 [17], 11.15 \
+[19, 44]; N2 4.52 [16], 2.2 [24], 12.7 [32], 1.36 [19]. [16] = nibbering_1997 (its Table 2 \
+n2,total, itself from hellwarth_1990: 0.980, 4.52 x 1e-23 m2/W); [17] = C. Bree, A. \
+Demircan and G. Steinmeyer, IEEE J. Quantum Electron. 46, 433 (2010) (Keldysh / \
+Kramers-Kronig theory, not in the library); [19] = shelton_1990; [24] = loriot_2009 (the \
+original article, before the erratum halved its values: Ar 2.0, N2 2.2); [32] = Y.-H. \
+Chen, S. Varma, I. Alexeev and H. M. Milchberg, Opt. Express 15, 7458 (2007) (not in the \
+library); [44] = A. Couairon, H. S. Chakraborty and M. B. Gaarde, PRA 77, 053814 (2008) \
+(not in the library). How Shelton's gammas became these n2 is not stated. B-integral \
+at 1000 mbar: Ar 0.121, N2 0.042, Ne 0.011 rad, Xe 0.053 at 100 mbar (p. 25853)."""
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+file = "Ar/borzsonyi_2010__n2_Ar.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table 1, 'Pressure dependent n2 [x 10^-19 cm2/W at 1bar]' (slope of n2 against pressure, per bar), 800 nm, 200-fs chirped pulses, 293 K (stated). Self coefficient, total response. See the source notes' doubt on the size."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 200
+
+[[datasets]]
+id = "literature_Ar"
+material = "Ar"
+file = "Ar/borzsonyi_2010__literature_Ar.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997", "C. Bree, A. Demircan and G. Steinmeyer, IEEE J. Quantum Electron. 46, 433 (2010)", "loriot_2009", "Y.-H. Chen, S. Varma, I. Alexeev and H. M. Milchberg, Opt. Express 15, 7458 (2007)", "shelton_1990", "A. Couairon, H. S. Chakraborty and M. B. Gaarde, Phys. Rev. A 77, 053814 (2008)"]
+notes = "Table 1, 'Values from the literature at 1 bar', one row per value, the row id naming the reference number(s) (source notes). Wavelength not stated; the state is the table's 1 bar: the paper gives neither for these values; mixed parts (theory, electronic, total). Not for fitting."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_Ne"
+material = "Ne"
+file = "Ne/borzsonyi_2010__n2_Ne.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table 1, 'Pressure dependent n2 [x 10^-19 cm2/W at 1bar]' (slope of n2 against pressure, per bar), 800 nm, 200-fs chirped pulses, 293 K (stated). Self coefficient, total response. The error is 83 % of the value. See the source notes' doubt on the size."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 200
+
+[[datasets]]
+id = "literature_Ne"
+material = "Ne"
+file = "Ne/borzsonyi_2010__literature_Ne.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997", "C. Bree, A. Demircan and G. Steinmeyer, IEEE J. Quantum Electron. 46, 433 (2010)", "loriot_2009", "Y.-H. Chen, S. Varma, I. Alexeev and H. M. Milchberg, Opt. Express 15, 7458 (2007)", "shelton_1990", "A. Couairon, H. S. Chakraborty and M. B. Gaarde, Phys. Rev. A 77, 053814 (2008)"]
+notes = "Table 1, 'Values from the literature at 1 bar', one row per value, the row id naming the reference number(s) (source notes). Wavelength not stated; the state is the table's 1 bar: the paper gives neither for these values; mixed parts (theory, electronic, total). Not for fitting."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_Xe"
+material = "Xe"
+file = "Xe/borzsonyi_2010__n2_Xe.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table 1, 'Pressure dependent n2 [x 10^-19 cm2/W at 1bar]' (slope of n2 against pressure, per bar), 800 nm, 200-fs chirped pulses, 293 K (stated). Self coefficient, total response. Measured up to 100 mbar only (p. 25853); the error is 50 %. See the source notes' doubt on the size."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 200
+
+[[datasets]]
+id = "literature_Xe"
+material = "Xe"
+file = "Xe/borzsonyi_2010__literature_Xe.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997", "C. Bree, A. Demircan and G. Steinmeyer, IEEE J. Quantum Electron. 46, 433 (2010)", "loriot_2009", "Y.-H. Chen, S. Varma, I. Alexeev and H. M. Milchberg, Opt. Express 15, 7458 (2007)", "shelton_1990", "A. Couairon, H. S. Chakraborty and M. B. Gaarde, Phys. Rev. A 77, 053814 (2008)"]
+notes = "Table 1, 'Values from the literature at 1 bar', one row per value, the row id naming the reference number(s) (source notes). Wavelength not stated; the state is the table's 1 bar: the paper gives neither for these values; mixed parts (theory, electronic, total). Not for fitting."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+file = "N2/borzsonyi_2010__n2_N2.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table 1, 'Pressure dependent n2 [x 10^-19 cm2/W at 1bar]' (slope of n2 against pressure, per bar), 800 nm, 200-fs chirped pulses, 293 K (stated). Self coefficient, total response. Includes the rotational response (200-fs pulses). See the source notes' doubt on the size."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 200
+
+[[datasets]]
+id = "literature_N2"
+material = "N2"
+file = "N2/borzsonyi_2010__literature_N2.csv"
+table = "tbl_7c2c2d4e525c"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997", "C. Bree, A. Demircan and G. Steinmeyer, IEEE J. Quantum Electron. 46, 433 (2010)", "loriot_2009", "Y.-H. Chen, S. Varma, I. Alexeev and H. M. Milchberg, Opt. Express 15, 7458 (2007)", "shelton_1990", "A. Couairon, H. S. Chakraborty and M. B. Gaarde, Phys. Rev. A 77, 053814 (2008)"]
+notes = "Table 1, 'Values from the literature at 1 bar', one row per value, the row id naming the reference number(s) (source notes). Wavelength not stated; the state is the table's 1 bar: the paper gives neither for these values; mixed parts (theory, electronic, total). Not for fitting."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[errata]]
+dataset = "n2_Ar"
+row = ""
+column = "scale"
+printed = "1e-19"
+corrected = "1e-20"
+reason = "Table 1's measured row is headed x 10^-19 cm2/W, which puts Ar, Ne and Xe 1.5-2.4 times above the largest literature value the same table prints in that unit and all four 8-20 times above the ESHG-based gamma (TC-314); read as x 10^-20 they are 0.8-2 times it and agree with the literature as the text states."
+evidence = "Circumstantial: p. 25853, 'the measured n2 values at 1 bar pressure are in agreement with the measured and theoretically deducted values from earlier works'; Table 1's literature row (same unit): Ar 0.98-7.96, Ne 0.14-0.85, Xe 11.15-54.8, N2 1.36-12.7. Not stated by the authors. Checked 2026-09-26 against the library's table and text."
+
+[[errata]]
+dataset = "n2_Ne"
+row = ""
+column = "scale"
+printed = "1e-19"
+corrected = "1e-20"
+reason = "Table 1's measured row is headed x 10^-19 cm2/W, which puts Ar, Ne and Xe 1.5-2.4 times above the largest literature value the same table prints in that unit and all four 8-20 times above the ESHG-based gamma (TC-314); read as x 10^-20 they are 0.8-2 times it and agree with the literature as the text states."
+evidence = "Circumstantial: p. 25853, 'the measured n2 values at 1 bar pressure are in agreement with the measured and theoretically deducted values from earlier works'; Table 1's literature row (same unit): Ar 0.98-7.96, Ne 0.14-0.85, Xe 11.15-54.8, N2 1.36-12.7. Not stated by the authors. Checked 2026-09-26 against the library's table and text."
+
+[[errata]]
+dataset = "n2_Xe"
+row = ""
+column = "scale"
+printed = "1e-19"
+corrected = "1e-20"
+reason = "Table 1's measured row is headed x 10^-19 cm2/W, which puts Ar, Ne and Xe 1.5-2.4 times above the largest literature value the same table prints in that unit and all four 8-20 times above the ESHG-based gamma (TC-314); read as x 10^-20 they are 0.8-2 times it and agree with the literature as the text states."
+evidence = "Circumstantial: p. 25853, 'the measured n2 values at 1 bar pressure are in agreement with the measured and theoretically deducted values from earlier works'; Table 1's literature row (same unit): Ar 0.98-7.96, Ne 0.14-0.85, Xe 11.15-54.8, N2 1.36-12.7. Not stated by the authors. Checked 2026-09-26 against the library's table and text."
+
+[[errata]]
+dataset = "n2_N2"
+row = ""
+column = "scale"
+printed = "1e-19"
+corrected = "1e-20"
+reason = "Table 1's measured row is headed x 10^-19 cm2/W, which puts Ar, Ne and Xe 1.5-2.4 times above the largest literature value the same table prints in that unit and all four 8-20 times above the ESHG-based gamma (TC-314); read as x 10^-20 they are 0.8-2 times it and agree with the literature as the text states."
+evidence = "Circumstantial: p. 25853, 'the measured n2 values at 1 bar pressure are in agreement with the measured and theoretically deducted values from earlier works'; Table 1's literature row (same unit): Ar 0.98-7.96, Ne 0.14-0.85, Xe 11.15-54.8, N2 1.36-12.7. Not stated by the authors. Checked 2026-09-26 against the library's table and text."

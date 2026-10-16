@@ -1,0 +1,327 @@
+citation = "B. Eshel, C. A. Rice and G. P. Perram, \"Pressure broadening and shift rates for Ar (s-p) transitions observed in an Ar-He discharge\", J. Quant. Spectrosc. Radiat. Transfer 179, 40-50 (2016)"
+doi = "10.1016/j.jqsrt.2016.03.006"
+library = "Eshel_2016_PressureBroadeningShift"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Tunable diode laser absorption spectroscopy (New Focus Velocity 6314, 792-802 \
+nm, 300 kHz linewidth, wavemeter against a stabilised HeNe to 10 MHz, below saturation) \
+of the metastable- and resonance-level absorption lines 801.699 nm (s5 -> p8), 800.836 nm \
+(s4 -> p6) and 795.036 nm (s3 -> p4) of argon in a 13.56 MHz capacitively coupled \
+discharge (10 W, alumina tube 0.15 in i.d., flowing 99.999 % Ar-He mixtures of 2.5, 5, \
+10 and 25 % Ar) at 10-160 Torr total pressure (tables; 10-200 Torr in the text). Each \
+absorbance profile is fitted with a Voigt profile, the Doppler width constrained to \
+888 +- 25 MHz (440 +- 20 K, the mean of the unconstrained fits below 60 Torr); the \
+Lorentzian FWHM and the line centre are fitted linearly against the total pressure. \
+Uncertainties are the 95 % confidence intervals of the linear fits."""
+notes = """J. Quant. Spectrosc. Radiat. Transfer 179, 40-50 (2016) = PDF pages 1-11 \
+(journal page = PDF page + 39). Identity checked on the first page (PDF p. 1: journal, \
+volume, pages, title, authors, Air Force Institute of Technology; received 7 December \
+2015, accepted 1 March 2016, available online 17 March 2016; DOI) on 2026-10-12. Tables \
+1 and 2 checked cell by cell against their images.
+
+ONE-PHOTON 4s-4p LINES, NOT OEP 8's COHERENCE. These are one-photon absorption lines \
+from the 4s levels to the 4p levels, broadened and shifted by an Ar-He mixture. OEP 8 \
+needs the dephasing of the ground-to-4p two-photon coherence by argon; the 4s-4p line \
+width also contains the 4s level's broadening and the Ar-He mixture's helium part, so \
+nothing for the two-photon coherence is derived from these values.
+
+LEVELS (Fig. 1, Paschen and Racah labels with NIST's energies; NIST \
+Ar_I_levels.tsv). s5 = 4s[3/2]2 = 3p5(2P*3/2)4s 2[3/2]* J = 2 (93143.76 cm-1); s4 = \
+4s[3/2]1 = 3p5(2P*3/2)4s 2[3/2]* J = 1 (93750.60); s3 = 4s'[1/2]0 = 3p5(2P*1/2)4s \
+2[1/2]* J = 0 (94553.67); p8 = 4p[5/2]2 = 3p5(2P*3/2)4p 2[5/2] J = 2 (105617.27); p6 = \
+4p[3/2]2 = 3p5(2P*3/2)4p 2[3/2] J = 2 (106237.55); p4 = 4p'[3/2]1 = 3p5(2P*1/2)4p 2[3/2] \
+J = 1 (107131.71). The upper levels p8 and p6 are two of OEP 8's two-photon levels \
+(4p[5/2]2 and 4p[3/2]2); p4 is one of baig_2008's photoionised levels. The printed \
+wavelengths are NIST's vacuum wavelengths (801.6990, 800.8359, 795.0362 nm; Ar_I_lines_nir.tsv; \
+script report). The paper misprints the lines as '794.036 nm' (pp. 47-49), \
+'800.036 nm' (Fig. 6 and 10 captions) and '801.669' (p. 45).
+
+WIDTH CONVENTION. Eq. (2) writes the Lorentzian with (Delta nu_L / 2)^2, so Delta nu_L \
+is the FWHM in ordinary frequency, and Eq. (9) defines the rate by Delta nu_L = gamma \
+P; Table 1's heading calls the rate '2 gamma'. The tabulated values are the slopes of \
+the Lorentzian FWHM (Fig. 6, whose caption gives the 10 % row), so width = fwhm; the \
+'2 gamma' label is the convention in which gamma is the half width. Eq. (10): nu_c = \
+nu_0 + beta P, beta positive for a blue shift (Table 2: 'Negative rates are \
+red-shifts'), the vocabulary's sign. Rates are per Torr of total pressure of the \
+mixture.
+
+TAKEN (tools/extract/eshel_2016.py; Tables 1 and 2, 'This work' rows): broadening_mix* \
+and shift_mix* for 2.5, 5, 10 and 25 % Ar in He, rows the three lines (800.836 nm not \
+measured at 25 %), use primary, uncertainties the 95 % confidence intervals as printed. \
+Inline (p. 47 and Fig. 9 caption): the authors' separation of the broadening into Ar-Ar \
+and Ar-He rates by a linear fit in the Ar fraction, gamma = gamma_Ar f_Ar + gamma_He (1 - \
+f_Ar), 'Ar-Ar rates of 8, 38 and 12 MHz/Torr and Ar-He rates of 16, 16 and 19 MHz/Torr' \
+(broadening_self_fit, broadening_He_fit), use check: the authors call it 'an estimate', \
+the Ar-Ar rates are an extrapolation from 2.5-25 % Ar to pure argon, and no uncertainty \
+is given. No shift separation is given (the paper says shift rates in a mixture do not \
+add, p. 49).
+
+CHECKED (2026-10-12). The 10 % Ar rows against the abstract and the captions of Figs. 6 \
+and 7 (script check). The Ar-He decomposition against Table 1's Ar-He literature row \
+(Copley, ref. 22, 460 K): 801.699 nm 16.40 +- 1.64 against the fit's 16; 795.036 nm \
+13.88 +- 1.39 against 19.
+
+FINDINGS. The fitted Ar-Ar rate of the 801.699 and 795.036 nm lines (8 and 12 MHz/Torr \
+at 440 K) is about half their Ar-He rate; the 800.836 nm line (resonance lower level s4) \
+has the larger Ar-Ar rate, 38 MHz/Torr, which the paper ascribes to resonance \
+broadening of s4. The paper's literature rows of Ar-Ar broadening at 353-3900 K, scaled \
+to 440 K by T^-0.7, give 9.6-14.9 MHz/Torr for 801.699 and 795.036 nm (fit: 8 and \
+12) and 20.1-25.0 for 800.836 nm (fit: 38); the authors call the separation 'in good \
+agreement' after scaling. The Einstein A values used (p. 42; 1.86e7, 4.90e6, 9.28e6 \
+s-1, ref. 35, '25 %') are NIST's (1.86e7, 4.9e6, 9.3e6) and are not taken.
+
+NOT TAKEN. The literature rows of Tables 1 and 2 (refs. 21-24, 27: Copley and Camm 1974, \
+Copley 1976, Vallee et al. 1977, Moussounda and Ranson 1987, Aeschliman et al. 1976), \
+quoted with the authors' T^-0.7 scaling; the Lorentzian and Doppler widths and shift at \
+100 Torr (1879 +- 2 MHz, 889 MHz, 610.9 +- 0.6 MHz, p. 44); the zero-pressure widths \
+(117 +- 44 to 227 +- 33 MHz); the line-centre cross sections (p. 43); the Stark estimates \
+(p. 45); Figs. 3-10 (the rates are printed); the phase-changing cross sections of Fig. \
+10 (no quantity). No two-photon data."""
+
+[[datasets]]
+id = "broadening_mix2p5"
+material = "Ar"
+file = "Ar/eshel_2016__broadening_mix2p5.csv"
+table = "tbl_45fc5023b655"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 47), 'Pressure broadening rate, 2 gamma (MHz/Torr)', row '2.5% Ar' (this work): 801.699, 800.836 and 795.036 nm, per Torr of the total pressure of the 2.5 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The Lorentzian FWHM rate in ordinary frequency (record notes). One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "broadening"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "fwhm"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 2.5 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "broadening_mix5"
+material = "Ar"
+file = "Ar/eshel_2016__broadening_mix5.csv"
+table = "tbl_45fc5023b655"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 47), 'Pressure broadening rate, 2 gamma (MHz/Torr)', row '5% Ar' (this work): 801.699, 800.836 and 795.036 nm, per Torr of the total pressure of the 5 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The Lorentzian FWHM rate in ordinary frequency (record notes). One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "broadening"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "fwhm"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 5 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "broadening_mix10"
+material = "Ar"
+file = "Ar/eshel_2016__broadening_mix10.csv"
+table = "tbl_45fc5023b655"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 47), 'Pressure broadening rate, 2 gamma (MHz/Torr)', row '10% Ar' (this work): 801.699, 800.836 and 795.036 nm, per Torr of the total pressure of the 10 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The Lorentzian FWHM rate in ordinary frequency (record notes). One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "broadening"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "fwhm"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 10 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "broadening_mix25"
+material = "Ar"
+file = "Ar/eshel_2016__broadening_mix25.csv"
+table = "tbl_45fc5023b655"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 47), 'Pressure broadening rate, 2 gamma (MHz/Torr)', row '25% Ar' (this work): 801.699 and 795.036 nm (800.836 nm: '-'), per Torr of the total pressure of the 25 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The Lorentzian FWHM rate in ordinary frequency (record notes). One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "broadening"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "fwhm"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 25 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "shift_mix2p5"
+material = "Ar"
+file = "Ar/eshel_2016__shift_mix2p5.csv"
+table = "tbl_6d2606d4248c"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 49), 'Pressure shifting rate, beta (MHz/Torr)', negative = red, row '2.5% Ar' (this work): 801.699, 800.836 and 795.036 nm, per Torr of the total pressure of the 2.5 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The line-centre shift in ordinary frequency, positive to the blue. One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "shift"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "none"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 2.5 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "shift_mix5"
+material = "Ar"
+file = "Ar/eshel_2016__shift_mix5.csv"
+table = "tbl_6d2606d4248c"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 49), 'Pressure shifting rate, beta (MHz/Torr)', negative = red, row '5% Ar' (this work): 801.699, 800.836 and 795.036 nm, per Torr of the total pressure of the 5 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The line-centre shift in ordinary frequency, positive to the blue. One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "shift"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "none"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 5 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "shift_mix10"
+material = "Ar"
+file = "Ar/eshel_2016__shift_mix10.csv"
+table = "tbl_6d2606d4248c"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 49), 'Pressure shifting rate, beta (MHz/Torr)', negative = red, row '10% Ar' (this work): 801.699, 800.836 and 795.036 nm, per Torr of the total pressure of the 10 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The line-centre shift in ordinary frequency, positive to the blue. One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "shift"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "none"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 10 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "shift_mix25"
+material = "Ar"
+file = "Ar/eshel_2016__shift_mix25.csv"
+table = "tbl_6d2606d4248c"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 49), 'Pressure shifting rate, beta (MHz/Torr)', negative = red, row '25% Ar' (this work): 801.699 and 795.036 nm (800.836 nm: '-'), per Torr of the total pressure of the 25 % Ar in He mixture at 440 +- 20 K, 10-160 Torr. The line-centre shift in ordinary frequency, positive to the blue. One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+column = true
+level = "95 % confidence"
+[datasets.parameters]
+effect = "shift"
+transition = "the rows: 801.699 nm (s5 -> p8, 4s[3/2]2 - 4p[5/2]2), 800.836 nm (s4 -> p6, 4s[3/2]1 - 4p[3/2]2), 795.036 nm (s3 -> p4, 4s'[1/2]0 - 4p'[3/2]1), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "none"
+frequency_variable = "ordinary"
+perturber = "Ar-He mixture, 25 % Ar in He (rate per unit total pressure)"
+temperature_k = 440
+pressure_range = "10-160 Torr"
+method = "tunable diode laser absorption in an RF discharge, Voigt fits with the Doppler width fixed (440 K), linear fit against pressure"
+
+[[datasets]]
+id = "broadening_self_fit"
+material = "Ar"
+table = "text"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "check"
+points = [["801.699", "801.699 nm", "8"], ["800.836", "800.836 nm", "38"], ["795.036", "795.036 nm", "12"]]
+notes = "p. 47 and Fig. 9's caption: 'Ar-Ar rates of 8, 38 and 12 MHz/Torr' for 801.699, 800.836 and 795.036 nm, from the linear fit gamma = gamma_Ar f_Ar + gamma_He (1 - f_Ar) to the mixtures' broadening rates (Table 1, 2.5-25 % Ar); the authors' 'estimate', no uncertainty; an extrapolation to pure argon. Use check (record notes). One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+effect = "broadening"
+transition = "the rows: 801.699 nm (s5 -> p8), 800.836 nm (s4 -> p6), 795.036 nm (s3 -> p4), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "fwhm"
+frequency_variable = "ordinary"
+perturber = "self"
+temperature_k = 440
+pressure_range = "10-160 Torr (mixtures of 2.5-25 % Ar)"
+method = "linear fit of the mixtures' broadening rates against the Ar fraction (Ar-Ar part)"
+
+[[datasets]]
+id = "broadening_He_fit"
+material = "Ar"
+table = "text"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "check"
+points = [["801.699", "801.699 nm", "16"], ["800.836", "800.836 nm", "16"], ["795.036", "795.036 nm", "19"]]
+notes = "p. 47 and Fig. 9's caption: 'Ar-He rates of 16, 16 and 19 MHz/Torr' for 801.699, 800.836 and 795.036 nm, from the linear fit gamma = gamma_Ar f_Ar + gamma_He (1 - f_Ar) to the mixtures' broadening rates (Table 1, 2.5-25 % Ar); the authors' 'estimate', no uncertainty; an extrapolation to pure helium. Use check (record notes). One-photon 4s-4p lines, not the ground-to-4p two-photon coherence."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+effect = "broadening"
+transition = "the rows: 801.699 nm (s5 -> p8), 800.836 nm (s4 -> p6), 795.036 nm (s3 -> p4), vacuum wavelengths"
+photons = 1
+frequency_scale = "transition"
+width = "fwhm"
+frequency_variable = "ordinary"
+perturber = "He"
+temperature_k = 440
+pressure_range = "10-160 Torr (mixtures of 2.5-25 % Ar)"
+method = "linear fit of the mixtures' broadening rates against the Ar fraction (Ar-He part)"

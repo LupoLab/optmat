@@ -1,0 +1,300 @@
+citation = "A. Bahl, E. M. Wright and M. Kolesik, \"Nonlinear optical response of noble gases via the metastable electronic state approach\", Phys. Rev. A 94, 023850 (2016)"
+doi = "10.1103/PhysRevA.94.023850"
+library = "Bahl_2016_NonlinearOpticalResponse"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field resonance (Stark-resonance) energies of single-active-electron \
+models of He, Ne, Ar, Kr and Xe: the Hamiltonian H = -Delta/2 + V(r) - F x (Eq. (1)) \
+with the field axis continued into the complex plane far from the atom ('a version of \
+the exterior complex scaling', p. 2), so that the metastable ground state psi_0(F), the \
+Stark resonance that tends to the field-free ground state, has the complex energy \
+E_0(F) whose imaginary part gives the ionisation rate (Eq. (4), p. 2; Eq. (32), p. 5). \
+'we utilized SAE potentials specified in Refs. [18-20], and used the FEAST eigenvalue \
+solver [21] to obtain the metastable wave functions' (p. 5). The data are tabulated for \
+the paper's metastable electronic state approach (MESA) to the nonlinear response of \
+the gases in pulse propagation, and compared there with the authors' TDSE in the same \
+potentials (Sec. IV)."""
+notes = """Journal pp. 023850-1 to -10 = PDF pages 1-10. Identity checked against the first page \
+(A. Bahl, E. M. Wright, and M. Kolesik, Phys. Rev. A 94, 023850 (2016)).
+
+THE DATA FILES. 'We have tabulated quantities D_NL(F), E_0(F), and M(F,0) for the \
+single-active-electron (SAE) models of He, Ne, Ar, Kr, and Xe atoms ... the \
+Supplemental Material [22] includes these data sets' (p. 5). The ten files of the \
+Supplemental Material are attached to the paper in the library byte for byte, with \
+their URL and SHA-256: per atom <ATOM>_imE_nlp.dat and <ATOM>_pa_corr.dat. An _imE_nlp \
+file has three columns and no header: F (au), Im E_0(F) (au) and D_NL(F) (Eq. (31), \
+au). The paper does not describe the files' columns; the reading follows the file \
+names and the paper's list, and is checked: Im E_0 is never positive and |Im E_0| \
+rises with F; D_NL/F^3 is constant at low field (Ne 11.3, Ar 159, Kr 355, Xe 1275 au \
+between 0.001 and 0.003 au), as a third-order response must be. Fields every 0.001 au \
+from 0 to 0.150 (Ne, Ar), 0.130 (Kr) and 0.100 au (Xe); Ne lacks 0.061 and 0.091 au, \
+Xe 0.017 and 0.027 au.
+
+WHAT IS TAKEN. The rate Gamma = -2 Im E_0 against F, for Ne, Ar, Kr and Xe: the file \
+keeps Im E_0 as printed and scale = -2 makes it the rate (au). 'imposing the outgoing \
+boundary conditions shifts the eigenvalues into the lower half of the complex plane, \
+where the imaginary parts reflect the lifetimes and can be interpreted as the \
+ionization rates' (p. 2); the ionised fraction obeys d rho/dt = 2 Im{E_R(F(t))}[1 - \
+rho] (Eq. (32), p. 5; E_R = E_0 in the adiabatic limit, Eq. (29)): the population \
+decays as exp(2 Im E_0 t), so the rate is -2 Im E_0, the sign of Eq. (32) being that \
+of a decay. Confirmed for Ar: the file's -2 Im E_0, interpolated in log Gamma, is \
+0.998-1.000 times the rate of the 3p, m = 0 electron in Tong and Lin's potential \
+computed with tRecX (travers_2026_trecx/static_Ar_m0) at 0.053, 0.094, 0.122 and 0.144 \
+au, and 0.999-1.000 times zhang_2014's Tong-Lin rates (Table IX, 2 x the printed \
+Gamma/2) at 0.053, 0.094 and 0.144 au (at 0.122 au it is 1.19 times the Tong-Lin cell \
+and 1.000 times the Muller cell, the displaced row of that table) (computed \
+2026-10-01). Gamma, not Gamma/2: -Im E_0 alone would be half the tRecX rate.
+
+WHAT THE RATES COUNT. One active electron in a model potential, in the state that \
+continues the field-free ground state of the model: one electron, no factor for the \
+other electrons of the shell. For Ne, Ar, Kr and Xe that state is the p orbital with m \
+= 0 along the field. The paper does not state m; it is implied by the method (the \
+authors' TDSE, which 'represents exactly the same open (i.e., norm nonconserving) \
+system as the one used to extract all MESA-related quantities', p. 5, runs on a grid \
+'along z and radial dimensions', so in cylindrical symmetry, m = 0) and confirmed for \
+Ar by the agreement with the m = 0 tRecX rate above (the m = 1 rate in that potential \
+is 2 to 22 % of it, travers_2026_trecx/static_Ar_m1). The atom's rate in this model \
+would add the other p electrons (the m = 0 partner of opposite spin, and the m = +-1 \
+electrons); the paper uses the one-electron rate as the rate of the atom (Eq. (32)).
+
+THE POTENTIALS. 'SAE potentials specified in Refs. [18-20]': Tong and Lin 2005 \
+(tong_2005), Cloux, Fabre and Pons, Phys. Rev. A 91, 023415 (2015) (not in the \
+library), and Zhao, Liu and Zhou 2014 (zhao_2014). The paper does not say which atom \
+takes which. tong_2005 tabulates He, Ne and Ar; zhao_2014 (p. 75) gives Xe's \
+parameters in the Tong-Lin form and uses Garvey et al.'s potential for Kr. Ar is Tong \
+and Lin's (the check above). For Ne, Tong and Lin's is the only one of the three in \
+the library that gives Ne (zhao_2014 takes He, Ne and Ar from it; Cloux et al. not \
+checked), but the Ne rates were not checked against it. For Kr and Xe the potential is \
+not identified (zhao_2014 or Cloux et al.). Each dataset names what is known in \
+parameters.potential.
+
+THE USABLE RANGE (decided 2026-10-01). At low field the files are not rates. Each \
+dataset keeps the rows from the first field F0 from which on the rate rises \
+monotonically and its logarithmic slope d ln Gamma/dF (between consecutive rows) never \
+increases, the first row's slope from its lower neighbour included (a tunnelling \
+rate's ln Gamma is concave in F): F0 = 0.043 au (Ne), 0.025 (Ar), 0.020 (Kr), 0.018 \
+(Xe), where Gamma is 1.8e-12, 1.0e-12, 3.8e-13 and 3.3e-11 au. Below F0 there are \
+isolated glitches (Ar: 1.15e-14 au at 0.020 au, 7.4e-16 at 0.021; Ne: 8.4e-15 at \
+0.036, 1.5e-15 at 0.037; Kr: 0.018 and 0.019 au at 2.0 and 0.91 times the zeroth-order \
+WFAT shape described below, against 1.04-1.15 from 0.020 to 0.025 au), an absolute \
+noise of about 1e-14 au in Gamma; and below the glitches the values are smooth but on \
+a branch that does not continue the rates above F0: relative to the zeroth-order WFAT \
+rate |g00|^2 W00(F) with trinh_2013's coefficients (a different potential, used only \
+for the shape, whose ratio to an exact rate must tend to a constant as F -> 0), the \
+file's rate is 0.93-0.95 (Ne, 0.043-0.050 au), 0.70-0.83 (Ar, 0.025-0.050), 0.70-1.15 \
+(Kr, 0.020-0.050) and 0.53-1.06 (Xe, 0.018-0.050), but at 0.010 au 0.0012 (Ne), 18 \
+(Ar), 2.0 (Kr) and 8e-82 (Xe) (computed 2026-10-01). The rows are kept in the files \
+and excluded with their reasons (excluded_rows). A reviewer's reading (Ar from 0.023, \
+Kr from 0.020, Xe from 0.018 au) agrees except for Ar, where d ln Gamma/dF rises at \
+0.024 au, a row 9 % below the cubic through its four neighbours, so 0.023 and 0.024 au \
+are excluded too. Within the kept range a scatter of a few per cent remains near F0: \
+the deviation of a row from the cubic through its four neighbours exceeds 1 % up to \
+0.043 (Ne), 0.027 (Ar), 0.026 (Kr) and 0.026 au (Xe), and is below 0.1 % above 0.048, \
+0.036, 0.035 and 0.034 au.
+
+ACCURACY. No uncertainty is stated for the tabulated quantities. The Ar check above \
+(0.2 % against tRecX) shows the rates at 0.05-0.15 au are converged to that level.
+
+He IS NOT TAKEN. Its field column is printed to three decimals while its grid is (k - \
+1/2) x 0.001 au, k = 1-225: D_NL/F^3 is constant only with that grid (4.67-4.75 au \
+over rows 2-30, against 0.6-4.5 with the printed fields), and 20 printed fields occur \
+twice (0.004, 0.009, 0.011, ... 0.203). Every printed field is 0.0005 au off, which \
+changes a tunnelling rate by d ln Gamma/d ln F x 0.0005/F (about 8 % at 0.1 au) and \
+leaves rows with the same field. Taking He would need the grid as an erratum of every \
+row; the rates are not taken. (On the reconstructed grid the rate is smooth, and its \
+logarithm concave in F, from 0.0035 au on, without the glitches of the other files.)
+
+NOT TAKEN. The nonlinear dipole D_NL(F) (third column; the model's, kept in the \
+printed cells). The _pa_corr files (the post-adiabatic correction M(F,0), Eq. (26), \
+not documented column by column). The effective energies E_eff (p. 5: 0.17, 0.14, \
+0.12, 0.11, 0.10 au for He-Xe, adjusted to TDSE yields). The ionised fractions of \
+Figs. 2-6 (figures; MESA and TDSE in pulses)."""
+
+[[datasets]]
+id = "rate_Ne"
+material = "Ne"
+file = "Ne/bahl_2016__rate_Ne.csv"
+table = "data/NE_imE_nlp.dat"
+quantity = "ionization_rate"
+unit = "au"
+scale = -2
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "File NE_imE_nlp.dat of the Supplemental Material (record notes), column 2: Im E_0(F) of the metastable ground state of the single-active-electron model of Ne, the 2p electron with m = 0 (implied by the method, record notes), against the static field F (au); scale = -2 makes it the rate Gamma = -2 Im E_0 (au) of that one electron, with no factor for the other electrons of the atom. Potential: SAE model of refs. [18-20], not stated; of these only Tong and Lin's (tong_2005) is known to give Ne. 149 rows from 0 to 0.150 au; the 43 rows below 0.043 au are excluded (excluded_rows; the usable range, record notes), leaving 106 rows from 0.043 to 0.150 au, Gamma 1.8e-12 to 0.00221 au. No uncertainty is stated."
+[datasets.excluded_rows]
+"0.000" = "F = 0: no field, Im E_0 = 0"
+"0.001" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.002" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.003" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.004" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.005" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.006" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.007" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.008" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.009" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.010" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.011" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.012" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.013" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.014" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.015" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.016" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.017" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.018" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.019" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.020" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.021" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.022" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.023" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.024" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.025" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.026" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.027" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.028" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.029" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.030" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.031" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.032" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.033" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.034" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.035" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.036" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.037" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.038" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.039" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.040" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.041" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.042" = "below 0.043 au, the usable range: glitches at 0.036-0.042 au and below them a branch that departs from the tunnelling law (record notes)"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "2p"
+m = 0
+potential = "SAE model of refs. [18-20], not stated; of these only Tong and Lin's (tong_2005) is known to give Ne"
+method = "exterior complex scaling, FEAST eigenvalue solver (SAE)"
+
+[[datasets]]
+id = "rate_Ar"
+material = "Ar"
+file = "Ar/bahl_2016__rate_Ar.csv"
+table = "data/AR_imE_nlp.dat"
+quantity = "ionization_rate"
+unit = "au"
+scale = -2
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "File AR_imE_nlp.dat of the Supplemental Material (record notes), column 2: Im E_0(F) of the metastable ground state of the single-active-electron model of Ar, the 3p electron with m = 0 (implied by the method, record notes), against the static field F (au); scale = -2 makes it the rate Gamma = -2 Im E_0 (au) of that one electron, with no factor for the other electrons of the atom. Potential: Tong and Lin's (tong_2005), identified by the rates; the paper cites refs. [18-20] without assigning them. 151 rows from 0 to 0.150 au; the 25 rows below 0.025 au are excluded (excluded_rows; the usable range, record notes), leaving 126 rows from 0.025 to 0.150 au, Gamma 1e-12 to 0.0565 au. No uncertainty is stated. Within 0.2 % of the Tong-Lin m = 0 rates of travers_2026_trecx/static_Ar_m0 at 0.053-0.144 au."
+[datasets.excluded_rows]
+"0.000" = "F = 0: no field, Im E_0 = 0"
+"0.001" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.002" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.003" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.004" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.005" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.006" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.007" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.008" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.009" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.010" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.011" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.012" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.013" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.014" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.015" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.016" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.017" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.018" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.019" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.020" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.021" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.022" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.023" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.024" = "below 0.025 au, the usable range: glitches at 0.020-0.024 au and below them a branch that departs from the tunnelling law (record notes)"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "3p"
+m = 0
+potential = "Tong and Lin's (tong_2005), identified by the rates; the paper cites refs. [18-20] without assigning them"
+method = "exterior complex scaling, FEAST eigenvalue solver (SAE)"
+
+[[datasets]]
+id = "rate_Kr"
+material = "Kr"
+file = "Kr/bahl_2016__rate_Kr.csv"
+table = "data/KR_imE_nlp.dat"
+quantity = "ionization_rate"
+unit = "au"
+scale = -2
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "File KR_imE_nlp.dat of the Supplemental Material (record notes), column 2: Im E_0(F) of the metastable ground state of the single-active-electron model of Kr, the 4p electron with m = 0 (implied by the method, record notes), against the static field F (au); scale = -2 makes it the rate Gamma = -2 Im E_0 (au) of that one electron, with no factor for the other electrons of the atom. Potential: SAE model of refs. [18-20] (zhao_2014 or Cloux et al. 2015); not identified. 131 rows from 0 to 0.130 au; the 20 rows below 0.020 au are excluded (excluded_rows; the usable range, record notes), leaving 111 rows from 0.020 to 0.130 au, Gamma 3.8e-13 to 0.0671 au. No uncertainty is stated."
+[datasets.excluded_rows]
+"0.000" = "F = 0: no field, Im E_0 = 0"
+"0.001" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.002" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.003" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.004" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.005" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.006" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.007" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.008" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.009" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.010" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.011" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.012" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.013" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.014" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.015" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.016" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.017" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.018" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+"0.019" = "below 0.020 au, the usable range: glitches at 0.018-0.019 au and below them a branch that departs from the tunnelling law (record notes)"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "4p"
+m = 0
+potential = "SAE model of refs. [18-20] (zhao_2014 or Cloux et al. 2015); not identified"
+method = "exterior complex scaling, FEAST eigenvalue solver (SAE)"
+
+[[datasets]]
+id = "rate_Xe"
+material = "Xe"
+file = "Xe/bahl_2016__rate_Xe.csv"
+table = "data/XE_imE_nlp.dat"
+quantity = "ionization_rate"
+unit = "au"
+scale = -2
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "File XE_imE_nlp.dat of the Supplemental Material (record notes), column 2: Im E_0(F) of the metastable ground state of the single-active-electron model of Xe, the 5p electron with m = 0 (implied by the method, record notes), against the static field F (au); scale = -2 makes it the rate Gamma = -2 Im E_0 (au) of that one electron, with no factor for the other electrons of the atom. Potential: SAE model of refs. [18-20] (zhao_2014 or Cloux et al. 2015); not identified. 99 rows from 0 to 0.100 au; the 17 rows below 0.018 au are excluded (excluded_rows; the usable range, record notes), leaving 82 rows from 0.018 to 0.100 au, Gamma 3.3e-11 to 0.0822 au. No uncertainty is stated."
+[datasets.excluded_rows]
+"0.000" = "F = 0: no field, Im E_0 = 0"
+"0.001" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.002" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.003" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.004" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.005" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.006" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.007" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.008" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.009" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.010" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.011" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.012" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.013" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.014" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.015" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+"0.016" = "below 0.018 au, the usable range: values 1e-31 to 1e-228 of the tunnelling law, not a rate (record notes)"
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "5p"
+m = 0
+potential = "SAE model of refs. [18-20] (zhao_2014 or Cloux et al. 2015); not identified"
+method = "exterior complex scaling, FEAST eigenvalue solver (SAE)"

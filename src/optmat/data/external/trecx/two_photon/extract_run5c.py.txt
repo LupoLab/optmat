@@ -1,0 +1,185 @@
+"""Two-photon TDSE campaign, addendum 4: haCC's propagated 1s2p -> run5c/results.csv, run5c/scan_fit.csv, run5c/pop_<name>.csv
+
+    python extract_run5c.py        (on the cluster, in tdse_two_photon/; reads manifest_run5c.csv; uses extract_run5b.py)
+
+All time series are resampled linearly onto a 1 au grid first (expec has a row per adaptive step with Dipole on).
+Runs: haCC as run 5b (He19, 1 channel, lMax 10, rMax 40, occE build, accuracy 1e-9), one photon at 21.21 eV
++ {0, +-50, +-100} meV, 10 fs, 1e9 W/cm2, +3000 au after the pulse, printed every 1 au, Dipole: length, velocity.
+
+1. Beat. The OccDual 1s2p projector (state 2, 1P) cannot see the 1S ground state (the no-field floor of P(1s2p) is
+   1.3e-19, run5b), so P(1s2p)(t) has no usable beat. The dipole does: after the pulse (t > 2T, T = 10 fs)
+   <z>(t) = 2 Re(c0* c1 z01 exp(-i Delta t)) + ..., Delta the propagated 1s2p - ground spacing. Fitted, for the
+   length (DipLenZ) and velocity (DipVelZ) forms separately, by z(t) = a cos(w t) + b sin(w t) + c: w on a 1e-7 au grid
+   around the non-uniform DFT peak, a, b, c linear least squares; parabolic refinement of the residual minimum;
+   sigma_w from the residual's curvature, sigma_w^2 = 2 s^2 / RSS''(w), s^2 = RSS/(n - 4).
+   Also: the residual spectrum's largest other line, and the dipole |z01| = amplitude / (2 sqrt(P0 P1)) (length form),
+   and the velocity/length amplitude ratio (= Delta for exact eigenstates).
+2. P(1s2p) after the pulse: mean, end, spread, slope (post_stats of extract_run5b).
+3. Scan: P_i = K |S1_i(Omega)|^2, S1(Omega) = int E+(t) exp(i Omega t) dt, E+ ~ exp(-i omega t) the positive-frequency
+   part of the field as run (E = E+ + E-). In this convention first-order theory gives P = |z01|^2 |S1|^2, so K = |z01|^2.
+   K and Omega free; Omega on a 1 meV grid +-0.3 eV around the Occupation set's 1s2p, then 0.05 meV +-2 meV.
+4. State 3 (unidentified): its post-pulse maximum, and its beat if it is above 1e-20.
+"""
+import csv, importlib.util, os
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+_s = importlib.util.spec_from_file_location("x5b", f"{HERE}/extract_run5b.py")
+x5b = importlib.util.module_from_spec(_s); _s.loader.exec_module(x5b)
+HA, FS, TR = x5b.HA, x5b.FS, x5b.TR
+
+
+def S1(tE, Om):
+    t, Ep = tE
+    return complex(TR(Ep * np.exp(1j * Om * t), t))
+
+
+def nudft_peak(t, d, lo=0.2, hi=3.0, n=28001, exclude=None):
+    w = np.linspace(lo, hi, n)
+    dd = (d - d.mean()) * np.hanning(len(d))
+    F = np.concatenate([np.abs(np.exp(-1j * np.outer(wc, t)) @ dd) for wc in np.array_split(w, 28)])
+    if exclude is not None:
+        F[np.abs(w - exclude) < 0.01] = 0
+    k = int(np.argmax(F))
+    return float(w[k]), float(F[k])
+
+
+def fit_beat(t, z, w0):
+    def rss(w):
+        X = np.column_stack([np.cos(w * t), np.sin(w * t), np.ones_like(t)])
+        c, *_ = np.linalg.lstsq(X, z, rcond=None)
+        r = z - X @ c
+        return float(r @ r), c, r
+    ws = w0 + np.arange(-2000, 2001) * 1e-7
+    R = np.array([rss(w)[0] for w in ws])
+    k = int(np.argmin(R)); k = min(max(k, 1), len(ws) - 2)
+    h = ws[1] - ws[0]
+    c2 = (R[k + 1] - 2 * R[k] + R[k - 1]) / h ** 2
+    wb = ws[k] - (R[k + 1] - R[k - 1]) / (2 * h * c2) if c2 > 0 else ws[k]
+    r0, c, res = rss(wb)
+    s2 = r0 / (len(t) - 4)
+    sig = float(np.sqrt(2 * s2 / c2)) if c2 > 0 else float("nan")
+    amp = float(np.hypot(c[0], c[1]))
+    w2, F2 = nudft_peak(t, res, exclude=wb)
+    return dict(w=float(wb), sigma_w=sig, amp=amp, offset=float(c[2]), rel_rms_resid=float(np.sqrt(r0 / len(t)) / amp),
+                w_next=w2, at_edge=bool(k in (1, len(ws) - 2)))
+
+
+def main():
+    man = list(csv.DictReader(open(f"{HERE}/manifest_run5c.csv")))
+    rows = []
+    for r in man:
+        name = r["name"]
+        d = f"{HERE}/run5c/hacc/{name}"; rd = f"{d}/{name}/0000"
+        o = dict(name=name, done=os.path.isfile(f"{d}/{name}.done"), omega1_eV=float(r["omega1_eV"]),
+                 detuning_meV=1000 * float(r["detuning_eV"]), I_Wcm2=float(r["I_per_colour"]), accuracy=r["accuracy"])
+        if not os.path.isfile(f"{rd}/expec"):
+            rows.append(o); continue
+        col, a = x5b.expec(f"{rd}/expec")
+        occ = [j for n, j in col.items() if n.startswith("OccDual")]
+        jn = col["Overlap"]
+        en = [l.split() for l in open(f"{rd}/occupation_energies") if not l.startswith("#")]
+        E = {int(s): float(e) for s, e, _ in en}
+        o["E_state0"], o["E_state2"] = E[0], E[2]
+        o["Occ_1s2p_eV"] = (E[2] - E[0]) * HA
+        o["t_end"] = float(a[-1, 0]); o["nrows"] = len(a); o["norm_loss_end"] = float(1 - a[-1, jn])
+        # with Dipole on, expec has a row at every adaptive step (~0.035 au): resample every column linearly onto the
+        # 1 au grid the brief asks for (beat period ~8 au; linear interpolation of steps of 0.035 au changes amplitudes
+        # by < 1e-4 relative and frequencies not at all)
+        t, iu = np.unique(a[:, 0], return_index=True); a = a[iu]
+        o["nrows_raw"] = len(t)
+        tg = np.arange(np.ceil(t[0]), t[-1] + 1e-9, 1.0)
+        a = np.column_stack([np.interp(tg, t, a[:, j]) for j in range(a.shape[1])]); t = tg
+        t0 = 2 * 10. * FS
+        s = t > t0
+        # 2. P(1s2p) after the pulse
+        st = x5b.post_stats(t, a[:, occ[2]], t0)
+        o.update({f"p2_{k}": v for k, v in st.items()})
+        o["P_ground_end"] = float(a[-1, occ[0]])
+        P0, P1 = float(a[s, occ[0]].mean()), st["P_mean"]
+        # 1. the dipole beat
+        for form, nm in (("len", "DipLenZ"), ("vel", "DipVelZ")):
+            j = next((jj for n, jj in col.items() if n.startswith(nm)), None)
+            if j is None:
+                continue
+            z = a[s, j]
+            w0, _ = nudft_peak(t[s], z)
+            fb = fit_beat(t[s], z, w0)
+            for k, v in fb.items():
+                o[f"{form}_{k}"] = v
+            o[f"{form}_eV"] = fb["w"] * HA; o[f"{form}_sigma_eV"] = fb["sigma_w"] * HA
+        if "len_amp" in o:
+            o["z01_from_beat"] = o["len_amp"] / (2 * np.sqrt(P0 * P1))
+            if "vel_amp" in o:
+                o["vel_over_len_amp"] = o["vel_amp"] / o["len_amp"]
+        # 4. state 3
+        p3 = a[s, occ[3]]
+        o["P_state3_max"] = float(p3.max())
+        if p3.max() > 1e-20:
+            o["state3_beat_w"] = nudft_peak(t[s], p3)[0]
+        o["_tE"] = x5b.eplus(f"{d}/{name}.inp")
+        st_ = f"{d}/{name}.stderr"
+        if os.path.isfile(st_):
+            import re
+            mm = re.search(r"Elapsed \(wall clock\) time.*: (\S+)", open(st_).read())
+            if mm:
+                q = [float(x) for x in mm.group(1).split(":")]
+                o["wall_s"] = sum(x * 60 ** i for i, x in enumerate(reversed(q)))
+        with open(f"{HERE}/run5c/pop_{name}.csv", "w") as fo:
+            jl = next((jj for n, jj in col.items() if n.startswith("DipLenZ")), None)
+            jv = next((jj for n, jj in col.items() if n.startswith("DipVelZ")), None)
+            fo.write("t_au,P_ground,P_1s2s,P_1s2p,P_state3,P_1s3p,DipLenZ,DipVelZ,norm\n")
+            for row in a:
+                fo.write(",".join(f"{x:.12e}" for x in (row[0], row[occ[0]], row[occ[1]], row[occ[2]], row[occ[3]], row[occ[6]],
+                                                        row[jl] if jl else np.nan, row[jv] if jv else np.nan, row[jn])) + "\n")
+        rows.append(o)
+
+    # 3. scan fit
+    scan = sorted([o for o in rows if "_tE" in o], key=lambda o: o["detuning_meV"])
+    if len(scan) >= 3:
+        Om0 = scan[0]["E_state2"] - scan[0]["E_state0"]
+        P = np.array([o["p2_P_mean"] for o in scan])
+        best, fitrows = None, []
+        coarse = Om0 + np.arange(-300, 301) * 1e-3 / HA              # 1 meV over +-0.3 eV
+        rc = []
+        for Om in coarse:
+            sv = np.array([abs(S1(o["_tE"], Om)) ** 2 for o in scan])
+            K = float(P @ sv / (sv @ sv)); rc.append(float(np.sum((P - K * sv) ** 2) / np.sum(P ** 2)))
+        Omc = coarse[int(np.argmin(rc))]
+        grid = Omc + np.arange(-40, 41) * 5e-5 / HA                  # then 0.05 meV over +-2 meV
+        for Om in grid:
+            sv = np.array([abs(S1(o["_tE"], Om)) ** 2 for o in scan])
+            K = float(P @ sv / (sv @ sv)); res = float(np.sum((P - K * sv) ** 2) / np.sum(P ** 2))
+            fitrows.append((Om, K, res))
+            if best is None or res < best[2]:
+                best = (Om, K, res)
+        Omf, Kf, resf = best
+        with open(f"{HERE}/run5c/scan_fit.csv", "w") as f:
+            f.write("Omega_eV,K,rel_residual\n")
+            for Om, K, res in fitrows:
+                f.write(f"{Om * HA:.5f},{K:.6e},{res:.6e}\n")
+        print(f"scan fit ({len(scan)} points): Omega = {Omf * HA:.5f} eV (Occupation 1s2p {Om0 * HA:.5f}, "
+              f"{1000 * (Omf - Om0) * HA:+.1f} meV), K = {Kf:.5e} (sqrt K = {np.sqrt(Kf):.5f}), rel residual {resf:.2e}")
+        for o in scan:
+            sv = abs(S1(o["_tE"], Omf)) ** 2
+            o["S1_abs2_fit"] = sv; o["ratio_fit"] = o["p2_P_mean"] / (Kf * sv)
+            o["scan_Omega_eV"] = Omf * HA; o["scan_K"] = Kf; o["scan_rel_residual"] = resf
+    for o in rows:
+        o.pop("_tE", None)
+    keys = []
+    for o in rows:
+        keys += [k for k in o if k not in keys]
+    with open(f"{HERE}/run5c/results.csv", "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=keys); w.writeheader(); w.writerows(rows)
+    for o in rows:
+        if "p2_P_mean" not in o:
+            print(o["name"], "no expec"); continue
+        print(f"{o['name']:24s} P2 {o['p2_P_mean']:.5e} spread {o['p2_spread']:.2e} | len {o.get('len_eV', np.nan):.5f}"
+              f"+-{o.get('len_sigma_eV', np.nan):.1e} eV amp {o.get('len_amp', np.nan):.4e} resid {o.get('len_rel_rms_resid', np.nan):.1e}"
+              f" next {o.get('len_w_next', np.nan):.4f} | vel {o.get('vel_eV', np.nan):.5f}+-{o.get('vel_sigma_eV', np.nan):.1e}"
+              f" | z01 {o.get('z01_from_beat', np.nan):.5f} v/l {o.get('vel_over_len_amp', np.nan):.5f} | P3max {o['P_state3_max']:.1e}"
+              f" | ratio {o.get('ratio_fit', np.nan):.4f}")
+
+
+if __name__ == "__main__":
+    main()

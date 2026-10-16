@@ -1,0 +1,217 @@
+citation = "P. Egan and J. A. Stone, Appl. Opt. 50, 3076 (2011)"
+doi = "10.1364/AO.50.003076"
+library = "Egan_2011_AbsoluteRefractometryDry"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute refractometry with two Fabry-Perot cavities of ULE glass (143 and \
+329 mm, finesse about 400) at NIST: He-Ne lasers locked to cavity modes, absolute \
+frequencies from beats against an iodine-stabilised He-Ne laser; n - 1 from the \
+vacuum and gas-filled resonant frequencies, the mode-number change and the free \
+spectral range (Eq. (2)). The pressure-induced length change is calibrated with \
+helium, whose refractivity is calculated from first principles (Stone and Stejskal \
+2004), giving the ULE bulk modulus 33.86 GPa. Gases at (100 +- 0.5) kPa and (20 +- \
+0.005) C, scaled to 100 kPa and 20 C; pressure gauge u = 1.6 Pa, thermistor-referenced \
+thermocouples u = 1.3 mK (pp. 2-5; page numbers are the library pdf pages)."""
+notes = """Title as observed (the record is UNVERIFIED in the library): 'Absolute \
+refractometry of dry gas to +-3 parts in 10^9'; the citation is Egan et al.'s Ref. 50 in \
+egan_2019 (Appl. Opt. 50, 3076 (2011)), which matches the library file name \
+ao-50-19-3076.pdf.
+
+Wavelength: the paper says '632.8 nm' (abstract, conclusion) and 'lambda ~ 633 nm' \
+(Table 2), the usual air-wavelength label of the He-Ne line; the lasers are He-Ne \
+lasers measured against an iodine-stabilised He-Ne. Egan et al. (2019, p. 12) state \
+that these measurements were 'made at the same wavelength' as theirs, 632.9908 nm \
+(vacuum), which is used here. The difference from treating 632.8 nm as a standard-air \
+wavelength (about 632.97 nm in vacuum) is negligible for n - 1 (a few 1e-9 relative).
+
+Table 2: (n - 1) x 10^8 at p = 100 kPa, T = 20 C. This work 27368.2 +- 0.9 (N2) and \
+25838.9 +- 0.9 (Ar); the +- is the expanded uncertainty, 'an expanded uncertainty of \
+< 9 x 10^-9 (k = 2) in the refractive index reference values for nitrogen and argon at \
+specified temperature and pressure' (p. 7). The dry-gas refractometer alone has a \
+standard uncertainty of 1.41e-9 (Table 1, not extracted: the budget). The Birch, Hou \
+and Thalmann and Achtermann et al. rows are 'corresponding results obtained using the \
+molar refractivity values given by' those authors (p. 9): the authors' conversion of \
+other work to 100 kPa and 20 C, reproduced; their uncertainty level is not stated.
+
+Molar refractivities (text, p. 9): N2 4.44585 and Ar 4.19545 cm^3/mol, 'expanded \
+uncertainty of 1.2 x 10^-4 cm^3/mol', computed from the refractivities with Dymond et \
+al.'s density virial coefficients and Achtermann et al.'s (1991) refractivity virial \
+coefficients (so partly derived from literature virials): inline datasets, check.
+
+REVISED BY THE AUTHORS: Egan et al. (2019, p. 12, Table III note a) adjust these molar \
+refractivities by +19.3e-6 A_R for two biases: the difference T - T_90 = 2.9 mK \
+(9.9e-6; the 2011 temperatures were ITS-90) and a blunder in the extrapolation of the \
+helium-permeation lengthening (9.4e-6; a linear instead of the stated half-linear, \
+half-quadratic extrapolation), giving 4.44594(6) and 4.19553(6) (egan_2019, reproduced \
+there as a check), and 'consider the present measurements to supersede those of 2011'. \
+The helium blunder enters the refractivity itself and T - T_90 its temperature, so the \
+Table 2 refractivities are presumably low by a similar amount (about 5e-9 in n - 1, \
+within the stated expanded uncertainty 9e-9); the paper's values are kept as printed \
+and flagged in the register (TC-116).
+
+Not extracted: Table 1 (uncertainty budget), the humidity and cavity-comparison \
+results (air; figures)."""
+
+[[datasets]]
+id = "refractivity_N2"
+material = "N2"
+file = "N2/egan_2011__refractivity_N2.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "check"  # superseded by egan_2019, which revises these by +19.3e-6 (2026-09-25)
+notes = "Table 2 'This work': (n - 1) x 10^8 = 27368.2 +- 0.9 (k = 2) at 100 kPa, 20 C (ITS-90), 632.9908 nm (vacuum; see source notes). Later found by the authors to share a bias of about -19e-6 relative (source notes; TC-116)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "refractivity_Ar"
+material = "Ar"
+file = "Ar/egan_2011__refractivity_Ar.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "check"  # superseded by egan_2019, which revises these by +19.3e-6 (2026-09-25)
+notes = "Table 2 'This work': (n - 1) x 10^8 = 25838.9 +- 0.9 (k = 2) at 100 kPa, 20 C (ITS-90), 632.9908 nm (vacuum). Later found by the authors to share a bias of about -19e-6 relative (source notes; TC-116)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "birch_1991_N2"
+material = "N2"
+file = "N2/egan_2011__birch_1991_N2.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table 2 'Birch': 27368 +- 4, computed by Egan and Stone from Birch's molar refractivity (p. 9)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "birch_1991_Ar"
+material = "Ar"
+file = "Ar/egan_2011__birch_1991_Ar.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table 2 'Birch': 25838 +- 4, computed by Egan and Stone from Birch's molar refractivity (p. 9)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "hou_1994_N2"
+material = "N2"
+file = "N2/egan_2011__hou_1994_N2.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["W. Hou and R. Thalmann, Measurement 13, 307 (1994)"]
+notes = "Table 2 'Hou and Thalmann': 27367 +- 4, computed by Egan and Stone from Hou and Thalmann's molar refractivity (p. 9). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "hou_1994_Ar"
+material = "Ar"
+file = "Ar/egan_2011__hou_1994_Ar.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["W. Hou and R. Thalmann, Measurement 13, 307 (1994)"]
+notes = "Table 2 'Hou and Thalmann': 25839 +- 4, computed by Egan and Stone from Hou and Thalmann's molar refractivity (p. 9). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "achtermann_1991_N2"
+material = "N2"
+file = "N2/egan_2011__achtermann_1991_N2.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["achtermann_1991"]
+notes = "Table 2 'Achtermann et al.' (Ref. 22, the 1991 paper): 27372 +- 3, computed by Egan and Stone from Achtermann et al.'s molar refractivity (p. 9)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "achtermann_1991_Ar"
+material = "Ar"
+file = "Ar/egan_2011__achtermann_1991_Ar.csv"
+table = "tbl_7d11225de36b"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["achtermann_1991"]
+notes = "Table 2 'Achtermann et al.': 25842 +- 1, computed from Achtermann et al.'s molar refractivity; 'the argon measurements of Achtermann et al. ... claim a much lower uncertainty than is assigned to the corresponding nitrogen results' and are the only values not consistent within the stated uncertainties (p. 9)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "molar_refractivity_N2"
+material = "N2"
+table = "text"
+points = [["632.9908", "632.9908", "4.44585", "0.00012"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 9: A_R = 4.44585 cm^3/mol at 20 C, expanded uncertainty 1.2e-4 cm^3/mol, from refractivity_N2 with Dymond et al.'s density and Achtermann et al.'s refractivity virial coefficients: derived, and revised to 4.44594(6) by Egan et al. 2019 (+19.3e-6; source notes). A check."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+temperature_k = 293.15
+
+[[datasets]]
+id = "molar_refractivity_Ar"
+material = "Ar"
+table = "text"
+points = [["632.9908", "632.9908", "4.19545", "0.00012"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 9: A_R = 4.19545 cm^3/mol, expanded uncertainty 1.2e-4 cm^3/mol, derived as for nitrogen; revised to 4.19553(6) by Egan et al. 2019. A check."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"

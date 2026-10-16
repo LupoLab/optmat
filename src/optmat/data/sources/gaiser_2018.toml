@@ -1,0 +1,288 @@
+citation = "C. Gaiser and B. Fellmuth, Phys. Rev. Lett. 120, 123203 (2018)"
+doi = "10.1103/physrevlett.120.123203"
+library = "Gaiser_2018_PolarizabilityHeliumNeon"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Dielectric-constant gas thermometry (DCGT) at PTB, at the triple point of \
+water (isotherm temperatures 273.149-273.161 K, Table II): the relative capacitance \
+change gamma of a gas-filled 10 pF capacitor measured against pressure, scaled to mu = \
+gamma/(gamma + 3) and fitted by p = A_1 (mu + A_2 mu^2 + A_3 mu^3 + ...) (Eq. (1)), with \
+A_1 = (A_eps/(RT) + kappa_eff/3)^-1 (Eq. (2)); kappa_eff the independently determined \
+effective compressibility of the capacitor. Two setups: DCGTk, three tungsten-carbide \
+capacitors TC1-TC3 and pressure balances up to 7 MPa; DCGT2, two copper-beryllium \
+capacitors C1, C2 up to 0.3 MPa; 8 to 10 isotherms per capacitor; autotransformer ratio \
+bridge (pp. 1-2). A_eps/R converted to A_eps with the CODATA 2017 k and N_A (the values \
+fixed by the 2019 SI) (p. 3). Very low measuring frequency: the static polarizability."""
+notes = """The molar polarizability A_eps = N_A alpha_0 / (3 eps0), the package's molar \
+refractivity (cm3/mol) at zero frequency. It is the ELECTRIC polarizability only \
+(dielectric constant): for the refractive index the magnetic susceptibility must be \
+added (see lesiuk_2020, lesiuk_2023). A density-independent quantity: the virial terms \
+are in A_2, A_3, which the paper does not report.
+
+Uncertainty: Table I gives the budgets in ppm of A_eps/R per capacitor ('Sum', the root \
+sum of squares) and of the weighted means, 1.7/1.9/1.8 ppm without and 1.9/2.4/2.4 ppm \
+(He/Ne/Ar) with the correlations between capacitors and setups; the Table III \
+uncertainties are standard uncertainties (caption) and equal the correlated ones (He \
+10/5172544 = 1.9 ppm, Ne 2.4, Ar 2.4 ppm; checked 2026-09-25).
+
+Consistency (checked 2026-09-25): Table II's weighted means A_eps/R = 6.221140(12), \
+11.96363(28), 49.80100(12) x 10^-8 m^3 K/J times R = k N_A (8.31446261815324 J/(mol K)) \
+give 0.51725436, 0.99471154, 4.14068553 cm^3/mol, Table III's values to 0.15 ppm. In \
+atomic units (3 A_eps/(4 pi N_A a0^3), CODATA 2018): He 1.3837616, Ne 2.6610571, Ar \
+11.0771845; Lesiuk et al. quote Ne 2.661057(7) (2020) and Ar 11.077183(27) (2023). The \
+isotope effect is negligible except for neon (0.08 ppm from the natural-composition \
+spread, p. 3).
+
+Table III compares literature values (plotted in Fig. 2), extracted as reproduced \
+datasets. The text adds: the Ne theory value 0.99503(75) is Klopper et al.'s CCSD \
+with relativistic corrections benchmarked on Larsen et al.'s FCI, 2.6617(20) a.u. \
+(details in gaiser_2010); the Ar theory value 4.140(11) is Lupinetti and Thakkar's \
+nonrelativistic 11.065(3) a.u. (bounds turned into a standard uncertainty with a \
+rectangular distribution) plus a relativistic correction +0.01(1) a.u. from three \
+calculations (Refs. [20-22]), 11.075(30) a.u. (p. 4). Orcutt and Cole's values in Table \
+III are their low-pressure data without the compressibility correction (p. 4). The \
+reference list prints Orcutt and Cole's volume as '446' (for 46); not a data issue.
+
+Not extracted: Table I (budgets; the per-capacitor sums are used as uncertainties of \
+per_capacitor), Table II's T, kappa_eff and A_1 rows (inputs), and the weighted-mean \
+A_eps/R row (restated in Table III as A_eps)."""
+
+[[datasets]]
+id = "molar_polarizability_He"
+material = "He"
+file = "He/gaiser_2018__molar_polarizability_He.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_eps = 0.5172544(10) cm^3/mol, static, the correlated weighted mean of TC1-TC3 (standard uncertainty 1.9 ppm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "molar_polarizability_Ne"
+material = "Ne"
+file = "Ne/gaiser_2018__molar_polarizability_Ne.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_eps = 0.9947114(24) cm^3/mol, static, the correlated weighted mean of TC2, TC3, C1, C2 (standard uncertainty 2.4 ppm). Supersedes gaiser_2010 (0.994727(11); 1.6e-5 higher, within the expanded combined uncertainties, p. 4)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "molar_polarizability_Ar"
+material = "Ar"
+file = "Ar/gaiser_2018__molar_polarizability_Ar.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_eps = 4.140686(10) cm^3/mol, static, the correlated weighted mean of TC2, TC3, C1, C2 (standard uncertainty 2.4 ppm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "per_capacitor_He"
+material = "He"
+file = "He/gaiser_2018__per_capacitor_He.csv"
+table = "tbl_ec04560e1d2e"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.0831446261815324
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II: A_eps/R x 10^8 (m^3 K/J) per capacitor (rows TC1-TC3), whose correlated weighted mean is molar_polarizability_He: a check, not fitted beside it. scale = 1e-8 x R x 1e6 with R = k N_A = 8.31446261815324 J/(mol K) (the CODATA values the paper uses, exact in the 2019 SI) turns A_eps/R into A_eps in cm^3/mol. Per-row relative standard uncertainties are Table I's 'Sum' (ppm); the mu, T, p and p_head components are fully correlated between capacitors. relative = 4.0e-6 is the largest row, a fallback."
+[datasets.uncertainty]
+relative = 4.0e-6
+level = "1 sigma"
+relative_rows = { "TC1" = 4.0e-6, "TC2" = 2.4e-6, "TC3" = 2.9e-6 }
+
+[[datasets]]
+id = "per_capacitor_Ne"
+material = "Ne"
+file = "Ne/gaiser_2018__per_capacitor_Ne.csv"
+table = "tbl_ec04560e1d2e"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.0831446261815324
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II: A_eps/R x 10^8 (m^3 K/J) per capacitor (rows TC2, TC3, C1, C2), whose correlated weighted mean is molar_polarizability_Ne: a check. scale as for per_capacitor_He. Per-row relative standard uncertainties from Table I 'Sum'; relative = 12.2e-6 is the largest row, a fallback."
+[datasets.uncertainty]
+relative = 12.2e-6
+level = "1 sigma"
+relative_rows = { "TC2" = 2.8e-6, "TC3" = 2.8e-6, "C1" = 10.2e-6, "C2" = 12.2e-6 }
+
+[[datasets]]
+id = "per_capacitor_Ar"
+material = "Ar"
+file = "Ar/gaiser_2018__per_capacitor_Ar.csv"
+table = "tbl_ec04560e1d2e"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.0831446261815324
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II: A_eps/R x 10^8 (m^3 K/J) per capacitor (rows TC2, TC3, C1, C2), whose correlated weighted mean is molar_polarizability_Ar: a check. scale as for per_capacitor_He. Per-row relative standard uncertainties from Table I 'Sum'; relative = 12.8e-6 is the largest row, a fallback."
+[datasets.uncertainty]
+relative = 12.8e-6
+level = "1 sigma"
+relative_rows = { "TC2" = 2.5e-6, "TC3" = 2.6e-6, "C1" = 12.8e-6, "C2" = 11.1e-6 }
+
+[[datasets]]
+id = "orcutt_1967_He"
+material = "He"
+file = "He/gaiser_2018__orcutt_1967_He.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["orcutt_1967"]
+notes = "Table III 'Experiment' [16]: 0.51740(70) cm^3/mol, Orcutt and Cole's low-pressure value without the compressibility correction (p. 4); dielectric constant."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "buckley_2000_He"
+material = "He"
+file = "He/gaiser_2018__buckley_2000_He.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. J. Buckley, J. Hamelin, and M. R. Moldover, Rev. Sci. Instrum. 71, 2914 (2000)"]
+notes = "Table III 'Experiment' [17]: 0.51747(20) cm^3/mol, dielectric constant with capacitors, 'uncertainties of 100 ppm for Ar and 400 ppm for He' (p. 4). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "schmidt_2007_He"
+material = "He"
+file = "He/gaiser_2018__schmidt_2007_He.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["schmidt_2007"]
+notes = "Table III 'Experiment' [3]: 0.5172535(47) cm^3/mol, microwave technique (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "piszczatowski_2015_He"
+material = "He"
+file = "He/gaiser_2018__piszczatowski_2015_He.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["piszczatowski_2015", "puchalski_2016"]
+notes = "Table III 'Theory' [1,2]: 0.517254079(52) cm^3/mol, ab initio with relativistic and QED corrections (Piszczatowski et al. 2015; Puchalski et al. 2016)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "orcutt_1967_Ne"
+material = "Ne"
+file = "Ne/gaiser_2018__orcutt_1967_Ne.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["orcutt_1967"]
+notes = "Table III 'Experiment' [16]: 0.99360(80) cm^3/mol, low-pressure value without the compressibility correction (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "gaiser_2010_Ne"
+material = "Ne"
+file = "Ne/gaiser_2018__gaiser_2010_Ne.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2010"]
+notes = "Table III 'Experiment' [10]: 0.994727(11) cm^3/mol, DCGT1 (p. 4); the same as gaiser_2010's 9.94727 x 10^-7 m^3/mol."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "klopper_2004_Ne"
+material = "Ne"
+file = "Ne/gaiser_2018__klopper_2004_Ne.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. Klopper, S. Coriani, T. Helgaker, and P. Jørgensen, J. Phys. B 37, 3753 (2004)", "H. Larsen, J. Olsen, C. Hättig, P. Jørgensen, O. Christiansen, and J. Gauss, J. Chem. Phys. 111, 1917 (1999)"]
+notes = "Table III 'Theory' [18,19]: 0.99503(75) cm^3/mol, coupled-cluster with relativistic corrections and an FCI benchmark, 2.6617(20) a.u. (p. 4). The originals are not in the library."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "orcutt_1967_Ar"
+material = "Ar"
+file = "Ar/gaiser_2018__orcutt_1967_Ar.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["orcutt_1967"]
+notes = "Table III 'Experiment' [16]: 4.1400(20) cm^3/mol, low-pressure value without the compressibility correction (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "buckley_2000_Ar"
+material = "Ar"
+file = "Ar/gaiser_2018__buckley_2000_Ar.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. J. Buckley, J. Hamelin, and M. R. Moldover, Rev. Sci. Instrum. 71, 2914 (2000)"]
+notes = "Table III 'Experiment' [17]: 4.14078(39) cm^3/mol (p. 4). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "lupinetti_2005_Ar"
+material = "Ar"
+file = "Ar/gaiser_2018__lupinetti_2005_Ar.csv"
+table = "tbl_a15621c7c166"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Lupinetti and A. J. Thakkar, J. Chem. Phys. 122, 044301 (2005)"]
+notes = "Table III 'Theory' [15]: 4.140(11) cm^3/mol = 11.075(30) a.u.: Lupinetti and Thakkar's nonrelativistic 11.065(3) plus a relativistic +0.01(1) a.u. assembled by Gaiser and Fellmuth from Refs. [20-22] (p. 4), so partly the authors' own estimate. The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"

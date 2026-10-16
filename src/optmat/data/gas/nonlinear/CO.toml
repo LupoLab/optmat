@@ -1,0 +1,47 @@
+# Carbon monoxide: one measured ESHG value, with the ab initio process dependence.
+gas = "CO"
+description = "Carbon monoxide: Ward & Miller's 1979 ESHG at 694.3 nm (electronic plus vibrational, orientation removed), with Sekino & Bartlett's CCSD(T) static, THG, ESHG, Kerr and dc Kerr (one free scale) for the dispersion. B' is fixed at 0."
+range_nm = [400.0, 20000.0]
+validators = [
+    "lundeen_1983/fwm_532_CO",
+    "ward_1979/chi3_CO",
+    "hahn_1995/electronic_CO",
+]
+
+[[fitted]]
+key = "ward_1979/chi3_CO"
+
+[[fitted]]
+key = "sekino_1993/static_par_CO"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.01
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/thg_CO"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.01
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/eshg_CO"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.01
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/kerr_CO"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.01
+rows = ["ccsd_t"]
+
+[[fitted]]
+key = "sekino_1993/dc_kerr_CO"
+free_scale = true
+scale_group = "sekino_ccsd_t"
+extra_relative = 0.01
+rows = ["ccsd_t"]

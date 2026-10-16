@@ -1,0 +1,93 @@
+citation = "G. Garberoglio, C. Gaiser, R. M. Gavioso, A. H. Harvey, R. Hellmann, B. Jeziorski, K. Meier, M. R. Moldover, L. Pitre, K. Szalewicz and R. Underwood, \"Ab Initio Calculation of Fluid Properties for Precision Metrology\", J. Phys. Chem. Ref. Data 52, 031502 (2023)"
+doi = "10.1063/5.0156293"
+library = "Garberoglio_2023_AbInitioCalculation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Review: gas-based primary thermometry and pressure metrology (acoustic, \
+dielectric-constant, refractive-index and constant-volume gas thermometry; optical \
+and microwave pressure standards) and the ab initio quantities they use: atomic \
+polarizabilities and magnetic susceptibilities, pair and three-body potentials and \
+polarizabilities, density, acoustic, dielectric and refractivity virial coefficients \
+by path-integral Monte Carlo with propagated uncertainties, transport properties; \
+chiefly helium, also neon and argon, briefly molecules (N2, H2O, CO2, CO)."""
+notes = """The library copy (61 pdf pages, 'Dated: 21 July 2023', two-column preprint \
+layout) is cited as the journal article; page numbers are the library pdf's. \
+Identity VALIDATED_WITH_WARNINGS (library metadata; the version is not asserted).
+
+A REVIEW: it prints very few numbers of its own, and every optical number it prints \
+is another paper's. Only one is transcribed (the dataset A_mu_He: its original is not \
+in the library). The rest, and why not:
+- Table I (p. 25), the static polarizability of 4He by contribution, from Ref. 192 \
+(Puchalski, Szalewicz, Lesiuk and Jeziorski, Phys. Rev. A 101, 022505 (2020)): total \
+1.38376078(14) a0^3, identical to puchalski_2020/alpha_static (curated from the \
+original); not transcribed. Checked here: the eight contributions sum to the total \
+(1.3837607818); the total is 7 ppb above puchalski_2016's static total 1.38376077(14) \
+(fit/He's backbone), the difference being the Bethe-logarithm derivative term \
+(0.0000001822 against 0.000000183) and the new alpha^3/m QED recoil term \
+(0.00000001112).
+- p. 25: the molar polarizability of helium, measured 0.5172544(10) cm^3/mol (Ref. 63, \
+gaiser_2018) and calculated 0.51725408(5) (Table I converted; puchalski_2020 prints \
+it): duplicates, not transcribed.
+- p. 9: A_mu/A_eps about -1.53e-5 for He at zero frequency, B_eps = B_R there (the \
+magnetic and pair terms of Eq. (11), the Lorentz-Lorenz relation with A_mu, which is \
+the package's convention, TC-71): consistent with fit/He's chi0_au (-2.1194e-5 / \
+1.38376 = -1.532e-5).
+- p. 30: neon's and argon's calculated susceptibilities had 'approximately 0.2%' \
+(Ref. 64, lesiuk_2020) and '1%' (Ref. 66, lesiuk_2023) uncertainties, 'improvement \
+in progress' (Ref. 326, since curated as lesiuk_2023b, 1e-4); pp. 40, 48: they \
+disagree with Barter et al.'s (1960) measurements by 'on the order of 7%', in the \
+opposite direction for helium, and a modern measurement (perhaps of the argon/helium \
+ratio) 'would be highly desirable'. Numbers not printed here.
+- p. 14: Egan et al. (2019, Ref. 119, egan_2019) measured the refractivities of Ne, \
+Ar, Xe, N2, CO2 and N2O relative to helium at 293.15 K and about 633 nm 'with \
+standard uncertainty within 16 x 10^-6'; p. 13: Egan et al.'s dual-cavity N2 \
+refractometry at 632.9908 nm, 302.9190 K and 100 kPa (Ref. 106, Opt. Lett. 40, 3945 \
+(2015), not in the library) and the NIST comparison with a mercury manometer a year \
+later (Ref. 18), within 10 ppm from 100 Pa to 180 kPa. No values printed.
+
+TABLE IV (p. 38, 'state-of-the-art ab initio calculations'), for comparison with \
+the package's choices (TC-71 and data/gas/refractivity_virial.toml):
+- A_eps: He Ref. 192 (puchalski_2020; the package fits puchalski_2016's series, 7 ppb \
+lower static); Ne Ref. 65 (Hellmann, Phys. Rev. A 105, 022809 (2022), not in the \
+library; the package uses lesiuk_2020 and gaiser_2018); Ar Ref. 66 (lesiuk_2023). \
+For Ne and Ar 'the most accurate theoretical results are less accurate than the best \
+experimental determination' (Ref. 63, gaiser_2018, p. 39), which is the package's \
+choice of static anchor.
+- A_mu: He Ref. 80 (the dataset below; fit/He uses Bruch and Weinhold's \
+-2.1194(1)e-5 a.u.), Ne Ref. 64 (lesiuk_2020: fit/Ne's -8.484e-5), Ar Ref. 66 \
+(lesiuk_2023: fit/Ar's -2.30e-4). No krypton, xenon or molecular susceptibility: \
+the review covers He, Ne and Ar (Kr and Xe appear only for transport), so fit/Kr, \
+fit/Xe (chi0_au = 0) get nothing here.
+- B_R: He, Ne, Ar Ref. 79 (Garberoglio and Harvey, J. Res. Natl. Inst. Stand. \
+Technol. 125, 125022 (2020), path-integral B_eps and B_R, not in the library); for \
+Ne, better Ref. 117's B_eps (Hellmann et al., J. Chem. Phys. 154, 164304 (2021), not \
+in the library) with Ref. 79's frequency dependence (note c). The package's B_R are \
+measured: achtermann_1991 (He, Ar), orcutt_1967's static B_eps (Ne). For neon and \
+argon B_R 'rely on values for the Cauchy moment Delta S(-4) that could be \
+significantly improved' (p. 47). No C_R theory at optical frequencies (p. 47).
+- Molecules (pp. 41-45, 48): no ab initio dielectric or refractivity virial \
+coefficient exists for any molecule ('no fully ab initio calculation of dielectric \
+virial coefficients for molecular systems has been performed', p. 48); nitrogen for \
+optical pressure metrology 'would be aided by good ab initio results for the \
+polarizability of the N2 molecule and its second density and refractivity virial \
+coefficients' (p. 46), since supplied for the polarizability by lang_2026 (not the \
+virial). So N2's B_R stays achtermann_1991's.
+
+Not extracted: Tables II-III (He2 and Ne2 interaction energies), Table IV (a \
+bibliography, summarised above), the figures (uncertainty histories)."""
+
+[[datasets]]
+id = "A_mu_He"
+material = "He"
+table = "text"
+points = [["4He", "", "-7.92128", "0.00013"]]
+quantity = "magnetic_susceptibility"
+unit = "cm3/mol"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["M. Puchalski, M. Lesiuk and B. Jeziorski, \"Relativistic treatment of diamagnetic susceptibility of helium\", Phys. Rev. A 108, 042812 (2023) (Ref. 80, cited as in preparation)"]
+notes = "p. 30 (checked on the pdf text): 'the final result for 4He corresponds to A_mu = -7.92128(13) x 10^-6 cm3 mol-1', converted by the reviewers from Puchalski et al.'s atomic units; 'all effects through order alpha^4', the nonrelativistic limit with Slater geminals; relative uncertainty 'conservatively estimated at 16 ppm', mainly the neglected alpha^5 QED (level not stated). A_mu is the molar magnetic term of Eq. (11), (4 pi/3) N_A chi_0: chi_0 = -2.119105e-5 a.u. (with 0.3738031 cm^3/mol per a.u., computed), 1.4e-4 of itself smaller in magnitude than Bruch and Weinhold's -2.1194(1)e-5 that fit/He uses (via puchalski_2016), a change of 2.1e-9 of helium's refractive polarizability. The original (published as Phys. Rev. A 108, 042812 (2023), as lang_2026 and lesiuk_2023b cite it) is not in the library: this is the best copy."
+[datasets.uncertainty]
+column = true
+level = "not stated"

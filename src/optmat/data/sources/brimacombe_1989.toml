@@ -1,0 +1,277 @@
+citation = "R. K. Brimacombe, R. S. Taylor and K. E. Leopold, J. Appl. Phys. 66, 4035 (1989)"
+doi = "10.1063/1.343987"
+library = "Brimacombe_1989_DependenceNonlinearTransmission"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Nonlinear transmission of commercial fused-silica step-index fibres \
+(NA ~0.2, 0.4 to 13 m long) at the excimer wavelengths 193 (ArF), 248 (KrF), 308 \
+(XeCl) and 351 nm (XeF): an unpolarized, multimode Lumonics 861-T laser, spatially \
+filtered, coupled into the fibre core (about 70 % filled; uniform filling checked at \
+the output of a 5 cm fibre). Energies by pyroelectric detectors calibrated at each \
+wavelength against a UV calorimeter, corrected for Fresnel reflection at both ends; \
+pulse shapes by a vacuum photodiode (1 ns rise time), typical FWHM 5, 9, 4 and 7 ns at \
+193, 248, 308 and 351 nm. The small-signal transmission, re-measured after each high-\
+intensity shot, separates colour-centre absorption from two-photon absorption."""
+notes = """Table II (p. 5) is transcribed in full and Table I (fibres) is in these \
+notes. Both tables were checked against their images: all cells agree. In Table II \
+the Ref. 21 bound '< 4.5e-5' is printed on its own line under the 266 nm row; the \
+script gives it 266 nm (see the script). Cells print their own uncertainty and power \
+of ten; values and sigmas are stored in e-notation (cm/MW, scale 1).
+
+Definition (p. 4): the two-photon coefficient is called alpha_1, '-(1/I) dI/dx = alpha_0 \
++ I alpha_1' (Eq. 1), integrated over the fibre length to 1/T = (1 + beta) exp(-alpha l) \
+- beta with beta = alpha_1 I_0 / alpha_0 (Eq. 2; the paper's beta is this ratio, not \
+the TPA coefficient). alpha_1 is the only adjusted parameter, the model applied point \
+by point to the digitised input pulse, with alpha_0 re-measured after each shot so that \
+colour-centre formation is taken out. The intensity is the energy coupled into the core \
+(Fresnel reflection removed) over the core area and the measured pulse, 'assuming \
+that the fiber core was uniformly filled' (p. 2). 'Measurements of alpha_1 were within \
+experimental error for different fiber types (plastic versus silica clad, low versus \
+high OH content)', which the authors take as evidence that alpha_1 is 'solely the \
+property of the bulk material' (p. 4). The uncertainties are printed per value; their \
+level is not stated.
+
+Table I (verbatim, fibre type / core diameter (um) / cladding / OH content (ppm), OH \
+'provided by the manufacturers'): Diaguide ST-U / 400-600 / Silica / 400; Diaguide ST-U \
+Medical / 400 / Silica / 400; Fiberguide-GUV / 400 / Silica / 1200; Quartz and Silice \
+PCS-600 / 600 / Plastic / 325; Spectran-Spectraguide UV / 320 / Silica / 1000 \
+(footnote b: Diaguide is now part of Mitsubishi Cable America Inc.). The fibres were \
+bought 1985-1988. Table II's own values are not assigned to fibres; the per-fibre fits \
+are printed on Figs. 5, 7 and 8 (below, as check datasets; the curves themselves are \
+not digitised).
+
+Band gaps (p. 5): Fig. 9's dashed curve is Mizunami and Takagi's (Ref. 8) Keldysh \
+prediction 'using an experimental value for the fused silica band-gap energy of 7.8 \
+eV' (Ref. 21, Liu et al. 1978), and 'an effective band gap of 8.2 eV rather than 7.8 eV \
+is more appropriate for use in the Keldysh formula', from the disagreement at 308 nm. \
+The paper also calls the gap '~8 eV' (p. 4). At 308 and 351 nm the small loss 'made it \
+very difficult to get accurate values for alpha_1'; the similar values there 'may be the \
+result of background multiphoton absorption by impurities or the onset of three-photon \
+absorption in fused silica at 351 nm' (p. 5). Colour centres: E' centre band at ~215 \
+nm (Fig. 4), recovery after baking at 150 C; a 337 nm value of Ref. 5 'is now believed to \
+be in error' (ref. 19). Figures 2-4 and 6 (transmission against accumulated energy, \
+induced attenuation spectra, waveforms) are not digitised.
+
+Reference list oddities: the entry numbered 30 is Ref. 10 (Stathis and Kastner), and \
+refs. 20-23 are printed out of order; the in-text numbers are used here.
+
+Reproductions (Table II, 'Other work'): Ref. 9 is taylor_1988 (4.5e-11 cm/W = 4.5e-5 \
+cm/MW at 248 nm, +-2.2 being Taylor's +-50 %); Refs. 6 and 21 are the two Liu et al. \
+papers, Refs. 7 and 8 the Mizunami fibre measurements, none in the library. Footnote \
+a: Refs. 9, 6 and 21 used fused-silica substrates (bulk). This paper's values are \
+reproduced by eva_1996 (2.1 at 248 nm) and by dragomir_2002 Table 1 (21 at 248 nm and, \
+wrongly, 20 instead of 200 x 1e-11 cm/W at 193 nm; see dragomir_2002)."""
+
+[[datasets]]
+id = "alpha1_fibre"
+material = "SiO2"
+file = "SiO2/brimacombe_1989__alpha1_fibre.csv"
+table = "tbl_b42460a7da40"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "primary"
+excluded_rows = { "351" = "2 h nu = 7.1 eV is below the gap: 'may be the result of background multiphoton absorption by impurities or the onset of three-photon absorption' (p. 5); printed 4.6 +- 4.6e-7" }
+notes = "Table II 'This work': fibres of several types (Table I), not assigned. Typical pulse FWHM 5, 9, 4 and 7 ns at 193, 248, 308 and 351 nm (p. 2; Figs. 5, 7, 8 print 4.5, 9 and 4 ns). The 308 nm value disagrees with the Keldysh prediction for a 7.8 eV gap (p. 5)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "fibre"
+technique = "intensity-dependent transmission"
+polarization = "unpolarized"
+
+[[datasets]]
+id = "taylor_1988_248"
+material = "SiO2"
+file = "SiO2/brimacombe_1989__taylor_1988_248.csv"
+table = "tbl_b42460a7da40"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "Ref. 9 (substrate, footnote a): taylor_1988's 4.5e-11 cm/W with its +-50 %."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+pulse_fs = 700
+
+[[datasets]]
+id = "liu_1979_266"
+material = "SiO2"
+file = "SiO2/brimacombe_1989__liu_1979_266.csv"
+table = "tbl_b42460a7da40"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["liu_1979"]
+notes = "Ref. 6 (substrate, footnote a): liu_1979 (Table I and p. 1017: 1.7e-5 cm/MW +- 20 %, i.e. +-0.34, printed here +-0.3; agrees). The same 1.7e-11 cm/W is in taylor_1988 and dragomir_2002 (there +-43 % absolute)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_1978"
+material = "SiO2"
+file = "SiO2/brimacombe_1989__liu_1978.csv"
+table = "tbl_b42460a7da40"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1978"]
+notes = "Ref. 21 (substrate, footnote a): upper bounds at 266 and 355 nm ('< 4.5e-5', '< 1.3e-6'), not measured values. liu_1978 prints < 1.25e-6 cm/MW at 355 nm (Table I; here rounded to 1.3) and 4.5e-5 cm/MW at 266 nm without '<' (Table II), which liu_1979 calls the detection limit."
+[datasets.parameters]
+form = "bulk"
+pulse_fs = 30000
+
+[[datasets]]
+id = "mizunami_1988_282"
+material = "SiO2"
+file = "SiO2/brimacombe_1989__mizunami_1988_282.csv"
+table = "tbl_b42460a7da40"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. Mizunami and K. Takagi, Optical Fiber Sensors Technical Digest Series 2, 260 (1988)"]
+notes = "Ref. 8 (a fibre measurement; no footnote a). Pulse length not stated here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "fibre"
+
+[[datasets]]
+id = "mizunami_1987_308"
+material = "SiO2"
+file = "SiO2/brimacombe_1989__mizunami_1987_308.csv"
+table = "tbl_b42460a7da40"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["T. Mizunami, T. Miyazaki and K. Tagaki, J. Opt. Soc. Am. B 4, 498 (1987)"]
+notes = "Ref. 7 (a fibre measurement; author 'Tagaki' as printed): an upper bound ('< 2e-7'), not a measured value."
+[datasets.parameters]
+form = "fibre"
+
+[[datasets]]
+id = "fig5_diaguide_193"
+material = "SiO2"
+points = [["Fig. 5", "193", "1.8e-3"]]
+table = "text"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "The alpha_1 printed on Fig. 5 for the l = 101 cm Diaguide fibre (a label on the fitted curve, read from the figure's text, not digitised); the 4.5 ns input pulse is printed on the figure. Behind Table II's value at this wavelength."
+[datasets.parameters]
+form = "fibre"
+technique = "intensity-dependent transmission"
+polarization = "unpolarized"
+grade = "Diaguide"
+pulse_fs = 4500000.0
+
+[[datasets]]
+id = "fig5_fiberguide_guv_193"
+material = "SiO2"
+points = [["Fig. 5", "193", "2.2e-3"]]
+table = "text"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "The alpha_1 printed on Fig. 5 for the l = 39 cm Fiberguide GUV fibre (a label on the fitted curve, read from the figure's text, not digitised); the 4.5 ns input pulse is printed on the figure. Behind Table II's value at this wavelength."
+[datasets.parameters]
+form = "fibre"
+technique = "intensity-dependent transmission"
+polarization = "unpolarized"
+grade = "Fiberguide GUV"
+pulse_fs = 4500000.0
+
+[[datasets]]
+id = "fig7_diaguide_medical_248"
+material = "SiO2"
+points = [["Fig. 7", "248", "2.0e-4"]]
+table = "text"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "The alpha_1 printed on Fig. 7 for the l = 100 cm Diaguide medical fibre (a label on the fitted curve, read from the figure's text, not digitised); the 9 ns input pulse is printed on the figure. Behind Table II's value at this wavelength."
+[datasets.parameters]
+form = "fibre"
+technique = "intensity-dependent transmission"
+polarization = "unpolarized"
+grade = "Diaguide medical"
+pulse_fs = 9000000
+
+[[datasets]]
+id = "fig7_diaguide_st_u_248"
+material = "SiO2"
+points = [["Fig. 7", "248", "1.9e-4"]]
+table = "text"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "The alpha_1 printed on Fig. 7 for the l = 60 cm Diaguide ST-U fibre (a label on the fitted curve, read from the figure's text, not digitised); the 9 ns input pulse is printed on the figure. Behind Table II's value at this wavelength."
+[datasets.parameters]
+form = "fibre"
+technique = "intensity-dependent transmission"
+polarization = "unpolarized"
+grade = "Diaguide ST-U"
+pulse_fs = 9000000
+
+[[datasets]]
+id = "fig8_diaguide_st_u_308"
+material = "SiO2"
+points = [["Fig. 8", "308", "4.6e-7"]]
+table = "text"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "The alpha_1 printed on Fig. 8 for the l = 685 cm Diaguide ST-U fibre (a label on the fitted curve, read from the figure's text, not digitised); the 4 ns input pulse is printed on the figure. Behind Table II's value at this wavelength."
+[datasets.parameters]
+form = "fibre"
+technique = "intensity-dependent transmission"
+polarization = "unpolarized"
+grade = "Diaguide ST-U"
+pulse_fs = 4000000
+
+[[datasets]]
+id = "band_gap_liu_1978"
+material = "SiO2"
+points = [["SiO2", "", "7.8"]]
+table = "text"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["liu_1978"]
+notes = "p. 5: the Keldysh prediction of Fig. 9 (from Ref. 8) uses 'an experimental value for the fused silica band-gap energy of 7.8 eV' (Ref. 21). A model input, quoted."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "band_gap_effective"
+material = "SiO2"
+points = [["SiO2", "", "8.2"]]
+table = "text"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 5: 'The significant difference in the predicted and experimental value of alpha_1 at 308 nm suggests that an effective band gap of 8.2 eV rather than 7.8 eV is more appropriate for use in the Keldysh formula.' An effective gap inferred from the comparison, not a measurement."
+[datasets.parameters]
+kind = "effective"

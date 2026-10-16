@@ -1,0 +1,310 @@
+citation = "Z.-L. Nie, J. Wang, C.-L. Hu, Y. R. Sun, C.-F. Cheng, Y. Tan and S.-M. Hu, \"Polarizability of molecular hydrogen and gas metrology\", Phys. Rev. A 111, 012801 (2025)"
+doi = "10.1103/PhysRevA.111.012801"
+library = "Nie_2025_PolarizabilityMolecularHydrogen"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Fabry-Perot gas refractometers (USTC; the instrument of zhao_2026): 10 cm \
+ULE cavities (R ~ 99.9 %, FSR 1.5 GHz, mode width ~0.4 MHz) in a vacuum cell in an \
+aluminium cylinder at about 297.53 K (calibrated platinum resistance thermometer, < 5 \
+mK), a 1566 nm fibre laser (< 10 kHz) PDH-locked to a cavity mode, the mode frequency \
+beaten against a reference laser (drift ~0.1 Hz/s). n - 1 from the mode shift, Eq. \
+(2), with the bulk modulus K = 3.3372e10 Pa and mirror-deformation d_1 = 1.6119e-13 \
+Pa^-1 (Opt-1; d_2 = 0 for Opt-2) calibrated at 70 kPa with ARGON against a Fluke \
+PG7601 piston gauge (11 ppm) taking A_eps(Ar) = 4.140686(10) cm^3/mol (Gaiser and \
+Fellmuth 2018, gaiser_2018). Pressure from an Inficon CDGSci manometer calibrated \
+against the optical gauge, u = sqrt((20e-6 p)^2 + (1.5 Pa)^2). Gases 99.9999 %; H2 \
+through a liquid-nitrogen trap. Pressure points 2-100 kPa, several series; the \
+static A_eps from each point through Eqs. (1) and (3), weighted mean (pp. 1-4)."""
+notes = """Identity VALIDATED; first page checked (pdf page 1: Phys. Rev. A 111, 012801 \
+(2025), published 7 January 2025). Page numbers are the article pages 1-5 (= pdf \
+pages).
+
+WHAT IS MEASURED AND WHAT IS PRINTED (the same scheme as zhao_2026, whose record \
+explains it at length). The refractometer measures n - 1 at 1566 nm (vacuum). Eq. (1) \
+reduces it to the refractive molar polarization A_eps'(omega) + A_mu; the authors \
+subtract A_mu (Table I; Refs. 32, 33) and convert to the static A_eps with Eq. (3), \
+the electronic dipole sums S(-4), S(-6), S(-8) of Table I ('S parameters are from Ref. \
+[21]', Olney et al. 1997, for all four gases). They are not Olney et al.'s own sums but \
+comparison rows of Olney's Table 3 (olney_1997, curated 2026-09-26): N2 and H2 are \
+Zeiss et al.'s DOSD (zeiss_1977), Ne and Ar Kumar and Meath's (kumar_1985); the \
+parenthesised uncertainties are not in Olney et al. and are Nie et al.'s own. Only the static A_eps is printed \
+(Table II, the text, the abstract). The datasets A_R_1566_* are RECONSTRUCTED by \
+tools/extract/nie_2025.py, inverting Eq. (3) exactly (see its docstring: the reduced-\
+mass factor applied to H2 with the proton mass, +5 ppm; omitted for N2 and Ne, < 0.1 \
+ppm). Their A_mu convention is that of Rourke (A_mu = chi_M/3, SI): Ar -80.9(6)e-6 \
+cm^3/mol equals rourke_2021's -8.09(57)e-5, and Ne -29.2(6)e-6 is near lesiuk_2020's \
+chi_0 converted, -31.7e-6.
+
+WHAT THE STATIC VALUES INCLUDE. As in zhao_2026: the electronic polarizability plus \
+the (negative) infrared response at 1566 nm, which the conversion does not remove; no \
+static vibrational polarizability. N2, Ne and H2 have no infrared-active vibration, so \
+here the static values are the electronic (vibrationally and rotationally averaged, \
+297.53 K) static polarizabilities. For H2 the value is for normal hydrogen at 297.53 K; \
+the natural D/H ratio 'should be corrected by -2 x 10^-6' (p. 4).
+
+NOT INDEPENDENT OF ARGON: the pressure scale (K, d) is calibrated with argon's A_eps \
+from gaiser_2018 at one point (70 kPa); every result here is relative to it. zhao_2026 \
+in turn calibrates with this paper's N2 value.
+
+UNCERTAINTY (Table II, ppm; the level is not stated in the table, taken as one \
+standard uncertainty like the paper's k = 1 gauge uncertainties): T 16, p \
+25, K 11, purity 1, outgas 0.2/0.9/0.5, frequency and L_cav < 0.1, statistics 9/26/5, \
+A_mu 0.1/0.6/0.2, B_eps 3/<0.1/2, B_T 12/20/4, S(i) 7/1/12 (N2/Ne/H2); totals 36, 46, 35 \
+(each the root sum of squares, checked). The reconstructed A_R keeps all but S(i) and \
+A_mu: 35.2 (N2), 45.6 (Ne), 32.4 (H2) ppm.
+
+COMPARISONS (computed 2026-09-25): H2 static 2.031027(71) is 26 ppm above raj_2018's \
+normal-H2 static average at 296.15 K (5.4332744 au = 2.030975 cm^3/mol) and 0.00023 \
+above Sun et al.'s 2.03080(12), which omits relativistic and QED terms (the authors \
+estimate 60 ppm, p. 4). Ne static 0.994742(46) is 31 ppm above gaiser_2018's \
+0.9947114(24). N2 4.38705(16) is 59 ppm above the Egan et al. value 4.38679(7). The \
+reconstructed Ne A_R(1566) 0.995627(45) is 44 ppm above rourke_2021's A_R at 1550 nm \
+(0.9956018(34)) moved to 1566 nm with Olney's sums (0.995583). Lesiuk et al.'s Ne \
+value as quoted, 0.99470(13) cm^3/mol, is 2.66103 au, not lesiuk_2020's alpha_0 \
+2.66080 au (0.994615 cm^3/mol; 86 ppm lower): the quoted value may include \
+something else (the magnetic term would lower it); not resolved.
+
+Text values not extracted as datasets: Egan et al.'s Ne 0.994598(16) cm^3/mol (p. 4; \
+Nie et al.'s conversion of egan_2019, like the N2 value of Table II); Klopper et al.'s \
+0.99503(75) (already gaiser_2018/klopper_2004_Ne); the calibration value A_eps(Ar) = \
+4.140686(10) (gaiser_2018's). Not extracted: Table I's B_T and B_eps (Ar -16.1(5), \
+1.72(11); Ne 11.0(5), -0.0930(5); N2 -5.5(3), 1.12(30); H2 14.1(1), 0.06(10); \
+cm^3/mol and cm^6/mol^2 at about 297.5 K, sources Refs. 34-37 not assigned per gas), \
+the argon column (a calibration input, not a result), the per-pressure points \
+(figures only)."""
+
+[[datasets]]
+id = "A_R_1566_N2"
+material = "N2"
+file = "N2/nie_2025__A_R_1566_N2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "RECONSTRUCTED (not printed): A_eps'(omega) + A_mu at 1566 nm (vacuum) and 297.53 K, = Table II's static 4.38705 + (4 pi/3) N_A a0^3 [S(-4) w^2 + S(-6) w^4 + S(-8) w^6] (Table I, Olney's sums) + A_mu (-52.1e-6), by tools/extract/nie_2025.py. Uncertainty: Table II without S(i) and A_mu, 35.2 ppm, one sigma. Tied to gaiser_2018's argon A_eps through the pressure calibration."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "A_R_1566_Ne"
+material = "Ne"
+file = "Ne/nie_2025__A_R_1566_Ne.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "RECONSTRUCTED (not printed), as A_R_1566_N2: 0.994742 + Olney's dispersion + A_mu (-29.2e-6) at 1566 nm, 297.53 K; 45.6 ppm. 44 ppm above rourke_2021's 1550 nm A_R moved to 1566 nm (source notes)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "A_R_1566_H2"
+material = "H2"
+file = "H2/nie_2025__A_R_1566_H2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "RECONSTRUCTED (not printed), as A_R_1566_N2: 2.031027 + (1 + m_e/m_p)^3 x Olney's dispersion + A_mu (-17.0e-6) at 1566 nm, 297.53 K, normal hydrogen (natural D/H; -2 ppm for pure H2 isotopologue, p. 4); 32.4 ppm."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "static_N2"
+material = "N2"
+file = "N2/nie_2025__static_N2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'This work': A_eps = 4.38705(16) cm^3/mol (36 ppm, k = 1), the static electronic value derived from the 1566 nm measurement with Olney's sums. Not independent of A_R_1566_N2: a check. zhao_2026 calibrates its cavity with this value. At 297.53 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "static_Ne"
+material = "Ne"
+file = "Ne/nie_2025__static_Ne.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'This work': A_eps = 0.994742(46) cm^3/mol (46 ppm), static, from A_R_1566_Ne: a check. 31 ppm above gaiser_2018 (0.7 sigma)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "static_H2"
+material = "H2"
+file = "H2/nie_2025__static_H2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'This work' and Eq. (4): A_eps = 2.031027(71) cm^3/mol at 297.53 K (35 ppm), normal hydrogen, static electronic, from A_R_1566_H2: a check. 26 ppm above raj_2018's normal-H2 static average at 296.15 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "egan_2019_N2"
+material = "N2"
+file = "N2/nie_2025__egan_2019_N2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["egan_2019"]
+notes = "Table II 'Expt.' (note a, Ref. 40, Egan et al. 2019): 'The static polarizability according to the value obtained by Egan et al.' (p. 4), 4.38679(7) cm^3/mol: Nie et al.'s static conversion of egan_2019's optical A_R, not a printed Egan value. Derived: a check."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "gaiser_2018_Ne"
+material = "Ne"
+file = "Ne/nie_2025__gaiser_2018_Ne.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2018"]
+notes = "Table II 'Expt.' (note a, Ref. 39): 0.9947114(24) cm^3/mol, identical to gaiser_2018's molar_polarizability_Ne (DCGT)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hohm_kerl_1990_H2"
+material = "H2"
+file = "H2/nie_2025__hohm_kerl_1990_H2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["hohm_1990"]
+notes = "Table II 'Expt.' (note a, Ref. 25, Hohm and Kerl, Mol. Phys. 69, 803 (1990) = hohm_1990): 2.033(4) cm^3/mol. The number itself is not printed in hohm_1990 (its H2 values are temperature fits at 632.99 nm and a 0 K extrapolation); how Nie et al. derived a static molar value from it is not said. Level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "olney_1997_N2"
+material = "N2"
+file = "N2/nie_2025__olney_1997_N2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["olney_1997"]
+notes = "Table II 'Theor.' (note b, Ref. 21): 4.3887(18) cm^3/mol, 'with an uncertainty of 410 ppm' (p. 4); a dipole-sum (DOSD) static value. Olney et al. (curated since 2026-09-26 as olney_1997) print no such number: 4.3887 cm^3/mol is 11.7407 au, and their N2 values are 11.75 (Table 3, refined, the Hohm and Kerl 1990 polarizability it was renormalised to: 4.3922 cm^3/mol), 11.74 (Zeiss et al.'s DOSD row: 4.3885), 11.743 (Langhoff and Karplus: 4.3896) and 11.54 (Table 1, unrefined); nor do they print an uncertainty. How Nie et al. obtained 4.3887(18) is not established (checked 2026-09-26)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "lesiuk_2020_Ne"
+material = "Ne"
+file = "Ne/nie_2025__lesiuk_2020_Ne.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lesiuk_2020"]
+notes = "Table II 'Theor.' (note b, Ref. 23): 0.99470(13) cm^3/mol. Does not equal lesiuk_2020's alpha_0 = 2.66080 au, which is 0.994615 cm^3/mol (86 ppm lower); 0.99470 is 2.66103 au. Not resolved; use lesiuk_2020 itself."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "sun_2021_H2"
+material = "H2"
+file = "H2/nie_2025__sun_2021_H2.csv"
+table = "tbl_2c3bf20e3331"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Sun, Y. P. Zhang, X. J. Wei, L. M. Wang and Z.-C. Yan, Phys. Rev. A 103, 062813 (2021)"]
+notes = "Table II 'Theor.' (note b, Ref. 26): 2.03080(12) cm^3/mol at 297.53 K, non-Born-Oppenheimer static polarizabilities of the rotational levels in Hylleraas coordinates, thermally averaged; 'the contributions from the relativistic and QED effects have not been included', estimated at 60 ppm (p. 4). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "olney_moments_N2"
+material = "N2"
+file = "N2/nie_2025__olney_moments_N2.csv"
+table = "tbl_c8f73c6e439f"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["zeiss_1977"]
+notes = "Table I: S(-4) 30.11(9), S(-6) 101.8(9), S(-8) 385(6) au ('S parameters are from Ref. [21]', Olney et al. 1997). CORRECTED ATTRIBUTION (2026-09-26): these are not Olney et al.'s sums (their own N2 row is 30.02, 100.8, 378.7: olney_1997/moments_N2) but the Zeiss et al. (1977) DOSD row [49] of Olney's Table 3 (30.11, 101.8, 384.6; olney_1997/zeiss_1977_N2), identical to zeiss_1977/moments_N2 (385 is 384.6 rounded): reproduced_from set to zeiss_1977. The parenthesised uncertainties (0.3, 0.9, 1.6 %) are printed by neither Olney nor Zeiss: Nie et al.'s own."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "olney_moments_Ne"
+material = "Ne"
+file = "Ne/nie_2025__olney_moments_Ne.csv"
+table = "tbl_c8f73c6e439f"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_1985"]
+notes = "Table I: S(-4) 2.886(2), S(-6) 5.063(18), S(-8) 10.86(4) au. Neon has curated ab initio moments (lesiuk_2020, pawlowski_2005): this copy is a check on them. CORRECTED ATTRIBUTION (2026-09-26): Nie et al. cite Olney et al. (Ref. [21]), but these are the Kumar and Meath (1985) DOSD row [54] of Olney's Table 3 (olney_1997/kumar_1985_Ne), identical to kumar_1985/moments_Ne; Olney et al.'s own neon sums are 2.938, 5.137, 10.95 (olney_1997/moments_Ne). reproduced_from set to kumar_1985. The parenthesised uncertainties are Nie et al.'s own."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "olney_moments_H2"
+material = "H2"
+file = "H2/nie_2025__olney_moments_H2.csv"
+table = "tbl_c8f73c6e439f"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["zeiss_1977"]
+notes = "Table I: S(-4) 19.96(8), S(-6) 82.94(51), S(-8) 367(4) au. Hydrogen has curated ab initio dispersion (raj_2018, rychlewski_1983): this copy is a check on them. CORRECTED ATTRIBUTION (2026-09-26): Nie et al. cite Olney et al. (Ref. [21]), but these are the Zeiss et al. (1977) DOSD row [49] of Olney's Table 3 (19.96, 82.94, 367.0; olney_1997/zeiss_1977_H2), identical to zeiss_1977/moments_H2; Olney et al.'s own H2 sums are 20.04, 83.18, 367.0 (olney_1997/moments_H2). reproduced_from set to zeiss_1977. The parenthesised uncertainties are Nie et al.'s own."
+[datasets.uncertainty]
+column = true
+level = "not stated"

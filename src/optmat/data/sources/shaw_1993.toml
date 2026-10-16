@@ -1,0 +1,151 @@
+citation = "M. J. Shaw, C. J. Hooker and D. C. Wilson, Opt. Commun. 103, 153 (1993)"
+doi = "10.1016/0030-4018(93)90657-q"
+library = "Shaw_1993_MeasurementNonlinearRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Self-phase modulation of about 10 ps pulses at 248.6 nm (tripled 746 nm \
+Ti:sapphire oscillator pulses amplified in a dye amplifier and a double-passed KrF \
+discharge amplifier to 2 mJ, 180 MW, 8 Hz) focused by a 2 m lens into a 3 m pressure \
+cell; spectra on an echelle spectrometer (0.2 cm^-1) against pressure (Baratron gauge) \
+in both directions; the B integral of each spectrum fitted with a modelled asymmetric \
+pulse shape (sech^2 oscillator pulse cubed and passed through a saturated amplifier, \
+Eqs. 9-11); relative n2 from the slopes of B against pressure (Eq. 8, Fig. 4)."""
+notes = """Defining equations (p. 2): n = n0 + n2 <E^2> = n0 + Gamma I (Eq. 1), 'I is the \
+intensity (watt/cm^2) and Gamma = 4.2 x 10^-3 (n2/n0) (n2 in e.s.u.)'; B(t) = k Gamma \
+int_0^L I dl (Eqs. 4-5); B = B1 + alpha gamma P with alpha = k int I dl and gamma = \
+Gamma/P, 'n2 is usually specified at a pressure of 760 Torr' (p. 3). Gamma is the \
+single-beam (self) coefficient of SPM. The absolute scale needs int I dl, estimated as \
+6.8 +- 2.4 TW/cm (from 4.5, 7.6 and 9.2 TW/cm by three assumptions, p. 3), so the \
+absolute values are uncertain by +-33 %; the ratios to air are better than 10 % \
+(Conclusion, p. 7-8). Only the ratios (Table 1) are for curated gases; the only absolute \
+value is for air: 'n2 for air at 248 nm, 760 Torr and 300 K of 2.9 +- 1.0 x 10^-16 esu' \
+(p. 5), not a curated species. B1 = 1.3 with the cell evacuated (window and lens \
+material).
+
+Table 1 ('Relative values of nonlinear refractive index at 248 nm. Errors shown are \
+calculated from the standard errors in the slopes of the fitted lines'; \
+tbl_d1f5f8c27975, image checked): air 1.00, N2 0.62 +- 0.03, O2 2.50 +- 0.25, Ar 0.24 +- \
+0.01, CH4 0.94 +- 0.07, Ne 0.005 +- 0.001, He -0.002 +- 0.001. Extracted as \
+nonlinear_index_ratio against 'air' (reference_material = air, not a curated species; \
+same pressure, 760 Torr and 300 K for the absolute value). The uncertainties are \
+standard errors of slopes (1 sigma).
+- O2 is not measured: 'calculated using the results obtained for air, nitrogen and \
+argon, assuming that oxygen makes a 21 % contribution to the total nonlinear index of \
+air while nitrogen contributes 78 % and argon 1 %' (p. 5). Check: (1 - 0.78 x 0.62 - \
+0.01 x 0.24)/0.21 = 2.45 against 2.50 printed (2 %, presumably unrounded slopes).
+- CH4: stimulated Raman scattering above about 250 Torr raised the slope; only the \
+data below 250 Torr were used (p. 5).
+- Ne (just observable at 7000 Torr) and He (no broadening; a slight narrowing, 50 \
+spectra): the authors write 'It seems plausible that our values for helium and \
+probably also neon were affected by ionization in the focal region' (p. 8), with an \
+MPI estimate giving B of about -0.1 (p. 7): both excluded.
+- Molecules: 'at our pulselength of 10 ps there is some reduction of the \
+susceptibility of the molecular gases due to the freezing out of the nuclear motions' \
+(p. 6; rovibrational response times 1-2 ps estimated). Recorded as part = total (the \
+nuclear response is largely adiabatic at 10 ps), with that caveat. The ratio N2/Ar \
+disagrees with Hellwarth et al.'s calculation (p. 6).
+
+Wavelength: 248.6 nm (the KrF gain peak, p. 3; medium not stated). Pulse: 'about 10 \
+ps' (streak camera), modelled as an asymmetric pulse of about 11 ps FWHM (p. 4)."""
+
+[[datasets]]
+id = "ratio_N2"
+material = "N2"
+file = "N2/shaw_1993__ratio_N2.csv"
+table = "tbl_d1f5f8c27975"
+quantity = "nonlinear_index_ratio"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: n2(N2)/n2(air) at 248.6 nm, SPM of 10 ps pulses, slope standard error."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+reference_material = "air"
+part = "total"
+pulse_fs = 10000
+
+[[datasets]]
+id = "ratio_O2"
+material = "O2"
+file = "O2/shaw_1993__ratio_O2.csv"
+table = "tbl_d1f5f8c27975"
+quantity = "nonlinear_index_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1: n2(O2)/n2(air), not measured but derived from air, N2 and Ar with volume fractions 0.21/0.78/0.01 (p. 5); marked check because it is a combination of the other ratios."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+reference_material = "air"
+part = "total"
+pulse_fs = 10000
+
+[[datasets]]
+id = "ratio_Ar"
+material = "Ar"
+file = "Ar/shaw_1993__ratio_Ar.csv"
+table = "tbl_d1f5f8c27975"
+quantity = "nonlinear_index_ratio"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: n2(Ar)/n2(air) at 248.6 nm (numerator electronic, reference air total), up to 3500 Torr of Ar."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+reference_material = "air"
+part = "electronic"
+pulse_fs = 10000
+
+[[datasets]]
+id = "ratio_CH4"
+material = "CH4"
+file = "CH4/shaw_1993__ratio_CH4.csv"
+table = "tbl_d1f5f8c27975"
+quantity = "nonlinear_index_ratio"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: n2(CH4)/n2(air) at 248.6 nm from the slope below 250 Torr (SRS above)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+reference_material = "air"
+part = "total"
+pulse_fs = 10000
+
+[[datasets]]
+id = "ratio_Ne"
+material = "Ne"
+file = "Ne/shaw_1993__ratio_Ne.csv"
+table = "tbl_d1f5f8c27975"
+quantity = "nonlinear_index_ratio"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table 1: n2(Ne)/n2(air). Excluded: the authors think neon 'probably also' affected by ionisation in the focus (p. 8); broadening only just observable at 7000 Torr."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+reference_material = "air"
+part = "electronic"
+pulse_fs = 10000
+
+[[datasets]]
+id = "ratio_He"
+material = "He"
+file = "He/shaw_1993__ratio_He.csv"
+table = "tbl_d1f5f8c27975"
+quantity = "nonlinear_index_ratio"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table 1: n2(He)/n2(air) = -0.002 +- 0.001, a slight spectral narrowing; excluded: the authors attribute it to free electrons from multiphoton ionisation in the focus (p. 7-8). An upper limit on He's n2 at best."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+reference_material = "air"
+part = "electronic"
+pulse_fs = 10000

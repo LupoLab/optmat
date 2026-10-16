@@ -1,0 +1,447 @@
+citation = "J. K. Wahlstrand, Y.-H. Cheng and H. M. Milchberg, \"Absolute measurement of the transient optical nonlinearity in N2, O2, N2O, and Ar\", Phys. Rev. A 85, 043820 (2012)"
+doi = "10.1103/PhysRevA.85.043820"
+library = "Wahlstrand_2012_AbsoluteMeasurementTransient"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single-shot supercontinuum spectral interferometry (SSSI): a 40-fs, 800-nm \
+(1.55 eV) Ti:sapphire pump and a chirped supercontinuum probe (generated in SF6, usable \
+bandwidth 120 nm, group-delay dispersion 1750 fs^2) copropagate through a thin gas flow \
+(laser-drilled flattened tube, outer thickness 475 um, L_eff = 418 um) in a vacuum \
+chamber; the probe phase shift Delta Phi(x, t) is extracted from the spectral \
+interferogram (1000 shots averaged). The pump spot (29 um x 27 um) is measured from the \
+Kerr phase along two perpendicular slices (Dove prism). L_eff comes from a folded \
+wave-front interferometer at 635 nm on the N2 flow; the other gases are measured in the \
+backfilled chamber at about 90 Torr and referenced to the N2 flow-tube measurement \
+(effective length 4.41 mm at 90 Torr). Probe parallel and perpendicular to the pump \
+separate the instantaneous and rotational parts (pp. 2-3)."""
+notes = """Journal pages 043820-1 to -5 = PDF pages 1-5. Identity checked against the first \
+page. Air is not curated; no air value is given here anyway.
+
+DEFINING EQUATIONS (quoted; Gaussian units throughout). Eq. (1), p. 043820-1: 'The total \
+nonlinear index of refraction, to second order in the field or first order in the laser \
+intensity, is Delta n(t) = n2 I(t) + int R(t - t') I(t') dt'', with I(t) the laser \
+intensity and R(t) the (rotational, plus a small adiabatic bond-stretch) Raman response. \
+Eq. (2), p. 1: Delta Phi(x, t) = k0 int Delta n dz = k0 Delta n_atm(x, t) int P(z)/P0 dz \
+= k0 Delta n_atm(x, t) L_eff, with k0 the average vacuum wavenumber of the chirped probe \
+over the overlap and Delta n_atm 'the change in refractive index at atmospheric pressure \
+P0'. Separation (pp. 2-3): Delta Phi_par = Delta Phi_inst + Delta Phi_rot, Delta Phi_perp \
+= Delta Phi_inst/3 - Delta Phi_rot/2, so Delta Phi_inst = 3(Delta Phi_par + 2 Delta \
+Phi_perp)/5 and Delta Phi_rot = 2(Delta Phi_par - 3 Delta Phi_perp)/5. Long-pulse limit \
+(p. 3): n2,long = n2 - [8 pi N (Delta alpha)^2 / (15 n0^2 c^2 hbar B)] sum_j [j(j - 1)/(2j - \
+1)^2] (rho_j/(2j + 1) - rho_(j-2)/(2j - 3)), rho_j the thermal (nuclear-spin weighted) \
+populations; B = 2.0 (N2), 1.44 (O2), 0.41 cm^-1 (N2O). The paper states no relation \
+between n2 and chi(3) or gamma (it only defines Delta alpha = alpha_par - alpha_perp, the \
+linear polarizabilities along and across the bond axis, p. 1).
+
+SELF OR PROBE COEFFICIENT. Eq. (1) writes the probe's index as n2 I, with no factor 2, \
+and the paper does not discuss the cross-phase factor. The tabulated n2 is nevertheless \
+the SELF coefficient: (i) the same group's PRL (wahlstrand_2012b, which calibrates \
+'as in [this paper]') writes Delta n = 2 n2 I and gives the same Ar value, 9.7 +- 1.2; (ii) \
+wahlstrand_2013 (p. 7) says its calculations 'provide theoretical justification for the \
+analysis performed in' this paper, the only difference between the probe's and the \
+self index being the factor 2 of the bound electronic part, and compares these values \
+with Loriot's erratum-corrected self coefficients; (iii) zahedpour_2015 (p. 5795) writes \
+the probe index as 2 n2 I + int R, citing this paper. Recorded as coefficient = 'self' \
+(TC-276).
+
+PART. The instantaneous part is attributed to the electronic response: the adiabatic \
+bond-stretch (vibrational) contribution, which the 40-fs pulse cannot separate, is \
+estimated ~30 times smaller than the measured instantaneous phase in N2 and O2 (p. 3, \
+citing Zheltikov's response function and Shelton and Rice's < 10 %). The molecular \
+values are therefore recorded as 'electronic_vibrational' (Ar: 'electronic'); the \
+rotational part is removed by the polarization analysis, not by the pulse duration. \
+For pulses longer than ~80 fs the instantaneous and rotational responses merge (Fig. 3, \
+40-100 fs, N2).
+
+REFERENCE STATE. 'absolute values of Kerr nonlinearity at 1 atm' (p. 2); no temperature \
+is stated for the reduction (the density-matrix code of note [23] uses 300 K; n2/n2,long \
+is for 'atmospheric density and room temperature'). Recorded as 101325 Pa and 290.9 K \
+(decided 2026-09-26, TC-316; the other sources' unstated temperatures are \
+293.15 K). The absolute scale rests on L_eff from Delta phi = k0 (n0 - 1) L_eff = 1.16 \
+rad with n0 - 1 = 2.795e-4 for N2 at 633 nm and 1 atm (Clergent et al. 1999, now \
+clergent_1999); optmat's default N2 model gives that refractivity at 101325 Pa and about \
+291 K (2.795e-4 lies between 2.822e-4 at 288.15 K and 2.773e-4 at 293.15 K; computed \
+2026-09-26; at 632.8 nm in standard air the fit/N2 model gives 2.795e-4 at 290.88 K), so \
+the effective reference density is that of N2 at 290.9 K, 1 atm: +0.7 % against 293.15 \
+K. The group's own n2 are recorded at that state. The ORIGIN of 2.795e-4 (clergent_1999, \
+checked 2026-09-26): it is Clergent et al.'s Table 5 value for N2, (n - 1) x 10^6 = \
+279.5 +- 0.8 at 632.8 nm, 101.325 kPa and 293.15 K (mu p/T with mu = 808.8 +- 1.2 x \
+1e-9 K/Pa). At that state optmat's N2 model gives 277.33e-6, so the value is +0.78 % \
+above the fit; Clergent's Ar and CO2 are likewise +0.56 % and +0.50 % above optmat's \
+models (a common calibration offset of that measurement, about twice its stated 0.3 \
+%). Two readings follow: if Clergent's absolute value were right, the n2 would refer \
+to N2 at 293.15 K, 1 atm (the state of Clergent's value; the group states no \
+temperature); if optmat's N2 model is right \
+(Clergent's offset is common to all three gases, which suggests a calibration \
+error of that measurement), the phase calibration refers to the density of N2 at 290.9 K, 1 atm, \
+as recorded here, and the n2 are 0.78 % above what the same measurement gives at \
+293.15 K. No value is changed here.
+
+WAVELENGTHS. Pump 800 nm (1.55 eV, p. 1), vacuum assumed. Probe: supercontinuum, n2 and \
+Delta alpha showed 'no measurable variation, to within error ... over the central probe \
+wavelength range of 550-635 nm'; for a probe at 580 nm the n2 at 800 nm is overestimated \
+'by less than 3 %' (power-series dispersion, Shelton and Rice / Bishop; p. 4). probe_nm = \
+580 is recorded.
+
+UNCERTAINTY (p. 3): 'The largest source of uncertainty is the peak intensity ... the \
+uncertainty values given in Table I are the absolute error; the relative contribution \
+between n2 and Delta alpha was measured much more precisely ... Ratios of values between \
+gases are also more precise than the absolute error given'. Level not stated.
+
+TABLE I (p. 3). The library's cells file has merged all rows into one garbled row; the \
+values are entered inline, read from the table image and confirmed in the pdf text \
+layer (pdftotext, page 3). Columns: n2 (1e-20 cm2/W) this work, Nibbering et al. [10], \
+Loriot et al. [16], Shelton and Rice [25]; Delta alpha (1e-25 cm3) this work and Lin et \
+al. [26]; n2/n2,long this work (Ar blank; N2 0.23, O2 0.14, N2O 0.04: a derived ratio, not \
+extracted, there is no quantity for it). The Shelton and Rice column (Ar 10.4, N2 8.1, O2 \
+8.7) is not tabulated as n2 in Shelton and Rice; how it was computed is not stated.
+
+TEXT (not extracted). Pulse-width study in N2 40-100 fs at constant energy (Fig. 3); the \
+nonlinear response, instantaneous and rotational, is linear in intensity up to the \
+ionization threshold for every gas (p. 2). Peak intensities (Fig. 2): Ar 41, N2 45, O2 \
+14, N2O 28 TW/cm2. No higher-order Kerr terms are measured here."""
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+table = "text"
+points = [["800", "800", "9.7", "1.2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Table I, 'This work' (read from the table image, p. 3). 1 atm at 290.9 K, the density of the N2 flow calibration (source notes; TC-316). Self coefficient (source notes). Measured in the backfilled chamber (~90 Torr) against the N2 flow-tube calibration."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+probe_nm = 580
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+table = "text"
+points = [["800", "800", "7.4", "0.9"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Table I, 'This work' (table image, p. 3). The instantaneous part of the polarization-resolved response (rotation removed); includes the adiabatic bond-stretch part, estimated ~1/30 of it (p. 3). 1 atm at 290.9 K, the density of the N2 flow calibration (source notes; TC-316). Self coefficient. The absolute calibration (thin flow, L_eff = 418 um) was done in N2."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 40
+probe_nm = 580
+
+[[datasets]]
+id = "n2_O2"
+material = "O2"
+table = "text"
+points = [["800", "800", "9.5", "1.2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Table I, 'This work' (table image, p. 3). Instantaneous part (rotation removed by polarization analysis; adiabatic bond stretch ~1/30 included). 1 atm at 290.9 K, the density of the N2 flow calibration (source notes; TC-316). Self coefficient."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 40
+probe_nm = 580
+
+[[datasets]]
+id = "n2_N2O"
+material = "N2O"
+table = "text"
+points = [["800", "800", "17.2", "2.2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Table I, 'This work' (table image, p. 3). Instantaneous part (rotation removed by polarization analysis; any adiabatic vibrational part included, not estimated for N2O). 1 atm at 290.9 K, the density of the N2 flow calibration (source notes; TC-316). Self coefficient. The rotational response dominates N2O (n2/n2,long = 0.04)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 40
+probe_nm = 580
+
+[[datasets]]
+id = "dalpha_N2"
+material = "N2"
+table = "text"
+points = [["800", "800", "6.7", "0.3"]]
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I, Delta alpha 'This work' (table image, p. 3), in 1e-25 cm3 (a polarizability volume). Fitted to the delayed (rotational) response with a density-matrix code (40 fs, 300 K, j_max = 30; note [23]) whose only inputs are Delta alpha and the moment of inertia. The rotational response scales as Delta alpha(pump) x Delta alpha(probe): the wavelength recorded is the pump's, 800 nm; the probe was near 580 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dalpha_O2"
+material = "O2"
+table = "text"
+points = [["800", "800", "10.2", "0.4"]]
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I, Delta alpha 'This work' (table image, p. 3); as dalpha_N2 (j_max = 30)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dalpha_N2O"
+material = "N2O"
+table = "text"
+points = [["800", "800", "28.1", "1.1"]]
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I, Delta alpha 'This work' (table image, p. 3); as dalpha_N2 (j_max = 45)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "nibbering_Ar"
+material = "Ar"
+table = "text"
+points = [["800", "800", "14", "2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table I, 'Nibbering et al. [10]' (table image, p. 3): Nibbering's n2,instant (Table 3 there: 1.4 +- 0.2 x 1e-23 m2/W at 1.0 bar, 300 K, 120-fs pulses), unit changed only. State and part as in the original."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "nibbering_N2"
+material = "N2"
+table = "text"
+points = [["800", "800", "23", "3"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table I, 'Nibbering et al. [10]' (p. 3): Nibbering's n2,instant for N2 (2.3 +- 0.3 x 1e-23 m2/W), which includes the rotational Rayleigh part."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "nibbering_O2"
+material = "O2"
+table = "text"
+points = [["800", "800", "51", "7"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 300.0 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table I, 'Nibbering et al. [10]' (p. 3): Nibbering's n2,instant for O2 (5.1 +- 0.7 x 1e-23 m2/W)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 120
+
+[[datasets]]
+id = "loriot_Ar"
+material = "Ar"
+table = "text"
+points = [["800", "800", "10.0", "0.9"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009", "loriot_2010"]
+notes = "Table I, 'Loriot et al. [16]' (p. 3), [16] citing both Opt. Express 17, 13429 (2009) and the erratum 18, 3011 (2010): the erratum's self coefficients. Loriot: degenerate pump-probe transient birefringence, 90 fs, 800 nm, 1 bar, room temperature (293.15 K assumed here)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "loriot_N2"
+material = "N2"
+table = "text"
+points = [["800", "800", "11", "2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009", "loriot_2010"]
+notes = "Table I, 'Loriot et al. [16]' (p. 3). Includes the degenerate probe's rotational-grating contribution (wahlstrand_2013 corrects it to 8.4 +- 2.0)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "loriot_O2"
+material = "O2"
+table = "text"
+points = [["800", "800", "16.0", "3.5"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009", "loriot_2010"]
+notes = "Table I, 'Loriot et al. [16]' (p. 3). Includes the rotational-grating contribution (wahlstrand_2013 corrects it to 11.1 +- 3.5)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "shelton_rice_Ar"
+material = "Ar"
+table = "text"
+points = [["800", "800", "10.4"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["shelton_1994"]
+notes = "Table I, 'Shelton and Rice [25]' (p. 3): an n2 the authors derived from Shelton and Rice's hyperpolarizabilities; the computation (dispersion, density, temperature) is not stated. A comparison value, not a measurement."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "shelton_rice_N2"
+material = "N2"
+table = "text"
+points = [["800", "800", "8.1"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["shelton_1994"]
+notes = "Table I, 'Shelton and Rice [25]' (p. 3); as shelton_rice_Ar. Whether the vibrational part is included is not stated."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "shelton_rice_O2"
+material = "O2"
+table = "text"
+points = [["800", "800", "8.7"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["shelton_1994"]
+notes = "Table I, 'Shelton and Rice [25]' (p. 3); as shelton_rice_N2."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "lin_dalpha_N2"
+material = "N2"
+table = "text"
+points = [["inf", "not stated", "9.3"]]
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table I, Delta alpha 'Lin et al. [26]' (p. 3); lin_1976 itself reproduces Hirschfelder, Curtiss and Bird. No wavelength is stated for the original value (not a static value)."
+
+[[datasets]]
+id = "lin_dalpha_O2"
+material = "O2"
+table = "text"
+points = [["inf", "not stated", "11.4"]]
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table I, Delta alpha 'Lin et al. [26]' (p. 3); see lin_dalpha_N2."
+
+[[datasets]]
+id = "lin_dalpha_N2O"
+material = "N2O"
+table = "text"
+points = [["inf", "not stated", "27.9"]]
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table I, Delta alpha 'Lin et al. [26]' (p. 3); see lin_dalpha_N2."

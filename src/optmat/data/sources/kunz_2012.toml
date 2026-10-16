@@ -1,0 +1,57 @@
+citation = "O. Kunz and W. Wagner, \"The GERG-2008 Wide-Range Equation of State for Natural Gases and Other Mixtures: An Expansion of GERG-2004\", J. Chem. Eng. Data 57, 3032 (2012)"
+doi = "10.1021/je300655b"
+library = "Kunz_2012_GERG2008Wide"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Fit: the GERG-2008 multi-fluid mixture model (the basis of ISO 20765-2/3) for 21 \
+components: reduced Helmholtz energy = ideal-mixture part + sum of x_i times each \
+component's residual part + departure functions, with binary reducing functions for \
+density and temperature (beta_v, gamma_v, beta_T, gamma_T), fitted to mixture \
+p-rho-T, caloric and phase-equilibrium data."""
+notes = """Identity VALIDATED by the library. Printed page = pdf page + 3031 (checked on the \
+rendered pages, 2026-09-30). The library's text garbles Eqs. (42), (43) and (45) \
+('E_ij', 'f_ij', Delta alpha on both sides); the page prints F_ij alpha^r_ij(delta, \
+tau). A small misprint in the original, 'Delta alpha^r_ij = Delta alpha^r_gen' (p. \
+3047), affects no parameter.
+
+THE FORM (checked by a reader against the pages): the general multi-fluid model, Eqs. \
+(1)-(7) (§2.2.1, p. 3035), Eq. (7) alpha^r = sum x_i alpha^r_oi + Delta alpha^r; the \
+working form, Eqs. (8)-(11) (p. 3040), with the departure term sum x_i x_j F_ij \
+alpha^r_ij; the reducing functions, Eqs. (16)-(17) (p. 3041), their general forms Eqs. \
+(34)-(35) and the Lorentz-Berthelot limit Eqs. (37)-(38) (pp. 3045-3046). 'The models \
+default to the fundamental equation used for the respective substance' (§2.2, p. \
+3034). GERG-2008's own pure-fluid equations are 12-24-term technical equations (Table \
+1, p. 3033; O2 valid 54-303 K); CoolProp combines the binary parameters with the \
+reference pure-fluid equations instead.
+
+COMPONENTS (p. 3032; Table 1, p. 3033): methane, nitrogen, CO2, ethane, propane, \
+n-butane, isobutane, n-pentane, isopentane, n-hexane, n-heptane, n-octane, n-nonane, \
+n-decane, hydrogen, oxygen, CO, water, H2S, helium and argon.
+
+BINARY PARAMETERS (Table A8, pp. 3077-3080, beta_v, gamma_v, beta_T, gamma_T; F_ij from \
+Table A6, p. 3075): N2-O2 0.999521770, 0.997082328, 0.997190589, 0.995157044; N2-Ar \
+1.004166412, 1.002212182, 0.999069843, 0.990034831; O2-Ar 0.999746847, 0.993907223, \
+1.000023103, 0.990430423; N2-He 0.969501055, 0.932629867, 0.692868765, 1.471831580; \
+CO2-Ar 1.008392428, 1.029205465, 0.996512863, 1.050971635 (fitted reducing functions, \
+no departure function); N2-CO2 with a binary-specific departure function (F = 1). \
+He-Ar, He-O2, He-H2, He-CO, Ar-H2, H2-O2 and O2-CO: all four parameters 1 and no \
+departure function, the Lorentz-Berthelot pairs (grey in Fig. 1, p. 3039). For pairs \
+with poor data 'either the parameters of the reducing functions were set to unity or \
+the linear combining rules' were used (p. 3048); 'for many mixtures containing oxygen, \
+argon, and helium, no suitable data are available' (p. 3039), and for combining-rule \
+pairs 'the uncertainty is basically considered to be unknown' (p. 3044). CoolProp's \
+N2-O2 parameters are these (under the key Gernert-Thesis-2013, which kept them); its \
+He-Ar, He-Ne and Ne-Ar are Tkaczuk et al.'s; its N2-Ar and O2-Ar are Gernert's refits.
+
+THE SECOND VIRIAL: no quadratic mixing rule for B is stated; B enters only through \
+Table B1 (p. 3081), as the low-density limit of the residual part. The model's B is not \
+quadratic in composition in general (as Gernert, §5.2.4, shows).
+
+STATED UNCERTAINTY (Table 6, p. 3045, gas-phase density of binaries at p <= 30 MPa): \
+with a binary-specific departure function 0.1 % (1.2 <= T/T_r <= 1.4 and 1.4-2.0); \
+generalized departure function 0.1-0.2 % and 0.1 %; fitted reducing functions only \
+0.5-1 % and 0.3-0.5 %, the similar pairs such as N2-O2, N2-Ar and O2-Ar 'often near the \
+lower value' (p. 3044). Near ambient the N2-O2-Ar pairs have T/T_r of about 1.6-2.8, \
+largely above the table. For air, 0.1-0.2 % to 900 K and 90 MPa (pp. 3044, 3080); the \
+outlook proposes a departure function for the air pairs (p. 3080). Nothing \
+transcribed."""

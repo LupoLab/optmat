@@ -1,0 +1,251 @@
+citation = "G. F. Thomas and W. J. Meath, \"Dipole spectrum, sums and properties of ground-state methane and their relation to the molar refractivity and dispersion energy constant\", Mol. Phys. 34, 113 (1977)"
+doi = "10.1080/00268977700101561"
+library = "Thomas_1977_DipoleSpectrumSums"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Constrained dipole oscillator strength distribution (DOSD): measured photoabsorption \
+and fast-electron inelastic-scattering data for CH4 above 2.36 nm (Table 1's \
+references), the mixture rule sigma(CH4) = sigma(C) + 2 sigma(H2) with Henke and \
+Ebisu's and Millar and Greening's carbon data below 17.71 nm where CH4 data were \
+missing or unreliable, and the non-relativistic Stobbe formula below 0.05 nm; the \
+initial data, weighted by their errors, adjusted by least squares to satisfy the TRK \
+sum rule S(0) = 10 and the molar refractivity at two wavelengths (0.5462 and 0.2302 \
+um, from the refractivity data of several authors normalised to Watson and Ramaswamy's \
+at 0.5462 um, with a virial density from Dymond and Smith's second virial \
+coefficient). The recommended DOSD is the one of least total adjustment. Sums by \
+numerical integration (linear interpolation between data points to 0.05 nm, \
+Gauss-Legendre below) (pp. 115-119)."""
+notes = """PDF pages 1 (a download cover sheet) and 2-14 = journal pages 113-125. Identity \
+checked on the first page. Values per molecule; electronic transitions only (the \
+'atomic' (infrared) contribution is excluded from Eqs. (2)-(6), footnote p. 115, and \
+discussed in Section 5).
+
+Dipole sums S(k) = integral of df/dE (E/2R)^k dE (Eq. (4), 2R = 1 hartree), atomic \
+units; S(-2) is the static electronic polarizability in a0^3. Table 2 (p. 120) gives \
+S(-1), S(-2), S(-4) of the recommended DOSD (10.86, 17.27, 62.41) with other DOSDs' \
+and with S(-2), S(-4) that Thomas and Meath fitted to four sets of normalised \
+refractivity data with the Cauchy series Eq. (3) (the S(-4) spread about +-4 %). The \
+text (p. 121) gives the other sums: S(-6) = 2.983(2), S(-8) = 1.714(3), S(-10) = \
+1.122(4), S(-12) = 8.064(4), S(-14) = 6.190(5), S(-16) = 4.980(6), S(-3) = 3.140(1) \
+and S(-3/2) = 1.339(1) (mantissa(power of ten)), stored in e-notation with the digits \
+unchanged. S(0) = 10 is the constraint (the Table 1 regions sum to 9.9995). The \
+logarithmic sums L(-2) = -9.374, L(-1) = -3.905, L(0) = 4.259, L(1) = 1.474(2), L(2) = \
+1.921(4) and the mean excitation energies I_0 = 41.66 eV, I_1 = 497.1 eV, I_2 = \
+1.087e4 eV, I_-2 = 15.81 eV (pp. 121-122) have no quantity: not extracted. Accuracy \
+(p. 122): for S(k), k >= -8, about 0.5 % (k = 2) to 1 % (k = -8); for k < -8 from \
+about 1.5 % (k = -10) to 4 % (k = -16); L(k) below 1 %; 'only valid if the \
+refractivity data used to constrain the DOSDs is reliable to a few tenths of a per \
+cent'. So the S(k) are not independent of the refractivity data (as kumar_1985): \
+checks.
+
+Table 1 (p. 118): the recommended DOSD integrated over 17 spectral regions (nm), \
+dataset dosd; threshold to 49.59 nm holds 4.98 (p. 119, checked: 4.982). The \
+'unmodified experimental data' column (several references per cell) is not extracted. \
+Marks: (c) the mixture rule from 10.33 nm down, with the Stobbe formula in the last \
+region; (d) only relative measurements at 4.43-4.08 nm.
+
+Eq. (8) (p. 121): the recommended eight-term Cauchy formula for the molar refractivity \
+(formula cauchy_molar_refractivity), R(lambda) in m^3/mol; 'For the spectral region \
+lambda > 0.2 um the results for R(lambda) obtained from the DOSD and (2) are \
+reproduced to within approximately 5.4, 1.7, 0.61, 0.24, 0.10, 0.04 and 0.02 per cent, \
+respectively, if from two to eight terms are retained'.
+
+Section 5 (pp. 122-123): C6(CH4-CH4) = 129.6 hartree bohr^6 (Table 3, with eight \
+approximate formulas, 106.7-152.2), and combination-rule C6(CH4-B) for H2, N2, O2, \
+NH3, H2O, NO, N2O, He = 39.6, 97.0, 89.0, 107.4, 76.6, 94.7, 154.7, 13.2: no quantity \
+(dispersion coefficients), not extracted. The infrared (atomic) polarizability from \
+band intensities, minimum 3.304e-32 and maximum 4.467e-32 m^3, against 3.17e-32 m^3 \
+from Watson and Ramaswamy's electronic 2.5590e-30 m^3 and Watson, Rao and Ramaswamy's \
+total 2.5907e-30 m^3 (p. 123; datasets). A footnote (p. 123) notes CH4's \
+centrifugal-distortion dipole moment (about 1e-36 C m), assumed zero here.
+
+REPRODUCTIONS: margoliash_1978's CH4 pseudospectrum is fitted to this DOSD's sums; \
+olney_1997 (thomas_1977_CH4) and zhao_2026 quote its S(k) (see those records). Olney \
+et al. print S(-6) = 289.3 for this DOSD; the original prints 2.983(2) = 298.3 (p. \
+121)."""
+
+[[datasets]]
+id = "dosd"
+material = "CH4"
+file = "CH4/thomas_1977__dosd.csv"
+table = "tbl_df5a5473a0a4"
+quantity = "interval_oscillator_strength"
+abscissa_unit = "nm"
+columns = { x_upper = "nm" }
+use = "check"
+notes = "Table 1 'Recommended oscillator strengths': the constrained DOSD integrated over each spectral region, from the threshold (145.86 nm) to 0.00 nm, 17 regions; x the long-wavelength edge, x_upper the short one (nm, as printed; the last region's 0.00 nm edge is infinite photon energy); row = the region. Constrained to the TRK sum and two refractivities (source notes): a check. Sums to 9.9995 (S(0) = 10)."
+
+[[datasets]]
+id = "moments"
+material = "CH4"
+file = "CH4/thomas_1977__moments.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 2 'Calculated using (4) and the recommended DOSD': S(-1) = 10.86, S(-2) = 17.27, S(-4) = 62.41 (rows k), atomic units. Estimated accuracy about 1 % for these k (p. 122), given reliable refractivity constraints: not independent of those data, a check."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+
+[[datasets]]
+id = "moments_text"
+material = "CH4"
+table = "text"
+points = [["-1.5", "-1.5", "1.339e1"], ["-3", "-3", "3.140e1"], ["-6", "-6", "2.983e2"], ["-8", "-8", "1.714e3"], ["-10", "-10", "1.122e4"], ["-12", "-12", "8.064e4"], ["-14", "-14", "6.190e5"], ["-16", "-16", "4.980e6"]]
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "p. 121: S(-6) = 2.983(2), S(-8) = 1.714(3), S(-10) = 1.122(4), S(-12) = 8.064(4), S(-14) = 6.190(5), S(-16) = 4.980(6), S(-3) = 3.140(1), S(-3/2) = 1.339(1) (mantissa(power of ten); rows k, -1.5 for -3/2). Accuracy (p. 122): about 1 % to k = -8, about 1.5 % at k = -10 rising to 4 % at k = -16 (k = -12, -14 stored at 4 %, the stated upper end). A check, as moments."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "-10" = 0.015, "-12" = 0.04, "-14" = 0.04, "-16" = 0.04 }
+
+[[datasets]]
+id = "platzman_1962"
+material = "CH4"
+file = "CH4/thomas_1977__platzman_1962.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["R. L. Platzman, Vortex 23, 372 (1962)"]
+notes = "Table 2: dipole sums (rows k) of another source; a DOSD, apparently TRK-normalised (p. 121)."
+
+[[datasets]]
+id = "santar_1969"
+material = "CH4"
+file = "CH4/thomas_1977__santar_1969.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["I. Santar and J. Bednář, Collect. Czech. Chem. Commun. 34, 1 (1969)"]
+notes = "Table 2: dipole sums (rows k) of another source; a DOSD; its S(-1) is about 15 % below the present value (p. 121)."
+
+[[datasets]]
+id = "fit_watson_1936"
+material = "CH4"
+file = "CH4/thomas_1977__fit_watson_1936.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["watson_1936"]
+notes = "Table 2: S(-2) and S(-4) (rows k) obtained by Thomas and Meath by least-squares fitting the Cauchy series Eq. (3) to the (normalised, virial-density) refractivities of Watson and Ramaswamy (printed 'Ramasawamy'), the reference set to which the others were normalised at 0.5462 um: derived from that source's data, not printed by it."
+
+[[datasets]]
+id = "fit_cuthbertson_1920"
+material = "CH4"
+file = "CH4/thomas_1977__fit_cuthbertson_1920.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1920"]
+notes = "Table 2: S(-2) and S(-4) (rows k) obtained by Thomas and Meath by least-squares fitting the Cauchy series Eq. (3) to the (normalised, virial-density) refractivities of Cuthbertson and Cuthbertson: derived from that source's data, not printed by it."
+
+[[datasets]]
+id = "fit_friberg_1927"
+material = "CH4"
+file = "CH4/thomas_1977__fit_friberg_1927.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["S. Friberg, Z. Phys. 41, 378 (1927)"]
+notes = "Table 2: S(-2) and S(-4) (rows k) obtained by Thomas and Meath by least-squares fitting the Cauchy series Eq. (3) to the (normalised, virial-density) refractivities of Friberg: derived from that source's data, not printed by it."
+
+[[datasets]]
+id = "fit_frivold_1939"
+material = "CH4"
+file = "CH4/thomas_1977__fit_frivold_1939.csv"
+table = "tbl_010d4e4faeeb"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["O. E. Frivold, O. Hassel and E. Hetland, Phys. Z. 40, 29 (1939)"]
+notes = "Table 2: S(-2) and S(-4) (rows k) obtained by Thomas and Meath by least-squares fitting the Cauchy series Eq. (3) to the (normalised, virial-density) refractivities of Frivold et al.: derived from that source's data, not printed by it."
+
+[[datasets]]
+id = "infrared_polarizability"
+material = "CH4"
+table = "text"
+points = [["min", "inf", "3.304"], ["max", "inf", "4.467"]]
+quantity = "polarizability_correction"
+unit = "angstrom3"
+scale = 0.01
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 123: 'Using the IR experimental band intensities one can also estimate a minimum and a maximum value for the atomic (IR) polarizability of CH4, namely alpha_A = 3.304 x 10^-32 m^3 and alpha_A = 4.467 x 10^-32 m^3 respectively' (rows min, max; polarizability volumes, printed mantissa times 10^-32 m^3 = 10^-2 A^3, the scale). The static vibrational (infrared) polarizability; bounds, not a value with an uncertainty."
+[datasets.parameters]
+part = "vibrational"
+
+[[datasets]]
+id = "infrared_polarizability_watson"
+material = "CH4"
+table = "text"
+points = [["alpha_A", "inf", "3.17"]]
+quantity = "polarizability_correction"
+unit = "angstrom3"
+scale = 0.01
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["watson_1936", "H. E. Watson, G. G. Rao and K. L. Ramaswamy, Proc. R. Soc. A 143, 558 (1934)"]
+notes = "p. 123: 'the experimental value of alpha_A = 3.17 x 10^-32 m^3 obtained by using the results of Watson and Ramaswamy [69] ... and Watson et al. [110] for the electric and total polarizabilities of methane', i.e. the total (dielectric) 2.5907e-30 minus the electronic (optical) 2.5590e-30 m^3; the minimum IR estimate is 'within 4 per cent (and therefore within the experimental error)' of it."
+[datasets.parameters]
+part = "vibrational"
+
+[[datasets]]
+id = "polarizability_watson"
+material = "CH4"
+table = "text"
+points = [["alpha_e", "inf", "2.5590"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["watson_1936"]
+notes = "p. 123: the electronic polarizability of methane from Watson and Ramaswamy's refractivities, alpha_e = 2.5590 x 10^-30 m^3 (a polarizability volume; 10^-30 m^3 = 1 A^3). How it was obtained from their data (extrapolation to infinite wavelength, density) is not stated here."
+
+[[datasets]]
+id = "polarizability_total_watson_1934"
+material = "CH4"
+table = "text"
+points = [["alpha_T", "inf", "2.5907"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. E. Watson, G. G. Rao and K. L. Ramaswamy, Proc. R. Soc. A 143, 558 (1934)"]
+notes = "p. 123: the total (static dielectric: electronic plus infrared) polarizability of methane, alpha_T = 2.5907 x 10^-30 m^3, from Watson, Rao and Ramaswamy's dielectric measurements (a polarizability volume). Not the electronic polarizability: it includes the vibrational part."
+
+[[formulas]]
+id = "cauchy_molar_refractivity"
+material = "CH4"
+equation = "Eq. (8), p. 121"
+printed = "R(lambda) x 10^6 = 6.454 + 4.843 x 10^-2/lambda^2 + 4.805 x 10^-4/lambda^4 + 5.733 x 10^-6/lambda^6 + 7.792 x 10^-8/lambda^8 + 11.62 x 10^-10/lambda^10 + 18.52 x 10^-12/lambda^12 + 30.94 x 10^-14/lambda^14"
+variable = "lambda: wavelength in um (vacuum, as the DOSD's photon energies); R(lambda) the molar refractivity in m^3 mol^-1 (the printed left side is R x 10^6)"
+state = "none (per mole of molecules: R = (4 pi/3) N_A alpha(lambda), Eq. (2))"
+density = "none"
+range = "lambda > 0.2 um (p. 121: the eight-term series reproduces the DOSD's R(lambda) there to about 0.02 %)"
+coefficients = { c0 = "6.454", c1 = "4.843e-2", c2 = "4.805e-4", c3 = "5.733e-6", c4 = "7.792e-8", c5 = "11.62e-10", c6 = "18.52e-12", c7 = "30.94e-14" }
+check = "Each coefficient is (4 pi/3) N_A a0^3 S(-2l) (hc/(2R))^(2(l-1)) x 10^6 with the paper's S(-2l) (Eq. (3)): with 2018 constants the eight terms come out 6.4556, 4.8432e-2, 4.8057e-4, 5.7325e-6, 7.7904e-8, 11.624e-10, 18.523e-12, 30.938e-14, within 3.3e-4 of the printed ones (the paper used 1973 constants). R(0.5462 um) = 6.622e-6 m^3/mol, against 6.620e-6 from watson_1936's (n - 1) = 405.90e-6 at 25 C and 760 mm with the ideal-gas density (Thomas and Meath used a virial density) (computed 2026-09-27)."
+notes = "The recommended Cauchy formula built from the DOSD's S(-2) ... S(-16); the electronic molar refractivity only (no infrared part). Not independent of the refractivity data that constrain the DOSD."

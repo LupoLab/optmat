@@ -1,0 +1,26 @@
+citation = "G. H. Golub and J. H. Welsch, \"Calculation of Gauss Quadrature Rules\", Math. Comp. 23, 221 (1969)"
+doi = "10.1090/s0025-5718-69-99647-1"
+library = "Golub_1969_CalculationGaussQuadrature"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Numerical analysis: the nodes and weights of an N-point Gaussian quadrature \
+rule for a weight function are the eigenvalues and the squared first components of \
+the orthonormal eigenvectors (times the zeroth moment) of the symmetric tridiagonal \
+Jacobi matrix of the three-term recurrence of its orthogonal polynomials (section 2, \
+Eqs. 2.1-2.6); a shifted Q-R algorithm that computes only the first components \
+(sections 3-4); and the recurrence from the moments (section 5)."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library, whose resolver took the \
+received and revised dates (1967, 1968) for the publication year; the DOI and the \
+record were confirmed by the curator (the library's DOI review). No values are \
+transcribed: the paper is the method of OEP 3's band rules.
+
+THE RELATION USED (p. 223, Eq. 2.6, checked against the page image): \
+w_j = q_{1,j}^2 / p_0^2(t_j) = q_{1,j}^2 / k_0^2 = q_{1,j}^2 x integral_a^b omega(x) dx \
+= q_{1,j}^2 mu_0, with t_j the eigenvalues of the Jacobi matrix and q_{1,j} the first \
+component of the j-th orthonormal eigenvector. optmat.gas.infrared.gauss_rule applies \
+it to a band's discrete measure (weights f/E^2 at x = E^2): the Jacobi matrix comes \
+from the Lanczos process on the lines, with full reorthogonalisation, rather than from \
+the moments (section 5), whose recurrence is ill-conditioned; the eigenvalues and \
+vectors from numpy's symmetric eigensolver, rather than the paper's Q-R program. \
+The rule is exact for polynomials of degree up to 2N - 1 (p. 222, the Theorem), so it keeps the band's \
+moments mu_0 to mu_{2N-1}; tested in tests/test_infrared.py."""

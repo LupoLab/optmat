@@ -1,0 +1,125 @@
+citation = "S. Kirouac and T. K. Bose, \"Dielectric and pressure virial coefficients of imperfect gases. Pure N2O\", J. Chem. Phys. 59, 3043 (1973)"
+doi = "10.1063/1.1680442"
+library = "Kirouac_1973_DielectricPressureVirial"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Dielectric constants of N2O from three-terminal parallel-plate capacitance \
+cells and a General Radio 1615A decade transformer bridge (the apparatus of Orcutt and \
+Cole 1967 and Sutter and Cole 1970; audio frequency, static). B_eps and C_eps from the \
+cyclic (Burnett-type) expansion technique, Delta f_i = f_i - f_{i+2}/R fitted in f_i^2 \
+and f_i^3 (Eq. 5); A_eps and the pressure virial B_p from measurements below 14 atm, \
+[(eps - 1)/(eps + 2)](RT/P) fitted by least squares as a polynomial in P/RT (Eq. 4), \
+A_eps the intercept. At 6.5, 30.1 and 75.1 degrees C. Matheson research-grade N2O with \
+O2 600 ppm, N2 2000 ppm, NO-NO2 0.5 ppm, CO2 3 ppm, chlorides 1 ppm, water 35 ppm, \
+Cl-C4 0.2 ppm (mass spectrometry) (pp. 2-3)."""
+notes = """Page numbers are the library pdf pages (pdf page 1 is the publisher's cover; \
+journal p. 3043 is pdf page 2).
+
+WHAT A_eps INCLUDES. (eps - 1)/((eps + 2) d) = A_eps + B_eps d + C_eps d^2 (Eq. 1, d the \
+molar density), and for a polar molecule A_eps = (4 pi N_0/3)(alpha_0 + mu_0^2/3kT) \
+(Eq. 2, p. 2): A_eps is the static molar polarization, the static polarizability \
+alpha_0 (electronic plus the vibrational, 'atomic', part: the bridge is far below the \
+infrared bands) PLUS the orientation polarization of N2O's permanent dipole. The paper \
+separates them by the Debye plot of A_eps against 1/T (Fig. 2; 'The intercept in Fig. \
+2 measures 4/3 pi N_0 (alpha_0 + mu_0^2/3kT)', p. 3): 'the mean values of alpha_0 and mu_0 \
+are 3.03e-24 cm^3 and 0.18 D' (p. 3; abstract), the dipole 'in excellent agreement with \
+the microwave value 0.167 D of Shulman, Dailey and Townes'. It does not split alpha_0 \
+into its electronic and vibrational parts. Check (2026-09-25): a straight line A_eps = \
+a + b/T through Table I gives a = 7.660 cm^3/mol (alpha_0 = 3.036e-24 cm^3) and mu_0 = \
+0.1805 D, reproducing the printed 3.03e-24 and 0.18 D to rounding; with Table I's +- as \
+one sigma, a has +-0.039 cm^3/mol (0.5 %), strongly anticorrelated with mu_0. The \
+orientation term is 0.55-0.66 cm^3/mol (7-8 % of A_eps) over 6.5-75.1 degrees C.
+
+Uncertainty: Table I's +- are not described; the only statement is 'Our estimated error \
+is 3 times the standard deviation given by a least square fit' (p. 3), written after \
+the discussion of B_p. Stored as '3 sigma' on that reading (TC-152).
+
+B_eps (Discussion, pp. 3-5): B_eps = B_ind + B_or; B_or (dipole-dipole and \
+quadrupole-induced orientation terms) dominates; from B_eps against 1/T the authors \
+derive B_ind = (0 +- 2) cm^6/mol^2 ('We shall therefore consider that all the measured \
+B_eps is essentially the contribution of B_or', p. 4). So B_eps is an orientation \
+(static) quantity with no optical counterpart: the refractivity virial of N2O at optical \
+frequencies is not measured here.
+
+Not extracted: C_eps (Table I: -1275.7 +- 1060.5, -1656.0 +- 597.9, -2055.7 +- 995.0 \
+cm^9/mol^3 at 6.5, 30.1, 75.1 degrees C; no quantity); Table II's pressure virial \
+-B_p (cm^3/mol: this work 146.4 +- 1.5, 119.7 +- 1.2, 101.2 +- 4.0; theoretical 152, \
+127, 96; literature 149, 126, 98; no quantity); Table III's corrections to B_or and \
+Table IV's quadrupole moments (the result: 3.4e-26 esu cm^2); Lennard-Jones \
+parameters eps_0/k = 235.5 K, R_0 = 3.802e-8 cm (Spurling and Mason)."""
+
+[[datasets]]
+id = "A_eps"
+material = "N2O"
+file = "N2O/kirouac_1973__A_eps.csv"
+table = "tbl_18fe8b762246"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I A_eps (cm^3/mol) at 6.5, 30.1, 75.1 degrees C (rows: 279.65, 303.25, 348.25 K), static (capacitance bridge). A CHECK, NOT A POLARIZABILITY: it includes the orientation polarization (4 pi N_0/3) mu_0^2/3kT, 0.55-0.66 cm^3/mol (7-8 %) by the authors' own mu_0 = 0.18 D, besides the electronic and vibrational static polarizability; converting it to a per-molecule alpha overstates alpha by that much. Uncertainty as printed, level read as 3 sigma (see the source notes)."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability + orientation polarization mu_0^2/3kT (row = temperature, K)"
+
+[[datasets]]
+id = "alpha_0"
+material = "N2O"
+table = "text"
+points = [["static", "inf", "3.03"]]
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 3 (and abstract): alpha_0 = 3.03e-24 cm^3 (polarizability volume), the static polarizability from the Debye analysis of A_eps(T) (intercept of A_eps against 1/T, with mu_0 = 0.18 D): electronic plus vibrational, without the orientation term. No uncertainty is stated; a straight line through Table I gives +-0.5 % (one sigma, if the +- are one sigma), strongly anticorrelated with mu_0 (the microwave 0.167 D quoted by the authors would raise alpha_0 by 1.2 %). A check, derived from A_eps."
+
+[[datasets]]
+id = "B_eps_279.65"
+material = "N2O"
+file = "N2O/kirouac_1973__B_eps_279.65.csv"
+table = "tbl_18fe8b762246"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table I B_eps = 36.06 +- 1.72 cm^6/mol^2 at 6.5 degrees C. Excluded: the dielectric second virial coefficient of a polar, quadrupolar molecule is orientation-dominated (B_ind = 0 +- 2 by the authors, p. 4); it is not the optical refractivity virial. Uncertainty level read as 3 sigma."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+temperature_k = 279.65
+
+[[datasets]]
+id = "B_eps_303.25"
+material = "N2O"
+file = "N2O/kirouac_1973__B_eps_303.25.csv"
+table = "tbl_18fe8b762246"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table I B_eps = 32.35 +- 1.34 cm^6/mol^2 at 30.1 degrees C. Excluded, as B_eps_279.65."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+temperature_k = 303.25
+
+[[datasets]]
+id = "B_eps_348.25"
+material = "N2O"
+file = "N2O/kirouac_1973__B_eps_348.25.csv"
+table = "tbl_18fe8b762246"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table I B_eps = 28.08 +- 2.56 cm^6/mol^2 at 75.1 degrees C. Excluded, as B_eps_279.65."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+temperature_k = 348.25

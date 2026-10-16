@@ -1,0 +1,96 @@
+citation = "H. Hettema, H. J. Aa. Jensen, P. Jørgensen and J. Olsen, \"Quadratic response functions for a multiconfigurational self-consistent field wave function\", J. Chem. Phys. 97, 1174-1190 (1992)"
+doi = "10.1063/1.463245"
+library = "Hettema_1992_QuadraticResponseFunctions"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """The quadratic response function of a multiconfiguration self-consistent \
+field (MCSCF) state and its residues, implemented (Secs. II-III); the two-photon \
+transition moment of the reference state to an excited state from two linear response \
+vectors and the excited state's eigenvector (Eq. 47). Sample calculations (Sec. IV): \
+H2 at R = 1.4011 au (HF and two CAS), and Ne in the basis of Maroulis and Thakkar \
+(one extra diffuse s, p, d function for a basis test) at four levels: SCF (HF), CAS \
+three shell (2s, 2p, 3s, 3p, 3d), SD RAS three shell and SD RAS four shell (all \
+singles and doubles from 2s, 2p into the 3s-3d or 3s-4f shells), the 1s frozen; an \
+estimate from the three by Eq. (102). Non-relativistic, LS coupling."""
+notes = """Journal pp. 1174-1190 = PDF pages 2-18 (PDF page 1 is the AIP download \
+cover); journal page = PDF page + 1172. Identity checked on the first page (PDF p. 2: \
+'J. Chem. Phys. 97 (2), 15 July 1992', Hinne Hettema (Nijmegen), Hans Jørgen Aa. \
+Jensen and Poul Jørgensen (Aarhus), Jeppe Olsen (Lund); received 14 August 1991, \
+accepted 5 March 1992) on 2026-10-08.
+
+Nothing is taken. The paper's two-photon numbers are single tensor elements of the \
+transition moment, which no quantity of the vocabulary holds \
+(two_photon_transition_strength holds the rotational average delta^TP, TC-872), and it \
+gives no rotational average, rate constant or cross section.
+
+NEON (Sec. IV D, pp. 1186-1188; Tables VII, VIII, image checked). Table VII: 'Two-photon \
+transition moments of Ne between the 1Se ground state and the first excited state of \
+1De symmetry. The A operator is the x dipole operator. The B operator is the y dipole \
+operator carrying the frequency. All values are in atomic units.' Its first row is \
+each method's excitation energy (HF 0.738 881, CAS three shell 0.700 454, SD RAS three \
+shell 0.706 363 (0.706 177 with the diffuse functions), SD RAS four shell 0.704 482 \
+au), the others the element S_xy at four frequencies of the B photon, 0.085 625, 0.171 \
+25, 0.256 875 and 0.342 5 au (a quarter, half, three quarters and all of half the \
+experimental energy 0.6850 au), the other photon carrying omega_f - omega_B with the \
+method's omega_f. At 0.3425 au: HF 2.9663, CAS three shell 3.3265, SD RAS three shell \
+3.2665 (3.2434), SD RAS four shell 3.3450. So S_xy is the one element of the level's xy \
+component; the F = G = H = 2 average of that component is (4/15) S_xy^2 and the level's \
+(all five components) (4/3) S_xy^2 (sundholm_1994's notes, TC-887, TC-888).
+
+CHECKED (2026-10-08, by direct computation). Table VIII (the contributions at 0.3425 \
+au) sums to its totals, which are Table VII's last row (2.9663, 3.3265, 3.2665, \
+3.3450). The text: 'the contribution from the E(3) and S(3) terms is only 0.07 a.u.' \
+(-0.0684); 'about 60%' of the correlation of the excitation energy recovered ((0.738 \
+881 - 0.704 482)/(0.738 881 - 0.6850) = 0.638); 'at the highest frequency, the \
+correlation contribution is about 10%-15%' (3.3450/2.9663 = 1.128). The RPA energy \
+0.738 881 au is moccia_1984's RPA 0.7389, as the text says. The text (p. 1187) gives \
+Table VIII's frequency as '0.3452 a.u.', the caption as 0.3425 a.u., Table VII's last \
+row (the caption and Table VII are consistent; the text's digits are transposed; no \
+value is taken, so no erratum).
+
+FINDING: THE EXTRAPOLATED EXCITATION ENERGY. Eq. (102) (Q = SD RAS four + (CAS three - \
+SD RAS three) + (1/2)(SD RAS four - SD RAS three), +- the sum of the two differences' \
+magnitudes) gives from Table VII 0.697 63 +- 0.006 85 au; the text prints '0.6936 +- \
+0.0068 a.u.' (p. 1187): the uncertainty is reproduced, the value is not (0.0040 au \
+lower). hattig_1998b's Table I prints Ne 1De 'MCSCF' 18.874 eV (footnote a, this \
+paper) = 0.6936 au, the printed estimate (0.697 63 au would be 18.984 eV).
+
+FINDING: THE QUOTATIONS IN hattig_1998b (TC-887). Its Table IV's SCF 8.799 for Ne 1De is \
+2.9663^2 (8.7989), but at omega_B = 0.3425 au and omega_2 = 0.738 881 - 0.3425 = 0.3964 \
+au, not the degenerate pair of the column it stands in (its footnote b computes K \
+'assuming omega_1 = omega_2 = 0.3425 a.u.'). Its MCSCF 11.289 is no square of a value \
+printed here: SD RAS four shell 3.3450^2 = 11.189, CAS three shell 11.066, SD RAS three \
+shell 10.670, and Eq. (102) applied to the 0.3425 au elements gives 3.444, squared \
+11.86; its K, 0.0885e-51 cm4 s, follows 11.289 (11.189 would give 0.0877e-51). \
+sqrt(11.289) = 3.3599 is none of Table VII's twenty cells; also tried (2026-10-09), \
+none reproduces it: the extended-basis SD RAS three shell 3.2434^2 = 10.520, Eq. (102) \
+with that value 3.4789^2 = 12.10, SD RAS four shell without the E(3), S(3) term \
+(3.1807^2 = 10.117), Eq. (102) applied to the squares (11.84). Not resolved: hattig_1998b \
+cites this paper alone (its Ref. 6) and states no other source. henriksson_2005's quotations (HF 2.9663 and SD RAS 3.3450 au at 20.106 and \
+19.170 eV, one photon at 9.320 eV) are this paper's (0.738 881 and 0.704 482 au; 0.3425 \
+au = 9.320 eV).
+
+FINDING: THE COMPARISON WITH MOCCIA AND RIZZO (p. 1187). The text compares Moccia and \
+Rizzo's RPA amplitude 3.84 (moccia_1984, Table 2, at omega_1 = omega_2) with its own SCF \
+S_xy 2.9663 and calls the difference large, blaming the basis. Moccia and Rizzo's M \
+is the zz element of the M = 0 component for parallel linear polarisation \
+(moccia_1984's notes), which is (2/sqrt 3) S_xy: their 3.836 is S_xy = 3.322, 12 % (not \
+29 %) above 2.9663, and they used experimental excitation energies for the final \
+level and the lowest 1Po levels (0.6850 and 0.6192 au against RPA 0.7389 and 0.6741), \
+which raises the amplitude. The basis is not needed to explain most of the difference.
+
+H2 (Sec. IV A, Tables II-IV): the zz element of the X 1Sigma_g+ -> (E,F) 1Sigma_g+ \
+two-photon transition moment at R = 1.4011 au (HF, CAS 1, CAS 2), at seven \
+frequencies, and its sum-over-states decomposition; the HF values 'identical to those \
+of Parkinson and Oddershede' (W. A. Parkinson, P. W. Sengeløv and J. Oddershede, Int. \
+J. Quant. Chem. S24, 487 (1990), not in the library). Not taken: one molecule-fixed \
+element at one internuclear distance, not a rotationally and vibrationally averaged \
+strength.
+
+NOT TAKEN, out of this curation's scope (two-photon): the Ne polarizability and \
+second hyperpolarizability (Sec. IV E; Tables IX-XII: the ESHG gamma(-2w; w, w, 0) at \
+HF and CAS three shell at Shelton's frequencies, Table X; the estimate 99 +- 6 au \
+static and 109 +- 7 au at 0.076 641 au, Table XI; the static polarizability estimate \
+2.643 +- 0.049 au, p. 1189). They belong to the third-order and dispersion families \
+and have not been checked here. Tables I and V (MP2 natural orbital occupations), VI \
+(finite-field convergence)."""

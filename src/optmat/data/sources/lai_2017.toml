@@ -1,0 +1,576 @@
+citation = "Y. H. Lai, J. Xu, U. B. Szafruga, B. K. Talbert, X. Gong, K. Zhang, H. Fuest, M. F. Kling, C. I. Blaga, P. Agostini and L. F. DiMauro, \"Experimental investigation of strong-field-ionization theories for laser fields from visible to midinfrared frequencies\", Phys. Rev. A 96, 063417 (2017)"
+doi = "10.1103/PhysRevA.96.063417"
+library = "Lai_2017_ExperimentalInvestigationStrong"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Ion yields against intensity (Sec. II, p. 3). 'Two titanium sapphire \
+laser systems (0.8-um central wavelength) delivering 80- to 100-fs pulses with a \
+maximum energy of 12 mJ at 1-kHz repetition rate. These systems pump different optical \
+parametric amplifiers providing tuning over 1-2 and 3-4 um.' How the 0.4 um light was \
+made, and the durations of the 0.4, 1.3 and 3.3 to 3.9 um pulses, are not stated. \
+Pulse energy set by a half-wave plate and a polarizer, with neutral density filters or \
+pellicle beam splitters; ellipticity by a quarter-wave plate (QWP) after them. Focused \
+by a lens of 100 mm focal length into the chamber. The noble gases 'delivered with a \
+constant flow rate into the vacuum chamber through a leak valve' (no pressure stated; \
+base pressure about 1e-9 Torr). Ions detected by a 0.5-m-long home-built Wiley-McLaren \
+time-of-flight spectrometer, microchannel-plate chevron detector, time-to-digital \
+converter with 1-ns resolution; 'Each data point is normalized to the number of laser \
+shots and the gas density. The number of laser shots for a data point is at least \
+6 x 10^4'; the background ions (mainly water) are mass resolved from the targets. \
+INTENSITY: 'Laser intensities were calibrated by the 10 U_p cutoff in the \
+photoelectron spectrum of noble gases [31,45,46]. The experimental intensities in some \
+cases are slightly scaled (<=20% from the calibration) to achieve best fit to the \
+theoretical ion yield curves' (p. 3); 'The uncertainty of our intensity calibration is \
+about 20%' (Table I's caption; Fig. 12's caption: 'an error bar of 20% in intensity \
+due to the uncertainty in intensity calibrations'). CIRCULAR POLARISATION: 'To switch \
+between linear and circular polarization (LP and CP) at a fixed intensity, the QWP is \
+rotated without adjusting the laser energy (that is, the CP field is the LP \
+field/sqrt(2))' (p. 3): a CP point is at the same pulse energy, hence the same \
+intensity, as an LP point at that abscissa, its field amplitude 1/sqrt(2) of the LP \
+peak field; 'peak amplitude of the field for LP is a factor of sqrt(2) larger than \
+that for CP when the intensity is fixed' (p. 6). The yields are relative: 'Since we do \
+not perform absolute measurements, the signal versus intensity is freely normalized to \
+the theory, for example, on the highest intensity point' (p. 3); the y axes read 'Ion \
+Yield (arb. units)'. The theory curves are focal-volume averaged over 'the full \
+Gaussian laser beam focus' (App., p. 9), so the abscissa is the focal peak intensity \
+(not said in so many words)."""
+notes = """Article pp. 063417-1 to 063417-10 = PDF pages 1-10. Identity checked on PDF \
+p. 1 (title, the eleven authors, The Ohio State University and MPQ Garching/LMU; \
+received 10 October 2017, published 20 December 2017; DOI 10.1103/PhysRevA.96.063417) \
+on 2026-10-06; the library's front matter agrees.
+
+WHAT IS TAKEN (tools/extract/lai_2017.py; data rule 8, TC-699): the measured ion \
+yields of the noble gases, Figs. 1 to 4 (all on PDF p. 2), 16 datasets, 435 points: \
+Xe (Fig. 1, library figure fig_31008d4c7a41) at 0.8 um LP 37 and CP 35 points and at \
+3.3 um LP 21; Ar (Fig. 2, fig_0d4d59b034d0) at 0.4 um LP 25, CP 20, 0.8 um LP 45, CP \
+39, 1.3 um LP 16, CP 17; Kr (Fig. 3, fig_4b3af4da8236) at 0.8 um LP 39, CP 26, and \
+(Fig. 3(b)) 3.3 um 23, 3.6 um 18, 3.9 um 16, polarisation not stated; Ne (Fig. 4, \
+fig_73722d72eb42) at 0.8 um LP 30, CP 28. No yield is printed as a number anywhere in \
+the paper. Each dataset is one gas, wavelength and polarisation; its rows are numbered \
+in order of intensity; several sets hold two points at the same intensity (25 pairs, \
+the yields 0 to 41 % apart, median 5 %: repeated measurements, kept as drawn).
+
+NOT TAKEN: the PPT and ADK curves (the authors' calculations of others' formulas, \
+Eqs. (A1) to (A7)); Na, K, Zn and Mg (Figs. 5 to 8, 11, 15, 16; outside optmat's \
+media); Fig. 9 (Xe 0.8 um again, with a polynomial fit and its derivative Y_d: the \
+data are Fig. 1(a)'s, used as a check below; Y_d is not printed for any gas); Fig. 10 \
+(theory-to-experiment ratios of Y_d at 0.8 I_BSI); Fig. 12 (measured-to-theory ratios \
+of the saturation intensities: the measured I_sat themselves are printed only for Mg \
+at 0.8 um, 20 TW/cm^2, p. 5, out of scope); Fig. 14 (ratios of R = Y_CP/Y_LP, \
+experiment to theory). Fig. 13(a), the measured R at I_BSI for Ar 0.4, 0.8, 1.3 um, \
+Xe, Kr and Ne 0.8 um, is the paper's reduction of these same curves (Sec. IV C) and \
+is not taken: it is checked against them below. No quantity of the vocabulary holds a \
+circular-to-linear yield ratio (ionization_yield_ratio is a ratio to a companion \
+species).
+
+HOW THE FIGURES WERE READ: all four are MATLAB vector drawings on PDF p. 2 (tick \
+labels are text; markers stroked paths). Each panel's plot area is its white-filled \
+rectangle. Both axes are logarithmic and calibrated from the panel's own tick marks \
+(on the bottom and left edges), every tick on the fitted scale within 0.05 pt \
+(the script fails otherwise): x, the labelled decades (10^1 to 10^2, Fig. 4 10^2 to \
+10^3) and the eight unlabelled multiples between, 11 to 14 ticks per panel, the worst \
+tick 0.011 to 0.039 pt off (0.0002 to 0.0006 decade); y, labelled ticks every second \
+decade, 4 to 6 per panel, the worst 0.020 to 0.023 pt off (0.0009 to 0.0018 decade). \
+The tick labels are read from the text ('10' and its superscript). Figs. 1(b) and 2(b) \
+print no y labels: their ticks lie at Figs. 1(a)'s and 2(a)'s positions within 0.001 \
+pt, whose labels they share. Scales: x 59.8 (Fig. 1), 67.3 (Fig. 2), 65.9 and 74.8 \
+(Fig. 3(a), (b)), 128.2 pt per decade (Fig. 4); y 22.1, 12.8, 20.8, 14.9 and 22.1 pt \
+per decade. Markers: open squares (LP; 3.3 um in Fig. 3(b)), circles (CP; 3.6 um) and \
+up triangles (3.9 um), 2.8 to 4.0 pt across; the centre of a square or circle is the \
+middle of its extent, of a triangle its centroid (in Fig. 3(b)'s legend the triangle's \
+centroid lies on its row, 0.02 pt off the rows' even spacing, where the middle of its \
+height lies 0.56 pt above: MATLAB centres the marker there). The legends' markers are \
+excluded (one beside each legend text 'Expt...', whose shape confirms the assignment \
+of squares to LP and circles to CP, and of the shapes to 3.3, 3.6 and 3.9 um). Fig. \
+3(b) draws every data marker twice at one place (within 0.002 pt): each is kept once. \
+All 504 marker paths of the page are accounted for (435 points, 57 second copies, 12 \
+legend markers). An overlay of the extracted centres on the page rendered at 6x \
+matched every marker (inspected 2026-10-06).
+
+CHECKS: (1) Table I (p. 3, tbl_73c01a54f6cc, checked against its image) prints each \
+set's I_min and I_max: the linear sets' (and Fig. 3(b)'s) extracted ranges agree \
+within 3 % (Ne 113.8 to 1029.6 against 114 to 1030 TW/cm^2; Kr 3.9 um 29.2 to 100.2 \
+against 29 to 100), except Ar at 1.3 um, 59.6 to 239.9 against 58 to 230 (+2.8 %, \
++4.3 %); the script allows 5 %. The circular sets reach beyond Table I's I_max (Xe 0.8 \
+um to 188, Kr 0.8 um to 213, Ar 1.3 um to 282, Ne to 1149 TW/cm^2): Table I's ranges \
+are the LP sets'. (2) Fig. 9(a) (p. 5, fig_826039bb622f) replots Xe's 0.8 um yields \
+on a linear intensity axis, a second drawing calibrated independently: its 37 squares \
+are Fig. 1(a)'s 37 LP points, one for one, within 0.29 % in intensity and 0.76 % in \
+yield (the same normalisation). (3) Fig. 13(a) (p. 6, fig_55247f967b87; its linear \
+axis read from its ticks and labels, the markers' centres as above) against \
+Y_CP/Y_LP at Table II's I_BSI (tbl_67a91b746408: Ne 862, Ar 246, Kr 153, Xe 86 \
+TW/cm^2) from the extracted LP and CP sets (each log yield fitted by a straight line in \
+log intensity through the five points nearest I_BSI): Ar 0.4 um 0.440 against \
+Fig. 13's 0.413, Ar 0.8 um 0.205 / 0.198, Ar 1.3 um 0.107 / 0.077 (the LP set ends at \
+240 TW/cm^2, so slightly extrapolated), Xe 0.156 / 0.133, Kr 0.175 / 0.153, Ne \
+0.208 / 0.183: the curves give 4 to 39 % more than Fig. 13, whose values they reach \
+at 0.88 to 0.98 I_BSI. Sec. IV C says 'All \
+the comparisons are performed approximately at the calculated values of \
+over-the-barrier intensities' (p. 6); whether Fig. 13 was evaluated before the \
+intensity rescaling (below) is not stated. The text prints no CP/LP ratio as a number.
+
+UNCERTAINTY: the yields' own uncertainty is not stated (no error bars; at least 6e4 \
+shots a point). The datasets carry 1 %, the digitising: the y calibration's worst \
+tick residual is 0.0018 decade (0.4 %), the marker centres are exact to 0.001 pt, and \
+Fig. 9(a) reproduces Fig. 1(a) to 0.8 %. The repeated points at one intensity \
+(above) suggest a reproducibility of about 5 % (up to 41 % at Xe 3.3 um's lowest \
+intensities); this is not added. The intensity's digitising is below 0.15 %; its \
+calibration, 'about 20%' (level not stated), is a scale on the abscissa common to a \
+set and is recorded in the parameters, not in the yields' uncertainty.
+
+THE ABSCISSA AND THE ORDINATE ARE NOT FREE OF THE THEORY: (1) 'The experimental \
+intensities in some cases are slightly scaled (<=20% from the calibration) to achieve \
+best fit to the theoretical ion yield curves' (p. 3): which sets were rescaled, and by \
+how much, is not stated, so an intensity scale here may be PPT's (with the authors' \
+Coulomb-corrected PPT, sine-squared envelope and volume average, App.) rather than the \
+photoelectron calibration's. (2) Each panel's yields are 'freely normalized to the \
+theory' (p. 3): the unit is arbitrary, and differs between panels. Within a panel, LP \
+and CP presumably share one normalisation (the paper forms its measured R = \
+Y_CP/Y_LP from them, Sec. IV C, and the QWP switches between them at one pulse \
+energy); this is not stated. (3) Fig. 3(b)'s three sets 'are displaced from each other arbitrarily along the \
+vertical axis for clear illustration' (its caption): their relative heights mean \
+nothing (vertical_offset = 'arbitrary'). Use these data for the shape of the yield \
+against intensity and, within a panel, the CP/LP ratio; not for absolute yields or, \
+without the 20 %, the intensity scale.
+
+ODDITIES: the text (p. 3, Sec. IV) says 'Figure 3 shows Xe ionized at 3.3 and 0.8 um': \
+it is Fig. 1 (Fig. 3 is Kr); no value is affected. Fig. 3(b)'s legend and caption \
+give no polarisation for the 3.3 to 3.9 um sets (Fig. 1(b), Xe at 3.3 um, is labelled \
+LP); the ion's charge state is not stated ('ion yield'; compared with single-ionisation \
+theory, so singly charged presumably). Table I's caption calls gamma at I_min \
+'gamma_max'."""
+
+[[datasets]]
+id = "fig1a_Xe_0p8um_LP"
+material = "Xe"
+file = "Xe/lai_2017__fig1a_Xe_0p8um_LP.csv"
+table = "fig_31008d4c7a41"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 1(a) (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Xe ion yield, arbitrary units, against the intensity, 0.8 um, linearly polarised; 37 points, 11.27 to 171.7 TW/cm2, yield 1.19e-05 to 1.52; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig1a_Xe_0p8um_CP"
+material = "Xe"
+file = "Xe/lai_2017__fig1a_Xe_0p8um_CP.csv"
+table = "fig_31008d4c7a41"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 1(a) (pdf p. 2), measured points (open circles, legend 'Expt.-CP'): the Xe ion yield, arbitrary units, against the intensity, 0.8 um, circularly polarised; 35 points, 16.62 to 188.4 TW/cm2, yield 4.44e-06 to 0.61; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). The abscissa of a CP point is the intensity at the same pulse energy as LP ('the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "circular"
+intensity = "the intensity at the same pulse energy as the LP point at this abscissa: 'the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))' (p. 3), the circular field's amplitude 1/sqrt(2) of the linear peak field; the focal peak intensity (implied, App.)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig1b_Xe_3p3um_LP"
+material = "Xe"
+file = "Xe/lai_2017__fig1b_Xe_3p3um_LP.csv"
+table = "fig_31008d4c7a41"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 1(b) (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Xe ion yield, arbitrary units, against the intensity, 3.3 um, linearly polarised; 21 points, 20.57 to 89.08 TW/cm2, yield 6.09e-07 to 0.18; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 3300
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: from an optical parametric amplifier tuning over 3-4 um, pumped by the 80 to 100 fs titanium sapphire pulses (p. 3)"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig2a_Ar_0p4um_LP"
+material = "Ar"
+file = "Ar/lai_2017__fig2a_Ar_0p4um_LP.csv"
+table = "fig_0d4d59b034d0"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a) (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Ar ion yield, arbitrary units, against the intensity, 0.4 um, linearly polarised; 25 points, 26.69 to 247.1 TW/cm2, yield 0.000104 to 1.09; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: neither the duration nor how the 0.4 um light was made (the 0.8 um pump pulses are 80 to 100 fs, p. 3)"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig2a_Ar_0p4um_CP"
+material = "Ar"
+file = "Ar/lai_2017__fig2a_Ar_0p4um_CP.csv"
+table = "fig_0d4d59b034d0"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a) (pdf p. 2), measured points (open circles, legend 'Expt.-CP'): the Ar ion yield, arbitrary units, against the intensity, 0.4 um, circularly polarised; 20 points, 35.37 to 245.6 TW/cm2, yield 7.63e-05 to 0.45; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). The abscissa of a CP point is the intensity at the same pulse energy as LP ('the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: neither the duration nor how the 0.4 um light was made (the 0.8 um pump pulses are 80 to 100 fs, p. 3)"
+polarization = "circular"
+intensity = "the intensity at the same pulse energy as the LP point at this abscissa: 'the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))' (p. 3), the circular field's amplitude 1/sqrt(2) of the linear peak field; the focal peak intensity (implied, App.)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig2b_Ar_0p8um_LP"
+material = "Ar"
+file = "Ar/lai_2017__fig2b_Ar_0p8um_LP.csv"
+table = "fig_0d4d59b034d0"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(b) (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Ar ion yield, arbitrary units, against the intensity, 0.8 um, linearly polarised; 45 points, 24.24 to 388.6 TW/cm2, yield 2.35e-07 to 0.858; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig2b_Ar_0p8um_CP"
+material = "Ar"
+file = "Ar/lai_2017__fig2b_Ar_0p8um_CP.csv"
+table = "fig_0d4d59b034d0"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(b) (pdf p. 2), measured points (open circles, legend 'Expt.-CP'): the Ar ion yield, arbitrary units, against the intensity, 0.8 um, circularly polarised; 39 points, 40.76 to 389.4 TW/cm2, yield 1.25e-07 to 0.389; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). The abscissa of a CP point is the intensity at the same pulse energy as LP ('the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "circular"
+intensity = "the intensity at the same pulse energy as the LP point at this abscissa: 'the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))' (p. 3), the circular field's amplitude 1/sqrt(2) of the linear peak field; the focal peak intensity (implied, App.)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig2c_Ar_1p3um_LP"
+material = "Ar"
+file = "Ar/lai_2017__fig2c_Ar_1p3um_LP.csv"
+table = "fig_0d4d59b034d0"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(c) (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Ar ion yield, arbitrary units, against the intensity, 1.3 um, linearly polarised; 16 points, 59.61 to 239.9 TW/cm2, yield 9.38e-06 to 0.219; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1300
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: from an optical parametric amplifier tuning over 1-2 um, pumped by the 80 to 100 fs titanium sapphire pulses (p. 3)"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig2c_Ar_1p3um_CP"
+material = "Ar"
+file = "Ar/lai_2017__fig2c_Ar_1p3um_CP.csv"
+table = "fig_0d4d59b034d0"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(c) (pdf p. 2), measured points (open circles, legend 'Expt.-CP'): the Ar ion yield, arbitrary units, against the intensity, 1.3 um, circularly polarised; 17 points, 59.73 to 281.9 TW/cm2, yield 5.47e-08 to 0.0649; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). The abscissa of a CP point is the intensity at the same pulse energy as LP ('the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1300
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: from an optical parametric amplifier tuning over 1-2 um, pumped by the 80 to 100 fs titanium sapphire pulses (p. 3)"
+polarization = "circular"
+intensity = "the intensity at the same pulse energy as the LP point at this abscissa: 'the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))' (p. 3), the circular field's amplitude 1/sqrt(2) of the linear peak field; the focal peak intensity (implied, App.)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig3a_Kr_0p8um_LP"
+material = "Kr"
+file = "Kr/lai_2017__fig3a_Kr_0p8um_LP.csv"
+table = "fig_4b3af4da8236"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a) (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Kr ion yield, arbitrary units, against the intensity, 0.8 um, linearly polarised; 39 points, 16.2 to 201.6 TW/cm2, yield 8.18e-07 to 0.681; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig3a_Kr_0p8um_CP"
+material = "Kr"
+file = "Kr/lai_2017__fig3a_Kr_0p8um_CP.csv"
+table = "fig_4b3af4da8236"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a) (pdf p. 2), measured points (open circles, legend 'Expt.-CP'): the Kr ion yield, arbitrary units, against the intensity, 0.8 um, circularly polarised; 26 points, 35.41 to 212.7 TW/cm2, yield 1.41e-06 to 0.235; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). The abscissa of a CP point is the intensity at the same pulse energy as LP ('the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "circular"
+intensity = "the intensity at the same pulse energy as the LP point at this abscissa: 'the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))' (p. 3), the circular field's amplitude 1/sqrt(2) of the linear peak field; the focal peak intensity (implied, App.)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig3b_Kr_3p3um"
+material = "Kr"
+file = "Kr/lai_2017__fig3b_Kr_3p3um.csv"
+table = "fig_4b3af4da8236"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (pdf p. 2), measured points (open squares, legend 'Expt.(3.3)'): the Kr ion yield, arbitrary units, against the intensity, 3.3 um, polarisation not stated; 23 points, 25.76 to 138.6 TW/cm2, yield 2.86e-08 to 0.0892; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3); this set's height relative to the other two of Fig. 3(b) is arbitrary ('displaced from each other arbitrarily along the vertical axis', the caption). Polarisation: not stated (legend 'Expt.(3.3)', curve 'PPT(3.3)'). Every marker is drawn twice in the PDF; kept once. Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 3300
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: from an optical parametric amplifier tuning over 3-4 um, pumped by the 80 to 100 fs titanium sapphire pulses (p. 3)"
+polarization = "not stated"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+vertical_offset = "arbitrary (Fig. 3(b)'s caption)"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig3b_Kr_3p6um"
+material = "Kr"
+file = "Kr/lai_2017__fig3b_Kr_3p6um.csv"
+table = "fig_4b3af4da8236"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (pdf p. 2), measured points (open circles, legend 'Expt.(3.6)'): the Kr ion yield, arbitrary units, against the intensity, 3.6 um, polarisation not stated; 18 points, 30.13 to 131.3 TW/cm2, yield 8.91e-09 to 0.00394; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3); this set's height relative to the other two of Fig. 3(b) is arbitrary ('displaced from each other arbitrarily along the vertical axis', the caption). Polarisation: not stated (legend 'Expt.(3.6)', curve 'PPT(3.6)'). Every marker is drawn twice in the PDF; kept once. Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 3600
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: from an optical parametric amplifier tuning over 3-4 um, pumped by the 80 to 100 fs titanium sapphire pulses (p. 3)"
+polarization = "not stated"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+vertical_offset = "arbitrary (Fig. 3(b)'s caption)"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig3b_Kr_3p9um"
+material = "Kr"
+file = "Kr/lai_2017__fig3b_Kr_3p9um.csv"
+table = "fig_4b3af4da8236"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (pdf p. 2), measured points (open triangles, legend 'Expt.(3.9)'): the Kr ion yield, arbitrary units, against the intensity, 3.9 um, polarisation not stated; 16 points, 29.18 to 100.2 TW/cm2, yield 3.26e-10 to 4.74e-05; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3); this set's height relative to the other two of Fig. 3(b) is arbitrary ('displaced from each other arbitrarily along the vertical axis', the caption). Polarisation: not stated (legend 'Expt.(3.9)', curve 'PPT(3.9)'). Every marker is drawn twice in the PDF; kept once. Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 3900
+pulse_fs = "not stated"
+pulse_fs_definition = "not stated: from an optical parametric amplifier tuning over 3-4 um, pumped by the 80 to 100 fs titanium sapphire pulses (p. 3)"
+polarization = "not stated"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+vertical_offset = "arbitrary (Fig. 3(b)'s caption)"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig4_Ne_0p8um_LP"
+material = "Ne"
+file = "Ne/lai_2017__fig4_Ne_0p8um_LP.csv"
+table = "fig_73722d72eb42"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4 (pdf p. 2), measured points (open squares, legend 'Expt.-LP'): the Ne ion yield, arbitrary units, against the intensity, 0.8 um, linearly polarised; 30 points, 113.8 to 1030 TW/cm2, yield 1.19e-06 to 0.778; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "linear"
+intensity = "the focal peak intensity (implied by the volume-averaged theory, App.; not stated in words)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"
+
+[[datasets]]
+id = "fig4_Ne_0p8um_CP"
+material = "Ne"
+file = "Ne/lai_2017__fig4_Ne_0p8um_CP.csv"
+table = "fig_73722d72eb42"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "arb. units"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4 (pdf p. 2), measured points (open circles, legend 'Expt.-CP'): the Ne ion yield, arbitrary units, against the intensity, 0.8 um, circularly polarised; 28 points, 178.9 to 1149 TW/cm2, yield 7.66e-07 to 0.378; read from the vector drawing (the record's notes). The yield's scale is free: normalised to the authors' PPT curve ('freely normalized to the theory', p. 3), presumably one normalisation for the panel's LP and CP sets (not stated). The abscissa of a CP point is the intensity at the same pulse energy as LP ('the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))', p. 3). Intensity calibrated by the 10 U_p photoelectron cutoff, 'about 20%' (Table I), and in some sets rescaled by up to 20 % to fit PPT (p. 3; which sets not stated). 1 %: the digitising (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = "80 to 100"
+pulse_fs_definition = "as printed: the titanium sapphire systems 'delivering 80- to 100-fs pulses' (p. 3); the measure (FWHM of the intensity, presumably) and the duration of each set are not stated"
+polarization = "circular"
+intensity = "the intensity at the same pulse energy as the LP point at this abscissa: 'the QWP is rotated without adjusting the laser energy (that is, the CP field is the LP field/sqrt(2))' (p. 3), the circular field's amplitude 1/sqrt(2) of the linear peak field; the focal peak intensity (implied, App.)"
+intensity_calibration = "about 20 % (Table I's caption), level not stated: the 10 U_p cutoff of the photoelectron spectrum of noble gases (p. 3)"
+intensity_scaling = "in some cases scaled by up to 20 % from the calibration to fit the PPT yield curves (p. 3); which sets, not stated"
+yield_normalization = "free, to the authors' PPT curve (p. 3); arbitrary units"
+ion = "not stated ('ion yield'; compared with single-ionisation theory)"
+detection = "Wiley-McLaren time-of-flight, normalised to the laser shots and the gas density (p. 3)"

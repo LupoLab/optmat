@@ -1,0 +1,126 @@
+citation = "D. Kligler, D. Pritchard, W. K. Bischel and C. K. Rhodes, \"XeO* production through collisional electronic energy transfer from two-photon excited Xe atoms\", J. Appl. Phys. 49, 2219-2223 (1978)"
+doi = "10.1063/1.325127"
+library = "Kligler_1978_XeOProductionThrough"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Xe/N2O mixtures (6000:1 to 500:1, 0-760 Torr) irradiated by a \
+transverse-discharge KrF* laser at 248.4 nm (20-30 mJ, 15 ns; the laser's bandwidth is \
+not stated), focused by a 50 mm lens to 0.2 x 0.3 mm, 'a peak focused power of 3 x 10^9 \
+W/cm^2'; the XeO* (and O(1S)) emission at 520-570 nm through 10 nm filters on a cooled \
+photomultiplier (photon counting); the square-law dependence on laser energy (Fig. 3), \
+decay rates and yields against pressure (Fig. 4). Sec. IV and Table I: estimates of \
+two-photon couplings from second-order perturbation theory (Eqs. 2-3, Ref. 14: \
+Bischel, Kelley and Rhodes 1976) with one intermediate state, mu_1^2 and mu_2^2 of \
+order 1 D^2, an energy denominator and an estimated linewidth."""
+notes = """J. Appl. Phys. 49(4), 2219-2223 (April 1978) = PDF pages 2-6 (PDF page 1 is \
+the AIP download cover; journal page = PDF page + 2217). Identity checked on the first \
+page of the article (PDF p. 2: title, authors, Molecular Physics Center, SRI \
+International; received 26 September 1977, accepted 9 November 1977) on 2026-10-09. \
+Every number below was read on the rendered pages (pp. 2220-2223) and Table I's cells \
+against its image.
+
+WHAT THE PAPER MEASURES FOR XENON: A LOWER BOUND, NOT A STRENGTH. From the largest \
+XeO* signal (2.5 x 10^16 cm^-3 N2O in 2.5 x 10^19 cm^-3 Xe, 'about 1.6 x 10^6 counts', \
+detection efficiency 'about 0.2 %', so '8 x 10^8 photons'), a peak duration of 8 ns and \
+a focal volume of 2 x 10^-4 cm^3, 'excited Xe must be produced in the focal volume at a \
+rate not less than R_Xe = 5 x 10^20 cm^-3 sec^-1'; with R_Xe = sigma_Xe (I / hbar \
+omega) n_Xe (Eq. 1), 'sigma_Xe >= 5 x 10^-27 cm^2 at our intensity' (p. 2220), 'where \
+the unit branching ratio was assumed' (p. 2222). The script recomputes every step \
+(5.3 x 10^-27 cm^2). This is a bound on the production of unresolved 'Xe*' (5p5 6p, \
+5p5 6s or Xe2*, any of which may feed XeO*, p. 2221) by a laser whose bandwidth the \
+paper does not give, at 248.4 nm: the 6p[1/2]0 two-photon resonance is at 249.63 nm \
+(hawkins_1980), 396 cm^-1 away on the two-photon scale (NIST 80118.962 cm^-1). Above \
+100 Torr the yield grows as the 2.6 power of pressure (p. 2221). NOT TAKEN: no quantity \
+holds a lower bound on an intensity-dependent effective cross section of unresolved \
+products; it is not a per-level two_photon_excitation_cross_section. As sigma/I it is \
+>= 1.8 x 10^-36 cm^4/W; as sigma_2 = sigma / Phi, >= 1.4 x 10^-54 cm^4 s (computed).
+
+WHAT IS TAKEN (tools/extract/kligler_1978.py): Table I's Xe+ row (1930 Angstrom, \
+two-photon ionisation), sigma/I = 1 x 10^-34 cm^4/W, an estimate (use = check), as \
+bischel_1979 (TC-917) holds the same estimate (equal; the script checks).
+
+NOT TAKEN (no quantity holds them): Table I's bound two-photon excitation estimates of \
+sigma/I (cm^4/W), at line centre for an 'Estimated linewidth' of 10^6 MHz (footnote b): \
+H2 E,F (v = 2, j = 2) 1.8 x 10^-31, CO F 1.6 x 10^-32, N2 E 1.1 x 10^-33, Kr* 4p5 6p \
+(103,762 cm^-1) 3 x 10^-31, I2 1.7 x 10^-30 at 1930 Angstrom; Xe*(5p5 6p) 3 x 10^-31 and \
+N2O ~3 x 10^-35 (linewidth ~10^9 MHz) at 2484 Angstrom. They are linewidth-dependent \
+peak coefficients, not the frequency-integrated two_photon_excitation_cross_section, \
+and the line shape g(omega) is not stated (as bischel_1979). The text's 'sigma ~ \
+10^-21 cm^2' for Xe at 3 x 10^9 W/cm^2 is Table I's 3 x 10^-31 times that intensity \
+(checked). The N2O bound sigma_N2O <= 8 x 10^-25 cm^2 and the N2O estimate sigma_2 ~ 6 \
+x 10^-26 cm^2 (Eq. 4); the XeO* quenching rate coefficients k_N2O = 2.3(4) x 10^-11 \
+and k_Xe = 0.4(1) x 10^-14 cm^3/s (p. 2221; XeO* is not a level of a material); the \
+Xe* -> Xe2* conversion 'at 800 Torr ... 125 x 10^5 sec^-1, see Ref. 13' (a quoted rate \
+of an unspecified level at one pressure); Figs. 2-4 (spectra, counts and decay rates \
+of XeO*).
+
+THE ESTIMATE AND THE PER-LEVEL CONVENTION (findings; the script prints them). Eq. (2), \
+sigma(omega) = [(2 pi)^2 / hbar c^2] I omega |M_fg|^2 g(omega), with M_fg = 2 sum_k \
+<f|e.mu|k><k|e.mu|g> / (E_kg - hbar omega) (Eq. 3), 'omega is the laser angular \
+frequency', 'g(omega) is the linewidth factor' (form and normalisation not stated). \
+With Table I's inputs (one intermediate state, mu^2 = 1 D^2, Delta = 28 x 10^3 cm^-1, \
+2484 Angstrom, 10^6 MHz) Eq. (2) in CGS gives 2.6 x 10^-31 cm^4/W for a Lorentzian g \
+normalised in the ordinary frequency (3.8 x 10^-31 Gaussian), 4.1 and 6.1 x 10^-32 \
+normalised in the angular frequency: the printed 3 x 10^-31 matches the first reading; \
+so do Kr (2.9 against 3), N2 (1.05 against 1.1) and I2 (1.64 against 1.7); H2 gives \
+1.3 against 1.8, and Xe+ (10^9 MHz) 1.0 x 10^-33 against the printed 1 x 10^-34. In \
+TC-952's convention (sigma_0 = 2 pi^3 alpha^2 a0^4 omega_au^2 delta^TP, profile \
+normalised in the two-photon angular frequency, coherent light) the same inputs give \
+delta^TP = |M|^2 = 5.89 au (M = 2.43 au; for J = 0 -> 0 and parallel linear \
+polarisation the tensor is isotropic and delta^TP = |S_zz|^2) and sigma_0 = 5.1 x \
+10^-37 cm^4; converting the printed 3 x 10^-31 cm^4/W with a 10^6 MHz Lorentzian \
+(FWHM, two-photon frequency; assumed) gives sigma_0 = 2.4 x 10^-36 cm^4 (delta^TP = 27 \
+au; Gaussian 1.6 x 10^-36, 19 au). The factor 4.6 between the two is Eq. (2)'s \
+prefactor, (2 pi)^2 against 2 pi^3, times 2 pi for the ordinary-frequency \
+normalisation, and the rounding to 3. Either way the estimate is 20 to 100 times below \
+kroll_1990's (TC-890) measured 5.0 x 10^-35 cm^4 (580 au) and henriksson_2005's (TC-888) 752 au for \
+6p[1/2]0: it uses placeholder moments (1 D^2; the NIST 5p6 -> 6s[3/2]1 f = 0.265 \
+corresponds to |<z>|^2 = 2.8 D^2) and one intermediate state, and the paper calls it \
+an estimate. Inputs: Table I and Eqs. (2)-(3) (printed); the line shape (assumed); \
+NIST's level energy (curated). Neither number is a third measurement of the \
+6p[1/2]0 strength.
+
+FINDINGS (held records). bischel_1979 (same group, 1979): its Table I's Xe+ value, 1 x \
+10^-34 cm^4/W at 193 nm, equals this paper's (script); its bound rows use a 100 cm^-1 \
+(3 x 10^6 MHz) laser line where this paper's use 10^6 MHz, and its Xe 6p (8 x 10^-32) \
+and Kr 6p (1 x 10^-31) values are this paper's 3 x 10^-31 scaled by the linewidth ratio \
+(1/3, 1/3.75). bischel_1979's DOUBT that its Table I's Kr level '103,762 cm^-1' is a \
+misprint of the text's '103 363' is answered here: Table I's 103,762 cm^-1 is NIST's \
+Kr 4p5 6p[1/2]0 (103761.634 cm^-1), the Kr analogue of Xe 6p[1/2]0, and 103 363 is \
+6p[3/2]2 (103362.612): two real levels, no misprint. lehmberg_1995 uses the same 248.4 \
+nm and places 6p[1/2]0 at 249.6 nm (80119 cm^-1), as this paper (80119 cm^-1, p. 2222). \
+Sec. V's 'Kr(4p5 5p)' (p. 2222) is a slip for Table I's 4p5 6p.
+
+DOUBT: footnote (g) of the linewidth '~10^9' (Xe+ and N2O) reads 'Some interfering \
+absorption present from Cordes bands. See J.A. Myer, J. Chem. Phys. 52, 716 (1970)': \
+Cordes bands are bands of I2, and bischel_1979's footnote (g) for the same cells reads \
+'Estimated for photoionization continuum'. The footnote text appears misplaced; no \
+value depends on it.
+
+TWO-PHOTON DATA CITED, NOT IN THE LIBRARY: W. K. Bischel, P. J. Kelley and C. K. \
+Rhodes, Phys. Rev. A 13, 1817 (1976) (Eq. 2, Ref. 14) and Phys. Rev. A 13, 1829 (1976) \
+(Ref. 5); D. J. Kligler and C. K. Rhodes, Phys. Rev. Lett. 40, 309 (1978) (H2 E,F \
+two-photon excitation at 193 nm, Ref. 17)."""
+
+[[datasets]]
+id = "sigma_over_I_Xe"
+material = "Xe"
+file = "Xe/kligler_1978__sigma_over_I_Xe.csv"
+table = "tbl_51477d804fd7"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 W-1"
+scale = 1e-34
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table I (p. 2222), xenon, 1930 Angstrom (ArF*), excited product Xe+: the estimated sigma/I in cm^4/W (rate per atom (sigma/I) I^2 / hbar omega, Eq. 1; sigma_2 = (sigma/I) hbar omega = 1.03e-52 cm4 s at 193.0 nm), energy denominator 16 x 10^3 cm^-1, linewidth ~10^9 MHz, mu_1^2 = mu_2^2 = 1 D^2. One significant figure; an order-of-magnitude estimate. Equal to bischel_1979's later copy of the same estimate. Eq. (2) with these inputs gives 1.0e-33 for a 10^9 MHz Lorentzian normalised in the ordinary frequency, ten times the printed value (record notes)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "not stated"
+method = "estimate from second-order perturbation theory with one intermediate state (Eqs. 2-3): energy denominator 16 x 10^3 cm^-1, mu_1^2 = mu_2^2 = 1 debye^2, linewidth ~10^9 MHz"
+definition = "R = sigma (I / hbar omega) n (Eq. 1, p. 2220); Table I's sigma/I in cm^4/W"
+wavelength_nm = 193
+linewidth_mhz = 1e9
+linewidth_definition = "'~10^9 (g)' (Table I); footnote (g) reads 'Some interfering absorption present from Cordes bands' (record notes)"
+energy_denominator_cm1 = 16000

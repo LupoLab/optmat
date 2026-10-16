@@ -1,0 +1,232 @@
+citation = "D. Shekhtman, M. A. Mustafa and N. J. Parziale, \"Two-photon cross-section calculations for krypton in the 190-220 nm range\", Appl. Opt. 59, 10826 (2020)"
+doi = "10.1364/AO.410806"
+library = "Shekhtman_2020_TwoPhotonCross"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Lowest-order perturbation theory for the two-photon excitation of krypton \
+from its 4p6 1S0 ground state to eight 5p, 5p' and 6p levels, one per excitation line \
+(192.749 to 216.667 nm), in linear polarisation only (q = 0, p. 5). The two-photon \
+matrix element M_fg^(2) (Eq. 12) is a sum over a finite basis of intermediate states \
+(the 'matrix mechanics' form D G D, Eq. 19), truncated at n <= 7 by a Debye-length \
+argument (Eq. 13). The dipole matrix elements are evaluated with quantum-defect radial \
+functions (Eq. 33) calibrated on NIST level energies and Einstein coefficients (the \
+integer I_m chosen to reproduce the NIST A values, Table 4), the ground state's \
+Hartree-Fock 4p orbital of Clementi (Eq. 39), and, in the 'with oscillator strengths' \
+variant, the NIST transition probabilities where they exist (Eq. 41), with the sign \
+taken from the quantum-defect radial integral. Three bases (Table 3's states): set 1, \
+|g> and |1> to |20> (5s, 6s, 7s intermediates); set 2, also |21> (4d); set 3, also \
+|22> to |24> (5d, 6d). The single-path approximation of Table 9 keeps one intermediate \
+state per line. The cross section is sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 \
+|M_fg^(2)|^2 a_o^4 (Eq. 8), with W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux, and \
+sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g a Gaussian line shape whose peak is Eq. \
+(9). The experimental part (relative fluorescence at 212.56, 214.77, 216.67 nm, 7 ns, \
+1350 MHz dye laser, 1 torr of 1 % Kr in N2) is a check of the relative values only."""
+notes = """Appl. Opt. 59(34), 10826-10837 (1 December 2020) = PDF pages 1-12 (journal \
+page = PDF page + 10825); identity checked against the first page (journal, volume, \
+pages, authors: D. Shekhtman, M. A. Mustafa, N. J. Parziale). Version of record.
+
+WHAT IS TAKEN (tools/extract/shekhtman_2020.py). sigma_o^(2), cm4, of Tables 5, 6 and \
+7 (basis sets 1, 2, 3; PDF pp. 10-11, journal pp. 10835-10836), quantum-defect (QD) \
+and quantum-defect with oscillator strengths (QD+OS) columns, and of Table 9 (p. 11/\
+10836, single path): seven datasets of eight lines. The row is the final level in \
+Racah notation (5p[3/2]2; primed for the 2P_1/2 core), taken from Table 3 (p. 9/10834) \
+by its lambda_L; the abscissa is the printed lambda_L, the exciting photon's vacuum \
+wavelength (Table 3 note c: 'as measured in vacuum'; checked: 2 h c / (E - E_G) from \
+Table 3's own energies reproduces every lambda_L to 0.0005 nm, while standard-air \
+values would be 0.07 nm shorter). The authors' result is basis set 3 with oscillator \
+strengths (Fig. 3, and the value the text compares with experiment, 'In Table 7, the \
+calculated cross-section for 214.769 nm excitation is 4.18 x 10^-35 cm4', p. 9/10834): \
+that dataset is primary, the others (smaller bases, QD alone, single path) are checks. \
+No uncertainty is stated; the QD Einstein coefficients of Table 4 differ from NIST's by \
+2 % to 541 %, and the bases differ by up to three orders of magnitude for the 6p lines \
+(192-194 nm), which the text calls 'predictions'. For the 5p and 5p' lines (202-217 nm) \
+the paper reports 'good agreement' of the relative values with measured relative \
+excitation spectra (Table 8), 'especially using basis sets 2 and 3' (p. 7/10832).
+
+THE LINE PROFILE IS NORMALISED IN ANGULAR FREQUENCY (frequency_variable). The tables' \
+second column, sigma^(2) = sigma_o^(2) g(2 omega_L) in cm4 s, divided by sigma_o^(2) \
+is Eq. (9)'s Gaussian peak g = 2 sqrt(ln 2 / pi) / sqrt(2 Delta omega_L^2 + Delta \
+omega_T^2) with Delta omega_L = 2 pi x 1350 MHz and the Doppler width (Eq. 10) of Kr \
+at 298 K at the two-photon frequency 2 omega_L, both angular: 1.0045 to 1.0125 times it \
+(mean 1.008) in all 52 regular cells; the mean is 1.000 at 292 K, so the authors' \
+temperature (or mass) may differ slightly from 298 K. With g normalised in ordinary \
+frequency the ratio would be 2 pi smaller. So W = sigma_o^(2) g Phi^2 with g \
+normalised in the two-photon angular frequency, the convention of kroll_1990 and \
+drag_2021; Eq. (8) is drag_2021's Eq. (9), 8 pi^3 alpha^2 omega^2 |M|^2.
+
+NOT TAKEN. The profile-dependent sigma^(2) (cm4 s), the peak for the authors' line \
+shape and laser width, which the vocabulary does not hold (it is sigma_o^(2) times a \
+number fixed above); used as the check above. The normalised columns sigma^(2) / \
+max sigma^(2) (checked). Table 3's level energies (NIST's, below the ionisation limit) \
+and quantum-defect parameters, Table 4's Einstein coefficients (NIST's and the \
+quantum-defect ones: no quantity of the vocabulary holds an A coefficient), Table 8's \
+relative excitation signals (Richardson et al., Grib et al. and this work: relative \
+fluorescence, no quantity), Tables 1 and 2 (angular-momentum bookkeeping). The \
+photoionisation cross section of Eq. (5) is Khambatta et al.'s formula, not evaluated.
+
+PRINTED INCONSISTENCIES (the script's checks list them; every other cell agrees with its \
+row): (1) Table 6, QD, 193.494 nm: sigma_o^(2) printed 9.85 x 10^-35, the 204.196 nm \
+cell two rows below repeated; its sigma^(2) (7.42e-46) and normalised ratio (0.084) give \
+2.26e-35: erratum. (2) Table 9, 214.769 nm: sigma_o^(2) printed 8.54 x 10^-35; its \
+sigma^(2) (3.05e-46) and ratio (0.318) give 8.5e-36: erratum (the power of ten). (3) \
+Table 5, QD, 214.769 and 216.667 nm: sigma^(2) printed 1.98 x 10^-46 and 2.24 x 10^-46, \
+ten times smaller than their sigma_o^(2) g and their printed ratios 0.404 and 0.455 \
+imply: the power of ten; not a taken column. (4) Table 7, QD, 193.494 nm: the \
+normalised ratio printed 0.198, against 1.74e-45 / 1.03e-44 = 0.169: not a taken \
+column. The PDF's text layer has the same numbers as the table images in all four \
+cases. (5) The text (p. 9/10834) quotes dakka_2018's sigma_o^(2) as '5.2 +- 2.2 x \
+10^-35 cm4'; the library's copy of Dakka et al. (the submitted version) prints 5.2 +- \
+2.1.
+
+REFERENCES CITED FOR TWO-PHOTON DATA, NOT IN THE LIBRARY: N. M. Khambatta, J. A. \
+Oertel, R. Silk, L. J. Radziemski and J. M. Mack, J. Appl. Phys. 64, 4809 (1988) \
+(Kr two- and three-photon excitation cross sections, 6p levels); N. M. Khambatta, L. J. \
+Radziemski and S. N. Dixit, Phys. Rev. A 39, 3842 (1989) (Ar three-photon); J. Bokor, \
+J. Y. Zavelovich and C. K. Rhodes, Phys. Rev. A 21, 1453 (1980) (Kr 6p, single path); \
+M. A. Mustafa, D. Shekhtman and N. J. Parziale, Phys. Rev. Appl. 11, 064013 (2019) \
+(single path, 212.556 nm); and the relative excitation spectra of D. R. Richardson et \
+al., Opt. Lett. 42, 3498 (2017) and S. W. Grib et al., Appl. Opt. 58, 7621 (2019)."""
+
+[[datasets]]
+id = "qd_basis1"
+material = "Kr"
+file = "Kr/shekhtman_2020__qd_basis1.csv"
+table = "tbl_795599a25fb2"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5 (p. 10/10835), Quantum-Defect sigma_o^(2) column; basis set 1. Row: the final level (Table 3); x: the laser's vacuum wavelength. This column's sigma^(2) at 214.769 and 216.667 nm is misprinted by a power of ten (record notes), not this one."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "quantum_defect"
+basis = "set 1: |g> and |1> to |20> of Table 3 (5s, 6s, 7s intermediates)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[datasets]]
+id = "qdos_basis1"
+material = "Kr"
+file = "Kr/shekhtman_2020__qdos_basis1.csv"
+table = "tbl_795599a25fb2"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5 (p. 10/10835), Quantum-Defect with Oscillator Strengths sigma_o^(2) column; basis set 1. Row: the final level (Table 3); x: the laser's vacuum wavelength."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "quantum_defect_with_oscillator_strengths"
+basis = "set 1: |g> and |1> to |20> of Table 3 (5s, 6s, 7s intermediates)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[datasets]]
+id = "qd_basis2"
+material = "Kr"
+file = "Kr/shekhtman_2020__qd_basis2.csv"
+table = "tbl_c5a835601f3b"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 6 (p. 10/10835), Quantum-Defect sigma_o^(2) column; basis set 2. Row: the final level (Table 3); x: the laser's vacuum wavelength. The 193.494 nm cell (printed 9.85e-35) is corrected by an erratum."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "quantum_defect"
+basis = "set 2: |g> and |1> to |21> of Table 3 (5s, 6s, 7s and one 4d intermediate)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[datasets]]
+id = "qdos_basis2"
+material = "Kr"
+file = "Kr/shekhtman_2020__qdos_basis2.csv"
+table = "tbl_c5a835601f3b"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 6 (p. 10/10835), Quantum-Defect with Oscillator Strengths sigma_o^(2) column; basis set 2. Row: the final level (Table 3); x: the laser's vacuum wavelength."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "quantum_defect_with_oscillator_strengths"
+basis = "set 2: |g> and |1> to |21> of Table 3 (5s, 6s, 7s and one 4d intermediate)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[datasets]]
+id = "qd_basis3"
+material = "Kr"
+file = "Kr/shekhtman_2020__qd_basis3.csv"
+table = "tbl_9e3a7f52b1d8"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 7 (p. 11/10836), Quantum-Defect sigma_o^(2) column; basis set 3. Row: the final level (Table 3); x: the laser's vacuum wavelength. This column's normalised ratio at 193.494 nm is misprinted (record notes), not sigma_o^(2)."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "quantum_defect"
+basis = "set 3: |g> and |1> to |24> of Table 3 (5s, 6s, 7s, 4d, 5d, 6d intermediates)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[datasets]]
+id = "qdos_basis3"
+material = "Kr"
+file = "Kr/shekhtman_2020__qdos_basis3.csv"
+table = "tbl_9e3a7f52b1d8"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 7 (p. 11/10836), Quantum-Defect with Oscillator Strengths sigma_o^(2) column; basis set 3, the authors' result (Fig. 3; the 214.769 nm value, 4.18e-35 cm4, is the one the text compares with dakka_2018). Row: the final level (Table 3); x: the laser's vacuum wavelength. No uncertainty is stated."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "quantum_defect_with_oscillator_strengths"
+basis = "set 3: |g> and |1> to |24> of Table 3 (5s, 6s, 7s, 4d, 5d, 6d intermediates)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[datasets]]
+id = "single_path"
+material = "Kr"
+file = "Kr/shekhtman_2020__single_path.csv"
+table = "tbl_305221c17bc2"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 9 (p. 11/10836), single-path approximation: one intermediate state, |1> (5s[3/2]1) or |3> (5s'[1/2]1) as the table names it, with the NIST oscillator strengths. Row: the final level (Table 3, and Table 9's own |f> column, which agrees); x: the laser's vacuum wavelength. The 214.769 nm cell (printed 8.54e-35) is corrected by an erratum."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected (a calculation: lowest-order perturbation theory for a monochromatic field, no G2(0))"
+method = "single_path"
+basis = "one intermediate state per line (Table 9's |k>)"
+definition = "W_fg = sigma^(2) F^2 (Eq. 6), F the photon flux; sigma^(2) = sigma_o^(2) g(2 omega_L) (Eq. 7), g normalised in the two-photon angular frequency (checked, record notes); sigma_o^(2) = (2 pi)^3 alpha^2 omega_L^2 |M_fg^(2)|^2 a_o^4 (Eq. 8)"
+
+[[errata]]
+dataset = "qd_basis2"
+row = "6p[3/2]2"
+column = "value"
+printed = "9.85e-35"
+corrected = "2.26e-35"
+reason = "Table 6 prints the 204.196 nm cell (9.85 x 10^-35, two rows below) at 193.494 nm: the row's own sigma^(2) = 7.42 x 10^-46 cm4 s and normalised ratio 0.084 (= 7.42e-46 / 8.86e-45) give sigma_o^(2) = sigma^(2) / g(193.494 nm) = 2.26e-35, where g is Eq. (9)'s Gaussian peak times the mean ratio sigma^(2) / (sigma_o^(2) g) = 1.008 of the 52 regular cells of Tables 5-7 and 9 (their spread, 1.0045 to 1.0125, makes the correction good to +-0.01 in the last figure); the printed value gives a ratio of 0.232."
+evidence = "Table 6 image and the PDF's text layer both read 9.85 x 10^-35 in the 193.494 and the 204.196 nm rows of the Quantum-Defect column; checked by tools/extract/shekhtman_2020.py (checks)."
+
+[[errata]]
+dataset = "single_path"
+row = "5p[3/2]2"
+column = "value"
+printed = "8.54e-35"
+corrected = "8.54e-36"
+reason = "The row's own sigma^(2) = 3.05 x 10^-46 cm4 s (and its normalised ratio 0.318 = 3.05e-46 / 9.57e-46) gives sigma^(2) / (sigma_o^(2) g) = 0.101 with the printed sigma_o^(2), and 1.010 with 8.54 x 10^-36, inside the 1.0045 to 1.0125 of the regular cells: the power of ten is misprinted."
+evidence = "Table 9 image and the PDF's text layer both read 8.54 x 10^-35; checked by tools/extract/shekhtman_2020.py (checks)."

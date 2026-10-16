@@ -1,0 +1,47 @@
+citation = "A. M. Perelomov and V. S. Popov, \"Ionization of atoms in an alternating electrical field. III\", Sov. Phys. JETP 25, 336 (1967) [J. Exptl. Theoret. Phys. (U.S.S.R.) 52, 514 (1967)]"
+library = "Perelomov_1967_IonizationAtomsAlternating_af59d3"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """The quasiclassical ('imaginary time') method for the penetration of a \
+time-varying barrier: the Coulomb interaction between the electron and the atomic \
+remainder is taken as a perturbation of the action along the sub-barrier trajectory of \
+the short-range problem (Sect. 4, pp. 340-341)."""
+notes = """Pages are journal pages (pdf page 1 is p. 336). Identity checked on the first \
+page (title, authors, volume 25, number 2, August 1967); the library's automatic check \
+of the identity is 'review', the paper having no DOI. This is the third paper of the \
+series; the first is Perelomov, Popov & Terent'ev (Sov. Phys. JETP 23, 924 (1966)), \
+whose eq. (54) is the short-range rate, and the second (Sov. Phys. JETP 24, 207 (1967)) \
+is in the library as Perelomov_1967_IonizationAtomsAlternating.
+
+No tables and no data: the record holds the formulas on which optmat's Coulomb factor \
+rests (TC-670). Everything was read on the page images (pp. 340-342).
+
+THE FACTOR (1 + gamma^2)^(-n*) IS NOT IN THIS PAPER. Ilkov et al. (ilkov_1992, eq. 8) \
+and Bergé et al. (2007, eq. B14) cite this paper for a Coulomb factor that they write \
+(2F_0/(F sqrt(1 + gamma^2)))^(2n*). Here the factor is (2F_0/F)^(2 lambda) for linear \
+polarisation at any gamma within the range of validity (eq. 42, and C(gamma, 0) = 1 in \
+eq. 45).
+
+VALIDITY. The abstract: formulas 'for the Coulomb correction in the case of not too \
+high frequencies (gamma << gamma_c, where gamma_c is defined in (51))'. The condition \
+is made exact in perelomov_1968."""
+
+[[formulas]]
+id = "eq42_coulomb"
+equation = "Eq. (42), p. 341"
+printed = "delta S(t_0, 0) = -i lambda ln(2F_0/F); exp{-2 Im delta S} = (2F_0/F)^(2 lambda)"
+variable = "Atomic units. F: amplitude of the linearly polarised field; F_0 = kappa^3, kappa^2/2 the binding energy; lambda = kappa_c/kappa = Z/kappa, the Coulomb parameter (optmat's n*)"
+range = "Linear polarisation; gamma << gamma_c (the abstract), made exact in perelomov_1968"
+coefficients = {}
+check = "Checked against the page image (p. 341), 2026-09-28."
+notes = "'The dependence of delta S on the frequency has dropped out, i.e., the Coulomb correction in the ionization probability w(F, omega) has the same form as for a static field (see (31))' (p. 341). optmat's static Coulomb factor (coulomb = 'static')."
+
+[[formulas]]
+id = "eq45_coulomb_elliptic"
+equation = "Eqs. (45)-(48), p. 341"
+printed = "w(F, omega, epsilon) = [2F_0 C(gamma, epsilon)/F]^(2 lambda) w_s.r.(F, omega, epsilon) (45); C(gamma, epsilon) = (tau_0/(2 gamma)) exp{int_0^tau_0 d tau [gamma/F(gamma, epsilon) - 1/(tau_0 - tau)]} (46); F(gamma, epsilon) = [(ch tau_0 - ch tau)^2 - epsilon^2 tau^2 (sh tau_0/tau_0 - sh tau/tau)^2]^(1/2) (47); sh^2 tau_0 - epsilon^2 (ch tau_0 - sh tau_0/tau_0)^2 = gamma^2 (48)"
+variable = "epsilon: the ellipticity (0 linear, 1 circular); w_s.r.: the rate in a short-range potential (lambda = 0); tau_0 = omega t_0, t_0 the time of motion under the barrier"
+range = "As Eq. (42)"
+coefficients = {}
+check = "Checked against the page image (p. 341), 2026-09-28. For epsilon = 0, tau_0 = arsinh gamma and the integrand is gamma/(ch tau_0 - ch tau) - 1/(tau_0 - tau); C(gamma, 0) = 1.0000 at gamma = 0.5, 1, 2, 3, 5, 10, 20 and 30 by numerical quadrature (computed 2026-09-28), so that (45) is (42) for linear polarisation at every gamma."
+notes = "'In the adiabatic region (gamma << 1) the Coulomb correction does not depend on epsilon' (p. 341). Ilkov et al.'s footnote (ilkov_1992, p. 4007) quotes this factor with 'C = 1 for gamma << 1 and linear polarisation'; for linear polarisation C is 1 at any gamma."

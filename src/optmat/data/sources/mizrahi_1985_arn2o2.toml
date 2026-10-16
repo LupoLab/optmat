@@ -1,0 +1,215 @@
+citation = "V. Mizrahi and D. P. Shelton, Phys. Rev. Lett. 55, 696 (1985)"
+library = "Mizrahi_1985_DispersionNonlinearSusceptibilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Gas-phase electric-field-induced second-harmonic generation (ESHG) with \
+periodic phase matching (electrode spacing 2.69 mm, optimal pressures of order 1 atm, \
+about 100 atm for He), cw rhodamine-6G or DCM dye laser or argon-ion laser, 700.0-457.9 nm; \
+Ar, N2 and O2 measured against He (O2 and some Ar points via N2 as a transfer standard) \
+(p. 696)."""
+notes = """Title and authors from the observed text (the library record is UNVERIFIED and \
+carries no DOI): 'Dispersion of Nonlinear Susceptibilities of Ar, N2, and O2 Measured \
+and Compared', Victor Mizrahi and D. P. Shelton, received 29 April 1985; the citation \
+Phys. Rev. Lett. 55, 696 (1985) is the one given in Shelton (1986, Ref. \
+15, shelton_1986_krxe), not read from this document.
+
+No datasets: the paper measures the nonlinear susceptibility ratios \
+chi3(omega)/chi3_He(omega) of Ar, N2, O2 (Table I, lambda in air and nu in vacuum, \
+700.0-457.9 nm) and fits them (Table II); the phase-match densities are not given. \
+Its only linear-dispersion numbers are the effective resonance frequencies omega_0 of \
+Table III (tbl_e6ad0bfdfcc3; image checked), 'chosen so that chi1(omega)/chi1(0) = [1 + \
+(omega/omega_0)^2] gives the best fit to linear-dispersion data (Ref. 10)', Ref. 10 \
+being Landolt-Bornstein II/8 (1962): He 206, Ar 138, H2 113, D2 115, N2 126, O2 119, \
+printed in units of '10^13 cm^-1', evidently a misprint for 10^3 cm^-1 (206 x 10^3 cm^-1 \
+= 25.5 eV for He, an effective resonance; 10^13 cm^-1 would be about 10^9 eV). They are \
+the authors' one-pole fits to other data, without alpha(0), so not a usable model; \
+recorded here only.
+
+Not extracted (third-order susceptibility, for later): Table I ratios (the Ar value \
+printed 20.99(16) at 600.0 nm is presumably 30.99: its neighbours are 30.88 and 31.25; \
+image checked), Table II fits A(1 + B omega^2): Ar 25.85(19), 7.11(26)e-10 cm^2; N2 \
+20.30(11), 6.55(20)e-10; O2 19.73(27), 13.64(54)e-10 (H2, D2 from Ref. 5), Table III's C.
+
+THIRD-ORDER DATA (added 2026-09-26; supersedes "No datasets" and "Not \
+extracted" above). The library record is now VALIDATED_WITH_WARNINGS (as the identity \
+field says). chi(3)(omega) is the ESHG susceptibility chi_ijkl(3)(-2 omega; omega, \
+omega, 0), 'the case of the optical-field polarization parallel to the static field' \
+(the stronger component), 'related to the molecule-fixed components by an isotropic \
+average'; 'Details of the notational convention have been given elsewhere [Ref. 5 = \
+mizrahi_1985_h2d2], but in any case we shall be principally interested in ratios' (p. \
+696): the ratios are per molecule, the same as Shelton's gamma ratios (shelton_1990 \
+rescales these data as gamma, Table III(a)). Expansion: chi(3)(omega) = chi(3)(0)(1 + a \
+omega^2 + b omega^4 + ...) (Eq. 1), truncated to A(1 + B omega^2) for the fits (Table \
+II; omega the vacuum wavenumber of the fundamental in cm^-1, not nu_L^2). Calibration \
+(Table II caption; Eq. 2): Sitz & Yaris's chi_He(3)(omega) = 42.6(1 + B_He omega^2) au, \
+B_He = 2.94e-10 cm^2 = 1/(58300 cm^-1)^2, 1 au = 6.2353e-65 C^4 m^4 J^-3. Uncertainty: \
+'The error bars, which range from 0.3% to 1.5%, represent the total experimental \
+uncertainty. In particular, we believe that the systematic errors in the present \
+experiment are negligible' (p. 696); 'the results obtained in this work are uniformly \
+1.5% larger than those previously reported' (shelton_1982; the CH4-He step of that \
+work is blamed). Parts: Ar electronic; N2, O2 total ESHG (vibrational overtones 'give \
+only a small contribution', p. 696; the Table III note says subtracting the vibrational \
+part would reduce C by 1 for H2, D2, less for the others). Table III (C of \
+chi(3)(omega)/chi(3)(0) = 1 + C (omega/omega_0)^2 with omega_0 from linear dispersion: \
+He 13, Ar 19, H2 15, D2 15, N2 15, O2 23; +-0.6) is a re-expression of the fits, kept \
+in these notes; the models of Owyoung (C = 6) and Ward (C = 10) 'underestimate the \
+dispersion' (p. 698)."""
+
+[[datasets]]
+id = "ratio_Ar_over_He"
+material = "Ar"
+file = "Ar/mizrahi_1985_arn2o2__ratio_Ar_over_He.csv"
+table = "tbl_1008a085d5aa"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table I (p. 697): chi(3)(omega)/chi(3)_He(omega) for Ar by ESHG, 19 lines 700.0-457.9 nm (row: air wavelength; abscissa: vacuum wavenumber); parenthesised last-digit uncertainties as sigma. Rows 694.3, 690.0, 670.0, 660.0 are marked a: 'obtained by first measuring against N2 used as a transfer standard, and then using the smoothed values for chi_N2/chi_He'. Row 600.0 corrected by an erratum (printed 20.99). The ratio is the measurement (He the reference, Sitz & Yaris's chi_He for absolute values); shelton_1990 Table III(a) re-expresses these on Bishop & Pipin's He (reproduced there)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "ratio_N2_over_He"
+material = "N2"
+file = "N2/mizrahi_1985_arn2o2__ratio_N2_over_He.csv"
+table = "tbl_1008a085d5aa"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table I (p. 697): chi(3)(omega)/chi(3)_He(omega) for N2 by ESHG, 19 lines; parenthesised last-digit uncertainties as sigma. Total ESHG (vibration and rotation included; small)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "ratio_O2_over_He"
+material = "O2"
+file = "O2/mizrahi_1985_arn2o2__ratio_O2_over_He.csv"
+table = "tbl_1008a085d5aa"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table I (p. 697): chi(3)(omega)/chi(3)_He(omega) for O2 by ESHG, 18 lines (none at 457.9 nm); the whole column is marked a: measured against N2 as transfer standard and converted with the smoothed N2/He curve (formula table2_N2), so O2's ratios carry N2's calibration. Total ESHG."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[errata]]
+dataset = "ratio_Ar_over_He"
+row = "600.0"
+column = "value"
+printed = "20.99"
+corrected = "30.99"
+reason = "A dropped first digit: the Ar ratios rise smoothly from 29.6 to 34.4 over the table, and 20.99 sits between 30.88 (610.0 nm) and 31.25 (590.0 nm)."
+evidence = "Table image checked: it prints 20.99(16). The paper's own fit (Table II: 25.85 [1 + 7.11e-10 x 16662^2]) gives 30.95 at this line; shelton_1990 Table III(a) lists Ar at 600.0 nm as 90.05e-63 C^4 m^4 J^-3, which is 30.99 times Sitz & Yaris's gamma_He there (42.6 au x 1.0816 x 6.2353e-65 = 2.873e-63 C^4 m^4 J^-3; 30.99 x 2.873e-63 = 89.0e-63) scaled by the same 1.011 rescaling that shelton_1990 applies at the other lines (632.8 nm: 30.21 -> 87.09e-63), whereas 20.99 would give 60.3e-63. Checked 2026-09-26."
+
+[[formulas]]
+id = "table2_Ar"
+material = "Ar"
+equation = "Table II, p. 697"
+printed = "f(omega) = A(1 + B omega^2); Ar: A = 25.85 +- 0.19, B = (7.11 +- 0.26) x 10^-10 cm^2"
+variable = "omega: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2)"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "14282-21831 cm^-1 (700.0-457.9 nm)"
+coefficients = { A = "25.85", B = "7.11e-10" }
+coefficient_units = { A = "1 (chi_Ar/chi_He)", B = "cm^2" }
+check = "Gives 29.60 at 14282 cm^-1, 30.95 at 16662 cm^-1 (the corrected 30.99) and 34.61 at 21831 cm^-1 against 29.67, 30.99, 34.41. Checked 2026-09-26."
+notes = "Weighted least-squares fit of the ratio to He; 'The excellent quality of the fits (chi^2 test) indicates that terms in omega^4 and higher are unimportant at this level of accuracy' (p. 696). Used as the Ar calibration curve by shelton_1986_krxe (its Eq. 7)."
+
+[[formulas]]
+id = "table2_N2"
+material = "N2"
+equation = "Table II, p. 697"
+printed = "f(omega) = A(1 + B omega^2); N2: A = 20.30 +- 0.11, B = (6.55 +- 0.20) x 10^-10 cm^2"
+variable = "omega: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "14282-21831 cm^-1"
+coefficients = { A = "20.30", B = "6.55e-10" }
+coefficient_units = { A = "1 (chi_N2/chi_He)", B = "cm^2" }
+check = "Gives 23.62 at 15798 cm^-1 against 23.72(10). Checked 2026-09-26."
+notes = "The N2 calibration curve of shelton_1985_sf6, shelton_1986_co2 and shelton_1986_ch4 (their Eq. 2)."
+
+[[formulas]]
+id = "table2_O2"
+material = "O2"
+equation = "Table II, p. 697"
+printed = "f(omega) = A(1 + B omega^2); O2: A = 19.73 +- 0.27, B = (13.64 +- 0.54) x 10^-10 cm^2"
+variable = "omega: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "14282-20981 cm^-1"
+coefficients = { A = "19.73", B = "13.64e-10" }
+coefficient_units = { A = "1 (chi_O2/chi_He)", B = "cm^2" }
+check = "Gives 29.89 at 19430 cm^-1 against 29.93(26). Checked 2026-09-26."
+notes = "O2 was measured against N2 (transfer standard)."
+
+[[formulas]]
+id = "table2_H2"
+material = "H2"
+equation = "Table II, p. 697"
+printed = "f(omega) = A(1 + B omega^2); H2 (note a: 'Data for H2 and D2 come from Ref. 5'): A = 14.72 +- 0.09, B = (9.01 +- 0.22) x 10^-10 cm^2"
+variable = "omega: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "the data of Ref. 5 (457.9-700 nm)"
+coefficients = { A = "14.72", B = "9.01e-10" }
+coefficient_units = { A = "1 (chi_H2/chi_He)", B = "cm^2" }
+reproduced_from = ["mizrahi_1985_h2d2"]
+check = "B equals mizrahi_1985_h2d2's uncorrected H2/He column B = 9.01(22)e-10 cm^2 (its Table I caption); A not compared here."
+notes = "Reproduced from Ref. 5 (then to be published: Mizrahi & Shelton, Phys. Rev. A 32, 3454 (1985))."
+
+[[formulas]]
+id = "table2_D2"
+material = "D2"
+equation = "Table II, p. 697"
+printed = "f(omega) = A(1 + B omega^2); D2 (note a): A = 14.54 +- 0.11, B = (8.54 +- 0.26) x 10^-10 cm^2"
+variable = "omega: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "the data of Ref. 5"
+coefficients = { A = "14.54", B = "8.54e-10" }
+coefficient_units = { A = "1 (chi_D2/chi_He)", B = "cm^2" }
+reproduced_from = ["mizrahi_1985_h2d2"]
+check = "Not checked against mizrahi_1985_h2d2 (which gives the H2/D2 ratio, not D2/He)."
+notes = "Reproduced from Ref. 5."
+
+[[formulas]]
+id = "he_calibration"
+material = "He"
+equation = "Eq. (2), p. 697; Table II caption"
+printed = "chi_He(3)(omega)/chi_He(3)(0) = 1 + [omega/(58 300 cm^-1)]^2; chi_He(3)(omega) = 42.6(1 + B_He omega^2), in atomic units (1 a.u. = 6.2353 x 10^-65 C^4 m^4 J^-3); B_He = 2.94 x 10^-10 cm^2 with omega in inverse centimeters"
+variable = "omega: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the visible (the measurements)"
+coefficients = { gamma0 = "42.6", B = "2.94e-10", omega_0 = "58300" }
+coefficient_units = { gamma0 = "au", B = "cm^2", omega_0 = "cm^-1" }
+reproduced_from = ["P. Sitz and R. Yaris, J. Chem. Phys. 49, 3546 (1968)"]
+check = "1/58300^2 = 2.942e-10 cm^2 = B_He. Checked 2026-09-26."
+notes = "'which adequately represents the ab initio results of Sitz and Yaris' (p. 697; the reference list prints the journal as 'Chem. Phys. 49, 3546', meaning J. Chem. Phys.). The old He calibration, 1.3 % below Bishop & Pipin's at 514.5 nm (see shelton_1982)."

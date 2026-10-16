@@ -1,0 +1,139 @@
+citation = "V. Loriot, P. Bejot, W. Ettoumi, Y. Petit, J. Kasparian, S. Henin, E. Hertz, B. Lavorel, O. Faucher and J.-P. Wolf, Laser Phys. 21, 1319 (2011); preprint arXiv:1011.0841 (2010)"
+doi = "10.1134/S1054660X11130196"
+library = "Loriot_2010_NegativeHigherOrder"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """A defence of the higher-order Kerr (HOKE) measurement of loriot_2009 \
+(same apparatus: 90 fs, 800 nm, degenerate pump-probe transient birefringence, f = 20 \
+cm, 4 degree crossing, 0.1 bar static cell for the HOKE, 1 bar for n2): the \
+intensity calibration, the fitting protocol, the volume-effect corrections, and a \
+discussion of plasma, ion and two-beam-coupling artefacts; plus filamentation \
+simulations."""
+notes = """The library copy is the arXiv preprint (arXiv:1011.0841v1, 3 Nov 2010; the \
+library's bibliographic record is the arXiv DOI 10.48550/arxiv.1011.0841); the \
+journal version, Laser Phys. 21, 1319 (2011), DOI 10.1134/S1054660X11130196, is cited \
+in these terms by Bejot et al. 2013 (ref. 12) and Richter et al. 2013 (ref. 22) and is \
+not in the library. The paper prints no new third-order value; its only datasets are \
+the ionisation potentials of Table II (added 2026-09-26, TC-439; below).
+
+What it adds to loriot_2009 (pages of the preprint):
+- Intensity: from the fit of the post-pulse alignment signal with an effective \
+intensity I_eff = I_peak / 1.7 (Eq. 2, p. 5), cross-checked against beam waist, energy \
+(+-5 %) and duration (+-10 %); 'an uncertainty of +-10 % (at 3 standard deviations)' \
+(p. 6). P = 1.8 GW, nonlinear phase below 0.1 (N2) and 0.14 rad (O2).
+- n2 (p. 7): Eq. (3) S_homo ~ I_pr (x) [Delta n_rot + (2/3) n2^cross I]^2; 'The \
+coefficients n2^cross = 2 x n2, with n2 the standard self-induced Kerr index, \
+therefore describes the non-linear refractive index due to cross-Kerr effect'; \
+n_2,par = 3 n_2,perp, valid when intrapulse alignment is negligible (orientational \
+Kerr contribution below 5 % at the highest intensity, p. 7). Table 1 of loriot_2009 \
+comes from 50, 30 and 8 low-intensity records (I_eff < 1 TW/cm^2) in N2, O2 and Ar \
+(p. 8); Delta alpha = 4.6 and 7.25 au for N2 and O2.
+- HOKE (p. 8-10): Eq. (4) with (2j/(2j + 1)) n_2j^cross I^j, 'We have generalized the \
+relation n_2j,par = (2j + 1) x n_2j,perp ... verified for n2 and n4, to higher \
+orders'; volume-effect correction factors c_2j = effective / true HOKE term (Table I, \
+an equation-array table: c4 1.04, c6 1.30, c8 1.45, c10 2.66); n4 fitted from 14, 10, 11 \
+records at I_eff <= 27, 20, 24 TW/cm^2 (N2, O2, Ar), n6 and n8 together from 24, 10, 26 \
+records at higher intensity, n10 only for Ar.
+- Artefacts (p. 11-15): plasma birefringence rejected (Ar signal returns to zero \
+after the pulses, no temporal asymmetry), ion chi(3) from Sprangle's (IP_neutral / \
+IP_ion)^3 (Table II: IP 15.6/27.12, 12.07/24.14, 15.8/27.6 eV and ratios 0.19, 0.125, \
+0.185 for N2, O2, Ar) at most 0.2 %, two-beam coupling rejected (heterodyne detection, \
+symmetric time profile).
+
+Claim and status: the paper maintains that the saturation and inversion of the \
+instantaneous index are real and that HOKE dominates filament regularisation for \
+short pulses at long wavelengths. Refuted: Wahlstrand et al. 2013 (wahlstrand_2013) \
+show that the plasma grating of a degenerate pump-probe geometry produces the \
+negative birefringence at these intensities, the time-symmetry argument failing for \
+chirped pulses (their Fig. 4 and p. 8-9); Wahlstrand et al. 2012 and 2018 measure a \
+response linear in intensity up to and beyond the ionisation threshold. Not to be \
+used.
+
+No curated gas beyond N2, O2 and Ar; air is discussed only in the simulations.
+
+TABLE II (preprint p. 14; image checked): 'Ionization potentials of neutral and \
+ionized nitrogen, oxygen, and argon': the molecules N2 and O2 and the atom Ar (not \
+the N and O atoms), IP_neutral 15.6, 12.07, 15.8 eV and IP_ion 27.12, 24.14, 27.6 eV, \
+extracted as the ionisation energies of N2, O2, Ar and of the cations N2+, O2+, Ar+ \
+('check': no source is cited, and no kind for the molecules). The third row, \
+chi(3)_ion/chi(3)_neutral = (IP_neutral/IP_ion)^3 (Eq. 6, after Sprangle et al., ref. \
+36): 0.19, 0.125, 0.185, an estimate, not extracted."""
+
+[[datasets]]
+id = "ip_N2"
+material = "N2"
+file = "N2/loriot_2011__ip_N2.csv"
+table = "tbl_701638991ad8"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II (preprint p. 14), IP_neutral: the ionisation potential used in Sprangle et al.'s estimate Eq. (6) of the ions' chi(3); no source is given. Adiabatic or vertical is not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "ip_N2+"
+material = "N2+"
+file = "N2+/loriot_2011__ip_N2+.csv"
+table = "tbl_701638991ad8"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II (preprint p. 14), IP_ion: the ionisation potential of N2+ (to N22+; the final state is not stated), used in Eq. (6); no source is given. Adiabatic or vertical is not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "ip_O2"
+material = "O2"
+file = "O2/loriot_2011__ip_O2.csv"
+table = "tbl_701638991ad8"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II (preprint p. 14), IP_neutral: the ionisation potential used in Sprangle et al.'s estimate Eq. (6) of the ions' chi(3); no source is given. Adiabatic or vertical is not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "ip_O2+"
+material = "O2+"
+file = "O2+/loriot_2011__ip_O2+.csv"
+table = "tbl_701638991ad8"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II (preprint p. 14), IP_ion: the ionisation potential of O2+ (to O22+; the final state is not stated), used in Eq. (6); no source is given. Adiabatic or vertical is not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "ip_Ar"
+material = "Ar"
+file = "Ar/loriot_2011__ip_Ar.csv"
+table = "tbl_701638991ad8"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II (preprint p. 14), IP_neutral: the ionisation potential used in Sprangle et al.'s estimate Eq. (6) of the ions' chi(3); no source is given. For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_Ar+"
+material = "Ar+"
+file = "Ar+/loriot_2011__ip_Ar+.csv"
+table = "tbl_701638991ad8"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II (preprint p. 14), IP_ion: the ionisation potential of Ar+ (to Ar2+; the final state is not stated), used in Eq. (6); no source is given. For an atomic ion the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+

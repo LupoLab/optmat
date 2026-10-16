@@ -1,0 +1,593 @@
+citation = "A. Balakrishnan, V. Smith and B. P. Stoicheff, \"Dissociation energies of the hydrogen and deuterium molecules\", Phys. Rev. A 49, 2460 (1994)"
+doi = "10.1103/PhysRevA.49.2460"
+library = "Balakrishnan_1994_DissociationEnergiesHydrogen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single-photon fluorescence-excitation spectroscopy of H2 and D2 near 84 nm \
+(Sec. II): tunable XUV at 2 nu1 + nu2 by four-wave sum mixing in a pulsed effusive jet \
+of krypton (1 mm nozzle, about 2 atm backing), nu1 (about 212.6 nm, about 15 kW, from \
+a doubled grazing-incidence dye laser, 0.2 cm^-1) tuned to the two-photon resonance \
+4p6 -> 4p5 5p[1/2]0 of Kr and nu2 (400-425 nm, a single-mode dye laser, 0.02 cm^-1, \
+about 55 kW) scanned; both focused by a 25 cm lens, at about 8e8 and 2e9 W/cm2; XUV \
+pulses of about 4 ns, bandwidth 0.25 cm^-1. The XUV crossed a pulsed H2 or D2 jet 50 \
+mm below its nozzle; the H(2s) or D(2s) atoms from photodissociation above the second \
+dissociation limit, H2(B' 1Sigma_u+) -> H(1s) + H(2s), were quenched by a delayed \
+electric field (50-150 V/cm) and their Lyman-alpha fluorescence detected, so that the \
+onset of the continuum is free of molecular lines. nu2 was calibrated on uranium \
+optogalvanic lines (+-0.01 cm^-1); 2 nu1 in a separate experiment from the maximum of \
+the Kr-resonant third harmonic (near 70.9 nm) with the single-mode laser doubled to \
+nu1 at the same intensity (p. 2464). The limit D_L was found by linear extrapolation \
+of the onset; D0 = D_L - E(2s - 1s)."""
+notes = """Phys. Rev. A 49(4), 2460-2469 (April 1994) = PDF pages 1-10 (journal page = \
+PDF page + 2459); a scan with a text layer. Identity checked against the first page \
+(PHYSICAL REVIEW A VOLUME 49, NUMBER 4, APRIL 1994; received 30 September 1993; \
+Balakrishnan, Smith and Stoicheff, Toronto) on 2026-10-09. brandi_2002 (TC-1006, \
+TC-1017) cites this paper as 'Phys. Rev. A 48, 2460 (1994)': the volume is 49. Every \
+number below was read on the rendered pages (pp. 2460, 2464, 2466-2468) and Table \
+III's image.
+
+WHAT IS TAKEN. (1) Table III (p. 2468, tbl_26f7348398d0; tools/extract/ \
+balakrishnan_1994.py), dissociation_energy, cm^-1, one file per row and molecule: \
+this paper's D0(H2) = 36 118.11+-0.08 and D0(D2) = 36 748.38+-0.07 (primary; the \
+'Present [4,10]' row) and D0(H2+) = 21 379.37+-0.08 and D0(D2+) = 21 711.64+-0.07 (the \
+'Present [10]' row; check: derived from D0 with other laboratories' ionisation \
+energies, D0(ion) = D0 + I(atom) - I(molecule), p. 2468); and the other rows, \
+reproduced (Herzberg 1970; Stwalley 1970; LeRoy and Barwell 1975; McCormack and Eyler \
+1991; Eyler and Melikechi 1993; the theories of Wolniewicz 1993, Kolos, Szalewicz and \
+Monkhorst 1986, and Wolniewicz and Orlikowski 1991). The uncertainties are printed \
+'+-', with no stated level; Table II (p. 2467) gives the budget: extrapolation 0.04, \
+nu2 0.01 (D2 0.015), 2 nu1 0.04, ac Stark 0.03, Doppler 0.01 (D2 0.008), added in \
+quadrature, plus the H(1s) hyperfine 0.013 added linearly for H2 (0.024 in the 1992 \
+Letter, halved here by a symmetry argument, p. 2467). (2) Text values, inline: the \
+second dissociation limits D_L(H2) = 118 377.06+-0.04 and D_L(D2) = 119 029.72+-0.04 \
+cm^-1 above X(v = 0, J'' = 0) (abstract; pp. 2465-2466; products H(1s) + H(2s), the \
+directly measured quantity, primary); D_L(D2) = 119 029.71+-0.09 from the J'' = 2 \
+spectrum (118 850.68+-0.09 + F''(2) = 179.029, p. 2466; a confirmation, check); \
+De(H2) = 38 297.38+-0.10 and De(D2) = 38 294.87+-0.09 (pp. 2465-2466; D0 plus Huber \
+and Herzberg's zero-point energies 2179.27 and 1546.49+-0.05, so check). (3) Krypton, \
+the calibration (pp. 2464, 2466-2467): the light shift of the two-photon resonance 4p6 \
+-> 5p[1/2]0, '(8.6+-3.8) x 10^-11 cm-1/W/cm2' from 'measurements at different power \
+of nu1' (light_shift_coefficient, primary, ls_5p12_0); and the level energy \
+extrapolated to zero intensity, '2 nu1 = 94 092.93+-0.05 cm-1' (level_energy, check, \
+level_5p12_0).
+
+CHECKED (the script). D_L(H2) = 118 258.57 (from J'' = 1, p. 2465) + F''(1) = 118.49 = \
+118 377.06; D0 = D_L - E(2s - 1s) with 82 258.954 (H) and 82 281.336 (D) gives 36 \
+118.106 and 36 748.384; De = D0 + zero-point energy; D0(H2+) = 36 118.11 + 109 678.764 \
+- 124 417.500 = 21 379.374 and D0(D2+) = 36 748.38 + 109 708.617 - 124 745.353 = 21 \
+711.644; Table II's budget gives 0.079 (H2) and 0.066 (D2), printed 0.08 and 0.07; \
+the 0.07 cm^-1 between 94 093.00 (at about 8e8 W/cm2) and 94 092.93 (zero intensity) \
+over 8e8 W/cm2 is 8.8e-11 cm^-1 per W/cm2, inside 8.6+-3.8. All within the printed \
+digits. DOUBT: the text calls 124 417.500+-0.01 'the average of' Gilligan and Eyler's \
+124 417.507+-0.018 and Jungen et al.'s 124 417.484+-0.017 (p. 2468); their mean is \
+124 417.4955 (the script allows 0.005). D0(H2+) follows the printed 124 417.500; with \
+the mean it would be 21 379.379, which rounds to 21 379.38. Not an erratum: no value \
+taken depends on it beyond the last digit of D0(H2+).
+
+FINDINGS (comparison with held records). H2: D0 = 36 118.11+-0.08 lies 0.04 cm^-1 \
+above liu_2009's 36 118.069 62(37) and komasa_2011's theory 36 118.0696(11) (both in \
+those records' notes; no H2 dissociation_energy dataset was held before this record), \
+inside the uncertainty; Eyler and Melikechi's 36 118.06+-0.04 (reproduced here) is \
+0.01 below. D2: 36 748.38+-0.07 lies 0.017 above liu_2010's 36 748.362 86(68). \
+D0(H2+) = 21 379.37+-0.08 against liu_2009's 21 379.350 (notes): 0.02. The ionisation \
+energies the paper uses: Gilligan and Eyler's I(H2) 124 417.507+-0.018 is liu_2009's \
+gilligan_1992_H2 (124 417.507(18)); Jungen et al.'s 124 417.484+-0.017 differs from \
+liu_2009's jungen_1990_H2 (124 417.501(17), the value the 1992 Letter used) by -0.017 \
+('Both values rely on a measurement by the first group and incorporate a recent \
+change reported by them', p. 2468); I(D2) = 124 745.353+-0.024, which the text gives \
+with I(D) 'from Jungen et al. [28,30]', is liu_2010's gilligan_1992_D2 (124 \
+745.353(24)), not its jungen_1990_D2 (124 745.49(11)): the attribution reads as I(D) \
+only.
+
+KRYPTON, FOR OEP 8 (ls_5p12_0). 8.6e-11 cm^-1 per W/cm2 is 2.58 Hz/(W cm-2) (times c \
+= 2.99792458e10 cm/s; the dataset's scale, 0.299792458, does it), and +-3.8e-11 is \
++-1.14: the '2.6(1.1) Hz (W cm-2)-1' that brandi_2002 (ls_5p12_0_stoicheff, TC-1017) \
+reproduces, to the digits printed. It is the shift of 2 nu1 at the maximum of the \
+resonance-enhanced third harmonic (the measured 2 nu1 at the experiments' intensity, \
+94 093.00+-0.04, lies above the zero-intensity value, so a shift to the blue), \
+measured in natural krypton ('predominantly 84Kr', p. 2467) in the jet used for the \
+mixing. The intensity is that of nu1 at the focus; the paper states the value (about \
+8e8 W/cm2, p. 2462) but not how it was obtained (no spot size or pulse definition), \
+nor the intensities of the series, the number of points or the polarisation. No \
+Stark shift was detectable from nu2 up to 2.6e9 W/cm2 (p. 2467). Against brandi_2002's \
+0.75(48) Hz/(W cm-2) (84Kr, collision-free beam, power density = pulse energy over 6 \
+ns and the focal area, 50 % uncertainty) the difference is 1.8, 1.5 times the \
+combined uncertainty; brandi_2002 calls them 'of the same order of magnitude'. In \
+OEP 8's convention brandi_2002's record gives -16(10) au for 0.75; the same \
+conversion of 2.58 gives about -55 au (a derived number, not recorded as data). The \
+Stoicheff group's value is not in the 1992 Letter (balakrishnan_1992), which brandi_2002 \
+also cites for it.
+
+KRYPTON LEVEL (level_5p12_0). 94 092.93+-0.05 cm^-1 (natural Kr, extrapolated to zero \
+nu1 intensity) against brandi_2002's 84Kr value 94 092.8627 (its 86Kr 94 092.8673(13) \
+plus its isotope shift) and NIST's 94 092.8626: +0.067, 1.3 times the uncertainty. The \
+paper's own comparison value, Trickl et al.'s 94 092.856+-0.007 cm^-1 for 86Kr \
+([23]: T. Trickl (private communication); Phys. Rev. A 39, 2948 (1989)), is 0.011 \
+below brandi_2002's 86Kr value; not taken (a private communication; the library's \
+Trickl_1989 is a different paper, on N2). NOT TAKEN: 2 nu1 = 94 093.00+-0.04 \
+(pp. 2464, 2466; the 1992 Letter's value), the level light shifted at about 8e8 \
+W/cm2, not a level energy; nu1/2 = 23 523.25+-0.01 cm^-1 (p. 2464), its half.
+
+NOT TAKEN (inputs reproduced from others, held elsewhere or not a quantity of the \
+gases): F''(1) of H2 118.49 (Foltz et al.), F''(2) of D2 179.029+-0.004 (Brannon et \
+al.), the zero-point energies (Huber and Herzberg), the 2s - 1s intervals of H \
+(Andreae et al. 1992) and D (Boshier et al. 1987), I(H) = 109 678.764+-0.01 (Erickson \
+1977), I(D) = 109 708.617, I(H2) and I(D2) (above; held by liu_2009 and liu_2010); \
+the D_L(H2) above J'' = 1, 118 258.57+-0.04 (p. 2465; the limit from a level that is \
+not the ground state); the para-H2 estimate 'about 118 377.0' (p. 2465); HD: D0 = 36 \
+405.88+-0.10 (Eyler and Melikechi) and 36 405.83+-0.10 (Balakrishnan, Vallet and \
+Stoicheff, J. Mol. Spectrosc. 162, 168 (1993)) against theory 36 405.774+-0.01 (p. \
+2468): HD is not an optmat material; the H(2s) decay time in the H2 jet, 516+-10 ns at \
+50 mm from the nozzle (collisional quenching by H2, p. 2463; no density given, so no \
+rate coefficient), and the 2p lifetime '1.6 ns' (p. 2463, uncited); the Doppler \
+shifts (+0.008+-0.01 and +0.006+-0.008 cm^-1) and the beam velocity (2.1+-0.3) x 10^3 \
+m/s (p. 2467); Table I (dyes); the figures (spectra; no numbers beyond those printed \
+in the text).
+
+FURTHER DATA CITED, NOT IN THE LIBRARY (checked by folder name): A. Balakrishnan and B. \
+P. Stoicheff, J. Mol. Spectrosc. 156, 517 (1992) (the D2 letter, [10]); E. E. Eyler \
+and N. Melikechi, Phys. Rev. A 48, R18 (1993); T. Trickl et al., Phys. Rev. A 39, 2948 \
+(1989) (Kr 5p[1/2]0); G. Hilber, A. Lago and R. Wallenstein, J. Opt. Soc. Am. B 4, \
+1753 (1987) (four-wave mixing in a Kr jet near 80 nm); L. Wolniewicz, J. Chem. Phys. \
+99, 1851 (1993). No two-photon cross section, line width or pressure shift of the Kr \
+line is given."""
+
+[[datasets]]
+id = "d0_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__d0_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 2468), Experiment, 'Present [4,10]', H2: '36 118.11±0.08'; also the abstract and p. 2466. D_L(H2) = 118 377.06+-0.04 minus E(2s) - E(1s) = 82 258.954 (Andreae et al. 1992). The uncertainty is Table II's budget (record notes), level not stated. The 1992 Letter (balakrishnan_1992) printed the same value from the same spectra with a hyperfine allowance of 0.024 instead of 0.013."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+initial_state = "X 1Sigma_g+ (v = 0, J = 0), para-H2"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "d0_D2"
+material = "D2"
+file = "D2/balakrishnan_1994__d0_D2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 2468), Experiment, 'Present [4,10]', D2: '36 748.38±0.07'; also the abstract and p. 2466. D_L(D2) = 119 029.72+-0.04 (ortho-D2, J'' = 0) minus the 2s - 1s interval of D, 82 281.336 (Boshier et al. 1987). First reported in Balakrishnan and Stoicheff, J. Mol. Spectrosc. 156, 517 (1992) (not in the library). Level not stated."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(1s)"
+initial_state = "X 1Sigma_g+ (v = 0, J = 0), ortho-D2"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "d0_H2+"
+material = "H2+"
+file = "H2+/balakrishnan_1994__d0_H2+.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 2468), Experiment, 'Present [10]', H2+: '21 379.37±0.08'; p. 2468: D0(H2+) = D0(H2) + I(H) - I(H2) with I(H) = 109 678.764 (Erickson 1977) and I(H2) = 124 417.500 (the paper's average of Gilligan and Eyler's and Jungen et al.'s values; see the record's DOUBT). Derived from other laboratories' ionisation energies, so check. Level not stated."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H+"
+initial_state = "X 2Sigma_g+ (v+ = 0, N+ = 0)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "d0_D2+"
+material = "D2+"
+file = "D2+/balakrishnan_1994__d0_D2+.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 2468), Experiment, 'Present [10]', D2+: '21 711.64±0.07'; p. 2468: D0(D2) + I(D) - I(D2) with I(D2) = 124 745.353+-0.024 and I(D) = 109 708.617. Derived, so check. Level not stated."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D+"
+initial_state = "X 2Sigma_g+ (v+ = 0, N+ = 0)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dl_H2"
+material = "H2"
+table = "text"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "B' 1Sigma_u+ -> H(1s) + H(2s)", "118377.06", "0.04"]]
+notes = "Abstract and p. 2466: the second dissociation limit D_L(H2) = 118 377.06+-0.04 cm^-1 above X(v = 0, J'' = 0): measured from J'' = 1 (ortho-H2, Fig. 6) as 118 258.57+-0.04 (p. 2465; the weighted average of two runs of 10-15 scans) plus F''(1) = 118.49 (Foltz et al.). The +-0.04 is the extrapolation error alone (Table II); the calibration of 2 nu1 and nu2, the ac Stark and Doppler terms enter D0's 0.08. The para-H2 spectrum (Fig. 7) gives about 118 377.0. Level not stated."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(2s)"
+initial_state = "X 1Sigma_g+ (v = 0, J = 0)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dl_D2"
+material = "D2"
+table = "text"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "B' 1Sigma_u+ -> D(1s) + D(2s)", "119029.72", "0.04"]]
+notes = "Abstract and p. 2466: D_L(D2) = 119 029.72+-0.04 cm^-1 from the ortho-D2 (J'' = 0) spectrum (Fig. 8), from a fit of a sloped step convolved with the 0.25 cm^-1 line shape. The +-0.04 is the extrapolation error (Table II). Level not stated."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(2s)"
+initial_state = "X 1Sigma_g+ (v = 0, J = 0)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dl_D2_j2"
+material = "D2"
+table = "text"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["1", "B' 1Sigma_u+ -> D(1s) + D(2s), from J'' = 2", "119029.71", "0.09"]]
+notes = "p. 2466: from the weak J'' = 2 spectrum (Fig. 9), threshold 118 850.68+-0.09 plus F''(2) = 179.029+-0.004 (Brannon et al. 1968), 'confirming the more precise value obtained from the ortho-D2 (J'' = 0) spectrum' (dl_D2). Level not stated."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(2s)"
+initial_state = "X 1Sigma_g+ (v = 0, J = 0)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "de_H2"
+material = "H2"
+table = "text"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["1", "X 1Sigma_g+", "38297.38", "0.10"]]
+notes = "p. 2466 (displayed): De(H2) = 38 297.38+-0.10 cm^-1, D0 plus the zero-point energy 2179.27+-0.05 of Huber and Herzberg (1979). Derived with another source's constant, so check. Level not stated."
+[datasets.parameters]
+kind = "De"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "de_D2"
+material = "D2"
+table = "text"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["1", "X 1Sigma_g+", "38294.87", "0.09"]]
+notes = "p. 2466 (displayed): De(D2) = 38 294.87+-0.09 cm^-1, D0 plus the zero-point energy 1546.49+-0.05 of Huber and Herzberg (1979). Derived, so check. Level not stated."
+[datasets.parameters]
+kind = "De"
+products = "D(1s) + D(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ls_5p12_0"
+material = "Kr"
+table = "text"
+quantity = "light_shift_coefficient"
+unit = "Hz/(W/cm2)"
+scale = 0.299792458
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+points = [["1", "212.6", "8.6", "3.8"]]
+notes = "pp. 2466-2467: 'Measurements at different power of nu1 confirmed that this difference was due to a Stark shift of (8.6+-3.8) x 10^-11 cm-1/W/cm2', the difference being that of the measured 2 nu1 = 94 093.00+-0.04 (at about 8e8 W/cm2) from Trickl et al.'s low-intensity 94 092.856+-0.007; extrapolated to zero intensity, 2 nu1 = 94 092.93+-0.05 (level_5p12_0). Printed in cm^-1 per W/cm2 (the points, in units of 1e-11); the scale, 1e-11 x c (c = 2.99792458e10 cm/s), gives 2.58+-1.14 Hz/(W/cm2): brandi_2002's reproduced 2.6(1.1). Positive: the shifted resonance lies above the zero-intensity one, a blue shift of the transition (2 nu1) frequency. The x is the nu1 photon, '~212.6 nm' (p. 2461); nu1/2 = 23 523.25 cm^-1 (p. 2464) puts it at 212.556 nm (vacuum). The +-3.8 has no stated level."
+[datasets.parameters]
+final_level = "5p[1/2]0 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 0"
+photons = 2
+intensity_definition = "the intensity of the nu1 beam (about 15 kW peak, 3 ns pulses at about 212.6 nm) at the focus of a 25 cm lens, about 8e8 W/cm2 in the dissociation experiments (p. 2462); how the intensity was obtained (spot size, pulse definition) is not stated"
+method = "maximum of the Kr-resonant third harmonic (70.9 nm) against nu1, calibrated on uranium optogalvanic lines, at several powers of nu1 (pp. 2464, 2467)"
+isotope = "natural Kr (predominantly 84Kr)"
+polarization = "not stated"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_5p12_0"
+material = "Kr"
+table = "text"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["5p[1/2]0", "4p5 5p[1/2]0", "94092.93", "0.05"]]
+notes = "p. 2467: 'an extrapolation to zero intensity of nu1 gave a value of 2 nu1 = 94 092.93+-0.05 cm-1, in essential agreement with the value of Ref. [23]' (Trickl et al., 86Kr, 94 092.856+-0.007), with the remark that natural Kr is predominantly 84Kr. Check: a natural-isotope extrapolation, 40 times less precise than brandi_2002's 86Kr level (94 092.8673(13)); 0.067 cm^-1 above brandi_2002's 84Kr value and NIST's 94 092.8626. Level of the uncertainty not stated."
+[datasets.parameters]
+configuration = "4s2.4p5.(2P*<3/2>).5p"
+term = "2[1/2]"
+j = "0"
+isotope = "natural Kr (predominantly 84Kr)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "herzberg_1970_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__herzberg_1970_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["G. Herzberg, J. Mol. Spectrosc. 33, 147 (1970)"]
+notes = "Table III (p. 2468), Experiment, Herzberg [5], H2: '36 118.3', no uncertainty printed. From the upper bound of the second dissociation limit in absorption at 77 K, which Herzberg favoured (p. 2460)."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "herzberg_1970_D2"
+material = "D2"
+file = "D2/balakrishnan_1994__herzberg_1970_D2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["G. Herzberg, J. Mol. Spectrosc. 33, 147 (1970)"]
+notes = "Table III (p. 2468), Experiment, Herzberg [5], D2: '36 748.9±0.4' (the D2 limit free of overlapping lines, p. 2460)."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "stwalley_1970_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__stwalley_1970_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. C. Stwalley, Chem. Phys. Lett. 6, 241 (1970)"]
+notes = "Table III (p. 2468), Experiment, Stwalley [6], H2: '36 118.6±0.5', from new vibrational assignments near the limit and long-range extrapolation (pp. 2460-2461)."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "leroy_1975_D2"
+material = "D2"
+file = "D2/balakrishnan_1994__leroy_1975_D2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. J. LeRoy and M. G. Barwell, Can. J. Phys. 53, 1983 (1975)"]
+notes = "Table III (p. 2468), Experiment, LeRoy and Barwell [7], D2: '36 748.88±0.3', from the first rotational term value of the ground-state v = 21 level (p. 2461)."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "mccormack_1991_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__mccormack_1991_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. F. McCormack and E. E. Eyler, Phys. Rev. Lett. 66, 1042 (1991)"]
+notes = "Table III (p. 2468), Experiment, McCormack and Eyler [3], H2: '36 118.26±0.20', from the onset of the second dissociation continuum at 118 377.23+-0.20 cm^-1 (p. 2461; the 1992 Letter prints 118 377.2)."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "eyler_1993_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__eyler_1993_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. E. Eyler and N. Melikechi, Phys. Rev. A 48, R18 (1993)"]
+notes = "Table III (p. 2468), Experiment, Eyler and Melikechi [9], H2: '36 118.06±0.04', double-resonance spectroscopy of the same limit (pp. 2461, 2467)."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "eyler_1993_D2"
+material = "D2"
+file = "D2/balakrishnan_1994__eyler_1993_D2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. E. Eyler and N. Melikechi, Phys. Rev. A 48, R18 (1993)"]
+notes = "Table III (p. 2468), Experiment, Eyler and Melikechi [9], D2: '36 748.32±0.07' (pp. 2461, 2467)."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "wolniewicz_1993_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__wolniewicz_1993_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["L. Wolniewicz, J. Chem. Phys. 99, 1851 (1993)"]
+notes = "Table III (p. 2468), Theory, Wolniewicz [2], H2: '36 118.060±0.01', ab initio with relativistic, radiative and nonadiabatic corrections, 'estimated to have an accuracy of +-0.01 cm-1' (p. 2460)."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "wolniewicz_1993_D2"
+material = "D2"
+file = "D2/balakrishnan_1994__wolniewicz_1993_D2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["L. Wolniewicz, J. Chem. Phys. 99, 1851 (1993)"]
+notes = "Table III (p. 2468), Theory, Wolniewicz [2], D2: '36 748.355±0.01' (p. 2460)."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kolos_1986_H2"
+material = "H2"
+file = "H2/balakrishnan_1994__kolos_1986_H2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. Kolos, K. Szalewicz and H. J. Monkhorst, J. Chem. Phys. 84, 3278 (1986)"]
+notes = "Table III (p. 2468), Theory, 'Kolos, Szalewicz, and Monkhorst [2]', H2: '36 118.088±0.1' ([2] reads 'L. Wolniewicz ...; see also W. Kolos, K. Szalewicz, and H. J. Monkhorst, ibid. 84, 3278 (1986)'). The 1992 Letter (balakrishnan_1992) prints the same calculation as 36 118.088 with an estimated accuracy of +-0.10 from Dressler and Wolniewicz (1986)."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kolos_1986_D2"
+material = "D2"
+file = "D2/balakrishnan_1994__kolos_1986_D2.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. Kolos, K. Szalewicz and H. J. Monkhorst, J. Chem. Phys. 84, 3278 (1986)"]
+notes = "Table III (p. 2468), Theory, 'Kolos, Szalewicz, and Monkhorst [2]', D2: '36 748.347±0.1'."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D(1s)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "wolniewicz_1991_H2+"
+material = "H2+"
+file = "H2+/balakrishnan_1994__wolniewicz_1991_H2+.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["L. Wolniewicz and T. Orlikowski, Mol. Phys. 74, 103 (1991)"]
+notes = "Table III (p. 2468), Theory, Wolniewicz and Orlikowski [31], H2+: '21 379.348', no uncertainty printed (p. 2468: the ions' binding energies calculated 'to better than +-0.01 cm-1')."
+[datasets.parameters]
+kind = "D0"
+products = "H(1s) + H+"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "wolniewicz_1991_D2+"
+material = "D2+"
+file = "D2+/balakrishnan_1994__wolniewicz_1991_D2+.csv"
+table = "tbl_26f7348398d0"
+quantity = "dissociation_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["L. Wolniewicz and T. Orlikowski, Mol. Phys. 74, 103 (1991)"]
+notes = "Table III (p. 2468), Theory, Wolniewicz and Orlikowski [31], D2+: '21 711.580', no uncertainty printed."
+[datasets.parameters]
+kind = "D0"
+products = "D(1s) + D+"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"

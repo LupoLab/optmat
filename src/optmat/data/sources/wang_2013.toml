@@ -1,0 +1,153 @@
+citation = "D. Wang, Y. Leng and Z. Xu, \"Measurement of nonlinear refractive index coefficient of inert gases with hollow-core fiber\", Appl. Phys. B 111, 447 (2013)"
+doi = "10.1007/s00340-013-5354-0"
+library = "Wang_2013_MeasurementNonlinearRefractive"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Self-phase-modulation spectral broadening in a gas-filled hollow-core fiber \
+(1 m long; 250 um inner diameter at 800 nm, 400 um at 1.8 um): near transform-limited \
+input pulses (800 nm: 0.46 mJ (Ar) or 0.66 mJ (Ne), 50 fs FWHM; 1.8 um: 1.27 mJ, 57 fs from \
+an OPA) coupled to the fundamental mode; the rms spectral broadening factor versus gas \
+pressure (up to ~1 bar Ar, 2.6 bar Ne, 0.5 bar Ar at 1.8 um) gives n2 through Eq. (1); \
+n2 per bar from the slope of a linear fit, corrected for the 2-4 % extra broadening near \
+the fiber ends (pp. 447-449)."""
+notes = """Journal pages 447-452 = PDF pages 1-6. Identity checked against the first page. \
+Ne and Ar (Kr and Xe were not measured: ionization dominates at these intensities, p. \
+450).
+
+DEFINITIONS (p. 448): Delta omega_out / Delta omega_in = (1 + (4 / 3 sqrt 3) phi_max^2)^(1/2) \
+(Eq. (1), transform-limited Gaussian), phi_max = gamma P0 L_eff, L_eff = [1 - exp(-alpha L)] \
+/ alpha, gamma = n2 omega0 / (c A_eff), A_eff = 0.48 pi a^2 (HE11 mode); rms widths, Eqs. \
+(2)-(3). n2 is the SELF coefficient (single-beam SPM, n = n0 + n2 I). Validity: the Kerr \
+length is required to be well below the dispersion, self-steepening and ionization \
+lengths (Tables 1-4, characteristic lengths per pressure).
+
+VALUES (text only): Ar at 800 nm, slope '(1.11 +- 0.05) x 10^-19 cm2/W bar', 'Considering \
+the 2-4 % extra contribution near the input and output end of the fiber, the n2 of argon \
+is (1.08 +- 0.06) x 10^-19 cm2/W bar which agrees well the value of 1.0 x 10^-19 cm2/W bar \
+given in [19]' (p. 449). Ne at 800 nm: 'Linear fitting followed by a correction results \
+in an average n2 of (9.30 +- 0.25) x 10^-21 cm2/W bar compared with 7.5 x 10^-21 cm2/W bar in \
+[20]' (p. 450). Ar at 1.8 um: '(6.65 +- 0.33) x 10^-20 cm2/W bar while the calculated value \
+is 9.73 x 10^-20 cm2/W bar at 1.83 um in [21]' (p. 450). The +- are fit statistics. \
+Accuracy (p. 451): self-steepening (overestimate, Ne) and plasma (underestimate, Ar at \
+1.8 um) 'cause a deviation of about +-30 % from the referred values'; chirped or \
+non-Gaussian input would lower n2. Not a stated uncertainty: kept in notes.
+
+REFERENCE STATE: per bar ('cm2/W bar'), temperature not stated: 1e5 Pa and 293.15 K \
+assumed; n2 was found linear in pressure over the range. Wavelengths: the laser centre \
+wavelengths (800 nm; 1.8 um, OPA tunable 1.6-2.0 um), vacuum assumed.
+
+PART: electronic (atoms, 50-57 fs), with the residual self-steepening and plasma effects \
+discussed above. [19] = bejot_2010 (PRL 104, 103903), [20] = Nurhuda et al., Appl. Phys. \
+B 89, 209 (2007) (not in the library), [21] = Bejot et al., PRA 81, 063828 (2010) = \
+bejot_2010_hollow."""
+
+[[datasets]]
+id = "n2_Ar_800"
+material = "Ar"
+table = "text"
+points = [["800", "800", "1.08", "0.06"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+notes = "p. 449: '(1.08 +- 0.06) x 10^-19 cm2/W bar' after the 2-4 % fiber-end correction (fit slope 1.11 +- 0.05). Per bar; 293.15 K assumed. 0.46 mJ, 50 fs, 250-um fiber, pressures up to ~960 mbar; the plasma length drops to 0.2 m at 960 mbar (Table 2)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 50
+
+[[datasets]]
+id = "n2_Ar_1800"
+material = "Ar"
+table = "text"
+points = [["1800", "1800", "6.65", "0.33"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+notes = "p. 450: '(6.65 +- 0.33) x 10^-20 cm2/W bar' at 1.8 um (57 fs, 1.27 mJ, 400-um fiber, below 500 mbar). The authors attribute its 32 % shortfall against Bejot et al.'s calculation to plasma (p. 451)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 57
+
+[[datasets]]
+id = "n2_Ne"
+material = "Ne"
+table = "text"
+points = [["800", "800", "9.30", "0.25"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+notes = "p. 450: '(9.30 +- 0.25) x 10^-21 cm2/W bar' (0.66 mJ, 50 fs, up to 2,600 mbar). The authors attribute its excess over Nurhuda et al.'s 7.5 to self-steepening (p. 451)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 50
+
+[[datasets]]
+id = "bejot_Ar"
+material = "Ar"
+table = "text"
+points = [["800", "800", "1.0"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["bejot_2010"]
+notes = "p. 449: 'the value of 1.0 x 10^-19 cm2/W bar given in [19]' (Bejot et al., PRL 104, 103903 (2010)); state as quoted (per bar)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "nurhuda_Ne"
+material = "Ne"
+table = "text"
+points = [["800", "800", "7.5"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["M. Nurhuda, A. Suda, M. Kaku and K. Midorikawa, Appl. Phys. B 89, 209 (2007)"]
+notes = "p. 450: '7.5 x 10^-21 cm2/W bar in [20]'. Wavelength assumed 800 nm (the comparison's); the original is not in the library."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "bejot_Ar_1830"
+material = "Ar"
+table = "text"
+points = [["1830", "1830", "9.73"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["bejot_2010_hollow"]
+notes = "p. 450: 'the calculated value is 9.73 x 10^-20 cm2/W bar at 1.83 um in [21]' (Bejot et al., PRA 81, 063828 (2010)); a calculated value."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"

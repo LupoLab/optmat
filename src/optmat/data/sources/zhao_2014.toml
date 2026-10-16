@@ -1,0 +1,60 @@
+citation = "S.-F. Zhao, L. Liu and X.-X. Zhou, \"Multiphoton and tunneling ionization probability of atoms and molecules in an intense laser field\", Opt. Commun. 313, 74 (2014); corrigendum Opt. Commun. 355, 615 (2015)"
+doi = "10.1016/j.optcom.2013.09.074"
+library = "Zhao_2014_MultiphotonTunnelingIonization"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ionisation probabilities of atoms from the authors' time-dependent \
+Schroedinger equation with one active electron (H, He, Ne, Ar, Kr, Xe; model \
+potentials, Eq. (3)) against the rates of Perelomov, Popov & Terent'ev and of Ammosov, \
+Delone & Krainov; and of molecules (H2, NO, Cl2, N2, O2) from a molecular PPT rate \
+(after benis_2004) and the molecular tunnelling rate of Tong, Zhao & Lin, against \
+others' calculations and measurements. 266 to 1200 nm; 15 to 30 fs; 1e13 to 1e15 \
+W/cm^2."""
+notes = """Pages are journal pages 74-79; the corrigendum (one page, Opt. Commun. 355, \
+615 (2015), doi 10.1016/j.optcom.2015.09.005) is bound in the library's file as its \
+last pages. Identity checked on the first page of each. There are no tables, and every \
+comparison is of probabilities or signals normalised to 1 at saturation, to the \
+calculation at one intensity, or to the measurement at its highest intensity (pp. \
+3-4): they test the dependence on intensity, not the magnitude. No dataset is taken.
+
+THE ATOMIC AND THE MOLECULAR RATE OF THE PAPER DIFFER IN THEIR COULOMB FACTOR. Eq. (8) \
+(atoms) has (2F_0/F)^(2n* - |m| - 1) (1 + gamma^2)^(|m|/2 + 3/4): Perelomov & Popov's \
+static Coulomb factor. Eq. (13) (molecules), as corrected, has (2 kappa^3/(F sqrt(1 + \
+gamma^2)))^(2Z_c/kappa - |m| - 1). For one partial wave the second is the first times \
+(1 + gamma^2)^(-n* - 1/4). The paper does not remark on it.
+
+WHAT IS NOT IN THE FORMULAS. A_m 'can be found in Refs. [21,24,25]'; no structure \
+coefficients are given; the molecule is aligned ('We assume that the molecular axis is \
+aligned along the external field direction', p. 2) though the measurements compared \
+with are of unaligned gases; no sum over m, no count of electrons, no factor of the \
+cycle average (the rates are called static and used at |F(t)|, Eq. (16)); no \
+correction at finite field."""
+
+[[formulas]]
+id = "eq8_ppt"
+equation = "Eqs. (8)-(11), p. 75"
+printed = "w_PPT(F, omega) = |C_n*l*|^2 f(l, m) E_0 (2F_0/F)^(2n* - |m| - 1) (1 + gamma^2)^(|m|/2 + 3/4) A_m(omega, gamma) exp(-(2F_0/3F) g(gamma)); |C_n*l*|^2 = 2^(2n*)/(n* Gamma(n* + l* + 1) Gamma(n* - l*)); f(l, m) = (2l + 1)(l + |m|)!/(2^|m| |m|! (l - |m|)!); g(gamma) = (3/2 gamma)[(1 + 1/(2 gamma^2)) sinh^-1 gamma - sqrt(1 + gamma^2)/(2 gamma)]"
+variable = "Atomic units. E_0: the ionisation energy; F_0 = (2E_0)^(3/2); n* = Z_c (2E_0)^(-1/2); l* = n* - 1; gamma = omega sqrt(2 E_0)/F"
+range = "Any gamma"
+coefficients = {}
+reproduced_from = ["A. M. Perelomov, V. S. Popov and M. V. Terent'ev, Sov. Phys. JETP 23, 924 (1966)"]
+check = "Checked against the page image (p. 75), 2026-09-28. It is the rate of larochelle_1998's eq. (10) without the factor (3F/pi F_0)^(1/2) of the cycle average: optmat's short-range rate times the static Coulomb factor, divided by that factor."
+notes = "Called 'the ionization rate in a static field' and used at the instantaneous |F(t)| in Eq. (16)."
+
+[[formulas]]
+id = "eq13_mo_ppt"
+equation = "Eq. (13), p. 76, and the corrigendum"
+printed = "w_MO-PPT(F, omega, 0) = [B^2(m)/(2^|m| |m|!)] [A_m(omega, gamma)/kappa^(2Z_c/kappa - 1)] (2 kappa^3/(F (1 + gamma^2)))^(2Z_c/kappa - |m| - 1) e^(-(2 kappa^3/3F) g(gamma)); B(m) = sum_l C_l Q(l, m) (14); Q(l, m) = (-1)^((m + |m|)/2) sqrt((2l + 1)(l + |m|)!/(2 (l - |m|)!)) (15)"
+variable = "As Eq. (8); kappa = sqrt(2 I_p); C_l: the structure coefficients of a linear molecule with its axis along the field"
+range = "Not stated"
+coefficients = { coulomb_bracket = "2 kappa^3/(F (1 + gamma^2))" }
+reproduced_from = ["benis_2004"]
+check = "Checked against the page image (p. 76) and the image of the corrigendum, 2026-09-28."
+notes = "'Based on the MO-PPT model [41]' (p. 76; [41] is benis_2004). As corrected it is benis_2004's eq. (2)."
+
+[[formulas.corrections]]
+term = "coulomb_bracket"
+printed = "2 kappa^3/(F (1 + gamma^2))"
+corrected = "2 kappa^3/(F sqrt(1 + gamma^2))"
+reason = "The authors' corrigendum: 'There is a printing error in Eq. (13), the corrected formula for calculating the static ionization rate with the MO-PPT model should be as follows', with the square root."
+evidence = "Opt. Commun. 355, 615 (2015), read on its page image; benis_2004's eq. (2), which the paper follows, has the square root."

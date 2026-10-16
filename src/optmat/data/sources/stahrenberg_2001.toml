@@ -1,0 +1,155 @@
+citation = "K. Stahrenberg, Th. Herrmann, K. Wilmers, N. Esser, W. Richter and M. J. G. Lee, \"Optical properties of copper and silver in the energy range 2.5-9.0 eV\", Phys. Rev. B 64, 115111 (2001)"
+doi = "10.1103/PhysRevB.64.115111"
+library = "Stahrenberg_2001_OpticalPropertiesCopper"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Spectroscopic ellipsometry in ultrahigh vacuum at room temperature on \
+single-crystal Cu(110) and Ag(110) (aligned by Laue backscattering to 0.1 deg, \
+mechanically polished, cleaned in situ by cycles of 600 eV Ar+ sputtering and annealing \
+to 670 K, cleanliness checked by reflectance anisotropy spectroscopy: the surface-state \
+features at 2.1 eV on Cu(110) and 1.7 eV on Ag(110)). A rotating-analyser ellipsometer \
+with all components in the UHV chamber, on the 2m-Seya-Namioka beamline at BESSY I: MgF2 \
+prism polariser and rotating MgF2 analyser, angle of incidence 67.5 deg, plane of \
+incidence along [1-11], 2.5-10 eV (a quartz filter against second order at 2.5-4.5 eV) \
+(pp. 115111-2 to -3). The pseudodielectric function was corrected for surface roughness \
+measured ex situ by AFM (RMS 0.41 nm for Cu, 0.42 nm for Ag) with a three-layer model \
+(bulk, a Bruggeman 50 % void / 50 % bulk layer, vacuum) (p. 115111-4). The paper also \
+computes epsilon by FP-LAPW DFT (WIEN97, GGA, and an empirical exchange-correlation \
+potential fitted to Fermi-surface data) with final-state scissors shifts."""
+notes = """Journal article pages 115111-1 to 115111-8 = PDF pages 1-8. Identity checked \
+against the first page. No tables were extracted by the library, and the paper has \
+none: the pages were read.
+
+WHAT THE PAPER HOLDS. The measured dielectric functions of Cu and Ag are in figures \
+only: Fig. 2 (Cu) and Fig. 5 (Ag), epsilon_1 and epsilon_2 against photon energy, the \
+measured pseudodielectric function (dotted), the roughness-corrected bulk function \
+(solid), the calculation (dashed), with Palik's (Ref. 1) and Johnson and Christy's (Ref. \
+3) values; Figs. 4 and 7 are the energy derivatives d epsilon/dE. No n, k or epsilon \
+value is printed in the text or a table.
+
+THE NUMBERS (datasets n_Ag, k_Ag, n_Cu, k_Cu). The only publication of the \
+numbers is the refractiveindex.info database, whose files main/Ag/nk/Stahrenberg.yml and \
+main/Cu/nk/Stahrenberg.yml cite this paper with the note '(Numerical data kindly \
+provided by Prof. Dr. Norbert Esser)' (N. Esser is the fourth author). The files are \
+kept in data/external/refractiveindex_info/main/ (commit c5c2f18, with their SHA-256 in \
+its PROVENANCE.md; the Ag file is identical to solprop's pinned copy). J. C. Travers \
+chose to take them as this source's numbers (2026-09-28): they are recorded as this \
+paper's data (use = primary, no reproduced_from), with the database as the route, not \
+as a comparison source. They give n and k against the vacuum wavelength in um, five \
+decimals, 0.02 eV steps: Ag 0.12782-0.49594 um (9.70-2.50 eV, 361 rows), Cu \
+0.13776-0.49594 um (9.00-2.50 eV, 326 rows), the ranges the paper measured (Ag to 9.7 \
+eV, Cu to 9 eV). The database gives no uncertainty and does not say whether the \
+numbers are the measured pseudodielectric function or the roughness-corrected one.
+
+CHECKS OF THE NUMBERS AGAINST THE PAPER (2026-09-28; epsilon = (n + ik)^2 computed \
+from the files). Ag epsilon_1 crosses zero from negative to positive at 3.788 eV and \
+7.948 eV (linear interpolation between rows), the text's 3.79 and 7.95 eV (dataset \
+eps1_zero_Ag), and from positive to negative at 4.462 eV between them. Maxima of d \
+epsilon_2/dE: Cu at 4.30 and 4.70 eV (the text: 4.3 and 4.7 eV); Ag at 4.04 eV (the \
+text: a peak at 4.03 eV; the shoulders at 3.84 and 4.2 eV are not separate maxima of \
+the numerical derivative). Ag epsilon_2 below 3.8 eV is 0.3-0.5 with n ~ 0.07, the range \
+where the paper says the noise increases. The paper's comparison with the literature: \
+at 4.49 eV the numbers give epsilon_2 = 5.81 (Cu) and 4.12 (Ag) against Johnson and \
+Christy's 4.81 and 3.75 (the Weaver workbook's JC sheet): 1.0 and 0.4 higher, as the \
+text says (1.0-1.5 for Cu, 0.5 for Ag). ROUGHNESS CORRECTION: not established. Figs. 2 \
+and 5 show the measured (dotted) and corrected (solid) functions; read off the figure \
+pixels (a check, not data), at the epsilon_2 maxima the corrected curve is at about \
+6.41 (Cu, 4.86 eV) and 4.17 (Ag, 4.48 eV) and the measured one at about 6.18 and 4.09, \
+while the numbers give 6.25 and 4.12: between the two, nearer the measured curve for \
+Cu; the stated corrections (0.2 and 0.1) are comparable with the line widths. The Ag \
+epsilon_1 at 5.0-6.1 eV (-0.66 to -0.92) follows the experimental curves (which nearly \
+coincide there), not the calculation.
+
+COMPARISONS (2026-09-28). solprop's silver table takes 0.12782-0.20595 um from this \
+database file: its 185 rows there equal the file's exactly. Against babar_2015's website \
+data (Babar and Weaver's single crystals; interpolated): Cu epsilon_2 is 5-17 % higher \
+over 2.5-9 eV (6.27 against 5.57 at 2.5 eV, 3.66 against 3.26 at 6 eV) and epsilon_1 \
+more negative by 0.35-1.6; Ag epsilon_2 higher by 0.05-0.6 (4.12 against 3.48 at 4.5 \
+eV, 3.00 against 2.69 at 6 eV) and epsilon_1 lower by 0.25-0.52 above 4.5 eV. At 6 eV (206.6 \
+nm), where optmat's silver table now joins werner_2009's REELS to Babar's Table 1, \
+Stahrenberg's N = 1.053 + 1.422i lies between Babar's 1.079 + 1.247i and the REELS \
+0.949 + 1.548i (copper: 1.027 + 1.780i, Babar 1.021 + 1.599i, REELS 0.962 + 1.782i).
+
+Silver was measured over 2.5-9.7 eV (p. 115111-6; the title \
+says 2.5-9.0 eV); below the onset of d-band absorption at 3.84 eV the noise in \
+epsilon_2 increases 'since the sample is nonabsorbing and no compensator could be used'.
+
+TEXT VALUES (recorded where a quantity fits):
+- Ag: 'epsilon_1 crosses from negative to positive at 3.79 eV and again at 7.95 eV' \
+(p. 115111-6): dataset eps1_zero_Ag. The zero crossing 'observed at 7.3 eV in Ref. 1 \
+[Palik] is shifted to 7.95 eV in our data'.
+- Roughness corrections: Cu, epsilon_2 raised by at most 0.2 at 4.5 eV; Ag, by 0.1 at \
+4.5 eV. The measured epsilon_2 exceeds the literature's (Refs. 1 and 3, reflectance on \
+films and polycrystals not measured in UHV) by 1.0-1.5 at 4.5 eV for Cu and by 0.5 at \
+4.5 eV for Ag (pp. 115111-4 and -6), attributed to the absence of adsorbed overlayers.
+- Features of d epsilon_2/dE: Cu maxima at 4.3 and 4.7 eV (shoulder near 4.4 eV in \
+epsilon_2); Ag a peak at 4.03 eV, a shoulder at 3.84 eV and another at 4.2 eV.
+- Calculation (notes only): scissors shifts Cu Delta_6 = 0.0, Delta_7 = 0.3 eV (GGA) and \
+0.2, 0.4 eV (empirical potential); Ag 0.93, 0.09 eV (GGA) and 0.18, 0.60 eV (empirical); \
+broadening gamma = 0.15 eV for Cu and 0.025 eV for Ag; lattice constants 6.8087 au \
+(Cu) and 7.7218 au (Ag) at room temperature."""
+
+[[datasets]]
+id = "eps1_zero_Ag"
+material = "Ag"
+points = [["1", "3.79", "0"], ["2", "7.95", "0"]]
+table = "text"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "check"
+notes = "Text, p. 115111-6: 'In silver, epsilon_1 crosses from negative to positive at 3.79 eV and again at 7.95 eV (see Fig. 5)'. The energies are printed; the value 0 is the statement's (epsilon_1 = 0 there), from the roughness-corrected measurement. A check on the zero crossings of a silver model, not a measured epsilon_1 at a set energy."
+[datasets.parameters]
+form = "bulk"
+technique = "spectroscopic ellipsometry (UHV, Ag(110))"
+
+[[datasets]]
+id = "n_Ag"
+material = "Ag"
+file = "Ag/stahrenberg_2001__n_Ag.csv"
+table = "data/external/refractiveindex_info/main/Ag/nk/Stahrenberg.yml"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "n of Ag(110), 0.12782-0.49594 um (9.70-2.50 eV), 361 rows, as the database file prints them (numbers provided by N. Esser to refractiveindex.info; see notes). Whether roughness-corrected is not stated."
+[datasets.parameters]
+form = "bulk"
+technique = "spectroscopic ellipsometry (UHV, Ag(110))"
+
+[[datasets]]
+id = "k_Ag"
+material = "Ag"
+file = "Ag/stahrenberg_2001__k_Ag.csv"
+table = "data/external/refractiveindex_info/main/Ag/nk/Stahrenberg.yml"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "k of Ag(110), 0.12782-0.49594 um (9.70-2.50 eV), 361 rows, as the database file prints them (see notes)."
+[datasets.parameters]
+form = "bulk"
+technique = "spectroscopic ellipsometry (UHV, Ag(110))"
+
+[[datasets]]
+id = "n_Cu"
+material = "Cu"
+file = "Cu/stahrenberg_2001__n_Cu.csv"
+table = "data/external/refractiveindex_info/main/Cu/nk/Stahrenberg.yml"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "n of Cu(110), 0.13776-0.49594 um (9.00-2.50 eV), 326 rows, as the database file prints them (numbers provided by N. Esser to refractiveindex.info; see notes). Whether roughness-corrected is not stated."
+[datasets.parameters]
+form = "bulk"
+technique = "spectroscopic ellipsometry (UHV, Cu(110))"
+
+[[datasets]]
+id = "k_Cu"
+material = "Cu"
+file = "Cu/stahrenberg_2001__k_Cu.csv"
+table = "data/external/refractiveindex_info/main/Cu/nk/Stahrenberg.yml"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "k of Cu(110), 0.13776-0.49594 um (9.00-2.50 eV), 326 rows, as the database file prints them (see notes)."
+[datasets.parameters]
+form = "bulk"
+technique = "spectroscopic ellipsometry (UHV, Cu(110))"

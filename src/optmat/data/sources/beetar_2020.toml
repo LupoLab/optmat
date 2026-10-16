@@ -1,0 +1,159 @@
+citation = "J. E. Beetar, M. Nrisimhamurty, T.-C. Truong, G. C. Nagar, Y. Liu, J. Nesper, O. Suarez, F. Rivas, Y. Wu, B. Shim and M. Chini, Sci. Adv. 6, eabb5375 (2020)"
+doi = "10.1126/sciadv.abb5375"
+library = "Beetar_2020_MultioctaveSupercontinuumGeneration"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Hollow-core-fibre (3.5 m, 500 um) spectral broadening and compression of \
+280 fs, 1025 nm Yb:KGW pulses (up to 400 uJ) in Ar, N2 and N2O at 1-6.5 bar, modelled \
+with a density-matrix rotational-alignment response plus the electronic Kerr term \
+(supplement Eqs. S1-S5) and with a multimode nonlinear envelope equation using an \
+instantaneous-plus-damped-oscillator Kerr response (Eq. S6), PPT/MPI ionisation and \
+plasma (Eq. S7)."""
+notes = """Only the supplement (supplement_01, Table S1, split by the library into \
+tbl_d1e82e48818a and tbl_696db144fb76; JSON cells equal to the images) holds values; \
+all are simulation inputs.
+
+Conventions (supplement p. 2-4): Delta n_i = n2 I(t) (instantaneous electronic Kerr, \
+self coefficient); rotational Delta n_d(t) = (2 pi N / n0) Delta alpha (<cos^2 theta>_t - \
+1/3) (Eq. S1, Gaussian units), <cos^2 theta> from first-order density-matrix theory \
+(Eqs. S2-S4) with rotational constant B, dephasing gamma and spin weights D_even, D_odd; \
+total phase Delta phi = (2 pi L_eff / lambda)(Delta n_i + Delta n_d) (Eq. S5); in the \
+propagation code Delta n = n2 (1 - xi) I(t) + n2 xi int R(t - tau) I(tau) dtau with R = R0 \
+exp(-Gamma t) sin(w_R t), R0 = (Gamma^2 + w_R^2)/w_R (Eq. S6), so that the n2 of Eq. (S6) \
+is the long-pulse (adiabatic) total index.
+
+Sources (supplement p. 3): 'The electronic Kerr nonlinear coefficients n2 for Ar, N2, \
+and N2O as well as the values for the polarizability anisotropies Delta alpha and the \
+rotational constants B were taken from Ref. (27)' = Wahlstrand, Cheng & Milchberg, \
+Phys. Rev. A 85, 043820 (2012) (record wahlstrand_2012); 'As in Ref. (30), we found it \
+necessary to increase the value of Delta alpha by a factor of 2 in order to obtain \
+agreement with experimental results' (table: '2 x 9.3', '2 x 27.9'). Checked against \
+Wahlstrand's Table I (image): n2 = 9.7, 7.4, 17.2 x 10^-20 cm^2/W (Ar, N2, N2O) are \
+Wahlstrand's own values; but Delta alpha = 9.3 and 27.9 x 10^-25 cm^3 are the values \
+Wahlstrand quote from Lin et al. [26] (Wahlstrand's own are 6.7 +- 0.3 and 28.1 +- 1.1), \
+so the anisotropies are reproduced from lin_1976 through wahlstrand_2012. B = 2.0 and \
+0.41 cm^-1 are Wahlstrand's. The 'n2 for long pulse' (N2 3.2, N2O 43 x 10^-19 cm^2/W; Ar \
+0.97, the electronic value) is footnoted 'Determined from fits to Delta n = Delta n_i + \
+Delta n_d ... and gas parameters from the density matrix model simulations', but it \
+equals Wahlstrand's n2 divided by Wahlstrand's n2/n2,long ratio (7.4/0.23 = 32.2 and \
+17.2/0.04 = 430 x 10^-20 cm^2/W): reproduced from wahlstrand_2012 as well.
+
+Every n2 is printed 'x Pressure' with the pressure in bar (Table S1 rows 'Pressure \
+(bar)'): the values are per bar; Wahlstrand's are at 1 atm (a 1.3 % mislabelling). \
+Temperature not stated ('room temperature', supplement p. 2): 293.15 K assumed. The \
+wavelength is that of the simulations, 1.03 um (Wahlstrand measured at 800 nm). Other \
+Table S1 entries (not third-order quantities): gamma^-1 = 20 ps (N2), 23.8 ps (N2O); \
+D_even/D_odd = 6/3 (N2), 1/1 (N2O); Raman frequency 14.5 and 8 THz and relaxation 170 and \
+220 fs (N2, N2O) of the fitted response R(t); K = 14, 13, 11 (21 at 1.95 um) photons and \
+the MPI cross sections sigma_K; band gaps 15.76, 15.58, 12.89 eV."""
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+file = "Ar/beetar_2020__n2_Ar.csv"
+table = "tbl_d1e82e48818a"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table S1(1): '0.97 x Pressure' (10^-19 cm^2/W, pressure in bar): Wahlstrand et al. 2012's 9.7 x 10^-20 cm^2/W at 1 atm, used per bar at 1.03 um."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+file = "N2/beetar_2020__n2_N2.csv"
+table = "tbl_d1e82e48818a"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table S1(1): '0.74 x Pressure': Wahlstrand et al. 2012's electronic n2 7.4 x 10^-20 cm^2/W, used per bar at 1.03 um."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_N2O"
+material = "N2O"
+file = "N2O/beetar_2020__n2_N2O.csv"
+table = "tbl_d1e82e48818a"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table S1(1): '1.72 x Pressure': Wahlstrand et al. 2012's electronic n2 17.2 x 10^-20 cm^2/W, used per bar at 1.03 um."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "delta_alpha_N2"
+material = "N2"
+file = "N2/beetar_2020__delta_alpha_N2.csv"
+table = "tbl_d1e82e48818a"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["lin_1976", "wahlstrand_2012"]
+notes = "Table S1(1): printed '2 x 9.3' (10^-25 cm^3); the value is 9.3, doubled in the simulations 'to obtain agreement with experimental results'. 9.3 is Lin et al.'s value as quoted in Wahlstrand et al. 2012 Table I (not Wahlstrand's own 6.7), although Beetar cite Wahlstrand. Wavelength of the simulations (1.03 um); the original's is Lin et al.'s."
+
+[[datasets]]
+id = "delta_alpha_N2O"
+material = "N2O"
+file = "N2O/beetar_2020__delta_alpha_N2O.csv"
+table = "tbl_d1e82e48818a"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["lin_1976", "wahlstrand_2012"]
+notes = "Table S1(1): printed '2 x 27.9' (10^-25 cm^3); the value is 27.9 (doubled in the simulations). Lin et al.'s value as quoted in Wahlstrand et al. 2012 Table I (Wahlstrand's own: 28.1 +- 1.1)."
+
+[[datasets]]
+id = "n2_long_N2"
+material = "N2"
+file = "N2/beetar_2020__n2_long_N2.csv"
+table = "tbl_696db144fb76"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table S1(2): 'n2 ... for long pulse' '3.2 x Pressure': the long-pulse (adiabatic) total index of Eq. (S6), equal to Wahlstrand's 7.4 / 0.23 (their n2/n2,long) = 32 x 10^-20 cm^2/W."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_long_N2O"
+material = "N2O"
+file = "N2O/beetar_2020__n2_long_N2O.csv"
+table = "tbl_696db144fb76"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table S1(2): '43 x Pressure': the long-pulse total index, equal to Wahlstrand's 17.2 / 0.04 = 430 x 10^-20 cm^2/W."
+[datasets.parameters]
+part = "total"
+coefficient = "self"

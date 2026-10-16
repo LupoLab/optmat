@@ -1,0 +1,139 @@
+citation = "D. Franta, P. Franta, J. Vohánka, M. Čermák and I. Ohlídal, \"Determination of thicknesses and temperatures of crystalline silicon wafers from optical measurements in the far infrared region\", J. Appl. Phys. 123, 185707 (2018)"
+doi = "10.1063/1.5026195"
+library = "Franta_2018_DeterminationThicknessesTemperatures"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Revision of franta_2017's temperature-dependent advanced dispersion model (ADM) \
+of float-zone c-Si, fitted in newAD2 by least squares to 85 078 points at 0.0086-40 eV \
+and 5-700 K (Table III, p. 185707-7): the data of franta_2017 plus a 0.25 mm wafer and \
+a 14.33 mm slab, Bruker Vertex 80v transmittance at 0 deg in the FIR (70-680 cm-1, 1 \
+cm-1 resolution) and MIR (450-2000 cm-1, 4 cm-1; the slab to 3000 cm-1) at 300-450 K \
+(heated holder, INSTEC mK1000 controller, Pt100 sensor 'with an accuracy of 0.01 K'), \
+Lambda 1050 and UVISEL on the new samples, and n at 2 um for 5-700 K in 1 K steps (696 \
+points) from the two-term Sellmeier formula of Table II, which was fitted to Frey et \
+al.'s published formula values. The partial coherence of the FIR transmittance is \
+modelled by convolving the coherent transmittance with the instrument's line profile \
+(Eq. (13)); the samples' temperatures at 300-450 K are fitted (offsets dT from the \
+holder, Fig. 12)."""
+notes = """Journal article pages 185707-1 to 185707-11 = PDF pages 2-12 (PDF page 1 is the \
+publisher's cover page). Identity checked against the first article page. The paper \
+prints no n or k: the model's n and k are in Figs. 6-7 (FIR and MIR at three \
+temperatures), their LSM uncertainties in Fig. 9, ADM minus the Sellmeier formula at 2 \
+um in Fig. 11. The model has 'more than one thousand parameters' (p. 185707-6), none \
+printed. The refractiveindex.info pages main/Si/nk/Franta-*.yml cite this paper for \
+their 'Numerical procedures': their numbers are curated in franta_2017 (datasets \
+rii_*), whose notes show that they follow this paper's two-term Sellmeier formula at 2 \
+um within 1e-5 over 10-500 K.
+
+CHANGES TO THE MODEL (pp. 185707-1, -3, -7, -9). New samples and data (above); the \
+2 um pseudo-data from the two-term Sellmeier formula with the ABESF (Eqs. (9)-(10), \
+Table II) in place of franta_2017's Eq. (3); the linear thermal expansion from the \
+three-phonon ABESF formula (Eq. (3), the 4th fit of Table I) in place of Watanabe et \
+al.'s polynomial ('a negligible effect on the dispersion model'); N_a(T) = N_a^300K [1/(1 \
++ e(T))]^3 (Eq. (5)) and d(T) = d^300K [1 + e(T)] (Eq. (6)), reference 300 K; Gaussian \
+broadening by cubic-spline approximation and analytic integration in place of Romberg \
+integration, which removed the numerical noise of franta_2017's comparison at 2 um \
+(Fig. 11 and p. 185707-9).
+
+TEXT VALUES (pp. 185707-5 to -9). Frey et al.'s index (Proc. SPIE 6273, 62732J (2006), \
+not in the library): uncertainty 'estimated to be +-1 x 10^-4', 'published ... together \
+with values calculated using formula (7) on the mesh consisting of 12 x 13 \
+temperature-spectral points' at 30-295 K and 1.1-5.5 um; 'the original Frey et al. data \
+determined by the MDM were not published'; the authors 'suspect that the Frey et al. \
+model exhibits a systematic error because one of the strength parameters S_j(T) is \
+negative'. The one-term formula deviates from Frey's mesh values by -6e-4 to +14e-4, the \
+two-term formula systematically by about the stated uncertainty (Fig. 5). ADM minus the \
+two-term formula at 2 um: an undulation 5-10 times smaller than 1e-4 (Fig. 11). \
+Statistical (LSM) uncertainty of n 'approximately 2 x 10^-5' at room temperature in \
+the infrared (Fig. 9). Wafer thicknesses at 300 K: 0.252260 +- 0.000002 mm (LSM standard \
+error; about 7.4 nm from the 1e-4 index uncertainty, Eq. (14)) and 0.577568 +- 0.000006 \
+mm. Effective numbers of electrons of the Sellmeier poles (Eq. (11)) 'approximately 2.6 \
+and 2.8' (281.961/108.2 = 2.61; (273.563 + 23.447)/108.2 = 2.74, with franta_2014c's \
+N_a(300 K) = 108.2 eV^2), against 4.12 for the valence electrons of the ADM. Lattice \
+spacings of Lu et al. 0.078390 nm (300 K) and 0.078372 nm (near 0 K), whence e_0 ~ \
+-2.30e-4.
+
+AS PRINTED. The Frey range is given as 1.1-5.6 um on p. 185707-4 and 1.1-5.5 um \
+elsewhere, and 20-300 K against the mesh's 30-295 K. Table I's polynomial column is \
+Watanabe et al.'s formula with their reference 293 K (e(293 K) = -8e-7, e(300 K) = \
+1.80e-5), although the text says the results use 300 K; its e_0 = -4.2668e-4 is the \
+value quoted in the text. Table I's ABESF columns (the 1st to 4th fits) print e_1-e_3 \
+without their factor 10^-4: corrected in the formula below."""
+
+[[formulas]]
+id = "sellmeier_abesf"
+material = "Si"
+equation = "Eqs. (9)-(10), p. 185707-5; Table II, p. 185707-5"
+printed = "n^2(E, T) - 1 = \\frac{2}{\\pi} \\sum_{j=1}^{1 or 2} \\frac{N_j}{E_j^2(T) - E^2}, E_j(T) = E_j^{0K} + (E_j^{300K} - E_j^{0K}) [\\exp(\\Theta_j/300 K) - 1]/[\\exp(\\Theta_j/T) - 1]"
+variable = "E: photon energy (eV); T: temperature (K); N_j in eV^2, E_j in eV, Theta_j in K"
+range = "fitted to Frey et al.'s formula values at 30-295 K and 1.1-5.5 um; used for n at 2 um, 5-700 K"
+coefficients = { one_N1 = "281.961", one_E1_0K = "4.13650", one_E1_300K = "4.09926", one_Theta1 = "321.00", two_N1 = "273.563", two_E1_0K = "4.38129", two_E1_300K = "4.36617", two_Theta1 = "592.56", two_N2 = "23.447", two_E2_0K = "3.24469", two_E2_300K = "3.10798", two_Theta2 = "208.97" }
+check = "Table II cells agree with the image (2026-10-14). Computed (2026-10-14; hc = 1.239841984 eV um): two-term n(2 um) = 3.424838 (10 K), 3.453226 (293.15 K), 3.453541 (295 K), 3.454397 (300 K), 3.492349 (500 K); one-term 3.453498 (295 K); franta_2017's Eq. (3) gives 3.45351 at 295 K. The refractiveindex.info Franta pages' n at 2 um equals the two-term values within 1e-5 at 10-500 K (franta_2017 notes). The Theta_j correspond to 6.69, 12.35 and 4.35 THz, as the text says."
+notes = "Prefixes one_ and two_: the one-term and two-term formulas. The N_j are temperature independent (the expansion factor neglected, p. 185707-5). The two-term formula's parameters were fixed in the ADM fit, which used its n at 2 um for 5-700 K as pseudo-data (p. 185707-9); franta_2019's Table 3 reprints the two-term values. A fit of n data, not an independent measurement: it carries Frey et al.'s values (and their suspected systematic error) and must not be fitted beside Frey et al.'s silicon data."
+
+[[formulas]]
+id = "thermal_expansion"
+material = "Si"
+equation = "Eqs. (1)-(3), pp. 185707-2 to -3; Table I, p. 185707-2"
+printed = "e(T) = \\sum_{k=0}^{4} e_k T^k (2); e(T) = e_0 + \\sum_j e_j/[\\exp(\\Theta_j/T) - 1] (3)"
+variable = "T: temperature (K); e: linear thermal expansion (L(T) - L_0)/L_0 (dimensionless); Theta_j in K; poly_ek in K^-k"
+range = "Watanabe et al. 293-1000 K (e and alpha); Ibach below room temperature (alpha); the 4th fit 20-1000 K (conclusion)"
+coefficients = { poly_e0 = "-4.2668e-4", poly_e1 = "-9.0926e-8", poly_e2 = "6.5359e-9", poly_e3 = "-4.7219e-12", poly_e4 = "1.3822e-15", fit1_e0 = "-2.7131e-4", fit1_e1 = "35.188", fit1_Theta1 = "790.4", fit2_e0 = "-3.4529e-4", fit2_e1 = "18.739", fit2_e2 = "20.391", fit2_Theta1 = "566.4", fit2_Theta2 = "1556", fit3_e0 = "-2.2278e-4", fit3_e1 = "-1.036", fit3_e2 = "36.241", fit3_Theta1 = "165.6", fit3_Theta2 = "718.7", fit4_e0 = "-2.3741e-4", fit4_e1 = "-1.748", fit4_e2 = "33.153", fit4_e3 = "18.635", fit4_Theta1 = "197.6", fit4_Theta2 = "652.2", fit4_Theta3 = "3033", chi_e_Watanabe_poly = "0.201", chi_e_Watanabe_fit1 = "0.899", chi_e_Watanabe_fit2 = "0.131", chi_e_Watanabe_fit3 = "1.106", chi_e_Watanabe_fit4 = "0.275", chi_alpha_Watanabe_poly = "0.806", chi_alpha_Watanabe_fit3 = "1.211", chi_alpha_Watanabe_fit4 = "0.115", chi_alpha_Ibach_fit3 = "0.469", chi_alpha_Ibach_fit4 = "0.257" }
+check = "Table I cells compared with the image (2026-10-14); the CSV loses the minus signs and the powers of ten of the exponent column, so the values were read from the image ('a × 10^-b' written ae-b). With the corrections below, e(300 K) = 6.5e-7, 4.3e-7, -1.0e-7 and 5.5e-7 for the 1st-4th fits, zero to the rounding of e_0 (the reference temperature is 300 K, Eq. (6) and p. 185707-3); as printed it is 2.7, 3.5, 2.2 and 2.4. The polynomial gives e(293 K) = -8e-7 (Watanabe et al.'s reference). The Theta_j of the text check: 790.4 K = 16.5 THz, 566.4 K = 11.8 THz, 1556 K = 32.4 THz, 197.6 K = 4.1 THz, 652.2 K = 13.6 THz."
+notes = "The linear thermal expansion of c-Si, no optmat quantity: fitted to Watanabe et al. (Int. J. Thermophys. 25, 221 (2004); e and alpha, 293-1000 K) and, for the 3rd and 4th fits, Ibach (Phys. Status Solidi 31, 625 (1969); alpha below room temperature, chi with an assumed uncertainty 1e-7 K^-1). The 4th fit is the one used in the revised ADM (p. 185707-3). chi: the rms deviation over the data's uncertainty. franta_2019 Table 1 reprints the 4th fit with uncertainties ('4-th fit in [12]') and gives newer fits."
+
+[[formulas.corrections]]
+term = "fit1_e1"
+printed = "35.188"
+corrected = "35.188e-4"
+reason = "Table I prints the ABESF coefficients e_j of Eq. (3) without their factor 10^-4: as printed, e(300 K) = 2.7, where the reference temperature 300 K requires e(300 K) = 0."
+evidence = "With e_j x 10^-4, e(300 K) = 6.5e-7, zero to the rounding of the printed e_0 = -2.7131e-4 (computed 2026-10-14). franta_2019 Table 1 reprints the 4th fit as e_1 = -0.00017(2), e_2 = 0.00332(3), e_3 = 0.00186(12) (here -1.748, 33.153, 18.635)."
+
+[[formulas.corrections]]
+term = "fit2_e1"
+printed = "18.739"
+corrected = "18.739e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "With e_j x 10^-4, the 2nd fit's e(300 K) = 4.3e-7 (computed 2026-10-14); see fit1_e1."
+
+[[formulas.corrections]]
+term = "fit2_e2"
+printed = "20.391"
+corrected = "20.391e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "As fit2_e1."
+
+[[formulas.corrections]]
+term = "fit3_e1"
+printed = "-1.036"
+corrected = "-1.036e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "With e_j x 10^-4, the 3rd fit's e(300 K) = -1.0e-7 (computed 2026-10-14); see fit1_e1."
+
+[[formulas.corrections]]
+term = "fit3_e2"
+printed = "36.241"
+corrected = "36.241e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "As fit3_e1."
+
+[[formulas.corrections]]
+term = "fit4_e1"
+printed = "-1.748"
+corrected = "-1.748e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "With e_j x 10^-4, the 4th fit's e(300 K) = 5.5e-7 (computed 2026-10-14); franta_2019 Table 1, '4-th fit in [12]': e_1 = -0.00017(2)."
+
+[[formulas.corrections]]
+term = "fit4_e2"
+printed = "33.153"
+corrected = "33.153e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "As fit4_e1; franta_2019 Table 1: e_2 = 0.00332(3)."
+
+[[formulas.corrections]]
+term = "fit4_e3"
+printed = "18.635"
+corrected = "18.635e-4"
+reason = "As fit1_e1: Table I prints e_j without the factor 10^-4."
+evidence = "As fit4_e1; franta_2019 Table 1: e_3 = 0.00186(12)."

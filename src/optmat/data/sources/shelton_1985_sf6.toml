@@ -1,0 +1,148 @@
+citation = "D. P. Shelton and V. Mizrahi, Chem. Phys. Lett. 120, 318 (1985)"
+doi = "10.1016/0009-2614(85)87065-2"
+library = "Shelton_1985_FrequencyDependenceHyperpolarizability"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Electric-field-induced second-harmonic generation (ESHG) with periodic phase \
+matching: a cw dye or argon-ion laser (0.3-2.0 W) weakly focused through a cell whose \
+electrodes (spacing 2.69 mm) reverse the static field every coherence length, the gas \
+density being adjusted to phase match (1-6 atm); sample SF6 (99.99 %) and reference \
+N2 (99.9995 %); densities from pressure and temperature by the virial equation of \
+state (virial corrections about 2 % for SF6, Dymond and Smith) (pp. 1-2)."""
+notes = """The paper's aim is the hyperpolarizability gamma; its by-product, the ratio \
+Delta alpha_SF6 / Delta alpha_N2 with Delta alpha = alpha(2 omega) - alpha(omega), 'is \
+just proportional to the phase match density rho measured' (table note a), i.e. it is \
+the phase-match density ratio rho_N2 / rho_SF6. As in shelton_1990 the printed number \
+is filed under N2 as gas with SF6 as reference_material (the package's quantity is \
+rho_gas / rho_reference); parameters.sample_gas and shelton_reference_gas keep the \
+paper's roles.
+
+Wavelengths: the fundamental, 670.0, 650.0, 620.0 nm (dye laser) and 514.5, 488.0, \
+457.9 nm (argon-ion lines as usually quoted in air); the paper does not say, and \
+standard air is assumed (as the later papers of the series state, shelton_1986_ch4 \
+and shelton_1986_co2).
+
+Uncertainty: +-0.003 per ratio (level not stated); 'the accuracy of the overall \
+measurement is chiefly determined by photon-counting statistics' (p. 2). The gamma \
+values (Table 1, fit gamma = A(1 + B nu^2), A = 8.21e-62 C^4 m^4 J^-3, B = 8.44e-10 \
+cm^2) are hyperpolarizabilities and are not extracted. The 694.3 nm row holds only Ward \
+and Miller's gamma.
+
+The same ratio at 1064 and 1319 nm is in shelton_1990 (density_N2_over_SF6).
+
+THIRD-ORDER DATA (added 2026-09-26; supersedes the remark above that the \
+gamma values are not extracted). gamma(-2 omega; omega, omega, 0), the ESHG gamma of \
+Shelton's series (Taylor-series convention, SI C^4 m^4 J^-3; shelton_1990 and shelton_1994 \
+reproduce these values), measured relative to N2 and put on an absolute scale with \
+Mizrahi & Shelton's smoothed N2 curve (ref [10]). The authors note (p. 319): 'The values \
+at lambda = 514.5 nm in ref. [6] [shelton_1982] are systematically low by 1.5% [10]; when \
+corrected, gamma_SF6 from ref. [6] coincides with the value reported here.' Fit (p. \
+319): gamma = A (1 + B nu^2), formula below (nu the fundamental wavenumber, not \
+nu_L^2). Relations between processes (pp. 319-320): gamma^elec = gamma_0^elec [1 + C \
+(omega/omega_0)^2] (Eq. 2) with C^THG : C^ESHG : C^Kerr = 6 : 3 : 1 (Eq. 3, Dawes; Finn); \
+the measured gamma^THG/gamma^ESHG of SF6 at 694.3 nm is 1.14 +- 0.07 (Elliott & Ward; \
+Ward & Elliott) against 1.15 predicted from this dispersion, while gamma^ESHG/gamma^Kerr \
+is measured 0.65 +- 0.06 against 1.11 predicted, attributed to vibrational contributions \
+to the Kerr gamma (ratios between processes: no quantity; recorded here only). For H2 \
+gamma_0^vib/gamma_0^elec = 0.28 is quoted from Mizrahi & Shelton (to be published)."""
+
+[[datasets]]
+id = "density_N2_over_SF6"
+material = "N2"
+file = "N2/shelton_1985_sf6__density_N2_over_SF6.csv"
+table = "tbl_72ec8b2e57c2"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table 1, Delta alpha_SF6 / Delta alpha_N2 = rho_N2 / rho_SF6 as printed, six fundamental wavelengths 457.9-670.0 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "SF6"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "SF6"
+shelton_reference_gas = "N2"
+printed_as = "Delta alpha_SF6 / Delta alpha_N2"
+
+[[datasets]]
+id = "gamma_SF6_over_N2"
+material = "SF6"
+file = "SF6/shelton_1985_sf6__gamma_SF6_over_N2.csv"
+table = "tbl_72ec8b2e57c2"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 1 (p. 319): gamma_SF6/gamma_N2 by ESHG, as printed (Eq. 1: gamma_A/gamma_B = (S_A/S_B)^(1/2) (rho_A n_A / rho_B n_B)^-1, n = (n_0^4 n_omega^(2+zeta) n_2omega)^(1/6)). The raw measurement behind gamma_SF6. 'The accuracy of the overall measurement is chiefly determined by photon-counting statistics'; the 457.9 nm error is large for lack of a filter (p. 319)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "gamma_SF6"
+material = "SF6"
+file = "SF6/shelton_1985_sf6__gamma_SF6.csv"
+table = "tbl_72ec8b2e57c2"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 1 (p. 319): gamma_SF6 in 1e-62 C^4 m^4 J^-3, 'Obtained using the smoothed results given in ref. [10]' for gamma_N2 (Mizrahi & Shelton, then to be published; the N2 ESHG curve of mizrahi_1985_arn2o2, itself calibrated against He); 'The error bars given for gamma_SF6 include allowance for +-0.4% uncertainty in the calibration values of gamma_N2' (p. 319). Total ESHG gamma; 'The nu^2 dependence seen in these experiments substantiates the usual assumption that vibrational contributions to gamma are negligible at optical frequencies for ESHG' (pp. 319-320; shelton_1988 later finds gamma^v_ESHG ~ -3e-62, not negligible). shelton_1990 Table III(b) reproduces these on its new He calibration (e.g. 98.2e-63 against 9.75e-62 at 670 nm)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "gamma_SF6_ward_miller"
+material = "SF6"
+file = "SF6/shelton_1985_sf6__gamma_SF6_ward_miller.csv"
+table = "tbl_72ec8b2e57c2"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["ward_1979"]
+notes = "Table 1 row 694.3 nm, note c): 'From ref. [12]' (Ward & Miller 1979), ESHG, as converted by the authors."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+
+[[formulas]]
+id = "fit"
+material = "SF6"
+equation = "text, p. 319"
+printed = "gamma = A (1 + B nu^2); A = (8.21 +- 0.09) x 10^-62 C^4 m^4 J^-3 and B = (8.44 +- 0.03) x 10^-10 cm^2, where nu is in cm^-1"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2: for ESHG nu_L^2 = 6 nu^2, so B corresponds to Shelton & Rice's A = B/6 = 1.41e-10 cm^2)"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "457.9-694.3 nm (Table 1, including Ward & Miller's 694.3 nm point: 'the results are also presented graphically in fig. 1')"
+coefficients = { A = "8.21e-62", B = "8.44e-10" }
+coefficient_units = { A = "C^4 m^4 J^-3", B = "cm^2" }
+calibration = "N2: Mizrahi & Shelton's smoothed gamma_N2 (ref [10]), on the old He calibration"
+check = "Gives 9.753e-62 at 670.0 nm (14921 cm^-1 from the air wavelength) and 10.826e-62 at 514.5 nm against 9.75 +- 0.07 and 10.84 +- 0.04. Checked 2026-09-26."
+notes = "Weighted least-squares straight line against nu^2; A and B uncertainties as printed. Superseded by shelton_1990's refit (gamma_0 = 89.10e-63, A = 0.500e-10, B = 2.124e-20 against nu_L^2, including 1064 and 1319 nm)."

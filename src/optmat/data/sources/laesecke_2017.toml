@@ -1,0 +1,38 @@
+citation = "A. Laesecke and C. D. Muzny, \"Reference Correlation for the Viscosity of Carbon Dioxide\", J. Phys. Chem. Ref. Data 46, 013107 (2017)"
+doi = "10.1063/1.4977429"
+library = "Laesecke_2017_ReferenceCorrelationViscosity"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A reference correlation of the viscosity of carbon dioxide: the zero-density \
+limit from Hellmann's ab initio values scaled by 1.0055 to the most accurate \
+measurements, in a form found by symbolic regression, plus initial-density and residual \
+terms fitted to measurements, with densities from Span and Wagner's equation of state."""
+notes = """Identity VALIDATED by the library. The library's copy is the NIST author \
+manuscript; pages cited are its pdf pages.
+
+THE ZERO-DENSITY VISCOSITY (Eq. 4, pdf p. 10; Table 2, pdf p. 57): eta0(T) = 1.0055 \
+sqrt(T) / [a0 + a1 T^(1/6) + a2 exp(a3 T^(1/3)) + (a4 + a5 T^(1/3))/exp(T^(1/3)) + a6 \
+sqrt(T)], in mPa s with T in K; a0..a6 = 1749.354893188350, -369.069300007128, \
+5423856.34887691, -2.21283852168356, -269503.247933569, 73145.021531826, \
+5.34368649509278. It represents Hellmann's values within -0.059 % to +0.026 % and has no \
+singularity below 100 K (pdf p. 10).
+
+UNCERTAINTY (pdf p. 22): 'Below the triple-point pressure of 0.51795 MPa, the \
+uncertainty of the correlation is 0.2 % from 200 K to 700 K and 1 % up to 2000 K'; the \
+estimates build on the expanded uncertainties of the data sources. Extrapolations below \
+200 K and above 2000 K are called physically realistic. optmat takes 200-2000 K, where \
+an uncertainty is stated.
+
+REPRODUCED: CoolProp 8.0.0's carbon dioxide viscosity (reference key \
+Laesecke-JPCRD-2017-CO2) at 1e-6 mol/m^3 equals Eq. (4) to 4e-10, 120-900 K (computed \
+2026-09-30)."""
+
+[[formulas]]
+id = "eq4"
+material = "CO2"
+equation = "Eq. (4), pdf p. 10; Table 2, pdf p. 57 (author manuscript)"
+printed = "eta0 = 1.0055 sqrt(T)/[a0 + a1 T^(1/6) + a2 exp(a3 T^(1/3)) + (a4 + a5 T^(1/3))/exp(T^(1/3)) + a6 sqrt(T)]"
+variable = "T in K; eta0 in mPa s"
+range = "200-2000 K (stated uncertainty)"
+coefficients = { scale = "1.0055", a0 = "1749.354893188350", a1 = "-369.069300007128", a2 = "5423856.34887691", a3 = "-2.21283852168356", a4 = "-269503.247933569", a5 = "73145.021531826", a6 = "5.34368649509278" }
+check = "CoolProp 8.0.0 equals it to 4e-10 (tests/test_transport.py)."

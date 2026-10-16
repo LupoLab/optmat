@@ -1,0 +1,508 @@
+citation = "A. Borzsonyi, Z. Heiner, M. P. Kalashnikov, A. P. Kovacs and K. Osvay, Appl. Opt. 47, 4856 (2008)"
+doi = "10.1364/ao.47.004856"
+library = "Borzsonyi_2008_DispersionMeasurementInert"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Spectrally and spatially resolved interferometry (Mach-Zehnder plus imaging \
+spectrograph) with a Ti:sapphire oscillator (peak 767 nm, 115 nm wide at the 10 % \
+level); the sample arm is a 4.5 m tube, double-passed (geometrical propagation length \
+9.110 +- 0.003 m, p. 4). Gas pressure set at 18 points from 1 bar to 0.05 mbar \
+(capacitance gauges), 'pressure up' and 'pressure down' series; nine interferograms \
+per pressure, the extremes dropped and seven averaged (p. 4). Laboratory at \
+19.7 +- 1 degrees C, stable to 0.2 degrees C within a series. Purity 99.999 % \
+(Xe 99.996 %)."""
+notes = """The phase derivatives are measured relative to the lowest pressure: linear \
+fits in pressure of GD, GDD and TOD are assumed to vanish at 0.05 mbar (p. 5), and \
+Table 1 gives the specific (per metre) values 'deducted for 1000 mbar' (p. 5) at 800 nm \
+(omega0 = 2.35 fs^-1, a vacuum wavelength) and at the laboratory temperature of each \
+measurement (Table 1, 19.4-20.8 degrees C, +-0.2). Table 1's caption says '800 nm, \
+1000 mbars, and 20 degrees C'; the per-gas temperature column is used as the state. \
+No reduction to another state is made, so the values refer to the real gas at that \
+state (density = real); the paper's own theory (Eqs. 6-11) takes Z = 1. The stated \
+errors are not defined for the table; each measured point's error is 'the standard \
+deviation of these seven points from their averaged value' (p. 4). The paper claims \
+SGD to 1 part in 1000 and SGDD to 1 in 400 (p. 5).
+
+The SGD column is kept as a check, not fitted: every gas's SGD lies 22-39 fs/m above \
+what its refractivity implies (the paper's own Sellmeier fits give, at the measured \
+state, He 107.5 against 146.0 printed, Ne 207.1 / 241.7, N2 925.8 / 947.4, Ar 870.0 / \
+895.2, Kr 1334.5 / 1366.2, Xe 2198 / 2225.4 fs/m, the Xe fit with its C1 corrected, \
+see the formula). For helium the refractivity is known to 0.1 % and implies about \
+108 fs/m, so the 146.0 +- 1.0 printed cannot be the excess group delay of helium; a \
+common additive offset of about +30 fs/m (a 9 um path error over 9.11 m, or the air \
+term SGD_air * dL of Eq. 5) is the likeliest cause, but the paper gives no way to \
+check it. The SGDD column is kept as a validator (use = check; 2026-09-24, TC-45), because it too disagrees with the precise \
+interferometric dispersion of the literature: Peck & Khanna's N2 formula (peck_1966, \
+Eq. 3, scaled to 1000 mbar and 19.4 C) gives SGDD = 19.84 fs^2/m at 800 nm against \
+18.04 +- 0.15 printed (9 % low), and Peck & Fisher's Ar formula (20.8 C) 18.38 \
+against 17.98 +- 0.11 (2 % low); their shapes are known to about 1e-4 in n - 1. \
+Whether these SGDD values enter fits should be decided at review. STOD is only an \
+upper limit (p. 5) and kept as a check.
+
+The Lorentz-Lorenz constants of Table 1 (m^3/kg, 'This Work' and 'Calc. from \
+Literature') are not extracted: the paper does not say how they were obtained from \
+the group-delay data, and a check with the known refractivities (2/3 (n - 1)/rho at \
+20 degrees C, 1000 mbar) reproduces the noble-gas values within 1-4 % but not \
+nitrogen's (1.47 against 1.627), so their definition is unclear. Air (Table 1 and \
+Table 2) is not a curated species and is skipped. The gas-mixture results (Fig. 4) are \
+figures only.
+
+The Sellmeier fits (Table 2, Eq. 14) are formulas below. They were fitted to only \
+'three refractive indices from the literature' per gas (Leonard 1974 for the noble \
+gases, Peck & Khanna 1966 for N2, CRC for air; refs. 18, 23, 42) 'and the SGDD taken \
+from our measurements' (p. 7): they are not independent refractivity data, and the \
+visible/UV behaviour is that of the three literature points. The printed xenon \
+coefficient C1 is wrong by a factor 1000 (see the formula)."""
+
+[[formulas]]
+id = "sellmeier_N2"
+form = "n2_sellmeier"
+terms = { B = ["39209.95e-8", "18806.48e-8"], C = ["1146.24e-6", "13.476e-3"] }
+range_nm = [400.0, 1000.0]
+material = "N2"
+equation = "Eq. (14), p. 7, with Table 2 (tbl_8d505c3d8e77)"
+printed = "n^2(lambda, p, T) - 1 = (p/p0) (T0/T) [B1 lambda^2/(lambda^2 - C1) + B2 lambda^2/(lambda^2 - C2)]; B1 x 10^8 = 39209.95, C1 x 10^6 = 1146.24, B2 x 10^8 = 18806.48, C2 x 10^3 = 13.476"
+variable = "lambda: vacuum wavelength in um"
+state = { pressure_pa = 100000.0, temperature_c = 0.0 }
+density = "ideal"
+range = "fitted to three literature n values in the visible (Peck & Khanna 1966) and the SGDD at 800 nm; compared with the literature over 400-1000 nm (Fig. 5)"
+coefficients = { B1 = "39209.95e-8", C1 = "1146.24e-6", B2 = "18806.48e-8", C2 = "13.476e-3" }
+check = "At 546.2258 nm, 0 degrees C, 1013.25 mbar: n - 1 = 299.15e-6 (Peck & Khanna: 299.14e-6). At 800 nm, 1000 mbar, 19.4 degrees C: SGDD 19.67 fs^2/m against 18.04 +- 0.15 measured (9 % high), SGD 925.8 against 947.4 fs/m, STOD 4.9 against 10 +- 10 fs^3/m (checked 2026-09-24)."
+notes = "Pressure and temperature enter as the ideal-gas density ratio (p/p0)(T0/T) on n^2 - 1 (derived from Eq. 6 with Z = 1). T0 is '273 K' in the text (p. 7) and '0 degrees C' in Table 2's caption; the difference is 0.05 %. Table 2's 'Std. Dev.' of the literature n from the fit: 5.46e-8."
+
+[[formulas]]
+id = "sellmeier_He"
+form = "n2_sellmeier"
+terms = { B = ["4977.77e-8", "1856.94e-8"], C = ["28.54e-6", "7.760e-3"] }
+range_nm = [400.0, 1000.0]
+material = "He"
+equation = "Eq. (14), p. 7, with Table 2 (tbl_8d505c3d8e77)"
+printed = "as sellmeier_N2; B1 x 10^8 = 4977.77, C1 x 10^6 = 28.54, B2 x 10^8 = 1856.94, C2 x 10^3 = 7.760"
+variable = "lambda: vacuum wavelength in um"
+state = { pressure_pa = 100000.0, temperature_c = 0.0 }
+density = "ideal"
+range = "fitted to three literature n values (Leonard 1974) and the SGDD at 800 nm; compared over 400-1000 nm (Fig. 5)"
+coefficients = { B1 = "4977.77e-8", C1 = "28.54e-6", B2 = "1856.94e-8", C2 = "7.760e-3" }
+check = "At 546.2258 nm, 0 degrees C, 1013.25 mbar: n - 1 = 34.88e-6 (Leonard's Table I values 34.887-34.950). At 800 nm, 1000 mbar, 19.5 degrees C: SGDD 0.94 against 0.82 +- 0.13, SGD 107.5 against 146.0 fs/m printed (checked 2026-09-24)."
+notes = "Table 2 'Std. Dev.': 1.46e-8."
+
+[[formulas]]
+id = "sellmeier_Ne"
+form = "n2_sellmeier"
+terms = { B = ["9154.48e-8", "4018.63e-8"], C = ["656.97e-6", "5.728e-3"] }
+range_nm = [400.0, 1000.0]
+material = "Ne"
+equation = "Eq. (14), p. 7, with Table 2 (tbl_8d505c3d8e77)"
+printed = "as sellmeier_N2; B1 x 10^8 = 9154.48, C1 x 10^6 = 656.97, B2 x 10^8 = 4018.63, C2 x 10^3 = 5.728"
+variable = "lambda: vacuum wavelength in um"
+state = { pressure_pa = 100000.0, temperature_c = 0.0 }
+density = "ideal"
+range = "fitted to three literature n values (Leonard 1974) and the SGDD at 800 nm; compared over 400-1000 nm (Fig. 5)"
+coefficients = { B1 = "9154.48e-8", C1 = "656.97e-6", B2 = "4018.63e-8", C2 = "5.728e-3" }
+check = "At 546.2258 nm, 0 degrees C, 1013.25 mbar: n - 1 = 67.24e-6 (Leonard: 67.236-67.246). At 800 nm, 1000 mbar, 19.7 degrees C: SGDD 1.84 against 2.11 +- 0.10, SGD 207.1 against 241.7 fs/m (checked 2026-09-24)."
+notes = "Table 2 'Std. Dev.': 0.41e-8."
+
+[[formulas]]
+id = "sellmeier_Ar"
+form = "n2_sellmeier"
+terms = { B = ["20332.29e-8", "34458.31e-8"], C = ["206.12e-6", "8.066e-3"] }
+range_nm = [400.0, 1000.0]
+material = "Ar"
+equation = "Eq. (14), p. 7, with Table 2 (tbl_8d505c3d8e77)"
+printed = "as sellmeier_N2; B1 x 10^8 = 20332.29, C1 x 10^6 = 206.12, B2 x 10^8 = 34458.31, C2 x 10^3 = 8.066"
+variable = "lambda: vacuum wavelength in um"
+state = { pressure_pa = 100000.0, temperature_c = 0.0 }
+density = "ideal"
+range = "fitted to three literature n values (Leonard 1974) and the SGDD at 800 nm; compared over 400-1000 nm (Fig. 5)"
+coefficients = { B1 = "20332.29e-8", C1 = "206.12e-6", B2 = "34458.31e-8", C2 = "8.066e-3" }
+check = "At 546.2258 nm, 0 degrees C, 1013.25 mbar: n - 1 = 282.46e-6 (Leonard: 282.4655). At 800 nm, 1000 mbar, 20.8 degrees C: SGDD 18.14 against 17.98 +- 0.11, SGD 870.0 against 895.2 fs/m, STOD 5.9 against 12 +- 14 (checked 2026-09-24)."
+notes = "Table 2 'Std. Dev.': 5.92e-8."
+
+[[formulas]]
+id = "sellmeier_Kr"
+form = "n2_sellmeier"
+terms = { B = ["26102.88e-8", "56946.82e-8"], C = ["2.01e-6", "10.043e-3"] }
+range_nm = [400.0, 1000.0]
+material = "Kr"
+equation = "Eq. (14), p. 7, with Table 2 (tbl_8d505c3d8e77)"
+printed = "as sellmeier_N2; B1 x 10^8 = 26102.88, C1 x 10^6 = 2.01, B2 x 10^8 = 56946.82, C2 x 10^3 = 10.043"
+variable = "lambda: vacuum wavelength in um"
+state = { pressure_pa = 100000.0, temperature_c = 0.0 }
+density = "ideal"
+range = "fitted to three literature n values (Leonard 1974) and the SGDD at 800 nm; compared over 400-1000 nm (Fig. 5)"
+coefficients = { B1 = "26102.88e-8", C1 = "2.01e-6", B2 = "56946.82e-8", C2 = "10.043e-3" }
+check = "At 546.2258 nm, 0 degrees C, 1013.25 mbar: n - 1 = 430.71e-6 (Leonard's average 430.84). At 800 nm, 1000 mbar, 19.7 degrees C: SGDD 37.33 against 37.32 +- 0.13, SGD 1334.5 against 1366.2 fs/m, STOD 14 against 20 +- 10 (checked 2026-09-24)."
+notes = "Table 2 'Std. Dev.': 21.67e-8. C1 = 2.01e-6 um^2 puts the first pole at 1.4 nm: the first term is in effect a constant."
+
+[[formulas]]
+id = "sellmeier_Xe"
+form = "n2_sellmeier"
+terms = { B = ["103701.61e-8", "31228.61e-8"], C = ["12.75e-6", "0.561e-3"] }
+range_nm = [400.0, 1000.0]
+material = "Xe"
+equation = "Eq. (14), p. 7, with Table 2 (tbl_8d505c3d8e77)"
+printed = "as sellmeier_N2; B1 x 10^8 = 103701.61, C1 x 10^6 = 12.75, B2 x 10^8 = 31228.61, C2 x 10^3 = 0.561"
+variable = "lambda: vacuum wavelength in um"
+state = { pressure_pa = 100000.0, temperature_c = 0.0 }
+density = "ideal"
+range = "fitted to three literature n values (Leonard 1974) and the SGDD at 800 nm; compared over 400-1000 nm (Fig. 5)"
+coefficients = { B1 = "103701.61e-8", C1 = "12.75e-6", B2 = "31228.61e-8", C2 = "0.561e-3" }
+check = "As printed the formula fails: at 546.2258 nm, 0 degrees C, 1013.25 mbar n - 1 = 683.7e-6 against Leonard's 706.60 (-3.2 %), and at 800 nm, 1000 mbar, 19.9 degrees C SGDD = 1.17 against 87.42 +- 0.17 fs^2/m measured: with both poles below 24 nm the formula has almost no dispersion. With C1 = 12.75e-3 um^2 (the column factor 10^3, not 10^6): n - 1 = 707.09e-6 at 546.2258 nm (+0.07 % from Leonard), SGDD 88.54, SGD 2197.8 (2225.4 printed), STOD 42.6 (40 +- 12) (checked 2026-09-24; STOD corrected at the second read, 2026-09-25)."
+notes = "Corrected form: C1 = 12.75e-3 um^2 (pole at 113 nm), the other coefficients as printed. The correction is established by the paper's own 800 nm measurements and Leonard's 546 nm value, which it reproduces; no other single change of one coefficient's power of ten does (C2 = 0.0561 gives SGDD 147; C1 = 12.75e-4 gives 9.3). Luna's PhysData.jl (read-only reference) uses C1 = 12750e-6, the same correction. Table 2 'Std. Dev.': 43.25e-8."
+
+[[formulas.corrections]]
+term = "C"
+index = 0
+printed = "12.75e-6"
+corrected = "12.75e-3"
+reason = "Table 2's column factor for C1 (10^-6) is wrong for xenon by 10^3: with both poles below 24 nm the printed formula has almost no dispersion (SGDD 1.17 against 87.42 fs^2/m measured at 800 nm) and gives n - 1 = 683.7e-6 at 546.2 nm against Leonard's 706.60e-6."
+evidence = "With C1 = 12.75e-3 um^2 the formula gives SGDD 88.54 fs^2/m (87.42 measured), n - 1 = 707.09e-6 at 546.2258 nm (Leonard 706.60), SGD 2197.8 and STOD 42.6 (40 +- 12; 41.5 before the second read of 2026-09-25); no other single power-of-ten change works (2026-09-24). Luna uses 12750e-6."
+
+[[datasets]]
+id = "sgd_N2"
+material = "N2"
+file = "N2/borzsonyi_2008__sgd_N2.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay"
+unit = "fs/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.4 }
+density = "real"
+use = "check"
+notes = "Excess over vacuum: the printed SGD is (n_g - 1)/c, the vacuum 1/c (3335.64 fs/m) removed (parameters.excess_over_vacuum). Not fitted: see the source notes (an offset of about +30 fs/m against the known refractivities). Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+excess_over_vacuum = true
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgdd_N2"
+material = "N2"
+file = "N2/borzsonyi_2008__sgdd_N2.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.4 }
+density = "real"
+use = "check"
+notes = "Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "stod_N2"
+material = "N2"
+file = "N2/borzsonyi_2008__stod_N2.csv"
+table = "tbl_15ed1378c327"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.4 }
+density = "real"
+use = "check"
+notes = "'All of them were around the magnitude of the achievable accuracy, so that only an upper limit for STOD could be determined' (p. 5): kept as a check, not fitted."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgd_He"
+material = "He"
+file = "He/borzsonyi_2008__sgd_He.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay"
+unit = "fs/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.5 }
+density = "real"
+use = "check"
+notes = "Excess over vacuum: the printed SGD is (n_g - 1)/c, the vacuum 1/c (3335.64 fs/m) removed (parameters.excess_over_vacuum). Not fitted: see the source notes (an offset of about +30 fs/m against the known refractivities). Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+excess_over_vacuum = true
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgdd_He"
+material = "He"
+file = "He/borzsonyi_2008__sgdd_He.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.5 }
+density = "real"
+use = "check"
+notes = "Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "stod_He"
+material = "He"
+file = "He/borzsonyi_2008__stod_He.csv"
+table = "tbl_15ed1378c327"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.5 }
+density = "real"
+use = "check"
+notes = "'All of them were around the magnitude of the achievable accuracy, so that only an upper limit for STOD could be determined' (p. 5): kept as a check, not fitted."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgd_Ne"
+material = "Ne"
+file = "Ne/borzsonyi_2008__sgd_Ne.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay"
+unit = "fs/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.7 }
+density = "real"
+use = "check"
+notes = "Excess over vacuum: the printed SGD is (n_g - 1)/c, the vacuum 1/c (3335.64 fs/m) removed (parameters.excess_over_vacuum). Not fitted: see the source notes (an offset of about +30 fs/m against the known refractivities). Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+excess_over_vacuum = true
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgdd_Ne"
+material = "Ne"
+file = "Ne/borzsonyi_2008__sgdd_Ne.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.7 }
+density = "real"
+use = "check"
+notes = "Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "stod_Ne"
+material = "Ne"
+file = "Ne/borzsonyi_2008__stod_Ne.csv"
+table = "tbl_15ed1378c327"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.7 }
+density = "real"
+use = "check"
+notes = "'All of them were around the magnitude of the achievable accuracy, so that only an upper limit for STOD could be determined' (p. 5): kept as a check, not fitted."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgd_Ar"
+material = "Ar"
+file = "Ar/borzsonyi_2008__sgd_Ar.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay"
+unit = "fs/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 20.8 }
+density = "real"
+use = "check"
+notes = "Excess over vacuum: the printed SGD is (n_g - 1)/c, the vacuum 1/c (3335.64 fs/m) removed (parameters.excess_over_vacuum). Not fitted: see the source notes (an offset of about +30 fs/m against the known refractivities). Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+excess_over_vacuum = true
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgdd_Ar"
+material = "Ar"
+file = "Ar/borzsonyi_2008__sgdd_Ar.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 20.8 }
+density = "real"
+use = "check"
+notes = "Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "stod_Ar"
+material = "Ar"
+file = "Ar/borzsonyi_2008__stod_Ar.csv"
+table = "tbl_15ed1378c327"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 20.8 }
+density = "real"
+use = "check"
+notes = "'All of them were around the magnitude of the achievable accuracy, so that only an upper limit for STOD could be determined' (p. 5): kept as a check, not fitted."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgd_Kr"
+material = "Kr"
+file = "Kr/borzsonyi_2008__sgd_Kr.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay"
+unit = "fs/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.7 }
+density = "real"
+use = "check"
+notes = "Excess over vacuum: the printed SGD is (n_g - 1)/c, the vacuum 1/c (3335.64 fs/m) removed (parameters.excess_over_vacuum). Not fitted: see the source notes (an offset of about +30 fs/m against the known refractivities). Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+excess_over_vacuum = true
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgdd_Kr"
+material = "Kr"
+file = "Kr/borzsonyi_2008__sgdd_Kr.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.7 }
+density = "real"
+use = "check"
+notes = "Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "stod_Kr"
+material = "Kr"
+file = "Kr/borzsonyi_2008__stod_Kr.csv"
+table = "tbl_15ed1378c327"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.7 }
+density = "real"
+use = "check"
+notes = "'All of them were around the magnitude of the achievable accuracy, so that only an upper limit for STOD could be determined' (p. 5): kept as a check, not fitted."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgd_Xe"
+material = "Xe"
+file = "Xe/borzsonyi_2008__sgd_Xe.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay"
+unit = "fs/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.9 }
+density = "real"
+use = "check"
+notes = "Excess over vacuum: the printed SGD is (n_g - 1)/c, the vacuum 1/c (3335.64 fs/m) removed (parameters.excess_over_vacuum). Not fitted: see the source notes (an offset of about +30 fs/m against the known refractivities). Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+excess_over_vacuum = true
+path_length_m = 9.110
+
+[[datasets]]
+id = "sgdd_Xe"
+material = "Xe"
+file = "Xe/borzsonyi_2008__sgdd_Xe.csv"
+table = "tbl_15ed1378c327"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.9 }
+density = "real"
+use = "check"
+notes = "Temperature: the table's 'Temperature of Meas.' for this gas, +-0.2 degrees C."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+
+[[datasets]]
+id = "stod_Xe"
+material = "Xe"
+file = "Xe/borzsonyi_2008__stod_Xe.csv"
+table = "tbl_15ed1378c327"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 100000.0, temperature_c = 19.9 }
+density = "real"
+use = "check"
+notes = "'All of them were around the magnitude of the achievable accuracy, so that only an upper limit for STOD could be determined' (p. 5): kept as a check, not fitted."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+path_length_m = 9.110
+

@@ -1,0 +1,267 @@
+citation = "V. Loriot, E. Hertz, O. Faucher and B. Lavorel, Opt. Express 17, 13429 (2009); erratum Opt. Express 18, 3011 (2010)"
+doi = "10.1364/oe.17.013429"
+library = "Loriot_2009_MeasurementHighOrder"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Degenerate pump-probe transient birefringence (strong-field polarization \
+technique) with a 1 kHz Ti:sapphire amplifier, 90 fs pulses at 800 nm; pump and probe \
+focused by one f = 20 cm lens, crossing at 4 degrees in a static gas cell; probe \
+polarized at 45 degrees to the pump, crossed analyser, photomultiplier; homodyne \
+detection for n2 (low intensity), pure heterodyne detection (difference of two records \
+with opposite static birefringence) for the higher orders. The instantaneous Kerr \
+birefringence is calibrated against the post-pulse field-free rotational alignment \
+signal of N2 and O2, computed with Delta alpha(N2) = 4.6 au (Maroulis) and Delta \
+alpha(O2) = 7.25 au (Hertz et al.) (p. 3); Ar is calibrated against the N2 alignment \
+signal recorded separately under the same conditions (p. 4). n2 measured in 1 bar at \
+room temperature (Table 1 caption; Fig. 1 caption); the higher orders in 100 mbar \
+(p. 4)."""
+notes = """The library copy is the authors' submitted manuscript ('Submitted to' on its \
+first pages; validation.json flags only the missing printed DOI). Its Table 2 values \
+divided by (j + 1) give exactly the published erratum's table (loriot_2010), so the \
+manuscript's numbers are those the erratum corrects.
+
+Defining equations (p. 3 and p. 5). Birefringence of the alignment: Delta n_rot = \
+(3 rho / (4 n0 eps0)) Delta alpha (<cos^2 theta> - 1/3) (Eq. 4). 'The instantaneous \
+Kerr effect produces a variation of the refractive index along the pump polarization \
+axis defined by n_kerr,par = n2 I'; with n_kerr,perp = n2 I / 3 the birefringence is \
+Delta n_kerr = (2/3) n2 I (p. 3, citing Boyd). The homodyne signal is fitted with Eq. \
+(5), S ~ I_pr (x) [Delta n_rot + (2/3) n2 I]^2, with a magnitude factor and n2 free. \
+At high intensity n_kerr,par = n2 I + n4 I^2 + ... + n10 I^5 and Delta n_(2j) = \
+2j/(2j + 1) n_(2j) I^j (the generalisation to j > 2 is the authors'; p. 5, Eq. 6). No \
+relation to chi(3) or gamma is used; I is the pump intensity in TW/cm^2.
+
+Convention of the printed n2: the paper presents it as the Kerr index n = n0 + n2 I, \
+but the signal is the index the probe sees because of the pump (cross-phase \
+modulation). The authors' erratum (loriot_2010, Opt. Express 18, 3011) states that the \
+coefficients of Eqs. (5) and (6) 'describe therefore the cross-Kerr refractive index \
+experienced by the probe beam' and that the single-beam (self) value is obtained by \
+'dividing each cross-Kerr coefficient n_2j ... by (j + 1)' (valid when intrapulse \
+alignment is negligible, below 2 % for N2 at 45 TW/cm^2). Loriot et al. 2011 \
+(loriot_2011, p. 7) repeat it: 'n2^cross = 2 x n2, with n2 the standard self-induced \
+Kerr index'. The printed values are therefore probe coefficients; the datasets n2_* \
+carry the erratum's self values through [[errata]] (the paper's own correction) and \
+are labelled coefficient = self. Wahlstrand et al. 2013 (Phys. Rev. A 87, 053801, \
+Table I) quote exactly the corrected values (Ar 10.0 +- 0.9, N2 11 +- 2, O2 16.0 +- 3.5 \
+x 10^-20 cm^2/W).
+
+Part. For N2 and O2 the rotational (alignment) contribution is separated by fitting \
+the computed alignment response (Eq. 5); what remains is the 'instantaneous \
+electronic' response of the abstract, which for 90 fs pulses also contains any \
+adiabatically following vibrational Raman part and, as Wahlstrand et al. 2013 (Table I \
+and p. 8) show, the effectively instantaneous rotational-grating contribution of a \
+degenerate pump-probe experiment (their corrected values are N2 8.4 +- 2.0 and O2 11.1 \
++- 3.5 x 10^-20 cm^2/W). They are recorded as part = instantaneous. Ar has no rotation: \
+part = electronic.
+
+Statistics (loriot_2011, p. 8): Table 1 results from 50, 30 and 8 records at low \
+intensity (effective I < 1 TW/cm^2) in N2, O2 and Ar. Uncertainty: 'two standard \
+deviations of the fitted values over a set of experimental records' (Table 2 caption; \
+the erratum repeats it); Table 1 prints the same values with no stated level (Ar 2.0 \
++- 0.2 against Table 2's 2.01 +- 0.19; air 2.4 +- 0.5 against 2.4 +- 0.6). The n2 of Table \
+2 is Table 1's (p. 5: 'We first consider the index n2 as a fixed parameter in Eq. (6) \
+with the values given in Table 1').
+
+State: '1 bar' (Table 1 caption), 'room temperature' (Fig. 1); the temperature is not \
+stated and 293.15 K is assumed here. Fig. 3 (and the erratum's Fig. 1) caption says \
+'room temperature and 1 atm'; the tables say 1 bar, which is used. Wavelength 800 nm, \
+medium not stated.
+
+Higher-order Kerr coefficients (notes only; there is no quantity for them). Table 2 \
+as printed (probe coefficients; units 10^-8 cm^4/TW^2, 10^-9 cm^6/TW^3, 10^-11 \
+cm^8/TW^4, 10^-13 cm^10/TW^5; 2 sigma): n4 N2 -0.16 +- 0.08, O2 -1.55 +- 0.16, Ar -0.11 +- \
+0.31, air -0.45 +- 0.9; n6 N2 0.56 +- 0.06, O2 1.9 +- 0.2, Ar 1.6 +- 0.2, air 0.84 +- 0.09; \
+n8 N2 -2.2 +- 0.2, O2 -10.5 +- 0.7, Ar -8.6 +- 0.5, air -4.0 +- 0.3; n10 (Ar only) 5.3 +- \
+0.3; I_inv (n_kerr,par = 0) N2 33, O2 19, Ar 26, air 26 TW/cm^2 (checked against the \
+table image). The erratum's self values are in loriot_2010. The claim (abstract, p. \
+5-6): the Kerr index saturates and becomes negative between 19 and 33 TW/cm^2 (the \
+erratum moves this to 25-43 TW/cm^2), so that the Kerr effect itself defocuses \
+filaments. Status: refuted. Wahlstrand et al. 2013 (wahlstrand_2013, abstract and \
+p. 8) reproduce the negative birefringence at high intensity as the plasma-grating \
+signal of a degenerate pump-probe experiment (at the paper's intensities, with the \
+intensity scaled by 1/1.7); Wahlstrand et al. 2012 (Phys. Rev. Lett. 109, 113904, \
+wahlstrand_2012b) find the response of He, Ne, Ar, Kr and Xe 'quadratic in the laser \
+field ... up to the ionization threshold', and Wahlstrand et al. 2018 (Phys. Rev. Lett. \
+120, 183901) find it 'approximately quadratic' beyond the ionization threshold in Ar, \
+Kr, Xe, N2 and O2. The higher-order coefficients are not to be used.
+
+Air is skipped (not a curated species): n2 2.4 +- 0.6 (Table 2), 2.4 +- 0.5 (Table 1), \
+Nibbering's 2.9 +- 0.4, 10^-7 cm^2/TW. The paper's comparison (p. 4): consistent with \
+Nibbering for N2, different for O2 and Ar; ref. 13 (Neogrady et al.) predicts 1.5-1.7 x \
+10^-7 cm^2/TW (gas not stated in the sentence)."""
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+file = "N2/loriot_2009__n2_N2.csv"
+table = "tbl_732962a00e08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 2 n2 row (= Table 1 'This work'), printed 2.2 +- 0.4 x 10^-7 cm^2/TW (the probe, cross-Kerr coefficient); the erratum's self value 1.1 +- 0.2 applied as errata. 1 bar; 293.15 K assumed (room temperature). Rotation fitted out; contains the rotational-grating part (see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+probe_nm = 800
+
+[[datasets]]
+id = "n2_O2"
+material = "O2"
+file = "O2/loriot_2009__n2_O2.csv"
+table = "tbl_732962a00e08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 2 n2 row (= Table 1 'This work'), printed 3.2 +- 0.7 x 10^-7 cm^2/TW (the probe, cross-Kerr coefficient); the erratum's self value 1.60 +- 0.35 applied as errata. 1 bar; 293.15 K assumed (room temperature). Rotation fitted out; contains the rotational-grating part (see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+probe_nm = 800
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+file = "Ar/loriot_2009__n2_Ar.csv"
+table = "tbl_732962a00e08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 2 n2 row, printed 2.01 +- 0.19 x 10^-7 cm^2/TW (the probe, cross-Kerr coefficient; Table 1 prints 2.0 +- 0.2); the erratum's self value 1.00 +- 0.09 applied as errata. Calibrated against the N2 alignment signal. 1 bar; 293.15 K assumed (room temperature)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 90
+probe_nm = 800
+
+[[datasets]]
+id = "nibbering_1997_N2"
+material = "N2"
+file = "N2/loriot_2009__nibbering_1997_N2.csv"
+table = "tbl_90188e88dc6d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table 1 row 'n2 (Ref [2])': Nibbering et al., J. Opt. Soc. Am. B 14, 650 (1997), quoted in Loriot's units and under Loriot's '1 bar' caption. Wahlstrand et al. 2012 (Table I) quote the same value as 23 +- 3 x 10^-20 cm^2/W (sigma 0.3, not 0.4, in these units). Use the nibbering_1997 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+
+[[datasets]]
+id = "nibbering_1997_O2"
+material = "O2"
+file = "O2/loriot_2009__nibbering_1997_O2.csv"
+table = "tbl_90188e88dc6d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table 1 row 'n2 (Ref [2])': Nibbering et al. (1997), quoted under Loriot's '1 bar' caption. Wahlstrand et al. 2012 quote 51 +- 7 x 10^-20 cm^2/W. Use the nibbering_1997 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+
+[[datasets]]
+id = "nibbering_1997_Ar"
+material = "Ar"
+file = "Ar/loriot_2009__nibbering_1997_Ar.csv"
+table = "tbl_90188e88dc6d"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table 1 row 'n2 (Ref [2])': Nibbering et al. (1997), quoted under Loriot's '1 bar' caption. Wahlstrand et al. 2012 quote 14 +- 2 x 10^-20 cm^2/W. Use the nibbering_1997 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[errata]]
+dataset = "n2_N2"
+row = "n2"
+column = "value"
+printed = "2.2"
+corrected = "1.1"
+reason = "The printed coefficient is the cross-Kerr index the probe sees (twice the self coefficient for n2), not the single-beam Kerr index n = n0 + n2 I the paper presents it as."
+evidence = "The authors' erratum, Opt. Express 18, 3011 (2010) (loriot_2010), Table 1: n2(N2) = 1.1 +- 0.2 x 10^-7 cm^2/TW, obtained by dividing each n_2j by (j + 1) (p. 1); checked on its table image. Also loriot_2011 p. 7 (n2^cross = 2 n2) and Wahlstrand et al. 2013 Table I (11 +- 2 x 10^-20 cm^2/W)."
+
+[[errata]]
+dataset = "n2_N2"
+row = "n2"
+column = "sigma"
+printed = "0.4"
+corrected = "0.2"
+reason = "The uncertainty of the cross-Kerr coefficient, halved with it."
+evidence = "loriot_2010 Table 1 (table image): 1.1 +- 0.2."
+
+[[errata]]
+dataset = "n2_O2"
+row = "n2"
+column = "value"
+printed = "3.2"
+corrected = "1.60"
+reason = "The printed coefficient is the cross-Kerr (probe) index, twice the self coefficient."
+evidence = "loriot_2010 Table 1 (table image): n2(O2) = 1.60 +- 0.35 x 10^-7 cm^2/TW; Wahlstrand et al. 2013 Table I quote 16.0 +- 3.5 x 10^-20 cm^2/W."
+
+[[errata]]
+dataset = "n2_O2"
+row = "n2"
+column = "sigma"
+printed = "0.7"
+corrected = "0.35"
+reason = "The uncertainty of the cross-Kerr coefficient, halved with it."
+evidence = "loriot_2010 Table 1 (table image): 1.60 +- 0.35."
+
+[[errata]]
+dataset = "n2_Ar"
+row = "n2"
+column = "value"
+printed = "2.01"
+corrected = "1.00"
+reason = "The printed coefficient is the cross-Kerr (probe) index, twice the self coefficient; 2.01 / 2 = 1.005, printed 1.00 in the erratum."
+evidence = "loriot_2010 Table 1 (table image): n2(Ar) = 1.00 +- 0.09 x 10^-7 cm^2/TW; Wahlstrand et al. 2013 Table I quote 10.0 +- 0.9 x 10^-20 cm^2/W."
+
+[[errata]]
+dataset = "n2_Ar"
+row = "n2"
+column = "sigma"
+printed = "0.19"
+corrected = "0.09"
+reason = "The uncertainty of the cross-Kerr coefficient, halved with it (0.095, printed 0.09)."
+evidence = "loriot_2010 Table 1 (table image): 1.00 +- 0.09."

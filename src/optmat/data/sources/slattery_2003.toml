@@ -1,0 +1,529 @@
+citation = "S. A. Slattery and D. N. Nikogosyan, Opt. Commun. 228, 127 (2003)"
+doi = "10.1016/j.optcom.2003.09.086"
+library = "Slattery_2003_TwoPhotonAbsorption"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Transmittance against irradiance at 211 nm (2-40 GW/cm2): the fifth \
+harmonic of a Twinkle Nd:glass laser (Light Conversion), made by non-collinear sum-\
+frequency mixing of 1055 and 264 nm pulses in a 0.2 mm BBO crystal, ~100 uJ at 27 Hz, \
+energy stability ~15 %; pulse duration 250 +- 20 fs taken from Dubietis et al. (same \
+laser system); Gaussian beam of 2.2 +- 0.1 mm FWHM (from aperture transmission), \
+focused by a 424 mm CaF2 lens, the sample always well before the focus (no self-\
+focusing or filamentation seen). Energies by Ophir PE10 detectors; the curves are \
+fitted with the theory of their Ref. [6] after correcting the focal shift in the \
+sample (Ref. [1], dragomir_2002). Room temperature. Low-intensity transmittance by an \
+HP8453 spectrophotometer."""
+notes = """Tables 1 and 2 (pp. 3-4) are transcribed in full; checked against the \
+images (the wrapped material names of Table 1 and the spanned material and E_g cells \
+of Table 2 are handled in the script). Total uncertainty of beta 'about 16 %' (p. 2); \
+the uncertainties are printed per value, level not stated.
+
+Samples (p. 3): 'two samples of Suprasil fused silica glass (Heraues [sic], Germany), \
+as well as samples of crystalline quartz (cut perpendicular to the optic axis), \
+calcium fluoride and barium fluoride (all from former Soviet Union, unknown \
+manufacturers)'. The quartz is printed '(||c)': light along the optic axis, so its \
+datasets are given axis 'o' (an inference). Its length, 1.380 cm, is that of the \
+quartz of dragomir_2002 (1.38 cm), probably the same sample. Table 1's lengths l (cm): \
+1.000, 1.005, 1.380, 0.250, 0.815 (kept in the printed column). The beta of fused silica \
+is one value for the two Suprasil samples.
+
+Definition: the paper does not write the propagation equation; it uses the theory and \
+fitting of its Refs. [1] and [6], i.e. dragomir_2002's dI/dz = -alpha I - beta I^2 with \
+(1 - R) at the entrance face (Eqs. 3-7 there): reflection losses are removed (Table 1's \
+(1 - R)^2) and alpha is Napierian (exp(-alpha l)). Table 1's alpha is 'experimentally \
+determined linear absorption coefficient alpha (at 211 nm, deduced from total \
+absorbance minus optical density, corresponding to the reflection losses, for details \
+see [1])'; the words absorbance and optical density are decadic, and the paper does not \
+say whether the difference was converted to a Napierian coefficient (a doubt; base 'e' \
+is recorded as in dragomir_2002).
+
+Table 1's refractive index is 'calculated from dispersion relations, given in [12]' \
+(Nikogosyan's handbook) and (1 - R)^2 is in per cent. For BaF2 and CaF2, (1 - R)^2 \
+follows from n with R = ((n - 1)/(n + 1))^2 (91.02 and 92.50, reproduced). For the \
+Suprasil samples n = 1.5275 gives 91.48, not the printed 91.23, which needs n = 1.537; \
+Malitson's formula (malitson_1965, Eq. 1) gives n = 1.5373 at 211 nm. For quartz \
+n = 1.6347 gives 88.73, not 88.57, which needs n = 1.641. The printed n of fused silica \
+and quartz is therefore inconsistent with the paper's own reflection loss (checked \
+2026-09-26); those two index datasets are excluded, the others reproduced.
+
+Reproductions (Table 2, 'Literature data for TPA coefficients together with our \
+results at 211 nm'; 'only picosecond and femtosecond data are considered'): [17] is \
+kittelmann_1994 (its Gaussian-profile values; the +- is 70 % of the value, Kittelmann's \
+50 % absolute plus 20 % relative), [20] taylor_1988 (the +- is 65 %, Taylor's 50 % + \
+15 %; CaF2's 0.8 is 8.3e-12 rounded), [1] dragomir_2002 (fused silica 1.7 +- 0.2 is \
+Dragomir's Suprasil, the smallest of its six glasses; quartz 1.2 +- 0.2), [18] Schenker \
+et al. 1995 and [19] Gurzadyan and Ispiryan 1992 (not in the library; footnote a: \
+'Only relative uncertainty is mentioned in publications'). The band gaps come from \
+[15] weinberg_1979 (fused silica 9.3 eV) and [16] eva_1996 (quartz ~9, BaF2 9.1, CaF2 \
+10 eV), which took them from weinberg_1979 and taylor_1988. The text (p. 4) says 'for \
+fused silica, crystalline quartz and BaF2 E_g is about 9 eV, and for CaF2 it equals 10 \
+eV'. The paper judges Kittelmann's 193 nm values for fused silica and BaF2 \
+'underestimated'. The abstract's range '26-59 x 10^-11 cm/W' is this work's."""
+
+[[datasets]]
+id = "index_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__index_SiO2.csv"
+table = "tbl_43ed8a53704c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["D. N. Nikogosyan, Properties of Optical and Laser-related Materials, A Handbook, Wiley, Chichester, 1997"]
+notes = "Table 1: 'calculated from dispersion relations, given in [12]'. Both samples 1.5275; inconsistent with the paper's own (1 - R)^2 = 91.23 %, which needs n = 1.537 (Malitson's formula gives 1.5373 at 211 nm); see the record's notes."
+[datasets.parameters]
+grade = "Suprasil"
+
+[[datasets]]
+id = "index_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__index_SiO2_quartz.csv"
+table = "tbl_43ed8a53704c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["D. N. Nikogosyan, Properties of Optical and Laser-related Materials, A Handbook, Wiley, Chichester, 1997"]
+notes = "Table 1: 'calculated from dispersion relations, given in [12]'. Inconsistent with the paper's own (1 - R)^2 = 88.57 %, which needs n = 1.641; see the record's notes. Axis 'o' inferred from '(||c)'."
+[datasets.parameters]
+axis = "o"
+
+[[datasets]]
+id = "index_BaF2"
+material = "BaF2"
+file = "BaF2/slattery_2003__index_BaF2.csv"
+table = "tbl_43ed8a53704c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. N. Nikogosyan, Properties of Optical and Laser-related Materials, A Handbook, Wiley, Chichester, 1997"]
+notes = "Table 1: 'calculated from dispersion relations, given in [12]'."
+
+[[datasets]]
+id = "index_CaF2"
+material = "CaF2"
+file = "CaF2/slattery_2003__index_CaF2.csv"
+table = "tbl_43ed8a53704c"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. N. Nikogosyan, Properties of Optical and Laser-related Materials, A Handbook, Wiley, Chichester, 1997"]
+notes = "Table 1: 'calculated from dispersion relations, given in [12]'."
+
+[[datasets]]
+id = "alpha_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__alpha_SiO2.csv"
+table = "tbl_43ed8a53704c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: 'deduced from total absorbance minus optical density, corresponding to the reflection losses' (spectrophotometer). Napierian base assumed from dragomir_2002's definition (a doubt; see the record's notes). Two Suprasil samples."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "Suprasil"
+
+[[datasets]]
+id = "alpha_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__alpha_SiO2_quartz.csv"
+table = "tbl_43ed8a53704c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: 'deduced from total absorbance minus optical density, corresponding to the reflection losses' (spectrophotometer). Napierian base assumed from dragomir_2002's definition (a doubt; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+axis = "o"
+
+[[datasets]]
+id = "alpha_BaF2"
+material = "BaF2"
+file = "BaF2/slattery_2003__alpha_BaF2.csv"
+table = "tbl_43ed8a53704c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: 'deduced from total absorbance minus optical density, corresponding to the reflection losses' (spectrophotometer). Napierian base assumed from dragomir_2002's definition (a doubt; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+
+[[datasets]]
+id = "alpha_CaF2"
+material = "CaF2"
+file = "CaF2/slattery_2003__alpha_CaF2.csv"
+table = "tbl_43ed8a53704c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1: 'deduced from total absorbance minus optical density, corresponding to the reflection losses' (spectrophotometer). Napierian base assumed from dragomir_2002's definition (a doubt; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+
+[[datasets]]
+id = "band_gap_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__band_gap_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["weinberg_1979"]
+notes = "Table 2: '9.3 [15]': weinberg_1979's gap of amorphous SiO2 from the field dependence of photoconductivity."
+[datasets.parameters]
+kind = "photoconductivity"
+
+[[datasets]]
+id = "band_gap_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__band_gap_SiO2_quartz.csv"
+table = "tbl_0a42752ea230"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["eva_1996"]
+notes = "Table 2: '≈9 [16]': eva_1996's approximate value, which it attributes to weinberg_1979."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_BaF2"
+material = "BaF2"
+file = "BaF2/slattery_2003__band_gap_BaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["eva_1996"]
+notes = "Table 2: '9.1 [16]': eva_1996's value, from taylor_1988."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_CaF2"
+material = "CaF2"
+file = "CaF2/slattery_2003__band_gap_CaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["eva_1996"]
+notes = "Table 2: '10 [16]': eva_1996's value (10.0), from taylor_1988."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "beta_211_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__beta_211_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2, 'This work'; also in the text (p. 4). One value for the two Suprasil samples."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 250
+grade = "Suprasil"
+
+[[datasets]]
+id = "beta_211_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__beta_211_SiO2_quartz.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2, 'This work'; also in the text (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 250
+axis = "o"
+
+[[datasets]]
+id = "beta_211_BaF2"
+material = "BaF2"
+file = "BaF2/slattery_2003__beta_211_BaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2, 'This work'; also in the text (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 250
+
+[[datasets]]
+id = "beta_211_CaF2"
+material = "CaF2"
+file = "CaF2/slattery_2003__beta_211_CaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2, 'This work'; also in the text (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 250
+
+[[datasets]]
+id = "kittelmann_1994_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__kittelmann_1994_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kittelmann_1994"]
+notes = "Table 2, [17]: kittelmann_1994's Gaussian-profile beta at 193 nm; the +- is 70 % of the value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 800
+
+[[datasets]]
+id = "kittelmann_1994_BaF2"
+material = "BaF2"
+file = "BaF2/slattery_2003__kittelmann_1994_BaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kittelmann_1994"]
+notes = "Table 2, [17]: kittelmann_1994's Gaussian-profile beta at 193 nm; the +- is 70 % of the value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 800
+
+[[datasets]]
+id = "kittelmann_1994_CaF2"
+material = "CaF2"
+file = "CaF2/slattery_2003__kittelmann_1994_CaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kittelmann_1994"]
+notes = "Table 2, [17]: kittelmann_1994's Gaussian-profile beta at 193 nm; the +- is 70 % of the value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 800
+
+[[datasets]]
+id = "schenker_1995_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__schenker_1995_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. Schenker, L. Eichner, H. Vaidya, S. Vaidya, P. Schermerhorn, D. Fladd, W. G. Oldham, Proc. SPIE 2428 (1995) 458"]
+notes = "Table 2, [18], 213 nm, pulse length printed '?'; footnote a: only a relative uncertainty in the original. Not in the library; dragomir_2002 Table 1 gives the fused-silica value as a range, 35-52."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "schenker_1995_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__schenker_1995_SiO2_quartz.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. Schenker, L. Eichner, H. Vaidya, S. Vaidya, P. Schermerhorn, D. Fladd, W. G. Oldham, Proc. SPIE 2428 (1995) 458"]
+notes = "Table 2, [18], 213 nm, pulse length printed '?'; footnote a: only a relative uncertainty in the original. Not in the library; dragomir_2002 Table 1 gives the fused-silica value as a range, 35-52."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "gurzadyan_1992_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__gurzadyan_1992_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. G. Gurzadyan, R. K. Ispiryan, Int. J. Nonl. Opt. Phys. 1 (3) (1992) 533"]
+notes = "Table 2, [19], 216 nm, 15 ps; footnote a: only a relative uncertainty in the original. Not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 15000000
+
+[[datasets]]
+id = "gurzadyan_1992_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__gurzadyan_1992_SiO2_quartz.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. G. Gurzadyan, R. K. Ispiryan, Int. J. Nonl. Opt. Phys. 1 (3) (1992) 533"]
+notes = "Table 2, [19], 216 nm, 15 ps; footnote a: only a relative uncertainty in the original. Not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 15000000
+
+[[datasets]]
+id = "taylor_1988_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__taylor_1988_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "Table 2, [20]: taylor_1988's beta at 248 nm; the +- is 65 % of the value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "taylor_1988_BaF2"
+material = "BaF2"
+file = "BaF2/slattery_2003__taylor_1988_BaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "Table 2, [20]: taylor_1988's beta at 248 nm; the +- is 65 % of the value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "taylor_1988_CaF2"
+material = "CaF2"
+file = "CaF2/slattery_2003__taylor_1988_CaF2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "Table 2, [20]: taylor_1988's beta at 248 nm; the +- is 65 % of the value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "dragomir_2002_SiO2"
+material = "SiO2"
+file = "SiO2/slattery_2003__dragomir_2002_SiO2.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dragomir_2002"]
+notes = "Table 2, [1]: dragomir_2002's beta at 264 nm (fused silica: its Suprasil value)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 220
+
+[[datasets]]
+id = "dragomir_2002_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/slattery_2003__dragomir_2002_SiO2_quartz.csv"
+table = "tbl_0a42752ea230"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dragomir_2002"]
+notes = "Table 2, [1]: dragomir_2002's beta at 264 nm (fused silica: its Suprasil value)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+pulse_fs = 220

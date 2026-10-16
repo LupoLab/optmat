@@ -1,0 +1,109 @@
+citation = "B. L. Henke, E. M. Gullikson and J. C. Davis, \"X-ray interactions: photoabsorption, scattering, transmission, and reflection at E = 50-30,000 eV, Z = 1-92\", At. Data Nucl. Data Tables 54, 181 (1993)"
+library = "Henke_1993_RayInteractionsPhotoabsorption"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "database"
+technique = """Semiempirical atomic scattering factors: a best-fit synthesis of measured \
+photoabsorption cross sections (10-10 000 eV, interpolated with Doolen and \
+Liberman's relativistic time-dependent LDA calculations at 10-1000 eV; Biggs and \
+Lighthill above 10 keV), converted to f2(0) = (pi/2) C E mu_a(E) (Eq. 77) and to \
+f1(0) = Z* + C int eps^2 mu_a(eps) d eps/(E^2 - eps^2) (Eq. 76, a modified \
+Kramers-Kronig relation, C = (pi r0 h c)^-1 = 0.9111 (eV A^2)^-1, Z* = Z - \
+(Z/82.5)^2.37, Eq. 78), pp. 201-202."""
+notes = """Identity: unverified by the library (its observed title is the scan's file \
+name); the scanned pdf's title page and running footer read 'X-RAY INTERACTIONS: \
+PHOTOABSORPTION, SCATTERING, TRANSMISSION, AND REFLECTION AT E = 50-30,000 eV, Z = \
+1-92', B. L. Henke, E. M. Gullikson and J. C. Davis, 'Atomic Data and Nuclear Data \
+Tables, Vol. 54, No. 2, July 1993', pp. 181-342 (pdf page N is journal page 180 + N; \
+the pdf has no text layer, the library text is OCR). No DOI in the library.
+
+This record holds no datasets: the package keeps CXRO's .nff files of these tables \
+(src/optmat/data/external/henke/, PROVENANCE.md) and the paper's 464 \
+tables are not extracted. What the tables contain (Table I, pp. 213-304, one page \
+per element Z = 1-92): at the energies of ~50 characteristic x-ray lines from H \
+Lyman-alpha 10.2 eV and He I 21.2 eV to 29 779 eV ('Line', E (eV), lambda (A)), the \
+photoabsorption cross section mu (cm^2/g), f1 and f2 (dimensionless, forward \
+scattering), with plots and the edge energies; f1 is printed only from about 72 eV \
+(the dispersion integral is evaluated for 50-30 000 eV); conversion factors mu_a \
+(b/atom) = mu x (A/N_A x 1e24) and E(keV) mu = f2 x const are printed per element. \
+Table II: incoherent scattering cross sections, Z = 2-18, 1-30 keV (p. 305); Tables \
+III-IV: mirror and crystal reflectivities (pp. 306-336). 'Computer files with finely \
+spaced tables of ... mu and of the atomic scattering factors f1(0) and f2(0) for Z = \
+1-92 and E = 50-30,000 eV are available from the authors' (p. 204): the origin of the \
+CXRO files.
+
+The optical relation (Eq. 3, p. 184, checked on the page image): 'n_r = 1 - delta - i \
+beta = 1 - (r0/2 pi) lambda^2 sum_q n_q f_q(0)', n_q the number of atoms of type q per \
+unit volume, with 'f = f1 + i f2' (Fig. 1 and Eq. 2, pp. 183-184) and r0 = e^2/(m c^2) \
+the classical electron radius; so n = 1 - r_e lambda^2 N (f1 + i f2)/(2 pi): delta = \
+r_e lambda^2 N f1/(2 pi) and beta = r_e lambda^2 N f2/(2 pi), both positive for an \
+absorbing medium, n = 1 - delta - i beta. The package's PROVENANCE.md writes n = 1 - \
+r_e lambda^2 N (f1 - i f2)/(2 pi), the opposite sign of the imaginary part (the n = 1 \
+- delta + i beta convention of an exp(-i omega t) time dependence, as on CXRO's web \
+pages): the magnitudes agree, the sign convention does not follow the paper.
+
+Validity (quoted): atoms scatter independently, 'a good assumption for photon energies \
+above about 50 eV and which are sufficiently outside the absorption threshold regions' \
+(p. 183); 'f1 cannot be defined by Eq. (76) as an \"atomic\" scattering factor for \
+photon energies near the absorption edges' (neglect of damping, condensed-matter \
+threshold structure; p. 201); 'photoabsorption within condensed matter is indeed \
+atomic-like above about 50 eV except in the energy regions near absorption thresholds' \
+(p. 202). The tabulated range is 50-30 000 eV (f2 also below 50 eV, from 10 eV).
+
+Comparison with the package's .nff files (2026-09-24; paper values from the library \
+tables tbl_ba3aa8cd984a He p. 214, tbl_6d4aad08e4c2 Ne p. 222, tbl_a9ecc4b5c66d Ar p. \
+230, tbl_ad86e348703a Kr p. 248, tbl_dfb608127b3a Xe p. 266, identified by Z, their \
+conversion factors and edges; .nff values interpolated, f1 linearly, f2 log-log), paper \
+f1/f2 vs .nff f1/f2 at the table's line energies: \
+He 91.5 eV 2.20/0.694 vs 2.203/0.694; 108.5 eV 2.23/0.536 vs 2.228/0.536; 524.9 eV \
+2.04/0.0227 vs 2.039/0.0227; 1011.7 eV 2.01/0.00546 vs 2.013/0.00546. \
+Ne 91.5 eV 5.63/6.04 vs 5.633/6.036; 108.5 eV 6.91/5.53 vs 6.916/5.528; 524.9 eV \
+8.38/0.650 vs 8.384/0.650; 1011.7 eV (above the K edge) 8.60/3.62 vs 8.600/3.618. \
+Ar 91.5 eV 6.12/1.82 vs 6.052/1.816; 108.5 eV 6.19/1.90 vs 6.128/1.900; 524.9 eV \
+16.11/8.03 vs 16.145/8.039; 1011.7 eV 17.67/3.12 vs 17.672/3.118. \
+Kr 91.5 eV 1.52/5.41 vs -0.92/5.67 (at the 3d edge); 108.5 eV 4.76/2.42 vs \
+4.955/2.417; 524.9 eV 26.27/12.84 vs 26.300/12.84; 1011.7 eV 28.50/5.71 vs \
+28.543/5.714. \
+Xe 91.5 eV -2.61/32.92 vs -2.59/32.95; 108.5 eV 22.31/37.99 vs 22.34/38.06; 524.9 eV \
+17.94/7.21 vs 17.948/7.205; 1011.7 eV 35.16/29.25 vs 35.162/29.25. \
+At 49.3 eV (f2 only in the paper): He 1.51 vs 1.507, Ne 5.25 vs 5.247, Ar 0.63 vs \
+0.631, Kr 1.21 vs 1.213, Xe 0.98 vs 0.975. \
+So the .nff files reproduce the 1993 tables to the printed digits for He and Ne at \
+every energy, and for all five gases above 500 eV (0.2 %) and in f2 everywhere except \
+Kr at its 3d edge; f1 differs by 1.1 % for Ar at 90-110 eV and by 4 % for Kr at 108.5 \
+eV, and near the Kr 3d edge (91.5 eV) the files and the paper disagree outright - the \
+region the paper itself calls unreliable, and where the CXRO files have been revised \
+since 1993 (PROVENANCE.md: 'as updated by CXRO').
+
+COMPOUNDS (2026-09-26). The optical constants of a compound follow from its \
+atoms' forward scattering factors weighted by their number densities, Eq. (3), p. 184, \
+and Eqs. (17)-(18), p. 187: 'delta ~ (r0 lambda^2/(2 pi d)) M F_1(0) = (r0 lambda^2/(2 pi)) \
+sum_q n_q f_1q(0)', 'beta ~ (r0 lambda^2/(2 pi d)) M F_2(0) = (r0 lambda^2/(2 pi)) sum_q \
+n_q f_2q(0)', n_q the atoms of type q per unit volume (for SiO2 of density rho: n_Si = \
+rho N_A/M_SiO2, n_O = 2 n_Si), and the linear absorption coefficient Eq. (44): \
+mu_l = 4 pi beta/lambda = 2 r0 lambda sum_q n_q f_2q(0) = sum_q n_q mu_aq (p. 192). So n = 1 - delta \
+and k = beta. The atoms are assumed to scatter independently: no chemical, molecular \
+or solid-state effects (valid above ~50 eV away from edges, p. 183).
+
+MIRROR REFLECTIVITIES OF SiO2 AND Al2O3 (Table III, 'Specular Reflectivity for Mirrors', \
+p. 309 'Aluminum Oxide (Al2O3), rho = 3.96 gm/cm3', library table tbl_8ba35ae7a438; p. \
+310 'Quartz (SiO2), rho = 2.20 gm/cm3', tbl_54a15c06ece9; both JSON only). Each gives P(%) \
+= 100 I(theta)/I_0 for unpolarized radiation (Eqs. (54)-(57), p. 193: I_sigma/I_0 = \
+[rho^2 (sin theta - rho)^2 + beta^2]/[rho^2 (sin theta + rho)^2 + beta^2], I_pi/I_sigma = \
+[rho^2 (rho - cos theta cot theta)^2 + beta^2]/[rho^2 (rho + cos theta cot theta)^2 + \
+beta^2], rho^2 = (1/2)[sin^2 theta - 2 delta + sqrt((sin^2 theta - 2 delta)^2 + 4 \
+beta^2)], I = I_sigma (1 + I_pi/I_sigma)/2), for ideally smooth semi-infinite mirrors, at \
+10 grazing angles (5, 10, 15, 20, 30, 50, 80, 125, 200, 400 mrad) and 35 line energies \
+(72.4 eV Al L2,3 to 29 779.0 eV Xe K-alpha): 350 values per material (explanation of \
+tables, p. 212). The extracted cells agree with both table images (checked \
+2026-09-26). The SiO2 table is labelled 'Quartz' but its density, 2.20 g/cm3, is that of \
+silica glass (crystal quartz is 2.65), so it describes SiO2 (fused), not SiO2_quartz; \
+Al2O3's 3.96 g/cm3 is sapphire's density, treated as isotropic.
+CHECK (scratch computation, 2026-09-26): Eq. (3) with the atoms' f1, f2 from Table I \
+(Si p. 226, tbl_e09b8ca8e558; O p. 220, tbl_c7ba4535a7ab; Al p. 225) at C, Al, Ti, Cu and \
+Mo K-alpha, and Eqs. (54)-(57), reproduce all 50 printed values per material at those \
+five energies to 0.3 % (to 1.1 % at C K-alpha, 125-400 mrad, where f1 and f2 are printed \
+to 3-4 digits); e.g. SiO2 at 8047.8 eV, 5 mrad: 4.32 % computed and printed.
+NOT EXTRACTED: the vocabulary has no quantity for a reflectance (with the grazing \
+angle and polarization as parameters), so these 700 values are recorded only here \
+(TC-385). The other eight mirrors (Be, C, Al, Ni, Cu, Mo, Pt, Au) are not in the list \
+requested."""

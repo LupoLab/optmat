@@ -1,0 +1,68 @@
+citation = "A. Scrinzi, M. Geissler and T. Brabec, \"Ionization Above the Coulomb Barrier\", Phys. Rev. Lett. 83, 706 (1999)"
+doi = "10.1103/PhysRevLett.83.706"
+library = "Scrinzi_1999_IonizationAboveCoulomb"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Static-field ionisation rates from the complex-scaling method: the \
+coordinates of the full two-electron Hamiltonian (Eq. (1), dipole approximation, Z = \
+2 for He; one electron, Z = 1, for H) are multiplied by e^(i theta), and 'the resulting \
+non-Hermitian Hamiltonian has complex eigenvalues, whose imaginary parts give one-half \
+of the ionization rate'; eigenvalues found variationally, in an explicitly correlated \
+basis for He (Scrinzi & Piraux, Phys. Rev. A 58, 1310 (1998)) and finite elements for \
+H. The time-dependent Schrodinger equation of H (velocity gauge, Laguerre expansion, \
+complex-scaling boundary) for the quasistatic test (pp. 706-707)."""
+notes = """Journal pp. 706-709 = PDF pages 1-4. Identity checked on the first page.
+
+EXTRACTED: Table I (p. 708, tbl_695d85562032, image checked), 'Static field ionization \
+rates from the ground state of He in atomic units', w against E, 60 fields from 0.08 to \
+1.70 au: one dataset. The rate is the full two-electron atom's total rate, Gamma = -2 \
+Im(E) of the complex-scaled resonance (p. 707), per atom (not per electron). 'The \
+numerical data is accurate to at least two digits' (caption): recorded here, not as a \
+dataset uncertainty (the statement is a lower bound on the precision, without a level). \
+The caption's conversions: 1 au of time = 2.419 x 10^-17 s, 1 au of field = 5.142 x \
+10^11 V/m.
+
+STRUCTURAL FIX (script): the extracted cells read '0.463 3 1027' for '0.463 x 10^-7' \
+(the multiplication sign and the minus sign lost); the image confirms each factor, and \
+the script rewrites the cells as 0.463e-7.
+
+REPRINTS (re-pointed, identical): parker_2009/table1_scrinzi_1999 (15 fields, 0.08-0.40 \
+au) and majety_2015/table1_scrinzi_1999_He (11 fields, 0.08-0.20 au) reprint this \
+table's values to the printed three digits (checked 2026-09-27: every reprinted value \
+equals Table I's, e.g. 0.463e-7 = 4.63e-8 at 0.08 au, 0.977e-1 = 9.77e-2 at 0.40 au).
+
+TEXT (pp. 707-708): for H, the ADK rate is within 20 % of the exact one below the \
+barrier-suppression field E_bs = I_p^2/4 (1/16 au for H) and 'strongly overestimates' \
+above it; for He, 'in the tunneling regime we find reasonable agreement between the \
+numerical and analytical results within about 30%', and 'In the barrier suppression \
+regime ionization is less than predicted by the ADK theory' (Fig. 1, figure only). The \
+quasistatic approximation holds for H (5 fs sech pulses at 800 nm and wavelengths 1-0.25 \
+um at fixed tau omega_0; the text's 'mm' is um) above E_qs ~ 0.1 au, where the TDSE and \
+the quasistatic yields differ by less than 5 % (Fig. 2): 0.5 < gamma_qs < 2. \
+gamma_bs = 16 omega_0/(2 I_p)^(3/2) (p. 707); about 0.05 at 10 um, 0.5-2 in the UV to \
+near infrared. Fig. 3: the He harmonic cutoff against pulse duration (800 nm) from \
+Table I and from ADK; ADK underestimates it by 40 % for a single-cycle pulse (p. 708).
+
+FIGURES (not digitised): Fig. 1, static rates of H and He against field (numerical and \
+ADK); Fig. 2, H ionisation yield against peak field (TDSE and quasistatic); Fig. 3, the \
+He cutoff harmonic against pulse duration."""
+
+[[datasets]]
+id = "table1_He"
+material = "He"
+file = "He/scrinzi_1999__table1_He.csv"
+table = "tbl_695d85562032"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = """Table I, p. 708: the static-field ionisation rate of the He ground state (the \
+whole atom, both electrons; Gamma = -2 Im E of the complex-scaled resonance), fields \
+0.08-1.70 au. 'Accurate to at least two digits' (caption; record notes). Converged \
+correlated two-electron calculation: the first accurate He rates, per the authors \
+(p. 706)."""
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional complex scaling (explicitly correlated two-electron basis)"

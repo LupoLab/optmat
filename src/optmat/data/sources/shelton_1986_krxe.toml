@@ -1,0 +1,363 @@
+citation = "D. P. Shelton, J. Chem. Phys. 84, 404 (1986)"
+doi = "10.1063/1.450152"
+library = "Shelton_1986_HyperpolarizabilityDispersionMeasured_5d296f"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Gas-phase electric-field-induced second-harmonic generation (ESHG) with \
+periodic phase matching (electrode spacing 2.69 mm, phase-match pressures 0.4-6 atm), \
+cw dye or argon-ion laser at 650.0, 590.0, 514.5 and 488.0 nm; Kr and Xe measured \
+against Ar; densities from pressure and temperature by the virial equation of state \
+(Dymond and Smith); refractive indices at phase match from tables (Bogaard and Orr; \
+Leonard 1974) (p. 405)."""
+notes = """No datasets: the paper reports only hyperpolarizability data, the ratios \
+gamma_Kr/gamma_Ar and gamma_Xe/gamma_Ar (Table I, 'accuracy of the ratios is about \
++-0.3 %', p. 405), the absolute gamma_Kr, gamma_Xe calibrated on gamma_Ar/gamma_He \
+(Eq. (7), from Mizrahi and Shelton 1985) and Sitz and Yaris's gamma_He (Eq. (8)), and \
+other processes' gamma values (Table II). The phase-match densities, which carry the \
+linear dispersion, are neither tabulated nor quoted, and no density ratio or coherence \
+length is given. The refractive indices used (from Leonard 1974 = leonard_1974, and \
+Bogaard and Orr) only enter a small local-field correction.
+
+Not extracted (third-order susceptibility, for later): Table I, gamma_Kr/gamma_Ar = \
+2.359(6), 2.402(11), 2.477(7), 2.502(7) and gamma_Xe/gamma_Ar = 6.761(26), 7.128(21), \
+7.704(29), 7.958(30) at 650.0, 590.0, 514.5, 488.0 nm; the fits gamma = A[1 + B nu^2], Kr A = \
+1.397e-61 C^4 m^4 J^-3, B = 18.93e-10 cm^2; Xe A = 2.999e-61, B = 39.44e-10 cm^2 (Figs. 1, \
+2 captions).
+
+THIRD-ORDER DATA (added 2026-09-26; supersedes "No datasets" and "Not \
+extracted" above). Theory (pp. 404-405): the single-resonance model gamma_zzzz(-omega_s; \
+omega_1, omega_2, omega_3) = hbar^-3 K(-omega_s; omega_1, omega_2, omega_3) {S_1 P_1 - \
+S_2 P_2} (Eq. 2), K the process factor, giving gamma(-omega_s; ...) = gamma(0; 0, 0, 0) \
+[1 + C (omega_L/omega_0)^2 + ...] (Eq. 5) with omega_L^2 = omega_s^2 + omega_1^2 + \
+omega_2^2 + omega_3^2 (Eq. 4): relative dispersion dc Kerr : ESHG : THG = 1 : 3 : 6 (p. \
+407; Sitz & Yaris's He gives 1 : 3.1 : 6.1). gamma is the zzzz ESHG gamma of Shelton's \
+series (Taylor convention, SI C^4 m^4 J^-3), on the old He calibration (Sitz & Yaris; \
+Eq. 8 converts with 1 au = 6.2353e-65 C^4 m^4 J^-3, against 6.2360e-65 in \
+shelton_1986_co2). Parts: atoms, electronic. 'The dispersion of gamma is large, \
+yielding an optical hyperpolarizability about twice as large as the static value' \
+(p. 406). Datasets: Table I ratios (check) and absolute gammas (primary), Table II other \
+processes (reproduced), and Lehmeier's THG values from the note added in proof. The \
+fits (formulas) are against nu^2 of the fundamental, not nu_L^2."""
+
+[[datasets]]
+id = "gamma_Kr_over_Ar"
+material = "Kr"
+file = "Kr/shelton_1986_krxe__gamma_Kr_over_Ar.csv"
+table = "tbl_c9d92892bdc1"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I (p. 405): gamma_Kr/gamma_Ar by ESHG, zzzz component, as printed; 'The uncertainty of the last digits is given in parentheses' (caption), turned into the sigma column; 'The accuracy of the ratios is about +-0.3%' (p. 405). Ratio by Eq. (6): gamma_A/gamma_B = (S_A/S_B)^(1/2) (rho_A n_A / rho_B n_B)^-1. The raw measurement behind gamma_Kr."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_Kr"
+material = "Kr"
+file = "Kr/shelton_1986_krxe__gamma_Kr.csv"
+table = "tbl_c9d92892bdc1"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table I (p. 405): gamma_Kr in 1e-61 C^4 m^4 J^-3 at 650.0, 590.0, 514.5, 488.0 nm (air), note a: 'Obtained using Refs. 15 and 18', i.e. calibrated through Mizrahi & Shelton's gamma_Ar/gamma_He = 25.85 [1 + 7.11e-10 nu^2] (Eq. 7, mizrahi_1985_arn2o2) and Sitz & Yaris's gamma_He = 42.6 au [1 + 2.94e-10 nu^2] (Eq. 8, 1 au = 6.2353e-65 C^4 m^4 J^-3), nu the fundamental in cm^-1; 'An uncertainty of +-0.4% due to the gamma_Ar/gamma_He calibration' is included, the ~1 % of gamma_He is not (p. 406). Parenthesised last-digit uncertainties as sigma. shelton_1990 Table III(b) reproduces these on the new He calibration (e.g. 204.6e-63 against 2.024e-61 at 650.0 nm)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_Xe_over_Ar"
+material = "Xe"
+file = "Xe/shelton_1986_krxe__gamma_Xe_over_Ar.csv"
+table = "tbl_c9d92892bdc1"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I (p. 405): gamma_Xe/gamma_Ar by ESHG, zzzz component, as printed; 'The uncertainty of the last digits is given in parentheses' (caption), turned into the sigma column; 'The accuracy of the ratios is about +-0.3%' (p. 405). Ratio by Eq. (6): gamma_A/gamma_B = (S_A/S_B)^(1/2) (rho_A n_A / rho_B n_B)^-1. The raw measurement behind gamma_Xe."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_Xe"
+material = "Xe"
+file = "Xe/shelton_1986_krxe__gamma_Xe.csv"
+table = "tbl_c9d92892bdc1"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table I (p. 405): gamma_Xe in 1e-61 C^4 m^4 J^-3 at 650.0, 590.0, 514.5, 488.0 nm (air), note a: 'Obtained using Refs. 15 and 18', i.e. calibrated through Mizrahi & Shelton's gamma_Ar/gamma_He = 25.85 [1 + 7.11e-10 nu^2] (Eq. 7, mizrahi_1985_arn2o2) and Sitz & Yaris's gamma_He = 42.6 au [1 + 2.94e-10 nu^2] (Eq. 8, 1 au = 6.2353e-65 C^4 m^4 J^-3), nu the fundamental in cm^-1; 'An uncertainty of +-0.4% due to the gamma_Ar/gamma_He calibration' is included, the ~1 % of gamma_He is not (p. 406). Parenthesised last-digit uncertainties as sigma. shelton_1990 Table III(b) reproduces these on the new He calibration (e.g. 586.5e-63 against 5.800e-61 at 650.0 nm)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table2_Kr_dc_kerr"
+material = "Kr"
+file = "Kr/shelton_1986_krxe__table2_Kr_dc_kerr.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note b: gamma(-omega; omega, 0, 0), omega_L^2 = 2 omega^2, 'from Ref. 19' (Buckingham & Dunmur, cited as Trans. Faraday Soc. 64, 1176 (1968); the paper is on p. 1776 = buckingham_1968), 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table2_Xe_dc_kerr"
+material = "Xe"
+file = "Xe/shelton_1986_krxe__table2_Xe_dc_kerr.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note b: gamma(-omega; omega, 0, 0), omega_L^2 = 2 omega^2, from Ref. 19 (buckingham_1968; cited with page 1176 for 1776), 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table2_Kr_cars"
+material = "Kr"
+file = "Kr/shelton_1986_krxe__table2_Kr_cars.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note c: gamma(-2 omega_1 + omega_2; omega_1, omega_1, -omega_2), omega_L^2 = 4 omega_1^2 + 2 (omega_1 - omega_2)^2, from Ref. 10 (Lundeen et al. 1983), pump 532 nm, Stokes 683 nm (the abscissa is the pump). FWM 'is referenced to the N2 Raman Q-branch intensity' (p. 406)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "electronic"
+stokes_nm = 683.0
+
+[[datasets]]
+id = "table2_Kr_eshg"
+material = "Kr"
+file = "Kr/shelton_1986_krxe__table2_Kr_eshg.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["R. S. Finn and J. F. Ward, Phys. Rev. Lett. 26, 285 (1971)"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note d: gamma(-2 omega; omega, omega, 0), omega_L^2 = 6 omega^2, from Ref. 20 (Finn & Ward 1971), 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table2_Xe_eshg"
+material = "Xe"
+file = "Xe/shelton_1986_krxe__table2_Xe_eshg.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["R. S. Finn and J. F. Ward, Phys. Rev. Lett. 26, 285 (1971)"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note d: ESHG from Ref. 20 (Finn & Ward 1971), 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table2_Kr_thg"
+material = "Kr"
+file = "Kr/shelton_1986_krxe__table2_Kr_thg.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note e: gamma(-3 omega; omega, omega, omega), omega_L^2 = 12 omega^2, from Ref. 21 (Ward & New 1969), 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table2_Xe_thg"
+material = "Xe"
+file = "Xe/shelton_1986_krxe__table2_Xe_thg.csv"
+table = "tbl_e36736d86d09"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table II (p. 406): 'Hyperpolarizabilities of Kr and Xe measured by several nonlinear optical processes', 1e-61 C^4 m^4 J^-3, note a: 'Conversion factor 1 esu = 6 x 10^9/c^4 = 7.4279 x 10^-25 C^4 m^4 J^-3 has been used, where the extra factor of 6 converts from susceptibility to hyperpolarizability' (Ward's per-molecule esu chi = gamma/6). Reproduced (converted by the author). Note e: THG from Ref. 21 (Ward & New 1969), 694.3 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_thg_lehmeier_Kr"
+material = "Kr"
+points = [
+    ["Lehmeier et al.", "1055", "1.74", "0.17"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["lehmeier_1985"]
+notes = "Note added in proof (p. 407): 'The recent, accurate THG measurements by H. J. Lehmeier et al. [Opt. Commun. 56, 67 (1985)], give gamma_Kr = 1.74 +- 0.17 x 10^-61 C^4 m^4 J^-3 and gamma_Xe = 5.11 +- 0.51 x 10^-61 C^4 m^4 J^-3 at lambda = 1.055 um, in good agreement with the predicted dispersion curves'. Lehmeier's values converted by the author to this gamma (the conversion is not stated; Lehmeier's own chi is defined with P = 4 eps0 chi E^3, see lehmeier_1985). Medium of 1.055 um not stated (air assumed, as the other lines)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_thg_lehmeier_Xe"
+material = "Xe"
+points = [
+    ["Lehmeier et al.", "1055", "5.11", "0.51"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-61
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["lehmeier_1985"]
+notes = "Note added in proof (p. 407): 'The recent, accurate THG measurements by H. J. Lehmeier et al. [Opt. Commun. 56, 67 (1985)], give gamma_Kr = 1.74 +- 0.17 x 10^-61 C^4 m^4 J^-3 and gamma_Xe = 5.11 +- 0.51 x 10^-61 C^4 m^4 J^-3 at lambda = 1.055 um, in good agreement with the predicted dispersion curves'. Lehmeier's values converted by the author to this gamma (the conversion is not stated; Lehmeier's own chi is defined with P = 4 eps0 chi E^3, see lehmeier_1985). Medium of 1.055 um not stated (air assumed, as the other lines)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+
+
+[[formulas]]
+id = "gamma_fit_Kr"
+material = "Kr"
+equation = "Fig. 1 caption, p. 405"
+printed = "gamma = A[1 + B nu^2]; A = 1.397 x 10^-61 C^4 m^4 J^-3 and B = 18.93 x 10^-10 cm^2, where nu is given in cm^-1"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2; for ESHG nu_L^2 = 6 nu^2)"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "488.0-650.0 nm (Table I)"
+coefficients = { A = "1.397e-61", B = "18.93e-10" }
+coefficient_units = { A = "C^4 m^4 J^-3", B = "cm^2" }
+calibration = "old He (Sitz & Yaris) via Ar (Eqs. 7, 8)"
+check = "Gives 2.023 at 650.0 nm (15380 cm^-1) and 2.507 at 488.0 nm (20487 cm^-1) against 2.024 +- 0.010 and 2.506 +- 0.012. Checked 2026-09-26."
+notes = "Least-squares straight line against nu^2. Superseded by shelton_1990 Table IV (162.1e-63, A = 1.389e-10, B = 3.465e-20 against nu_L^2)."
+
+[[formulas]]
+id = "gamma_fit_Xe"
+material = "Xe"
+equation = "Fig. 2 caption, p. 406"
+printed = "gamma = A[1 + B nu^2]; A = 2.999 x 10^-61 C^4 m^4 J^-3 and B = 39.44 x 10^-10 cm^2, where nu is given in cm^-1"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2)"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "488.0-650.0 nm (Table I)"
+coefficients = { A = "2.999e-61", B = "39.44e-10" }
+coefficient_units = { A = "C^4 m^4 J^-3", B = "cm^2" }
+calibration = "old He (Sitz & Yaris) via Ar (Eqs. 7, 8)"
+check = "Gives 5.797 at 650.0 nm and 7.964 at 488.0 nm against 5.800 +- 0.032 and 7.970 +- 0.044. Checked 2026-09-26."
+notes = "Least-squares straight line against nu^2; its intercept (3.0e-61 = 4810 au) is the 'visible-only linear fit' static value that is too low (shelton_1990's refit with 1064 and 1319 nm gives 429.5e-63 = 6888 au)."
+
+[[formulas]]
+id = "calibration_Ar_over_He"
+material = "Ar"
+equation = "Eq. (7), p. 406"
+printed = "gamma_Ar/gamma_He = 25.85 [1 + (7.11 x 10^-10 cm^2) nu^2]"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "'Over the range of frequencies employed in the present measurements' (488-650 nm)"
+coefficients = { ratio0 = "25.85", B = "7.11e-10" }
+coefficient_units = { ratio0 = "1", B = "cm^2" }
+reproduced_from = ["mizrahi_1985_arn2o2"]
+check = "Not checked against mizrahi_1985_arn2o2 here."
+notes = "From Ref. 15 (Mizrahi & Shelton, Phys. Rev. Lett. 55, 696 (1985)). Eq. (8), gamma_He = 42.6 au [1 + 2.94e-10 cm^2 nu^2], is the same Sitz & Yaris line as shelton_1986_co2's calibration_He, but converted here with 1 au = 6.2353e-65 C^4 m^4 J^-3."

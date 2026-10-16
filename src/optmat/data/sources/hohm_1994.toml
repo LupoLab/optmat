@@ -1,0 +1,229 @@
+citation = "U. Hohm, \"Dispersion of polarizability anisotropy of H2, O2, N2O, CO2, NH3, C2H6, and cyclo-C3H6 and evaluation of isotropic and anisotropic dispersion-interaction energy coefficients\", Chem. Phys. 179, 533 (1994)"
+doi = "10.1016/0301-0104(94)87028-4"
+library = "Hohm_1994_DispersionPolarizabilityAnisotropy"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A two-term sum-over-states model of the parallel and perpendicular \
+polarizabilities (Eqs. 4-5, four parameters f_par, f_perp, omega_par^2, omega_perp^2) \
+fitted by least squares (Eq. 13, relative residuals) to N = 4-5 mean polarizabilities \
+measured in the author's laboratory by refractometry at 632.99-325.13 nm and M = 1-5 \
+Rayleigh depolarization ratios from the literature at 647.1-457.9 nm (p. 536)."""
+notes = """Page numbers are the journal's (533-541; pdf page 1 = p. 533). Atomic units \
+throughout (p. 535): 1 au of polarizability = 1.648778e-41 C^2 m^2 J^-1.
+
+Mean polarizabilities (Table 2, input rows): 'whose frequency dependence is determined \
+in our laboratory with very high precision (Delta alpha(omega)/alpha(omega) ~ 10^-5 \
+with respect to a reference value alpha(omega_1)) in the frequency range between omega = \
+0.07198 au (632.99 nm) and omega = 0.1401 au (325.13 nm)' (p. 536); from the free-molecule \
+limit of the Lorentz-Lorenz function (Eq. 6). The absolute accuracy of the reference \
+value alpha(omega_1) is not stated here; the same laboratory's apparatus gives |Delta \
+alpha/alpha| < 1e-3 (hohm_1990, p. 809), used as the datasets' scale uncertainty. The \
+column wavelengths are those of the table's note a), vacuum (632.990 nm with 0.0719812 \
+au). The measurement temperature is not stated (room temperature presumably).
+
+Sources of the inputs (note b-d): H2, ref. [33] 'U. Hohm, unpublished results', so this \
+paper is their first publication (primary here); O2, N2O and CO2, ref. [29] 'U. Hohm, \
+Mol. Phys. (1993); in press', published as U. Hohm, Mol. Phys. 81, 157 (1994) \
+(hohm_1994b), whose Table 1 rows (b, this work) these inputs are, digit for digit \
+(checked 2026-09-26): reproductions, not fitted beside the original. The original \
+prints an absolute uncertainty of the last digits (O2 0.0013, N2O 0.0015, CO2 0.0013 \
+au, level not stated, the same at every wavelength) and the gas temperatures (292.06, \
+295.05, 293.80 K), which this paper omits; the 1e-5 relative figure quoted below is \
+this paper's statement of the dispersion's precision.
+
+Accuracy of the fit (p. 537): 'the mean dipole polarizabilities alpha(omega) are correct \
+to 0.5% in the range between omega = 0 and omega = 0.2 au' (by comparison with Meath's \
+DOSD values); kappa(omega) to 3 %. Table 1's caption: Delta f/f ~ 0.05 %, Delta \
+omega^2/omega^2 ~ 0.1 %, 'more figures are given in order to reproduce the input data \
+correctly'. The two-term form 'cannot account correctly for the Schumann-Runge band of \
+O2' (p. 540), which makes its C6 10-20 % low.
+
+Not extracted: the depolarization ratios (100 rho, Table 2; for the anisotropies later), \
+the kappa(omega) dispersion (Figs. 2-3), the C6, C6', C6'' coefficients (Tables 3-5), \
+and NH3, C2H6, cyclo-C3H6 (not curated species)."""
+
+[[datasets]]
+id = "input_H2"
+material = "H2"
+file = "H2/hohm_1994__input_H2.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2 (p. 537), H2 input row (ref. [33], unpublished results of the author): 632.990-325.130 nm."
+[datasets.uncertainty]
+relative = 1e-5
+level = "not stated"
+systematic_relative = 0.001
+
+[[datasets]]
+id = "input_O2"
+material = "O2"
+file = "O2/hohm_1994__input_O2.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["hohm_1994b"]
+notes = "Table 2, O2 input row: ref. [29] 'U. Hohm, Mol. Phys. (1993); in press', published as hohm_1994b; digit-identical to hohm_1994b/alpha_O2 (Table 1 there, which also gives the temperature and an absolute uncertainty of the last digits). A reproduction: not fitted beside the original."
+[datasets.uncertainty]
+relative = 1e-5
+level = "not stated"
+systematic_relative = 0.001
+
+[[datasets]]
+id = "input_N2O"
+material = "N2O"
+file = "N2O/hohm_1994__input_N2O.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["hohm_1994b"]
+notes = "Table 2, N2O input row (no value at 611.971 nm): ref. [29] 'U. Hohm, Mol. Phys. (1993); in press', published as hohm_1994b; digit-identical to hohm_1994b/alpha_N2O (Table 1 there, which also gives the temperature and an absolute uncertainty of the last digits). A reproduction: not fitted beside the original."
+[datasets.uncertainty]
+relative = 1e-5
+level = "not stated"
+systematic_relative = 0.001
+
+[[datasets]]
+id = "input_CO2"
+material = "CO2"
+file = "CO2/hohm_1994__input_CO2.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["hohm_1994b"]
+notes = "Table 2, CO2 input row: ref. [29] 'U. Hohm, Mol. Phys. (1993); in press', published as hohm_1994b; digit-identical to hohm_1994b/alpha_CO2 (Table 1 there, which also gives the temperature and an absolute uncertainty of the last digits). A reproduction: not fitted beside the original."
+[datasets.uncertainty]
+relative = 1e-5
+level = "not stated"
+systematic_relative = 0.001
+
+[[datasets]]
+id = "fit_H2_a"
+material = "H2"
+file = "H2/hohm_1994__fit_H2_a.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, the calculated row of set a (two anisotropies fitted)."
+
+[[datasets]]
+id = "fit_H2_b"
+material = "H2"
+file = "H2/hohm_1994__fit_H2_b.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, the calculated row of set b (one anisotropy fitted)."
+
+[[datasets]]
+id = "fit_O2"
+material = "O2"
+file = "O2/hohm_1994__fit_O2.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, calculated row."
+
+[[datasets]]
+id = "fit_N2O"
+material = "N2O"
+file = "N2O/hohm_1994__fit_N2O.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, calculated row."
+
+[[datasets]]
+id = "fit_CO2"
+material = "CO2"
+file = "CO2/hohm_1994__fit_CO2.csv"
+table = "tbl_14b1cb679065"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, calculated row."
+
+# Table 1 (p. 536): the fit parameters of Eq. (4),
+# alpha(omega) = (1/3) [f_par/(omega_par^2 - omega^2) + 2 f_perp/(omega_perp^2 - omega^2)],
+# omega the photon energy in hartree. Not in a registered form (the package's oscillator
+# form takes f_i/(E_i^2 - omega^2) with E_i itself; here the strengths carry 1/3 and 2/3
+# and the squared energies are printed), so recorded without a form. Equivalent oscillator
+# terms: f = (f_par/3, 2 f_perp/3), E = (sqrt(omega_par^2), sqrt(omega_perp^2)).
+
+[[formulas]]
+id = "two_term_H2_a"
+material = "H2"
+equation = "Eq. (4) with Table 1, p. 536"
+printed = "alpha(omega) = (1/3)(f_par/(omega_par^2 - omega^2) + 2 f_perp/(omega_perp^2 - omega^2)); H2 (a): f_par = 1.62632, f_perp = 1.40105, omega_par^2 = 0.23940245 au, omega_perp^2 = 0.29486069 au"
+variable = "omega: photon energy in hartree; alpha in au"
+range = "0-0.2 au (to 228 nm), 'correct to 0.5%' (p. 537); fitted 325-633 nm"
+coefficients = { f_par = "1.62632", f_perp = "1.40105", omega_par2 = "0.23940245", omega_perp2 = "0.29486069" }
+check = "Reproduces Table 2's calculated row to 1e-5 au (5.53888, 5.54649, 5.55364, 5.57795, 5.86052 against 5.53887 ... 5.86051); static limit 5.4321 au. Checked 2026-09-25."
+notes = "Set a: two of Kumar and Meath's anisotropies used as depolarization inputs; its kappa(omega) is within 1.34 % of theirs at 0.3 au (set b: 40 %, p. 536)."
+
+[[formulas]]
+id = "two_term_H2_b"
+material = "H2"
+equation = "Eq. (4) with Table 1, p. 536"
+printed = "as two_term_H2_a; H2 (b): f_par = 1.36603, f_perp = 1.70361, omega_par^2 = 0.20191405 au, omega_perp^2 = 0.35741442 au"
+variable = "omega: photon energy in hartree; alpha in au"
+range = "as two_term_H2_a"
+coefficients = { f_par = "1.36603", f_perp = "1.70361", omega_par2 = "0.20191405", omega_perp2 = "0.35741442" }
+check = "Reproduces Table 2's calculated row to 1e-5 au (5.53893, 5.54651, 5.55362, 5.57784, 5.86052); static limit 5.4328 au. Checked 2026-09-25."
+notes = "Set b: one anisotropy input; its anisotropy dispersion is poor (40 % at 0.3 au), its mean polarizability as good as set a's."
+
+[[formulas]]
+id = "two_term_O2"
+material = "O2"
+equation = "Eq. (4) with Table 1, p. 536"
+printed = "as two_term_H2_a; O2: f_par = 2.74876, f_perp = 4.86007, omega_par^2 = 0.18095751 au, omega_perp^2 = 0.58545449 au"
+variable = "omega: photon energy in hartree; alpha in au"
+range = "0-0.2 au, 0.5 % (p. 537); fitted 325-633 nm; cannot represent the Schumann-Runge band (p. 540)"
+coefficients = { f_par = "2.74876", f_perp = "4.86007", omega_par2 = "0.18095751", omega_perp2 = "0.58545449" }
+check = "Reproduces Table 2's calculated row to 1e-5 au (10.79627 ... 11.40610 against 10.7963 ... 11.4061); static limit 10.5976 au. Checked 2026-09-25."
+
+[[formulas]]
+id = "two_term_N2O"
+material = "N2O"
+equation = "Eq. (4) with Table 1, p. 536"
+printed = "as two_term_H2_a; N2O: f_par = 5.65126, f_perp = 9.72095, omega_par^2 = 0.17424213 au, omega_perp^2 = 0.72904985 au"
+variable = "omega: photon energy in hartree; alpha in au"
+range = "0-0.2 au, 0.5 % (p. 537); fitted 325-633 nm"
+coefficients = { f_par = "5.65126", f_perp = "9.72095", omega_par2 = "0.17424213", omega_perp2 = "0.72904985" }
+check = "Reproduces Table 2's calculated row to 1e-4 au (20.09523, 20.12363, 20.15028, 20.24116, 21.31967 against 20.0952, 20.1236, 20.1503, 20.2412, 21.3197); static limit 19.7003 au (electronic only). Checked 2026-09-25."
+
+[[formulas]]
+id = "two_term_CO2"
+material = "CO2"
+equation = "Eq. (4) with Table 1, p. 536"
+printed = "as two_term_H2_a; CO2: f_par = 6.00332, f_perp = 8.54433, omega_par^2 = 0.22525399 au, omega_perp^2 = 0.66083749 au"
+variable = "omega: photon energy in hartree; alpha in au"
+range = "0-0.2 au, 0.5 % (p. 537); fitted 325-633 nm"
+coefficients = { f_par = "6.00332", f_perp = "8.54433", omega_par2 = "0.22525399", omega_perp2 = "0.66083749" }
+check = "Reproduces Table 2's calculated row to 1e-4 au (17.78075, 17.80053, 17.81908, 17.88221, 18.61600 against 17.7808, 17.8005, 17.8191, 17.8822, 18.6160); static limit 17.5035 au (electronic only). Checked 2026-09-25."

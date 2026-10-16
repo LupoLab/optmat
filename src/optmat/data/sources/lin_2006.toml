@@ -1,0 +1,132 @@
+citation = "Q. Lin and G. P. Agrawal, \"Raman response function for silica fibers\", Opt. Lett. 31, 3086 (2006)"
+doi = "10.1364/ol.31.003086"
+library = "Lin_2006_RamanResponseFunction"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A model of the Raman response of silica fibre with an isotropic part (Blow \
+and Wood's damped oscillator) and an anisotropic part (a Boson-peak term plus a share of \
+the oscillator), fitted to Stolen's measured copolarized and orthogonal Raman gain \
+spectra (ref. 6: R. H. Stolen, in Raman Amplifiers for Telecommunications 1, M. N. \
+Islam, ed. (Springer, 2003); spectra provided by Stolen) over 0-15 THz."""
+notes = """Journal pages 3086-3088 = PDF pages 1-3. Identity checked against the first \
+page. f_b = 0.21 is garbled in the extracted text ('0.\\bar{2}1') and was read from the \
+PDF text layer (pdftotext, p. 3087).
+
+THE RESPONSE (verbatim, with the page). Eq. (1), p. 3086: R_ijkl(tau) = [(1 - f_R)/3] \
+delta(tau)(delta_ij delta_kl + delta_ik delta_jl + delta_il delta_jk) + f_R R_a(tau) \
+delta_ij delta_kl + (f_R/2) R_b(tau)(delta_ik delta_jl + delta_il delta_jk), i, j, k, l = x \
+or y; R_a the isotropic and R_b the anisotropic Raman response. The scalar form: \
+R_xxxx(tau) = (1 - f_R) delta(tau) + f_R [R_a(tau) + R_b(tau)]. Gains: g_a(Omega) = 2 gamma \
+f_R Im[R_a~(Omega)], g_b(Omega) = 2 gamma f_R Im[R_b~(Omega)], gamma = n2 omega_0/c, R~(Omega) \
+= int R(tau) exp(i Omega tau) dtau; g_par = g_a + g_b, g_perp = g_b/2. Eq. (2), p. 3087: \
+h_a(tau) = tau_1 (tau_1^-2 + tau_2^-2) exp(-tau/tau_2) sin(tau/tau_1) (Blow and Wood, ref. \
+10), R_a = f_a h_a. Eq. (3): h_b(tau) = [(2 tau_b - tau)/tau_b^2] exp(-tau/tau_b). R_b(tau) \
+= f_b h_b(tau) + f_c h_a(tau). Eq. (4): R_xxxx(tau) = (1 - f_R) delta(tau) + f_R [(f_a + f_c) \
+h_a(tau) + f_b h_b(tau)], with f_a + f_c + f_b = 1. h_a and h_b each integrate to 1 over \
+tau > 0 (h_b's integral is 2 - 1 = 1).
+
+VALUES (p. 3087). tau_1 = 12.2 fs and tau_2 = 32 fs (Blow and Wood, reproduced); f_a = \
+0.75 (fits g_a below 14 THz); tau_b = 96 fs, f_b = 0.21, f_c = 0.04 (fit g_par and g_perp \
+over 0-15 THz). 'If we use n2 = 2.6 x 10^-20 m2/W for silica fibers [ref. 1, Agrawal's \
+book], the choice f_R = 0.245 in our model yields a peak Raman gain equal to the \
+experimental value of g_R = 1.2 x 10^-11 cm/W at 795.5 nm [ref. 4: Dougherty et al., Opt. \
+Lett. 20, 31 (1995)], corresponding to g_R = 1.81 x 10^-11 cm/W at 526 nm [ref. 6].' 'Our \
+value of f_R is slightly higher than the experimental value of about 0.2 (Refs. 9 and 10), \
+because our model overestimates the Raman gain in the spectral region beyond 15 THz. \
+This causes an underestimation of the electronic contribution to nonlinear refractive \
+index by 5% or so' (p. 3087). The model is expected to hold 'for pulses as short as 30 \
+fs' (p. 3088).
+
+NOT EXTRACTED. The fractions f_a, f_b, f_c have no quantity (they partition the Raman \
+response, not the total): they are the coefficients of the formula below. The peak \
+Raman gain coefficients g_R (1.2e-11 cm/W at 795.5 nm, 1.81e-11 cm/W at 526 nm, both \
+reproduced) have no quantity in the vocabulary (TC-384). The gain spectra, the nonlinear \
+index against shift (Fig. 3) and the RIFS rates (Fig. 4; the single-Lorentzian model \
+underestimates RIFS by ~40 % for 100-500 fs solitons, and by ~20 % in the 300-fs, \
+1200-nm simulation, whose soliton shifts 175 nm) are figures only."""
+
+[[datasets]]
+id = "f_R"
+material = "SiO2"
+table = "text"
+points = [["f_R", "f_R", "0.245"]]
+quantity = "raman_fraction"
+abscissa = "label"
+use = "primary"
+notes = "p. 3087: chosen so that the model's peak copolarized Raman gain, with n2 = 2.6e-20 m2/W, equals g_R = 1.2e-11 cm/W at 795.5 nm. Slightly above the 'experimental value of about 0.2', because the model overestimates the gain beyond 15 THz (the electronic part is underestimated by ~5 %)."
+[datasets.parameters]
+definition = "R(tau) = (1 - f_R) delta(tau) + f_R h_R(tau) (p. 3086), the copolarized scalar response R_xxxx of Eq. (4); f_R set by the peak Raman gain with n2 = 2.6e-20 m2/W"
+form = "fibre"
+
+[[datasets]]
+id = "f_R_literature"
+material = "SiO2"
+table = "text"
+points = [["f_R", "f_R", "0.2"]]
+quantity = "raman_fraction"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["stolen_1989", "blow_1989"]
+notes = "p. 3087: 'the experimental value of about 0.2 (Refs. 9 and 10)'. Printed as 'about 0.2', a rounded summary: stolen_1989 gives 0.18; blow_1989 prints alpha = 0.7 for the instantaneous weight, i.e. a Raman weight of 0.3 in its field-squared response (Eq. 5) and a delayed share of 0.22 in its envelope equation (Eq. 8, a factor 2/3), neither 0.2 exactly."
+[datasets.parameters]
+definition = "R(tau) = (1 - f_R) delta(tau) + f_R h_R(tau)"
+form = "fibre"
+
+[[datasets]]
+id = "blow_wood_times"
+material = "SiO2"
+table = "text"
+points = [["tau1", "tau1", "12.2"], ["tau2", "tau2", "32"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["blow_1989"]
+notes = "p. 3087: 'By using the values tau_1 = 12.2 fs and tau_2 = 32 fs (Ref. 10)' in h_a, Eq. (2). blow_1989 (p. 2666): tau_1 = 0.0122 ps, tau_2 = 0.032 ps: agrees."
+[datasets.parameters]
+constant = "tau1, tau2 (per row)"
+model = "h_a(tau) = tau_1 (tau_1^-2 + tau_2^-2) exp(-tau/tau_2) sin(tau/tau_1) (Eq. (2), Blow and Wood)"
+form = "fibre"
+
+[[datasets]]
+id = "tau_b"
+material = "SiO2"
+table = "text"
+points = [["tau_b", "tau_b", "96"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "label"
+use = "primary"
+notes = "p. 3087: 'By choosing tau_b = 96 fs to account for the spectral width of the Boson peak together with f_b = 0.21 and f_c = 0.04'."
+[datasets.parameters]
+constant = "tau_b"
+model = "h_b(tau) = [(2 tau_b - tau)/tau_b^2] exp(-tau/tau_b) (Eq. (3)), the anisotropic Boson-peak response of lin_2006"
+form = "fibre"
+
+[[datasets]]
+id = "n2"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "2.6"]]
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic, 2001), Chap. 2"]
+notes = "p. 3087: 'If we use n2 = 2.6 x 10^-20 m2/W for silica fibers [ref. 1]', the input that fixes f_R. Wavelength and part not stated."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+form = "fibre"
+assumed = true
+
+[[formulas]]
+id = "response"
+material = "SiO2"
+equation = "Eqs. (2)-(4), p. 3087"
+printed = "R^{(3)}_{xxxx}(\\tau) = (1 - f_R)\\delta(\\tau) + f_R[(f_a + f_c) h_a(\\tau) + f_b h_b(\\tau)], h_a(\\tau) = \\tau_1(\\tau_1^{-2} + \\tau_2^{-2})\\exp(-\\tau/\\tau_2)\\sin(\\tau/\\tau_1), h_b(\\tau) = [(2\\tau_b - \\tau)/\\tau_b^2]\\exp(-\\tau/\\tau_b)"
+variable = "tau: delay (fs); the copolarized scalar response of silica fibre"
+coefficients = { f_R = "0.245", f_a = "0.75", f_b = "0.21", f_c = "0.04", tau_1 = "12.2 fs", tau_2 = "32 fs", tau_b = "96 fs" }
+check = "f_a + f_b + f_c = 0.75 + 0.21 + 0.04 = 1.00, as the paper requires; h_a and h_b each integrate to 1 over tau > 0 (analytically). No printed number to reproduce (the gain comparisons are figures)."
+notes = "The tensor form, Eq. (1), gives the orthogonal gain g_perp = g_b/2 with R_b = f_b h_b + f_c h_a. tau_1 and tau_2 are Blow and Wood's; f_R, f_a, f_b, f_c and tau_b are this paper's. f_R assumes n2 = 2.6e-20 m2/W. Valid 0-15 THz; overestimates the gain beyond 15 THz."

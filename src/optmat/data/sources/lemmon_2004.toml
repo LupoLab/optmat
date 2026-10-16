@@ -1,0 +1,61 @@
+citation = "E. W. Lemmon and R. T Jacobsen, \"Viscosity and Thermal Conductivity Equations for Nitrogen, Oxygen, Argon, and Air\", Int. J. Thermophys. 25, 21 (2004)"
+doi = "10.1023/b:ijot.0000022327.04529.f3"
+library = "Lemmon_2004_ViscosityThermalConductivity"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """Correlations of the viscosity and thermal conductivity of nitrogen, oxygen, \
+argon and air (as a pseudo-pure fluid): a Chapman-Enskog dilute-gas term with a \
+collision integral fitted to experimental data, empirical residual terms, and a \
+crossover critical enhancement for the conductivity, fitted to the data of Tables III \
+and IV with the reference equations of state for density."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library. Printed pp. 21-69; p. = pdf page + 20.
+
+THE DILUTE VISCOSITY (p. 23, Eq. 2; Tables I and II, p. 24, read from the library \
+text): eta0(T) = 0.0266958 sqrt(M T) / (sigma^2 Omega(T*)), in uPa s, with M in g/mol, \
+sigma in nm, T* = T/(epsilon/k), and Omega(T*) = exp(sum_{i=0}^{4} b_i (ln T*)^i), b = \
+0.431, -0.4623, 0.08406, 0.005341, -0.00331. Table I: nitrogen M = 28.01348, epsilon/k \
+= 98.94 K, sigma = 0.3656 nm; argon 39.948, 143.2 K, 0.335 nm; oxygen 31.9988, 118.5 K, \
+0.3428 nm; air 28.9586, 103.3 K, 0.360 nm. The equations are 'valid over all liquid and \
+vapor states' of each fluid's equation of state (abstract, p. 21): optmat takes each \
+equation of state's temperatures. The dilute states are taken at about one atmosphere \
+and the ideal gas at zero pressure is taken as 'nearly identical' to them (p. 22).
+
+UNCERTAINTY (section 5, p. 57): 'the uncertainties for viscosity are 0.5 % in the dilute gas \
+for nitrogen and argon, 1% in the dilute gas for air and for oxygen at temperatures \
+above 200 K, and 5% in the dilute gas for oxygen at lower temperatures'; no coverage \
+factor stated. At high temperatures a second group of data lies systematically below \
+the equations, by up to -14 % at 2500 K for nitrogen (p. 38, Fig. 17).
+
+REPRODUCED: CoolProp 8.0.0's viscosities of the three gases (reference key \
+Lemmon-IJT-2004) at 1e-6 mol/m^3 equal Eq. (2) with these constants to 5e-11, 120-900 \
+K (computed 2026-09-30)."""
+
+[[formulas]]
+id = "eq2_N2"
+material = "N2"
+equation = "Eq. (2), p. 23; Tables I-II, p. 24"
+printed = "eta0 = 0.0266958 sqrt(M T)/(sigma^2 Omega(T*)); Omega = exp(sum_i b_i (ln T*)^i)"
+variable = "T in K, T* = T/(epsilon/k); eta0 in uPa s"
+range = "the equation of state's temperatures"
+coefficients = { prefactor = "0.0266958", b0 = "0.431", b1 = "-0.4623", b2 = "0.08406", b3 = "0.005341", b4 = "-0.00331", molar_mass = "28.01348", epsilon_k = "98.94", sigma_nm = "0.3656" }
+check = "CoolProp 8.0.0 equals it to 5e-11 (tests/test_transport.py)."
+
+[[formulas]]
+id = "eq2_Ar"
+material = "Ar"
+equation = "Eq. (2), p. 23; Tables I-II, p. 24"
+printed = "eta0 = 0.0266958 sqrt(M T)/(sigma^2 Omega(T*)); Omega = exp(sum_i b_i (ln T*)^i)"
+variable = "T in K, T* = T/(epsilon/k); eta0 in uPa s"
+range = "the equation of state's temperatures"
+coefficients = { prefactor = "0.0266958", b0 = "0.431", b1 = "-0.4623", b2 = "0.08406", b3 = "0.005341", b4 = "-0.00331", molar_mass = "39.948", epsilon_k = "143.2", sigma_nm = "0.335" }
+check = "CoolProp 8.0.0 equals it to 4e-11 (tests/test_transport.py)."
+
+[[formulas]]
+id = "eq2_O2"
+material = "O2"
+equation = "Eq. (2), p. 23; Tables I-II, p. 24"
+printed = "eta0 = 0.0266958 sqrt(M T)/(sigma^2 Omega(T*)); Omega = exp(sum_i b_i (ln T*)^i)"
+variable = "T in K, T* = T/(epsilon/k); eta0 in uPa s"
+range = "the equation of state's temperatures"
+coefficients = { prefactor = "0.0266958", b0 = "0.431", b1 = "-0.4623", b2 = "0.08406", b3 = "0.005341", b4 = "-0.00331", molar_mass = "31.9988", epsilon_k = "118.5", sigma_nm = "0.3428" }
+check = "CoolProp 8.0.0 equals it to 3e-11 (tests/test_transport.py)."

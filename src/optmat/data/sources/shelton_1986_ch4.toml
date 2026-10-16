@@ -1,0 +1,251 @@
+citation = "D. P. Shelton, Phys. Rev. A 34, 304 (1986)"
+doi = "10.1103/physreva.34.304"
+library = "Shelton_1986_HyperpolarizabilityDispersionMeasured_37a53a"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """ESHG with periodic phase matching as in shelton_1985_sf6 (electrode spacing \
+2.69 mm, 0.9-5.9 atm at 20-27 C), cw dye or argon-ion laser, 0.3-3.0 W; dye-laser \
+wavelengths set with a 1 m spectrometer calibrated by Na and Ne lamps; sample CH4 \
+(99.97 %) and reference N2 (99.999 %) in triplets ABA or coupled triplets; densities \
+from the virial equation of state (p. 1)."""
+notes = """The by-product ratio Delta alpha_CH4 / Delta alpha_N2 (Delta alpha = \
+alpha(2 omega) - alpha(omega)) 'is just proportional to rho^-1, the inverse \
+phase-match density' (p. 1): it is rho_N2 / rho_CH4, filed under N2 with CH4 as \
+reference_material as in shelton_1990. Table I gives the air wavelength (note a) and the \
+vacuum wavenumber (note b) of the fundamental; the wavenumber is the abscissa, the \
+air wavelength the row id.
+
+Uncertainty (p. 1): 'The accuracy of the polarizability dispersion ratio has been \
+given as +-0.20%, a conservative estimate based on the absolute pressure-gauge \
+accuracy of +-0.15%. If the gauge is linear, the dispersion ratio accuracy will \
+instead be set by the +-0.03% density ratio reproducibility. The correct value for \
+the error bar is probably intermediate'; Table I note c: 'The tabulated error bars \
+may be too pessimistic by as much as a factor of 7.' The tabulated +- are kept as \
+printed (level not stated).
+
+The gamma values, the gamma fits (Fig. 1) and Table II (other processes) are \
+hyperpolarizabilities and are not extracted. Refractive indices for the local-field \
+factors were 'calculated from tables' (Landolt-Bornstein).
+
+THIRD-ORDER DATA (added 2026-09-26; supersedes the remark above that the \
+gamma values are not extracted). gamma is the ESHG <gamma>_zzzz (fields parallel) of \
+Shelton's series (Taylor convention, SI C^4 m^4 J^-3), calibrated on the old He value \
+(Sitz & Yaris, 42.6 au static) through Mizrahi & Shelton's N2/He ratio (Eqs. 2, 3, as \
+in shelton_1986_co2); the A, B, C of the fits below are against nu^2 of the \
+fundamental, not nu_L^2. The electronic dispersion of all processes is written \
+gamma^e(-omega_s; omega_1, omega_2, omega_3) = gamma^e(0; 0, 0, 0)(1 + C omega_L^2) \
+(Eqs. 4-5). Part: the author compares ESHG, dc Kerr, FWM and THG and, with Elliott & \
+Ward's estimate that the vibrational part is '3% or less for dc Kerr and an order of \
+magnitude smaller still for ESHG', concludes that 'the vibrational contribution to \
+gamma_CH4 is negligible' (p. 307; shelton_1990 later finds the 1319 nm ESHG point 12 \
+sigma below this curve, attributed to gamma^vR). No vibrational-overtone resonance is \
+seen at the 0.1 % level, contrary to shelton_1982's suggestion (p. 307)."""
+
+[[datasets]]
+id = "density_N2_over_CH4"
+material = "N2"
+file = "N2/shelton_1986_ch4__density_N2_over_CH4.csv"
+table = "tbl_9090f1c5cfc2"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+density = "real"
+use = "primary"
+notes = "Table I, Delta alpha_CH4 / Delta alpha_N2 = rho_N2 / rho_CH4 as printed, 12 fundamentals 476.5-671.7 nm (air), abscissa the printed vacuum wavenumber."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "CH4"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "CH4"
+shelton_reference_gas = "N2"
+printed_as = "Delta alpha_CH4 / Delta alpha_N2"
+
+[[formulas]]
+id = "ratio_fit"
+material = "CH4"
+equation = "Fig. 2 caption, p. 3"
+printed = "Delta alpha_CH4 / Delta alpha_N2 = A (1 + B nu^2 + C nu^4); A = 2.1029, B = 0.916 x 10^-10 cm^2, C = 1.69 x 10^-20 cm^4"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+range = "14883-20981 cm^-1 (476.5-671.7 nm)"
+coefficients = { A = "2.1029", B = "0.916e-10", C = "1.69e-20" }
+check = "As printed (page image checked) it lies 0.016 below the data at 14883 cm^-1 and 0.063 below at 20981 cm^-1, outside every error bar. With C = 16.9 x 10^-20 cm^4 it reproduces all twelve points to within 0.0018 (the error bars are 0.0043-0.0046): C is misprinted by a factor of 10 (read 16.9 x 10^-20). Checked 2026-09-25."
+notes = "A fit of the dispersion ratio, not of the refractive index. A straight line in nu^2 also passes through all the error bars (p. 3)."
+
+[[datasets]]
+id = "gamma_CH4_over_N2"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__gamma_CH4_over_N2.csv"
+table = "tbl_9090f1c5cfc2"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table I (p. 305): gamma_CH4/gamma_N2 by ESHG as printed (Eq. 1 as in shelton_1986_co2), 12 wavelengths 476.5-671.7 nm (row: air wavelength; abscissa: vacuum wavenumber). 'The accuracy of the ratio is about +-0.3%, while the reproducibility is about +-0.1%' (p. 304). The raw measurement behind gamma_CH4."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "gamma_CH4"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__gamma_CH4.csv"
+table = "tbl_9090f1c5cfc2"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table I column d (p. 305): gamma_CH4 in 1e-63 C^4 m^4 J^-3, 'Obtained using Refs. 13 and 19 for calibration' (Mizrahi & Shelton's gamma_N2/gamma_He = 20.30 [1 + 6.55e-10 nu^2] and Sitz & Yaris's gamma_He = 42.6 au [1 + 2.94e-10 nu^2], 1 au = 6.2360e-65; see shelton_1986_co2's formulas calibration_*). '+-0.4% due to the gamma_N2/gamma_He calibration' is included in the error bars; the ~1 % uncertainty of gamma_He is not (p. 305). The old He calibration; shelton_1990 Table III(c) reproduces these rescaled (e.g. 206.76 against 204.1 at 671.7 nm). Total ESHG gamma; the author concludes that 'the vibrational contribution to gamma_CH4 is negligible' (p. 307)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "gamma_CH4_miller_ward"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__gamma_CH4_miller_ward.csv"
+table = "tbl_9090f1c5cfc2"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["C. K. Miller and J. F. Ward, Phys. Rev. A 16, 1179 (1977)"]
+notes = "Table I last column, note e: 'From Ref. 20' (Miller & Ward 1977), 694.3 nm: 195 +- 2 (shelton_1982 Table III prints the same measurement as 196 +- 2; the conversions differ)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "gamma_CH4_shelton_1982"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__gamma_CH4_shelton_1982.csv"
+table = "tbl_9090f1c5cfc2"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1982"]
+notes = "Table I last column, note f: 'From Ref. 12' (Shelton & Buckingham 1982, Table III), as printed there. The previous results 'agree well with the curve fitted to the present results', but their 'error bars had been underestimated by about a factor of 2 or more' (pp. 306-307)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table2_dc_kerr"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__table2_dc_kerr.csv"
+table = "tbl_0ba11cfe8ccf"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["buckingham_1969"]
+notes = "Table II (p. 306): 'Hyperpolarizability of CH4 measured by several nonlinear-optical processes', 1e-63 C^4 m^4 J^-3, converted by the author with '1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3' (note b; 6 x the au ratio, Ward's chi = gamma/6). nu_L^2 printed 4.99, 8.64, 8.64, 14.47, 24.88 x 10^8 cm^-2. Note c: gamma(-omega; 0, 0, omega), from Ref. 21 (Buckingham & Orr 1969). About 10 % above the ESHG-predicted line (p. 307). Re-pointed to buckingham_1969 (now in the library): digit-identical with its 10^60 gamma(CH4) = 0.180 +- 0.009 C^4 m^4 J^-3 (p. 677), whose error is the stated 5 % absolute accuracy."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table2_cars"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__table2_cars.csv"
+table = "tbl_0ba11cfe8ccf"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["G. Hauchecorne, F. Kerherve and G. Mayer, J. Phys. (Paris) 32, 47 (1971)", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)", "lundeen_1983"]
+notes = "Table II (p. 306): 'Hyperpolarizability of CH4 measured by several nonlinear-optical processes', 1e-63 C^4 m^4 J^-3, converted by the author with '1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3' (note b; 6 x the au ratio, Ward's chi = gamma/6). nu_L^2 printed 4.99, 8.64, 8.64, 14.47, 24.88 x 10^8 cm^-2. FWM gamma(-2 omega_1 + omega_2; omega_1, omega_1, -omega_2) (CARS-type). Rows: note d, from Ref. 22 (Hauchecorne et al. 1971), 694 and 975 nm; note e, 'From Ref. 23 [Rado 1967], as corrected and given in Ref. 24 [Lundeen et al.], but with their vibrational correction removed', 694 and 975 nm; note f, 'From Ref. 24, with their vibrational correction removed', 532 and 683 nm. Abscissa: the pump wavelength; the Stokes (975, 975, 683 nm) in parameters. 'The FWM results are in good agreement with' the ESHG-predicted line (p. 307)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "T"
+part = "total"
+stokes_nm = "975, 975, 683 (rows in order)"
+
+[[datasets]]
+id = "table2_thg"
+material = "CH4"
+file = "CH4/shelton_1986_ch4__table2_thg.csv"
+table = "tbl_0ba11cfe8ccf"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["ward_1984"]
+notes = "Table II (p. 306): 'Hyperpolarizability of CH4 measured by several nonlinear-optical processes', 1e-63 C^4 m^4 J^-3, converted by the author with '1 esu = 7.4279 x 10^-25 C^4 m^4 J^-3' (note b; 6 x the au ratio, Ward's chi = gamma/6). nu_L^2 printed 4.99, 8.64, 8.64, 14.47, 24.88 x 10^8 cm^-2. Note g: gamma(-3 omega; omega, omega, omega), from Ref. 25 (Ward & Elliott, cited as J. Chem. Phys. 80, 1002 (1984); the paper starts on p. 1003), 694.3 nm. About 10 % below the ESHG-predicted line (p. 307)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+
+
+[[formulas]]
+id = "gamma_fit_quadratic"
+material = "CH4"
+equation = "Fig. 1 caption, p. 305"
+printed = "gamma = A(1 + B nu^2 + C nu^4); A = 149.1 x 10^-63 C^4 m^4 J^-3, B = 14.70 x 10^-10 cm^2 and C = 89.1 x 10^-20 cm^4, where nu is given in cm^-1"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2)"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "14883-20981 cm^-1 (476.5-671.7 nm, Table I column d)"
+coefficients = { A = "149.1e-63", B = "14.70e-10", C = "89.1e-20" }
+coefficient_units = { A = "C^4 m^4 J^-3", B = "cm^2", C = "cm^4" }
+calibration = "old He (Sitz & Yaris) via N2 (Eqs. 2, 3)"
+check = "Gives 204.17 at 14883 cm^-1 and 271.33 at 20981 cm^-1 against 204.1 +- 0.9 and 271.0 +- 1.8. Checked 2026-09-26."
+notes = "Least-squares fit to the 12 present values; 'the scatter of data points about the quadratic curve is in better agreement with the statistical estimate of the measurement reproducibility' than a straight line (p. 305)."
+
+[[formulas]]
+id = "gamma_fit_linear"
+material = "CH4"
+equation = "Fig. 1 caption, p. 305"
+printed = "gamma = A'(1 + B' nu^2) with A' = 136.3 x 10^-63 C^4 m^4 J^-3 and B' = 22.31 x 10^-10 cm^2"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (not nu_L^2)"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "14883-20981 cm^-1"
+coefficients = { A = "136.3e-63", B = "22.31e-10" }
+coefficient_units = { A = "C^4 m^4 J^-3", B = "cm^2" }
+calibration = "old He (Sitz & Yaris) via N2 (Eqs. 2, 3)"
+check = "Gives 203.66 at 14883 cm^-1 and 270.16 at 20981 cm^-1 (within the error bars of 204.1 +- 0.9 and 271.0 +- 1.8). Checked 2026-09-26."
+notes = "'A straight-line least squares fitted to the data will also pass through all the error bars'; the line used, as gamma^e(0)(1 + C omega_L^2), for the comparison with the other processes (Fig. 4). Superseded by shelton_1990 Table IV (161.5e-63, A = 1.532e-10, B = 4.334e-20 against nu_L^2)."

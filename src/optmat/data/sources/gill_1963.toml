@@ -1,0 +1,162 @@
+citation = "P. Gill and D. W. O. Heddle, J. Opt. Soc. Am. 53, 847 (1963)"
+doi = "10.1364/josa.53.000847"
+library = "Gill_1963_DeterminationRefractiveIndices"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Rayleigh scattering at 90 degrees of the hydrogen Lyman-alpha line (a 30 Mc/s \
+discharge lamp viewed through LiF; no oxygen filter), iodine-helium photon counter for \
+the scattered light, nitric-oxide ionization chamber monitoring the incident beam; the \
+slope of scattered/incident signal against pressure (to 1 atm) per gas, normalised to \
+argon each day."""
+notes = """The measured quantity is the ratio of scattering slopes, which gives \
+(n0 - 1)_i^2 / (n0 - 1)_Ar^2 after the depolarisation correction (Eq. (8)); Table I \
+prints its square root, the ratio of |n0 - 1|. The absolute scale is set by 'the value \
+of 5.71 x 10^-4 found for nitrogen at 1220 A by the Cerenkov method' (Heddle et al. \
+1963), applied at 1216 A (p. 4). n0 - 1 refers to STP by Eq. (3), (n - 1) = \
+(n0 - 1) p (273/T): an ideal-gas scaling (density 'ideal'). Depolarisation ratios from \
+the visible (N2 0.036; H2 the mean of 0.012 and 0.016). Uncertainty (p. 4): 'the \
+refractivities of argon, hydrogen, and nitrogen are believed to be correct to better \
+than 2 %'. Krypton and xenon: their resonance lines lie in the counter's band, so \
+source emission near them would inflate the scattering; 'it is probably as well to \
+regard the results for krypton and xenon as preliminary measurements', and 'the \
+refractivity of krypton is almost certainly negative and so also may be that of xenon' \
+(hence the modulus bars). Kingston 1964 finds both far too high (Kr would need f about \
+1.5 for its first resonance line); Leonard 1974 omits all scattering values near \
+resonances; Mahon et al. 1979 show Kr's n - 1 is negative at 1216 A. The Kr and Xe \
+values are therefore excluded. Table I is internally consistent (ratio = sqrt(S' x \
+depolarisation factor), absolute = ratio x 5.653) except for krypton, whose printed \
+53.1 is 0.7 % below 9.46 x 5.653 = 53.5 (unexplained; excluded anyway).
+
+Helium and neon gave no measurable scattering (p. 4); the calculated helium value the \
+paper quotes is recorded as a reproduction. The library PDF also contains an unrelated \
+paper (Patterson and Vaughan, LiF transmission), from p. 5."""
+
+[[datasets]]
+id = "absolute_Ar"
+material = "Ar"
+file = "Ar/gill_1963__absolute_Ar.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table I, |n0 - 1| x 10^4 at 1216 A (Lyman alpha): nitrogen's Cerenkov value divided by the measured N2/Ar ratio (1.01); agrees with Heddle et al.'s Cerenkov 5.59e-4 at 1210 +- 30 A. Positive (argon's resonance lines lie at longer wavelength). Gordon et al. 1993 call it 'much too high' against Chashchina et al.'s 5.016 and their own calculation, 5.12."
+[datasets.uncertainty]
+relative = 0.02
+level = "bound"
+
+[[datasets]]
+id = "absolute_H2"
+material = "H2"
+file = "H2/gill_1963__absolute_H2.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table I, |n0 - 1| x 10^4 of hydrogen at 1216 A, depolarisation factor 0.975. Gordon et al. 1993 calculate 3.24."
+[datasets.uncertainty]
+relative = 0.02
+level = "bound"
+
+[[datasets]]
+id = "absolute_N2"
+material = "N2"
+file = "N2/gill_1963__absolute_N2.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["heddle_1963"]
+notes = "Table I, nitrogen: not a measurement of this paper but the normalising value, Heddle et al.'s Cerenkov result at 1220 +- 30 A (57.1 +- 1.0 x 10^-5), applied at 1216 A."
+
+[[datasets]]
+id = "absolute_Kr"
+material = "Kr"
+file = "Kr/gill_1963__absolute_Kr.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "excluded"
+notes = "Table I, |n0 - 1| x 10^4 = 53.1: a magnitude only (the sign is 'almost certainly negative', p. 4), 'preliminary', and far too large by Kingston's (1964) and Mahon et al.'s (1979) analyses (Mahon et al.: n - 1 = -7.75e-24 N at 1215.67 A, about -2.1e-4 at STP). Kept for the record only; the positive number stored here is not a valid refractivity."
+
+[[datasets]]
+id = "ratio_Kr"
+material = "Kr"
+file = "Kr/gill_1963__ratio_Kr.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "excluded"
+notes = "Table I, |n0 - 1|_Kr / |n0 - 1|_Ar = 9.46 at 1216 A: a ratio of magnitudes; excluded for the reasons given for absolute_Kr."
+[datasets.parameters]
+reference_material = "Ar"
+
+[[datasets]]
+id = "ratio_Xe"
+material = "Xe"
+file = "Xe/gill_1963__ratio_Xe.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "excluded"
+notes = "Table I, |n0 - 1|_Xe / |n0 - 1|_Ar = 30.5 at 1216 A (|n0 - 1| = 172e-4; that absolute value is not extracted, see the extraction script). 'Preliminary', sign undetermined; Kingston 1964 shows it would need a discrete oscillator-strength sum of about 5; Mahon et al. 1979 attribute such scattering to Xe2 molecules or fluorescence. Excluded."
+[datasets.parameters]
+reference_material = "Ar"
+
+[[datasets]]
+id = "ratio_H2"
+material = "H2"
+file = "H2/gill_1963__ratio_H2.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I, |n0 - 1|_H2 / |n0 - 1|_Ar = 0.57 at 1216 A, the measured quantity behind absolute_H2 (which is this ratio times argon's value): a check, not fitted beside it."
+[datasets.parameters]
+reference_material = "Ar"
+
+[[datasets]]
+id = "ratio_N2"
+material = "N2"
+file = "N2/gill_1963__ratio_N2.csv"
+table = "tbl_8bd54abf02ad"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I, |n0 - 1|_N2 / |n0 - 1|_Ar = 1.01 at 1216 A (sqrt(1.10 x 0.925) = 1.009), the ratio that turns the N2 normalisation into absolute_Ar: a check. Leonard 1974 reproduces it as 1.005 +- .01."
+[datasets.parameters]
+reference_material = "Ar"
+
+[[datasets]]
+id = "dalgarno_stewart_He"
+material = "He"
+points = [["1216", "1216", "4.27"]]
+table = "text"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["A. Dalgarno and A. C. Stewart, Proc. Phys. Soc. (London) 75, 49 (1960)"]
+notes = "p. 4: 'In the case of helium the refractivity at 1216 A can be reliably calculated from the oscillator strengths obtained by Dalgarno and Stewart to be 4.27 x 10^-5'. A calculated value; the original is not in the library."

@@ -1,0 +1,91 @@
+# Argon: the refractive polarizability from 107 nm to the static limit.
+gas = "Ar"
+description = "Argon: the 104.8 nm and 106.7 nm resonance lines at their NIST energies and two effective oscillators, fitted to Lesiuk & Jeziorski's ab initio Cauchy moments, the dielectric (DCGT) static polarizability and Egan's refractometry (the absolute level), Peck & Fisher and Zhang (the visible and near-infrared shape) and the vacuum-ultraviolet measurements."
+range_nm = [107.5, "inf"]
+
+# Compared with the fit, not fitted. (Top-level keys must precede the tables.)
+validators = [
+    "sneep_2005/rayleigh_Ar",   # Rayleigh scattering (TC-150)
+    "chopra_1974/rayleigh_Ar",   # Rayleigh scattering (TC-150)
+    "thalman_2014/bbces_Ar",   # Rayleigh scattering, 370-405 nm (TC-711)
+    # 2.6e-4 above the absolute level (stated 2.3e-5); Birch 1991 at 633 nm is -6e-5.
+    "zhang_2008/measured_Ar",
+    "zhang_2008/birch_1991_Ar",
+    # Cerenkov threshold (broad bandpass) and Rayleigh scattering near Lyman alpha:
+    # 2-10 % off every other source.
+    "heddle_1963/experiment_Ar",
+    "gill_1963/absolute_Ar",
+    "chopra_1974/gashchina_1968_Ar",
+    "borzsonyi_2008/sgdd_Ar",
+    "rusch_1923/experiment_Ar",
+    "rusch_1923/experiment_ir_Ar",
+    "kumar_2010/moments_Ar",
+    "lesiuk_2023/cauchy_alpha6_Ar",
+    "ferrell_1987/experiment_Ar",
+    "bideau_mehu_1981/chashchina_1968_Ar",
+    "leonard_1974/absolute_Ar",
+    "pawlowski_2005/cc3_Ar",   # CC3 moments, not converged per the authors
+    "burns_1986/A_R_Ar",
+    "hohm_1990/this_work_Ar",
+    { key = "bose_1970/A_eps_Ar", electric = true },   # static dielectric, 323 K (TC-606)
+]
+
+[model]
+effective = 2
+# Above the 104.8 nm line (0.43467 hartree); the next lines are at 86.7-89.4 nm.
+effective_min_energy_hartree = 0.44
+# Magnetic susceptibility with the leading relativistic correction, Lesiuk & Jeziorski
+# (arXiv:2311.11357), Table IX: -22.9545(32)e-5 a.u. (TC-706; before, lesiuk_2023's
+# -2.30(2)e-4, its Eq. (39)). The refractive polarizability is the electric one plus
+# chi_0 (TC-71).
+chi0_au = -2.29545e-4
+
+[[model.lines]]
+label = "Ar 3p6 1S0 - 3p5(2P1/2)4s [1/2]1"
+wavelength_nm = 104.8219924  # NIST ASD Ritz vacuum wavelength
+f_prior = 0.2629             # NIST ASD fik, grade AA (<= 1 %); the bound as sigma
+f_sigma = 0.0026
+
+[[model.lines]]
+label = "Ar 3p6 1S0 - 3p5(2P3/2)4s [3/2]1"
+wavelength_nm = 106.6659865
+f_prior = 0.0675             # NIST ASD fik, grade A+ (<= 2 %)
+f_sigma = 0.00135
+
+# --- the absolute level: theory and metrology
+[[fitted]]
+key = "lesiuk_2023/cauchy_Ar"      # S(-2), S(-4), S(-6), electric, with uncertainties
+
+[[fitted]]
+key = "gaiser_2018/molar_polarizability_Ar"  # DCGT static polarizability: electric
+electric = true
+
+[[fitted]]
+key = "egan_2019/A_R_Ar"    # laser refractometry at 632.99 nm: refractive
+
+[[fitted]]
+key = "egan_2023/A_R_Ar"    # 632.99 nm, piston-gauge pressure, 3.1 ppm; independent of egan_2019 (TC-707, TC-725)
+
+# --- the dispersion from the ultraviolet to the near infrared
+[[fitted]]
+key = "peck_1964/measured_15C"
+extra_relative = 4e-6               # the fit's rms, 0.01e-7 of 2677e-7 (no per-point value)
+# Shape only: every point lies 3.5e-4 above the theory/metrology level, 1.8 times the
+# stated systematic bound (as Mansfield & Peck for helium, TC-44).
+free_scale = true
+
+[[fitted]]
+key = "cuthbertson_1910/experiment_Ar"
+
+[[fitted]]
+key = "swift_1988/experiment_Ar"
+
+# --- the vacuum ultraviolet
+[[fitted]]
+key = "bideau_mehu_1981/experiment_Ar"
+
+[[fitted]]
+key = "gordon_1993/experiment_Ar"
+
+[[fitted]]
+key = "bideau_mehu_1976/experiment_Ar"   # 164.1 and 170.2 nm (the original of bideau_mehu_1981 there)

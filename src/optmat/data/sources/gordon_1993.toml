@@ -1,0 +1,156 @@
+citation = "R. J. Gordon, S.-P. Lu, S. M. Park, K. Trentelman, Y. Xie, L. Zhu, A. Kumar and W. J. Meath, J. Chem. Phys. 98, 9481 (1993)"
+doi = "10.1063/1.464379"
+library = "Gordon_1993_UseCoherentPhase"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Coherent phase control of 3+1 (and 1+1) resonance-enhanced multiphoton \
+ionization of HCl or CO: the UV beam (lambda_1) and its third harmonic (lambda_3, \
+generated in Kr) pass through a 45-50 cm tuning cell of H2 or Ar at 1-6 Torr; the ion \
+signal is modulated as the pressure changes the phase difference, and the modulation \
+period Delta P gives n_3 - n_1 (Eqs. (2), (5))."""
+notes = """The measurement gives the difference n_3 - n_1 between the VUV and UV \
+refractivities; n_3 is obtained by adding n_1 calculated from constrained dipole \
+oscillator-strength distributions: Kumar and Meath's for argon (constrained to Coulon \
+et al.'s refractivities at 6329.9 and 4766.2 A), Zeiss et al.'s for H2 (constrained to \
+Smith et al.'s at 2632.1 and 1679.7 A), 'accurate to a few tenths of a percent' away \
+from the absorption threshold (p. 4). The experimental values therefore depend on that \
+calculated UV value, which is small beside the VUV one (about 3 x 10^-4 at 3300-3450 A \
+for Ar against 6-8 x 10^-4 at 1110-1150 A), so a few-tenths-percent error in it moves \
+n_3 - 1 by well under the stated +-6-8 %. Values at STP (1 atm, 0 degrees C) with \
+N / N_0 = (P/P_0)(T_0/T) (Eq. (5)): an ideal-gas density. Error bars 'are single \
+standard deviations' (Fig. 6 caption). Wavelengths are vacuum wavelengths.
+
+The 'theory' columns are the DOSD calculations (the Kumar-Meath argon DOSD is one of \
+this paper's authors' own), kept as checks. Table II's values lie among the B-X (0-0) \
+rotational lines of H2 (Table III: R(0) 1108.13, R(1) 1108.63, P(1) 1110.06, R(2) \
+1110.12 A), where n - 1 has anomalous dispersion; the paper models them with individual \
+lines, Doppler-broadened (Eqs. (7)-(9), Fig. 5); they are not for a smooth dispersion \
+model. Table III (line positions from Wilkinson) is not extracted.
+
+The text (p. 5) also quotes Chashchina et al.'s argon value at 1216 A, (n - 1) x 10^4 = \
+5.016, 'in good agreement with the present calculation of 5.12', Gill et al.'s 5.65 \
+('much too high') and, for H2 at 1216 A, Gill et al.'s 3.20 against the calculated \
+3.24. The library holds a second, identical extraction of this paper \
+(Gordon_1993_UseCoherentPhase_81bd3b); this record uses the first."""
+
+[[datasets]]
+id = "experiment_Ar"
+material = "Ar"
+file = "Ar/gordon_1993__experiment_Ar.csv"
+table = "tbl_d009cc88bfad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table I, argon, n_3 - 1 at 1109.45-1150.32 A (+-6-8 %), with n_1 - 1 at lambda_1 = 3 lambda_3 from Kumar and Meath's DOSD."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "theory_Ar"
+material = "Ar"
+file = "Ar/gordon_1993__theory_Ar.csv"
+table = "tbl_d009cc88bfad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, 'Theory': n_3 - 1 from Kumar and Meath's constrained argon DOSD (Eq. (6))."
+
+[[datasets]]
+id = "experiment_H2"
+material = "H2"
+file = "H2/gordon_1993__experiment_H2.csv"
+table = "tbl_d009cc88bfad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table I, H2, n_3 - 1 at 1119.65, 1127.85 and 1150.32 A, away from the B-X (0-0) band (origin 1108.61 A), with n_1 from Zeiss et al.'s DOSD. The 1109.45 A H2 row ('see Table II') is in anomalous_H2."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "theory_H2"
+material = "H2"
+file = "H2/gordon_1993__theory_H2.csv"
+table = "tbl_d009cc88bfad"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, 'Theory': n_3 - 1 from Zeiss et al.'s constrained H2 DOSD."
+
+[[datasets]]
+id = "anomalous_H2"
+material = "H2"
+file = "H2/gordon_1993__anomalous_H2.csv"
+table = "tbl_c084e004c082"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table II, H2 n_3 - 1 at eight HCl rotational lines 1107.593-1110.223 A, among the H2 B-X (0-0) lines (anomalous dispersion: 2.0 to 9.2 x 10^-4 within 3 A); R(4) and R(2) of HCl gave no or irreproducible modulation (footnote a) and have no value. For comparison with a rotationally resolved model (the paper's Eqs. (7)-(8)), not for a smooth fit. The +- are single standard deviations."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "chashchina_1968_Ar"
+material = "Ar"
+points = [["1216", "1216", "5.016"]]
+table = "text"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. I. Chashchina, V. I. Gladushchak and E. Ya. Shreider, Opt. Spectrosc. 24, 542 (1968)"]
+notes = "p. 5: 'At 1216 A Chashchina et al. obtained a value of (n - 1) x 10^4 = 5.016'. A value of their smoothing Sellmeier formula; the original is not in the library."
+
+[[datasets]]
+id = "theory_1216"
+material = "Ar"
+points = [["1216", "1216", "5.12"]]
+table = "text"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "p. 5: 'the present calculation of 5.12' (Kumar and Meath's argon DOSD) at 1216 A."
+
+[[datasets]]
+id = "theory_1216_H2"
+material = "H2"
+points = [["1216", "1216", "3.24"]]
+table = "text"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "p. 5: 'our calculated value of 3.24' for H2 at 1216 A (Zeiss et al.'s DOSD)."

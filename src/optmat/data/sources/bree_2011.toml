@@ -1,0 +1,259 @@
+citation = "C. Bree, A. Demircan and G. Steinmeyer, Phys. Rev. Lett. 106, 183902 (2011)"
+doi = "10.1103/physrevlett.106.183902"
+library = "Bree_2011_SaturationAllOptical"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Kerr coefficients n_2k computed by a Kramers-Kronig transform of (k + 1)-photon \
+ionisation cross sections from a modified PPT (Keldysh) theory (Eq. 1), with the \
+nondegenerate absorption approximated by the degenerate one at the mean frequency (Eq. \
+2); a one-parameter model (the ionisation potential) for the noble gases, extended to \
+O2 and N2 with Talebpour's effective charge (Z_eff = 0.53 and 0.9; curated as \
+talebpour_1999)."""
+notes = """Defining equations. Eq. (3), p. 2: n_2k(w) = (hbar c rho_nt / pi) P int_0^inf \
+(Omega + k w) sigma_(k+1)((Omega + k w)/(k + 1)) / (Omega^2 - w^2) dOmega (P: Cauchy \
+principal value); the K-photon absorption coefficient Delta alpha_K(w) = K hbar w \
+rho_nt sigma_K I^(K-1), 'with a particle density rho_nt = 2.7 x 10^19 cm^-3 \
+corresponding to standard conditions' (p. 1, checked on the page image). The index is \
+n = n0 + n2 I + n4 I^2 + ... (p. 1 and Fig. 3), a single-beam (self) coefficient. The \
+companion paper bree_2012 (Eq. 10) gives the relation to chi: n_2k = 2^(k-1) C^(k) / \
+(n0 (n0 eps0 c)^k) Re chi^(2k+1), C^(k) = (2k + 1)!/(2^(2k) k! (k + 1)!), and gamma^(3)(0) \
+= 8 eps0^2 c n2(0) / rho0 (Eq. 18).
+
+Table I (tbl_3d9fe63acf83; JSON cells, no CSV; equal to the table image): n2 in 10^-8 \
+cm^2/TW of the neutral atoms at 800 nm (Z = 1) and in the static limit, of the singly \
+charged ions (Z = 2: skipped, not curated species), and 'Experimental data (rightmost \
+column) as compiled from [18,21] and corrected for the dispersion of the DFWM process \
+with Eq. (13) in [20]' ([18] Bishop & Pipin, J. Chem. Phys. 91, 3549 (1989); [21] \
+Shelton & Rice, Chem. Rev. 94, 3 (1994); [20] Bree et al., IEEE J. Quantum Electron. \
+46, 433 (2010), not in the library). The model columns are datasets kk_<gas> (rows \
+800nm and static, use = check: a semi-empirical model whose authors quote agreement \
+of 26 % (He), 15 % (Ne, Kr, Xe) and better (Ar) with reference data, p. 2); the \
+reference column is refs_<gas> (reproduced).
+
+The reference column is the static limit: the text compares the model's long-wavelength \
+He value 4.8 x 10^-9 cm^2/TW with '3.8 x 10^-9 cm^2/TW that was derived in [18]' \
+(p. 2), and the column equals gamma0 x 8.911e-23 cm^2/W per au (N gamma_T / (8 eps0^2 c) \
+at the Loschmidt density), with gamma0 = 43.104 (He), 108 (Ne), 1167 (Ar), 2600 (Kr), \
+6888 au (Xe) as tabulated from Shelton & Rice and Bishop & Pipin: 0.3841, 0.962, 10.399, 23.17, 61.38 against 0.38, 0.96, 10.40, 23.17, 61.39 \
+(checked 2026-09-26). So it is gamma0 in Shelton & Rice's T convention converted to n2 \
+at 1 atm and 0 C, whatever 'corrected for the dispersion of the DFWM process' means.
+
+Other values in the text: O2 long-wavelength limit n2(w -> 0) = 0.7 x 10^-7 cm^2/TW \
+from the model with Z_eff = 0.53 (dataset kk_static_O2), 'which agrees excellently \
+with the electronic contribution of n2 = 0.746 x 10^-7 cm^2/TW computed in [28]' \
+(Hellwarth, Pennington & Henesian, Phys. Rev. A 41, 2766 (1990); record hellwarth_1990; \
+not duplicated here) (p. 3, page image checked). He: the n2 maximum is about 4 x 10^-8 \
+cm^2/TW near 100 nm, the zero crossing at 85 nm, negative up to 50.4 nm (p. 2); Ar: \
+about 10^-7 cm^2/TW in the infrared, zero crossing at 140 nm (p. 2). Neutral Ar against \
+Ar+ with ionisation: 'from n2 = 1.3 x 10^-7 cm^2/W at p = 0 to n2 = 0.6 x 10^-7 cm^2 at \
+p = 1' (p. 4): the units are misprinted (cm^2/TW, as Table I's 12.68 and 6.14 x 10^-8 \
+show); text only, nothing extracted.
+
+Higher-order Kerr claim (notes only): the model gives n4 of Ar with an infrared limit \
+of 2 x 10^-12 cm^4/TW^2, 12 times higher at 240 nm, negative below 210 nm (p. 3; page \
+image checked), positive n_2k up to n18 at 800 nm and negative beyond, and an Ar index \
+that saturates near 42 TW/cm^2 and inverts at 49 TW/cm^2 (Loriot: 30 and 34), with \
+inversion intensities of 112, 89, 40 and 30 TW/cm^2 for He, Ne, Kr, Xe (p. 3); a negative \
+n4 at 800 nm (Loriot's -0.36 +- 1.03 x 10^-9 cm^4/TW^2) 'appears to be incompatible' \
+with the model. The coefficients n2 ... n32 are in the supplement, not in the library. \
+Status: the premise (MPI-rate expansion as the absorption in the KK integral) is \
+criticised by Wahlstrand et al. 2012 (Phys. Rev. Lett. 109, 113904, p. 2-3), who show \
+that with the full ionisation rate the KK response stays linear in I up to ionisation \
+and that the MPI model 'strongly overestimates' the low-frequency absorption at high \
+intensity, 'the source of the saturation and inversion calculated in [12,13]'. The \
+n2 (k = 1) values are not affected by that criticism; the higher orders are not to be \
+used.
+
+Wavelengths: 800 nm, medium not stated (vacuum assumed)."""
+
+[[datasets]]
+id = "kk_He"
+material = "He"
+file = "He/bree_2011__kk_He.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, Z = 1 (800 nm) and n2(w -> 0) (static) columns, 10^-8 cm^2/TW = 10^-20 cm^2/W, at rho_nt = 2.7e19 cm^-3 ('standard conditions', read as 1 atm and 0 C with the rounded Loschmidt number). Kramers-Kronig model, not a measurement. The model's 800 nm row is repeated (rounded) in bree_2012 Table I."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Ne"
+material = "Ne"
+file = "Ne/bree_2011__kk_Ne.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, Z = 1 (800 nm) and static columns; Kramers-Kronig model at rho_nt = 2.7e19 cm^-3."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Ar"
+material = "Ar"
+file = "Ar/bree_2011__kk_Ar.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, Z = 1 (800 nm) and static columns; Kramers-Kronig model at rho_nt = 2.7e19 cm^-3."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Kr"
+material = "Kr"
+file = "Kr/bree_2011__kk_Kr.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, Z = 1 (800 nm) and static columns; Kramers-Kronig model at rho_nt = 2.7e19 cm^-3."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Xe"
+material = "Xe"
+file = "Xe/bree_2011__kk_Xe.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table I, Z = 1 (800 nm) and static columns; Kramers-Kronig model at rho_nt = 2.7e19 cm^-3."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_static_O2"
+material = "O2"
+points = [["static", "inf", "0.7"]]
+table = "text"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Text p. 3: 'For oxygen, our theory yields a long-wavelength limit n2(w -> 0) = 0.7 x 10^-7 cm^2/TW' (page image checked), with Talebpour's Z_eff = 0.53; rho_nt = 2.7e19 cm^-3 as for the atoms (assumed: the O2 density is not restated)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "refs_He"
+material = "He"
+file = "He/bree_2011__refs_He.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["bishop_1989", "shelton_1994"]
+notes = "Table I 'Refs. [18,21]' column: the static gamma0 of the reference literature converted to n2 at the Loschmidt density (0.3841 from 43.104 au; see the record's notes). He is presumably Bishop & Pipin's value [18]; the paper does not say which reference gives which gas."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "refs_Ne"
+material = "Ne"
+file = "Ne/bree_2011__refs_Ne.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["shelton_1994", "bishop_1989"]
+notes = "Table I 'Refs. [18,21]' column: static gamma0 (108 au) converted to n2 at the Loschmidt density (see the record's notes)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "refs_Ar"
+material = "Ar"
+file = "Ar/bree_2011__refs_Ar.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["shelton_1994", "bishop_1989"]
+notes = "Table I 'Refs. [18,21]' column: static gamma0 (1167 au) converted to n2 at the Loschmidt density (see the record's notes)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "refs_Kr"
+material = "Kr"
+file = "Kr/bree_2011__refs_Kr.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["shelton_1994", "bishop_1989"]
+notes = "Table I 'Refs. [18,21]' column: static gamma0 (2600 au) converted to n2 at the Loschmidt density (see the record's notes)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "refs_Xe"
+material = "Xe"
+file = "Xe/bree_2011__refs_Xe.csv"
+table = "tbl_3d9fe63acf83"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["shelton_1994", "bishop_1989"]
+notes = "Table I 'Refs. [18,21]' column: static gamma0 (6888 au) converted to n2 at the Loschmidt density (see the record's notes)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"

@@ -1,0 +1,259 @@
+citation = "K. C. Kulander, \"Time-dependent Hartree-Fock theory of multiphoton ionization: Helium\", Phys. Rev. A 36, 2726-2738 (1987)"
+doi = "10.1103/PhysRevA.36.2726"
+library = "Kulander_1987_TimeDependentHartree"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Time-dependent Hartree-Fock (TDHF, time-dependent self-consistent field): \
+the helium ground state as one doubly occupied spatial orbital, propagated on a \
+two-dimensional finite-difference grid in cylindrical coordinates (rho, z), spacing \
+0.2 a0 (259 x 100 points, boundaries at z = +-25.8 a0 and rho = 20.1 a0 for the 1.064 \
+um case), Peaceman-Rachford alternating-direction propagator, 200-400 steps per \
+optical period, an absorbing imaginary potential at the boundary (pp. 2727-2728). \
+The field: linear polarisation, dipole approximation, length form, V_I = -e E(t) z \
+sin(omega t) (Eq. 2), its envelope rising linearly over five to ten periods and then \
+constant (Eq. 10); a rate is taken from the exponential decay during the constant \
+part. Two models: TDHF, in which the orbital's binding grows as the atom ionises, so \
+that the rate falls with time and is extrapolated back to the static Hartree-Fock \
+orbital energy (Fig. 12, p. 2733); and a frozen one-electron model, one electron \
+frozen in its ground-state orbital and the other moving in the field of the nucleus \
+and the frozen electron. A renormalised variant (RTDHF) is used at 9, 28 and 30 eV. \
+The initial state, relaxed in imaginary time on the grid: total energy -75.95 eV \
+(Hartree-Fock limit -77.87, exact -78.98), orbital energy -24.28 eV (Hartree-Fock \
+-24.98; the true ionisation potential 24.58 eV; p. 2728)."""
+notes = """Phys. Rev. A 36, 2726-2738 (1987) = PDF pages 1-13 (journal page = PDF page + \
+2725). Identity checked on the first page ('PHYSICAL REVIEW A VOLUME 36, NUMBER 6 \
+SEPTEMBER 15, 1987'; Kenneth C. Kulander, Lawrence Livermore National Laboratory; \
+received 16 March 1987) on 2026-10-09. The PDF is a scan (one 5169 x 7129 image per \
+page) with an OCR text layer. The library's identity is VALIDATED_WITH_WARNINGS; the \
+copy is the version of record.
+
+WHAT IS TAKEN (tools/extract/kulander_1987.py), all from Table I (p. 2732, \
+tbl_8ef576c11381; every cell checked against the table image), all use = check: \
+(a) 'Helium ionization rates (s^-1)' at 1.064 and 0.532 um (peak intensities 5e14, \
+1e15, 2e15 W/cm2) and at 9.0 eV (1e15 W/cm2), each in the columns '1s^2' and \
+"1s1s'"; (b) the TDHF '(generalized) cross sections': two-photon, in cm4/W2 s, at \
+13.6 and 17.7 eV, and one-photon, in cm2, at 30.0 eV. Every cell prints its own power \
+of ten; the files hold mantissa e power, as printed.
+
+THE COLUMNS OF TABLE I(a) (the record's reading; the table does not name them). The \
+text compares the TDHF rate, 'obtained by extrapolating the linear falloff back to the \
+correct orbital energy', with 'the frozen, one-electron results in Table I for \
+several wavelengths and peak intensities' (p. 2733). '1s^2' is read as TDHF (its one \
+doubly occupied orbital) and "1s1s'" as the frozen model (one electron frozen in 1s, \
+the other active): the frozen rate is the larger in every row, as the text says for \
+9 eV (the TDHF decay 'slightly slower', p. 2734). The text calls the long-wavelength \
+agreement 'excellent'; the table's frozen/TDHF ratios are 1.4-2.2. At 9 eV the TDHF \
+decay is not exponential at late times (Rabi oscillations, Fig. 14); how the 1s^2 \
+value was taken there is not stated. RTDHF rates at the longer wavelengths 'agree \
+exactly with the extrapolated rates shown in Table I' (p. 2735).
+
+ACCURACY. 'The calculated ionization rates changed by less than 20% for reasonable \
+variations of the parameters' (grid spacing, size, time step; p. 2728): taken as \
+relative 0.2, level not stated, for the rates. At the longest wavelength and highest \
+intensities the grid lies inside the ponderomotive barrier, so those rates 'are \
+expected to be upper bounds' (p. 2737): at 532 nm and 1e15 W/cm2 doubling the z extent \
+lowered the rate by 15 % (p. 2732); 'may be higher in other cases'. Because of the \
+grid's ionisation potential the 1.064 um process needs 22 photons, not 21 (p. 2729). \
+The cross sections are given to one significant figure (3e-16 is 2.5-3.5e-16).
+
+THE PHOTON ENERGIES are as printed: wavelengths in um (medium not stated) for (a), hbar \
+omega in eV for the 9 eV row and for (b). Nothing is shifted: the calculation's \
+threshold is its own grid orbital energy, 24.28 eV (the two-photon threshold 12.14 \
+eV), 0.3 eV below the true 24.58 eV. The 9.0 eV dataset's wavelength_nm, 137.76, is hc \
+/ 9.0 eV (the record's conversion; the parameter photon_energy_ev keeps the printed \
+value).
+
+THE TWO-PHOTON DEFINITION is not printed; the unit, cm4 W^-2 s^-1, is that of W / I^2, \
+W the rate and I the intensity in W/cm2 (held as printed, 's-1 cm4/W2', as \
+bachau_1990's Fig. 1(a)). As sigma_2 = (W / I^2) (hbar omega)^2 for W = sigma_2 \
+Phi^2, Phi the photon flux (the script's report): TDHF 1.424e-51 cm4 s at 13.6 eV and \
+8.04e-52 at 17.7 eV; the PT column 1.187e-51 and 8.85e-52. The intensity of the TDHF \
+cross-section runs is not stated. Fig. 10 (p. 2733) shows the one- and two-photon \
+ionising wave functions for 30 and 15 eV photons; the table's two-photon energies \
+are 13.6 and 17.7 eV.
+
+COMPARISON with the curated two-photon cross sections of He (sigma_2 as above; each \
+curve interpolated in log on its record's own axis; ratio Kulander / other). TDHF at \
+13.6 eV: mihelic_2021 (TC-874, L = 0 + 2, 1.301e-51) 1.10, vanderhart_2005 (TC-904, \
+1.347e-51) 1.06, saenz_1999 (TC-873, 1S + 1D, 1.481e-51) 0.96; at 17.7 eV: 0.91 \
+(8.80e-52), 0.92 (8.74e-52), 0.94 (8.57e-52). The PT column: 0.91, 0.88, 0.80 at 13.6 \
+eV and 1.01, 1.01, 1.03 at 17.7 eV. bachau_1990's Fig. 1(a) draws Kulander's value as \
+a '+' at 1.0 Ry on its long-dashed line, which reads 2.81e-16 s^-1 W^-2 cm^4 there \
+(the printed TDHF 3e-16). Within the one printed figure, TDHF agrees with all three. \
+The one-photon 4e-18 cm2 at 30.0 eV is 0.74 of samson_1994's measured 5.38 Mb.
+
+NOT TAKEN. Table I(b)'s PT column, 'Refs. 25-27' (G. A. Victor, Proc. Phys. Soc. 91, \
+825 (1967); B. Ritchie, Phys. Rev. A 16, 2080 (1977), ritchie_1977; A. L'Huillier, L. \
+Jonsson and G. Wendin, Phys. Rev. A 33, 3938 (1986), lhuillier_1986) and \
+'Refs. 28' (J. W. Cooper, Phys. Rev. 128, 681 (1962)): other papers' values, and the \
+row does not say which reference gives which number: 2.5e-16 and 1.1e-16 cm4/W2 s, \
+5e-18 cm2. The figures (expectation values, norms and projections against time, \
+rates against orbital energy, wave-function density plots; Figs. 1-20): no quantity \
+holds them, and the rates they give are Table I's. The text's statements without a \
+number in a quantity: no excitation at 0.532 um and 1e14 W/cm2 within the numerical \
+accuracy (the method needs rates of at least 1e11 s^-1, p. 2737); the observed \
+saturation intensity 2e13 W/cm2 for a 50 ps pulse (Lompre et al., Ref. 24, quoted); \
+the 28 eV Rabi oscillations; less than a tenth of a percent left on the grid at 1e17 \
+W/cm2.
+
+FURTHER TWO-PHOTON DATA CITED, not in the library: G. A. Victor, Proc. Phys. Soc. 91, \
+825 (1967) (He, coupled Hartree-Fock)."""
+
+[[datasets]]
+id = "tbl1a_rate_1064_1s2"
+material = "He"
+file = "He/kulander_1987__tbl1a_rate_1064_1s2.csv"
+table = "tbl_8ef576c11381"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I(a) (p. 2732), 1.064 um, column '1s^2' (TDHF, extrapolated to the static Hartree-Fock orbital energy; the record's reading): 4.7e11, 1.5e13, 1.2e14 s-1 at 5e14, 1e15, 2e15 W/cm2. Tunnelling regime (p. 2729). 20 %: the paper's sensitivity to the numerical parameters; the highest intensity may be an upper bound (the record's notes)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1064
+polarization = "linear"
+method = "time-dependent Hartree-Fock, one doubly occupied orbital, finite-difference grid (0.2 a0); rate extrapolated to the static Hartree-Fock orbital energy (Fig. 12)"
+column = "1s^2"
+
+[[datasets]]
+id = "tbl1a_rate_1064_1s1sp"
+material = "He"
+file = "He/kulander_1987__tbl1a_rate_1064_1s1sp.csv"
+table = "tbl_8ef576c11381"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I(a) (p. 2732), 1.064 um, column \"1s1s'\" (the frozen one-electron model; the record's reading): 7.1e11, 2.1e13, 2.6e14 s-1 at 5e14, 1e15, 2e15 W/cm2. 20 %: the paper's sensitivity to the numerical parameters; the highest intensity may be an upper bound (the record's notes)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1064
+polarization = "linear"
+method = "frozen one-electron model: one electron frozen in its static Hartree-Fock orbital, the other propagated on the finite-difference grid (0.2 a0)"
+column = "1s1s'"
+
+[[datasets]]
+id = "tbl1a_rate_532_1s2"
+material = "He"
+file = "He/kulander_1987__tbl1a_rate_532_1s2.csv"
+table = "tbl_8ef576c11381"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I(a) (p. 2732), 0.532 um, column '1s^2' (TDHF, extrapolated; the record's reading): 9.0e11, 1.9e13, 1.4e14 s-1 at 5e14, 1e15, 2e15 W/cm2. At 1e15 a grid twice as long in z lowered the rate by 15 % (p. 2732). 20 %: the paper's sensitivity to the numerical parameters (the record's notes)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 532
+polarization = "linear"
+method = "time-dependent Hartree-Fock, one doubly occupied orbital, finite-difference grid (0.2 a0); rate extrapolated to the static Hartree-Fock orbital energy"
+column = "1s^2"
+
+[[datasets]]
+id = "tbl1a_rate_532_1s1sp"
+material = "He"
+file = "He/kulander_1987__tbl1a_rate_532_1s1sp.csv"
+table = "tbl_8ef576c11381"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I(a) (p. 2732), 0.532 um, column \"1s1s'\" (the frozen one-electron model; the record's reading): 1.4e12, 2.8e13, 2.7e14 s-1 at 5e14, 1e15, 2e15 W/cm2. 20 %: the paper's sensitivity to the numerical parameters (the record's notes)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 532
+polarization = "linear"
+method = "frozen one-electron model: one electron frozen in its static Hartree-Fock orbital, the other propagated on the finite-difference grid (0.2 a0)"
+column = "1s1s'"
+
+[[datasets]]
+id = "tbl1a_rate_9eV_1s2"
+material = "He"
+file = "He/kulander_1987__tbl1a_rate_9eV_1s2.csv"
+table = "tbl_8ef576c11381"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I(a) (p. 2732), 9.0 eV photons, column '1s^2' (TDHF; the record's reading): 2.6e13 s-1 at 1e15 W/cm2, three-photon ionisation. The TDHF decay turns non-exponential at late times (Fig. 14); how this value was taken is not stated. 20 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 137.76
+photon_energy_ev = 9.0
+wavelength_definition = "hc / 9.0 eV, the printed photon energy (the record's conversion)"
+polarization = "linear"
+method = "time-dependent Hartree-Fock, one doubly occupied orbital, finite-difference grid (0.2 a0)"
+column = "1s^2"
+
+[[datasets]]
+id = "tbl1a_rate_9eV_1s1sp"
+material = "He"
+file = "He/kulander_1987__tbl1a_rate_9eV_1s1sp.csv"
+table = "tbl_8ef576c11381"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I(a) (p. 2732), 9.0 eV photons, column \"1s1s'\" (the frozen one-electron model; the record's reading): 5.8e13 s-1 at 1e15 W/cm2; exponential decay, direct ionisation (Fig. 13). 20 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 137.76
+photon_energy_ev = 9.0
+wavelength_definition = "hc / 9.0 eV, the printed photon energy (the record's conversion)"
+polarization = "linear"
+method = "frozen one-electron model: one electron frozen in its static Hartree-Fock orbital, the other propagated on the finite-difference grid (0.2 a0)"
+column = "1s1s'"
+
+[[datasets]]
+id = "tbl1b_sigma2_tdhf"
+material = "He"
+file = "He/kulander_1987__tbl1b_sigma2_tdhf.csv"
+table = "tbl_8ef576c11381"
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm4/W2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table I(b) (p. 2732), column TDHF: the generalised two-photon cross section of He, 3e-16 at 13.6 eV and 1e-16 cm4/W2 s at 17.7 eV (photon energies, below the one-photon threshold), one significant figure. As sigma_2 = (W / I^2)(hbar omega)^2: 1.42e-51 and 8.04e-52 cm4 s, within 10 % of mihelic_2021, vanderhart_2005 and saenz_1999 (the record's notes). 'Our calculated one- and two-photon cross sections agree very well with perturbation results' (p. 2732). No uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+method = "time-dependent Hartree-Fock (equivalent to RPAE in the short-time limit, p. 2728), finite-difference grid"
+definition = "W / I^2, W the ionisation rate (s^-1) and I the intensity (W/cm2), as the unit cm4/W2 s implies (the definition is not printed); sigma_2 = (W / I^2)(hbar omega)^2 for W = sigma_2 Phi^2, Phi the photon flux"
+gauge = "length (V_I = -e E z sin(omega t), Eq. 2)"
+energy_axis = "photon energy as printed; the calculation's ionisation threshold is its grid orbital energy, 24.28 eV (two-photon threshold 12.14 eV), not shifted"
+
+[[datasets]]
+id = "tbl1b_sigma1_tdhf"
+material = "He"
+file = "He/kulander_1987__tbl1b_sigma1_tdhf.csv"
+table = "tbl_8ef576c11381"
+quantity = "photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table I(b) (p. 2732), column TDHF: the one-photon photoionisation cross section of He, 4e-18 cm2 at 30.0 eV, one significant figure (Cooper's 5e-18, the PT column, not taken). 0.74 of samson_1994's measured 5.38 Mb at 30 eV. No uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+method = "time-dependent Hartree-Fock, finite-difference grid; rate over intensity (the intensity not stated)"

@@ -1,0 +1,67 @@
+citation = "J. W. Schmidt, R. M. Gavioso, E. F. May and M. R. Moldover, \"Polarizability of Helium and Gas Metrology\", Phys. Rev. Lett. 98, 254504 (2007)"
+doi = "10.1103/PhysRevLett.98.254504"
+library = "Schmidt_2007_PolarizabilityHeliumGas"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Quasispherical microwave cavity resonator (maraging steel, copper plated, \
+radius about 4.82 cm) filled with helium (99.9999 %, trapped and gettered) at 0.1-6.3 \
+MPa near 273.16 K: n^2 from the frequencies of the TM11, TE11, TM12 and TE12 triplets \
+(2.7-7.6 GHz) in vacuum and under pressure, corrected for the cavity's isothermal \
+compressibility kappa_T (resonance ultrasound spectroscopy) and the field penetration \
+(Eq. 5); pressure from a calibrated piston gauge; n^2(rho) fitted by a quadratic in \
+density whose linear coefficient is 3(A_eps + A_mu) (pp. 1-3)."""
+notes = """The result (abstract, pp. 1 and 3): 'A_eps,meas = 0.517 253 5 (47) cm3 mol-1, \
+which is equivalent to (A_eps,meas - A_eps,theory)/A_eps = (-1.8 +- 9.1) x 1e-6', one \
+standard uncertainty ('The uncertainties are one standard uncertainty', p. 1); 9.1 ppm \
+combines the fit's 1.8 ppm with the Table I components (kappa_T 4.8 ppm, p_lab 4.3 \
+ppm, R 1.8 ppm, ...). The quantity measured is A_eps + A_mu (zero-density limit, \
+273.16 K); A_mu = 4 pi chi_0/3 = -0.000 008 03 (17) cm^3/mol from Bruch and Weinhold \
+(2000) was subtracted (Table I), so the measured A_eps + A_mu is 0.5172455(47) \
+(puchalski_2016 Table X, which uses -0.0000079224 and prints this sum). The \
+theoretical A_eps compared is Lach et al.'s 0.517 254 19 (10). The glyphs of the \
+parentheses are unmapped in the library's text (validation warnings, pp. 1-4); the \
+value was checked on the pdf text and against puchalski_2016's reproduction.
+
+Frequency: the resonances are at 2.7-7.6 GHz (vacuum wavelengths 3.9-11 cm); 'the \
+experimental result for A_eps was independent of the mode' and A_eps(f)/A_eps(0) - 1 = \
+22.6e-14 (f/GHz)^2 (Stone and Stejskal, p. 3), so the value is the static limit to \
+1e-11: stored at wavelength inf.
+
+Also in Table I (inputs, not extracted): B_rho = 11.9301(39) cm^3/mol (Hurly and Mehl \
+2007), dielectric virial b = -0.098(04) cm^3/mol (Rizzo et al. 2002; B_eps = A_eps b in \
+the package's convention, not printed), c = -1.34(36) cm^6/mol^2 (Heller and Gelbart), \
+C_rho = 112.7(20) cm^6/mol^2 and D_rho = 820(70) cm^9/mol^3 (McLinden and Loesch-Will), \
+R = 8.314 472 (15), kappa_T = 6.0370(46)e-12 /Pa. Eq. (4) lacks a factor 2 in front of \
+A_eps^2 b rho^2 (puchalski_2016 p. 12). Alternative reading: R = 8.314 487(76) J/(mol \
+K) if theory is accepted (p. 4)."""
+
+[[datasets]]
+id = "molar_polarizability"
+material = "He"
+table = "text"
+points = [["273.16", "inf", "0.5172535", "0.0000047"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "pp. 1 and 3: measured A_eps = 0.517 253 5 (47) cm3/mol at 273.16 K, zero-density limit, magnetic term A_mu = -0.00000803 cm3/mol subtracted; microwave (2.7-7.6 GHz), stored as static. Row id is the temperature."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "lach_2004"
+material = "He"
+file = "He/schmidt_2007__lach_2004.csv"
+table = "tbl_db1498b084c8"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lach_2004"]
+notes = "Table I: the theoretical A_eps 0.517 254 19 (10) of Lach et al. (2004), the value this measurement is compared with."
+[datasets.uncertainty]
+column = true
+level = "not stated"

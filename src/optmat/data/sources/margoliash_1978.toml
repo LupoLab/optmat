@@ -1,0 +1,112 @@
+citation = "D. J. Margoliash and W. J. Meath, J. Chem. Phys. 68, 1426 (1978)"
+doi = "10.1063/1.435963"
+library = "Margoliash_1978_PseudospectralDipoleOscillator"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Pseudospectral dipole oscillator strength distributions: n pairs \
+(epsilon_i, f_i) reproducing 2n dipole sums S(k) = sum_i epsilon_i^k f_i, k = 0 ... \
+-2n+1 (Eq. (2)), of constrained DOSDs built from photoabsorption, electron-scattering \
+and refractivity data (Refs. 1-4: Zeiss & Meath 1977; Zeiss et al. 1977; Thomas & \
+Meath 1977), by the theory of moments and generalized Gaussian quadrature; ten \
+pseudostates per species listed (up to 19 constructed), Hartree atomic units \
+(p. 1427)."""
+notes = """Only the curated species are recorded: H2, N2, O2, N2O and CH4 (Li, N, O, \
+NO, H2O and NH3 are skipped; H and He pseudostates are Johnson, Epstein and Meath's, \
+not tabulated here). No S(k) are tabulated in this paper: the sums are those of the \
+original DOSDs (zeiss_1977 holds H2, N2, O2 and N2O; CH4's are in Thomas & Meath 1977, \
+curated since as thomas_1977). The pseudospectra are recorded as oscillator formulas; Tables II \
+and III (C6 and W4 dispersion coefficients) are not refractive-index data.
+
+Table I (p. 1427, JSON only, image checked) prints each number as mantissa(power of \
+ten); the terms are stored in e-notation with the digits unchanged, and \
+tools/extract/margoliash_1978.py asserts that every term equals the library table \
+(it writes no data file).
+
+Accuracy (p. 1429): 'ten pseudostates reproduce the dynamic polarizabilities alpha(E) \
+for photon energies up to 0.95 and 0.99 E0 with a maximum error of 0.02% and 1.6%, \
+respectively' (E0: the ultraviolet absorption threshold, Eq. (1)); 'The DOSDs \
+reproduce accurate experimental refractivities ... to within a few tenths of a \
+percent.' Checks: the pseudospectra of H2, N2, O2 and N2O reproduce Zeiss et al.'s \
+Table 3 S_k for k = 0 to -14 to 0.05 % or better (the four printed figures; computed \
+2026-09-25). S_0 is 2.00000, 13.99935, 16.00000, 22.00014 and 9.99999 for H2, N2, O2, \
+N2O and CH4 (N2 alone is off by more than 1e-4 relative).
+
+ERRATUM NOT IN THE LIBRARY: the article's cover page lists 'A correction has been \
+published: Erratum: Pseudospectral dipole oscillator strength distributions ...'. It \
+is not in the library; some of Table I may be corrected there."""
+
+[[formulas]]
+id = "pseudospectrum_H2"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["0.345800e-1", "0.253720e0", "0.386589e0", "0.332736e0", "0.347771e0", "0.299819e0", "0.209133e0", "0.994406e-1", "0.308526e-1", "0.535865e-2"], E = ["0.420131e0", "0.446381e0", "0.482857e0", "0.565092e0", "0.689317e0", "0.899545e0", "0.126909e1", "0.202021e1", "0.402141e1", "0.124531e2"] }
+range_nm = [116.8, "inf"]
+material = "H2"
+equation = "Table I, p. 1427, with Eq. (2); alpha(omega) = sum_i f_i / (epsilon_i^2 - omega^2)"
+printed = "(epsilon_i, f_i), Hartree atomic units, powers of ten in parentheses: (0.420131(0), 0.345800(-1)); (0.446381(0), 0.253720(0)); (0.482857(0), 0.386589(0)); (0.565092(0), 0.332736(0)); (0.689317(0), 0.347771(0)); (0.899545(0), 0.299819(0)); (0.126909(1), 0.209133(0)); (0.202021(1), 0.994406(-1)); (0.402141(1), 0.308526(-1)); (0.124531(2), 0.535865(-2))"
+variable = "omega: photon energy (angular frequency) in hartree; alpha in atomic units"
+state = "none (per molecule)"
+density = "none"
+range = "photon energies up to 0.95 E0, E0 = 11.18 eV (H2 absorption bands 11.18-14.43 eV, Zeiss et al. 1977, p. 2085): 'ten pseudostates reproduce the dynamic polarizabilities alpha(E) for photon energies up to 0.95 and 0.99 E0 with a maximum error of 0.02% and 1.6%' (p. 1429); range_nm is hc/(0.95 E0) rounded up"
+check = "Terms equal Table I (asserted by tools/extract/margoliash_1978.py against the library table; image checked). S_0 = 2.00000, S_-2 = 5.4279 against Zeiss et al.'s 2.000 and 5.428; alpha at 632.8 nm 5.5337, 0.13 % below the package's fitted H2 model (5.5409), 0.10 % at 250 nm (computed 2026-09-25)."
+notes = "A ten-term pseudospectrum fitted (Gaussian quadrature, the theory of moments) to the sums S(0) ... S(-19) of the original DOSD of Zeiss et al. 1977 (zeiss_1977) and Zeiss & Meath 1977 (Refs. 1, 4); the printed mantissa(exponent) values are stored in e-notation, digits unchanged. The original DOSD was constrained to measured refractivities (zeiss_1977 notes), so this model is not independent of them. A published erratum to this paper (J. Chem. Phys., 'Erratum: Pseudospectral dipole oscillator strength distributions ...', listed on the article's cover page) is not in the library: the values may have been corrected."
+
+[[formulas]]
+id = "pseudospectrum_N2"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["0.328825e0", "0.527786e0", "0.524360e0", "0.833046e0", "0.135867e1", "0.199241e1", "0.217348e1", "0.189764e1", "0.151592e1", "0.284721e1"], E = ["0.467496e0", "0.494570e0", "0.550174e0", "0.655940e0", "0.838536e0", "0.114071e1", "0.173846e1", "0.304633e1", "0.944981e1", "0.316643e2"] }
+range_nm = [104.5, "inf"]
+material = "N2"
+equation = "Table I, p. 1427, with Eq. (2); alpha(omega) = sum_i f_i / (epsilon_i^2 - omega^2)"
+printed = "(epsilon_i, f_i), Hartree atomic units, powers of ten in parentheses: (0.467496(0), 0.328825(0)); (0.494570(0), 0.527786(0)); (0.550174(0), 0.524360(0)); (0.655940(0), 0.833046(0)); (0.838536(0), 0.135867(1)); (0.114071(1), 0.199241(1)); (0.173846(1), 0.217348(1)); (0.304633(1), 0.189764(1)); (0.944981(1), 0.151592(1)); (0.316643(2), 0.284721(1))"
+variable = "omega: photon energy (angular frequency) in hartree; alpha in atomic units"
+state = "none (per molecule)"
+density = "none"
+range = "photon energies up to 0.95 E0, E0 = 12.50 eV (N2 bands from 12.50 eV, Zeiss et al. 1977, p. 2086): 'ten pseudostates reproduce the dynamic polarizabilities alpha(E) for photon energies up to 0.95 and 0.99 E0 with a maximum error of 0.02% and 1.6%' (p. 1429); range_nm is hc/(0.95 E0) rounded up"
+check = "Terms equal Table I (asserted by tools/extract/margoliash_1978.py against the library table; image checked). S_0 = 13.99935 (0.005 % below 14: the only pseudospectrum here off by more than 1e-5; the published erratum, not in the library, may bear on it), S_-2 = 11.7377 against Zeiss et al.'s 11.74; alpha at 632.8 nm 11.8966, +0.01 % from the fitted N2 model, +0.03 % at 250 nm (computed 2026-09-25)."
+notes = "A ten-term pseudospectrum fitted (Gaussian quadrature, the theory of moments) to the sums S(0) ... S(-19) of the original DOSD of Zeiss et al. 1977 (zeiss_1977) and Zeiss & Meath 1977 (Refs. 1, 4); the printed mantissa(exponent) values are stored in e-notation, digits unchanged. The original DOSD was constrained to measured refractivities (zeiss_1977 notes), so this model is not independent of them. A published erratum to this paper (J. Chem. Phys., 'Erratum: Pseudospectral dipole oscillator strength distributions ...', listed on the article's cover page) is not in the library: the values may have been corrected."
+
+[[formulas]]
+id = "pseudospectrum_O2"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["0.956663e-3", "0.296637e-1", "0.120254e0", "0.571651e-1", "0.561433e0", "0.160054e1", "0.294745e1", "0.392044e1", "0.277156e1", "0.399054e1"], E = ["0.257583e0", "0.284123e0", "0.315624e0", "0.389406e0", "0.525362e0", "0.724304e0", "0.111366e1", "0.195604e1", "0.455412e1", "0.307069e2"] }
+range_nm = [213.3, "inf"]
+material = "O2"
+equation = "Table I, p. 1427, with Eq. (2); alpha(omega) = sum_i f_i / (epsilon_i^2 - omega^2)"
+printed = "(epsilon_i, f_i), Hartree atomic units, powers of ten in parentheses: (0.257583(0), 0.956663(-3)); (0.284123(0), 0.296637(-1)); (0.315624(0), 0.120254(0)); (0.389406(0), 0.571651(-1)); (0.525362(0), 0.561433(0)); (0.724304(0), 0.160054(1)); (0.111366(1), 0.294745(1)); (0.195604(1), 0.392044(1)); (0.455412(1), 0.277156(1)); (0.307069(2), 0.399054(1))"
+variable = "omega: photon energy (angular frequency) in hartree; alpha in atomic units"
+state = "none (per molecule)"
+density = "none"
+range = "photon energies up to 0.95 E0, E0 = 6.12 eV (Schumann-Runge bands from 6.12 eV, Zeiss et al. 1977, p. 2086): 'ten pseudostates reproduce the dynamic polarizabilities alpha(E) for photon energies up to 0.95 and 0.99 E0 with a maximum error of 0.02% and 1.6%' (p. 1429); range_nm is hc/(0.95 E0) rounded up"
+check = "Terms equal Table I (asserted by tools/extract/margoliash_1978.py against the library table; image checked). S_0 = 16.00000, S_-2 = 10.5901 against Zeiss et al.'s 10.59; alpha at 632.8 nm 10.7769, +0.02 % from the fitted O2 model, +0.04 % at 250 nm (computed 2026-09-25)."
+notes = "A ten-term pseudospectrum fitted (Gaussian quadrature, the theory of moments) to the sums S(0) ... S(-19) of the original DOSD of Zeiss et al. 1977 (zeiss_1977) and Zeiss & Meath 1977 (Refs. 1, 4); the printed mantissa(exponent) values are stored in e-notation, digits unchanged. The original DOSD was constrained to measured refractivities (zeiss_1977 notes), so this model is not independent of them. A published erratum to this paper (J. Chem. Phys., 'Erratum: Pseudospectral dipole oscillator strength distributions ...', listed on the article's cover page) is not in the library: the values may have been corrected."
+
+[[formulas]]
+id = "pseudospectrum_N2O"
+form = "oscillator"
+energy_unit = "hartree"
+terms = { f = ["0.354715e-4", "0.833303e-3", "0.424885e-1", "0.541260e0", "0.897658e0", "0.225780e1", "0.380666e1", "0.516885e1", "0.353283e1", "0.575172e1"], E = ["0.215324e0", "0.241027e0", "0.313142e0", "0.361978e0", "0.467336e0", "0.648504e0", "0.100102e1", "0.178454e1", "0.412480e1", "0.266071e2"] }
+range_nm = [244.0, "inf"]
+material = "N2O"
+equation = "Table I, p. 1427, with Eq. (2); alpha(omega) = sum_i f_i / (epsilon_i^2 - omega^2)"
+printed = "(epsilon_i, f_i), Hartree atomic units, powers of ten in parentheses: (0.215324(0), 0.354715(-4)); (0.241027(0), 0.833303(-3)); (0.313142(0), 0.424885(-1)); (0.361978(0), 0.541260(0)); (0.467336(0), 0.897658(0)); (0.648504(0), 0.225780(1)); (0.100102(1), 0.380666(1)); (0.178454(1), 0.516885(1)); (0.412480(1), 0.353283(1)); (0.266071(2), 0.575172(1))"
+variable = "omega: photon energy (angular frequency) in hartree; alpha in atomic units"
+state = "none (per molecule)"
+density = "none"
+range = "photon energies up to 0.95 E0, E0 = 5.35 eV (N2O DOSD from 5.35 eV, Zeiss et al. 1977, p. 2088): 'ten pseudostates reproduce the dynamic polarizabilities alpha(E) for photon energies up to 0.95 and 0.99 E0 with a maximum error of 0.02% and 1.6%' (p. 1429); range_nm is hc/(0.95 E0) rounded up"
+check = "Terms equal Table I (asserted by tools/extract/margoliash_1978.py against the library table; image checked). S_0 = 22.00014, S_-2 = 19.6957 against Zeiss et al.'s 22.00 and 19.70 (read from the table image); alpha at 632.8 nm 20.081, 0.09 % below the default N2O model (He et al.) (computed 2026-09-25)."
+notes = "A ten-term pseudospectrum fitted (Gaussian quadrature, the theory of moments) to the sums S(0) ... S(-19) of the original DOSD of Zeiss et al. 1977 (zeiss_1977) and Zeiss & Meath 1977 (Refs. 1, 4); the printed mantissa(exponent) values are stored in e-notation, digits unchanged. The original DOSD was constrained to measured refractivities (zeiss_1977 notes), so this model is not independent of them. A published erratum to this paper (J. Chem. Phys., 'Erratum: Pseudospectral dipole oscillator strength distributions ...', listed on the article's cover page) is not in the library: the values may have been corrected."
+
+[[formulas]]
+id = "pseudospectrum_CH4"
+material = "CH4"
+equation = "Table I, p. 1427, with Eq. (2); alpha(omega) = sum_i f_i / (epsilon_i^2 - omega^2)"
+printed = "(epsilon_i, f_i), Hartree atomic units, powers of ten in parentheses: (0.321135(0), 0.212204(-1)); (0.345902(0), 0.955530(-1)); (0.394321(0), 0.297613(0)); (0.471748(0), 0.998503(0)); (0.583696(0), 0.174261(1)); (0.779898(0), 0.193128(1)); (0.115847(1), 0.176802(1)); (0.204856(1), 0.977037(0)); (0.638403(1), 0.722007(0)); (0.219451(2), 0.144615(1))"
+variable = "omega: photon energy (angular frequency) in hartree; alpha in atomic units"
+state = "none (per molecule)"
+density = "none"
+range = "photon energies up to 0.95 E0 (p. 1429). E0 for CH4 is the threshold of Thomas & Meath's DOSD, 145.86 nm = 8.500 eV (thomas_1977 Table 1), so the stated accuracy holds above hc/(0.95 E0) = 153.6 nm; the formula is still recorded without a form (a model is a decision for review)"
+check = "Terms equal Table I (asserted by tools/extract/margoliash_1978.py against the library table; image checked). S_0 = 9.99999, S_-2 = 17.2661; alpha at 632.8 nm 17.598, 0.45 % below the default CH4 model (He et al.), 0.40 % at 250 nm (computed 2026-09-25). Against thomas_1977's printed sums (2026-09-27): S_-1 10.858 (10.86), S_-3/2 13.392 (13.39), S_-2 17.266 (17.27), S_-3 31.402 (31.40), S_-4 62.411 (62.41), S_-6 298.28 (298.3), S_-8 1714.1 (1714), S_-10 11223 (11220), S_-12 80641 (80640), S_-14 6.1897e5 (6.190e5), S_-16 4.9804e6 (4.980e6): within 3e-4."
+notes = "A ten-term pseudospectrum fitted (Gaussian quadrature, the theory of moments) to the sums S(0) ... S(-19) of the original DOSD of Thomas & Meath (1977, Ref. 3; thomas_1977); the printed mantissa(exponent) values are stored in e-notation, digits unchanged. The original DOSD was constrained to measured refractivities (zeiss_1977 notes), so this model is not independent of them. A published erratum to this paper (J. Chem. Phys., 'Erratum: Pseudospectral dipole oscillator strength distributions ...', listed on the article's cover page) is not in the library: the values may have been corrected. Recorded without a form because its valid range cannot be stated from the library."

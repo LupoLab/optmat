@@ -1,0 +1,89 @@
+citation = "W.-C. Liu, Phys. Rev. A 56, 4938 (1997)"
+doi = "10.1103/physreva.56.4938"
+library = "Liu_1997_HighOrderNonlinear"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Rayleigh-Schrodinger perturbation theory at lowest order for the \
+nonrelativistic, infinite-nuclear-mass helium atom, with mixed Hylleraas and \
+Frankowski basis sets (385 functions per angular block for the polarizability, 307 for \
+Table IV), 128-bit arithmetic; complex rotation (theta trajectories) above the \
+ionisation threshold (pp. 4938-4941)."""
+notes = """Static limit (p. 4941): alpha(0) = 1.383 191 94 a.u., 'to be compared to ... \
+Bishop and Lam, 1.383 192 a.u., and the very accurate result from Bhatia and \
+Drachman, 1.383 192 179 3 a.u. The agreement is within 2e-7 a.u.' No uncertainty is \
+stated for the dynamic values; Fig. 2 shows them inside Glover and Weinhold's rigorous \
+bounds.
+
+Units: atomic units for the infinite-mass, nonrelativistic atom, both for omega and \
+for alpha. For physical 4He, in the reduced-mass approximation, alpha scales by (1 + \
+m_e/M)^3 = 1.000411 and omega by (1 + m_e/M)^-1 (stone_2004 Eqs. 6-7): the physical \
+static value is 1.38376 (Lach et al. 2004, quoted in wang_2021), 4.1e-4 above the \
+printed 1.38319; near the first resonance the frequency scaling changes alpha by a \
+few parts in 1e3 (at omega = 0.75 a.u.). A fit must apply these corrections or treat \
+the values as infinite-mass ones (TC-16).
+
+Above threshold (Table II) the polarizability is complex and its real part is \
+negative (-0.43 to -0.81 a.u.); the format has no quantity for a real part above \
+threshold, so only the imaginary part is extracted. The cross \
+sections follow sigma = (4 pi omega / c) Im alpha (Eq. 17): the printed Im alpha \
+reproduces the printed cross section at all eight energies to the last digit \
+(checked 2026-09-24). Tables III and IV (q >= 3) are nonlinear susceptibilities, \
+outside this extraction."""
+
+[[datasets]]
+id = "alpha"
+material = "He"
+file = "He/liu_1997__alpha.csv"
+table = "tbl_c824036c5cc9"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table I, omega = 0 to 0.75 a.u.; nonrelativistic, infinite nuclear mass (see the source notes on the mass scaling). The static value is 2e-7 below Bhatia and Drachman's 1.3831921793 as quoted by the paper."
+
+[[datasets]]
+id = "alpha_imaginary"
+material = "He"
+file = "He/liu_1997__alpha_imaginary.csv"
+table = "tbl_936a0db2e146"
+quantity = "polarizability_imaginary"
+unit = "au"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table II, imaginary part of the complex polarizability at 27-58 eV (the real parts, -0.57, -0.758, -0.809, -0.739, -0.645, -0.555, -0.473, -0.426, are not extracted)."
+
+[[datasets]]
+id = "cross_section"
+material = "He"
+file = "He/liu_1997__cross_section.csv"
+table = "tbl_936a0db2e146"
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table II, 'present work': Eq. (17) applied to alpha_imaginary, so not independent of it."
+
+[[datasets]]
+id = "samson_cross_section"
+material = "He"
+file = "He/liu_1997__samson_cross_section.csv"
+table = "tbl_936a0db2e146"
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. A. R. Samson, Z. X. He, L. Yin and G. N. Haddad, J. Phys. B 27, 887 (1994)"]
+notes = "Table II, 'Samson et al. [32]', measured; the original is not in the library."
+
+[[datasets]]
+id = "chi1"
+material = "He"
+file = "He/liu_1997__chi1.csv"
+table = "tbl_5f861154394b"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table IV, q = 1: |chi_1| in esu (a polarizability volume, cm^3) at 1064, 532, 248 nm and at the 'low frequency limit', printed 'lambda ~ 46 um' and stored as 46000 nm. The same calculation as Table I with a smaller basis (307 functions); 2.04968e-25 cm^3 is 1.3832 a.u."

@@ -1,0 +1,136 @@
+citation = "T. Otobe, K. Yabana and J.-I. Iwata, \"First-principles calculations for the tunnel ionization rate of atoms and molecules\", Phys. Rev. A 69, 053404 (2004)"
+doi = "10.1103/PhysRevA.69.053404"
+library = "Otobe_2004_FirstPrinciplesCalculations"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field tunnel ionisation rates from Gamow states of the Kohn-Sham \
+equation (density functional theory). Step one: the static Kohn-Sham equation with the \
+dipole potential e F z, emission suppressed by a spherical wall (Eq. (27)), \
+self-consistent, so that the atom's static polarisation screens the field. Step two: \
+with that Hamiltonian fixed, each occupied orbital's Gamow state from the Kohn-Sham \
+equation with a linear absorbing potential -i W0 (r - R)/Delta R between R = 10 and R + \
+Delta R = 30 Angstrom (Eqs. (19), (21); Table I), whose complex eigenvalue epsilon_i = \
+epsilon_i^R + i Gamma_i (Eq. (5)) gives the orbital's ionisation rate w_i = -(2/hbar) \
+Gamma_i (Eq. (10)). Exchange and correlation: the self-interaction-corrected optimized \
+effective potential in Krieger, Li and Iafrate's approximation (KLI-SIC, Eqs. (11)-(17)), \
+so that the highest orbital energy approximates the ionisation potential and the \
+potential falls as -e^2/r. Valence electrons only, with Troullier-Martins \
+norm-conserving pseudopotentials (l up to 2; R_ps = 1.4 Angstrom for the rare gases). \
+Real-space adaptive grid (Eqs. (24)-(26); h = 0.2, a = 5.0, k = 10.0, n = 2, Table I). \
+W0 checked to leave the rates unchanged (Fig. 3, p. 053404-6)."""
+notes = """Journal pp. 053404-1 to -11 = PDF pages 1-11. Identity checked against the \
+first page (T. Otobe and K. Yabana; J.-I. Iwata; Phys. Rev. A 69, 053404 (2004)).
+
+WHAT IS TAKEN. Table II (p. -6, tbl_a857b4484f15): 'Orbital energy of each Gamow state \
+of Xe atom ... under the static electric field parallel to the z axis ... Numbers in \
+brackets denote powers of 10' (caption): the complex energies of the p_x, p_y and p_z \
+orbitals at six field strengths labelled by a 'Laser intensity' of 4, 5, 6, 7, 8 and 9 \
+x 10^13 W/cm^2. One dataset per orbital: the imaginary part Gamma_i (eV, negative, as \
+printed: -12.27-i1.07[-5] is epsilon^R = -12.27 eV, Gamma = -1.07e-5 eV); scale = \
+-2/27.211386245981 (the hartree in eV, CODATA 2022) turns it into the orbital's rate \
+w_i = -2 Gamma_i/hbar in atomic units (Eq. (10), p. -2: 'The ionization rate of the \
+orbital i, w_i ... = -(2/hbar) Gamma_i'). Gamma_i is the imaginary part of the energy, \
+not a width: the rate is twice |Gamma_i|/hbar. The real parts are kept in the printed \
+cells. The library's cells are scrambled (rows merged); the script transcribes the \
+table from the image, and checks the transcription against the library's cells; the \
+image and the PDF's text layer agree (checked 2026-10-01). The columns are headed '2p_x', \
+'2p_y', '2p_z': for Xe the orbitals are 5p (the text, p. -6, says 'p_x, p_y, and p_z \
+orbitals'); the label is a misprint of the heading and changes no value.
+
+THE ABSCISSA. The fields are static; the table labels each by the intensity of a \
+linearly polarised laser whose peak field it is, I = c eps0 F^2/2: '5 x 10^13 W/cm^2 \
+(1.94 eV/Angstrom)' (p. -5), and 5e13 W/cm^2 gives F = 1.941 V/Angstrom by that \
+relation. The intensities 4-9 x 10^13 W/cm^2 are F = 0.03376, 0.03775, 0.04135, \
+0.04466, 0.04774 and 0.05064 au. The datasets keep the printed intensity.
+
+WHAT THE RATES COUNT. Each w_i is the rate of one electron in the Kohn-Sham orbital i \
+(the flux through a large sphere over the orbital's norm, Eq. (10)). The atom's rate is \
+the sum over the occupied orbitals: 'The total ionization rate w is given by summing up \
+the rates of all occupied orbitals' (p. -4; Eq. (23), w = -(2/hbar) sum_i Gamma_i = \
+(2/hbar) integral n W, n the total electron density), and 'Summing up the ionization \
+rates of all orbitals, we obtain the total ionization rate. In Fig. 4, we show the \
+calculated ionization rate of the Xe and Ar atoms' (p. -6). Xe is closed-shell, each \
+spatial orbital holding two electrons, so the 5p contribution is 2 x (w_px + w_py + \
+w_pz); 'The eigenvalue of the s orbital is not shown, since the imaginary part of the \
+eigenvalue of the s orbital is very small' (p. -6). That total is 1.34e-3 fs^-1 at 4e13 \
+and 7.47e-2 fs^-1 at 9e13 W/cm^2; Fig. 4's open squares (read by eye, not digitised) \
+lie near 1.5e-3 and 8e-2 fs^-1 there, and not at the half: the plotted total includes \
+the factor 2 for spin. p_x and p_y are equal ('reflecting the axial symmetry'); p_z, \
+along the field, is 19 to 36 times faster.
+
+DOUBT: THE 8e13 ROW. Gamma of p_z grows by 3.54, 2.63, 1.99, 2.35 and 1.28 from one \
+intensity to the next, and that of p_x by 2.07, 2.31, 2.57, 1.93 and 2.33: a smooth \
+tunnelling rate grows by a factor that falls steadily with the field. The p_z value at \
+8e13 W/cm^2 (8.65e-3 eV) is high against its neighbours (2.35 after 1.99, then 1.28), \
+and the p_x values at 7e13 and 8e13 are irregular too. The paper says nothing about \
+it; the values are as printed, nothing is excluded.
+
+ACCURACY. No uncertainty is stated. 'we examined carefully that the calculated \
+ionization rates are not sensitive to the change of W0' (p. -6), and the spatial \
+parameters were checked (p. -4). The method is a static, adiabatic one ('the Keldysh \
+parameter ... is assumed to be much smaller than unity', p. -2; 'This trend may be \
+attributed to the effect of the multiphoton process', p. -6, of the fall of the \
+calculated rate below the measured one under 3 x 10^13 W/cm^2 for Xe). 'Comparing our \
+calculation with the ADK formula, the absolute values of the ionization rate are \
+slightly higher (about a factor of 2)' (p. -6). The field-free p orbital energy of the \
+calculation is 12.07 eV against the measured ionisation potential of 12.13 eV (p. -6, \
+Table II).
+
+NOT TAKEN. The real parts (Stark-shifted orbital energies) and the measured \
+ionisation potential (12.13 eV) of Table II. Ar's rates (Figs. 4 and 5, figures only, \
+with and without the static polarisation). Table III (orbital energies of N2, O2, F2) \
+and the molecular rates (figures)."""
+
+[[datasets]]
+id = "tableII_px_Xe"
+material = "Xe"
+file = "Xe/otobe_2004__tableII_px_Xe.csv"
+table = "tbl_a857b4484f15"
+quantity = "ionization_rate"
+unit = "au"
+scale = -0.0734986443513289
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table II (p. 053404-6), column '2p_x (eV)' (Xe 5p_x, perpendicular to the field): Gamma_x, the imaginary part of the complex Kohn-Sham (KLI-SIC) orbital energy in a static field, eV as printed, against the 'laser intensity' of the field (I = c eps0 F^2/2: 4-9e13 W/cm^2 are F = 0.0338-0.0506 au). scale = -2/27.211386245981 makes it the rate of the orbital w = -2 Gamma/hbar in atomic units (Eq. (10)): the rate of ONE electron in that orbital; the atom's 5p rate is 2 x (w_px + w_py + w_pz) (record notes). Equal to p_y. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "5p_x (printed 2p_x)"
+method = "Gamow states of the KLI-SIC Kohn-Sham equation, absorbing potential, pseudopotentials"
+
+[[datasets]]
+id = "tableII_py_Xe"
+material = "Xe"
+file = "Xe/otobe_2004__tableII_py_Xe.csv"
+table = "tbl_a857b4484f15"
+quantity = "ionization_rate"
+unit = "au"
+scale = -0.0734986443513289
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table II (p. 053404-6), column '2p_y (eV)' (Xe 5p_y, perpendicular to the field): Gamma_y, the imaginary part of the complex Kohn-Sham (KLI-SIC) orbital energy in a static field, eV as printed, against the 'laser intensity' of the field (I = c eps0 F^2/2: 4-9e13 W/cm^2 are F = 0.0338-0.0506 au). scale = -2/27.211386245981 makes it the rate of the orbital w = -2 Gamma/hbar in atomic units (Eq. (10)): the rate of ONE electron in that orbital; the atom's 5p rate is 2 x (w_px + w_py + w_pz) (record notes). Equal to p_x ('reflecting the axial symmetry', p. -6). No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "5p_y (printed 2p_y)"
+method = "Gamow states of the KLI-SIC Kohn-Sham equation, absorbing potential, pseudopotentials"
+
+[[datasets]]
+id = "tableII_pz_Xe"
+material = "Xe"
+file = "Xe/otobe_2004__tableII_pz_Xe.csv"
+table = "tbl_a857b4484f15"
+quantity = "ionization_rate"
+unit = "au"
+scale = -0.0734986443513289
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table II (p. 053404-6), column '2p_z (eV)' (Xe 5p_z, along the field, the m = 0 orbital): Gamma_z, the imaginary part of the complex Kohn-Sham (KLI-SIC) orbital energy in a static field, eV as printed, against the 'laser intensity' of the field (I = c eps0 F^2/2: 4-9e13 W/cm^2 are F = 0.0338-0.0506 au). scale = -2/27.211386245981 makes it the rate of the orbital w = -2 Gamma/hbar in atomic units (Eq. (10)): the rate of ONE electron in that orbital; the atom's 5p rate is 2 x (w_px + w_py + w_pz) (record notes). The 8e13 W/cm^2 value is irregular against its neighbours (growth 2.35 from 7e13, then 1.28 to 9e13; record notes); kept as printed. No uncertainty is stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+orbital = "5p_z (printed 2p_z)"
+method = "Gamow states of the KLI-SIC Kohn-Sham equation, absorbing potential, pseudopotentials"

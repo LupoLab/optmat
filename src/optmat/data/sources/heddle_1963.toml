@@ -1,0 +1,117 @@
+citation = "D. W. O. Heddle, R. E. Jennings and A. S. L. Parsons, J. Opt. Soc. Am. 53, 840 (1963)"
+doi = "10.1364/josa.53.000840"
+library = "Heddle_1963_DeterminationRefractiveIndices"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Cerenkov threshold: electrons of fixed velocity from a 4.5 MeV microtron pass \
+through the gas; the threshold pressures for Cerenkov light in the vacuum ultraviolet \
+(gold-photocathode photomultipliers with fused-silica or Spectrosil windows, about 1900 \
+A; a nitric-oxide ionization chamber with a LiF window, about 1200 A) and in the \
+visible (filters at the Hg 4358 A line) are compared, and a Jamin interferometer gives \
+the ratio of the refractivities at the two thresholds."""
+notes = """The refractivity at the ultraviolet effective wavelength follows from the \
+measured ratio and 'the known value for the gas in the visible', 'assuming that the \
+ratio of the refractivities is independent of the pressure' (p. 2): the absolute scale \
+rests on 28.52e-5 for argon at 4358 A (from Larsen) and 30.29e-5 for nitrogen (from \
+Koch) (p. 7). Values are 'refractivities (STP)' (Table I); the paper does not say how \
+the reduction was made (density unknown). The effective wavelengths were computed from \
+detector responses 'deduced from various published data', so 'a realistic estimate of \
+the errors in the effective wavelengths is difficult' (p. 7); the +-80 and +-30 A \
+printed with them are the detector bands. Errors (Table I): 'standard deviations'; the \
+text lists threshold determination 'up to +-2 %' and gauge reading and fringe counting \
+'up to +-0.3 %' (p. 7). The authors call the results preliminary.
+
+The columns 'From Wilkinson' and 'From Larsen' are values of those authors' dispersion \
+formulas (Larsen's extrapolated far below its 2300 A range); they are kept as checks, \
+not as data. The formulas quoted on p. 1 are recorded below. Reproduced by Leonard 1974 \
+(Table III(c), argon), Kingston 1964 (Table III) and Langhoff and Karplus 1969 (Table IV); \
+Bideau-Mehu et al. 1981 attribute to this paper argon values (332.0, 336.0 at 184.9, \
+180.7 nm) that are not in it."""
+
+[[datasets]]
+id = "experiment_Ar"
+material = "Ar"
+file = "Ar/heddle_1963__experiment_Ar.csv"
+table = "tbl_2c6e9aed4bea"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table I, argon, detectors (a), (b), (c) at effective wavelengths 1850 +- 80, 1805 +- 80, 1210 +- 30 A. A value over a broad band: comparing with a dispersion model needs the band average (the text's Eq. for eta r-bar)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "experiment_N2"
+material = "N2"
+file = "N2/heddle_1963__experiment_N2.csv"
+table = "tbl_2c6e9aed4bea"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table I, nitrogen, at effective wavelengths 1860 +- 80, 1805 +- 80, 1220 +- 30 A. The 1220 A value (57.1) is the one Gill and Heddle 1963 use to put their Rayleigh-scattering results on an absolute scale."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "larsen_formula_Ar"
+material = "Ar"
+file = "Ar/heddle_1963__larsen_formula_Ar.csv"
+table = "tbl_2c6e9aed4bea"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table I, 'From Larsen': Larsen's 1939 formula (formula larsen_1939) evaluated at the effective wavelengths, an extrapolation below its 2300 A range. Not data."
+
+[[datasets]]
+id = "wilkinson_formula_N2"
+material = "N2"
+file = "N2/heddle_1963__wilkinson_formula_N2.csv"
+table = "tbl_2c6e9aed4bea"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table I, 'From Wilkinson': Wilkinson's (1960) dispersion formula at 1860 and 1805 A (none at 1220 A). Wilkinson's formula is not in the library; its first term corresponds to 1474 A, where nitrogen is transparent, which the authors take as a sign of oxygen contamination (p. 7). Not data."
+
+[[formulas]]
+id = "larsen_1939"
+material = "Ar"
+equation = "p. 1 (unnumbered), quoted"
+printed = "n - 1 = 1.2048 x 10^6 (0.209646/(0.87882 x 10^10 - nu^2) + 0.209646/(0.91001 x 10^10 - nu^2) + 4.941724/(2.69636 x 10^10 - nu^2))"
+variable = "nu: wavenumber in cm^-1 (vacuum)"
+state = "1atm_0C"
+density = "unknown"
+range = "about 5700-2300 A (Larsen's interferometric data)"
+coefficients = { c = "1.2048e6", f1 = "0.209646", nu1_squared = "0.87882e10", f2 = "0.209646", nu2_squared = "0.91001e10", f3 = "4.941724", nu3_squared = "2.69636e10" }
+check = "Reproduces the 'From Larsen' column: 33.158, 33.522, 53.598 (x 1e-5) at 1850, 1805, 1210 A against the printed 33.15, 33.52, 53.60, and gives 28.524e-5 at 4358 A, the reference value 28.52e-5 the paper takes 'from Larsen'. Checked 2026-09-24."
+notes = "Reproduced from T. Larsen, dissertation (Lund, 1939), not in the library. The first two terms are the resonance lines at 1066 and 1048 A. Differs from the Larsen (1934) formula quoted by Peck and Fisher 1964 (1.2098e6, 0.208972, 4.925837, 0.9100e10; a function of the Lorentz-Lorenz R there): two versions of Larsen's fit."
+
+[[formulas]]
+id = "dalgarno_kingston_1960"
+material = "Ar"
+equation = "p. 1 (unnumbered), quoted"
+printed = "n^2 - 1 = 5.547 x 10^-4 (1 + 5.15 x 10^5/lambda^2 + 4.19 x 10^11/lambda^4 + 4.09 x 10^17/lambda^6 + 4.32 x 10^32/lambda^8 + ...)"
+variable = "lambda: wavelength in angstrom units"
+state = "1atm_0C"
+density = "unknown"
+range = "extrapolation formula (Dalgarno and Kingston)"
+coefficients = { a = "5.547e-4", b2 = "5.15e5", b4 = "4.19e11", b6 = "4.09e17", b8_printed = "4.32e32" }
+check = "The printed 10^32 in the lambda^-8 term cannot be right: at 2000 A it would make that term 1.7e6 times the leading one. The coefficients grow by 8.1e5 and 9.8e5 per order, so 4.32e23 is the likely value (a transposed exponent). The page image (checked 2026-09-24) prints 10^32. Not corrected in the coefficients; to be checked against Dalgarno and Kingston 1960 (library source dalgarno_1960)."
+notes = "Reproduced from A. Dalgarno and A. E. Kingston, Proc. Roy. Soc. (London) A259, 424 (1960) (library source dalgarno_1960). The paper shows it becomes inaccurate at short wavelengths."

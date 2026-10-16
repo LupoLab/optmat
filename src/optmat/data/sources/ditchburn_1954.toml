@@ -1,0 +1,94 @@
+citation = "R. W. Ditchburn and D. W. O. Heddle, \"Absorption cross-sections in the vacuum ultra-violet. II. The Schumann-Runge bands of oxygen (2000 to 1750 A)\", Proc. R. Soc. Lond. A 226, 509 (1954)"
+doi = "10.1098/rspa.1954.0271"
+library = "Ditchburn_1954_AbsorptionCrossSections"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photographic absorption spectrophotometry of the unbroadened Schumann-Runge \
+bands with the 1 m concave-grating vacuum spectrograph of part I (slit 5e-4 cm, \
+resolution insufficient to separate the rotational structure at the heads; P(J) and \
+R(J + 2) unresolved for v' < 8, resolved for v' = 8-15), a d.c. hydrogen discharge, \
+Ilford Q1 plates and a Moll microphotometer; paths 205 +- 1 cm (O2 at 0.3-760 mm Hg in \
+the spectrograph) and 4.90 +- 0.05 cm (250-750 mm Hg). The minimum transmission of each \
+line was converted to a peak cross section through computed curves of transmission \
+against sigma_0 n L and the damping ratio (Fig. 3, Appendix 2: the grating's \
+instrumental function, a Voigt profile with the Doppler breadth at 20 C), with the \
+radiation damping ratio taken from an assumed f-sum and iterated until the f-sum of the \
+derived band oscillator strengths agreed (Eqs. 1-10, pp. 513-514); the rotational \
+populations from a weighted Boltzmann factor (Eq. 10) (pp. 510-514, 520)."""
+notes = """Journal pages 509-521 = PDF pages 2-14 (page 1 is the JSTOR cover; page 2 \
+opens with the end of the preceding paper's references, and page 14 continues with the \
+next paper, Skyrme's). Identity checked against the first page (PDF page 2): Ditchburn \
+and Heddle, Proc. R. Soc. A 226, 509, received 29 June 1954. O2 only. Part I is \
+ditchburn_1953.
+
+Table 1 (p. 514): the oscillator strengths f of the bands (v', 0), v' = 0-20, 'the \
+values for bands with v' = 1, 18, 19 and 20 being extrapolated' (p. 514). The f-sum \
+of the discrete transitions is 0.044 (p. 515) and 'The total oscillator strength \
+(including the continuum) is found to be 0.259' (abstract, p. 509), the continuum's \
+0.215 being part I's (p. 513, reproduced; recorded in ditchburn_1953). Accuracy: 'the \
+total errors are estimated to be less than 20 %' (p. 515, said of the f-sum after the \
+extrapolation to high v'); 'The oscillator strengths for these bands [v' = 2, 3, 4] are \
+probably the least accurate' (p. 516); the standard deviation of the relative line \
+intensities within bands 20 % (p. 514). Temperature: room temperature; the analysis \
+takes the Doppler breadth for 20 C (Eq. 23, p. 520); the fraction of molecules with v'' \
+> 0 is 5.7e-4 (p. 509).
+
+These band strengths are not usable: Bethke (1959, bethke_1959, Table I column six, \
+which reproduces all sixteen values v' = 2-17 exactly, and its remainder 2276e-5 = \
+f(18,0) + f(19,0) + f(20,0) and total 4450e-5, both reproduced by the sums of this \
+table, checked 2026-09-25) finds them 80 to 110 times his own for (2,0)-(8,0) and the \
+band sum 140 times his 0.000314, and they imply an electronic f_el of 0.8 to 17 against \
+0.030-0.55 expected; Matsui et al. (2003, matsui_2003) find (12,0)-(17,0) 15-28 % \
+below Bethke's. The cause is not identified in the library papers; the analysis here \
+derived the line \
+breadths from an assumed f-sum through radiation damping alone (Eqs. 2, 3, 9) and \
+neglected collision broadening at the long-path pressures (p. 516). All datasets are \
+therefore excluded, kept for the record. bethke_1959/ditchburn_heddle is a reproduction \
+of this table.
+
+Not extracted: Table 2 (p. 516), the cross sections Q for deactivating collisions of the \
+upper state per (v', J') (Eq. 11, rho_c = 5.15e11 p Q; italic values measured with the \
+4.90 cm path, roman values calculated for rotational deactivation, the typeface not \
+kept by the extraction), not optical data. Figure 5 (relative f, f(0,11) = 100, against \
+Pillow's theory) and the mean relative line intensities (Fig. 4) are figures only. \
+Also stated: the dissociation limit 57140 +- 20 cm^-1 ('K'), D0 = 5.12 eV (p. 511); \
+the note added in proof (p. 521) takes Brix and Herzberg's 5.1148 +- 0.002 eV and \
+57128 +- 5 cm^-1 as definitive. Bethke's comparison is the check."""
+
+[[datasets]]
+id = "band_f"
+material = "O2"
+file = "O2/ditchburn_1954__band_f.csv"
+table = "tbl_2b2a1247ae97"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "excluded"
+notes = "Table 1: band oscillator strengths f(v', 0) of the Schumann-Runge system, v' = 0-20 (index v'), each printed with its own power of ten (value column in E notation). Excluded: 80-140 times the pressure-broadened photoelectric values of bethke_1959 and matsui_2003 (see the record's notes). v' = 1, 18, 19, 20 are the paper's extrapolations (excluded_rows). No per-band uncertainty; the v' = 2-4 values 'probably the least accurate' (p. 516). Bands' wavelengths not tabulated."
+[datasets.excluded_rows]
+"(1,0)" = "extrapolated (p. 514)"
+"(18,0)" = "extrapolated (p. 514)"
+"(19,0)" = "extrapolated (p. 514)"
+"(20,0)" = "extrapolated (p. 514)"
+
+[[datasets]]
+id = "band_sum"
+material = "O2"
+points = [["discrete f-sum", "0", "0.044"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "excluded"
+notes = "p. 515: 'The f-sum for the discrete transitions is 0.044' (Table 1 sums to 0.04450 with the extrapolated bands; Bethke prints it as 4450e-5). Index 0 marks the first band of the sum. Excluded with band_f (140 times bethke_1959's 0.000314)."
+
+[[datasets]]
+id = "total_f"
+material = "O2"
+points = [["total S-R system", "0", "0.259"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "excluded"
+notes = "Abstract (p. 509) and p. 516 ('For Sigma f = 0.259'): the total oscillator strength of the Schumann-Runge transition, the continuum's 0.215 (ditchburn_1953, part I) plus the band sum 0.044. 'total errors ... less than 20 %' (p. 515), recorded as a bound. Excluded: the band part is about 140 times too large (bethke_1959), so the total overstates the system by about 0.044; the continuum part is in ditchburn_1953/continuum_f."
+[datasets.uncertainty]
+relative = 0.20
+level = "bound"

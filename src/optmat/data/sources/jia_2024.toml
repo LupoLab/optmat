@@ -1,0 +1,559 @@
+citation = "Y.-W. Jia, C. H. Yuen, W.-Q. Jing, Z.-Y. Zhou, C. D. Lin and S.-F. Zhao, \"Improved model for the dissociative sequential double ionization of nitrogen molecules by an intense few-cycle infrared laser pulse\", Phys. Rev. A 110, 023112 (2024)"
+doi = "10.1103/PhysRevA.110.023112"
+library = "Jia_2024_ImprovedModelDissociative"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The density-matrix model of sequential double ionisation (DM-SDI) of \
+yuen_2022, Eqs. (1)-(4), with two additions: field couplings between the N2^2+ \
+states (Table IV, calculated here) and the vibrational spread of the neutral's ground \
+state. The model is solved at fixed R = 1.00, 1.05, 1.10, 1.15 and 1.20 angstrom with \
+that geometry's vertical energies (Table I), structure parameters (Table II) and \
+dipoles (Tables III-IV), averaged over isotropic alignment (Eq. 9), and the KER \
+spectra are averaged over |phi_1(R)|^2 of the neutral's v = 0 level (Eq. 11; Fourier \
+grid Hamiltonian, a modified Morse potential of Desai et al. 2020). MO-ADK rates \
+(Tong et al. 2002; Zhao et al. 2011); C_l of the 3sigma_g, 1pi_u and 2sigma_u orbitals \
+of N2 by the method of Zhao et al. (2010, 2017: an LB-alpha model potential, the \
+orbitals solved with B-splines, the asymptotic part fitted), and the same C_l for the \
+cation's orbitals. N2^2+ dipoles: SA-CASSCF with rotated multistate CASPT2 in \
+OpenMolcas, ANO-L basis, 8 electrons in 11 orbitals, 9 singlet and 6 triplet states. \
+Fourth-order Runge-Kutta with a fixed step."""
+notes = """The library holds the accepted manuscript (CHORUS, 8 PDF pages; published 26 \
+August 2024); pages are cited as PDF pages. Identity checked on PDF pp. 1-2 (Yan-Wen \
+Jia, C. H. Yuen, Wen-Quan Jing, Zhong-Yao Zhou, C. D. Lin and Song-Feng Zhao; \
+Northwest Normal University, Kennesaw State, Kansas State) on 2026-10-09. The register \
+entry is TC-957.
+
+THE PULSE OF THE MODEL (Eq. 5, p. 3): E(t) = E0 exp(-2 ln 2 t^2 / tau^2) cos(omega t), \
+tau the FWHM, linear polarisation in the xz plane, the molecular axis along z. Fig. 2: \
+1.2e15 W/cm^2, 8 fs FWHM, 800 nm, sigma = 0.28 eV. Fig. 4: (b) as Voss et al. 2004, \
+1.2e15 W/cm^2, 8 fs, 800 nm, sigma = 0.03 KER; (c) as Wu et al. 2010, 7.5e14 W/cm^2, 8 \
+fs, 780 nm, sigma = 0.05 KER; the measured spectra shifted by -0.20 eV and +0.37 eV to \
+match the 7.43 eV peak.
+
+TABLE I (p. 4): taken. 'The vertical ionization energies at different internuclear \
+distances are obtained from Pandey et al. [32]' (J. Chem. Phys. 140, 034319 (2014)); \
+limits from Iwayama et al. 2016 (states 10 and 11 from the curves of ref. 29). The \
+KER are not tabulated: 'The KER values at different internuclear distances are the \
+difference between vertical ionization energies and the dissociation limits' (p. 4). \
+The text's peaks at R = 1.10 angstrom, 6.54 eV (state 5) and 10.03 eV (state 9) (p. 5), \
+are Table I's 45.50 and 48.99 eV less 38.96 eV, the 3P + 3P limit implied by \
+yuen_2022's Table I. Against yuen_2022's Table I (Bhattacharya et al. 2021, R = 1.09 \
+angstrom) the values at 1.10 angstrom are 0.13 to 0.21 eV lower for states 1-10 and \
+0.85 eV lower for state 11 (TC-957).
+
+TABLE II (p. 5): taken. The LB-alpha binding energies, the 'C+M' (CASSCF+MRCI) \
+energies of ref. 29 (Bhattacharya et al. 2021), the C_l ('For sigma orbitals, m = 0 \
+and for pi orbital, m = 1') and alpha. alpha changes with R (1.15, 1.08, 1.13, 1.14, \
+1.11) and is not explained; the LB-alpha energies and the C_l are not smooth in R \
+(3sigma_g C_0m 3.11, 3.25, 2.99, 2.56, 2.89), which suggests alpha was set at each R \
+(perhaps to an energy), but the paper does not say. At R = 1.10 the 3sigma_g C_l {2.99, \
+1.48, 0.12} differ from zhao_2010's {2.68, 1.10, 0.06} (LDA + LB) and zhao_2017's \
+{3.39, 1.40, 0.05} (LB-alpha, alpha = 1.12) at 1.098 angstrom; the 1pi_u {2.15, 0.37, \
+0.00} and 2sigma_u {4.22, 0.55, 0.04} against zhao_2010's {1.89, 0.22, 0.01} and \
+{3.72, 0.34, 0.01} (TC-957).
+
+TABLE III (p. 5): taken; 'taken from Refs. [36, 37]' (Langhoff, Bauschlicher and \
+Partridge 1987; Langhoff and Bauschlicher 1988), R in bohr.
+
+TABLE IV (p. 6): taken, material N2++ (registered in TC-954). Transition dipoles (au) \
+between N2^2+ states (Table I's numbering) at the five R, this paper's calculation: \
+d(1-4), d(1-10), d(2-5), d(2-6), d(3-6), d(4-7), d(4-8), d(4-9), d(8-10), d(9-10), each \
+along x or z as printed (the same axis at every R, checked by the script, and the one \
+the states' symmetries allow). One dataset per pair, as Table III.
+
+TEXT: the couplings between dication states raise the three KER peaks by factors 4.5, \
+2.3 and 2.4 (p. 5); at R = 1.10 angstrom and 45 degrees they lower the final \
+populations of states 1-4 by 41.1, 54.6, 51.2 and 66.2 % and raise those of states \
+5-10 by about 16.1, 2.1, 2.8, 1.5, 3.3 and 22.7 times (p. 5). Model statements, not \
+taken.
+
+FIGURES (not digitised; vector drawings except Fig. 1, a tiled raster): Fig. 2, the \
+alignment-averaged yields of the dissociative N2^2+ states at R = 1.10 angstrom with \
+and without the dication couplings (800 nm, 8 fs, 1.2e15 W/cm^2), with the KER \
+spectra; Fig. 3, the N2^2+ populations against time at 45 degrees; Fig. 4, |phi_1(R)|^2 \
+and the R-averaged KER spectra against Voss et al. and Wu et al."""
+
+[[datasets]]
+id = "table1_ip"
+material = "N2"
+file = "N2/jia_2024__table1_ip_N2.csv"
+table = "tbl_99caa8ce4558"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["A. Pandey, B. Bapat and K. R. Shamasundar, J. Chem. Phys. 140, 034319 (2014)"]
+notes = "Table I, 'I_p (eV)': the vertical double-ionisation energy of N2 to each N2^2+ state with two valence holes (row <index>@<R>, x the state; configuration and limit in the printed cells) at the five R of the column internuclear_distance. States 1-4 metastable. No uncertainty is stated."
+[datasets.parameters]
+kind = "vertical"
+initial_state = "N2 X 1Sigma_g+"
+final_state = "the N2^2+ state of the row"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table2_lbalpha"
+material = "N2"
+file = "N2/jia_2024__table2_lbalpha_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 'I_p (eV), LB-alpha': the binding energy of each orbital (row <orbital>@<R>) in this paper's LB-alpha potential at the R of the column internuclear_distance; alpha in the printed cells. An orbital energy of the model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+initial_state = "N2 X 1Sigma_g+"
+final_state = "the hole in the orbital of the row: 3sigma_g X 2Sigma_g+, 1pi_u A 2Pi_u, 2sigma_u B 2Sigma_u+"
+
+[[datasets]]
+id = "table2_cm"
+material = "N2"
+file = "N2/jia_2024__table2_cm_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["D. Bhattacharya, K. R. Shamasundar and A. Emmanouilidou, J. Phys. Chem. A 125, 7778 (2021)"]
+notes = "Table II, 'I_p (eV), C+M': CASSCF+MRCI ionisation energies of N2 to the cation state of each orbital's hole (rows <orbital>@<R>) at the R of the column, from ref. 29; vertical, being at a fixed R. At R = 1.10 angstrom 15.49, 16.42 and 18.72 eV."
+[datasets.parameters]
+kind = "vertical"
+initial_state = "N2 X 1Sigma_g+"
+final_state = "the hole in the orbital of the row: 3sigma_g X 2Sigma_g+, 1pi_u A 2Pi_u, 2sigma_u B 2Sigma_u+"
+
+[[datasets]]
+id = "table3_xa"
+material = "N2+"
+file = "N2+/jia_2024__table3_xa_N2+.csv"
+table = "tbl_250cc6975ec7"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "bohr" }
+use = "reproduced"
+reproduced_from = ["S. R. Langhoff, C. W. Bauschlicher Jr. and H. Partridge, J. Chem. Phys. 87, 4716 (1987)"]
+notes = "Table III, X 2Sigma_g+ -> A 2Pi_u, printed with x-hat (perpendicular to the axis); rows R = 1.80-2.40 a0 (the column internuclear_distance). yuen_2022 used 0.25 at the equilibrium (about 2.06 a0, where this table gives about 0.265)."
+[datasets.parameters]
+states = "X 2Sigma_g+ - A 2Pi_u"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table3_xb"
+material = "N2+"
+file = "N2+/jia_2024__table3_xb_N2+.csv"
+table = "tbl_250cc6975ec7"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "bohr" }
+use = "reproduced"
+reproduced_from = ["S. R. Langhoff and C. W. Bauschlicher Jr., J. Chem. Phys. 88, 329 (1988)"]
+notes = "Table III, X 2Sigma_g+ -> B 2Sigma_u+, printed with z-hat (along the axis); rows R = 1.80-2.40 a0. yuen_2022 used 0.75 at the equilibrium (this table: about 0.74)."
+[datasets.parameters]
+states = "X 2Sigma_g+ - B 2Sigma_u+"
+component = "parallel (z)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table2_cl_3sigmag_100"
+material = "N2"
+file = "N2/jia_2024__table2_cl_3sigmag_100_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 3sigma_g at R = 1.00 angstrom (the column internuclear_distance): C_l, rows l = 0, 2, 4, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_3sigmag_105"
+material = "N2"
+file = "N2/jia_2024__table2_cl_3sigmag_105_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 3sigma_g at R = 1.05 angstrom (the column internuclear_distance): C_l, rows l = 0, 2, 4, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_3sigmag_110"
+material = "N2"
+file = "N2/jia_2024__table2_cl_3sigmag_110_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 3sigma_g at R = 1.10 angstrom (the column internuclear_distance): C_l, rows l = 0, 2, 4, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_3sigmag_115"
+material = "N2"
+file = "N2/jia_2024__table2_cl_3sigmag_115_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 3sigma_g at R = 1.15 angstrom (the column internuclear_distance): C_l, rows l = 0, 2, 4, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_3sigmag_120"
+material = "N2"
+file = "N2/jia_2024__table2_cl_3sigmag_120_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 3sigma_g at R = 1.20 angstrom (the column internuclear_distance): C_l, rows l = 0, 2, 4, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3sigma_g"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_1piu_100"
+material = "N2"
+file = "N2/jia_2024__table2_cl_1piu_100_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 1pi_u at R = 1.00 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_1piu_105"
+material = "N2"
+file = "N2/jia_2024__table2_cl_1piu_105_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 1pi_u at R = 1.05 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_1piu_110"
+material = "N2"
+file = "N2/jia_2024__table2_cl_1piu_110_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 1pi_u at R = 1.10 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_1piu_115"
+material = "N2"
+file = "N2/jia_2024__table2_cl_1piu_115_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 1pi_u at R = 1.15 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_1piu_120"
+material = "N2"
+file = "N2/jia_2024__table2_cl_1piu_120_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 1pi_u at R = 1.20 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1pi_u"
+m = 1
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_2sigmau_100"
+material = "N2"
+file = "N2/jia_2024__table2_cl_2sigmau_100_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 2sigma_u at R = 1.00 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 2sigma_u"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_2sigmau_105"
+material = "N2"
+file = "N2/jia_2024__table2_cl_2sigmau_105_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 2sigma_u at R = 1.05 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 2sigma_u"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_2sigmau_110"
+material = "N2"
+file = "N2/jia_2024__table2_cl_2sigmau_110_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 2sigma_u at R = 1.10 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 2sigma_u"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_2sigmau_115"
+material = "N2"
+file = "N2/jia_2024__table2_cl_2sigmau_115_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 2sigma_u at R = 1.15 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 2sigma_u"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table2_cl_2sigmau_120"
+material = "N2"
+file = "N2/jia_2024__table2_cl_2sigmau_120_N2.csv"
+table = "tbl_d1566ca9a202"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table II, 2sigma_u at R = 1.20 angstrom (the column internuclear_distance): C_l, rows l = 1, 3, 5, of the neutral's orbital in the LB-alpha potential (alpha in the printed cells); also used for the cation's orbital. At 1.10 angstrom compare zhao_2010 and zhao_2017 (the record's notes, TC-957)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 2sigma_u"
+m = 0
+normalisation = "as Zhao et al. 2010 and 2017 (zhao_2010 Eqs. (19)-(20); zhao_2017), the method the paper cites; the paper prints no definition"
+
+[[datasets]]
+id = "table4_d1_4"
+material = "N2++"
+file = "N2++/jia_2024__table4_d1_4_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_1->4: the transition dipole between N2^2+ states 1 (1 1Sigma_g+) and 4 (1 1Pi_u) (Table I's indices), printed with x-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 1Sigma_g+ - 1 1Pi_u"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d1_10"
+material = "N2++"
+file = "N2++/jia_2024__table4_d1_10_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_1->10: the transition dipole between N2^2+ states 1 (1 1Sigma_g+) and 10 (1 1Sigma_u+) (Table I's indices), printed with z-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 1Sigma_g+ - 1 1Sigma_u+"
+component = "parallel (z)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d2_5"
+material = "N2++"
+file = "N2++/jia_2024__table4_d2_5_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_2->5: the transition dipole between N2^2+ states 2 (1 3Pi_u) and 5 (1 3Sigma_g-) (Table I's indices), printed with x-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 3Pi_u - 1 3Sigma_g-"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d2_6"
+material = "N2++"
+file = "N2++/jia_2024__table4_d2_6_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_2->6: the transition dipole between N2^2+ states 2 (1 3Pi_u) and 6 (1 3Pi_g) (Table I's indices), printed with z-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 3Pi_u - 1 3Pi_g"
+component = "parallel (z)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d3_6"
+material = "N2++"
+file = "N2++/jia_2024__table4_d3_6_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_3->6: the transition dipole between N2^2+ states 3 (1 3Sigma_u+) and 6 (1 3Pi_g) (Table I's indices), printed with x-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 3Sigma_u+ - 1 3Pi_g"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d4_7"
+material = "N2++"
+file = "N2++/jia_2024__table4_d4_7_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_4->7: the transition dipole between N2^2+ states 4 (1 1Pi_u) and 7 (1 1Delta_g) (Table I's indices), printed with x-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 1Pi_u - 1 1Delta_g"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d4_8"
+material = "N2++"
+file = "N2++/jia_2024__table4_d4_8_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_4->8: the transition dipole between N2^2+ states 4 (1 1Pi_u) and 8 (2 1Sigma_g+) (Table I's indices), printed with x-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 1Pi_u - 2 1Sigma_g+"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d4_9"
+material = "N2++"
+file = "N2++/jia_2024__table4_d4_9_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_4->9: the transition dipole between N2^2+ states 4 (1 1Pi_u) and 9 (1 1Pi_g) (Table I's indices), printed with z-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated. It falls from 0.787 at 1.15 to 0.530 at 1.20 angstrom, a step much larger than at the other R (TC-957)."
+[datasets.parameters]
+states = "1 1Pi_u - 1 1Pi_g"
+component = "parallel (z)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d8_10"
+material = "N2++"
+file = "N2++/jia_2024__table4_d8_10_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_8->10: the transition dipole between N2^2+ states 8 (2 1Sigma_g+) and 10 (1 1Sigma_u+) (Table I's indices), printed with z-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "2 1Sigma_g+ - 1 1Sigma_u+"
+component = "parallel (z)"
+geometry = "per row: the column internuclear_distance"
+
+[[datasets]]
+id = "table4_d9_10"
+material = "N2++"
+file = "N2++/jia_2024__table4_d9_10_N2++.csv"
+table = "tbl_34e26f76cb3c"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table IV, d_9->10: the transition dipole between N2^2+ states 9 (1 1Pi_g) and 10 (1 1Sigma_u+) (Table I's indices), printed with x-hat; rows R = 1.00-1.20 angstrom (the column internuclear_distance). SA-CASSCF/rotated multistate CASPT2, ANO-L, OpenMolcas (p. 4); no uncertainty stated."
+[datasets.parameters]
+states = "1 1Pi_g - 1 1Sigma_u+"
+component = "perpendicular (x)"
+geometry = "per row: the column internuclear_distance"

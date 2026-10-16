@@ -1,0 +1,98 @@
+citation = "D. Ityaksov, H. Linnartz and W. Ubachs, Chem. Phys. Lett. 462, 31 (2008)"
+doi = "10.1016/j.cplett.2008.07.049"
+library = "Ityaksov_2008_DeepUVAbsorption"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Cavity ring-down extinction with pressure ramps from 0 to 10^5 Pa at \
+room temperature (pressure to 0.15 %), laser bandwidth below 0.2 cm^-1; 40 cm cell for \
+215-270 nm, the 82 cm turbulence-free cell for 198-204 nm (pp. 2-3). CO2 99.7 %."""
+notes = """CO2 was deferred when this record was written (every dataset "check"); the \
+CO2 was taken up on 2026-09-25, so the measured extinction is primary like any \
+other gas's data (the calculated column stays a check).
+
+The measured quantity is the extinction cross section per molecule, Rayleigh \
+scattering plus absorption; below about 202 nm CO2 absorbs ('the onset actually \
+starts at higher energy, around 202 nm', abstract), and the paper's Rayleigh fit is \
+restricted to 202-300 nm. The rows below 202 nm are therefore excluded from the \
+Rayleigh dataset (kept in its file). 'The experimental error (1 sigma uncertainty) is \
+~15% for the measurements in the 215.38-270.15 nm interval and about 10% for \
+observations in the wavelength region where the turbulence free CRD cell has been \
+used' (p. 2); the table's +- are the per-point one-sigma values. No quadratic density \
+dependence (collision-induced effects) was found. Wavelengths are vacuum (Eqs. 3-4, \
+'the wavelength lambda (in vacuum)').
+
+The calculated cross sections use Eq. (2) with 'the dispersion formulas for the \
+refractive indices [9] and depolarization ratios [10]' at 288.15 K and 101 325 Pa. \
+Check (2026-09-25): with N = 2.5469e19 cm^-3, the refractive-index formula of \
+sneep_2005 (Eq. 13, scale read as 1.1427 x 10^3) and its King factor (Eq. 14, \
+1.1364 + 25.3e-12 nu^2) every one of the 22 calculated values is reproduced to its \
+printed 0.1; with this paper's rounded Eqs. (3) and (4) they come out up to 0.08 \
+higher. Eq. (4) repeats sneep_2005's misprinted scale 1.1427 x 10^6 (it must be \
+10^3).
+
+The literature data of Figs. 1-3 (Shemansky, Ogawa, Karaiskou et al., Parkinson et \
+al., Lewis and Carver, Sneep et al., Dong and Gupta) are not tabulated here."""
+
+[[datasets]]
+id = "extinction_CO2"
+material = "CO2"
+file = "CO2/ityaksov_2008_co2__extinction_CO2.csv"
+table = "tbl_d53eeed0ae27"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+excluded_rows = { "197.70" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "197.84" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "198.28" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "198.38" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "198.48" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "198.75" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "199.10" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "199.55" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "199.90" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "200.08" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "200.42" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "200.76" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "201.00" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "201.33" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "201.58" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption", "201.78" = "below the absorption onset near 202 nm: the extinction includes CO2 photoabsorption" }
+notes = "Table 1, measured extinction cross section, +- one sigma. Rows from 202.43 nm on are Rayleigh scattering (the paper's fit range 202-300 nm); 201.78 nm (8.0 +- 1.2) lies below the calculated 9.1 and is excluded with the absorbing rows by the paper's onset. Deferred gas: check."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "calculated_CO2"
+material = "CO2"
+file = "CO2/ityaksov_2008_co2__calculated_CO2.csv"
+table = "tbl_d53eeed0ae27"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, sigma_R^calc from Bideau-Mehu et al.'s refractive index and Alms et al.'s depolarization (via sneep_2005's Eqs. 13 and 14; see the source notes). Not a measurement."
+
+[[formulas]]
+id = "king_eq3"
+material = "CO2"
+equation = "Eq. (3), p. 2"
+printed = "F_k(lambda) = 1.14 + 25.3 x 10^-12 / lambda^2"
+variable = "lambda: vacuum wavelength in cm"
+range = "not stated (sneep_2005's fit to Alms et al., 4579-6471 A)"
+coefficients = { a = "1.14", b = "25.3e-12" }
+reproduced_from = ["sneep_2005"]
+check = "sneep_2005's Eq. (14) with 1.1364 rounded to 1.14; the calculated column follows the unrounded form (see the source notes). Checked 2026-09-25."
+
+[[formulas]]
+id = "n_eq4"
+material = "CO2"
+equation = "Eq. (4), p. 2"
+printed = "n(lambda) - 1 = 1.1427 x 10^6 (5799.3 lambda^2/(16.6 x 10^9 lambda^2 - 1) + 120 lambda^2/(7.96 x 10^9 lambda^2 - 1) + 5.33 lambda^2/(5.63 x 10^9 lambda^2 - 1) + 4.32 lambda^2/(4.6 x 10^9 lambda^2 - 1) + 1.22 x 10^-5 lambda^2/(5.85 x 10^6 lambda^2 - 1))"
+variable = "lambda: vacuum wavelength in cm"
+state = "1atm_15C"
+density = "ideal"
+range = "180-254 nm (Bideau-Mehu et al.'s data, as stated p. 3)"
+coefficients = { scale = "1.1427e6", B1 = "5799.3", C1 = "16.6e9", B2 = "120", C2 = "7.96e9", B3 = "5.33", C3 = "5.63e9", B4 = "4.32", C4 = "4.6e9", B5 = "1.22e-5", C5 = "5.85e6" }
+reproduced_from = ["sneep_2005", "A. Bideau-Mehu, Y. Guern, R. Abjean and A. Johannin-Gilles, Opt. Commun. 9, 432 (1973)"]
+check = "sneep_2005's Eq. (13) rewritten with the poles squared and rounded (128908.9^2 = 1.6617e10 -> 16.6e9, ...). The scale 1.1427 x 10^6 gives n - 1 = 0.5 at 200 nm; with 10^3, 501.7e-6 at 197.7 nm. Checked 2026-09-25."
+
+[[formulas]]
+id = "power_eq6"
+material = "CO2"
+equation = "Eq. (6), p. 3"
+printed = "sigma_R = sigma_bar nu^(4 + epsilon); sigma_bar = 1.78(7) x 10^-46, epsilon = 0.625(3)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma_R in cm^2"
+range = "202-300 nm (fitted to this work's and the literature's data except Ogawa's); 'not meant to be extrapolated beyond 300 nm', 20 % off at 532 nm"
+coefficients = { sigma_bar = "1.78e-46", epsilon = "0.625" }
+check = "Gives 9.10, 6.83, 2.39 x 10^-25 cm^2 at 202.43, 215.38, 270.15 nm against the measured 7.9 +- 0.8, 6.6 +- 1.0, 2.3 +- 0.4 and calculated 9.0, 6.7, 2.4. Checked 2026-09-25."

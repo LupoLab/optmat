@@ -1,0 +1,116 @@
+citation = "D. M. Bishop and D. W. De Kee, \"The frequency dependence of nonlinear optical processes\", J. Chem. Phys. 104, 9876 (1996)"
+doi = "10.1063/1.471752"
+library = "Bishop_1996_FrequencyDependenceNonlinear"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Sum rules (the hyperpolarizability counterparts of Cauchy moments) for the diagonal \
+components of the dynamic X^3 = gamma and X^5 = epsilon, derived from the sum-over-states \
+expressions (Eq. 4) by expanding the frequency denominators to fourth order; evaluated for \
+H and He with near-exact wave functions (He: explicitly correlated Hylleraas-type \
+functions as in bishop_1989, 140 S, 140 P, 190 D and 190 F states) (pp. 9877-9885)."""
+notes = """Identity: pdf page 1 is the publisher's cover; journal pages 9876-9887 = pdf \
+pages 2-13 (page = pdf page + 9874). Only He is curated (H is the hydrogen atom, not a \
+curated species).
+
+THE GENERALISED DISPERSION FORMULA (abstract; Eq. 22, p. 9879; Eq. 67, p. 9884): X^n(-w_s; \
+w1, ..., wn) = X^n(0) + A W2 + B W2^2 + B' W4 + ..., with W2 = w_s^2 + w1^2 + ... + wn^2 \
+('the same as omega_L^2 in the previous literature') and W4 = w_s^4 + w1^4 + ... + wn^4; \
+A, B and B' are process-independent sum rules. Unlike Shelton's relative A, B, these \
+coefficients are ABSOLUTE: 'the units of A, B, B', a, and b in Tables XI-XIV are those of \
+the hyperpolarizabilities themselves', with the frequencies in hartree (p. 9885). So \
+Shelton's A = A / X(0) / 219474.6^2 (cm^2) and Shelton's B for a given process = (B + B' \
+W4/W2^2) / X(0) / 219474.6^4: the fourth-order coefficient is process-dependent through \
+W4/W2^2 (1/2 for dc Kerr and ESHG, 1/4 for IDRI, 7/12 for THG, computed here). 'It is \
+apparent that B' is generally smaller than B and this accounts for the reasonable success \
+of the Shelton-Bishop dispersion formula' (abstract). 'For both the Kerr effect and ESHG W4 \
+= (1/2) W2^2 and consequently an expansion in W2 and W2^2 alone will furnish the same \
+coefficients for these two processes' (p. 9884).
+
+CONVENTION: X^n by the SOS formula Eq. (4) with hbar^-n and the sum over the (n+1)! \
+permutations, 'in conventional notation X^1 = alpha, X^2 = beta, X^3 = gamma' (abstract), \
+the same definition as bishop_1989: T. Components: diagonal (zzzz), which for atoms is the \
+isotropic value (p. 9885). Part electronic. Processes of Table XII: X^3(-w; w, 0, 0) (dc \
+Kerr), (-2w; w, w, 0) (ESHG), (-3w; w, w, w) (THG), (-w; w, -w, w) ('the \
+intensity-dependent refractive index', process kerr).
+
+FORMULAS: he_sum_rules (Table XI) and he_<process> (Table XII); all images checked. \
+Checks (2026-09-26): A = A(+) + A(-) = 106.1183 - 11.74475 = 94.37355, B = 165.7406, B' = \
+-30.6705 (printed); A / 43.104 = 2.1894, bishop_1989 Table V's 2.189; Table XII's a, b \
+follow from A, B, B' with W2/w^2 = 2, 6, 12, 4 and W4/w^4 = 2, 18, 84, 4 (e.g. THG b = 144 \
+x 165.7406 - 84 x 30.6705 = 21290, printed 2.1290 (4)); and the Table XII series \
+reproduce bishop_1989 Table III: dc Kerr at 0.10 a.u. 45.052 (45.054), ESHG at 0.05 \
+44.553 (44.554), THG at 0.05 46.068 (46.074), DFWM at 0.05 44.064 (44.064). The authors: \
+'at least three-figure agreement' with directly calculated values for He when hbar w <= \
+0.19 (Kerr), 0.11 (ESHG, IDRI), 0.07 E_h (THG) (p. 9885). X^3(0) = 43.104 'taken from Ref. \
+55' (the bishop_1989 value); not recorded again.
+
+NOT RECORDED: the fourth hyperpolarizability X^5 (epsilon) sum rules and a, b for He and \
+H (Tables XIII, XIV: He X^5(0) = 1.4937e4 a.u.; fifth-harmonic, second-order Kerr and \
+self-induced IDRI) - no vocabulary quantity for fifth-order response; noted for the \
+higher-order-Kerr discussion (these are bound-electron values, positive, far below \
+resonance). The H values (not curated)."""
+
+[[formulas]]
+id = "he_sum_rules"
+material = "He"
+equation = "Eq. (67), p. 9884, with Table XI (tbl_75a4ba038074), He column"
+printed = "X^3_zzzz(w) = X^3_zzzz(0) + A W2 + B W2^2 + B' W4; He: A(+) 1.061 183 (2), A(-) -1.174 475 (1), A 9.437 355 (1), B(+) 1.707 919 (2), B(-) -5.051 324 (0), B 1.657 406 (2), B'(+) -1.864 023 (1), B'(-) -1.203 027 (1), B' -3.067 050 (1) [numbers in parentheses: powers of ten]"
+variable = "W2 = w_s^2 + w1^2 + w2^2 + w3^2 and W4 = w_s^4 + w1^4 + w2^4 + w3^4, the frequencies in hartree; X^3 = gamma_zzzz of He in atomic units (T convention, electronic, the isotropic value for an atom); any process"
+state = "none (per atom)"
+density = "none"
+range = "a fourth-order expansion; three-figure agreement with direct values for hbar w <= 0.19 (dc Kerr), 0.11 (ESHG, IDRI), 0.07 E_h (THG) (p. 9885)"
+coefficients = { X0 = "43.104", A = "9.437355e1", B = "1.657406e2", B_prime = "-3.067050e1" }
+check = "A, B, B' equal the sums of their (+) and (-) parts; with X(0) = 43.104 they reproduce bishop_1989 Table III to three figures in the stated ranges (source notes). Checked 2026-09-26."
+notes = "Absolute coefficients (units of gamma, frequencies in hartree), not Shelton's relative ones: Shelton A = A / 43.104 / 219474.6^2 cm^2 = 0.4545e-10 cm^2. X(0) = 43.104 is quoted from Ref. 55 (= bishop_1989's value), infinite-nuclear-mass atomic units."
+
+[[formulas]]
+id = "he_dc_kerr"
+material = "He"
+equation = "Eq. (68), p. 9884, with Table XII (tbl_ed5ea5559158), row X^3(-w; w, 0, 0), He"
+printed = "X^3(w) = X^3(0) + a w^2 + b w^4; X^3(0) 4.3104 (1), a 1.8875 (2), b 6.0162 (2)"
+variable = "w: laser photon energy in hartree; X^3 = gamma_zzzz(-w; w, 0, 0) of He, the dc Kerr process, atomic units, T convention"
+state = "none (per atom)"
+density = "none"
+range = "hbar w <= 0.19 E_h for three-figure accuracy (p. 9885)"
+coefficients = { X0 = "4.3104e1", a = "1.8875e2", b = "6.0162e2" }
+check = "a = 2A = 188.75 and b = 4B + 2B' = 601.62 from he_sum_rules; at w = 0.10 a.u. 45.052 against bishop_1989 Table III 45.054. Checked 2026-09-26."
+notes = "'The values in Table XII have been verified by fitting Eq. (68) to independently-determined values of X^3(w)' (p. 9884)."
+
+[[formulas]]
+id = "he_eshg"
+material = "He"
+equation = "Eq. (68), p. 9884, with Table XII, row X^3(-2w; w, w, 0), He"
+printed = "X^3(w) = X^3(0) + a w^2 + b w^4; X^3(0) 4.3104 (1), a 5.6624 (2), b 5.4146 (3)"
+variable = "w: laser photon energy in hartree; X^3 = gamma_zzzz(-2w; w, w, 0) of He (ESHG), atomic units, T convention"
+state = "none (per atom)"
+density = "none"
+range = "hbar w <= 0.11 E_h for three-figure accuracy (p. 9885)"
+coefficients = { X0 = "4.3104e1", a = "5.6624e2", b = "5.4146e3" }
+check = "a = 6A, b = 36B + 18B' = 5414.6 from he_sum_rules; at w = 0.05 a.u. 44.553 against bishop_1989 Table III 44.554. Checked 2026-09-26."
+notes = "As he_dc_kerr."
+
+[[formulas]]
+id = "he_thg"
+material = "He"
+equation = "Eq. (68), p. 9884, with Table XII, row X^3(-3w; w, w, w), He"
+printed = "X^3(w) = X^3(0) + a w^2 + b w^4; X^3(0) 4.3104 (1), a 1.1325 (3), b 2.1290 (4)"
+variable = "w: laser photon energy in hartree; X^3 = gamma_zzzz(-3w; w, w, w) of He (THG), atomic units, T convention"
+state = "none (per atom)"
+density = "none"
+range = "hbar w <= 0.07 E_h for three-figure accuracy (p. 9885)"
+coefficients = { X0 = "4.3104e1", a = "1.1325e3", b = "2.1290e4" }
+check = "a = 12A, b = 144B + 84B' = 21290 from he_sum_rules; at w = 0.05 a.u. 46.068 against bishop_1989 Table III 46.074. Checked 2026-09-26."
+notes = "As he_dc_kerr."
+
+[[formulas]]
+id = "he_kerr"
+material = "He"
+equation = "Eq. (68), p. 9884, with Table XII, row X^3(-w; w, -w, w), He"
+printed = "X^3(w) = X^3(0) + a w^2 + b w^4; X^3(0) 4.3104 (1), a 3.7749 (2), b 2.5292 (3)"
+variable = "w: laser photon energy in hartree; X^3 = gamma_zzzz(-w; w, -w, w) of He, the intensity-dependent refractive index (process kerr), atomic units, T convention"
+state = "none (per atom)"
+density = "none"
+range = "hbar w <= 0.11 E_h for three-figure accuracy (p. 9885)"
+coefficients = { X0 = "4.3104e1", a = "3.7749e2", b = "2.5292e3" }
+check = "a = 4A, b = 16B + 4B' = 2529.2 from he_sum_rules; at w = 0.05 a.u. 44.064 against bishop_1989 Table III (DFWM) 44.064. Checked 2026-09-26."
+notes = "The Kerr coefficient of He (SPM/XPM gamma) as a two-term series; with X(0) = 43.104 infinite-mass atomic units (bishop_1989 notes)."

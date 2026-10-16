@@ -1,0 +1,45 @@
+citation = "W. J. C. Orr, Trans. Faraday Soc. 32, 1556 (1936)"
+doi = "10.1039/tf9363201556"
+library = "Orr_1936_RefractiveIndexDeuterium"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Rayleigh gas interferometer (75 cm gas tubes) with electrolytic H2 in one tube \
+and D2 (from 99.1 % D2O, final D concentration 99.9 +- 0.2 %) in the other, both \
+streaming at room temperature and at equal pressure (checked by a differential \
+manometer), vented to the atmosphere; fringe shift read on the compensator drum \
+(35.0 divisions), the drum calibrated with the 5462 A mercury line (14.25 divisions \
+per fringe)."""
+notes = """The measurement is the difference n_H2 - n_D2 = 35.0/14.25 x 5462/75 x 1e-8 = \
+(179 +- 2) x 10^-8 at 5462 A (p. 3), deuterium having the smaller index. It is made at \
+room temperature and near atmospheric pressure, neither stated. The paper then \
+subtracts it, unscaled, from the International Critical Tables value for H2, \
+1.00013966 at 5462 A, 273 K and 760 mm, and gives n_D2 = 1.0001378(7) 'under the same \
+conditions' (p. 3). Two caveats make that absolute value a check rather than a \
+datum: (1) it inherits the ICT hydrogen value, which Peck & Huang (1977) show to be \
+high by about 0.25 % (their absolute H2 refractivity at 546.2 nm is 139.304e-6 at \
+0 C and 760 Torr against ICT's 139.66e-6); (2) the difference was measured at room \
+density and not scaled to 0 C (at about 290 K it would be some 6 % larger at 0 C, \
+i.e. about 190e-8; the paper does not give the room temperature, so this cannot be \
+done exactly). The independent result is the fractional difference: D2's refractivity \
+is about 1.3-1.4 % below H2's at 546 nm. The package has no quantity for a \
+refractivity difference; a refractivity_ratio would need the room-condition H2 \
+refractivity, which is not printed. The raw drum-reading tables (tbl_9411e045eb4e, \
+tbl_aee47e92d4aa, tbl_d00339570e78) are not extracted. The wavelength '5462 A' is the \
+mercury green line's vacuum wavelength rounded (5460.74 A in air)."""
+
+[[datasets]]
+id = "n_D2"
+material = "D2"
+table = "text"
+points = [["5462", "5462", "137.87", "0.02"]]
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "p. 3: n_D2 = 1.0001378(7) at 273 K and 760 mm, printed with its last digit in parentheses (an uncertain digit), entered as (n - 1) x 1e6 = 137.87. It is ICT's H2 value 1.00013966 minus the measured (179 +- 2)e-8, so the sigma (0.02e-6) is the difference's alone; the ICT value's own error (about +0.25 %, see the source notes) is not included. Not fitted: see the source notes."
+[datasets.uncertainty]
+column = true
+level = "not stated"

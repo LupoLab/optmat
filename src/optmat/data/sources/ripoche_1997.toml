@@ -1,0 +1,106 @@
+citation = "J.-F. Ripoche, G. Grillon, B. Prade, M. Franco, E. Nibbering, R. Lange and A. Mysyrowicz, \"Determination of the time dependence of n2 in air\", Opt. Commun. 135, 310 (1997)"
+doi = "10.1016/s0030-4018(96)00675-x"
+library = "Ripoche_1997_DeterminationTimeDependence"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Cross-phase modulation pump-probe (pp. 310-311): a Ti:sapphire \
+oscillator-amplifier at 800 nm, about 150 fs, up to 40 mJ, 15 mm beam; pump (15 mm) and \
+weak probe (3 mm) crossed at < 0.3 degree; the probe spectrum's centre of gravity \
+against the pump-probe delay (twenty shots per point), fitted with a model of an \
+instantaneous plus a delayed index response. Samples: BK7 and Herasil plates (3 mm), \
+CS2 (2 mm cell), and 5 m of room air (-500 to 6500 fs delays)."""
+notes = """Identity checked against the first page. Page numbers are journal pages \
+(pdf pages 1-5 = pp. 310-314).
+
+WHAT IS TABULATED (Table 1, p. 313, 'Values of the non-linear refractive index \
+parameters for O2 and N2 [13]'): per gas, the concentration in air (O2 20 %, N2 80 %), \
+the rotational constant B (cm-1: O2 1.4, N2 2.0) and the polarizability anisotropy \
+beta(omega) = alpha_par - alpha_perp (Eq. (15)) in C2 m2/J (= C m2/V, SI: O2 1.27e-40, N2 \
+1.0e-40). All are the model's inputs, from Ref. [13] = C. H. Lin, J. P. Heritage, T. K. \
+Gustafson, R. Y. Chiao and J. P. McTague, Phys. Rev. A 13, 813 (1976) (lin_1976), not \
+measured here. Checked: lin_1976's Table I Delta alpha, N2 9.3 and O2 11.4 x 10^-25 cm3 \
+(from Hirschfelder, Curtiss and Bird), times 4 pi eps0 x 1e-6 are 1.035e-40 and 1.268e-40 \
+C m2/V (printed 1.0 and 1.27), and its B, 2.001 and 1.438 cm-1, round to 2.0 and 1.4. \
+N2 and O2 are given separately, so B and beta are datasets (reproduced); no wavelength \
+is stated for beta (lin_1976 states none either). The concentrations (air) are notes \
+only: air is not a material.
+
+THE AIR RESULT (not a material; notes only). The model, Eqs. (11)-(18) (pp. 312-313): \
+Delta n = n2,inst I + integral R(u) I(t - u) du, with the rotational Raman response \
+R_gas(t) = n2,rot sum_J F_J sin(-omega_J t) (Eq. (13)), n2,rot = (32 pi^2 N/(h c n0)) \
+beta^2(omega) (Eq. (14)), F_J = [rho_{J+2} - rho_J] Z_J (J + 2)(J + 1)/(2J + 3) (Eq. \
+(16)), rho_J Boltzmann with B (Eq. (17), no centrifugal distortion), Z_J = 2 (even) and 1 \
+(odd) for N2, and 0 (even) and 1 (odd) for O2, omega_J = 4 pi B c (2J + 3) (Eq. (18)); no \
+dephasing (collisions 'neglected on a picosecond time scale', p. 312). The 'first echo \
+occurs approximately at t = 1/4Bc ~ 4 ps in N2 and t ~ 6 ps in O2' (p. 313). The fit to \
+the air data (Fig. 6) has two free parameters, r_air = n2,rot/n2,inst and the pulse \
+length: 'best fitted with tau_FWHM = 125 fs and r_air = 1 which corresponds to a pure \
+rotational contribution as important as the electronic one' (p. 314); Fig. 6's caption \
+prints 'tau_FWHM = 130 fs and r_air = 1' (125 against 130: unresolved; both pages \
+checked). No uncertainty is given for r_air. No absolute n2 of air is given. r_air is a \
+ratio of the model's amplitude n2,rot (Eq. (14), the prefactor of the response) to \
+n2,inst, not of the time-integrated rotational index to the electronic one, and the \
+instantaneous part includes the 'Rayleigh rotational contributions' (p. 312).
+
+OTHER RESULTS (notes only). Herasil: tau_FWHM = 140 fs (a pure electronic response, \
+'response time shorter than 3 fs'); CS2: r1 = A1/n2,inst = 1.25 and r2 = A2/n2,inst = 16.25 \
+with T1 = 100 fs and T2 = 1.5 ps fixed from Ref. [5] (p. 312; Fig. 2). The red shift of the \
+pump after 5 m of air: centre of gravity 799.4 -> 806.2 nm (Fig. 3).
+
+What this bears on: nothing new for the parameters in use: the anisotropies are \
+lin_1976's (Wahlstrand et al.'s are used), and the air response has no separate N2 and \
+O2 result."""
+
+[[datasets]]
+id = "table1_B_N2"
+material = "N2"
+file = "N2/ripoche_1997__table1_B_N2.csv"
+table = "tbl_d9854060f4cb"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table 1 (p. 313), N2: B = 2.0 cm-1, from Ref. [13] (lin_1976's 2.001, which cites Herzberg), rounded. The vibrational state is not stated; used in Eqs. (17)-(18) as the ground-state rotational constant with no distortion term."
+[datasets.parameters]
+constant = "B"
+
+[[datasets]]
+id = "table1_B_O2"
+material = "O2"
+file = "O2/ripoche_1997__table1_B_O2.csv"
+table = "tbl_d9854060f4cb"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["lin_1976"]
+notes = "Table 1 (p. 313), O2: B = 1.4 cm-1, from Ref. [13] (lin_1976's 1.438), rounded. The vibrational state is not stated."
+[datasets.parameters]
+constant = "B"
+
+[[datasets]]
+id = "table1_anisotropy_N2"
+material = "N2"
+file = "N2/ripoche_1997__table1_anisotropy_N2.csv"
+table = "tbl_d9854060f4cb"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976", "J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, New York, 1954)"]
+notes = "Table 1 (p. 313), N2: beta(omega) = alpha_par - alpha_perp = 1.0 x 10^-40 C2 m2/J (= C m2/V), from Ref. [13]: lin_1976's 9.3e-25 cm3 (Hirschfelder, Curtiss and Bird) is 1.035e-40 C m2/V. Wavelength not stated (the experiment is at 800 nm; the value is not measured)."
+
+[[datasets]]
+id = "table1_anisotropy_O2"
+material = "O2"
+file = "O2/ripoche_1997__table1_anisotropy_O2.csv"
+table = "tbl_d9854060f4cb"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lin_1976", "J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, New York, 1954)"]
+notes = "Table 1 (p. 313), O2: beta(omega) = 1.27 x 10^-40 C2 m2/J (= C m2/V), from Ref. [13]: lin_1976's 11.4e-25 cm3 is 1.268e-40 C m2/V. Wavelength not stated."

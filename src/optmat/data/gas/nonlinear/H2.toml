@@ -1,0 +1,39 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "H2"
+description = "H2: Shelton's 1990 ESHG with his gamma^vR subtracted (Table III column), with Bishop, Pipin & Cybulski's 1991 electronic dc Kerr, ESHG and THG dispersion (one free scale) for the process dependence."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 0.7]
+validators = [
+    "tammer_1992/table2_gamma_H2",   # absolute dc Kerr (TC-401)
+    "ward_1969/chi_i_H2",
+    "ward_1979/chi3_H2",
+    "wahlstrand_2015/n2_elec_H2",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_H2_present"
+subtract_dataset = "shelton_1990/table3_H2_gammavR"
+
+[[fitted]]
+key = "shelton_1990/table3_H2_literature"
+subtract_dataset = "shelton_1990/table3_H2_gammavR"
+
+[[fitted]]
+key = "bishop_1991/dc_kerr_par_elec_H2"
+free_scale = true
+scale_group = "bishop_1991"
+extra_relative = 0.002
+
+[[fitted]]
+key = "bishop_1991/eshg_par_elec_H2"
+free_scale = true
+scale_group = "bishop_1991"
+extra_relative = 0.002
+
+[[fitted]]
+key = "bishop_1991/thg_par_elec_H2"
+range_nm = [650.0, "inf"]   # THG output above 217 nm: the fourth-order form holds
+free_scale = true
+scale_group = "bishop_1991"
+extra_relative = 0.002

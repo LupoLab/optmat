@@ -1,0 +1,411 @@
+# The curated Raman parameters of each molecular gas (optmat.gas.raman, TC-492).
+#
+# Each entry names the datasets and formulas its parameters come from
+# (`source/dataset`, `source/dataset#row`, or `source/formula`) and says why. Units are
+# converted on loading: constants to cm^-1, polarizabilities to C m^2/V, widths to FWHM
+# in Hz per amagat.
+#
+# [<gas>.constants]            the ground level's rotational constants: b, d, h, or
+#                              fit_lines (an S-branch table fitted for B and D)
+# [<gas>.rotational]           anisotropy (one value, or a table per lower J); widths
+# [[<gas>.vibrational]]        mode; band_origin (or upper_term - lower_term);
+#                              derivative (d alpha / dQ, mass-weighted) or
+#                              transition_polarizability; the upper level: upper,
+#                              b_difference or fit_lines; widths; depolarization
+#                              (the Q branch's, linear polarization at 90 degrees:
+#                              the anisotropic part of the lines, TC-686)
+# widths                       type = "law" (law = bischel_dyer, dicke_linear,
+#                              constant_linear or width), "table" (a line table per
+#                              perturber: dataset, with exponent_formula and
+#                              exponent_prefix, or temperatures to fit the exponents),
+#                              or "exponential_gap" (formula); substitutes name the
+#                              perturber whose coefficients stand in for one without
+#                              ("self" for the gas itself), a declared approximation.
+
+[N2.constants]
+b = "bendtsen_1974/table7_B0_rot_N2"
+d = "bendtsen_1974/table7_D_rot_N2"
+
+[N2.rotational]
+anisotropy = "wahlstrand_2012/dalpha_N2"
+
+[N2.rotational.widths]
+type = "table"
+substitutes = { Ar = "O2" }
+
+[N2.rotational.widths.perturbers.self]
+dataset = "herring_1986/table1_295K"
+exponent_formula = "herring_1986/eq9_power_law"
+exponent_prefix = "gamma_S"
+
+[N2.rotational.widths.perturbers.O2]
+dataset = "herring_1986/table3_O2_295K"
+temperatures = ["herring_1986/table3_O2_195K"]
+
+[[N2.vibrational]]
+mode = "v = 0 -> 1 (Q branch)"
+key = "v1"
+band_origin = "bendtsen_1974/table7_nu0_unconstrained_N2"
+b_difference = "bendtsen_1974/table7_dB_unconstrained_N2"
+derivative = "murphy_1969/dadQ_N2"
+dispersion = "bischel_1983/single_resonance_N2"
+reference_nm = 435.8
+depolarization = "danichkin_1981/recommended_rho_N2#0-1"
+
+[N2.vibrational.widths]
+type = "table"
+substitutes = { O2 = "self", Ar = "self" }
+
+[N2.vibrational.widths.perturbers.self]
+dataset = "rosasco_1983/table1_N2"
+temperatures = [
+    "rahn_1986/table1_500K",
+    "rahn_1986/table1_730K",
+    "rahn_1986/table1_1000K",
+    "rahn_1986/table1_1500K",
+]
+
+[N2.reasons]
+constants = "Bendtsen 1974's pure rotational fit (the preferred, italic values of Table VII), 14N2."
+anisotropy = "Wahlstrand et al. 2012, measured from the rotational response at 800 nm, the quantity the lines need (solprop's too)."
+rotational_widths = "Herring et al. 1986 Table I (FWHM per amagat at 295 K, S(2)-S(14)) with their per-J power laws in T (Table VII); O2 broadening from their Table III, its exponent from 295 and 195 K; Ar broadening taken as O2's (0.9 % of air)."
+vibrational = "Band origin and B0 - B1 from Bendtsen's unconstrained rotation-vibration fit; the transition polarizability from Murphy et al.'s d alpha / dQ (the mass-weighted normal coordinate, no reduced mass needed)."
+depolarization = "Danichkin et al.'s recommended Q-branch depolarization ratio at 488 nm (0.021, the mean of five measurements 0.020-0.028): the anisotropic part of the Q lines, 2.9 % of their strength for a parallel probe (TC-686)."
+vibrational_widths = "Rosasco et al. 1983's measured Q(J) widths at 298 K (HWHM per atm, J = 0-18, doubled), with a power law per J fitted to Rahn & Palmer 1986's FWHM at 500-1500 K (J = 19-30, which only the hot tables reach, keep J = 18's exponent and take their 298 K coefficient from the hot measurements; rms 0.6-5.5 % against every table, TC-541); foreign partners taken as self (no data curated at their temperatures). The widths are per line: the overlap and mixing of the Q(J) lines above about 1 atm is not modelled (Rosasco et al.'s mixing coefficients are recorded, TC-527)."
+
+[O2.constants]
+b = "hajigeorgiou_2013/table3_B_O2#0"
+d = "hajigeorgiou_2013/table3_D_O2#0"
+h = "hajigeorgiou_2013/table3_H_O2#0"
+
+[O2.rotational]
+anisotropy = "wahlstrand_2012/dalpha_O2"
+
+[O2.rotational.widths]
+type = "table"
+substitutes = { N2 = "air", Ar = "air" }
+
+[O2.rotational.widths.perturbers.self]
+dataset = "holzer_2021/table1_self_295K"
+temperatures = [
+    "holzer_2021/table1_self_500K",
+    "holzer_2021/table1_self_870K",
+    "holzer_2021/table1_self_1000K",
+    "holzer_2021/table1_self_1200K",
+    "holzer_2021/table1_self_1400K",
+    "holzer_2021/table1_self_1650K",
+    "holzer_2021/table1_self_1750K",
+    "holzer_2021/table1_self_1900K",
+]
+
+[O2.rotational.widths.perturbers.air]
+dataset = "holzer_2021/table2_air_295K"
+temperatures = [
+    "holzer_2021/table2_air_500K",
+    "holzer_2021/table2_air_870K",
+    "holzer_2021/table2_air_1400K",
+    "holzer_2021/table2_air_1650K",
+    "holzer_2021/table2_air_1900K",
+]
+
+[[O2.vibrational]]
+mode = "v = 0 -> 1 (Q branch)"
+key = "v1"
+upper_term = "hajigeorgiou_2013/table5_G_O2#1"
+lower_term = "hajigeorgiou_2013/table5_G_O2#0"
+derivative = "murphy_1969/dadQ_O2"
+dispersion = "bischel_1983/single_resonance_O2"
+reference_nm = 435.8
+depolarization = "danichkin_1981/recommended_rho_O2#0-1"
+
+[O2.vibrational.upper]
+b = "hajigeorgiou_2013/table3_B_O2#1"
+d = "hajigeorgiou_2013/table3_D_O2#1"
+h = "hajigeorgiou_2013/table3_H_O2#1"
+
+[O2.vibrational.widths]
+type = "table"
+substitutes = { Ar = "N2" }
+
+[O2.vibrational.widths.perturbers.self]
+dataset = "millot_1992/table2_295K"
+temperatures = [
+    "millot_1992/table2_446K",
+    "millot_1992/table2_769K",
+    "millot_1992/table2_990K",
+    "millot_1992/table2_1317K",
+]
+
+[O2.vibrational.widths.perturbers.N2]
+dataset = "millot_1992/table3_N2_295K"
+temperatures = ["millot_1992/table3_N2_446K", "millot_1992/table3_N2_990K"]
+
+[O2.reasons]
+constants = "Hajigeorgiou 2013 Table III, the levels of his fitted potential (16O2, N(N+1) ladder; spin splittings left out, as in solprop). Only odd N exist (I(16O) = 0, X 3Sigma_g-)."
+anisotropy = "Wahlstrand et al. 2012, measured from the rotational response at 800 nm."
+rotational_widths = "Hölzer et al. 2021 Table 1 (self, FWHM per atm at 295-1900 K) and Table 2 (O2 in air), per N; exponents fitted per N to their temperatures. N2 and Ar as partners are taken as air."
+vibrational = "Band origin G(1) - G(0) and v = 1 constants from Hajigeorgiou; the transition polarizability from Murphy et al.'s d alpha / dQ."
+depolarization = "Danichkin et al.'s recommended Q-branch depolarization ratio at 488 nm (0.047; four measurements 0.043-0.061): the anisotropic part of the Q lines, 6.7 % of their strength for a parallel probe (TC-686)."
+vibrational_widths = "Millot et al. 1992 Tables II and III (HWHM per atm, doubled), per N, self and N2, exponents fitted to their temperatures; Ar taken as N2."
+
+[H2.constants]
+b = "stoicheff_1957/table2_B0_H2"
+d = "stoicheff_1957/table2_D0_H2"
+h = "stoicheff_1957/table2_H0_H2"
+
+[H2.rotational]
+anisotropy = "shelton_1993/anisotropy_JJ2_632nm"
+
+[H2.rotational.widths]
+type = "table"
+dicke = "herring_1986/table4_A#S(1) 295 K"
+
+[H2.rotational.widths.perturbers.self]
+dataset = "herring_1986/table5_295K"
+temperatures = ["herring_1986/table5_80K"]
+
+[[H2.vibrational]]
+mode = "v = 0 -> 1 (Q branch)"
+key = "v1"
+band_origin = "teal_1935/text_deltaG1_H2"
+fit_lines = "teal_1935/table2_H2"
+dispersion = "bischel_1983/single_resonance_H2"
+
+[H2.vibrational.transition_components]
+parallel = "hunt_1984/par_dJ0_v1_H2"
+perpendicular = "hunt_1984/perp_dJ0_v1_H2"
+
+[H2.vibrational.widths]
+type = "law"
+law = "bischel_dyer"
+formula = "bischel_1986/eq2_linewidth"
+
+[H2.reasons]
+constants = "Stoicheff 1957's B0, D0 and H0 (Table II; Weber 1979's reprint carries the misprint B0 = 56.3392 for 59.3392, TC-542, TC-586); the v = 1 constants still come from Teal & MacWood's Q lines (below). Modern level energies (Komasa et al. 2011) remain requested."
+anisotropy = "Bishop & Pipin's ab initio Delta alpha of each J -> J + 2 transition at 632.8 nm, as Shelton 1993 reprints them: per line, rising 10 % from J = 0 to 6."
+rotational_widths = "Herring et al. 1986 Table V (S(0), S(1), FWHM per amagat at 295 and 80 K) with the Dicke term of their Table IV for S(1) at 295 K."
+vibrational = "Q(0) at Teal's Delta G1; B1 and D1 fitted to Teal's Q(1)-Q(3); Hunt, Poll & Wolniewicz 1984's ab initio static <0J|alpha|1J> per J (the mean (par + 2 perp)/3, 0.739-0.755 au), dispersed to the pump with Bischel & Black 1983's single-resonance law (TC-542)."
+vibrational_widths = "Bischel & Dyer's Eq. (2) for Q(1) (Dicke and collisional terms, 77-500 K), used for every Q(J) (their Q(0) is 47 % broader at 298 K)."
+
+[D2.constants]
+b = "stoicheff_1957/table2_B0_D2"
+d = "stoicheff_1957/table2_D0_D2"
+h = "stoicheff_1957/table2_H0_D2"
+
+[D2.rotational]
+anisotropy = "carusotto_1992/anisotropy_optical_D2"
+
+[D2.rotational.widths]
+type = "table"
+
+[D2.rotational.widths.perturbers.self]
+dataset = "keijser_1974/table1_D2"
+
+[[D2.vibrational]]
+mode = "v = 0 -> 1 (Q branch)"
+key = "v1"
+band_origin = "teal_1935/text_deltaG1_D2"
+fit_lines = "teal_1935/table2_D2"
+dispersion = "bischel_1983/single_resonance_D2"
+
+[D2.vibrational.transition_components]
+parallel = "hunt_1984/par_dJ0_v1_D2"
+perpendicular = "hunt_1984/perp_dJ0_v1_D2"
+
+[D2.vibrational.widths]
+type = "table"
+dicke_formula = "ottusch_1988/linewidth_D2"
+dicke_coefficient = "A_MHz_amagat"
+
+[D2.vibrational.widths.perturbers.self]
+dataset = "smyth_1987/table1_self"
+temperature_k = 297.0
+
+[D2.vibrational.widths.perturbers.He]
+dataset = "smyth_1987/table1_He"
+temperature_k = 297.0
+
+[D2.vibrational.widths.perturbers.Ar]
+dataset = "smyth_1987/table1_Ar"
+temperature_k = 297.0
+
+[D2.vibrational.widths.perturbers.H2]
+dataset = "smyth_1987/table1_H2"
+temperature_k = 297.0
+
+[D2.vibrational.widths.perturbers.CH4]
+dataset = "smyth_1987/table1_CH4"
+temperature_k = 297.0
+
+[D2.reasons]
+constants = "Stoicheff 1957's B0, D0 and H0 (Table II, the original of Weber 1979's reprint, TC-586); the v = 1 constants from Teal & MacWood's Q lines."
+anisotropy = "The ab initio optical anisotropy (Rychlewski; Bishop & Cheung) as Carusotto et al. 1992 reprint it."
+rotational_widths = "Keijser et al. 1974's S0(J) widths at 293 K (their Table 1, HWHM in GHz per amagat, doubled; the original of Smyth et al. 1987's reprint, TC-586): the Leiden set, which Knaap et al. 1979's figures confirm to 5 %. Edwards et al. 1991 (and solprop) are 1.3-2.6 times lower with no single factor (TC-483, TC-541). One temperature: no temperature law."
+vibrational = "Q(0) at Teal's Delta G1; B1 and D1 fitted to Teal's Q lines; Hunt et al. 1984's static elements per J (Q(2) agrees with Murphy et al.'s d alpha / dQ to 0.02 %), dispersed with Bischel & Black's law."
+vibrational_widths = "Smyth et al. 1987's per-J Q(0)-Q(5) widths (HWHM per amagat, doubled; 296.0-298.5 K, taken as 297 K), self and by He, Ar, H2 and CH4, with Russell & Roh's Q(2) Dicke term (101 MHz amagat, as Ottusch & Rockwell quote it). solprop uses the Q(2) width for every line, which is 1.5 times too broad for Q(1) and too narrow for Q(0) (TC-541)."
+
+[[CH4.vibrational]]
+mode = "nu1 (A1 C-H stretch, unresolved Q branch)"
+key = "nu1"
+band_origin = "bermejo_1977/shift_CH4#nu1 (a1)"
+cross_section_ratios = [
+    "schrotter_1979/sigma_CH4_e",
+    "schrotter_1979/sigma_CH4_h",
+    "schrotter_1979/sigma_CH4_p",
+    "schrotter_1979/sigma_CH4_a",
+    "schrotter_1979/sigma_CH4_j",
+    "schrotter_1979/sigma_CH4_d",
+    "schrotter_1979/sigma_CH4_r",
+    "schrotter_1979/sigma_CH4_b",
+    "schrotter_1979/sigma_CH4_c",
+]
+depolarization = "danichkin_1981/recommended_rho_CH4#nu1"
+n2_reference = "schrotter_1979/n2_q_absolute"
+dispersion = "bischel_1983/single_resonance_CH4"
+reference_nm = 488.0
+
+[CH4.vibrational.widths]
+type = "law"
+law = "constant_linear"
+formula = "ottusch_1988/linewidth_CH4"
+
+[CH4.reasons]
+rotational = "A spherical top: no rotational Raman spectrum."
+vibrational = "The nu1 band maximum measured by Bermejo et al. 1977; the transition polarizability from the mean of the thirteen nu1 cross sections relative to N2 compiled by Schrötter & Klöckner 1979 (8.55, 337-515 nm) with their absolute N2 value and rho = 0, 5 % above Murphy et al.'s (solprop's); dispersed with Bischel & Black's law from 488 nm, the middle of the compilation (TC-542)."
+vibrational_widths = "Ottusch & Rockwell's law, 8220 MHz + 384 MHz/amagat (FWHM); the constant is the unresolved Q-branch width."
+
+[[SF6.vibrational]]
+mode = "nu1 (775 cm-1, unresolved)"
+key = "nu1"
+band_origin = "murphy_1969/shift_SF6"
+cross_section_ratios = [
+    "schrotter_1979/sigma_SF6_e",
+    "schrotter_1979/sigma_SF6_a",
+    "schrotter_1979/sigma_SF6_aa",
+]
+depolarization = "murphy_1969/rho_SF6"
+n2_reference = "schrotter_1979/n2_q_absolute"
+
+[SF6.vibrational.widths]
+type = "law"
+law = "width"
+dataset = "everall_1987/linewidth_SF6"
+
+[SF6.reasons]
+rotational = "A spherical top: no rotational Raman spectrum."
+vibrational = "Murphy et al.'s nu1 position; the transition polarizability from Schrötter & Klöckner's four nu1 cross sections relative to N2 (3.3-3.96) and rho = 0 (a totally symmetric band); no dispersion law is curated (TC-542)."
+vibrational_widths = "Everall et al.'s 1.6 cm-1 FWHM at 5 atm (from Esherick & Owyoung), taken as density-independent as solprop does: the band's hot bands and unresolved structure make its width, and no density law is curated."
+
+[CO2.constants]
+b = "weber_1979/table3_3_B_ground_CO2"
+d = "weber_1979/table3_3_D_ground_CO2"
+
+[CO2.rotational]
+anisotropy = "gentle_1989/table2_anisotropy_optical_CO2"
+
+[CO2.rotational.widths]
+type = "table"
+
+[CO2.rotational.widths.perturbers.self]
+dataset = "jammu_1966/table2_pinter_CO2"
+temperature_k = 295.0
+
+[[CO2.vibrational]]
+mode = "the 1388 cm-1 member of the nu1/2nu2 Fermi dyad (unresolved Q branch)"
+key = "fermi_1388"
+band_origin = "danichkin_1981/shift_CO2_nu1"
+cross_section_ratios = [
+    "schrotter_1979/sigma_CO2_1388_e",
+    "schrotter_1979/sigma_CO2_1388_f",
+    "schrotter_1979/sigma_CO2_1388_h",
+    "schrotter_1979/sigma_CO2_1388_a",
+    "schrotter_1979/sigma_CO2_1388_d",
+    "schrotter_1979/sigma_CO2_1388_dd",
+    "schrotter_1979/sigma_CO2_1388_b",
+    "schrotter_1979/sigma_CO2_1388_c",
+    "schrotter_1979/sigma_CO2_1388_o",
+]
+depolarization = "danichkin_1981/recommended_rho_CO2#nu1"
+n2_reference = "schrotter_1979/n2_q_absolute"
+resolved = false
+
+[CO2.vibrational.widths]
+type = "table"
+
+[CO2.vibrational.widths.perturbers.self]
+dataset = "jammu_1966/table2_pinter_CO2"
+temperature_k = 295.0
+
+[[CO2.vibrational]]
+mode = "the 1285 cm-1 member of the nu1/2nu2 Fermi dyad (unresolved Q branch)"
+key = "fermi_1285"
+band_origin = "danichkin_1981/shift_CO2_2nu2"
+cross_section_ratios = [
+    "schrotter_1979/sigma_CO2_1285_e",
+    "schrotter_1979/sigma_CO2_1285_f",
+    "schrotter_1979/sigma_CO2_1285_a",
+    "schrotter_1979/sigma_CO2_1285_d",
+    "schrotter_1979/sigma_CO2_1285_dd",
+    "schrotter_1979/sigma_CO2_1285_b",
+    "schrotter_1979/sigma_CO2_1285_o",
+]
+depolarization = "danichkin_1981/recommended_rho_CO2#2nu2"
+n2_reference = "schrotter_1979/n2_q_absolute"
+resolved = false
+
+[CO2.vibrational.widths]
+type = "table"
+
+[CO2.vibrational.widths.perturbers.self]
+dataset = "jammu_1966/table2_pinter_CO2"
+temperature_k = 295.0
+
+[CO2.reasons]
+constants = "C.-H. W. Wang's (1975) B0 and D0 of the (00^0 0) level as Weber 1979 reprints them. Only even J exist (I(16O) = 0, X 1Sigma_g+)."
+anisotropy = "Bogaard et al.'s optical anisotropy at 632.8 nm as Gentle et al. 1989 reprint it."
+rotational_widths = "Pinter's S(22), S(26), S(32) self-broadening (HWHM per atm, doubled) as Jammu et al. 1966 reprint them, held at S(22)'s value below (room temperature, taken as 295 K): the only per-line CO2 widths curated; no temperature law (TC-542)."
+vibrational = "The two members of the Fermi dyad at Danichkin's positions, their transition polarizabilities from the means of Schrötter & Klöckner's cross sections relative to N2 (1388: 9 values; 1285: 7) with Danichkin's recommended rho; single unresolved lines; the hot bands (1265, 1409 cm-1) are left out."
+vibrational_widths = "No CO2 Q-branch width is curated: the S-line coefficient stands in (a declared stopgap, TC-542)."
+
+[[N2O.vibrational]]
+mode = "nu1 (1285 cm-1, unresolved Q branch)"
+key = "nu1"
+band_origin = "danichkin_1981/shift_N2O_nu1"
+cross_section_ratios = [
+    "schrotter_1979/sigma_N2O_1285_h",
+    "schrotter_1979/sigma_N2O_1285_p",
+    "schrotter_1979/sigma_N2O_1285_d",
+    "schrotter_1979/sigma_N2O_1285_b",
+]
+depolarization = "0"
+n2_reference = "schrotter_1979/n2_q_absolute"
+
+[N2O.vibrational.widths]
+type = "law"
+law = "dephasing"
+dataset = "chen_2007/T2_N2O"
+pressure_atm = 2.4
+temperature_k = 295.0
+
+[[N2O.vibrational]]
+mode = "nu3 (2224 cm-1, unresolved Q branch)"
+key = "nu3"
+band_origin = "danichkin_1981/shift_N2O_nu3"
+cross_section_ratios = [
+    "schrotter_1979/sigma_N2O_2224_d",
+    "schrotter_1979/sigma_N2O_2224_b",
+]
+depolarization = "0"
+n2_reference = "schrotter_1979/n2_q_absolute"
+
+[N2O.vibrational.widths]
+type = "law"
+law = "dephasing"
+dataset = "chen_2007/T2_N2O"
+pressure_atm = 2.4
+temperature_k = 295.0
+
+[N2O.reasons]
+rotational = "No N2O rotational constants are curated (the Weber volume has none): the rotational lines, N2O's main Raman response, wait for a primary B0 and D0 (requested)."
+vibrational = "The two Raman-active bands at Danichkin's positions, their transition polarizabilities from Schrötter & Klöckner's cross sections relative to N2 with rho taken as 0 (no ratio curated: an upper bound on the mean element)."
+vibrational_widths = "No N2O Q-branch width is curated: Chen et al. 2007's rotational dephasing time (23.8 ps at 2.4 atm) stands in, as a collisional width (a declared stopgap, TC-542)."

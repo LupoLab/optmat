@@ -1,0 +1,140 @@
+citation = "C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. London A 83, 149 (1910)"
+doi = "10.1098/rspa.1910.0001"
+library = "Cuthbertson_1910_RefractionDispersionNeon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Jamin refractometer with 300 c.c. of neon purified by H. E. Watson; Lowry's \
+silver-cadmium arc. The refractive index at the green mercury line from 11 \
+experiments; the dispersion at the Cd red (6438), Hg green (5461) and Cd blue (4800) \
+lines as the mean of nine experiments; at most 200 green bands could be counted \
+(pp. 149-150). Received 24 September 1909."""
+notes = """The index at the green line is given 'at 0 degrees C. and 760 mm' (p. 149): \
+1.00006716 'or, doubling for comparison with diatomic gases, 1.0001343'. The \
+three-line table and both formulas are for the doubled refractivity 2 (mu - 1). The \
+reduction to 0 degrees C and 760 mm is not described (density convention unknown). \
+Wavelengths are air values rounded to four figures.
+
+Accuracy (pp. 149-150): the 11 absolute experiments 'hardly varied by 1 part in 500'; \
+'the dispersive powers are so small that the figures cannot be trusted to less than 5 \
+per cent. for neon'. The authors remeasured the dispersion with 440 bands (cuthbertson_1910, \
+Table II) 'assuming the previous value of the refraction' (cuthbertson_1932, p. 40); \
+this dataset is therefore superseded and excluded, and its absolute value lives on as \
+the 5460.7 A row of cuthbertson_1910's neon data.
+
+Not extracted: the Cauchy b values of the three spectral sections (b x 10^11 = 2.30, \
+2.46, 2.38; tbl_c8b682a28331), which are differences of the three values. The 'revised' \
+table of Sellmeier formulas (tbl_b72bd245eec4, headed 'mu - 1' but, like the rest, for \
+2 (mu - 1)) is recorded as formulas: the Cuthbertsons' neon, krypton and xenon, Burton's \
+helium and argon, and Cuthbertson and Metcalfe's helium, the Kr and Xe ones revised \
+for the authors' own air dispersion (b = 5.8e-11 instead of Scheel's 5.67e-11). All \
+formulas here reproduce with n = V/lambda, V = 3e10 cm/s. The library record also \
+holds the first page of the next paper in the volume (air, O2, N2, H2) as footnotes; \
+it has no values."""
+
+[[datasets]]
+id = "experiment_Ne"
+material = "Ne"
+file = "Ne/cuthbertson_1910b__experiment_Ne.csv"
+table = "tbl_9757a187853d"
+quantity = "refractivity"
+scale = 5e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+notes = "Doubled (mu - 1) x 10^6 at 6438, 5461, 4800 A (rows collapsed in the library, split by the script). Superseded by the authors' remeasurement of the dispersion (cuthbertson_1910); the dispersion is uncertain to 5 %."
+[datasets.uncertainty]
+systematic_relative = 0.002
+level = "not stated"
+
+[[formulas]]
+id = "ne_cauchy"
+material = "Ne"
+equation = "unnumbered, p. 150"
+printed = "mu - 1 = 0.0001332 (1 + 2.38/lambda^2)"
+variable = "lambda: air wavelength; b = 2.38 x 10^-11 with lambda in cm (the preceding table gives b x 10^11)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-644 nm"
+coefficients = { a = "0.0001332", b = "2.38e-11" }
+check = "Gives 133.96, 134.26, 134.58 (x 1e-6, doubled) at the three lines against the printed 134.02, 134.30, 134.63: 0.05 low throughout, the rounding of a. Checked 2026-09-24."
+notes = "For 2 (mu - 1). The power of ten of b is not printed in the formula."
+
+[[formulas]]
+id = "ne_sellmeier"
+material = "Ne"
+equation = "unnumbered, p. 150; table p. 151"
+printed = "mu - 1 = 5.133 x 10^27 / (38517 x 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s"
+state = "1atm_0C"
+density = "unknown"
+range = "480-644 nm"
+coefficients = { C = "5.133e27", n0_squared = "38517e27" }
+check = "For 2 (mu - 1): 134.02, 134.32, 134.63 (x 1e-6) at the three lines against the printed 134.02, 134.30, 134.63. Checked 2026-09-24."
+notes = "Quoted halved (2.5665e27) in cuthbertson_1932, p. 40."
+
+[[formulas]]
+id = "kr_revised"
+material = "Kr"
+equation = "table p. 151"
+printed = "mu - 1 = 10.945 x 10^27 / (13039 x 10^27 - n^2)"
+variable = "n = V/lambda, V = 3e10 cm/s, lambda in cm (air)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible (the authors' earlier krypton measurements)"
+coefficients = { C = "10.945e27", n0_squared = "13039e27" }
+check = "For 2 (mu - 1): 8.593e-4 at 5461 A (mu - 1 = 4.296e-4). Not checkable further here."
+notes = "The authors' earlier krypton dispersion (measured against air) revised for their own air dispersion; superseded by cuthbertson_1910 (kr_1910)."
+
+[[formulas]]
+id = "xe_revised"
+material = "Xe"
+equation = "table p. 151"
+printed = "mu - 1 = 12.47 x 10^27 / (9140 x 10^27 - n^2)"
+variable = "n = V/lambda, V = 3e10 cm/s, lambda in cm (air)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible"
+coefficients = { C = "12.47e27", n0_squared = "9140e27" }
+check = "For 2 (mu - 1): 1.4109e-3 at 5461 A (mu - 1 = 7.055e-4), the absolute value of cuthbertson_1910 Table II (14109.8e-7). Checked 2026-09-24."
+notes = "Revised as for krypton; superseded by cuthbertson_1910 (xe_1910)."
+
+[[formulas]]
+id = "he_cuthbertson_metcalfe"
+material = "He"
+equation = "table p. 151"
+printed = "mu - 1 = 2.46 x 10^27 / (35500 x 10^27 - n^2)"
+variable = "n = V/lambda, V = 3e10 cm/s, lambda in cm (air)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible"
+coefficients = { C = "2.46e27", n0_squared = "35500e27" }
+check = "For 2 (mu - 1): 6.989e-5 at 5461 A (mu - 1 = 3.494e-5)."
+notes = "C. Cuthbertson and E. P. Metcalfe's helium (Proc. Roy. Soc. A 80, 411 (1908)), revised; superseded by cuthbertson_1910 and cuthbertson_1932."
+
+[[formulas]]
+id = "he_burton"
+material = "He"
+equation = "table p. 151"
+printed = "mu - 1 = 2.84 x 10^27 / (40900 x 10^27 - n^2)"
+variable = "n = V/lambda, V = 3e10 cm/s, lambda in cm (air)"
+state = "1atm_0C"
+density = "unknown"
+range = "Burton's lines"
+coefficients = { C = "2.84e27", n0_squared = "40900e27" }
+check = "For 2 (mu - 1): 6.995e-5 at 5461 A (mu - 1 = 3.498e-5)."
+notes = "Burton's helium (Proc. Roy. Soc. A 80, 390 (1908)) put in this form by the authors; reproduced."
+
+[[formulas]]
+id = "ar_burton"
+material = "Ar"
+equation = "table p. 151"
+printed = "mu - 1 = 9.124 x 10^27 / (16335 x 10^27 - n^2)"
+variable = "n = V/lambda, V = 3e10 cm/s, lambda in cm (air)"
+state = "1atm_0C"
+density = "unknown"
+range = "Burton's lines"
+coefficients = { C = "9.124e27", n0_squared = "16335e27" }
+check = "Same constants as cuthbertson_1910's refit of Burton (burton_refit_ar)."
+notes = "Burton's argon in this form; reproduced."

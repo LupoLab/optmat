@@ -1,0 +1,33 @@
+citation = "E. S. Smyth, J. S. Parker and K. T. Taylor, \"Numerical integration of the time-dependent Schrödinger equation for laser-driven helium\", Comput. Phys. Commun. 114, 1 (1998)"
+doi = "10.1016/s0010-4655(98)00083-6"
+library = "Smyth_1998_NumericalIntegrationTime"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """The numerical method of the HELIUM code (used by parker_2007 and \
+parker_2009): the full-dimensional two-electron helium-laser TDSE on a finite-difference \
+radial lattice with a coupled partial-wave expansion, velocity gauge, an Arnoldi \
+(Krylov) propagator of order 12-18, a Gaussian absorbing mask, and a five-point \
+Laplacian with a boundary correction; parallel performance on Cray T3D and T3E \
+(pp. 1-13)."""
+notes = """Pages are pdf pages (1-14 = pp. 1-14). The library copy's identity is \
+VALIDATED_WITH_WARNINGS: the PDF prints only the PII S0010-4655(98)00083-6, and the DOI \
+was found by bibliographic search.
+
+WHY NOTHING IS TAKEN. A methods paper: no ionisation rate or yield is given. The only \
+physics output is Fig. 2 (p. 7), He+ harmonic spectra at omega = 0.235 au and 64 x \
+10^14 W/cm^2. The tables are numerical tests: Table 1 (p. 9), the He+ ground-state energy \
+against the grid spacing (0.5-0.06 bohr) with and without the boundary correction C = \
+-exp(2 Z delta r) (-2.00002 au at 0.06 bohr with it); Table 2 (p. 10), the He ground-state \
+energy against the grid spacing and the number of terms of the 1/r12 expansion (at \
+delta r = 0.3333 the N = 6 and N = 7 entries, -2.93457 and -2.93447, break the monotonic \
+trend of every other column: a probable misprint, not used); Tables 3-5 (pp. 13-14), \
+execution times. (The library's table labels in paper.md are shifted: Table 1 is \
+unlabelled, Table 3 labelled 'Table 4'.)
+
+TEXT VALUES (not taken): 'The true value is -2.9037 a.u.' for the He ground state (p. \
+8), 'the established nonrelativistic limit of -2.9037 a.u.' (p. 9, uncited), with the He+ ground state -2.00 au: an implied \
+first ionisation energy of 0.9037 au, which parker_2007 uses as 0.903724 au; the lattice \
+gives -2.93 au with the boundary correction and -2.51 au without (p. 8). l_max = 7 \
+suffices up to about 1.6e15 W/cm^2 and l_max = 9 (385 partial waves) up to 3.2e15 \
+W/cm^2 (pp. 2-3). On p. 2 the speed-up of the worked example is printed '10^6/6' where \
+the step ratio 0.1/10^-6 gives 10^5/6."""

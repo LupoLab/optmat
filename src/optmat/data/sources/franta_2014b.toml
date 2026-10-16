@@ -1,0 +1,213 @@
+citation = "D. Franta, D. Nečas, L. Zajíčková and I. Ohlídal, \"Dispersion model of two-phonon absorption: application to c-Si\", Opt. Mater. Express 4, 1641 (2014)"  # codespell:ignore mater
+doi = "10.1364/ome.4.001641"
+library = "Franta_2014_DispersionModelTwo"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A dispersion model of two-phonon absorption (15 additive and subtractive \
+branch combinations, each a piecewise function with 3D and 2D critical-point singularities \
+between four critical points, Bose-Einstein thermal factors, Gauss-Dawson \
+eps-broadening) fitted to Bruker Vertex 80v transmittance of float-zone c-Si (580 um \
+slab, 450-1000 cm-1; 14 mm slab, 70-450 cm-1) at 300 K, and checked with Woollam \
+IR-VASE ellipsometry at five temperatures, 300-500 K, 300-1000 cm-1 (back side \
+aluminium-coated; only the thermal coefficient nu_T was fitted there) (p. 1650)."""
+notes = """Journal pages 1641-1656 = PDF pages 1-16. Identity checked against the first page. \
+Material: float-zone crystalline silicon (Si); no n or k is tabulated (the optical \
+constants are Fig. 5 only, not digitised).
+
+EQUATION MAP (journal pages). F_2ph = sum over branch pairs of F_(A+B) + F_(A-B) (Eq. \
+(8), p. 1645); Eq. (14): F_(A+-B)(E, T) = f_(A+-B)(E, T) P_(A+-B)(E); critical-point \
+energies Eq. (15), p. 1646: E_(t,A+-B) = h [nu_A(M_t) +- nu_B(M_t)] [1 + nu_T (T - 300)] \
+nu_iso, nu_iso = 0.9982 for natural silicon; the 17 independent frequencies and their \
+degeneracies, Eq. (16); auxiliary variables X, Y of regions I-III, Eqs. (17)-(18), p. \
+1647; the ten critical-point contributions L_i (Table 1, p. 1647: 0 3D M0 sqrt(X_I); 1 3D M1 1 - \
+sqrt(Y_I); 2 2D M1 -ln Y_I; 3 2D M1 -ln X_II; 4 3D M1 Y_II; 5 3D M2 X_II; 6 2D M1 -ln Y_II; 7 \
+2D M1 -ln X_III; 8 3D M2 1 - sqrt(X_III); 9 3D M3 sqrt(Y_III)), P = H(E) sum_i A_i L_i \
+(Eq. (19), p. 1648), the shape function H(E) with kappa_0..kappa_5, Eq. (20), and its \
+properties Eq. (21); thermal factors Eqs. (22)-(23), f_(A+B) = 1 + f_BE(E_A) + f_BE(E_B), \
+f_(A-B) = f_BE(E_B) - f_BE(E_A), with phonon energies interpolated linearly, Eq. (24); \
+normalisation at 300 K, Eqs. (25)-(26), p. 1649; eps-broadening with the Gauss-Dawson \
+kernel beta^(x) = -(sqrt(2)/(pi B)) D(x/(sqrt(2) B)) + i exp(-x^2/(2 B^2))/(sqrt(2 pi) B), \
+Eq. (27) (franta_2014); B the rms and beta = 2 sqrt(2 ln 2) B/(h c) the FWHM in cm^-1, Eq. \
+(28), used as the fitting parameter; eps^0_(A+-B) = beta^ * F^0/E, Eq. (29); combined TO+TA \
+and LA+TA terms weighted by C, Eq. (30); eps_(A+-B) = alpha_(A+-B) N_Si eps^0_(A+-B), Eq. \
+(31), N_Si the transition strength of the silicon nuclei (franta_2013); the two-phonon \
+effective charge e*_2ph = Z_Si e sqrt(sum alpha), Eq. (32).
+
+PARAMETERS (formulas below). Table 2 (p. 1650): phonon frequencies (THz) at the \
+symmetry points at 300 K, fitted (A(Gamma) = 0 fixed); nu_T = -3.4e-5 K^-1 (p. 1654, from \
+the ellipsometry); Table 5 (p. 1653): alpha, beta (cm^-1), C, A_0..A_9, kappa_0..kappa_5 \
+for the 15 terms, daggers = fixed ('we fixed A_5 = 1', C_(A+-B(1)) = 1, and kappa_0, \
+kappa_5 = 0 at Gamma-point M0/M3, p. 1650). Tables 3 and 4 (pp. 1651-1652) identify the \
+critical points of each term as sums and differences of Table 2's frequencies, with \
+the photon wavenumbers; they add no parameters. Checked: the THz sums reproduce Table \
+2 (e.g. TO+TO M0 = 2 x 14.09 = 28.18); the wavenumber columns are the THz values over \
+c to 0.1 cm^-1 within rounding (28.18 THz = 940.0 cm^-1, printed 939.9: the columns were \
+evidently computed from unrounded frequencies).
+
+LIMITS (p. 1654): good agreement at 300 K over 70-1000 cm^-1; above 300 K the model \
+misses absorption at 750-850 cm^-1 (three-phonon processes, added in franta_2017); \
+broadening independent of temperature over 300-500 K. The paper's Table 5 needs N_Si \
+(franta_2013: N_n of Eq. (46)) to be used absolutely; franta_2017 supersedes this \
+model for temperatures other than 300 K and gives new phonon frequencies at 0 and 300 \
+K (its Table 4)."""
+
+[[formulas]]
+id = "phonon_frequencies"
+material = "Si"
+equation = "Eqs. (15)-(16), p. 1646; Table 2, p. 1650; nu_T p. 1654"
+printed = "E_{t,A\\pm B} = h[\\nu_{A(M_t)} \\pm \\nu_{B(M_t)}][1 + \\nu_T (T - 300)]\\nu_{iso}"
+variable = "nu: phonon frequencies at the symmetry points (THz) at 300 K; T in K"
+coefficients = { nu_A_Gamma = "0", nu_O_Gamma = "15.63", nu_TA_X = "4.71", nu_L_X = "11.98", nu_TO_X = "14.09", nu_TA_L = "3.14", nu_LA_L = "11.05", nu_LO_L = "12.93", nu_TO_L = "14.99", nu_TA_W = "6.39", nu_L_W = "10.63", nu_TO_W = "14.33", nu_TA1_K = "4.82", nu_TA2_K = "6.70", nu_LA_K = "10.88", nu_LO_K = "11.30", nu_TO1_K = "13.90", nu_TO2_K = "14.91", nu_T = "-3.4e-5", nu_iso = "0.9982" }
+check = "Table 2 checked against its image (2026-09-26): the Gamma row's 0 (dagger, fixed) spans the acoustic columns and 15.63 the optical ones; X and W give one value for TA1=TA2, LA=LO and TO1=TO2 (Eq. (16)). Tables 3 and 4 reproduce these frequencies (source notes)."
+notes = "nu_A_Gamma = 0 is fixed (dagger). nu_T in K^-1 (fitted to the 300-500 K ellipsometry, p. 1654); nu_iso for natural silicon (p. 1646). franta_2017 Table 4 gives newer values at 0 and 300 K."
+
+[[formulas]]
+id = "two_phonon_TO_plus_TO"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO+TO: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "1.24e-6", beta = "16.12", A0 = "1.18", A1 = "0.344", A2 = "0.0138", A3 = "0", A4 = "1.23", A5 = "1", A6 = "0.000725", A7 = "0.144", A8 = "0.0177", A9 = "0.842", kappa0 = "1.08", kappa1 = "0.747", kappa2 = "3.67", kappa3 = "4.22", kappa4 = "9.46", kappa5 = "0" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO+TO'. Fixed values (dagger): A3, A5, kappa5. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_TO_plus_LO"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO+LO: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "4.57e-6", beta = "14.96", A0 = "0.817", A1 = "0.0516", A2 = "0.422", A3 = "0.000367", A4 = "1.65", A5 = "1", A6 = "0.0266", A7 = "0.234", A8 = "0.000226", A9 = "0.626", kappa0 = "1.76", kappa1 = "0.315", kappa2 = "3.8", kappa3 = "2.06", kappa4 = "0.723", kappa5 = "0" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO+LO'. Fixed values (dagger): A5, kappa5. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_TO_plus_LA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO+LA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "3.95e-6", beta = "14.59", A0 = "0.0806", A1 = "1.45", A2 = "5.05e-5", A3 = "0.00127", A4 = "0.00072", A5 = "1", A6 = "0.258", A7 = "0.000271", A8 = "0.00174", A9 = "0.321", kappa0 = "0", kappa1 = "0.312", kappa2 = "1.24", kappa3 = "4.97", kappa4 = "3.66", kappa5 = "0.809" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO+LA'. Fixed values (dagger): A5, kappa0. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_LO_plus_LA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band LO+LA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "2.51e-6", beta = "4.58", A0 = "6.94e-5", A1 = "0.000249", A2 = "0.0323", A3 = "0.0107", A4 = "0.0832", A5 = "1", A6 = "0.000179", A7 = "0.0726", A8 = "0.00193", A9 = "0.782", kappa0 = "0", kappa1 = "0.1", kappa2 = "0.811", kappa3 = "9.97", kappa4 = "0.679", kappa5 = "0.895" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'LO+LA'. Fixed values (dagger): A5, kappa0. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_TO_plus_TA1"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO+TA(1): F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "7.50e-6", beta = "6.58", C = "1", A0 = "0.948", A1 = "1.49", A2 = "2.07e-5", A3 = "6.67e-5", A4 = "1.66", A5 = "1", A6 = "0.515", A7 = "0.029", A8 = "0.119", A9 = "0.264", kappa0 = "0", kappa1 = "0.11", kappa2 = "3.59", kappa3 = "9.78", kappa4 = "0.43", kappa5 = "5.05e-5" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO+TA(1)'. Fixed values (dagger): C, A5, kappa0."
+
+[[formulas]]
+id = "two_phonon_TO_plus_TA2"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO+TA(2): F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { C = "0.0537", A0 = "0", A1 = "0", A2 = "0", A3 = "0", A4 = "1.3", A5 = "1", A6 = "0", A7 = "0", A8 = "2.24", A9 = "0", kappa0 = "0", kappa1 = "1", kappa2 = "1", kappa3 = "2.84", kappa4 = "1", kappa5 = "1" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO+TA(2)'. Fixed values (dagger): A0, A1, A2, A3, A5, A6, A7, A9, kappa0, kappa1, kappa2, kappa4, kappa5. Printed '-' for alpha, beta: this term shares alpha and beta with the (1) term (Eq. (30))."
+
+[[formulas]]
+id = "two_phonon_TO_plus_TA3"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO+TA(3): F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { C = "0.0846", A0 = "0", A1 = "0.876", A2 = "0", A3 = "0", A4 = "0.846", A5 = "1", A6 = "0", A7 = "0", A8 = "1.43", A9 = "0", kappa0 = "0", kappa1 = "1", kappa2 = "1", kappa3 = "1", kappa4 = "1", kappa5 = "1" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO+TA(3)'. Fixed values (dagger): A0, A2, A3, A5, A6, A7, A9, kappa0, kappa1, kappa2, kappa3, kappa4, kappa5. Printed '-' for alpha, beta: this term shares alpha and beta with the (1) term (Eq. (30))."
+
+[[formulas]]
+id = "two_phonon_LO_plus_TA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band LO+TA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "6.90e-7", beta = "7.98", A0 = "0", A1 = "0.0345", A2 = "0.0181", A3 = "0.000201", A4 = "29", A5 = "1", A6 = "24.7", A7 = "3", A8 = "6.84", A9 = "60.9", kappa0 = "0", kappa1 = "7.82", kappa2 = "4", kappa3 = "7.53", kappa4 = "0.191", kappa5 = "1.23" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'LO+TA'. Fixed values (dagger): A0, A5, kappa0. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_LA_plus_TA1"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band LA+TA(1): F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "5.06e-6", beta = "8.98", C = "1", A0 = "0.0154", A1 = "0.214", A2 = "0.0481", A3 = "2.39e-5", A4 = "0.42", A5 = "1", A6 = "0.0725", A7 = "0.024", A8 = "0.000503", A9 = "0.533", kappa0 = "0", kappa1 = "0.256", kappa2 = "0.248", kappa3 = "10", kappa4 = "2.08", kappa5 = "0.953" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'LA+TA(1)'. Fixed values (dagger): C, A5, kappa0."
+
+[[formulas]]
+id = "two_phonon_LA_plus_TA2"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band LA+TA(2): F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { C = "0.0755", A0 = "0", A1 = "0", A2 = "0", A3 = "0", A4 = "0", A5 = "1", A6 = "0", A7 = "0", A8 = "1", A9 = "0", kappa0 = "0", kappa1 = "1", kappa2 = "1", kappa3 = "1", kappa4 = "1", kappa5 = "1" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'LA+TA(2)'. Fixed values (dagger): A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, kappa0, kappa1, kappa2, kappa3, kappa4, kappa5. Printed '-' for alpha, beta: this term shares alpha and beta with the (1) term (Eq. (30))."
+
+[[formulas]]
+id = "two_phonon_TA_plus_TA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TA+TA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "1.96e-7", beta = "8.63", A0 = "0", A1 = "0", A2 = "0", A3 = "0", A4 = "0", A5 = "1", A6 = "0.00901", A7 = "1.9e-5", A8 = "0.187", A9 = "0", kappa0 = "0", kappa1 = "1", kappa2 = "1", kappa3 = "0.183", kappa4 = "9.98", kappa5 = "0" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TA+TA'. Fixed values (dagger): A0, A1, A2, A3, A4, A5, A9, kappa0, kappa1, kappa2, kappa5. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_TO_minus_TA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO-TA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "1.59e-7", beta = "6.40", A0 = "4.26", A1 = "20.1", A2 = "0.511", A3 = "6.41", A4 = "1.9", A5 = "1", A6 = "0.329", A7 = "0.00061", A8 = "1.36", A9 = "0.00811", kappa0 = "1.35", kappa1 = "0.785", kappa2 = "1.07", kappa3 = "1.8", kappa4 = "1.1", kappa5 = "0" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO-TA'. Fixed values (dagger): A5, kappa5. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_LO_minus_TA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band LO-TA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "3.94e-7", beta = "7.30", A0 = "3.64", A1 = "17.5", A2 = "26.2", A3 = "8.74", A4 = "27.3", A5 = "1", A6 = "0.171", A7 = "5.84e-5", A8 = "3.77", A9 = "0.00146", kappa0 = "0.186", kappa1 = "0.933", kappa2 = "2.89", kappa3 = "9.99", kappa4 = "0.483", kappa5 = "0" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'LO-TA'. Fixed values (dagger): A5, kappa5. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_LA_minus_TA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band LA-TA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "1.85e-7", beta = "7.45", A0 = "34.6", A1 = "139", A2 = "40.1", A3 = "77.8", A4 = "218", A5 = "1", A6 = "0.513", A7 = "21.5", A8 = "0.0417", A9 = "0.245", kappa0 = "0", kappa1 = "1.74", kappa2 = "9.89", kappa3 = "9.88", kappa4 = "0.1", kappa5 = "0.00079" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'LA-TA'. Fixed values (dagger): A5, kappa0. Printed '-' for C: no C for a single-term band."
+
+[[formulas]]
+id = "two_phonon_TO_minus_LA"
+material = "Si"
+equation = "Eqs. (14)-(31), pp. 1645-1649; Table 5, p. 1653"
+printed = "Two-phonon band TO-LA: F_(A+-B) = f_(A+-B)(E,T) P_(A+-B)(E), P = H(E) sum_i A_i L_i(E), normalised at 300 K, eps-broadened (Gauss-Dawson), eps_(A+-B) = alpha N_Si eps^0"
+variable = "E: photon energy; critical-point energies from the phonon frequencies (formula phonon_frequencies); beta: Gaussian FWHM in cm^-1 (Eq. (28))"
+coefficients = { alpha = "3.16e-7", beta = "11.18", A0 = "8.42", A1 = "15.7", A2 = "17.1", A3 = "16.3", A4 = "38.2", A5 = "1", A6 = "25.1", A7 = "7.28", A8 = "7.24", A9 = "0.00539", kappa0 = "0.876", kappa1 = "0.195", kappa2 = "0.259", kappa3 = "0.152", kappa4 = "0.378", kappa5 = "0" }
+check = "Transcribed from the library JSON of Table 5 by a scratch generator and compared with the table image (2026-09-26). The model cannot be evaluated from the paper alone (N_Si and the critical-point identification of Tables 3-4 are needed); not reproduced numerically."
+notes = "Table 5 (p. 1653), column 'TO-LA'. Fixed values (dagger): A5, kappa5. Printed '-' for C: no C for a single-term band."
+

@@ -1,0 +1,132 @@
+citation = "M. Tarazkar, D. A. Romanov and R. J. Levis, \"Nonlinear optical responses of multiply ionized noble gases: Dispersion and spin multiplicity effects\", Phys. Rev. A 94, 012514 (2016)"
+doi = "10.1103/physreva.94.012514"
+library = "Tarazkar_2016_NonlinearOpticalResponses"
+identity = "VALIDATED"
+kind = "theory"
+technique = "MCSCF (active spaces optimised at 800 nm) cubic response (DALTON) with t-aug-cc-pV5Z for He, Ne, Ar, Kr and their ions up to 6+ (CCSD for the closed-shell neutrals and 6+ ions as a benchmark); DFWM gamma dispersion from about 100 nm above the two-photon resonance to the static limit (Figs. 8-11)."
+notes = """Pages: article 012514, pdf pages 1-11. The subject is multiply charged ions \
+(not curated; notes only): n2 falls on ionisation (He+ 0.107 against He 3.543 x 10^-9 \
+cm^2/TW static) and turns negative for Ne3+ to Ne5+, Ar5+, Ar6+, Kr5+, Kr6+ (Table II).
+
+CONVENTION (Eq. 2, pdf page 2): the same Taylor expansion of the induced dipole as \
+tarazkar_2014 (1/6, 1/2, 1/8, 1/4, 1/24 factors): T; DFWM gamma^(2)(-w; w, -w, w) 'is \
+related to the nonlinear refractive index n2'; for the neutral atoms gamma_par = \
+gamma_zzzz (Eq. 3). Eq. (5) (pdf page 8): 'n2 (cm^2/W) = 8.28 x 10^-23 gamma_DFWM (a.u.)' \
+(citing tarazkar_2015), with NO density stated. Inference (computed here, TC-256): with \
+n2 = N gamma / (8 eps0^2 c n0^2), 8.28e-23 cm^2/W per a.u. is N = 2.50e25 m^-3, 1 atm at \
+293.9 K (ideal gas); the datasets carry this inferred state. Back-converted, the static \
+n2 values correspond to gamma_DFWM(0) = 42.8 (He), 108.5 (Ne), 1162 (Ar), 2690 (Kr) a.u. \
+(computed here), close to the CC static values (bishop_1989 43.104; host_2005 107.4, \
+1159, 2589).
+
+DATASETS: Table II (pdf page 9, image checked), static n2 of neutral He, Ne, Ar, Kr, \
+self coefficient (single-beam DFWM), electronic. The 'lambda_min' column (He 5.962, Ne \
+16.307, Ar 240.679, Kr 463.157 x 10^-9 cm^2/TW) is at a species-specific wavelength 'about \
+100 nm above the two-photon absorption resonance' that is not stated numerically: not \
+recorded. Text (pdf page 8): 'the n2 at 800 nm for He is calculated to be 3.64 x 10^-9 \
+cm^2/TW and for Kr the n2 increases to 2.46 x 10^-7 cm^2/TW [27]' (tarazkar_2014's \
+calculations): datasets n2_800nm_He, n2_800nm_Kr (reproduced from tarazkar_2014, whose \
+paper states only the gamma^(4) and n4 values; the n2 here are this paper's \
+statement)."""
+
+[[datasets]]
+id = "n2_static_He"
+material = "He"
+file = "He/tarazkar_2016__n2_static_He.csv"
+table = "tbl_53f14a8f3c08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325, temperature_k = 293.9 }
+density = "ideal"
+use = "check"
+notes = "Table II 'n2(lambda -> infinity) (10^-9 cm^2/TW)' = 1e-21 cm^2/W: the static-limit n2 of neutral He from the MCSCF (neutrals also CCSD-checked) DFWM gamma via Eq. (5), n2 = 8.28e-23 cm^2/W x gamma_DFWM (a.u.). THE STATE IS INFERRED (not stated): the factor corresponds to 1 atm at about 294 K (see the source notes). The value at 'lambda_min' (printed beside it) has no stated wavelength and is not recorded."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_static_Ne"
+material = "Ne"
+file = "Ne/tarazkar_2016__n2_static_Ne.csv"
+table = "tbl_53f14a8f3c08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325, temperature_k = 293.9 }
+density = "ideal"
+use = "check"
+notes = "Table II 'n2(lambda -> infinity) (10^-9 cm^2/TW)' = 1e-21 cm^2/W: the static-limit n2 of neutral Ne from the MCSCF (neutrals also CCSD-checked) DFWM gamma via Eq. (5), n2 = 8.28e-23 cm^2/W x gamma_DFWM (a.u.). THE STATE IS INFERRED (not stated): the factor corresponds to 1 atm at about 294 K (see the source notes). The value at 'lambda_min' (printed beside it) has no stated wavelength and is not recorded."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_static_Ar"
+material = "Ar"
+file = "Ar/tarazkar_2016__n2_static_Ar.csv"
+table = "tbl_53f14a8f3c08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325, temperature_k = 293.9 }
+density = "ideal"
+use = "check"
+notes = "Table II 'n2(lambda -> infinity) (10^-9 cm^2/TW)' = 1e-21 cm^2/W: the static-limit n2 of neutral Ar from the MCSCF (neutrals also CCSD-checked) DFWM gamma via Eq. (5), n2 = 8.28e-23 cm^2/W x gamma_DFWM (a.u.). THE STATE IS INFERRED (not stated): the factor corresponds to 1 atm at about 294 K (see the source notes). The value at 'lambda_min' (printed beside it) has no stated wavelength and is not recorded."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_static_Kr"
+material = "Kr"
+file = "Kr/tarazkar_2016__n2_static_Kr.csv"
+table = "tbl_53f14a8f3c08"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325, temperature_k = 293.9 }
+density = "ideal"
+use = "check"
+notes = "Table II 'n2(lambda -> infinity) (10^-9 cm^2/TW)' = 1e-21 cm^2/W: the static-limit n2 of neutral Kr from the MCSCF (neutrals also CCSD-checked) DFWM gamma via Eq. (5), n2 = 8.28e-23 cm^2/W x gamma_DFWM (a.u.). THE STATE IS INFERRED (not stated): the factor corresponds to 1 atm at about 294 K (see the source notes). The value at 'lambda_min' (printed beside it) has no stated wavelength and is not recorded."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_800nm_He"
+material = "He"
+points = [["He", "800", "3.64"]]
+table = "text"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325, temperature_k = 293.9 }
+density = "ideal"
+use = "check"
+notes = "pdf page 8: 'the n2 at 800 nm for He is calculated to be 3.64 x 10^-9 cm^2/TW' (citing Ref. 27, tarazkar_2014). Inferred state as n2_static_He."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_800nm_Kr"
+material = "Kr"
+points = [["Kr", "800", "2.46"]]
+table = "text"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 101325, temperature_k = 293.9 }
+density = "ideal"
+use = "check"
+notes = "pdf page 8: 'for Kr the n2 increases to 2.46 x 10^-7 cm^2/TW' at 800 nm (citing Ref. 27). 2.46e-7 cm^2/TW = 2.46e-19 cm^2/W. Inferred state as n2_static_Kr."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"

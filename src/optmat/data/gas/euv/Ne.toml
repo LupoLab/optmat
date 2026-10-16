@@ -1,0 +1,24 @@
+# Neon's oscillator-strength distribution, for the complex index above the first
+# resonance (the extreme ultraviolet).
+gas = "Ne"
+description = "NIST's lines with oscillator strengths (the 3s-6s and 3d-5d members of both series), the unlisted higher members as one pseudo-line just below the thresholds (Chan et al.'s 1992 discrete total to 21.616 eV less the NIST lines), Chan et al.'s absolute continuum from 21.6 to 250 eV, Henke's f2 above 250 eV; the measured continuum scaled to Lesiuk et al.'s static polarizability."
+# Magnetic susceptibility, Lesiuk et al. (2020), as in fit/Ne (TC-71).
+chi0_au = -8.484e-5
+
+[lines]
+total = "chan_1992_neon/present_total_Ne"   # 0.292(15), the discrete sum to 21.616 eV
+# Just below 21.616 eV, the midpoint of the 2P3/2 and 2P1/2 thresholds (Chan p. 11),
+# where the higher Rydberg members of both series lie.
+pseudo_line_ev = 21.55
+
+[[continuum]]
+dataset = "chan_1992_neon/continuum_Ne"     # 21.6-250 eV, TRK-normalised, no stated uncertainty
+
+[[continuum]]
+henke = "ne"
+min_ev = 250.5
+
+[constraint]
+dataset = "lesiuk_2020/cauchy_Ne"
+row = "-2"                                  # S(-2) = 2.66080(36), the electric static polarizability
+region_max_ev = 250.5

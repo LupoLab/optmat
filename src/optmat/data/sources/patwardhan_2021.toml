@@ -1,0 +1,373 @@
+citation = "G. N. Patwardhan, J. S. Ginsberg, C. Y. Chen, M. M. Jadidi and A. L. Gaeta, \"Nonlinear refractive index of solids in mid-infrared\", Opt. Lett. 46, 1824 (2021)"
+doi = "10.1364/ol.421469"
+library = "Patwardhan_2021_NonlinearRefractiveIndex"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Spectrally resolved two-beam coupling (SRTBC): a weak probe and a strong pump of \
+the same centre frequency, split from one OPA / nonlinear difference-frequency output \
+(1-10 um, < 150 fs; pumped by a Coherent Legend Ti:sapphire amplifier, 800 nm, 35 fs, 1 \
+kHz), crossed at 4 degrees in the sample (15 cm parabolic mirror; spot 190-220 um); the \
+spectrally resolved probe transmission change Delta T/T against delay and detuning \
+(Horiba iHR320 monochromator, HgCdTe detector) is fitted with Kang et al.'s formula (Eq. \
+1, chirp-free, at 2.3 um) or its chirped form (Eq. 2, Wang et al., at 3.5-8.3 um, \
+chirp b = (1.7-2.7) x 10^26 s^-2). Samples 500 um thick (CaF2, MgF2, sapphire, fused \
+silica) and 1 mm (ZnSe, ZnS); interaction length 795 um (2.3, 3.5 um) or about 1 mm (4.5, \
+8.3 um), the smaller of it and the thickness used (pp. 1824-1826)."""
+notes = """Journal pages 1824-1827 = PDF pages 1-4. Identity checked against the first page.
+
+DEFINING RELATIONS (p. 1824): the method measures chi(3)(omega; omega, omega, -omega), \
+with n2 = 3 Re[chi(3)] / (4 n0^2 eps0 c) and beta = 3 omega Im[chi(3)] / (2 n0^2 eps0 c^2) \
+(SI). In Eq. (1), Delta T/T = (2/sqrt(6)) exp(-(delta t0)^2/3 - 2 tau^2/(3 t0^2)) [2 \
+Delta Phi sin(2 delta tau/3) - q cos(2 delta tau/3)], with Delta Phi = k n2 I_pu L the \
+nonlinear phase and q = beta I_pu L. The factor 2 of cross-phase modulation is explicit \
+in the formula, so the n2 of Table 1 is the self coefficient n = n0 + n2 I. Polarization \
+not stated.
+
+ABSOLUTE AND RELATIVE (p. 1826): 'Absolute measurement of n2 was performed at each \
+wavelength for one material (FS at 2.3 um, Saph at 3.5 and 4.5 um, and ZnSe at all four \
+wavelengths), and the n2 for other materials (CaF2, MgF2, and ZnS) was obtained by a \
+relative measurement.' 'Most of the error in n2 arises from the uncertainty in \
+determining the pump intensity'; the level of the +- is not stated. Maximum intensities \
+a few 10^11 W/cm^2, typical a few 10^9 W/cm^2. beta was negligible in all measurements. \
+Fused silica only to 3.5 um (linear absorption beyond 4 um); no 8.3 um value except for \
+ZnSe and ZnS (too little pump power).
+
+PULSES AND PART. OPA/NDFG pulses < 150 fs; 75 fs FWHM (with chirp) fitted at 3.5 um, 100 \
+fs FWHM at 4.5 um (Fig. 1(c), Fig. 2); the duration at 2.3 um is not stated. 'Our minimum \
+pulse durations were >65 fs, which prevented us from distinguishing the electronic \
+contribution from the nuclear response' (p. 1827): part = 'unknown'. No pulse_fs is \
+recorded (it differs by wavelength and is not given for every one).
+
+THEORY COLUMN: the two-band model of Sheik-Bahae et al. [1] 'with K' = 0.86 x 10^-8, E_P \
+= 21 eV' and the band gaps of the table ('includes contributions from TPA, Raman, linear, \
+and quadratic Stark effects and the divergent term', p. 1827): use = 'check'. See the \
+formula entry: not reproduced here (the paper gives neither G2 nor the n0 used).
+
+BAND GAPS: 'Obtained from [1,15,16]' (Table 1 footnote b): the inputs of the theory \
+column, taken from the literature, not measured: kind 'assumed', assumed = true, use = \
+'check'. [1] Sheik-Bahae, Hutchings, Hagan & Van Stryland, IEEE J. Quantum Electron. 27, \
+1296 (1991); [15] N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011); [16] P. D'Amico, A. \
+Calzolari, A. Ruini and A. Catellani, Sci. Rep. 7, 1 (2017); which gap comes from which \
+reference is not said.
+
+MATERIALS: ZnS '(polycrystalline)'; ZnSe crystallinity not stated; 'Sapphire' = Al2O3, \
+axis not stated; fused silica grade not stated. Text comparisons (p. 1827): ZnS (50 +- \
+12.5) and ZnSe (120 +- 30) x 10^-20 m^2/W at 3.9 um by Z-scan [2] (Ensley & Bambha 2019) \
+and [3] (Werner et al. 2019): reproductions of ensley_2019's Table 1 (and Werner), not \
+extracted here.
+
+refractiveindex.info (Patwardhan n2 pages, checked 2026-09-26): Al2O3 2.44, 2.62, 2.66; \
+CaF2 1.09, 1.19, 1.12; MgF2 0.66, 0.74, 0.82 (x 10^-20 m^2/W at 2.3, 3.5, 4.5 um); SiO2 \
+1.94, 2.0 (2.3, 3.5 um): the measured values, identical. The pages label the pulse '100 \
+fs' for every wavelength (the paper: 75 fs at 3.5 um, 100 fs at 4.5 um, not stated at \
+2.3 um). There are no pages for ZnSe and ZnS (all four wavelengths including 8.3 um), and \
+no theory values."""
+
+[[datasets]]
+id = "exp_ZnSe"
+material = "ZnSe"
+file = "ZnSe/patwardhan_2021__exp_ZnSe.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1, Exp., row 'ZnSe'. Absolute at all four wavelengths. Samples 1 mm thick."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "spectrally resolved two-beam coupling"
+form = "bulk"
+
+[[datasets]]
+id = "theory_ZnSe"
+material = "ZnSe"
+file = "ZnSe/patwardhan_2021__theory_ZnSe.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, Theory, row 'ZnSe': the two-band model (formula two_band_theory) with the band gap of band_gap_ZnSe."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "band_gap_ZnSe"
+material = "ZnSe"
+file = "ZnSe/patwardhan_2021__band_gap_ZnSe.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["sheik_bahae_1991", "N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011)", "P. D'Amico, A. Calzolari, A. Ruini, and A. Catellani, Sci. Rep. 7, 1 (2017)"]
+notes = "Table 1, 'Bandgap E_g (eV)', row 'ZnSe': 'Obtained from [1,15,16]', the input of the theory column (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "exp_ZnS"
+material = "ZnS"
+file = "ZnS/patwardhan_2021__exp_ZnS.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1, Exp., row 'ZnS (polycrystalline)'. Relative to the absolutely measured material at each wavelength (source notes). Polycrystalline. Samples 1 mm thick."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "spectrally resolved two-beam coupling"
+form = "bulk"
+
+[[datasets]]
+id = "theory_ZnS"
+material = "ZnS"
+file = "ZnS/patwardhan_2021__theory_ZnS.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, Theory, row 'ZnS (polycrystalline)': the two-band model (formula two_band_theory) with the band gap of band_gap_ZnS."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "band_gap_ZnS"
+material = "ZnS"
+file = "ZnS/patwardhan_2021__band_gap_ZnS.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["sheik_bahae_1991", "N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011)", "P. D'Amico, A. Calzolari, A. Ruini, and A. Catellani, Sci. Rep. 7, 1 (2017)"]
+notes = "Table 1, 'Bandgap E_g (eV)', row 'ZnS (polycrystalline)': 'Obtained from [1,15,16]', the input of the theory column (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "exp_Al2O3"
+material = "Al2O3"
+file = "Al2O3/patwardhan_2021__exp_Al2O3.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1, Exp., row 'Sapphire'. Absolute at 3.5 and 4.5 um; relative at 2.3 um (source notes). Axis not stated. Samples 500 um thick."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "spectrally resolved two-beam coupling"
+form = "bulk"
+
+[[datasets]]
+id = "theory_Al2O3"
+material = "Al2O3"
+file = "Al2O3/patwardhan_2021__theory_Al2O3.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, Theory, row 'Sapphire': the two-band model (formula two_band_theory) with the band gap of band_gap_Al2O3."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "band_gap_Al2O3"
+material = "Al2O3"
+file = "Al2O3/patwardhan_2021__band_gap_Al2O3.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["sheik_bahae_1991", "N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011)", "P. D'Amico, A. Calzolari, A. Ruini, and A. Catellani, Sci. Rep. 7, 1 (2017)"]
+notes = "Table 1, 'Bandgap E_g (eV)', row 'Sapphire': 'Obtained from [1,15,16]', the input of the theory column (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "exp_CaF2"
+material = "CaF2"
+file = "CaF2/patwardhan_2021__exp_CaF2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1, Exp., row 'CaF2'. Relative to the absolutely measured material at each wavelength (source notes). Samples 500 um thick."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "spectrally resolved two-beam coupling"
+form = "bulk"
+
+[[datasets]]
+id = "theory_CaF2"
+material = "CaF2"
+file = "CaF2/patwardhan_2021__theory_CaF2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, Theory, row 'CaF2': the two-band model (formula two_band_theory) with the band gap of band_gap_CaF2."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "band_gap_CaF2"
+material = "CaF2"
+file = "CaF2/patwardhan_2021__band_gap_CaF2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["sheik_bahae_1991", "N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011)", "P. D'Amico, A. Calzolari, A. Ruini, and A. Catellani, Sci. Rep. 7, 1 (2017)"]
+notes = "Table 1, 'Bandgap E_g (eV)', row 'CaF2': 'Obtained from [1,15,16]', the input of the theory column (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "exp_MgF2"
+material = "MgF2"
+file = "MgF2/patwardhan_2021__exp_MgF2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1, Exp., row 'MgF2'. Relative to the absolutely measured material at each wavelength (source notes). Samples 500 um thick."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "spectrally resolved two-beam coupling"
+form = "bulk"
+
+[[datasets]]
+id = "theory_MgF2"
+material = "MgF2"
+file = "MgF2/patwardhan_2021__theory_MgF2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, Theory, row 'MgF2': the two-band model (formula two_band_theory) with the band gap of band_gap_MgF2."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "band_gap_MgF2"
+material = "MgF2"
+file = "MgF2/patwardhan_2021__band_gap_MgF2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["sheik_bahae_1991", "N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011)", "P. D'Amico, A. Calzolari, A. Ruini, and A. Catellani, Sci. Rep. 7, 1 (2017)"]
+notes = "Table 1, 'Bandgap E_g (eV)', row 'MgF2': 'Obtained from [1,15,16]', the input of the theory column (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "exp_SiO2"
+material = "SiO2"
+file = "SiO2/patwardhan_2021__exp_SiO2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1, Exp., row 'Fused silica'. Absolute measurement at 2.3 um; the other wavelengths relative (source notes). Samples 500 um thick."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "spectrally resolved two-beam coupling"
+form = "bulk"
+
+[[datasets]]
+id = "theory_SiO2"
+material = "SiO2"
+file = "SiO2/patwardhan_2021__theory_SiO2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-20
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, Theory, row 'Fused silica': the two-band model (formula two_band_theory) with the band gap of band_gap_SiO2."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "band_gap_SiO2"
+material = "SiO2"
+file = "SiO2/patwardhan_2021__band_gap_SiO2.csv"
+table = "tbl_2daca1ccb18c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["sheik_bahae_1991", "N. M. Saeed, Al-Nahrain J. Sci. 14, 86 (2011)", "P. D'Amico, A. Calzolari, A. Ruini, and A. Catellani, Sci. Rep. 7, 1 (2017)"]
+notes = "Table 1, 'Bandgap E_g (eV)', row 'Fused silica': 'Obtained from [1,15,16]', the input of the theory column (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[formulas]]
+id = "two_band_theory"
+equation = "Table 1 note a and p. 1827"
+printed = "Theoretical value is calculated using two-band model theory in [1] ... (with K' = 0.86 x 10^-8, E_P = 21 eV [1])"
+variable = "photon energy over the band gap, hbar omega / E_g (the model of Sheik-Bahae et al. 1991)"
+coefficients = { K_prime = "0.86 x 10^-8", E_P = "21 eV" }
+check = "Not reproduced: the paper names the model and its two constants but prints neither the dispersion function G2 nor the linear indices n0 it used (checked 2026-09-26). K' = 0.86e-8 differs from DeSalvo et al.'s 7.33e-9 and from the 1.5e-8 of Sheik-Bahae et al. 1991 (desalvo_1996, p. 1328). Added 2026-09-27, from the original (sheik_bahae_1991, p. 1304): 0.86e-8 is Sheik-Bahae et al.'s own fit to the wide-gap solids (its Table III '*' column), and its G2 (formula sheik_bahae_1991/g2_degenerate, which reproduces that table) makes this column computable once n0 is chosen; ZnSe, sapphire, CaF2, MgF2 and fused-silica gaps here equal that table's, the ZnS gap (3.2 eV) does not (3.54 eV there)."
+notes = "The Theory columns of Table 1 are this model's values; recorded as use = 'check' datasets."

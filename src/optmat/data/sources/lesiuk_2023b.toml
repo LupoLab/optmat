@@ -1,0 +1,240 @@
+citation = "M. Lesiuk and B. Jeziorski, \"Diamagnetic susceptibility of neon and argon including leading relativistic effects\", arXiv:2311.11357v1 [physics.atom-ph] (2023)"
+doi = "10.48550/arxiv.2311.11357"
+library = "Lesiuk_2023_DiamagneticSusceptibilityNeon"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ab initio composite calculation of the static diamagnetic susceptibility \
+(magnetizability) chi_0 = -d^2E/dB^2 of the neon and argon atoms (Eq. (2)). Leading \
+term chi_0^(0) = -(alpha^2/6) <sum_i r_i^2> (Eq. (3)): numerical Hartree-Fock <r^2> \
+(Saito 2009, Eq. (23)), all-electron CCSD(T) in doubly augmented Gaussian basis sets up \
+to 9Z extrapolated to the complete basis set with the Riemann-zeta formula (Eq. (24)), \
+higher excitations CCSDT, CCSDTQ, CCSDTQP (argon's from Lesiuk and Jeziorski 2023, \
+Eq. (25)). The complete relativistic correction of order alpha^4: Dirac-equation terms \
+(Eqs. (4)-(6)) and Breit terms (Eqs. (7)-(8)) as CCSD(T) expectation values in \
+Slater-type bases (finite difference, Eq. (26)); the mass-velocity and one-electron \
+Darwin corrections to the wavefunction by CC3 linear response (Eq. (27)); the \
+orbit-orbit term at Hartree-Fock level (50 % uncertainty); the two-electron Darwin term \
+neglected. QED estimated as -alpha log(alpha) times the largest relativistic term \
+(100 % uncertainty, Eq. (29)); finite nuclear mass by reduced-mass scaling (Eq. (32), \
+20Ne and 40Ar, 50 % uncertainty); finite nuclear size about 1 ppm, neglected. CODATA \
+2018 constants, alpha = 1/137.035999 (p. 2)."""
+notes = """The library copy is the arXiv preprint 2311.11357v1 (dated 21 November 2023, 12 \
+pages; the file is named lesiuk-2024.pdf); no journal reference appears in it or in \
+the library metadata. The published version (Phys. Rev. A 109, 012820 (2024), per \
+Crossref as reported to the curators) is not in the library and was not checked: the \
+citation is the preprint's. Page numbers are the preprint's pdf pages.
+
+Atomic units: chi_0 in a0^3 (the Gaussian-atomic unit of the magnetizability, 'where \
+a0 is the Bohr radius', abstract); 1 cm^3/mol = 11.205872 a.u. (p. 2, the authors' \
+conversion of a molar value N_A chi_0). The molar magnetic term of the Lorentz-Lorenz \
+relation, A_mu = (4 pi/3) N_A chi_0 a0^3 (0.3738031 cm^3/mol per a.u., computed), is \
+-3.16933e-5 cm^3/mol for Ne and -8.58046e-5 for Ar.
+
+Results (abstract, p. 9, Table IX): chi_0 = -8.4786(7) x 10^-5 (Ne), -22.9545(32) x \
+10^-5 (Ar), 'of the order of one part per ten thousand' relative uncertainty (p. 9). \
+The error is the quadrature sum of the components' ('not correlated in the statistical \
+sense', p. 8); no confidence level is stated. The dominant uncertainties are CCSD(T) \
+basis-set extrapolation, the orbit-orbit term and QED (argon: all three comparable). \
+Frequency dependence of chi is of order alpha^5 or quadratic in m_e/M_N and is not \
+considered (p. 2): the values are static, and the package applies them at optical \
+frequencies (TC-71). Isotopes: the finite-mass term is for 20Ne and 40Ar (p. 8).
+
+Checks (2026-09-29): the Table IX contributions sum to the totals, -8.4786 and \
+-22.9545, and their quadrature is 0.00065 and 0.00317 (printed (7), (32)); Eq. (3) \
+with Eq. (23)'s <r^2>_HF (9.37184, 26.0344) and alpha = 1/137.035999 gives -8.31772 \
+and -23.10612, Table IX's chi_0^HF -8.3177 and -23.1061.
+
+Table X (image checked) prints three misprints, two of them in the powers of ten: \
+Barter et al.'s neon value as -7.80(16) x 10^-4 (erratum below: 10^-5); the second line \
+of Barter et al.'s argon cell, the revised uncertainty of Rourke (2021), as -2.16(15) x \
+10^-5 (it is x 10^-4: rourke_2021's argon A_mu, -8.09(57) x 10^-5 cm^3/mol, is \
+-2.164(152) x 10^-4 a.u. by the conversion above, and the text, p. 9, says the \
+uncertainty 'has to be increased to about 7%'; not extracted, the dataset keeps \
+Barter et al.'s own line); and its 'this work' argon value as -2.29548(32) x 10^-4 \
+where the abstract, the text (p. 9) and Table IX's total, which its rows reproduce, \
+give -22.9545(32) x 10^-5 (the 'this work' row is not extracted) (TC-706). The label 'FMS' \
+under 'other corrections' in Table IX is the finite nuclear size term (FNS in the \
+text, p. 8), neglected.
+
+Comparison (p. 9): the previous theory (including the authors' own -8.484(19) x \
+10^-5 and -2.30(2) x 10^-4) agrees roughly; Barter et al. disagree for neon (and for \
+argon only before Rourke's revision of the uncertainty); Havens' neon agrees. The \
+authors ask for 'new and independent measurements'.
+
+Helium appears only as a test of the method (pp. 5-6): Paper I (Puchalski, Lesiuk and \
+Jeziorski, Phys. Rev. A 108, 042812 (2023), not in the library) gives <r^2> = \
+2.38697, <sum l_i^2> = 0.018970526 and <sum r_i^2 nabla_i^2> = -0.139689120; the \
+helium chi_0 itself is not printed here (not extracted).
+
+Not extracted: Tables I-VIII (basis-set sequences of the components), the Table IX \
+contribution rows (components of the totals), Table X's theoretical rows without \
+uncertainties (Yoshizawa and Hada -8.27e-5, -2.22e-4; Ruud et al. / Jaszunski et al. \
+-8.48e-5, -2.31e-4; Reinsch and Meyer -8.57e-5, -2.32e-4; Levy and Perdew / Desclaux \
+-8.31e-5, -2.30e-4) and its 'this work' row."""
+
+[[datasets]]
+id = "chi0_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2023b__chi0_Ne.csv"
+table = "tbl_070dd39bd6ec"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-5
+abscissa = "none"
+use = "primary"
+notes = "Table IX 'total': chi_0 = -8.4786(7) x 10^-5 a.u. (the table's entries are x 10^5), static, 20Ne; also the abstract and p. 9. 0.064 % smaller in magnitude than lesiuk_2020's -8.484(19) x 10^-5, which it supersedes (0.3 of that value's sigma)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "chi0_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023b__chi0_Ar.csv"
+table = "tbl_070dd39bd6ec"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-5
+abscissa = "none"
+use = "primary"
+notes = "Table IX 'total': chi_0 = -22.9545(32) x 10^-5 a.u., static, 40Ar; also the abstract and p. 9 (Table X's -2.29548(32) x 10^-4 is a misprint, source notes). 0.22 % smaller in magnitude than lesiuk_2023's nonrelativistic -2.3004(6) x 10^-4 (Eq. (35) there) and 0.20 % than its rounded -2.30(2) x 10^-4 (Eq. (39)), which it supersedes: the difference is mainly the mass-velocity correction to the wavefunction, +0.0529 x 10^-5."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "havens_1933_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2023b__havens_1933_Ne.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-5
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["G. G. Havens, Phys. Rev. 43, 992 (1933)"]
+notes = "Table X, experimental, 'Havens [58]': -8.574(9) x 10^-5 a.u., as converted by Lesiuk and Jeziorski; 1.1 % from their theory, 'a good agreement' (p. 9). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "havens_1933_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023b__havens_1933_Ar.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["G. G. Havens, Phys. Rev. 43, 992 (1933)"]
+notes = "Table X, experimental, 'Havens [58]': -2.15(2) x 10^-4 a.u. (6.3 % below the theory in magnitude). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "mann_1936_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2023b__mann_1936_Ne.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-5
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["K. E. Mann, Z. Phys. 98, 548 (1936)"]
+notes = "Table X, experimental, 'Mann [59]': -7.56(20) x 10^-5 a.u. The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "mann_1936_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023b__mann_1936_Ar.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["K. E. Mann, Z. Phys. 98, 548 (1936)"]
+notes = "Table X, experimental, 'Mann [59]': -2.19(2) x 10^-4 a.u. The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "barter_1960_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2023b__barter_1960_Ne.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["C. Barter, R. G. Meisenheimer, and D. P. Stevenson, J. Phys. Chem. 64, 1312 (1960)"]
+notes = "Table X, experimental, 'Barter el al. [60]' (sic): printed -7.80(16) x 10^-4 a.u., read as x 10^-5 (erratum below): 8 % below the theory in magnitude, the 'large discrepancy' of p. 9. nie_2025 uses the same value, -29.2(6) x 10^-6 cm^3/mol (A_mu, its Table I). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "barter_1960_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023b__barter_1960_Ar.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["C. Barter, R. G. Meisenheimer, and D. P. Stevenson, J. Phys. Chem. 64, 1312 (1960)"]
+notes = "Table X, experimental, 'Barter el al. [60]', first line: -2.16(2) x 10^-4 a.u., note a, 'original error estimate'. Not an independent measurement: 'an average of three previous measurements (used to calibrate the apparatus)' (p. 9). Rourke (2021) raised the uncertainty to about 7 % (the table's second line, note b, -2.16(15), misprinted x 10^-5; source notes); with it the theory, 6.3 % larger in magnitude, agrees. This is the value behind rourke_2021's recommended argon A_mu and nie_2025's A_mu (-80.9(6) x 10^-6 cm^3/mol). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "lesiuk_jeziorski_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2023b__lesiuk_jeziorski_Ne.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-5
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["lesiuk_2020"]
+notes = "Table X, theoretical, 'Lesiuk and Jeziorski [25, 27]': -8.484(19) x 10^-5 a.u., lesiuk_2020's chi_0 (abstract and p. 10 there; nonrelativistic with an allowance for the relativistic terms), which fit/Ne uses (TC-71). Superseded by chi0_Ne."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "lesiuk_jeziorski_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023b__lesiuk_jeziorski_Ar.csv"
+table = "tbl_e0613af46035"
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["lesiuk_2023"]
+notes = "Table X, theoretical, 'Lesiuk and Jeziorski [25, 27]': -2.30(2) x 10^-4 a.u., lesiuk_2023's Eq. (39) (-2.3004(6) x 10^-4 from <r^2>, nonrelativistic, 1 % allowed), which fit/Ar uses (TC-71). Superseded by chi0_Ar."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[errata]]
+dataset = "barter_1960_Ne"
+row = ""
+column = "scale"
+printed = "0.0001"
+corrected = "1e-05"
+reason = "Table X prints Barter et al.'s neon chi_0 as -7.80(16) x 10^-4 a.u., ten times every other neon entry of the table (experimental -7.56e-5 and -8.574e-5, theoretical -8.27e-5 to -8.57e-5, this work -8.4786e-5); read as x 10^-5 it is 8 % below the theory with a 2 % stated uncertainty, the persistent disagreement the text describes."
+evidence = "Circumstantial: p. 9, 'the present results are in disagreement with the experimental data of Barter et al.' and, after Rourke's revision for argon, 'for neon a large discrepancy remains', a disagreement at the level of the other experiments, not an order of magnitude. The same table misprints the power of ten of Barter et al.'s revised argon line (10^-5 for 10^-4; source notes). Corroborated by nie_2025, whose Table I takes A_mu from Barter et al. (its Ref. 32): neon -29.2(6) x 10^-6 cm^3/mol, which is -7.81(16) x 10^-5 a.u. by the conversion in the source notes (argon -80.9(6) x 10^-6, i.e. -2.164(16) x 10^-4 a.u., Barter et al.'s argon line here). Not stated by the authors; the original (J. Phys. Chem. 64, 1312 (1960)) is not in the library. Checked 2026-09-29 against the table image and the text."

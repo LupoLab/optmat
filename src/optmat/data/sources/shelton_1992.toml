@@ -1,0 +1,352 @@
+citation = "D. P. Shelton and E. A. Donley, Chem. Phys. Lett. 195, 591 (1992)"
+doi = "10.1016/0009-2614(92)85568-u"
+library = "Shelton_1992_HyperpolarizabilityDispersionNeon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """ESHG with periodic phase matching relative to He, as in shelton_1990 and \
+Shelton & Lu 1988: argon-ion laser (514.5, 488.0 nm), 2-3 W at the sample, confocal \
+parameter 20 cm, beam polarised parallel to the static field; electrode array with \
+2.69 mm spacing and 150 pairs (Ne phase match at 29 and 24 atm, 26 C), and a coarser \
+array (5.08 mm, 82 pairs) at half the density; sample and reference in 2-3 coupled \
+triplets; 99.999 % gases; pressures with a Paroscientific 1003K gauge (+-0.02 atm) \
+(p. 2)."""
+notes = """The corrected neon hyperpolarizability: 'the anomalous hyperpolarizability \
+dispersion previously observed for neon is spurious' (abstract). The earlier visible \
+data (Shelton & Lu 1988) are discarded (electrical breakdown in neon went unnoticed, \
+p. 3); the new visible points and shelton_1990's infrared points give gamma_0 = 108 +- 2 \
+au and A = 2.47 au (omega_L^2 in au), against shelton_1990's 119 au and negative A. \
+Supersedes shelton_1990's Ne fit (table4_Ne) and shelton_1989's anomaly.
+
+Definitions: gamma is the ESHG hyperpolarizability gamma(-2w; w, w, 0), the same \
+quantity and convention as shelton_1990 (Taylor series; shelton_1994 reproduces this \
+fit), per atom, in au with the Ne reduced-mass factors (1 au = 219469 cm^-1 for omega, \
+6.23656e-65 C^4 m^4 J^-3 for gamma, p. 3). Dispersion: gamma = gamma_0 (1 + A omega_L^2 \
++ B omega_L^4), omega_L^2 = 6 omega^2 for ESHG, omega and gamma in au (Table 2 \
+caption). Calibration: Bishop & Pipin's ab initio gamma_He (bishop_1989) through \
+shelton_1990's fit; 'note that table 2 of ref. [1], which gives the fit coefficients, \
+has a misprint: 10^-31 in the last line should be 10^-32' (p. 3; recorded on \
+shelton_1990's formula table2_He_si). No separation of parts is needed (atom: \
+electronic). Pair interactions: theory predicts gamma_Ne/gamma_He overestimated by 0.3 \
+% at the highest density; the half-density measurement bounds the pair contribution \
+below about +-1 %; the tabulated gamma_Ne include a 0.0 +- 0.3 % correction (p. 4).
+
+Other experiments (Table 1 caption): 'The only other measurements of gamma_Ne are from \
+one dc Kerr effect experiment and two third harmonic generation experiments (error \
+bars +-8%-17%, see ref. [2] for discussion)'. The dc Kerr value and the ab initio best \
+estimates are recorded from the text (p. 4-5). A comparison with He: 'The dispersion is \
+only slightly larger for gamma_Ne than for gamma_He (A = 2.5 au versus A = 2.191 au)' \
+(p. 4). Figure 1 (the dispersion plot) is not digitised. The library's validation shows \
+no findings; the two tables' CSV cells agree with their images."""
+
+[[formulas]]
+id = "table2_expt"
+material = "Ne"
+equation = "Table 2, p. 4"
+printed = "gamma = gamma_0 (1 + A omega_L^2 + B omega_L^4), omega_L^2 = 6 omega^2 for ESHG, omega and gamma in au; expt.: gamma_0 = 108.1, A = 2.47, B = 5.50"
+variable = "omega_L^2 = 6 omega^2, omega the laser angular frequency in au (1 au = 219469 cm^-1 for Ne, p. 3)"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "omega = 0.0-0.1 au; data 1319-488.0 nm (the first four rows of Table 1)"
+coefficients = { gamma0 = "108.1", A = "2.47", B = "5.50" }
+coefficient_units = { gamma0 = "au", A = "au", B = "au" }
+calibration = "He: Bishop & Pipin (bishop_1989), through shelton_1990 Table II"
+check = "At the data: 121.97 (514.5 nm) and 123.69 (488.0) against 122.2 +- 0.4 and 123.5 +- 0.5; 110.04 (1319) and 111.11 (1064) against 111.0 +- 0.8 and 109.9 +- 0.5 (the infrared scatter the text mentions). In cm units (1 au = 219469 cm^-1): A = 0.5128e-10 cm^2, B = 0.2371e-20 cm^4, shelton_1994 Table VII's 0.513 and 0.237. At 632.8 nm for dc Kerr (omega_L^2 = 1.036e-2 au) 110.93, the text's 111. Checked 2026-09-26."
+notes = "'The B coefficient in the fit to the experimental measurement is arbitrarily set to a value between the values given by the electron-correlated calculations (fitted A depends only weakly on B: +-0.5 in B gives +-0.03 in A) ... The statistical uncertainties in the experimental fit coefficients are +-1% for gamma_0 and +-10% for A' (Table 2 caption). The recommended Ne ESHG dispersion (shelton_1994 Table VII)."
+
+[[formulas]]
+id = "table2_mp2"
+material = "Ne"
+equation = "Table 2, p. 4"
+printed = "MP2: gamma_0 = 110.4, A = 2.40, B = 5.33 (au)"
+variable = "omega_L^2 = 6 omega^2, omega in au"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "omega = 0.0-0.1 au"
+coefficients = { gamma0 = "110.4", A = "2.40", B = "5.33" }
+coefficient_units = { gamma0 = "au", A = "au", B = "au" }
+reproduced_from = ["rice_1992"]
+check = "A = 2.40 au = 0.4983e-10 cm^2 and B = 5.33 au = 0.2297e-20 cm^4, shelton_1994 Table VII's 0.498 and 0.230 (whose gamma_0 = 110 is the CCSD(T) static value). Checked 2026-09-26."
+notes = "Fitted by the authors to the MP2 calculation of Ref. [3] (J. E. Rice, J. Chem. Phys., in press = rice_1992)."
+
+[[formulas]]
+id = "table2_casscf"
+material = "Ne"
+equation = "Table 2, p. 4"
+printed = "CASSCF: gamma_0 = 94.6, A = 2.55, B = 5.94 (au)"
+variable = "omega_L^2 = 6 omega^2, omega in au"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "omega = 0.0-0.1 au"
+coefficients = { gamma0 = "94.6", A = "2.55", B = "5.94" }
+coefficient_units = { gamma0 = "au", A = "au", B = "au" }
+reproduced_from = ["H. J. Aa. Jensen, P. Jorgensen, H. Hettema and J. Olsen, Chem. Phys. Lett. 187, 387 (1991)"]
+check = "A = 2.55 au = 0.5294e-10 cm^2, B = 5.94 au = 0.2560e-20 cm^4: shelton_1994 Table VII's 0.529 and 0.256 (with gamma_0 = 99, Jensen et al.'s adjusted best static value). Checked 2026-09-26."
+notes = "Fitted to Jensen et al.'s CASSCF curve (Ref. [4]). 'The best static value given by Jensen et al. [4] includes an adjustment based on the estimated effect of adding more correlating orbitals; the difference between their stated best static value of gamma [99 +- 6 au] and the static intercept of the dispersion curve given in table 2 and fig. 1 is due to this adjustment' (pp. 4-5)."
+
+[[formulas]]
+id = "table2_scf"
+material = "Ne"
+equation = "Table 2, p. 4"
+printed = "SCF: gamma_0 = 68.7, A = 2.28, B = 4.72 (au); note d) 'SCF limit is 70.0 au; see ref. [17]'"
+variable = "omega_L^2 = 6 omega^2, omega in au"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "omega = 0.0-0.1 au"
+coefficients = { gamma0 = "68.7", A = "2.28", B = "4.72" }
+coefficient_units = { gamma0 = "au", A = "au", B = "au" }
+reproduced_from = ["rice_1992"]
+check = "A = 2.28 au = 0.4734e-10 cm^2, B = 4.72 au = 0.2034e-20 cm^4: shelton_1994 Table VII's SCF (ref 122) 0.473 and 0.203. Checked 2026-09-26."
+notes = "Uncorrelated (Ref. [3]); 'including correlations increases gamma_0 to 1.6 times the SCF result but only increases A by 5%' (p. 4). Note d cites ref. [17] (Maroulis & Thakkar 1989) for the 70.0 au SCF limit."
+
+[[datasets]]
+id = "gamma_present"
+material = "Ne"
+file = "Ne/shelton_1992__gamma_present.csv"
+table = "tbl_9856decaf635"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 1 rows c) (present work), argon-ion laser at 514.5 and 488.0 nm (air; abscissa the vacuum wavenumber). gamma_Ne in au 'when reduced mass corrections for neon are incorporated into the conversion factors': 1 au = 219469 cm^-1 for omega and 1 au = 6.23656e-65 C^4 m^4 J^-3 for gamma (p. 3). Obtained from gamma_Ne/gamma_He with Bishop & Pipin's gamma_He (bishop_1989) through the fit of shelton_1990 Table II (whose C misprint the paper notes). 'The results for gamma_Ne from the present experiments, given in table 1, include an estimated pair interaction correction of 0.0 +- 0.3%' (p. 4). Error budget for gamma_Ne/gamma_He: '+-0.05%-0.25% for reproducibility and +-0.1% from the density determinations' (p. 2); no allowance for the He calibration (thought better than 0.1 %)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "ratio_present"
+material = "Ne"
+file = "Ne/shelton_1992__ratio_present.csv"
+table = "tbl_9856decaf635"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 1 rows c): gamma_Ne/gamma_He as measured (the raw ESHG ratio behind gamma_present, so not independent of it). Phase match for Ne at 29 and 24 atm (26 C) for 514.5 and 488.0 nm (p. 2). Pair interaction effects are not in the error bars of the ratio (p. 2)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_infrared"
+material = "Ne"
+file = "Ne/shelton_1992__gamma_infrared.csv"
+table = "tbl_9856decaf635"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "shelton_1989"]
+notes = "Table 1 rows d) (Refs. [1, 2] = shelton_1990, shelton_1989): the 1319 and 1064 nm ratios 2.534 and 2.487 of shelton_1990 Table I re-expressed in au with the Ne reduced-mass factor (shelton_1990 Table III: 6.925e-63 and 6.855e-63 C^4 m^4 J^-3 = 111.04 and 109.92 au with 6.23656e-65). Included in the new fit, but 'the scatter about the fitted curve is greater than the stated error bars for the two infrared measurements' (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_finn_ward"
+material = "Ne"
+file = "Ne/shelton_1992__gamma_finn_ward.csv"
+table = "tbl_9856decaf635"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["R. S. Finn and J. F. Ward, Phys. Rev. Lett. 26, 285 (1971)"]
+notes = "Table 1 row e) (Ref. [11], Finn & Ward 1971), ruby laser, rescaled to Bishop & Pipin's He; not in the fit ('the fifth value has large uncertainty', caption)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_shelton_lu"
+material = "Ne"
+file = "Ne/shelton_1992__gamma_shelton_lu.csv"
+table = "tbl_9856decaf635"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "cm-1"
+use = "excluded"
+reproduced_from = ["D. P. Shelton and Z. Lu, Phys. Rev. A 37, 3813 (1988)"]
+notes = "Table 1 rows f) (Ref. [9], Shelton & Lu 1988). SPURIOUS: 'the signal for helium was too large' because of an unnoticed electrical breakdown in neon ('a steady, electrically quiet discharge'), so 'the last three measurements of gamma_Ne/gamma_He given in table 1 should be discarded' (p. 3). Their phase-match density ratios agree with the new ones, so the samples were not contaminated. These are the data behind the anomalous Ne dispersion of shelton_1989 and shelton_1990 (and essentially the same values as shelton_1990's excluded table3_Ne_literature: 6.402, 6.816, 7.141e-63 = 102.65, 109.29, 114.50 au). Row 594.5 nm (16817 cm^-1; shelton_1990 prints 594.4)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "density_He_over_Ne"
+material = "He"
+file = "He/shelton_1992__density_He_over_Ne.csv"
+table = "tbl_9856decaf635"
+quantity = "phase_match_density_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+density = "real"
+use = "primary"
+notes = "Table 1 rows c): rho_He/rho_Ne at ESHG periodic phase match, as printed (gas He, reference Ne, as in shelton_1990). Pressures with a Paroscientific 1003K gauge (full scale 200 atm, +-0.02 atm), 26 C; density evaluation as in the earlier papers (virial equation of state, ref [1] = shelton_1990). 'the phase match density ratios rho_He/rho_Ne are in excellent agreement with previous results' (p. 2). The other rows' ratios (d, e, f) are those of shelton_1989's datasets (not repeated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ne"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Ne"
+shelton_reference_gas = "He"
+
+[[datasets]]
+id = "half_density_ratio"
+material = "Ne"
+points = [
+    ["514.5 half density", "19430", "2.554", "0.010"],
+]
+table = "text"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+use = "check"
+notes = "p. 4: 'A measurement with the coarser electrode array at half the highest sample density yields rho_He/rho_Ne = 1.879 +- 0.003 and gamma_Ne/gamma_He = 2.554 +- 0.010 at lambda = 514.5 nm. Combined with the result measured at higher density at the same wavelength, this indicates that the pair contribution to the hyperpolarizability ratio is less than about +-1% in these experiments.' (5.08 mm electrode spacing, 82 pairs.)"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "half_density_He_over_Ne"
+material = "He"
+points = [
+    ["514.5 half density", "19430", "1.879", "0.003"],
+]
+table = "text"
+quantity = "phase_match_density_ratio"
+unit = "1"
+abscissa_unit = "cm-1"
+density = "real"
+use = "primary"
+notes = "p. 4: rho_He/rho_Ne = 1.879 +- 0.003 at 514.5 nm with the coarser array (half density); the same as the full-density 1.879 +- 0.002."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ne"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Ne"
+shelton_reference_gas = "He"
+
+[[datasets]]
+id = "static_expt"
+material = "Ne"
+points = [
+    ["static", "inf", "108", "2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 4: 'The experimental estimate of static gamma_Ne that is obtained from the fitted dispersion curve is gamma_Ne = 108 +- 2 au, where a conservative error bar has been assigned because the scatter about the fitted curve is greater than the stated error bars for the two infrared measurements'. The static intercept of formula table2_expt (108.1)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_buckingham"
+material = "Ne"
+points = [
+    ["632.8 nm", "632.8", "101", "8"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "p. 5: 'The Kerr measurement at lambda = 632.8 nm (omega_L^2 = 1.036e-2 au) gives gamma_Ne = 101 +- 8 au' (Ref. [20], Buckingham & Dunmur 1968, as converted to gamma in au by the authors), 'in fair agreement with gamma_Ne = 111 +- 2 au predicted from the ESHG experimental dispersion curve'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_predicted"
+material = "Ne"
+points = [
+    ["632.8 nm", "632.8", "111", "2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "p. 5: gamma_Ne = 111 +- 2 au for the dc Kerr effect at 632.8 nm (omega_L^2 = 1.036e-2 au), 'predicted from the ESHG experimental dispersion curve (the two experiments measure slightly different quantities; a 0.1 au correction based on the measured deviation from Kleinman symmetry [9] is included in our estimate to account for this difference)'. Check: 108.1 (1 + 2.47 x 0.01036 + 5.50 x 0.01036^2) = 110.93 au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_abinitio"
+material = "Ne"
+points = [
+    ["Rice et al. CCSD(T) (ref 13)", "inf", "110", "3"],
+    ["Jensen et al. RASSCF (ref 4)", "inf", "99", "6"],
+    ["Chong and Langhoff CCSD(T) (ref 16)", "inf", "111.0"],
+    ["Maroulis and Thakkar CCD+ST(CCD) (ref 17)", "inf", "114", "9"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. E. Rice, G. E. Scuseria, T. J. Lee, P. R. Taylor and J. Almlof, Chem. Phys. Lett. 191, 23 (1992)", "H. J. Aa. Jensen, P. Jorgensen, H. Hettema and J. Olsen, Chem. Phys. Lett. 187, 387 (1991)", "D. P. Chong and S. R. Langhoff, J. Chem. Phys. 93, 570 (1990)", "G. Maroulis and A. J. Thakkar, Chem. Phys. Lett. 156, 87 (1989)"]
+notes = "p. 4: 'The values of static gamma_Ne from various ab initio calculations which include electron correlation ... lie in the range 81-123 au [3-5,13-19]. However, the best estimates from the most recent calculations are more tightly grouped: Rice et al., CCSD(T), 110 +- 3 au [13]; Jensen et al., RASSCF, 99 +- 6 au [4]; Chong and Langhoff, CCSD(T), 111.0 au [16]; and Maroulis and Thakkar, CCD+ST(CCD), 114 +- 9 au [17]. The stated uncertainties are based on estimates of the contribution to gamma due to terms which could not be directly calculated.' Chong and Langhoff's value has no stated uncertainty (sigma empty)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+

@@ -1,0 +1,22 @@
+# Helium's oscillator-strength distribution, for the complex index above the first
+# resonance (the extreme ultraviolet).
+gas = "He"
+description = "NIST 1snp lines (n = 2-10, continued by the n*^-3 law to n = 60), Samson et al.'s measured photoionisation cross section from threshold to 120 eV, Henke's f2 from 120 eV to 30 keV; the measured continuum scaled (within its 1-2 %) to Puchalski et al.'s static polarizability."
+# Magnetic susceptibility (Puchalski et al. 2016, p. 11).
+chi0_au = -2.1194e-5
+
+[lines]
+rydberg_to_n = 60
+last_listed_n = 10        # the NIST file lists f for 1s2p ... 1s10p
+
+[[continuum]]
+dataset = "samson_1994/measured"   # 24.587-120 eV, 1-2 %
+
+[[continuum]]
+henke = "he"
+min_ev = 120.5
+
+[constraint]
+dataset = "puchalski_2016/cauchy_total"
+row = "-2"                         # S(-2), the electric static polarizability
+region_max_ev = 120.5

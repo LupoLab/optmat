@@ -1,0 +1,67 @@
+citation = "C. Guo, M. Li, J. P. Nibarger and G. N. Gibson, \"Single and double ionization of diatomic molecules in strong laser fields\", Phys. Rev. A 58, R4271 (1998)"
+doi = "10.1103/PhysRevA.58.R4271"
+library = "Guo_1998_SingleDoubleIonization"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single and double ion yields of N2, Ar, O2 and Xe against peak intensity, \
+2 x 10^13 to 8 x 10^14 W/cm^2: Ti:sapphire laser, 800 nm, 30 fs, 1 kHz, over 400 uJ; \
+linear (LP) and circular (CP) polarisation; on-axis parabolic mirror; base pressure \
+< 5 x 10^-10 torr; ions extracted through a 1 mm pinhole into a time-of-flight mass \
+spectrometer, microchannel plate, individual ion counting (signal kept between 10^-5 \
+and 10^-1 counts/shot by the gas pressure); fragment ions (N+ + N+, O+ + O, O+ + O+) \
+recorded too (p. 2)."""
+notes = """Journal pp. R4271-R4274 = pdf pages 1-4. Identity checked against pdf p. 1 \
+(C. Guo, M. Li, J. P. Nibarger and G. N. Gibson; received 31 August 1998).
+
+WHY NO YIELDS ARE TAKEN. The ion yields are in figures only, as ion signal in \
+counts/(shot torr) against intensity: Fig. 1 N2+, N2 2+, N+ + N+ and Ar+, Ar2+ (LP and \
+CP); Fig. 2 O2+, O2 2+, O+ + O, O+ + O+ and Xe+, Xe2+ (LP); Fig. 3 O2 and Xe (CP); Fig. 4 \
+the double/single ratios of N2, Ar, O2, Xe (LP). None is printed as a number, and none \
+is digitised. 'The N2+ data are slightly reduced at the highest intensities due to \
+detector saturation' (Fig. 1 caption).
+
+CALIBRATION (p. 2). Intensity: 'The intensity was calibrated by fitting the Ar+ LP ion \
+yield to the ADK model. The rate was integrated over the measured pulse duration and \
+focal volume. The adjustable parameters in the fit are the beam waist, detection \
+efficiency, and extraction pinhole diameter'; 'The absolute intensity based on fitting \
+the Ar+ ion yield agreed with the intensity calculated from the measured beam-spot size, \
+pulse duration, and energy also to within a factor of 2. All of the other ADK curves \
+(Figs. 1-3) use the experimental parameters determined from the Ar+ LP data.' So every \
+intensity here is ADK's Ar+ intensity, and the agreement of Xe and N2 with ADK is \
+relative to Ar. Detection efficiency: 'independently measured to be 0.5-1 % using \
+correlation techniques'; 'The fitted detection efficiency agrees with this measured \
+value within a factor of 2'; the electron-multiplier efficiency is taken as \
+proportional to Z/M^(1/2) (Cornaggia et al., ref. 16). Volume: because of the pinhole \
+the volume saturation 'does not follow the usual I^(3/2) dependency'. Thermal O+ \
+contamination of the O2 2+ signal measured and 'negligible' (p. 3).
+
+FINDINGS STATED (numbers in the text). N2 behaves like Ar (similar ionisation \
+potentials) in single, double and nonsequential double ionisation, for LP and CP; N2+ \
+dissociation 'quite small' (p. 3). 'the O2+ LP ion yield is roughly ten times below Xe+ \
+in the unsaturated range of the data' (p. 3), the same with CP (Fig. 3), so the \
+suppression is not dissociative recombination; 'the O2+ ion yield can be fit reasonably \
+well to an ADK rate if we use an ionization potential of 15 eV ... this ionization \
+potential falls between the two ionization limits of O2, leading to the X and A state \
+of O2+, 12.06 and 16 eV, respectively' (pp. 3-4; the dashed curve of Fig. 2): the \
+dataset ip_adk_O2. The ratio N2 2+/N2+ and Ar2+/Ar+ is weakly intensity dependent \
+between 1.2 x 10^14 and 3 x 10^14 W/cm^2 (nonsequential), approaching the sequential \
+yield above 3 x 10^14 W/cm^2 (p. 3); Xe's NSDI rate is 'about five times higher' (Fig. \
+4, p. 4); O2 shows NSDI 'with a rate much lower than the other three gases' (p. 4).
+
+VALUES QUOTED WITHOUT A SOURCE (not taken as data): ionisation potentials (single and \
+double, p. 1): N2 15.58 and 27.12 eV, Ar 15.76 and 27.63, O2 12.06 and 24.14, Xe 12.13 \
+and 21.21; polarizabilities (p. 3): Xe 4.04 x 10^-24 cm^3, O2 1.58 x 10^-24 cm^3."""
+
+[[datasets]]
+id = "ip_adk_O2"
+material = "O2"
+table = "text"
+points = [["I_p", "", "15"]]
+quantity = "ionization_model_parameter"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Text pp. 3-4 and Fig. 2 caption ('The dashed curve fitting the O2+ data uses an ionization potential of 15 eV'): the ionisation potential with which the ADK rate (Ammosov et al. 1986, their ref. 6; the rate integrated over pulse and volume with the parameters of the Ar+ fit) fits the O2+ yield 'reasonably well' at 800 nm, 30 fs, linear polarisation. An effective value of the model, not O2's ionisation energy (12.06 eV, p. 1); the ADK quantum numbers used for O2 are not stated. No uncertainty is stated. It plays the part talebpour_1999's Z_eff = 0.53 (with 12.55 eV, PPT) plays there: both lower the rate of O2 below that of an atom with its ionisation energy."
+[datasets.parameters]
+model = "adk"
+parameter = "I_p"

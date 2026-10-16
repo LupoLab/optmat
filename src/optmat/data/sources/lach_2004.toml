@@ -1,0 +1,66 @@
+citation = "G. Lach, B. Jeziorski and K. Szalewicz, \"Radiative Corrections to the Polarizability of Helium\", Phys. Rev. Lett. 92, 233001 (2004)"
+doi = "10.1103/PhysRevLett.92.233001"
+library = "Lach_2004_RadiativeCorrectionsPolarizability"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ab initio static dipole polarizability of the helium atom: the complete \
+alpha^3 QED correction for infinite nuclear mass, including the electric-field \
+dependence of the Bethe logarithm (integral representation, Eqs. 10-14, explicitly \
+correlated Slater bases up to 1024 functions), plus the nonrelativistic value with \
+nuclear motion, the alpha^2 relativistic correction, estimates of the alpha^2 m_e/M \
+and alpha^3 m_e/M recoil terms and the one-loop alpha^4 term (Eq. 19) (pp. 1-4). The \
+library's directory name lost the author's initial L (Lach)."""
+notes = """Table IV, 'Contributions to the polarizability of 4He in atomic units x 1e-6' \
+(read on the image; the CSV lost the minus signs and parentheses): nonrelativistic \
+approximation 1 383 809.986... (with the mass-polarization term, computed in reduced \
+atomic units, p. 4, and given in atomic units: it equals puchalski_2016's 4He \
+alpha_0^(0)); alpha^2 relativistic -80.35(2) (Pachucki and Sapirstein -80.358(27), \
+Cencek et al. -80.34(2)); alpha^3 QED without the field derivative of ln k0 30.473(1) \
+(Pachucki and Sapirstein 30.474(1)); alpha^3 QED from that derivative 0.193(2); \
+alpha^4, alpha^2 m_e/M_He and alpha^3 m_e/M_He terms 0.49(23); total 1 383 760.79(23). \
+In the text: the alpha^2 m_e/M correction is -0.07(2)e-6 a.u. (preliminary), the \
+alpha^3 m_e/M one smaller than 0.05e-6, the alpha^4 one-loop estimate 0.56e-6 a.u. \
+with a 40 % uncertainty ('very conservatively', p. 4); the abstract gives the complete \
+alpha^3 QED correction 0.000 030 666(3) a.u. for infinite nuclear mass; d^2 ln k0/dE^2 \
+= 0.0512(4) (Eq. 18); the P(r12^-3) contribution 0.371 61(1)e-6 (p. 2).
+
+Recommended molar polarizability (p. 4, abstract): 0.517 254 19(9)(4) cm^3/mol, 'the \
+first of the two error bounds is of theoretical origin and the second reflects the \
+uncertainty of the Avogadro constant' (CODATA 1998, Ref. 1). Overall error 0.2 ppm. \
+The uncertainties are called 'error bounds'; their level is not stated.
+
+Superseded by puchalski_2016 (same group): the static total 1.38376077(14) there \
+recomputes the field derivative of the Bethe logarithm (0.183 instead of 0.193 u a0^3), \
+adds the computed recoil -0.0935 u a0^3 and reduces the alpha^4 allowance to 25 %. \
+Both datasets are checks."""
+
+[[datasets]]
+id = "alpha_static"
+material = "He"
+file = "He/lach_2004__alpha_static.csv"
+table = "tbl_81cac1358e95"
+quantity = "polarizability"
+unit = "au"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table IV 'Total': static polarizability of 4He 1 383 760.79(23) x 1e-6 a.u. (nonrelativistic with nuclear motion, alpha^2, alpha^3 QED, recoil and alpha^4 estimates). Superseded by puchalski_2016 (1.38376077(14)); a check."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "molar_polarizability"
+material = "He"
+table = "text"
+points = [["static", "inf", "0.51725419", "0.00000009"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "p. 4 and abstract: '0.517 254 19(9)(4) cm3/mol as our recommended value of the molar polarizability of helium' (4He, static); the sigma is the theoretical (9), the (4) is from the 1998 Avogadro constant (combined (10) in puchalski_2016 Table IX). The same number as alpha_static converted; a check."
+[datasets.uncertainty]
+column = true
+level = "not stated"

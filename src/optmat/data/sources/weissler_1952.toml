@@ -1,0 +1,182 @@
+citation = "G. L. Weissler and Po Lee, \"Absorption coefficients of oxygen in the vacuum ultraviolet\", J. Opt. Soc. Am. 42, 200 (1952)"
+doi = "10.1364/josa.42.000200"
+library = "Weissler_1952_AbsorptionCoefficientsOxygen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photographic photometry with a grazing-incidence vacuum spectrograph filled \
+with O2 at 0.5-100 micron (Hg) and a line-emission light source (lines of O, N, C, Si, \
+H, He ions, some in second and third order); light path 79.7 cm at 550 A to 103.3 cm at \
+1300 A. Each k is the slope of ln I against p from at least three, often five, \
+pressures (Beer's law tested) (Eqs. 1, 1a, pp. 200-201). Wavelengths are those of the \
+source lines (vacuum ultraviolet: vacuum wavelengths; the printed wave numbers are \
+1e8/lambda). Resolution: that of the spectrograph with a line source; not stated."""
+notes = """Journal pages 200-203 = PDF pages 1-4. O2 only; 76 rows between 303.779 and \
+1306.038 A (the paper's '76 wavelengths' counts the OI 990.797 line printed twice).
+
+Quantity: k (cm^-1) is defined by I = I0 exp(-k x), 'x is the thickness of the \
+absorbing gas layer at N.T.P.', reduced with the ideal-gas law x = T0 L p / (p0 T), T0 = \
+0 C, p0 = atmospheric pressure (Eq. 1, pp. 200-201): a natural-log absorption \
+coefficient per unit length at 0 C and 1 atm. The paper gives no conversion to cross \
+sections. The datasets store the printed k with scale = 1e18 / n0 (and x 10^2 for Table \
+I's column factor), n0 = 101325 Pa / (k_B 273.15 K) = 2.6867801e19 cm^-3 (the ideal-gas \
+Loschmidt number from the exact SI constants, matching the paper's ideal-gas \
+reduction), giving the photoabsorption cross section per molecule in Mb. The vocabulary \
+has no photoabsorption cross section: 'photoionization_cross_section' is used, as for the \
+noble gases, although below the first ionisation limit (about 1027 A) the absorption is \
+into bands and dissociation continua, not ionisation (format need reported).
+
+Accuracy (p. 202): 'The error in the coefficients presented here is estimated to be \
+about ten percent for k-values greater than 100 cm^-1 and fifteen percent for lower \
+values', with the note 'The experiment was not designed to measure k-values less than \
+20 cm^-1 accurately'; slit-width errors 'within the stated limits'. 'it is felt that \
+the accuracy of k-values which fall within molecular absorption bands is less than those \
+within a continuum. Furthermore, their physical significance is not clear' (p. 201): \
+those rows carry a band location (B.H., B.M., B.T.) in the printed column; they are not \
+band averages but values at single source lines, partly inside unresolved bands.
+
+Text values (pp. 200-203, not extracted as data): at 1300 A 'k less than 10 cm^-1'; \
+between 1300 and 1000 A about 10 cm^-1 outside bands, 'a weak continuous absorption ... \
+of the order of k = 50 cm^-1 to k = 100 cm^-1' (p. 202); between 1000 and 740 A the \
+lowest value outside a band 110 cm^-1, in the bands 600 cm^-1 or more; below 740 A k = \
+500-1000 cm^-1 'with a broad maximum of k = 700 cm^-1 between 400A and 600A and still \
+being strong at 303A, namely k = 550 cm^-1' (p. 202). The abstract says 530 cm^-1 at \
+303A, as Table I (5.3 x 10^2 at 303.779 A): the text's 550 is a misprint of the paper \
+(no dataset holds it). The dotted curve of Fig. 1 (figure only) joins roughly the lowest \
+k values between 1000 and 300 A. Reproduced (p. 200): Ladenburg and Van Voorhis's \
+Schumann continuum maximum 490 cm^-1 at about 1450 A.
+
+Comparison: Watanabe et al. (1953, watanabe_1953) found the k of these authors in \
+1060-1170 A 'in general, considerably larger' (attributed to resolution) and the weak \
+continuum near 1105 A of order 1 cm^-1, not 50-100 cm^-1; Metzger and Cook (1964, \
+metzger_1964) measured windows of k = 0.20-0.62 cm^-1 at 1108-1216 A, where this table \
+gives 43-120 cm^-1 at nearby lines. Above 1027 A these values are not reliable \
+between bands.
+
+Wave-number and wavelength columns disagree (1e8/lambda against the printed wave \
+number) beyond their precision in 14 rows; the wavelength (the source line) is used and \
+only row 54 is corrected, where the paper itself gives the evidence (erratum). Rows \
+(printed wave number; wavelength implied by it): 4 (80431.1; 1243.30), 8 (83364.8; \
+1199.55, italic digit), 15 (92201.7; 1084.58), 17 (96497.1; 1036.300), 18 (97942.8 for \
+97492.8, a transposition), 32 (110667; 903.611), 33 (113815; 878.62, against 886.618 \
+printed), 38 (120060; 832.917), 48 (142284; 702.820), 52 (148600; 672.948), 54 \
+(151450; 660.284: erratum), 63 (172177; 580.797), 68 (185499; 539.086), 71 (188900, \
+italic 00; 529.38), 74 (235236 for 232536, a transposition). In bands and windows a \
+wrong wavelength would matter; in the continuum below 740 A it does not.
+
+Table II's percent differences are not all reproduced by its columns: 640 and 670 \
+differ by 4.6 %, printed 7.8 (the others agree to 0.3 %); not extracted.
+
+Formula: Ladenburg and Wolfsohn's three-term dispersion of O2, quoted p. 200 (see \
+formulas); the paper's integral of its continuum (p. 203) 'a mean oscillator strength of \
+approximately f = 6', against Ladenburg and Wolfsohn's f3 = 5.9."""
+
+[[datasets]]
+id = "table_1"
+material = "O2"
+file = "O2/weissler_1952__table_1.csv"
+table = "tbl_56bc106d3886, tbl_3c7b2b7dceeb"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 3.7219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+excluded_rows = { "1" = "k = 7 cm^-1, below the 20 cm^-1 the experiment 'was not designed to measure ... accurately' (p. 202, Table note)", "24" = "the paper prints the line OI 990.797 (100929 cm^-1, 1.7 x 10^2) twice, as rows 21 and 24; the repeat is dropped" }
+notes = "Table I, rows in print order 1-76: k (cm^-1, natural log, layer reduced to 0 C and 1 atm) at the source-line wavelengths, printed as mantissa x 10^2; scale = 1e20 / n0 (n0 = 2.6867801e19 cm^-3) turns the mantissa into the photoabsorption cross section in Mb (see the source notes). 10 % for k > 100 cm^-1, 15 % for k <= 100 cm^-1 (rows with mantissa <= 1.0). Rows with a band location (printed column: B.H., B.M., B.T., reference 6 Price and Collins or 8 Tanaka and Takamine) lie inside molecular bands; the paper doubts their accuracy and meaning. Values above about 1000 A disagree strongly with the photoelectric data of watanabe_1953 and metzger_1964 (source notes). Row 54 prints 660.380 A for 660.280 (erratum)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+[datasets.uncertainty.relative_rows]
+"2" = 0.15
+"3" = 0.15
+"5" = 0.15
+"7" = 0.15
+"8" = 0.15
+"11" = 0.15
+"12" = 0.15
+"13" = 0.15
+"15" = 0.15
+"18" = 0.15
+
+[[datasets]]
+id = "first_order"
+material = "O2"
+file = "O2/weissler_1952__first_order.csv"
+table = "tbl_3deee1da1d4e"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table II, 'First order' (plate LE 25): k (cm^-1) from the first-order lines, compared with the second-order ones; scale = 1e18 / n0 to Mb. A consistency test of the photometry in two grating orders, not fitted. The OII row prints 644.188 A for the 644.148 of Table I (erratum)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+
+[[datasets]]
+id = "second_order"
+material = "O2"
+file = "O2/weissler_1952__second_order.csv"
+table = "tbl_3deee1da1d4e"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table II, 'Second order': three of the four values equal Table I's second-order rows (750, 720 and 780 cm^-1 at 644.825, 645.167 and 660.280 A); the OII line gives 670 here and 690 in Table I. A duplicate of Table I's measurement: a check, not fitted. The OII row prints 644.188 A for 644.148 (erratum)."
+[datasets.uncertainty]
+relative = 0.10
+level = "not stated"
+
+[[datasets]]
+id = "continuum_f"
+material = "O2"
+points = [["continuum", "1", "6"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "p. 203: 'When integrating graphically the dotted curve in Fig. 1 representing continuous absorption, a mean oscillator strength of approximately f=6 was found', agreeing with Ladenburg and Wolfsohn's f3 = 5.9. The dotted curve joins 'roughly the lowest measured k-values between 1000A and 300A' and is 'probably a reasonable approximation to the continuous absorption' below 740 A (p. 202); the range of the integral is not stated. Index abscissa: an integrated strength, not a line. Approximate; a check."
+
+[[errata]]
+dataset = "table_1"
+row = "54"
+column = "x"
+printed = "660.380"
+corrected = "660.280"
+reason = "The second-order NII line is printed 660.380 A in Table I; the same line is 660.280 A in Table II, and Table I's own wave number, 151450 cm^-1, is 1e8/660.280 (660.380 would be 151428)."
+evidence = "Table I (page 3 continuation, image tbl_3c7b2b7dceeb.jpg) and Table II (tbl_3deee1da1d4e.jpg), checked 2026-09-25; Table I's k (7.8 x 10^2) equals Table II's second-order 780 cm^-1 at 660.280."
+
+[[errata]]
+dataset = "first_order"
+row = "644.188"
+column = "x"
+printed = "644.188"
+corrected = "644.148"
+reason = "Table II prints the OII line as 644.188 A; Table I has no such line but OII (second order) 644.148 A with the wave number 155244 cm^-1 = 1e8/644.148 (644.188 would be 155234). The other three Table II lines are Table I lines."
+evidence = "Tables I and II, images checked 2026-09-25. Moderately certain: Table II's second-order k (670) differs from Table I's (690) for this line, while it equals Table I's for the other three."
+
+[[errata]]
+dataset = "second_order"
+row = "644.188"
+column = "x"
+printed = "644.188"
+corrected = "644.148"
+reason = "As for first_order: the OII line of Table I is 644.148 A (wave number 155244 cm^-1)."
+evidence = "Tables I and II, images checked 2026-09-25."
+
+[[formulas]]
+id = "ladenburg_wolfsohn"
+material = "O2"
+equation = "text, p. 200 (reproduced)"
+printed = "represented by a three term equation containing three characteristic wavelengths, lambda_1 = 1898.6A, lambda_2 = 1467.9A, lambda_3 = 544.36A, and three corresponding oscillator strengths, f_1 = 4.04 x 10^-5, f_2 = 0.202, and f_3 = 5.93"
+variable = "lambda: wavelength in A (the equation itself is not printed)"
+state = "not stated"
+density = "unknown"
+range = "the interferometric dispersion measured between 5900 A and 1920 A (p. 200)"
+coefficients = { lambda_1 = "1898.6", lambda_2 = "1467.9", lambda_3 = "544.36", f_1 = "4.04e-5", f_2 = "0.202", f_3 = "5.93" }
+reproduced_from = ["R. Ladenburg and G. Wolfsohn, Z. Physik 79, 42 (1932)"]
+check = "Read as a per-molecule oscillator model alpha = sum f_i / (E_i^2 - omega^2) (atomic units, E_i = hc/lambda_i), it gives the static polarizability 10.562 au and 10.774 au at 589 nm, 11.510 au at 300 nm, 13.694 au at 200 nm: 0.24-0.45 % below the stored fit/O2 (10.587, 10.805, 11.550, 13.755 au) (computed 2026-09-25)."
+notes = "Quoted without the equation; the f_i are classical oscillator strengths per molecule. Watanabe et al. (1953) quote lambda_2 = 1468A from the same work and Koch's (1912) lambda_2 = 1421A. The original is not in the library (missing-K)."

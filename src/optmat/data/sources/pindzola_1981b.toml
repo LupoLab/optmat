@@ -1,0 +1,111 @@
+citation = "M. S. Pindzola, M. G. Payne and W. R. Garrett, \"Two-photon excitation of xenon\", Phys. Rev. A 24, 3115-3119 (1981)"
+doi = "10.1103/PhysRevA.24.3115"
+library = "Pindzola_1981_TwoPhotonExcitation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Lowest-order perturbation theory for the two-photon excitation of the \
+xenon ground state to 5p5 6p 2P3/2 (J = 0) (jjJM coupling; 6p[1/2]0, Paschen 2p5) by \
+one linearly polarised beam, in the dipole approximation, a single-active-electron \
+(frozen-core, single-configuration) model: relativistic Dirac-Fock orbitals \
+(Desclaux's program), explicit summation over fixed-core bound states to n = 10, the n^-3 \
+rule beyond, and an integral over Dirac-Fock continuum orbitals (iterative exchange), \
+in the length and velocity forms (Eqs. 4, 5); nonrelativistic Hartree-Fock with an \
+implicit summation (Dalgarno-Lewis inhomogeneous equation, Eqs. 7, 8); and \
+average-energy closure (Eqs. 12, 13) with Dirac-Fock, Hartree-Fock, l-averaged \
+Hartree-Fock and Hartree-Slater radial r^2 elements, the average energy set to the \
+experimental 6s 2P3/2 (J = 1) level. 'The single-particle energies ... were taken \
+from the atomic energy level tables of Moore' (p. 3117): experimental energies in the \
+denominators. The rate model is that of Payne et al. (Ref. 6): W = alpha I^2 G(omega) \
+(Eq. 1), I the intensity in erg cm-2 s-1, G the bandwidth-dependent line-shape \
+function, rate equations valid when the two-photon Rabi frequency is small against \
+the laser bandwidth."""
+notes = """Phys. Rev. A 24(6), 3115-3119 (December 1981) = PDF pages 1-5 (journal page = \
+PDF page + 3114). Identity checked on the first page (PDF p. 1: 'PHYSICAL REVIEW A \
+VOLUME 24, NUMBER 6 DECEMBER 1981', M. S. Pindzola (Auburn University), M. G. Payne \
+and W. R. Garrett (Oak Ridge National Laboratory); received 16 April 1981) on \
+2026-10-09. The id pindzola_1981b: pindzola_1981 is M. S. Pindzola, Phys. Rev. A 23, 201 \
+(1981), the photoionisation of the same excited level.
+
+Nothing is taken. The paper's values are the 'two-photon excitation parameter' alpha in \
+cm4/erg2 (Table II), the coefficient of W = alpha I^2 G(omega) with I an intensity, not \
+a cross section per photon flux: two_photon_excitation_cross_section holds cm4 or m4 \
+(TC-872), and the conversion (below) rests on reading the line-shape function, which \
+the paper defines only through its Eq. (14). No krypton values (the paper is about \
+xenon only).
+
+THE QUANTITY (pp. 3115-3117). alpha_L = (8 pi^3 / c^2) |sum_n <f|sum_i eps.r_i|n> \
+<n|sum_i eps.r_i|i> / (E_i - E_n + omega)|^2 (Eq. 2, atomic units, omega the \
+line-centre photon energy), alpha_V the velocity form (Eq. 3). For a Gaussian laser at \
+exact resonance G(omega) = (8 ln 2 / pi)^(1/2) / Delta_L, Delta_L the laser FWHM in \
+rad/s (Eq. 14, after Ref. 6). In atomic units alpha has the unit a0^4/E_h^2 = 4.1255 x \
+10^-13 cm4/erg2 (from Eq. 1, W in 1/t0, I in E_h a0^-2 t0^-1, G in t0); the closure \
+checks below confirm it.
+
+TABLE II (p. 3117; image checked), alpha in cm4/erg2, the ground to 6p 2P3/2 (J = 0) \
+transition: 1. Dirac-Fock explicit summation, length, 2.10 x 10^-12; 2. the same, \
+velocity, 5.89 x 10^-13; 3. Hartree-Fock implicit summation, length, 1.04 x 10^-12; 4. \
+the same, velocity, 4.61 x 10^-13; 5.-8. closure: Dirac-Fock 1.71 x 10^-12, \
+Hartree-Fock 7.53 x 10^-13, l-averaged Hartree-Fock 5.38 x 10^-12, Hartree-Slater 4.11 \
+x 10^-11; 9.-10. 'Inferred from experiment (Ref. 4)', with Delta lambda_L = 0.05 and \
+0.10 A, 2.73 x 10^-12 and 5.46 x 10^-12. The authors' 'best estimate is to average the \
+Dirac-Fock explicit summation results to get alpha = 1.4 x 10^-12 cm4/erg2', \
+uncertain 'at least [by] the factor of 3.5 found between length and velocity forms' \
+(p. 3118); the Dirac-Fock 6p (J = 0) state is '95% pure'.
+
+CHECKED (2026-10-09, by direct computation from the printed numbers). The four closure \
+rows from Eqs. (12)-(13) with the printed radial elements 3.39 (Dirac-Fock), 2.25, \
+6.01 and 16.6, omega = 9.9308/2 eV (the paper's level energy) and epsilon-bar the Xe \
+6s[3/2]1 level, 68 045.156 cm-1 (nist_asd_2026), converted with a0^4/E_h^2: 1.7105, \
+0.7535, 5.376 and 41.02 x 10^-12 against the printed 1.71, 0.753, 5.38 and 41.1 x \
+10^-12 (worst -0.2 %). \
+The experimental rows from W = 2.4 x 10^-23 I^2 (the paper's quotation of Ref. 4) and \
+Eq. (14) at 2496 A: 2.731 and 5.462 x 10^-12 (printed 2.73, 5.46). The length/velocity \
+ratio 2.10/0.589 = 3.57 ('3.5'). 9.9308 eV corresponds to 2497.0 A for two photons \
+(vacuum; the paper's '2496 A').
+
+FINDING: THE CONVERSION TO A CROSS SECTION, AND kroll_1990's QUOTATION (TC-890). With \
+the photon flux Phi = I/(hbar omega), W = alpha (hbar omega)^2 G Phi^2, so alpha (hbar \
+omega)^2 is a two-photon cross section in cm4 (hbar omega = 4.9654 eV = 7.955 x 10^-12 \
+erg): Dirac-Fock length 1.33 x 10^-34, velocity 3.73 x 10^-35, Hartree-Fock 6.58 and \
+2.92 x 10^-35, the best estimate 8.9 x 10^-35 cm4. kroll_1990 quotes this paper (its \
+Ref. 12) as '4-13' x 10^-35 cm4 for 2p5: the Dirac-Fock velocity and length values \
+under this conversion. What G is normalised in decides whether that is \
+two_photon_excitation_cross_section with frequency_variable = angular for the \
+two-photon frequency and photon_statistics corrected: Eq. (14)'s (8 ln 2/pi)^(1/2) / \
+Delta_L is twice the peak of a normalised Gaussian of FWHM 2^(1/2) Delta_L, the \
+two-photon line of a Gaussian laser, in the two-photon detuning (Payne et al., Ref. 6, \
+Payne_1981_ResonanceIonizationSpectroscopy, Eqs. 7-8, a multimode model that 'yields \
+<E^2n> = n! <E^2>^n', so the factor 2 is the chaotic light's G2(0) = 2); it is also \
+exactly the peak of a normalised Gaussian of FWHM Delta_L / 2^(1/2) in the laser \
+frequency, without that factor. Read the first way, alpha (hbar omega)^2 is the \
+coherent-light cross section with g in the two-photon angular frequency (kroll_1990's \
+convention); read the second way it is half of it. The paper does not say which, so \
+the conversion is not made here (a decision for the register, after checking Ref. \
+6's normalisation of alpha against the coherent-light rate).
+
+FINDINGS ON THE TEXT. (a) 'The laser line width ... is estimated to be somewhere \
+between 0.05 and 0.01 A' (p. 3118), but Table II's rows 9-10 are computed for 0.05 \
+and 0.10 A (reproduced above; 0.01 A would give 5.46 x 10^-13): the text's '0.01' is \
+0.10. (b) 'the spread in the last two values given in Table I' means Table II (Table I \
+is orbital energies and radial matrix elements). (c) The 'average' of the Dirac-Fock \
+results is 1.34 x 10^-12 (arithmetic) or 1.11 x 10^-12 (geometric), printed 1.4. (d) \
+The experimental W = 2.4 x 10^-23 I^2 (I in erg cm-2 s-1) is attributed to Chen et al. \
+(Ref. 4, Chen_1980_DirectCountingXe in the library): that paper's fit to its Fig. 3 is \
+'R ~ 2 x 10^-9 I^2' with I in W/cm2 (p. 476), 2 x 10^-23 I^2 in erg cm-2 s-1, and its \
+estimate 3.1 x 10^-9 I^2 (3.1 x 10^-23); neither is 2.4. Not resolved (Chen et al.'s R \
+may be defined differently from W; not curated here).
+
+NOT TAKEN. Table II (alpha in cm4/erg2: no quantity; rows 9-10 are derived from \
+another paper's measurement and an assumed bandwidth). Table I (orbital energies and \
+radial matrix elements <5p||r||5p>, <6p||r||6p> of eight single-configuration \
+calculations: no quantity). The radial r^2 elements of the closure (3.39, 2.25, 6.01, \
+16.6). The level energy 9.9308 eV (Moore's tables, secondary). The text's percentages \
+(95 % pure Dirac-Fock J = 0 state; the Hartree-Fock 2P 6p 1S0 '71% pure'). The paper \
+states no uncertainty beyond the factor 3.5 and 'better than 25% accuracy will require \
+an extensive study of electron correlation'.
+
+TWO-PHOTON DATA CITED, NOT IN THE LIBRARY: W. Gornik, S. Kindt, E. Matthias, H. \
+Rinneberg and D. Schmidt, Phys. Rev. Lett. 45, 1941 (1980) (two-photon excitation of \
+xenon, E1-E2 contributions). In the library: J. Bokor, J. Zavelovich and C. K. Rhodes, \
+Phys. Rev. A 21, 1453 (1980) (bokor_1980); C. H. Chen, G. S. Hurst and M. G. Payne, \
+Chem. Phys. Lett. 75, 473 (1980) (Chen_1980_DirectCountingXe, uncurated)."""

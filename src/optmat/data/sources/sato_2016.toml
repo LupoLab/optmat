@@ -1,0 +1,134 @@
+citation = "T. Sato, K. L. Ishikawa, I. Brezinova, F. Lackner, S. Nagele and J. Burgdorfer, \"Time-dependent complete-active-space self-consistent-field method for atoms: Application to high-order harmonic generation\", Phys. Rev. A 94, 023405 (2016)"
+doi = "10.1103/PhysRevA.94.023405"
+library = "Sato_2016_TimeDependentComplete"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Time-dependent complete-active-space self-consistent-field (TD-CASSCF) method \
+(Sec. II-III): the wave function a configuration-interaction expansion in Slater \
+determinants of time-dependent orbitals, split into frozen-core, dynamical-core and \
+active orbitals, (n_fc, n_dc, n_a); for helium, (0,0,n) is the multiconfiguration \
+time-dependent Hartree-Fock (MCTDHF) method with both electrons active, (0,0,1) is \
+TDHF. Orbitals on a spherical finite-element discrete-variable-representation (FEDVR) \
+radial grid times spherical harmonics, L_max = L_ee; nonrelativistic, dipole \
+approximation; the initial state the ground state by imaginary-time propagation \
+(p. 023405-4). A split-operator propagator (Sec. III B): the stiff one-electron part \
+by an implicit method (Eqs. 26), the nonlinear part and the CI coefficients by \
+fourth-order Runge-Kutta. He at 800 nm (Sec. IV A, pp. 023405-5 to -7): velocity gauge, d_FE = 2, \
+L_max = L_ee = 71, 20 000 steps per cycle, (0,0,14), 'converged, up to the cutoff \
+frequencies, in radial resolution (d_FE = 2), angular resolution (L_max = L_ee = 71) \
+temporal resolution (20 000 steps per cycle), and number of orbitals (n = 14)' (p. \
+023405-5, of the HHG spectra of Fig. 5; Fig. 6 uses 'the same computational \
+condition'). The radial box and absorber of the 800 nm runs are not restated: at 400 \
+nm, R_max = 320 with orbitals masked beyond 256 by a cos^1/4 function (p. 023405-5). \
+At 400 nm, 4e14 W/cm2, 12 cycles, the (0,0,14) survival probability is \
+'indistinguishable' from the full two-electron TDSE of the Vienna code (Fig. 2(b), \
+p. 023405-5); at 800 nm the TDSE 'is still difficult' to converge and no TDSE is \
+shown."""
+notes = """Journal pp. 023405-1 to -14 = PDF pages 1 to 14 (the journal's page n is PDF \
+page n). Identity checked on the first page (PDF p. 1: 'PHYSICAL REVIEW A 94, 023405 \
+(2016)', Takeshi Sato, Kenichi L. Ishikawa, Iva Brezinova, Fabian Lackner, Stefan \
+Nagele and Joachim Burgdorfer; received 2 May 2016, published 9 August 2016) on \
+2026-10-06.
+
+THE PULSE (Eq. 27, p. 023405-4): 'E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= \
+tau, with total duration tau, peak intensity I0 = E0^2, wavelength lambda = 2 pi/omega0, \
+and period T = 2 pi/omega0'. The envelope is on the electric field; the carrier a sine \
+from the pulse's start, so the field is zero at the envelope's peak (t = tau/2); the \
+intensity is that of the envelope's amplitude E0 in atomic units (E0^2 times 3.50945e16 \
+W/cm2), the largest |E(t)| being 0.983 E0 for six cycles (computed). Velocity gauge, \
+A(t) = -integral of E(t) dt (Eq. 6b); with Eq. 27, A(tau) = 0. The 800 nm runs: \
+'(lambda = 800 nm, I0 = 8 x 10^14 W/cm2, and tau = 6T)' (p. 023405-5, for Figs. 3 and \
+4); Fig. 5 (4, 8 and 14 x 10^14 W/cm2) and Fig. 6 ('the same computational condition \
+as for Fig. 5, a wavelength of 800 nm') do not restate tau: their time axes end at 6 \
+optical cycles, and Fig. 4(c), the 8 x 10^14 W/cm2 survival against time in atomic \
+units, ends at 661.9 au = 6T (read). tau = 6T = 16.01 fs at 800 nm (T = 2.6685 fs); \
+the intensity envelope, sin^4, is 0.364 tau = 5.83 fs wide at half maximum (computed).
+
+THE MEASURE (p. 023405-5): 'the probability of finding both two electrons inside a \
+sphere of radius R0 = 20 a.u. (referred to as survival probability hereafter) measuring \
+the temporal evolution of the complement to ionization or formation of Rydberg states'. \
+Its complement, 1 - S, is the probability that at least one electron is beyond 20 au: \
+single and double ionisation together, and bound (Rydberg) population beyond 20 au; \
+electrons ionised but still inside 20 au at t = 6T count as surviving. The paper does \
+not separate single from double ionisation for helium.
+
+EXTRACTED (tools/extract/sato_2016.py). The paper prints no number of these \
+probabilities and has no supplement: they are given only in Fig. 6 (p. 023405-7), a \
+vector drawing, read from the PDF by data rule 8 (TC-699): the (0,0,14) curve's last \
+vertex, at t = 6T (the 6-cycle tick, the pulse's end), in each of the three panels. \
+The data file holds 1 - S; the survival S as read is in each row's printed cell. Axes \
+calibrated from the drawing's own ticks, labelled by the text objects at them: x 0 to \
+6 cycles (worst tick residual 0.016 pt), y 0.9996 to 1.0000, 0.980 to 1.000 and 0.80 \
+to 1.00 (worst 0.0007 pt), each on 90.4 pt; the drawing's coordinates step by 0.055 \
+pt. Read: S = 0.9996971 (4e14 W/cm2), 0.9841076 (8e14), 0.8392404 (1.4e15); 1 - S = \
+3.029e-4, 0.01589, 0.1608.
+
+DIGITISING UNCERTAINTY: 0.06 pt on the y axis (one quantum: half a quantum plus the \
+worst tick residual, and the last vertices stepping one quantum up and down on the \
+flat end): 2.7e-7, 1.3e-5 and 1.3e-4 in S, absolute, at 4e14, 8e14 and 1.4e15 W/cm2, \
+the same on 1 - S (the sigma column), 0.088, 0.084 and 0.083 % of it: the axes' spans \
+scale with 1 - S. The paper states no uncertainty of the calculation; its convergence \
+statements are quoted in the technique.
+
+THE CHECKS (the script fails if one is missed). (1) Fig. 4(c) (p. 023405-6), the same \
+calculation at 8e14 W/cm2 with L_max = 59, ends at S = 0.9841062, 1.4e-6 below Fig. \
+6(b) (0.009 % of 1 - S), at 661.93 au (6T = 661.92 au). (2) The caption's multipliers, \
+verbatim: 'For the survival probabilities to match those of TD-CASSCF the ADK rates \
+must be scaled by 2.55, 1.35, and 0.96 for the three intensities in ascending order. \
+The analogous factors for the PPT rates are 1.24, 1.27, and 1.24. The ADK and PPT \
+probabilities are shifted in time to take into account the time required for an \
+ejected electron to propagate classically to R0 = 20 a.u.' Read as ln S(TD-CASSCF) / \
+ln S(model) at 6T from the drawn ADK and PPT curves: ADK 2.546, 1.353, 0.955; PPT \
+1.236, 1.267, 1.260 (within 0.5 %, and PPT at 1.4e15 1.6 %): the drawn curves are the \
+unscaled models, with S = exp(-integral of the rate). The overlay of the read \
+vertices on the rendered page matches the curves' ends (inspected 2026-10-06).
+
+ADK AND PPT, NOT TAKEN: the curves are the authors' evaluation of Ammosov, Delone and \
+Krainov, Sov. Phys. JETP 64, 1191 (1986) [53] and Perelomov, Popov and Terent'ev, Sov. \
+Phys. JETP 23, 924 (1966) [54], 'calculated by integrating over the temporal profile of \
+the laser electric field' (p. 023405-5). The paper gives no formula, no ionisation \
+energy, no asymptotic coefficient, no orbital quantum numbers and no number of \
+electrons (one, or two equivalent 1s electrons) for either model (checked in the text, \
+captions and appendices, 2026-10-06), so the multipliers cannot be reinterpreted \
+between those conventions. The text: 'The ADK model fails to reproduce the intensity \
+dependence of the survival probability, underestimating the ionization probability at \
+moderate intensity while approaching the TD-CASSCF result at high intensity. The PPT \
+model, on the other hand, consistently underestimates the ionization by a nearly \
+constant factor independent of the intensity' (pp. 023405-5, -6).
+
+ALSO NOT TAKEN: Fig. 2(b) (He, 400 nm, 4e14 W/cm2, 12 cycles: (0,0,n) and the TDSE), \
+Fig. 4(c) (He, 800 nm, 8e14, n = 1 to 14 at L_max = 59; read only for the check), and \
+Fig. 9(b) (Be, 800 nm, 3e14 W/cm2, 3 cycles, the probability of all electrons inside \
+20 au; TDHF and TD-CASSCF): no one-electron run is matched to them. The HHG spectra \
+(Figs. 2-5, 9, 10) and the dipole moments of Be (Figs. 7, 8) are not quantities of the \
+vocabulary."""
+
+[[datasets]]
+id = "fig6_casscf_He_800nm"
+material = "He"
+file = "He/sato_2016__fig6_casscf_He_800nm.csv"
+table = "fig_13d7c9bcd599"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6 (p. 023405-7), the TD-CASSCF (0,0,14) curves (black, thick): 1 - S, S the survival probability of both electrons inside R0 = 20 au, at t = 6T, the end of the six-cycle sin^2 pulse (Eq. 27), against the peak intensity I0 = E0^2, 4, 8 and 14e14 W/cm2; for He, (0,0,14) is MCTDHF with both electrons active, equal to the full two-electron TDSE where that converges (400 nm, Fig. 2(b)). The values are 1 - S; the survival read (0.9996971, 0.9841076, 0.8392404) is in the printed cells. Read from the vector drawing, the curves' last vertices (the record's notes). sigma: the digitising uncertainty, absolute, 0.06 pt on each panel's y axis (2.7e-7, 1.3e-5, 1.3e-4; 0.08 to 0.09 % of 1 - S); the calculation's own is not stated. Fig. 4(c), the same at L_max = 59, agrees at 8e14 within 1.4e-6 in S. Not the ADK or PPT curves (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 16.01
+pulse_fs_definition = "total (foot-to-foot) duration tau = 6T of Eq. 27's sin^2 envelope of the field, T = 2.6685 fs; the intensity envelope (sin^4) is 5.83 fs wide at half maximum (computed); tau = 6T as the text states for 800 nm, 8e14 W/cm2 (p. 023405-5), Fig. 6's time axis (0 to 6 cycles) and Fig. 4(c)'s curve ending at 6T"
+pulse_cycles = 6
+polarization = "linear"
+pulse_envelope = "sin^2 on the electric field: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau (Eq. 27)"
+cep = "sine"
+cep_definition = "E(t) = E0 sin(omega0 t) sin^2(pi t/tau) (Eq. 27): a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 3T)"
+intensity_definition = "I0 = E0^2 in atomic units (Eq. 27's text; 3.50945e16 W/cm2 per au^2): the envelope's amplitude, the largest |E(t)| being 0.983 E0 (computed)"
+gauge = "velocity"
+measure = "1 - the survival probability of both electrons inside R0 = 20 a.u., at t = 6T"
+method = "TD-CASSCF (0,0,14) = MCTDHF: both electrons active in 14 time-dependent orbitals, no core; spherical FEDVR, d_FE = 2, L_max = L_ee = 71, 20 000 steps per cycle, velocity gauge (pp. 023405-5 to -7); box and absorber at 800 nm not restated"
+electrons = "two, both active (all electrons; no frozen or dynamical core)"

@@ -1,0 +1,573 @@
+citation = "J. E. Rice, \"Frequency-dependent hyperpolarizabilities for argon, krypton, and neon: Comparison with experiment\", J. Chem. Phys. 96, 7580 (1992)"
+doi = "10.1063/1.462410"
+library = "Rice_1992_FrequencyDependentHyperpolarizabilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """SCF and MP2 (all electrons correlated) frequency-dependent hyperpolarizabilities: \
+analytic frequency-dependent beta(-w; w, 0) and beta(-2w; w, w), differentiated by a \
+finite static field (0.001 a.u.) to give gamma(-w; w, 0, 0) and gamma(-2w; w, w, 0), in \
+the ANO basis sets of rice_1991 (Sec. II, p. 7581); CADPAC. Kleinman symmetry assumed \
+for the components (tested: < 0.3 % (Ar), < 0.5 % (Kr) at omega = 0.10 a.u., p. 7581)."""
+notes = """Identity: pdf page 1 is the publisher's cover; journal pages 7580-7586 = pdf \
+pages 2-8. Page numbers below are journal pages.
+
+CONVENTION (Eq. 1, p. 7580): the dipole in E = E_0 + E_w cos wt as a Taylor series with \
+the terms (1/2) gamma(-w; w, 0, 0) E_w E_0 E_0 cos wt, (1/8) gamma(-w; w, -w, w) E_w^3 \
+cos wt, (1/4) gamma(-2w; w, w, 0) E_w^2 E_0 cos 2wt, (1/24) gamma(-3w; w, w, w) E_w^3 \
+cos 3wt (equation image checked; the library's text rendering garbles the ESHG and \
+THG arguments). These are 1/6 K with K = 3, 3/4, 3/2, 1/4 of Shelton and Rice's Table I: the \
+Taylor-series (T) convention, same static limit for every process. Atomic units. Part \
+electronic (atoms; 'there is obviously no vibrational contribution', p. 7580).
+
+COMPONENTS (p. 7581): gamma_par(-2w; w, w, 0) = (1/5)(3 zzzz + 4 zzxx + 2 zxxz) (the \
+ESHG gamma_par); gamma^K(-w; w, 0, 0) = (3/2)(gamma_par^K - gamma_perp^K), the dc Kerr \
+gamma. With Kleinman symmetry assumed both equal gamma_zzzz of the process. \
+Recorded as component 'parallel' (ESHG) and 'K' (dc Kerr). The dc Kerr gamma^K is the \
+process dc_kerr; no intensity-dependent-index (kerr) values are given.
+
+DATASETS FROM TABLES I-III (p. 7582, 7585; images checked): SCF and MP2 gamma^K and \
+gamma_par(ESHG) of Ar, Kr, Ne at omega = 0-0.10 a.u. (hartree; the tables also print \
+the wavelength in angstrom, 45 563 ... 4556 = 455.6335/omega). Structural fix of Table \
+I's merged header in the script. ERRATA: Table II's Kr SCF gamma^K at 0.09 and 0.10 \
+a.u. are printed 2618 and 2541 (image checked), i.e. swapped: the row must increase \
+monotonically (increments 47, 57, then 67 and 77 after the swap) and the MP2/SCF ratio \
+is 1.206, 1.205, 1.204 at 0.08-0.10 after the swap (1.170, 1.240 as printed); a cubic \
+fit in omega_L^2 then gives A = 7.39, as the text's 'SCF (7.4)' for krypton (p. 7584), \
+against 2.49 as printed (checked 2026-09-26). The alpha-bar rows are linear data, not \
+extracted.
+
+A COEFFICIENTS (Eq. 2, gamma_par = gamma_0 [1 + A w_L^2 + B w_L^4 + C w_L^6], w_L^2 = \
+6 w^2 (ESHG), 2 w^2 (dc Kerr), in a.u.; fitted by the author over omega = 0.01-0.1 a.u., \
+truncated at w_L^6): Ar MP2 5.5 (Kerr), 5.4 (SHG), SCF 5.6, 5.6, 'the value of 5.1 \
+deduced from the experimental SHG measurements' (p. 7584); Kr MP2 7.2, SCF 7.4, \
+experiment 6.7 (p. 7584); Ne 2.3-2.4 for both methods and processes, experiment -9.3 \
+(from the measurements later found in error, p. 7586). B and C are not printed, so no \
+[[formulas]] entry: the A values are for comparison (Shelton's A in cm^2 = A / \
+219474.63^2, e.g. 5.4 -> 1.12e-10 cm^2). Refitted here from the tables: Ar MP2 5.46 \
+(ESHG), 5.60 (Kerr); Kr MP2 7.15, 7.11; Ne MP2 2.40, 2.59 (checked 2026-09-26).
+
+BEST ESTIMATES (text; datasets best_*): the rice_1991 static best estimates (Ar 1220, \
+Kr 2810) and rice_1992_neon's (Ne 110 +- 3) times the MP2 dispersion ratio (a \
+'percentage' correction; the additive alternative is given for Kr). Reproduced here \
+from Tables I-III by a cubic fit in w_L^2: Ar 1269.0, 1296.4 (printed 1269, 1296 at \
+1319, 1064 nm), 1410.8 (1410 at 694.3 nm), 1441.2 (1440 at 650 nm), dc Kerr 1292.2 \
+(1292 at 632.8 nm); Kr 2958.9, 3043.5 (2959, 3044; additive 2954.0, 3035.8 against \
+2954, 3036); Ne 111.9, 113.0, 117.2, 123.7 (111.8, 112.8, 117, 123.6 with gamma_0 = \
+110: within the rounding of Table III's MP2 values); Ne dc Kerr 112.8 (113). The Kr \
+dc Kerr value 'theoretical value of 2930 +- 130 a.u.' at 632.8 nm (p. 7584) is the \
+UNADJUSTED MP2 gamma^K at 632.8 nm (2930.3 from Table II): adjusted to 2810 it would \
+be 3031 (percentage) or 3023 (additive). Recorded as printed, flagged (TC-244). The \
+wavelengths are the laser lines as printed (nm; air or vacuum not stated, recorded as \
+vacuum: 0.03 % in omega changes these gammas by < 1e-4 of themselves).
+
+REPRODUCED EXPERIMENTAL VALUES (text; datasets expt_*): ESHG, Shelton, Phys. Rev. A 42, \
+2578 (1990) = shelton_1990: Ar 1220 +- 7 (1319 nm), 1237 +- 4 (1064), 1400 +- 8 (650); \
+Kr 2721 +- 6, 2845 +- 8; Ne 111.1 +- 0.8, 109.9 +- 0.5. ESHG, Finn and Ward, Phys. Rev. \
+Lett. 26, 285 (1971) (not in the library): Ar 1355 +- 43, Ne 120 +- 4 at 694.3 nm. Ne \
+122.2 +- 0.5 at 514.5 nm: Shelton, personal communication (1991; the revision of his \
+neon data, extrapolated static value 108 +- 2). dc Kerr, Buckingham and Dunmur, printed \
+'Trans. Faraday Soc. 64, 1987 (1968)' (= buckingham_1968, 64, 1776; see rice_1991): Ar \
+1070 +- 80, Kr 2780 +- 200, Ne 101 +- 8 at 632.8 nm. Ratios quoted: Ar:He ESHG 29.0 vs \
+27.8 (1319 nm), 29.2 vs 28.0 (1064 nm); Kr:Ar 2.33, 2.35 vs 2.24, 2.30 (theory vs \
+experiment; quotients, not recorded)."""
+
+[[datasets]]
+id = "scf_dc_kerr_Ar"
+material = "Ar"
+file = "Ar/rice_1992__scf_dc_kerr_Ar.csv"
+table = "tbl_0346004ae107"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, SCF gamma^K(-w; w, 0, 0) (dc Kerr), omega = 0-0.10 a.u.; the omega = 0 row is the static value. SCF: about 20 % (Ar) to 40 % (Ne) below the correlated gamma."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "scf_eshg_Ar"
+material = "Ar"
+file = "Ar/rice_1992__scf_eshg_Ar.csv"
+table = "tbl_0346004ae107"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, SCF gamma_par(-2w; w, w, 0) (ESHG), omega = 0-0.10 a.u.; the omega = 0 row is the static value. SCF: about 20 % (Ar) to 40 % (Ne) below the correlated gamma."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "mp2_dc_kerr_Ar"
+material = "Ar"
+file = "Ar/rice_1992__mp2_dc_kerr_Ar.csv"
+table = "tbl_0346004ae107"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, MP2 gamma^K(-w; w, 0, 0) (dc Kerr), omega = 0-0.10 a.u.; the omega = 0 row is the static value. MP2 with all electrons correlated; its static value is the rice_1991 best estimate within 3 a.u. for Ar and Ne, 93 a.u. below it for Kr (p. 7582)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "mp2_eshg_Ar"
+material = "Ar"
+file = "Ar/rice_1992__mp2_eshg_Ar.csv"
+table = "tbl_0346004ae107"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, MP2 gamma_par(-2w; w, w, 0) (ESHG), omega = 0-0.10 a.u.; the omega = 0 row is the static value. MP2 with all electrons correlated; its static value is the rice_1991 best estimate within 3 a.u. for Ar and Ne, 93 a.u. below it for Kr (p. 7582)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "scf_dc_kerr_Kr"
+material = "Kr"
+file = "Kr/rice_1992__scf_dc_kerr_Kr.csv"
+table = "tbl_8eb3fba4bcde"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, SCF gamma^K(-w; w, 0, 0) (dc Kerr), omega = 0-0.10 a.u.; the omega = 0 row is the static value. Rows 0.09 and 0.10 corrected by errata (swapped in print). SCF: about 20 % (Ar) to 40 % (Ne) below the correlated gamma."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "scf_eshg_Kr"
+material = "Kr"
+file = "Kr/rice_1992__scf_eshg_Kr.csv"
+table = "tbl_8eb3fba4bcde"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, SCF gamma_par(-2w; w, w, 0) (ESHG), omega = 0-0.10 a.u.; the omega = 0 row is the static value. SCF: about 20 % (Ar) to 40 % (Ne) below the correlated gamma."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "mp2_dc_kerr_Kr"
+material = "Kr"
+file = "Kr/rice_1992__mp2_dc_kerr_Kr.csv"
+table = "tbl_8eb3fba4bcde"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, MP2 gamma^K(-w; w, 0, 0) (dc Kerr), omega = 0-0.10 a.u.; the omega = 0 row is the static value. MP2 with all electrons correlated; its static value is the rice_1991 best estimate within 3 a.u. for Ar and Ne, 93 a.u. below it for Kr (p. 7582)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "mp2_eshg_Kr"
+material = "Kr"
+file = "Kr/rice_1992__mp2_eshg_Kr.csv"
+table = "tbl_8eb3fba4bcde"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, MP2 gamma_par(-2w; w, w, 0) (ESHG), omega = 0-0.10 a.u.; the omega = 0 row is the static value. MP2 with all electrons correlated; its static value is the rice_1991 best estimate within 3 a.u. for Ar and Ne, 93 a.u. below it for Kr (p. 7582)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "scf_dc_kerr_Ne"
+material = "Ne"
+file = "Ne/rice_1992__scf_dc_kerr_Ne.csv"
+table = "tbl_0f061820910a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, SCF gamma^K(-w; w, 0, 0) (dc Kerr), omega = 0-0.10 a.u.; the omega = 0 row is the static value. SCF: about 20 % (Ar) to 40 % (Ne) below the correlated gamma."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "scf_eshg_Ne"
+material = "Ne"
+file = "Ne/rice_1992__scf_eshg_Ne.csv"
+table = "tbl_0f061820910a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, SCF gamma_par(-2w; w, w, 0) (ESHG), omega = 0-0.10 a.u.; the omega = 0 row is the static value. SCF: about 20 % (Ar) to 40 % (Ne) below the correlated gamma."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "mp2_dc_kerr_Ne"
+material = "Ne"
+file = "Ne/rice_1992__mp2_dc_kerr_Ne.csv"
+table = "tbl_0f061820910a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, MP2 gamma^K(-w; w, 0, 0) (dc Kerr), omega = 0-0.10 a.u.; the omega = 0 row is the static value. MP2 with all electrons correlated; its static value is the rice_1991 best estimate within 3 a.u. for Ar and Ne, 93 a.u. below it for Kr (p. 7582)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "mp2_eshg_Ne"
+material = "Ne"
+file = "Ne/rice_1992__mp2_eshg_Ne.csv"
+table = "tbl_0f061820910a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, MP2 gamma_par(-2w; w, w, 0) (ESHG), omega = 0-0.10 a.u.; the omega = 0 row is the static value. MP2 with all electrons correlated; its static value is the rice_1991 best estimate within 3 a.u. for Ar and Ne, 93 a.u. below it for Kr (p. 7582)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_eshg_Ar"
+material = "Ar"
+points = [["1319", "1319", "1270", "40"], ["1064", "1064", "1300", "40"], ["694.3", "694.3", "1410", "40"], ["650", "650", "1440", "40"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "pp. 7583-7584: the static best estimate 1220 (rice_1991) with the MP2 percentage dispersion: 'the best estimates would be 1270 +- 40 and 1300 +- 40 a.u.' at 1319 and 1064 nm (unrounded 1269, 1296), 'the theoretical value of 1440 +- 40 a.u.' (650 nm) and 'the calculated value of 1410 +- 40 a.u.' (694.3 nm). The author expects MP2 to underestimate the dispersion at the higher frequencies (p. 7584). Uncertainty: the author's 'conservative total error estimate of 40 a.u.'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_dc_kerr_Ar"
+material = "Ar"
+points = [["632.8", "632.8", "1292"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 7584: 'the theoretical value is somewhat higher (1292 a.u.)' than Buckingham and Dunmur's dc Kerr 1070 +- 80 at 632.8 nm. No uncertainty printed."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "best_eshg_Kr"
+material = "Kr"
+points = [["1319", "1319", "2960", "130"], ["1064", "1064", "3040", "130"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 7584: 2810 (rice_1991) with the MP2 percentage (additive) dispersion, '2959(2954) and 3044(3036) a.u.' at 1319 and 1064 nm, rounded to '2960 +- 130' and '3040 +- 130' (including 40 a.u., 25 %, for the frequency-dependent part)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_dc_kerr_Kr"
+material = "Kr"
+points = [["632.8", "632.8", "2930", "130"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 7584: 'the theoretical value of 2930 +- 130 a.u.' at 632.8 nm. It equals the unadjusted MP2 gamma^K of Table II at 632.8 nm (2930.3, cubic fit); scaled to the static best estimate 2810 it would be 3031 (see the source notes, TC-244). As printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "best_eshg_Ne"
+material = "Ne"
+points = [["1319", "1319", "112", "3"], ["1064", "1064", "113", "3"], ["694.3", "694.3", "117", "3"], ["514.5", "514.5", "124", "4"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "pp. 7585-7586: the static best estimate 110 +- 3 (rice_1992_neon) with the MP2 percentage dispersion, 111.8, 112.8, 123.6 a.u. unrounded (1319, 1064, 514.5 nm), 'with error bars assigned are 112 +- 3 ..., 113 +- 3 ..., and 124 +- 4 a.u.'; 117 +- 3 at 694.3 nm (p. 7586). The same values are in the rice_1992_neon manuscript, which cites this paper for the MP2 dispersion."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_dc_kerr_Ne"
+material = "Ne"
+points = [["632.8", "632.8", "113", "3"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 7586: 'the calculated value of 113 +- 3 a.u.' for gamma^K at 632.8 nm (also in rice_1992_neon)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_Ar"
+material = "Ar"
+points = [["1319", "1319", "1220", "7"], ["1064", "1064", "1237", "4"], ["650", "650", "1400", "8"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "pp. 7583-7584: Shelton's measurements (Ref. 1), relative to Bishop and Pipin's He."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_finn_ward"
+material = "Ar"
+points = [["694.3", "694.3", "1355", "43"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. S. Finn and J. F. Ward, Phys. Rev. Lett. 26, 285 (1971)"]
+notes = "p. 7584: 'the earlier experimental value of 1355 +- 43 a.u.' at 694.3 nm (Ref. 8)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_Ar"
+material = "Ar"
+points = [["632.8", "632.8", "1070", "80"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "p. 7584: Buckingham and Dunmur's dc Kerr gamma^K, 1070 +- 80 a.u. at 632.8 nm (Ref. 27, printed 'Trans. Faraday Soc. 64, 1987 (1968)')."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_Kr"
+material = "Kr"
+points = [["1319", "1319", "2721", "6"], ["1064", "1064", "2845", "8"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "p. 7584: Shelton's measurements (Ref. 1), relative to argon."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_Kr"
+material = "Kr"
+points = [["632.8", "632.8", "2780", "200"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "p. 7584: 'The Kerr effect measurement for gamma^K(-w; w, 0, 0) of 2780 +- 200 a.u. at lambda = 632.8 nm' (Ref. 27)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_Ne"
+material = "Ne"
+points = [["1319", "1319", "111.1", "0.8"], ["1064", "1064", "109.9", "0.5"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "p. 7585: Shelton's values at 1319 and 1064 nm (Ref. 1)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_Ne_revised"
+material = "Ne"
+points = [["514.5", "514.5", "122.2", "0.5"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. P. Shelton, personal communication and Fourth North American Chemical Congress (ACS), August 1991 (Ref. 28)"]
+notes = "p. 7585: 'The revised value for lambda = 514.5 nm of 122.2 +- 0.5 a.u.' after Shelton found 'a systematic error in some of the frequency-dependent measurements for neon at wavelengths of 594.4, 514.5, and 488.0 nm' (Ref. 28, personal communication; published later by Shelton, the corrected neon dispersion, shelton_1992)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_Ne_finn_ward"
+material = "Ne"
+points = [["694.3", "694.3", "120", "4"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. S. Finn and J. F. Ward, Phys. Rev. Lett. 26, 285 (1971)"]
+notes = "p. 7586: 'the earlier experimental value of 120 +- 4 a.u.' at 694.3 nm (Ref. 8)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_Ne"
+material = "Ne"
+points = [["632.8", "632.8", "101", "8"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "p. 7586: 'The Kerr effect measurement, gamma^K(-w; w, 0, 0) at lambda = 632.8 nm (Ref. 27) of 101 +- 8 a.u.'."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[errata]]
+dataset = "scf_dc_kerr_Kr"
+row = "0.09"
+column = "value"
+printed = "2618"
+corrected = "2541"
+reason = "Table II's Kr SCF gamma^K values at omega = 0.09 and 0.10 a.u. are printed in swapped order (2618, 2541; image checked)."
+evidence = "After the swap the row increases monotonically with smooth increments (57, 67, 77), the MP2/SCF ratio is 1.206, 1.205, 1.204 at 0.08-0.10 a.u. (1.170, 1.240 as printed), and a cubic fit in omega_L^2 gives A = 7.39, the text's 'SCF (7.4)' for krypton (p. 7584), against 2.49 as printed. Checked 2026-09-26."
+
+[[errata]]
+dataset = "scf_dc_kerr_Kr"
+row = "0.10"
+column = "value"
+printed = "2541"
+corrected = "2618"
+reason = "The other half of the swap (see the erratum for row 0.09)."
+evidence = "As for row 0.09."

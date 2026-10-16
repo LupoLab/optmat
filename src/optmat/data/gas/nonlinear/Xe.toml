@@ -1,0 +1,49 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "Xe"
+description = "Xenon: Shelton's 1990 ESHG (1064, 1319 nm and the rescaled 488-650 nm values), with Tarazkar et al.'s 2014 CCSD static, dc Kerr, ESHG and Kerr values at 800 nm (q-aug basis; one free scale) for the process dependence."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 2.4]
+validators = [
+    "wahlstrand_2012b/n2_Xe",
+    "nibbering_1997/n2_instant_Xe",
+    "borzsonyi_2010/n2_Xe",
+    "pigeon_2018/fwm_Xe",
+    "lehmeier_1985/gamma_thg_Xe",
+    "ward_1969/chi_i_Xe",
+    "buckingham_1968/gamma_Xe",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_Xe_present"
+
+[[fitted]]
+key = "shelton_1990/table3_Xe_literature"
+
+[[fitted]]
+key = "tarazkar_2014/static"
+free_scale = true
+scale_group = "tarazkar_ccsd"
+extra_relative = 0.005
+rows = ["q-aug-cc-pVQZ-pp"]
+
+[[fitted]]
+key = "tarazkar_2014/dc_kerr"
+free_scale = true
+scale_group = "tarazkar_ccsd"
+extra_relative = 0.005
+rows = ["q-aug-cc-pVQZ-pp"]
+
+[[fitted]]
+key = "tarazkar_2014/eshg"
+free_scale = true
+scale_group = "tarazkar_ccsd"
+extra_relative = 0.005
+rows = ["q-aug-cc-pVQZ-pp"]
+
+[[fitted]]
+key = "tarazkar_2014/kerr"
+free_scale = true
+scale_group = "tarazkar_ccsd"
+extra_relative = 0.005
+rows = ["q-aug-cc-pVQZ-pp"]

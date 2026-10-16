@@ -1,0 +1,278 @@
+citation = "A. L'Huillier, X. Tang and P. Lambropoulos, \"Multiphoton ionization of rare gases using multichannel-quantum-defect theory\", Phys. Rev. A 39, 1112-1122 (1989)"
+doi = "10.1103/PhysRevA.39.1112"
+library = "LHuillier_1989_MultiphotonIonizationRare"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Multichannel quantum-defect theory (Fano's eigenchannel formulation; \
+Lu-Fano plots and the Robaux-Aymar program) for the J = 0, 2 even-parity and J = 1, 3 \
+odd-parity Rydberg series of Xe and Kr, the parameters (mu_alpha, U_i_alpha) fitted to \
+experimental energy levels, with jj-coupled channels converging to the 2P3/2 and \
+2P1/2 limits; bound-bound and bound-free dipole matrix elements of the MQDT wave \
+functions outside the core (Burgess-Seaton cutoff, Eq. 28), with fitted one-photon \
+oscillator strengths. N-photon generalised cross sections in lowest-order \
+perturbation theory (Eqs. 29-30), linear polarisation (p. 1116), the sum over \
+intermediate states truncated to the discrete spectrum, about 25 Rydberg states \
+(p. 1117)."""
+notes = """Journal pp. 1112-1122 = PDF pages 1-11 (a scan: each page one 1-bit image, \
+5169 x 7129 pixels, 600 dpi; no text layer is used). Identity checked on the first \
+page (Physical Review A, volume 39, number 3, 1 February 1989; A. L'Huillier, X. Tang \
+and P. Lambropoulos, University of Southern California; received 11 August 1988) on \
+2026-10-08.
+
+THE DEFINITION (Eq. 29, p. 1116): sigma_N = 2 pi (alpha c / a0) (omega / F0)^N \
+sum_J sum_alpha |D_alpha^N|^2, in cm^2N s^(N-1), F0 = 3.22e34 photons/cm2 s, omega the \
+photon energy (a.u.); the rate is sigma_N F^N with F the photon flux. D_alpha^N (Eq. \
+30) is the N-photon amplitude with the dipole operator epsilon . r (Eq. 27, the length \
+form), epsilon linear. The truncation of the intermediate sum to the discrete \
+spectrum 'should yield reasonable cross sections in this energy range' (between the \
+two limits and slightly above the second, p. 1117); the authors expect it to become \
+worse as the number of photons increases (p. 1121).
+
+THE ENERGY AXES (Figs. 6 and 10): 'Energy (10^3 cm^-1)', the TOTAL energy of the \
+two-photon final state above the ground state, not the photon energy: Fig. 6's ranges, \
+115 000-116 500 cm^-1 in Kr and 103 000-106 000 cm^-1 in Xe, lie between the 2P3/2 and \
+2P1/2 limits (p. 1118), and Fig. 10 is 'above the second ionization threshold, up to \
+about 130 000 cm^-1 in Xe, and 140 000 cm^-1 in Kr' (p. 1120). The resonance positions \
+are those of the MQDT fit to experimental levels (J-resolved, jj-coupled channels; \
+the primes mark series converging to 2P1/2); no shift or scaling was applied. \
+DECISION (recorded in the register): the data files' x is the PHOTON wavenumber (cm-1, vacuum), half the \
+total energy read on the axis; each value's printed cell keeps the total energy and \
+the pixel it was read at.
+
+EXTRACTED (tools/extract/lhuillier_1989.py), by data rule 8 (TC-699): the two-photon \
+cross sections are in figures only, read from the page images at their native \
+resolution. Each panel's frame lines are fitted to the image and the shear of the scan \
+(up to 0.013 pixel per row) corrected; every tick mark is found in the image where the \
+script writes it (within 2 pixels) and lies on the fitted scale: Fig. 6 within 3.8 \
+pixels (x; y within 2.4: the inner x ticks sit 2-5 pixels off the line through the frame lines, so \
+the total energy is uncertain by about 5 cm^-1 in Kr and 10 cm^-1 in Xe), Fig. 10 \
+within 6.2 pixels (its minor ticks are hand-placed; 1 pixel = 0.43 %). The frame and \
+ticks are erased and the ink split into connected pieces; the solid line is the \
+pieces at least 150 pixels long, Fig. 6's J = 0 dashes the smaller pieces in the band \
+near zero. A curve is read at a column only where its ink is one run no taller than \
+12 pixels (the lines are 6-8 pixels wide): the resonances' steep flanks and narrow \
+peaks, and the off-scale tops of the f' resonances, are left out by that rule. Gaps \
+between dashes are bridged by linear interpolation within 25 pixels; a J = 0 dash \
+touching the frame line (values below about 0.07e-50) is not read. The overlays of \
+every value on the page images were inspected (2026-10-08): all lie on their lines.
+
+FIG. 6 (p. 1119, fig_31bfc6fa4487): sigma_2 in 1e-50 cm4 s, linear axes, (a) Kr, (b) \
+Xe. Solid: the total cross section; dashed: the partial cross section to J = 0 final \
+states, 'much smaller (by about a factor of 30) than that of the J = 2 states, except, \
+of course, in the vicinity of the J = 0 resonances' (p. 1118). Linear polarisation \
+from the J = 0 ground state reaches J = 0 and J = 2 final states, so the total is J = 0 \
+plus J = 2. The J = 0 curve is read only on its low background (0.12-0.26e-50) and a \
+few points near its peaks; its peaks (Xe: 2.3e-50 at 104.62, 1.3e-50 at 105.71; Kr: \
+about 0.3e-50) are steep and not read.
+
+MISPRINT IN THE TEXT (not an erratum of a value): p. 1118 says 'the cross in Fig. 6(a) \
+indicates the experimental measurement ... by McCown et al.'; the cross is drawn in \
+Fig. 6(b), the Xe panel (at a total energy of 103.62e3 cm^-1), and McCown et al. \
+measured Xe. The caption spells the name 'McCowen'.
+
+CHECK AGAINST McCOWN (mccown_1982): the script finds the cross's centre at 103.617e3 \
+cm^-1 total and 5.70e-50 cm4 s, on the solid line (5.67e-50 there; the paper: 'in \
+good agreement with the present calculation'). It is drawn at twice the photon \
+wavenumber of 193 nm (103.627e3), not at twice McCown et al.'s ArF line centre \
+(103 466 cm^-1, their p. 3321). FINDING: its height is 1.39 times McCown et al.'s \
+printed alpha = 4e-32 cm4 W-1 converted as sigma = alpha hbar omega (4.12e-50 cm4 s at \
+193 nm, the conversion of mccown_1982's notes); the conversion the authors used is not \
+stated. The script fails if the cross moves off the line or the ratio leaves 1.30-1.42.
+
+FIG. 10 (p. 1120, fig_2942ab283ba9): sigma_2 in cm4 s, logarithmic axes, (a) Xe \
+110-130 and (b) Kr 120-140 (1e3 cm^-1, total). Only the solid line is this paper's; \
+overlaid and NOT TAKEN: Gangopadhyay et al.'s MQDT crosses (Ref. 18), McGuire's \
+independent-electron dashed line (Ref. 34, mcguire_1981 in the library), and \
+L'Huillier and Wendin's RPAE dot-dashed and linear-RPAE short-dashed lines (Ref. 8: \
+lhuillier_1987 and J. Phys. B 20, L37 (1987)). Xe: read from 110.5 to 129.5 except at \
+129.0, where Gangopadhyay et al.'s cross lies on the line; Kr: 120.5 to 139.5. The \
+labels 10^-49 and 10^-50 of panel (a) are centred on the ticks at rows 3576.5 and \
+4122.5 (the '10' glyphs); a dash of McGuire's line meets the frame 33 pixels higher.
+
+STATED IN THE TEXT (p. 1121): three-photon ionisation above the second limit, 'within \
+20% of those obtained by McGuire. For example, at 266 nm, we have sigma_3 = 6 x \
+10^-82 cm6 s2. The result of McGuire is 5 x 10^-82 cm6 s2. Perry and Landen have \
+measured sigma_3 = 1.2 x 10^-82 cm6 s2. Kulander calculates a cross section equal to \
+2.5 x 10^-82 cm6 s2.' The sentence does not name the gas; it is Xe: three 266 nm \
+photons (112.8e3 cm^-1) lie above Xe's second limit (below 110e3, where Fig. 10(a) \
+starts) and below Kr's (above 116.5e3, the top of Fig. 6(a), which is still between \
+Kr's limits). Taken: this paper's value. NOT TAKEN: McGuire's 5e-82 (mcguire_1981 \
+holds McGuire's own values), Perry and Landen's 1.2e-82 (unpublished, Ref. 35) and \
+Kulander's 2.5e-82 (Ref. 7, not in the library; partly unpublished).
+
+NOT TAKEN: Tables I-III (p. 1116), the MQDT parameters (mu_alpha^0, mu_alpha^1 \
+and U_i_alpha) of the J = 0 and J = 2 even-parity series of Xe and Kr and the J = 3 \
+odd-parity series of Xe: no quantity holds quantum-defect parameters. Figs. 2-3 (Lu-Fano \
+plots), Figs. 4(a) and 5(a) (one-photon oscillator-strength density and \
+cross section), Figs. 4(b) and 5(b) (three-photon autoionisation spectra, the scope \
+of a later round), Fig. 7 (three-photon spectra against experiment, arbitrary units) \
+and Figs. 8-9 (angular distributions).
+
+THE PRINTED FIG. 2 CAPTION is from another paper: on p. 1117 the Kr Lu-Fano plot \
+(panels 'Kr J=2' and 'Kr J=0') is printed above 'FIG. 2. Three stages of the \
+plasma-vacuum interface development under the influence of the Rayleigh-Taylor \
+instability ...', a caption unrelated to this paper; the library copies it. Fig. 3's \
+caption is the Xe Lu-Fano plot's. Nothing taken depends on Fig. 2."""
+
+[[datasets]]
+id = "fig6_total_Kr"
+material = "Kr"
+file = "Kr/lhuillier_1989__fig6_total_Kr.csv"
+table = "fig_31bfc6fa4487"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+scale = 1e-50
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Fig. 6(a) (p. 1119), solid line: the total two-photon ionisation cross section of Kr between its 2P3/2 and 2P1/2 limits, 1e-50 cm4 s, against the photon wavenumber (half the total energy, 115.01 to 116.49e3 cm^-1 total, every 10 cm^-1 where readable). Autoionising resonances 6f', 7f' (off scale, not read), 9p2', 9p', 10p2', 10p0' (peaks not read). Read from the image (the record's notes). 0.1e-50: 4 pixels of line half-width and calibration (0.011e-50 per pixel), and the x uncertainty on the sloping stretches; the paper states none."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+channel = "total (J = 0 and J = 2 final states)"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels), lowest-order perturbation theory, intermediate sum over about 25 discrete Rydberg states"
+definition = "sigma_2 = 2 pi (alpha c / a0) (omega / F0)^2 sum_J sum_alpha |D_alpha^2|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s; the rate is sigma_2 F^2, F the photon flux in photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"
+abscissa_definition = "photon wavenumber = half the total two-photon energy on the figure's axis (the record's decision)"
+
+[[datasets]]
+id = "fig6_J0_Kr"
+material = "Kr"
+file = "Kr/lhuillier_1989__fig6_J0_Kr.csv"
+table = "fig_31bfc6fa4487"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+scale = 1e-50
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Fig. 6(a) (p. 1119), dashed line: the partial two-photon cross section of Kr to J = 0 final states, 1e-50 cm4 s, against the photon wavenumber (half the total energy). Read only where the dashes stand clear of the frame line: 115.01-115.61 and near 116.26e3 cm^-1 total; between, the line lies on the frame (below about 0.07e-50). 0.05e-50: the dash half-width (3 pixels) and calibration."
+[datasets.uncertainty]
+absolute = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+channel = "J = 0 final states (partial)"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels), lowest-order perturbation theory, intermediate sum over about 25 discrete Rydberg states"
+definition = "the J = 0 term of sigma_2 = 2 pi (alpha c / a0) (omega / F0)^2 sum_J sum_alpha |D_alpha^2|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"
+abscissa_definition = "photon wavenumber = half the total two-photon energy on the figure's axis (the record's decision)"
+
+[[datasets]]
+id = "fig6_total_Xe"
+material = "Xe"
+file = "Xe/lhuillier_1989__fig6_total_Xe.csv"
+table = "fig_31bfc6fa4487"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+scale = 1e-50
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Fig. 6(b) (p. 1119), solid line: the total two-photon ionisation cross section of Xe between its 2P3/2 and 2P1/2 limits, 1e-50 cm4 s, against the photon wavenumber (half the total energy, 103.02 to 105.98e3 cm^-1 total, every 20 cm^-1 where readable; 103.56-103.68 left out under McCown et al.'s cross, which lies on the line at 5.70e-50). Resonances 5f', 6f' (off scale), 9p2, 9p0', 10p2', 10p0' (peaks not read). 0.15e-50: 4 pixels of line half-width and calibration (0.017e-50 per pixel), and the x uncertainty on the sloping stretches."
+[datasets.uncertainty]
+absolute = 0.15
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+channel = "total (J = 0 and J = 2 final states)"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels), lowest-order perturbation theory, intermediate sum over about 25 discrete Rydberg states"
+definition = "sigma_2 = 2 pi (alpha c / a0) (omega / F0)^2 sum_J sum_alpha |D_alpha^2|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s; the rate is sigma_2 F^2, F the photon flux in photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"
+abscissa_definition = "photon wavenumber = half the total two-photon energy on the figure's axis (the record's decision)"
+
+[[datasets]]
+id = "fig6_J0_Xe"
+material = "Xe"
+file = "Xe/lhuillier_1989__fig6_J0_Xe.csv"
+table = "fig_31bfc6fa4487"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+scale = 1e-50
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Fig. 6(b) (p. 1119), dashed line: the partial two-photon cross section of Xe to J = 0 final states, 1e-50 cm4 s, against the photon wavenumber (half the total energy). Read on its background, 103.02-103.82e3 cm^-1 total (0.13-0.24e-50), and a few points on the flanks of the 9p0' and 10p0' peaks; elsewhere the dashes lie on the frame line or are steep (the peaks, 2.3e-50 at 104.62 and 1.3e-50 at 105.71, are not read). 0.08e-50: the dash half-width (3 pixels) and calibration."
+[datasets.uncertainty]
+absolute = 0.08
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+channel = "J = 0 final states (partial)"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels), lowest-order perturbation theory, intermediate sum over about 25 discrete Rydberg states"
+definition = "the J = 0 term of sigma_2 = 2 pi (alpha c / a0) (omega / F0)^2 sum_J sum_alpha |D_alpha^2|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"
+abscissa_definition = "photon wavenumber = half the total two-photon energy on the figure's axis (the record's decision)"
+
+[[datasets]]
+id = "fig10_total_Xe"
+material = "Xe"
+file = "Xe/lhuillier_1989__fig10_total_Xe.csv"
+table = "fig_2942ab283ba9"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Fig. 10(a) (p. 1120), solid line ('present work'): the two-photon ionisation cross section of Xe above the 2P1/2 limit, cm4 s, against the photon wavenumber (half the total energy, 110.5 to 129.5e3 cm^-1 total every 500 cm^-1, without 129.0 under Gangopadhyay et al.'s cross). Smooth: 3.0e-50 at 110.5, a minimum of 1.65e-50 near 124, rising to 2.1e-50. 3 %: 4 pixels of line half-width and the ticks' scatter (up to 6.2 pixels; 0.43 % per pixel)."
+[datasets.uncertainty]
+relative = 0.03
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+channel = "total"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels, fitted one-photon oscillator strengths), lowest-order perturbation theory, intermediate sum over about 25 discrete Rydberg states"
+definition = "sigma_2 = 2 pi (alpha c / a0) (omega / F0)^2 sum_J sum_alpha |D_alpha^2|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s; the rate is sigma_2 F^2, F the photon flux in photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"
+abscissa_definition = "photon wavenumber = half the total two-photon energy on the figure's axis (the record's decision)"
+
+[[datasets]]
+id = "fig10_total_Kr"
+material = "Kr"
+file = "Kr/lhuillier_1989__fig10_total_Kr.csv"
+table = "fig_2942ab283ba9"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Fig. 10(b) (p. 1120), solid line ('present work'): the two-photon ionisation cross section of Kr above the 2P1/2 limit, cm4 s, against the photon wavenumber (half the total energy, 120.5 to 139.5e3 cm^-1 total every 500 cm^-1). Falls from 1.3e-50 at 120.5 to 1.8e-51 at 139.5. 3 % (as for Xe)."
+[datasets.uncertainty]
+relative = 0.03
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+channel = "total"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels, fitted one-photon oscillator strengths), lowest-order perturbation theory, intermediate sum over about 25 discrete Rydberg states"
+definition = "sigma_2 = 2 pi (alpha c / a0) (omega / F0)^2 sum_J sum_alpha |D_alpha^2|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s; the rate is sigma_2 F^2, F the photon flux in photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"
+abscissa_definition = "photon wavenumber = half the total two-photon energy on the figure's axis (the record's decision)"
+
+[[datasets]]
+id = "text_sigma3_Xe"
+material = "Xe"
+table = "text"
+points = [["sigma3", "266", "6"]]
+scale = 1e-82
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 1121: 'at 266 nm, we have sigma_3 = 6 x 10^-82 cm6 s2', three-photon ionisation above the second limit; the gas is Xe by the energies (the record's notes). One significant figure; 'within 20% of those obtained by McGuire', and the truncated intermediate sum 'may become worse as the number of photons increases'. The wavelength medium is not stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+photons = 3
+wavelength_nm = 266
+polarization = "linear"
+method = "MQDT (eigenchannel, parameters fitted to experimental levels), lowest-order perturbation theory, intermediate sums over the discrete spectrum"
+definition = "sigma_3 = 2 pi (alpha c / a0) (omega / F0)^3 sum_J sum_alpha |D_alpha^3|^2 (Eq. 29), F0 = 3.22e34 photons/cm2 s; the rate is sigma_3 F^3, F the photon flux in photons/cm2 s"
+gauge = "length (dipole operator epsilon . r, Eq. 27)"

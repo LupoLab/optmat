@@ -1,0 +1,45 @@
+citation = "C. D. Muzny, M. L. Huber and A. F. Kazakov, \"Correlation for the Viscosity of Normal Hydrogen Obtained from Symbolic Regression\", J. Chem. Eng. Data 58, 969 (2013)"
+doi = "10.1021/je301273j"
+library = "Muzny_2013_CorrelationViscosityNormal"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A correlation of the viscosity of normal hydrogen from the triple point to \
+1000 K and 200 MPa: a dilute-gas term of the Chapman-Enskog form with an effective cross \
+section fitted to the primary dilute-gas data, an initial-density term, and a residual \
+term whose functional form was found by symbolic regression; densities from Leachman et \
+al.'s equation of state."""
+notes = """Identity VALIDATED by the library. Printed pp. 969-979; p. = pdf page + 968.
+
+THE DILUTE VISCOSITY (p. 975, Eqs. 3-4; Table 2, p. 971): eta0(T) = 0.021357 (M \
+T)^0.5 / (sigma^2 S*(T*)), in uPa s, M = 2.01588 g/mol, sigma in nm, with ln S*(T*) = \
+sum_{i=0}^{4} a_i (ln T*)^i, a = 2.09630e-1, -4.55274e-1, 1.43602e-1, -3.35325e-2, \
+2.76981e-3, T* = T/(epsilon/k), sigma = 0.297 nm and epsilon/k = 30.41 K (Behnejad and \
+Miralinaghi's values, p. 975).
+
+RANGE AND UNCERTAINTY (abstract, p. 969): the correlation covers the triple point to \
+1000 K and extrapolates 'in a physically reasonable manner to 2000 K'; 'For the limited \
+range of 200 K to 400 K at pressures up to 0.1 MPa, the uncertainty is 0.1 %'. The \
+dilute-gas term represents the theoretical values of Mehl et al. to within 1 % below \
+1000 K and 3 % at 2000 K (p. 975). optmat takes the triple point (13.957 K, the \
+equation of state's) to 1000 K.
+
+ERRATUM: Muzny, Huber and Kazakov, J. Chem. Eng. Data 67, 2855 (2022), \
+doi:10.1021/acs.jced.2c00523 (library: Muzny_2022_ErratumCorrelationViscosity), \
+corrects Eq. (6) (Avogadro's number in B_eta*), the sign of the exponent in Eq. (7) and \
+the scale density of Eq. (9): the initial-density and residual terms, not the \
+dilute-gas Eqs. (3)-(4). Its zero-density check value, 1.9772 uPa s at 40 K, is \
+reproduced (1.97721; checked 2026-09-30).
+
+REPRODUCED: CoolProp 8.0.0's hydrogen viscosity (reference key Muzny-JCED-2013) at 1e-6 \
+mol/m^3 equals Eqs. (3)-(4) to 8e-12, 120-900 K (computed 2026-09-30). The correlation \
+is for normal hydrogen; deuterium has its own (assael_1987)."""
+
+[[formulas]]
+id = "eq3_eq4"
+material = "H2"
+equation = "Eqs. (3)-(4), p. 975; Table 2, p. 971"
+printed = "eta0 = 0.021357 (M T)^0.5/(sigma^2 S*(T*)); ln S* = sum_i a_i (ln T*)^i"
+variable = "T in K, T* = T/(epsilon/k); eta0 in uPa s"
+range = "triple point to 1000 K"
+coefficients = { prefactor = "0.021357", a0 = "2.09630e-1", a1 = "-4.55274e-1", a2 = "1.43602e-1", a3 = "-3.35325e-2", a4 = "2.76981e-3", molar_mass = "2.01588", epsilon_k = "30.41", sigma_nm = "0.297" }
+check = "CoolProp 8.0.0 equals it to 8e-12 (tests/test_transport.py)."

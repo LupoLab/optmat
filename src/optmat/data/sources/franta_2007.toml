@@ -1,0 +1,233 @@
+citation = "D. Franta, D. Nečas and L. Zajíčková, \"Models of dielectric response in disordered solids\", Opt. Express 15, 16230 (2007)"
+doi = "10.1364/oe.15.016230"
+library = "Franta_2007_ModelsDielectricResponse"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Two dispersion models of disordered (amorphous and polycrystalline) solids \
+built on the electronic structure: PDOS, which parameterises the densities of states of \
+the initial and final bands and convolves them numerically (Eqs. (1)-(25)), and PJDOS, \
+which parameterises the joint density of states directly so that the real part has a \
+closed form (Eqs. (26)-(39)); Kramers-Kronig integration by an adaptive quadrature \
+(Appendix A), the elliptic integrals of the square-root DOS (Appendix B). Applied \
+(PDOS) to films fitted to ellipsometry and reflectance: diamond-like carbon films of \
+ref. [15] (as deposited and annealed), a typical a-Si:H film (with a Rayleigh-Rice \
+rough surface and a native oxide), and an SiO2-like film (1.13 um on c-Si, like those \
+of ref. [11], measured by ellipsometry and reflectometry at 1.2-6.5 eV, with surface \
+roughness, a transition layer and the monochromator's spectral width taken into \
+account) (pp. 16236-16241)."""
+notes = """Journal pages 16230-16244 = pdf pages 1-15 (the reference list is on pp. \
+16230-16231). Identity (three authors) checked against the first page. A model paper: \
+no optical constants are tabulated (Figs. 4, 6 and 7 show eps of the DLC, a-Si and \
+SiO2-like films, Figs. 3 and 5 the fitted DOS; not digitised). The three parameter \
+tables are the formulas below, checked cell by cell against their images; the band-gap \
+parameters are also band_gap datasets (kind 'effective').
+
+EQUATION MAP (E photon energy in eV; S the electron energy, E_F = 0):
+- Eq. (1)/(4), p. 16230-16232: eps_i from the sum over band pairs of |p_jk|^2 times the \
+convolution of the occupied DOS N_j(S) and the empty DOS N_k(S + E); Eq. (3) the JDOS; \
+Eq. (5) the Kramers-Kronig real part; Appendix A, Eqs. (40)-(45), its numerical form \
+(checked 2026-09-27: Eq. (43) with the PJDOS eps_i of Eq. (30) reproduces Eq. (31) to \
+1e-11).
+- PDOS, DLC (Section 2.1, pp. 16233-16235): Eq. (6) (stepwise Fermi-Dirac, sigma and pi \
+bands), Eq. (7) the 'unnormalized DOS' N_j, Eq. (8) its integral Q_j (proportional to \
+the concentration of j electrons, times the unknown |p|), Eqs. (9)-(10) the symmetric \
+square-root DOS of the valence and conduction bands between E_g/2 and E_h/2, Eq. (11) \
+eps_i = (1/E^2) sum_j (32 Q_j / (pi (E_hj - E_gj)^2))^2 e_j(E), e_j the elliptic \
+integral of Appendix B (Eqs. (46)-(53)); Eq. (12) the older parameter A_j = 32 Q_j / (pi \
+(E_hj - E_gj)^2) of refs. [12]-[16]. Eqs. (13)-(17): the pi-to-sigma ratio alpha = \
+Q_pi / (kappa Q_sigma), with kappa = |p_pi| / |p_sigma| = 0.5736 found by matching \
+Eqs. (15) and (16) for the annealed films (p. 16237), and the sp3/sp2 ratio.
+- PDOS, a-Si (Section 2.2, pp. 16237-16238): Eq. (18) the Tauc edge; Eq. (19) eps_i with \
+the extended-extended and the (doubled) localized-extended terms; Eqs. (20)-(22) the \
+extended DOS, A_xi C(S) sqrt(...)sqrt(...), with C(S) = 1 + two Gaussians in |S| \
+(A_1, B_1, E_1/2; A_2, B_2, E_2/2); Eq. (23) the localized (Urbach) DOS A_lambda \
+exp(-||S| - E_g/2| / E_lambda) inside the gap.
+- PDOS, SiO2-like (Section 2.3, pp. 16239-16241): Eqs. (9)-(10) for the extended \
+states (j = xi), Eq. (24) Gaussian two-level defect terms G(A, B, E_delta) and one \
+Gaussian for the infrared phonons, all inside the bracket of Eq. (25), which divides \
+them by E^2. MISPRINT: Eq. (24) prints both exponents without the minus sign, \
+exp[(E - E_delta)^2 / (2 B^2)] - exp[(E + E_delta)^2 / (2 B^2)] (page image, p. \
+16239), which diverges; exp[-(E - E_delta)^2 / (2 B^2)] - exp[-(E + E_delta)^2 / (2 \
+B^2)] is meant: with it the model reproduces Fig. 7 (formula pdos_sio2_like, check).
+- PJDOS (Section 3, pp. 16241-16242): Eq. (26) the unnormalised JDOS, Eq. (27) its \
+integral Q_j^2, Eq. (28) eps_i = J(E)/E^2, Eq. (29) J proportional to (E - E_g)^2 (E - \
+E_h)^2, Eq. (30) eps_i = 30 Q^2 (E - E_g)^2 (E - E_h)^2 / ((E_h - E_g)^5 E^2) on (E_g, \
+E_h), Eqs. (31)-(35) its closed-form real part, Eqs. (36)-(38) limits. MISPRINT: \
+Eq. (37), the E -> 0 limit, prints '- 3(E_h^2 - E_g^2)/2' in the bracket; the limit of \
+Eq. (31) is 60 Q^2 / (pi (E_h - E_g)^5) [(E_h^2 + E_g^2 + 4 E_g E_h) ln(E_h/E_g) - \
+3(E_h^2 - E_g^2)] (series expansion; numerically, with Q = 74.8, E_g = 7.05, E_h = 25.9: \
+Eq. (31) at 1e-3 eV gives 1.1046, the corrected limit 1.1046, the printed one 42.94). \
+Eq. (33) (D, with the /2) is right. No PJDOS parameters are given here (the DLC and UNCD \
+fits are in refs. [17] and [26]).
+
+COMPARISON WITH THE LATER FRANTA MODELS (franta_2013, franta_2013b, franta_2015b, \
+franta_2016 and optmat.solid.udm):
+- The PJDOS term, Eqs. (30)-(35), is exactly the symmetric valence-to-conduction \
+interband term of the universal dispersion model (franta_2015b Eqs. (4)-(12); \
+udm._interband): the same (E - E_g)^2 (E - E_h)^2 / E^2 shape and the same X(E), \
+Y(E) in the real part. Only the normalisation differs: here the integral of E^2 eps_i \
+is Q^2 (Eq. (27)); in the UDM the Thomas-Reiche-Kuhn integral of E eps_i is the \
+strength N (eV^2), with C_N = (E_h^2 - E_g^2)(E_h^2 + E_g^2 - 8 E_g E_h)/12 + E_g^2 \
+E_h^2 ln(E_h/E_g). So N_vc = 30 Q^2 C_N / (E_h - E_g)^5 (checked 2026-09-27: \
+udm._interband scaled so reproduces Eqs. (30)-(31) to 1e-14 at 1-30 eV; for the \
+SiO2-like film's Q, E_g, E_h this is N = 357 eV^2).
+- The PDOS square-root DOS convolution (Eqs. (9)-(11)) is not in the UDM; the \
+PJDOS form replaced it as its analytic stand-in (Section 3). franta_2013b's 'PDOS' \
+model column cites this paper (its ref. [24]).
+- The 2007 Gaussians (Eq. (24)) sit inside the JDOS bracket and are divided by E^2 \
+(Eq. (25)), with an amplitude A/(sqrt(2 pi) B); the UDM's Gaussian peaks (franta_2015b \
+Eqs. (41)-(43), udm._gaussian) are in eps_i itself, normalised to unit sum-rule strength \
+(1/(sqrt(pi) s E_p)). Not the same line shape.
+- The Urbach tail here is a localized DOS (Eq. (23)) convolved with the conduction band; \
+the UDM's Urbach term (franta_2013b Eq. (12), franta_2015b Eqs. (32)-(40)) is an \
+exponential JDOS joined to the interband edge. Different constructions.
+- No sum rule: Q_j carries the unknown |p_jk| (Eq. (8)), so the strengths are not \
+electron densities; the later papers (franta_2013 on) normalise every term to the \
+Thomas-Reiche-Kuhn sum rule, which makes N a density of electrons.
+
+TABLE 1'S OTHER ROWS (notes only; no quantity): the thickness ratio d_f(t)/d_f(0) \
+1.021-1.114, alpha (pi-to-sigma) 0.043-0.133, beta* (Eq. (15)) and beta† (Eq. (16)), \
+the ERDA hydrogen fraction X_H 0.38, 0.36, 0.37, 0.34, 0.30, 0.25, and the sp3/sp2 \
+ratio 4.23-0.96, for the six films (the formulas' checks reproduce them). The films are \
+those of ref. [15] (Franta et al., Diamond and Related Materials 14, 1795 (2005)), which used the \
+A_j parameterisation (p. 16235); whether Table 1 is a refit in Q_j or a conversion of \
+[15]'s values is not stated. Text values: SiO2-like films of ref. [11], band gap 7.4-8.2 \
+eV and defect transition energy 4.6-5.4 eV depending on the deposition; EELS of \
+amorphous SiO2 (ref. [25]) has defect states at 5.5 and 7.2 eV (p. 16240)."""
+
+[[datasets]]
+id = "dlc_band_gap_pi"
+material = "a-C_H"
+file = "a-C_H/franta_2007__dlc_band_gap_pi.csv"
+table = "tbl_363cc8a41358"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table 1, E_g_pi (the lower limit of the pi -> pi* transitions, the optical gap of the model) of the six DLC films of ref. [15], rows labelled by the annealing: as deposited, 280, 325, 406, 460, 510 C. A fitted model parameter. The sigma band's E_g_sigma (1.546-1.674 eV) is in the formulas. 'check': possibly a re-expression of ref. [15]'s fits (see the record's notes)."
+[datasets.parameters]
+kind = "effective"
+form = "film"
+technique = "ellipsometry and reflectance (PDOS model fit)"
+
+[[datasets]]
+id = "a_si_h_band_gap"
+material = "a-Si_H"
+file = "a-Si_H/franta_2007__a_si_h_band_gap.csv"
+table = "tbl_54c954601fc2"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table 2, E_g of 'the typical a-Si:H film': the lower limit of the extended-state DOS (Eqs. (20)-(21)), below which the localized states of Eq. (23) (Urbach energy E_lambda = 0.093 eV) absorb. A fitted model parameter; no uncertainty. Deposition and thickness not stated."
+[datasets.parameters]
+kind = "effective"
+form = "film"
+technique = "ellipsometry and reflectance (PDOS model fit)"
+
+[[datasets]]
+id = "sio2_like_band_gap"
+material = "SiO2-like_film_HMDSO"
+file = "SiO2-like_film_HMDSO/franta_2007__sio2_like_band_gap.csv"
+table = "tbl_e67d945ff5b3"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table 3, E_g of the SiO2-like film (1.13 um on c-Si, 'prepared similarly as in [11]', i.e. plasma-deposited from HMDSO/O2): the lower limit of the extended-state DOS, fitted from data at 1.2-6.5 eV, so it lies outside the measured range and is constrained only through the dispersion below the gap. A fitted model parameter; no uncertainty."
+[datasets.parameters]
+kind = "effective"
+form = "film"
+technique = "ellipsometry and reflectance (PDOS model fit)"
+
+[[formulas]]
+id = "pdos_dlc_as_deposited"
+material = "a-C_H"
+equation = "Eqs. (5), (6), (9)-(11), (46)-(53), pp. 16231-16235 and 16244; Table 1 (p. 16236), column 'as deposited'"
+printed = "eps_i(E) = (1/E^2) sum_{j = pi, sigma} (32 Q_j / (pi (E_hj - E_gj)^2))^2 e_j(E) (Eq. 11), e_j(E) = (2/3) M^3 [(k^2 - 1) K(k) + (k^2 + 1) E(k)], k = m/M, m = min(E/2 - E_g/2, E_h/2 - E/2), M = max(...), on E_g < E < E_h (Eqs. 50, 52); eps_r by Kramers-Kronig (Eq. 5)"
+variable = "E: photon energy (eV); Q_j in eV^(3/2); energies in eV"
+range = "the measured range of ref. [15]'s DLC films is not stated here"
+coefficients = { Q_pi = "3.37", E_gpi = "0.949", E_hpi = "6.71", Q_sigma = "136", E_gsigma = "1.584", E_hsigma = "51.7" }
+parameters = { form = "film" }
+check = "Table 1's derived rows reproduced (2026-09-27): alpha = Q_pi / (kappa Q_sigma), Eq. (13), kappa = 0.5736: 0.0432 (printed 0.043); sp3/sp2, Eq. (17), with X_H = 0.38: 4.235 (printed 4.23). Appendix B: Eq. (52) equals the direct quadrature of Eq. (46) to 1e-12 (E_g 1.5, E_h 51.7 eV, E = 2-40 eV); Eq. (9) integrates to Q (Eq. (8)). No eps value is printed (Fig. 4 only)."
+notes = "DLC film of ref. [15], as deposited. The films' deposition and thickness are in ref. [15] (not in the library)."
+
+[[formulas]]
+id = "pdos_dlc_280C"
+material = "a-C_H"
+equation = "Eqs. (5), (6), (9)-(11), (46)-(53); Table 1 (p. 16236), column '280 C'"
+printed = "As pdos_dlc_as_deposited (Eq. 11)."
+variable = "E: photon energy (eV); Q_j in eV^(3/2); energies in eV"
+coefficients = { Q_pi = "4.67", E_gpi = "1.109", E_hpi = "7.33", Q_sigma = "131", E_gsigma = "1.611", E_hsigma = "51.7" }
+parameters = { form = "film" }
+check = "alpha = 0.0621 (printed 0.062); beta*, Eq. (15), with d_f(t)/d_f(0) = 1.021: 1.0013 (printed 1.001); beta†, Eq. (16), X_H 0.38 -> 0.36: 0.9891 (0.989); sp3/sp2 2.746 (2.75). Checked 2026-09-27."
+notes = "DLC film of ref. [15], annealed at 280 C."
+
+[[formulas]]
+id = "pdos_dlc_325C"
+material = "a-C_H"
+equation = "Eqs. (5), (6), (9)-(11), (46)-(53); Table 1 (p. 16236), column '325 C'"
+printed = "As pdos_dlc_as_deposited (Eq. 11)."
+variable = "E: photon energy (eV); Q_j in eV^(3/2); energies in eV"
+coefficients = { Q_pi = "5.41", E_gpi = "1.104", E_hpi = "7.65", Q_sigma = "127", E_gsigma = "1.633", E_hsigma = "51.7" }
+parameters = { form = "film" }
+check = "alpha = 0.0743 (printed 0.074); beta* 0.9982 (0.998); beta† 0.9944 (0.994); sp3/sp2 2.153 (2.15). Checked 2026-09-27."
+notes = "DLC film of ref. [15], annealed at 325 C."
+
+[[formulas]]
+id = "pdos_dlc_406C"
+material = "a-C_H"
+equation = "Eqs. (5), (6), (9)-(11), (46)-(53); Table 1 (p. 16236), column '406 C'"
+printed = "As pdos_dlc_as_deposited (Eq. 11)."
+variable = "E: photon energy (eV); Q_j in eV^(3/2); energies in eV"
+coefficients = { Q_pi = "6.75", E_gpi = "1.104", E_hpi = "8.07", Q_sigma = "120", E_gsigma = "1.674", E_hsigma = "51.7" }
+parameters = { form = "film" }
+check = "alpha = 0.0981 (printed 0.098); beta* 0.9919 (0.992); beta† 0.9788 (0.979). sp3/sp2 by Eq. (17) with X_H = 0.34 is 1.480 (1.481 with the printed alpha), NOT the printed 1.45: the other five films reproduce to the printed digits, so this entry of Table 1 is off by 0.03 (a misprint or an X_H of about 0.36; not resolved). Checked 2026-09-27."
+notes = "DLC film of ref. [15], annealed at 406 C."
+
+[[formulas]]
+id = "pdos_dlc_460C"
+material = "a-C_H"
+equation = "Eqs. (5), (6), (9)-(11), (46)-(53); Table 1 (p. 16236), column '460 C'"
+printed = "As pdos_dlc_as_deposited (Eq. 11)."
+variable = "E: photon energy (eV); Q_j in eV^(3/2); energies in eV"
+coefficients = { Q_pi = "7.80", E_gpi = "0.957", E_hpi = "8.33", Q_sigma = "110", E_gsigma = "1.604", E_hsigma = "51.7" }
+parameters = { form = "film" }
+check = "alpha = 0.1236 (printed 0.124); beta* 0.9609 (0.960); beta† 0.9600 (0.960); sp3/sp2 1.052 (1.05). Checked 2026-09-27."
+notes = "DLC film of ref. [15], annealed at 460 C."
+
+[[formulas]]
+id = "pdos_dlc_510C"
+material = "a-C_H"
+equation = "Eqs. (5), (6), (9)-(11), (46)-(53); Table 1 (p. 16236), column '510 C'"
+printed = "As pdos_dlc_as_deposited (Eq. 11)."
+variable = "E: photon energy (eV); Q_j in eV^(3/2); energies in eV"
+coefficients = { Q_pi = "7.94", E_gpi = "0.791", E_hpi = "8.04", Q_sigma = "104", E_gsigma = "1.546", E_hsigma = "51.7" }
+parameters = { form = "film" }
+check = "alpha = 0.1331 (printed 0.133); beta* 0.9253 (0.925); beta† 0.9394 (0.939); sp3/sp2 0.965 (0.96). Checked 2026-09-27."
+notes = "DLC film of ref. [15], annealed at 510 C (the solid lines of Fig. 3 are this film and the as-deposited one)."
+
+[[formulas]]
+id = "pdos_a_si_h"
+material = "a-Si_H"
+equation = "Eqs. (5), (19)-(23), pp. 16237-16238; Table 2 (p. 16238)"
+printed = "eps_i(E) = (sgn(E)/E^2) int_{-inf}^{0} [N_xi(S) N_xi*(S + |E|) + 2 N_lambda(S) N_xi*(S + |E|)] dS (Eq. 19); N_xi(S) = A_xi C(S) sqrt(-S - E_g/2) sqrt(E_h/2 + S) on -E_h/2 < S < -E_g/2, N_xi*(S) = A_xi C(S) sqrt(S - E_g/2) sqrt(E_h/2 - S) on E_g/2 < S < E_h/2 (Eqs. 20-21); C(S) = 1 + A_1 exp[-(|S| - E_1/2)^2 / (2 B_1^2)] + A_2 exp[-(|S| - E_2/2)^2 / (2 B_2^2)] (Eq. 22); N_lambda(S) = A_lambda exp(-||S| - E_g/2| / E_lambda) (Eq. 23, inside the gap)"
+variable = "E, S: energies (eV); A_xi in eV^-1/2, A_lambda in eV^1/2, A_1 and A_2 dimensionless; the other parameters in eV"
+range = "not stated (the ellipsometric and reflectance data; Fig. 6 shows 1.2-6.5 eV)"
+coefficients = { A_xi = "0.255", E_g = "1.822", E_h = "27.8", A_1 = "11.7", B_1 = "0.429", E_1 = "3.648", A_2 = "11.2", B_2 = "1.945", E_2 = "0.812", A_lambda = "1.28", E_lambda = "0.093" }
+parameters = { form = "film" }
+check = "No value is printed to reproduce. Evaluated numerically (2026-09-27; Eq. (23) taken inside the gap, |S| < E_g/2): eps_i peaks at 23.3 at 3.63 eV (0.91 at 2 eV, 11.4 at 5 eV, 4.5 at 6.5 eV); eps_r is 12.5 at 1.2 eV and 21.7 at 2.7 eV. The shape and the peak positions follow Fig. 6, but the amplitude is about 10 % below the figure's a-Si curve as read by eye (peak near 26). Not resolved: a factor of 1.1 in A_xi^2 is not a plausible misprint, and the figure cannot be read more precisely."
+notes = "'a typical a-Si film', a-Si:H per the caption; its deposition, substrate (c-Si) and thickness are not given; the fit included a Rayleigh-Rice rough surface and a native oxide (p. 16238)."
+
+[[formulas]]
+id = "pdos_sio2_like"
+material = "SiO2-like_film_HMDSO"
+equation = "Eqs. (5), (9), (10), (24), (25), pp. 16239-16241; Table 3 (p. 16240)"
+printed = "eps_i(E) = (sgn(E)/E^2) [int_{-inf}^{0} N_xi(S) N_xi*(S + |E|) dS + sum_i G(A_delta_i, B_delta_i, E_delta_i) + G(A_p, B_p, E_p)] (Eq. 25), N_xi and N_xi* from Eqs. (9)-(10) with Q_xi, E_g, E_h; G(A, B, E_delta) = A/(sqrt(2 pi) B) {exp[(E - E_delta)^2/(2 B^2)] - exp[(E + E_delta)^2/(2 B^2)]} (Eq. 24, printed without the minus signs in the exponents: see notes)"
+variable = "E: photon energy (eV); Q_xi in eV^(3/2); A_delta, B_delta, A_p, B_p, E_p printed in meV, E_g, E_h, E_delta in eV"
+range = "1.2-6.5 eV (the ellipsometric and reflectance data)"
+coefficients = { Q_xi = "74.8", E_g = "7.05", E_h = "25.9", A_delta1 = "29.0", B_delta1 = "440", E_delta1 = "5.20", A_delta2 = "190", B_delta2 = "414", E_delta2 = "6.70", A_p = "4.72", B_p = "100", E_p = "300" }
+fixed = ["B_p", "E_p"]
+parameters = { form = "film" }
+check = "No value is printed to reproduce. Evaluated numerically (2026-09-27) with the corrected Eq. (24) (exp[-...]) and every meV parameter converted to eV (A read as 1e-3 of its printed value, the unit that keeps eps_i dimensionless with E in eV): eps_r = 2.070 at 1.5 eV, 2.084 at 2 eV, 2.174 at 4 eV, 2.443 at 6.4 eV; the defect terms give eps_i = 0.99e-3 at 5.1 eV and the total 3.45e-3 at 6.4 eV. Fig. 7 shows eps_r rising from about 2.07 at 1.2 eV to 2.45 at 6.5 eV and a defect peak near 1.0e-3 at about 5.1 eV (by eye): consistent. With the printed Eq. (24) the defect term at 5 eV is of order -1e100. Eq. (9) integrates to Q (Eq. (8)). The interband part equals the UDM's symmetric interband term with N = 30 Q^2 C_N / (E_h - E_g)^5 = 30 x 74.8^2 x 5069 / 18.85^5 = 357 eV^2 in the UDM's units (see the record's notes)."
+notes = "SiO2-like film, 1.13 um on c-Si, 'prepared similarly as in [11]' (Zajickova et al., Plasma Process. Polym. 4, S287 (2007): HMDSO/O2 plasma), measured by ellipsometry and reflectometry at 1.2-6.5 eV. B_p and E_p 'could not be determined because the absorption lay too far outside the measurement range and, therefore, these two parameters were fixed' (p. 16241); the phonon Gaussian is 'an average contribution' of the Si-O-Si, silanol, water and hydrocarbon bands. Fig. 7 compares the result with Palik's fused silica (philipp_1985): the film's eps_r lies slightly below it in the visible and meets it near 6.4 eV."

@@ -1,0 +1,1263 @@
+citation = "G. Jansonas, R. Budriūnas, M. Vengris and A. Varanavičius, \"Interferometric measurements of nonlinear refractive index in the infrared spectral range\", Opt. Express 30, 30507 (2022)"
+doi = "10.1364/oe.458850"
+library = "Jansonas_2022_InterferometricMeasurementsNonlinear"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Mach-Zehnder interferometry of the fringe distortion caused by self-phase \
+modulation: the sample sits in one arm, near-collimated (e^-2 beam diameter 0.62-0.94 mm, \
+Rayleigh length > 100 mm), its exit face imaged (x5) onto a beam profiler \
+(microbolometer camera at 2.2 and 3.2 um, CMOS at 1.03 um) where it interferes with the \
+reference beam at about 1 degree. The 2-D Fourier-transform phase, less a low-energy \
+reference, is fitted to the measured beam profile (Eq. 10) to give B_eff at each pulse \
+energy; B_eff = s_E (E - E_ref) (Eq. 11); the time-averaging factor s_B = B_eff / B is \
+simulated with the (X)FROG-measured pulses (Eq. 12, Fig. 2), and n2 = (lambda / 2 pi L) \
+(s_E / s_B) J, J the integral of the measured normalized beam and pulse profiles (Eq. \
+14). Sources: a Yb:KGW laser (Light Conversion Pharos), 1.03 um, and a home-built OPA at \
+2.2 and 3.2 um (up to 40 uJ, 1 kHz); pulse durations about 230, 170 and 190 fs (FROG and \
+XFROG, p. 30515), numerically propagated through the setup's transmissive optics before \
+use. B stayed below about 1 rad and no self-focusing was seen (p. 30512)."""
+notes = """Journal pages 30507-30524 = PDF pages 1-18. Identity checked against the first page. The \
+Supplement 1 cited for Tables S1-S2 (peak intensities, E_ref) and Figs. S1-S24 is not in \
+the library copy.
+
+DEFINING RELATIONS (p. 30508): n(x, y, t) = n0 + n2 I(x, y, t) (Eq. 1); B = (2 pi / \
+lambda) int_0^L n2 I0(z) dz (Eq. 2), = (2 pi / lambda) n2 I0 L for a thin sample (Eq. 3). \
+One beam's self-phase modulation: coefficient 'self'. Linearly polarized light (Eq. 5). \
+All tabulated n2 in 10^-14 cm^2/W (table notes, checked on the images).
+
+EFFECTIVE AND KERR n2 (pp. 30516-30520). Tables 2 and 3 give n2_eff, the measured \
+coefficient, which in a noncentrosymmetric crystal includes the nonlinear refraction of \
+cascaded (phase-mismatched) second-harmonic generation, n2_casc = -(4 pi / (c eps0 \
+lambda)) d_eff^2 / (n_omega^2 n_2omega Delta k) (Eq. 15, p. 30517; d_ij from Nikogosyan \
+[55] and Refs. [56, 57], scaled by Miller's rule). The only centrosymmetric samples are \
+Si, KRS-5, KRS-6 and UVFS (n2_eff has no cascaded part). Table 4 gives n2_Kerr = n2_eff - \
+n2_casc for GaSe, AgGaS2, ZGP, KTA and LGS: the third-order (Kerr) coefficient, the quantity \
+optmat models. For ZGP (e) at 3.2 um, Eq. (15) fails (small phase mismatch, pump \
+depletion) and n2_casc was 'calculated numerically by simulating the propagation of the \
+measured pulse' (Table 4 note b, p. 30520); for ZGP (o) n2_casc = 0 (d_eff = 0 for oo-e \
+at phi = 0), so n2_Kerr = n2_eff. The cascaded part was NOT computed for ZnS, ZnSe and \
+SBN-61 (polycrystalline or polydomain) nor for BGSe, GaAs and ZnTe (orientation \
+incompletely known): their n2_eff may contain an unknown cascaded contribution. \
+Decision: n2_Kerr (Table 4) datasets are 'primary'; the n2_eff datasets of the same five \
+crystals are 'check' (the same measurement before the cascade correction); every other \
+n2_eff dataset is 'primary', with its cascade status in its notes. part = 'unknown' \
+throughout (170-230 fs pulses; the paper does not discuss the Raman response); the \
+n2_eff datasets additionally include cascading where stated.
+
+SPECIAL CASES. Si at 2.2 um: two-photon absorption (beta_2PA = 0.238 cm/GW, fitted, Eqs. \
+16-17) was accounted for; the corrected n2_eff is about 0.5 x 10^-14 cm^2/W higher than \
+without (p. 30521). GaAs at 2.2 um: B_eff(E) is not linear, the SPM reverses sign above \
+about 5.5 GW/cm^2 (Fig. 8): no value (the '-' of Table 3). LGS (o) at 2.2 um: skipped, too \
+close to phase-matched SHG (p. 30519). ZnS and ZnSe: second harmonic from random \
+quasi-phase-matching seen, a few percent of the energy (p. 30516). Dispersion corrections \
+of B (numerical integration of Eq. 2) for KTA, LGS, SBN-61, ZnS, ZnSe at 1.03 um and KTA, \
+SBN-61 at 3.2 um (p. 30516).
+
+UNCERTAINTY. The +- of this work is not defined (no level stated); the method's limits \
+are discussed on p. 30515 (B_eff about 10 mrad the practical floor).
+
+SAMPLES (Table 1, p. 30513; orientation, thickness): GaSe theta = 0, E || X, 0.56 mm; AgGaS2 \
+theta = 39, phi = 45 deg, 0.98 mm; ZGP theta = 74, phi = 0, 0.72 mm; SBN-61 theta = 90, phi = \
+0, 5.05 mm (polydomain); KTA theta = 45, phi = 0, 5.065 mm; LGS theta = 45, phi = 0, 8.195 \
+mm; BGSe theta = 0, 1.785 mm; GaAs (100), 0.50 mm; Si unknown, 1.04 mm; ZnTe unknown, 0.63 \
+mm; ZnS ('Cleartran', polycrystalline) 6.125 mm; ZnSe (polycrystalline) 2.04 mm; KRS-5 \
+(TlBr-TlI) 4.01 mm and KRS-6 (TlBr-TlCl) 1.7 mm (mixed crystals); UVFS (SiO2) 20 mm. \
+Axes: for the uniaxial GaSe (theta = 0), AgGaS2, ZGP and SBN-61 an o-wave is recorded as \
+axis 'o'; an e-wave at theta = 39 or 74 deg is not along the e axis and is recorded as a \
+polarization only; SBN-61 was measured with the o-wave only. KTA and LGS are biaxial: \
+the paper's (o) and (e) are the two eigen-polarizations of the theta = 45, phi = 0 cut, \
+recorded as polarizations, not axes. BGSe (theta = 0) polarization not stated.
+
+LITERATURE COLUMNS. Tables 2 and 3: n2_eff of other works, each with its wavelength and \
+reference, 'use = reproduced' (reproduced_from as printed in the reference list, or the \
+curated id): [28] patwardhan_2021 (its 10^-20 m^2/W values, same numbers); [36] \
+ensley_2019 (the +- here are Ensley's stated +-20 % at 2 um and +-25 % at 3.9 um); [50] \
+milam_1998 (its recommended 1053 nm value). The superscript b of Table 2 ('Same value for \
+both polarization modes') marks KTA [45,46] and [47] and LGS [47]: the literature gives \
+one value for both, so those reproductions are not polarization-specific although filed \
+under the (o) or (e) row. Not extracted: LGS (o) '<0.64 (1.03 um) [48]' (an upper bound, \
+Namboodiri et al. 2021). The Si value of [32] is printed '≈ 10.4 +- 2 (2.2 um)'. Table 4's \
+last column is not a reproduction: 'The last column of the table contains n2_Kerr values \
+that we calculated using the data from other published works' (p. 30517), i.e. the \
+authors' removal of the cascaded part from the cited n2_eff: 'use = check', \
+reproduced_from the work whose n2_eff was used.
+
+refractiveindex.info (Jansonas n2 pages, checked 2026-09-26): Si 7e-18 and 4.54e-18 \
+m^2/W at 2.2 and 3.2 um (170 and 190 fs; orientation unknown), SiO2 (UVFS) 2.53e-20 m^2/W \
+at 1.03 um (230 fs): the same values. The pages hold only Si and SiO2; none of the other \
+13 materials, nor the n2_Kerr of Table 4, and they do not say that n2 here is n2_eff."""
+
+[[datasets]]
+id = "eff_KTA_o"
+material = "KTA"
+file = "KTA/jansonas_2022__eff_KTA_o.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Tables 2 and 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_KTA_o (primary). KTA (o), 5.065 mm (biaxial: the paper's o and e are the cut's two eigen-polarizations)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "o-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_eff_KTA_o_li_2000_2001"
+material = "KTA"
+file = "KTA/jansonas_2022__lit_eff_KTA_o_li_2000_2001.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["H. Li, C. Kam, Y. Lam, F. Zhou, and W. Ji, \"Nonlinear refraction of undoped and Fe-doped KTiOAsO4 crystals in the femtosecond regime,\" Appl. Phys. B 70(3), 385-388 (2000)", "H. Li, C. Kam, Y. Lam, and W. Ji, \"Femtosecond z-scan measurements of nonlinear refraction in nonlinear optical crystals,\" Opt. Mater. 15(4), 237-242 (2001)"]  # codespell:ignore mater
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of KTA (o), each value at its own wavelength. Footnote b: the cited work gives the same value for both polarization modes; not specific to this row's polarization."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_KTA_e"
+material = "KTA"
+file = "KTA/jansonas_2022__eff_KTA_e.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Tables 2 and 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_KTA_e (primary). KTA (e), 5.065 mm (biaxial: the paper's o and e are the cut's two eigen-polarizations)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_eff_KTA_e_mero_2019"
+material = "KTA"
+file = "KTA/jansonas_2022__lit_eff_KTA_e_mero_2019.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["M. Mero, L. Wang, W. Chen, N. Ye, G. Zhang, V. Petrov, and Z. Heiner, \"Laser-induced damage of nonlinear crystals in ultrafast, high-repetition-rate, mid-infrared optical parametric amplifiers pumped at 1 µm,\" Proc. SPIE 11063, 1106307 (2019)"]
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of KTA (e), each value at its own wavelength. Footnote b: the cited work gives the same value for both polarization modes; not specific to this row's polarization."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_LGS_o"
+material = "LGS"
+file = "LGS/jansonas_2022__eff_LGS_o.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Tables 2 and 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_LGS_o (primary). LGS (o), 8.195 mm (biaxial)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "o-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "eff_LGS_e"
+material = "LGS"
+file = "LGS/jansonas_2022__eff_LGS_e.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Tables 2 and 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_LGS_e (primary). LGS (e), 8.195 mm (biaxial)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_eff_LGS_e_mero_2019"
+material = "LGS"
+file = "LGS/jansonas_2022__lit_eff_LGS_e_mero_2019.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["M. Mero, L. Wang, W. Chen, N. Ye, G. Zhang, V. Petrov, and Z. Heiner, \"Laser-induced damage of nonlinear crystals in ultrafast, high-repetition-rate, mid-infrared optical parametric amplifiers pumped at 1 µm,\" Proc. SPIE 11063, 1106307 (2019)"]
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of LGS (e), each value at its own wavelength. Footnote b: the cited work gives the same value for both polarization modes; not specific to this row's polarization."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_SBN-61_o"
+material = "SBN-61"
+file = "SBN-61/jansonas_2022__eff_SBN-61_o.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Tables 2 and 3, n2_eff (this work). May include a cascaded chi(2) contribution, not computed (polydomain). SBN-61 (o): ordinary wave, theta = 90, phi = 0 deg cut, polydomain, 5.05 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_eff_SBN-61_o_sheik_bahae_1991"
+material = "SBN-61"
+file = "SBN-61/jansonas_2022__lit_eff_SBN-61_o_sheik_bahae_1991.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["sheik_bahae_1991"]
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of SBN-61 (o), each value at its own wavelength. Checked against sheik_bahae_1991 Table III (2026-09-27): its SBN row, 30e-13 esu with n0 = 2.4 at 1.06 um, is 0.524e-14 cm2/W by gamma = 40 pi n2 / (c n0): agrees. That paper names neither the composition (it prints only 'SBN') nor the axis; 'SBN-61 (o)' is this paper's row label, not Sheik-Bahae's."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "lit_eff_SBN-61_o_suminas_2020"
+material = "SBN-61"
+file = "SBN-61/jansonas_2022__lit_eff_SBN-61_o_suminas_2020.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["R. Šuminas, N. Garejev, A. Šuminienė, V. Jukna, G. Tamošauskas, and A. Dubietis, \"Femtosecond filamentation, supercontinuum generation, and determination of n2 in polycrystalline SBN,\" J. Opt. Soc. Am. B 37(5), 1530-1534 (2020)"]
+use = "reproduced"
+notes = "Tables 2 and 3, literature n2_eff on the row of SBN-61 (o), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_ZnS"
+material = "ZnS"
+file = "ZnS/jansonas_2022__eff_ZnS.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Tables 2 and 3, n2_eff (this work). May include a cascaded chi(2) contribution, not computed (polycrystalline). ZnS 'Cleartran', polycrystalline, 6.125 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+grade = "CLEARTRAN"
+
+[[datasets]]
+id = "lit_eff_ZnS_sheik_bahae_1991"
+material = "ZnS"
+file = "ZnS/jansonas_2022__lit_eff_ZnS_sheik_bahae_1991.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["sheik_bahae_1991"]
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of ZnS 'Cleartran', each value at its own wavelength. Checked against sheik_bahae_1991 Table III (2026-09-27): 48e-13 esu with n0 = 2.40 at 1.06 um is 0.838e-14 cm2/W (gamma = 40 pi n2 / (c n0)): agrees. Sheik-Bahae's sample is not said to be Cleartran."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_ZnSe"
+material = "ZnSe"
+file = "ZnSe/jansonas_2022__eff_ZnSe.csv"
+table = "tbl_8fc389324d09, tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Tables 2 and 3, n2_eff (this work). May include a cascaded chi(2) contribution, not computed (polycrystalline). ZnSe, polycrystalline, 2.04 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "lit_eff_ZnSe_sheik_bahae_1991"
+material = "ZnSe"
+file = "ZnSe/jansonas_2022__lit_eff_ZnSe_sheik_bahae_1991.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["sheik_bahae_1991"]
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of ZnSe, each value at its own wavelength. Checked against sheik_bahae_1991 Table III (2026-09-27): 170e-13 esu with n0 = 2.48 at 1.06 um is 2.87e-14 cm2/W: agrees."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_SiO2"
+material = "SiO2"
+file = "SiO2/jansonas_2022__eff_SiO2.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 2, n2_eff (this work). Centrosymmetric: no cascaded part. UVFS (ultraviolet-grade fused silica), 20 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+grade = "UVFS"
+
+[[datasets]]
+id = "lit_eff_SiO2_milam_1998"
+material = "SiO2"
+file = "SiO2/jansonas_2022__lit_eff_SiO2_milam_1998.csv"
+table = "tbl_8fc389324d09"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["milam_1998"]
+use = "reproduced"
+notes = "Table 2, literature n2_eff on the row of UVFS (ultraviolet-grade fused silica), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_GaSe"
+material = "GaSe"
+file = "GaSe/jansonas_2022__eff_GaSe.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Table 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_GaSe (primary). GaSe, theta = 0 cut, E || X (an ordinary wave), 0.56 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_eff_GaSe_pigeon_2020"
+material = "GaSe"
+file = "GaSe/jansonas_2022__lit_eff_GaSe_pigeon_2020.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["J. Pigeon, D. Matteo, S. Y. Tochitsky, I. Ben-Zvi, and C. Joshi, \"Measurements of the nonlinear refractive index of AgGaSe2, GaSe, and ZnSe at 10 µm,\" J. Opt. Soc. Am. B 37(7), 2076-2079 (2020)"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of GaSe, each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_AgGaS2_o"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__eff_AgGaS2_o.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Table 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_AgGaS2_o (primary). AgGaS2 (o): ordinary wave, theta = 39, phi = 45 deg cut, 0.98 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_eff_AgGaS2_o_li_2017"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__lit_eff_AgGaS2_o_li_2017.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of AgGaS2 (o), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+axis = "o"
+
+[[datasets]]
+id = "eff_AgGaS2_e"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__eff_AgGaS2_e.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Table 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_AgGaS2_e (primary). AgGaS2 (e): extraordinary wave of the theta = 39, phi = 45 deg cut (not along the e axis), 0.98 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave, theta = 39 deg, phi = 45 deg"
+
+[[datasets]]
+id = "lit_eff_AgGaS2_e_li_2017"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__lit_eff_AgGaS2_e_li_2017.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of AgGaS2 (e), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_ZnGeP2_o"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__eff_ZnGeP2_o.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Table 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_ZnGeP2_o (primary). ZGP (o): ordinary wave, theta = 74, phi = 0 deg cut, 0.72 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_eff_ZnGeP2_o_li_2017"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__lit_eff_ZnGeP2_o_li_2017.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of ZGP (o), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+axis = "o"
+
+[[datasets]]
+id = "eff_ZnGeP2_e"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__eff_ZnGeP2_e.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "check"
+notes = "Table 3, n2_eff (this work). Includes the cascaded chi(2) contribution; the same measurement corrected for it is kerr_ZnGeP2_e (primary). ZGP (e): extraordinary wave of the theta = 74, phi = 0 deg cut (not along the e axis), 0.72 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave, theta = 74 deg, phi = 0 deg"
+
+[[datasets]]
+id = "lit_eff_ZnGeP2_e_li_2017"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__lit_eff_ZnGeP2_e_li_2017.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of ZGP (e), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_GaAs"
+material = "GaAs"
+file = "GaAs/jansonas_2022__eff_GaAs.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 3, n2_eff (this work). May include a cascaded chi(2) contribution, not computed (orientation incompletely known). GaAs (100), 0.50 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "lit_eff_GaAs_ensley_2019"
+material = "GaAs"
+file = "GaAs/jansonas_2022__lit_eff_GaAs_ensley_2019.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["ensley_2019"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of GaAs (100), each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_BGSe"
+material = "BGSe"
+file = "BGSe/jansonas_2022__eff_BGSe.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 3, n2_eff (this work). May include a cascaded chi(2) contribution, not computed (orientation incompletely known). BGSe, theta = 0 cut, 1.785 mm; polarization not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "eff_Si"
+material = "Si"
+file = "Si/jansonas_2022__eff_Si.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 3, n2_eff (this work). Centrosymmetric: no cascaded part. Si, orientation unknown, 1.04 mm. 2.2 um value corrected for two-photon absorption (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "lit_eff_Si_bristow_2007"
+material = "Si"
+file = "Si/jansonas_2022__lit_eff_Si_bristow_2007.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["bristow_2007"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of Si, each value at its own wavelength. Printed '≈ 10.4 +- 2'. Checked against bristow_2007 (2026-09-27): that paper prints no n2 at 2.2 um in its text (only (4.7 +- 2.0) x 1e-14 cm2/W at 1220 nm and the peak 1.2e-13 cm2/W at 1800 nm); the 2.2-um value is a reading of its Fig. 3, not a printed number."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "lit_eff_Si_ensley_2019"
+material = "Si"
+file = "Si/jansonas_2022__lit_eff_Si_ensley_2019.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["ensley_2019"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of Si, each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "lit_eff_ZnS_ensley_2019"
+material = "ZnS"
+file = "ZnS/jansonas_2022__lit_eff_ZnS_ensley_2019.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["ensley_2019"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of ZnS 'Cleartran', each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "lit_eff_ZnS_patwardhan_2021"
+material = "ZnS"
+file = "ZnS/jansonas_2022__lit_eff_ZnS_patwardhan_2021.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["patwardhan_2021"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of ZnS 'Cleartran', each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_ZnTe"
+material = "ZnTe"
+file = "ZnTe/jansonas_2022__eff_ZnTe.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 3, n2_eff (this work). May include a cascaded chi(2) contribution, not computed (orientation unknown). ZnTe, orientation unknown, 0.63 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "lit_eff_ZnSe_ensley_2019"
+material = "ZnSe"
+file = "ZnSe/jansonas_2022__lit_eff_ZnSe_ensley_2019.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["ensley_2019"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of ZnSe, each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "lit_eff_ZnSe_patwardhan_2021"
+material = "ZnSe"
+file = "ZnSe/jansonas_2022__lit_eff_ZnSe_patwardhan_2021.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["patwardhan_2021"]
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of ZnSe, each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_KRS-5"
+material = "KRS-5"
+file = "KRS-5/jansonas_2022__eff_KRS-5.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 3, n2_eff (this work). Centrosymmetric: no cascaded part. KRS-5 (TlBr-TlI) mixed crystal, 4.01 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "lit_eff_KRS-5_marcinkeviciute_2018"
+material = "KRS-5"
+file = "KRS-5/jansonas_2022__lit_eff_KRS-5_marcinkeviciute_2018.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["A. Marcinkevičiūtė, G. Tamošauskas, and A. Dubietis, \"Supercontinuum generation in mixed thallous halides KRS-5 and KRS-6,\" Opt. Mater. 78, 339-344 (2018)"]  # codespell:ignore mater
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of KRS-5 (TlBr-TlI) mixed crystal, each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "eff_KRS-6"
+material = "KRS-6"
+file = "KRS-6/jansonas_2022__eff_KRS-6.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 3, n2_eff (this work). Centrosymmetric: no cascaded part. KRS-6 (TlBr-TlCl) mixed crystal, 1.7 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+
+[[datasets]]
+id = "lit_eff_KRS-6_marcinkeviciute_2018"
+material = "KRS-6"
+file = "KRS-6/jansonas_2022__lit_eff_KRS-6_marcinkeviciute_2018.csv"
+table = "tbl_df33b8fa6ec8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["A. Marcinkevičiūtė, G. Tamošauskas, and A. Dubietis, \"Supercontinuum generation in mixed thallous halides KRS-5 and KRS-6,\" Opt. Mater. 78, 339-344 (2018)"]  # codespell:ignore mater
+use = "reproduced"
+notes = "Table 3, literature n2_eff on the row of KRS-6 (TlBr-TlCl) mixed crystal, each value at its own wavelength."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_GaSe"
+material = "GaSe"
+file = "GaSe/jansonas_2022__kerr_GaSe.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. GaSe, theta = 0 cut, E || X (an ordinary wave), 0.56 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_kerr_GaSe_pigeon_2020"
+material = "GaSe"
+file = "GaSe/jansonas_2022__lit_kerr_GaSe_pigeon_2020.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["J. Pigeon, D. Matteo, S. Y. Tochitsky, I. Ben-Zvi, and C. Joshi, \"Measurements of the nonlinear refractive index of AgGaSe2, GaSe, and ZnSe at 10 µm,\" J. Opt. Soc. Am. B 37(7), 2076-2079 (2020)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of GaSe."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_AgGaS2_o"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__kerr_AgGaS2_o.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. AgGaS2 (o): ordinary wave, theta = 39, phi = 45 deg cut, 0.98 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_kerr_AgGaS2_o_li_2017"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__lit_kerr_AgGaS2_o_li_2017.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of AgGaS2 (o)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+axis = "o"
+
+[[datasets]]
+id = "kerr_AgGaS2_e"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__kerr_AgGaS2_e.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. AgGaS2 (e): extraordinary wave of the theta = 39, phi = 45 deg cut (not along the e axis), 0.98 mm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave, theta = 39 deg, phi = 45 deg"
+
+[[datasets]]
+id = "lit_kerr_AgGaS2_e_li_2017"
+material = "AgGaS2"
+file = "AgGaS2/jansonas_2022__lit_kerr_AgGaS2_e_li_2017.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of AgGaS2 (e)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_ZnGeP2_o"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__kerr_ZnGeP2_o.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. ZGP (o): ordinary wave, theta = 74, phi = 0 deg cut, 0.72 mm. n2_casc = 0 here, so equal to n2_eff."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "lit_kerr_ZnGeP2_o_li_2017"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__lit_kerr_ZnGeP2_o_li_2017.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of ZGP (o)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+axis = "o"
+
+[[datasets]]
+id = "kerr_ZnGeP2_e"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__kerr_ZnGeP2_e.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. ZGP (e): extraordinary wave of the theta = 74, phi = 0 deg cut (not along the e axis), 0.72 mm. The 3.2 um value is the numerically simulated case (note b, printed 'b5.44')."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave, theta = 74 deg, phi = 0 deg"
+
+[[datasets]]
+id = "lit_kerr_ZnGeP2_e_li_2017"
+material = "ZnGeP2"
+file = "ZnGeP2/jansonas_2022__lit_kerr_ZnGeP2_e_li_2017.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["W. Li, Y. Li, Y. Xu, J. Lu, P. Wang, J. Du, and Y. Leng, \"Measurements of nonlinear refraction in the mid-infrared materials ZnGeP2 and AgGaS2,\" Appl. Phys. B 123(3), 82 (2017)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of ZGP (e)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_KTA_o"
+material = "KTA"
+file = "KTA/jansonas_2022__kerr_KTA_o.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. KTA (o), 5.065 mm (biaxial: the paper's o and e are the cut's two eigen-polarizations)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "o-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_kerr_KTA_o_mero_2019"
+material = "KTA"
+file = "KTA/jansonas_2022__lit_kerr_KTA_o_mero_2019.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["M. Mero, L. Wang, W. Chen, N. Ye, G. Zhang, V. Petrov, and Z. Heiner, \"Laser-induced damage of nonlinear crystals in ultrafast, high-repetition-rate, mid-infrared optical parametric amplifiers pumped at 1 µm,\" Proc. SPIE 11063, 1106307 (2019)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of KTA (o)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_KTA_e"
+material = "KTA"
+file = "KTA/jansonas_2022__kerr_KTA_e.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. KTA (e), 5.065 mm (biaxial: the paper's o and e are the cut's two eigen-polarizations)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_kerr_KTA_e_mero_2019"
+material = "KTA"
+file = "KTA/jansonas_2022__lit_kerr_KTA_e_mero_2019.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["M. Mero, L. Wang, W. Chen, N. Ye, G. Zhang, V. Petrov, and Z. Heiner, \"Laser-induced damage of nonlinear crystals in ultrafast, high-repetition-rate, mid-infrared optical parametric amplifiers pumped at 1 µm,\" Proc. SPIE 11063, 1106307 (2019)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of KTA (e)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_LGS_o"
+material = "LGS"
+file = "LGS/jansonas_2022__kerr_LGS_o.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. LGS (o), 8.195 mm (biaxial)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "o-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_kerr_LGS_o_mero_2019"
+material = "LGS"
+file = "LGS/jansonas_2022__lit_kerr_LGS_o_mero_2019.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["M. Mero, L. Wang, W. Chen, N. Ye, G. Zhang, V. Petrov, and Z. Heiner, \"Laser-induced damage of nonlinear crystals in ultrafast, high-repetition-rate, mid-infrared optical parametric amplifiers pumped at 1 µm,\" Proc. SPIE 11063, 1106307 (2019)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of LGS (o)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "kerr_LGS_e"
+material = "LGS"
+file = "LGS/jansonas_2022__kerr_LGS_e.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table 4, n2_Kerr (this work): n2_eff with the computed cascaded chi(2) part removed. LGS (e), 8.195 mm (biaxial)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Mach-Zehnder interferometry (SPM fringe distortion)"
+form = "bulk"
+polarization = "e-wave of the theta = 45 deg, phi = 0 deg cut"
+
+[[datasets]]
+id = "lit_kerr_LGS_e_mero_2019"
+material = "LGS"
+file = "LGS/jansonas_2022__lit_kerr_LGS_e_mero_2019.csv"
+table = "tbl_59933d97ff63"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "um"
+reproduced_from = ["M. Mero, L. Wang, W. Chen, N. Ye, G. Zhang, V. Petrov, and Z. Heiner, \"Laser-induced damage of nonlinear crystals in ultrafast, high-repetition-rate, mid-infrared optical parametric amplifiers pumped at 1 µm,\" Proc. SPIE 11063, 1106307 (2019)"]
+use = "check"
+notes = "Table 4, literature column: n2_Kerr the authors computed from the cited work's n2_eff by removing the cascaded part (p. 30517); row of LGS (e)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"

@@ -1,0 +1,296 @@
+"""The two-photon TDSE campaign, runs 2-6 (optmat's brief and its addendum; decisions in STATUS.md).
+
+    python3 make_runs.py       # pulses -> pulse/, inputs -> run{2..6}/<model>/<name>/<name>.inp, lists, manifest.csv
+
+Common to all runs:
+- Pulses on the vector potential, velocity gauge, A(t) = sum_i (E0_i/omega_i) g(t) sin(omega_i t), CEP 0 for every
+  colour, g = exp(-2 ln2 t^2/T^2), T the FWHM of the intensity (as run 1). I0 = (1/2) eps0 c E0^2 per colour.
+  Chirp (runs 5, 6): a quadratic spectral phase phi(omega) = (phi2/2)(omega - omega0)^2 applied to the
+  transform-limited A in the convention A(t) = int A(omega) exp(+i omega t) d omega, A(omega) -> A(omega) exp(-i phi),
+  so phi2 > 0 delays the higher frequencies (up-chirp); the spectrum, and so the fluence, is unchanged, and I0 is the
+  transform-limited peak intensity. Each file holds A(t)/max|A| on [-3 T_eff, +3 T_eff] at dt 0.01 au
+  (T_eff = T sqrt(1 + (4 ln2 phi2/T^2)^2)); the input scales it by peakA = max|A| (au). Window [-3T_eff, +3T_eff + 1000 au].
+- One electron (Tong-Lin He or Ar): run 1's set-up, BOX 80 (run 1: BOX 40 spectra off by up to 8 %), Eta 10, A2's radial
+  grid, OccDual 0:70, iSurff spectrum to 1.5 au (1200 points). Ar: ECS 0.3, step cap 0.015 (A2); He: ECS 0.15, cap 0.03.
+- haCC He19, 1 channel, lMax 10, rMax 40 (run 1: converged to 0.3 %), iSurff channel spectrum to 1.5 au.
+Model energies used for the run design (the models' own, not NIST): Tong-Lin He 1s2p 21.056 eV, 1s2s 20.240 eV;
+Tong-Lin Ar 4s 11.267 eV, 4p 12.926 eV, 3d 13.859 eV above 3p (Ip 15.774 eV); haCC He Ip 24.541 eV.
+"""
+import csv, importlib.util, math, os
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+_s = importlib.util.spec_from_file_location("tp_make_inputs", f"{HERE}/make_inputs.py")
+mk = importlib.util.module_from_spec(_s)
+_s.loader.exec_module(mk)
+RUN_ROOT, TRECX_DATA, HC, HA, AU_T, AU_I = mk.RUN_ROOT, mk.TRECX_DATA, mk.HC, mk.HA, mk.AU_T, mk.AU_I
+SPEC = mk.SPEC
+TL = {"he": mk.TL_HE,
+      "ar": "#define TongLinV (1.0+16.039*exp(-2.007*Q)-25.543*Q*exp(-4.525*Q)+0.961*exp(-0.443*Q))/Q"}
+POTN = {"he": "TongLinHeV", "ar": "TongLinV"}
+ATOM = {"he": dict(theta=0.15, cap=0.03, state={0: 0}), "ar": dict(theta=0.3, cap=0.015, state={0: 5, 1: 2})}
+MANIFEST = []
+
+
+# ---------------------------------------------------------------- pulses
+def pulse(name, colours, fwhm_fs, phi2_fs2=0.):
+    """colours: [(E_photon_eV, I_Wcm2)]; returns dict with the file path (on the cluster), scale (peakA), window, central lambda"""
+    T = fwhm_fs * 1e-15 / AU_T
+    phi2 = phi2_fs2 * (1e-15 / AU_T) ** 2
+    teff = T * math.sqrt(1 + (4 * math.log(2) * phi2 / T ** 2) ** 2)
+    t3 = 3 * teff
+    t = np.linspace(-t3, t3, int(round(2 * t3 / 0.01)) + 1)
+    g = np.exp(-2 * math.log(2) * (t / T) ** 2)
+    A = np.zeros_like(t)
+    for e, I in colours:
+        w = e / HA
+        a = math.sqrt(I / AU_I) / w * g * np.sin(w * t)
+        if phi2:
+            # pad to avoid wrap-around, apply the spectral phase, back to time
+            n = len(t)
+            X = np.fft.fft(a, 2 * n)
+            om = 2 * math.pi * np.fft.fftfreq(2 * n, d=t[1] - t[0])
+            ph = 0.5 * phi2 * (np.abs(om) - w) ** 2
+            X *= np.exp(-1j * np.sign(om) * ph)
+            a = np.real(np.fft.ifft(X))[:n]
+        A += a
+    amax = np.abs(A).max()
+    f_local = f"{HERE}/pulse/{name}.dat"
+    os.makedirs(f"{HERE}/pulse", exist_ok=True)
+    with open(f_local, "w") as f:
+        f.write(f"# A_z(t)/max|A| (max|A| = {amax:.12e} au); colours (eV, W/cm2) {colours}; FWHM {fwhm_fs} fs (intensity); "
+                f"phi2 {phi2_fs2} fs^2; t in au, dt 0.01\n")
+        for ti, ai in zip(t, A / amax):
+            f.write(f"{ti:.10f} {ai:.15e}\n")
+    E = -np.gradient(A, t, edge_order=2)
+    e_c = np.mean([c[0] for c in colours])
+    return dict(file=f"{RUN_ROOT}/pulse/{name}.dat", scale=amax, t0=-t3, t_pe=t3, end=t3 + 1000., lam=HC / e_c,
+                E_peak=float(np.abs(E).max()), T_eff_fs=teff * AU_T * 1e15, A_end=float(abs(A[-1]) / amax), colours=colours,
+                fwhm_fs=fwhm_fs, phi2_fs2=phi2_fs2)
+
+
+# ---------------------------------------------------------------- inputs
+def radial(box):
+    return mk.radial(box, round(14 * (box - 20.) / 60.))
+
+
+def fixstep(atom, A0, cut=100., scale=1.):
+    emax = (math.sqrt(2 * cut) + A0) ** 2 / 2
+    return round(scale * min(ATOM[atom]["cap"], 2 / emax), 5)
+
+
+def sae(name, atom, m, P, note, box=80, eta=10, theta=None, cut=100., dtscale=1., nofield=False, occ="0:70"):
+    theta = ATOM[atom]["theta"] if theta is None else theta
+    dt = fixstep(atom, P["scale"], cut, dtscale)
+    phi = " Phi,1" if m == 0 else f" Phi,1,0.,6.28318530718,expIm[{m}]"
+    radii = sorted({20., 40., float(box)})
+    chis = ",".join(f"<1><1><chi[0,{r:g}]>" for r in radii)
+    laser = ("# no Laser: field-free propagation over the same window (drift)" if nofield else
+             f"Laser: shape, file, scale, scaleMode, timeUnits, lambda(nm)\nfile, {P['file']}, {P['scale']:.12e}, peakA, au, {P['lam']:.6f}")
+    return f"""Title:
+{name} - {atom} m={m} one electron (Tong-Lin SAE); {note}
+
+# Two-photon TDSE campaign. Pulse: colours {P['colours']} (eV, W/cm2), FWHM {P['fwhm_fs']} fs (intensity), phi2 {P['phi2_fs2']} fs^2.
+# A from the file scaled by peakA = {P['scale']:.12e} au; window [{P['t0']:.4f}, {P['end']:.4f}] au; fixStep {dt}.
+
+#define BOX {box}
+{TL[atom]}
+
+{"" if nofield else SPEC.format(plot="total")}
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+{phi}
+ Eta,{eta},-1,1,assocLegendre{{Phi}}
+{radial(box)}
+Absorption: kind, axis, theta, radius
+ECS,Rn,{theta},BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-{POTN[atom]}>
+Operator: interaction='iLaserAz[t]<<D/DZ>>'
+Operator: expectationValue='{chis}'
+
+# populations of the field-free (complex-scaled) eigenstates of H0, SmallReal order, 0-based
+Occupation: states={occ}, operator=hamiltonian
+
+Initial: state={ATOM[atom]['state'][m]}
+
+{laser}
+
+TimePropagation: begin,end,print,store,cutEnergy,operatorThreshold,fixStep
+ {P['t0']:.6f},{P['end']:.6f},10,0.05,{cut:g},1e-09,{dt}
+"""
+
+
+def sae_eig(name, atom, m, box=80, eta=10, theta=None):
+    theta = ATOM[atom]["theta"] if theta is None else theta
+    phi = " Phi,1" if m == 0 else f" Phi,1,0.,6.28318530718,expIm[{m}]"
+    return f"""Title:
+{name} - {atom} m={m} Tong-Lin SAE field-free spectrum; Eta={eta}; BOX={box}
+
+#define BOX {box}
+{TL[atom]}
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+{phi}
+ Eta,{eta},-1,1,assocLegendre{{Phi}}
+{radial(box)}
+Absorption: kind, axis, theta, radius
+ECS,Rn,{theta},BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-{POTN[atom]}>
+
+Eigen: select=SmallReal[80]
+"""
+
+
+def hacc(name, P, note, lmax=10, rmax=40, occ=None):
+    occl = f"Occupation: states={occ}, operator=hamiltonian\n" if occ else ""
+    return f"""Title:
+{name} - He haCC (He19_Standard) 1 channel; {note}
+
+# Two-photon TDSE campaign. Pulse: colours {P['colours']} (eV, W/cm2), FWHM {P['fwhm_fs']} fs (intensity), phi2 {P['phi2_fs2']} fs^2.
+# A from the file scaled by peakA = {P['scale']:.12e} au; window [{P['t0']:.4f}, {P['end']:.4f}] au.
+Chemical: data={TRECX_DATA}/chemical/He19_Standard
+AxisSystem: lMax={lmax}, nChan=1, rMax={rmax}
+{occl}{SPEC.format(plot="channels")}
+Laser: shape, file, scale, scaleMode, timeUnits, lambda(nm)
+file, {P['file']}, {P['scale']:.12e}, peakA, au, {P['lam']:.6f}
+
+TimePropagation: begin,end,print
+ {P['t0']:.6f},{P['end']:.6f},10
+"""
+
+
+def put(run, model, name, text, P, **meta):
+    d = f"{HERE}/{run}/{model}/{name}"
+    os.makedirs(d, exist_ok=True)
+    open(f"{d}/{name}.inp", "w").write(text)
+    MANIFEST.append(dict(run=run, model=model, name=name, path=f"{RUN_ROOT}/{run}/{model}/{name}/{name}.inp",
+                         t_pe=P["t_pe"] if P else "", end=P["end"] if P else "", fwhm_fs=P["fwhm_fs"] if P else "",
+                         phi2_fs2=P["phi2_fs2"] if P else "", colours=P["colours"] if P else "",
+                         peakA=P["scale"] if P else "", E_peak=P["E_peak"] if P else "", T_eff_fs=P["T_eff_fs"] if P else "", **meta))
+
+
+def tg(x):
+    return f"{x:g}".replace(".", "p")
+
+
+# ---------------------------------------------------------------- run 2: helium two-colour kernel
+def run2():
+    I = 1e12          # per colour (run 1: perturbative to 1e13; above the one-electron drift floor)
+    pts = {14.0: [0.5, 1, 2, 4, 6], 17.0: [0.5, 1, 2, 4, 6], 20.0: [0.5, 1, 4]}   # 20 eV: stop before 1s2p; nu 4 beyond it
+    for h, nus in pts.items():
+        Pr = pulse(f"r2_ref_{tg(h)}eV", [(h, I)], 20.)
+        for model in ("sae", "hacc"):
+            n = f"he_r2_{tg(h)}_nu0"
+            txt = sae(n, "he", 0, Pr, f"run 2 reference: one colour {h:g} eV {I:.0e} W/cm2 20 fs") if model == "sae" else \
+                hacc(n, Pr, f"run 2 reference: one colour {h:g} eV {I:.0e} W/cm2 20 fs")
+            put("run2", model, n, txt, Pr, half_sum_eV=h, nu_eV=0, omega1_eV=h, omega2_eV=h, I_per_colour=I)
+        for nu in nus:
+            w1, w2 = h + nu / 2, h - nu / 2
+            P = pulse(f"r2_{tg(h)}eV_nu{tg(nu)}", [(w1, I), (w2, I)], 20.)
+            for model in ("sae", "hacc"):
+                n = f"he_r2_{tg(h)}_nu{tg(nu)}"
+                note = f"run 2 two colours {w1:g} + {w2:g} eV each {I:.0e} W/cm2 20 fs"
+                put("run2", model, n, sae(n, "he", 0, P, note) if model == "sae" else hacc(n, P, note), P,
+                    half_sum_eV=h, nu_eV=nu, omega1_eV=w1, omega2_eV=w2, I_per_colour=I)
+    Pn = pulse("r2_ref_17eV", [(17.0, I)], 20.)
+    put("run2", "sae", "he_r2_nofield", sae("he_r2_nofield", "he", 0, Pn, "run 2 no field (drift)", nofield=True), Pn)
+
+
+# ---------------------------------------------------------------- run 3: argon degenerate and two-colour (one electron)
+def run3():
+    deg = [8.0, 8.5, 9.0, 10.0, 11.0]
+    for e in deg:
+        for I in (1e11, 1e12, 1e13):
+            P = pulse(f"r3_deg_{tg(e)}eV_I{I:.0e}".replace("+", ""), [(e, I)], 20.)
+            for m in (0, 1):
+                n = f"ar_m{m}_r3_{tg(e)}eV_I{I:.0e}".replace("+", "")
+                put("run3", "sae", n, sae(n, "ar", m, P, f"run 3 degenerate {e:g} eV {I:.0e} W/cm2 20 fs"), P,
+                    half_sum_eV=e, nu_eV=0, omega1_eV=e, omega2_eV=e, I_per_colour=I, m=m)
+    I = 1e12
+    pts = {8.5: [0.5, 1.0, 1.5, 2.0], 9.5: [0.5, 1.0, 1.5, 2.0], 10.5: [0.5]}   # stop 0.3 eV before the model's 4s (11.267)
+    for h, nus in pts.items():
+        if h not in deg:
+            P = pulse(f"r3_deg_{tg(h)}eV_I1e12", [(h, I)], 20.)
+            for m in (0, 1):
+                n = f"ar_m{m}_r3_{tg(h)}eV_I1e12"
+                put("run3", "sae", n, sae(n, "ar", m, P, f"run 3 reference one colour {h:g} eV 1e12 W/cm2 20 fs"), P,
+                    half_sum_eV=h, nu_eV=0, omega1_eV=h, omega2_eV=h, I_per_colour=I, m=m)
+        for nu in nus:
+            w1, w2 = h + nu / 2, h - nu / 2
+            P = pulse(f"r3_{tg(h)}eV_nu{tg(nu)}", [(w1, I), (w2, I)], 20.)
+            for m in (0, 1):
+                n = f"ar_m{m}_r3_{tg(h)}_nu{tg(nu)}"
+                put("run3", "sae", n, sae(n, "ar", m, P, f"run 3 two colours {w1:g} + {w2:g} eV each 1e12 W/cm2 20 fs"), P,
+                    half_sum_eV=h, nu_eV=nu, omega1_eV=w1, omega2_eV=w2, I_per_colour=I, m=m)
+    # convergence at 9 eV, 1e12, m = 0 (and the drift per variant)
+    P = pulse("r3_deg_9eV_I1e12", [(9.0, 1e12)], 20.)
+    for tgv, kw in (("eta15", dict(eta=15)), ("box120", dict(box=120)), ("dt23", dict(dtscale=2 / 3)),
+                    ("cut150", dict(cut=150.)), ("th23", dict(theta=0.2))):
+        n = f"ar_m0_r3_9eV_I1e12_{tgv}"
+        put("run3", "sae", n, sae(n, "ar", 0, P, f"run 3 convergence {tgv}", **kw), P, half_sum_eV=9., nu_eV=0,
+            omega1_eV=9., omega2_eV=9., I_per_colour=1e12, m=0, variant=tgv)
+        put("run3", "sae", f"ar_m0_r3_nofield_{tgv}", sae(f"ar_m0_r3_nofield_{tgv}", "ar", 0, P, f"no field {tgv}", nofield=True, **kw), P, m=0, variant=tgv)
+    for m in (0, 1):
+        put("run3", "sae", f"ar_m{m}_r3_nofield", sae(f"ar_m{m}_r3_nofield", "ar", m, P, "no field (drift)", nofield=True), P, m=m)
+        for box in (80, 120):
+            put("run3", "sae", f"eig_ar_m{m}_b{box}", sae_eig(f"eig_ar_m{m}_b{box}", "ar", m, box=box), None, m=m)
+        put("run3", "sae", f"eig_ar_m{m}_b80_eta15", sae_eig(f"eig_ar_m{m}_b80_eta15", "ar", m, eta=15), None, m=m)
+        put("run3", "sae", f"eig_ar_m{m}_b80_th23", sae_eig(f"eig_ar_m{m}_b80_th23", "ar", m, theta=0.2), None, m=m)
+
+
+# ---------------------------------------------------------------- run 4: argon 3p -> 4p two-photon excitation (one electron)
+def run4():
+    e = 12.926 / 2      # half the model's 4p excitation energy
+    for fw in (30., 50.):
+        for I in (1e10, 1e11):
+            P = pulse(f"r4_{tg(e)}eV_{tg(fw)}fs_I{I:.0e}".replace("+", ""), [(e, I)], fw)
+            for m in (0, 1):
+                n = f"ar_m{m}_r4_{tg(fw)}fs_I{I:.0e}".replace("+", "")
+                put("run4", "sae", n, sae(n, "ar", m, P, f"run 4 two-photon 3p-4p {e:.4f} eV {I:.0e} W/cm2 {fw:g} fs"), P,
+                    omega1_eV=e, I_per_colour=I, m=m)
+    for m in (0, 1):
+        put("run4", "sae", f"eig_ar_m{m}_b80", sae_eig(f"eig_ar_m{m}_b80", "ar", m), None, m=m)
+
+
+# ---------------------------------------------------------------- run 5: helium 1s2s, broadband (haCC)
+def run5():
+    e = HC / 120.3        # 10.306 eV
+    cases = [(1., 0.), (3., 0.), (10., 0.), (3., 10.), (3., -10.)]
+    for fw, c in cases:
+        for I in (1e12, 1e13, 1e14):
+            P = pulse(f"r5_{tg(fw)}fs_c{tg(c)}_I{I:.0e}".replace("+", ""), [(e, I)], fw, c)
+            n = f"he_r5_{tg(fw)}fs_c{tg(c)}_I{I:.0e}".replace("+", "")
+            put("run5", "hacc", n, hacc(n, P, f"run 5 1s2s two-photon resonance 120.3 nm {I:.0e} W/cm2 {fw:g} fs chirp {c:g} fs2",
+                                        occ="0:20"), P, omega1_eV=e, I_per_colour=I, chirp_fs2=c)
+
+
+# ---------------------------------------------------------------- run 6: helium broadband identity (one electron)
+def run6():
+    for fw, c in ((1., 0.), (2., 0.), (5., 0.), (1., 5.), (1., -5.)):
+        for I in (1e12, 1e13):
+            P = pulse(f"r6_14eV_{tg(fw)}fs_c{tg(c)}_I{I:.0e}".replace("+", ""), [(14.0, I)], fw, c)
+            n = f"he_r6_{tg(fw)}fs_c{tg(c)}_I{I:.0e}".replace("+", "")
+            put("run6", "sae", n, sae(n, "he", 0, P, f"run 6 broadband 14 eV {I:.0e} W/cm2 {fw:g} fs chirp {c:g} fs2"), P,
+                omega1_eV=14., I_per_colour=I, chirp_fs2=c)
+    Pn = pulse("r6_14eV_1fs_c0_I1e12", [(14.0, 1e12)], 1.)
+    put("run6", "sae", "he_r6_nofield", sae("he_r6_nofield", "he", 0, Pn, "run 6 no field (drift)", nofield=True), Pn)
+
+
+if __name__ == "__main__":
+    for f in (run2, run3, run4, run5, run6):
+        f()
+    keys = []
+    for r in MANIFEST:
+        keys += [k for k in r if k not in keys]
+    with open(f"{HERE}/manifest_runs2to6.csv", "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=keys)
+        w.writeheader()
+        w.writerows(MANIFEST)
+    for run in ("run2", "run3", "run4", "run5", "run6"):
+        for model in ("sae", "hacc"):
+            L = [r["path"] for r in MANIFEST if r["run"] == run and r["model"] == model]
+            if L:
+                open(f"{HERE}/{run}/list_{model}", "w").write("\n".join(L) + "\n")
+                print(run, model, len(L))

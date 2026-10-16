@@ -1,0 +1,936 @@
+citation = "B. J. Frey, D. B. Leviton and T. J. Madison, \"Temperature-dependent refractive index of silicon and germanium\", Proc. SPIE 6273, 62732J (2006)"
+doi = "10.1117/12.672850"
+library = "Frey_2006_TemperatureDependentRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Minimum deviation in CHARMS (the Cryogenic, High-Accuracy Refraction Measuring \
+System, NASA Goddard), 'in the absolute sense (in vacuum)' (p. 1). Two prisms of each \
+material, bought by JWST/NIRCam and cut from one boule per material: Si 'optical grade', \
+Ge single crystal, purity '>99.999%' by the vendor (pp. 1-2); refracting faces 38.1 mm, \
+height 28.6 mm; nominal apex angles Si 20.0 degrees, Ge 17.0 degrees (p. 2). Si: 1.1-5.6 \
+um, 20-300 K; Ge: 1.9-5.5 um, 20-300 K (abstract; pp. 3, 5). The raw indices are fitted \
+with a three-term Sellmeier whose S_i and lambda_i are quartic in T (p. 2); 'All of the \
+tabulated values for the refractive index of Si and Ge below have been calculated using \
+this Sellmeier model based on our measured data using the appropriate coefficients in \
+Tables 5 and 10' (p. 2). The acquisition and reduction are those of refs. 4 and 5 \
+(Proc. SPIE 5904, 59040P and 59040O, 2005; not in the library)."""
+notes = """PDF pages 1-10 (Proc. SPIE 6273, 62732J; the library copy is the NASA NTRS \
+scan, 20070021411, with an OCR text layer). Identity checked against the first page. \
+The two prisms of each material 'yielded equal indices to within our typical \
+measurement uncertainty of +/- 1 x 10^-4' (p. 3, Si; p. 5, Ge). Library table ids and \
+captions are swapped (see tools/extract/frey_2006.py): Table 2 is tbl_032f91d73970, \
+Table 4 tbl_7450bffe6825.
+
+MEDIUM. The index is absolute: CHARMS measures 'in the absolute sense (in vacuum)' (p. \
+1), and Tables 2 and 7 are 'Measured absolute refractive index'. The paper does not say \
+whether its wavelengths are vacuum or air values; the records take them as vacuum (the \
+default), as for leviton_2008 (same instrument). At 1.2 um an air/vacuum wavelength \
+difference (3.3e-4 um) would move n by 6e-5 (|dn/dlambda| = 0.184/um at 295 K, Table \
+3), at 2 um by 2e-5: below the stated uncertainty.
+
+ACCURACY. 'For materials with higher indices and high dispersion such as Si or Ge, \
+CHARMS can measure absolute index with an uncertainty of about one part in the fourth \
+decimal place of index' (p. 1). Table 1 (Si, 'Uncertainty in absolute refractive index \
+measurements', level not stated), at 30, 75, 100, 200, 295 K: 1.5 um 8.61e-5, 1.35e-4, \
+1.20e-4, 9.16e-5, 8.67e-5; 3.0 um 5.00e-5, 1.08e-4, 9.14e-5, 5.52e-5, 4.55e-5; 4.0 um \
+4.94e-5, 1.07e-4, 9.07e-5, 5.44e-5, 4.47e-5; 5.0 um 5.08e-5, 1.07e-4, 9.00e-5, 5.42e-5, \
+4.46e-5. Table 6 (Ge), same temperatures: 2.0 um 2.09e-4, 2.33e-4, 1.81e-4, 1.49e-4, \
+1.21e-4; 3.0 um 1.68e-4, 2.05e-4, 1.48e-4, 1.11e-4, 6.97e-5; 4.0 um 1.75e-4, 1.93e-4, \
+1.44e-4, 1.06e-4, 6.52e-5; 5.0 um 1.74e-4, 1.93e-4, 1.41e-4, 1.04e-4, 6.41e-5. Residuals \
+of the Sellmeier fits from the measured data: 'in the range of 1 x 10^-4 to 1 x 10^-5' \
+(p. 3); 'Average absolute residual of the fit from the measured data is 1 x 10^-4' \
+(Tables 5 and 10). No uncertainty is stated for dn/dT (Tables 4 and 9) or dn/dlambda.
+
+THE TABLES ARE NOT THE PRINTED SELLMEIER (checked 2026-10-14). Although p. 2 says every \
+tabulated index was calculated from the Sellmeier models, the coefficients of Tables 5 \
+and 10 as printed reproduce Tables 2 and 7 only to about 1e-4. Si, 144 cells at 1.2-5.5 \
+um: rms 1.35e-4, largest 3.9e-4 (1.4 um, 250 K); at 295 K rms 1.4e-4, mean -7.8e-5 \
+(formula minus table); at 1.1 um up to 1.04e-3 (295 K). Ge, 96 cells at 2.0-5.5 um: rms \
+1.9e-4, largest 4.8e-4; at 295 K the formula is 2.9e-4 below the table on average, and \
+2.1e-3 below at 1.8 um. The differences move together down whole temperature columns \
+(Si: from 90 to 100 K they step by +0.7 to +1.2e-4 at every wavelength from 1.3 to 5.5 \
+um; Ge at 2.0-5.5 um: +2.3 to +3.7e-4 at 80 K, -2.8 to -4.0e-4 at 150 K), so the tables \
+are not computed from these coefficients. Rounding of the six-figure coefficients moves n by \
+at most 7.5e-6 (each coefficient perturbed by half its last printed digit, 2 um, 100 and \
+295 K), so it is not the cause. Tables 3 and 8 (dn/dlambda) show the same column steps \
+(Si at 1.1 um: -0.23996 at 90 K, -0.24120 at 100 K). The tables are the better \
+statement of the measurement for fitting, at the paper's stated uncertainty.
+
+TABLE 4 (Si dn/dT) at 295 K is 3-8 % (12 % at 1.1 um) above the T-derivative of the Table 5 formula \
+(2.15e-4 against 1.92e-4 at 1.1 um; 1.78e-4 against 1.71e-4 at 2.0 um; 1.69e-4 against \
+1.62e-4 at 5.5 um) and above the mean slope of Table 2 between 250 and 295 K (1.70e-4 at \
+2.0 um), as expected of a slope that increases with T. How Tables 4 and 9 were derived is \
+not stated here (leviton_2008, same group, derives dn/dT from piecewise quadratic fits \
+of n(T) per wavelength). Taking Table 2 at 295 K to 293.15 K with Table 4: n = 3.52250 \
+(1.2 um), 3.48268 (1.5 um), 3.45321 (2.0 um), 3.43272 (3.0 um).
+
+FRANTA_2017's frey_index_2um (fitted by Franta et al. to these data at 2 um) gives \
+3.45351 at 295 K; Table 2 prints 3.45354, and the Table 5 formula gives 3.45352 \
+(computed 2026-10-14).
+
+TABLE 3 (Si dn/dlambda, 1/um, 13 wavelengths x 12 temperatures) and TABLE 8 (Ge, 8 \
+wavelengths 1.8-5.0 um): 'Measured spectral dispersion'; no quantity, not transcribed. \
+Si at 295 K: -0.26836 (1.1 um), -0.18426 (1.2 um), -0.03819 (2.0 um), -0.00164 (5.5 um).
+
+COMPARISON WITH THE LITERATURE (Figures 7 and 8, at 298 K, not digitised): Briggs \
+(1950), Cardona, Paul and Brooks (1959), Primak (1971), Salzberg and Villa (1957), Villa \
+(1972), Icenogle, Platt and Wolfe (1976) for Si; for Ge also Salzberg and Villa (1958) \
+and Lukes (1960). 'the range of measured values in the literature is greater than the \
+listed uncertainties amongst the various authors' (p. 8); the authors attribute the \
+differences partly to interspecimen variability and purity.
+
+FIGURES (not digitised): 1-3, Si n, dn/dlambda, dn/dT against wavelength; 4-6, the \
+same for Ge; 7-8, comparison with the literature."""
+
+[[formulas]]
+id = "sellmeier_Si"
+form = "n2_sellmeier_temperature"
+# Table 5 as printed (image), each list ordered T^0 ... T^4. lambda_2 is printed
+# negative; it enters squared.
+terms = { S1 = ["10.4907", "-2.08020E-04", "4.21694E-06", "-5.82298E-09", "3.44688E-12"], S2 = ["-1346.61", "29.1664", "-0.278724", "1.05939E-03", "-1.35089E-06"], S3 = ["4.42827E+07", "-1.76213E+06", "-7.61575E+04", "678.414", "103.243"], L1 = ["0.299713", "-1.14234E-05", "1.67134E-07", "-2.51049E-10", "2.32484E-14"], L2 = ["-3.51710E+03", "42.3892", "-0.357957", "1.17504E-03", "-1.13212E-06"], L3 = ["1.71400E+06", "-1.44984E+05", "-6.90744E+03", "-39.3699", "23.5770"] }
+range_nm = [1100, 5600]
+temperature_range_k = [20, 300]
+# The paper's room-temperature column (Tables 1-4).
+reference_temperature_k = 295
+index_medium = "vacuum"
+material = "Si"
+equation = "The equations of p. 2 (unnumbered) with Table 5 (p. 5)"
+printed = "n^2(lambda, T) - 1 = sum_{i=1}^{3} S_i(T) lambda^2 / (lambda^2 - lambda_i^2(T)), S_i(T) = sum_{j=0}^{4} S_ij T^j, lambda_i(T) = sum_{j=0}^{4} lambda_ij T^j"
+variable = "lambda: wavelength in um (the paper does not say vacuum or air; taken as vacuum, see the source notes); T: temperature in K"
+range = "'20 K <= T <= 300 K; 1.1 um <= lambda <= 5.6 um' (Table 5 heading)"
+check = "Does not reproduce Table 2 to its five decimals: rms 1.35e-4 over the 144 cells at 1.2-5.5 um (largest 3.9e-4), 1.04e-3 at 1.1 um and 295 K; differences move by whole temperature columns, and coefficient rounding accounts for at most 7.5e-6 (see the source notes). Gives 3.45352 at 2 um and 295 K (Table 2: 3.45354), 3.47846 at 1.55 um and 293.15 K. Its T-derivative at 295 K is 3-8 % below Table 4 (12 % at 1.1 um). Checked 2026-10-14 against the printed coefficients."
+notes = "Fitted to the raw measured indices of both prisms; S_i and lambda_i 'no longer have direct physical significance but are rather parameters used to generate an adequately accurate fit to empirical data' (p. 2). 'Average absolute residual of the fit from the measured data is 1 x 10^-4' (Table 5). The second and third terms have poles far beyond the range (|lambda_2| = 3517 um, lambda_3 = 1.7e6 um at T = 0; at 295 K S_2 = -32.2, lambda_2 = -571 um, S_3 = 7.9e11, lambda_3 = 1.8e11 um) and act as a small background (+3.9e-4 to n^2 at 2 um, 295 K)."
+
+[[formulas]]
+id = "sellmeier_Ge"
+form = "n2_sellmeier_temperature"
+# Table 10 as printed (image), each list ordered T^0 ... T^4. lambda_3 is printed
+# negative; it enters squared.
+terms = { S1 = ["13.9723", "2.52809E-03", "-5.02195E-06", "2.22604E-08", "-4.86238E-12"], S2 = ["0.452096", "-3.09197E-03", "2.16895E-05", "-6.02290E-08", "4.12038E-11"], S3 = ["751.447", "-14.2843", "-0.238093", "2.96047E-03", "-7.73454E-06"], L1 = ["0.386367", "2.01871E-04", "-5.93448E-07", "-2.27923E-10", "5.37423E-12"], L2 = ["1.08843", "1.16510E-03", "-4.97284E-06", "1.12357E-08", "9.40201E-12"], L3 = ["-2893.19", "-0.967948", "-0.527016", "6.49364E-03", "-1.95162E-05"] }
+range_nm = [1900, 5500]
+temperature_range_k = [20, 300]
+reference_temperature_k = 295
+index_medium = "vacuum"
+material = "Ge"
+equation = "The equations of p. 2 (unnumbered) with Table 10 (p. 8)"
+printed = "n^2(lambda, T) - 1 = sum_{i=1}^{3} S_i(T) lambda^2 / (lambda^2 - lambda_i^2(T)), S_i(T) = sum_{j=0}^{4} S_ij T^j, lambda_i(T) = sum_{j=0}^{4} lambda_ij T^j"
+variable = "lambda: wavelength in um (taken as vacuum, see the source notes); T: temperature in K"
+range = "'20 K <= T <= 300 K; 1.9 um <= lambda <= 5.5 um' (Table 10 heading)"
+check = "Does not reproduce Table 7 to its five decimals: rms 1.9e-4 over the 96 cells at 2.0-5.5 um (largest 4.8e-4), on average 2.9e-4 below it at 295 K, 2.1e-3 below at 1.8 um (outside the stated range) and 295 K; differences move by whole temperature columns (see the source notes). Checked 2026-10-14 against the printed coefficients."
+notes = "Fitted to the raw measured indices of both prisms (p. 2). 'Average absolute residual of the fit from the measured data is 1 x 10^-4' (Table 10 caption)."
+
+[[datasets]]
+id = "n_Si_30K"
+material = "Si"
+file = "Si/frey_2006__n_Si_30K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 30 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 at 30 K: 8.61e-5 (1.5 um), 5.00e-5 (3.0), 4.94e-5 (4.0), 5.08e-5 (5.0)."
+[datasets.parameters]
+temperature_k = 30
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_40K"
+material = "Si"
+file = "Si/frey_2006__n_Si_40K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 40 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 40
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_50K"
+material = "Si"
+file = "Si/frey_2006__n_Si_50K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 50 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 50
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_60K"
+material = "Si"
+file = "Si/frey_2006__n_Si_60K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 60 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 60
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_70K"
+material = "Si"
+file = "Si/frey_2006__n_Si_70K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 70 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 70
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_80K"
+material = "Si"
+file = "Si/frey_2006__n_Si_80K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 80 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 80
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_90K"
+material = "Si"
+file = "Si/frey_2006__n_Si_90K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 90 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 90
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_100K"
+material = "Si"
+file = "Si/frey_2006__n_Si_100K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 100 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 at 100 K: 1.20e-4 (1.5 um), 9.14e-5 (3.0), 9.07e-5 (4.0), 9.00e-5 (5.0)."
+[datasets.parameters]
+temperature_k = 100
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_150K"
+material = "Si"
+file = "Si/frey_2006__n_Si_150K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 150 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 150
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_200K"
+material = "Si"
+file = "Si/frey_2006__n_Si_200K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 200 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 at 200 K: 9.16e-5 (1.5 um), 5.52e-5 (3.0), 5.44e-5 (4.0), 5.42e-5 (5.0)."
+[datasets.parameters]
+temperature_k = 200
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_250K"
+material = "Si"
+file = "Si/frey_2006__n_Si_250K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 250 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 250
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Si_295K"
+material = "Si"
+file = "Si/frey_2006__n_Si_295K.csv"
+table = "tbl_032f91d73970"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 2, 295 K column: the absolute index of Si at 13 wavelengths, 1.1-5.5 um, 'calculated using this Sellmeier model based on our measured data' (p. 2) although the printed Table 5 coefficients do not reproduce them (differences up to 3.9e-4 at 1.2-5.5 um, 1.6e-4 at 1.3-5.5 um and 295 K, 1.0e-3 at 1.1 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/- 1 x 10^-4' (p. 3; level not stated). Table 1 at 295 K: 8.67e-5 (1.5 um), 4.55e-5 (3.0), 4.47e-5 (4.0), 4.46e-5 (5.0)."
+[datasets.parameters]
+temperature_k = 295
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "dndt_Si_30K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_30K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 30 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 30
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_40K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_40K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 40 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 40
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_50K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_50K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 50 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 50
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_60K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_60K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 60 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 60
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_70K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_70K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 70 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 70
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_80K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_80K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 80 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 80
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_90K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_90K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 90 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 90
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_100K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_100K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 100 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 100
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_150K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_150K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 150 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 150
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_200K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_200K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 200 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 200
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_250K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_250K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 250 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 250
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Si_295K"
+material = "Si"
+file = "Si/frey_2006__dndt_Si_295K.csv"
+table = "tbl_7450bffe6825"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 4, 295 K column: dn/dT (1/K) of Si at 13 wavelengths, 1.1-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it. It is not the T-derivative of the Table 5 Sellmeier (see the source notes)."
+[datasets.parameters]
+temperature_k = 295
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "n_Ge_30K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_30K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 30 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 at 30 K: 2.09e-4 (2.0 um), 1.68e-4 (3.0), 1.75e-4 (4.0), 1.74e-4 (5.0)."
+[datasets.parameters]
+temperature_k = 30
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_40K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_40K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 40 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 40
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_50K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_50K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 50 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 50
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_60K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_60K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 60 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 60
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_70K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_70K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 70 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 70
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_80K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_80K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 80 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 80
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_90K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_90K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 90 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 90
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_100K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_100K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 100 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 at 100 K: 1.81e-4 (2.0 um), 1.48e-4 (3.0), 1.44e-4 (4.0), 1.41e-4 (5.0)."
+[datasets.parameters]
+temperature_k = 100
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_150K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_150K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 150 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 150
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_200K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_200K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 200 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 at 200 K: 1.49e-4 (2.0 um), 1.11e-4 (3.0), 1.06e-4 (4.0), 1.04e-4 (5.0)."
+[datasets.parameters]
+temperature_k = 200
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_250K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_250K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 250 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 gives no column at this temperature."
+[datasets.parameters]
+temperature_k = 250
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "n_Ge_295K"
+material = "Ge"
+file = "Ge/frey_2006__n_Ge_295K.csv"
+table = "tbl_f6ae92c9ec46"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 7, 295 K column: the absolute index of Ge at 9 wavelengths, 1.8-5.5 um (the text gives the measured range as 1.9-5.5 um, p. 5; the 1.8 um row is printed without comment). Calculated from the Sellmeier model (p. 2), although the printed Table 10 coefficients do not reproduce it (differences up to 4.8e-4 at 2.0-5.5 um, 2.1e-3 at 1.8 um and 295 K; see the source notes). Uncertainty: 'typical measurement uncertainty of +/-1 x 10^-4' (p. 5; level not stated). Table 6 at 295 K: 1.21e-4 (2.0 um), 6.97e-5 (3.0), 6.52e-5 (4.0), 6.41e-5 (5.0)."
+[datasets.parameters]
+temperature_k = 295
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+[datasets.uncertainty]
+absolute = 1e-4
+level = "not stated"
+
+[[datasets]]
+id = "dndt_Ge_30K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_30K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 30 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 30
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_40K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_40K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 40 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 40
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_50K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_50K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 50 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 50
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_60K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_60K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 60 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 60
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_70K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_70K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 70 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 70
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_80K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_80K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 80 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 80
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_90K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_90K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 90 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 90
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_100K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_100K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 100 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 100
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_150K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_150K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 150 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 150
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_200K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_200K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 200 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 200
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_250K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_250K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 250 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 250
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"
+
+[[datasets]]
+id = "dndt_Ge_295K"
+material = "Ge"
+file = "Ge/frey_2006__dndt_Ge_295K.csv"
+table = "tbl_b208df1e1ae7"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 9, 295 K column: dn/dT (1/K) of Ge at 9 wavelengths, 1.8-5.5 um, 'Measured thermo-optic coefficient' (caption). The paper does not say how it was derived, and states no uncertainty for it."
+[datasets.parameters]
+temperature_k = 295
+form = "bulk"
+technique = "minimum deviation"
+index_medium = "vacuum"

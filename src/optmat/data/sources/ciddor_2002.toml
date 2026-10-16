@@ -1,0 +1,56 @@
+citation = "P. E. Ciddor, Appl. Opt. 41, 2292 (2002)"
+library = "Ciddor_2002_RefractiveIndexAir"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Review and recalculation of the refractive index of moist air (three components: \
+CO2-free dry air, CO2, water vapour), combined by Lorentz-Lorenz terms (Eqs. 6-9); no \
+measurements."""
+notes = """The library record is unverified; the title and author are from the page ('Refractive \
+index of air: 3. The roles of CO2, H2O, and refractivity virials', P. E. Ciddor, CSIRO; \
+received 6 August 2001; footer 0003-6935/02/122292-07); volume and page as cited by \
+marchetti_2006's reference list (Appl. Optics 41 (2002) 2292-2298). No DOI.
+
+Nothing is extracted as data. The CO2 dispersion equations the paper compares are \
+recorded as reproduced formulas (Eq. 4, Edlen's; Eq. 5, Old et al.'s, curated as \
+old_1971). Table 1 (air densities and phase and group refractivities) and Table 2 \
+(experimental limits) concern air, not a curated species; the water-vapour discussion \
+(Barrell and Sears's reference refractivity, revised to 308.7 at 10 mm Hg, 20 C, x \
+10^-8, 1.005 times Owens's 307.1) likewise.
+
+Refractivity virials (Section 8): no values are given. Quoted: 'the second refractivity \
+virial coefficient for N2 is variously quoted [refs. 16-18: achtermann_1991, Montixi \
+et al. 1983, Burns et al. 1986] with a relative uncertainty of ~10%', and for N2 (from \
+Achtermann et al.) B_R rho0 / A_R ~ 8 x 10^-6 at atmospheric density, so that the \
+linear approximation L* = A_R* rho errs by 6e-10 in n within 20 % of the reference \
+density. The paper also states that the Old et al. equation (with the 4.2 um CO2 \
+resonance) extrapolates well into the infrared whereas Edlen's does not, the two \
+differing by less than 3e-7 at about 500-700 nm and by less than 5e-6 in the near \
+infrared (Fig. 1)."""
+
+[[formulas]]
+id = "edlen_co2"
+material = "CO2"
+equation = "Eq. (4), p. 2"
+printed = "10^8 (n_EDLEN - 1) = 22822.1 + 117.8 sigma^2 + 2406030/(130 - sigma^2) + 15997/(38.9 - sigma^2)"
+variable = "sigma = 1/lambda, lambda the vacuum wavelength in micrometres"
+state = "1atm_15C"
+density = "unknown"
+range = "about 250-700 nm (Edlen's CO2 data)"
+coefficients = { A = "22822.1", B = "117.8", C1 = "2406030", D1 = "130", C2 = "15997", D2 = "38.9" }
+reproduced_from = ["edlen_1966", "C. and M. Cuthbertson, Proc. R. Soc. London A 97, 152 (1920) (cuthbertson_1920)", "J. Koch (1914)"]
+check = "Stated to be 'at a common temperature of 0 C and CO2 pressure of 101,325 Pa', but at 633 nm it gives 42426e-8, while Eq. (5) (Old et al., 0 C) gives 44794e-8; scaled by 288.15/273.15 it gives 44756e-8, 3.8e-7 below Eq. (5); over 500-700 nm the scaled Eq. (4) lies 3.1-4.3e-7 below Eq. (5), close to but not within the text's 'less than 3 x 10^-7'. The scaling is settled instead by Fig. 2, which the scaled Eq. (4) reproduces (zero crossing at 864 nm, +0.069 at 1300 nm), as it does Fig. 1 (second reading, 2026-09-25; TC-157). The printed coefficients are therefore Edlen's 15 C air formula (edlen_1966: 2406030/(130 - s^2) + 15997/(38.9 - s^2)) plus his CO2 correction (14485 + 117.8 s^2, eq18_CO2), i.e. for 15 C, not 0 C; the constant 22822.1 is 5.0 below 8342.13 + 14485 (not explained in the paper). The state recorded is 15 C accordingly. Checked 2026-09-25."
+notes = "Represents ultraviolet resonances only; 'valid only in the ultraviolet and the visible' (abstract)."
+
+[[formulas]]
+id = "old_co2"
+material = "CO2"
+equation = "Eq. (5), p. 2"
+printed = "10^8 (n_OLD - 1) = 154.489/(0.0584738 - sigma^2) + 8309192.7/(210.92417 - sigma^2) + 287641.90/(60.122959 - sigma^2)"
+variable = "sigma = 1/lambda, lambda the vacuum wavelength in micrometres"
+state = "1atm_0C"
+density = "real"
+range = "480-1817 nm (Old et al.'s measurements)"
+coefficients = { B1 = "154.489", C1 = "0.0584738", B2 = "8309192.7", C2 = "210.92417", B3 = "287641.90", C3 = "60.122959" }
+reproduced_from = ["old_1971"]
+check = "Identical to old_1971's Sellmeier (x 10^5 there, every numerator 1000 times smaller); 44794e-8 at 633 nm. Checked 2026-09-25."
+notes = "The first term is the 4.2 um infrared resonance. Ciddor adopts it as the standard for CO2."

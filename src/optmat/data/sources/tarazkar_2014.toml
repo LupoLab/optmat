@@ -1,0 +1,124 @@
+citation = "M. Tarazkar, D. A. Romanov and R. J. Levis, \"High-order nonlinear refractive indices for He, Ne, Kr, and Xe atoms\", Phys. Rev. A 90, 062514 (2014)"
+doi = "10.1103/physreva.90.062514"
+library = "Tarazkar_2014_HighOrderNonlinear"
+identity = "VALIDATED"
+kind = "theory"
+technique = """CCSD cubic response (DALTON) for the static, dc Kerr, ESHG and DFWM second-order \
+hyperpolarizability gamma^(2) (conventional gamma) of He, Ne, Kr, Xe, computed as \
+functions of an auxiliary static field F0 (1e-3 to 1e-2 a.u.) and fitted by quadratic \
+polynomials in F0 to extract the fourth-order (fifth-order response) gamma^(4); t-aug-cc-pV5Z \
+(He, Ne, Kr) and x-aug-cc-pVQZ-pp with relativistic pseudopotential (Xe) basis sets."""
+notes = """Pages: article 062514, pdf pages 1-10 = pages 062514-1 to -10.
+
+NOTATION AND CONVENTION (Eqs. 1, 3, pp. 062514-2): the induced dipole mu = mu0 + alpha F \
++ (1/2!) beta F F + (1/3!) gamma^(2) F F F + (1/4!) gamma^(3) ... + (1/5!) gamma^(4) \
+F^5; with F = F0 + F_w cos wt the terms are (1/6) gamma^(2)(0;0,0,0) F0^3, (1/2) \
+gamma^(2)(-w; w, 0, 0) F_w F0 F0 cos wt, (1/8) gamma^(2)(-w; w, -w, w) F_w^3 cos wt, (1/4) \
+gamma^(2)(-2w; w, w, 0) F_w^2 F0 cos 2wt, (1/24) gamma^(2)(-3w; w, w, w) F_w^3 cos 3wt: the \
+Taylor-series (T) convention. Their 'second-order hyperpolarizability gamma^(2)' is the \
+conventional gamma; 'fourth-order gamma^(4)' is the fifth-order response epsilon. \
+'the optical Kerr effect is related to gamma^(2)(-w; w, -w, w)' (DFWM, process kerr). \
+For atoms gamma_par = gamma_zzzz (Eq. 5).
+
+DATASETS: Table II (pdf page 6), Xe CCSD gamma at 800 nm (static, dc Kerr, ESHG, DFWM) in \
+aug-, d-aug-, t-aug-, q-aug-cc-pVQZ-pp: 'the q-aug-cc-pVQZ-pp basis set significantly \
+improves the convergence' (p. 062514-5); rows 'a' 6888 (Ref. 33, Shelton 1990) and 'b' \
+7030 +- 200 (Ref. 31, Rice et al. 1991) are quoted static values (reproduced). 800 nm is \
+recorded as a vacuum wavelength (not stated).
+
+HIGHER ORDER (notes only): Tables I, III, IV give the fourth-order \
+gamma^(4) (in 10^4 a.u.; 1 a.u. = 2.358106793e-88 C^6 m^6 J^-5) for He, Ne, Kr, Xe, \
+static and at 800 nm (dc Kerr, ESHG, DFWM), 'within 4 %' fit uncertainty; the degenerate \
+six-wave mixing coefficient from Eq. (14), gamma^(4)_DSWM = 3 gamma^(4)_DFWM - 3 \
+gamma^(4)_dcKerr + gamma^(4)_static, derived from Bishop and De Kee's W2/W4 expansion \
+(bishop_1996; Eqs. 12a-d, 13a-c); and n4 (cm^4/W^2) = 4.02 x 10^-40 gamma^(4)_DSWM (a.u.) \
+(Eq. 15, density not stated). 'At 800 nm, the values for n4 vary from 6.7 x 10^-12 (for \
+helium) to 2.2 x 10^-8 cm^4/TW^2 (for xenon)' and n4 is POSITIVE for all the noble gases \
+at 250-2000 nm (p. 062514-8): a theoretical refutation of the negative higher-order Kerr \
+terms of Loriot et al. (2009); the observed saturation is attributed to plasma and \
+ionization-grating coupling. Table III (Xe gamma^(4)) and Table IV (dispersion of \
+gamma^(4) for all four gases) are garbled in the library's cells (not needed). The \
+three-photon absorption edges quoted: He 151, Ne 172, Ar 236, Kr 265, Xe 306 nm (p. \
+062514-8)."""
+
+[[datasets]]
+id = "static"
+material = "Xe"
+file = "Xe/tarazkar_2014__static.csv"
+table = "tbl_6edfad81b32e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'Static': CCSD gamma of Xe (= gamma_zzzz) by basis (row ids); pseudopotential basis sets (scalar relativity through the pseudopotential), valence correlation."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr"
+material = "Xe"
+file = "Xe/tarazkar_2014__dc_kerr.csv"
+table = "tbl_6edfad81b32e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'dc Kerr': CCSD gamma(-w; w, 0, 0) of Xe at 800 nm by basis (gamma_zzzz, the parallel component; not gamma_K)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "eshg"
+material = "Xe"
+file = "Xe/tarazkar_2014__eshg.csv"
+table = "tbl_6edfad81b32e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'ESHG': CCSD gamma(-2w; w, w, 0) of Xe at 800 nm by basis."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "kerr"
+material = "Xe"
+file = "Xe/tarazkar_2014__kerr.csv"
+table = "tbl_6edfad81b32e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II 'DFWM': CCSD gamma(-w; w, -w, w) of Xe at 800 nm by basis, the Kerr (SPM) coefficient; q-aug-cc-pVQZ-pp 7871 a.u."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "quoted_static"
+material = "Xe"
+file = "Xe/tarazkar_2014__quoted_static.csv"
+table = "tbl_6edfad81b32e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "rice_1991"]
+notes = "Table II rows 'a' (Ref. 33, Shelton 1990: 6888, the ESHG static extrapolation) and 'b' (Ref. 31, Rice et al. 1991: 7030 +- 200, CCSD(T) best estimate)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"

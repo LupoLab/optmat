@@ -1,0 +1,387 @@
+citation = "H. R. Philipp, \"Silicon Dioxide (SiO2) (Glass)\", in Handbook of Optical Constants of Solids, E. D. Palik, ed. (Academic Press, 1985), pp. 749-763"
+doi = "10.1016/b978-0-08-054721-3.50040-x"
+library = "PHILIPP_1985_SiliconDioxideSiO2"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A critical compilation of the optical constants of SiO2 glass at room temperature \
+from 2000 eV (6.2 A) to 0.00248 eV (500 um), each range from a different original \
+(pp. 750-752): values computed from Henke's atomic scattering factors; reflectance \
+against angle of incidence (Rife and Osantowski; Hunter); Kramers-Kronig analyses of \
+normal-incidence reflectance (Philipp, Lamy; Philipp 1979 in the infrared); thin-film \
+and bulk transmission (Weinberg et al., Appleton et al., Kaminow et al., Drummond, \
+Philipp 1979); minimum-deviation prism data (Malitson, through Brixner's Sellmeier \
+fit); far-infrared interferometry (Randall and Rawcliffe)."""
+notes = """Chapter pages 749-763 are pdf pages 1-15; the text is pp. 749-752, Table X pp. \
+753-763 (pdf pp. 5-15), Fig. 10 (log-log plot of n and k against wavelength, 0.05-500 um, \
+figure only) p. 753. The library's pdf is the Elsevier reprint (the DOI's ISBN, file \
+name 'philipp_1997'); the chapter is the 1985 Handbook's. Identity checked against the \
+first page.
+
+WHAT TABLE X HOLDS. For every row: photon energy (eV), the wavenumber (cm-1, infrared \
+rows only), the wavelength (angstrom to 490 A, micrometre from 0.04959 um: the unit \
+switches inside the p. 9 part), n, k, and from p. 12 on k_ABS, 'obtained from \
+transmission measurements' (table footnote a). A reference tag in brackets names the \
+original of a value and of the values below it in the same column; the ranges by tag \
+(text pp. 750-752, pdf pp. 2-4) are the datasets below. 'The wavelength and index of \
+refraction n values are given to four places, and the extinction coefficient k values \
+are given to three places ... The accuracy of these values does not, in general, \
+warrant this precision' (p. 749). Every k printed as a bare mantissa inherits the power \
+of ten of the cell above (see the extraction script); the powers were checked on the \
+table images, in two full passes, and against the smoothness of k (the only jumps of \
+more than a factor 1.6 between neighbouring inherited values are the silicon K edge at \
+1815-1860 eV and the oxygen K edge at 529-542 eV).
+
+CROSS-CHECK. eV x wavelength agrees with hc to within the rounding of the printed digits \
+on all 442 rows but one, the 22.96 eV row, whose wavelength is printed 0.540 um for \
+0.0540 um (erratum below). The wavenumber column agrees with the wavelength on every \
+row; at 6.0 eV the printed 0.2066 um is 1e4/48,390 = 0.20665 rounded down (rounding).
+
+RANGES AND STATED ACCURACY (quotes, text pp. 750-752):
+- 2000-154 eV (6.199-80.51 A) [17]: 'we have calculated n and k based on the results of \
+Henke et al. in the region 80.5-6.1 A by assuming the atomic scattering factors of Si \
+and O in appropriate mixture ... The agreement in the overlap region near 82 A with \
+data of Rife and Osantowski is remarkable'; the same values would hold for alpha-quartz \
+of the same density. No accuracy stated. The density assumed is not stated.
+- 82-290 A [16]: 'data of Rife and Osantowski for a high-silica glass with 7.5% TiO2' \
+(reflectivity against angle of incidence, synchrotron radiation). NOT PURE SiO2: the \
+sample is a titania-silica glass; Philipp uses it as silica. Its two datasets are \
+filed under that glass (material SiO2-TiO2), not SiO2. The original is curated \
+(rife_1980): the 150-260 A rows are in fact Rife and Osantowski's other sample, the \
+Cer-Vit glass ceramic (glass A), moved up by 2 A (see the datasets' notes).
+- 300-600 A [15]: Hunter's unpublished reflectivity-against-angle data ('private \
+communication of unpublished data (1983)'), which 'show good overlap with the data of \
+Philipp and Lamy'. Printed at 300-490 A and 0.0500-0.0600 um.
+- lambda <= 0.11 um [9, 10]: 'a smooth curve drawn through both sets of data' (Philipp's \
+and Lamy's Kramers-Kronig results; Lamy's using Platzoder and Steinmann's reflectance \
+below 0.1 um). 'The deviations of each set of data points from the smoothed curve is \
+generally less than 5%. This does not attest to their absolute accuracy, however, \
+because in both cases the KK evaluations are based on somewhat arbitrary \
+extrapolations of the reflectance for lambda < 0.05 um ... In addition, the reflectance \
+values themselves may be in error.' In the overlap with Hunter (0.0496-0.0600 um) the \
+two sets differ: at 0.04959 um n = 0.733, k = 0.325 [9, 10] against 0.803, 0.300 at \
+0.0500 um [15]; at 0.06199 um 0.859, 0.585 against 0.862, 0.497 at 0.0600 um.
+- 0.1107-0.2066 um n [9]: Philipp's n, preferred to Lamy's above 0.11 um because \
+Philipp's k at 0.11-0.12 um agrees with Weinberg et al.'s transmission; 'This agreement \
+was accomplished with a slight modification of Philipp's results as described in \
+Weinberg et al.' (weinberg_1979 shifts Philipp's data by +0.075 eV to align the first \
+peak, p. 3111 there).
+- 0.1107-0.1291 um k [12]: 'The k values given in the table for 0.11 um <= lambda <= \
+0.13 um are taken from' Weinberg et al. (thermally grown films).
+- 0.1305-0.1590 um k [12-14]: 'obtained from a smooth curve drawn through the \
+transmission results of Weinberg et al., their thickest sample, those of Appleton et al. \
+and those of Kaminow et al., sample B2. Care should be taken in using the k values for \
+lambda >~ 0.13 um because they may have a component of impurity absorption (especially \
+OH) and defect absorption in them. For this reason, no k values are given for lambda >= \
+0.163 um.'
+- 0.213856-3.7067 um n [7]: Malitson's prism data 'fitted to three- and four-term \
+Sellmeier equations, and the values generated by Brixner are given in the table'; 'the \
+very precise Sellmeier-equation fits ... are not very reliable for wavelengths outside \
+the fitted range'. No k in this range: above ~0.6 um the measured absorption is \
+dominated by OH; below, Keck et al.'s intrinsic limit is 'questionable'.
+- 3.846-40 um n, and 7.692-26.67 um k [2]: Philipp 1979, Kramers-Kronig analysis of \
+reflectance augmented by absorption measurements. 'In the regions of strong infrared \
+absorption (k >~ 0.5), the values for n and k given in the table should be reasonably \
+good (+-15%) ... In the regions of weak infrared absorption, the k values as given by KK \
+analysis are not reliable.'
+- k_ABS 3.636-7.407 um [4]: Drummond's absorption spectrum (lambda <~ 7.5 um), \
+'duplicated for the most part by Galeener and Lucovsky in the 3.7-7.5 um region, with \
+alpha roughly 20% larger'; k 'must be carefully examined for wavelengths below 7.634 um, \
+where impurity absorption, especially that associated with OH bonding, can mask \
+intrinsic SiO2 absorption'.
+- k_ABS 7.692-40 um [2]: Philipp 1979's absorption data: 'perhaps better than the KK \
+derived values, they should also be treated as unreliable', because of impurities and \
+defects in the samples.
+- 100-500 um [1]: Randall and Rawcliffe, interferometric; 'The n values appear to be \
+reasonably precise, while the k values may be in error by as much as +-30%.' At 500 um \
+the printed k (7.96e-3) is larger than at 250 um (6.96e-3), against the trend of the \
+column; kept as printed (no evidence of a misprint).
+
+USE. Philipp's own ranges ([2], [9], the [9, 10] curve) and Hunter's otherwise \
+unpublished data are primary. Every other range reproduces another work and is \
+'reproduced'; none of those originals is in the library with tabulated values, so they \
+remain the best copies available. The temperature is 'room temperature' (p. 749) \
+throughout, except Malitson's 20 degrees C. Wavelengths are vacuum values except the \
+Malitson rows, which keep Malitson's standard-air line wavelengths."""
+
+[[datasets]]
+id = "henke_n"
+material = "SiO2"
+file = "SiO2/philipp_1985__henke_n.csv"
+table = "tbl_252c849fca85"
+quantity = "refractive_index"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["B. L. Henke, P. Lee, T. J. Tanaka, R. L. Shimabukuro and B. K. Fujikawa, in Low Energy X-Ray Diagnostics-1981, D. T. Attwood and B. L. Henke, eds., AIP Conference Proc. No. 75 (American Institute of Physics, New York, 1981)"]
+notes = "Table X, 2000-154 eV (6.199-80.51 A; parts tbl_252c849fca85, tbl_163001deeaae, tbl_dcfeca794199 and the first four rows of tbl_675d911da2e7): n computed by Philipp from Henke et al.'s atomic scattering factors of Si and O (p. 751). A calculation, not a measurement."
+
+[[datasets]]
+id = "henke_k"
+material = "SiO2"
+file = "SiO2/philipp_1985__henke_k.csv"
+table = "tbl_252c849fca85"
+quantity = "extinction_coefficient"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["B. L. Henke, P. Lee, T. J. Tanaka, R. L. Shimabukuro and B. K. Fujikawa, in Low Energy X-Ray Diagnostics-1981, D. T. Attwood and B. L. Henke, eds., AIP Conference Proc. No. 75 (American Institute of Physics, New York, 1981)"]
+notes = "As henke_n, k. Mantissas under a printed power of ten inherit it (extraction script). The steps at 1815-1860 eV (Si K edge) and 529-542 eV (O K edge) are as printed."
+
+[[datasets]]
+id = "rife_osantowski_n"
+material = "SiO2-TiO2"
+file = "SiO2-TiO2/philipp_1985__rife_osantowski_n.csv"
+table = "tbl_675d911da2e7"
+quantity = "refractive_index"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["rife_1980"]
+notes = "Table X, 82-290 A (tbl_675d911da2e7 and the first row of tbl_19c745bbcfde): reflectivity against angle of incidence with synchrotron radiation, on 'a high-silica glass with 7.5% TiO2' (p. 751): not pure silica, so filed under that glass (SiO2-TiO2), although Philipp's table gives these as silica glass's n and k over 82-290 A and finds his Henke-based SiO2 values in 'remarkable' agreement at 82 A. A silica model may use them as a proxy there, knowingly. CHECKED AGAINST THE ORIGINAL (rife_1980, 2026-09-27): only the 88, 98, 108, 118, 128 and 138 A rows equal Rife and Osantowski's Table II (glass B, Corning 7971 ULE, the titania-silica glass) exactly; the 2-A-spaced rows between them are in neither of their tables (presumably read from their Fig. 4 or data); the 150-260 A rows are their Table I, GLASS A (Cer-Vit C101, a lithium aluminosilicate glass ceramic, material Cer-Vit-C101), at 148-258 A, the wavelength moved up by 2 A; and 270-290 A match neither table (glass B prints n 0.9225, 0.9214, 0.9202 at 268-288 A against 0.9207, 0.9175, 0.9137 here). So rows 137-148 of this file are not the titania-silica glass. Values unchanged; rife_1980 holds the tables as printed."
+[datasets.parameters]
+form = "bulk"
+
+[[datasets]]
+id = "rife_osantowski_k"
+material = "SiO2-TiO2"
+file = "SiO2-TiO2/philipp_1985__rife_osantowski_k.csv"
+table = "tbl_675d911da2e7"
+quantity = "extinction_coefficient"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["rife_1980"]
+notes = "As rife_osantowski_n, k (7.5 % TiO2 glass). Mantissas under a printed power of ten inherit it. As for n (checked against rife_1980): 88-138 A in 10 A steps equal glass B's Table II; 150-260 A are glass A's (Cer-Vit) Table I at 148-258 A; the other rows are in neither table (270-290 A: 0.068, 0.075, 0.082 against glass B's 0.0690, 0.0743, 0.0823 at 268-288 A)."
+[datasets.parameters]
+form = "bulk"
+
+[[datasets]]
+id = "hunter_n_angstrom"
+material = "SiO2"
+file = "SiO2/philipp_1985__hunter_n_angstrom.csv"
+table = "tbl_19c745bbcfde"
+quantity = "refractive_index"
+abscissa_unit = "angstrom"
+use = "primary"
+notes = "Table X, 300-490 A: W. R. Hunter, private communication of unpublished data (1983), reflectivity against angle of incidence on fused silica, 0.3-0.03 um measured, 600-300 A used (p. 751). First published here. Continued in micrometres by hunter_n_um."
+[datasets.parameters]
+form = "bulk"
+technique = "reflectance against angle of incidence"
+
+[[datasets]]
+id = "hunter_k_angstrom"
+material = "SiO2"
+file = "SiO2/philipp_1985__hunter_k_angstrom.csv"
+table = "tbl_19c745bbcfde"
+quantity = "extinction_coefficient"
+abscissa_unit = "angstrom"
+use = "primary"
+notes = "As hunter_n_angstrom, k. The first four values inherit the 10^-2 printed at 330 A."
+[datasets.parameters]
+form = "bulk"
+technique = "reflectance against angle of incidence"
+
+[[datasets]]
+id = "hunter_n_um"
+material = "SiO2"
+file = "SiO2/philipp_1985__hunter_n_um.csv"
+table = "tbl_19c745bbcfde"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table X, 0.0500-0.0600 um (the part's second half, after the unit switch): Hunter's values, interleaved with the [9, 10] rows. The 22.96 eV row's wavelength is misprinted (erratum)."
+[datasets.parameters]
+form = "bulk"
+technique = "reflectance against angle of incidence"
+
+[[datasets]]
+id = "hunter_k_um"
+material = "SiO2"
+file = "SiO2/philipp_1985__hunter_k_um.csv"
+table = "tbl_19c745bbcfde"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "As hunter_n_um, k."
+[datasets.parameters]
+form = "bulk"
+technique = "reflectance against angle of incidence"
+
+[[datasets]]
+id = "philipp_lamy_n"
+material = "SiO2"
+file = "SiO2/philipp_1985__philipp_lamy_n.csv"
+table = "tbl_19c745bbcfde"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table X, 25-11.4 eV (0.04959-0.1088 um), tag [9, 10]: Philipp's smooth curve through his own (Solid State Commun. 4, 73 (1966), philipp_1966; J. Phys. Chem. Solids 32, 1935 (1971), philipp_1971; both figures only) and Lamy's (Appl. Opt. 16, 2212 (1977), lamy_1977, whose Table I overlaps this range only at 1000-1088 A, agreeing within 0.04 in n and 0.03 in k) Kramers-Kronig results; a curve, not a reprint, so it stays primary; 'deviations of each set of data points from the smoothed curve is generally less than 5%', not an absolute accuracy (p. 751)."
+[datasets.parameters]
+form = "bulk"
+technique = "Kramers-Kronig analysis of reflectance"
+
+[[datasets]]
+id = "philipp_lamy_k"
+material = "SiO2"
+file = "SiO2/philipp_1985__philipp_lamy_k.csv"
+table = "tbl_19c745bbcfde"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "As philipp_lamy_n, k."
+[datasets.parameters]
+form = "bulk"
+technique = "Kramers-Kronig analysis of reflectance"
+
+[[datasets]]
+id = "philipp_vuv_n"
+material = "SiO2"
+file = "SiO2/philipp_1985__philipp_vuv_n.csv"
+table = "tbl_f3221b4d7cc9"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table X, 11.2-6.0 eV (0.1107-0.2066 um), tag [9]: Philipp's Kramers-Kronig n (Solid State Commun. 4, 73 (1966), philipp_1966; J. Phys. Chem. Solids 32, 1935 (1971), philipp_1971; both show it in figures only), 'with a slight modification ... as described in Weinberg et al.' (p. 751)."
+[datasets.parameters]
+form = "bulk"
+technique = "Kramers-Kronig analysis of reflectance"
+
+[[datasets]]
+id = "weinberg_k"
+material = "SiO2"
+file = "SiO2/philipp_1985__weinberg_k.csv"
+table = "tbl_f3221b4d7cc9"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["weinberg_1979"]
+notes = "Table X, 11.2-9.6 eV (0.1107-0.1291 um), tag [12]: k 'taken from' Weinberg et al.'s transmission of thermally grown SiO2 films (p. 751). weinberg_1979 shows its absorption coefficient in figures only, so this is the only tabulation."
+[datasets.parameters]
+form = "film"
+technique = "transmission"
+
+[[datasets]]
+id = "transmission_curve_k"
+material = "SiO2"
+file = "SiO2/philipp_1985__transmission_curve_k.csv"
+table = "tbl_f3221b4d7cc9"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["weinberg_1979", "A. Appleton, T. Chiranjivi and M. Jafaripour-Ghazvini, in The Physics of SiO2 and Its Interfaces, S. T. Pantelides, ed. (Pergamon, New York, 1978), p. 94", "I. P. Kaminow, B. G. Bagley and C. G. Olson, Appl. Phys. Lett. 32, 98 (1978)"]
+notes = "Table X, 9.5-7.8 eV (0.1305-0.1590 um), tag [12-14]: 'a smooth curve drawn through the transmission results of Weinberg et al., their thickest sample, those of Appleton et al. and those of Kaminow et al., sample B2' (p. 751); may contain impurity (OH) and defect absorption. The absorption edge: k falls from 5.6e-2 to 4.7e-6."
+[datasets.parameters]
+technique = "transmission"
+
+[[datasets]]
+id = "brixner_malitson_n"
+material = "SiO2"
+file = "SiO2/philipp_1985__brixner_malitson_n.csv"
+table = "tbl_7e7b88d780eb"
+quantity = "refractive_index"
+abscissa_unit = "um"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "B. Brixner, J. Opt. Soc. Am. 57, 674 (1967)"]
+notes = "Table X, 0.213856-3.7067 um, tag [7]: 'the values generated by Brixner' from three- and four-term Sellmeier fits to Malitson's prism data (p. 750), at Malitson's 60 wavelengths (Table I there), five decimals. They are not Malitson's Eq. (1): they differ from malitson_1965/computed by -29e-6 to +25e-6 (at 3.7067 and 3.2668 um), and follow Malitson's mean measured values (computed + C-D-G.E. residual) to within +-1e-5 at most wavelengths (6e-5 at 0.226747 um, the line Malitson says was misassigned). Derived from malitson_1965's data: never fitted beside them. The wavelengths are Malitson's standard-air line wavelengths (see malitson_1965); 20 degrees C."
+[datasets.parameters]
+temperature_k = 293.15
+form = "bulk"
+
+[[datasets]]
+id = "philipp_ir_n"
+material = "SiO2"
+file = "SiO2/philipp_1985__philipp_ir_n.csv"
+table = "tbl_3ed3b519e90e"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table X, 3.846-40.00 um, tag [2]: Philipp, J. Appl. Phys. 50, 1053 (1979), Kramers-Kronig analysis of reflectance augmented by absorption measurements (p. 750). '+-15%' where the absorption is strong (k >~ 0.5); in the weakly absorbing ranges the KK values are less reliable. Every n printed from 3.846 um on, with gaps where only k_ABS is given."
+[datasets.parameters]
+form = "bulk"
+technique = "Kramers-Kronig analysis of reflectance"
+
+[[datasets]]
+id = "philipp_ir_k"
+material = "SiO2"
+file = "SiO2/philipp_1985__philipp_ir_k.csv"
+table = "tbl_b04abceaf3b9"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "As philipp_ir_n, k, 7.692-26.67 um: '+-15%' for k >~ 0.5; 'In the regions of weak infrared absorption, the k values as given by KK analysis are not reliable' (p. 750); compare philipp_k_abs there."
+[datasets.parameters]
+form = "bulk"
+technique = "Kramers-Kronig analysis of reflectance"
+
+[[datasets]]
+id = "drummond_k_abs"
+material = "SiO2"
+file = "SiO2/philipp_1985__drummond_k_abs.csv"
+table = "tbl_3ed3b519e90e"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["D. G. Drummond, Proc. R. Soc. London 153, 328 (1935)"]
+notes = "Table X column k_ABS, 3.636-7.407 um, tag [4]: k from Drummond's absorption (transmission) spectrum, which Galeener and Lucovsky largely duplicated 'with alpha roughly 20% larger' (p. 750); below 7.634 um impurity (OH) absorption can mask the intrinsic absorption. The citation's year is printed 1935 here (Kitamura 2007 gives 1936)."
+[datasets.parameters]
+form = "bulk"
+technique = "transmission"
+
+[[datasets]]
+id = "philipp_k_abs"
+material = "SiO2"
+file = "SiO2/philipp_1985__philipp_k_abs.csv"
+table = "tbl_b04abceaf3b9"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "Table X column k_ABS, 7.692-40.00 um, tag [2]: k 'determined from absorption data' of Philipp 1979 in weakly absorbing ranges; 'perhaps better than the KK derived values, they should also be treated as unreliable' (p. 750)."
+[datasets.parameters]
+form = "bulk"
+technique = "transmission"
+
+[[datasets]]
+id = "randall_rawcliffe_n"
+material = "SiO2"
+file = "SiO2/philipp_1985__randall_rawcliffe_n.csv"
+table = "tbl_e7f8b49d5a9f"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["C. M. Randall and R. D. Rawcliffe, Appl. Opt. 6, 1889 (1967)"]
+notes = "Table X, 100-500 um, tag [1]: interferometric; 'The n values appear to be reasonably precise' (p. 750)."
+[datasets.parameters]
+form = "bulk"
+technique = "interferometry"
+
+[[datasets]]
+id = "randall_rawcliffe_k"
+material = "SiO2"
+file = "SiO2/philipp_1985__randall_rawcliffe_k.csv"
+table = "tbl_e7f8b49d5a9f"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "reproduced"
+reproduced_from = ["C. M. Randall and R. D. Rawcliffe, Appl. Opt. 6, 1889 (1967)"]
+notes = "As randall_rawcliffe_n, k: 'may be in error by as much as +-30%' (p. 750). The 500 um value (7.96e-3) exceeds the 250 um value (6.96e-3), against the column's trend; kept as printed."
+[datasets.parameters]
+form = "bulk"
+technique = "interferometry"
+[datasets.uncertainty]
+relative = 0.3
+level = "bound"
+
+[[errata]]
+dataset = "hunter_n_um"
+row = "179"
+column = "x"
+printed = "0.540"
+corrected = "0.0540"
+reason = "The wavelength of the 22.96 eV row is printed 0.540 um, ten times too large: the row lies between 0.0530 and 0.0550 um on Hunter's 0.001-um grid."
+evidence = "Table image (tbl_19c745bbcfde.jpg, p. 9 of the table) prints '0.540'; hc/(22.96 eV) = 0.05400 um; every other row's eV x wavelength agrees with hc to the printed digits."
+
+[[errata]]
+dataset = "hunter_k_um"
+row = "179"
+column = "x"
+printed = "0.540"
+corrected = "0.0540"
+reason = "As for hunter_n_um: the wavelength of the 22.96 eV row is printed 0.540 um for 0.0540 um."
+evidence = "Table image (tbl_19c745bbcfde.jpg) prints '0.540'; hc/(22.96 eV) = 0.05400 um."

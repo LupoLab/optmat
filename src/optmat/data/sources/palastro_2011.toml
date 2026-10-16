@@ -1,0 +1,71 @@
+citation = "J. P. Palastro, T. M. Antonsen, Jr. and A. Pearson, \"Models of the delayed nonlinear Raman response in diatomic gases\", Phys. Rev. A 84, 013829 (2011)"
+doi = "10.1103/PhysRevA.84.013829"
+library = "Palastro_2011_ModelsDelayedNonlinear"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Classical kinetic (Boltzmann) theory of the orientational response of a \
+diatomic gas to a polarizing laser field: the linear Green's function in closed form, a \
+perturbative fully nonlinear impulse response (second-order polarizability), and \
+reduced fluid (moment) models with transport coefficients fitted to the kinetic response \
+(Hammett-Perkins closures); compared with full quantum density-matrix calculations for \
+N2 and O2 (and H2) (secs. II-III)."""
+notes = """Journal pages 013829-1 to -11 = PDF pages 1-11. Identity checked against the \
+first page. N2, O2, H2 in the comparisons; no gas parameter (Delta alpha, B, I) is \
+tabulated or quoted as a number: NO DATASET. The models and their fitted dimensionless \
+parameters are recorded as [[formulas]] below (gas N2: the fits are to nitrogen at 294 \
+K).
+
+DEFINITIONS (Gaussian, p. 1): V_L(theta, t) = -(1/4)[alpha_perp + Delta alpha cos^2 theta] \
+|E(t)|^2 (E the field amplitude, cycle averaged), Delta alpha = alpha_par - alpha_perp; \
+polarization P = rho [alpha_perp + Delta alpha <cos^2 theta>] E; chi = 4 pi rho alpha_perp, \
+Gamma = rho Delta alpha <cos^2 theta>, wave equation Eq. (2) with (4 pi / c^2) d^2(Gamma \
+E)/dt^2. Classical correspondence: l_th >> 1 (N2 at room temperature: l_th ~ 10) and times \
+shorter than the Heisenberg time t_H ~ 2 pi / (2 l_th Omega_0) (0.84 ps for N2; p. 2). \
+omega_T = (2T/I)^(1/2) (T in energy units, I the moment of inertia; p. 4). Adiabatic part, \
+Eq. (15b): Gamma_A = (2/5) pi rho (Delta alpha)^2 |E(t)|^2 / (I omega_T^2). Gamma_T(t) = int G(t \
+- t') |E(t')|^2 dt'. Second-order steady alignment, Eq. (35), p. 9: Gamma_2(t -> inf) = pi \
+rho Delta alpha (2/225)(sigma Delta alpha E0^2 / I omega_T)^2 (sigma the pulse duration).
+
+COMPARISONS (figures only): N2 and O2 at 294 K, I = 1e12 W/cm2, sigma = 20 fs (Fig. 2); N2 at \
+20 and 100 K (Fig. 3); H2 at 294 K, where the classical theory fails (Fig. 4); the second-order \
+theory against the nonlinear quantum calculation for N2 at I = 1e14 W/cm2 (Fig. 5): \
+'negligible up to the intensity threshold for ionization' (p. 10)."""
+
+[[formulas]]
+id = "kinetic_green_function"
+material = "N2"
+equation = "Eqs. (16a), (16b), (17), p. 013829-4"
+printed = "G(tau) = (g0/4)[tau + pi^(1/2)(1 - tau^2/2) exp(-tau^2/4) erfi(tau/2)], tau = 2 omega_T t, g0 = 8 pi rho (Delta alpha)^2 / (15 I omega_T^2), omega_T = (2T/I)^(1/2); G(Omega) = -g0 int s_R [Omega_R^3 / (Omega^2 - 4 Omega_R^2)] exp(-Omega_R^2) dOmega_R, Omega = omega/omega_T"
+variable = "t: time after an impulse, s; T: temperature in energy units; I: moment of inertia; rho: number density; Delta alpha: polarizability anisotropy (Gaussian)"
+state = "any (rho explicit); classical: high rotational temperature (l_th >> 1), times < t_H"
+density = "rho"
+range = "N2 and O2 at atmospheric temperatures, before the quarter revival (not H2 at 294 K)"
+coefficients = { }
+check = "Not checked numerically here (figures only): 'in excellent agreement' with the density-matrix response for N2 and O2 at 294 K (Fig. 2)."
+notes = "The linear (first-order) classical response function of a thermal diatomic gas; its shape depends on omega_T only."
+
+[[formulas]]
+id = "two_moment_fluid"
+material = "N2"
+equation = "Eq. (26c), p. 013829-6; fitted nu hat, p. 013829-7"
+printed = "G(tau) = g0 sin((1/2) omega_hat_Tnu tau) / omega_hat_Tnu exp(-(1/2) nu_hat tau), nu_hat = nu / omega_T, omega_hat_Tnu = (3 - nu_hat^2)^(1/2); 'With the least-squares fit we find that nu_hat = 0.95'"
+variable = "tau = 2 omega_T t"
+state = "N2 at T = 294 K (the fit); I = 1e12 W/cm2, sigma = 20 fs in the comparison"
+density = "rho (through g0)"
+range = "fitted to the kinetic response in the time domain; 'reasonable' but not as accurate as desired (p. 7)"
+coefficients = { nu_hat = "0.95" }
+check = "The fit's quality is shown in Fig. 6 only; not checked here."
+notes = "Continuity and momentum moments with a viscosity closure (rate nu of momentum loss); the zero-frequency limit of the kinetic Green's function is not preserved."
+
+[[formulas]]
+id = "three_moment_fluid"
+material = "N2"
+equation = "Eqs. (30), (31a), (31b), p. 013829-8"
+printed = "G(tau) = -g0 [nu2_hat (1 - omega1_hat^2/3) / (nu2_hat^2 + omega1_hat^2 - 2 nu1_hat nu2_hat)] [((Psi - nu1_hat)/omega1_hat) sin(omega1_hat tau/2) exp(-nu1_hat tau/2) + cos(omega1_hat tau/2) exp(-nu1_hat tau/2) - exp(-nu2_hat tau/2)], Psi = omega1_hat^2 (1 + nu2_hat^2/3 - 2 nu1_hat nu2_hat/3) / [nu2_hat (1 - omega1_hat^2/3)]; 'omega1_hat = 2.37, nu1_hat = 1.27, and nu2_hat = 3.28 ... we find mu_hat = 6.16, varpi = -6.45 and nu_hat = -0.17'"
+variable = "tau = 2 omega_T t; hats: divided by omega_T"
+state = "N2 at T = 294 K (the fit), same laser parameters as the two-moment fit"
+density = "rho (through g0)"
+range = "fitted in the time domain; 'matches the quantum response function quite well' (Fig. 7)"
+coefficients = { omega1_hat = "2.37", nu1_hat = "1.27", nu2_hat = "3.28", mu_hat = "6.16", varpi = "-6.45", nu_hat = "-0.17" }
+check = "Not checked numerically here. The relations mu_hat = omega1_hat^2 nu2_hat / 3 (2.37^2 x 3.28 / 3 = 6.14, printed 6.16: rounding) and 2 nu_hat + mu_hat = 2 nu1_hat + nu2_hat (2(-0.17) + 6.16 = 5.82 = 2(1.27) + 3.28) and 2 nu_hat mu_hat + 8 - (5/4) varpi = 2 nu1_hat nu2_hat + omega1_hat^2 (13.97 against 13.95) hold (checked 2026-09-26)."
+notes = "Continuity, momentum and pressure (energy) moments; varsigma set to zero (unphysical equilibria otherwise). A negative viscosity, 'linearly stable'."

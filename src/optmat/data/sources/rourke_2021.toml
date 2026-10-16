@@ -1,0 +1,202 @@
+citation = "P. M. C. Rourke, J. Phys. Chem. Ref. Data 50, 033104 (2021)"
+doi = "10.1063/5.0055412"
+library = "Rourke_2021_PerspectiveRefractiveIndex"
+identity = "VALIDATED"
+kind = "compilation"
+technique = """Review of the reference data of refractive-index gas metrology (RIGM) for \
+helium, neon, argon and nitrogen, with recommended values (Table 3), new fits of \
+literature data for C_eps (He, Ne, Ar), B_rho (Ar, N2) and C_rho (N2), and re-analyses \
+of RIGM and DCGT measurements (Tables 4-6)."""
+notes = """Working equation (Eqs. (1)-(5)): (n^2 - 1)/(n^2 + 2) = sum_i A_i (p/(N_A k_B \
+T))^i with A_1 = A_eps + A_mu (zero-density molar electric polarizability plus molar \
+magnetic susceptibility); for optical RIGM A_R replaces A_eps + A_mu, B_R replaces B_eps \
+and C_R replaces C_eps, 'understood to be at the frequency of the measuring laser', \
+632.9908 nm for the tabulated optical values (p. 4, Table 3 note a). A_R therefore \
+INCLUDES the magnetic A_mu; the static A_eps does not. 632.9908 nm is taken as the \
+vacuum wavelength of the He-Ne laser (the paper does not say; the air wavelength of \
+that line would be near 632.8 nm). 'All uncertainties in the present work have been \
+converted to standard uncertainties (k = 1)' (p. 4). Page numbers are the library pdf pages (pdf page 1 is the publisher's cover; the article page is one less).
+
+Datasets: the Table 3 rows with a number in a curated quantity. The recommended values \
+are other authors' (reproduced) except the helium A_R, which Rourke assembles (check). \
+The table also recommends, without a quantity here (FORMAT NEED: a molar magnetic \
+susceptibility A_mu = 4 pi chi_0/3, and third virial coefficients C_eps, C_R): A_mu He \
+-7.921(4) x 10^-6 (Bruch and Weinhold, relativistic treatment), Ne -3.1713(71) x 10^-5 \
+(Lesiuk et al. 2020, i.e. lesiuk_2020's chi_0), Ar -8.09(57) x 10^-5 cm^3/mol (Barter et \
+al., uncertainty raised by Rourke to 7 %, p. 13); C_R Ar -85.4(20) cm^9/mol^3 at 303 K \
+(Achtermann et al. 1993), N2 -89(10) cm^9/mol^3 at 302.919 K (Achtermann et al. via Egan \
+et al. 2016); C_eps fits He (7.69744e-3 T - 3.00555) (0.22), Ne (5.32572e-3 T - 5.21418) \
+(0.69), Ar (0.224542 T - 139.502) (20) cm^9/mol^3 (the present work's weighted straight \
+lines through Table 4); D_eps He -2.3(15), Ne 3.5(77), Ar 140(190) cm^12/mol^4 at 298 K. \
+The text adds C_R Ar -86.6(20) at 323 K (Achtermann et al. 1991) and -79(10) at 298 K \
+(Coulon et al. 1981), N2 -85(10) at 298 K (Montixi et al. 1983) (p. 15). B_eps, B_R of \
+He, Ne, Ar are pointers to the supplementary files of Garberoglio and Harvey (2020) and \
+Hellmann et al. (2021), not in the library (B_R 'listed without uncertainties').
+
+Text values extracted inline: neon A_R derived by Rourke from Lesiuk et al.'s dispersion \
+coefficients, Gaiser and Fellmuth's A_eps and Lesiuk et al.'s chi_0: 1.000249(14) \
+cm^3/mol at 632.9908 nm, 38 ppm above Egan et al.'s measurement, 'outside the combined \
+standard uncertainties', and 0.9956018(34) at 1550 nm (p. 13); Egan et al.'s \
+(2016) nitrogen A_R 4.446139(16) cm^3/mol at 302.919 K, not recommended because it is \
+traceable to a mercury manometer (p. 13). The helium A_R retardation correction of \
+Pachucki and Puchalski, -0.140 ppm at 633 nm, has no uncertainty (p. 13).
+
+Not extracted: Table 1 (data needs), Table 2 (copper heat-capacity coefficients), Table \
+4 (C_eps compilation), Tables 5-6 (B_rho of He, Ne, Ar, N2 and its budgets): no \
+refractive quantity."""
+
+[[datasets]]
+id = "A_eps_He"
+material = "He"
+file = "He/rourke_2021__A_eps_He.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["M. Puchalski, K. Szalewicz, M. Lesiuk, and B. Jeziorski, Phys. Rev. A 101, 022505 (2020)"]
+notes = "Table 3: recommended static A_eps = 0.51725408(5) cm^3/mol (theory, QED calculation with the fixed N_A and h; 'agrees with the previous best A_eps calculation (Puchalski et al. 2016) but with uncertainty reduced from 0.12 to 0.10 ppm', p. 11). The original is not in the library; puchalski_2016 gives 0.51725413(6)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_eps_Ne"
+material = "Ne"
+file = "Ne/rourke_2021__A_eps_Ne.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2018"]
+notes = "Table 3: recommended static A_eps = 0.9947114(24) cm^3/mol, Gaiser and Fellmuth 2018 (DCGT)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_eps_Ar"
+material = "Ar"
+file = "Ar/rourke_2021__A_eps_Ar.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2018"]
+notes = "Table 3: recommended static A_eps = 4.140686(10) cm^3/mol, Gaiser and Fellmuth 2018 (DCGT)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_He"
+material = "He"
+file = "He/rourke_2021__A_R_He.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["puchalski_2016", "M. Puchalski, K. Szalewicz, M. Lesiuk, and B. Jeziorski, Phys. Rev. A 101, 022505 (2020)", "K. Pachucki and M. Puchalski, Phys. Rev. A 99, 041803(R) (2019)"]
+notes = "Table 3: A_R = 0.52025565(5) cm^3/mol at 632.9908 nm (note a), assembled by Rourke: Puchalski et al.'s (2016) frequency dependence added to Puchalski et al.'s (2020) A_eps, with Pachucki and Puchalski's retardation correction (-0.140 ppm at 633 nm, no uncertainty) (p. 13). Includes A_mu (Eq. (3) with A_R in place of A_eps + A_mu). Derived from theory: a check."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_Ne"
+material = "Ne"
+file = "Ne/rourke_2021__A_R_Ne.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["egan_2019"]
+notes = "Table 3: A_R = 1.000211(16) cm^3/mol at 632.9908 nm (note a), Egan et al. 2019 (optical RIGM traceable to helium theory)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_Ar"
+material = "Ar"
+file = "Ar/rourke_2021__A_R_Ar.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["egan_2019"]
+notes = "Table 3: A_R = 4.195685(64) cm^3/mol at 632.9908 nm (note a), Egan et al. 2019."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_N2"
+material = "N2"
+file = "N2/rourke_2021__A_R_N2.csv"
+table = "tbl_9524b9b87512"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["egan_2019"]
+notes = "Table 3: A_R = 4.446107(68) cm^3/mol at 632.9908 nm and 293.1529 K (row id; nitrogen's A_R depends on temperature, p. 13), Egan et al. 2019."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "B_R_N2"
+material = "N2"
+file = "N2/rourke_2021__B_R_N2.csv"
+table = "tbl_9524b9b87512"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["achtermann_1991", "P. F. Egan, J. A. Stone, J. E. Ricker, and J. H. Hendricks, Rev. Sci. Instrum. 87, 053113 (2016)"]
+notes = "Table 3: B_R = 0.81(20) cm^6/mol^2 at 302.919 K and 632.9908 nm (note a), 'Achtermann et al. (Refs. 13, 94)': Achtermann et al.'s (1991) measurements as used by Egan et al. (2016) at 302.919 K; achtermann_1991 gives 0.89(6) at 323 K. Egan et al. 2016 is not in the library."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 302.919
+
+[[datasets]]
+id = "A_R_Ne_derived"
+material = "Ne"
+table = "text"
+points = [["632.9908", "632.9908", "1.000249", "0.000014"], ["1550", "1550", "0.9956018", "0.0000034"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["lesiuk_2020", "gaiser_2018"]
+notes = "p. 13: A_R of neon from Lesiuk et al.'s (2020) dispersion coefficients and chi_0 with Gaiser and Fellmuth's A_eps: 1.000249(14) cm^3/mol at 632.9908 nm and 0.9956018(34) at 1550 nm (vacuum assumed). Derived by Rourke from theory and DCGT: a check; 38 ppm above Egan et al.'s measured 1.000211(16)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_N2_egan_2016"
+material = "N2"
+table = "text"
+points = [["302.919", "632.9908", "4.446139", "0.000016"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. F. Egan, J. A. Stone, J. E. Ricker, and J. H. Hendricks, Rev. Sci. Instrum. 87, 053113 (2016)"]
+notes = "p. 13: 'Egan et al. earlier measured A_R to be 4.446139(16) cm^3 mol^-1 at 302.919 K' (632.9908 nm assumed, the laser of Ref. 13 is not named here); not recommended because it is traceable to a mercury manometer. Row id: the temperature. The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 302.919

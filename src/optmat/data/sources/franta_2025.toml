@@ -1,0 +1,120 @@
+citation = "D. Franta, J. Vohánka, J. Dvořák, P. Franta, I. Ohlídal, P. Klapetek, J. Březina and D. Škoda, \"Wide spectral range optical characterization of tantalum pentoxide (Ta2O5) films by the universal dispersion model\", Opt. Mater. Express 15, 903 (2025)"  # codespell:ignore mater
+doi = "10.1364/ome.550708"
+library = "Franta_2025_WideSpectralRange"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Multi-sample, multi-instrument characterization of five Ta2O5 films (e-beam \
+evaporation of crystalline Ta2O5 with an advanced plasma source, Buhler SYRUSpro 1110, \
+substrates at 120 C, 3e-4 mbar, 20 sccm O2, 0.3 nm/s; nominal 25, 60, 85, 130, 250 nm) on \
+float-zone c-Si: Horiba UVISEL and Woollam IR-VASE ellipsometry; McPherson VUVAS 1000 \
+(VUV reflectance), Perkin Elmer Lambda 1050+ (relative reflectance and NIR \
+transmittance), Bruker Vertex 80v and 70v (IR and far-IR); 25 cm-1 (400 um) to 10.7 eV \
+(116 nm). Universal dispersion model; a homogeneous-layer (HL) model and a three-phase \
+inhomogeneous-layer (IHL) model (pp. 904-907)."""
+notes = """Journal pages 903-918 = PDF pages 1-16. Identity checked against the first page. \
+The films are polycrystalline with very fine grains ('very fine polycrystalline \
+(amorphous) material', p. 915; AFM grain scale 3.2-5.8 nm, p. 910), assumed isotropic.
+
+WHAT IS PRINTED. 'The equations describing the dispersion model are given in \
+Supplement 1' and 'the values of the dispersion parameters can be found in Supplement \
+1' (pp. 908, 911); 'Optical constants and UDM parameter file (parfile) are available on \
+[58]' (newAD2 site, p. 917). Supplement 1 (figshare doi 10.6084/m9.figshare.28349450) \
+is not in the library, and no newAD2 parameter file of Ta2O5 was obtained: the \
+model cannot be implemented from the paper.
+
+UDM TERMS USED (p. 908; the forms are those of the 2017-2018 papers, not of \
+franta_2015/franta_2015b). Electron excitations: 'contributions combining the Tauc's \
+law with the Lorentz model' (similar to Ferlauto's Cody-Lorentz model; refs. [24, 36]: \
+Nb2O5, Optical Materials 157, 116133 (2024), and Thin Solid Films 631, 12 (2017), neither in \
+the library) plus an Urbach tail; parameters E_g (common to all contributions), E_ex,j \
+and B_ex,j (peak energy and width of structure j), E_q ('tuning the steepness of the \
+Tauc's law' above E_g), E_u, and one strength per contribution; two contributions for \
+the HL model and phases a and b of the IHL model, three for phase c. This E_q \
+parameter does not exist in the 2015 UDM (TC-387). Phonons: nine symmetric Gaussian \
+peaks for Ta2O5 plus 11 (HL) or 13 (IHL) peaks for water and organic contamination (p. \
+908), 'the one-dimensional Dawson function' (franta_2015b Eqs. (41)-(46)). Native oxide: \
+UDM with fixed parameters from refs. [42-44]; substrate: the temperature-dependent ADM \
+of franta_2017 and later papers (p. 909).
+
+STRUCTURAL MODEL. Profile function Eq. (3), p. 906 (Eq. (4), p. 907): p(z) = sum_{i=1}^{N_p - 1} [erf((z - \
+h_i)/w_i) - erf(-h_i/w_i)]/[1 - erf(-h_i/w_i)]; Eq. (4): each dispersion parameter \
+interpolated linearly between phases a, b, c by p(z); fitted h_1 = 16.0(4) nm, w_1 = \
+1.0(2) nm, h_2 = 206(2) nm, w_2 = 30(2) nm (p. 911); Rayleigh-Rice roughness. Table 1 (p. \
+909): thicknesses (HL 22.32-262.62 nm, IHL 24.88-263.40 nm), substrate thicknesses, \
+roughness (optics and two AFMs). Table 2 (p. 912): chi of the fits per instrument \
+(all data: HL 0.9392, IHL 0.8307). Not extracted.
+
+COMPARISONS (p. 915-916; not extracted): Rodriguez-de Marcos et al. (ref. [49], Opt. \
+Materials Express 6, 3622 (2016); the library copy is rodriguez_de_marcos_2016) \
+show stronger sub-gap absorption and lower peaks at 5.5 and 12 eV (thin 53 nm layers, \
+roughness neglected); Bright et al. (ref. [50]) differ in the phonon region (Palik's \
+c-Si and a Lorentz model); Franke et al. (ref. [48], J. Appl. Phys. 88, 5166 (2000)) \
+described the edge by two gaps 'E_g1 = 4.7 eV and E_g2 = 5.4 eV', which the authors call \
+incorrect for an amorphous material (not recorded as band gaps)."""
+
+[[datasets]]
+id = "band_gap"
+material = "Ta2O5"
+table = "text"
+points = [["1", "", "4.1099", "0.0007"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "p. 916: 'From our dispersion model, the band gap was determined at the value of 4.1099(7) eV' (least-squares uncertainty in concise notation); p. 904: 'E_g = 4.11 eV' for the homogeneous-layer model. The UDM's E_g, the onset of the Tauc-law absorption."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+kind = "tauc"
+form = "film"
+
+[[datasets]]
+id = "n_2eV"
+material = "Ta2O5"
+table = "text"
+points = [["1", "2", "2.125"]]
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "primary"
+notes = "p. 904: the Ta2O5 layers have 'a lower refractive index in the transparent region (E_g = 4.11 eV, n = 2.125 at 2 eV)' than Nb2O5, with the homogeneous-layer model. The profile of n at 632.991 nm (1.9587 eV) in the IHL model is Fig. 4 only."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "band_gap_Nb2O5"
+material = "Nb2O5"
+table = "text"
+points = [["1", "", "3.48"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["D. Franta, B. Hroncová, J. Dvořák, et al., \"Wide spectral range optical characterization of niobium pentoxide (Nb2O5) films by universal dispersion model\", Opt. Mater. 157, 116133 (2024)"]  # codespell:ignore mater
+notes = "p. 904: 'Nb2O5 layers (E_g = 3.48 eV, n = 2.331 at 2 eV)', from the group's Nb2O5 paper (ref. [24])."
+[datasets.parameters]
+kind = "tauc"
+form = "film"
+
+[[datasets]]
+id = "n_2eV_Nb2O5"
+material = "Nb2O5"
+table = "text"
+points = [["1", "2", "2.331"]]
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["D. Franta, B. Hroncová, J. Dvořák, et al., \"Wide spectral range optical characterization of niobium pentoxide (Nb2O5) films by universal dispersion model\", Opt. Mater. 157, 116133 (2024)"]  # codespell:ignore mater
+notes = "p. 904 (quoted with band_gap_Nb2O5)."
+[datasets.parameters]
+form = "film"
+
+[[formulas]]
+id = "profile_function"
+material = "Ta2O5"
+equation = "Eqs. (3)-(4), pp. 906-907; values p. 911"
+printed = "p(z) = \\sum_{i=1}^{N_p - 1} [erf((z - h_i)/w_i) - erf(-h_i/w_i)]/[1 - erf(-h_i/w_i)]"
+variable = "z: distance from the bottom interface (nm); N_p = 3 phases"
+coefficients = { h1 = "16.0", h1_sigma = "0.4", w1 = "1.0", w1_sigma = "0.2", h2 = "206", h2_sigma = "2", w2 = "30", w2_sigma = "2" }
+check = "Values in concise notation as printed (16.0(4) etc.); no printed quantity to reproduce from them alone (the phase parameters are in Supplement 1)."
+notes = "Each dispersion parameter p_j(z) = p_j^a [1 - p] + p_j^b p for p in [0, 1], p_j^b [2 - p] + p_j^c [p - 1] for p in [1, 2] (Eq. (4)). Structural, not optical; recorded because the IHL optical constants depend on it."

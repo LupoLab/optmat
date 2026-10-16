@@ -1,0 +1,43 @@
+citation = "A. M. Perelomov, V. S. Popov and V. P. Kuznetsov, \"Allowance for the Coulomb interaction in multiphoton ionization\", Sov. Phys. JETP 27, 451 (1968) [Zh. Eksp. Teor. Fiz. 54, 841 (1968)]"
+library = "Perelomov_1968_AllowanceCoulombInteraction"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Quasiclassical approximation: the Coulomb interaction between the \
+electron and the atomic core as a perturbation of the sub-barrier trajectory in the \
+field F cos(omega t) (Sect. 2), and the numerical solution of the sub-barrier motion \
+with the Coulomb force, which gives the limit of that treatment (Sect. 3, Table I)."""
+notes = """Pages are journal pages (pdf page 1 is p. 451). Identity checked on the first \
+page (title, authors, volume 27, number 3, September 1968); the library's automatic \
+check of the identity is 'review', the paper having no DOI.
+
+No dataset is taken: the record holds the formulas on which the range of validity of \
+optmat's Coulomb factor rests (TC-670). Read on the page images (pp. 451-452, 455).
+
+TABLE I (p. 455), NOT EXTRACTED: sigma_cr and s_cr x 100 against gamma, with f(gamma, \
+sigma) and a(gamma). It is printed with rotated headers; the values quoted in TC-670 \
+were read on the image: gamma = 3, 5, 7, 10, 15, 20: sigma_cr = 0.119, 0.184, 0.239, \
+0.315, 0.410, 0.496 and s_cr x 100 = 4.00, 3.68, 3.42, 3.15, 2.73, 2.48. No value is \
+tabulated below gamma = 3; Fig. 4 draws s_cr(gamma) from gamma of about 1.
+
+TABLE II and Sect. 5 (the experiments of the 1960s on the exponent k of w ~ F^(2k)): \
+not taken."""
+
+[[formulas]]
+id = "eq1_coulomb"
+equation = "Eqs. (1), (2) and (11), pp. 451-452"
+printed = "w(F)/w_sr(F) = (2F_0/F)^(2 lambda) (1); lambda = kappa_c/kappa = Z (I/I_0)^(-1/2) (2); delta W_1 = -i lambda [ln(2F_0/F) + Phi(gamma, p)], lambda = kappa_c/kappa (11)"
+variable = "F_0 = kappa^3 'the field inside the atom'; Z the charge of the atomic remainder; I, I_0 = 13.6 eV the ionisation potentials of the atom and of hydrogen; Phi(gamma, p) the part that depends on the momentum p at the point of emergence, Phi(gamma, 0) = 0"
+range = "Eq. (1): a constant field. Eq. (11): linear polarisation, within Eq. (20)"
+coefficients = {}
+check = "Checked against the page images (pp. 451-452), 2026-09-28."
+notes = "'It is interesting to note that although the form of the sub-barrier trajectory changes strongly when gamma >> 1 (for example, the point of emergence is given by x(0) ~ kappa^2/F gamma), the main Coulomb correction to the penetrability is given by formula (1) and does not depend on gamma at all' (p. 452). 'The dependence on the Coulomb interaction enters in (14) only via the preexponential factor' (p. 452)."
+
+[[formulas]]
+id = "eq20_validity"
+equation = "Eq. (20) and footnote 3, p. 452; Eq. (46), p. 454"
+printed = "gamma << gamma_k (gamma_k = 2I/(lambda omega)) (20); s = sigma/gamma = lambda omega/(2I) = 1/gamma_k (46)"
+variable = "I: the ionisation potential; omega: the frequency; sigma: the Coulomb parameter of the sub-barrier motion (its Eq. 26); sigma_cr(gamma): its value at the bifurcation of the two extremal trajectories"
+range = "'Allowance for the Coulomb interaction in accordance with (8) is valid when the interaction does not distort noticeably the sub-barrier trajectory of the electron' (p. 452)"
+coefficients = {}
+check = "Checked against the page images (pp. 452, 455), 2026-09-28. With optmat's ionisation energies and lambda = n* at 800 nm (omega = 0.05695 au): gamma_k = 42.7 (He), 35.1 (Ne), 21.9 (Ar), 18.3 (Kr), 14.8 (Xe), that is s = 0.0234, 0.0285, 0.0457, 0.0546, 0.0677 (computed 2026-09-28)."
+notes = "Footnote 3 (p. 452): 'condition (20) is only qualitative. As shown in the next section, the exact condition for the validity of formula (8) is of the form sigma << sigma_cr(gamma) ... From Fig. 4 (see below) we see that at not too large gamma these two conditions can differ by a factor of several times.' The points (gamma, s) below the curve s = s_cr(gamma) of Fig. 4 are those to which the treatment pertains (p. 454). 'At the present time, however, in experiments on ionization, I/omega ~ 10, and the region 1 << gamma << gamma_k is practically nonexistent' (p. 452)."

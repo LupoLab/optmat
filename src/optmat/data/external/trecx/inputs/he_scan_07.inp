@@ -1,0 +1,43 @@
+Title:
+Helium SAE (Tong-Lin) 800nm 6fs Gaussian intensity scan point 07 of 10  I=2.096e+15 Wcm2 z-pol
+
+# He 1s ionised by an ANALYTIC GAUSSIAN 800 nm, 6 fs FWHM pulse, velocity gauge, z-pol.
+# Physics: E0=0.2444 au, Up=4.603 au=125.3 eV, quiver alpha=75.3 au,
+#   Keldysh gamma=0.313, barrier u=E0/E_b=1.20 (E_b=Ip^2/4=0.2041 au).
+# BOX=120 = max(80, ~1.5*alpha) so the box exceeds the quiver (else the electron sloshes across
+#   the absorber and the yield is badly under-estimated). ECS theta=0.15 for strong-field stability.
+# fixStep=0.0172 = 2.0/Emax, Emax=(sqrt(2*cutEnergy)+aPeak)^2/2=116 au (RK |E|dt<2.83).
+
+#define BOX 120.
+
+# Tong-Lin SAE He: Zc=1, a1=1.231,a2=0.662,a3=-1.325,a4=1.236,a5=-0.231,a6=0.480 (a3,a5<0 -> minus)
+#define TongLinHeV (1.0+1.231*exp(-0.662*Q)-1.325*Q*exp(-1.236*Q)-0.231*exp(-0.480*Q))/Q
+
+# No Spectrum/iSurff: total yield + time trace only -> single propagation pass, complete expec trace.
+# Radial split [0,2],[2,20],[20,BOX] keeps r=20 (the chi[0,20] sphere) on an element boundary.
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1
+ Eta,30,-1,1,assocLegendre{Phi}
+ Rn,14,0.,2.,polynomial,3
+ Rn,12,2.,20.,RpowL*polynomial,4
+ Rn,12,20.,BOX,RpowL*polynomial,23
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.15,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinHeV>
+Operator: interaction='iLaserAz[t]<<D/DZ>>'
+Operator: expectationValue='<1><1><chi[0,20]>'
+
+# He 1s ground state (l=0). Confirm "Initial <H0>: -0.9038" before trusting.
+Initial: state=0
+
+# analytic Gaussian envelope, FWHM(intensity) = 6.0 fs = 2.24844 OptCyc, propagated +-3 FWHM.
+Laser: shape, I(W/cm2), FWHM, lambda(nm)
+gauss, 2.0961e+15, 2.24844 OptCyc, 800.
+
+# begin/end explicit: a Gaussian has infinite support (auto range would be infinite). +-3 FWHM captures
+# it to ~4e-6 of peak. store>=fixStep so the expec trace writes fully.
+TimePropagation: begin,end,print,store,cutEnergy,operatorThreshold,fixStep
+ -6.74533 OptCyc,6.74533 OptCyc,0.25 OptCyc,0.05,60,1e-9,0.0172

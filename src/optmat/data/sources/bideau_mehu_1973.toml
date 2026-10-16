@@ -1,0 +1,165 @@
+citation = "A. Bideau-Mehu, Y. Guern, R. Abjean and A. Johannin-Gilles, \"Interferometric determination of the refractive index of carbon dioxide in the ultraviolet region\", Opt. Commun. 9, 432 (1973)"
+doi = "10.1016/0030-4018(73)90289-7"
+library = "BideauMehu_1973_InterferometricDeterminationRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Fabry-Perot interferometry (the technique of Abjean and Johannin-Gilles, Opt. \
+Commun. 1, 385 (1970)) at 2537 A (Hg I), 2288 A (Cd I), 2139 A (Zn I), 2062 A (I I), \
+1942 A (Hg II), 1849 A (Hg I) and 1807 A (S I); interferometer thickness up to 5 mm, \
+20-30 fringes scanned; Air Liquide CO2 better than 99.998 %; each value the average of \
+at least 12 measurements (p. 432)."""
+notes = """Page numbers are the journal's (432-434; pdf page 1 = p. 432).
+
+State (p. 432): 'The refractive index is given at standard conditions (0 degrees and \
+760 torr) using the relation fitted by Old et al. from Hilsenrath's tables' (old_1971's \
+compressibility): a real-gas reduction. Wavelengths are vacuum wavelengths, printed to \
+0.001 A; the formula's sigma is 'the wavenumber in reciprocal micrometer vacuum \
+wavelengths' (p. 432).
+
+Uncertainty (p. 432): 'The most important error (1/100) originates from the estimation \
+of the fractional part of the fringes. The refractive error in the interference order \
+measurement is at most 0.01/20 = 5 x 10^-4, and that in the pressure is evaluated to \
+3 x 10^-4. The total relative error for (n - 1) is about 8 x 10^-4. In fact, we have \
+found for n a statistical standard derivation of about 3 x 10^-7 for 2537 A and of \
+5 x 10^-7 for 1807 A.' Level not stated.
+
+Table 1 also gives the extrapolations to the ultraviolet of the formulas of \
+Cuthbertson and Cuthbertson (ref. 2, cuthbertson_1920), Koch (ref. 4, Arkiv Mat. \
+Astr. Fys. 10, 1 (1914), not in the library) and Old et al. (ref. 5, old_1971); they \
+are not extracted. The formulas as quoted (p. 432): Cuthbertson, (n - 1) x 10^5 = \
+6914.45/(156.85 - sigma^2), a rewriting of cuthbertson_1920's frequency form (which \
+gives about 6905/(156.63 - sigma^2) with c = 3e10 cm/s; the source of the difference is \
+not said); Koch, recorded below; Old et al., identical to old_1971's formula.
+
+Table 2's measured column holds this work's seven values (marked *, as in Table 1 but \
+52.07 at 2062.300 A), fifteen of Koch's (marked [4]) and fifteen of Old et al.'s \
+(marked [5]), which the formula was fitted to. The Old et al. values are old_1971's \
+experimental column rounded to 0.01 (45.34 at 4801.260 A: 4534.159e-7 there; 43.74 at \
+16945.210 A: 4373.838e-7).
+
+Reproductions elsewhere: sneep_2005/co2_eq13 (the formula as corrected by Sneep and \
+Ubachs and rescaled to 15 C; see the formula's notes), ityaksov_2008_co2 (via \
+sneep_2005) and he_2021 (a CO2 formula citing this paper); the fits' CO2 data should take \
+this record's experiment_CO2 as the original."""
+
+[[datasets]]
+id = "experiment_CO2"
+material = "CO2"
+file = "CO2/bideau_mehu_1973__experiment_CO2.csv"
+table = "tbl_9f56a49e9efd"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table 1, 'present work', 1807.310-2537.281 A (seven lines); 2062.300 A corrected by an erratum."
+[datasets.uncertainty]
+relative = 0.0008
+level = "not stated"
+
+[[datasets]]
+id = "fit_CO2"
+material = "CO2"
+file = "CO2/bideau_mehu_1973__fit_CO2.csv"
+table = "tbl_9bf7f917ab3a"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table 2, 'Calculated values': the paper's five-term formula at every fitted wavelength, 1807.310-16945.210 A."
+
+[[datasets]]
+id = "koch_1914_CO2"
+material = "CO2"
+file = "CO2/bideau_mehu_1973__koch_1914_CO2.csv"
+table = "tbl_9bf7f917ab3a"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Koch, Arkiv Mat. Astr. Fys. 10, 1 (1914)"]
+notes = "Table 2, measured values marked [4], 2379.100-5462.230 A. The original is not in the library, so this copy may be fitted; the reduction Koch used is not said here."
+
+[[datasets]]
+id = "old_1971_CO2"
+material = "CO2"
+file = "CO2/bideau_mehu_1973__old_1971_CO2.csv"
+table = "tbl_9bf7f917ab3a"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "reproduced"
+reproduced_from = ["old_1971"]
+notes = "Table 2, measured values marked [5], 4801.260-16945.210 A: old_1971's experimental values rounded to 1e-7."
+
+[[errata]]
+dataset = "experiment_CO2"
+row = "2062.300"
+column = "value"
+printed = "53.07"
+corrected = "52.07"
+reason = "Table 1's value at 2062.300 A breaks the monotonic fall of the column (53.33 at 1942.317 A, 51.42 at 2139.234 A) and disagrees with the same measurement in Table 2, which prints 52.07 there with calc. - meas. = 52.00 - 52.07 = -0.07."
+evidence = "Table images tbl_9f56a49e9efd.jpg (53.07) and tbl_9bf7f917ab3a.jpg (*2062.300: 52.00, 52.07, -0.07); the three extrapolated formulas give 51.86-52.18 there. Checked 2026-09-25."
+
+[[formulas]]
+id = "sellmeier_CO2"
+material = "CO2"
+equation = "unnumbered, p. 433"
+printed = "(n - 1) x 10^5 = 1205.5 5.79925/(166.175 - sigma^2) + 0.12005/(79.609 - sigma^2) + 0.53334 x 10^-2/(56.3064 - sigma^2) + 0.43244 x 10^-2/(46.0196 - sigma^2) + 1.218145 x 10^-4/(0.0584738 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+form = "dn_sigma2"
+terms = { scale = "1205.5e-5", B = ["5.79925", "0.12005", "0.53334e-2", "0.43244e-2", "1.218145e-4"], C = ["166.175", "79.609", "56.3064", "46.0196", "0.0584738"] }
+state = "1atm_0C"
+density = "real"
+range_nm = [180.7, 1694.5]
+check = "Read with the factor 1205.5 multiplying every term and the infrared numerator corrected, reproduces Table 2's calculated column at all 37 wavelengths to 0.013 (rms 0.0034, the rounding of the column); with the printed infrared numerator the residual grows to 0.027 at 16945 A (rms 0.008). Checked 2026-09-25 (equation read on the page image, pdf page 2)."
+notes = """STRUCTURE: the printed formula has no brackets: as printed 1205.5 multiplies \
+only the first fraction, which would give (n - 1) x 10^5 = 46.4 at 2537 A against the \
+table's 48.98; 1205.5 = 1.2055e-2 x 10^5 (N e^2/(8 pi^2 eps0 m c^2) at 0 C, 760 Torr, \
+um^-2, as in bideau_mehu_1981) multiplies the whole sum, and the numerators are \
+oscillator strengths ('The numerators represent the oscillator strengths of the \
+transitions', pp. 433-434; Inn et al.'s 0.12, 0.53e-2, 0.43e-2 for the 1121, 1332 and \
+1475 A bands). The first term is the ionisation continuum (0.0775 um), the last the \
+4.13 um infrared band kept from Old et al. (p. 434). The form's terms apply the \
+bracket.
+
+Sneep and Ubachs (sneep_2005, Eq. 13) write 'Their article contains a typographical \
+error' and give the corrected formula scaled to 15 C and 1013 hPa: the same poles \
+(sqrt(C_i) x 10^4 = 128908.9, 89223.8, 75037.5, 67837.7, 2418.1 cm^-1), numerators \
+1000 times these (5799.25, 120.05, 5.3334, 4.3244) with the prefactor 1.1427 x 10^3 \
+(read for their misprinted 10^6) = 1.2055 x 10^3 x 273.15/288.15 (ideal-gas rescaling, \
+to 4e-5): their correction is the bracket. Their infrared numerator, 0.1218145 x \
+10^-4, is 10^4 times smaller than this paper's (1000 x 1.218145e-4 = 0.1218145), which \
+makes the infrared term negligible: it leaves Table 2's calculated column 0.53 high at \
+16945 A (rms 0.16), so it is a second misprint, in Sneep's copy (TC-167)."""
+[[formulas.corrections]]
+term = "B"
+index = 4
+printed = "1.218145e-4"
+corrected = "1.28154e-4"
+reason = "The paper keeps 'the term corresponding to the absorption band at 4.13 u given by Old et al.' (p. 433): Old et al.'s term is 0.154489/(0.0584738 - sigma^2) on (n - 1) x 10^5 (quoted p. 432; old_1971/sellmeier), the same pole, so the numerator here is 0.154489/1205.5 = 1.28154e-4; old_1971 gives the band's oscillator strength as 1.28e-4. The printed 1.218145 transposes those digits."
+evidence = "With 1.28154e-4 the formula reproduces Table 2's calculated column at all 37 wavelengths to the rounding (rms 0.0034; 43.680 against 43.68 at 16945.210 A); with the printed value the residual grows steadily through the infrared rows to 0.027 at 16945.210 A (rms 0.008, 43.707). Checked 2026-09-25."
+
+[[formulas]]
+id = "koch_1914"
+material = "CO2"
+equation = "unnumbered, p. 432"
+printed = "(3/2) (n^2 - 1)/(n^2 + 2) = 7420300 x 10^-8/(172.409 - sigma^2) + 48522 x 10^-8/(45.0378 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+range = "not stated (Koch's measurements reach 2379 A, p. 432)"
+coefficients = { B1 = "7420300e-8", C1 = "172.409", B2 = "48522e-8", C2 = "45.0378" }
+reproduced_from = ["J. Koch, Arkiv Mat. Astr. Fys. 10, 1 (1914)"]
+check = "The right-hand side gives 55.696, 52.089 and 48.945 (x 10^-5) at 1807.310, 2062.300 and 2537.281 A against Table 1's Ref. [4] column 55.69, 52.09, 48.94: the table lists the right-hand side itself (equal to n - 1 to 1e-4 of it), to the rounding. Checked 2026-09-25."
+notes = "Koch's formula as quoted; the original is not in the library. Its 'extrapolated' values in Table 1 are not extracted."

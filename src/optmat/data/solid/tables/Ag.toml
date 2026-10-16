@@ -1,0 +1,28 @@
+# The complex index of silver from curated tables, joined by range (TC-619, TC-646).
+# Each range is one source's pair of tables; nothing is averaged. The joins are placed
+# where neighbouring sources agree best (docs/metals.md).
+material = "Ag"
+
+[[segments]]
+real = "hagemann_1974/delta_Ag"
+imaginary = "hagemann_1974/k_Ag"
+range_nm = [4.13, 13.9]
+reason = "Hagemann, Gudat & Kunz's DESY report SR-74/7, Table 4, 90-300 eV, which prints 1 - n (three decimals) instead of n from 90 eV: their own film transmission to 110 eV, Haensel et al.'s to 300 eV. The table ends at 300 eV, where the printed 1 - n (0.004) is still several times its rounding; above it the printout's decrement is at its resolution (it prints -0.001 to -0.007 near the M edge and above 2 keV)."
+
+[[segments]]
+real = "hagemann_1974/n_Ag"
+imaginary = "hagemann_1974/k_Ag"
+range_nm = [14.0, 24.9]
+reason = "Hagemann, Gudat & Kunz's DESY report SR-74/7, Table 4, 50-85 eV: the Kramers-Kronig analysis of their own transmission of evaporated films (16-110 eV). At the join (25 nm) it meets Werner et al.'s REELS to 1.5 % in n and 8 % in k (0.884 + 0.290i against 0.871 + 0.269i); towards the end of the REELS range (17.6-20 nm) the two differ by 17-37 % in k. It runs on to the soft x-ray range."
+
+[[segments]]
+real = "werner_2009/eps1_reels_Ag"
+imaginary = "werner_2009/eps2_reels_Ag"
+range_nm = [25.0, 70.0]
+reason = "Werner, Glantschnig & Ambrosch-Draxl's permittivity from reflection electron energy-loss spectra, 17.5-49.5 eV (their stated accuracy about 10 %). At 41-70 nm Babar & Weaver's Kramers-Kronig values lie within 3-16 % of it in n and k (29 % in k near 60 nm; 4 % at the join, 70 nm), while the DESY films' k is 30-95 % above both at 40-50 nm and 30-40 % at 70 nm: two independent methods against one, and film transmission may carry an oxide (as Shiles et al. suspected for aluminium). Babar & Weaver's own analysis extrapolates the reflectance beyond 30 eV, so their k is likely least reliable at its top end."
+
+[[segments]]
+real = "babar_2015/web_n_Ag"
+imaginary = "babar_2015/web_k_Ag"
+range_nm = [70.5, 12400.0]
+reason = "Babar & Weaver's Kramers-Kronig analysis of the absorptivity of polished single crystals (0.1-6 eV) joined to Leveque, Olson & Lynch's reflectance (6-30 eV), as published on Weaver's website (their Table 1 is the same data rounded, to 6 eV): 0.1-17.4 eV. One analysis from the vacuum ultraviolet to the mid infrared; at 70 nm it meets the REELS values to 4 %. Stahrenberg et al.'s ellipsometry (128-496 nm) is 13-27 % higher in k at 130-300 nm, and Johnson & Christy's films -2 to +5 % at 206-400 nm: the spread is the uncertainty (docs/metals.md)."

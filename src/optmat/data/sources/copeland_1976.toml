@@ -1,0 +1,87 @@
+citation = "T. G. Copeland and R. H. Cole, \"Dielectric and pressure virial coefficients of imperfect gases. VII. CF3H-Ar and CFH3-Ar mixtures\", J. Chem. Phys. 64, 1747 (1976)"
+doi = "10.1063/1.432350"
+library = "Copeland_1976_DielectricPressureVirial"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Relative permittivity of CF3H-Ar and CFH3-Ar mixtures (and pure argon) at \
+50.0 degrees C (NBS-calibrated thermometer, 0.1 degrees C absolute; gradients < 0.05 \
+degrees C): three-terminal parallel-plate cells (Orcutt and Cole; 98 pF, stable to 2 \
+ppm) and a transformer bridge (General Radio 1493, 0.1 ppm relative). B_eps/A_eps^2 from \
+the cyclic expansion method with two or three cells from 40-200 atm; A_eps and B_p \
+from low-pressure data (Texas Instruments 0-100 psi quartz spiral gauge), \
+[(eps - 1)/(eps + 2)](RT/P) = A_eps + (B_eps - A_eps B_p)(P/RT) (Eq. 2). Mixture \
+viscosities at 25 degrees C by a capillary viscometer (pp. 2-3)."""
+notes = """Identity checked against the first page (pdf page 1 is the publisher's cover; \
+journal pp. 1747-1751 = pdf pages 2-6). Page numbers below are pdf pages.
+
+SCOPE. Argon only: CF3H and CFH3 are not curated species. Table I's first row (mole \
+fraction 0) is pure argon: this work's A_eps = 4.1406 +- 0.0014 cm^3/mole and, in \
+parentheses, Bose and Cole's (1970) A_eps = 4.1396 +- 0.0006 and B_eps = 0.72 +- 0.12 \
+cm^6/mole^2 (footnote a: 'Values from T. K. Bose and R. H. Cole, J. Chem. Phys. 52, \
+140 (1970)'; bose_1970, whose A_eps is 4.1397 +- 0.0006: re-pointed 2026-09-27); this work's pure-argon B_eps and C_eps are not given \
+('...'). The text (p. 2) uses 'A_eps1 = 4.140 cm^3/mole for argon' to compute the \
+mixtures' mole fractions. 'The small differences are accounted for by slight \
+irreproducibility of the cells used by Sutter and a suspected slight impurity of the \
+CFH3 used in this work' (p. 3; said of the pure components generally).
+
+WHAT A_eps IS. f = (eps - 1)/(eps + 2) = A_eps (n/V) + B_eps (n/V)^2 + ... (Eq. 1), \
+static (bridge frequency); for argon the electronic static polarizability. B_eps is the \
+static dielectric second virial coefficient (for argon an induction term only, no \
+orientation part).
+
+UNCERTAINTY. The +- of Tables I and II are not described anywhere in the paper \
+(level 'not stated'); the group's other papers quote three standard deviations.
+
+Not extracted: the mixture rows of Tables I and II (A_eps, B_eps, C_eps, B_p), \
+argon's B_p (-11.6 +- 1.5 cm^3/mole, no quantity), the mixed B_eps12 and B_p12, the \
+viscosities (Table III: argon 226.2 x 1e-6 P at 25 degrees C) and Table IV's model \
+parameters (argon alpha = 1.64e-24 cm^3, an input to the calculations; 4.1406 cm^3/mol \
+is 1.6413e-24 cm^3, computed 2026-09-26)."""
+
+[[datasets]]
+id = "A_eps_Ar"
+material = "Ar"
+file = "Ar/copeland_1976__A_eps_Ar.csv"
+table = "tbl_a066d6e5d380"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, mole fraction 0 (pure argon): A_eps = 4.1406 +- 0.0014 cm^3/mole at 50 degrees C (row = temperature, K), this work, static dielectric: the electronic polarizability of argon. 0.03 % below schmidt_2003's 4.14203 (19). A check. Level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 323.15
+
+[[datasets]]
+id = "A_eps_bose_cole_Ar"
+material = "Ar"
+file = "Ar/copeland_1976__A_eps_bose_cole_Ar.csv"
+table = "tbl_a066d6e5d380"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bose_1970"]
+notes = "Table I, pure argon, in parentheses (footnote a): A_eps = 4.1396 +- 0.0006 cm^3/mole, Bose and Cole (1970) = bose_1970 (re-pointed 2026-09-27), static dielectric. The original prints 4.1397 +- 0.0006 at 49.7 degrees C: this reprint is one lower in the last digit (image of both tables checked; kept as printed). The original's errors are three standard deviations: level corrected to '3 sigma'."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+
+[[datasets]]
+id = "B_eps_bose_cole_Ar"
+material = "Ar"
+file = "Ar/copeland_1976__B_eps_bose_cole_Ar.csv"
+table = "tbl_a066d6e5d380"
+quantity = "refractivity_virial_coefficient"
+unit = "cm6/mol2"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bose_1970"]
+notes = "Table I, pure argon, in parentheses (footnote a): B_eps = 0.72 +- 0.12 cm^6/mole^2, Bose and Cole (1970) = bose_1970 (re-pointed 2026-09-27; its 49.7 degrees C value, digit for digit): the static dielectric second virial coefficient (for argon, induction only). The original's errors are three standard deviations: level corrected to '3 sigma'."
+[datasets.uncertainty]
+column = true
+level = "3 sigma"
+[datasets.parameters]
+order = 2

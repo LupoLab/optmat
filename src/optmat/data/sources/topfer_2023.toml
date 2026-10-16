@@ -1,0 +1,87 @@
+citation = "K. Töpfer, D. Koner, S. Erramilli, L. D. Ziegler, and M. Meuwly, \"Molecular-level understanding of the rovibrational spectra of N2O in gaseous, supercritical, and liquid SF6 and Xe\", J. Chem. Phys. 158, 144302 (2023)"
+doi = "10.1063/5.0143395"
+library = "Topfer_2023_MolecularLevelUnderstanding"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Molecular-dynamics simulations (CHARMM) of one N2O molecule in Xe (291.2 K) or \
+SF6 (321.9 K) with a kernel (RKHS) potential for N2O, minimally distributed charge \
+models with non-iterative polarization, and Lennard-Jones solvent potentials; infrared \
+line shapes of N2O's bands from the dipole-dipole correlation function, compared with \
+2D-IR and FTIR experiments (pp. 2-5)."""
+notes = """Page numbers are the library pdf pages. The paper is about the infrared \
+line shapes of N2O dissolved in SF6 and Xe: it has no refractive-index data and no \
+tables. The only gas-phase polarizabilities are the force-field inputs quoted on p. 4, \
+kept here as inline datasets, all excluded: 'The polarizability of linear N2O computed \
+at the CCSD/aug-cc-pVTZ level is 2.85 A^3 (with each atom contributing ~0.95 A^3 per \
+atom), compared with 2.998 A^3 from the experiment [36]. For Xe at the \
+CCSD/aug-cc-pVTZ, the computed value of 2.96 A^3 compares with 4.005 A^3 from the \
+experiment [36]. For SF6, the experimentally measured polarizability of 4.49 A^3 was used \
+and evenly distributed over the fluorine atoms (0.74 A^3 per F atom) [37].' Ref. 36 is \
+Olney et al., Chem. Phys. 223, 59 (1997) (dipole sum rules from \
+absolute photoabsorption; curated \
+since 2026-09-26 as olney_1997: the two values are its unrefined Table 1 ones), Ref. 37 Gussoni, Rui and \
+Zerbi, J. Mol. Struct. 447, 163 (1998), not in the library. Whether the 'experimental' values are static or \
+optical, and electronic or total, is not said. Against the curated fits (checked \
+2026-09-25): N2O 2.998 A^3 = 20.23 au is 2.6 % above fit/N2O's static electronic 19.72 \
+au and 9.5 % below its static total with HITRAN's infrared bands; Xe 4.005 A^3 = 27.03 \
+au is 0.2 % below fit/Xe's static 27.08 au; SF6 4.49 A^3 = 30.30 au lies between \
+fit/SF6's static electronic 30.07 au and its 633 nm value 30.29 au. The dipole moment, \
+band positions and simulation results are not refractive data. Nothing is primary."""
+
+[[datasets]]
+id = "olney_1997_N2O"
+material = "N2O"
+table = "text"
+points = [["static", "inf", "2.998"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["olney_1997"]
+notes = "p. 4: 'experiment' 2.998 A^3 (Ref. 36, Olney et al. 1997), quoted as a force-field input; stored as static (Olney's dipole sums give static values; not said here). Excluded: what it includes (electronic only or with the vibrational part) is not stated, and it matches neither fit/N2O's electronic (-2.5 %) nor total static value. ORIGIN (checked 2026-09-26): 2.998 A^3 is 20.23 au, Olney et al.'s Table 1 column 2 value (olney_1997/table1_N2O): S(-2) of the originally published, TRK-normalised dipole (e,e) spectrum of Chan et al. 1994, an electronic static value from a 5 % spectrum, NOT Olney et al.'s refined result; their Table 3 S(-2) for N2O is 19.70 au (renormalised to Hohm's refractivity, olney_1997/s-2_N2O), 2.6 % lower. Re-pointed to olney_1997."
+
+[[datasets]]
+id = "olney_1997_Xe"
+material = "Xe"
+table = "text"
+points = [["static", "inf", "4.005"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["olney_1997"]
+notes = "p. 4: 'experiment' 4.005 A^3 (Ref. 36, Olney et al. 1997), quoted in passing; stored as static. Excluded: a four-figure quotation, 0.2 % below fit/Xe's static value; the dielectric and refractive xenon data are far better. ORIGIN (checked 2026-09-26): 4.005 A^3 is 27.03 au, Olney et al.'s Table 1 column 2 value (olney_1997/table1_Xe): S(-2) of Chan et al.'s 1992 spectrum as published (chan_1992), before refinement; their refined Table 3 S(-2) for Xe is 27.12 au (renormalised to Hohm and Trumper 1994, olney_1997/s-2_Xe). Re-pointed to olney_1997."
+
+[[datasets]]
+id = "gussoni_1998_SF6"
+material = "SF6"
+table = "text"
+points = [["static", "inf", "4.49"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["M. Gussoni, M. Rui, and G. Zerbi, \"Electronic and relaxation contribution to linear molecular polarizability. An analysis of the experimental values\", J. Mol. Struct. 447, 163 (1998)"]
+notes = "p. 4: 'the experimentally measured polarizability of 4.49 A^3' (Ref. 37), a force-field input. Excluded: static or optical not stated (it is an electronic-size value: SF6's static total with the infrared bands is 6.5 A^3); stored at the static limit only for the record."
+
+[[datasets]]
+id = "ccsd_N2O"
+material = "N2O"
+table = "text"
+points = [["static", "inf", "2.85"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "p. 4: CCSD/aug-cc-pVTZ polarizability of linear N2O, 2.85 A^3 (19.23 au; the frequency is not stated, taken as static electronic at the equilibrium geometry). Excluded: a force-field parametrisation with a triple-zeta basis, 2.5 % below fit/N2O's static electronic value; no uncertainty."
+
+[[datasets]]
+id = "ccsd_Xe"
+material = "Xe"
+table = "text"
+points = [["static", "inf", "2.96"]]
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "p. 4: CCSD/aug-cc-pVTZ polarizability of Xe, 2.96 A^3 (19.97 au). Excluded: 26 % below experiment (the authors' own comparison with 4.005 A^3): a basis-set-limited force-field value."

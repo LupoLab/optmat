@@ -1,0 +1,100 @@
+citation = "M. A. Dakka, G. Tsiminis, R. D. Glover, C. Perrella, J. Moffatt, N. A. Spooner, R. T. Sang, P. S. Light and A. N. Luiten, \"Laser-based metastable krypton generation\", Phys. Rev. Lett. 121, 093201 (2018)"
+doi = "10.1103/PhysRevLett.121.093201"
+library = "Dakka_2018_LaserBasedMetastable"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Two-photon excitation of krypton (0.05 mbar, in a quartz cell) from the \
+ground state to the 2p6 level (Paschen; 4p5 5p[3/2]2) with a frequency-doubled \
+optical parametric oscillator near 215 nm (the OPO's output at about 429 nm measured with \
+a spectrometer): 5 ns pulses of up to 2 mJ, a 200 GHz bandwidth, focused by a 75 mm CaF2 \
+lens to a 100 um spot (peak intensity about 1 GW cm-2). The 760 nm (2p6 -> 1s5) and 819 \
+nm (2p6 -> 1s4) laser-induced fluorescence imaged on an EMCCD camera (collection \
+efficiency 0.1 %) gives the metastable fraction per atom against detuning and pulse \
+energy (Fig. 5). sigma_0^(2) and the 2p6 photoionisation cross section sigma_ei are \
+the two free parameters of a fit (least root-mean-square error) of a four-level \
+density-matrix model (ground, 2p6, 1s5, ion; Eq. 1), with the two-photon Rabi \
+frequency Omega^(2) = sqrt(2 sigma_0^(2) / pi) I / (hbar omega_0) (Eq. 2), a \
+photoionisation rate R = sigma_ei I / (2 hbar omega_0) (Eq. 3), a phase-diffusion \
+model of the laser's 200 GHz bandwidth (Eq. 4, Gaussian lineshape parameter b ~ 3), \
+spontaneous decay, collisions (including Penning ionisation) and the branching ratio."""
+notes = """The library holds the submitted version: arXiv:1805.05669v1 (15 May 2018), 5 \
+pages (PDF pp. 2-6) after the University of Adelaide repository's cover (PDF p. 1), \
+which names the published article, Phys. Rev. Lett. 121(9), 093201 (2018). Identity \
+checked against the cover and the first page (title, authors). The numbers of the \
+published version are not checked: shekhtman_2020 quotes this sigma_0^(2) as '5.2 +- \
+2.2 x 10^-35 cm4' citing the published article, while this copy prints 5.2 +- 2.1 (and \
+drag_2021 quotes 5.2e-43 m4 +- 40 %, which fits 2.1).
+
+WHAT IS TAKEN (tools/extract/dakka_2018.py). Table I (PDF p. 5), 'This work': \
+sigma_0^(2) = 5.2 +- 2.1 x 10^-35 cm4 for the ground-2p6 two-photon transition, and \
+sigma_ei = 3.8 +- 1.7 x 10^-18 cm2, the photoionisation cross section of the 2p6 level \
+by the same 215 nm light. Neither error has a stated level or origin (the fit's, the \
+calibration's).
+
+DEFINITIONS. sigma_0^(2) is defined through the Rabi frequency, Eq. (2), which is \
+drag_2021's Eq. (11), Omega = sqrt(2 sigma-bar / pi) Phi, derived there from the \
+cross section integrated over the two-photon angular frequency 2 omega (drag_2021, \
+Eqs. 8-11; its footnote: 'This is formula (2) of Dakka et al. (2018)'): the \
+frequency-integrated cross section with the profile normalised in angular frequency. \
+The polarisation is not stated. The photon statistics are not measured: the 200 GHz \
+light is modelled by phase diffusion only (no intensity fluctuations, so G2(0) = 1 in \
+the model). DOUBT: Eq. (3) writes the ionisation rate as sigma_ei I / (2 hbar omega_0), \
+with omega_0 'the laser frequency' (under Eq. 2); the photon flux of the ionising \
+light is I / (hbar omega_0), so as printed sigma_ei would be twice the usual \
+one-photon cross section. Whether that factor 2 is a misprint of the submitted version \
+or was used in the fit cannot be told from the paper; the value is kept as a check.
+
+NOT TAKEN. The branching ratio of 2p6 to the metastable 1s5, beta = 75 +- 4 % (from the \
+760 and 819 nm fluorescence intensities; 'The uncertainty arises from uncertainty in \
+the wavelength-dependent quantum efficiency of the spectrometer CCD'), and the \
+literature average 76 +- 3 %: no quantity of the vocabulary holds a branching ratio. \
+Table I's 'Literature' sigma_0^(2), 2.4 +- 0.8 x 10^-35 cm4, is xenon's ground-2p6 \
+transition from Kroll and Bischel (kroll_1990; 'Not directly comparable'): it is their \
+as-measured product sigma_tot G2(0) (2.4), not their G2-corrected sigma_tot (1.7) \
+(checked by the script against kroll_1990's record). The 'Literature' sigma_ei, 3.3 x \
+10^-18 cm2, is 'Calculated from' H. Hyman, Appl. Phys. Lett. 31, 14 (1977) (not in the \
+library), by a calculation the paper does not give. Figs. 2-6 (spectra, images, model \
+curves). The metastable-production efficiencies (2 % per pulse measured, up to 30 % \
+modelled)."""
+
+[[datasets]]
+id = "sigma0_2p6"
+material = "Kr"
+file = "Kr/dakka_2018__sigma0_2p6.csv"
+table = "tbl_599c680c31e3"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+scale = 1e-35
+abscissa = "label"
+use = "primary"
+notes = "Table I (PDF p. 5), 'This work': sigma_0^(2) of the ground (4p6 1S0) to 2p6 (4p5 5p[3/2]2, J = 2) transition, excited near 215 nm (the paper prints no closer wavelength). Fitted with the density-matrix model (record technique). The +- has no stated level."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "not stated"
+photon_statistics = "not measured: the 200 GHz-wide OPO light is modelled by phase diffusion without intensity fluctuations (G2(0) = 1 in the model)"
+method = "fit of a four-level density-matrix model to the 760 nm fluorescence against detuning and pulse energy"
+definition = "through the two-photon Rabi frequency, Omega^(2) = sqrt(2 sigma_0^(2) / pi) I / (hbar omega_0) (Eq. 2), drag_2021's Eq. (11): the cross section integrated over the two-photon angular frequency"
+pulse_ns = 5
+bandwidth_ghz = 200
+
+[[datasets]]
+id = "photoionization_2p6"
+material = "Kr"
+file = "Kr/dakka_2018__photoionization_2p6.csv"
+table = "tbl_599c680c31e3"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (PDF p. 5), 'This work': sigma_ei of the 2p6 level, ionised by a third photon of the same light; the wavelength as printed, '215 nm' (nominal). A check, because Eq. (3) defines it with I / (2 hbar omega_0), half the photon flux (record notes). The +- has no stated level."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "2p6 (Paschen) = 4p5 5p[3/2]2, J = 2, two-photon excited from the ground state"
+method = "fit of a four-level density-matrix model to the 760 nm fluorescence against detuning and pulse energy"
+definition = "R = sigma_ei I / (2 hbar omega_0) (Eq. 3), omega_0 the laser frequency, as printed"

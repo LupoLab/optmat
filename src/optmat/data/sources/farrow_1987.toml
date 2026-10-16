@@ -1,0 +1,49 @@
+citation = "R. L. Farrow, R. P. Lucht and L. A. Rahn, J. Opt. Soc. Am. B 4, 1241 (1987)"
+doi = "10.1364/josab.4.001241"
+library = "Farrow_1987_MeasurementsNonresonantThird"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Scanned, polarization-analyzed CARS with a single-mode frequency-doubled \
+Nd:YAG pump (532 nm, < 50 MHz) and a dye-laser Stokes (1.1 GHz) on binary mixtures of \
+about 5 % N2 in propane and n-butane (cell, 0.4-1 atm, 297 K) and in the post-flame \
+gases of an H2-O2-N2 flame (1570 K, water vapour); the N2 Q-branch resonant \
+susceptibility (modified exponential-gap linewidth model fitted to inverse-Raman \
+linewidths, Schrotter and Klockner's cross section, curated as schrotter_1979) is the \
+calibration standard."""
+notes = """Nonresonant CARS susceptibilities of propane, n-butane and water vapour, none \
+of them curated species: their values (Table 2, 10^-18 (cm^3/erg)/amagat: effective \
+chi_nr C3H8 98 +- 12, n-C4H10 122 +- 15; electronic C3H8 80 +- 12, n-C4H10 100 +- 12, H2O \
+18.5 +- 2 (per atm at 273 K); off-resonant Raman 3 chi_1111,buf C3H8 18 +- 4, n-C4H10 22 \
++- 8) are not extracted. The only curated entry is N2's reference value, 8.5 +- 2 x \
+10^-18 (cm^3/erg)/amagat, taken from Farrow and Rahn 1985 (Ref. 9, farrow_1985).
+
+Definitions (p. 1241): 'In general 3 chi(3) = 3 chi_r + chi_nr' (so chi_nr is three times \
+a chi_1111 in the paper's normalization of the resonant term); Eq. (1): 3 chi_1111(3)(w) \
+= (N/hbar) alpha . G^-1 . p . alpha, with N the number density per amagat and alpha_j = \
+(c^2/w_1^2)(d sigma/d Omega)_j^1/2; Eq. (6): the anti-Stokes intensity |3 chi_1111,N2 \
+Phi(rho_N2) + 3 chi_1111,buf Phi(rho_buf) + chi_nr,N2 Phi(1/3) + chi_nr,buf Phi(1/3)|^2, \
+Phi(rho) = cos theta cos phi + rho sin theta sin phi (Eq. (7)). The chi_nr are thus the \
+same CARS-literature quantity as farrow_1985's (chi^CARS per amagat, gamma_T = 2 \
+chi_nr/N0). The abstract and the water section quote N2's 8.5 x 10^-18 once per amagat \
+and once '(cm^3/erg)/atm' (p. 1244): an inconsistency of units in the text. Stated \
+accuracy of the present results '~+-12 %' (p. 1244)."""
+
+[[datasets]]
+id = "chi_nr_N2"
+material = "N2"
+file = "N2/farrow_1987__chi_nr_N2.csv"
+table = "tbl_4c51c969c816"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["farrow_1985"]
+notes = "Table 2 (p. 1245), 'Electronic chi_nr(3)' of N2, 8.5 +- 2 x 10^-18 (cm^3/erg)/amagat, note c: 'Ref. 9' (Farrow and Rahn 1985, whose Table 2 prints 8.5 +- 1.3 and whose text 8.5 +- 0.9; here +- 2). The calibration value of this paper's ratios (abstract: propane, n-butane and water 11.5 +- 1.4, 14.4 +- 1.8 and 2.2 +- 0.3 times N2). CARS at a 532 nm pump, per amagat (no state)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"

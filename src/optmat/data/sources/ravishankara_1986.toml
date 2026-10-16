@@ -1,0 +1,77 @@
+citation = "A. R. Ravishankara, P. H. Wine, C. A. Smith, P. E. Barbone and A. Torabi, \"N2O5 photolysis: Quantum yields for NO3 and O(3P)\", J. Geophys. Res. 91, 5355 (1986)"
+doi = "10.1029/jd091id05p05355"
+library = "Ravishankara_1986_N2O5PhotolysisQuantum"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Pulsed laser photolysis at 298 K in N2. O(3P): resonance fluorescence \
+(oxygen lamp, 131 nm, solar-blind photomultiplier, photon counting) after photolysis \
+by an excimer or a Nd:YAG-dye laser at 248, 266, 286.9 and 288.9 nm, 75 torr N2 unless \
+noted, each yield measured relative to O3 photolysis (O(3P) yield of O3 taken as one, \
+O(1D) quenched by N2) just before and after; corrected for the absorption of the 131 nm \
+radiation by N2O5 and, at 286.9 and 288.9 nm, for O(3P) from NO2 photolysis (2-15 %). \
+NO3: 248 nm photolysis (spatially homogenised beam, fluence calibrated by O3 \
+actinometry, 'better than 8 %'), NO3 by multipass 662 nm laser absorption, 250-355 torr \
+N2. N2O5 by UV absorption at 213.9 nm (Zn lamp), with a cross section of '4.00 x 10^-19 \
+cm^2 [DeMore et al., 1983]'; sigma(N2O5) at 248 nm taken as 4.45 x 10^-19 cm^2 \
+(pp. 5355-5358)."""
+notes = """Identity checked on the first page (PDF page 1 = journal p. 5355): \
+Ravishankara, Wine, Smith, Barbone and Torabi, J. Geophys. Res. 91 (D5), 5355-5360 \
+(1986). PDF page n = journal page 5354 + n. N2O5 only.
+
+The yields depend on the cross sections assumed: the N2O5 density is measured at \
+213.9 nm and the photolysed fraction uses sigma(N2O5) at the photolysis wavelength \
+(4.45 x 10^-19 cm^2 at 248 nm, 1.93 x 10^-19 at 266, 8.28 x 10^-20 at 286.9, 7.32 x \
+10^-20 at 288.9 nm; Table 1 footnote d), and the NO3 density uses NO3's cross section at \
+662 nm (Ravishankara and Wine 1983; Marinelli et al. 1982). Doubt: the printed 213.9 nm \
+cross section, 4.00 x 10^-19 cm^2 (p. 5355, page image checked), is smaller than the \
+paper's own 248 nm value, while N2O5's spectrum falls monotonically from 208 to 398 nm \
+(harwood_1998: 2.85 x 10^-18 at 214 nm, 4.19 x 10^-19 at 248 nm); it is probably a \
+misprint for 4.00 x 10^-18 (an inference; TC-975). Harwood et al. (1998, p. 1316) \
+re-evaluate the 248 nm NO3 yield with Yokelson et al.'s (1994) NO3 cross section as \
+0.77 +- 0.13 (2 sigma).
+
+O(3P) (p. 5358): 'Even though our systematic error for each Phi(O(3P)) is ~20 %, the \
+relative values are much more precise'; the yield falls by a factor of about 4 from 248 \
+to 290 nm. The authors postulate a channel N2O5 -> NO3 + NO + O(3P), threshold 298.5 nm \
+at 298 K, beside NO3 + NO2 (p. 5359). Quoted (not taken): Margitan (1984) 0.35 +- 0.15 \
+at 266 nm, Magnotta (1979) 0.35 +- 0.10 at 290-300 nm (O(3P)) and an upper limit of 0.1 \
+for NO; Swanson et al. (1984) NO3 yields 0.89 +- 0.15 at 248 nm and 0.84 +- 0.09 at 350 \
+nm. At very low helium pressure the NO3 yield was about 0.7, attributed to loss of \
+excited NO3 before relaxation (p. 5358).
+
+The laser wavelengths are nominal (248 nm KrF; 266 nm the fourth harmonic; 286.9 and \
+288.9 nm the dye laser), medium not stated.
+
+Register: TC-975."""
+
+[[datasets]]
+id = "o3p_yield"
+material = "N2O5"
+file = "N2O5/ravishankara_1986__o3p_yield.csv"
+table = "tbl_92212005c108"
+quantity = "photodissociation_quantum_yield"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1 (p. 5356), last column 'Phi +- Accuracy': the O(3P) yield at 248, 266, 286.9 and 288.9 nm, 75 torr N2, 298 K. The accuracy includes the systematic error (~20 %, p. 5358); its level is not stated. The 266 nm value averages two sets of runs (0.36 +- 0.05 and 0.42 +- 0.06, 2 sigma; footnote g); the 286.9 and 288.9 nm values are corrected for O(3P) from NO2 (footnote h; uncorrected 0.21-0.28 and 0.16-0.19)."
+[datasets.parameters]
+product = "O(3P)"
+temperature_k = 298.0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "no3_yield"
+material = "N2O5"
+file = "N2O5/ravishankara_1986__no3_yield.csv"
+table = "tbl_eaa82cc4a2ec"
+quantity = "photodissociation_quantum_yield"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2 (p. 5359), last cell, '(0.96 +- 0.13)^d': 'Uncorrected average. The error refers to a combination of random errors and systematic errors (8 % in F, 6 % in [N2O5], 6 % in sigma(N2O5), and 6 % in the absorption cross section of NO3 at 662 nm)' (page image checked); level not stated. The same 0.96 +- 0.13 on p. 5358. 250-355 torr N2, 298 K. The random-only averages are 0.958 +- 0.060 (all runs) and 0.955 +- 0.064, 0.961 +- 0.062 (the two pressures), 2 sigma. Harwood et al.'s re-evaluation with a later NO3 cross section is 0.77 +- 0.13; harwood_1998 measured 0.64 +- 0.10 (TC-975)."
+[datasets.parameters]
+product = "NO3 (ground state, detected at 662 nm after collisional relaxation)"
+temperature_k = 298.0
+[datasets.uncertainty]
+column = true
+level = "not stated"

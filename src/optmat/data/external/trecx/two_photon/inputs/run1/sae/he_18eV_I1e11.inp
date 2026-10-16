@@ -1,0 +1,37 @@
+Title:
+he_18eV_I1e11 - He 1s one electron (Tong-Lin SAE) two-photon; 18 eV; 20 fs Gaussian (FWHM of the intensity); I=1.000e+11 W/cm2
+
+# Brief 16 run 1 (optmat dev/briefs/16-tdse-two-photon.md). base
+# E0 = 1.68803179e-03 au, A0 = E0/omega = 2.55187138e-03 au; I0 = (1/2) eps0 c E0^2; fixStep 0.01999.
+# A(t) = A0 exp(-2 ln2 t^2/T^2) sin(omega t), T = 826.8275 au, file over [-3T,+3T]; window [-3T, +3T + 1000 au].
+
+#define BOX 40
+#define TongLinHeV (1.0+1.231*exp(-0.662*Q)-1.325*Q*exp(-1.236*Q)-0.231*exp(-0.480*Q))/Q
+
+Spectrum: radialPoints=1200, maxEnergy=1.5, plot=total, iSurff=true
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1
+ Eta,10,-1,1,assocLegendre{Phi}
+ Rn,14,0.,2.,polynomial,3
+ Rn,12,2.,20.,RpowL*polynomial,4
+ Rn,12,20.,BOX,RpowL*polynomial,5
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.15,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinHeV>
+Operator: interaction='iLaserAz[t]<<D/DZ>>'
+Operator: expectationValue='<1><1><chi[0,20]>,<1><1><chi[0,40]>'
+
+# populations of the field-free (complex-scaled) eigenstates of H0, SmallReal order, 0-based
+Occupation: states=0:70, operator=hamiltonian
+
+Initial: state=0
+
+Laser: shape, file, scale, scaleMode, timeUnits, lambda(nm)
+file, /mnt/scratch/users/jt52/tdse_two_photon/pulse/gauss20fs_18eV_A.dat, 2.551830302850e-03, peakA, au, 68.880110
+
+TimePropagation: begin,end,print,store,cutEnergy,operatorThreshold,fixStep
+ -2480.482400,3480.482400,10,0.05,100,1e-09,0.01999

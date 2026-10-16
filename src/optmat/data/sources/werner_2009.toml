@@ -1,0 +1,297 @@
+citation = "W. S. M. Werner, K. Glantschnig and C. Ambrosch-Draxl, \"Optical constants and inelastic electron-scattering data for 17 elemental metals\", J. Phys. Chem. Ref. Data 38, 1013-1092 (2009)"
+doi = "10.1063/1.3243762"
+library = "Werner_2009_OpticalConstantsInelastic"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Two independent sets of the dielectric function of 16 metals and Te. \
+(1) DFT (Sec. 2, pp. 1017-1019): full-potential LAPW (WIEN2K), GGA (Perdew et al.), \
+spin-polarised for Fe, Co, Ni, spin-orbit coupling (second variational) for Au, Pb, Pd, \
+Pt and W; the dielectric response in the random-phase (independent-particle) \
+approximation: epsilon_2 interband from momentum matrix elements (Eq. 6, improved \
+tetrahedron method), the intraband part a Drude line with a lifetime broadening of 0.1 \
+eV ('a universal value chosen for all elemental metals'), the interband spectra \
+Lorentzian-broadened by 0.1 eV, epsilon_1 by Kramers-Kronig transformation; lattice and \
+convergence parameters in Table 1 (Cu fcc a = 6.8219 au; Ag fcc 7.7290 au; Au fcc \
+7.7101 au; optical k mesh 58x58x58). (2) REELS (Secs. 3-4, pp. 1020-1029): reflection \
+electron energy-loss spectra in UHV (VG Microlab 310 F, hemispherical analyser at 20 eV \
+pass energy, normal incidence, detection at 60 deg to the normal, base pressure ~1e-9 \
+mbar; 17 elemental samples on one holder, cleaned by 3 keV Ar+ sputtering, checked by \
+Auger spectroscopy), primary energies 300-3400 eV (50-200 eV discarded); \
+Richardson-Lucy deconvolution of the instrumental broadening, elastic-peak removal (Eq. \
+9), a partial-intensity deconvolution of multiple volume and surface scattering from a \
+pair of spectra (Eq. 23) giving the single-scattering distributions DIIMFP w_b and DSEP \
+w_s, and a simultaneous fit of both to the theoretical expressions (Eqs. 10, 13) with a \
+Drude-Lorentz dielectric function (Eq. 25, Tables 5-10), weights X_b = 1.0 and X_s = 0.01 \
+(Eq. 27). The tabulated REELS epsilon are that fitted model's values ('These values have \
+been calculated from the Drude-Lorentz expansion coefficients derived from experimental \
+results for the DIIMFP (and DSEP)', Summary, p. 1038)."""
+notes = """Journal pages 1013-1092 = PDF pages 1-80 (journal page = PDF page + 1012). \
+Identity checked against the first page (the library flags warnings on the \
+bibliographic record only). Werner et al. cover Ti, V, Fe, Co, Ni, Cu, Zn, \
+Mo, Pd, Ag, Ta, W, Pt, Au, Pb, Bi and the semimetal Te; aluminium is not among them \
+(it appears only in Fig. 4, a DIIMFP/DSEP illustration). Only Cu, Ag and Au are \
+recorded here (the registered metals); the others' tables are listed below and not \
+transcribed.
+
+TABLES OF OPTICAL CONSTANTS (Tables 11-26, pp. 1044-1091; one per metal, three pages \
+each): Table 11 Ti, 12 V, 13 Fe, 14 Co, 15 Ni, 16 Cu (pp. 1059-1061), 17 Zn, 18 Mo, 19 \
+Pd, 20 Ag (pp. 1071-1073), 21 Ta, 22 W, 23 Pt, 24 Au (pp. 1083-1085), 25 Pb, 26 Bi. Te \
+has no numerical table (its Drude-Lorentz parameters are in Table 8 and its figures are \
+Figs. 20 and 32). Each table gives, on one energy grid (0.50-4.75 eV in 0.25 eV steps, \
+5.0-70.5 eV in 0.5 eV steps; 150 rows), E (eV), epsilon_1, epsilon_2 and the ELF \
+Im(-1/epsilon) from DFT, then E, epsilon_1, epsilon_2, ELF from REELS, and the REELS \
+w_b (DIIMFP, meV^-1) and w_s (DSEP, arbitrary units, a_s = 1). The ELF, w_b and w_s \
+have no quantity; they are kept in each row's printed cells. The library has these \
+tables as JSON only; the extraction script gives the parts and their page order, \
+established from the images.
+
+ACCURACY (REELS). 'The accuracy of the experimental data is estimated to be better \
+than 10% for the ELF and epsilon_2 as well as for epsilon_1 for energies above 10 eV. For \
+energies below 10 eV, the uncertainty in epsilon_1 in the experimental data may exceed \
+100%, which is a consequence of the fact that energy-loss measurements mainly sample the \
+absorptive part of the dielectric constant' (abstract, p. 1013). The ~10% is the rms \
+deviation of the DIIMFP between energy pairs (p. 1026), carried to the ELF and, by error \
+propagation, to epsilon_1 and epsilon_2 (Fig. 9, Au, p. 1029). 'For energies below ~5 \
+eV, where the loss function assumes small values, the uncertainty in the real and \
+imaginary parts of the dielectric function derived from REELS becomes appreciable (that \
+may exceed 100% in the case of epsilon_1)'; the REELS n and k 'deviate from the other \
+data sets for wavelengths above ~0.2 um' (p. 1033); the cause is the tail of the elastic \
+peak between 0.1 and 5 eV loss (p. 1033). For the REELS datasets the uncertainty is \
+recorded as a 10 % bound, with epsilon_1 below 10 eV at 100 % (a floor: the paper says \
+it 'may exceed' 100 %). The low-energy REELS rows are erratic (Cu epsilon_2 49.3, 86.3, \
+41.4 at 0.75, 1.00, 1.25 eV, as printed and consistent with the printed ELF). Near the \
+semicore edges the REELS retrieval uses a dispersion alpha = 0.5 in Eq. 26 (alpha = 1 \
+below), chosen so the edges match photoemission binding energies (pp. 1028-1029); the \
+paper notes a 'small systematic uncertainty' from this beyond the semicore edges (Cu \
+3p3/2 at 75.1 eV, Ag 4p3/2 58.3 eV, Au 5p3/2 57.2 eV: Tables 6, 8, 9 captions). No \
+uncertainty is given for the DFT values. No sample temperature is stated.
+
+DFT CAVEATS. The DFT intraband broadening of 0.1 eV is not the metal's own: for Ag the \
+measured lifetime corresponds to 0.02 eV, and the choice 'affects the low-energy region \
+up to 2.6 eV' (Fig. 1, p. 1019). The DFT datasets are therefore recorded as checks \
+(use = check), a calculation rather than a measurement of these samples; this may be \
+decided otherwise at review.
+
+SUM RULES (Table 2, p. 1039; image checked). Z_eff (f-sum, Eq. 31) and P_eff (ps-sum, \
+Eq. 32), with Henke's data added above 80 eV: Cu (Z = 29) REELS 30.6, DFT 29.5, Palik \
+28.3; ps 1.037, 1.016, 0.995. Ag (47): 46.6, 44.5, 50.6; 1.018, 1.005, 1.148. Au (79): \
+74.5, 75.2, 75.0; 1.008, 0.992, 1.107. The f-sum deviations are 3-5 % for all three \
+sets (p. 1034).
+
+OTHER TABLES (notes only). Table 1 (p. 1019): DFT structural and convergence \
+parameters. Table 3 (p. 1040): fit parameters k1, p1, k2, p2 of the IMFP against energy \
+(Eq. 33, 200-3000 eV). Table 4 (p. 1041): the surface excitation parameter a_s per metal. \
+Tables 5-10 (p. 1043): the Drude-Lorentz parameters of the REELS fits (the formulas \
+below for Cu, Ag and Au; the other metals not transcribed). Figs. 27-32 plot n and k \
+against wavelength (REELS, DFT, Palik); Fig. 27 is Cu, Ag and Au.
+
+COMPARISON WITH PALIK (text). The three sets agree within the errors below the \
+semicore edges (<~50 eV), with DFT and REELS agreeing better with each other than with \
+Palik (e.g. the ELF peak positions below 30 eV for Ag and Au, p. 1033); at the semicore \
+edges Palik's values (from Henke's atomic tables) differ from both (p. 1032). For Au the \
+interband ELF peaks near 25 and 35 eV lie slightly higher in energy in Palik's data \
+than in the REELS (p. 1036).
+
+REFRACTIVEINDEX.INFO. solprop's silver table takes 0.0176-0.124 um (10-70.5 eV) from the \
+database's Ag/Werner page, 'Experimental data: Derived from reflection electron \
+energy-loss spectroscopy (REELS) spectra' (published range 0.017586-2.479684 um, i.e. \
+0.5-70.5 eV): the REELS columns of Table 20 converted to n and k. See the curators' \
+notes for the comparison."""
+
+[[formulas]]
+id = "drude_lorentz_Cu"
+material = "Cu"
+equation = "Eqs. (25)-(26), p. 1024, with Table 6 (tbl_acb9ee0c406b, p. 1043), column Cu"
+printed = "epsilon_1(omega, q) = 1 - sum_i f_i (omega^2 - omega_i(q)^2) / [(omega^2 - omega_i(q)^2)^2 + omega^2 gamma_i^2], epsilon_2(omega, q) = sum_i f_i gamma_i omega / [(omega^2 - omega_i(q)^2)^2 + omega^2 gamma_i^2] (25); omega_i(q) = omega_i + alpha q^2 / 2 (26). Table 6, Cu (E_3p3/2 = 75.1 eV): omega_i (eV), gamma_i (eV), A_i (eV^2) = 0.000, 0.027, 86.3; 1.0, 0.5, 19.8; 1.0, 0.5, 21.9; 4.0, 1.7, 30.2; 4.8, 0.5, 2.5; 7.2, 11.3, 157.7; 14.2, 10.1, 130.9; 16.9, 68.2, 108.6; 24.3, 3.0, 40.0; 59.4, 55.1, 1022.4"
+variable = "omega = hbar omega, the energy (loss) in eV; q the momentum transfer (q = 0 for optical constants); the table's A_i (eV^2) is Eq. (25)'s oscillator strength f_i"
+range = "The REELS fit, 0-~80 eV; the paper considers the REELS values reliable from the near UV (above ~5 eV) to the soft x-ray range"
+coefficients = { omega_1 = "0.000", gamma_1 = "0.027", A_1 = "86.3", omega_2 = "1.0", gamma_2 = "0.5", A_2 = "19.8", omega_3 = "1.0", gamma_3 = "0.5", A_3 = "21.9", omega_4 = "4.0", gamma_4 = "1.7", A_4 = "30.2", omega_5 = "4.8", gamma_5 = "0.5", A_5 = "2.5", omega_6 = "7.2", gamma_6 = "11.3", A_6 = "157.7", omega_7 = "14.2", gamma_7 = "10.1", A_7 = "130.9", omega_8 = "16.9", gamma_8 = "68.2", A_8 = "108.6", omega_9 = "24.3", gamma_9 = "3.0", A_9 = "40.0", omega_10 = "59.4", gamma_10 = "55.1", A_10 = "1022.4" }
+check = "At q = 0 with f_i = A_i, Eq. (25) gives epsilon = 0.804 + 0.257i at 70.0 eV (Table 16 REELS: 0.804, 0.257), 0.894 + 0.353i at 40.0 eV (0.894, 0.354), -0.104 + 2.120i at 10.0 eV (-0.097, 2.118), -4.149 + 5.191i at 5.0 eV (-4.101, 5.185), but -78.8 + 86.7i at 1.00 eV (-73.064, 86.333): three digits above 10 eV; below, the one- and two-digit rounding of the printed parameters (the two oscillators at 1.0 eV, the 0.027 eV Drude width) dominates. Checked 2026-09-27."
+notes = "The REELS dielectric function of Cu. The last row of Table 6 is merged in the library's cells ('24.359.4 | 3.055.1 | 40.01022.4'); the values here are from the image. The oscillator parameters are 'a convenient numerical representation of the data' rather than physical transition energies (p. 1027). alpha = 1 below the semicore edge and 0.5 for semicore transitions (pp. 1024, 1029)."
+
+[[formulas]]
+id = "drude_lorentz_Ag"
+material = "Ag"
+equation = "Eqs. (25)-(26), p. 1024, with Table 8 (tbl_9247fa2f536a, p. 1043), column Ag"
+printed = "Eq. (25) as for drude_lorentz_Cu. Table 8, Ag (E_4p3/2 = 58.3 eV): omega_i (eV), gamma_i (eV), A_i (eV^2) = 0.000, 0.065, 98.4; 1.0, 93.8, 103.9; 4.9, 0.7, 23.8; 10.3, 22.0, 318.3; 13.2, 6.3, 89.6; 21.2, 3.3, 63.5; 30.2, 3.7, 43.3; 43.0, 16.7, 313.3; 65.7, 38.8, 519.9"
+variable = "omega = hbar omega in eV; q = 0 for optical constants; A_i (eV^2) is Eq. (25)'s f_i"
+range = "The REELS fit, 0-~80 eV"
+coefficients = { omega_1 = "0.000", gamma_1 = "0.065", A_1 = "98.4", omega_2 = "1.0", gamma_2 = "93.8", A_2 = "103.9", omega_3 = "4.9", gamma_3 = "0.7", A_3 = "23.8", omega_4 = "10.3", gamma_4 = "22.0", A_4 = "318.3", omega_5 = "13.2", gamma_5 = "6.3", A_5 = "89.6", omega_6 = "21.2", gamma_6 = "3.3", A_6 = "63.5", omega_7 = "30.2", gamma_7 = "3.7", A_7 = "43.3", omega_8 = "43.0", gamma_8 = "16.7", A_8 = "313.3", omega_9 = "65.7", gamma_9 = "38.8", A_9 = "519.9" }
+check = "At q = 0 with f_i = A_i: 0.735 + 0.250i at 70.0 eV (Table 20 REELS: 0.735, 0.250), 0.877 + 0.641i at 40.0 eV (0.880, 0.641), 0.969 + 2.233i at 10.0 eV (0.956, 2.232), -92.055 + 8.138i at 1.00 eV (-92.057, 8.164), but -2.280 + 8.585i at 5.0 eV (-1.599, 9.249), where the 0.7 eV-wide oscillator at 4.9 eV makes the model sensitive to the printed rounding. Checked 2026-09-27."
+notes = "The REELS dielectric function of Ag. Table 8's cells in the library agree with the image for the Ag column (the merged last row belongs to Te and Ta)."
+
+[[formulas]]
+id = "drude_lorentz_Au"
+material = "Au"
+equation = "Eqs. (25)-(26), p. 1024, with Table 9 (tbl_0f7ff357dab2, p. 1043), column Au"
+printed = "Eq. (25) as for drude_lorentz_Cu. Table 9, Au (E_5p3/2 = 57.2 eV): omega_i (eV), gamma_i (eV), A_i (eV^2) = 0.000, 0.2, 113.1; 4.0, 1.5, 44.6; 7.3, 3.3, 54.8; 12.8, 11.8, 184.9; 18.9, 71.0, 728.1; 19.9, 2.9, 65.7; 28.9, 3.9, 50.0; 38.7, 13.0, 74.7; 64.3, 51.9, 544.0"
+variable = "omega = hbar omega in eV; q = 0 for optical constants; A_i (eV^2) is Eq. (25)'s f_i"
+range = "The REELS fit, 0-~80 eV"
+coefficients = { omega_1 = "0.000", gamma_1 = "0.2", A_1 = "113.1", omega_2 = "4.0", gamma_2 = "1.5", A_2 = "44.6", omega_3 = "7.3", gamma_3 = "3.3", A_3 = "54.8", omega_4 = "12.8", gamma_4 = "11.8", A_4 = "184.9", omega_5 = "18.9", gamma_5 = "71.0", A_5 = "728.1", omega_6 = "19.9", gamma_6 = "2.9", A_6 = "65.7", omega_7 = "28.9", gamma_7 = "3.9", A_7 = "50.0", omega_8 = "38.7", gamma_8 = "13.0", A_8 = "74.7", omega_9 = "64.3", gamma_9 = "51.9", A_9 = "544.0" }
+check = "At q = 0 with f_i = A_i: 0.768 + 0.238i at 70.0 eV (Table 24 REELS: 0.768, 0.237), 0.640 + 0.519i at 40.0 eV (0.639, 0.519), 0.030 + 2.833i at 10.0 eV (0.033, 2.828), -2.424 + 5.053i at 5.0 eV (-2.340, 4.989), -100.26 + 22.59i at 1.00 eV (-101.906, 17.819). Checked 2026-09-27."
+notes = "The REELS dielectric function of Au. Table 9's cells for Au agree with the image."
+
+[[datasets]]
+id = "eps1_reels_Cu"
+material = "Cu"
+file = "Cu/werner_2009__eps1_reels_Cu.csv"
+table = "tbl_bbde835d361c"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 16, pp. 1059-1061 (tbl_bbde835d361c, tbl_77acafd389e3, tbl_d3f670af9b86), REELS epsilon_1, 0.50-70.5 eV, 150 rows: the fitted Drude-Lorentz model's values (formula drude_lorentz_Cu). Unreliable below ~5 eV (see the record's notes)."
+[datasets.parameters]
+technique = "REELS"
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+relative_rows = { "0.50" = 1.0, "0.75" = 1.0, "1.00" = 1.0, "1.25" = 1.0, "1.50" = 1.0, "1.75" = 1.0, "2.00" = 1.0, "2.25" = 1.0, "2.50" = 1.0, "2.75" = 1.0, "3.00" = 1.0, "3.25" = 1.0, "3.50" = 1.0, "3.75" = 1.0, "4.00" = 1.0, "4.25" = 1.0, "4.50" = 1.0, "4.75" = 1.0, "5.0" = 1.0, "5.5" = 1.0, "6.0" = 1.0, "6.5" = 1.0, "7.0" = 1.0, "7.5" = 1.0, "8.0" = 1.0, "8.5" = 1.0, "9.0" = 1.0, "9.5" = 1.0 }
+
+[[datasets]]
+id = "eps2_reels_Cu"
+material = "Cu"
+file = "Cu/werner_2009__eps2_reels_Cu.csv"
+table = "tbl_bbde835d361c"
+quantity = "permittivity_imaginary"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 16, pp. 1059-1061, REELS epsilon_2, 0.50-70.5 eV, 150 rows. 'Better than 10%' (abstract); the paper calls the uncertainty 'appreciable' below ~5 eV without a number."
+[datasets.parameters]
+technique = "REELS"
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+
+[[datasets]]
+id = "eps1_dft_Cu"
+material = "Cu"
+file = "Cu/werner_2009__eps1_dft_Cu.csv"
+table = "tbl_bbde835d361c"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 16, pp. 1059-1061, DFT epsilon_1 (GGA, LAPW; 0.1 eV intraband and interband broadening), 0.50-70.5 eV, 150 rows. A calculation: kept as a check (record notes)."
+[datasets.parameters]
+technique = "DFT"
+
+[[datasets]]
+id = "eps2_dft_Cu"
+material = "Cu"
+file = "Cu/werner_2009__eps2_dft_Cu.csv"
+table = "tbl_bbde835d361c"
+quantity = "permittivity_imaginary"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 16, pp. 1059-1061, DFT epsilon_2, 0.50-70.5 eV, 150 rows."
+[datasets.parameters]
+technique = "DFT"
+
+[[datasets]]
+id = "eps1_reels_Ag"
+material = "Ag"
+file = "Ag/werner_2009__eps1_reels_Ag.csv"
+table = "tbl_a521b89d0a14"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 20, pp. 1071-1073 (tbl_a521b89d0a14, tbl_ba923cb150a2, tbl_d7484476dcbe), REELS epsilon_1, 0.50-70.5 eV, 150 rows: the fitted model's values (formula drude_lorentz_Ag). The refractiveindex.info Ag/Werner page is this column with epsilon_2, as n and k."
+[datasets.parameters]
+technique = "REELS"
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+relative_rows = { "0.50" = 1.0, "0.75" = 1.0, "1.00" = 1.0, "1.25" = 1.0, "1.50" = 1.0, "1.75" = 1.0, "2.00" = 1.0, "2.25" = 1.0, "2.50" = 1.0, "2.75" = 1.0, "3.00" = 1.0, "3.25" = 1.0, "3.50" = 1.0, "3.75" = 1.0, "4.00" = 1.0, "4.25" = 1.0, "4.50" = 1.0, "4.75" = 1.0, "5.0" = 1.0, "5.5" = 1.0, "6.0" = 1.0, "6.5" = 1.0, "7.0" = 1.0, "7.5" = 1.0, "8.0" = 1.0, "8.5" = 1.0, "9.0" = 1.0, "9.5" = 1.0 }
+
+[[datasets]]
+id = "eps2_reels_Ag"
+material = "Ag"
+file = "Ag/werner_2009__eps2_reels_Ag.csv"
+table = "tbl_a521b89d0a14"
+quantity = "permittivity_imaginary"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 20, pp. 1071-1073, REELS epsilon_2, 0.50-70.5 eV, 150 rows."
+[datasets.parameters]
+technique = "REELS"
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+
+[[datasets]]
+id = "eps1_dft_Ag"
+material = "Ag"
+file = "Ag/werner_2009__eps1_dft_Ag.csv"
+table = "tbl_a521b89d0a14"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 20, pp. 1071-1073, DFT epsilon_1, 0.50-70.5 eV, 150 rows. The 0.1 eV intraband broadening exceeds silver's measured 0.02 eV (p. 1019)."
+[datasets.parameters]
+technique = "DFT"
+
+[[datasets]]
+id = "eps2_dft_Ag"
+material = "Ag"
+file = "Ag/werner_2009__eps2_dft_Ag.csv"
+table = "tbl_a521b89d0a14"
+quantity = "permittivity_imaginary"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 20, pp. 1071-1073, DFT epsilon_2, 0.50-70.5 eV, 150 rows."
+[datasets.parameters]
+technique = "DFT"
+
+[[datasets]]
+id = "eps1_reels_Au"
+material = "Au"
+file = "Au/werner_2009__eps1_reels_Au.csv"
+table = "tbl_991d52c88cc2"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 24, pp. 1083-1085 (tbl_991d52c88cc2, tbl_f4fe6ec8cdaa, tbl_4c92ff38fd6e), REELS epsilon_1, 0.50-70.5 eV, 150 rows: the fitted model's values (formula drude_lorentz_Au)."
+[datasets.parameters]
+technique = "REELS"
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+relative_rows = { "0.50" = 1.0, "0.75" = 1.0, "1.00" = 1.0, "1.25" = 1.0, "1.50" = 1.0, "1.75" = 1.0, "2.00" = 1.0, "2.25" = 1.0, "2.50" = 1.0, "2.75" = 1.0, "3.00" = 1.0, "3.25" = 1.0, "3.50" = 1.0, "3.75" = 1.0, "4.00" = 1.0, "4.25" = 1.0, "4.50" = 1.0, "4.75" = 1.0, "5.0" = 1.0, "5.5" = 1.0, "6.0" = 1.0, "6.5" = 1.0, "7.0" = 1.0, "7.5" = 1.0, "8.0" = 1.0, "8.5" = 1.0, "9.0" = 1.0, "9.5" = 1.0 }
+
+[[datasets]]
+id = "eps2_reels_Au"
+material = "Au"
+file = "Au/werner_2009__eps2_reels_Au.csv"
+table = "tbl_991d52c88cc2"
+quantity = "permittivity_imaginary"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 24, pp. 1083-1085, REELS epsilon_2, 0.50-70.5 eV, 150 rows."
+[datasets.parameters]
+technique = "REELS"
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+
+[[datasets]]
+id = "eps1_dft_Au"
+material = "Au"
+file = "Au/werner_2009__eps1_dft_Au.csv"
+table = "tbl_991d52c88cc2"
+quantity = "permittivity_real"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 24, pp. 1083-1085, DFT epsilon_1 (with spin-orbit coupling), 0.50-70.5 eV, 150 rows."
+[datasets.parameters]
+technique = "DFT"
+
+[[datasets]]
+id = "eps2_dft_Au"
+material = "Au"
+file = "Au/werner_2009__eps2_dft_Au.csv"
+table = "tbl_991d52c88cc2"
+quantity = "permittivity_imaginary"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 24, pp. 1083-1085, DFT epsilon_2 (with spin-orbit coupling), 0.50-70.5 eV, 150 rows."
+[datasets.parameters]
+technique = "DFT"

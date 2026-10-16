@@ -1,0 +1,228 @@
+citation = "J. K. Wahlstrand, J. H. Odhner, E. T. McCole, Y.-H. Cheng, J. P. Palastro, R. J. Levis and H. M. Milchberg, \"Effect of two-beam coupling in strong-field optical pump-probe experiments\", Phys. Rev. A 87, 053801 (2013)"
+doi = "10.1103/PhysRevA.87.053801"
+library = "Wahlstrand_2013_EffectTwoBeam"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Theory and numerical calculation of the probe phase shift in pump-probe \
+experiments with bound-electronic (instantaneous chi(3)), plasma (PPT/Popruzhenko \
+ionization) and rotational (first-order density matrix) nonlinearities, including the \
+pump-probe interference ('grating') terms, for degenerate and nondegenerate probes; \
+simulations of the Loriot et al. transient-birefringence experiment (90 fs, 800 nm, \
+Gaussian beams crossing at 4 degrees) and of SSSI; new degenerate experiments in Ar and \
+air (spectrally resolved transient birefringence, 42 fs; degenerate chirped-pulse \
+spectral interferometry in 0.5 atm Ar, 40 fs, crossing 3 degrees) supporting the plasma \
+grating as the origin of the negative birefringence (secs. II-IV)."""
+notes = """Journal pages 053801-1 to -12 = PDF pages 1-12 (p. 13 references). Identity \
+checked against the first page. No new absolute n2 is measured here; the paper \
+establishes the self/probe factor 2 and corrects Loriot's degenerate-probe values.
+
+DEFINING EQUATIONS (Gaussian units). Fields (p. 2): pump E_e = (1/2) A_e exp(i k_e.r - i \
+omega_e t) + c.c., probe likewise, so A is the full complex amplitude and the field is \
+Re[A exp(...)]. Eq. (3), p. 2: (P_el)_i = chi(3)_ijkl E_j E_k E_l with the total real \
+field (instantaneous response). p. 3: 'defining the Kerr coefficient n2 = 12 pi^2 \
+chi(3)_xxxx / (n0^2 c)', with I_e = n0 c / (8 pi) |A_e|^2 the pump intensity. Eq. (6), p. \
+3: dPhi_x/dz - (n0/c) dPhi_x/dt = k_p (2 n2 I_e): 'the effective Kerr nonlinear refractive \
+index for the probe is found to be Delta n_K^cross = 2 n2 I_e, twice as large as the change \
+in nonlinear index calculated for the pump beam on itself, Delta n_K = n2 I_e. The phase \
+shift of the probe is enhanced by a factor of 2 regardless of whether the probe is \
+degenerate or nondegenerate with the pump' (p. 3). Perpendicular probe: Eq. (5), the \
+same with n2/3 (chi_yyxx = chi_yxyx = chi_yxxy = chi_xxxx/3, Appendix A). Birefringence at \
+low intensity: Delta n_par - Delta n_perp = 2 n2 - 2 n2/3 = 4 n2/3 (p. 8). For a \
+nondegenerate probe the plasma and rotational grating terms vanish, so 'the only \
+difference between the experimentally measured Delta n and the true nonlinear index \
+Delta n is the factor of 2 enhancement in the bound electronic contribution' (p. 7); \
+'These calculations provide theoretical justification for the analysis performed in \
+recent absolute measurements of the nonlinearity in the noble gases, N2, O2, and N2O \
+[17,18]' (= wahlstrand_2012, wahlstrand_2012b). With a degenerate probe the rotational \
+grating adds an effectively instantaneous positive signal that would make n2 appear \
+larger (p. 6), and the plasma grating a negative one (p. 6-8). Rotational response: B = 2.0 \
+(N2), 1.44 cm^-1 (O2), T = 293 K, n2 and Delta alpha from [17] (p. 5); the vibrational \
+response is neglected ('less than 10 % of the electronic nonlinearity [43]', p. 5).
+
+TABLE I (p. 8; image checked; the cells file matches). n2 in 1e-20 cm2/W: Ref. [17] = \
+wahlstrand_2012 (reproduced); Ref. [10] = Loriot et al.'s erratum (Opt. Express 18, 3011 \
+(2010)), which 'corrected' the Kerr coefficients 'for the effect of a pulse on itself' \
+(p. 1): self coefficients, reproduced; 'Ref. [10] corrected for rot. grating': this \
+paper's subtraction of the calculated rotational-grating contribution (90 fs \
+transform-limited Gaussian pulses) from Loriot's N2 and O2 values, after which Loriot and \
+Wahlstrand agree within error (p. 8). Loriot's normalized intensity is the peak \
+intensity divided by 1.7 (p. 8).
+
+HIGHER-ORDER KERR (notes only): the negative birefringence Loriot et al. attributed to \
+negative n4, n6, ... is explained by the plasma grating of a degenerate probe; the \
+spectrally resolved birefringence in Ar and air (Fig. 5) matches the plasma-grating \
+model better than the higher-order Kerr model, and in the degenerate interferometry the \
+negative t = 0 signal appears together with the long-lived plasma signal (Fig. 6; pp. \
+9-10). Note [41]: a second-order rotational response (proportional to I^2) at high pulse \
+energy would give an effective n4 through its grating.
+
+STATE. Table I prints no state; the reproduced values keep their sources' states \
+(wahlstrand_2012: 1 atm; Loriot: 1 bar, room temperature), recorded as there."""
+
+[[datasets]]
+id = "ref17_Ar"
+material = "Ar"
+file = "Ar/wahlstrand_2013__ref17_Ar.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table I, 'Ref. [17]' column: wahlstrand_2012 Table I, state and parameters as there."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "ref17_N2"
+material = "N2"
+file = "N2/wahlstrand_2013__ref17_N2.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table I, 'Ref. [17]' column: wahlstrand_2012 Table I."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "ref17_O2"
+material = "O2"
+file = "O2/wahlstrand_2013__ref17_O2.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table I, 'Ref. [17]' column: wahlstrand_2012 Table I."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "ref10_Ar"
+material = "Ar"
+file = "Ar/wahlstrand_2013__ref10_Ar.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2010"]
+notes = "Table I, 'Ref. [10]' column: Loriot et al.'s erratum value (self coefficient); degenerate transient birefringence, 90 fs, 800 nm, 1 bar, room temperature (293.15 K assumed)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "ref10_N2"
+material = "N2"
+file = "N2/wahlstrand_2013__ref10_N2.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2010"]
+notes = "Table I, 'Ref. [10]' column: Loriot et al.'s erratum value, including the degenerate probe's rotational-grating signal."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "ref10_O2"
+material = "O2"
+file = "O2/wahlstrand_2013__ref10_O2.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2010"]
+notes = "Table I, 'Ref. [10]' column: Loriot et al.'s erratum value, including the rotational-grating signal."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "corrected_N2"
+material = "N2"
+file = "N2/wahlstrand_2013__corrected_N2.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["loriot_2010"]
+notes = "Table I, 'Ref. [10] corrected for rot. grating': Loriot's value minus this paper's calculated rotational-grating contribution (90 fs transform-limited Gaussian pulses, T = 293 K). A re-analysis of Loriot's measurement, not an independent one: 'check'. The error bar is Loriot's, unchanged. Part: rotation removed, the adiabatic vibrational part kept."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "corrected_O2"
+material = "O2"
+file = "O2/wahlstrand_2013__corrected_O2.csv"
+table = "tbl_2cd9818d136f"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "check"
+reproduced_from = ["loriot_2010"]
+notes = "Table I, 'Ref. [10] corrected for rot. grating': as corrected_N2."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+pulse_fs = 90

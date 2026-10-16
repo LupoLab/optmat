@@ -1,0 +1,447 @@
+citation = "D. M. Bishop and J. Pipin, J. Chem. Phys. 91, 3549 (1989)"
+doi = "10.1063/1.456886"
+library = "Bishop_1989_ImprovedDynamicHyperpolarizabilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Sum-over-states perturbation theory with explicitly correlated \
+(Hylleraas-type geminal) wave functions for the 1S, 1P and 1D states of helium, their \
+nonlinear parameters optimised by maximising the property computed."""
+notes = """The paper is about the dynamic second hyperpolarizability gamma (Tables II-V, \
+Kerr, DFWM, ESHG, THG) and the dipole-quadrupole and quadrupole polarizabilities B \
+and C (Table VI); none of these is linear dipole data, and none is extracted here. The \
+only linear value is the static dipole polarizability in the text (p. 3550): 'by \
+maximizing the dipole polarizability (we find alpha = 1.383 192 a.u., in good agreement \
+with past accurate calculations, see Ref. 6)'. The value is for the nonrelativistic, \
+infinite-mass atom (see liu_1997 on the mass scaling). The library's cover page notes a \
+published erratum (J. Chem. Phys. 103, 5868 (1995)), not in the library; it concerns \
+the hyperpolarizabilities, as far as its title shows.
+
+THIRD-ORDER DATA (2026-09-26). The gamma tables are now extracted; the \
+statement above that nothing but alpha is extracted refers to the linear phase. The \
+erratum (bishop_1995, now in the library) corrects only Table VI's dipole-quadrupole \
+polarizability B(omega) (a programming error); the gamma values of Tables II-V stand.
+
+Definitions (p. 3549). Eq. (1): the Orr-Ward sum-over-states expression, \
+gamma_abgd(-w_s; w1, w2, w3) = hbar^-3 sum_P [ sum_mnp <g|mu_a|m><m|mu_d|n><n|mu_g|p><p|mu_b|g> \
+/ ((w_mg - w_s)(w_ng - w1 - w2)(w_pg - w1)) - sum_mn ... ], sum_P over the 24 \
+permutations of the frequencies with their subscripts, w_s = w1 + w2 + w3. No factor K \
+appears, and the static limit is the same for every process: this is the Taylor-series \
+(T) convention of Shelton and Rice (Chem. Rev. 94, 3 (1994), Eqs. 1-3 with the K factors \
+of their Table I in the expansion of mu), who take these values unchanged as the He \
+calibration (their Table VI and p. 11 of the review, pdf page 9: 'the accuracy of their final ab \
+initio results is thought to be better than 0.1 %'). PROCESS NAMES: Bishop's 'Kerr' is \
+the dc Kerr effect gamma(-w; w, 0, 0) (process dc_kerr), his 'DFWM' is gamma(-w; -w, w, \
+w), the intensity-dependent index (process kerr); ESHG gamma(-2w; 0, w, w), THG \
+gamma(-3w; w, w, w). Two independent components gamma_zzzz and gamma_xxzz except in the \
+static limit and for THG, where 3 gamma_xxzz = gamma_zzzz (p. 3549). gamma_zzzz of an \
+atom is Shelton and Rice's gamma_parallel (the isotropic average <gamma>_zzzz); \
+gamma_xxzz is not their gamma_perp = <gamma>_zxxz of a dc Kerr or ESHG experiment in \
+general, but the dc Kerr gamma_K = (3/2)(gamma_zzzz - gamma_xxzz) (note added in proof, \
+p. 3551): 44.73 a.u. at 5145 A and 44.17 a.u. at 6328 A, which the Kerr columns of \
+Table II reproduce (44.7285, 44.169; checked 2026-09-26).
+
+Units and mass. Atomic units; 'the SI equivalents are 6.241 36 x 10^-65 C^4 m^4 J^-3 \
+... for gamma ... These conversions are based on a reduced electron mass appropriate \
+for the helium nucleus' (p. 3549). The standard atomic unit is 6.235 377e-65 (Shelton \
+and Rice, Table II); 6.235377e-65 x (1 + m_e/m_alpha)^7 = 6.24136e-65, so the tabulated \
+numbers are infinite-nuclear-mass atomic units and the physical 4He gamma in standard \
+atomic units is 0.096 % larger. Shelton and Rice's Table VI 'include the reduced mass \
+correction' (dc Kerr 632.8 nm: 44.211 = 44.169 x 1.00096). The frequencies of Table III \
+are in standard (infinite-mass) hartree: Table II's values are reproduced by a spline of \
+Table III at omega = 2 pi c / lambda with lambda as printed taken as a VACUUM wavelength \
+(rms 0.0015 a.u. over the THG column, where the frequency sensitivity is largest), \
+against 0.009 a.u. with reduced-mass hartree and 0.021 a.u. with lambda read as air \
+(checked 2026-09-26). Table II's wavelengths are therefore recorded as vacuum.
+
+Part: electronic (He has no vibration or rotation). The values are nonrelativistic. \
+Accuracy: the static gamma_zzzz 43.104 and C(0) agree 'completely' with Buckingham and \
+Hibbard's variation-perturbation values (p. 3550); 'we have no reason to believe that \
+our dynamic values will deviate from this accuracy' (p. 3551). No number is stated: \
+the datasets carry no uncertainty.
+
+Dispersion fits (Tables IV and V, images checked; formulas below). Eqs. (9), (10): \
+gamma_par(w)/gamma_par(0) = 1 + A w_L^2 + A' w_L^4 and gamma_perp(w)/gamma_perp(0) = 1 \
++ B w_L^2 + B' w_L^4, with w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units \
+(hartree^2), gamma_par = gamma_zzzz, gamma_perp = gamma_xxzz, gamma_par(0) = 43.104, \
+gamma_perp(0) = 14.368. So w_L^2 = 2 w^2 (dc Kerr), 4 w^2 (DFWM), 6 w^2 (ESHG), 12 w^2 \
+(THG). MAPPING TO SHELTON: Shelton's gamma = gamma_0 (1 + A nu_L^2 + B nu_L^4) with \
+nu_L in cm^-1 is Bishop's Eq. (9): Shelton A = Bishop A / (219474.6307 cm^-1)^2 \
+(2.189 -> 0.4544e-10 cm^2) and Shelton B = Bishop A' / (219474.6307)^4 (3.494 -> \
+0.1506e-20 cm^4, 3.602 -> 0.1552e-20). Bishop's B and B' belong to the perpendicular \
+component gamma_xxzz, not to Shelton's B. The text: A is 'constant for all four \
+processes; A' is the same (approximately) for Kerr and ESHG; and B follows quite \
+precisely the ratio 1:(1 + k/2):(1 + k/3):(1 + k/6) for processes Kerr:DFWM:ESHG:THG, \
+with k/6 = 0.161'; or Bishop's 1:(3 + delta)/2:(4 + delta)/3:(7 + delta)/6 'with \
+delta = -0.0326' (p. 3551).
+
+Experimental He values quoted (note added in proof, p. 3551): gamma^Kerr = 47.2 +- 3 \
+a.u. at 5145 A (Carusotto et al. 1985), 54 +- 4 (Buckingham and Dunmur 1968) and 52 \
++- 8 (Boyle et al. 1966) at 6328 A: dataset expt_dc_kerr (reproduced). The ESHG ratio \
+gamma_par/gamma_perp = 2.949 at 4880 A (Mizrahi and Shelton 1985, Ref. 13; theory \
+2.950) is a ratio of components, noted here only.
+
+Second copy: Bishop_1989_ImprovedDynamicHyperpolarizabilities_033679 (a second \
+download of the same PDF, 4 pages): its six tables' cells are identical to this copy's \
+(Tables IV and V are listed in the other order; compared 2026-09-26).
+
+Not extracted: Table I (wave-function parameters) and Table VI (B and C field-gradient \
+polarizabilities; B corrected by bishop_1995)."""
+
+[[datasets]]
+id = "alpha_static"
+material = "He"
+table = "text"
+points = [["1", "inf", "1.383192"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Text, p. 3550: the static polarizability reached by the basis optimisation; not an independent high-accuracy result."
+
+[[datasets]]
+id = "omega_dc_kerr_zzzz"
+material = "He"
+file = "He/bishop_1989__omega_dc_kerr_zzzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_zzzz, Bishop's 'Kerr' column, the dc Kerr gamma(-w; w, 0, 0), omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "omega_kerr_zzzz"
+material = "He"
+file = "He/bishop_1989__omega_kerr_zzzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_zzzz, Bishop's 'DFWM' column, gamma(-w; -w, w, w): the intensity-dependent index, omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "omega_eshg_zzzz"
+material = "He"
+file = "He/bishop_1989__omega_eshg_zzzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_zzzz, 'ESHG' column, gamma(-2w; 0, w, w), omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "omega_thg_zzzz"
+material = "He"
+file = "He/bishop_1989__omega_thg_zzzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_zzzz, 'THG' column, gamma(-3w; w, w, w), omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "omega_dc_kerr_xxzz"
+material = "He"
+file = "He/bishop_1989__omega_dc_kerr_xxzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_xxzz, Bishop's 'Kerr' column, the dc Kerr gamma(-w; w, 0, 0), omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "omega_kerr_xxzz"
+material = "He"
+file = "He/bishop_1989__omega_kerr_xxzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_xxzz, Bishop's 'DFWM' column, gamma(-w; -w, w, w): the intensity-dependent index, omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "omega_eshg_xxzz"
+material = "He"
+file = "He/bishop_1989__omega_eshg_xxzz.csv"
+table = "tbl_ec80e5c576f2"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "primary"
+notes = "Table III, gamma_xxzz, 'ESHG' column, gamma(-2w; 0, w, w), omega in atomic units (hartree), 0 to 0.20; the row 0.0 is the static value (43.104 zzzz, 14.368 xxzz). Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "lambda_dc_kerr_zzzz"
+material = "He"
+file = "He/bishop_1989__lambda_dc_kerr_zzzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_zzzz, Bishop's 'Kerr' column, the dc Kerr gamma(-w; w, 0, 0), at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "lambda_kerr_zzzz"
+material = "He"
+file = "He/bishop_1989__lambda_kerr_zzzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_zzzz, Bishop's 'DFWM' column, gamma(-w; -w, w, w): the intensity-dependent index, at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "lambda_eshg_zzzz"
+material = "He"
+file = "He/bishop_1989__lambda_eshg_zzzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_zzzz, 'ESHG' column, gamma(-2w; 0, w, w), at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "lambda_thg_zzzz"
+material = "He"
+file = "He/bishop_1989__lambda_thg_zzzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_zzzz, 'THG' column, gamma(-3w; w, w, w), at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "lambda_dc_kerr_xxzz"
+material = "He"
+file = "He/bishop_1989__lambda_dc_kerr_xxzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_xxzz, Bishop's 'Kerr' column, the dc Kerr gamma(-w; w, 0, 0), at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "lambda_kerr_xxzz"
+material = "He"
+file = "He/bishop_1989__lambda_kerr_xxzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_xxzz, Bishop's 'DFWM' column, gamma(-w; -w, w, w): the intensity-dependent index, at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "lambda_eshg_xxzz"
+material = "He"
+file = "He/bishop_1989__lambda_eshg_xxzz.csv"
+table = "tbl_7d807148ca60"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table II, gamma_xxzz, 'ESHG' column, gamma(-2w; 0, w, w), at eight laser wavelengths (angstrom, vacuum: see the source notes); the same calculation as Table III, for comparison with experiment. Infinite-nuclear-mass atomic units (x 1.00096 for 4He, source notes). No uncertainty stated (better than 0.1 % per Shelton and Rice)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "expt_dc_kerr"
+material = "He"
+points = [["carusotto_1985", "5145", "47.2", "3"], ["buckingham_dunmur_1968", "6328", "54", "4"], ["boyle_1966", "6328", "52", "8"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["carusotto_1985", "buckingham_1968", "boyle_1966"]
+notes = "Note added in proof, p. 3551: experimental gamma^Kerr = (3/2)(gamma_zzzz - gamma_xxzz) of He, '(47.2 +- 3) a.u.' at 5145 A (Ref. 15), '(54 +- 4)' (Ref. 16, Buckingham and Dunmur 1968 = buckingham_1968) and '(52 +- 8) a.u.' (Ref. 17, Boyle et al. 1966 = boyle_1966, re-pointed 2026-09-27: its (2.6 +- 0.4) x 10^-38 esu is 51.6 +- 7.9 au, checked) at 6328 A, against the theory's 44.73 and 44.17. The uncertainties' level is not stated. The conversion from the measured Kerr constants to a.u. is the original authors' or Bishop's (not said). Wavelengths as printed (air or vacuum not stated; recorded as vacuum, a 0.03 % difference)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[formulas]]
+id = "tableiv_dc_kerr"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table IV (tbl_30d8a1e91236), column 'Kerr'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; Kerr: A 2.166, A' 3.525, B 1.885, B' 2.734"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 2 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process dc_kerr, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.01, 0.02, 0.03, 0.04, 0.05 a.u. (the fitted points, caption)"
+coefficients = { A = "2.166", A_prime = "3.525", B = "1.885", B_prime = "2.734", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's Kerr columns for omega <= 0.05 to within 0.005 a.u. (gamma_zzzz at 0.05: 43.575 against 43.580) and 0.001 (gamma_xxzz). A = 2.189 (Table V, and the text's claim that A is the same for all processes) with this A' would fit to 0.001 at every omega <= 0.05: 2.166 may be a misprint for 2.189, not established (TC-20). Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's."
+
+[[formulas]]
+id = "tableiv_kerr"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table IV (tbl_30d8a1e91236), column 'DFWM'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; DFWM: A 2.189, A' 3.755, B 2.797, B' 5.975"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 4 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process kerr, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.01, 0.02, 0.03, 0.04, 0.05 a.u. (the fitted points, caption)"
+coefficients = { A = "2.189", A_prime = "3.755", B = "2.797", B_prime = "5.975", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's DFWM columns for omega <= 0.05 to within 0.001 a.u. Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's."
+
+[[formulas]]
+id = "tableiv_eshg"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table IV (tbl_30d8a1e91236), column 'ESHG'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; ESHG: A 2.189, A' 3.602, B 2.493, B' 4.624"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 6 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process eshg, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.01, 0.02, 0.03, 0.04, 0.05 a.u. (the fitted points, caption)"
+coefficients = { A = "2.189", A_prime = "3.602", B = "2.493", B_prime = "4.624", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's ESHG columns for omega <= 0.05 to within 0.001 a.u. Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's."
+
+[[formulas]]
+id = "tableiv_thg"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table IV (tbl_30d8a1e91236), column 'THG'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; THG: A 2.187, A' 3.652, B (2.187), B' (3.652)"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 12 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process thg, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.01, 0.02, 0.03, 0.04, 0.05 a.u. (the fitted points, caption)"
+coefficients = { A = "2.187", A_prime = "3.652", B = "2.187", B_prime = "3.652", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's THG column for omega <= 0.05 to within 0.001 a.u. Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's. B and B' are printed in parentheses with footnote b: 'Necessarily, A = B and A' = B' for THG'."
+
+[[formulas]]
+id = "tablev_dc_kerr"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table V (tbl_cb481970c901), column 'Kerr'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; Kerr: A 2.189, A' 3.494, B 1.885, B' 2.714"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 2 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process dc_kerr, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.005, 0.01, 0.015, 0.02 a.u. (the caption prints '0, 0.05, 0.01, 0.015, and 0.02': 0.05 is a misprint for 0.005, as the text says the fit is for omega <= 0.02)"
+coefficients = { A = "2.189", A_prime = "3.494", B = "1.885", B_prime = "2.714", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's Kerr columns for omega <= 0.05 to within 0.001 a.u. Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's."
+
+[[formulas]]
+id = "tablev_kerr"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table V (tbl_cb481970c901), column 'DFWM'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; DFWM: A 2.189, A' 3.681, B 2.797, B' 5.835"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 4 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process kerr, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.005, 0.01, 0.015, 0.02 a.u. (the caption prints '0, 0.05, 0.01, 0.015, and 0.02': 0.05 is a misprint for 0.005, as the text says the fit is for omega <= 0.02)"
+coefficients = { A = "2.189", A_prime = "3.681", B = "2.797", B_prime = "5.835", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's DFWM columns for omega <= 0.05 to within 0.001 a.u. Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's."
+
+[[formulas]]
+id = "tablev_eshg"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table V (tbl_cb481970c901), column 'ESHG'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; ESHG: A 2.189, A' 3.507, B 2.493, B' 4.489"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 6 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process eshg, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.005, 0.01, 0.015, 0.02 a.u. (the caption prints '0, 0.05, 0.01, 0.015, and 0.02': 0.05 is a misprint for 0.005, as the text says the fit is for omega <= 0.02)"
+coefficients = { A = "2.189", A_prime = "3.507", B = "2.493", B_prime = "4.489", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's ESHG columns for omega <= 0.05 to within 0.001 a.u. Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's."
+
+[[formulas]]
+id = "tablev_thg"
+material = "He"
+equation = "Eqs. (9), (10), p. 3551, with Table V (tbl_cb481970c901), column 'THG'"
+printed = "gamma_par^w / gamma_par^0 = 1 + A w_L^2 + A' w_L^4; gamma_perp^w / gamma_perp^0 = 1 + B w_L^2 + B' w_L^4; THG: A 2.189, A' 3.464, B (2.189), B' (3.464)"
+variable = "w_L^2 = w_s^2 + w1^2 + w2^2 + w3^2 in atomic units (hartree^2); here 12 w^2 with w the laser photon energy in hartree. gamma_par = gamma_zzzz, gamma_par^0 = 43.104 a.u.; gamma_perp = gamma_xxzz, gamma_perp^0 = 14.368 a.u. (footnote a). Process thg, convention T, electronic."
+state = "none (per atom)"
+density = "none"
+range = "omega = 0, 0.005, 0.01, 0.015, 0.02 a.u. (the caption prints '0, 0.05, 0.01, 0.015, and 0.02': 0.05 is a misprint for 0.005, as the text says the fit is for omega <= 0.02)"
+coefficients = { A = "2.189", A_prime = "3.464", B = "2.189", B_prime = "3.464", gamma_par_0 = "43.104", gamma_perp_0 = "14.368" }
+check = "Reproduces Table III's THG column to 0.001 a.u. for omega <= 0.04 and 0.005 at 0.05 (outside its fitted range). Checked 2026-09-26."
+notes = "Fitted by the authors to their own Table III (no experimental data, no He calibration). Shelton's form gamma_0 (1 + A nu_L^2 + B nu_L^4), nu_L in cm^-1, is Eq. (9): Shelton A = A / 219474.6307^2 cm^2, Shelton B = A' / 219474.6307^4 cm^4. Bishop's B and B' are the perpendicular component's. B and B' are printed in parentheses with footnote b: 'Necessarily, A = B and A' = B' for THG'."

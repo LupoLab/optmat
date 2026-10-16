@@ -1,0 +1,67 @@
+citation = "J. Berkowitz, J. P. Greene, H. Cho and B. Ruscic, \"The ionization potentials of CH4 and CD4\", J. Chem. Phys. 86, 674 (1987)"
+doi = "10.1063/1.452268"
+library = "Berkowitz_1987_IonizationPotentialsCH4"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photoionisation mass spectrometry: photoion yield curves of CH4+ and CD4+ \
+near threshold, the target gases cooled to 78 K, wavelength resolution 0.28 A FWHM, \
+target pressure about 1e-5 Torr (the same for both gases); the threshold read from the \
+yield curve (Fig. 1) (pp. 674-675)."""
+notes = """PDF pages 2-4 = journal pages 674-676 (PDF page 1 is the publisher's cover \
+sheet). Identity checked on the first page.
+
+CH4 (p. 675): 'The observed threshold occurs at 983 (+0, -1) A = 12.61 (+0.01, -0.00) \
+eV and is not influenced by temperature'; the yield curve is 'essentially the same' as \
+Chupka & Berkowitz's 1971 (Ref. 5). Extracted as the adiabatic ionisation energy (the \
+paper's sense: its title and abstract speak of the adiabatic ionisation potentials, \
+and the CD4 value is 'higher than that of CH4' by 0.05 +- 0.02 eV). It is the onset of \
+the photoion yield at 78 K: the paper argues (pp. 675-676) that the Boltzmann \
+distribution of rotational levels moves the J'' = 0 -> J' = 0 adiabatic value to \
+slightly higher energy than the onset. Its model (C2v CH4+ as a symmetric top, \
+perpendicular transition) puts the linearly extrapolated onset about 43 cm^-1 below \
+the rotationally adiabatic value for CH4+ and 31 cm^-1 for CD4+, 'the difference \
+between the extrapolated onset and the rotationally adiabatic value is ~0.005 eV for \
+CH4' (the sign is printed as '-0.005'). 'By choosing the extrapolated onsets, instead \
+of attempting to infer the rotationally adiabatic values, we incur a possible error of \
+~0.001 eV for the difference', and 'rotational effects are too small to influence the \
+present results'. So 12.61 eV is the onset; the rotationless value implied by the \
+paper's model is about 12.615 eV (not printed). The printed uncertainty is asymmetric, \
++0.01 / -0.00 eV; it is recorded as the one sigma column value 0.01, level not \
+stated. Also: the step heights (second to first) are <= 3 for CH4.
+
+CD4 (not a curated species; notes): adiabatic IP '979.5 +- 1 A = 12.65_8 +- 0.015 eV' \
+(abstract, p. 675), attributed to zero-point energy differences; the calculated \
+difference IP(CD4) - IP(CH4) is 0.013 eV (Paddon-Row et al. frequencies), 0.056 eV \
+(HF/6-31G* frequencies) and 0.050 eV (scaled by 0.89) (p. 674).
+
+EARLIER VALUES QUOTED (p. 674, notes): PIMS and PES adiabatic values range from \
+12.55 +- 0.05 to 12.78 eV; Rabalais et al.: 'below 12.616 eV, and probably ... near \
+12.51 eV'; CD4/CH4 pairs 12.882 +- 0.008 / 12.704 +- 0.008 (Nicholson 1965), 12.87 +- \
+0.02 / 12.71 +- 0.02 (Dibeler et al. 1965), 12.83 / 12.75 eV (Brundle, Robin & Basch \
+1970). Brundle et al.'s first PES band has two broad Jahn-Teller peaks and a shoulder; \
+the splitting is 0.8 eV (CH4+) and 0.7 eV (CD4+) (p. 676). Zero-point energies (p. \
+674): 27.10 (CH4), 20.10 (CD4) kcal/mol from experiment; calculated 25.1 (CH4+), 18.4 \
+kcal/mol (CD4+)."""
+
+[[datasets]]
+id = "adiabatic_CH4"
+material = "CH4"
+table = "text"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "CH4", "12.61", "0.01"]]
+notes = """p. 675: 'The observed threshold occurs at 983 (+0, -1) A = 12.61 (+0.01, -0.00) \
+eV and is not influenced by temperature' (gas at 78 K). The onset of the photoion \
+yield, taken by the paper as the adiabatic ionisation potential; the rotationally \
+adiabatic (J = 0 -> 0) value lies about 0.005 eV higher by the paper's model (record \
+notes). The uncertainty is printed asymmetric, +0.01 / -0.00 eV: 0.01 recorded."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "X 2T2 ground state of CH4+ (Jahn-Teller distorted, C2v), onset"
+temperature_k = 78
+
+[datasets.uncertainty]
+column = true
+level = "not stated"

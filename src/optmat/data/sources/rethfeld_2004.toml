@@ -1,0 +1,126 @@
+citation = "B. Rethfeld, \"Unified Model for the Free-Electron Avalanche in Laser-Irradiated Dielectrics\", Phys. Rev. Lett. 92, 187401 (2004)"
+doi = "10.1103/physrevlett.92.187401"
+library = "Rethfeld_2004_UnifiedModelFree"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The multiple rate equation (MRE, Eq. 2): conduction electrons on discrete \
+energy levels spaced by the photon energy, climbing by one-photon intraband absorption \
+(probability W_1pt) to the critical energy for impact ionization, then impact-ionizing \
+(probability alpha~); analytic asymptotic solution (Eqs. 4-7) and numerical examples \
+compared with the kinetic calculation of Kaiser et al. (2000) and the single rate \
+equation."""
+notes = """Journal pages 187401-1 to -4 = PDF pages 1-4 ('publisher error corrected 11 May \
+2004' on page 1). Identity validated.
+
+MATERIAL. The paper names no material for its examples: 'For the following examples we \
+choose parameters similar to those applied in Ref. [6] in order to allow direct \
+comparison with the kinetic approach' (Kaiser et al., Phys. Rev. B 61, 11437 (2000)), \
+and 'W_1pt = 3.5 x 10^-7 E_L^2 m^2/V^2 s ... compares well with the mean value of the \
+one-photon absorption probability for SiO2 in Refs. [6,15]' (p. 187401-3). The inputs \
+are recorded for SiO2 on that basis (assumed, check): E_gap = 9 eV; m_VB = m_CB = the \
+free-electron mass (so mu = m_e/2); alpha~ ~ 1 x 10^15 s^-1 'estimated from the \
+corresponding collision term given in Ref. [6]'. The example wavelength is 500 nm \
+(hbar omega = 2.48 eV), fields up to 1e10 V/m.
+
+CHECKS (2026-09-26): hbar omega = 2.4797 eV at 500 nm; eps_crit = (1 + mu/m_VB)(E_gap + \
+<eps_osc>) with <eps_osc> = e^2 E_L^2/(4 mu omega^2) is 13.50 eV at E_L -> 0 and 14.43 eV at \
+1e10 V/m, 'between 13.5 and 14.5 eV'; k = ceil(eps_crit/hbar omega) = 6, 'k + 1 = 7 \
+equations'. From Eq. (7) with k = 6: alpha_asymp = 1.07e12 s^-1 and t_MRE = 933 fs at \
+50 MV/cm; 2.1e12 s^-1 and 476 fs at 70 MV/cm (not printed; Figs. 2-3 show the \
+evolution; the text says the stationary regime takes 'several hundreds of femtoseconds').
+
+FIGURES ONLY: Fig. 2 (alpha~ n_k/n_total against time for several fields, with Kaiser's \
+kinetic result at 50 MV/cm), Fig. 3 (the impact-ionization share of the density for a \
+300-fs, 70 MV/cm Gaussian pulse by four models).
+
+REPRODUCED BY: gulley_2012 (the MRE for the carrier density), couairon_2005 (cited as \
+refinement), jing_2012 (cited), bourgeade_2012 (cites Rethfeld 2006, Phys. Rev. B 73, \
+035101, not in the library)."""
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "9"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 187401-3: 'We assume the effective masses m_VB and m_CB both equal to the free-electron mass and a bandgap of E_gap = 9 eV.' The material is not named (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_electron_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "p. 187401-3: m_CB equal to the free-electron mass (conduction band)."
+[datasets.parameters]
+carrier = "electron"
+assumed = true
+
+[[datasets]]
+id = "model_hole_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "p. 187401-3: m_VB equal to the free-electron mass (valence band); the reduced mass mu = m_e/2 enters eps_crit and <eps_osc>."
+[datasets.parameters]
+carrier = "hole"
+assumed = true
+
+[[datasets]]
+id = "model_impact_ionization_probability"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1e15"]]
+quantity = "avalanche_coefficient"
+unit = "1/s"
+abscissa = "none"
+use = "check"
+reproduced_from = ["A. Kaiser, B. Rethfeld, M. Vicanek and G. Simon, Phys. Rev. B 61, 11437 (2000)"]
+notes = "p. 187401-3: 'The probability of impact ionization alpha~ can be estimated from the corresponding collision term given in Ref. [6] and lies in the range of alpha~ ~ 1 x 10^15 s^-1. As long as alpha~ >> W_1pt, the exact value of alpha~ plays no role for the total free-electron density'. Not the avalanche coefficient of the single rate equation: alpha = alpha~ n_k/n_total."
+[datasets.parameters]
+definition = "alpha~: impact-ionization probability per unit time of the electrons above eps_crit in the MRE, Eq. (2)"
+assumed = true
+
+[[formulas]]
+id = "multiple_rate_equation"
+material = "SiO2"
+equation = "Eqs. (2)-(3), p. 187401-2"
+printed = "dn_0/dt = n_pi + 2 alpha~ n_k - W_1pt(eps_0) n_0; dn_1/dt = W_1pt(eps_0) n_0 - W_1pt(eps_1) n_1; ...; dn_(k-1)/dt = W_1pt(eps_(k-2)) n_(k-2) - W_1pt(eps_(k-1)) n_(k-1); dn_k/dt = W_1pt(eps_(k-1)) n_(k-1) - alpha~ n_k, with k = ceil(eps_crit/(hbar omega_L)) (2); dn_total/dt = n_pi(E_L) + alpha~ n_k (3)"
+variable = "n_j: density of electrons at eps_j = eps_0 + j hbar omega_L; n_pi the photoionization rate (Keldysh, ref. 7); W_1pt the one-photon intraband absorption probability; alpha~ the impact-ionization probability"
+coefficients = { W_1pt = "3.5e-7 E_L^2 m^2/(V^2 s)", alpha_tilde = "~1e15 s^-1", E_gap = "9 eV", m_VB = "m_e", m_CB = "m_e" }
+check = "k + 1 = 7 at 500 nm for fields up to 1e10 V/m reproduced (k = 6; checked 2026-09-26)."
+notes = "The single rate equation dn_total/dt = n_pi + alpha n_total (Eq. 1) is the special case of a stationary distribution, alpha = alpha~ n_k/n_total. n_total is printed as sum_{j=1}^{k} n_j (from j = 1, as printed)."
+
+[[formulas]]
+id = "asymptotic_avalanche"
+material = "SiO2"
+equation = "Eqs. (5)-(7), p. 187401-2"
+printed = "n_k(t) = n_pi / (2k (1 - (1/2)^(1/k)) alpha~) exp[(2^(1/k) - 1) W_1pt t] + ... (5); n_total(t) = (n_pi/W_1pt) / (2k (2^(1/k) - 2 + (1/2)^(1/k))) exp[(2^(1/k) - 1) W_1pt t] for t >> t_MRE = [(2^(1/k) - 1) W_1pt]^-1 (6); alpha_asymp = (2^(1/k) - 1) W_1pt (7)"
+variable = "k: the number of photons to reach eps_crit; W_1pt constant in energy; valid for alpha~ >> W_1pt"
+coefficients = { W_1pt = "3.5e-7 E_L^2 m^2/(V^2 s)" }
+check = "alpha_asymp -> ln(2) W_1pt/k as k -> infinity (p. 187401-4), as the formula implies; with k = 6: 1.07e12 s^-1 at 50 MV/cm (computed, not printed)."
+notes = "The common estimate alpha_est = W_1pt hbar omega_L/eps_crit (or /E_gap) is compared in Fig. 3; the MRE corrects it by the factor ln 2 in the long-time limit."
+
+[[formulas]]
+id = "critical_energy"
+material = "SiO2"
+equation = "Eq. (8), p. 187401-3"
+printed = "eps_crit = (1 + mu/m_VB)(E_gap + <eps_osc>), <eps_osc> = e^2 E_L^2/(4 mu omega_L^2)"
+variable = "mu: the reduced mass of m_VB and m_CB; E_L the laser field amplitude; omega_L the laser frequency"
+coefficients = { E_gap = "9 eV", m_VB = "m_e", m_CB = "m_e" }
+reproduced_from = ["A. Kaiser, B. Rethfeld, M. Vicanek and G. Simon, Phys. Rev. B 61, 11437 (2000)"]
+check = "13.50 eV (E_L -> 0) to 14.43 eV (1e10 V/m) at 500 nm, printed 'between 13.5 and 14.5 eV' (checked 2026-09-26)."
+notes = "The first factor accounts for momentum conservation (parabolic bands, ref. 8, Keldysh 1959)."

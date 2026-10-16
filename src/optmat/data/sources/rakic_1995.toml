@@ -1,0 +1,282 @@
+citation = "A. D. Rakic, \"Algorithm for the determination of intrinsic optical constants of metal films: application to aluminum\", Appl. Opt. 34, 4755-4767 (1995)"
+doi = "10.1364/AO.34.004755"
+library = "Rakic_1995_AlgorithmDeterminationIntrinsic"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A self-consistent set of the optical functions of aluminium from 6.2 meV \
+(200 um) to 10 keV, by an iterative Kramers-Kronig analysis of published data on \
+evaporated aluminium films (no new measurement). Input (Sec. 2, p. 4756): the \
+reflectance of films 'of controlled (or known) roughness that were prepared in \
+ultrahigh vacuum (1e-10 Torr) or in conventional vacuum with high evaporation rates' \
+from 6.2 meV to 24.8 eV, namely 6.2-37.8 meV Ordal et al. (Appl. Opt. 27, 1203 (1988), \
+nonresonant-cavity data), 44.3 meV-2.25 eV Bennett, Silver and Ashley, 2.27-3.44 eV Hass \
+and Waylonis, 4.00-11.72 eV Endriz and Spicer (smooth-surface films), 15.0-16.0 eV \
+Ditchburn and Freeman, 16.53-24.80 eV Hunter; the reflectance at 11.7-15 eV, where no \
+reliable measurement exists, from the semiquantum model (Table 1); and above the \
+plasma energy omega_p = 14.94 eV to 10 keV, Shiles et al.'s extinction coefficient \
+(Phys. Rev. B 22, 1612 (1980), 'tabulated in Ref. 27': Smith, Shiles and Inokuti in \
+Palik's Handbook of Optical Constants of Solids (1985), pp. 369-408), 256 values \
+spline-interpolated. Procedure (Sec. 3, pp. 4757-4760): trial k from the semiquantum \
+model (Eqs. 1-4, Table 1, fitted by Levenberg-Marquardt to the reflectance) below \
+omega_p, Shiles's k above; n by the subtracted Kramers-Kronig relation for k (Eqs. \
+5-11); R above omega_p from n and k (Eq. 15); the reflection phase by the \
+Jahoda-Velicky relation (Eqs. 17-18) from the composite R (measured below omega_p) at \
+404 energies; n, k, epsilon from R and the phase (Eqs. 19-22); iterated (two complete \
+iterations in the last stage), with a Drude extrapolation below 6.2 meV and the \
+asymptotic forms Eqs. 12-16 above 10 keV."""
+notes = """Journal pages 4755-4767 = PDF pages 1-13. Identity checked against the first \
+page (the library flags warnings on the bibliographic record only). The author's name \
+is printed Rakic with an accent (Rakić).
+
+WHAT IS TABULATED. Table 2 (pp. 4762-4765; four library tables, one per page): hbar \
+omega (eV), lambda (um), n, k and R of aluminium, 206 rows from 6.1993E-03 eV (200 um) \
+to 1.0000E+04 eV (0.12399 nm), in scientific notation to five significant figures (n to \
+six or seven above 6 keV). n and k are recorded against the energy as printed, one \
+dataset each; R has no quantity and is kept in printed; epsilon is not tabulated (Fig. \
+7). The 404 points of the calculation are not all tabulated. 'Intrinsic' means, in the \
+paper, the optical functions of smooth, unoxidised aluminium films as the sum-rule \
+tests support ('they prove that the obtained functions are really intrinsic optical \
+functions of aluminum', p. 4766); Fig. 7 calls them those of 'bulk Al film'. The \
+datasets say form = film (the input data are films). No uncertainty is given for Table \
+2. The library's cells encode the exponent signs as digits (1 for +, 2 for -): the \
+script decodes them (see tools/extract/rakic_1995.py).
+
+CHECKS (redundant columns, 2026-09-28): the printed R agrees with ((n - 1)^2 + \
+k^2)/((n + 1)^2 + k^2) of the same row to 4.4e-4 relative in every row up to 66 eV \
+(the worst at 62 eV, R = 2.3042E-05); above 68 eV (R < 4e-4, set by 1 - n) it agrees \
+within the rounding of n and k except 700 eV (just outside), 6 keV (4 %) and 10 keV (2 \
+%), negligible there, and 1.1 keV (misprinted n, errata). Energy times wavelength is \
+1.23984 eV um to 5e-5 in every row except the four misprinted energies (errata) and \
+1.9 eV, whose wavelength is printed 6.5225E-01 for 0.65255 um (a misprint of the \
+wavelength, which is not stored; the energy and the 19 and 190 eV rows' 6.5255E-02 and \
+6.5255E-03 confirm it). k is not monotonic between 8 and 10 keV (1.9173E-07 at 8 keV, \
+1.2488E-07 at 9, 1.2720E-07 at 9.5, 8.2410E-08 at 10 keV), consistent with the printed R \
+at 9.5 keV: as printed, not a misprint on the evidence.
+
+WHERE THE VALUES COME FROM, BY RANGE. Below 6.2 meV the Drude extrapolation (Table 3). \
+6.2 meV-24.8 eV: the reflectance data listed in technique (the phase by \
+Kramers-Kronig), so n and k there are this paper's; below 37.8 meV they rest on \
+Ordal et al.'s cavity data (ordal_1988, whose own Table I at 320 cm-1 and above rests in \
+turn on Shiles et al.'s tabulation). Above omega_p = 14.94 eV to 10 keV, the input k \
+is Shiles et al.'s tabulated extinction coefficient (Smith, Shiles and Inokuti in \
+Palik's Handbook; the 'experimental' k of the iteration), and n its Kramers-Kronig \
+transform combined with the measured R below omega_p ('the set obtained \
+by Shiles et al. is still the best currently available composition above the plasma \
+frequency', p. 4757, i.e. with their 14 % reduction above the L edge). Against Weaver et \
+al.'s reprint of Shiles et al.'s tabulation (Physics Data 18-2, pp. 79-86; three \
+decimals; J. C. Travers's scans, not in the library; read by eye, 2026-09-28): from \
+about 35 eV to 100 eV Table 2 agrees within the reprint's rounding (80 eV: n 1.0075, k \
+0.024476 here; 1.007, 0.024 there; 100 eV: 0.99123, 0.029920; 0.991, 0.030), so there k \
+is in effect Shiles et al.'s; between the plasma edge and 30 eV it is lower (15 eV: \
+0.11041 against 0.153; 20 eV: 0.02234 against 0.027; 25 eV: 0.015894 against 0.018; \
+30 eV: 0.011651 against 0.013), n within 2 %, where the paper also used Ditchburn and \
+Freeman's and Hunter's measured R (15-24.8 eV). \
+The paper keeps the 1.5-3 eV secondary structure (2.1 eV, W-point transition) that \
+Shiles et al. interpolated away, and its R falls rather than rises at 4-11 eV (Endriz \
+and Spicer's smooth films), unlike Shiles's (pp. 4755-4756).
+
+MATHEWSON AND MYERS (Phys. Scr. 4, 291 (1971), UHV in situ ellipsometry) are NOT input: \
+they, Bodo and Gergely (Appl. Opt. 26, 2065 (1987), corrected ex situ), Blanco and \
+McMarr (Appl. Opt. 30, 3210 (1991)) and Nguyen, An and Collins (Phys. Rev. B 47, 3947 \
+(1993)) are comparisons for k and n (Figs. 5-6; 'The calculated values for k(omega) are \
+in good agreement with the ellipsometric measurements by Mathewson and Myers', p. 4759), \
+as are Windt et al.'s EUV values, which lie up to an order of magnitude higher in k \
+above omega_p (surface roughness; p. 4761).
+
+NUMBERS OF THE ANALYSIS (text): the plasma energy omega_p = 14.94 eV (the zero of \
+epsilon_1, consistent with the loss-function peak; p. 4758), the loss-function FWHM \
+0.48 eV (Fig. 2; experiment ~0.5 eV); other estimates quoted: 15.78 eV for 3 \
+electrons/atom (Powell), 14.8(0), 14.76, 15.00 eV from critical wavelengths 83.7, 84.0, \
+82.6 nm (Hunter, Daude et al., Ditchburn and Freeman), 15.2, 15.3 and 15.0(2) eV from \
+energy loss, 15.28 and 14.93 eV from Lee and Chang's calculation. DENSITIES AND \
+ELECTRON COUNTS (p. 4759): 13 electrons per Al atom; the atom density n_at = 6.028e28 \
+at/m^3, for which omega_p,t = (N e^2/(m epsilon_0))^1/2 = 32.86 eV (N = 13 n_at; checked: \
+32.87 eV). Asymptotic forms: epsilon_r1 = 1 - omega_p,t^2/omega^2 (Eq. 12), n = 1 - \
+omega_p,t^2/(2 omega^2) (Eq. 24), R = omega_p,t^4/(16 omega^4) = (16.43/omega)^4 above 10 \
+keV (Eq. 16; the table's n and k at 10 keV give R = 7.29e-12, as Eq. 16 does; the \
+printed R is 7.5642E-12). Sum rules (pp. 4765-4766): the inertial rule zeta = 2e-4 (Eq. \
+23; Shiles et al. -2e-3, Sasaki and Inokuti 0.17, with Bennett and Bennett's infrared \
+0.06); the dc-conductivity rule gives sigma_0 = 3.44e7 1/(Ohm m) (rho_0 = 2.90 uOhm cm) \
+against 3.5(3)e7 (2.8(3) uOhm cm) for Al wire (CRC Handbook, 70th ed.); the f-sum rules \
+(Eqs. 26-28, Fig. 8) all reach N = 13 electrons/atom.
+
+FIGURES (not digitised): Fig. 1 R against energy below omega_p with the data; Fig. 2 \
+the loss function; Fig. 3 the phase; Fig. 4 R over the whole range; Figs. 5-6 k and n \
+with Mathewson and Myers, Bodo and Gergely, Blanco and McMarr, Windt et al.; Fig. 7 \
+epsilon_1, epsilon_2; Fig. 8 N_eff.
+
+AGAINST ORDAL ET AL. 1988 (ordal_1988, Table I, 50-15000 cm-1; Table 2 interpolated \
+log-log where the grids differ, exact at 50-300 cm-1; 2026-09-28): n is 3-7 % lower at \
+50-300 cm-1 and up to 10 % lower at 350-1000 cm-1, then 0-10 % higher from 0.15 to 1.9 \
+eV; k is 0.3-2.5 % lower at 50-300 cm-1 and 2-5 % lower from 0.04 to 1.9 eV (50 cm-1: n, \
+k = 423.96, 483.70 here and 436.99, 485.20 there; 1 eV (8000 cm-1): 1.321, 12.36 \
+interpolated here and 1.232, 12.72 there).
+
+McPEAK ET AL. (mcpeak_2015) compare their aluminium film with this paper (their Ref. \
+24; Fig. 4 and Table 1; 'very similar to', p. 8)."""
+
+[[formulas]]
+id = "semiquantum_model_Al"
+material = "Al"
+equation = "Eqs. (1)-(4), pp. 4757-4758, with Table 1 (tbl_76d082e09e3d, p. 4758)"
+printed = "epsilon_r(omega) = epsilon_r^(f)(omega) + epsilon_r^(b)(omega) (1); epsilon_r^(f)(omega) = 1 - Omega_p^2/(omega(omega + i Gamma_0)) (2); epsilon_r^(b)(omega) = - sum_{j=1}^{k} f_j omega_p^2/((omega^2 - omega_j^2) + i omega Gamma_j) (3); Omega_p = sqrt(f_0) omega_p; Omega_p = (N_eff,fe e^2/(m epsilon_0))^(1/2) (4). Table 1: j, f_j, Gamma_j (eV), omega_j (eV) = 0, 0.632, 0.075, 0; 1, 0.109, 0.44, 0.34; 2, 0.096, 0.45, 1.57; 3, 0.122, 1.41, 2.11; 4, 0.024, 2.82, 4.59; 'The oscillator strengths are based on a conduction-electron plasma frequency of omega_p = 14.94 eV.'"
+variable = "omega: photon energy in eV; omega_p = 14.94 eV; Gamma_0 is Table 1's j = 0 damping, a constant (the text allows Gamma_0 = Gamma_0' + omega^2 tau, but Table 1 gives no tau)"
+range = "6.2 meV to omega_p = 14.94 eV: the trial k of the first iteration, and the reflectance at 11.7-15 eV"
+coefficients = { omega_p = "14.94", f_0 = "0.632", Gamma_0 = "0.075", omega_0 = "0", f_1 = "0.109", Gamma_1 = "0.44", omega_1 = "0.34", f_2 = "0.096", Gamma_2 = "0.45", omega_2 = "1.57", f_3 = "0.122", Gamma_3 = "1.41", omega_3 = "2.11", f_4 = "0.024", Gamma_4 = "2.82", omega_4 = "4.59" }
+check = "Table 1 checked against its image. Omega_p = sqrt(0.632) x 14.94 = 11.88 eV. The model is the initial approximation, not the result: against Table 2's epsilon = (n + ik)^2 it gives, at 0.1 eV, -8,816 + 6,853i (table -9,134 + 6,790i); 1 eV -140.9 + 28.4i (-148.2 + 32.2i); 1.56 eV -58.7 + 42.9i (-62.7 + 46.4i); 5 eV -7.84 + 1.02i (-8.39 + 1.05i); 10 eV -1.21 + 0.094i (-1.33 + 0.107i): epsilon_1 4-9 % and epsilon_2 1-12 % smaller from 0.1 to 10 eV; at 6.2 meV -24,682 + 301,350i against -54,224 + 410,139i (the table rests there on Ordal et al.'s data). Checked 2026-09-28."
+notes = "A multiparameter least-squares fit to the reflectance data listed in the record's technique (6.2 meV-25 eV), with initial oscillator energies from the band structure (0.40, 1.56, 2.10, 4.50 eV). 'The discrepancies between the calculated and the experimental values of R(omega) lie within the borders of experimental uncertainties in a wide range from 6.2 meV to 25 eV' (p. 4758)."
+
+[[formulas]]
+id = "drude_damping_Al"
+material = "Al"
+equation = "Eq. (2), p. 4757, with Gamma_0 = Gamma_0' + omega^2 tau (p. 4757), and Table 3 first row (tbl_5cf32d5f9f8c, p. 4765)"
+printed = "epsilon_r^(f)(omega) = 1 - Omega_p^2/(omega(omega + i Gamma_0)) (2); Gamma_0 = Gamma_0' + omega^2 tau. Table 3 ('Drude-Model Parameter Values Employed for the Low-Frequency-Region Extrapolations'): Omega_p (eV) 11.6, Gamma (meV) 53.3, tau (s) 7.75 x 10^-16"
+variable = "omega: photon energy in eV; Gamma_0 = Gamma + omega^2 tau with tau in s, evaluated here as Gamma + omega^2 tau/hbar in eV (the paper does not say how the units combine: an interpretation)"
+range = "Below 6.2 meV (the low-frequency extrapolation of the sum-rule integrals)"
+coefficients = { Omega_p = "11.6", Gamma = "53.3", tau = "7.75 x 10^-16" }
+check = "Table 3 checked against its image. With the interpretation above: at 6.1993 meV, epsilon = -46,654 + 401,470i against Table 2's (n + ik)^2 = -54,224 + 410,139i (epsilon_2 -2 %, epsilon_1 -14 %); at 0.1 eV -9,452 + 6,152i against -9,134 + 6,790i. epsilon_0 Omega_p^2/Gamma = 3.40e7 1/(Ohm m) (2.94 uOhm cm), against the text's sum-rule 3.44e7. Checked 2026-09-28."
+notes = "The paper says 'The Drude model with the frequency-dependent damping constant is used for low-frequency extrapolation. Parameters used in this calculation are presented in Table 3' (p. 4765) without saying which of the two rows is used where."
+
+[[formulas]]
+id = "drude_constant_Al"
+material = "Al"
+equation = "Eq. (2), p. 4757, and Table 3 second row (tbl_5cf32d5f9f8c, p. 4765)"
+printed = "epsilon_r^(f)(omega) = 1 - Omega_p^2/(omega(omega + i Gamma_0)) (2). Table 3: Omega_p (eV) 11.3, Gamma (meV) 49.9, tau (s) 0"
+variable = "omega: photon energy in eV; Gamma_0 = Gamma, constant (tau = 0)"
+range = "Below 6.2 meV (the low-frequency extrapolation)"
+coefficients = { Omega_p = "11.3", Gamma = "49.9", tau = "0" }
+check = "Table 3 checked against its image. The dc conductivity epsilon_0 Omega_p^2/Gamma = 3.442e7 1/(Ohm m) (2.905 uOhm cm) reproduces the text's sigma_0 = 3.44e7 1/(Ohm m) (rho_0 = 2.90 uOhm cm) from the dc-conductivity sum rule (p. 4766) to three digits. At 6.1993 meV, epsilon = -50,500 + 406,500i against Table 2's -54,224 + 410,139i (epsilon_2 -0.9 %, epsilon_1 -7 %). Checked 2026-09-28."
+notes = "As drude_damping_Al, with a constant damping."
+
+[[formulas]]
+id = "asymptotic_eps2_Al"
+material = "Al"
+equation = "Eqs. (13)-(14), pp. 4759-4760"
+printed = "epsilon_r2 = C/omega^delta (13), where C = 1.42003 x 10^9 when omega is in eV, delta = 3.97778 + 0.22222 x 10^-5 omega for omega < 10^5 eV, 4.2 for omega > 10^5 eV (14); 'C and delta were determined when Eq. (13) was fitted to the data in the region from 4 to 10 keV.'"
+variable = "omega: photon energy in eV"
+range = "Above 10 keV (the high-energy extrapolation; fitted to 4-10 keV)"
+coefficients = { C = "1.42003 x 10^9", delta_0 = "3.97778", delta_1 = "0.22222 x 10^-5", delta_high = "4.2", omega_break = "10^5" }
+check = "Printed form checked on the page image. Against Table 2's epsilon_2 = 2nk in the fitted range the formula gives 6.20e-6 at 4 keV (table 4.97e-6, +25 %), 2.50e-6 at 5 keV (2.15e-6, +16 %), 3.61e-7 at 8 keV (3.83e-7, -6 %) and 1.42e-7 at 10 keV (1.65e-7, -14 %): it does not reproduce the table to better than 25 % there (the table's epsilon_2 falls as omega^-3.7 between 4 and 10 keV, the formula as omega^-4.0). No single correction explains it. Checked 2026-09-28."
+notes = "The data fitted were Shiles et al.'s k (the paper does not print which data exactly); the formula only extends the Kramers-Kronig integrals beyond 10 keV."
+
+[[datasets]]
+id = "atom_density_Al"
+material = "Al"
+points = [["1", "", "6.028"]]
+table = "text"
+quantity = "atom_density"
+unit = "m-3"
+scale = 1e28
+abscissa = "none"
+use = "check"
+notes = "Text, p. 4759 (after Eq. 12): 'omega_p,t = 32.86 eV corresponds to n_at = 6.028 x 10^28 at/m^3, where at denotes atom', with N = 13 electrons per Al atom (the total electron density N = 13 n_at is not printed as a number). Printed with the factor 10^28 (the scale). The paper's input to its high-energy asymptotic forms (Eqs. 12, 16, 24), not a measurement: assumed. Check: (13 n_at e^2/(m epsilon_0))^1/2 = 32.87 eV (hbar omega), against the printed 32.86 eV."
+[datasets.parameters]
+counts = "atoms"
+assumed = true
+
+[[datasets]]
+id = "n_Al"
+material = "Al"
+file = "Al/rakic_1995__n_Al.csv"
+table = "tbl_a8fb03d43d0c"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2, pp. 4762-4765 (tbl_a8fb03d43d0c, tbl_956d16c6a12e, tbl_7415e4ccca18, tbl_784e13d5a0b4): n of aluminium, 6.1993E-03 to 1.0000E+04 eV, 206 rows (the row id is the position in the table); the energy as printed (errata: four misprinted energies and one n). Room-temperature film data (the inputs). Above 14.94 eV n is the Kramers-Kronig transform of Shiles et al.'s k with the measured R below (record notes)."
+[datasets.parameters]
+form = "film"
+technique = "iterative Kramers-Kronig analysis of published reflectance (to 24.8 eV) and extinction coefficient (above 14.94 eV)"
+
+[[datasets]]
+id = "k_Al"
+material = "Al"
+file = "Al/rakic_1995__k_Al.csv"
+table = "tbl_a8fb03d43d0c"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2, pp. 4762-4765: k of aluminium, 6.1993E-03 to 1.0000E+04 eV, 206 rows (as n_Al; errata: the four misprinted energies). Above omega_p = 14.94 eV the Kramers-Kronig input was Shiles et al.'s tabulated k (Smith, Shiles and Inokuti in Palik's Handbook, not in the library): from about 35 eV the table agrees with Weaver et al.'s reprint of that tabulation within its three decimals, so there it is not independent of it; at 15-30 eV it is 10-28 % lower (record notes); below 15 eV it is this analysis's."
+[datasets.parameters]
+form = "film"
+technique = "iterative Kramers-Kronig analysis of published reflectance (to 24.8 eV) and extinction coefficient (above 14.94 eV)"
+
+[[errata]]
+dataset = "n_Al"
+row = "74"
+column = "x"
+printed = "1.0000E+00"
+corrected = "1.0000E+01"
+reason = "Misprinted exponent of the energy: the row is 10 eV, between 9 and 11 eV (the table's energies rise in every row), and 1 eV is row 45."
+evidence = "Table 2 image, p. 4763 (tbl_956d16c6a12e): the row prints hbar omega '1.0000E+00' with lambda '1.2399E-01' um, and 1.23984/0.12399 = 10.000 eV; its n, k and R (4.6304E-02, 1.1555E+00, 9.2378E-01) lie between the 9 and 11 eV rows', and 1 eV (row 45) prints n = 1.3157, k = 12.245."
+
+[[errata]]
+dataset = "k_Al"
+row = "74"
+column = "x"
+printed = "1.0000E+00"
+corrected = "1.0000E+01"
+reason = "Misprinted exponent of the energy: the row is 10 eV (as for n_Al)."
+evidence = "Table 2 image, p. 4763: lambda '1.2399E-01' um gives 10.000 eV; the row lies between 9 and 11 eV; 1 eV is row 45."
+
+[[errata]]
+dataset = "n_Al"
+row = "173"
+column = "value"
+printed = "9.9961E-05"
+corrected = "9.9961E-01"
+reason = "Misprinted exponent of n at 1.1 keV: n is 0.9995-0.9997 on the neighbouring rows."
+evidence = "Table 2 image, p. 4764 (tbl_7415e4ccca18), row 1.1000E+03 eV: n printed '9.9961E-05' between 9.9953E-01 (1 keV) and 9.9968E-01 (1.2 keV); with n = 0.99961 and the row's k = 2.1586E-05, ((n - 1)^2 + k^2)/((n + 1)^2 + k^2) = 3.8e-8, the printed R being 3.7224E-08 (within the rounding of n), while n = 9.9961E-05 would give R = 0.9996."
+
+[[errata]]
+dataset = "n_Al"
+row = "177"
+column = "x"
+printed = "1.4500E-03"
+corrected = "1.4500E+03"
+reason = "Misprinted sign of the energy's exponent: the row is 1450 eV, between 1400 and 1500 eV."
+evidence = "Table 2 image, p. 4764: hbar omega '1.4500E-03' with lambda '8.5507E-04' um, and 1.23984/8.5507e-4 = 1450.0 eV; the neighbouring rows print 1.4000E+03 and 1.5000E+03."
+
+[[errata]]
+dataset = "k_Al"
+row = "177"
+column = "x"
+printed = "1.4500E-03"
+corrected = "1.4500E+03"
+reason = "Misprinted sign of the energy's exponent: the row is 1450 eV (as for n_Al)."
+evidence = "Table 2 image, p. 4764: lambda '8.5507E-04' um gives 1450.0 eV; the neighbours are 1.4000E+03 and 1.5000E+03."
+
+[[errata]]
+dataset = "n_Al"
+row = "179"
+column = "x"
+printed = "1.5200E-03"
+corrected = "1.5200E+03"
+reason = "Misprinted sign of the energy's exponent: the row is 1520 eV, between 1500 and 1540 eV."
+evidence = "Table 2 image, p. 4764: hbar omega '1.5200E-03' with lambda '8.1569E-04' um, and 1.23984/8.1569e-4 = 1520.0 eV; the neighbouring rows print 1.5000E+03 and 1.5400E+03."
+
+[[errata]]
+dataset = "k_Al"
+row = "179"
+column = "x"
+printed = "1.5200E-03"
+corrected = "1.5200E+03"
+reason = "Misprinted sign of the energy's exponent: the row is 1520 eV (as for n_Al)."
+evidence = "Table 2 image, p. 4764: lambda '8.1569E-04' um gives 1520.0 eV; the neighbours are 1.5000E+03 and 1.5400E+03."
+
+[[errata]]
+dataset = "n_Al"
+row = "187"
+column = "x"
+printed = "1.5620E-03"
+corrected = "1.5620E+03"
+reason = "Misprinted sign of the energy's exponent: the row is 1562 eV, between 1560 and 1564 eV."
+evidence = "Table 2 image, p. 4764: hbar omega '1.5620E-03' with lambda '7.9376E-04' um, and 1.23984/7.9376e-4 = 1562.0 eV; the neighbouring rows print 1.5600E+03 and 1.5640E+03."
+
+[[errata]]
+dataset = "k_Al"
+row = "187"
+column = "x"
+printed = "1.5620E-03"
+corrected = "1.5620E+03"
+reason = "Misprinted sign of the energy's exponent: the row is 1562 eV (as for n_Al)."
+evidence = "Table 2 image, p. 4764: lambda '7.9376E-04' um gives 1562.0 eV; the neighbours are 1.5600E+03 and 1.5640E+03."

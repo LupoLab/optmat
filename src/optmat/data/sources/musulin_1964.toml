@@ -1,0 +1,29 @@
+citation = "B. Musulin and S. T. Epstein, Phys. Rev. 136, A966 (1964)"
+doi = "10.1103/physrev.136.a966"
+library = "Musulin_1964_IndexRefractionHelium"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Shielding approximation (Dalgarno and Stewart) extended to the dynamic \
+polarizability: first-order corrections to two independent hydrogenic electrons of \
+effective charge zeta, zeta fixed by making the first-order correction vanish; the \
+result is a power series in omega through omega^4 (pp. A966-A967)."""
+notes = """No tabulated values: the paper gives one formula (below) and a figure \
+comparing it with Cuthbertson and Cuthbertson (1932), Wheeler (1933) and Karplus and \
+Kolker (1963). Stated accuracy 'about 10%' (abstract). Hartree atomic units, with \
+lambda (A) = 456/omega (footnote 11); zeta runs from 1.641 at omega = 0 to 1.629 at \
+omega = 0.456. No dataset is extracted. mansfield_peck_1969 (Table IV) quotes 2.983e-5 \
+for this theory at 5462 A, but the formula gives 3.130e-5 there (checked 2026-09-24): \
+the quoted value does not come from this formula as printed."""
+
+[[formulas]]
+id = "shielding"
+material = "He"
+equation = "unnumbered, p. A967"
+printed = "(n^2 - 1) x 10^4 = 0.50064 {zeta^-4 (9 + b0/zeta) + omega^2 zeta^-8 (319/6 + b2/zeta) + omega^4 zeta^-12 (297541/864 + b4/zeta)}, b0 = 207/16 + 36 (zeta - Z), b2 = 3983/24 + (1276/3)(zeta - Z), b4 = 4673097941/2764800 + (297541/72)(zeta - Z); zeta from b0 + omega^2 b2/zeta^4 + omega^4 b4/zeta^8 = 0 (solved through omega^4)"
+variable = "omega: photon energy in hartree (lambda in A = 456/omega); Z = 2 for helium"
+state = "1atm_0C"
+density = "ideal"
+range = "low frequencies, well below the first resonance ('it seemed reasonable to confine our attention to low frequencies', p. A967)"
+coefficients = { prefactor = "0.50064", c0 = "9", c2 = "319/6", c4 = "297541/864", b0 = "207/16 + 36 (zeta - Z)", b2 = "3983/24 + (1276/3)(zeta - Z)", b4 = "4673097941/2764800 + (297541/72)(zeta - Z)" }
+check = "At omega = 0 the zeta equation gives zeta = 1.640625, the printed 1.641; n - 1 = 3.110e-5 static and 3.130e-5 at 5462 A, 10 % below experiment, as the paper says. The prefactor 0.50064e-4 is 4 pi N0 a0^3 with N0 = 2.689e19 cm^-3 (Loschmidt's number, 0 degrees C, 1 atm). Checked 2026-09-24."
+notes = "The check solved the zeta equation numerically in full, not truncated at omega^4 as the paper did; at 5462 A the difference is far below the method's 10 %."

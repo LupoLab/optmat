@@ -1,0 +1,138 @@
+citation = "U. Hohm, \"Experimental determination of the dispersion in the mean linear dipole polarizability alpha(omega) of small hydrocarbons and evaluation of Cauchy moments between 325 nm and 633 nm\", Mol. Phys. 78, 929 (1993)"
+doi = "10.1080/00268979300100621"
+library = "Hohm_1993_ExperimentalDeterminationDispersion"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Michelson twin interferometer, gas cell of length l/2 about 0.5 m, pressure \
+below 3e5 Pa, illuminated simultaneously by four He-Ne lasers (vacuum wavelengths \
+632.990, 611.971, 594.096 and 543.516 nm, from Rowley and Gill's frequencies) and a \
+He-Cd laser (325.130 nm). The cell is evacuated in about 20 isothermal steps (pressure \
+to 50 Pa, temperature to 10 mK) while a monochromatic (632.99 nm) and the polychromatic \
+interferogram are recorded; the polychromatic one is Fourier transformed over the \
+density, and each peak position gives alpha(omega_j) (Eq. 5; peak centre to <= 5e-6, of \
+the order of the lasers' relative wavelength accuracy). Gas purity of CH4 99.995 % \
+(pp. 931-932)."""
+notes = """Page numbers are the journal's (929-941); pdf page 1 is the publisher's \
+cover, so p. = pdf page + 927. Only CH4 is a curated species: C2H6, C3H8, n-C4H10, \
+neopentane, C2H4, C3H6 and cyclo-C3H6 are not transcribed.
+
+Reduction (Eq. 1, p. 930): (n^2 - 1)/(n^2 + 2) = 4 pi N_A [a0^3 alpha(omega, T)] rho_0 \
+[1 + sum_k B_k* rho_0^k]/3, rho_0 = p/RT the ideal-gas molar density; alpha is the \
+polarizability of the free molecule (zero density), in atomic units, so it needs no \
+state. The wavelengths are vacuum wavelengths (p. 931 and Table 1 note a). The text \
+prints omega_2 = '0.7445345 a.u.' (p. 931), a misprint for Table 1's 0.07445345 (the \
+value of 611.971 nm); no dataset uses it.
+
+Uncertainty: the paper does not say what the parenthesised digits of Table 1 are \
+(level not stated; the same 0.0017 au at all five wavelengths, 1e-4 of alpha). 'The \
+uncertainty in the relative dispersion ... is mostly determined by the uncertainty in \
+the frequency of the radiation sources used' (p. 929); the fit parameters of Table 2 \
+carry their 'r.m.s. error' (p. 936).
+
+Table 1 (p. 935): CH4 at 294.47(1) K, this work (b) and alpha from Thomas and Meath's \
+DOSD Cauchy moments (c [26], S(-2) ... S(-16), p. 936). 'Very good agreement', and the \
+relative dispersion Delta alpha/Delta omega is 15.14 (this work) against 15.02 [26] \
+(p. 936). The 'latest experimental value' alpha(omega_1) = 17.5922(54) au at 323 K is \
+Achtermann et al.'s ([41], achtermann_1991; p. 936). Reprinted as hohm_1994b/alpha_CH4 \
+(Table 1 row h there).
+
+Table 2 (p. 937): a_0-a_2 of the quadratic fit in omega^2 (Eq. 13), recorded as the \
+formula cauchy_CH4, and the Cauchy moments: S(-2k) of this work, obtained from a_k by \
+the iteration of Eqs. (12) and (17) (M = 7, about 200 steps, p. 936), with Thomas and \
+Meath's (b [26]) and Spackman's TDHF (e [13]) values. The moments are refraction-derived \
+over 325-633 nm: 'S(-2) only reflects the electronic part of the static polarizability, \
+excluding polarization effects resulting from vibrations' (p. 939), and S(-6), S(-8) \
+rest on the estimate (17) of the higher moments; use = 'check'. The mean deviations \
+Delta_1, Delta_2 from Meath's moments over six hydrocarbons (Table 2's last rows: S(-2) \
+0.10(0.24) %, S(-4) -0.7(1.0) %, S(-6) -1.4(4.8) %, S(-8) 9.4(9.1) % for Delta_1) are \
+not extracted. Spackman's row mixes his two basis sets: S(-2) = 15.895 is his ELP value \
+(Spackman 1991 Table I; 6-31G(+sd+sp) 15.771), S(-4) = 50.07 and S(-6) = 199.11 his \
+6-31G(+sd+sp) values (ELP 50.68, 204.05).
+
+Table 3 (p. 939): B_2*(omega, T) = b_R(omega, T) - B(T) in cm^3/mol, a fit parameter \
+that is not a vocabulary quantity (it contains the thermodynamic virial B): CH4 \
+48.58(1.20) at omega_1, 49.17 and 49.00 at omega_4 and omega_5, 'uncertainty ... about \
+0.15 [omega_3, omega_4], ... 0.1 cm^3 mol^-1 [omega_5] relative to B_2*(omega_1, T)'. \
+hohm_1994b turns them into B_R with Burns et al.'s reference (hohm_1994b/B_R_CH4).
+
+Elsewhere: he_2021's O2 formula (O2_table1) lists 'Hohm (1993)' among its sources; this \
+paper has no O2 (the O2 dispersion is hohm_1994b's)."""
+
+[[datasets]]
+id = "alpha_CH4"
+material = "CH4"
+file = "CH4/hohm_1993__alpha_CH4.csv"
+table = "tbl_90f137181bd7"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 935), CH4 this work (b), 294.47(1) K; the parenthesised last digits in the sigma column, level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 294.47
+
+[[datasets]]
+id = "thomas_1977_CH4"
+material = "CH4"
+file = "CH4/hohm_1993__thomas_1977_CH4.csv"
+table = "tbl_90f137181bd7"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["thomas_1977"]
+notes = "Table 1 row c ([26], 'calculated using DOSD'): alpha from Thomas and Meath's moments S(-2) ... S(-16) (p. 936). Their S(-2) ... S(-8) (moments_thomas_1977_CH4) reproduce it to 4e-5 au at 544-633 nm and 2e-3 au at 325 nm (the higher moments)."
+
+[[datasets]]
+id = "moments_CH4"
+material = "CH4"
+file = "CH4/hohm_1993__moments_CH4.csv"
+table = "tbl_efe74204a8d8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 2 (p. 937), CH4, this work: S(-2), S(-4), S(-6), S(-8) iterated from the fit parameters (the first of three stacked values in each merged cell, split against the image). Electronic only (refraction at 325-633 nm); no uncertainty printed (Delta_1 of the table's last row is a mean over six hydrocarbons). The four moments reproduce Table 1 to 6e-4 au at 544-633 nm and 1.5e-3 au at 325 nm."
+
+[[datasets]]
+id = "moments_thomas_1977_CH4"
+material = "CH4"
+file = "CH4/hohm_1993__moments_thomas_1977_CH4.csv"
+table = "tbl_efe74204a8d8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["thomas_1977"]
+notes = "Table 2, CH4 row b ([26]): Thomas and Meath's recommended DOSD moments S(-2) ... S(-8) (the second stacked value). Spackman 1991 prints the same S(-2), S(-4), S(-6) (spackman_1991/meath_CH4)."
+
+[[datasets]]
+id = "moments_spackman_1991_CH4"
+material = "CH4"
+file = "CH4/hohm_1993__moments_spackman_1991_CH4.csv"
+table = "tbl_efe74204a8d8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["spackman_1991"]
+notes = "Table 2, CH4 row e ([13]): Spackman's TDHF moments S(-2), S(-4), S(-6) (theory; 8-28 % below the DOSD). S(-2) = 15.895 is Spackman's ELP-basis value, S(-4) and S(-6) his 6-31G(+sd+sp) values: Hohm mixes the two basis sets (Spackman 1991 Table I)."
+
+[[formulas]]
+id = "cauchy_CH4"
+material = "CH4"
+equation = "Eq. (13) with Table 2, pp. 934 and 937"
+printed = "alpha(omega) = a_0^(2) + a_1^(2) omega^2 + a_2^(2) omega^4; CH4: a_0^(2) = 17.2585(21), a_1^(2) = 62.72(47), a_2^(2) = 349(19)"
+variable = "omega: photon energy in hartree; alpha in au (vacuum wavelengths 325.13-632.99 nm)"
+range = "325.130-632.990 nm (the data fitted), 294.47 K"
+coefficients = { a0 = "17.2585", a1 = "62.72", a2 = "349", a0_rms = "0.0021", a1_rms = "0.47", a2_rms = "19" }
+check = "Reproduces Table 1's CH4 row to 4e-4 au (-0.00006, +0.00030, -0.00041, +0.00001, +0.00006 at 633 ... 325 nm), within its printed 0.0017 au. Checked 2026-09-26."
+notes = "The Gaussian least-squares parameters with their 'r.m.s. error' (p. 936); a_k is not S(-2k-2) (Eq. 10), the moments of moments_CH4 are its iterated correction. A formula of the free molecule's electronic polarizability at 294.47 K; not to be extrapolated far below 325 nm."

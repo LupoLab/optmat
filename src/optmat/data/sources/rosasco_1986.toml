@@ -1,0 +1,145 @@
+citation = "G. J. Rosasco and W. S. Hurst, J. Opt. Soc. Am. B 3, 1251 (1986)"
+doi = "10.1364/josab.3.001251"
+library = "Rosasco_1986_DispersionElectronicContribution"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """cw phase-modulated stimulated Raman spectroscopy (optical-heterodyne-detected \
+Raman-induced Kerr effect) as in rosasco_1985: Kr-ion pump (14779 cm^-1, 10 MHz), ring-dye \
+probe (17751 cm^-1, 1 MHz), 45-pass cell; 5 % D2 in H2 (the D2 Q(3), Q(4) lines as \
+internal standard) at 1.0-6.0 atm, bracketed by two 5 % D2 in He runs that calibrate the \
+mirror contribution; ideal-gas densities, pressure and temperature to 0.1 %."""
+notes = """The electronic hyperpolarizability of H2 from its nonresonant optical (ac) Kerr \
+constant, and a dispersion comparison of H2's electronic hyperpolarizability from ac \
+Kerr, dc Kerr, THG, FISHG and CARS (Fig. 4, figure only).
+
+Definitions (Appendix A, p. 1255): (A1) P_1,i = D chi_ijkl(-w1, w2, w3, w4) E_2,j E_3,k \
+E_4,l with D = 6, 3, 1 and Fourier components (as rosasco_1985); (A2) Hellwarth's \
+representation 24 chi_ijkl = [sigma + 2A + B + B] delta delta + ...; sigma the electronic \
+hyperpolarizability, A and B the nuclear (vibrational, rotational) terms, (A3)-(A10); the \
+measured nonresonant chi^N = 2 sigma/24 + 2 B(0)/24 + chi_R(2A+B)^OR (Eq. (6)), with the \
+far-off-resonance Raman sums (A12) and the reorientation term (A13) 2B(0)/24 = (2/24) \
+(1/15) (N/k_B T) gamma_0^2 (1 - R_0 + 8 R_0^2/15 + ...), gamma_0 the optical polarizability \
+anisotropy (Bridge and Buckingham 1966, not in the library). Eq. (11), p. 1253: '[3 \
+sigma/24]_1 amagat, cgs = N0 gamma/24 = 5.639 x 10^-22 gamma_AU' with gamma in atomic \
+units (checked: 2.687e19/24 x 5.0367e-40 esu/au = 5.639e-22), gamma the Taylor (Shelton) \
+gamma. So gamma_T (au) = (3 sigma/24)/5.639e-22 = 1.5 (2 sigma/24)/5.639e-22.
+
+Result (p. 1253): chi_0^N/(A_0 N_0) = 0.0137 (+0.0003, -0.0005) (Eq. (7), the range from \
+the mirror model), A_0 N_0 = 461.4 x 10^-19 esu (rosasco_1985 Eq. (47)); with the computed \
+2B(0)/24 and off-resonant Raman terms of Table 1 this gives 2 sigma/24 = 2.966 x 10^-19 \
+esu for H2. (Recomputing chi_0^N from Table 1's components, 2.966 + 2.722 + 0.665 - \
+0.00547 = 6.348 x 10^-19 = 0.01376 A_0 N_0, which rounds to 0.0138, not the printed 0.0137: \
+a rounding question only.) The reference susceptibility 'is believed to have an \
+uncertainty of +-5 %' (p. 1251); Table 1 note a: 'Estimated errors for most of the values \
+given in this table are +-5 %. These results assume the pump (14779 cm^-1) and probe \
+(17751 cm^-1) frequencies employed in this work.'
+
+Table 1 rows not extracted (computed corrections, a mixture of the A and B terms, not \
+one 'part'): chi_R(2A+B)^OR sums H2 0.665 (Sum' over omega - Omega, excluding the resonant \
+Q branch) and -0.00547 (omega + Omega), D2 0.0834 and -0.00275; chi_R(2A-B)^OR sums H2 \
+0.663 and +0.00471, D2 0.0516 and +0.00243 (the last row prints B(omega - Omega) inside a \
+sum over omega + Omega, image checked: presumably a misprint; the H2 0.663 cell carries a \
+stray prime on its footnote f); A_0 N_0 (D2) 461.4.
+
+Dispersion (pp. 1253-1254): Owyoung's and Hellwarth's chi^NRE(-w1, w2, w3, w4) \
+proportional to chi(w1) chi(w2) chi(w3) chi(w4) (Eq. (8)), with one pole: chi^NRE \
+proportional to chi_0 [1 + k (w^2)_eff] (Eq. (9)), (w^2)_eff = w1^2 + w2^2 + w3^2 + w4^2 \
+(Eq. (10)); dc Kerr, FISHG and THG dispersion rates in the ratio 1:3:6 (Dawes, Finn). \
+No coefficients are given (the Fig. 4 line is Mizrahi and Shelton's): no formula \
+recorded. In Fig. 4 the dc-KE value of rosasco_1985 Table IV is corrected by +3 % for \
+far-off-resonance Raman terms, the CARS value is Lundeen et al.'s D2 scaled by Mizrahi \
+and Shelton's H2:D2 ratio, the THG value Ward and New's; the paper speculates the dc Kerr \
+value 'may be approximately 20 % low'.
+
+Wavelengths: the pump is given as 14779 cm^-1 (vacuum wavenumber, as printed; the \
+Kr-ion 676.4 nm line), recorded with wavelength_unit cm-1; the probe 17751 cm^-1 is in \
+parameters."""
+
+
+[[datasets]]
+id = "sigma_H2"
+material = "H2"
+file = "H2/rosasco_1986__sigma_H2.csv"
+table = "tbl_1142277dccf1"
+quantity = "nonlinear_susceptibility"
+unit = "esu (per amagat)"
+scale = 1e-19
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table 1 (p. 1254), 10^-19 esu at 1 amagat and 296 K (per amagat, N0 = Loschmidt's number; no state), Hellwarth's convention of rosasco_1985 (2 sigma/24 = N0 gamma_T/36): 2 sigma/24 of H2, 'determined in this work' (note b): the electronic part of the measured ac Kerr constant, chi_0^N minus the computed 2B(0)/24 (2.722) and off-resonant Raman terms. Nondegenerate optical Kerr chi(-w, w, W, -W), pump 14779 cm^-1, probe 17751 cm^-1. +-5 % (note a; the level is not stated). Electronic (the paper: 'the electronic hyperpolarizability'), separated by subtraction of the calculated reorientation and Raman terms."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "rosasco_1985_hellwarth"
+part = "electronic"
+probe_cm1 = 17751
+
+[[datasets]]
+id = "sigma_D2"
+material = "D2"
+file = "D2/rosasco_1986__sigma_D2.csv"
+table = "tbl_1142277dccf1"
+quantity = "nonlinear_susceptibility"
+unit = "esu (per amagat)"
+scale = 1e-19
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 1 (p. 1254), 10^-19 esu at 1 amagat and 296 K (per amagat, N0 = Loschmidt's number; no state), Hellwarth's convention of rosasco_1985 (2 sigma/24 = N0 gamma_T/36): 2 sigma/24 of D2, 'From the H2 value and the ratio of H2/D2 of ~1.02; see Ref. 13' (note c, Mizrahi and Shelton 1985, mizrahi_1985_h2d2): derived, not measured (2.966/1.02 = 2.908). Electronic."
+[datasets.parameters]
+process = "kerr"
+convention = "rosasco_1985_hellwarth"
+part = "electronic"
+probe_cm1 = 17751
+
+[[datasets]]
+id = "sigma_He"
+material = "He"
+file = "He/rosasco_1986__sigma_He.csv"
+table = "tbl_1142277dccf1"
+quantity = "nonlinear_susceptibility"
+unit = "esu (per amagat)"
+scale = 1e-19
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "ward_1969"]
+notes = "Table 1 (p. 1254), 10^-19 esu at 1 amagat and 296 K (per amagat, N0 = Loschmidt's number; no state), Hellwarth's convention of rosasco_1985 (2 sigma/24 = N0 gamma_T/36): 2 sigma/24 of He, 'Value from Ref. 14 [Ward and New], as reported in Ref. 6 [rosasco_1985]' (note d): 1.5 x 0.178 = 0.267 = rosasco_1985's He reference (0.0267 x 10^-18) in 3 sigma/24; ultimately the Sitz and Yaris theory Ward and New normalize to. Used to model the D2:He calibration runs. Electronic. The wavelength column holds this paper's pump (the value's own frequency is Ward and New's)."
+[datasets.parameters]
+process = "kerr"
+convention = "rosasco_1985_hellwarth"
+part = "electronic"
+
+[[datasets]]
+id = "reorientation_H2"
+material = "H2"
+file = "H2/rosasco_1986__reorientation_H2.csv"
+table = "tbl_1142277dccf1"
+quantity = "nonlinear_susceptibility"
+unit = "esu (per amagat)"
+scale = 1e-19
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 1 (p. 1254), 10^-19 esu at 1 amagat and 296 K (per amagat, N0 = Loschmidt's number; no state), Hellwarth's convention of rosasco_1985 (2 sigma/24 = N0 gamma_T/36): 2B(0)/24 of H2 = 2.722, the molecular-reorientation (orientational) term of the ac Kerr constant, 'Calculated from Eq. (A13) and the anisotropy values from Ref. 8' (Bridge and Buckingham 1966; note e), at 296 K (it scales as 1/T). Computed, not measured. Rotational."
+[datasets.parameters]
+process = "kerr"
+convention = "rosasco_1985_hellwarth"
+part = "rotational"
+temperature_k = 296
+
+[[datasets]]
+id = "reorientation_D2"
+material = "D2"
+file = "D2/rosasco_1986__reorientation_D2.csv"
+table = "tbl_1142277dccf1"
+quantity = "nonlinear_susceptibility"
+unit = "esu (per amagat)"
+scale = 1e-19
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table 1 (p. 1254), 10^-19 esu at 1 amagat and 296 K (per amagat, N0 = Loschmidt's number; no state), Hellwarth's convention of rosasco_1985 (2 sigma/24 = N0 gamma_T/36): 2B(0)/24 of D2 = 2.827, the molecular-reorientation (orientational) term of the ac Kerr constant, 'Calculated from Eq. (A13) and the anisotropy values from Ref. 8' (Bridge and Buckingham 1966; note e), at 296 K (it scales as 1/T). Computed, not measured. Rotational."
+[datasets.parameters]
+process = "kerr"
+convention = "rosasco_1985_hellwarth"
+part = "rotational"
+temperature_k = 296

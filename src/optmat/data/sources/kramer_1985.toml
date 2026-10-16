@@ -1,0 +1,101 @@
+citation = "S. D. Kramer, M. G. Payne and C. H. Chen, \"Vacuum-ultraviolet refractive-index measurement in a negatively dispersive region of xenon\", J. Opt. Soc. Am. B 2, 1284 (1985)"
+doi = "10.1364/josab.2.001284"
+library = "Kramer_1985_VacuumUltravioletRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Phase matching of resonant four-wave sum mixing, omega_3 = 2 omega_1 + omega_2, \
+in Xe-Ar mixtures (Oak Ridge): lambda_1 = 252.5 nm (two-photon resonant with Xe \
+5p5 6p[3/2]2; 0.2 mJ, 5 ns, about 1e7 W/cm2 at the focus) and lambda_2 = 1.33-1.62 um \
+(second Stokes of a dye laser in a high-pressure H2 Raman cell), focused (f = 40 cm) \
+into a 15 cm cell; the VUV (1-500 nJ, calculated bandwidth 1.5 cm-1) detected by \
+ionisation of NO behind a LiF window. Xe 10-150 Torr, Ar 100-1800 Torr (capacitance \
+manometer, +-0.1 %), room temperature. For each density ratio R = N(Ar)/N(Xe) the \
+wavelength lambda_3 of maximum VUV output is found (+-7 cm-1), and Eq. (1), n_3(Xe) = \
+lambda_3 (alpha R + beta), gives xenon's refractivity per atom at lambda_3 from argon's \
+and xenon's known indices at the other wavelengths (alpha, beta; p. 2)."""
+notes = """Journal pages 1284-1286 = PDF pages 1-3; the PDF is a scan (one image per \
+page, 400 dpi). Identity checked against the first page.
+
+THE MEASUREMENT (pp. 1-2). Eq. (1): n_3(Xe) = lambda_3 (alpha R + beta), with alpha = \
+2[n_1(Ar) - n_2(Ar)]/lambda_1 + [n_2(Ar) - n_3(Ar)]/lambda_3 and beta = 2[n_1(Xe) - \
+n_2(Xe)]/lambda_1 + n_2(Xe)/lambda_3; n_i(A) is the 'refractive index per atom' of gas \
+A at lambda_i (the mixture's n_i = 1 + N(Ar) n_i(Ar) + N(Xe) n_i(Xe)), i.e. (n - 1)/N \
+in the dilute limit, cm^3. The phase-matching condition derives from Delta k = 0 as \
+printed (reproduced here). With the near-UV and infrared indices 'known to better than \
++-3 %' and Chashchina's argon VUV index (other values within about 5 %), alpha = \
+-9.0(+-0.9)e-19 cm^2 and beta = 2.6(+-0.1)e-18 cm^2 at 116.23 nm; alpha varies from \
+-8.4e-19 at 117.02 nm to -9.9e-19 at 115.24 nm, beta negligibly (p. 2). 'The error \
+limits are due almost entirely to the uncertainty in the value for alpha' (p. 2): a \
+common (systematic) error, since alpha rests on argon's index at lambda_3. The package \
+reproduces alpha and beta independently from fit/Ar and fit/Xe (TC-713): \
+alpha = -1.019e-18, -9.32e-19, -8.72e-19 cm^2 at 115.24, 116.23, 117.02 nm (3-4 % more \
+negative than printed, within the +-10 %), beta = 2.56e-18 (1.4 % below).
+
+Checks made by the authors (p. 2): Xe2 is below 0.12 % of the atoms and no dimer band \
+lies in the region; lambda_3 did not change with the Xe pressure at fixed R: R = 4.00, \
+115.41 +- 0.01 nm (Xe 50-150 Torr); R = 40.0, 116.94 +- 0.01 nm (Xe 10-40 Torr); R = \
+9.11, '106.23 +- 0.01 nm' at 150 and 12.4 Torr and '106.28' at 0.99 Torr, where Eq. (1) \
+no longer holds. 106.23 nm is outside the tuning range (115-117 nm) and must be 116.23 \
+nm, the centre of the range where alpha and beta are quoted (the page image prints \
+'106.23'). No change with laser intensity (excited Xe below 0.1 %). Fig. 2's two \
+tuning curves (60 Torr Xe with 340 and 550 Torr Ar, R = 5.67 and 9.17) peak near \
+116.04 and 116.49 nm (read by eye from its top axis): the second disagrees with the \
+text's R = 9.11 at 116.23 nm (below).
+
+DATASET: fig3_Xe, the 26 measured points of Fig. 3 ('The refractive index per xenon \
+atom', cm^3, all negative), read from the page image by data rule 8 (TC-699; the \
+extraction script's docstring gives the calibration and the rule), use check: the \
+paper prints no n_3 value, only the three (R, lambda_3) pairs above. The sigma column \
+is the paper's uncertainty, 0.1 |n_3 - lambda_3 beta| (alpha's 10 % through Eq. (1)), \
+combined with 2 % for the reading; the upper ends of the error bars drawn at 115.23, \
+115.41 and 115.81 nm agree with it to 1-9 % (the script fails beyond 15 %). The \
+overlay of the 26 extracted centres on the page image matches every marker \
+(inspected 2026-09-29). It is mostly common to all points. The wavelength's own uncertainty, +-7 \
+cm-1 (+-0.0094 nm), is not in the sigma: near 117.0 nm it moves n_3 by 20 % or more. \
+The state is nominal (0 degrees C, 1 atm), as for the other per-atom values \
+(mahon_1979, ferrell_1987): the reduction then adds a Lorentz-Lorenz factor of at most \
+0.8 % (at 117.03 nm, n - 1 = -0.046 at that density), which the paper's linear \
+definition does not have.
+
+CHECKED against the text: the pairs R = 4.00 at 115.41 nm and R = 40.0 at 116.94 nm \
+with the printed alpha (interpolated) and beta give -1.498e-23 and -3.654e-22, 2.4 % \
+and 0.8 % from the figure interpolated there (-1.463e-23, -3.684e-22; the script \
+fails beyond 6 %). R = 9.11 at 116.23 nm gives -6.51e-23, 23 % more negative than the \
+figure's point at 116.229 nm (-5.28e-23), 1.5 of its sigma; Fig. 2's R = 9.17 at 116.49 nm gives \
+-6.37e-23, against the figure's -7.12e-23 there. The paper's R = 9.11 wavelength (or R) \
+may be misprinted beyond the '106'; it is not used.
+
+NOT TRANSCRIBED: Fig. 2 (the two tuning curves: VUV energy per pulse against the dye \
+wavelength, raster); Fig. 3's curve (Mahon's semiempirical calculation, unpublished \
+details; 'A recent calculation by Payne gives a similar result'); Fig. 1 (the level \
+scheme). The paper says the difference between the calculation and the points at \
+short wavelength arises because 'the discrete and continuum contributions to the \
+refractive index are almost equal in magnitude but opposite in sign' there (p. 3), and \
+that the points agree with Ferrell's then-unpublished nonlinear measurements \
+(ferrell_1987 prints no xenon refractivity in this region).
+
+THE REGION. The points lie on the short-wavelength side of the Xe 5p5 7s[3/2]1 line \
+(117.04 nm; arrow in Fig. 3), which dominates near 117 nm (n_3 = -1.7e-21 cm^3 at \
+117.03 nm, n - 1 = -0.046 at 1 atm), above the 5d[3/2]1 line (119.20 nm) whose \
+strength makes the index negative: beyond xenon's first resonance, far outside fit/Xe's \
+range (148 nm and longer) and between lines of euv/Xe (TC-713)."""
+
+[[datasets]]
+id = "fig3_Xe"
+material = "Xe"
+file = "Xe/kramer_1985__fig3_Xe.csv"
+table = "fig_26507279fdf6"
+digitised = "raster"
+quantity = "refractivity_per_density"
+unit = "cm3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Fig. 3 (p. 3): n_3(Xe), the refractivity per atom in the dilute limit (cm^3, negative), 115.23-117.03 nm, read from the page image (the extraction script). Beyond the first resonance; negative. Sigma: the paper's alpha uncertainty through Eq. (1) with 2 % for the reading (the record's notes); the wavelength's +-7 cm-1 is not included."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+beyond_resonance = true

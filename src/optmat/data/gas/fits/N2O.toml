@@ -1,0 +1,47 @@
+# Nitrous oxide: effective electronic oscillators plus the HITRAN infrared bands (fixed).
+gas = "N2O"
+description = "Nitrous oxide: effective electronic oscillators fitted to Hohm's 325-633 nm dispersion (Mol. Phys. 1994; its shape at 4e-5, the level free), the Cuthbertsons' (1914) visible dispersion (shape) and Birch's and Egan et al.'s 633 nm metrology, with the HITRAN vibrational bands fixed and the TRK sum as a prior. No near-infrared data: valid 320 nm to 1.95 um except at 1516-1518 nm, and in the windows at 4.81-4.96 and 6.75-7.05 um, with HITRAN's bands and the pure rotational band as derived Gaussian rules (OEP 3)."
+range_nm = [320.0, 2000.0]
+
+validators = [
+    "sneep_2005/rayleigh_N2O",   # Rayleigh scattering (TC-150)
+    "watson_1936/green_N2O",     # 0.09 % above the fit, 7 of its sigma (25 C, ideal gas)
+    "cuthbertson_1914/n2o_dispersion_calculated",
+    "watson_1936/zero_celsius_N2O",
+    "zeiss_1977/moments_N2O",
+]
+
+[model]
+# The temperature the polarizability refers to: a molecule's zero-density polarizability
+# changes with temperature (rotational and vibrational averaging), which the model does
+# not carry; datasets measured elsewhere are brought here where the coefficient is
+# measured (TC-730).
+reference_temperature_k = 293.15
+effective = 2
+effective_min_energy_hartree = 0.20   # above the data's photon energies (325 nm = 0.140 hartree)
+chi0_au = 0.0
+starts = 12
+band_nodes = 8   # every band as derived rules, the rotational band, and the windows between them (OEP 3)
+windows = true   # the derived windows are the qualified intervals (TC-749)
+
+# With visible data only the two effective oscillators are not separately determined;
+# the Thomas-Reiche-Kuhn sum S(0) = 22 (the electron count, 7 + 7 + 8), with 10 %
+# allowance for what two oscillators cannot represent, keeps them physical. Without it
+# one runs to 6.9 hartree with f = 661 at the same chi-squared.
+[model.sum_priors]
+"0" = [22.0, 2.2]
+
+[[fitted]]
+key = "cuthbertson_1914/n2o_dispersion"
+free_scale = true             # shape; the level from the metrology
+
+[[fitted]]
+key = "birch_1991/alpha_N2O"
+
+[[fitted]]
+key = "egan_2019/A_R_N2O"
+
+[[fitted]]
+key = "hohm_1994b/alpha_N2O"   # 325-633 nm dispersion (the original of hohm_1994's input)
+free_scale = true             # level free: Hohm's absolute levels scatter by 0.1-0.5 % (TC-400)
+shape_relative = 4e-5         # the shape's precision, from his argon against theory (TC-400)

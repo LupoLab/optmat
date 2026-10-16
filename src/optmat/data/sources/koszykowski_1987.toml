@@ -1,0 +1,68 @@
+citation = "M. L. Koszykowski, L. A. Rahn, R. E. Palmer and M. E. Coltrin, \"Theoretical and experimental studies of high-resolution inverse Raman spectra of N2 at 1-10 atm\", J. Phys. Chem. 91, 41 (1987)"
+doi = "10.1021/j100285a012"
+library = "Koszykowski_1987_TheoreticalExperimentalStudies"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Quasi-cw inverse Raman spectroscopy (p. 2): a single-mode argon-ion probe near \
+514 nm and a pulse-amplified single-mode dye pump (8 ns, 0.003 cm-1 = 90 MHz FWHM), \
+crossed beams; Raman shifts to +- 0.001 cm-1 (wavemeter and etalon). N2 Q branch at \
+295 K and 1, 5 and 10 atm. Quasi-classical trajectory calculations of the N2-N2 \
+state-to-state rates on a multipole and an atom-atom Lennard-Jones surface, and \
+exponential-gap (EG) and modified exponential-gap (MEG) scaling laws fitted to the \
+1-atm spectrum through the S-matrix (relaxation-matrix) line shape, Eq. (3.1)."""
+notes = """Identity checked against the first page (pp. 41-46, received 1 May 1986). The \
+library holds two downloads of this article: Koszykowski_1987_TheoreticalExperimentalStudies \
+(downloaded 2019, used here) and Koszykowski_1987_TheoreticalExperimentalStudies_9b762d \
+(the same DOI, 'version_of_record', downloaded 2026): their texts are identical apart \
+from the download banners and the order of the footnotes (compared 2026-09-26); the \
+first pdf page of each also carries the end of the preceding article. Page numbers here \
+are pdf pages (1-6). Material: 14N2 (no isotopologue).
+
+NOTHING IS TABULATED. The experimental 1, 5 and 10 atm spectra (Figs. 1, 5), the \
+J-dependent Q-branch collisional broadening coefficients (FWHM) at 295 K from Ref. 20 \
+(Rosasco, Lempert and Hurst, Chem. Phys. Lett. 97, 435 (1983)) and from the calculations (Fig. 2), and the state-to-state rates (Figs. 4, 6, 7) are in \
+figures only (not digitised). The scaling laws are recorded as formulas.
+
+WIDTH CONVENTION. FULL widths: Eq. (4.3), p. 4, 'the diagonal relaxation elements, or \
+equivalently the collisional line widths Gamma_j (fwhm), are given by Gamma_j/2 = \
+sum_{i != j} gamma_ij'; Fig. 2's broadening coefficients are '(fwhm)'. The rates are per \
+atm ('p is the pressure'; alpha in cm-1 atm-1) at 295 K.
+
+TEXT VALUES. 'fits to the IRS data required a pressure-induced frequency shift of \
+between -0.003 and -0.004 cm-1 atm-1' for the Q branch (p. 5; not extracted: a range \
+inferred from the fits). Trajectory convergence: 500-1000 trajectories give the total \
+relaxation rates to better than 10 % (p. 3). Potentials: multipole d = 2.9 A, n = 7.6 \
+(widths about 25 % too low); Lennard-Jones eps = 30.54 cm-1, sigma = 3.341 A \
+(agreement within errors) (p. 3). The EG law with alpha = 0.02, beta = 1.6 gives widths \
+'too small for J < 6, and ... too large for J >= 6' (p. 4).
+
+solprop cites this paper (as 'J. Phys. Chem. 91, 41 (1987)') for the statement that \
+its N2 6 ps Q-branch dephasing time is 'an inherited effective band approximation': \
+the paper indeed shows the Q branch collapsing into one collisionally narrowed line \
+above 1 atm (Figs. 1, 5); it gives no single dephasing time."""
+
+[[formulas]]
+id = "eq41_exponential_gap"
+material = "N2"
+equation = "Eqs. (4.1)-(4.3), p. 4"
+printed = "gamma_ji = alpha p exp(-beta Delta E_ij/kT) (J-increasing, i < j); gamma_ij = [(2J_i + 1)/(2J_j + 1)] gamma_ji exp(Delta E_ij/kT); Gamma_j/2 = sum_{i != j} gamma_ij"
+variable = "p: pressure in atm; Delta E_ij the rotational energy gap; T = 295 K; alpha in cm-1 atm-1; Gamma_j the FWHM of Q(J) in cm-1"
+state = "pure N2, 295 K"
+density = "unknown"
+range = "295 K, Q branch, 1 atm (the rates also used at 5 and 10 atm)"
+coefficients = { alpha = "0.02", alpha_error = "0.003", beta = "1.6", beta_error = "0.05" }
+check = "No printed width to compare with (Fig. 2 only). Evaluated with the N2 levels of B = 1.990 cm-1 (shelton_1987 Table 2), same-parity J only (scratch, 2026-09-26): FWHM 91.6, 88.7, 89.7, 91.8, 87.7, 72.0 x 1e-3 cm-1/atm for J = 2, 4, 6, 10, 14, 20: nearly flat below J = 14, as the paper says ('too small for J < 6, and ... too large for J >= 6')."
+notes = "These alpha and beta are from 'fitting all of the calculated points' of the trajectory calculations (p. 4); the fit to the 1-atm spectrum gave 'similar best-fit values' that are not printed."
+
+[[formulas]]
+id = "eq44_modified_exponential_gap"
+material = "N2"
+equation = "Eqs. (4.2)-(4.4), p. 4; temperature factor p. 5"
+printed = "gamma_ji = alpha p [(1 + 1.5 E_i/kT delta)/(1 + 1.5 E_i/kT)]^2 exp(-beta Delta E_ij/kT); gamma_ij by Eq. (4.2); Gamma_j/2 = sum_{i != j} gamma_ij; at other temperatures alpha multiplied by (T0/T)^n"
+variable = "p: pressure in atm; E_i the rotational energy of the initial (lower) level i; Delta E_ij the gap; alpha in cm-1 atm-1; Gamma_j the FWHM of Q(J) in cm-1"
+state = "pure N2"
+density = "unknown"
+range = "295 K fit (1 atm spectrum; 5 and 10 atm predicted); the temperature factor from trajectories at 1000 and 1700 K and 'initial experimental results' to 1500 K"
+coefficients = { alpha = "0.023", alpha_error = "0.003", beta = "1.67", beta_error = "0.15", delta = "1.26", delta_error = "0.06", a = "1.5", n_scattering = "1.2-1.3", T0_scattering = "300", n_experiment = "1.346", n_experiment_error = "0.006", T0_experiment = "295" }
+check = "No printed width to compare with (Fig. 2 only). Evaluated as for eq41 (scratch, 2026-09-26): FWHM 126.3, 99.0, 91.6, 88.4, 85.9, 82.5, 71.9, 52.6 x 1e-3 cm-1/atm for J = 0, 2, 4, 6, 8, 10, 14, 20 at 295 K."
+notes = "The modified exponential-gap (MEG) law, fitted to the 1-atm spectrum; 'no spin degeneracy factor was included' (p. 5). n = 1.2-1.3 (T0 = 300 K) from the scattering calculations; n = 1.346 +- 0.006 (T0 = 295 K) from 'Initial experimental results' of Ref. 28 (printed 'Rahn, L. A.; Palmer, R. E. J. Opt. Soc. Am. B 1983, 3, 1164'), p. 5. Millot et al. (millot_1992) use this law for O2 with a = 1.5. Rahn & Palmer's paper (rahn_1986, the 1986 volume) prints n = 1.346 +- 0.06, ten times the +- 0.006 quoted here (TC-526)."

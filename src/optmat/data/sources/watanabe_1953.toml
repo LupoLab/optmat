@@ -1,0 +1,94 @@
+citation = "K. Watanabe, E. C. Y. Inn and M. Zelikoff, \"Absorption coefficients of oxygen in the vacuum ultraviolet\", J. Chem. Phys. 21, 1026 (1953)"
+doi = "10.1063/1.1699104"
+library = "Watanabe_1953_AbsorptionCoefficientsOxygen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photoelectric absorption: windowless hydrogen discharge (many-line spectrum \
+below about 1650 A, continuum above), Baird 1 m normal-incidence vacuum monochromator \
+with 0.05 mm slits (band width 0.85 A), scanned at 20 A/min, wavelengths to the nearest \
+angstrom ('occasionally ... in error by as much as two angstroms'); a Pyrex cell 4.7 cm \
+long with LiF windows behind the exit slit; a sodium-salicylate-coated 1P21 \
+photomultiplier; O2 at 0.1-500 mm Hg (impurity about 0.1 %, mostly N2); scattered light \
+and LiF fluorescence corrected; several pressures differing by at least ten at each of \
+several hundred wavelengths, 1050-1900 A (pp. 1026-1027)."""
+notes = """Journal pages 1026-1030 = PDF pages 2-6 (page 1 is the publisher's cover). \
+O2 only. The absorption coefficients are given only in figures (Fig. 3: the \
+Schumann-Runge bands 1750-1950 A; Fig. 4: the Schumann-Runge continuum 1300-1750 A, 'the \
+mean of several hundred points'; Fig. 5: 1050-1300 A); no table of k. What the text \
+states is recorded as points.
+
+Quantity (p. 1027): 'The absorption coefficient, k in cm^-1, is defined by I/I0 = \
+exp(-kx) where x is the layer thickness of the absorbing gas reduced to NTP' (NTP not \
+defined further; taken as 0 C and 1 atm, as Weissler and Lee define it and as Metzger \
+and Cook's Loschmidt number implies). No conversion to cross sections is given; the \
+datasets store k with scale = 1e18 / n0, n0 = 101325 Pa / (k_B 273.15 K) = 2.6867801e19 \
+cm^-3 (ideal gas), to the cross section in Mb. 'photoionization_cross_section' is used \
+for want of a photoabsorption cross section (all these wavelengths are below the O2 \
+ionisation limit; format need reported).
+
+Reliability as stated: in the Schumann-Runge bands (1750-1900 A) 'the resolution was not \
+adequate to resolve the P and R branches'; the 'observed coefficients' vary with \
+pressure by a factor of four or five over a factor of 70 in pressure ('the head of the \
+14-0 band was 4.0 cm^-1 at a pressure of 7.1-mm Hg and 0.9 cm^-1 at 491 mm', p. \
+1028); Fig. 3 is smoothed ('maxima are probably still too low and minima too high'). \
+k below 0.02 cm^-1 could not be measured; the lowest band seen is 4-0. In the \
+continuum 'Within experimental error (about 5 percent) Beer's Law held over a pressure \
+range of a factor of twenty' (p. 1029); the Shell Oil laboratory's measurement agreed in \
+1750-1570 A. Below 1170 A Fig. 5 is 'semiquantitative'; 1170-1300 A 'should be fairly \
+reliable' (p. 1030).
+
+Text values not taken as data (pp. 1028-1030): at Lyman alpha 0.30 cm^-1 at 70 mm and \
+0.50 cm^-1 at 490 mm (pressure effect; the zero-pressure value 0.27 is the dataset); \
+Preston's (1940) extrapolated 0.28 cm^-1 (reproduced; Metzger and Cook's window 1 also \
+0.28); a weak continuum at 1105 A of 'order of 1 cm^-1 in Fig. 5', against Weissler and \
+Lee's 50-100 cm^-1; Weissler and Lee's 7 values in 1060-1170 A 'in general, considerably \
+larger'; Ladenburg and Van Voorhis's maximum about 490 cm^-1 at 1450 A (reproduced). \
+Also: the dissociation limit of B 3Sigma_u^- 57140 +- 60 cm^-1 (19-0 and 20-0 bands \
+observed); Ladenburg and Wolfsohn's dispersion resonance lambda_2 = 1468 A and Koch's \
+1421 A (p. 1029).
+
+Table I (tbl_a84e89715f1d, image checked): relative intensities of the Schumann-Runge \
+bands 8-0 to 18-0 at 7.8 mm Hg, 12-0 = 100 (39, 42, 59, 90, 100, 87, 124, 146, 161, \
+166, 160), with Pillow's theoretical 5-0 to 14-0 (1, 5, 20, 29, 51, 50, 78, 100, 90, \
+95). Not extracted: relative 'observed' intensities without pressure broadening, which \
+Bethke (1959) shows are not proportional to the band strengths (his f(8,0)/f(12,0) = \
+0.24 against 0.39 here), and no vocabulary quantity."""
+
+[[datasets]]
+id = "lyman_alpha"
+material = "O2"
+points = [["Lyman alpha", "1215.7", "0.27"]]
+table = "text"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "p. 1030: 'Our extrapolated value was 0.27 cm^-1' (k at zero pressure at Lyman alpha; 0.30 at 70 mm and 0.50 at 490 mm Hg). scale = 1e18 / n0 to Mb. The paper names the line, not its wavelength: 1215.7 A is Metzger and Cook's Table 1 value for H Ly alpha (metzger_1964, p. 110). Uncertainty not stated. Metzger and Cook's window 1 gives 0.28 cm^-1 at 1215.7 A."
+
+[[datasets]]
+id = "sr_maximum"
+material = "O2"
+points = [["maximum", "1420", "380"]]
+table = "text"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "p. 1029: 'The maximum in the present observation is rather flat and is 380 cm^-1 at about 1420A' (the Schumann-Runge continuum, Fig. 4's mean curve); scale = 1e18 / n0 to Mb. The wavelength is approximate ('about'). 5 % from the stated 'experimental error (about 5 percent)' of the continuum measurements (level not stated). metzger_1964 gives 402 +- 20 cm^-1 at 1422 A."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "sr_continuum_f"
+material = "O2"
+points = [["5.7e4-7.8e4 cm-1", "1", "0.161"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "p. 1030: f = (m c^2 / (N pi e^2)) integral k_nu dnu with nu1 = 5.7e4 and nu2 = 7.8e4 cm^-1: 'the f value of 0.161 was obtained by integrating graphically the k value for the Schumann-Runge continuum', against Ladenburg and Van Voorhis's 0.193. Index abscissa: an integrated strength over the stated range. Compare metzger_1964 (0.142 over 5.71e4-7.41e4 cm^-1). A check."

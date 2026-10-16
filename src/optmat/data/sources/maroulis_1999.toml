@@ -1,0 +1,182 @@
+citation = "G. Maroulis, J. Chem. Phys. 111, 6846 (1999)"
+library = "Maroulis_1999_ExtremeProblemRevisited"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Finite-field SCF, MP2-MP4, CCSD and CCSD(T) calculations of the \
+polarizability and hyperpolarizabilities of the open (C2v) and cyclic (D3h) forms of \
+O3, with specially optimised [7s5p4d2f] basis sets (168 CGTF), at the experimental \
+geometry of the open form (1.2717 A, 116.783 degrees)."""
+notes = """Identity: the library record is UNVERIFIED (observed title 'Using JCP format'); \
+the text is 'An extreme problem revisited: The hyperpolarizability of the open and \
+cyclic forms of ozone' by George Maroulis (received 5 April 1999), file \
+6846_1_online.pdf, with DOI candidate 10.1063/1.479977; Kumar & Thakkar (2011) and \
+Kalugina & Thakkar (2015) cite it as J. Chem. Phys. 111, 6846 (1999). The DOI is not \
+recorded until the identity is verified.
+
+Only the mean static polarizability of the open form is extracted (Table III, \
+tbl_20d61f051169, JSON only, image checked). The CCSD(T) value 19.27 au is electronic: \
+'We have neglected the vibrational correction to the theoretical values' (footnote 20, \
+p. 6849). The 'Experiment' value 19.33 is an 'Extrapolation of old refractivity data to \
+infinite wavelength' communicated privately by U. Hohm (footnote e and ref. 23), most \
+likely of the Cuthbertsons' (1914) data (not stated). Table I (the MP and CC series) \
+and the cyclic form (16.50) are not extracted; the CCD+ST(CCD) column repeats \
+Maroulis (1994). No uncertainty is stated.
+
+THIRD-ORDER DATA (2026-09-26). Table I (tbl_f41afb24c0cd, image checked), the \
+open (C2v) form at the experimental geometry, basis [7s5p4d2f] (168 CGTF), frozen core \
+(three innermost orbitals), finite field (GAUSSIAN 94), methods SCF, MP2, MP3, SDQ-MP4, \
+MP4, CCSD, CCSD(T): datasets gamma_<component> and gamma_mean (rows the methods). \
+gamma-bar = (gamma_xxxx + gamma_yyyy + gamma_zzzz + 2 gamma_xxyy + 2 gamma_yyzz + 2 \
+gamma_zzxx)/5 (footnote a; the library's rendering prints the first term 'gamma_zzzz', \
+the image not checked on this point; the means reproduce with gamma_xxxx). Convention: \
+static, finite-field energy derivatives as in maroulis_1994 (T). CCSD(T) gamma-bar = \
+2642 a.u. (abstract: 'yield mean values ... gamma-bar = 2642'), the author's best, \
+'expected ... to be more accurate than those obtained with the CCD+ST(CCD) method' \
+(maroulis_1994, 3250). No uncertainty stated; the MP series does not converge (SDQ-MP4 \
+-1282, MP4 1667) and CCSD gives 1446: the triples change gamma-bar by 83 %, so the \
+value is uncertain by several hundred a.u. at least (an assessment, not the author's). \
+STRUCTURAL FIX: minus signs lost in six library cells, restored from the image in the \
+script; every mean is consistent with its components (e.g. MP3 (1240 + 954 + 1277 + 2 \
+(970 + 353 - 47))/5 = 1204.6, printed 1205; CCSD(T) 2641.8, printed 2642; checked \
+2026-09-26). Electronic, clamped nuclei, no vibrational correction ('We have neglected \
+the vibrational correction', footnote 20). Table II (cyclic D3h ozone, gamma-bar 1549 \
+CCSD(T)) and Table III (comparison; its CCD+ST(CCD) column repeats maroulis_1994) are \
+not taken."""
+
+[[datasets]]
+id = "ccsd_t"
+material = "O3"
+file = "O3/maroulis_1999__ccsd_t.csv"
+table = "tbl_20d61f051169"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "CCSD(T)/[7s5p4d2f] mean static electronic polarizability of open O3 (also Table I). Electronic only, no vibrational correction."
+[datasets.parameters]
+electronic_only = true
+
+[[datasets]]
+id = "hohm_refractivity"
+material = "O3"
+file = "O3/maroulis_1999__hohm_refractivity.csv"
+table = "tbl_20d61f051169"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["U. Hohm (private communication), as cited by Maroulis (1999), ref. 23"]
+notes = "Table III 'Experiment', footnote e: extrapolation of old refractivity data to infinite wavelength (a derived value; if the data are the Cuthbertsons', it is not independent of cuthbertson_1914). Compare Berkowitz's 19.7 from the same kind of extrapolation (kumar_2011, static_j)."
+
+[[datasets]]
+id = "gamma_xxxx"
+material = "O3"
+file = "O3/maroulis_1999__gamma_xxxx.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the component gamma_xxxx (z the C2 axis, xz the molecular plane); rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "gamma_yyyy"
+material = "O3"
+file = "O3/maroulis_1999__gamma_yyyy.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the component gamma_yyyy (z the C2 axis, xz the molecular plane); rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyyy"
+
+[[datasets]]
+id = "gamma_zzzz"
+material = "O3"
+file = "O3/maroulis_1999__gamma_zzzz.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the component gamma_zzzz (z the C2 axis, xz the molecular plane); rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "gamma_xxyy"
+material = "O3"
+file = "O3/maroulis_1999__gamma_xxyy.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the component gamma_xxyy (z the C2 axis, xz the molecular plane); rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxyy"
+
+[[datasets]]
+id = "gamma_yyzz"
+material = "O3"
+file = "O3/maroulis_1999__gamma_yyzz.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the component gamma_yyzz (z the C2 axis, xz the molecular plane); rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyzz"
+
+[[datasets]]
+id = "gamma_zzxx"
+material = "O3"
+file = "O3/maroulis_1999__gamma_zzxx.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the component gamma_zzxx (z the C2 axis, xz the molecular plane); rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzxx"
+
+[[datasets]]
+id = "gamma_mean"
+material = "O3"
+file = "O3/maroulis_1999__gamma_mean.csv"
+table = "tbl_f41afb24c0cd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, open O3, [7s5p4d2f]: static the mean gamma-bar = (gamma_xxxx + gamma_yyyy + gamma_zzzz + 2 gamma_xxyy + 2 gamma_yyzz + 2 gamma_zzxx)/5; rows SCF, MP2, MP3, SDQ-MP4, MP4, CCSD, CCSD(T) (the author's best, CCSD(T); gamma-bar 2642)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"

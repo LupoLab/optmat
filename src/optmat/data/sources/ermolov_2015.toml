@@ -1,0 +1,40 @@
+citation = "A. Ermolov, K. F. Mak, M. H. Frosz, J. C. Travers and P. St.J. Russell, Phys. Rev. A 92, 033821 (2015)"
+doi = "10.1103/PhysRevA.92.033821"
+library = "Ermolov_2015_SupercontinuumGenerationVacuum"
+identity = "VALIDATED"
+kind = "fit"
+technique = "A three-term 'modified Sellmeier equation' for helium fitted to published refractive-index data down to 90 nm (Huber & Tondello 1974 is the one cited)."
+notes = """No datasets: the paper's only refractive-index content is its helium formula \
+(Eq. (3) and Table I). Table I (tbl_a8db8f8174bd) lost its header row in extraction \
+(the first coefficient pair became the header); the six coefficients are read from the \
+table image. Luna's :He/:HeJ (PhysData.jl) uses the same coefficients with more digits \
+(2.16463842e-05, -6.80769781e-04, ...), recorded under source luna_physdata. The paper \
+states the formula is 'for helium at 1 bar and 273 K' with rho 'the gas density \
+relative to 1 bar at 273 K'; solprop instead references it to 1 atm because \
+it then agrees with Mansfield & Peck (1969) to 0.13 %. The data comparison here will \
+say which state the fit really corresponds to.
+
+Third-order values: none printed. The simulations (a multimode, \
+carrier-resolved unidirectional propagation equation with the Kerr effect, \
+self-focusing, ionisation and plasma, ref. 50) state only 'The nonlinear refractive \
+index data was taken from [51]' (pdf p. 4), ref. 51 being Lehmeier, Leupacher & \
+Penzkofer, Opt. Commun. 56, 67 (1985) (record lehmeier_1985: THG hyperpolarizabilities \
+at 1055 nm, P = 4 eps0 chi E E E), for the He and Ne fillings; no value, convention or \
+conversion is given. The other nonlinear citation, ref. 25 (Boling, Glass & Owyoung, \
+IEEE J. Quantum Electron. 14, 601 (1978)), concerns optical solids and is cited only \
+for the trend of lower nonlinearity with higher ionisation potential. No \
+third-order dataset is added."""
+
+[[formulas]]
+id = "sellmeier_He"
+material = "He"
+equation = "Eq. (3) and Table I, p. 5"
+printed = "n0^2(lambda) - 1 = rho sum_{i=1}^3 B_i lambda^2 / (lambda^2 - C_i); B1 = 2.16463e-5, C1 = -6.8077e-4, B2 = 2.10561e-7, C2 = 5.13251e-3, B3 = 4.75093e-5, C3 = 3.18621e-3"
+variable = "lambda: wavelength in um; rho: density relative to 1 bar at 273 K"
+form = "n2_sellmeier"
+terms = { B = ["2.16463e-5", "2.10561e-7", "4.75093e-5"], C = ["-6.8077e-4", "5.13251e-3", "3.18621e-3"] }
+state = "1bar_0C"
+density = "real"
+range_nm = [90.0, 1000.0]
+check = "Not checkable against the paper, which prints no values of n."
+notes = "C1 < 0 puts the first 'pole' at an imaginary wavelength: the term is a smooth background, not a resonance. The paper states no range; 90 nm is the short end of the data it cites, 1000 nm the long end of what Luna PR #425 and solprop assume. 273 K is read as 273.15 K."

@@ -1,0 +1,46 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "N2"
+description = "Nitrogen: Shelton's 1990 ESHG with his gamma^vR (Table V formula) subtracted, with Haettig & Jorgensen's CCSD Kerr, ESHG and THG dispersion (one free scale) for the process dependence."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 0.6]
+validators = [
+    "wahlstrand_2012/n2_N2",
+    "zahedpour_2015/n2_N2",
+    "zahedpour_2019/n2_N2",
+    "nibbering_1997/n2_instant_N2",
+    "borzsonyi_2010/n2_N2",
+    "loriot_2009/n2_N2",
+    "lehmeier_1985/gamma_thg_N2",
+    "ward_1969/chi_i_N2",
+    "lundeen_1983/fwm_532_N2",
+    "ward_1979/chi3_N2",
+    "zahedpour_2015/n2_adjusted_N2",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_N2_present"
+subtract_formula = "shelton_1990/table5_gammavR_N2"
+
+[[fitted]]
+key = "shelton_1990/table3_N2_literature"
+subtract_formula = "shelton_1990/table5_gammavR_N2"
+
+[[fitted]]
+key = "hattig_1998/ccsd_kerr_N2"
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003
+
+[[fitted]]
+key = "hattig_1998/ccsd_eshg_N2"
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003
+
+[[fitted]]
+key = "hattig_1998/ccsd_thg_N2"
+range_nm = [650.0, "inf"]   # THG output above 217 nm: the fourth-order form holds
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003

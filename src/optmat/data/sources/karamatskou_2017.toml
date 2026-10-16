@@ -1,0 +1,207 @@
+citation = "A. Karamatskou and R. Santra, \"Time-dependent configuration-interaction-singles calculation of the 5p-subshell two-photon ionization cross section in xenon\", Phys. Rev. A 95, 013415 (2017)"
+doi = "10.1103/PhysRevA.95.013415"
+library = "Karamatskou_2017_TimeDependentConfiguration"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Time-dependent configuration-interaction singles (TDCIS): the N-electron \
+wave function expanded in the Hartree-Fock ground state and its one-particle-one-hole \
+excitations, spin singlets only (Eq. 2), propagated in time in the field of a linearly \
+polarised vacuum-ultraviolet pulse, light-matter interaction p.A(t) in the velocity \
+form and the dipole approximation (Eq. 3), as described by Greenman et al., Phys. \
+Rev. A 82, 023406 (2010) (Ref. 8), with the XCID program (Ref. 23). The Hamiltonian \
+is nonrelativistic (Eq. 3: no spin-orbit term; the 5p3/2 and 5p1/2 holes are not \
+distinguished). Two coupling schemes: interchannel (the residual Coulomb interaction \
+couples the hole channels) and intrachannel (each hole channel coupled to itself \
+only). Each point is a separate propagation at one photon energy with a Gaussian pulse \
+of 'pulse duration of 3000 a.u.' (72.6 fs; whether FWHM or another width is not \
+stated), 'such that the energy width is small and, hence, can span maximally one \
+intermediate resonance state' (p. 5); the intensity is not given, only 'sufficiently \
+weak to satisfy the conditions of the perturbative regime' (pp. 4-5). The two-photon \
+5p depopulation is separated from the one-photon one by the final-state angular \
+momentum (l = 1, 3 against l = 0, 2) in the ion density matrix (Eqs. 5-6). The \
+one-photon excitation cross section of Fig. 2 is from the autocorrelation function \
+over 5 x 10^4 a.u. (Krebs, Pabst and Santra, Am. J. Phys. 82, 113 (2014), Ref. 9)."""
+notes = """The library copy is the arXiv preprint, arXiv:1701.04789v1 [physics.atom-ph], 21 \
+Dec 2016, 11 pages (PDF pp. 1-11, page numbers as printed), not the journal version. \
+Identity checked on the first page (PDF p. 1: the arXiv stamp, the title, Antonia \
+Karamatskou and Robin Santra, The Hamburg Centre for Ultrafast Imaging, CFEL/DESY, \
+Universitat Hamburg) on 2026-10-08. The arXiv abstract page (arxiv.org/abs/1701.04789, \
+read 2026-10-08) gives no journal reference but links the related DOI \
+10.1103/PhysRevA.95.013415; Crossref gives for it the same title and authors, Phys. \
+Rev. A 95, 013415 (issue 1; published online 25 January 2017), cited here. The \
+journal version is not in the library: the values are read from the preprint's \
+figures, and the journal's figures were not compared.
+
+THE CROSS SECTION (p. 4, Eq. 7): sigma^(N) = P_N / F^(N), P_N the 5p depopulation by \
+N photons after the pulse and F^(N) = int dt [I(t) / omega_ph]^N, I(t) the intensity \
+envelope: for N = 2 the generalised two-photon cross section with the rate sigma \
+Phi^2 (Phi = I / omega the photon flux), evaluated in atomic units and plotted in \
+10^-48 cm4 s ('Gen. cross section sigma^(2)(omega) (10^-48 cm^4 s)'). Each value is \
+for a 3000 a.u. Gaussian pulse at its central photon energy: 'the line widths and \
+peak strengths in Fig. 1 are limited by the Gaussian pulse duration used' (p. 6), and \
+the peak heights differ from RPAE's because of it (p. 8): at the resonances the values \
+are those of this pulse, not of the atom. Off resonance the curve is the \
+perturbative cross section the method gives.
+
+THE ENERGY AXIS: the photon energy (one of two equal photons), 'Energy (eV)', below \
+the one-photon 5p ionisation threshold of the model; the TDCIS (Hartree-Fock-based) \
+threshold and Rydberg energies place the resonances (5p^-1 6s, 5d, 7s, 6d, 8s, ...; \
+LS-coupled singlets, no spin-orbit splitting), not experiment; the paper gives no \
+threshold or resonance energy in numbers. Figs. 1 and 2 are as computed. Fig. 3 is \
+moved by the authors: 'When shifting the 5p binding energy about 0.3 eV down to the \
+energy found within RPAE the cross-section curves for the two-photon cross section \
+agree nicely as far as the positions of the Rydberg states are concerned' (p. 8). \
+FINDING: Fig. 3's points are Fig. 1's interchannel points, one for one, moved by \
+-0.3264 eV (0.0120 hartree) in photon energy with their values unchanged (all 80 \
+pairs within 0.0005 eV of that shift and within 0.1e-48 cm4 s or 3 %): the shift was \
+applied to the plotted energies, not by a new calculation with a shifted binding \
+energy. The record keeps each figure's energies as drawn; Fig. 3's are not the \
+calculation's photon energies, and adding 0.3264 eV recovers Fig. 1's (a reader's \
+step, not done here).
+
+FINDING (Figs. 1 and 2): Fig. 2 draws the interchannel calculation of Fig. 1 ('the \
+interchannel two-photon ionization cross section shown in Fig. 1', p. 7), and its \
+points pair one for one with Fig. 1's (73 pairs, values within the margins), but \
+0.0135 eV lower in photon energy (spread 0.0005 eV; about 0.0005 hartree), well \
+beyond the drawings' resolution (0.0006 eV) and both axes' tick residuals (0.03 pt, \
+0.0003 eV). The paper does not say which is right; the text's 'slight shift of the \
+two-photon cross section to higher energies starting from the third peak' (p. 7) is \
+about Fig. 2's comparison with the one-photon curve. Fig. 1 is taken as the reference \
+(its energies are the paper's first presentation of the calculation and the ones Fig. \
+3 is shifted from); Fig. 2's are kept as drawn.
+
+EXTRACTED (tools/extract/karamatskou_2017.py). No table and no supplement: the cross \
+sections are only in figures, vector drawings (gnuplot 4.2), read from the PDF by data \
+rule 8 (TC-699). Each curve is one polyline through the computed points (gnuplot joins \
+the data with straight lines; the grid is 0.005 hartree, 0.136 eV, off resonance and \
+finer near the peaks): every vertex is a computed point, except those gnuplot puts on \
+the frame where it clips the line (two in Fig. 1's interchannel curve, two in Fig. \
+2's, one in Fig. 3's), which are dropped. Axes calibrated from the drawings' own tick \
+marks (long at the labels, short between; linear in energy, linear in sigma in Figs. 1 \
+and 2, logarithmic in decades in Fig. 3): every tick within 0.043 pt of its fitted \
+scale, against a drawing quantised in steps of 0.065 pt. The tick labels are text \
+objects, checked against the values written in the script. The extracted values, \
+mapped back through the calibrations and overlaid on the rendered pages, follow every \
+drawn line (inspected 2026-10-08).
+
+DIGITISING UNCERTAINTY: half the drawing's quantum (0.032 pt) with the tick residuals \
+(up to 0.043 pt): 0.07 pt, which is 0.06e-48 cm4 s on Fig. 1's linear axis (1.10 pt \
+per 10^-48 cm4 s; 6 % of the off-resonance values, about 1e-48) and 0.04e-48 on Fig. \
+2's (1.65 pt per unit); on Fig. 3's log axis (52 pt per decade) 0.3 %, taken as 1 %. \
+In photon energy 0.07 pt is 0.0006 eV. The paper states no accuracy: 'TDCIS might \
+deviate from the experimental values, because the quality of the matrix elements \
+within the CIS approach is restricted' (p. 7).
+
+COMPARISON (for the reconciliation; not a check of the reading). Off resonance the \
+interchannel cross section is 1.0 to 2.0e-48 cm4 s between 9.25 and 11 eV (Fig. 1), \
+the intrachannel 3 to 8e-48: 20 to 200 times the CIPFCP and PF values of lagutin_2017 \
+at the same photon energies (e.g. 10.2 eV: 1.29e-48 here, 5.3e-51 CIPFCP L and \
+5.2e-50 PF L there), and above the RPAE curve of Wendin et al. drawn in Fig. 3, which \
+falls below the frame (0.05e-48) between the resonances. The paper compares only the \
+resonance positions; it does not discuss the off-resonance magnitude.
+
+PEAKS (drawn, interchannel, Fig. 1): 9.486 eV (1.55e-46 cm4 s; 5p^-1 6s), 11.211 \
+(8.0e-47), 11.336 (2.95e-47), 11.905 (1.34e-47), 11.973 (6.4e-48), 12.231 eV \
+(4.2e-48); intrachannel: 9.496 (1.24e-46), 11.116 (2.32e-46), 11.167 (8.8e-47), \
+11.320, 11.796, 11.837 eV: 'for the nd lines a splitting is observed in the \
+intrachannel case' (p. 6). In Fig. 3 the first peak is at 9.159 eV.
+
+NOT TAKEN. Fig. 2's one-photon excitation cross section (10^3 Mb, right axis): \
+discrete Rydberg lines broadened by the 5 x 10^4 a.u. autocorrelation window, their \
+heights set by it; no quantity of the vocabulary holds a broadened model line \
+spectrum. Fig. 3's RPAE curve of Wendin, Jonsson and L'Huillier, J. Opt. Soc. Am. B 4, \
+833 (1987) (Ref. 21; digitised by the authors, 'for the range available for \
+comparison as provided in Ref. [21]'), another paper's values. The two-photon \
+calculations the paper cites, not in the library: Wendin, Jonsson and L'Huillier, J. \
+Opt. Soc. Am. B 4, 833 (1987); L'Huillier and Wendin, J. Phys. B 20, L37 (1987) (Ref. \
+20); Jonsson and Wendin, J. Opt. Soc. Am. B 9, 627 (1992) (Ref. 18); L'Huillier and \
+Wendin, Phys. Rev. A 36, 5632 (1987) (Ref. 19); Mazza et al., Nat. Commun. 6, 6799 \
+(2015) (Ref. 16, Xe 4d two-photon above-threshold ionisation); Chen, Pabst, \
+Karamatskou and Santra, Phys. Rev. A 91, 032503 (2015) (Ref. 17). L'Huillier and \
+Wendin, Phys. Rev. A 36, 4747 (1987) (Ref. 22) is in the library \
+(LHuillier_1987_LinearNonlinearScreening)."""
+
+[[datasets]]
+id = "fig1_interchannel"
+material = "Xe"
+file = "Xe/karamatskou_2017__fig1_interchannel.csv"
+table = "fig_f3d1dc935443"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 1 (p. 5): the generalised two-photon ionisation cross section of the Xe 5p subshell, TDCIS with interchannel coupling (solid), cm4 s against the photon energy as computed, 9.116 to 12.558 eV: the 80 computed points of the drawn line (the clip vertices at both ends of the frame dropped). The reference drawing of the calculation (Fig. 2's points lie 0.0135 eV lower, Fig. 3's 0.3264 eV lower; the record's notes). Peak heights limited by the 3000 a.u. pulse (p. 6). 5e-50 cm4 s: the digitising uncertainty on this linear axis (the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 5e-50
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "TDCIS (Hartree-Fock ground state and singles, spin singlets, nonrelativistic: no spin-orbit), interchannel coupling; each point a propagation with a 3000 a.u. Gaussian pulse at that photon energy, perturbative intensity (not stated)"
+definition = "sigma^(2) = P_2 / F^(2), F^(2) = int dt [I(t) / omega_ph]^2 (Eq. 7), P_2 the 5p depopulation into l = 1, 3 final states after the pulse, I(t) the intensity envelope, in atomic units; plotted in 10^-48 cm4 s"
+
+[[datasets]]
+id = "fig1_intrachannel"
+material = "Xe"
+file = "Xe/karamatskou_2017__fig1_intrachannel.csv"
+table = "fig_f3d1dc935443"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 1 (p. 5): the same with intrachannel coupling only (dashed), 8.980 to 12.381 eV: the 90 computed points of the drawn line (it starts and ends inside the frame). The ns peaks 'are not altered' and the nd lines split (p. 6); off resonance 2 to 4 times the interchannel values. Peak heights limited by the 3000 a.u. pulse. 5e-50 cm4 s: the digitising uncertainty (the record's notes)."
+[datasets.uncertainty]
+absolute = 5e-50
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "TDCIS (Hartree-Fock ground state and singles, spin singlets, nonrelativistic: no spin-orbit), intrachannel coupling only; each point a propagation with a 3000 a.u. Gaussian pulse at that photon energy, perturbative intensity (not stated)"
+definition = "sigma^(2) = P_2 / F^(2), F^(2) = int dt [I(t) / omega_ph]^2 (Eq. 7), P_2 the 5p depopulation into l = 1, 3 final states after the pulse, I(t) the intensity envelope, in atomic units; plotted in 10^-48 cm4 s"
+
+[[datasets]]
+id = "fig2_interchannel"
+material = "Xe"
+file = "Xe/karamatskou_2017__fig2_interchannel.csv"
+table = "fig_551a2ef821b9"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 2 (p. 6), left axis: the interchannel two-photon cross section of Fig. 1 (solid), drawn again beside the one-photon excitation cross section, 9.238 to 12.449 eV: the 73 computed points of the drawn line (the clip vertices at both ends dropped). Each point pairs with one of Fig. 1 at the same value but 0.0135 eV lower in photon energy (a finding; the record's notes): the energies are kept as drawn. 4e-50 cm4 s: the digitising uncertainty on this linear axis (the record's notes)."
+[datasets.uncertainty]
+absolute = 4e-50
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "TDCIS (Hartree-Fock ground state and singles, spin singlets, nonrelativistic: no spin-orbit), interchannel coupling; each point a propagation with a 3000 a.u. Gaussian pulse at that photon energy, perturbative intensity (not stated)"
+definition = "sigma^(2) = P_2 / F^(2), F^(2) = int dt [I(t) / omega_ph]^2 (Eq. 7), P_2 the 5p depopulation into l = 1, 3 final states after the pulse, I(t) the intensity envelope, in atomic units; plotted in 10^-48 cm4 s"
+
+[[datasets]]
+id = "fig3_interchannel_shifted"
+material = "Xe"
+file = "Xe/karamatskou_2017__fig3_interchannel_shifted.csv"
+table = "fig_92f6093163b2"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 8): the interchannel two-photon cross section on a log axis, its energies moved by the authors to bring the Rydberg resonances onto RPAE's ('shifting the 5p binding energy about 0.3 eV down', p. 8), 8.789 to 12.327 eV as drawn: the 84 computed points of the drawn line (one clip vertex at the left edge dropped). The x values are NOT the calculation's photon energies: each point is Fig. 1's (80 pairs, same values) at 0.3264 eV (0.0120 hartree) lower energy; the last four (12.231 to 12.327 eV here) are computed points beyond Fig. 1's frame (12.56 to 12.65 eV unshifted). Kept for its extra points and as drawn; for the photon energies use fig1_interchannel. 1 %: the digitising uncertainty on this log axis (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "TDCIS (Hartree-Fock ground state and singles, spin singlets, nonrelativistic: no spin-orbit), interchannel coupling; each point a propagation with a 3000 a.u. Gaussian pulse at that photon energy, perturbative intensity (not stated); plotted at the photon energy minus 0.3264 eV (read; 'about 0.3 eV')"
+definition = "sigma^(2) = P_2 / F^(2), F^(2) = int dt [I(t) / omega_ph]^2 (Eq. 7), P_2 the 5p depopulation into l = 1, 3 final states after the pulse, I(t) the intensity envelope, in atomic units; plotted in 10^-48 cm4 s"
+energy_shift_ev = -0.3264

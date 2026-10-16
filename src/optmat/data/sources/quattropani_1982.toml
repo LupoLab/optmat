@@ -1,0 +1,248 @@
+citation = "A. Quattropani, F. Bassani and S. Carillo, \"Two-photon transitions to excited states in atomic hydrogen\", Phys. Rev. A 25, 3079-3089 (1982)"
+doi = "10.1103/PhysRevA.25.3079"
+library = "Quattropani_1982_TwoPhotonTransitions"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Second-order perturbation theory of the two-photon transition 1s -> ns of \
+non-relativistic hydrogen (infinite nuclear mass, dipole approximation), with the \
+complete set of exact intermediate states: the discrete np states summed term by term \
+up to an n-dependent N and by integration beyond (to 0.1 %), the continuum by numerical \
+integration, the radial matrix elements from Gordon's closed form (Eq. 4a, 4b) and from \
+the Sommerfeld-Schur continuum form (Eq. 5); in the length gauge J0 (E.x, Eqs. 3a, 3b) \
+and the velocity gauge J (A.p, Eqs. 3c, 3d). Both beams polarised along z. Energies in \
+rydberg units: E_mu = -1/mu^2, omega_1 = R nu_1, nu_2 = 1 - 1/n^2 - nu_1 (Eq. 6)."""
+notes = """Journal pp. 3079-3089 = PDF pages 1-11 (journal page = PDF page + 3078). \
+Identity checked on the first page (PDF p. 1: 'PHYSICAL REVIEW A VOLUME 25, NUMBER 6 \
+JUNE 1982', A. Quattropani (EPF Lausanne), F. Bassani and Sandra Carillo (Roma), \
+received 1 October 1981; p. 1 footer '3079') on 2026-10-09. Atomic hydrogen is the \
+optmat material H; Table I's amplitudes are taken under two_photon_transition_amplitude \
+(approved for bound final levels, TC-1040).
+
+THE AMPLITUDE (pp. 3080-3081). Eq. (3a), length gauge: D_1^n[J0] = (1/2) sum_mu \
+[(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} (+ the \
+continuum, Eq. 3b), with R the radial matrix elements of r/a0 ('the dimensionless \
+transition amplitude', p. 3080). The denominators are in rydberg, the angular factor \
+1/3 of <s0|z|p0>^2 is not in D, and both photon orderings are. Hence, in atomic units \
+(hartree denominators), the zz element of OEP 8's kernel (Eq. 2) is M_zz = (4/3) D, \
+and for an ns level (rank 0, isotropic tensor) delta^TP = |M_zz|^2 = (16/9) D^2 at the \
+degenerate point nu_1 = nu_2 = (1 - 1/n^2)/2, while D(nu_1)/D(nu_deg) is OEP 8's \
+two-colour kernel M(omega_a, omega_b)/M(Omega/2, Omega/2) with omega_a = R nu_1 and \
+omega_b = R nu_2. Exact values (a Dalgarno-Lewis solution in a Sturmian basis, \
+80-digit arithmetic, converged to 1e-9): 1s-2s D = -11.780483, delta^TP = 246.7196 au, \
+sigma_0 = 2.246e-35 cm4 (TC-952's convention, photon 5.102 eV, infinite nuclear mass); \
+1s-3s D(4/9) = -3.210927, delta^TP = 18.329 au, sigma_0 = 2.344e-36 cm4; 1s-6s \
+D(35/72) = -0.752341, delta^TP = 1.0063 au, sigma_0 = 1.539e-37 cm4. Eq. (1)'s rate \
+prefactor as printed, e^4 a0^4 |E1 E2|^2 / (36 (2 pi hbar^2)^2 R^3), is 1/(128 pi^3) of \
+the golden-rule rate that Eqs. (2a) and (3a) give with delta(Delta nu) in rydberg \
+units; the relation above rests on Eq. (3a), not on Eq. (1).
+
+OEP 8'S KAPPA (Eq. 4) from the exact amplitude, M(nu) = M(0)[1 + kappa nu^2], nu the \
+half-split in hartree: 1s-2s kappa = 36.83, D_eff = kappa^-1/2 = 0.1648 hartree = 0.879 \
+D_1 (D_1 = E(2p) - Omega/2 = 0.1875 hartree), above OEP 8's rule 0.75 D_1; 1s-3s kappa \
+= 7.47, D_eff = 2.39 D_1 (the mu = n term has the opposite sign, so the paths cancel); \
+1s-6s kappa = -16.3, negative (|kappa|^-1/2 = 1.88 D_1): with mixed signs the \
+bandwidth lowers the probability.
+
+TAKEN (tools/extract/quattropani_1982.py, from the library's JSON cells, every cell \
+checked against the table images): Table I (PDF pp. 4-5, tbl_bd158100b034 and \
+tbl_84d4824d7da0), the totals D_1^n[J0] (gauge length) and D_1^n[J] (gauge velocity) \
+against nu_1 (abscissa in rydberg, as printed), for n = 3 (14 rows, nu_1 = \
+0.3750-0.8860), n = 6 (20 rows, 0.4860-0.9650) and n = 20 (19 rows, 0.4950-0.9800): \
+six datasets, use = primary (the paper's own calculation, exact to its printing), \
+m_zz_per_unit = 4/3 by the derivation above, two misprints corrected by errata. Not \
+taken: the discrete (d) and continuum (c) parts, which are gauge-dependent and not \
+observables (they enter the script's checks). The amplitude is not a delta^TP: signed, \
+a dimensionless multiple of M_zz, and a function of the split.
+
+CHECKED by the script against the exact amplitude (above; Decimal arithmetic, 36-70 \
+basis functions), every total of Table I: all agree to \
+the printed 4 decimals or within 0.0055 (n = 6 and 20 near the poles, both gauges; \
+relative error below 1e-5 except near the transparency zeros), apart from two \
+misprints confirmed on the table image: (a) nu_1 = 0.6875, both totals printed \
+'0.6963' (exact -0.69628; the printed parts sum to -0.6963 in both gauges); (b) nu_1 = \
+0.9400, D_1^6[J] printed '-115.1149' (exact -151.11567; J0 prints -151.1172 and the J \
+parts sum to -151.1150). The J parts of three rows do not sum to the printed total: \
+(a) 0.8860, -669.9164 + -448.0724 = -1117.9888 against -1117.2361 (the total is \
+right); (b) 0.9000, -14.2202 + -9.6863 = -23.9065 against -23.4888; (b) 0.9625, \
+-574.9131 + -96.7605 = -671.6736 against -644.6736 ('-547.9131' would fit). The \
+library's text of (c)'s last heading, 'D_1^{120}[J]', is D_1^{20}[J] in the image. \
+Table I(a)'s first row, \
+nu_1 = 0.3750, lies outside 4/9 <= nu_1 <= 8/9 and equals D at nu_1 = 8/9 - 0.375 = \
+0.5139 (D is symmetric in nu_1 and nu_2); its nu_1 grid from 0.6750 to 0.7475 is that \
+of Bassani et al.'s 1s-2s table, which drachman_1990 reproduces.
+
+TABLE II (p. 3085, tbl_a5221758c076), the transparency frequencies nu_0^mu (zeros of \
+D) against the exact zeros: 1s-3s 0.6935 (exact 0.69357); 1s-20s 0.6895, 0.8703, \
+0.9293, 0.9551, 0.9697 (exact 0.68946, 0.87034, 0.92934, 0.95570, 0.96968); 1s-6s \
+0.6882, 0.8675, 0.9292, 0.9556 against 0.69013, 0.87049, 0.92952, 0.95600, so the \
+1s-6s row is off by up to 0.0030 (at nu_1 = 0.6882 the exact D is -0.044) although \
+Table I's 1s-6s amplitudes agree with the exact ones. The exact mu = 2 zeros fall with \
+n (0.69357, 0.69013, 0.68946), as the text says ('The two-photon transparency \
+frequency shifts towards lower values with increasing final state principal quantum \
+numbers', p. 3087); the printed 1s-6s value breaks that order. NOT TAKEN: no quantity.
+
+TABLE III (p. 3086, tbl_4879369ee0d8), headed |<vp|x|1s>|^2 and |<vp|x|3s>|^2 (a.u.): \
+the squares of the radial integrals (1.665, 0.881, 0.267, 162.0 against the exact \
+1.66479, 0.88060, 0.26697, 162.000 for 2p-1s, 2p-3s, 3p-1s, 3p-3s), not of the z or x \
+matrix elements (1/3 of those). NOT TAKEN: transition_dipole_moment holds a moment, not \
+its square, and these are textbook values.
+
+TABLE IV (p. 3087, tbl_56a19e15a624), the dimensionless threshold probability w_1^t = \
+lim |D_1^n|^2 n^3 (13 values of nu_1, 0.50-0.7475, the n = 45 column and the \
+extrapolated limit). The n = 45 column against the exact |D|^2 n^3: within 0.3 % \
+except near the zero (0.68: 5.1047 against 5.253; 0.69: 2.6907e-2 against 2.936e-2). \
+The text's 'two-photon transparency occurs at nu_1 ~ 0.68' (p. 3087) is nearer 0.69 by \
+the table itself. NOT TAKEN: a threshold two-photon ionisation strength needs Eq. \
+(11), whose prefactor shares Eq. (1)'s doubt, and a conversion to \
+multiphoton_ionization_cross_section; no quantity holds w_1^t. Section VI's light-shift \
+estimate (Eq. 10: 35 MHz at 2 kW/cm2 and 10 GHz detuning, a near-resonant single-level \
+term) and the hyperfine scheme of Fig. 5 are not taken. Figs. 1-4, 6, 7 draw D, |D|^2 \
+and w_1^t; the tables print the values.
+
+CITED, NOT IN THE LIBRARY: F. Bassani, J.-J. Forney and A. Quattropani, Phys. Rev. \
+Lett. 39, 1070 (1977) (the 1s-2s amplitude, both gauges); N. K. Rahman, J. Phys. B \
+12, 3229 (1979) (threshold two-photon ionisation of hydrogen); P. F. Liao and J. E. \
+Bjorkholm, Phys. Rev. Lett. 34, 1 (1975) (light shifts in resonant two-photon \
+absorption). Its Ref. 21, M. P. Pindzola and H. P. Kelly, Phys. Rev. A 11, 1543 \
+(1975), is pindzola_1975."""
+
+[[datasets]]
+id = "D_3s_length"
+material = "H"
+file = "H/quattropani_1982__D_3s_length.csv"
+table = "tbl_bd158100b034"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table I(a), column D_1^3[J_0] (the total of the discrete and continuum parts), 14 rows, nu_1 = 0.3750-0.8860; x and row: nu_1 = omega_1 / R as printed, omega_2 = R (1 - 1/9) - omega_1 (Eq. 6). No uncertainty stated; the exact amplitude agrees within 0.006 (tools/extract/quattropani_1982.py)."
+[datasets.parameters]
+final_level = "3s"
+gauge = "length"
+polarization = "linear_parallel"
+definition = "D_1^n[J0] = (1/2) sum_mu [(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} + continuum (Eqs. 3a, 3b); D_1^n[J] (Eqs. 3c, 3d) equal by gauge invariance; R the radial matrix elements of r/a0, energies in rydberg, nu_2 = 1 - 1/n^2 - nu_1"
+m_zz_per_unit = 1.3333333333333333
+method = "second-order perturbation theory, exact non-relativistic hydrogen eigenstates (infinite nuclear mass), discrete np summed and integrated, continuum integrated numerically"
+
+[[datasets]]
+id = "D_3s_velocity"
+material = "H"
+file = "H/quattropani_1982__D_3s_velocity.csv"
+table = "tbl_bd158100b034"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table I(a), column D_1^3[J] (the total of the discrete and continuum parts), 14 rows, nu_1 = 0.3750-0.8860; x and row: nu_1 = omega_1 / R as printed, omega_2 = R (1 - 1/9) - omega_1 (Eq. 6). No uncertainty stated; the exact amplitude agrees within 0.006 (tools/extract/quattropani_1982.py)."
+[datasets.parameters]
+final_level = "3s"
+gauge = "velocity"
+polarization = "linear_parallel"
+definition = "D_1^n[J0] = (1/2) sum_mu [(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} + continuum (Eqs. 3a, 3b); D_1^n[J] (Eqs. 3c, 3d) equal by gauge invariance; R the radial matrix elements of r/a0, energies in rydberg, nu_2 = 1 - 1/n^2 - nu_1"
+m_zz_per_unit = 1.3333333333333333
+method = "second-order perturbation theory, exact non-relativistic hydrogen eigenstates (infinite nuclear mass), discrete np summed and integrated, continuum integrated numerically"
+
+[[datasets]]
+id = "D_6s_length"
+material = "H"
+file = "H/quattropani_1982__D_6s_length.csv"
+table = "tbl_bd158100b034"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table I(b), column D_1^6[J_0] (the total of the discrete and continuum parts), 20 rows, nu_1 = 0.4860-0.9650; x and row: nu_1 = omega_1 / R as printed, omega_2 = R (1 - 1/36) - omega_1 (Eq. 6). No uncertainty stated; the exact amplitude agrees within 0.006 (tools/extract/quattropani_1982.py)."
+[datasets.parameters]
+final_level = "6s"
+gauge = "length"
+polarization = "linear_parallel"
+definition = "D_1^n[J0] = (1/2) sum_mu [(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} + continuum (Eqs. 3a, 3b); D_1^n[J] (Eqs. 3c, 3d) equal by gauge invariance; R the radial matrix elements of r/a0, energies in rydberg, nu_2 = 1 - 1/n^2 - nu_1"
+m_zz_per_unit = 1.3333333333333333
+method = "second-order perturbation theory, exact non-relativistic hydrogen eigenstates (infinite nuclear mass), discrete np summed and integrated, continuum integrated numerically"
+
+[[datasets]]
+id = "D_6s_velocity"
+material = "H"
+file = "H/quattropani_1982__D_6s_velocity.csv"
+table = "tbl_bd158100b034"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table I(b), column D_1^6[J] (the total of the discrete and continuum parts), 20 rows, nu_1 = 0.4860-0.9650; x and row: nu_1 = omega_1 / R as printed, omega_2 = R (1 - 1/36) - omega_1 (Eq. 6). No uncertainty stated; the exact amplitude agrees within 0.006 (tools/extract/quattropani_1982.py)."
+[datasets.parameters]
+final_level = "6s"
+gauge = "velocity"
+polarization = "linear_parallel"
+definition = "D_1^n[J0] = (1/2) sum_mu [(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} + continuum (Eqs. 3a, 3b); D_1^n[J] (Eqs. 3c, 3d) equal by gauge invariance; R the radial matrix elements of r/a0, energies in rydberg, nu_2 = 1 - 1/n^2 - nu_1"
+m_zz_per_unit = 1.3333333333333333
+method = "second-order perturbation theory, exact non-relativistic hydrogen eigenstates (infinite nuclear mass), discrete np summed and integrated, continuum integrated numerically"
+
+[[datasets]]
+id = "D_20s_length"
+material = "H"
+file = "H/quattropani_1982__D_20s_length.csv"
+table = "tbl_84d4824d7da0"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table I(c), column D_1^20[J_0] (the total of the discrete and continuum parts), 19 rows, nu_1 = 0.4950-0.9800; x and row: nu_1 = omega_1 / R as printed, omega_2 = R (1 - 1/400) - omega_1 (Eq. 6). No uncertainty stated; the exact amplitude agrees within 0.006 (tools/extract/quattropani_1982.py)."
+[datasets.parameters]
+final_level = "20s"
+gauge = "length"
+polarization = "linear_parallel"
+definition = "D_1^n[J0] = (1/2) sum_mu [(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} + continuum (Eqs. 3a, 3b); D_1^n[J] (Eqs. 3c, 3d) equal by gauge invariance; R the radial matrix elements of r/a0, energies in rydberg, nu_2 = 1 - 1/n^2 - nu_1"
+m_zz_per_unit = 1.3333333333333333
+method = "second-order perturbation theory, exact non-relativistic hydrogen eigenstates (infinite nuclear mass), discrete np summed and integrated, continuum integrated numerically"
+
+[[datasets]]
+id = "D_20s_velocity"
+material = "H"
+file = "H/quattropani_1982__D_20s_velocity.csv"
+table = "tbl_84d4824d7da0"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table I(c), column D_1^20[J] (the total of the discrete and continuum parts), 19 rows, nu_1 = 0.4950-0.9800; x and row: nu_1 = omega_1 / R as printed, omega_2 = R (1 - 1/400) - omega_1 (Eq. 6). No uncertainty stated; the exact amplitude agrees within 0.006 (tools/extract/quattropani_1982.py)."
+[datasets.parameters]
+final_level = "20s"
+gauge = "velocity"
+polarization = "linear_parallel"
+definition = "D_1^n[J0] = (1/2) sum_mu [(1 - 1/mu^2 - nu_1)^-1 + (1/n^2 - 1/mu^2 + nu_1)^-1] R_10^{mu1} R_n0^{mu1} + continuum (Eqs. 3a, 3b); D_1^n[J] (Eqs. 3c, 3d) equal by gauge invariance; R the radial matrix elements of r/a0, energies in rydberg, nu_2 = 1 - 1/n^2 - nu_1"
+m_zz_per_unit = 1.3333333333333333
+method = "second-order perturbation theory, exact non-relativistic hydrogen eigenstates (infinite nuclear mass), discrete np summed and integrated, continuum integrated numerically"
+
+[[errata]]
+dataset = "D_3s_length"
+row = "0.6875"
+column = "value"
+printed = "0.6963"
+corrected = "-0.6963"
+reason = "Sign lost: the printed parts sum to -0.6963 (-3.2446 + 2.5483), the table's own sign change lies between 0.6875 (negative) and 0.7000 (+0.9847), at Table II's transparency frequency 0.6935, and the exact amplitude is -0.69628."
+evidence = "Table I(a) image (tbl_bd158100b034.jpg, PDF p. 4) prints 0.6963 without a sign in both gauges; tools/extract/quattropani_1982.py."
+
+[[errata]]
+dataset = "D_3s_velocity"
+row = "0.6875"
+column = "value"
+printed = "0.6963"
+corrected = "-0.6963"
+reason = "Sign lost: the printed parts sum to -0.6963 (5.1183 - 5.8146), the length gauge has the same parts' sum, and the exact amplitude is -0.69628."
+evidence = "Table I(a) image (tbl_bd158100b034.jpg, PDF p. 4); tools/extract/quattropani_1982.py."
+
+[[errata]]
+dataset = "D_6s_velocity"
+row = "0.9400"
+column = "value"
+printed = "-115.1149"
+corrected = "-151.1149"
+reason = "Digits transposed: the printed velocity-gauge parts sum to -151.1150 (-126.4391 - 24.6759), the length gauge prints -151.1172, and the exact amplitude is -151.11567."
+evidence = "Table I(b) image (tbl_bd158100b034.jpg, PDF p. 4) prints -115.1149; tools/extract/quattropani_1982.py."

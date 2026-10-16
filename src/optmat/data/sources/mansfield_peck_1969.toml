@@ -1,0 +1,462 @@
+citation = "C. R. Mansfield and E. R. Peck, \"Dispersion of Helium\", J. Opt. Soc. Am. 59, 199 (1969)"
+library = "Mansfield_1969_DispersionHelium"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Compensated corner-reflector Michelson interferometer, fringe shifts \
+monitored simultaneously at two wavelengths while a 24 cm gas cell was evacuated to \
+about 0.01 torr and filled to nearly atmospheric pressure; mercury manometer with \
+travelling microscope and meter bar (corrected for mercury expansion and local \
+gravity), copper-constantan thermocouple against an ice bath; helium of 99.99 % \
+minimum purity through a dry-ice-acetone trap. The absolute refractivity was measured \
+at the Hg green line (5462.258 A); the other wavelengths were measured as refractivity \
+ratios to it (pp. 199-200)."""
+notes = """Identity unverified by the library: the observed title and authors are \
+"Dispersion of Helium", C. R. Mansfield and E. R. Peck (University of Idaho, received \
+28 March 1968); the original file is 'josa-59-2-199-2.pdf', consistent with JOSA 59, \
+199 (1969). No DOI is recorded.
+
+Reduction (p. 199): values are converted to 760 torr, 0 degrees C with the \
+Lorentz-Lorenz form r0/r = rho0/rho [1 + r0 (1 - P T0 / P0 T) / 6] and the density \
+ratio rho0/rho = P0 T Z / (P T0 Z0), Z from the virial fit to White et al. (1960): \
+Z = 1 + (0.74062e-8 T^2 - 0.061793e-4 T + 16.742e-4) P, P in atm, T in K. A real-gas \
+reduction. Wavelengths are vacuum wavelengths (Table I heading and p. 200).
+
+Uncertainty (p. 200): the absolute refractivity at 5462.258 A, 760 torr, 0 degrees C, \
+is (n-1) x 10^5 = 3.4950 +- 0.0014, 'the standard deviation from the mean of 156 \
+individual measurements'; 'a liberal estimate of the systematic errors resulting from \
+impurities, pressure measurement, temperature measurement, and cell-length \
+measurement would raise the error of the absolute refractivity to +-0.009' (Table III \
+prints +-0.0088). Every other value is the green-line value divided by a measured \
+ratio, so the absolute error is a scale error common to all points; the ratios are \
+'subject only to errors of the measurement of fringe shift and wavelength'. The \
+per-point scatter is taken from the rms residual of the four-parameter Eq. (4) fit, \
+2.9e-5 in units of (n-1) x 10^5, i.e. 0.29 in the printed units of 1e-9.
+
+Table I's 'Deviation from Eq. (4)' column is not extracted and does not reproduce: the \
+printed Eq. (4) gives residuals (fit minus value) of 0.02, -0.73, -0.06, ... and a \
+free four-parameter refit of the 13 fitted points reproduces neither sign of the \
+printed column (checked 2026-09-24). The two excluded points, at which the refit lies \
+1.6e-9 and 4.6e-9 above the measurement, are printed with -1.72 and -4.23, so the \
+column's sign is probably value minus fit, against its heading.
+
+The theoretical refractivity (p. 202) is computed from Eq. (5) with Loschmidt's \
+number and oscillator strengths and photoionisation cross sections from the literature \
+(Table II; Stewart and Webb 1963 for the continuum), n - 1 = (3/2) R (1 + R/4) with R \
+the Lorentz-Lorenz function: an ideal-gas density at 760 torr, 0 degrees C. The 26 \
+computed values are not tabulated, only fitted (Eqs. 6-8) and quoted at 5462.258 A \
+(Table IV). The paper's sum-rule check (p. 202): discrete F = 0.447, continuum 1.540, \
+total 1.998. 'We have not estimated the absolute accuracy of the computation.'
+
+Not extracted: Table V (effective F values and absorption wavelengths of one-term \
+formulas), Table VII (Becquerel-equation constants) and Table VIII (Verdet constants \
+derived from the dispersion formulas through the Becquerel equation, printed in \
+'min/Oe cm' with no power of ten, and a ratio r to the unquoted measurement of \
+Ingersoll and Liebenberg): they are derived from dispersion formulas, not measured. \
+The dielectric-constant column of Table VI ((k - 1) at 760 torr, 20 degrees C, twice \
+the extrapolated n' - 1) has no quantity of its own; its polarizability column is \
+extracted. Table VI's alpha follows from (k-1) by Clausius-Mossotti with the ideal-gas \
+density at 760 torr, 20 degrees C (6.462e-5 gives 0.2054e-24 cm^3; checked \
+2026-09-24)."""
+
+[[datasets]]
+id = "experiment"
+material = "He"
+file = "He/mansfield_peck_1969__experiment.csv"
+table = "tbl_aae92dff687e"
+quantity = "refractivity"
+scale = 1e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = """The 13 points the paper fitted (Table I). The 5462.258 A value is the \
+measured absolute refractivity; the others are it divided by measured ratios, so the \
+relative values are far better than the absolute scale."""
+[datasets.uncertainty]
+absolute = 0.29
+level = "rms"
+systematic_relative = 0.0026
+
+[[datasets]]
+id = "experiment_excluded"
+material = "He"
+file = "He/mansfield_peck_1969__experiment_excluded.csv"
+table = "tbl_aae92dff687e"
+quantity = "refractivity"
+scale = 1e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = """9660.434 and 15300.153 A, printed in parentheses with footnote a, 'Values \
+not included while fitting dispersion formulas': they 'deviated far enough from the \
+trial formulas that it was thought that they unduly affected the formulas' (p. 200). \
+They lie 1.6e-9 and 4.6e-9 (5e-5 and 1.3e-4 relative) below a four-parameter fit of \
+the other 13."""
+
+[[datasets]]
+id = "oscillator_strengths"
+material = "He"
+file = "He/mansfield_peck_1969__oscillator_strengths.csv"
+table = "tbl_330bf663e80e"
+quantity = "oscillator_strength"
+abscissa_unit = "um-1"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = [
+    "B. Schiff and C. L. Pekeris, Phys. Rev. 134, A640 (1964)",
+    "W. L. Wiese, M. W. Smith and B. M. Glennon, Atomic Transition Probabilities, NBS Natl. Std. Ref. Data System 4, Vol. 1 (U. S. Government Printing Office, Washington, D. C., 1953), p. 11",
+    "musulin_1964",
+    "A. Dalgarno and A. L. Stewart, Proc. Phys. Soc. (London) 76, 49 (1960)",
+]
+notes = """Table II: F_n and wavenumbers of 1s^2 1S -> 1s np 1P (rows 1s2p..1s10p), of \
+the doubly excited (2s, np) (2s2p..2s6p) and (3s, np) (3s2p..3s4p) series. Footnotes \
+(image): a Schiff and Pekeris (n = 2, 3), b Wiese et al. (Ref. 29; n = 4-6), c \
+Musulin and Epstein (Ref. 25; n = 7-10 and the sum from 11). The (2s, np) values for \
+n = 2-6 are Dalgarno and Stewart's (p. 202); the three sum rows (1snp_11+, 2snp_7+, \
+3snp_5+) are the paper's estimates lumped at one wavenumber (the 1snp_11+ sum 'assumed \
+to act at 505.5 A', the mean of the 10P and series-limit wavelengths). The text \
+(p. 202) says the (2s, np) sum from n = 7 'was estimated by the ratio test to be \
+0.00122', but the table prints 0.00137 (not corrected: which is meant is not known). \
+Wavenumbers of the (2s, np) levels come from Dalgarno and Stewart's E = 4.81 - \
+1.58/n^2 Ry; those of the (3s, np) levels are rough estimates (p. 202). The library's \
+CSV merges each series label into the preceding sum row; the row ids follow the image."""
+
+[[datasets]]
+id = "koch_1913"
+material = "He"
+file = "He/mansfield_peck_1969__koch_1913.csv"
+table = "tbl_cd9d9ebee3ff"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Koch, Ark. Mat. Astr. Fys. 9, 1 (1913)"]
+notes = "Table III, at 5462.258 A as quoted by Mansfield and Peck; the original is not in the library, and its wavelength medium and reduction are not stated here."
+
+[[datasets]]
+id = "cuthbertson"
+material = "He"
+file = "He/mansfield_peck_1969__cuthbertson.csv"
+table = "tbl_cd9d9ebee3ff"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = """Table III prints '3.4890 +- 0.05 (?)', the query mark the paper's. The value \
+is Cuthbertson and Cuthbertson's 1932 mean at the green line, 0.00003489 (cuthbertson_1932, \
+p. 45, three measurements 3489, 3485, 3492 e-8), so the paper is the 1932 one (Ref. 7); \
+the +-0.05 is Mansfield and Peck's guess. The same value is Table III of \
+cuthbertson_1932 at 5462 A."""
+[datasets.uncertainty]
+absolute = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "theory"
+material = "He"
+file = "He/mansfield_peck_1969__theory.csv"
+table = "tbl_acc0ad617db8"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = """The paper's own oscillator-strength sum (Table IV, 'Present calc.'); its \
+absolute accuracy was not estimated. The corrected Eqs. (7) and (8), fitted to the \
+same computation, give 3.49784 here, 7e-5 above the printed 3.4976; the printed \
+'percentage difference' 0.02 does not follow from 3.4976 and 3.4950 (0.074 %)."""
+
+[[datasets]]
+id = "korwin_1934"
+material = "He"
+file = "He/mansfield_peck_1969__korwin_1934.csv"
+table = "tbl_acc0ad617db8"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Korwin, Z. Physik 91, 1 (1934)"]
+notes = "Theoretical value (Table IV)."
+
+[[datasets]]
+id = "musulin_epstein_1964"
+material = "He"
+file = "He/mansfield_peck_1969__musulin_epstein_1964.csv"
+table = "tbl_acc0ad617db8"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["musulin_1964"]
+notes = "Theoretical value (Table IV), 15.7 % below this experiment as printed (the numbers give 14.6 %). musulin_1964's formula gives 3.130e-5 at 5462 A, not 2.983e-5: the origin of this number is unclear."
+
+[[datasets]]
+id = "karplus_kolker_1963"
+material = "He"
+file = "He/mansfield_peck_1969__karplus_kolker_1963.csv"
+table = "tbl_acc0ad617db8"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["M. Karplus and J. J. Kolker, J. Chem. Phys. 39, 2997 (1963)"]
+notes = "Theoretical value (Table IV); citation as printed (Ref. 24)."
+
+[[datasets]]
+id = "migneron_levinger_1965"
+material = "He"
+file = "He/mansfield_peck_1969__migneron_levinger_1965.csv"
+table = "tbl_acc0ad617db8"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["migneron_1965"]
+notes = "Theoretical value at 5500 A (Table IV), 'not of sufficient accuracy to permit dispersion formulas to be fitted' (p. 202)."
+
+[[datasets]]
+id = "alpha_cuthbertson"
+material = "He"
+file = "He/mansfield_peck_1969__alpha_cuthbertson.csv"
+table = "tbl_a09b6733c084"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = "Table VI: Mansfield and Peck's static extrapolation of a dispersion formula fitted to Cuthbertson and Cuthbertson's 1932 data (the 1932 one-term formula gives 1.32614e27/38313.7e27 = 3.4613e-5 at 0 degrees C, i.e. (k - 1) = 6.450e-5 at 20 degrees C against the printed 6.453: probably their own refit)."
+
+[[datasets]]
+id = "alpha_experiment"
+material = "He"
+file = "He/mansfield_peck_1969__alpha_experiment.csv"
+table = "tbl_a09b6733c084"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "check"
+notes = """Table VI: the static extrapolation of the experimental dispersion formulas \
+(Eq. (3) gives the printed (k-1) = 6.462e-5 at 20 degrees C exactly), not an \
+independent measurement; (k - 1) x 10^5 = 6.462 +- 0.024."""
+[datasets.uncertainty]
+relative = 0.0037
+level = "not stated"
+
+[[datasets]]
+id = "alpha_theory"
+material = "He"
+file = "He/mansfield_peck_1969__alpha_theory.csv"
+table = "tbl_a09b6733c084"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table VI: the paper's oscillator-strength sum in the static limit ('direct computation')."
+
+[[datasets]]
+id = "alpha_chung_hurst_1966"
+material = "He"
+file = "He/mansfield_peck_1969__alpha_chung_hurst_1966.csv"
+table = "tbl_a09b6733c084"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["D. T. Chung and R. P. Hurst, Phys. Rev. 152, 35 (1966)"]
+notes = "Table VI, theoretical (the dielectric constant was 'computed from alpha')."
+
+[[datasets]]
+id = "alpha_maryott_buckley_1953"
+material = "He"
+file = "He/mansfield_peck_1969__alpha_maryott_buckley_1953.csv"
+table = "tbl_a09b6733c084"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["A. A. Maryott and F. Buckley, Table of Dielectric Constants and Electric Dipole Moments of Substances in the Gaseous State, NBS Circ. 537 (1953), p. 3"]
+notes = "Table VI: the review's recommended dielectric constant, (k - 1) x 10^5 = 6.50 +- 0.04 at 760 torr, 20 degrees C, converted to alpha by Mansfield and Peck."
+[datasets.uncertainty]
+relative = 0.0062
+level = "not stated"
+
+[[datasets]]
+id = "alpha_chung_1968"
+material = "He"
+file = "He/mansfield_peck_1969__alpha_chung_1968.csv"
+table = "tbl_a09b6733c084"
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["K. C. Chung, Phys. Rev. 166, 1 (1968)"]
+notes = "Table VI, theoretical."
+
+[[errata]]
+dataset = "oscillator_strengths"
+row = "1s4p"
+column = "x"
+printed = "19.4195"
+corrected = "19.1495"
+reason = """The 1s4p wavenumber is printed above the 1s5p value (19.395), which breaks \
+the Rydberg series; 19.1495 is the printed digits with '41' and '14' transposed."""
+evidence = """A Rydberg fit sigma_n = I - R/(n - delta)^2 (R = 10.9722 um^-1) to the \
+paper's own n = 5-10 wavenumbers (residuals below 0.0035) gives I = 19.8303, \
+delta = -0.0166 and sigma_4 = 19.150 (and 18.625, 17.132 for n = 3, 2 against the \
+printed 18.6211, 17.1130); checked 2026-09-24. The table image \
+tbl_330bf663e80e.jpg shows 19.4195 as extracted."""
+
+[[formulas]]
+id = "eq1"
+material = "He"
+equation = "Eq. (1), p. 200"
+printed = "(n - 1) x 10^5 = 1470.091/(423.98 - sigma^2); rms residual = 5.7 x 10^-5"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "480.1-2058.7 nm (the 13 fitted points of Table I)"
+coefficients = { b = "1470.091", c = "423.98" }
+check = """Residuals against the 13 fitted points of Table I, rms 0.63e-9 (quoted 0.57e-9); \
+extrapolated to sigma = 0 and to 20 degrees C (x 273.15/293.15, times 2) it gives \
+(k - 1) = 6.4617e-5 (Table VI: 6.462 from the recommended formula). Checked 2026-09-24."""
+notes = "Two-parameter fit to the experimental data."
+
+[[formulas]]
+id = "eq2"
+material = "He"
+equation = "Eq. (2), p. 200"
+printed = "(n - 1) x 10^5 = 2.212693 + 196.0586/(156.25 - sigma^2); rms residual = 4.2 x 10^-5"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "480.1-2058.7 nm (the 13 fitted points of Table I)"
+coefficients = { a = "2.212693", b = "196.0586", c = "156.25" }
+check = "Residuals against the 13 fitted points of Table I, rms 0.41e-9 (quoted 0.42e-9). Checked 2026-09-24."
+notes = "Three-parameter fit to the experimental data (a constant plus one pole)."
+
+[[formulas]]
+id = "eq3"
+form = "dn_sigma2"
+terms = { scale = "1e-5", B = ["1452.449", "-0.0009278"], C = ["418.95", "-1.3331"] }
+# The printed second term, 0.0009278/(1.3331 + sigma^2), is -0.0009278/(-1.3331 - sigma^2)
+# in the form B/(C - sigma^2): the signs are the rewriting, not a correction.
+range_nm = [480.1, 2058.7]
+material = "He"
+equation = "Eq. (3), p. 200"
+printed = "(n - 1) x 10^5 = 1452.449/(418.95 - sigma^2) + 0.0009278/(1.3331 + sigma^2); rms residual = 3.6 x 10^-5"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "480.1-2058.7 nm (the 13 fitted points of Table I)"
+coefficients = { b1 = "1452.449", c1 = "418.95", b2 = "0.0009278", c2 = "-1.3331" }
+check = """Against the 13 fitted points: residuals (fit - value) have a mean of +0.38e-9 \
+and an rms about that mean of 0.36e-9 (quoted rms 0.36e-9); the offset (1.1e-5 \
+relative) is what the rounding of 418.95 to two decimals allows (+-0.005 moves the \
+fit by 0.42e-9). Static limit at 20 degrees C (x 273.15/293.15, times 2): \
+(k - 1) = 6.4620e-5, Table VI's 'present expt.' 6.462 exactly. Checked 2026-09-24."""
+notes = """The paper's recommended formula for interpolation (p. 201). The second term \
+is printed with '+' in both places; 'both Sellmeier constants are negative' (p. 201), \
+i.e. B2 = -0.0009278 over (sigma2^2 - sigma^2) with sigma2^2 = -1.3331, which is the \
+printed form. The printed sign is confirmed by the static-limit check."""
+
+[[formulas]]
+id = "eq4"
+material = "He"
+equation = "Eq. (4), p. 200"
+printed = "(n - 1) x 10^5 = 1467.196/(423.15 - sigma^2) + 0.00002125/(0.71530 - sigma^2); rms residual = 2.9 x 10^-5"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "480.1-2058.7 nm (the 13 fitted points of Table I)"
+coefficients = { b1 = "1467.196", c1 = "423.15", b2 = "0.00002125", c2 = "0.71530" }
+check = """Against the 13 fitted points: rms 0.38e-9 (quoted 0.29e-9); a free refit of \
+the same form gives 1467.60/(423.264 - s^2) + 2.100e-5/(0.71292 - s^2) with rms \
+0.30e-9, so the printed coefficients are a rounded or slightly different solution. The \
+printed deviation column of Table I does not reproduce (see notes). Checked \
+2026-09-24."""
+notes = """The second term puts a pole at 1.18 um inside the data, which 'does not exist \
+in helium' (possibly water vapour); the paper recommends Eq. (3) for interpolation."""
+
+[[formulas]]
+id = "eq6"
+material = "He"
+equation = "Eq. (6), p. 202"
+printed = "(n - 1) x 10^5 = 1499.65775/(432.0852 - sigma^2); rms residual = 4.8 x 10^-5"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "ideal"
+range = "the 26 computed wavelengths (those of Table I and of Cuthbertson and Cuthbertson)"
+coefficients = { b = "1499.65775", c = "432.0852" }
+check = """At 5462.258 A: 3.49788 (Table IV prints 3.4976 for the computation). Static \
+limit at 20 degrees C: (k - 1) = 6.468e-5, Table VI's 'present theor. work'. Checked \
+2026-09-24."""
+notes = "One-pole fit to the paper's theoretical values."
+
+[[formulas]]
+id = "eq7"
+material = "He"
+equation = "Eq. (7), p. 202"
+printed = "(n - 1) x 10^5 = 0.563419516 - 1058.08288/(363.9286 - sigma^2); rms residual = 7.3 x 10^-7"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "ideal"
+range = "the 26 computed wavelengths"
+coefficients = { a = "0.563419516", b = "1058.08288", c = "363.9286" }
+check = """As printed it gives -2.3710 at 5462.258 A (negative); with '+' before the \
+pole term it gives 3.49784, agreeing with Eq. (8) (3.49784) to 1e-10 and, in the \
+static limit, 3.470811 against Eq. (8)'s 3.470810 (Table VI: 6.468 at 20 degrees C). \
+Checked 2026-09-24."""
+notes = """Misprinted sign: the corrected form is (n - 1) x 10^5 = 0.563419516 + \
+1058.08288/(363.9286 - sigma^2)."""
+
+[[formulas]]
+id = "eq8"
+form = "dn_sigma2"
+terms = { scale = "1e-5", B = ["645.686373", "1290.41989"], C = ["318.1312", "895.3867"] }
+range_nm = [275.3, 2058.7]
+material = "He"
+equation = "Eq. (8), p. 202"
+printed = "(n - 1) x 10^5 = 645.686373/(318.1312 - sigma^2) 1290.41989/(895.3867 - sigma^2); rms residual = 4.5 x 10^-10"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "ideal"
+range = "the 26 computed wavelengths"
+coefficients = { b1 = "645.686373", c1 = "318.1312", b2 = "1290.41989", c2 = "895.3867" }
+check = """With '+' between the terms: 3.49784 at 5462.258 A (Table IV prints 3.4976 for \
+the computation itself, 7e-5 lower, which the fit's quoted residual does not explain); \
+static limit 3.470810, i.e. (k - 1) = 6.4680e-5 at 20 degrees C, Table VI's 'direct \
+computation' 6.468. Checked 2026-09-24."""
+notes = """The operator between the two terms is missing in print; the corrected form is \
+(n - 1) x 10^5 = 645.686373/(318.1312 - sigma^2) + 1290.41989/(895.3867 - sigma^2) \
+('the Sellmeier constants in Eq. (8) are all positive', p. 202). The paper recommends \
+it for the region covered."""

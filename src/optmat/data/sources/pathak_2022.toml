@@ -1,0 +1,194 @@
+citation = "H. Pathak, T. Sato and K. L. Ishikawa, \"Time-dependent optimized coupled-cluster method with doubles and perturbative triples for first principles simulation of multielectron dynamics\", Front. Chem. 10, 982120 (2022)"
+doi = "10.3389/fchem.2022.982120"
+library = "Pathak_2022_TimeDependentOptimized"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Time-dependent many-electron calculations of Kr in a laser pulse (Sec. 3, \
+PDF p. 4): TDHF, TD-OCCD (time-dependent optimised coupled-cluster doubles), \
+TD-OCCD(T) (with perturbative triples, introduced here) and TD-CASSCF; the dipole \
+interaction V_ext = A(t) p_z 'in the velocity gauge', A(t) = -int^t E(t') dt', the field \
+'linearly polarized along the z axis' (Sec. 2). 'In all correlation calculations, eight \
+electrons of 4s4p orbitals are considered as active and correlated among thirteen \
+active orbitals'; whether the 28 core electrons are frozen or dynamical, and TDHF's \
+number of orbitals, are not stated. Orbitals on a spherical FEDVR basis: l_max = 72, 0 \
+< r < 300 with 78 finite elements of 25 DVR functions each, a cos^(1/4) mask switched \
+on at r = 180; fourth-order exponential Runge-Kutta, 20 000 time steps per optical \
+cycle; 'We run the simulations for a further 6,000 time steps after the end of the \
+pulse' (Table 2's note: '66000 time steps (0 <= t <= 3.3T)'). The pulse: 'a \
+three-cycle laser pulse with a central wavelength of 800 nm having intensity 2 x 10^14 \
+W/cm2 and a period of T = 2 pi / omega_0 ~ 2.67 fs'; its envelope and carrier phase are \
+not stated. The single-ionisation probability: 'we computed the probability of finding \
+an electron outside a sphere of a radius of 20 a.u. using RDMs defined in Refs. 19; 20; \
+37' (p. 4)."""
+notes = """PDF pages 1-7 (Frontiers' layout). Identity checked on the first page \
+(2026-10-06): 'Time-dependent optimized coupled-cluster method with doubles and \
+perturbative triples for first principles simulation of multielectron dynamics', \
+Himadri Pathak, Takeshi Sato and Kenichi L. Ishikawa (The University of Tokyo), Front. \
+Chem. 10:982120, doi 10.3389/fchem.2022.982120, received 30 June 2022, accepted 09 \
+August 2022, published 13 September 2022.
+
+EXTRACTED (tools/extract/pathak_2022.py). The paper prints no number of the \
+time-dependent calculations: the single-ionisation probabilities are only in Fig. 2 \
+(PDF p. 4), an image embedded in the PDF (927 x 642 pixels, JPEG, 300 dpi; its tick \
+labels are part of the image, not text), read from its native pixels by data rule 8 \
+(TC-699). The data availability statement (p. 5): 'The raw data supporting the \
+conclusion of this article will be made available by the authors, without undue \
+reservation'; they have not been asked, and the numbers here would be replaced by \
+theirs. Axes calibrated from the frame lines and the inward tick marks, their \
+darkness-weighted centres written in the script and found again in the image (each \
+within 0.25 pixel; the left and right marks agree within 0.25 pixel): time 1.0 to 3.0 \
+optical cycles (395.7 pixels per cycle), probability 0.0000 to 0.1200 (92.74 pixels \
+per 0.02; 2.16e-4 per pixel), linear; the worst tick residuals 0.03 pixel (x) and 0.06 \
+pixel (y). Each curve is picked by its colour as the legend shows (TD-CASSCF red, \
+TD-OCCD(T) black, TD-OCCD green, TDHF blue; the legend's order checked) and traced \
+column by column from a seed at column 880 (2.93 cycles); its row is the colour's \
+weighted centre in the column. The lines are 3-4 pixels wide and do not overlap near \
+the end (12 pixels apart at least).
+
+THE TIME. The axis ends at 3.0 cycles = 3T (330.96 au), the end of the pulse, under \
+the frame's right line; the simulation ran on to 3.3T, which the figure does not \
+show. The value is the traced row at column 905, 2.9939 cycles (0.7 au before 3T), the \
+last clear of the frame's line; a straight line through the rows of the last 20 \
+columns, extrapolated to 3.0 cycles, agrees within 0.75 pixel (TD-OCCD(T), whose line \
+wiggles there by about 1 pixel; the others within 0.2 pixel); both are in each \
+printed cell. Unlike Pathak et al. 2020's argon at 1200 nm, the curves are still \
+rising at 3T: from 2.5 cycles to 3T, TDHF from 0.0828 to 0.0860, TD-CASSCF from 0.1154 \
+to 0.1205 (4 %).
+
+THE VALUES at 3T: TD-CASSCF 0.1205, TD-OCCD(T) 0.1177, TD-OCCD 0.1152, TDHF 0.08599 \
+(0.977, 0.956 and 0.714 times TD-CASSCF). The checks (the script fails if one is \
+missed): the order at 3T is the legend's, as the text says ('a substantial \
+underestimation ... by the TDHF method'; 'All correlation methods perform according to \
+their ability to treat electron correlation'; TD-OCCDT, not shown, is 'not \
+identifiable from the TD-CASSCF results within the graphical resolution'); the TDHF \
+line is at zero before the pulse ionises (1.04 to 1.24 cycles), drawn 1.5 pixels \
+(3.2e-4) above the zero tick: the drawing's own offset, not corrected. The traced rows, \
+overlaid on the image enlarged eight times, follow the centre of every line from \
+column 880 to the frame (inspected 2026-10-06).
+
+DIGITISING UNCERTAINTY: one pixel is 2.16e-4 (0.18 % of TD-CASSCF, 0.25 % of TDHF); \
+the line's centre is found to about half a pixel, the extrapolation to 3T moves it by \
+up to 0.75 pixel, and the zero of the drawing is 1.5 pixels off the tick: about 2.5 \
+pixels in all, 0.45-0.63 %. 1 % is stated (the paper states none).
+
+THE PULSE. 'three-cycle' is read as the total, foot-to-foot duration 3T = 8.005 fs (T \
+= 2.6685 fs at 800 nm; the paper's '~2.67 fs'), as in the group's Pathak et al. 2020 \
+(Eq. 29: E(t) = E0 sin(omega_0 t) sin^2(pi t / 3T) on the field). \
+The sin^2 envelope on the field is assumed from that paper, not stated here; the \
+carrier-envelope phase is not stated (cep = 'not stated'). The abscissa is the stated \
+peak intensity.
+
+NOT TAKEN: Fig. 1 (the dipole moments), Fig. 3 (harmonic spectra), Table 1 (ground \
+state energies), Table 2 (computation times)."""
+
+[[datasets]]
+id = "fig2_tdhf_Kr"
+material = "Kr"
+file = "Kr/pathak_2022__fig2_tdhf_Kr.csv"
+table = "fig_d7a5c6e5e701"
+digitised = "raster"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2, p. 4, TDHF (blue): the single-ionisation probability of Kr, 'the probability of finding an electron outside a sphere of a radius of 20 a.u.', at the end of the pulse, t = 3T (the axis's end), at 2e14 W/cm^2: 0.08599, read from the image (the record's notes). 0.714 times TD-CASSCF. 1 %: the digitising (about 2.5 pixels, 0.6 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.005
+pulse_fs_definition = "the total, foot-to-foot duration: 'a three-cycle laser pulse' (3 cycles foot to foot assumed, as in the group's Pathak et al. 2020)"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field (assumed: the paper does not state the envelope)"
+cep = "not stated"
+cep_definition = "not stated; the group's Pathak et al. 2020 Eq. 29, E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau, is the natural assumption"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TDHF, velocity gauge, FEDVR l_max = 72, R_max = 300 au (the number of orbitals not stated)"
+electrons = "the eight 4s4p electrons active (the treatment of the 28 core electrons not stated)"
+
+[[datasets]]
+id = "fig2_tdoccd_Kr"
+material = "Kr"
+file = "Kr/pathak_2022__fig2_tdoccd_Kr.csv"
+table = "fig_d7a5c6e5e701"
+digitised = "raster"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2, p. 4, TD-OCCD (green): the single-ionisation probability of Kr, 'the probability of finding an electron outside a sphere of a radius of 20 a.u.', at the end of the pulse, t = 3T (the axis's end), at 2e14 W/cm^2: 0.1152, read from the image (the record's notes). 0.956 times TD-CASSCF. 1 %: the digitising (about 2.5 pixels, 0.5 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.005
+pulse_fs_definition = "the total, foot-to-foot duration: 'a three-cycle laser pulse' (3 cycles foot to foot assumed, as in the group's Pathak et al. 2020)"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field (assumed: the paper does not state the envelope)"
+cep = "not stated"
+cep_definition = "not stated; the group's Pathak et al. 2020 Eq. 29, E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau, is the natural assumption"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TD-OCCD (time-dependent optimised coupled-cluster doubles), velocity gauge, 13 active orbitals, FEDVR l_max = 72, R_max = 300 au"
+electrons = "the eight 4s4p electrons correlated in 13 active orbitals (the treatment of the 28 core electrons not stated)"
+
+[[datasets]]
+id = "fig2_tdoccdpt_Kr"
+material = "Kr"
+file = "Kr/pathak_2022__fig2_tdoccdpt_Kr.csv"
+table = "fig_d7a5c6e5e701"
+digitised = "raster"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2, p. 4, TD-OCCD(T) (black): the single-ionisation probability of Kr, 'the probability of finding an electron outside a sphere of a radius of 20 a.u.', at the end of the pulse, t = 3T (the axis's end), at 2e14 W/cm^2: 0.1177, read from the image (the record's notes). The paper's new method; 0.977 times TD-CASSCF. 1 %: the digitising (about 2.5 pixels, 0.5 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.005
+pulse_fs_definition = "the total, foot-to-foot duration: 'a three-cycle laser pulse' (3 cycles foot to foot assumed, as in the group's Pathak et al. 2020)"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field (assumed: the paper does not state the envelope)"
+cep = "not stated"
+cep_definition = "not stated; the group's Pathak et al. 2020 Eq. 29, E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau, is the natural assumption"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TD-OCCD(T) (time-dependent optimised coupled-cluster doubles with perturbative triples), velocity gauge, 13 active orbitals, FEDVR l_max = 72, R_max = 300 au"
+electrons = "the eight 4s4p electrons correlated in 13 active orbitals (the treatment of the 28 core electrons not stated)"
+
+[[datasets]]
+id = "fig2_tdcasscf_Kr"
+material = "Kr"
+file = "Kr/pathak_2022__fig2_tdcasscf_Kr.csv"
+table = "fig_d7a5c6e5e701"
+digitised = "raster"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2, p. 4, TD-CASSCF (red): the single-ionisation probability of Kr, 'the probability of finding an electron outside a sphere of a radius of 20 a.u.', at the end of the pulse, t = 3T (the axis's end), at 2e14 W/cm^2: 0.1205, read from the image (the record's notes). The benchmark within the active space. 1 %: the digitising (about 2.5 pixels, 0.45 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.005
+pulse_fs_definition = "the total, foot-to-foot duration: 'a three-cycle laser pulse' (3 cycles foot to foot assumed, as in the group's Pathak et al. 2020)"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field (assumed: the paper does not state the envelope)"
+cep = "not stated"
+cep_definition = "not stated; the group's Pathak et al. 2020 Eq. 29, E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau, is the natural assumption"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TD-CASSCF (time-dependent complete-active-space self-consistent field), velocity gauge, 13 active orbitals, FEDVR l_max = 72, R_max = 300 au"
+electrons = "the eight 4s4p electrons correlated in 13 active orbitals (the treatment of the 28 core electrons not stated)"

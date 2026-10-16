@@ -1,0 +1,1073 @@
+# The materials the curated records may name (TC-318).
+#
+# A record's dataset names its material by `id`. The id is the directory of the
+# material's extracted files (`data/values/<family>/<id>/`), so it is short and safe as
+# a file name. `kind` is gas, ion, glass or crystal; `optics` is isotropic, uniaxial or
+# biaxial, and an anisotropic material lists the `axes` a dataset's `parameters.axis`
+# may take. Media add their own facts in their subpackage (optmat.gas.gases for the
+# gases); this file only says what a material is.
+#
+# A material is added here, with its identity, before data for it are recorded.
+
+# The gases (optmat.gas).
+[He]
+name = "helium"
+kind = "gas"
+
+[Ne]
+name = "neon"
+kind = "gas"
+
+[Ar]
+name = "argon"
+kind = "gas"
+
+[Kr]
+name = "krypton"
+kind = "gas"
+
+[Xe]
+name = "xenon"
+kind = "gas"
+
+[H2]
+name = "hydrogen (normal)"
+kind = "gas"
+
+[D2]
+name = "deuterium (normal)"
+kind = "gas"
+
+[N2]
+name = "nitrogen"
+kind = "gas"
+
+[O2]
+name = "oxygen"
+kind = "gas"
+
+[CH4]
+name = "methane"
+kind = "gas"
+
+[SF6]
+name = "sulfur hexafluoride"
+kind = "gas"
+
+[N2O]
+name = "nitrous oxide"
+kind = "gas"
+
+[CO2]
+name = "carbon dioxide"
+kind = "gas"
+
+[O3]
+name = "ozone"
+kind = "gas"
+
+[CO]
+name = "carbon monoxide"
+kind = "gas"
+
+# Atomic hydrogen: not one of optmat's gases (no models), named only by reference
+# calculations of the ionisation of a one-electron atom (zhao_2016's TDSE).
+[H]
+name = "hydrogen (atomic)"
+kind = "gas"
+
+# Molecules named only by reference data on their dissociation and ionisation (TC-954):
+# not optmat's gases (no models).
+[NO2]
+name = "nitrogen dioxide"
+kind = "gas"
+
+[N2O5]
+name = "dinitrogen pentoxide"
+kind = "gas"
+
+[NO]
+name = "nitric oxide"
+kind = "gas"
+
+# The singly charged cations of the gases, in their ground state (TC-440). Their data
+# (a static polarizability, for the Stark shift of the ionisation rates) are the ion's
+# own and never enter the neutral gas's models; `kind = "ion"` keeps them apart.
+["He+"]
+name = "helium cation"
+kind = "ion"
+
+["Ne+"]
+name = "neon cation"
+kind = "ion"
+
+["Ar+"]
+name = "argon cation"
+kind = "ion"
+
+["Kr+"]
+name = "krypton cation"
+kind = "ion"
+
+["Xe+"]
+name = "xenon cation"
+kind = "ion"
+
+["H2+"]
+name = "hydrogen molecular cation"
+kind = "ion"
+
+["D2+"]
+name = "deuterium molecular cation"
+kind = "ion"
+
+["N2+"]
+name = "nitrogen cation"
+kind = "ion"
+
+["O2+"]
+name = "oxygen cation"
+kind = "ion"
+
+["CH4+"]
+name = "methane cation"
+kind = "ion"
+
+["SF6+"]
+name = "sulfur hexafluoride cation"
+kind = "ion"
+
+["N2O+"]
+name = "nitrous oxide cation"
+kind = "ion"
+
+["CO2+"]
+name = "carbon dioxide cation"
+kind = "ion"
+
+# Molecular cations named only by dissociative-recombination and fragmentation data
+# (TC-954).
+["NO2+"]
+name = "nitrogen dioxide cation"
+kind = "ion"
+
+["NO+"]
+name = "nitric oxide cation"
+kind = "ion"
+
+# Molecular dications named only by the transition dipoles of the density-matrix models
+# of sequential double ionisation (TC-954).
+["N2++"]
+name = "nitrogen dication"
+kind = "ion"
+
+["O2++"]
+name = "oxygen dication"
+kind = "ion"
+
+# Glasses. A glass's grade (Corning 7980, Suprasil 1, Lithosil Q2, ...) is a dataset
+# parameter, not a separate material: grades of one glass differ in impurities (OH,
+# metals) and fictive temperature, which the data record and the models state.
+[SiO2]
+name = "silica glass (fused silica, fused quartz)"
+formula = "SiO2"
+kind = "glass"
+aliases = ["fused silica", "fused quartz", "silica", "a-SiO2"]
+
+[BK7]
+name = "Schott BK7 borosilicate crown (the historical, lead-containing melt)"
+kind = "glass"
+
+[N-BK7]
+name = "Schott N-BK7 borosilicate crown (the lead- and arsenic-free BK7)"
+kind = "glass"
+
+# Crystals. Cubic crystals are optically isotropic.
+[SiO2_quartz]
+name = "crystalline quartz (alpha-SiO2)"
+formula = "SiO2"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["quartz", "crystal quartz", "alpha-quartz"]
+
+[Al2O3]
+name = "sapphire (alpha-Al2O3, corundum)"
+formula = "Al2O3"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["sapphire"]
+
+[MgF2]
+name = "magnesium fluoride"
+formula = "MgF2"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[CaF2]
+name = "calcium fluoride (fluorite)"
+formula = "CaF2"
+kind = "crystal"
+
+[BaF2]
+name = "barium fluoride"
+formula = "BaF2"
+kind = "crystal"
+
+[SrF2]
+name = "strontium fluoride"
+formula = "SrF2"
+kind = "crystal"
+
+[LiF]
+name = "lithium fluoride"
+formula = "LiF"
+kind = "crystal"
+
+[NaF]
+name = "sodium fluoride"
+formula = "NaF"
+kind = "crystal"
+
+[KBr]
+name = "potassium bromide"
+formula = "KBr"
+kind = "crystal"
+
+[MgO]
+name = "magnesium oxide (periclase)"
+formula = "MgO"
+kind = "crystal"
+
+[YAG]
+name = "yttrium aluminium garnet"
+formula = "Y3Al5O12"
+kind = "crystal"
+aliases = ["Y3Al5O12"]
+
+[KGW]
+name = "potassium gadolinium tungstate"
+formula = "KGd(WO4)2"
+kind = "crystal"
+optics = "biaxial"
+axes = ["n_p", "n_m", "n_g"]
+aliases = ["KGd(WO4)2"]
+
+[CaCO3]
+name = "calcite"
+formula = "CaCO3"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["calcite"]
+
+[YVO4]
+name = "yttrium orthovanadate"
+formula = "YVO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[BBO]
+name = "beta barium borate"
+formula = "beta-BaB2O4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["beta-BaB2O4"]
+
+[KDP]
+name = "potassium dihydrogen phosphate"
+formula = "KH2PO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["KH2PO4"]
+
+[LiNbO3]
+name = "lithium niobate"
+formula = "LiNbO3"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[KTP]
+name = "potassium titanyl phosphate"
+formula = "KTiOPO4"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["KTiOPO4"]
+
+[Si]
+name = "silicon (crystalline)"
+formula = "Si"
+kind = "crystal"
+
+[Ge]
+name = "germanium (crystalline)"
+formula = "Ge"
+kind = "crystal"
+
+[ZnS]
+name = "zinc sulfide"
+formula = "ZnS"
+kind = "crystal"
+
+[ZnSe]
+name = "zinc selenide"
+formula = "ZnSe"
+kind = "crystal"
+
+[GaAs]
+name = "gallium arsenide"
+formula = "GaAs"
+kind = "crystal"
+
+[InP]
+name = "indium phosphide"
+formula = "InP"
+kind = "crystal"
+
+[GaSb]
+name = "gallium antimonide"
+formula = "GaSb"
+kind = "crystal"
+
+# The solids of the n2 records (silica and every other solid). The identity is what the
+# sources state; where a source does not state a crystal's phase, the name says so.
+# Glasses.
+[BK-10]
+name = "BK-10 borosilicate crown glass (White et al. 1984; maker not stated)"
+kind = "glass"
+
+[SF-58]
+name = "SF-58 lead (flint) glass (Adair et al. 1989, Tables I and II; maker not stated)"
+kind = "glass"
+
+[tellurite_75TeO2-20ZnO-5Na2O]
+name = "tellurite glass 75 % TeO2 + 20 % ZnO + 5 % Na2O (DeSalvo et al. 1996)"
+kind = "glass"
+
+[BGG]
+name = "barium gallogermanate glass (BGG), made at the U.S. Naval Research Laboratory (Flom et al. 2015)"
+kind = "glass"
+aliases = ["barium gallogermanate"]
+
+[AMTIR-1]
+name = "AMTIR-1 chalcogenide glass, Ge33As12Se55 (Amorphous Materials, Inc.)"
+kind = "glass"
+
+[AMTIR-2]
+name = "AMTIR-2 chalcogenide glass, As-Se (Amorphous Materials, Inc.)"
+kind = "glass"
+
+[AMTIR-4]
+name = "AMTIR-4 chalcogenide glass, As-Se (Amorphous Materials, Inc.)"
+kind = "glass"
+
+[AMTIR-5]
+name = "AMTIR-5 chalcogenide glass, As-Se (Amorphous Materials, Inc.)"
+kind = "glass"
+
+[AMTIR-6]
+name = "AMTIR-6 chalcogenide glass, As2S3 (Amorphous Materials, Inc.)"
+kind = "glass"
+
+# Crystals and polycrystalline ceramics.
+[KF]
+name = "potassium fluoride"
+formula = "KF"
+kind = "crystal"
+
+[NaCl]
+name = "sodium chloride (rock salt)"
+formula = "NaCl"
+kind = "crystal"
+
+[KCl]
+name = "potassium chloride"
+formula = "KCl"
+kind = "crystal"
+
+[NaBr]
+name = "sodium bromide"
+formula = "NaBr"
+kind = "crystal"
+
+[CdF2]
+name = "cadmium fluoride"
+formula = "CdF2"
+kind = "crystal"
+
+[PbF2]
+name = "lead fluoride"
+formula = "PbF2"
+kind = "crystal"
+
+[LaF3]
+name = "lanthanum fluoride"
+formula = "LaF3"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[CeF3]
+name = "cerium fluoride"
+formula = "CeF3"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[AgCl]
+name = "silver chloride"
+formula = "AgCl"
+kind = "crystal"
+
+[CaO]
+name = "calcium oxide"
+formula = "CaO"
+kind = "crystal"
+
+[SrO]
+name = "strontium oxide"
+formula = "SrO"
+kind = "crystal"
+
+[ZnO]
+name = "zinc oxide (wurtzite)"
+formula = "ZnO"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[Ga2O3]
+name = "gallium oxide (the source, Adair et al. 1989, does not state the phase; beta-Ga2O3 is monoclinic)"
+formula = "Ga2O3"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+
+[Y2O3]
+name = "yttrium oxide (yttria)"
+formula = "Y2O3"
+kind = "crystal"
+
+[Er2O3]
+name = "erbium oxide"
+formula = "Er2O3"
+kind = "crystal"
+
+[TiO2]
+name = "titanium dioxide (single crystal; Adair et al. 1989 do not name the phase)"
+formula = "TiO2"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[ZrO2]
+name = "zirconium dioxide (zirconia; Adair et al. 1989 do not state the phase or stabilizer)"
+formula = "ZrO2"
+kind = "crystal"
+
+[BeAl2O4]
+name = "chrysoberyl"
+formula = "BeAl2O4"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["chrysoberyl"]
+
+[MgAl2O4]
+name = "magnesium aluminate spinel (single crystal or polycrystalline ceramic)"
+formula = "MgAl2O4"
+kind = "crystal"
+aliases = ["spinel"]
+
+[AlON]
+name = "aluminum oxynitride (polycrystalline ceramic)"
+kind = "crystal"
+aliases = ["aluminum oxynitride"]
+
+[CaMgSi2O6]
+name = "diopside"
+formula = "CaMgSi2O6"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["diopside"]
+
+[YAlO3]
+name = "yttrium aluminium perovskite (YAP)"
+formula = "YAlO3"
+kind = "crystal"
+optics = "biaxial"
+axes = ["n_p", "n_m", "n_g"]
+aliases = ["YAP"]
+
+[GSAG]
+name = "gadolinium scandium aluminium garnet"
+formula = "Gd3Sc2Al3O12"
+kind = "crystal"
+aliases = ["Gd3Sc2Al3O12"]
+
+[GSGG]
+name = "gadolinium scandium gallium garnet"
+formula = "Gd3Sc2Ga3O12"
+kind = "crystal"
+aliases = ["Gd3Sc2Ga3O12"]
+
+[GGG]
+name = "gadolinium gallium garnet"
+formula = "Gd3Ga5O12"
+kind = "crystal"
+aliases = ["Gd3Ga5O12"]
+
+[YGG]
+name = "yttrium gallium garnet"
+formula = "Y3Ga5O12"
+kind = "crystal"
+aliases = ["Y3Ga5O12"]
+
+[LLGG]
+name = "lanthanum lutetium gallium garnet"
+formula = "La3Lu2Ga3O12"
+kind = "crystal"
+aliases = ["La3Lu2Ga3O12"]
+
+[SrTiO3]
+name = "strontium titanate"
+formula = "SrTiO3"
+kind = "crystal"
+
+[KTaO3]
+name = "potassium tantalate"
+formula = "KTaO3"
+kind = "crystal"
+
+[CaWO4]
+name = "calcium tungstate (scheelite)"
+formula = "CaWO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[LAP]
+name = "L-arginine phosphate (monohydrate)"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["L-arginine phosphate"]
+
+[CdS]
+name = "cadmium sulfide (wurtzite)"
+formula = "CdS"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[ZnTe]
+name = "zinc telluride"
+formula = "ZnTe"
+kind = "crystal"
+
+[GaSe]
+name = "gallium selenide"
+formula = "GaSe"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[AgGaS2]
+name = "silver thiogallate"
+formula = "AgGaS2"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[ZnGeP2]
+name = "zinc germanium phosphide (ZGP)"
+formula = "ZnGeP2"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["ZGP"]
+
+[SBN-61]
+name = "strontium barium niobate SBN-61"
+formula = "Sr0.61Ba0.39Nb2O6"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[KTA]
+name = "potassium titanyl arsenate"
+formula = "KTiOAsO4"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["KTiOAsO4"]
+
+[LGS]
+name = "lithium thiogallate"
+formula = "LiGaS2"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["LiGaS2"]
+
+[BGSe]
+name = "barium gallium selenide"
+formula = "BaGa4Se7"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["BaGa4Se7"]
+
+[KRS-5]
+name = "KRS-5, thallium bromide-iodide mixed crystal (TlBr-TlI)"
+kind = "crystal"
+
+[KRS-6]
+name = "KRS-6, thallium bromide-chloride mixed crystal (TlBr-TlCl)"
+kind = "crystal"
+
+[BiBO]
+name = "bismuth triborate"
+formula = "BiB3O6"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["BiB3O6"]
+
+# Worker W (boling_1978): the glasses of Boling, Glass and Owyoung 1978, Tables I-III,
+# under the names printed there (no maker or composition is stated there).
+[FK-6]
+name = "FK-6 glass (Boling et al. 1978, Table I; maker not stated)"
+kind = "glass"
+
+[FK-5]
+name = "FK-5 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[FK-51]
+name = "FK-51 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[LSO]
+name = "LSO glass (Boling et al. 1978, Tables I and II; composition and maker not stated)"
+kind = "glass"
+
+[ED-2]
+name = "ED-2 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[ED-4]
+name = "ED-4 glass (Boling et al. 1978, Table I; maker not stated)"
+kind = "glass"
+
+[EY-1]
+name = "EY-1 glass (Boling et al. 1978, Tables I-III; maker not stated)"
+kind = "glass"
+
+[EV-1]
+name = "EV-1 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[FD-2]
+name = "FD-2 glass (as printed in Boling et al. 1978, Table II a; maker not stated)"
+kind = "glass"
+
+[FR-5]
+name = "FR-5 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[SF-7]
+name = "SF-7 lead flint glass (Boling et al. 1978, Tables I and II; maker not stated)"
+kind = "glass"
+
+[LaK-3]
+name = "LaK-3 glass (Boling et al. 1978, Table I; maker not stated)"
+kind = "glass"
+
+[LaSF-7]
+name = "LaSF-7 glass (Boling et al. 1978, Table I; maker not stated)"
+kind = "glass"
+
+[LHG-5]
+name = "LHG-5 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[LHG-6]
+name = "LHG-6 glass (Boling et al. 1978, Table III; maker not stated)"
+kind = "glass"
+
+[silicate_boling_1978]
+name = "the glass printed only as 'silicate' in Boling et al. 1978, Table III (n_d 1.769, nu_d 27; composition and maker not stated)"
+kind = "glass"
+
+[fluorophosphate_boling_1978]
+name = "the glass printed only as 'fluoro-phosphate' in Boling et al. 1978, Table III (n_d 1.492, nu_d 81; composition and maker not stated)"
+kind = "glass"
+
+# Worker V
+[SiO2-TiO2]
+name = "titania-silica glass: a high-silica glass with 7.5 % TiO2 (Rife and Osantowski's sample, Corning 7971 ULE)"
+kind = "glass"
+aliases = ["ULE", "Corning 7971"]
+
+[Ta2O5]
+name = "tantalum pentoxide (amorphous, as deposited films)"
+formula = "Ta2O5"
+kind = "glass"
+
+# The solids of the ionisation, breakdown, damage and filamentation records. NaCl is
+# registered above.
+[SF11]
+name = "SF11 dense flint glass (so named by Schaffer et al. 2001; manufacturer not stated)"
+kind = "glass"
+
+[Corning-0211]
+name = "Corning 0211, a zinc-doped borosilicate cover-slip glass (Corning)"
+kind = "glass"
+aliases = ["Corning 0211"]
+
+[NaI]
+name = "sodium iodide"
+formula = "NaI"
+kind = "crystal"
+
+# The materials of dubietis_2019 and Franta's model papers. PbF2, KRS-5, KRS-6 and Ta2O5
+# are registered above; TiO2 is the crystal registered above.
+[ZBLAN]
+name = "ZBLAN fluorozirconate glass (as named in dubietis_2019; composition not stated)"
+kind = "glass"
+
+[La_glass]
+name = "lanthanum glass ('La glass' in dubietis_2019; composition and maker not stated)"
+kind = "glass"
+
+[Te_glass]
+name = "tellurite glass ('Te glass' in dubietis_2019; composition and maker not stated)"
+kind = "glass"
+
+[As2S3]
+name = "arsenic trisulfide chalcogenide glass"
+formula = "As2S3"
+kind = "glass"
+
+[C_diamond]
+name = "diamond"
+formula = "C"
+kind = "crystal"
+
+[C_graphite]
+name = "graphite"
+formula = "C"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[a-Si_H]
+name = "hydrogenated amorphous silicon (a-Si:H), films"
+kind = "glass"
+
+[a-C_H]
+name = "hydrogenated amorphous carbon (a-C:H, diamond-like carbon), films"
+kind = "glass"
+
+[HfO2]
+name = "hafnium dioxide (hafnia): amorphous or fine-grained polycrystalline films, as in Franta's papers"
+formula = "HfO2"
+kind = "glass"
+aliases = ["hafnia"]
+
+[Nb2O5]
+name = "niobium pentoxide: films, as quoted in franta_2025"
+formula = "Nb2O5"
+kind = "glass"
+
+[Al2O3_amorphous]
+name = "amorphous alumina (evaporated or sputtered films); sapphire is Al2O3"
+formula = "Al2O3"
+kind = "glass"
+
+# Metals (TC-543). Polycrystalline films and bulk samples of one metal are one material;
+# a dataset's parameters.form and notes say which, with the deposition, the substrate and
+# the thickness, since these change the optical constants.
+[Ag]
+name = "silver"
+formula = "Ag"
+kind = "metal"
+aliases = ["silver"]
+
+[Au]
+name = "gold"
+formula = "Au"
+kind = "metal"
+aliases = ["gold"]
+
+[Al]
+name = "aluminium"
+formula = "Al"
+kind = "metal"
+aliases = ["aluminum", "aluminium"]
+
+[Cu]
+name = "copper"
+formula = "Cu"
+kind = "metal"
+aliases = ["copper"]
+
+# The vacuum-ultraviolet glasses. Rife and Osantowski's glass B (Corning 7971 ULE, a high-silica
+# glass with 7.5 % TiO2) is SiO2-TiO2, registered above; glass A is new.
+[Cer-Vit-C101]
+name = "Cer-Vit C101 (Owens-Illinois): a recrystallized, slightly amber lithium aluminium silicate glass ceramic (mostly Li2O.Al2O3.6.5SiO2, with TiO2 for nucleation), Rife and Osantowski's glass A"
+kind = "glass"
+aliases = ["Cer-Vit", "Cer-Vit C101"]
+
+[SiO2-like_film_HMDSO]
+name = "SiO2-like film (SiOx with residual C and H) plasma-deposited from hexamethyldisiloxane (HMDSO) and oxygen, as in Franta et al. 2007 and Zajickova et al. 2007"
+kind = "glass"
+
+# The solids of adair_1987, weber_1978, liu_1978, liu_1979,
+# lenzner_1998 and mero_2005. Names and makers as printed; compositions in mol % as
+# Adair et al. 1987 Table 1 prints them. Existing ids reused: BK7 (Schott BK 7), FK-5
+# (Hoya FC-5 in milam_1976; Weber et al. and Boling et al. print it FK-5), FK-51, ED-2,
+# ED-4, EV-1, EY-1, FR-5, LHG-5, LHG-6, KDP, SiO2 and the fluorides.
+# Glasses of Adair, Chase and Payne 1987 (Nd-doped laser glasses unless stated).
+[E-115]
+name = "E-115 Nd fluorophosphate laser glass (Owens-Illinois): 17.9 Al(PO3)3, 54.2 NaF, 26.9 CaF2, 1.0 NdF3 (Adair et al. 1987)"
+kind = "glass"
+
+[E-131]
+name = "E-131 Nd fluorophosphate laser glass (Owens-Illinois): 2.7 Al(PO3)3, 37.3 AlF3, 1.0 YF3, 10 MgF2, 30 CaF2, 10 SrF2, 8.0 BaF2, 1.0 NdF3 (Adair et al. 1987)"
+kind = "glass"
+
+[E-132]
+name = "E-132 Nd fluorophosphate laser glass (Owens-Illinois): 3.3 Al(PO3)3, 36.7 AlF3, 10 MgF2, 30 CaF2, 10 SrF2, 10 BaF2, 1.0 NdF3 (Adair et al. 1987)"
+kind = "glass"
+
+[E-133]
+name = "E-133 Nd fluorophosphate laser glass (Owens-Illinois): 4.0 Al(PO3)3, 31 AlF3, 10 MgF2, 30 CaF2, 8 SrF2, 12 BaF2, 4 YF3, 1 NdF3; printed 'E-133' in Adair et al. 1987 Table 2 and 'K-133' in their Table 1"
+kind = "glass"
+
+[K-1172]
+name = "K-1172 Nd fluorophosphate laser glass (NBS): 8.0 Ba(PO3)2, 40 AlF3, 5 BaF2, 5 MgF2, 11 CaF2, 5 SrF2, 25 NaF, 1.0 NdF3 (Adair et al. 1987)"
+kind = "glass"
+
+[Q-88]
+name = "Q-88 Nd phosphate laser glass (Kigre; composition proprietary)"
+kind = "glass"
+
+[P-108]
+name = "P-108 Nd phosphate laser glass (Kigre): 45 P2O5, 25 Li2O, 4.3 Al2O3, 15 Na2O, 10 CaO, 0.7 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[Hoya-5037]
+name = "5037 Nd phosphate laser glass (Hoya): 55 P2O5, 40 SrO, 4.7 La2O3, 0.3 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[Hoya-5038]
+name = "5038 Nd phosphate laser glass (Hoya): 55 P2O5, 40 BaO, 4.7 La2O3, 0.3 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[C-2828]
+name = "C-2828 Nd silicate laser glass (American Optical; composition proprietary; printed 'C2828' by Adair et al. 1987)"
+kind = "glass"
+
+[ED-8]
+name = "ED-8 Nd silicate laser glass (Owens-Illinois): 50 SiO2, 2.5 Al2O3, 27.5 Li2O, 20 CaO, 0.2 CeO, 0.8 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[S-7606]
+name = "S-7606 Nd silicate laser glass (Schott): 63.6 SiO2, 6.5 Li2O, 16.7 Na2O, 2.5 K2O, 7.6 ZnO, 0.4 Sb2O3, 2.4 F2, 0.3 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[LG-650]
+name = "LG-650 Nd silicate laser glass (Schott; composition proprietary)"
+kind = "glass"
+
+[ED-3]
+name = "ED-3 Nd silicate laser glass (Owens-Illinois; composition proprietary)"
+kind = "glass"
+
+[Q-246]
+name = "Q-246 Nd silicate laser glass (Kigre; composition proprietary)"
+kind = "glass"
+
+[L-109]
+name = "L-109 Nd borate glass (Kigre): 60 B2O3, 30 BaO, 9.3 Al2O3, 0.7 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[L-65]
+name = "L-65 Nd aluminate glass (NBS): 10.5 SiO2, 32 Al2O3, 52 CaO, 5 BaO, 0.5 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[fluorozirconate-9028]
+name = "9028 Nd fluorozirconate glass ('Univ. Remes' as printed): 53 ZrF4, 22 BaF2, 7.7 ThF4, 6.9 LiF, 3.4 NaF, 1.8 PbF2, 0.6 AlF3, 0.4 CaF2, 4.2 NdF3 (Adair et al. 1987)"
+kind = "glass"
+
+[K-1261]
+name = "K-1261 Nd tellurite glass (NBS): 79 TeO2, 20 Na2O, 1 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[Kigre-3151]
+name = "3151 Nd tellurite glass (Kigre): 88 TeO2, 10.4 Nb2O5, 1.6 Nd2O3 (Adair et al. 1987)"
+kind = "glass"
+
+[SF-6]
+name = "SF-6 (SF6) lead silicate dense flint glass (Schott): 57.6 SiO2, 2 K2O, 40.4 PbO (Adair et al. 1987)"
+kind = "glass"
+aliases = ["Schott SF6"]
+
+# Glasses of Weber, Milam and Smith 1978 (makers not stated there).
+[BeF2]
+name = "beryllium fluoride glass"
+formula = "BeF2"
+kind = "glass"
+
+[C-835]
+name = "C-835 Nd silicate laser glass (Weber et al. 1978; maker not stated)"
+kind = "glass"
+
+[A86-82]
+name = "A86-82 Nd fluorophosphate laser glass (Weber et al. 1978; maker not stated)"
+kind = "glass"
+
+[LG-812]
+name = "LG-812 Nd fluorophosphate laser glass (Weber et al. 1978; maker not stated)"
+kind = "glass"
+
+[B-101]
+name = "B-101 Nd fluoroberyllate laser glass (Weber et al. 1978; maker not stated)"
+kind = "glass"
+
+[FR-4]
+name = "FR-4 Ce phosphate Faraday rotator glass (Weber et al. 1978; maker not stated)"
+kind = "glass"
+
+# Crystals of Weber et al. 1978.
+[Al2O3-Cr]
+name = "ruby (Cr-doped sapphire, Al2O3:Cr; the Cr concentration not stated by Weber et al. 1978)"
+formula = "Al2O3:Cr"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["ruby"]
+
+[La2Be2O5]
+name = "lanthanum beryllate (BEL), monoclinic; Nd-doped as measured by Weber et al. 1978"
+formula = "La2Be2O5"
+kind = "crystal"
+optics = "biaxial"
+axes = ["x", "y", "z"]
+aliases = ["BEL"]
+
+[LiYF4]
+name = "yttrium lithium fluoride (YLF), tetragonal scheelite"
+formula = "LiYF4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["YLF"]
+
+# Crystals of Liu et al. 1978 (the KDP isomorphs are tetragonal, uniaxial; the degree of
+# deuteration of the deuterated ones is not stated).
+[KI]
+name = "potassium iodide"
+formula = "KI"
+kind = "crystal"
+
+[RbCl]
+name = "rubidium chloride"
+formula = "RbCl"
+kind = "crystal"
+
+[RbBr]
+name = "rubidium bromide"
+formula = "RbBr"
+kind = "crystal"
+
+[RbI]
+name = "rubidium iodide"
+formula = "RbI"
+kind = "crystal"
+
+[ADP]
+name = "ammonium dihydrogen phosphate"
+formula = "NH4H2PO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["NH4H2PO4"]
+
+[ADA]
+name = "ammonium dihydrogen arsenate"
+formula = "NH4H2AsO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[CDA]
+name = "cesium dihydrogen arsenate"
+formula = "CsH2AsO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[DCDA]
+name = "deuterated cesium dihydrogen arsenate (degree of deuteration not stated)"
+formula = "CsD2AsO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[KDA]
+name = "potassium dihydrogen arsenate"
+formula = "KH2AsO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[DKDA]
+name = "deuterated potassium dihydrogen arsenate (degree of deuteration not stated)"
+formula = "KD2AsO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[DKDP]
+name = "deuterated potassium dihydrogen phosphate (KD*P; degree of deuteration not stated)"
+formula = "KD2PO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+aliases = ["KD*P"]
+
+[RDA]
+name = "rubidium dihydrogen arsenate"
+formula = "RbH2AsO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+[RDP]
+name = "rubidium dihydrogen phosphate"
+formula = "RbH2PO4"
+kind = "crystal"
+optics = "uniaxial"
+axes = ["o", "e"]
+
+# Lenzner et al. 1998 and Mero et al. 2005.
+[Corning-7059]
+name = "Corning 7059 barium aluminum borosilicate glass (BBS)"
+kind = "glass"
+aliases = ["Corning 7059"]
+
+[TiO2_amorphous]
+name = "titanium dioxide films, dense and nearly amorphous (ion-beam sputtered, Mero et al. 2005); the crystal is TiO2"
+formula = "TiO2"
+kind = "glass"

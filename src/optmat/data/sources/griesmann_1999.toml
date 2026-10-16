@@ -1,0 +1,62 @@
+citation = "U. Griesmann and J. H. Burnett, Opt. Lett. 24, 1699 (1999)"
+doi = "10.1364/ol.24.001699"
+library = "Griesmann_1999_RefractivityNitrogenGas"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """NIST FT700 vacuum-ultraviolet Fourier-transform spectrometer (scanning \
+Mach-Zehnder, CaF2 optics, resolving power 1.3e6 at 150 nm) whose tank is evacuated \
+and then filled with ultra-high-purity N2 (O2 below 10 ppm) at about 103 kPa: the \
+refractive index is the ratio of the wave numbers of 31 Fe-Ne hollow-cathode lines in \
+gas and vacuum, corrected for the index of N2 at the He-Ne reference-laser wave number \
+(Eq. 1). Gas temperature by a calibrated silicon diode, within 0.03 C of the bench."""
+notes = """Reduced to 273.15 K and 101 325 Pa with the Lorentz-Lorenz formula (Eqs. 2-3) and \
+Peck & Khanna's compressibility Z = 1 - P (317.6 - T) 1e-5 / 101325 (Eq. 4): density = \
+real. Wavelengths are vacuum. 'The combined standard uncertainty was found to be \
+0.2 x 10^-6' (p. 1699), from the line wave numbers and n(sigma_HeNe).
+
+The absolute scale is not independent: 'the pressure in the spectrometer tank was \
+measured ... using the known refractive index of nitrogen in the ultraviolet [Abjean \
+et al. 1970] and the accurately known wave numbers of spectral lines of iron ... using \
+the observed line shifts' (p. 1700), with a capacitance manometer (0.15 %) only as a \
+consistency check. The refractivities are therefore tied to Abjean et al.'s UV values \
+(and n at 633 nm to Peck & Khanna 1966) at the level of those works' accuracy; the \
+paper states no separate systematic uncertainty for this, so none is set. What the \
+data add is the shape of the dispersion down to 149 nm. In a joint fit with Abjean's \
+data (not in the library) or with other N2 UV data they are not independent in scale.
+
+The paper claims 'the largest deviation of any data point from the fitted Sellmeier \
+formula is smaller than the standard uncertainty of 0.2 x 10^-6' (p. 1700); Table 1 \
+does not bear this out (see the formula)."""
+
+[[datasets]]
+id = "experiment"
+material = "N2"
+file = "N2/griesmann_1999__experiment.csv"
+table = "tbl_0e295af4655d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Scale tied to Abjean et al. (1970) through the optical pressure measurement (see the source notes)."
+[datasets.uncertainty]
+absolute = 0.2
+level = "1 sigma"
+
+[[formulas]]
+id = "sellmeier"
+form = "dn_sigma2"
+terms = { scale = "1e-6", B = ["1.9662731e6", "2.7450825e4"], C = ["22086.66", "133.85688"] }
+range_nm = [150.0, 270.0]
+material = "N2"
+equation = "Eq. (5), p. 1700"
+printed = "10^6 x (n - 1)|_(273.15 K, 101,325 Pa) = 1.9662731 x 10^6/(22086.66 - sigma^2) + 2.7450825 x 10^4/(133.85688 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "150-270 nm (p. 1700); 'between the onset of nitrogen absorption ... near 145 nm, and 270 nm' (p. 1701)"
+coefficients = { B1 = "1.9662731e6", C1 = "22086.66", B2 = "2.7450825e4", C2 = "133.85688" }
+check = "Against Table 1: rms 0.16, largest deviations -0.52 (149.4169 nm), -0.29 (216.6774, 165.6338 nm), -0.23 (225.9511 nm), not all below 0.2 as the paper says. A free least-squares refit of the same form to Table 1 gives rms 0.145 and max 0.37, so the printed coefficients are close to optimal and not misprinted; the claim is presumably about the unrounded data (Table 1 is rounded to 0.1) or excludes the 149.4 nm point (checked 2026-09-24)."
+notes = "The first term's pole is at 6.7 nm (C1 = 22086.66 um^-2): effectively a slowly varying background."

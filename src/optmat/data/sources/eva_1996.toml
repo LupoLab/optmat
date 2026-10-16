@@ -1,0 +1,509 @@
+citation = "E. Eva and K. Mann, Appl. Phys. A 62, 143 (1996)"
+doi = "10.1007/bf01575711"
+library = "Eva_1996_CalorimetricMeasurementTwo"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Laser calorimetry: 25 ns excimer pulses (Lambda Physik EMG202) at 351, \
+248 or 193 nm, apertured and focused to a point behind the slightly tilted sample; \
+transmitted energy by a pyroelectric detector (Ophir PE50), incident energy computed \
+from the refractive index and the absorbed energy; temperature by two NTC resistors, \
+calibrated electrically with a resistor glued at the laser spot. Irradiation 30 s at \
+19-150 Hz, energy density H set by a variable attenuator, intensities 2-80 MW/cm2 \
+(1/e^2 maximum 80 MW/cm2). Beam profile a flat Gaussian (intensity at 90 % of the \
+maximum twice that at 1/e^2), at most 6 x 4 mm2 on 25 mm samples."""
+notes = """Table 1 (p. 4) is transcribed in full. It is a wide table with a label \
+column ('351 nm:', '248 nm:', '193 nm:') before each wavelength block; checked against \
+the image row by row (see the extraction script): every value is in its column. Caption \
+(verbatim): 'Absolute absorption coefficients of commercially available UV-grade \
+substrates at 351, 248 and 193 nm (3.5/5/6.4 eV) (surface absorption not accounted for), \
+absolute uncertainty is +-20 % for alpha and +-40 % for beta; beta_Lit. (measured at \
+248 nm / 0.7 ps) and E_gap from [2] unless stated otherwise'. Ref. [2] is taylor_1988, \
+[19] brimacombe_1989, [20] weinberg_1979. '-' is 'not measured'.
+
+Definitions (p. 1): dI/dz = -alpha I - beta I^2 (Eq. 1), and the absorptance of a sample \
+of thickness dz is A = dz (alpha + beta H / tau_pulse) (Eq. 2): alpha from the offset and \
+beta from the slope of A against intensity, so alpha is a Napierian (base e) \
+coefficient per length. A is the absorbed over the incident energy (Eq. 3); the \
+incident energy inside the sample is computed with the refractive index, so front- \
+surface reflection is removed, but surface absorption is included in alpha. For a \
+flat-topped profile beta is the slope; for this beam 'a constant factor of 0.7 applies' \
+(p. 2, stated for BaF2, from attenuation computed over ten areas of homogeneous \
+intensity); whether it was applied to the other materials is not said.
+
+Samples and grades: fused silica S1 and S2 are Suprasil 1 and Suprasil 2 (Heraeus; \
+p. 2 and p. 5: Suprasil 2 'differs from Suprasil 1 only in optical homogeneity'; both \
+high-OH). 'A CaF2 crystal (Korth Kristalle)' is named in Sec. 3.1 without saying which \
+CaF2 row it is. The crystalline quartz is z-cut (p. 6): light along the optic axis, so \
+its datasets are given axis 'o' (an inference from the cut). No other orientation is \
+stated (MgF2's is not). Liquids: none.
+
+Thicknesses dz (mm) as printed: S1 1, CaF2 2 and 5 (two rows), LiF 2, MgF2 2, S2 2, \
+quartz 2, BaF2 5, CaF2 5 (the 193 nm row); kept in the files' printed column.
+
+Text values (not tabulated): BaF2 at 248 nm, maximum absorptivity 2.1 % at 1.1 J/cm2, \
+transmission loss (2 +- 0.8) %; linear fits for two samples consistent to +-6 % relative \
+(p. 2); up to 24 % of the BaF2 slope may be intensity-dependent colour-centre \
+absorption (transient, lifetime tau_life = 50 ms in the model of Eq. 4), 'then our value \
+for beta must be too large' (p. 3). Suprasil 1 at 248 nm, 1.4 J/cm2, saturates at alpha = \
+0.14/cm after 3e5 pulses (induced absorption, not an intrinsic value; p. 4). The fused-\
+silica beta comes from absorptance extrapolated to zero pulses (Figs. 6-7); 'some of the \
+slope (up to a third) might be due to transient, intensity-dependent color-center \
+formation' (p. 5). CaF2 at 193 nm: 'as the sample was damaged at 420 mJ/cm2 already, \
+only approximate coefficients could be derived' (p. 3); the authors conclude from the \
+absence of two-photon absorption at 248 nm that the CaF2 gap exceeds 2 x 5.0 eV.
+
+Formula: the degradation-rate fit of Suprasil 2 at 248 nm (below). The figures (2-10) \
+are not digitised: absorptance against H or pulse number for CaF2 and MgF2 (Fig. 2), \
+BaF2 (Figs. 3-4), Suprasil 1 and 2 (Figs. 5-9) and quartz (Fig. 10).
+
+Reproductions: the E_gap column and the beta_Lit values come from taylor_1988 (the \
+CaF2 .08 is Taylor's 8.3e-12 rounded; LiF and MgF2 '<= .01' are Taylor's <= 1.3e-12 \
+bounds rounded), 2.1 from brimacombe_1989 (its 248 nm fibre value, 2.1e-4 cm/MW = \
+2.1e-10 cm/W, measured with 9 ns pulses although the caption says 0.7 ps), and the \
+quartz gap from weinberg_1979."""
+
+[[formulas]]
+id = "degradation_rate"
+material = "SiO2"
+equation = "Fig. 7 and p. 5"
+printed = "Delta A / n = 0.056 ppm (H[J/cm^2])^3.14"
+variable = "H: energy density per pulse in J/cm2; Delta A / n: initial absorptance increase per pulse, in ppm"
+range = "Suprasil 2, 2 mm, 248 nm, 33 Hz; the four energy densities (>= 600 mJ/cm2) at which ageing took place"
+coefficients = { a = "0.056", p = "3.14" }
+check = "The paper's own prediction, 160 ppm after 200 000 pulses at 256 mJ/cm2 (p. 6), is reproduced: 0.056 x 0.256^3.14 x 2e5 = 155 ppm (checked 2026-09-26)."
+notes = "Log-log regression of the initial degradation rates of Fig. 6; 'given the uncertainty and scarcity of the data points, a quadratic relationship cannot be ruled out' (p. 5). No change was seen at 250 mJ/cm2 over 200 000 pulses (a threshold the fit does not describe)."
+
+[[datasets]]
+id = "band_gap_SiO2"
+material = "SiO2"
+file = "SiO2/eva_1996__band_gap_SiO2.csv"
+table = "tbl_48a4477a3382"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "E_gap from Ref. [2] (taylor_1988), per the caption. Printed on rows 1 and 6."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_CaF2"
+material = "CaF2"
+file = "CaF2/eva_1996__band_gap_CaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "E_gap from Ref. [2] (taylor_1988), per the caption. Printed on rows 2, 3 and 9."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_LiF"
+material = "LiF"
+file = "LiF/eva_1996__band_gap_LiF.csv"
+table = "tbl_48a4477a3382"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "E_gap from Ref. [2] (taylor_1988), per the caption."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_MgF2"
+material = "MgF2"
+file = "MgF2/eva_1996__band_gap_MgF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "E_gap from Ref. [2] (taylor_1988), per the caption."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_BaF2"
+material = "BaF2"
+file = "BaF2/eva_1996__band_gap_BaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "E_gap from Ref. [2] (taylor_1988), per the caption."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/eva_1996__band_gap_SiO2_quartz.csv"
+table = "tbl_48a4477a3382"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["weinberg_1979"]
+notes = "Printed '≈ 9 [20]' (approximate). weinberg_1979 deduces 9.3 eV for amorphous thermally grown SiO2 from the field dependence of photoconductivity and reviews ~9 eV estimates (among them a 9.2 eV indirect gap calculated for alpha-quartz); it prints no measured gap of crystalline quartz, so the attribution is loose."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "alpha_SiO2_suprasil1"
+material = "SiO2"
+file = "SiO2/eva_1996__alpha_SiO2_suprasil1.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. 1 mm sample; 351 nm only (no two-photon absorption at 351 nm)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+grade = "Suprasil 1"
+
+[[datasets]]
+id = "alpha_SiO2_suprasil2"
+material = "SiO2"
+file = "SiO2/eva_1996__alpha_SiO2_suprasil2.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. 2 mm; at 248 nm extrapolated to zero pulses (Figs. 6-7). The 193 nm value is printed '≈ 30' (approximate; Fig. 9 shows it rising with pulse number)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+grade = "Suprasil 2"
+
+[[datasets]]
+id = "alpha_CaF2"
+material = "CaF2"
+file = "CaF2/eva_1996__alpha_CaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. Three rows: 2 mm at 351 nm, 5 mm at 248 nm, 5 mm at 193 nm (the last row; the sample was damaged at 420 mJ/cm2 and the 193 nm values are 'approximate', p. 3)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "alpha_LiF"
+material = "LiF"
+file = "LiF/eva_1996__alpha_LiF.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. 2 mm. The rise from 351 to 248 nm is ascribed to colour-centre bands near 250 nm (p. 2)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "alpha_MgF2"
+material = "MgF2"
+file = "MgF2/eva_1996__alpha_MgF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. 2 mm; orientation not stated."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "alpha_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/eva_1996__alpha_SiO2_quartz.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. z-cut, 2 mm (axis 'o' inferred from the cut)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+axis = "o"
+
+[[datasets]]
+id = "alpha_BaF2"
+material = "BaF2"
+file = "BaF2/eva_1996__alpha_BaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.001
+abscissa_unit = "nm"
+use = "primary"
+notes = "From the offset of absorptance against intensity (Eq. 2); surface absorption not accounted for. 5 mm; offset of the linear fit (Fig. 3)."
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "beta_SiO2_suprasil2"
+material = "SiO2"
+file = "SiO2/eva_1996__beta_SiO2_suprasil2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "primary"
+notes = "Slope of absorptance against intensity (Eq. 2). 2 mm; absorptance extrapolated to zero pulses (Figs. 6-7), eliminating the cumulative colour-centre increase only; up to a third of the slope may be transient colour-centre absorption (p. 5)."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+grade = "Suprasil 2"
+
+[[datasets]]
+id = "beta_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/eva_1996__beta_SiO2_quartz.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "primary"
+notes = "Slope of absorptance against intensity (Eq. 2). z-cut, 2 mm (axis 'o' inferred); increase linear in H, virtually no degradation (Fig. 10)."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+axis = "o"
+
+[[datasets]]
+id = "beta_BaF2"
+material = "BaF2"
+file = "BaF2/eva_1996__beta_BaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "primary"
+notes = "Slope of absorptance against intensity (Eq. 2). 5 mm. At 248 nm: slope times the beam form factor 0.7, reversible, up to 24 % possibly transient colour-centre absorption (p. 3). At 193 nm: 'slightly smaller than at 248 nm'; surface damage after 35 000 pulses at 0.9 J/cm2."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "beta_CaF2"
+material = "CaF2"
+file = "CaF2/eva_1996__beta_CaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "primary"
+excluded_rows = { "3/248" = "printed '≈ 0': no two-photon absorption detected (band gap above twice the photon energy), not a measured magnitude" }
+notes = "Slope of absorptance against intensity (Eq. 2). 5 mm samples. The 193 nm value is 'approximate' (damage at 420 mJ/cm2, p. 3)."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "beta_LiF"
+material = "LiF"
+file = "LiF/eva_1996__beta_LiF.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Slope of absorptance against intensity (Eq. 2). 2 mm; printed '≈ 0': no two-photon absorption detected (band gap above twice the photon energy), not a measured magnitude."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "beta_MgF2"
+material = "MgF2"
+file = "MgF2/eva_1996__beta_MgF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Slope of absorptance against intensity (Eq. 2). 2 mm; printed '≈ 0': no two-photon absorption detected (band gap above twice the photon energy), not a measured magnitude."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "calorimetry"
+pulse_fs = 25000000
+
+[[datasets]]
+id = "taylor_248_SiO2"
+material = "SiO2"
+file = "SiO2/eva_1996__taylor_248_SiO2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "beta_Lit. column, 'measured at 248 nm / 0.7 ps' (caption), from Ref. [2] (taylor_1988). Taylor's 4.5e-11 cm/W."
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "taylor_248_CaF2"
+material = "CaF2"
+file = "CaF2/eva_1996__taylor_248_CaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "beta_Lit. column, 'measured at 248 nm / 0.7 ps' (caption), from Ref. [2] (taylor_1988). '.08' is Taylor's 8.3e-12 cm/W rounded."
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "taylor_248_BaF2"
+material = "BaF2"
+file = "BaF2/eva_1996__taylor_248_BaF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "beta_Lit. column, 'measured at 248 nm / 0.7 ps' (caption), from Ref. [2] (taylor_1988). Taylor's 1.1e-10 cm/W."
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "taylor_248_LiF"
+material = "LiF"
+file = "LiF/eva_1996__taylor_248_LiF.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["taylor_1988"]
+notes = "beta_Lit. column, 'measured at 248 nm / 0.7 ps' (caption), from Ref. [2] (taylor_1988). Printed '≤ .01': Taylor's upper bound (<= 1.3e-12) rounded; not a measured beta."
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "taylor_248_MgF2"
+material = "MgF2"
+file = "MgF2/eva_1996__taylor_248_MgF2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["taylor_1988"]
+notes = "beta_Lit. column, 'measured at 248 nm / 0.7 ps' (caption), from Ref. [2] (taylor_1988). Printed '≤ .01': Taylor's upper bound (<= 1.3e-12) rounded; not a measured beta."
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "brimacombe_248_SiO2"
+material = "SiO2"
+file = "SiO2/eva_1996__brimacombe_248_SiO2.csv"
+table = "tbl_48a4477a3382"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-10
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["brimacombe_1989"]
+notes = "The '(2.1 [19])' in the Suprasil 2 beta_Lit cell (split by the script): brimacombe_1989's fibre value at 248 nm (2.1e-4 cm/MW), measured with 9 ns pulses, not 0.7 ps as the caption says of the column; the text calls it 'the value reported for fibers with 9 ns pulses' (p. 5)."
+[datasets.parameters]
+form = "fibre"
+pulse_fs = 9000000

@@ -1,0 +1,71 @@
+citation = "M. J. Weber, Handbook of Optical Materials (CRC Press, Boca Raton, 2003), ISBN 0-8493-3512-4; Section 1.3.4, \"Dispersion Formulas for Refractive Indices\", pp. 75-76"
+kind = "compilation"
+technique = """A handbook: Section 1.3.4 tabulates 'Dispersion formulas for the \
+refractive indices of crystals at room temperature' (p. 75), one row per crystal with \
+the formula (wavelength in um), its range and a reference. Only sapphire's row is \
+curated here."""
+notes = """Not a paper and not in the paper library: J. C. Travers supplied the book's \
+section PDFs (2026-09-28; a private copy, 3512_S01.pdf, SHA-256 \
+a06ffe6f173adf0a89cd7bfd0b9c0589ed34e20e5461bfd4e96da64679b08f60, book p. 76 = pdf p. \
+75). The two formulas below were transcribed from the page's text layer and checked \
+against the page image digit by digit (2026-09-28).
+
+WHAT THE ROW IS. 'Al2O3', ordinary and extraordinary ray, range 0.22-5.0 um, Ref. 13: \
+'Malitson, I. H. and Dodge, M. J., Refractive index and birefringence of synthetic \
+sapphire, J. Opt. Soc. Am. 62, 1405 (1972)' (p. 89), a talk abstract (not in the \
+library). The formulas are that work's, reprinted; this handbook is where optmat reads \
+them. refractiveindex.info (main/Al2O3/nk/Malitson-o and Malitson-e, which solprop's \
+sapphire uses) cites them from M. J. Dodge, 'Refractive index', Handbook of Laser \
+Science and Technology IV (CRC Press, 1986), p. 30, 'at 20 C', and prints the ordinary \
+ray's first coefficient to one digit less (1.4313493 against 1.43134936 here).
+
+CONDITIONS. 'At room temperature' (the section's heading text); read as 20 C, the \
+temperature refractiveindex.info gives for the same formulas. The index medium is not \
+stated: like Malitson's 1962 formula of the same laboratory's prisms (malitson_1962, \
+TC-546), relative to the room air and on the lines' air wavelengths, an inference from \
+the NBS method. Against malitson_1962's formula (24 C) at the same wavelength argument, \
+both relative to air, this ordinary ray is 9.4e-5 lower at 0.3 um, 5-8e-5 at 0.4-2 um, \
+0.9e-5 at 4 um and 6.5e-5 higher at 5 um; 4 K of temperature (dn/dT about +13e-6/K) \
+accounts for about 5e-5 of it.
+
+THE BIREFRINGENCE n_o - n_e from the two formulas is 0.0091 at 0.3 um, 0.0085 at 0.4 um, \
+0.0079 at 1 um, 0.0070 at 4 um and 0.0056 at 5 um."""
+
+[[formulas]]
+id = "sellmeier_o"
+material = "Al2O3"
+form = "n2_sellmeier_wavelength"
+terms = { B = ["1.43134936", "0.65054713", "5.3414021"], L = ["0.0726631", "0.1193242", "18.028251"] }
+wavelength_medium = "standard_air"
+index_medium = "air"
+air_temperature_k = 293.15
+# The vacuum wavelengths of 0.22 and 5.0 um in standard air.
+range_nm = [220.069, 5001.363]
+parameters = { axis = "o", temperature_k = 293.15 }
+reproduced_from = ["I. H. Malitson and M. J. Dodge, 'Refractive index and birefringence of synthetic sapphire', J. Opt. Soc. Am. 62, 1405 (1972) (abstract)"]
+equation = "Section 1.3.4 table, p. 76, row Al2O3 (Ref. 13)"
+printed = "n_o^2 = 1 + 1.43134936 lambda^2/[lambda^2 - (0.0726631)^2] + 0.65054713 lambda^2/[lambda^2 - (0.1193242)^2] + 5.3414021 lambda^2/[lambda^2 - (18.028251)^2]"
+variable = "lambda: wavelength in um (air wavelengths, inferred; see the source notes)"
+range = "0.22-5.0 um (as printed); room temperature"
+coefficients = { B1 = "1.43134936", lambda1 = "0.0726631", B2 = "0.65054713", lambda2 = "0.1193242", B3 = "5.3414021", lambda3 = "18.028251" }
+check = "No index is printed with it. The coefficients equal refractiveindex.info's Malitson-o (solprop's sapphire) except the first, printed here with one digit more; at 1.064 um both give 1.7544855. Against malitson_1962/sellmeier_o (24 C) at the same wavelength argument, 9.4e-5 lower at 0.3 um, 5-8e-5 at 0.4-2 um, 0.9e-5 at 4 um, 6.5e-5 higher at 5 um. Checked 2026-09-28."
+notes = "Malitson and Dodge's ordinary-ray formula as reprinted by Weber. Relative to the room air at about 20 C (inferred)."
+
+[[formulas]]
+id = "sellmeier_e"
+material = "Al2O3"
+form = "n2_sellmeier_wavelength"
+terms = { B = ["1.5039759", "0.55069141", "6.59273791"], L = ["0.0740288", "0.1216529", "20.072248"] }
+wavelength_medium = "standard_air"
+index_medium = "air"
+air_temperature_k = 293.15
+range_nm = [220.069, 5001.363]
+parameters = { axis = "e", temperature_k = 293.15 }
+reproduced_from = ["I. H. Malitson and M. J. Dodge, 'Refractive index and birefringence of synthetic sapphire', J. Opt. Soc. Am. 62, 1405 (1972) (abstract)"]
+equation = "Section 1.3.4 table, p. 76, row Al2O3 (Ref. 13)"
+printed = "n_e^2 = 1 + 1.5039759 lambda^2/[lambda^2 - (0.0740288)^2] + 0.55069141 lambda^2/[lambda^2 - (0.1216529)^2] + 6.59273791 lambda^2/[lambda^2 - (20.072248)^2]"
+variable = "lambda: wavelength in um (air wavelengths, inferred; see the source notes)"
+range = "0.22-5.0 um (as printed); room temperature"
+coefficients = { B1 = "1.5039759", lambda1 = "0.0740288", B2 = "0.55069141", lambda2 = "0.1216529", B3 = "6.59273791", lambda3 = "20.072248" }
+check = "No index is printed with it. Against malitson_1962's one extraordinary index, 1.74794 at 1.01398 um (24 C, the 1959 sample): this formula gives 1.74754 there, 4.0e-4 lower, where the ordinary rays of the two differ by 5.2e-5 (Malitson's extraordinary index was measured on another sample, presumably). Birefringence 0.0091 at 0.3 um to 0.0056 at 5 um. Checked 2026-09-28."
+notes = "Malitson and Dodge's extraordinary-ray formula as reprinted by Weber; the only extraordinary-ray formula of sapphire in the curated sources. Relative to the room air at about 20 C (inferred)."

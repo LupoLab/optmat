@@ -1,0 +1,45 @@
+citation = "D. Franta, D. Nečas, L. Zajíčková and I. Ohlídal, \"Broadening of dielectric response and sum rule conservation\", Thin Solid Films 571, 496 (2014)"
+doi = "10.1016/j.tsf.2013.11.148"
+library = "Franta_2014_BroadeningDielectricResponse"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Theory: which quantity to convolve with a broadening function (the \
+transition probability J = E^2 eps_i, the transition strength F = E eps_i, or eps_i \
+itself) so that the Thomas-Reiche-Kuhn sum rule of franta_2013 is conserved, and how to \
+combine the broadening with the Kramers-Kronig transform."""
+notes = """Journal pages 496-501 = PDF pages 1-6. Identity checked against the first page. \
+No material values: this record holds the definitions the UDM uses for broadening \
+(franta_2014b, franta_2015b and franta_2017 cite it for the 'Gauss-Dawson' \
+epsilon-broadening).
+
+EQUATION MAP (journal pages).
+- Definitions, Eq. (1), p. 496: eps_i ~ J/E^2 = F/E; Eq. (2): int_0^inf F dE = N; Eq. (3): \
+sigma_r ~ (eps0/hbar) F.
+- Gaussian broadening function, Eq. (13), p. 497: beta(x) = exp(-x^2/(2 B^2))/(sqrt(2 pi) \
+B), B > 0 the rms width (energy). Lorentzian, Eq. (26), p. 498: beta(x) = (B/pi)/(x^2 + \
+B^2).
+- The three broadenings, Eqs. (14)-(15), p. 497: J-broadening eps~_i = (beta * J)/E^2; \
+F-broadening eps~_i = (beta * F)/E; eps-broadening eps~_i = beta * eps_i (* = convolution \
+in E; beta must be even). General form Eq. (18): F~_m(E) = (E^m/2) int [beta(E - t) + \
+(-1)^m beta(E + t)] F(t) t^-m dt, m = -1, 0, 1 for J-, F-, eps-broadening.
+- Sum-rule result (Section 4, pp. 497-498): F- and eps-broadening conserve int F dE \
+(Eqs. (22), (23)); J-broadening does not (Eq. (24); Gaussian: Eq. (25), I = (sqrt(2) \
+t/B) D(t/(sqrt(2) B)) with D the Dawson integral, equal to 1 at t ~ 1.307 B; Lorentzian: \
+Eq. (27), I = 1/(1 + (B/t)^2) < 1).
+- Recommendations (pp. 498-499, 501): eps-broadening for interband transitions (F- and \
+J-broadening create a spurious Drude-like singularity at E -> 0); F-broadening for \
+intraband transitions (eps-broadening empties the region around E = 0); eps-broadening \
+for multi-phonon bands (Section 5.3). FT-broadening (F-broadening times the \
+Fermi-Dirac factor, Eqs. (32)-(33)) for direct intraband transitions at finite \
+temperature (p. 500); Eq. (34) gives the strength moved to free carriers.
+- Real part (Section 6, p. 500): eps-broadened eps~_r = H[beta] * eps_i (Eq. (36)); for the \
+Gaussian, Eq. (37): H[beta](x) = -(sqrt(2)/(pi B)) D(x/(sqrt(2) B)); F-broadened eps~_r \
+= (1/E)(H[beta] * F) (Eq. (39)); complex kernel beta^ = H[beta] + i beta (Eq. (40)) - the \
+'Gauss-Dawson' function of franta_2014b Eq. (27). The Gaussian peak of the UDM \
+(franta_2015b Eqs. (41)-(42)) is exactly the eps-broadening of a delta line with this \
+kernel.
+
+TEXT CORRECTION (not a coefficient): below Eq. (34), p. 500, the text reads 'F~(E) is \
+obtained using F-broadening in the case of intraband transitions and eps-broadening in \
+the case of intraband transitions'; the second 'intraband' must be 'interband', by \
+Sections 5.1-5.2 and the conclusion (p. 501)."""

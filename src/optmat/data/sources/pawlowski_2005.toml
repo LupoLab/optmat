@@ -1,0 +1,301 @@
+citation = "F. Pawlowski, P. Jorgensen and C. Hattig, \"Cauchy moments of Ne, Ar, and Kr atoms calculated using the approximate coupled cluster triples model CC3\", Adv. Quantum Chem. 48, 9 (2005)"
+doi = "10.1016/s0065-3276(05)48002-8"
+library = "Pawlowski_2005_CauchyMomentsNe"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Coupled-cluster response theory: Cauchy moments S(k), k = -2 ... -10, for the \
+hierarchy CCS, CC2, CCSD and CC3 (implemented here for CC3 with N^7 scaling), \
+all electrons correlated, orbitals not relaxed, local Dalton; Dunning's \
+correlation-consistent basis sets with double diffuse augmentation: d-aug-cc-pV6Z for \
+Ne and Ar, d-aug-cc-pV5Z for Kr (the largest available), pp. 16-20."""
+notes = """The library records no volume; 48 is the volume in the DOI. Page numbers are \
+the chapter's (9-21; pdf page 1 = p. 9). All values in atomic units, S(k) = sum f_i \
+E_i^k (k = -2 is the static polarizability).
+
+Accuracy (pp. 18-20). Neon: 'the CCSD/q-aug-cc-pV5Z level ... converged within 1%' \
+of the basis-set limit, the 6Z values 'significantly less than 1%' from it; for \
+S(-2) the CC3 basis-set error is estimated at -0.005 au, correlation beyond CC3 \
+-0.003 au (aug-cc-pVDZ FCI), relativity +0.004 au: net -0.004 au, 'The effects not \
+accounted for ... to a high degree cancel each other'; for |k| > 2 'it is difficult to \
+estimate the accuracy'; the conclusion claims for Ne 'accuracy comparable to the \
+experimental results'. The CC3 first excitation energy of Ne (d-aug-cc-pV6Z) is 16.826 \
+eV against the experimental 16.848 eV. Argon and krypton: 'a more detailed \
+investigation of the convergence in one-electron and N-electron space is required. The \
+relativistic contribution to the Cauchy moments may also need to be taken into \
+account' (p. 20); no uncertainty is stated. For Kr the CC3 moments fall increasingly \
+below the DOSD with |k| (S(-10) 11 % low), for Ar they straddle it (S(-2) +0.2 %, \
+S(-10) -2.3 %).
+
+The 'Experiment' columns are reproduced: DOSD, ref. [6] Kumar and Meath, Can. J. \
+Chem. 63, 1616 (1985) (kumar_1985's adopted moments); 'Other', ref. [30] (Ne, Chan et \
+al., Phys. Rev. A 45, 1420 (1992): chan_1992_neon) and ref. [35] (Ar, Kr: chan_1992), \
+neither of which prints Cauchy moments (the moments are presumably sums over their \
+DOSDs, by whom is not said); and for k = -2, ref. [29] (Ne: Hohm and Kerl 1990, \
+hohm_1990, whose Table 1 gives 0.39682 A^3 = 2.678 au at 632.99 nm, not the 2.663 \
+printed here as a static value) or ref. [34] (Ar, Kr: U. Hohm, Mol. Phys. 81, 157 \
+(1994), not in the library). Table 1 (CCSD basis-set convergence for Ne, aug- to \
+q-aug-cc-pVXZ, X = D-6) is not extracted.
+
+Krypton has no ab initio dispersion in the library yet (TC-94): cc3_Kr is \
+the first, with the caveats above."""
+
+[[datasets]]
+id = "cc3_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__cc3_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: CC3, the paper's result. S(-2): the effects left out are estimated to net -0.004 au (p. 19)."
+
+[[datasets]]
+id = "ccsd_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__ccsd_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: CCSD. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "cc2_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__cc2_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: CC2. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "ccs_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__ccs_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: CCS. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "dosd_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__dosd_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_1985"]
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: 'Experiment, DOSD', ref. [6]."
+
+[[datasets]]
+id = "other_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__other_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["chan_1992_neon"]
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: 'Experiment, Other', ref. [30], k = -4 ... -10. The cited paper prints no moments (see the source notes)."
+
+[[datasets]]
+id = "other_s-2_Ne"
+material = "Ne"
+file = "Ne/pawlowski_2005__other_s-2_Ne.csv"
+table = "tbl_1f9141ba155d"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["hohm_1990"]
+notes = "Table 2 (p. 18), d-aug-cc-pV6Z: 'Experiment, Other', k = -2 only, ref. [29] (note c). 2.663 au is not in hohm_1990 (0.39682 A^3 = 2.678 au at 632.99 nm)."
+
+[[datasets]]
+id = "cc3_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__cc3_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: CC3, the paper's result. No accuracy stated; convergence and relativity not assessed (p. 20)."
+
+[[datasets]]
+id = "ccsd_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__ccsd_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: CCSD. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "cc2_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__cc2_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: CC2. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "ccs_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__ccs_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: CCS. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "dosd_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__dosd_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_1985"]
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: 'Experiment, DOSD', ref. [6]."
+
+[[datasets]]
+id = "other_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__other_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["chan_1992"]
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: 'Experiment, Other', ref. [35], k = -4 ... -10. The cited paper prints no moments (see the source notes)."
+
+[[datasets]]
+id = "other_s-2_Ar"
+material = "Ar"
+file = "Ar/pawlowski_2005__other_s-2_Ar.csv"
+table = "tbl_5e1ed83a0b39"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["U. Hohm, Mol. Phys. 81, 157 (1994)"]
+notes = "Table 3 (p. 19), d-aug-cc-pV6Z: 'Experiment, Other', k = -2 only, ref. [34] (note c)."
+
+[[datasets]]
+id = "cc3_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__cc3_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: CC3, the paper's result. No accuracy stated; convergence and relativity not assessed (p. 20)."
+
+[[datasets]]
+id = "ccsd_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__ccsd_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: CCSD. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "cc2_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__cc2_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: CC2. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "ccs_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__ccs_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: CCS. A lower level of the hierarchy, kept for comparison."
+
+[[datasets]]
+id = "dosd_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__dosd_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_1985"]
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: 'Experiment, DOSD', ref. [6]."
+
+[[datasets]]
+id = "other_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__other_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["chan_1992"]
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: 'Experiment, Other', ref. [35], k = -4 ... -10. The cited paper prints no moments (see the source notes)."
+
+[[datasets]]
+id = "other_s-2_Kr"
+material = "Kr"
+file = "Kr/pawlowski_2005__other_s-2_Kr.csv"
+table = "tbl_64847cac1c91"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["U. Hohm, Mol. Phys. 81, 157 (1994)"]
+notes = "Table 4 (p. 20), d-aug-cc-pV5Z: 'Experiment, Other', k = -2 only, ref. [34] (note c)."

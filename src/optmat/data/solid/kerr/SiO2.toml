@@ -1,0 +1,156 @@
+# The Kerr response of fused silica: the long-pulse n2(lambda) and its Raman fraction
+# (TC-393). Every measured self coefficient of the curated sources with a stated or
+# inferable pulse length. Each source has a calibration scale with a 10 % prior (the
+# spread of absolute calibrations between laboratories); per-point uncertainties are
+# the sources' own. The fitted dispersion is below the two-photon edge (lambda >= 350
+# nm: 2 hbar omega < 7.1 eV, below the 8.4 eV gap).
+material = "SiO2"
+description = "Fused silica's n2 from 350 nm to 3.5 um, with Hollenbeck's Raman response"
+range_nm = [350.0, 3500.0]
+# The Raman fraction is set by Stolen & Ippen's measured gain (below), not by a prior:
+# Stolen et al. 1989's alpha = 0.18, the prior until TC-696, was derived from that gain
+# and Hellwarth et al.'s spectra, so both would count the same measurement twice.
+# Only the E^2 term of the dispersion: with the E^4 term free the curve turns over near
+# 400 nm (a maximum, then falling towards the two-photon edge), which the near-UV data's
+# scatter allows but physics does not (TC-393).
+quartic = false
+
+[[fitted]]
+key = "desalvo_1996/n2_SiO2"
+range_nm = [350.0, 3500.0]
+note = "15-30 ps (per-row pulse_fs): eta = 1"
+
+[[fitted]]
+key = "adair_1989/n2_SiO2"
+raman = "full"
+note = "nanosecond three-wave mixing, electronic plus vibrational, no electrostriction (the paper)"
+
+# Milam & Weber 1976: time-resolved interferometry, 125-ps pulses at 1064 nm (TC-594).
+# Adair et al. 1987's silica (0.85e-13 esu) is not added: it equals adair_1989's value
+# from the same apparatus and calibration, which is fitted.
+[[fitted]]
+key = "milam_1976/gamma_SiO2"
+raman = "full"
+note = "125 ps pulses: the full Raman response"
+
+[[fitted]]
+key = "white_1984/this_work_355_SiO2"
+raman = "full"
+note = "0.15-0.20 ns pulses"
+
+[[fitted]]
+key = "flom_2015/n2_SiO2"
+
+[[fitted]]
+key = "ensley_2019/n2_SiO2"
+
+[[fitted]]
+key = "jansonas_2022/eff_SiO2"
+
+[[fitted]]
+key = "kabacinski_2019/this_work_SiO2"
+
+[[fitted]]
+key = "van_der_linden_2025/twins_SiO2"
+
+[[fitted]]
+key = "patwardhan_2021/exp_SiO2"
+pulse_fs = 75.0
+note = "the paper: 75 fs FWHM fitted at 3.5 um, pulses < 150 fs; 75 fs used for both"
+
+# Santran et al. 2004: ten grades; their pump-probe isolates the electronic response
+# (Raman at most 1-1.5 %, their pp. 2187-2188). No per-value uncertainty: their Table
+# 1's relative accuracy is 2-16 % (800, 1500 nm) and 3-17 % (400 nm); 0.10 is used,
+# and the grades share one calibration group.
+[[fitted]]
+key = "santran_2004/heraeus_s300"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/herasil"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/suprasil"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/heraeus_homosil"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/heraeus_s1"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/herasil_s1v"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/suprasil_en1027a"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/f851053"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/heraeus_h1"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/schott_sq1"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+[[fitted]]
+key = "santran_2004/suprasil_1500"
+raman = "none"
+group = "santran_2004"
+sigma = 0.1
+
+# Validators: Milam's assessment (it averages originals fitted above), DeSalvo's 266
+# nm value (2 hbar omega = 9.3 eV, above the gap: two-photon resonant), and Couairon's
+# n2 from a measured critical power (model-dependent).
+[[validators]]
+key = "milam_1998/best_1053"
+raman = "full"
+
+[[validators]]
+key = "milam_1998/best_uv_visible"
+raman = "full"
+
+[[validators]]
+key = "desalvo_1996/n2_SiO2"
+range_nm = [260.0, 270.0]
+
+[[validators]]
+key = "couairon_2005/n2"
+sigma = 0.2
+
+# The absolute Raman gain of fused quartz (TC-693): 1.5e-11 cm/W +- 10 % at 330 cm-1
+# for a 526.0 nm pump, predicted as 2 omega_s n2(526 nm) f_R Im H_R(330 cm-1) / c with
+# Hollenbeck & Cantrell's shape. It fixes f_R n2, so f_R is paired with that shape
+# (TC-696). Hellwarth et al.'s nuclear share (0.21 +- 0.03, hellwarth_1975) is compared,
+# not fitted: its cross sections and Stolen & Ippen's agree within their errors.
+[[raman_gains]]
+key = "stolen_1973/gain_amplifier"

@@ -1,0 +1,56 @@
+citation = "S. P. Velsko and D. Eimerl, \"Precise measurements of optical dispersion using a new interferometric technique\", Appl. Opt. 25, 1344 (1986)"
+doi = "10.1364/AO.25.001344"
+library = "Velsko_1986_PreciseMeasurementsOptical"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Nonlinear (second-harmonic) interferometer: a spatially filtered Q-switched \
+Nd:YAG beam at 1.064 um (10 Hz, about 10 mJ) passes two type-II KD*P doublers (3.6 and \
+4.8 cm) with a gas cell between them (10.41 +- 0.05 cm, or 112.48 +- 0.05 cm for He and \
+Ne); the second-harmonic signal after the second crystal oscillates as the cell \
+pressure is raised (15-100 psia), with period set by n(532 nm) - n(1064 nm) of the gas; \
+I(P) = a + b cos(d + c P l) fitted (Eq. 11). Room temperature 24.5 +- 0.2 degrees C; \
+pressure transducer linear to 1 % (pp. 1344-1347)."""
+notes = """What is measured: the index difference Delta n = n(2 omega) - n(omega) (Eq. 3) \
+between 532 and 1064 nm (vacuum 1.064 um and its harmonic), not n - 1. The format has \
+no quantity for a refractivity difference (nor for Delta k per pressure), so no dataset \
+is recorded; the values are transcribed here from the library tables \
+(tbl_baa16db5a26a, tbl_2379e8dc78c4; the images agree with the CSV cells). \
+A quantity 'refractivity_difference' (n(lambda_2) - n(lambda_1) at a state, with \
+parameters.second_wavelength or harmonic = 2) would take Table II; Delta k/N = (4 pi / \
+lambda) Delta n_0 / N_L would put it in phase_mismatch_per_density.
+
+Table I, 'Coherence lengths of gases, at 1.064 um and 24 degrees C': the fitted \
+periodicity c in mrad/(psia cm) and l_c (cm) at 1 atm: He 1.591, 268.7; Ne 2.971, \
+143.9; Ar 29.51, 14.48; Kr 60.50, 7.065; Xe 141.7, 3.017; H2 20.68, 20.67; N2 31.60, \
+13.53; O2 38.06, 11.23; CO 54.27, 7.876; CO2 66.76, 6.402; CH4 69.6, 6.141; SF6 77.63, \
+5.506; air 32.65, 13.09. c = 4 pi Delta n_0 (T_0/T)/(lambda P_0) (Eq. 12) with P_0 = \
+14.696 psia, T_0 = 273.15 K; l_c = lambda/(2 Delta n) (Eq. 7) and indeed l_c = 2 pi/(c \
+x 14.696 psia) for every gas (checked); the text says l_c is 'at 1 atm and 25 degrees \
+C', the caption 24 degrees C.
+
+Table II, 'Dispersion of gases, for 1.064 um and STP', Delta n_meas x 1e7 (and the \
+authors' Delta n_calc x 1e7 from Cuthbertson and Cuthbertson's data in Gmelin, \
+interpolated with a single-pole Sellmeier fit): He 2.160 (3.6), Ne 4.030 (4.7), Ar 40.04 \
+(40.6), Kr 82.05 (79.8), Xe 192.1 (189.5), H2 28.00 (28.6), N2 42.84 (42.9), O2 51.62 \
+(51.2), CO 73.61 (71.6), CO2 90.55 (78.7), CH4 94.40 (none), air 44.29 (44.30, Rankin \
+1959). SF6 is measured (Table I) but absent from Table II; from c it would be about \
+105.3e-7 (computed here, not printed). STP means 1 amagat (0 degrees C, 14.696 psia) \
+with pressure proportional to density ('valid to parts per thousand' at <= 100 psia): \
+an ideal-gas reduction. Table II agrees with Table I's c converted at T = 297.65 K to \
++-0.1 % only (ratios Delta n/c vary from 1.354 to 1.358; checked 2026-09-24), so the two \
+tables are not exact conversions of each other. For helium, puchalski_2016's series gives \
+Delta alpha = 0.0085939 au between 532 and 1064 nm, i.e. Delta n = 2.150e-7 at the ideal \
+gas at 0 degrees C, 1 atm (computed here), 0.5 % below the measured 2.160e-7, within the \
+stated 2 %.
+
+Accuracy (p. 1347): c 'varied by < 1 % from run to run'; cell lengths known to better \
+than 0.5 %, transducer linear to 1 %: 'an overall 95 % confidence interval of 2 % can \
+be quoted for these measurements'. Residual air raises the apparent dispersion of He, \
+Ne and H2 (2 ppt of air adds 5 % to He's); data were taken while filling, which removes \
+it (Eqs. 13-16). The authors attribute the He discrepancy with Cuthbertson to \
+impurities in Cuthbertson's helium. Stone and Stejskal (stone_2004) cite Velsko and \
+Eimerl's helium dispersion as supporting the ab initio helium index. CO (curated \
+since 2026-09-25) is transcribed above with the other gases (Table I 54.27, 7.876; Table \
+II 73.61 against Cuthbertson's 71.6, 2.8 % apart, beyond the stated 2 %); it gets no \
+dataset, for the same format reason as every gas here. Air is not a curated species. \
+Solids (LiF 0.0069, glass 0.0133) are outside the package."""

@@ -1,0 +1,206 @@
+citation = "Y. Clergent, C. Durou and M. Laurens, \"Refractive Index Variations for Argon, Nitrogen, and Carbon Dioxide at lambda = 632.8 nm (He-Ne Laser Light) in the Range 288.15 K <= T <= 323.15 K, 0 < p < 110 kPa\", J. Chem. Eng. Data 44, 197 (1999)"
+doi = "10.1021/je980133o"
+library = "Clergent_1999_RefractiveIndexVariations"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Mach-Zehnder interferometer with a 5 mW He-Ne laser (632.8 nm): two brass \
+tubes of equal length L = 40.64 cm (at 25 degrees C) in a thermostatted bath, one \
+evacuated, the other slowly filled from vacuum to 110 kPa through a microvalve while an \
+electronic counter counts the bright fringes N; [n(p, T_i) - 1] L = N lambda. For each \
+of eight bath temperatures T_i from 15 to 50 degrees C, three runs, each fitted as N = \
+alpha p + beta; mu = lambda T_i alpha/L (Eq. 3), and mu averaged over the 24 runs per \
+gas. Temperature by a K-type thermocouple (within 0.2 K of a Pt reference, Delta T/T <= \
+1e-3); absolute pressure by an electronic manometer (linearity 4e-4, calibrated against \
+a SCHWIEN 140 absolute manometer). Air Liquide gases (Table 1: impurities of Ar H2O 3, \
+CnHm 1.5, O2 3, N2 10 ppm; N2 H2O 3, CnHm 1.5, O2 5 ppm; CO2 H2O 7, CnHm 5, O2 10, N2 \
+25, CO 2, H2 1 ppm by volume) (pp. 1-3)."""
+notes = """Identity checked against the first page (pp. 197-199 = pdf pages 1-3; a \
+4-page supplement holds the CO2 and Ar fringe counts). Page numbers are pdf pages.
+
+REDUCTION (p. 1). The gases are taken as ideal and the Gladstone-Dale form of \
+Lorentz-Lorenz as exact over 0-110 kPa and 288-323 K, so that n - 1 = mu p/T (Eq. 1) \
+with one constant mu per gas; the N-p plots are straight (R^2 > 0.9999, Fig. 2, Table \
+3). Table 5's n - 1 at 101.325 kPa (760 mmHg) and 293.15 K is mu p/T with Table 4's mu. \
+They are therefore the refractivity at that state, measured on the 20 degrees C \
+isotherm and nearby ones: the linear fit over 0-110 kPa absorbs the second-virial \
+curvature, and the ideal-gas law enters only in averaging mu over the eight isotherms \
+(for CO2, whose B p/RT is -0.5 % at 1 atm, this shifts the 20 degrees C value by about \
+-0.05 %; less for Ar and N2; estimated here). Recorded with density = 'real' for that \
+reason (the value at the state), not the ideal-gas reduction of Eq. (1). Note also \
+that mu p/T gives 263.38 (Ar) and 279.56 (N2) where Table 5 prints 263.3 and 279.5: the \
+table truncates (CO2 418.61, printed 418.6).
+
+WAVELENGTH. 'lambda = 632.8 nm' (title, p. 2), the He-Ne line, medium not stated; \
+stored as a standard-air wavelength (632.97 nm in vacuum), as buckingham_1968 does for \
+632.8 nm.
+
+UNCERTAINTY (p. 3). Table 4's +- on mu is the 'confidence interval' of the mean of \
+the 24 runs (Tables 3 and S2, S4 print mean, confidence interval and standard \
+deviation: N2 808.8, 1.2, 2.3; CO2 1211.1, 1.5, 2.9; Ar 762.0, 1.2, 2.2, x 1e-9 K/Pa). \
+No level is stated; every interval equals 2.576 x std dev/sqrt(24), a 99 % normal \
+interval of the mean (computed here). Table 5's +- is Eq. (4), the LINEAR sum Delta \
+(n - 1)/(n - 1) = Delta mu/mu + Delta p/p + Delta T/T with Delta p/p = 4e-4 and \
+Delta T/T = 1e-3 (N2: 1.2/808.8 + 0.0014 = 0.29 %, i.e. 0.80 on 279.5, as printed): a \
+worst-case sum of the 99 % interval and instrument bounds; level 'not stated'.
+
+FINDING (computed 2026-09-26 with optmat's default models at 632.8 nm standard air, \
+i.e. 632.975 nm vacuum, 101325 Pa, 293.15 K, real-gas density): fit/Ar 261.83e-6, \
+fit/N2 277.33e-6, fit/CO2 416.51e-6. Clergent et al. are HIGHER by +0.56 % (Ar 263.3), \
++0.78 % (N2 279.5) and +0.50 % (CO2 418.6), about twice their own stated \
+uncertainties (0.30, 0.29, 0.26 %), while Hauf and Grigull's interpolated values \
+(261.8, 278.1, 417.4) agree with the models to -0.01 %, +0.28 % and +0.21 %. The \
+common +0.5 to +0.8 % offset points to a calibration error of the measurement; the \
+authors themselves suggest 'differences in calibration of pressure and temperature \
+measurements' (p. 3). The models reach Clergent's values at 291.5 K (Ar), 290.9 K (N2) \
+and 291.7 K (CO2). Use as a check only.
+
+WAHLSTRAND. The Maryland group's absolute Kerr calibration (wahlstrand_2012 and the \
+papers that follow it) takes n0 - 1 = 2.795e-4 for N2 at 633 nm and 1 atm from this \
+paper: it is Table 5's N2 value (279.5e-6) at 293.15 K, 0.78 % above optmat's N2 model \
+at that state (see the note added to wahlstrand_2012).
+
+Not extracted: Table 4's mu is recorded as the formulas below (it is not a quantity \
+with a state). Table 6, the specific refractivities r = (2/3)(n - 1)RT/(M p) (Eq. 5; \
+10^3 m^3 kg^-1: Ar 0.1057, N2 0.1600, CO2 0.1525; Hauf and Grigull 0.1052, 0.1592, \
+0.1521; molar masses 39.95, 28.02, 44.01): derived from mu. Table 7, dn/dT = -mu \
+p/T^2 at 101.325 kPa and 293.15 K (|dn/dT| x 10^6 K^-1: Ar 0.898, N2 0.953, CO2 1.428; \
+Hauf and Grigull 0.894, 0.949, 1.424): derived from mu. Table 2 (N2) and the \
+supplement's tables (CO2, Ar): the raw fringe counts N at eight temperatures and nine \
+pressures, three runs each; Table 3 and the supplement's: alpha, beta, R^2 and mu of \
+the 24 runs per gas (N2 mu from 802.61 to 812.05 x 1e-9 K/Pa). Table 1: impurities \
+(in the technique)."""
+
+[[datasets]]
+id = "refractivity_Ar"
+material = "Ar"
+file = "Ar/clergent_1999__refractivity_Ar.csv"
+table = "tbl_4e3479144d9d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 5 'our results': (n - 1) x 10^6 = 263.3 +- 0.8 at 101.325 kPa and 293.15 K, 632.8 nm (mu p/T with mu = 762.0 +- 1.2 x 1e-9 K/Pa; the '+-' extracts as '('). 0.56 % above optmat's Ar model (source notes): a check. Uncertainty the linear sum of Eq. (4), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_N2"
+material = "N2"
+file = "N2/clergent_1999__refractivity_N2.csv"
+table = "tbl_4e3479144d9d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 5 'our results': (n - 1) x 10^6 = 279.5 +- 0.8 at 101.325 kPa and 293.15 K, 632.8 nm (mu = 808.8 +- 1.2 x 1e-9 K/Pa). 0.78 % above optmat's N2 model: a check. The value wahlstrand_2012 uses as n0 - 1 = 2.795e-4 of N2 for its absolute calibration."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "refractivity_CO2"
+material = "CO2"
+file = "CO2/clergent_1999__refractivity_CO2.csv"
+table = "tbl_4e3479144d9d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = "1atm_20C"
+density = "real"
+use = "check"
+notes = "Table 5 'our results': (n - 1) x 10^6 = 418.6 +- 1.1 at 101.325 kPa and 293.15 K, 632.8 nm (mu = 1211.1 +- 1.5 x 1e-9 K/Pa). 0.50 % above optmat's CO2 model: a check."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "hauf_grigull_Ar"
+material = "Ar"
+file = "Ar/clergent_1999__hauf_grigull_Ar.csv"
+table = "tbl_4e3479144d9d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["W. Hauf and V. Grigull, Optical Methods in Heat Transfer, in Advances in Heat Transfer, Vol. 6 (Academic Press, New York, 1970), pp. 133-366"]
+notes = "Table 5 'Hauf and Grigull': (n - 1) x 10^6 = 261.8 at 101.325 kPa, 293.15 K, 632.8 nm, which Hauf and Grigull (1970; the second author printed 'V. Grigull') 'calculated ... by interpolation from old data collected in the International Critical Tables' (1930) with a Cauchy formula n - 1 = A/(nu0^2 - nu^2) (Eq. 2, p. 1). Not a measurement at 632.8 nm; no uncertainty. Agrees with optmat's Ar model to 0.01 %."
+
+[[datasets]]
+id = "hauf_grigull_N2"
+material = "N2"
+file = "N2/clergent_1999__hauf_grigull_N2.csv"
+table = "tbl_4e3479144d9d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["W. Hauf and V. Grigull, Optical Methods in Heat Transfer, in Advances in Heat Transfer, Vol. 6 (Academic Press, New York, 1970), pp. 133-366"]
+notes = "Table 5 'Hauf and Grigull': (n - 1) x 10^6 = 278.1, interpolated from the International Critical Tables (see hauf_grigull_Ar). 0.28 % above optmat's N2 model."
+
+[[datasets]]
+id = "hauf_grigull_CO2"
+material = "CO2"
+file = "CO2/clergent_1999__hauf_grigull_CO2.csv"
+table = "tbl_4e3479144d9d"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = "1atm_20C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["W. Hauf and V. Grigull, Optical Methods in Heat Transfer, in Advances in Heat Transfer, Vol. 6 (Academic Press, New York, 1970), pp. 133-366"]
+notes = "Table 5 'Hauf and Grigull': (n - 1) x 10^6 = 417.4, interpolated from the International Critical Tables (see hauf_grigull_Ar). 0.21 % above optmat's CO2 model."
+
+[[formulas]]
+id = "mu_Ar"
+material = "Ar"
+equation = "Eq. (1), p. 1; Table 4, p. 3"
+printed = "n - 1 = mu p/T; mu/(10^-9 K Pa^-1) = 762.0 +- 1.2 (Ar)"
+variable = "p: pressure in Pa; T: temperature in K; lambda = 632.8 nm (He-Ne, medium not stated)"
+state = "any p, T in range (ideal gas assumed)"
+density = "ideal"
+range = "288.15-323.15 K, 0-110 kPa, 632.8 nm"
+coefficients = { mu = "762.0e-9" }
+check = "mu x 101325/293.15 = 263.38e-6; Table 5 prints 263.3 +- 0.8 (truncated). The mean of the supplement's 24 Ar runs as printed there (762.0, confidence interval 1.2, std dev 2.2). Checked 2026-09-26."
+notes = "+- 1.2 is the confidence interval of the mean of 24 runs (2.576 std dev/sqrt(24): a 99 % interval; level not stated). The Gladstone-Dale and ideal-gas assumptions are the authors' (p. 1)."
+
+[[formulas]]
+id = "mu_N2"
+material = "N2"
+equation = "Eq. (1), p. 1; Table 4, p. 3"
+printed = "n - 1 = mu p/T; mu/(10^-9 K Pa^-1) = 808.8 +- 1.2 (N2)"
+variable = "p: pressure in Pa; T: temperature in K; lambda = 632.8 nm (He-Ne, medium not stated)"
+state = "any p, T in range (ideal gas assumed)"
+density = "ideal"
+range = "288.15-323.15 K, 0-110 kPa, 632.8 nm"
+coefficients = { mu = "808.8e-9" }
+check = "mu x 101325/293.15 = 279.56e-6; Table 5 prints 279.5 +- 0.8 (truncated). Table 3 prints the 24 runs (mu from 802.61 to 812.05) and their mean 808.8, confidence interval 1.2, std dev 2.3 (x 1e-9 K/Pa). Checked 2026-09-26."
+notes = "As mu_Ar."
+
+[[formulas]]
+id = "mu_CO2"
+material = "CO2"
+equation = "Eq. (1), p. 1; Table 4, p. 3"
+printed = "n - 1 = mu p/T; mu/(10^-9 K Pa^-1) = 1211.1 +- 1.5 (CO2)"
+variable = "p: pressure in Pa; T: temperature in K; lambda = 632.8 nm (He-Ne, medium not stated)"
+state = "any p, T in range (ideal gas assumed)"
+density = "ideal"
+range = "288.15-323.15 K, 0-110 kPa, 632.8 nm"
+coefficients = { mu = "1211.1e-9" }
+check = "mu x 101325/293.15 = 418.61e-6; Table 5 prints 418.6 +- 1.1. The supplement prints the mean of the 24 CO2 runs 1211.1, confidence interval 1.5, std dev 2.9. Checked 2026-09-26."
+notes = "As mu_Ar. For CO2 the ideal-gas form ignores B p/RT = -0.4 to -0.55 % at 1 atm over 288-323 K: n - 1 = mu p/T is good to about 0.1 % over the range, not better (estimated here)."

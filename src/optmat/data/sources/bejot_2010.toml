@@ -1,0 +1,108 @@
+citation = "P. Bejot, J. Kasparian, S. Henin, V. Loriot, T. Vieillard, E. Hertz, O. Faucher, B. Lavorel and J.-P. Wolf, Phys. Rev. Lett. 104, 103903 (2010)"
+doi = "10.1103/physrevlett.104.103903"
+library = "Bejot_2010_HigherOrderKerr"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Numerical filamentation simulations (scalar envelope NLSE with \
+diffraction, GVD, instantaneous Kerr terms up to n8 (air) or n10 (Ar), plasma \
+defocusing, inverse bremsstrahlung and multiphoton absorption; multi-species PPT \
+ionisation) of a 1 mJ, 30 fs, 800 nm pulse focused by f = 1 m in 1 bar of air or \
+argon, with the higher-order Kerr coefficients of Loriot et al. (2009) as corrected."""
+notes = """The library's first copy is the HAL author version (hal-00464524, 5 pages, \
+submitted 17 Mar 2010); the second copy (Bejot_2010_HigherOrderKerr_c718b7) is the \
+published PRL. Their Tables I and II are identical (both images checked) and the text \
+is the same apart from copy-editing; the published copy's table CSVs are garbled by \
+the extraction, so the first copy's are used.
+
+Values: Table I (N2, O2, air 'at 1 bar pressure, and interpolation to air, as used in \
+the present work [17]') and Table II (Ar at 1 bar); ref. [17] is Loriot et al., Opt. \
+Express 17, 13429 (2009) with its erratum 18, 3011 (2010). 'As compared with \
+previously published data [17], we used values of the higher-order refractive \
+indices (Table I) incorporating the correction for the coherent artifact [19] (Oudar, \
+IEEE J. Quantum Electron. 19, 713, 1983), i.e. adequately subtracting [spelt with an extra s in the paper] its electronic \
+contribution at play in the original measurement ... This correction results in \
+dividing each n_2*j term by j + 1' (p. 3); for argon 'we refined the corresponding \
+indices to take the coherent artifact into account' (p. 4). The values equal the \
+erratum's (loriot_2010) to the printed digits, with a few rounded (n4 N2 -0.5 +- 0.27 \
+against -0.53 +- 0.26; air n2 1.2 +- 0.23 against 1.2 +- 0.3) and the units rewritten: \
+n2 10^-19 cm^2/W, n4 10^-33 cm^4/W^2, n6 10^-46 (Ar: 10^-45) cm^6/W^3, n8 10^-59 \
+cm^8/W^4, n10 10^-74 cm^10/W^5. Only n2 is extracted, as reproduced from loriot_2009.
+
+Convention (p. 2-3): Delta n_Kerr = n2 I + n4 I^2 + n6 I^3 + n8 I^4 + ... with 'the n_2*j \
+coefficients ... related to chi(2*j+1) susceptibilities'; the NLSE term is i (k0/n0) \
+(sum_j n_2*j |eps|^(2j)) eps with |eps|^2 = I, so the coefficients are self (single-beam) \
+coefficients. 'Owing to the short pulse duration (30 fs) used in the simulations, the \
+delayed orientational response is disregarded' (p. 3).
+
+Higher-order Kerr claim (notes only): with the Table I/II coefficients the higher-order \
+terms, not the plasma, provide the main defocusing of filaments in air and argon at \
+800 nm (clamped intensity 31.6 against 78 TW/cm^2 in air, electron density 1.1e15 \
+against 4.2e16 cm^-3; Ar 28.5 against 80.9 TW/cm^2). Higher orders as used: N2 n4 -0.5 \
++- 0.27, n6 1.4 +- 0.15, n8 -0.44 +- 0.04; O2 n4 -5.2 +- 0.5, n6 4.8 +- 0.5, n8 -2.1 +- 0.14; \
+Ar n4 -0.37 +- 1, n6 0.4 +- 0.05 (x 10^-45), n8 -1.7 +- 0.1, n10 8.8 +- 0.5 (units above). \
+Status: refuted (see loriot_2009's notes: Wahlstrand et al. 2013 explain the \
+measured inversion as a plasma-grating artefact; Wahlstrand et al. 2012 and 2018 \
+measure a response linear in intensity up to ionisation). Not to be used."""
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+file = "N2/bejot_2010__n2_N2.csv"
+table = "tbl_994ad741fed5"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009"]
+notes = "Table I, n2 of N2 at 1 bar (temperature not stated; 293.15 K as in loriot_2009): Loriot's value after the erratum's division by 2."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "n2_O2"
+material = "O2"
+file = "O2/bejot_2010__n2_O2.csv"
+table = "tbl_994ad741fed5"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009"]
+notes = "Table I, n2 of O2 at 1 bar (temperature not stated; 293.15 K as in loriot_2009): Loriot's value after the erratum's division by 2 (1.60 printed 1.6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 90
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+file = "Ar/bejot_2010__n2_Ar.csv"
+table = "tbl_c5fc8d94f60e"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["loriot_2009"]
+notes = "Table II, n2 of Ar at 1 bar (temperature not stated; 293.15 K as in loriot_2009): Loriot's value after the erratum's division by 2 (1.00 printed 1.0)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 90

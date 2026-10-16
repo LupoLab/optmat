@@ -1,0 +1,196 @@
+citation = "E. R. Peck and D. J. Fisher, J. Opt. Soc. Am. 54, 1362 (1964)"
+doi = "10.1364/josa.54.001362"
+library = "Peck_1964_DispersionArgon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Corner-reflector Michelson interferometer with fringe counters and a static \
+fringe interpolator, 24 cm gas cell, argon of research grade (N2, O2, H2 < 5 ppm) and \
+99.998 %; reference lines Hg 5462 A (vacuum) and Cd; the refractivity ratio \
+(n-1)_5462/(n-1)_ir measured at 17 vacuum wavelengths from 4679 to 20 587 A; over 200 \
+absolute measurements at 5462 A; gas at 0.8-1.0 atm and 22-26 degrees C."""
+notes = """Reduction (p. 2): 'use was made of the compressibility factor Z = PV/RT of argon \
+as tabulated by Hilsenrath', fitted by Z = 1 - (P/760) 1e-5 (1011 - 5.26 T + 0.007 T^2) \
+(P in Torr, T in K), with 'a small correction for the Lorentz-Lorenz relation': a \
+real-gas reduction to 15 degrees C and 760 Torr, and to 0 degrees C and 760 Torr. \
+Wavelengths are vacuum wavelengths (Table I heading 'lambda_vac'; the formula's sigma is \
+'the vacuum wave number in reciprocal microns', p. 3).
+
+Uncertainties (p. 2): the mean of over 200 absolute measurements, '(n-1)_5462 x 10^7 = \
+2677.08 +- 0.42', where +-0.42 'is the standard deviation in the mean'; 'the accumulated \
+systematic errors were thought not to be greater than two parts in 10 000'. The \
+per-point +- of Table I 'arise from the standard deviation in relative values' (the \
+refractivity ratio), and 'the relative precision within the set ... exceeds the \
+accuracy of their absolute value ... by a large factor'. The 4679 A (Cd) value 'was not \
+used in the least-squared fitting of the formula ... since its deviation was considered \
+excessive' (p. 3); rms deviation of the other 16 from the formula 0.01e-7.
+
+Table II's 'calculated' column (0 degrees C) is not the paper's 0 degrees C formula: it \
+equals the 15 degrees C formula scaled by 288.16/273.16 (ideal-gas temperature ratio) to \
+within +-0.008e-7 at all eight wavelengths, and lies 0.57-0.60e-7 (2.0e-4) below the \
+printed 0 degrees C formula, which reproduces the measured 0 degrees C column of Table \
+I (checked 2026-09-24). Peck and Fisher's statement that Larsen's values are 'about one \
+part in 2000' higher is made with that column. Table II's wavelength 5677.40 A \
+(vacuum) does not match the Hg line Leonard 1974 prints for Larsen as 5677.17 A in air \
+(5678.72 A in vacuum); the other seven agree with Leonard's air wavelengths, converted to \
+vacuum, within 0.13 A.
+
+The text also quotes the dispersion formulas of Burton (1908), C. and M. Cuthbertson \
+(1910), Quarder (1924) and Larsen (1934) (p. 1), recorded below as reproduced formulas."""
+
+[[datasets]]
+id = "measured_15C"
+material = "Ar"
+file = "Ar/peck_1964__measured_15C.csv"
+table = "tbl_c5791a12e56b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "primary"
+notes = "Table I, measured n - 1 at 15 degrees C and 760 Torr. sigma is the random error relative to the 5462.258 A reference (0 for the reference line, printed '...'). The absolute level carries the systematic uncertainty: 0.42/2677.08 = 1.57e-4 (standard deviation of the mean) combined in quadrature with the stated systematic bound 2e-4 read as a uniform half-width (1.15e-4), giving 1.95e-4. The 4679.465 A value was left out of the paper's fit (excessive deviation, p. 3)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+systematic_relative = 1.95e-4
+
+[[datasets]]
+id = "measured_0C"
+material = "Ar"
+file = "Ar/peck_1964__measured_0C.csv"
+table = "tbl_c5791a12e56b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table I, the same measurements reduced to 0 degrees C and 760 Torr (real gas). A second reduction of measured_15C, not an independent set: kept as a check."
+
+[[datasets]]
+id = "fit_15C"
+material = "Ar"
+file = "Ar/peck_1964__fit_15C.csv"
+table = "tbl_c5791a12e56b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "real"
+use = "check"
+notes = "Table I, 'calc. (15 degrees C)': the paper's formula (formula peck_15C), as tabulated."
+
+[[datasets]]
+id = "fit_0C_table2"
+material = "Ar"
+file = "Ar/peck_1964__fit_0C_table2.csv"
+table = "tbl_1681f4cff0cd"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table II, 'Calculated (n-1)10^7 this work' at 0 degrees C, 760 Torr: the 15 degrees C formula scaled by the ideal-gas temperature ratio (see the source notes), 2.0e-4 below the paper's own 0 degrees C formula; density 'ideal' records that scaling."
+
+[[datasets]]
+id = "larsen_1934"
+material = "Ar"
+file = "Ar/peck_1964__larsen_1934.csv"
+table = "tbl_1681f4cff0cd"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["T. Larsen, Z. Physik 88, 389 (1934)"]
+notes = "Table II, 'Measured (n-1)10^7 Larsen' at 0 degrees C, 760 Torr, at vacuum wavelengths (converted by Peck and Fisher from Larsen's air wavelengths). Larsen's reduction convention is not stated here (Leonard 1974 says Koch and Larsen used their own definition of the ideal state). Includes 2865.41 at 4109.25 A, the line Leonard 1974 misprints. The original is not in the library."
+
+[[formulas]]
+id = "peck_15C"
+form = "dn_sigma2"
+terms = { scale = "1e-7", A = "643.2135", B = ["286060.21"], C = ["144"] }
+range_nm = [467.9, 2058.7]
+material = "Ar"
+equation = "abstract and p. 2 (unnumbered)"
+printed = "(n - 1) 10^7 = 643.2135 + 286060.21/(144 - sigma^2)"
+variable = "sigma: vacuum wavenumber in reciprocal microns"
+state = "1atm_15C"
+density = "real"
+range = "4679-20 587 A (vacuum), 16 of the 17 measurements (4679 A left out)"
+coefficients = { a = "643.2135", b = "286060.21", c = "144" }
+check = "Reproduces Table I's calculated (15 degrees C) column to within 0.001e-7 at 16 of the 17 wavelengths (5462.258 A: 2677.081, as printed). At 4679.465 A it gives 2694.806 against the printed 2694.832 (and the printed difference +0.030 follows the printed 2694.832): 0.026e-7, 1e-5 relative, unexplained; the point was left out of the fit. Checked 2026-09-24."
+notes = "sigma^2 = 144 um^-2 (83.3 nm) is an effective resonance between the two resonance lines (90.0 and 89.4 um^-2) and the ionization limit (161 um^-2), as the paper notes (p. 3)."
+
+[[formulas]]
+id = "peck_0C"
+form = "dn_sigma2"
+terms = { scale = "1e-7", A = "678.6711", B = ["301829.43"], C = ["144"] }
+range_nm = [467.9, 2058.7]
+material = "Ar"
+equation = "p. 3 (unnumbered)"
+printed = "(n - 1) 10^7 = 678.6711 + 301829.43/(144 - sigma^2)"
+variable = "sigma: vacuum wavenumber in reciprocal microns"
+state = "1atm_0C"
+density = "real"
+range = "4679-20 587 A (vacuum)"
+coefficients = { a = "678.6711", b = "301829.43", c = "144" }
+check = "Both coefficients are the 15 degrees C ones times 1.0551257 (the real-gas density ratio used by the paper). Reproduces the measured 0 degrees C column of Table I to within 0.022e-7 except at 4679 A (-0.060, the point left out of the fit); at 5462.258 A it gives 2824.657 against 2824.655. It does not reproduce Table II's calculated 0 degrees C column (0.57-0.60e-7 higher; see the source notes). Checked 2026-09-24."
+
+[[formulas]]
+id = "burton_1908"
+material = "Ar"
+equation = "p. 1, quoted"
+printed = "n = 1.0002792 + 1.6 x 10^-14 / lambda^2"
+variable = "lambda: wavelength in centimeters (medium not stated)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible"
+coefficients = { a = "1.0002792", b = "1.6e-14" }
+check = "Not checkable here: the paper tabulates no values from it."
+notes = "Reproduced from W. Burton, Proc. Roy. Soc. (London) A80, 390 (1908), not in the library. The state is not given by Peck and Fisher; 0 degrees C, 1 atm is an assumption."
+
+[[formulas]]
+id = "cuthbertson_1910"
+material = "Ar"
+equation = "p. 1, quoted"
+printed = "n - 1 = 9.43264 x 10^27 / (17008.9 x 10^27 - sigma^2)"
+variable = "sigma: frequency in hertz"
+state = "1atm_0C"
+density = "unknown"
+range = "visible"
+coefficients = { c = "9.43264e27", nu0_squared = "17008.9e27" }
+check = "As printed it gives 5.65e-4 at 5462 A, twice argon's n - 1 (2.82e-4): the Cuthbertsons' numerator appears to be for n^2 - 1 (or doubled). Not corrected here; compare with cuthbertson_1910 in the library before use (checked 2026-09-24)."
+notes = "Reproduced from C. and M. Cuthbertson, Proc. Roy. Soc. (London) A84, 13 (1910) (library source cuthbertson_1910). State assumed 0 degrees C, 1 atm."
+
+[[formulas]]
+id = "quarder_1924"
+material = "Ar"
+equation = "p. 1, quoted"
+printed = "(n - 1) 10^7 = 2778.26 + 15.58 (10^8) / lambda^2"
+variable = "lambda: wavelength in angstrom units (medium not stated)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible and ultraviolet"
+coefficients = { a = "2778.26", b = "15.58e8" }
+check = "Not checkable here. Gives 2830.5e-7 at 5462 A, 0.2 % above Peck and Fisher's 0 degrees C value."
+notes = "Reproduced from B. Quarder, Ann. Physik 74, 255 (1924), not in the library; Leonard 1974 prints Quarder's values in parentheses (discrepant). State assumed 0 degrees C, 1 atm."
+
+[[formulas]]
+id = "larsen_1934"
+material = "Ar"
+equation = "p. 1, quoted"
+printed = "R = C [f1/(lambda1^-2 - lambda^-2) + f2/(lambda2^-2 - lambda^-2) + f3/(lambda3^-2 - lambda^-2)] = 1.2098 x 10^6 [0.208972/(0.87882 x 10^10 - lambda^-2) + 0.208972/(0.9100 x 10^10 - lambda^-2) + 4.925837/(2.69636 x 10^10 - lambda^-2)]"
+variable = "lambda: wavelength in centimeters; R = (3/2)(n^2 - 1)/(n^2 + 2); C = e^2 N / (2 pi m c^2), N Loschmidt's number"
+state = "1atm_0C"
+density = "unknown"
+range = "about 2300-5700 A"
+coefficients = { c = "1.2098e6", f1 = "0.208972", l1 = "0.87882e10", f2 = "0.208972", l2 = "0.9100e10", f3 = "4.925837", l3 = "2.69636e10" }
+check = "Reproduces Larsen's measured values of Table II (dataset larsen_1934) to 0.04-0.08e-7 (2965.14 at 2894.45 A, 2865.37 at 4109.25 A, 2825.46 at 5462.25 A against 2965.22, 2865.41, 2825.50), taking the wavelengths as vacuum. Checked 2026-09-24."
+notes = "Reproduced from T. Larsen, Z. Physik 88, 389 (1934), not in the library. The first two terms are the resonance lines with f1 = f2 assumed; Heddle et al. 1963 quote a different Larsen formula (from his 1939 thesis), recorded in heddle_1963."

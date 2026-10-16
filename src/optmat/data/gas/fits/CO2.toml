@@ -1,0 +1,110 @@
+# Carbon dioxide: effective electronic oscillators plus the HITRAN infrared bands (fixed).
+# Taken up on 2026-09-25.
+gas = "CO2"
+description = "Carbon dioxide: the 1Delta_u and 1Pi_g bands (8.4 and 9.3 eV) as lines with Chan et al.'s strengths as priors and two effective electronic oscillators above 10 eV, fitted to Old, Gentili & Peck's 480-1529 nm refractivity (their 1695 and 1817 nm points, in the 1.40-2.30 um gap, are validators at the fitted scale), the Cuthbertsons' (1920), Watson & Ramaswamy's and Swift's visible and near-infrared values, the 633 nm metrology (Birch, Achtermann, Egan 2019) and Egan et al.'s 2026 values at 633 and 1542 nm, Zhang's 800 nm value, Shelton's N2/CO2 ratios (488-1319 nm, harmonics to 244 nm), Hohm's 325-633 nm dispersion (Mol. Phys. 1994; its shape at 4e-5, the level free) and with HITRAN's vibrational bands fixed (their strength is what the data want: a scale of 0.97 or 1.03 on it raises chi-squared from 520 to 6900 and 2200). Bideau-Mehu et al.'s 181-254 nm interferometry is a validator: it scatters by 0.3 % about any smooth dispersion, several times its stated 0.08 %. Valid from 250 nm to 1.4 um and in seven windows between the bands from 2.30 to 8.94 um, with HITRAN's bands as derived Gaussian rules (OEP 3); Marchetti's and Matsumoto's CO2-laser values (9.2-10.7 um) are validators: they lie beyond the last window, where the laser bands are kept."
+range_nm = [250.0, 1400.0]
+
+validators = [
+    { key = "schmidt_2003/A_eps_four_CO2", electric = true },   # static dielectric (TC-400)
+    "clergent_1999/refractivity_CO2",
+    "sneep_2005/rayleigh_CO2",   # Rayleigh scattering (TC-150)
+    "willetts_1982/measured_CO2",      # 10.59 um, 2.5-6 %
+    # Stoll's 1922 values: as for O2, a systematic shape against the modern data.
+    "stoll_1922/cylinder_CO2",
+    # The microwave value (+533 ppm, 6.6 sigma): as for H2, a validator (TC-148).
+    "newell_1965/newell_baird_cylindrical_CO2",
+    "old_1971/predicted",
+    "watson_1936/zero_celsius_CO2",
+    "burns_1986/A_R_CO2",   # its 632.8 nm value is 0.8 % below the metrology (TC-170)
+    "simmons_1978/LL_CO2",
+    "bideau_mehu_1973/experiment_CO2",   # 181-254 nm, below the fit range
+    { key = "bose_1970/A_eps_CO2", electric = true },   # static dielectric, 303-323 K (TC-606)
+    # 9.2-10.7 um: beyond the last window, where the laser bands are kept, so outside
+    # every qualified interval; compared, not fitted (TC-797).
+    "marchetti_2007/experiment_CO2",
+    "matsumoto_1987/measured_CO2",   # 10.6 um, 2 %; its three rows share one scale
+    # Old et al.'s 1695 and 1817 nm points lie in the 1.40-2.30 um gap, where the weak
+    # bands' rules miss the tolerance (TC-752): compared at the fitted scale, not
+    # fitted (OEP 3, Q19).
+    { key = "old_1971/experiment", range_nm = [1600.0, 2000.0] },
+]
+
+[model]
+# The temperature the polarizability refers to: a molecule's zero-density polarizability
+# changes with temperature (rotational and vibrational averaging), which the model does
+# not carry; datasets measured elsewhere are brought here where the coefficient is
+# measured (TC-730).
+reference_temperature_k = 293.15
+effective = 2
+# The two weak bands below 10 eV are lines (below); the effective oscillators stand for
+# the strong absorption from the 1Pi_u and 1Sigma_u+ bands near 11 eV upwards, so they
+# are bounded at 10 eV (0.37 hartree, 123 nm; a modelling bound). With the bound at the
+# 202 nm absorption onset instead, one oscillator settled on it with f = 0.0033, where
+# the photoabsorption has no such strength (TC-725, TC-726).
+effective_min_energy_hartree = 0.37
+chi0_au = 0.0
+starts = 24
+band_nodes = 8   # every band as derived rules, and the windows between them (OEP 3)
+windows = true   # the derived windows are the qualified intervals (TC-749)
+
+# CO2's two weak diffuse bands below 10 eV, from Chan et al.'s deconvoluted dipole (e,e)
+# oscillator strengths (chan_1993_co2, Table 2; peak energies approximate, no uncertainty
+# stated). The sigma covers the spread of the other measurements that table compares:
+# 1Delta_u 0.0040-0.0062, 1Pi_g 0.0053-0.0075 (TC-726).
+[[model.lines]]
+label = "CO2 1Delta_u (1pi_g -> pi*), about 8.38 eV"
+wavelength_nm = 147.95   # 1239.842 / 8.38 eV
+f_prior = 0.00565
+f_sigma = 0.0012
+
+[[model.lines]]
+label = "CO2 1Pi_g (1pi_g -> 3s sigma_g), about 9.30 eV"
+wavelength_nm = 133.32   # 1239.842 / 9.30 eV
+f_prior = 0.00753
+f_sigma = 0.0012
+
+[[fitted]]
+key = "old_1971/experiment"
+free_scale = true             # shape; the level from the metrology
+range_nm = [0.0, 1600.0]      # 1695 and 1817 nm lie just above the 2 um combination bands,
+                              # whose edge one pole per band does not represent (TC-148)
+
+[[fitted]]
+key = "cuthbertson_1920/experiment_CO2"
+free_scale = true
+
+[[fitted]]
+key = "watson_1936/dispersion_CO2"
+free_scale = true
+
+[[fitted]]
+key = "swift_1988/experiment_CO2"
+
+[[fitted]]
+key = "birch_1991/alpha_CO2"
+
+[[fitted]]
+key = "achtermann_1991/A_R_this_work_CO2"
+
+[[fitted]]
+key = "egan_2019/A_R_CO2"
+
+[[fitted]]
+key = "egan_2026/A_R_CO2"
+# A_303, at 303 K; A_theta = 4.22(9)e-6 per K at 633 nm (4.13 at 1542 nm), combined u 8 %
+# (egan_2026, pp. 4, 7-8): -42 ppm to 293.15 K, with 3.3 ppm for the coefficient (TC-730).
+temperature = { measured_k = 303.0, coefficient = 4.22e-6, sigma = 0.34e-6 }
+
+[[fitted]]
+key = "zhang_2008/measured_CO2"
+
+[[fitted]]
+key = "shelton_1986_co2/density_N2_over_CO2"
+
+[[fitted]]
+key = "shelton_1990/density_N2_over_CO2"
+
+[[fitted]]
+key = "hohm_1994b/alpha_CO2"   # 325-633 nm dispersion (the original of hohm_1994's input)
+free_scale = true             # level free: Hohm's absolute levels scatter by 0.1-0.5 % (TC-400)
+shape_relative = 4e-5         # the shape's precision, from his argon against theory (TC-400)

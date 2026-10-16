@@ -1,0 +1,86 @@
+citation = "M. Ogawa and G. R. Cook, \"Absorption coefficients of O3 in the vacuum ultraviolet region\", J. Chem. Phys. 28, 173 (1958)"
+doi = "10.1063/1.1744071"
+library = "Ogawa_1958_AbsorptionCoefficientsO3"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photoelectric absorption, 'preliminary measurements' 520-1350 A: normal-incidence \
+vacuum spectrograph (30000 lines/inch grating, 50 cm radius, 500 um primary slit) with an \
+exit slit moved along the Rowland circle; a repetitive condensed spark in air + He \
+(about 200 um Hg) as a line source; a sodium-salicylate-coated photomultiplier. Ozone \
+from an ozonizer fed with extra-dry O2 (0.4 % unspecified impurities), trapped as a \
+liquid, evaporated into a flask and flowed continuously through the absorption tube, \
+the relative pressure set by glass capillaries. The pressure itself was not measured: \
+only relative coefficients (p. 173)."""
+notes = """Identity checked against the first page (PDF page 2, journal p. 173): Ogawa and \
+Cook, 'Absorption Coefficients of O3 in the Vacuum Ultraviolet Region', J. Chem. Phys. \
+28, 173 (1958); the library's observed title lost the subscript ('O' for 'O3'). \
+Journal pages 173-174 = PDF pages 2-3 (page 1 is the publisher's cover; page 2 begins \
+with the end of the preceding letter). O3 only.
+
+Quantity (p. 173): Lambert's law I = I0 exp(-mu x), 'x cm of gas at standard conditions \
+(0 C and 760 mm of Hg)': mu is the natural-log absorption coefficient at the ideal-gas \
+Loschmidt density. The datasets keep mu (cm^-1) with scale = 1e18 / n0, n0 = 101325 Pa \
+/ (k_B 273.15 K) = 2.6867801e19 cm^-3, to the cross section per molecule in Mb (as \
+watanabe_1953). Wavelengths in A, 'approximate', vacuum (a vacuum spectrograph). \
+Temperature not stated (the flow of gas evaporated from the liquid; room temperature \
+presumably; the Mainz atlas's 295 K is not in the paper).
+
+Absolute scale (p. 173): 'only relative absorption coefficients were directly \
+determined'; with the Lyman alpha (1216 A) value set to 500 arbitrary units, the \
+absolute values follow from 'the absorption coefficient at the Lyman alpha line which \
+was carefully measured by Tanaka, Inn, and Watanabe [tanaka_1953] ... based on mu = 614 \
+cm^-1 at 1216 A as estimated from Tanaka's graph' (Tanaka's text states no Lyman alpha \
+value: 614 is read from their Fig. 1). So the whole absolute column is Tanaka's scale \
+times Ogawa's relative shape; Tanaka estimates their own 'combined experimental error \
+would be as high as 10 percent'.
+
+Accuracy (p. 173): five points in Tanaka's region (1060-1350 A: rows 1305, 1243, 1216, \
+1135, 1085) 'were in good agreement with this curve ... Therefore the error in the \
+present experiment was estimated to be below 20 percent' (recorded as a 20 % bound on \
+the absolute values). The percent-error column of Table I is the precision of the \
+relative coefficients (the relative dataset carries the printed +- as sigma).
+
+Text (p. 173-174): the continuous absorption (Fig. 1's dashed curve through the lower \
+points) 'increases rapidly from about 960 A and reaches a maximum of 980 cm^-1 at about \
+750 A; then it gradually decreases to 770 cm^-1 at 525 A'; 'between 750 and 520 A some \
+weak bands overlap this continuum' (the points above the dashed curve). The ionisation \
+potential 12.80 eV (950 A) of Herron and Shiff (reproduced, not extracted). These \
+readings of the smoothed continuum are figure-level and are not extracted.
+
+Checks made on Table I: absolute / relative = 1.2266-1.2316 for every row (614/500 = \
+1.228), except 1243 A (288 / 232 = 1.241: 232 x 1.228 = 285); the percent errors are \
+the +- over the relative value except 1305 A (5.8/190 = 3.1 %, printed 3.3) and 617 A \
+(22.0/762 = 2.9 %, printed 2.7). No correction is certain; the printed values are kept \
+(TC-179)."""
+
+[[datasets]]
+id = "absolute"
+material = "O3"
+file = "O3/ogawa_1958__absolute.csv"
+table = "tbl_987cd6327574"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table I, last column: the absolute absorption coefficient mu (cm^-1, 0 C and 760 mm Hg), 24 lines 526-1305 A; scale = 1e18 / n0 to Mb. Scaled to Tanaka's 614 cm^-1 at 1216 A (the row 1216 is that anchor, not a measurement of the absolute value). 'Error ... estimated to be below 20 percent' (p. 173), recorded as a bound. Line-source values at about 0.5-1 A resolution (not stated): the rows 703-526 A above Fig. 1's dashed continuum include weak bands. Temperature not stated."
+[datasets.uncertainty]
+relative = 0.2
+level = "bound"
+
+[[datasets]]
+id = "relative"
+material = "O3"
+file = "O3/ogawa_1958__relative.csv"
+table = "tbl_987cd6327574"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.045705266114
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I, second column: the relative absorption coefficient (Lyman alpha = 500), with the printed +- as sigma (level not stated; the precision of the relative shape). scale = (614 / 500) x 1e18 / n0, the paper's own conversion to the absolute coefficient, then to Mb. The same measurements as 'absolute' (a check of the per-point precision, never fitted beside it)."
+[datasets.uncertainty]
+column = true
+level = "not stated"

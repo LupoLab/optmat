@@ -1,0 +1,167 @@
+# The two-photon ionisation models of the noble gases (OEP 6, Phase 1).
+#
+# Per gas: the NIST datasets of its thresholds and of its first one-photon resonance E1,
+# and per polarisation the reference curve the author approved under data rule 8
+# (TC-943), its validators, its uncertainty and the energy bands where its values are
+# unsupported detail. The derivation (optmat.gas._two_photon_derivation) reads this file
+# and the curated datasets, and tools/fit/two_photon_record.py writes the stored models
+# (data/gas/models/two_photon/<gas>_<polarization>.json); a test checks they are fresh.
+#
+# A reference is one dataset, or the partial cross sections of one calculation to be
+# summed on their common coverage. Energies here are photon energies in eV.
+#
+# Keys of a polarisation:
+#   reference              the datasets of the reference, summed
+#   gauge, method          as the reference's records state them
+#   reason, registers      why this reference (TC-943)
+#   resolves_fine_structure
+#                          false for an LS-coupled calculation, whose single threshold
+#                          leaves the band between the ion's two thresholds unsupported
+#   source_uncertainty     the source's own relative accuracy, or "not stated"
+#   source_level           its level, as stated
+#   source_provenance      where it is stated
+#   digitising             the relative digitising uncertainty at a drawn vertex
+#   digitising_provenance  its record and register entry
+#   validators             label, datasets (summed), form (vector or raster) and role:
+#                          "independent" (another calculation; it enters the spread)
+#                          or "gauge" (the reference's other gauge: a diagnostic,
+#                          reported apart)
+#   wing_ev                the width below E1 labelled unsupported detail: the first
+#                          one-photon resonance's wing, which the sources place
+#                          differently from NIST and from each other. 0.6 eV for every
+#                          gas: the independent calculations depart from the references
+#                          there (Ar: Petrov et al. from 11.0 eV; He: Nikolopoulos and
+#                          Lambropoulos's displaced 1s2p resonance; Xe: Fink and Johnson
+#                          from 8.0 eV) and agree below it (TC-944)
+
+[He]
+thresholds = ["nist_asd_2026/ie_He_I"]
+e1 = "nist_asd_2026/level_He_1s2p_1P1"
+
+[He.linear]
+reference = ["mihelic_2021/fig3a_sigma2_L0", "mihelic_2021/fig3a_sigma2_L2"]
+gauge = "velocity"
+method = "B-spline exterior complex scaling, lowest-order perturbation theory (driven equations)"
+reason = """Approved by the author (TC-943): the only vector-drawn calculation that covers \
+the window from the threshold, with no axis shift; Saenz and Lambropoulos's starts at \
+12.65 eV (98.0 nm), above the threshold of 12.29 eV. Its calibration is checked by its \
+own redrawing of Saenz and Lambropoulos's curves, which match saenz_1999's extraction \
+within 1 to 2 % (TC-874). The paper prints no value of its own."""
+registers = ["TC-874", "TC-943"]
+resolves_fine_structure = true
+source_uncertainty = "not stated"
+source_level = "not stated"
+source_provenance = "mihelic_2021 states no accuracy for its cross sections (TC-874)"
+digitising = 0.005
+digitising_provenance = "mihelic_2021's datasets: 0.5 % at a drawn vertex (TC-874)"
+wing_ev = 0.6
+validators = [
+    { label = "Saenz and Lambropoulos 1999, 1S + 1D, velocity", datasets = ["saenz_1999/fig1a_sigma2_1S", "saenz_1999/fig1b_sigma2_1D"], form = "vector", role = "independent" },
+    { label = "Nikolopoulos and Lambropoulos 2001, S + D", datasets = ["nikolopoulos_2001/fig4_sigma2_S", "nikolopoulos_2001/fig4_sigma2_D"], form = "vector", role = "independent" },
+    { label = "van der Hart and Bingham 2005, R-matrix Floquet at 1e13 W/cm2", datasets = ["vanderhart_2005/fig2_sigma2_rmf"], form = "vector", role = "independent" },
+]
+
+[Ne]
+thresholds = ["nist_asd_2026/ie_Ne_I", "nist_asd_2026/level_Ne+_2P12"]
+e1 = "nist_asd_2026/level_Ne_odd_J1"
+
+[Ne.linear]
+status = "untested"
+status_reason = "A single calculation: no independent one is curated in vector or tabulated form (TC-910, TC-943)."
+reference = ["mckenna_2004/fig1_sigma2_Ne"]
+gauge = "length/velocity (R-matrix Floquet)"
+method = "R-matrix Floquet, two Ne+ target states, LS coupling, at 1e12 W/cm2"
+intensity_w_cm2 = 1e12
+reason = """Approved by the author (TC-943): the only vector-drawn neon calculation. The \
+only independent one, Moccia, Rahman and Rizzo's (raster), is strongly gauge dependent: \
+0.02 to 0.62 of it (TC-910). A single source: its accuracy is unstated."""
+registers = ["TC-856", "TC-943"]
+resolves_fine_structure = false
+source_uncertainty = "not stated"
+source_level = "not stated"
+source_provenance = "mckenna_2004 states no uncertainty of the calculation (TC-856); single source"
+digitising = 0.02
+digitising_provenance = "mckenna_2004's datasets: 2 % at a drawn vertex (TC-856)"
+wing_ev = 0.6
+validators = []
+
+[Ar]
+thresholds = ["nist_asd_2026/ie_Ar_I", "nist_asd_2026/level_Ar+_2P12"]
+e1 = "nist_asd_2026/level_Ar_odd_J1"
+
+[Ar.linear]
+reference = ["mckenna_2004/fig5_sigma2_Ar"]
+gauge = "length/velocity (R-matrix Floquet)"
+method = "R-matrix Floquet, two Ar+ target states, LS coupling, at 1e12 W/cm2"
+intensity_w_cm2 = 1e12
+reason = """Approved by the author (TC-943): it starts at 7.91 eV (156.7 nm), where \
+Petrov et al.'s starts at 8.00 eV (155.0 nm), so it covers the band of the shortest \
+resonant dispersive waves in argon; its quoted plateau is checked against the text \
+(TC-856). Petrov et al.'s two gauges with core polarisation agree with it within 10 % \
+from 8 to 11 eV (TC-902)."""
+registers = ["TC-856", "TC-943"]
+resolves_fine_structure = false
+source_uncertainty = "not stated"
+source_level = "not stated"
+source_provenance = "mckenna_2004 states no uncertainty of the calculation (TC-856)"
+digitising = 0.02
+digitising_provenance = "mckenna_2004's datasets: 2 % at a drawn vertex (TC-856)"
+wing_ev = 0.6
+validators = [
+    { label = "Petrov et al. 2016, correlation and core polarisation, length", datasets = ["petrov_2016/fig10_corrcp_L"], form = "vector", role = "independent" },
+    { label = "Petrov et al. 2016, correlation and core polarisation, velocity", datasets = ["petrov_2016/fig10_corrcp_V"], form = "vector", role = "independent" },
+]
+
+[Kr]
+thresholds = ["nist_asd_2026/ie_Kr_I", "nist_asd_2026/level_Kr+_2P12"]
+e1 = "nist_asd_2026/level_Kr_odd_J1"
+missing = """No vector-drawn or tabulated two-photon ionisation cross section of krypton \
+is curated: L'Huillier, Tang and Lambropoulos's MQDT (TC-882), Fink and Johnson's \
+relativistic calculation (TC-912) and McGuire's (TC-879) are all read from scans, which \
+data rule 8 never admits as a reference, and they differ by up to a factor of 6 \
+(TC-942). OEP 6, Q2."""
+
+[Xe]
+thresholds = ["nist_asd_2026/ie_Xe_I", "nist_asd_2026/level_Xe+_2P12"]
+e1 = "nist_asd_2026/level_Xe_odd_J1"
+
+[Xe.linear]
+reference = ["lagutin_2017/fig8_cipfcp_linear"]
+gauge = "length"
+method = "relativistic, configuration interaction, core polarisation (CIPFCP), lowest-order perturbation theory"
+reason = """Approved by the author (TC-943): the only vector-drawn xenon calculation in \
+the window, relativistic and correlated, with linear and circular polarisation drawn in \
+one figure. It starts at the 2P1/2 threshold (6.72 eV): nothing is computed between the \
+two thresholds (OEP 6, Q3). Fink and Johnson's relativistic calculation (raster) is 0.65 \
+to 0.87 of it over the supported band; the RPAE and MQDT calculations (raster) 0.27 to \
+0.69 (TC-942, TC-944)."""
+registers = ["TC-880", "TC-943"]
+resolves_fine_structure = true
+source_uncertainty = 0.077
+source_level = "not stated: the authors' 'measure of accuracy', the length-velocity difference at the threshold"
+source_provenance = "lagutin_2017, p. 7 (TC-880)"
+digitising = 0.02
+digitising_provenance = "lagutin_2017's vector drawing: 2 % at a drawn vertex (TC-880)"
+wing_ev = 0.6
+validators = [
+    { label = "Lagutin et al. 2017, CIPFCP, velocity", datasets = ["lagutin_2017/fig4_cipfcp_velocity"], form = "vector", role = "gauge" },
+    { label = "Fink and Johnson 1990, relativistic (raster)", datasets = ["fink_1990/fig5_linear"], form = "raster", role = "independent" },
+]
+
+[Xe.circular]
+reference = ["lagutin_2017/fig8_cipfcp_circular"]
+gauge = "length"
+method = "relativistic, configuration interaction, core polarisation (CIPFCP), lowest-order perturbation theory"
+reason = """Approved by the author (TC-943): drawn with the linear reference in one \
+figure (lagutin_2017, Fig. 8). It starts at the 2P1/2 threshold (6.72 eV)."""
+registers = ["TC-880", "TC-943"]
+resolves_fine_structure = true
+source_uncertainty = 0.077
+source_level = "not stated: the authors' 'measure of accuracy', the length-velocity difference at the threshold, for linear polarisation"
+source_provenance = "lagutin_2017, p. 7 (TC-880)"
+digitising = 0.02
+digitising_provenance = "lagutin_2017's vector drawing: 2 % at a drawn vertex (TC-880)"
+wing_ev = 0.6
+validators = [
+    { label = "Fink and Johnson 1990, relativistic, circular (raster)", datasets = ["fink_1990/fig5_circular"], form = "raster", role = "independent" },
+]

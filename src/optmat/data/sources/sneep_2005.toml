@@ -1,0 +1,534 @@
+citation = "M. Sneep and W. Ubachs, J. Quant. Spectrosc. Radiat. Transfer 92, 293 (2005)"
+doi = "10.1016/j.jqsrt.2004.07.025"
+library = "Sneep_2005_DirectMeasurementRayleigh"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Pulsed cavity ring-down extinction (mirror reflectivity above 99.98 %, 82 cm \
+cavity), the decay rate recorded during a 15 min pressure ramp from vacuum to about \
+1 bar; the cross section is the slope of the loss rate against the density \
+(Eq. 8), the density from a capacitance manometer (2 hPa) and the cell temperature \
+(about 20 C) by the ideal gas law ('a negligible error of < 0.5%', p. 7). Nd:YAG-pumped \
+dye laser (0.05 cm^-1) at 470-490 nm (Ar, N2) and 470-570 nm (CO2), and the unseeded \
+Nd:YAG second harmonic at 18 788.4 +- 0.4 cm^-1 (532.2 nm, 1 cm^-1 bandwidth) for Ar, \
+N2, CO, CO2, CH4, N2O, SF6 and O2 (pp. 5-7, 12)."""
+notes = """The measured quantity is the total extinction, taken to be the Rayleigh \
+scattering cross section (all Cabannes, Brillouin, Raman and wing contributions; no \
+absorption assumed), per molecule. Comparison 'n-based' cross sections use Eq. (2), \
+sigma = 24 pi^3 nu^4 / N^2 ((n^2 - 1)/(n^2 + 2))^2 F_k(nu), with the refractive index at \
+15 C and 1013 hPa and N = 25.47e18 cm^-3 (the ideal-gas density there, p. 8). \
+Forward and backward scattering kept in the cavity bias the result low by 'less than \
+0.01%' (p. 7).
+
+Datasets: the 532.2 nm cross sections of Table 2 (measured, primary; n-based, check) \
+and oxygen's Rayleigh part from a three-component fit (text, p. 15). The \
+wavelength-resolved Ar, N2, CO2 data (13, 23 and 47 new frequencies, with earlier \
+Naus and Ubachs 2000 data) are shown in Figs. 4 and 5 only and are not extracted; \
+Table 1 gives power-law fits to them (formulas *_power_*).
+
+Carbon monoxide (section 5.1, pp. 12-13; Table 2): purity 99.997 %, three pressure \
+ramps; measured 6.19 (0.4) against n-based 6.82 x 10^-27 cm^2, 9 % low, one of the \
+'somewhat larger discrepancies' of the abstract. Table 2's (n - 1) = 325e-6 is from \
+the authors' Eq. (17), a fit to Smith et al.'s 38 values (smith_1976 Table VII, both \
+the measured and the interpolated cells), and F_k = 1.016 from Bridge and \
+Buckingham's rho_p = 0.0048 at 632.8 nm (Eq. 7 gives 1.0161), taken as \
+wavelength-independent after Oddershede and Svendsen (1982). Eq. (2) with 325e-6 and \
+1.016 gives 6.817e-27 (printed 6.82; checked 2026-09-25).
+
+Table 2's (n - 1) x 10^6 at 15 C, 101 325 Pa, from the formulas below, are Ar 268, N2 \
+284, CO2 427, CH4 481, N2O 483, SF6 733; its F_k are Ar 1, N2 1.035, CO2 1.145, CH4 \
+1.000, N2O 1.225, SF6 1.000. With these, Eq. (2) reproduces the n-based column (Ar \
+4.561, N2 5.298, CO2 13.31, CH4 14.684, N2O 18.182, SF6 34.108 x 10^-27 cm^2 against \
+4.56, 5.30, 13.29, 14.69, 18.19, 34.1; checked 2026-09-25).
+
+The measured values lie below the n-based ones by 2.5-4 % for Ar, N2 and CO2 at \
+532.2 nm and by up to 15 % for CH4 ('We do not have an explanation for the obtained \
+differences', p. 14); over 470-645 nm Ar and N2 agree with the n-based values to 1 % \
+on average and CO2 is 3.9 % low (Table 1). Purities (Table 2): Ar 99.999, N2 99.9, \
+CO2 99.7, CH4 99.5, N2O 99.7, SF6 99.8 %. Pressure ramps: 3, 3, 4, 3, 2, 2.
+
+Oxygen at 532.2 nm shows a quadratic density dependence from the O2-O2 \
+collision-induced absorption peaking at 532.2 nm (Eq. 22); the three-component fit \
+gives sigma_R = (4.50 +- 0.15) x 10^-27 cm^2 (p. 15). With the Rayleigh part fixed at \
+the n-based value, sigma_CIA = (1.01 +- 0.03) x 10^-46 cm^5 molecule^-2 (not \
+extracted; no quantity). The n-based oxygen value is printed '4066 x 10^-27 cm^2' \
+(p. 16, page image checked), evidently 4.066 x 10^-27; it is not reproduced by \
+Eqs. (23) and (24) (see o2_eq23)."""
+
+[[datasets]]
+id = "rayleigh_O2"
+material = "O2"
+points = [["18788.4", "18788.4", "4.50", "0.15"]]
+table = "text"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "p. 15: 'A three-component fit results in a value (4.50 +- 0.15) x 10^-27 cm^2', the Rayleigh (linear-in-density) part at 532.2 nm with the collision-induced absorption fitted as a quadratic term; level not stated. No King factor is attached to the measured value; Bates's F_k of Eq. (24) is about 1.10 here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_Ar"
+material = "Ar"
+file = "Ar/sneep_2005__rayleigh_Ar.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over the pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1), the factor of the n-based comparison: unity for the spherical atom (p. 8). Table 1's Ar power-law fit to the 470-490 nm and earlier 555-645 nm data (Figs. 4-5; figures only) agrees with the n-based values to 0.4 % on average."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "rayleigh_N2"
+material = "N2"
+file = "N2/sneep_2005__rayleigh_N2.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over the pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1.035), the factor of the n-based comparison: Bates's Eq. (12)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.035
+
+[[datasets]]
+id = "rayleigh_CO"
+material = "CO"
+file = "CO/sneep_2005__rayleigh_CO.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over three pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1.016), the factor of the n-based comparison: from Bridge and Buckingham's depolarization ratio 0.0048 at 632.8 nm (p. 13). 9 % below the n-based value, whose n - 1 is an extrapolation of a fit to 168-288 nm data (co_eq17)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.016
+
+[[datasets]]
+id = "rayleigh_CO2"
+material = "CO2"
+file = "CO2/sneep_2005__rayleigh_CO2.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over the pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1.145), the factor of the n-based comparison: the authors' Eq. (14), fitted to Alms et al.'s depolarization ratios. CO2's measured values over 470-570 nm (figures only) lie 3.9 % below the n-based ones on average (Table 1)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.145
+
+[[datasets]]
+id = "rayleigh_CH4"
+material = "CH4"
+file = "CH4/sneep_2005__rayleigh_CH4.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over the pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1.000), the factor of the n-based comparison: assumed unity: CCl4's depolarization, rho_p < 0.2e-3 (Bridge and Buckingham), taken for CH4 by symmetry (p. 14). 15 % below the n-based value, which the authors cannot explain (p. 14)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "rayleigh_N2O"
+material = "N2O"
+file = "N2O/sneep_2005__rayleigh_N2O.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over the pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1.225), the factor of the n-based comparison: from the authors' Eq. (19) fit of Alms et al.'s depolarization ratios."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.225
+
+[[datasets]]
+id = "rayleigh_SF6"
+material = "SF6"
+file = "SF6/sneep_2005__rayleigh_SF6.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2, measured extinction cross section at 18 788.4 +- 0.4 cm^-1 (532.2 nm), the total over all scattering channels (absorption assumed absent), averaged over the pressure ramps; +- in parentheses is one sigma. king_factor is Table 2's F_k (1.000), the factor of the n-based comparison: unity: rho_p < 0.2e-3 (Bridge and Buckingham, p. 14)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "n_based_Ar"
+material = "Ar"
+file = "Ar/sneep_2005__n_based_Ar.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1 and Eq. (9) (Peck and Fisher). Not a measurement."
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "n_based_N2"
+material = "N2"
+file = "N2/sneep_2005__n_based_N2.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1.035 and Eq. (10) (Peck and Khanna). Not a measurement."
+[datasets.parameters]
+king_factor = 1.035
+
+[[datasets]]
+id = "n_based_CO"
+material = "CO"
+file = "CO/sneep_2005__n_based_CO.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1.016 and n - 1 = 325e-6 from Eq. (17) (the authors' fit to Smith et al. 1976, extrapolated to 532 nm; see co_eq17). Not a measurement."
+[datasets.parameters]
+king_factor = 1.016
+
+[[datasets]]
+id = "n_based_CO2"
+material = "CO2"
+file = "CO2/sneep_2005__n_based_CO2.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1.145 and Eq. (13) (Bideau-Mehu et al. 1973, as corrected by the authors; see co2_eq13). Not a measurement."
+[datasets.parameters]
+king_factor = 1.145
+
+[[datasets]]
+id = "n_based_CH4"
+material = "CH4"
+file = "CH4/sneep_2005__n_based_CH4.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1.000 and Eq. (18) (the authors' fit to Hohm 1993). Not a measurement."
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "n_based_N2O"
+material = "N2O"
+file = "N2O/sneep_2005__n_based_N2O.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1.225 and Eq. (20) (the authors' fit to Alms et al.). Not a measurement."
+[datasets.parameters]
+king_factor = 1.225
+
+[[datasets]]
+id = "n_based_SF6"
+material = "SF6"
+file = "SF6/sneep_2005__n_based_SF6.csv"
+table = "tbl_f4af3ec06557"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-27
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2, n-based cross section: Eq. (2) with N = 25.47e18 cm^-3, F_k = 1.000 and Eq. (21) (the authors' two-point fit to Vukovic et al.). Not a measurement."
+[datasets.parameters]
+king_factor = 1.0
+
+[[formulas]]
+id = "ar_eq9"
+material = "Ar"
+equation = "Eq. (9), p. 8"
+printed = "(n - 1) x 10^8 = 6432.135 + 286.06021 x 10^12 / (14.4 x 10^9 - (nu/cm^-1)^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "real"
+range = "5000-33000 cm^-1 (as stated)"
+coefficients = { A = "6432.135", B = "286.06021e12", C = "14.4e9" }
+reproduced_from = ["peck_1964"]
+check = "Identical to peck_1964's 15 C formula (643.2135 + 286060.21/(144 - sigma^2), x 10^-7) rewritten in cm^-1; gives (n - 1) = 267.97e-6 at 18 788.4 cm^-1 (Table 2: 268). Checked 2026-09-25."
+notes = "Peck and Fisher's formula is for the real gas at 15 C; the authors use it with the ideal-gas N = 25.47e18 cm^-3 (a 0.1 % inconsistency in n - 1)."
+
+[[formulas]]
+id = "n2_eq10"
+material = "N2"
+equation = "Eq. (10), p. 10"
+printed = "(n - 1) x 10^8 = 6498.2 + 307.43305 x 10^12 / (14.4 x 10^9 - (nu/cm^-1)^2), 4860 cm^-1 < nu < 21360 cm^-1"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "4860-21360 cm^-1 (468-2058 nm)"
+coefficients = { A = "6498.2", B = "307.43305e12", C = "14.4e9" }
+reproduced_from = ["peck_1966"]
+check = "It is Peck and Khanna's 0 C formula (peck_1966 eq4: 6855.200, 3243157.0) scaled by the ideal-gas ratio 273.15/288.15: B = 307.43305e12 exactly, A = 6498.34 (printed 6498.2). Gives 283.84e-6 at 18 788.4 cm^-1 (Table 2: 284). Checked 2026-09-25."
+notes = "'after scaling to 15 C and 1013 hPa' (p. 10): the scaling is the ideal-gas one from 0 C, so the formula is for the ideal-gas density 25.47e18 cm^-3, not Peck and Khanna's own (real-gas) 15 C formula eq3."
+
+[[formulas]]
+id = "n2_eq11"
+material = "N2"
+equation = "Eq. (11), p. 10"
+printed = "(n - 1) x 10^8 = 5677.465 + 318.81874 x 10^12 / (14.4 x 10^9 - (nu/cm^-1)^2), 21360 cm^-1 < nu < 39370 cm^-1"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "21360-39370 cm^-1 (254-468 nm)"
+coefficients = { A = "5677.465", B = "318.81874e12", C = "14.4e9" }
+reproduced_from = ["D. R. Bates, Planet. Space Sci. 32, 785 (1984)"]
+check = "Not used for Table 2 (outside its range); also quoted by he_2021 and wilmouth_2020 (N2_table1)."
+notes = "Bates's interpolation between Peck and Khanna and Abjean et al.'s ultraviolet data."
+
+[[formulas]]
+id = "n2_king_eq12"
+material = "N2"
+equation = "Eq. (12), p. 10"
+printed = "F_k(nu) = 1.034 + 3.17 x 10^-12 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+range = "not stated"
+coefficients = { a = "1.034", b = "3.17e-12" }
+reproduced_from = ["D. R. Bates, Planet. Space Sci. 32, 785 (1984)"]
+check = "Gives 1.0352 at 18 788.4 cm^-1 (Table 2: 1.035). Checked 2026-09-25."
+notes = "A King correction factor, not a refractive index. Based on Alms et al. (alms_1975), Bridge and Buckingham (1966) and Oddershede and Svendsen (1982)."
+
+[[formulas]]
+id = "co2_eq13"
+material = "CO2"
+equation = "Eq. (13), p. 10"
+printed = "(n - 1) = 1.1427 x 10^6 (5799.25/((128908.9)^2 - (nu/cm^-1)^2) + 120.05/((89223.8)^2 - (nu/cm^-1)^2) + 5.3334/((75037.5)^2 - (nu/cm^-1)^2) + 4.3244/((67837.7)^2 - (nu/cm^-1)^2) + 0.1218145 x 10^-4/((2418.136)^2 - (nu/cm^-1)^2))"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "the ultraviolet and visible (Bideau-Mehu et al. 1973; not stated here)"
+coefficients = { scale = "1.1427e6", B1 = "5799.25", nu1 = "128908.9", B2 = "120.05", nu2 = "89223.8", B3 = "5.3334", nu3 = "75037.5", B4 = "4.3244", nu4 = "67837.7", B5 = "0.1218145e-4", nu5 = "2418.136" }
+reproduced_from = ["A. Bideau-Mehu, Y. Guern, R. Abjean and A. Johannin-Gilles, Opt. Commun. 9, 432 (1973)"]
+check = "As printed (1.1427 x 10^6, page image checked) it gives n - 1 = 0.428 at 18 788.4 cm^-1, 1000 times too large. With 1.1427 x 10^3 it gives 427.79e-6 (Table 2: 427) and, with F_k = 1.145, sigma = 13.31e-27 cm^2 (Table 2: 13.29). The scale factor is misprinted: read 10^3 (427.79e-6 rounds to 428, not Table 2's 427: Sneep's own n - 1 was about 427.5e-6; He et al. 2021's 1.1427 x 10^11 on (n - 1) x 10^8 and all 22 of Ityaksov's CO2 values confirm the 10^3 reading, (second reading, 2026-09-25; TC-157)). Checked 2026-09-25."
+notes = "'Their article contains a typographical error, and the corrected formula, scaled to 15 C and 1013 hPa, yields' (p. 10): the authors' correction of the 1973 formula, itself misprinted here in the power of ten. The 2418.136 cm^-1 term is CO2's infrared bands. A second misprint (found against the 1973 original, bideau_mehu_1973; TC-167): the infrared numerator 0.1218145 x 10^-4 should be 1000 times the 1973 numerator, about 0.128 (the 1973 paper prints 1.218145e-4 for Old et al.'s 1.28154e-4). As printed here the infrared term vanishes; with 0.128154 it is -0.42e-6 at 18 788.4 cm^-1 and -5.1e-6 at 1.69 um (computed 2026-09-25). With it the formula gives 427.37e-6 at 18 788.4 cm^-1, which rounds to Table 2's 427 where the printed form's 427.79e-6 does not (see check): Sneep and Ubachs computed with the term, and only their printed copy lost it. ityaksov_2008_co2 copies this form."
+
+[[formulas]]
+id = "co2_king_eq14"
+material = "CO2"
+equation = "Eq. (14), p. 10"
+printed = "F_k(nu) = (1.1364 +- 0.0005) + (25.3 +- 1.5) x 10^-12 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+range = "the range of Alms et al.'s depolarization ratios (4579-6471 A)"
+coefficients = { a = "1.1364", b = "25.3e-12" }
+check = "Gives 1.1453 at 18 788.4 cm^-1 (Table 2: 1.145). 'The differences between (Eq. 14) and the measured King correction factors are less than 0.5%' (p. 10). Checked 2026-09-25."
+notes = "The authors' fit of Bates's N2 model function to King factors computed with Eq. (7) from Alms et al.'s depolarization ratios (alms_1975, Table I; Fig. 7)."
+
+[[formulas]]
+id = "co_eq17"
+material = "CO"
+equation = "Eq. (17), p. 12"
+printed = "(n - 1) x 10^8 = (22 851 +- 200) + (0.456 +- 0.01) x 10^12 / ((71 427 +- 200)^2 - (nu/cm^-1)^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "168-288 nm (Smith et al.'s data); extrapolated to 532 nm for Table 2, 'rather far outside the range of the measurements' (p. 12)"
+coefficients = { A = "22851", B = "0.456e12", C = "71427" }
+reproduced_from = ["smith_1976"]
+check = "As printed (equation image checked) it gives n - 1 = 229.5e-6 at 18 788.4 cm^-1, not Table 2's 325e-6, and 231.5e-6 at 167.2 nm against Smith's 532.0e-6 (scaled to 15 C): the numerator is 100 times too small. With 0.456 x 10^14 it gives 324.53e-6 at 18 788.4 cm^-1 (Table 2: 325) and follows smith_1976's experiment_CO, scaled from 0 C to 15 C by 273.15/288.15, to within -0.83 % to +0.26 % over 167-288 nm (within the stated ~2 %). Read the numerator as 0.456 x 10^14. The n-based 6.82e-27 needs n - 1 = 325.1e-6; 324.53e-6 gives 6.80e-27, a 0.3 % gap within the rounding of the printed coefficients. Checked 2026-09-25."
+notes = "The authors' fit of the N2/Ar functional form to Smith et al.'s 38 CO values (Fig. 6), 'scaled to 15 C and 1013 hPa, or a density of 25.47e18 cm^-3' (p. 12): an ideal-gas rescaling of Smith's real-gas 0 C values, as for Eq. (10). 'Within the range of the measurements, the accuracy of n - 1 is estimated to be ~2%'; the authors note that Smith et al. did not fit a dispersion relation themselves. Not independent of smith_1976 (which includes the Lagrange-interpolated cells among the 38)."
+
+[[formulas]]
+id = "ch4_eq18"
+material = "CH4"
+equation = "Eq. (18), p. 14"
+printed = "(n - 1) x 10^8 = (46662 +- 13) + (4.02 +- 0.03) x 10^-6 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "325-633 nm (Hohm's data)"
+coefficients = { a = "46662", b = "4.02e-6" }
+reproduced_from = ["U. Hohm, Mol. Phys. 78, 929 (1993)"]
+check = "Gives 480.81e-6 at 18 788.4 cm^-1 (Table 2: 481). Checked 2026-09-25."
+notes = "The authors' fit to Hohm's polarizabilities (Fig. 6), converted to n - 1 at N = 25.47e18 cm^-3. 'The accuracy of this equation is estimated to be better than 4%' (p. 14). Not independent of Hohm 1993 (not in the library)."
+
+[[formulas]]
+id = "n2o_rho_eq19"
+material = "N2O"
+equation = "Eq. (19), p. 14"
+printed = "rho_p = (0.0577 +- 0.0007) + (11.8 +- 2) x 10^-12 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+range = "4579-6471 A (Alms et al.)"
+coefficients = { a = "0.0577", b = "11.8e-12" }
+check = "Gives rho_p = 0.06187 at 18 788.4 cm^-1 and, with Eq. (7), F_k = 1.2248 (Table 2: 1.225). Checked 2026-09-25."
+notes = "The depolarization ratio for polarized light, fitted to Alms et al. (alms_1975); F_k = (3 + 6 rho_p)/(3 - 4 rho_p) (Eq. 7)."
+
+[[formulas]]
+id = "n2o_eq20"
+material = "N2O"
+equation = "Eq. (20), p. 14"
+printed = "(n - 1) x 10^8 = (46890 +- 85) + (4.12 +- 0.2) x 10^-6 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "4579-6471 A (Alms et al.)"
+coefficients = { a = "46890", b = "4.12e-6" }
+reproduced_from = ["alms_1975"]
+check = "Gives 483.44e-6 at 18 788.4 cm^-1 (Table 2: 483). Checked 2026-09-25."
+notes = "Fitted to Alms et al.'s polarizabilities, which are themselves Landolt-Bornstein's refractive indices (see alms_1975): not an independent refractive-index source."
+
+[[formulas]]
+id = "sf6_eq21"
+material = "SF6"
+equation = "Eq. (21), p. 14"
+printed = "(n - 1) x 10^8 = 71517 + 4.996 x 10^-6 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "633-1300 nm (two points); 'an extrapolation to short wavelength only provides a crude approximation' (p. 14)"
+coefficients = { a = "71517", b = "4.996e-6" }
+reproduced_from = ["vukovic_1996"]
+check = "Gives 732.81e-6 at 18 788.4 cm^-1 (Table 2: 733). Checked 2026-09-25."
+notes = "Two constants from Vukovic et al.'s 632.99 and 1300 nm values, rescaled to 15 C (how is not stated)."
+
+[[formulas]]
+id = "o2_eq23"
+material = "O2"
+equation = "Eq. (23), p. 16"
+printed = "(n - 1) x 10^8 = 20564.8 + 24.80899 / (4.09 x 10^9 - (nu/cm^-1)^2), 546 > lambda_vac > 288 nm"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_0C"
+density = "ideal"
+range = "288-546 nm (vacuum)"
+coefficients = { A = "20564.8", B = "24.80899", C = "4.09e9" }
+reproduced_from = ["D. R. Bates, Planet. Space Sci. 32, 785 (1984)"]
+check = "As printed (page image checked) the second term is negligible (7e-9); the numerator lacks a factor 10^12: he_2021 quotes the same formula with 2.480899 x 10^13, which gives n - 1 = 272.0e-6 at 18 788.4 cm^-1. Neither version reproduces the n-based oxygen cross section the paper prints ('4066 x 10^-27', i.e. 4.066e-27 cm^2): with Eq. (24) and N = 25.47e18 they give 2.96e-27 (as printed) and 5.18e-27 (with 10^12), and 4.66e-27 with he_2021's N = 2.68678e19 at 0 C. Not resolved. Checked 2026-09-25."
+notes = "The paper does not say to what state Eq. (23) refers; he_2021 records Bates's oxygen formula at 273.15 K and 1013.25 hPa, which is taken here."
+
+[[formulas]]
+id = "o2_king_eq24"
+material = "O2"
+equation = "Eq. (24), p. 16"
+printed = "F_k(nu) = 1.096 + 1.385 x 10^-11 (nu/cm^-1)^2 + 1.448 x 10^-20 (nu/cm^-1)^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+range = "not stated"
+coefficients = { a = "1.096", b = "1.385e-11", c = "1.448e-20" }
+reproduced_from = ["D. R. Bates, Planet. Space Sci. 32, 785 (1984)"]
+check = "The third term's exponent is printed 2 (page image checked); a second nu^2 term would merge with the first, so it is presumably nu^4 (he_2021 quotes nu^4, with a leading 1.09). With nu^4: F_k = 1.1027 at 18 788.4 cm^-1. Checked 2026-09-25."
+
+[[formulas]]
+id = "ar_power_exp"
+material = "Ar"
+equation = "Eq. (15) with Table 1, p. 11"
+printed = "sigma = sigma_bar (nu/cm^-1)^(4 + delta); sigma_bar_exp/10^-47 = 14.21(8), delta_exp = 0.0968(5)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma in cm^2"
+range = "the measured frequencies, 15 400-21 400 cm^-1"
+coefficients = { sigma_bar = "14.21e-47", delta = "0.0968" }
+check = "With the printed 10^-47 it gives 4.6e-29 cm^2 at 18 788.4 cm^-1, 100 times Table 2 (4.45e-27): the unit must be 10^-45 cm^2 (every sigma_bar of Table 1 fits Table 2 only so). With 10^-45: 4.59e-27 at 18 788.4 cm^-1. Checked 2026-09-25."
+notes = "Fit of Teillet's power law to the measured Ar cross sections (Figs. 4, 5), one parameter at a time; 'the correlation between the two parameters is very strong'. Delta_avg (measured minus n-based over measured, mean) 0.4 %."
+
+[[formulas]]
+id = "ar_power_n_based"
+material = "Ar"
+equation = "Eq. (15) with Table 1, p. 11"
+printed = "sigma_bar_n-based/10^-47 = 14.68(3), delta_n-based = 0.0930(2)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma in cm^2"
+range = "fitted to Eq. (2) values over 10 000-25 000 cm^-1"
+coefficients = { sigma_bar = "14.68e-47", delta = "0.0930" }
+check = "With 10^-45 (see ar_power_exp) it gives 4.568e-27 at 18 788.4 cm^-1 against Table 2's n-based 4.56. Checked 2026-09-25."
+
+[[formulas]]
+id = "n2_power_exp"
+material = "N2"
+equation = "Eq. (15) with Table 1, p. 11"
+printed = "sigma_bar_exp/10^-47 = 18.83(9), delta_exp = 0.0817(5)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma in cm^2"
+range = "the measured frequencies, 15 400-21 400 cm^-1"
+coefficients = { sigma_bar = "18.83e-47", delta = "0.0817" }
+check = "With 10^-45 it gives 5.24e-27 at 18 788.4 cm^-1 (Table 2 measured 5.10 +- 0.24). Delta_avg -0.7 %. Checked 2026-09-25."
+
+[[formulas]]
+id = "n2_power_n_based"
+material = "N2"
+equation = "Eq. (15) with Table 1, p. 11"
+printed = "sigma_bar_n-based/10^-47 = 16.31(4), delta_n-based = 0.974(3)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma in cm^2"
+range = "fitted to Eq. (2) values over 10 000-25 000 cm^-1"
+coefficients = { sigma_bar = "16.31e-47", delta = "0.974" }
+check = "delta is printed 0.974 (image and pdf text checked), which gives 3e-23 cm^2 at 18 788.4 cm^-1; with 0.0974 (and 10^-45) it gives 5.300e-27, Table 2's n-based 5.30 exactly. Read delta_n-based = 0.0974(3). Checked 2026-09-25."
+
+[[formulas]]
+id = "co2_power_exp"
+material = "CO2"
+equation = "Eq. (15) with Table 1, p. 11"
+printed = "sigma_bar_exp/10^-47 = 27.42(14), delta_exp = 0.1343(5)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma in cm^2"
+range = "the measured frequencies, 17 400-21 400 cm^-1"
+coefficients = { sigma_bar = "27.42e-47", delta = "0.1343" }
+check = "With 10^-45 it gives 12.81e-27 at 18 788.4 cm^-1 (Table 2 measured 12.4 +- 0.8). Delta_avg -3.9 %. Checked 2026-09-25."
+
+[[formulas]]
+id = "co2_power_n_based"
+material = "CO2"
+equation = "Eq. (15) with Table 1, p. 11"
+printed = "sigma_bar_n-based/10^-47 = 28.49(9), delta_n-based = 0.1343(3)"
+variable = "nu: vacuum wavenumber in cm^-1; sigma in cm^2"
+range = "fitted to Eq. (2) values over 10 000-25 000 cm^-1"
+coefficients = { sigma_bar = "28.49e-47", delta = "0.1343" }
+check = "With 10^-45 it gives 13.31e-27 at 18 788.4 cm^-1 (Table 2's n-based 13.29). Checked 2026-09-25."

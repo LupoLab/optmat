@@ -1,0 +1,165 @@
+citation = "S. Kröll and W. K. Bischel, \"Two-photon absorption and photoionization cross-section measurements in the 5p5 6p configuration of xenon\", Phys. Rev. A 41, 1340 (1990)"
+doi = "10.1103/PhysRevA.41.1340"
+library = "Kroll_1990_TwoPhotonAbsorption"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Two-photon cross sections (Sec. II A): two-photon-excited fluorescence of \
+xenon at 10-20 Pa ('Nonradiative decay (quenching) is not more than 1%'), the 5p5 6p \
+-> 5p5 6s infrared fluorescence (828, 823 and 905 nm, with branching ratios 0.998, 0.70 \
+and 0.36 from refs. 18, 19) on a photomultiplier, the detection efficiency calibrated \
+by spontaneous Raman scattering in H2 at the same wavelengths (ref. 17), single-shot \
+signal against pulse energy (slope 1.01 against E^2, Fig. 1), with measured spatial \
+and temporal beam profiles (Eqs. 1, 2, following Bamford, Jusinski and Bischel, ref. \
+16). Light: a Nd:YAG-pumped dye laser (R6G, about 557-573 nm), frequency-doubled and \
+Raman-shifted in H2 (the first anti-Stokes line), the vertically polarised part \
+selected by a Pellin-Broca prism; 50-100 uJ through a 1 mm aperture. The laser was \
+scanned over each line (Gaussian, 30 GHz FWHM two-photon width, a laser width of about \
+20 GHz) and the line-centre value integrated over the line (Eq. 4). Excited-state \
+photoionisation (Sec. II B): fluorescence depletion spectroscopy, the ratio of the \
+2p5 or 2p6 fluorescence after and before an excimer-laser pulse (193 or 248 nm) \
+against its fluence, I(F) = I(0) exp(-sigma_ion F) (Eq. 5), single shots, the fluence \
+from the energy through a 200 um pinhole; corrected by about 10 % for the ionising \
+beam's non-uniform fluence (r1/r0 <= 0.5, Sec. III A)."""
+notes = """Phys. Rev. A 41(3), 1340-1349 (1 February 1990) = PDF pages 3-12 of Lund \
+University's repository copy (a cover and a licence page first; journal page = PDF page \
++ 1337); a scan with a text layer. Identity checked against the first page of the \
+article (journal, volume, pages, authors). Every number taken was checked against the \
+table images and the rendered pages (Table I p. 1346, Table II p. 1347).
+
+LEVELS (Paschen notation, as the paper uses; jl notation from p. 1340): 2p5 = 5p5 6p \
+[1/2]0 (J = 0) at 80 119 cm-1, 2p6 = 6p[3/2]2 (J = 2) at 79 212 cm-1, 2p9 = 6p[5/2]2 \
+(J = 2) at 78 120 cm-1; excited at 249.6 nm (Sec. V and the abstract), and '250, 252, \
+and 256 nm' (p. 1341). The two-photon datasets' abscissa is the level (a label).
+
+WHAT IS TAKEN (tools/extract/kroll_1990.py). Table I's two 'This work' rows: (1) the \
+measured product sigma_tot G2(0), 7.0, 2.4, 4.0 x 10^-35 cm4 for 2p5, 2p6, 2p9: 'The \
+two-photon cross section as expressed in Eq. (1) is strictly the product of the actual \
+two-photon absorption cross section and G2(0)' (p. 1346); (2) sigma_tot, 5.0, 1.7, 2.9 \
+x 10^-35 cm4, the same divided by G2(0) = 1.4, a value 'previously determined' for the \
+second anti-Stokes line of the same laser system (ref. 27: D. J. Bamford, A. P. Hickman, \
+M. J. Dyer and W. K. Bischel, J. Opt. Soc. Am. B 5, 1369 (1988)) and assumed for the \
+first; 'an educated guess might be that this quantity actually is slightly higher for \
+the first than for the second anti-Stokes component. However, no conclusive evidence \
+exists at present' (p. 1346). DECISION: both are kept, because the measurement is the \
+product and the correction rests on an assumed G2(0) whose uncertainty is not stated; \
+the corrected values are the cross section proper and are primary, the product is a \
+check (it carries the same measurement and must not be used beside them). The \
+uncertainty, '30%' (50 % for 2p9), is 'one standard deviation based on 15 independent \
+measurements for the 2p5 and 2p6 states and seven independent measurements for the 2p9 \
+state' (p. 1346); for sigma_tot it does not include G2(0). Table II's measured \
+photoionisation cross sections (10^-18 cm2): 2p5, 4.3 +- 0.7 (248 nm) and 1.9 +- 0.7 \
+(193 nm); 2p6, 3.7 +- 0.7 and 1.8 +- 0.5; the level of the +- is not stated.
+
+CHECKED (the script). sigma_tot G2(0) / 1.4 rounds to every printed sigma_tot. Sec. V \
+(p. 1347) uses 'two-photon absorption cross section sigma^(2) = 4.0 x 10^-45 cm4 s, and \
+Doppler width 0.086 cm-1' for 2p5: 7.0e-35 cm4 times the peak of a Gaussian of 0.086 \
+cm-1 FWHM normalised in angular frequency, 2 sqrt(ln 2 / pi) / (2 pi c x 0.086 cm-1) = \
+5.80e-11 s, is 4.06e-45 cm4 s; with sigma_tot (5.0) it would be 2.9e-45. So Sec. V's \
+fractional-ionisation estimate (Fig. 8) uses the as-measured product, and Eq. (4)'s \
+integral is over the angular frequency of the two-photon transition ('omega_0 is the \
+two-photon radial frequency', p. 1342; the 0.086 cm-1 is xenon's Doppler width at \
+80 119 cm-1 and 295 K, 0.0860): frequency_variable = angular. The ratio of the 2p5 and \
+2p6 values is 2.9 ('~3', p. 1347).
+
+NOT TAKEN. Table I's other experiments, as sigma_tot G2(0): ref. 10 (C. H. Chen, G. S. \
+Hurst and M. G. Payne, Chem. Phys. Lett. 75, 473 (1980)), 6.1 for 2p5; ref. 8 (W. \
+Gornik, S. Kindt, E. Matthias and D. Schmidt, J. Chem. Phys. 75, 68 (1981)), 6.8, \
+0.74, 3.7, 'Factor of 3'; ref. 9 (T. D. Raymond, N. Bowering, C.-Y. Kuo and J. W. Keto, \
+Phys. Rev. A 29, 721 (1984)), 2.7, 0.28, 1.3, '50%'. The paper does not say how they \
+were brought to its definition (frequency variable, G2(0)), so the quantity's required \
+parameters cannot be stated for them; none is in the library. The theory of ref. 12 \
+(M. S. Pindzola, M. G. Payne and W. R. Garrett, Phys. Rev. A 24, 3115 (1981)), a range \
+'4-13' for 2p5 (Dirac-Fock, 'correct within a factor of 3-5'). Table II's theory: ref. \
+13 (M. S. Pindzola, Phys. Rev. A 23, 201 (1981)), Hartree-Fock velocity to Dirac-Fock \
+length ranges 1.3-3.0 (248 nm) and 0.7-1.8 (193 nm) for 2p5; ref. 14 (T. N. Chang and Y. \
+S. Kim, Phys. Rev. A 26, 2728 (1982)), 3.7 and 1.8, an average over the 5p5 6p \
+configuration; printed centred across both states' columns; ranges and averages, not \
+in the library. The 2p5/2p6 ratio of '5 +- 2' from consecutive measurements only (p. \
+1347), kept in the notes. Figs. 1-8 (illustrations and model curves).
+
+FINDINGS. dakka_2018 (Table I, 'Literature') compares its Kr sigma_0^(2) with this \
+paper's 2p6 value as 2.4 +- 0.8 x 10^-35 cm4: the as-measured product, not the \
+G2-corrected 1.7. drag_2021 (Table 1) quotes the corrected values, 5.0, 1.7 and 2.9 x \
+10^-43 m4 (+-30, 30, 50 %), correctly converted (10^-35 cm4 = 10^-43 m4)."""
+
+[[datasets]]
+id = "sigma_tot_g2"
+material = "Xe"
+file = "Xe/kroll_1990__sigma_tot_g2.csv"
+table = "tbl_3fbaf4afd365"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+scale = 1e-35
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 1346), upper part, 'This work': sigma_tot G2(0), the measured product (Eq. 1 integrated over the line, Eq. 4). Rows: 2p5 (6p[1/2]0, 249.6 nm), 2p6 (6p[3/2]2, 252 nm), 2p9 (6p[5/2]2, 256 nm). A check: sigma_tot (primary) is this divided by an assumed G2(0) = 1.4. Uncertainty 30 % (2p9: 50 %), one standard deviation of 15 (2p9: 7) independent measurements."
+[datasets.uncertainty]
+relative = 0.3
+relative_rows = { "2p9" = 0.5 }
+level = "1 sigma"
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "as measured: the product sigma_tot G2(0), G2(0) of the first anti-Stokes beam of an H2 Raman shifter (not measured)"
+method = "two-photon-excited fluorescence, detection calibrated by H2 Raman scattering"
+definition = "sigma_tot = integral of the line-centre cross section sigma^(2)(omega - omega_0) d omega (Eq. 4), omega_0 the two-photon angular frequency, the line-centre value from Eq. (1); W = sigma^(2) Phi^2"
+levels = "2p5 = 5p5 6p[1/2]0 (J = 0), 2p6 = 6p[3/2]2 (J = 2), 2p9 = 6p[5/2]2 (J = 2)"
+
+[[datasets]]
+id = "sigma_tot"
+material = "Xe"
+file = "Xe/kroll_1990__sigma_tot.csv"
+table = "tbl_3fbaf4afd365"
+quantity = "two_photon_excitation_cross_section"
+unit = "cm4"
+scale = 1e-35
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 1346), lower part, 'This work': sigma_tot, 'assuming G2(0) = 1.4' (note c), the as-measured product divided by 1.4 (checked). Rows: 2p5 (6p[1/2]0, 249.6 nm), 2p6 (6p[3/2]2, 252 nm), 2p9 (6p[5/2]2, 256 nm). The table gives no uncertainty for this part; the measurement's 30 % (2p9: 50 %, one standard deviation) is recorded, without the unstated uncertainty of the assumed G2(0)."
+[datasets.uncertainty]
+relative = 0.3
+relative_rows = { "2p9" = 0.5 }
+level = "1 sigma"
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "corrected, G2(0) = 1.4 assumed (measured for the second anti-Stokes line of the same laser, ref. 27; the light used is the first)"
+method = "two-photon-excited fluorescence, detection calibrated by H2 Raman scattering"
+definition = "sigma_tot = integral of the line-centre cross section sigma^(2)(omega - omega_0) d omega (Eq. 4), omega_0 the two-photon angular frequency, the line-centre value from Eq. (1) divided by G2(0); W = sigma^(2) Phi^2"
+levels = "2p5 = 5p5 6p[1/2]0 (J = 0), 2p6 = 6p[3/2]2 (J = 2), 2p9 = 6p[5/2]2 (J = 2)"
+
+[[datasets]]
+id = "photoionization_2p5"
+material = "Xe"
+file = "Xe/kroll_1990__photoionization_2p5.csv"
+table = "tbl_0a9507c3ebd9"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 1347), 'Experiment (This work)', 2p5 columns at 248 and 193 nm (KrF and ArF excimer lasers; the wavelengths as printed, to 1 nm). Fluorescence depletion, corrected by about 10 % for the non-uniform ionising fluence (Sec. III A). The +- is printed without a level."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "2p5 (Paschen) = 5p5 6p[1/2]0, J = 0, two-photon excited from the ground state with linearly polarised light"
+method = "fluorescence depletion spectroscopy"
+
+[[datasets]]
+id = "photoionization_2p6"
+material = "Xe"
+file = "Xe/kroll_1990__photoionization_2p6.csv"
+table = "tbl_0a9507c3ebd9"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table II (p. 1347), 'Experiment (This work)', 2p6 columns at 248 and 193 nm (KrF and ArF excimer lasers; the wavelengths as printed, to 1 nm). Fluorescence depletion (Fig. 5 shows a 193 nm run giving 1.7e-18 cm2), corrected by about 10 % for the non-uniform ionising fluence (Sec. III A). The +- is printed without a level."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "2p6 (Paschen) = 5p5 6p[3/2]2, J = 2, two-photon excited from the ground state with linearly polarised light (a single magnetic sublevel, p. 1344)"
+method = "fluorescence depletion spectroscopy"

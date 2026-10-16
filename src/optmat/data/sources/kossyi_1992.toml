@@ -1,0 +1,167 @@
+citation = "I. A. Kossyi, A. Yu. Kostinsky, A. A. Matveyev and V. P. Silakov, \"Kinetic scheme of the non-equilibrium discharge in nitrogen-oxygen mixtures\", Plasma Sources Sci. Technol. 1, 207 (1992)"
+doi = "10.1088/0963-0252/1/3/011"
+library = "Kossyi_1992_KineticSchemeNon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A kinetic scheme for a non-equilibrium discharge in N2-O2 mixtures, for \
+cold (200-500 K), vibrationally unexcited gas: rate constants selected from reviews and \
+recent papers for electron-impact excitation, dissociation and ionisation, associative \
+ionisation, electron-ion recombination, attachment and detachment, neutral chemistry, \
+ion conversion and ion-ion recombination, with a model calculation of a pulsed \
+discharge in air (pp. 207-219). No measurements."""
+notes = """Identity checked on the first article page (PDF page 2 = journal p. 207; \
+PDF page 1 is a cover sheet): Kossyi, Kostinsky, Matveyev and Silakov, Plasma Sources \
+Sci. Technol. 1, 207-220 (1992). PDF page n = journal page 205 + n (the page image of \
+PDF page 4 is numbered 209).
+
+Curated: only the dissociative recombination coefficients of the registered molecular \
+ions (Section 2.3, pp. 209-210; page images checked at 220 dpi, the text extraction \
+garbles the equation numbers). Each is printed as k = A x (300/T_e)^n cm^3 s^-1, with \
+'the electron temperature T_e ... the quantity (2 epsilon_e)/(3k) (epsilon_e is the mean \
+electron energy); T_e is in kelvin' (p. 209): a power law with T_ref = 300 K. Every \
+coefficient is taken by the authors from another work, cited in brackets, none of \
+which is in the library: [20] M. H. Bortner and T. Baurer (eds), Defense Nuclear Agency \
+Reaction Rate Handbook, 2nd ed., DNA 1948H (1978), ch. 24; [22] K. Smith and R. \
+Thomson, Computer Modeling of Gas Lasers (Plenum, 1978) (printed 'Tomson'); [24] S. I. \
+Kozlov, V. A. Vlaskov and N. V. Smirnova, Sov. Space Res. 26, 738 (1988). No \
+uncertainty and no range of T_e is given. The selection favoured 'fundamental review \
+articles containing a critical analysis' where possible (p. 208).
+
+NOT REGISTERED, NOTES ONLY (p. 209): the cluster ions, (29) N4+ + e -> N2 + N2, \
+k29 = 2 x 10^-6 (300/T_e)^1/2; (30) O4+ + e -> O2 + O2, 1.4 x 10^-6 (300/T_e)^1/2; (31) \
+NO+.NO + e -> NO + NO, 1.3 x 10^-6 (300/T_e)^1/2, all from [21] B. M. Smirnov, Complex \
+Ions (Nauka, 1983); (32)-(34) NO+.N2, NO+.O2 and O2+.N2 + e set equal to k31; (37) N3+ + \
+e -> N2 + N, set equal to k35 ('according to [23] there should be fulfilled an \
+inequality k37 << 3 x 10^-6 cm^3 s^-1'). Three-body electron-ion recombination (p. 210) \
+for A+ = N2+, O2+, NO+, N+, O+ and M = N2, O2: (43) e + e + A+, k43 = 10^-19 \
+(300/T_e)^4.5 cm^6 s^-1 [25]; (44) e + A+ + M, k44 = 6 x 10^-27 (300/T_e)^1.5 cm^6 s^-1 \
+[26]. The rest of the scheme (excitation, attachment, ion conversion, neutral \
+chemistry, ion-ion recombination) is not taken: plasma kinetics is outside optmat's \
+scope except as data (TC-954).
+
+Register: TC-976."""
+
+[[datasets]]
+id = "dr_N2+_N_N"
+material = "N2+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["K. Smith and R. Thomson, Computer Modeling of Gas Lasers (Plenum, New York, 1978)"]
+points = [["1", "", "2.8"]]
+notes = "Reaction (38), p. 209: 'N2+ + e => N + N, k38 = 2.8 x 10^-7 x (300/T_e)^1/2 cm^3 s^-1 [22]'. The products' states are not given (the second channel, (39), names N(2D))."
+[datasets.parameters]
+products = "N + N (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 0.5
+
+[[datasets]]
+id = "dr_N2+_N_N2D"
+material = "N2+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["M. H. Bortner and T. Baurer (eds), Defense Nuclear Agency Reaction Rate Handbook, 2nd ed., DNA 1948H (General Electric, TEMPO, 1978), ch. 24"]
+points = [["1", "", "2"]]
+notes = "Reaction (39), p. 209: 'N2+ + e => N + N(2D), k39 = 2 x 10^-7 x (300/T_e)^1/2 cm^3 s^-1 [20]'. The scheme carries both N2+ channels, (38) and (39), together 4.8 x 10^-7 at 300 K."
+[datasets.parameters]
+products = "N + N(2D)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 0.5
+
+[[datasets]]
+id = "dr_O2+"
+material = "O2+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["S. I. Kozlov, V. A. Vlaskov and N. V. Smirnova, Sov. Space Res. 26, 738 (1988)"]
+points = [["1", "", "2"]]
+notes = "Reaction (40), p. 210: 'O2+ + e => O + O, k40 = 2 x 10^-7 x (300/T_e) cm^3 s^-1 [24]' (exponent 1, page image checked)."
+[datasets.parameters]
+products = "O + O (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 1.0
+
+[[datasets]]
+id = "dr_NO+_N_O"
+material = "NO+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["S. I. Kozlov, V. A. Vlaskov and N. V. Smirnova, Sov. Space Res. 26, 738 (1988)"]
+points = [["1", "", "4"]]
+notes = "Reaction (41), p. 210: 'NO+ + e => N + O, k41 = 4 x 10^-7 x (300/T_e)^1.5 cm^3 s^-1 [24]'."
+[datasets.parameters]
+products = "N + O (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 1.5
+
+[[datasets]]
+id = "dr_NO+_N2D_O"
+material = "NO+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["M. H. Bortner and T. Baurer (eds), Defense Nuclear Agency Reaction Rate Handbook, 2nd ed., DNA 1948H (General Electric, TEMPO, 1978), ch. 24"]
+points = [["1", "", "3"]]
+notes = "Reaction (42), p. 210: 'NO+ + e => N(2D) + O, k42 = 3 x 10^-7 x (300/T_e) cm^3 s^-1 [20]' (exponent 1)."
+[datasets.parameters]
+products = "N(2D) + O"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 1.0
+
+[[datasets]]
+id = "dr_NO2+"
+material = "NO2+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["K. Smith and R. Thomson, Computer Modeling of Gas Lasers (Plenum, New York, 1978)"]
+points = [["1", "", "2"]]
+notes = "Reaction (35), p. 209: 'NO2+ + e => NO + O, k35 = 2 x 10^-7 x (300/T_e)^1/2 cm^3 s^-1 [22]'."
+[datasets.parameters]
+products = "NO + O (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 0.5
+
+[[datasets]]
+id = "dr_N2O+"
+material = "N2O+"
+table = "text"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "excluded"
+points = [["1", "", "2"]]
+notes = "Reaction (36), p. 209: 'N2O+ + e => N2 + O, k36 -> k35': the scheme sets the coefficient equal to NO2+'s (2 x 10^-7 (300/T_e)^1/2), without a source. An assumption of the scheme, not a measured or calculated value: kept for the record, excluded."
+[datasets.parameters]
+products = "N2 + O (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 0.5

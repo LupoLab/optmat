@@ -1,0 +1,6379 @@
+{
+ "optmat": {
+  "OptmatError": {
+   "bases": [
+    "builtins.Exception"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "__version__": {
+   "kind": "constant",
+   "type": "str"
+  }
+ },
+ "optmat.conditions": {
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "ONE_ATM_0C": {
+   "kind": "constant",
+   "type": "State"
+  },
+  "ONE_ATM_15C": {
+   "kind": "constant",
+   "type": "State"
+  },
+  "ONE_ATM_20C": {
+   "kind": "constant",
+   "type": "State"
+  },
+  "ONE_BAR_0C": {
+   "kind": "constant",
+   "type": "State"
+  },
+  "State": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pressure",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature",
+     "type": "float"
+    }
+   ],
+   "init": "(pressure: 'float', temperature: 'float') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "air_refractivity": {
+   "kind": "function",
+   "signature": "(vacuum_wavenumber: 'ArrayLike | float', state: 'State') -> \"Float[np.ndarray, '*shape']\""
+  },
+  "standard_air_refractivity": {
+   "kind": "function",
+   "signature": "(vacuum_wavenumber: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\""
+  },
+  "vacuum_wavelength_from_standard_air": {
+   "kind": "function",
+   "signature": "(air_wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\""
+  }
+ },
+ "optmat.exceptions": {
+  "ArgumentError": {
+   "bases": [
+    "optmat.exceptions.OptmatError",
+    "builtins.ValueError"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "DataError": {
+   "bases": [
+    "optmat.exceptions.OptmatError",
+    "builtins.ValueError"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "ModelAbsorptionWarning": {
+   "bases": [
+    "builtins.UserWarning"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "ModelRangeWarning": {
+   "bases": [
+    "builtins.UserWarning"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "OptmatError": {
+   "bases": [
+    "builtins.Exception"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "StateError": {
+   "bases": [
+    "optmat.exceptions.OptmatError",
+    "builtins.ValueError"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  },
+  "UnavailableModelError": {
+   "bases": [
+    "optmat.exceptions.OptmatError",
+    "builtins.LookupError"
+   ],
+   "init": "(...)",
+   "kind": "class",
+   "members": {}
+  }
+ },
+ "optmat.gas.absorption": {
+  "ABSORPTION_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "MeasuredAbsorption": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature_k",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pieces",
+     "type": "tuple[Piece, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "fwhm_cm",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "step_cm",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavenumber_cm",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma_m2",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "real_au",
+     "type": "Float[np.ndarray, ' n']"
+    }
+   ],
+   "init": "(gas: 'Gas', temperature_k: 'float', pieces: 'tuple[Piece, ...]', fwhm_cm: 'float', step_cm: 'float', wavenumber_cm: \"Float[np.ndarray, ' n']\", sigma_m2: \"Float[np.ndarray, ' n']\", real_au: \"Float[np.ndarray, ' n']\", *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "complex_derivative_au": "method(self, omega: \"Float[np.ndarray, '*shape']\") -> \"tuple[Float[np.ndarray, '*shape'], Float[np.ndarray, '*shape']]\"",
+    "complex_polarizability_au": "method(self, omega: \"Float[np.ndarray, '*shape']\") -> \"tuple[Float[np.ndarray, '*shape'], Float[np.ndarray, '*shape']]\"",
+    "max_wavenumber_cm": "property",
+    "real_derivative_au": "method(self, omega: \"Float[np.ndarray, '*shape']\", order: 'int') -> \"Float[np.ndarray, '*shape']\"",
+    "strength": "method(self, low_ev: 'float', high_ev: 'float') -> 'float'",
+    "sum_rule": "method(self, k: 'float') -> 'float'"
+   }
+  },
+  "Piece": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "from_nm",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "to_nm",
+     "type": "float"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "note",
+     "type": "str"
+    }
+   ],
+   "init": "(source: 'str', from_nm: 'float', to_nm: 'float', note: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "assemble": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', pieces: 'tuple[Piece, ...]', *, temperature_k: 'float', fwhm_cm: 'float' = 50.0, step_cm: 'float' = 0.5) -> 'MeasuredAbsorption'"
+  },
+  "measured_absorption": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', *, fwhm_cm: 'float | None' = None, variant: 'str | None' = None) -> 'MeasuredAbsorption'"
+  }
+ },
+ "optmat.gas.air": {
+  "ABSORPTION_THRESHOLD_M": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "AIR_COMPOSITIONS": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "ALPHA_FRACTION": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "AirModel": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "constituents",
+     "type": "tuple[Constituent, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "models",
+     "type": "tuple[Model, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "equation_of_state",
+     "type": "EquationOfState"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    }
+   ],
+   "init": "(name: 'str', constituents: 'tuple[Constituent, ...]', models: 'tuple[Model, ...]', equation_of_state: 'EquationOfState', wavelength_range: 'tuple[float, float]', intervals: 'tuple[tuple[float, float], ...]', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "complex_polarizability": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "dpolarizability_domega": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "polarizability": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Float[np.ndarray, '*shape']\"",
+    "refractive_index": "method(self, wavelength: 'ArrayLike | float', state: 'State' = State(pressure=101325.0, temperature=273.15), *, ideal: 'bool' = False, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "refractivity": "method(self, wavelength: 'ArrayLike | float', state: 'State' = State(pressure=101325.0, temperature=273.15), *, ideal: 'bool' = False, warn: 'bool' = True) -> \"Float[np.ndarray, '*shape']\""
+   }
+  },
+  "DEFAULT_AIR": {
+   "kind": "constant",
+   "type": "str"
+  },
+  "GVD_FRACTION": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "MIN_WIDTH_CM": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "air_model": {
+   "kind": "function",
+   "signature": "(name: 'str' = 'dry air (N2, O2, Ar)') -> 'AirModel'"
+  }
+ },
+ "optmat.gas.comparison": {
+  "COMMIT": {
+   "kind": "constant",
+   "type": "str"
+  },
+  "DatabaseModel": {
+   "bases": [
+    "optmat.gas.models.base.Model"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "formula_type",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "coefficients",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "State(pressure=101325.0, temperature=273.15)",
+     "init": true,
+     "kw_only": false,
+     "name": "state",
+     "type": "State"
+    }
+   ],
+   "init": "(gas: 'Gas | str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', formula_type: 'str' = '', coefficients: 'tuple[float, ...]' = (), state: 'State' = State(pressure=101325.0, temperature=273.15), *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "reference_density": "property"
+   }
+  },
+  "TabulatedEntry": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "references",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "state",
+     "type": "State"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "refractive_index",
+     "type": "Float[np.ndarray, ' n']"
+    }
+   ],
+   "init": "(gas: 'Gas', name: 'str', references: 'str', state: 'State', wavelength: \"Float[np.ndarray, ' n']\", refractive_index: \"Float[np.ndarray, ' n']\") -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "database_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, DatabaseModel]'"
+  },
+  "tabulated_entries": {
+   "kind": "function",
+   "signature": "() -> 'tuple[TabulatedEntry, ...]'"
+  }
+ },
+ "optmat.gas.composition": {
+  "Constituent": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "mole_fraction",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "primary",
+     "type": "bool"
+    }
+   ],
+   "init": "(material: 'str', mole_fraction: 'float', sigma: 'float', source: 'str', primary: 'bool') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "MIXTURES": {
+   "kind": "constant",
+   "type": "dict"
+  },
+  "REDUCED": {
+   "kind": "constant",
+   "type": "dict"
+  },
+  "composition": {
+   "kind": "function",
+   "signature": "(mixture: 'str' = 'dry air') -> 'tuple[Constituent, ...]'"
+  }
+ },
+ "optmat.gas.eos": {
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "EquationOfState": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "fluid",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "reference",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "backend",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas_constant",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "critical_temperature",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "maximum_pressure",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature_range",
+     "type": "tuple[float, float]"
+    }
+   ],
+   "init": "(material: 'str', fluid: 'str', reference: 'str', backend: 'str', gas_constant: 'float', critical_temperature: 'float', maximum_pressure: 'float', temperature_range: 'tuple[float, float]', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "compressibility": "method(self, state: 'State') -> 'float'",
+    "molar_mass": "property",
+    "number_density": "method(self, state: 'State') -> 'float'",
+    "phase_domain": "method(self, temperature: 'float') -> 'tuple[float, float]'",
+    "pressure": "method(self, number_density: 'ArrayLike | float', temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "saturation_pressure": "method(self, temperature: 'float') -> 'float | None'",
+    "speed_of_sound": "method(self, state: 'State') -> 'float'"
+   }
+  },
+  "ROUND_TRIP_TOLERANCE": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "SATURATION_MARGIN": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "air_equation_of_state": {
+   "kind": "function",
+   "signature": "() -> 'EquationOfState'"
+  },
+  "compressibility": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', state: 'State') -> 'float'"
+  },
+  "equation_of_state": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'EquationOfState'"
+  },
+  "ideal_number_density": {
+   "kind": "function",
+   "signature": "(state: 'State') -> 'float'"
+  },
+  "number_density": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', state: 'State', *, ideal: 'bool' = False) -> 'float'"
+  },
+  "pressure": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', number_density: 'ArrayLike | float', temperature: 'ArrayLike | float', *, ideal: 'bool' = False) -> \"Float[np.ndarray, '*shape']\""
+  }
+ },
+ "optmat.gas.gases": {
+  "Gas": {
+   "bases": [
+    "enum.StrEnum"
+   ],
+   "kind": "class",
+   "members": {
+    "Ar": "'Ar'",
+    "CH4": "'CH4'",
+    "CO": "'CO'",
+    "CO2": "'CO2'",
+    "D2": "'D2'",
+    "H2": "'H2'",
+    "He": "'He'",
+    "Kr": "'Kr'",
+    "N2": "'N2'",
+    "N2O": "'N2O'",
+    "Ne": "'Ne'",
+    "O2": "'O2'",
+    "O3": "'O3'",
+    "SF6": "'SF6'",
+    "Xe": "'Xe'"
+   }
+  },
+  "GasInfo": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "electrons",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "fluid",
+     "type": "str | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "atomic",
+     "type": "bool"
+    }
+   ],
+   "init": "(gas: 'Gas', electrons: 'int', fluid: 'str | None', atomic: 'bool') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "as_gas": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'Gas'"
+  },
+  "info": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'GasInfo'"
+  }
+ },
+ "optmat.gas.ionisation": {
+  "IONISATION_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "IonisationParameters": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy_sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy_kind",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy_source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "orbital",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "orbital_l",
+     "type": "int | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "orbital_m",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "structure",
+     "type": "Mapping[str, StructureCoefficients]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "default_structure",
+     "type": "str | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "polarizability",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "polarizability_sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "polarizability_source",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "vertical_ionization_energy",
+     "type": "float | None"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "vertical_ionization_energy_source",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "ion_polarizability",
+     "type": "float | None"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "ion_polarizability_source",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "barrier_suppression_alpha",
+     "type": "float | None"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "barrier_suppression_source",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "barrier_suppression_zhang",
+     "type": "tuple[float, float, float] | None"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "barrier_suppression_zhang_source",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "effective_charge",
+     "type": "float | None"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "effective_charge_source",
+     "type": "str"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "reasons",
+     "type": "Mapping[str, str]"
+    }
+   ],
+   "init": "(gas: 'Gas', ionization_energy: 'float', ionization_energy_sigma: 'float', ionization_energy_kind: 'str', ionization_energy_source: 'str', orbital: 'str', orbital_l: 'int | None', orbital_m: 'int', structure: 'Mapping[str, StructureCoefficients]', default_structure: 'str | None', polarizability: 'float', polarizability_sigma: 'float', polarizability_source: 'str', vertical_ionization_energy: 'float | None' = None, vertical_ionization_energy_source: 'str' = '', ion_polarizability: 'float | None' = None, ion_polarizability_source: 'str' = '', barrier_suppression_alpha: 'float | None' = None, barrier_suppression_source: 'str' = '', barrier_suppression_zhang: 'tuple[float, float, float] | None' = None, barrier_suppression_zhang_source: 'str' = '', effective_charge: 'float | None' = None, effective_charge_source: 'str' = '', reasons: 'Mapping[str, str]' = <factory>) -> 'None'",
+   "kind": "class",
+   "members": {
+    "hartree_coefficient_squared": "property",
+    "ionization_energy_au": "property",
+    "kappa": "property",
+    "l_star": "property",
+    "n_star": "property",
+    "polarizability_difference": "property"
+   }
+  },
+  "StructureCoefficients": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "orbital",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "m",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "coefficients",
+     "type": "Mapping[int, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "normalisation",
+     "type": "str"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "projections",
+     "type": "Mapping[tuple[int, int, int], complex]"
+    }
+   ],
+   "init": "(source: 'str', model: 'str', orbital: 'str', m: 'int', coefficients: 'Mapping[int, float]', normalisation: 'str', projections: 'Mapping[tuple[int, int, int], complex]' = <factory>) -> 'None'",
+   "kind": "class",
+   "members": {
+    "partial_wave_squares": "property"
+   }
+  },
+  "adk_coefficient_squared": {
+   "kind": "function",
+   "signature": "(n_star: 'float', l_star: 'float') -> 'float'"
+  },
+  "combined_structure_coefficients": {
+   "kind": "function",
+   "signature": "(tabulation: 'Sequence[Dataset]') -> 'StructureCoefficients'"
+  },
+  "electronic_static_polarizability": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'tuple[float, float, str]'"
+  },
+  "hartree_coefficient_squared": {
+   "kind": "function",
+   "signature": "(n_star: 'float', l_star: 'float') -> 'float'"
+  },
+  "ionisation_parameters": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'IonisationParameters'"
+  },
+  "structure_coefficients": {
+   "kind": "function",
+   "signature": "(dataset: 'Dataset') -> 'StructureCoefficients'"
+  }
+ },
+ "optmat.gas.ionisation_rates": {
+  "Averaging": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "Channel": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "label",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "weight",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "source",
+     "type": "str"
+    }
+   ],
+   "init": "(label: 'str', ionization_energy: 'float', weight: 'float', source: 'str') -> 'None'",
+   "kind": "class",
+   "members": {
+    "ionization_energy_au": "property"
+   }
+  },
+  "ChannelSum": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "CoulombFactor": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "IONISATION_RATES_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "IonisationRateModel": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "channels",
+     "type": "tuple[Channel, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "orbital_l",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "structure",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "structure_coefficient",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "electrons",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "coulomb",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "static_correction",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "static_constants",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "channel_sum",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "averaging",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "uncertainty_factor",
+     "type": "float"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "sources",
+     "type": "Mapping[str, str]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "reasons",
+     "type": "Mapping[str, str]"
+    }
+   ],
+   "init": "(gas: 'Gas | str', wavelength: 'float', model: 'str', channels: 'tuple[Channel, ...]', orbital_l: 'int', structure: 'str', structure_coefficient: 'float | None', electrons: 'float', coulomb: 'str', static_correction: 'str', static_constants: 'tuple[float, ...]', channel_sum: 'str', averaging: 'str', uncertainty_factor: 'float', sources: 'Mapping[str, str]' = <factory>, reasons: 'Mapping[str, str]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "INPUTS": "attribute: tuple",
+    "at_wavelength": "method(self, wavelength: 'float') -> 'IonisationRateModel'",
+    "barrier_suppression_field": "property",
+    "channel_rates": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' c ...']\"",
+    "circular_rate": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "citation": "property",
+    "cycle_averaged_rate": "method(self, amplitude: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "energy_kind": "property",
+    "energy_loss_rate": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "energy_per_event": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "from_parameters": "classmethod(cls, species: 'Gas | str', wavelength: 'float', *, ionization_energy: 'float', orbital_l: 'int', electrons: 'float', structure: 'Structure' = 'hartree', structure_coefficient: 'float | None' = None, coulomb: 'CoulombFactor' = 'static', static_correction: 'StaticCorrection' = 'tong-lin', static_constants: 'tuple[float, ...]' = (), channels: 'tuple[Channel, ...] | None' = None, channel_sum: 'ChannelSum' = 'integral', averaging: 'Averaging' = 'consistent', uncertainty_factor: 'float' = nan, citation: 'str' = '', model: 'str' = 'user', sources: 'Mapping[str, str] | None' = None, reasons: 'Mapping[str, str] | None' = None) -> 'IonisationRateModel'",
+    "instantaneous_rate": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "keldysh": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "maximum_field": "property",
+    "omega_au": "property",
+    "wavelength_range": "property"
+   }
+  },
+  "StaticCorrection": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "Structure": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "channel_factor": {
+   "kind": "function",
+   "signature": "(m: 'int', gamma: \"Float[np.ndarray, ' *shape']\", threshold: \"Float[np.ndarray, ' *shape'] | None\" = None, *, tolerance: 'float' = 1e-06) -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "channel_function": {
+   "kind": "function",
+   "signature": "(m: 'int', x: \"Float[np.ndarray, ' *shape']\") -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "circular_enhancement": {
+   "kind": "function",
+   "signature": "(field_au: 'ArrayLike', omega_au: 'float', ionization_energy_au: 'float', l: 'int') -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "circular_saddle_point": {
+   "kind": "function",
+   "signature": "(gamma: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "coulomb_factor": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", omega_au: 'float', ionization_energy_au: 'float', form: 'CoulombFactor' = 'static', charge: 'float' = 1.0) -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "cycle_average": {
+   "kind": "function",
+   "signature": "(slope: \"Float[np.ndarray, ' *shape']\", curvature: \"Float[np.ndarray, ' *shape']\") -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "cycle_average_factor": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", ionization_energy_au: 'float') -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "ionisation_rate_model": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', wavelength: 'float', model: 'str' = 'default') -> 'IonisationRateModel'"
+  },
+  "ionisation_rate_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, dict[Gas, IonisationRateModel]]'"
+  },
+  "keldysh_parameter": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", omega_au: 'float', ionization_energy_au: 'float') -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "power_law_average": {
+   "kind": "function",
+   "signature": "(slope: \"Float[np.ndarray, ' *shape']\") -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "ppt_exponent_function": {
+   "kind": "function",
+   "signature": "(gamma: \"Float[np.ndarray, ' *shape']\") -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "short_range_rate_au": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", omega_au: 'float', ionization_energy_au: 'float', coefficient_squared: 'float', l: 'int', m: 'int' = 0, *, channel_sum: 'ChannelSum' = 'integral') -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "tong_lin_factor": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", ionization_energy_au: 'float', alpha: 'float', charge: 'float' = 1.0) -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "tunnelling_rate_au": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", ionization_energy_au: 'float', coefficient_squared: 'float', l: 'int', m: 'int' = 0, charge: 'float' = 1.0) -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "zhang_factor": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", ionization_energy_au: 'float', coefficients: 'tuple[float, float, float]', charge: 'float' = 1.0) -> \"Float[np.ndarray, ' *shape']\""
+  }
+ },
+ "optmat.gas.mixture": {
+  "MixtureOptics": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "species",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "models",
+     "type": "tuple[Model, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pairs",
+     "type": "tuple[PairTerm, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    }
+   ],
+   "init": "(species: 'tuple[str, ...]', models: 'tuple[Model, ...]', pairs: 'tuple[PairTerm, ...]', intervals: 'tuple[tuple[float, float], ...]', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "density_bound": "method(self, composition: 'Mapping[Any, float]') -> 'float'",
+    "dsusceptibility_ddensity": "method(self, wavelength: 'ArrayLike | float', densities: 'Mapping[Any, ArrayLike]') -> \"dict[str, Complex[np.ndarray, '*shape']]\"",
+    "dsusceptibility_domega": "method(self, wavelength: 'ArrayLike | float', densities: 'Mapping[Any, ArrayLike]') -> \"Complex[np.ndarray, '*shape']\"",
+    "refractivity": "method(self, wavelength: 'ArrayLike | float', densities: 'Mapping[Any, ArrayLike]') -> \"Float[np.ndarray, '*shape']\"",
+    "refractivity_uncertainty": "method(self, wavelength: 'ArrayLike | float', densities: 'Mapping[Any, ArrayLike]') -> \"Float[np.ndarray, '*shape']\"",
+    "susceptibility": "method(self, wavelength: 'ArrayLike | float', densities: 'Mapping[Any, ArrayLike]') -> \"Complex[np.ndarray, '*shape']\""
+   }
+  },
+  "PairTerm": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "species",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "partner",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "b",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "status",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "reason",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "frequency",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "contribution",
+     "type": "str"
+    }
+   ],
+   "init": "(species: 'str', partner: 'str', b: 'float', sigma: 'float', status: 'str', source: 'str', reason: 'str', frequency: 'str', temperature: 'float', contribution: 'str') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "mixture_optics": {
+   "kind": "function",
+   "signature": "(species: 'Sequence[Gas | str]') -> 'MixtureOptics'"
+  }
+ },
+ "optmat.gas.mixture_eos": {
+  "METHODS": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "MixtureEquationOfState": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "composition",
+     "type": "tuple[tuple[str, float], ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "method",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "qualified",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pairs",
+     "type": "tuple[PairDensity, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "constituents",
+     "type": "tuple[EquationOfState, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "backend",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature_range",
+     "type": "tuple[float, float]"
+    }
+   ],
+   "init": "(material: 'str', composition: 'tuple[tuple[str, float], ...]', method: 'str', qualified: 'bool', pairs: 'tuple[PairDensity, ...]', constituents: 'tuple[EquationOfState, ...]', backend: 'str', temperature_range: 'tuple[float, float]', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "compressibility": "method(self, state: 'State') -> 'float'",
+    "molar_mass": "property",
+    "number_density": "method(self, state: 'State') -> 'float'",
+    "partial_densities": "method(self, state: 'State') -> 'dict[str, float]'",
+    "pressure": "method(self, number_density: 'ArrayLike | float', temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "second_virial": "method(self, temperature: 'float') -> 'float'",
+    "species": "property"
+   }
+  },
+  "PAIRS_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "PairDensity": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "species",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "partner",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "curated",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "qualified",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "cross_virial",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "reason",
+     "type": "str"
+    },
+    {
+     "default": "False",
+     "init": true,
+     "kw_only": false,
+     "name": "fallback_qualified",
+     "type": "bool"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "fallback_reason",
+     "type": "str"
+    },
+    {
+     "default": "False",
+     "init": true,
+     "kw_only": false,
+     "name": "prefer_multi_fluid",
+     "type": "bool"
+    }
+   ],
+   "init": "(species: 'str', partner: 'str', model: 'str', kind: 'str', curated: 'bool', qualified: 'bool', cross_virial: 'str', reason: 'str', fallback_qualified: 'bool' = False, fallback_reason: 'str' = '', prefer_multi_fluid: 'bool' = False) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "TRUNCATION_BOUND": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "mixture_equation_of_state": {
+   "kind": "function",
+   "signature": "(composition: 'Mapping[Any, float] | str', *, method: 'str | None' = None) -> 'MixtureEquationOfState'"
+  }
+ },
+ "optmat.gas.mixture_validation": {
+  "Comparison": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "dataset",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pair",
+     "type": "tuple[str, str]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "abscissa",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "measured",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "counted",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "passed",
+     "type": "bool"
+    }
+   ],
+   "init": "(dataset: 'str', pair: 'tuple[str, str]', kind: 'str', temperature: 'float', abscissa: 'float', measured: 'float', model: 'float', sigma: 'float', counted: 'bool', passed: 'bool') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "MODEL_DENSITY_UNCERTAINTY": {
+   "kind": "constant",
+   "type": "dict"
+  },
+  "PairResult": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pair",
+     "type": "tuple[str, str]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "counted",
+     "type": "Mapping[str, int]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "passed",
+     "type": "Mapping[str, int]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "qualified",
+     "type": "bool"
+    }
+   ],
+   "init": "(pair: 'tuple[str, str]', counted: 'Mapping[str, int]', passed: 'Mapping[str, int]', qualified: 'bool') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "TEMPERATURES": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "comparisons": {
+   "kind": "function",
+   "signature": "() -> 'tuple[Comparison, ...]'"
+  },
+  "effective_cross_virial": {
+   "kind": "function",
+   "signature": "(species: 'str', partner: 'str', temperature: 'float', fraction: 'float' = 0.5) -> 'float'"
+  },
+  "fallback_comparisons": {
+   "kind": "function",
+   "signature": "() -> 'tuple[Comparison, ...]'"
+  },
+  "fallback_results": {
+   "kind": "function",
+   "signature": "() -> 'dict[tuple[str, str], PairResult]'"
+  },
+  "pair_results": {
+   "kind": "function",
+   "signature": "() -> 'dict[tuple[str, str], PairResult]'"
+  }
+ },
+ "optmat.gas.models.base": {
+  "Model": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    }
+   ],
+   "init": "(gas: 'Gas | str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "INPUTS": "attribute: tuple",
+    "absorbing": "property",
+    "absorption_warning_threshold": "attribute: float",
+    "complex_polarizability": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "dpolarizability_domega": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "polarizability": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Float[np.ndarray, '*shape']\"",
+    "refractive_index": "method(self, wavelength: 'ArrayLike | float', state: 'State' = State(pressure=101325.0, temperature=273.15), *, ideal: 'bool' = False, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "refractivity": "method(self, wavelength: 'ArrayLike | float', state: 'State' = State(pressure=101325.0, temperature=273.15), *, ideal: 'bool' = False, warn: 'bool' = True) -> \"Float[np.ndarray, '*shape']\"",
+    "refractivity_virial": "property"
+   }
+  }
+ },
+ "optmat.gas.models.compact": {
+  "COMPACT_CONFIG_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "COMPACT_MODEL_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "CompactCoefficients": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parent",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model_digest",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parent_digest",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "form",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "labels",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kinds",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelengths",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "strengths",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "chi0",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "B",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "C",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "constant",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pressure",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "number_density",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "residuals_sigma",
+     "type": "Mapping[str, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "stated_error",
+     "type": "Mapping[str, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, 'q q']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "covariance_parameters",
+     "type": "tuple[str, ...]"
+    }
+   ],
+   "init": "(model: 'str', parent: 'str', model_digest: 'str', parent_digest: 'str', form: 'str', labels: 'tuple[str, ...]', kinds: 'tuple[str, ...]', wavelengths: 'tuple[float, ...]', strengths: 'tuple[float, ...]', chi0: 'float', B: 'tuple[float, ...]', C: 'tuple[float, ...]', constant: 'float', pressure: 'float | None', temperature: 'float | None', number_density: 'float | None', intervals: 'tuple[tuple[float, float], ...]', residuals_sigma: 'Mapping[str, float]', stated_error: 'Mapping[str, float]', covariance: \"Float[np.ndarray, 'q q']\", covariance_parameters: 'tuple[str, ...]') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "CompactConfig": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "description",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parent",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "poles",
+     "type": "tuple[int, ...]"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "longest_nm",
+     "type": "float | None"
+    },
+    {
+     "default": "400",
+     "init": true,
+     "kw_only": false,
+     "name": "grid_points",
+     "type": "int"
+    },
+    {
+     "default": "4",
+     "init": true,
+     "kw_only": false,
+     "name": "check_factor",
+     "type": "int"
+    },
+    {
+     "default": "0.1",
+     "init": true,
+     "kw_only": false,
+     "name": "tolerance_sigma",
+     "type": "float"
+    },
+    {
+     "default": "0",
+     "init": true,
+     "kw_only": false,
+     "name": "random_starts",
+     "type": "int"
+    },
+    {
+     "default": "1",
+     "init": true,
+     "kw_only": false,
+     "name": "seed",
+     "type": "int"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "digest",
+     "type": "str"
+    }
+   ],
+   "init": "(gas: 'Gas', description: 'str', parent: 'str', poles: 'tuple[int, ...]', longest_nm: 'float | None' = None, grid_points: 'int' = 400, check_factor: 'int' = 4, tolerance_sigma: 'float' = 0.1, random_starts: 'int' = 0, seed: 'int' = 1, digest: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "CompactModel": {
+   "bases": [
+    "optmat.gas.models.fitted.FittedModel"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "strengths",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "energies",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "labels",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "offset_au",
+     "type": "float"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "retardation_au",
+     "type": "float"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "absorption",
+     "type": "MeasuredAbsorption | None"
+    },
+    {
+     "default": "0",
+     "init": true,
+     "kw_only": false,
+     "name": "n_lines",
+     "type": "int"
+    },
+    {
+     "default": "0",
+     "init": true,
+     "kw_only": false,
+     "name": "n_fixed",
+     "type": "int"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, 'q q']"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "reduced_chi2",
+     "type": "float"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "record",
+     "type": "Mapping[str, object]"
+    }
+   ],
+   "init": "(gas: 'Gas | str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', strengths: 'tuple[float, ...]' = (), energies: 'tuple[float, ...]' = (), labels: 'tuple[str, ...]' = (), offset_au: 'float' = 0.0, retardation_au: 'float' = 0.0, absorption: 'MeasuredAbsorption | None' = None, n_lines: 'int' = 0, n_fixed: 'int' = 0, covariance: \"Float[np.ndarray, 'q q']\" = <factory>, reduced_chi2: 'float' = 0.0, record: 'Mapping[str, object]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "parent": "property",
+    "residuals_sigma": "property"
+   }
+  },
+  "Reduction": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "strengths",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "energies",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "region",
+     "type": "tuple[int, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kept",
+     "type": "tuple[bool, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "worst",
+     "type": "Mapping[str, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "moment_errors",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "start",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "passed",
+     "type": "bool"
+    }
+   ],
+   "init": "(strengths: 'tuple[float, ...]', energies: 'tuple[float, ...]', region: 'tuple[int, ...]', kept: 'tuple[bool, ...]', worst: 'Mapping[str, float]', moment_errors: 'tuple[float, float]', start: 'str', passed: 'bool') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "Region": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "low",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "high",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "strengths",
+     "type": "Float[np.ndarray, ' r']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "energies",
+     "type": "Float[np.ndarray, ' r']"
+    }
+   ],
+   "init": "(low: 'float', high: 'float', strengths: \"Float[np.ndarray, ' r']\", energies: \"Float[np.ndarray, ' r']\") -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "absorbing_regions": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel', intervals: '_validity.Intervals') -> 'tuple[Region, ...]'"
+  },
+  "coefficients": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', form: 'str' = 'polarizability', *, pressure: 'float | None' = None, temperature: 'float | None' = None) -> 'CompactCoefficients'"
+  },
+  "compact_intervals": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel', longest_nm: 'float | None' = None) -> '_validity.Intervals'"
+  },
+  "compact_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, CompactModel]'"
+  },
+  "compact_record": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel', config: 'CompactConfig', reduction: 'Reduction') -> 'dict[str, object]'"
+  },
+  "derive": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel', config: 'CompactConfig') -> 'Reduction'"
+  },
+  "format_coefficients": {
+   "kind": "function",
+   "signature": "(table: 'CompactCoefficients') -> 'str'"
+  },
+  "load_compact_config": {
+   "kind": "function",
+   "signature": "(name: 'str | Path') -> 'CompactConfig'"
+  },
+  "parent_digest": {
+   "kind": "function",
+   "signature": "(parent: 'str') -> 'str'"
+  },
+  "pole_dispersion_au": {
+   "kind": "function",
+   "signature": "(strengths: \"Float[np.ndarray, ' k']\", energies: \"Float[np.ndarray, ' k']\", omega: \"Float[np.ndarray, ' n']\", order: 'int') -> \"Float[np.ndarray, 'k n']\""
+  },
+  "reproduction": {
+   "kind": "function",
+   "signature": "(model: 'CompactModel') -> 'dict[str, dict[str, float]]'"
+  },
+  "residuals_sigma": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel', intervals: '_validity.Intervals', strengths: 'Sequence[float]', energies: 'Sequence[float]', points: 'int') -> \"dict[str, Float[np.ndarray, ' n']]\""
+  },
+  "statistical_sigma_au": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel', omega: \"Float[np.ndarray, ' n']\") -> \"dict[int, Float[np.ndarray, ' n']]\""
+  },
+  "vibrational_terms": {
+   "kind": "function",
+   "signature": "(parent: 'FittedModel') -> \"tuple[Float[np.ndarray, ' b'], Float[np.ndarray, ' b']]\""
+  }
+ },
+ "optmat.gas.models.fitted": {
+  "FittedModel": {
+   "bases": [
+    "optmat.gas.models.oscillator.OscillatorModel"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "strengths",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "energies",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "labels",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "offset_au",
+     "type": "float"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "retardation_au",
+     "type": "float"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "absorption",
+     "type": "MeasuredAbsorption | None"
+    },
+    {
+     "default": "0",
+     "init": true,
+     "kw_only": false,
+     "name": "n_lines",
+     "type": "int"
+    },
+    {
+     "default": "0",
+     "init": true,
+     "kw_only": false,
+     "name": "n_fixed",
+     "type": "int"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, 'q q']"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "reduced_chi2",
+     "type": "float"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "record",
+     "type": "Mapping[str, object]"
+    }
+   ],
+   "init": "(gas: 'Gas | str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', strengths: 'tuple[float, ...]' = (), energies: 'tuple[float, ...]' = (), labels: 'tuple[str, ...]' = (), offset_au: 'float' = 0.0, retardation_au: 'float' = 0.0, absorption: 'MeasuredAbsorption | None' = None, n_lines: 'int' = 0, n_fixed: 'int' = 0, covariance: \"Float[np.ndarray, 'q q']\" = <factory>, reduced_chi2: 'float' = 0.0, record: 'Mapping[str, object]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "derived_sha256": "property",
+    "dispersion_sigma_au": "method(self, omega: \"Float[np.ndarray, ' n']\", order: 'int', *, birge: 'bool' = True) -> \"Float[np.ndarray, ' n']\"",
+    "dispersion_sigma_relative": "method(self, omega: \"Float[np.ndarray, ' n']\", order: 'int', *, birge: 'bool' = True) -> \"Float[np.ndarray, ' n']\"",
+    "gap_reasons": "property",
+    "infrared_temperature": "property",
+    "n_rotational": "property",
+    "polarizability_sigma_au": "method(self, omega: \"Float[np.ndarray, ' n']\", *, birge: 'bool' = True) -> \"Float[np.ndarray, ' n']\"",
+    "reference_temperature": "property",
+    "representation_bound_au": "method(self, omega: \"Float[np.ndarray, '*shape']\", order: 'int') -> \"Float[np.ndarray, '*shape']\"",
+    "temperature_coefficient": "property"
+   }
+  },
+  "TemperatureCoefficient": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "coefficient_per_k",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma_per_k",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "dataset",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "reason",
+     "type": "str"
+    }
+   ],
+   "init": "(coefficient_per_k: 'float', sigma_per_k: 'float', wavelength: 'float', dataset: 'str', reason: 'str') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "fitted_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, FittedModel]'"
+  }
+ },
+ "optmat.gas.models.formulas": {
+  "FORMS": {
+   "kind": "constant",
+   "type": "frozenset"
+  },
+  "FormulaModel": {
+   "bases": [
+    "optmat.gas.models.base.Model"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "form",
+     "type": "str"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "terms",
+     "type": "Mapping[str, tuple[float, ...]]"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "state",
+     "type": "State | None"
+    },
+    {
+     "default": "False",
+     "init": true,
+     "kw_only": false,
+     "name": "ideal",
+     "type": "bool"
+    },
+    {
+     "default": "1.0",
+     "init": true,
+     "kw_only": false,
+     "name": "energy_scale",
+     "type": "float"
+    }
+   ],
+   "init": "(gas: 'Gas | str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', form: 'str' = '', terms: 'Mapping[str, tuple[float, ...]]' = <factory>, state: 'State | None' = None, ideal: 'bool' = False, energy_scale: 'float' = 1.0, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "reference_density": "property"
+   }
+  },
+  "published_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, FormulaModel]'"
+  }
+ },
+ "optmat.gas.models.oscillator": {
+  "OscillatorModel": {
+   "bases": [
+    "optmat.gas.models.base.Model"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "strengths",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "energies",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "labels",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "offset_au",
+     "type": "float"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "retardation_au",
+     "type": "float"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "absorption",
+     "type": "MeasuredAbsorption | None"
+    }
+   ],
+   "init": "(gas: 'Gas | str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', strengths: 'tuple[float, ...]' = (), energies: 'tuple[float, ...]' = (), labels: 'tuple[str, ...]' = (), offset_au: 'float' = 0.0, retardation_au: 'float' = 0.0, absorption: 'MeasuredAbsorption | None' = None, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "absorbing": "property",
+    "cauchy_moment": "method(self, k: 'int') -> 'float'",
+    "dispersion_au": "method(self, omega: \"Float[np.ndarray, '*shape']\", order: 'int') -> \"Float[np.ndarray, '*shape']\"",
+    "dpolarizability_domega_au": "method(self, omega: \"Float[np.ndarray, '*shape']\") -> \"Float[np.ndarray, '*shape']\"",
+    "from_parameters": "classmethod(cls, species: 'Gas | str', strengths: 'ArrayLike', energies: 'ArrayLike', *, intervals: 'Sequence[tuple[float, float]]', offset: 'float' = 0.0, labels: 'Sequence[str] | None' = None, citation: 'str' = '', name: 'str' = '') -> 'OscillatorModel'",
+    "polarizability_au": "method(self, omega: \"Float[np.ndarray, '*shape']\") -> \"Float[np.ndarray, '*shape']\""
+   }
+  },
+  "angular_frequency_au": {
+   "kind": "function",
+   "signature": "(wavelength: \"Float[np.ndarray, '*shape']\") -> \"Float[np.ndarray, '*shape']\""
+  }
+ },
+ "optmat.gas.models.registry": {
+  "DEFAULTS_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "default_model": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'Model'"
+  },
+  "model": {
+   "kind": "function",
+   "signature": "(name: 'str') -> 'Model'"
+  },
+  "models": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'dict[str, Model]'"
+  },
+  "refractive_index": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', wavelength: 'ArrayLike | float', state: 'State' = State(pressure=101325.0, temperature=273.15), *, model_name: 'str | None' = None) -> \"Complex[np.ndarray, '*shape']\""
+  },
+  "refractivity": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', wavelength: 'ArrayLike | float', state: 'State' = State(pressure=101325.0, temperature=273.15), *, model_name: 'str | None' = None) -> \"Float[np.ndarray, '*shape']\""
+  }
+ },
+ "optmat.gas.molecular_ionisation_rates": {
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "MOLECULAR_RATES_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "MolecularCorrection": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "MolecularForm": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "MolecularRateModel": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas | str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "form",
+     "type": "MolecularForm"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionization_energy_kind",
+     "type": "str"
+    },
+    {
+     "default": "1.0",
+     "init": true,
+     "kw_only": false,
+     "name": "charge",
+     "type": "float"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "structure_factors",
+     "type": "Mapping[int, float]"
+    },
+    {
+     "default": "nan",
+     "init": true,
+     "kw_only": false,
+     "name": "coefficient_squared",
+     "type": "float"
+    },
+    {
+     "default": "'ilkov'",
+     "init": true,
+     "kw_only": false,
+     "name": "coulomb",
+     "type": "CoulombFactor"
+    },
+    {
+     "default": "1.0",
+     "init": true,
+     "kw_only": false,
+     "name": "electrons",
+     "type": "float"
+    },
+    {
+     "default": "'none'",
+     "init": true,
+     "kw_only": false,
+     "name": "static_correction",
+     "type": "MolecularCorrection"
+    },
+    {
+     "default": "nan",
+     "init": true,
+     "kw_only": false,
+     "name": "tong_lin_alpha",
+     "type": "float"
+    },
+    {
+     "default": "1.5",
+     "init": true,
+     "kw_only": false,
+     "name": "correction_range",
+     "type": "float"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "vibrational_constant",
+     "type": "float"
+    },
+    {
+     "default": "'tunnelling'",
+     "init": true,
+     "kw_only": false,
+     "name": "averaging",
+     "type": "Averaging"
+    },
+    {
+     "default": "'integral'",
+     "init": true,
+     "kw_only": false,
+     "name": "channel_sum",
+     "type": "ChannelSum"
+    },
+    {
+     "default": "nan",
+     "init": true,
+     "kw_only": false,
+     "name": "adiabatic_ionization_energy",
+     "type": "float"
+    },
+    {
+     "default": "nan",
+     "init": true,
+     "kw_only": false,
+     "name": "uncertainty_factor",
+     "type": "float"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "sources",
+     "type": "Mapping[str, str]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "reasons",
+     "type": "Mapping[str, str]"
+    }
+   ],
+   "init": "(gas: 'Gas | str', wavelength: 'float', model: 'str', form: 'MolecularForm', ionization_energy: 'float', ionization_energy_kind: 'str', charge: 'float' = 1.0, structure_factors: 'Mapping[int, float]' = <factory>, coefficient_squared: 'float' = nan, coulomb: 'CoulombFactor' = 'ilkov', electrons: 'float' = 1.0, static_correction: 'MolecularCorrection' = 'none', tong_lin_alpha: 'float' = nan, correction_range: 'float' = 1.5, vibrational_constant: 'float' = 0.0, averaging: 'Averaging' = 'tunnelling', channel_sum: 'ChannelSum' = 'integral', adiabatic_ionization_energy: 'float' = nan, uncertainty_factor: 'float' = nan, sources: 'Mapping[str, str]' = <factory>, reasons: 'Mapping[str, str]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "INPUTS": "attribute: tuple",
+    "at_wavelength": "method(self, wavelength: 'float') -> 'MolecularRateModel'",
+    "barrier_suppression_field": "property",
+    "channel_rates": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' c ...']\"",
+    "citation": "property",
+    "cycle_averaged_rate": "method(self, amplitude: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "energy_kind": "property",
+    "energy_loss_rate": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "energy_per_event": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "from_parameters": "classmethod(cls, species: 'Gas | str', wavelength: 'float', *, form: 'MolecularForm', ionization_energy: 'float', ionization_energy_kind: 'str' = 'not stated', structure_coefficients: 'Mapping[int, float] | None' = None, structure_factors: 'Mapping[int, float] | None' = None, charge: 'float' = 1.0, electrons: 'float' = 1.0, coulomb: 'CoulombFactor' = 'ilkov', static_correction: 'MolecularCorrection' = 'none', tong_lin_alpha: 'float' = nan, correction_range: 'float' = 1.5, vibrational_constant: 'float' = 0.0, averaging: 'Averaging' = 'tunnelling', channel_sum: 'ChannelSum' = 'integral', adiabatic_ionization_energy: 'float' = nan, uncertainty_factor: 'float' = nan, citation: 'str' = '', model: 'str' = 'user', sources: 'Mapping[str, str] | None' = None, reasons: 'Mapping[str, str] | None' = None) -> 'MolecularRateModel'",
+    "instantaneous_rate": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "ionization_energy_au": "property",
+    "keldysh": "method(self, field_strength: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "maximum_field": "property",
+    "omega_au": "property",
+    "with_ionization_energy": "method(self, ionization_energy: 'float', kind: 'str') -> 'MolecularRateModel'"
+   }
+  },
+  "isotropic_structure_factors": {
+   "kind": "function",
+   "signature": "(coefficients: 'Mapping[int, float]') -> 'dict[int, float]'"
+  },
+  "moadk_rate_au": {
+   "kind": "function",
+   "signature": "(field_au: \"Float[np.ndarray, ' *shape']\", ionization_energy_au: 'float', structure_factors: 'Mapping[int, float]', charge: 'float' = 1.0) -> \"Float[np.ndarray, ' *shape']\""
+  },
+  "molecular_rate_model": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', wavelength: 'float', model: 'str' = 'default') -> 'MolecularRateModel'"
+  },
+  "molecular_rate_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, dict[Gas, MolecularRateModel]]'"
+  }
+ },
+ "optmat.gas.nonlinear": {
+  "AU_HYPERPOLARIZABILITY": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "AbsorptionEvidence": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "detected",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sampled",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "qualification",
+     "type": "str"
+    }
+   ],
+   "init": "(detected: 'bool', sampled: 'tuple[float, float]', qualification: 'str') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "ESU_PER_SI": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "HyperpolarizabilityModel": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parameters",
+     "type": "tuple[float, float, float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, '4 4']"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "reduced_chi2",
+     "type": "float"
+    },
+    {
+     "default": "(0.0, inf)",
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "record",
+     "type": "Mapping[str, object]"
+    }
+   ],
+   "init": "(gas: 'Gas', parameters: 'tuple[float, float, float, float]', covariance: \"Float[np.ndarray, '4 4']\", reduced_chi2: 'float' = 0.0, wavelength_range: 'tuple[float, float]' = (0.0, inf), record: 'Mapping[str, object]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "gamma3": "method(self, process: 'str', wavelength: \"Float[np.ndarray, '*shape'] | float\") -> \"Float[np.ndarray, '*shape']\"",
+    "gamma_au": "method(self, process: 'str', wavelength: \"Float[np.ndarray, '*shape'] | float\", other: \"Float[np.ndarray, '*shape'] | float | None\" = None) -> \"Float[np.ndarray, '*shape']\"",
+    "gamma_si": "method(self, process: 'str', wavelength: \"Float[np.ndarray, '*shape'] | float\", other: \"Float[np.ndarray, '*shape'] | float | None\" = None) -> \"Float[np.ndarray, '*shape']\"",
+    "gamma_sigma_au": "method(self, process: 'str', wavelength: \"Float[np.ndarray, '*shape'] | float\", other: \"Float[np.ndarray, '*shape'] | float | None\" = None, *, birge: 'bool' = True) -> \"Float[np.ndarray, '*shape']\"",
+    "n2": "method(self, wavelength: \"Float[np.ndarray, '*shape'] | float\", state: 'State', *, ideal: 'bool' = False) -> \"Float[np.ndarray, '*shape']\"",
+    "support": "property"
+   }
+  },
+  "HyperpolarizabilitySupport": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model_digest",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "derivation_version",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "fitted_points",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "max_w2",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "max_w2_witnesses",
+     "type": "tuple[SupportPoint, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "leg_max",
+     "type": "SupportLimit"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pair_max",
+     "type": "SupportLimit"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "e1",
+     "type": "SupportLimit | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "e2",
+     "type": "SupportLimit | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "e2_any",
+     "type": "SupportLimit | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "ionisation",
+     "type": "SupportLimit"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "missing_reasons",
+     "type": "Mapping[str, str]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "input_digests",
+     "type": "Mapping[str, str]"
+    }
+   ],
+   "init": "(gas: 'Gas', model_digest: 'str', derivation_version: 'int', fitted_points: 'int', max_w2: 'float', max_w2_witnesses: 'tuple[SupportPoint, ...]', leg_max: 'SupportLimit', pair_max: 'SupportLimit', e1: 'SupportLimit | None', e2: 'SupportLimit | None', e2_any: 'SupportLimit | None', ionisation: 'SupportLimit', missing_reasons: 'Mapping[str, str]' = <factory>, input_digests: 'Mapping[str, str]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "band_edge": "method(self, polarisation: 'str' = 'linear') -> 'float | None'",
+    "digest": "property",
+    "leg_max_in_w2": "property"
+   }
+  },
+  "NONLINEAR_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "NonlinearConfig": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gas",
+     "type": "Gas"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "description",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "range_nm",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "b_prime_prior",
+     "type": "tuple[float, float] | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "fitted",
+     "type": "tuple[NonlinearOptions, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "validators",
+     "type": "tuple[NonlinearOptions, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "digest",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "a_prior",
+     "type": "tuple[float, float] | None"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "b_prior",
+     "type": "tuple[float, float] | None"
+    }
+   ],
+   "init": "(gas: 'Gas', description: 'str', range_nm: 'tuple[float, float]', b_prime_prior: 'tuple[float, float] | None', fitted: 'tuple[NonlinearOptions, ...]', validators: 'tuple[NonlinearOptions, ...]', digest: 'str', a_prior: 'tuple[float, float] | None' = None, b_prior: 'tuple[float, float] | None' = None) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "NonlinearFit": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "config",
+     "type": "NonlinearConfig"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parameters",
+     "type": "Float[np.ndarray, ' 4']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, '4 4']"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "scales",
+     "type": "Mapping[str, float]"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "chi2",
+     "type": "float"
+    },
+    {
+     "default": "0",
+     "init": true,
+     "kw_only": false,
+     "name": "dof",
+     "type": "int"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "dataset_chi2",
+     "type": "Mapping[str, tuple[int, float]]"
+    }
+   ],
+   "init": "(config: 'NonlinearConfig', parameters: \"Float[np.ndarray, ' 4']\", covariance: \"Float[np.ndarray, '4 4']\", scales: 'Mapping[str, float]' = <factory>, chi2: 'float' = 0.0, dof: 'int' = 0, dataset_chi2: 'Mapping[str, tuple[int, float]]' = <factory>) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "NonlinearObservation": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "key",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_nm",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "w2",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "w4",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gamma",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "process",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "options",
+     "type": "NonlinearOptions"
+    }
+   ],
+   "init": "(key: 'str', wavelength_nm: \"Float[np.ndarray, ' n']\", w2: \"Float[np.ndarray, ' n']\", w4: \"Float[np.ndarray, ' n']\", gamma: \"Float[np.ndarray, ' n']\", sigma: \"Float[np.ndarray, ' n']\", process: 'str', options: 'NonlinearOptions') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "NonlinearOptions": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "key",
+     "type": "str"
+    },
+    {
+     "default": "False",
+     "init": true,
+     "kw_only": false,
+     "name": "free_scale",
+     "type": "bool"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "systematic",
+     "type": "float"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "extra_relative",
+     "type": "float"
+    },
+    {
+     "default": "(0.0, inf)",
+     "init": true,
+     "kw_only": false,
+     "name": "range_nm",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "subtract_formula",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "subtract_dataset",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "scale_group",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "rows",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "1.0",
+     "init": true,
+     "kw_only": false,
+     "name": "factor",
+     "type": "float"
+    }
+   ],
+   "init": "(key: 'str', free_scale: 'bool' = False, systematic: 'float' = 0.0, extra_relative: 'float' = 0.0, range_nm: 'tuple[float, float]' = (0.0, inf), subtract_formula: 'str' = '', subtract_dataset: 'str' = '', scale_group: 'str' = '', rows: 'tuple[str, ...]' = (), factor: 'float' = 1.0) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "SUPPORT_DERIVATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "SUPPORT_LIMIT_KINDS": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "SupportCandidate": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "datasets",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavenumber",
+     "type": "float"
+    }
+   ],
+   "init": "(datasets: 'tuple[str, ...]', wavenumber: 'float') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "SupportLimit": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavenumber",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "datasets",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "location",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "derivation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "registers",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "witnesses",
+     "type": "tuple[SupportPoint, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "candidates",
+     "type": "tuple[SupportCandidate, ...]"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "uncertainty",
+     "type": "SupportUncertainty | None"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "evidence",
+     "type": "AbsorptionEvidence | None"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "qualifications",
+     "type": "tuple[str, ...]"
+    }
+   ],
+   "init": "(wavenumber: 'float', kind: 'str', datasets: 'tuple[str, ...]', location: 'str', derivation: 'str', registers: 'tuple[str, ...]', witnesses: 'tuple[SupportPoint, ...]' = (), candidates: 'tuple[SupportCandidate, ...]' = (), uncertainty: 'SupportUncertainty | None' = None, evidence: 'AbsorptionEvidence | None' = None, qualifications: 'tuple[str, ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "SupportPoint": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "dataset",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "row",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "process",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "second_wavelength",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "legs",
+     "type": "tuple[float, float, float, float]"
+    }
+   ],
+   "init": "(dataset: 'str', row: 'str', process: 'str', wavelength: 'float', second_wavelength: 'float | None', legs: 'tuple[float, float, float, float]') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "SupportUncertainty": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "stated",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "value",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "level",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "provenance",
+     "type": "str"
+    }
+   ],
+   "init": "(stated: 'bool', value: 'float | None', level: 'str', provenance: 'str') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "W2_MARGIN": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "dumps": {
+   "kind": "function",
+   "signature": "(result: 'NonlinearFit') -> 'str'"
+  },
+  "fit_hyperpolarizability": {
+   "kind": "function",
+   "signature": "(config: 'NonlinearConfig') -> 'NonlinearFit'"
+  },
+  "frequency_sums": {
+   "kind": "function",
+   "signature": "(process: 'str', wavenumber: \"Float[np.ndarray, '*shape']\", other: \"Float[np.ndarray, '*shape'] | None\" = None) -> 'tuple[np.ndarray, np.ndarray]'"
+  },
+  "gamma_observation": {
+   "kind": "function",
+   "signature": "(dataset: 'Dataset', options: 'NonlinearOptions') -> 'NonlinearObservation'"
+  },
+  "hyperpolarizability_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[Gas, HyperpolarizabilityModel]'"
+  },
+  "load_nonlinear_config": {
+   "kind": "function",
+   "signature": "(name: 'str | Path') -> 'NonlinearConfig'"
+  },
+  "validation": {
+   "kind": "function",
+   "signature": "(result: 'NonlinearFit') -> 'dict[str, dict[str, float | int | str]]'"
+  }
+ },
+ "optmat.gas.raman_response": {
+  "Component": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "GasRamanResponse": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "composition",
+     "type": "tuple[tuple[str, float], ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "float | None"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "species",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "band",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "branch",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "j",
+     "type": "Int[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "frequency",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "isotropic",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "anisotropic",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "width_constant",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "width_dicke",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "width_broadening",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "doppler_width",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "shift",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "damping_group",
+     "type": "Int[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "density_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "temperature_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "sources",
+     "type": "Mapping[str, str]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "reasons",
+     "type": "Mapping[str, str]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": "nan",
+     "init": true,
+     "kw_only": true,
+     "name": "population_floor",
+     "type": "float"
+    }
+   ],
+   "init": "(composition: 'tuple[tuple[str, float], ...]', temperature: 'float', wavelength: 'float | None', species: 'tuple[str, ...]', band: 'tuple[str, ...]', branch: 'tuple[str, ...]', j: \"Int[np.ndarray, ' n']\", frequency: \"Float[np.ndarray, ' n']\", isotropic: \"Float[np.ndarray, ' n']\", anisotropic: \"Float[np.ndarray, ' n']\", width_constant: \"Float[np.ndarray, ' n']\", width_dicke: \"Float[np.ndarray, ' n']\", width_broadening: \"Float[np.ndarray, ' n']\", doppler_width: \"Float[np.ndarray, ' n']\", shift: \"Float[np.ndarray, ' n']\", damping_group: \"Int[np.ndarray, ' n']\", density_range: 'tuple[float, float]', temperature_range: 'tuple[float, float]', sources: 'Mapping[str, str]' = <factory>, reasons: 'Mapping[str, str]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', material: 'str' = '', population_floor: 'float' = nan) -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "INPUTS": "attribute: tuple",
+    "amplitude": "property",
+    "check_densities": "method(self, density: 'ArrayLike') -> 'None'",
+    "component_amplitudes": "method(self, component: 'Component' = 'parallel') -> \"Float[np.ndarray, ' n']\"",
+    "decay_rates": "method(self, density: 'ArrayLike') -> \"Float[np.ndarray, ' n *shape']\"",
+    "frequencies": "method(self, density: 'ArrayLike') -> \"Float[np.ndarray, ' n *shape']\"",
+    "from_lines": "classmethod(cls, species: 'str | Sequence[str]', temperature: 'float', frequency: 'ArrayLike', isotropic: 'ArrayLike', anisotropic: 'ArrayLike', width_constant: 'ArrayLike', width_dicke: 'ArrayLike', width_broadening: 'ArrayLike', doppler_width: 'ArrayLike', shift: 'ArrayLike', *, band: 'Sequence[str] | None' = None, branch: 'Sequence[str] | None' = None, j: 'ArrayLike | None' = None, mass: 'float | Mapping[str, float] | None' = None, composition: 'Mapping[str, float] | None' = None, wavelength: 'float | None' = None, temperature_range: 'tuple[float, float] | None' = None, citation: 'str' = '', material: 'str' = '', population_floor: 'float' = nan, sources: 'Mapping[str, str] | None' = None, reasons: 'Mapping[str, str] | None' = None) -> 'GasRamanResponse'",
+    "fwhm": "method(self, density: 'ArrayLike') -> \"Float[np.ndarray, ' n *shape']\"",
+    "groups": "method(self) -> 'tuple[RamanGroup, ...]'",
+    "line_id": "property",
+    "lines": "method(self, density: 'float') -> 'RamanLines'",
+    "references": "property",
+    "response": "method(self, time: 'ArrayLike', density: 'float', component: 'Component' = 'parallel') -> \"Float[np.ndarray, ' *shape']\"",
+    "rotational_nonlinear_index": "method(self, density: 'float') -> 'float'",
+    "spectrum": "method(self, omega: 'ArrayLike', density: 'float', component: 'Component' = 'parallel') -> \"Complex[np.ndarray, ' *shape']\"",
+    "stokes_gain": "method(self, pump_wavelength: 'float', density: 'float') -> \"Float[np.ndarray, ' n']\""
+   }
+  },
+  "RAMAN_RESPONSE_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "RamanGroup": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "index",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "lines",
+     "type": "tuple[int, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "line_ids",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gamma_constant",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gamma_dicke",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gamma_doppler",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "gamma_broadening",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "shift",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "frequency",
+     "type": "Float[np.ndarray, ' m']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "isotropic",
+     "type": "Float[np.ndarray, ' m']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "anisotropic",
+     "type": "Float[np.ndarray, ' m']"
+    }
+   ],
+   "init": "(index: 'int', lines: 'tuple[int, ...]', line_ids: 'tuple[str, ...]', gamma_constant: 'float', gamma_dicke: 'float', gamma_doppler: 'float', gamma_broadening: 'float', shift: 'float', frequency: \"Float[np.ndarray, ' m']\", isotropic: \"Float[np.ndarray, ' m']\", anisotropic: \"Float[np.ndarray, ' m']\") -> 'None'",
+   "kind": "class",
+   "members": {
+    "decay_rate": "method(self, density: 'ArrayLike') -> \"Float[np.ndarray, ' *shape']\"",
+    "response": "method(self, time: 'ArrayLike', density: 'float', component: 'Component' = 'parallel') -> \"Float[np.ndarray, ' *shape']\"",
+    "shifted": "property"
+   }
+  },
+  "placzek_teller_q": {
+   "kind": "function",
+   "signature": "(j: \"Int[np.ndarray, ' n']\") -> \"Float[np.ndarray, ' n']\""
+  },
+  "raman_response": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str | Mapping[str, float]', temperature: 'float', *, wavelength: 'float | None' = None, population_floor: 'float' = 1e-12) -> 'GasRamanResponse'"
+  },
+  "raman_response_status": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str | Mapping[str, float]') -> 'tuple[Status, str] | None'"
+  }
+ },
+ "optmat.gas.transport": {
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "QUANTITIES": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "TRANSPORT_GASES": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "TransportModel": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "viscosity_form",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "viscosity_source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "viscosity_parameters",
+     "type": "Mapping[str, Any]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "viscosity_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "viscosity_uncertainty",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "heat_capacity_source",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "heat_capacity_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "equation_of_state",
+     "type": "EquationOfState"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "molar_mass",
+     "type": "float"
+    }
+   ],
+   "init": "(material: 'str', viscosity_form: 'str', viscosity_source: 'str', viscosity_parameters: 'Mapping[str, Any]', viscosity_range: 'tuple[float, float]', viscosity_uncertainty: 'str', heat_capacity_source: 'str', heat_capacity_range: 'tuple[float, float]', equation_of_state: 'EquationOfState', molar_mass: 'float', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "heat_capacity": "method(self, temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "temperature_range": "method(self, quantity: 'str') -> 'tuple[float, float]'",
+    "viscosity": "method(self, temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\""
+   }
+  },
+  "heat_capacity": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\""
+  },
+  "mixture_viscosity": {
+   "kind": "function",
+   "signature": "(mixture: 'str | Mapping[Any, float]', temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\""
+  },
+  "molar_mass": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'float'"
+  },
+  "transport_model": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str') -> 'TransportModel'"
+  },
+  "viscosity": {
+   "kind": "function",
+   "signature": "(gas: 'Gas | str', temperature: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\""
+  }
+ },
+ "optmat.identity": {
+  "FrozenMapping": {
+   "bases": [
+    "collections.abc.Mapping",
+    "typing.Generic"
+   ],
+   "init": "(items: 'Mapping[K, V] | Any' = ()) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "Identified": {
+   "bases": [
+    "abc.ABC"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    }
+   ],
+   "init": "(*, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "INPUTS": "attribute: tuple",
+    "identity": "property",
+    "identity_record": "method(self) -> 'dict[str, Any]'",
+    "with_parameters": "method(self: 'T', **changes: 'Any') -> 'T'"
+   }
+  },
+  "ModelIdentity": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "digest",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "optmat_version",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sources",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "status",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "reference_temperature",
+     "type": "float | None"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "infrared_temperature",
+     "type": "float | None"
+    }
+   ],
+   "init": "(name: 'str', kind: 'str', material: 'str', digest: 'str', optmat_version: 'str', sources: 'tuple[str, ...]', status: 'str', status_reason: 'str', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', reference_temperature: 'float | None' = None, infrared_temperature: 'float | None' = None) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "STATUSES": {
+   "kind": "constant",
+   "type": "tuple"
+  },
+  "Status": {
+   "kind": "constant",
+   "type": "TypeAliasType"
+  },
+  "canonical": {
+   "kind": "function",
+   "signature": "(value: 'Any') -> 'Any'"
+  },
+  "canonical_json": {
+   "kind": "function",
+   "signature": "(value: 'Any') -> 'bytes'"
+  },
+  "describe": {
+   "kind": "function",
+   "signature": "(value: 'Any') -> 'str'"
+  },
+  "frozen": {
+   "kind": "function",
+   "signature": "(value: 'Any') -> 'Any'"
+  },
+  "parse_status": {
+   "kind": "function",
+   "signature": "(entry: 'Mapping[str, Any]', where: 'str', *, default: 'Status') -> 'tuple[Status, str]'"
+  },
+  "sha256_digest": {
+   "kind": "function",
+   "signature": "(value: 'Any') -> 'str'"
+  },
+  "source_ids": {
+   "kind": "function",
+   "signature": "(*texts: 'str') -> 'tuple[str, ...]'"
+  }
+ },
+ "optmat.solid.bundle": {
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "GainCheck": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "pump_wavelength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "shift",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "predicted",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "measured",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "reference",
+     "type": "str"
+    }
+   ],
+   "init": "(pump_wavelength: 'float', shift: 'float', predicted: 'float', measured: 'float', sigma: 'float', reference: 'str') -> 'None'",
+   "kind": "class",
+   "members": {
+    "deviation": "property"
+   }
+  },
+  "SilicaNonlinearBundle": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kerr",
+     "type": "KerrModel"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "response",
+     "type": "SilicaRamanResponse"
+    }
+   ],
+   "init": "(name: 'str', kerr: 'KerrModel', response: 'SilicaRamanResponse', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "gain_check": "property",
+    "h_r": "method(self, time: 'ArrayLike', component: 'Component' = 'parallel') -> \"Float[np.ndarray, ' *shape']\"",
+    "n2": "method(self, wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "n2_electronic": "method(self, wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "n2_raman": "method(self, wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "paired": "property",
+    "raman_fraction": "property"
+   }
+  },
+  "silica_bundle": {
+   "kind": "function",
+   "signature": "(name: 'str' = 'default') -> 'SilicaNonlinearBundle'"
+  },
+  "silica_bundles": {
+   "kind": "function",
+   "signature": "() -> 'Mapping[str, SilicaNonlinearBundle]'"
+  }
+ },
+ "optmat.solid.kerr": {
+  "GainOptions": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "key",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float | None"
+    }
+   ],
+   "init": "(key: 'str', sigma: 'float | None' = None) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "GainPoints": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "key",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "shift",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "value",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "response",
+     "type": "float"
+    }
+   ],
+   "init": "(key: 'str', wavelength: 'float', shift: 'float', value: 'float', sigma: 'float', response: 'float') -> 'None'",
+   "kind": "class",
+   "members": {
+    "factor": "method(self) -> 'float'"
+   }
+  },
+  "KERR_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "KerrConfig": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "description",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "range_nm",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "raman_fraction",
+     "type": "tuple[float, float] | None"
+    },
+    {
+     "default": "True",
+     "init": true,
+     "kw_only": false,
+     "name": "quartic",
+     "type": "bool"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "fitted",
+     "type": "tuple[KerrOptions, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "validators",
+     "type": "tuple[KerrOptions, ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "raman_gains",
+     "type": "tuple[GainOptions, ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "digest",
+     "type": "str"
+    }
+   ],
+   "init": "(name: 'str', material: 'str', description: 'str', range_nm: 'tuple[float, float]', raman_fraction: 'tuple[float, float] | None', quartic: 'bool' = True, fitted: 'tuple[KerrOptions, ...]' = (), validators: 'tuple[KerrOptions, ...]' = (), raman_gains: 'tuple[GainOptions, ...]' = (), digest: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "KerrModel": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parameters",
+     "type": "tuple[float, float, float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, '4 4']"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "scales",
+     "type": "Mapping[str, float]"
+    }
+   ],
+   "init": "(material: 'str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', parameters: 'tuple[float, float, float, float]', covariance: \"Float[np.ndarray, '4 4']\", scales: 'Mapping[str, float]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "n2": "method(self, wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "n2_effective": "method(self, wavelength: 'ArrayLike | float', pulse_fwhm: 'float') -> \"Float[np.ndarray, '*shape']\"",
+    "n2_electronic": "method(self, wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "n2_sigma": "method(self, wavelength: 'ArrayLike | float') -> \"Float[np.ndarray, '*shape']\"",
+    "raman_fraction": "property"
+   }
+  },
+  "KerrOptions": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "key",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "group",
+     "type": "str"
+    },
+    {
+     "default": "0.1",
+     "init": true,
+     "kw_only": false,
+     "name": "scale_sigma",
+     "type": "float"
+    },
+    {
+     "default": "'pulse'",
+     "init": true,
+     "kw_only": false,
+     "name": "raman",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "pulse_fs",
+     "type": "float | None"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "float | None"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "extra",
+     "type": "float"
+    },
+    {
+     "default": "(0.0, inf)",
+     "init": true,
+     "kw_only": false,
+     "name": "range_nm",
+     "type": "tuple[float, float]"
+    }
+   ],
+   "init": "(key: 'str', group: 'str' = '', scale_sigma: 'float' = 0.1, raman: 'str' = 'pulse', pulse_fs: 'float | None' = None, sigma: 'float | None' = None, extra: 'float' = 0.0, range_nm: 'tuple[float, float]' = (0.0, inf)) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "KerrResult": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "config",
+     "type": "KerrConfig"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "model",
+     "type": "KerrModel"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "chi2",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "dof",
+     "type": "int"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "dataset_chi2",
+     "type": "Mapping[str, tuple[int, float]]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "validation",
+     "type": "Mapping[str, list[float]]"
+    }
+   ],
+   "init": "(config: 'KerrConfig', model: 'KerrModel', chi2: 'float', dof: 'int', dataset_chi2: 'Mapping[str, tuple[int, float]]', validation: 'Mapping[str, list[float]]') -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "Points": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "key",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "group",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "value",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "sigma",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "eta",
+     "type": "Float[np.ndarray, ' n']"
+    }
+   ],
+   "init": "(key: 'str', group: 'str', wavelength: \"Float[np.ndarray, ' n']\", value: \"Float[np.ndarray, ' n']\", sigma: \"Float[np.ndarray, ' n']\", eta: \"Float[np.ndarray, ' n']\") -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "dumps": {
+   "kind": "function",
+   "signature": "(result: 'KerrResult') -> 'str'"
+  },
+  "fit": {
+   "kind": "function",
+   "signature": "(config: 'KerrConfig') -> 'KerrResult'"
+  },
+  "gain_points": {
+   "kind": "function",
+   "signature": "(options: 'GainOptions') -> 'GainPoints'"
+  },
+  "kerr_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, KerrModel]'"
+  },
+  "load_config": {
+   "kind": "function",
+   "signature": "(name: 'str | Path') -> 'KerrConfig'"
+  },
+  "points": {
+   "kind": "function",
+   "signature": "(options: 'KerrOptions') -> 'Points'"
+  },
+  "raman_response": {
+   "kind": "function",
+   "signature": "(time: \"Float[np.ndarray, ' n']\") -> \"Float[np.ndarray, ' n']\""
+  },
+  "raman_weight": {
+   "kind": "function",
+   "signature": "(pulse_fwhm: 'float') -> 'float'"
+  }
+ },
+ "optmat.solid.models.base": {
+  "Model": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "axis",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    }
+   ],
+   "init": "(material: 'str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', axis: 'str' = '', *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "INPUTS": "attribute: tuple",
+    "dindex_domega": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "dpermittivity_domega": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "group_index": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Float[np.ndarray, '*shape']\"",
+    "gvd": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Float[np.ndarray, '*shape']\"",
+    "permittivity": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\"",
+    "refractive_index": "method(self, wavelength: 'ArrayLike | float', *, warn: 'bool' = True) -> \"Complex[np.ndarray, '*shape']\""
+   }
+  },
+  "complex_index": {
+   "kind": "function",
+   "signature": "(permittivity: \"Complex[np.ndarray, '*shape']\") -> \"Complex[np.ndarray, '*shape']\""
+  }
+ },
+ "optmat.solid.models.fitted": {
+  "FittedModel": {
+   "bases": [
+    "optmat.solid.models.formulas.UdmModel"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "axis",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "udm",
+     "type": "UniversalDispersionModel | None"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "attributes",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "values",
+     "type": "Mapping[str, float]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "free",
+     "type": "tuple[str, ...]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "scales",
+     "type": "Mapping[str, tuple[str, ...]]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "covariance",
+     "type": "Float[np.ndarray, 'p p']"
+    },
+    {
+     "default": "nan",
+     "init": true,
+     "kw_only": false,
+     "name": "reduced_chi2",
+     "type": "float"
+    }
+   ],
+   "init": "(material: 'str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', axis: 'str' = '', udm: 'UniversalDispersionModel | None' = None, attributes: 'tuple[str, ...]' = (), values: 'Mapping[str, float]' = <factory>, free: 'tuple[str, ...]' = (), scales: 'Mapping[str, tuple[str, ...]]' = <factory>, covariance: \"Float[np.ndarray, 'p p']\" = <factory>, reduced_chi2: 'float' = nan, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "index_sigma": "method(self, wavelength: 'ArrayLike | float') -> \"tuple[Float[np.ndarray, '*shape'], Float[np.ndarray, '*shape']]\""
+   }
+  },
+  "fitted_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, FittedModel]'"
+  }
+ },
+ "optmat.solid.models.formulas": {
+  "FORMS": {
+   "kind": "constant",
+   "type": "frozenset"
+  },
+  "FormulaModel": {
+   "bases": [
+    "optmat.solid.models.base.Model"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "axis",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "form",
+     "type": "str"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "terms",
+     "type": "Mapping[str, tuple[float, ...]]"
+    },
+    {
+     "default": "'vacuum'",
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_medium",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "air",
+     "type": "State | None"
+    },
+    {
+     "default": "'air'",
+     "init": true,
+     "kw_only": false,
+     "name": "reference_gas",
+     "type": "str"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "temperature",
+     "type": "float | None"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "temperature_range",
+     "type": "tuple[float, float] | None"
+    }
+   ],
+   "init": "(material: 'str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', axis: 'str' = '', form: 'str' = '', terms: 'Mapping[str, tuple[float, ...]]' = <factory>, wavelength_medium: 'str' = 'vacuum', air: 'State | None' = None, reference_gas: 'str' = 'air', temperature: 'float | None' = None, temperature_range: 'tuple[float, float] | None' = None, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "at_temperature": "method(self, temperature: 'float') -> 'Model'",
+    "reference_model": "property",
+    "sellmeier": "classmethod(cls, material: 'str', coefficients: 'Mapping[str, Sequence[float]]', wavelength_range: 'tuple[float, float]', *, reference_medium: 'str | State' = 'vacuum', citation: 'str' = '', name: 'str' = '') -> 'FormulaModel'"
+   }
+  },
+  "UdmModel": {
+   "bases": [
+    "optmat.solid.models.base.Model"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "axis",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "None",
+     "init": true,
+     "kw_only": false,
+     "name": "udm",
+     "type": "UniversalDispersionModel | None"
+    }
+   ],
+   "init": "(material: 'str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', axis: 'str' = '', udm: 'UniversalDispersionModel | None' = None, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = ()) -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int"
+   }
+  },
+  "published_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, Model]'"
+  }
+ },
+ "optmat.solid.models.registry": {
+  "DEFAULTS_FILE": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "default_model": {
+   "kind": "function",
+   "signature": "(material: 'str', axis: 'str | None' = None) -> 'Model'"
+  },
+  "default_reason": {
+   "kind": "function",
+   "signature": "(material: 'str') -> 'str'"
+  },
+  "model": {
+   "kind": "function",
+   "signature": "(name: 'str') -> 'Model'"
+  },
+  "models": {
+   "kind": "function",
+   "signature": "(material: 'str') -> 'dict[str, Model]'"
+  }
+ },
+ "optmat.solid.models.tabulated": {
+  "HENKE_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "Segment": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "real",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "imaginary",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "range_nm",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "reason",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "henke",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "atom_density",
+     "type": "str"
+    }
+   ],
+   "init": "(real: 'str', imaginary: 'str', range_nm: 'tuple[float, float]', reason: 'str', henke: 'str' = '', atom_density: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "cited": "property",
+    "label": "property"
+   }
+  },
+  "TABLES_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "TabulatedModel": {
+   "bases": [
+    "optmat.solid.models.base.Model"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "material",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "citation",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "wavelength_range",
+     "type": "tuple[float, float]"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "axis",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "intervals",
+     "type": "tuple[tuple[float, float], ...]"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": false,
+     "name": "segments",
+     "type": "tuple[Segment, ...]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "knots",
+     "type": "Float[np.ndarray, ' n']"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "index",
+     "type": "Complex[np.ndarray, ' n']"
+    },
+    {
+     "default": "'hold'",
+     "init": true,
+     "kw_only": true,
+     "name": "out_of_range",
+     "type": "str"
+    }
+   ],
+   "init": "(material: 'str', name: 'str', citation: 'str', wavelength_range: 'tuple[float, float]', kind: 'str', axis: 'str' = '', segments: 'tuple[Segment, ...]' = (), knots: \"Float[np.ndarray, ' n']\" = <factory>, index: \"Complex[np.ndarray, ' n']\" = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '', intervals: 'tuple[tuple[float, float], ...]' = (), out_of_range: 'str' = 'hold') -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "INPUTS": "attribute: tuple",
+    "from_arrays": "classmethod(cls, material: 'str', wavelength: \"Float[np.ndarray, ' n']\", n: \"Float[np.ndarray, ' n']\", k: \"Float[np.ndarray, ' n']\", *, citation: 'str' = '', name: 'str' = '') -> 'TabulatedModel'",
+    "with_out_of_range": "method(self, mode: 'str') -> 'TabulatedModel'"
+   }
+  },
+  "load_table": {
+   "kind": "function",
+   "signature": "(path: 'Path') -> 'TabulatedModel'"
+  },
+  "tabulated_models": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, TabulatedModel]'"
+  }
+ },
+ "optmat.solid.raman_response": {
+  "Component": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "EVALUATION_VERSION": {
+   "kind": "constant",
+   "type": "int"
+  },
+  "Form": {
+   "kind": "function",
+   "signature": "(*args, **kwargs)"
+  },
+  "RAMAN_DIRECTORY": {
+   "kind": "constant",
+   "type": "PosixPath"
+  },
+  "SilicaRamanResponse": {
+   "bases": [
+    "optmat.identity.Identified"
+   ],
+   "fields": [
+    {
+     "default": "'user'",
+     "init": true,
+     "kw_only": true,
+     "name": "status",
+     "type": "Status"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "status_reason",
+     "type": "str"
+    },
+    {
+     "default": "()",
+     "init": true,
+     "kw_only": true,
+     "name": "modified",
+     "type": "tuple[tuple[str, str], ...]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": true,
+     "name": "base",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "name",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "form",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "raman_fraction",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "paired",
+     "type": "bool"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "parameters",
+     "type": "Mapping[str, Float[np.ndarray, ' m']]"
+    },
+    {
+     "default": "''",
+     "init": true,
+     "kw_only": false,
+     "name": "description",
+     "type": "str"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "sources",
+     "type": "Mapping[str, str]"
+    },
+    {
+     "default": "<factory>",
+     "init": true,
+     "kw_only": false,
+     "name": "reasons",
+     "type": "Mapping[str, str]"
+    }
+   ],
+   "init": "(name: 'str', form: 'str', raman_fraction: 'float', paired: 'bool', parameters: \"Mapping[str, Float[np.ndarray, ' m']]\", description: 'str' = '', sources: 'Mapping[str, str]' = <factory>, reasons: 'Mapping[str, str]' = <factory>, *, status: 'Status' = 'user', status_reason: 'str' = '', modified: 'tuple[tuple[str, str], ...]' = (), base: 'str' = '') -> 'None'",
+   "kind": "class",
+   "members": {
+    "DERIVED": "attribute: tuple",
+    "EVALUATES_THROUGH": "attribute: tuple",
+    "EVALUATION_VERSION": "attribute: int",
+    "IDENTITY_KIND": "attribute: str",
+    "INPUTS": "attribute: tuple",
+    "electronic_susceptibility": "method(self, wavelength: 'float') -> 'float'",
+    "gain": "method(self, pump_wavelength: 'float', shift: 'ArrayLike', *, n2: 'float | None' = None) -> \"Float[np.ndarray, ' *shape']\"",
+    "has_tensor": "property",
+    "index_model": "property",
+    "kerr_model": "property",
+    "raman_coefficient": "method(self, wavelength: 'float') -> 'float'",
+    "response": "method(self, time: 'ArrayLike', component: 'Component' = 'parallel') -> \"Float[np.ndarray, ' *shape']\"",
+    "spectrum": "method(self, omega: 'ArrayLike', component: 'Component' = 'parallel') -> \"Complex[np.ndarray, ' *shape']\""
+   }
+  },
+  "silica_raman_response": {
+   "kind": "function",
+   "signature": "(model: 'str' = 'default') -> 'SilicaRamanResponse'"
+  },
+  "silica_raman_responses": {
+   "kind": "function",
+   "signature": "() -> 'dict[str, SilicaRamanResponse]'"
+  }
+ },
+ "optmat.solid.udm": {
+  "Term": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "kind",
+     "type": "str"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "strength",
+     "type": "float"
+    },
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "shape",
+     "type": "tuple[float, ...]"
+    },
+    {
+     "default": "0.0",
+     "init": true,
+     "kw_only": false,
+     "name": "lowest",
+     "type": "float"
+    }
+   ],
+   "init": "(kind: 'str', strength: 'float', shape: 'tuple[float, ...]', lowest: 'float' = 0.0) -> 'None'",
+   "kind": "class",
+   "members": {}
+  },
+  "UDM_WAVENUMBER_TO_EV": {
+   "kind": "constant",
+   "type": "float"
+  },
+  "UniversalDispersionModel": {
+   "bases": [
+    "builtins.object"
+   ],
+   "fields": [
+    {
+     "default": null,
+     "init": true,
+     "kw_only": false,
+     "name": "terms",
+     "type": "tuple[Term, ...]"
+    }
+   ],
+   "init": "(terms: 'tuple[Term, ...]') -> 'None'",
+   "kind": "class",
+   "members": {
+    "EVALUATION_VERSION": "attribute: int",
+    "dpermittivity_denergy": "method(self, energy: \"Float[np.ndarray, ' n']\") -> \"Complex[np.ndarray, ' n']\"",
+    "permittivity": "method(self, energy: \"Float[np.ndarray, ' n']\") -> \"Complex[np.ndarray, ' n']\"",
+    "transition_strength": "method(self) -> 'float'"
+   }
+  },
+  "from_file": {
+   "kind": "function",
+   "signature": "(path: 'Path') -> 'UniversalDispersionModel'"
+  },
+  "from_parameters": {
+   "kind": "function",
+   "signature": "(attributes: 'tuple[str, ...]', values: 'Mapping[str, float]') -> 'UniversalDispersionModel'"
+  },
+  "parse_attributes": {
+   "kind": "function",
+   "signature": "(line: 'str', where: 'str') -> 'tuple[str, ...]'"
+  },
+  "parse_parameters": {
+   "kind": "function",
+   "signature": "(text: 'str', where: 'str') -> 'tuple[tuple[str, ...], dict[str, float]]'"
+  },
+  "read_parameter_file": {
+   "kind": "function",
+   "signature": "(path: 'Path') -> 'tuple[tuple[str, ...], dict[str, float]]'"
+  }
+ }
+}

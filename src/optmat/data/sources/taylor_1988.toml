@@ -1,0 +1,334 @@
+citation = "A. J. Taylor, R. B. Gibson and J. P. Roberts, Opt. Lett. 13, 814 (1988)"
+doi = "10.1364/ol.13.000814"
+library = "Taylor_1988_TwoPhotonAbsorption"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Intensity-dependent energy transmission of thin windows at 248 nm: linearly \
+polarized 0.7 +- 0.1 ps pulses (autocorrelation by two-photon ionisation of NO) from a \
+KrF high-brightness laser, 20 mJ, gently focused by a 5 m mirror onto a pyroelectric \
+detector (Gentec ED-200); the sample is moved along the beam to vary the incident \
+intensity from 5e9 to 3e11 W/cm2, normalised by a 4 % reflection taken before the \
+mirror. Nearly flat-topped spatial profile; a ~20 ns ASE background carries < 5 % of \
+the energy. No small-scale self-focusing was seen."""
+notes = """Table 1 (p. 3) is transcribed in full: the band gap, beta at 248 nm \
+('2h nu = 10 eV') and beta at 266 nm ('2h nu = 9.36 eV', footnote b: Liu et al., Appl. \
+Opt. 18, 1015 (1979) and Phys. Rev. B 17, 4620 (1978)), for fused silica, BaF2, SrF2, \
+CaF2, LiF and MgF2. Checked against the table image: all cells agree.
+
+Definition of beta (p. 2): the pulse 'propagates through a sample of thickness l, with \
+reflectivity R at each surface, according to dI/dz = -beta I^2' (linear absorption \
+assumed negligible), with I_in = I_i exp(-(t/tau)^2) spatially uniform, so that \
+T^-1 = sqrt(pi) (1 - R)^-2 [int dx / (alpha + exp(x^2))]^-1 with alpha = beta l (1 - R) \
+I_i (Eqs. 1-2). Reflection losses are therefore removed (R enters explicitly); the \
+intensity is that incident on the sample. beta is fitted to T^-1 against I_i l (Figs. \
+1, 2). Pulse-width broadening B = [ln(2 + alpha)/ln 2]^(1/2) (Eq. 4).
+
+Uncertainty (p. 2 and footnote a): 'The absolute uncertainty in beta is +-50 %, while \
+the relative uncertainty is +-15 %', from pyroelectric calibration, beam-profile \
+variations and the pulse shape. 'The measurements of beta by Liu et al. have an \
+uncertainty of +-43 %.' Levels not stated.
+
+LiF and MgF2 (footnote c, p. 2): their band gaps exceed 10 eV; the weak loss 'is \
+consistent with a three-photon absorption process', points above 2e11 W/cm2 (colour \
+centres, fluorescence) are ignored, and the tabulated value is an upper bound \
+calculated 'for comparison purposes'. CaF2 is 'a nearly pure sample (Optipur from \
+Optovac)'; 'values up to a factor of 2 higher are measured for samples of lower \
+purity'. The fused-silica grade is not stated.
+
+The band gaps are quoted without a source or a method; they are kept as check values \
+(parameters.kind = 'not stated'). The text notes that Liu et al. 'questioned the \
+accuracy of the reported band gap' of BaF2 (citing Strelow and Cook, J. Phys. Chem. \
+Ref. Data 2, 163 (1973)).
+
+Checks (scratch computation, 2026-09-26): Eq. 4 gives B = 1.259 at alpha = 1 (printed \
+1.26); Eq. 2 gives T = 0.605 at alpha = 1, i.e. 39.5 % loss against the printed 36 %; \
+the printed I_out/I_in = 0.44 is reproduced (0.443) if (1 - R)^2 = 0.92 (R = 0.04) is \
+included. Fig. 3's statements for 1.27 cm windows (I_out/I_in = 0.33 and 0.12 for \
+fused silica, 0.66 and 0.45 for CaF2, at 3e10 and 1e11 W/cm2) are reproduced to \
+0.33, 0.13, 0.70 and 0.44 with the tabulated beta and R = 0.041 (silica) or 0.036 \
+(CaF2), which confirms beta in cm/W with the definition above. The Fig. 1 caption \
+prints beta for fused silica and BaF2 in 'W/cm2', a misprint for cm/W (Table 1).
+
+The header's '2h nu = 9.36 eV' for Liu's 266 nm is printed as such (2 x 4.66 eV = \
+9.32 eV); the text says 266 nm. Liu's values at 266 nm are 30 ps measurements (p. 1); \
+the originals are now curated (liu_1978, liu_1979): each 266-nm value is found in one \
+of them (liu_1978 Table II: CaF2, LiF; liu_1979 Table I: fused silica, BaF2, SrF2, MgF2) and \
+the datasets name it. The band gaps of Table 1 match those papers' (fused silica 7.8, CaF2 \
+10.0, LiF 11.6: liu_1978; MgF2 11.8: liu_1979; BaF2 9.1 against liu_1979's 9.06, Strehlow \
+and Cook's), except SrF2 9.6, for which liu_1979 prints '?'."""
+
+# --- Band gaps (Table 1, column 2), quoted without source.
+
+[[datasets]]
+id = "band_gap_SiO2"
+material = "SiO2"
+file = "SiO2/taylor_1988__band_gap_SiO2.csv"
+table = "tbl_d491af0a4326"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Quoted without source or method."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_BaF2"
+material = "BaF2"
+file = "BaF2/taylor_1988__band_gap_BaF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Quoted without source or method; Liu et al. questioned the accuracy of the reported BaF2 gap (p. 3)."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_SrF2"
+material = "SrF2"
+file = "SrF2/taylor_1988__band_gap_SrF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Quoted without source or method."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_CaF2"
+material = "CaF2"
+file = "CaF2/taylor_1988__band_gap_CaF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Quoted without source or method; 'impurities will lower the band-gap energy' (p. 3)."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_LiF"
+material = "LiF"
+file = "LiF/taylor_1988__band_gap_LiF.csv"
+table = "tbl_d491af0a4326"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Quoted without source or method."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_MgF2"
+material = "MgF2"
+file = "MgF2/taylor_1988__band_gap_MgF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Quoted without source or method."
+[datasets.parameters]
+kind = "not stated"
+
+# --- beta at 248 nm, this work (Table 1, column 3).
+
+[[datasets]]
+id = "beta_248_SiO2"
+material = "SiO2"
+file = "SiO2/taylor_1988__beta_248_SiO2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Grade not stated. Fit of Eq. (2) to Fig. 1 (open circles)."
+[datasets.uncertainty]
+relative = 0.5
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 700
+polarization = "linear"
+
+[[datasets]]
+id = "beta_248_BaF2"
+material = "BaF2"
+file = "BaF2/taylor_1988__beta_248_BaF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Fit of Eq. (2) to Fig. 1 (filled circles). Disagrees with Liu et al.'s 266 nm bound (p. 3)."
+[datasets.uncertainty]
+relative = 0.5
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 700
+polarization = "linear"
+
+[[datasets]]
+id = "beta_248_SrF2"
+material = "SrF2"
+file = "SrF2/taylor_1988__beta_248_SrF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "primary"
+[datasets.uncertainty]
+relative = 0.5
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 700
+polarization = "linear"
+
+[[datasets]]
+id = "beta_248_CaF2"
+material = "CaF2"
+file = "CaF2/taylor_1988__beta_248_CaF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Optipur (Optovac), 'a nearly pure sample'; less pure samples gave up to twice this value (p. 2)."
+[datasets.uncertainty]
+relative = 0.5
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+grade = "Optipur"
+technique = "intensity-dependent transmission"
+pulse_fs = 700
+polarization = "linear"
+
+[[datasets]]
+id = "beta_248_LiF"
+material = "LiF"
+file = "LiF/taylor_1988__beta_248_LiF.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Printed as an upper bound (<= 1.3e-12), from a two-photon fit of loss the authors ascribe to three-photon absorption and colour centres (footnote c, Fig. 2). Not a measured beta."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 700
+polarization = "linear"
+
+[[datasets]]
+id = "beta_248_MgF2"
+material = "MgF2"
+file = "MgF2/taylor_1988__beta_248_MgF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Printed as an upper bound (<= 1.3e-12), from a two-photon fit of loss the authors ascribe to three-photon absorption and colour centres (footnote c, Fig. 2). Not a measured beta. Crystal orientation not stated."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 700
+polarization = "linear"
+
+# --- beta at 266 nm from Liu et al. (Table 1, column 4, footnote b): reproduced.
+
+[[datasets]]
+id = "liu_266_SiO2"
+material = "SiO2"
+file = "SiO2/taylor_1988__liu_266_SiO2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["liu_1979"]
+notes = "The original: liu_1979 Table I prints 1.7e-5 cm/MW +- 20 % (+-43 % systematic) = 1.7e-11 cm/W: agrees. Footnote b cites both Liu papers without saying which value comes from which; dragomir_2002 Table 1 gives 1.7e-11 at 266 nm, 30 ps, to the 1979 paper (+-43 % absolute). 30 ps pulses (p. 1)."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_266_BaF2"
+material = "BaF2"
+file = "BaF2/taylor_1988__liu_266_BaF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1979"]
+notes = "The original: liu_1979 Table I prints < 4.0e-6 cm/MW = < 4.0e-12 cm/W: agrees. Reproduced upper bound (< 4.0e-12), not a measured beta."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_266_SrF2"
+material = "SrF2"
+file = "SrF2/taylor_1988__liu_266_SrF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1979"]
+notes = "The original: liu_1979 Table I prints < 5.4e-6 cm/MW = < 5.4e-12 cm/W: agrees. Reproduced upper bound (< 5.4e-12), not a measured beta."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_266_CaF2"
+material = "CaF2"
+file = "CaF2/taylor_1988__liu_266_CaF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1978"]
+notes = "The original: liu_1978 Table II prints < 2e-5 cm/MW = < 2.0e-11 cm/W: agrees. Reproduced upper bound (< 2.0e-11), not a measured beta."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_266_LiF"
+material = "LiF"
+file = "LiF/taylor_1988__liu_266_LiF.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1978"]
+notes = "The original: liu_1978 Table II prints < 2e-5 cm/MW = < 2.0e-11 cm/W: agrees. Reproduced upper bound (< 2.0e-11), not a measured beta."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_266_MgF2"
+material = "MgF2"
+file = "MgF2/taylor_1988__liu_266_MgF2.csv"
+table = "tbl_d491af0a4326"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1979"]
+notes = "The original: liu_1979 Table I prints < 2.8e-6 cm/MW = < 2.8e-12 cm/W: agrees. Reproduced upper bound (< 2.8e-12), not a measured beta."
+[datasets.parameters]
+pulse_fs = 30000

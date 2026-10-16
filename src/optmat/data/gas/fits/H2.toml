@@ -1,0 +1,53 @@
+# Hydrogen (normal H2, 3:1 ortho:para, at room temperature): the refractive polarizability
+# from 112 nm (red of the B-X Lyman bands, which start at 110.8 nm) to the static limit.
+# On theory (2026-09-25, TC-95/TC-101): the three ab initio
+# calculations agree to 0.15 %; the experiments' levels scatter by 1e-3 about them.
+gas = "H2"
+description = "Hydrogen, on theory: effective oscillators fitted to Raj et al.'s ab initio polarizability of normal H2 averaged at 293 K (182 nm to the static limit, the backbone, 0.1 % allowance) and Rychlewski's below 182 nm; the shapes of Peck & Hung's visible and near-infrared refractivity (level within its stated systematic) and Smith, Huber & Parkinson's ultraviolet (level free); Shelton's He/H2 ratio. The single-value level measurements (Achtermann, Orcutt & Cole, Newell, Essen) and Bishop & Cheung's and Rychlewski's theory are validators. The rotational average makes the polarizability depend weakly on temperature (0.03 % between 273 and 296 K), not modelled here."
+range_nm = [112.0, "inf"]
+
+validators = [
+    "achtermann_1991/A_R_this_work_H2",
+    { key = "orcutt_1967/A_this_work_H2", electric = true },
+    "newell_1965/newell_baird_cylindrical_H2",
+    "essen_1953/microwave_H2",
+    { key = "bishop_1980/alpha_293K", electric = true },
+    { key = "rychlewski_1983/alpha_293K_H2", electric = true },
+    { key = "ford_1973/thermal_293K", electric = true },
+    "gill_1963/absolute_H2",
+    "gordon_1993/experiment_H2",
+    "hohm_1994/input_H2",   # 325-633 nm, first published here
+    { key = "may_2009/recommended_H2", electric = true },   # static dielectric, 273 K (TC-606)
+]
+
+[model]
+# The temperature the polarizability refers to: a molecule's zero-density polarizability
+# changes with temperature (rotational and vibrational averaging), which the model does
+# not carry; datasets measured elsewhere are brought here where the coefficient is
+# measured (TC-730).
+reference_temperature_k = 293.15
+effective = 2
+effective_min_energy_hartree = 0.411
+chi0_au = 0.0
+
+[[fitted]]
+key = "raj_2018/normal_293K_H2"
+extra_relative = 1e-3        # the spread of the three ab initio calculations (Raj,
+electric = true              # Rychlewski, Bishop & Cheung: 0.15 %), per the decision
+
+[[fitted]]
+key = "rychlewski_1983/alpha_293K_H2"
+range_nm = [0.0, 182.0]      # the vacuum ultraviolet, below Raj's 182.25 nm
+extra_relative = 1.7e-3
+electric = true
+
+[[fitted]]
+key = "peck_1977/experiment"
+
+[[fitted]]
+key = "smith_1976/experiment_H2"
+free_scale = true
+
+# Near-infrared dispersion relative to a partner gas: He/H2 ratio, helium fixed.
+[[fitted]]
+key = "shelton_1990/density_He_over_H2"

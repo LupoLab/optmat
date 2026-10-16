@@ -1,0 +1,38 @@
+citation = "M. J. Assael, S. Mixafendi and W. A. Wakeham, \"The Viscosity and Thermal Conductivity of Normal Hydrogen in the Limit of Zero Density\", J. Phys. Chem. Ref. Data 15, 1315 (1986)"
+doi = "10.1063/1.555764"
+library = "Assael_1986_ViscosityThermalConductivity"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A correlation of the zero-density viscosity and thermal conductivity of normal \
+hydrogen from 20 K to 2200 K, from critically evaluated primary measurements, in the \
+form of the kinetic theory of polyatomic gases with a fitted collision functional."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library. Printed pp. 1315-1322; pages \
+cited are pdf pages (p. = pdf page + 1314).
+
+THE HYDROGEN VISCOSITY (pdf p. 4, Eqs. 1 and 3, Table 2): eta = (5/16) (m k T / \
+pi)^(1/2) / (sigma^2 Omega*(T*)), ln Omega* = sum_{i=0}^{4} a_i (ln T*)^i, with \
+a = 0.354125, -0.427581, 0.149251, -0.037174, +0.003176, sigma = 0.2968 nm and \
+epsilon/k = 33.3 K, fitted over 20-2200 K. Section 5.1 (pdf p. 7) gives a different, \
+universal corresponding-states functional, Eq. (13): ln Omega_eta* = 0.46649 - \
+0.57015 ln T* + 0.19164 (ln T*)^2 - 0.03708 (ln T*)^3 + 0.00241 (ln T*)^4, which \
+represents hydrogen's primary data only to 6 %, systematically.
+
+THE D2 PAPER'S MISPRINT (TC-760). Assael, Mixafendi and Wakeham (1987, assael_1987) \
+print this Eq. (13)'s coefficients as their Eq. (4), for 'the viscosity of hydrogen'. \
+With Eq. (3)'s Table 2 coefficients instead, and their Eq. (7) f(T*) applied at every \
+temperature, their Table 2 of D2 is reproduced within 1.5 units of its last digit, \
+except the cell at 90 K (computed 2026-09-30, tests/test_transport.py). This paper's own Table of hydrogen's \
+viscosity is reproduced by Eqs. (1) and (3) to its rounding (20, 100, 300, 1000 and \
+2000 K checked).
+
+Only the check is used: optmat's hydrogen viscosity is Muzny et al.'s (muzny_2013)."""
+
+[[formulas]]
+id = "eq1_eq3"
+material = "H2"
+equation = "Eqs. (1) and (3), Table 2, pdf p. 4"
+printed = "eta = (5/16)(m k T/pi)^(1/2)/(sigma^2 Omega*(T*)); ln Omega* = sum_i a_i (ln T*)^i"
+variable = "T* = k T / epsilon; eta in Pa s with m in kg, sigma in m"
+range = "20-2200 K"
+coefficients = { a0 = "0.354125", a1 = "-0.427581", a2 = "0.149251", a3 = "-0.037174", a4 = "0.003176", sigma_nm = "0.2968", epsilon_k = "33.3" }
+check = "With the D2 mass and assael_1987's f(T*) at every temperature, reproduces assael_1987's Table 2 within 1.5 units of its last digit except at 90 K (tests/test_transport.py)."

@@ -1,0 +1,136 @@
+citation = "P. F. Egan, Meas. Sci. Technol. 37, 255003 (2026)"
+doi = "10.1088/1361-6501/ae6e94"
+library = "Egan_2026_TwoColorMeasurements"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Fabry-Perot cavity refractometer (Yang et al.'s apparatus) interrogated \
+simultaneously at 0.6329908 and 1.542383 um (vacuum), both lasers referenced to a \
+frequency comb; pressure from a dimensionally characterized piston gauge (1.9e-6 p), \
+ITS-90 temperature by a capsule SPRT in a borehole of the vessel lid (1e-6 T); cavity \
+compression calibrated with helium. Nine isotherms from 20 to 100 C up to 0.5 MPa per \
+gas, regressed to p = (n - 1) A [1 + (n - 1) B + (n - 1)^2 C] + eps_p (Eq. 4), A = \
+2RT/(3 A_R) (pp. 3-4). Baseline relative standard uncertainty 2.3e-6."""
+notes = """Measured gases: CO2, O2, two N2 + O2 mixtures, natural dry air (Niwot Ridge) and \
+water vapour. The mixtures, air and water are not curated species and are skipped \
+(water's refractivity ratio 0.97569(8) at 1542/633 nm, 100 C, and the adjusted Voronin \
+and Zheltikov Sellmeier of Table 5 included). All uncertainties are one standard \
+uncertainty (p. 6).
+
+Molar refractivity A_R (the zero-density Lorentz-Lorenz coefficient, Eq. 2) at 303 K, \
+with a linear temperature dependence A_R(T) = A_303 [1 + A_theta (T/K - 303)] (Eq. 5); \
+the parenthesised figures after A_303 are statistical only, the combined standard \
+uncertainties are CO2 4.6e-6 A_303 and O2 7.2e-6 A_303 (pp. 6, 8). A_theta: CO2 \
+4.22(9)e-6 at 633 nm and 4.13(9)e-6 at 1542 nm (combined u 8.0 %); O2 2.11(4)e-6 and \
+2.02(5)e-6 (combined u 9.4 %) (pp. 4, 7-8). ITS-90 nonlinearity (up to 9 mK) limits \
+A_theta and leaves up to 2.7e-5 relative error in A_R(T).
+
+Comparisons (pp. 5, 10): Birch's A_R at 0.633 um, CO2 6.6418(5) and O2 4.0278(3) \
+cm^3/mol (birch_1991); Zhang et al.'s (zhang_2008) O2 at 0.800 um is 4.5e-4 (n - 1) \
+below Eq. (8) and their CO2 is also discrepant; Kren's inferred O2 Sellmeier \
+(kren_2011) is within 8e-5 at 0.633 um and 1.7e-4 at 1.542 um of Eq. (8).
+
+Second density virial coefficients B_rho (Tables 1, 2, 4) and the N2-O2 cross virial \
+(Table 3) are equation-of-state quantities, not refractive ones, and are not extracted \
+(the vocabulary's refractivity_virial_coefficient is B_R). They were derived with the \
+second refractivity virial coefficients b_R(sigma, T) (B_R = A_R b_R) recorded below as \
+formulas.
+
+Table 6 (tbl_15c8e9be0440, image checked) gives beta, the slope of the refractivity \
+ratio (n_633 - 1)/(n_1542 - 1) against n_1542 - 1 at 30 C (Eq. 15), which measures the \
+dispersion of b_R (Eq. 18); the format has no quantity for it and it is not extracted. \
+Values x 10^-3 (this apparatus; He, Ne, Ar, N2 from Yang, Stone and Egan, Phys. Rev. Appl. 23, 064041 (2025), ref. 15): He -1.20(25), \
+Ne -0.70(25), Ar 2.62(25), N2 2.17(25), O2 4.73(25), CO2 4.83(25); Keeling's \
+ultraviolet values reduced by 4.95: Ar 2.99, N2 2.71, CO2 4.21; Hohm's heuristic: He \
+-0.18, Ne 0.20, Ar 2.81, N2 2.25, O2 3.21, CO2 4.29; ab initio (Garberoglio and \
+Harvey): He -1.20, Ne -0.67, Ar 1.93."""
+
+[[datasets]]
+id = "A_R_CO2"
+material = "CO2"
+points = [["632.9908", "0.6329908", "6.64337"], ["1542.383", "1.542383", "6.50541"]]
+table = "text"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "p. 4: A_303 = 6.64337(3) cm^3/mol at 0.6329908 um and 6.50541(3) at 1.542383 um (statistical u in parentheses), molar refractivity at 303 K from nine isotherms 20-100 C. Combined standard uncertainty 4.6e-6 A_303 (apparatus 2.3e-6, fit 3.6e-6, nitrogen impurity bias 1.6e-6; p. 6). Temperature dependence A_theta = 4.22(9)e-6 and 4.13(9)e-6 per K."
+[datasets.uncertainty]
+relative = 4.6e-6
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_O2"
+material = "O2"
+points = [["632.9908", "0.6329908", "4.027716"], ["1542.383", "1.542383", "3.968990"]]
+table = "text"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "p. 7: A_303 = 4.027716(7) cm^3/mol at 0.633 um and 3.968990(7) at 1.542 um (statistical u in parentheses; the wavelengths are the apparatus's 0.6329908 and 1.542383 um), at 303 K. Combined standard uncertainty 7.2e-6 A_303 (apparatus 2.3e-6, fit 1.8e-6, possible krypton impurity bias 4.0e-6; p. 8). A_theta = 2.11(4)e-6 and 2.02(5)e-6 per K. Oxygen's optical A_R excludes the microwave orientational (magnetic-dipole) contribution (p. 10)."
+[datasets.uncertainty]
+relative = 7.2e-6
+level = "1 sigma"
+
+[[formulas]]
+id = "o2_sellmeier"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "0", B = ["5627886.8", "197258.6"], C = ["281.0", "45.4"] }
+range_nm = [254.0, 1542.4]
+material = "O2"
+equation = "Eq. (8), p. 9"
+printed = "10^8 (n_os - 1) = 5627886.8/(281.0 - sigma^2) + 197258.6/(45.4 - sigma^2)"
+variable = "sigma = um/lambda, lambda the vacuum wavelength"
+state = { pressure_pa = 100000.0, temperature_c = 20.0 }
+density = "real"
+range = "fitted to Ladenburg and Wolfsohn's (1932) visible-ultraviolet data, Hohm's five visible points (offset -2.1e-3 (n - 1)), this work's 0.633 and 1.542 um values and Keeling et al.'s 0.436/0.254 um ratio (1.097922)"
+coefficients = { B1 = "5627886.8", C1 = "281.0", B2 = "197258.6", C2 = "45.4" }
+check = "With the package's real-gas density at 20 C and 100 kPa (CoolProp) and Lorentz-Lorenz, Eq. (8) gives A_R = 4.027691 cm^3/mol at 0.6329908 um and 3.968977 at 1.542383 um, 6.3e-6 and 3.4e-6 below this work's A_303 (within its 7.2e-6). A_R carried to 293.15 K with A_theta would be 2.1e-5 lower (4.027632), which suggested that Eq. (8) takes A_303 at 20 C without the temperature dependence; that is not established: with the paper's own density virial (-17.0 cm^3/mol), refractivity virial and A_theta, Eq. (8) is +1.8e-6 and +4.4e-6 off, both within 7.2e-6, and the package has no refractivity virial for O2 (an 8.6e-6 effect) (second reading, 2026-09-25; TC-157). Checked 2026-09-25."
+notes = "At 'standard conditions 20 C and 100 kPa' (n_os after Ciddor). 'Consistent within 1e-6 (n - 1) of the two-color measurement of this work and the Keeling et al ratio'; the fit is not robust in the ultraviolet (a Cauchy alternative differs by 7.7e-6 (n - 1) at zero frequency). Not valid at microwave frequencies (the 60 GHz O2 band adds 2.7e-3 (n - 1)); the 0.76 um A band perturbs n locally at 1e-5 (n - 1). The reproduced data it rests on are not in this record (Ladenburg and Wolfsohn 1932, Hohm, Keeling et al.)."
+
+[[formulas]]
+id = "co2_b_R"
+material = "CO2"
+equation = "p. 5"
+printed = "b_R / (cm^3 mol^-1) = (0.291 + 0.00575 sigma^2) [1 - 3.2 x 10^-3 (T/K - 303)]"
+variable = "sigma = um/lambda (vacuum); T in K; B_R = A_R b_R"
+range = "0.633-1.542 um, 293-373 K"
+coefficients = { b_eps = "0.291", b_R2 = "0.00575", b_theta = "-3.2e-3" }
+reproduced_from = ["achtermann_1991"]
+check = "Not checked (the reference value is Achtermann et al.'s B_R at 323 K and 0.633 um; the sigma^2 and T dependences are this work's beta analysis). At 0.633 um and 303 K, B_R = 6.64337 x 0.30535 = 2.029 cm^6/mol^2 (computed here)."
+notes = "The second refractivity virial coefficient b_R = B_R / A_R (Eq. 2), 'this work recommends'; assumed 10 % uncertainty (p. 6)."
+
+[[formulas]]
+id = "o2_b_R"
+material = "O2"
+equation = "p. 8"
+printed = "b_R / (cm^3 mol^-1) = (0.194 + 0.00641 sigma^2) [1 + 1.4 x 10^-3 (T/K - 303)]"
+variable = "sigma = um/lambda (vacuum); T in K"
+range = "0.633-1.542 um, 293-373 K"
+coefficients = { b_eps = "0.194", b_R2 = "0.00641", b_theta = "1.4e-3" }
+reproduced_from = ["U. Hohm, Z. Naturforsch. A 48, 505 (1993) (heuristic b_epsilon)"]
+check = "Checked against the paper's text (p. 8), 2026-10-01: the formula, the 50 % uncertainty and 'tied to Hohm's b_eps estimate, but the sigma^2 and T dependencies are derived from this work' (TC-794). b_epsilon is Hohm's heuristic estimate, the sigma^2 and T dependences this work's (Hohm's b_R^(2) 50 % too small, his temperature slope of the wrong sign)."
+
+[[formulas]]
+id = "n2_b_R"
+material = "N2"
+equation = "p. 11"
+printed = "b_nn / (cm^3 mol^-1) = (0.195 + 0.00211 sigma^2) [1 + 0.0 x 10^-3 (T/K - 303)]"
+variable = "sigma = um/lambda (vacuum); T in K"
+range = "0.633-1.542 um, 293-373 K"
+coefficients = { b_eps = "0.195", b_R2 = "0.00211", b_theta = "0.0" }
+reproduced_from = ["achtermann_1991"]
+check = "Not checked. Based on Achtermann et al.'s 0.633 um measurements ('7% uncertainty'); a 10 % uncertainty is used for dry air."
+
+[[formulas]]
+id = "ar_b_R"
+material = "Ar"
+equation = "p. 14"
+printed = "b_rr / (cm^3 mol^-1) = (0.412 + 0.00321 sigma^2) [1 - 0.3 x 10^-3 (T/K - 303)]"
+variable = "sigma = um/lambda (vacuum); T in K"
+range = "0.633-1.542 um, 293-373 K"
+coefficients = { b_eps = "0.412", b_R2 = "0.00321", b_theta = "-0.3e-3" }
+reproduced_from = ["G. Garberoglio and A. H. Harvey, J. Res. Natl. Inst. Stand. Technol. 125, 125022 (2020)"]
+check = "Not checked. b_R^(2) from this apparatus's beta (Yang, Stone and Egan 2025, ref. 15); 10 % uncertainty assumed."

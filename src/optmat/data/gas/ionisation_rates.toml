@@ -1,0 +1,182 @@
+# The strong-field ionisation-rate models (optmat.gas.ionisation_rates, TC-652).
+#
+# A model is a named combination of the factors of the rate
+#
+#     W = electrons x sum over the ion's levels of
+#         weight x [short-range rate of Perelomov, Popov & Terent'ev 1966, eq. (54)]
+#                x [Coulomb factor] x [static correction],
+#
+# for one electron in the orbital (l, m = 0), and its constants per gas. The
+# ionisation energies, the structure coefficients and the published constants of the
+# static corrections are those of ionisation.toml; this file makes the choices that are
+# optmat's own, each with its reason and its register entry.
+#
+# Keys of a model:
+#   description        what the model is
+#   coulomb            static | ilkov | popruzhenko (the Coulomb factor)
+#   static_correction  tong-lin | zhang | none
+#   structure          tong_2002 (Tong, Zhao & Lin's C_l) | hartree (Ammosov et al.
+#                      1986, eq. 19, with l* = n* - 1)
+#   channel_sum        integral (smooth, the default) | sum
+#   averaging          consistent (the default): the average of the instantaneous
+#                      rate over a cycle is the cycle-averaged rate | tunnelling: the
+#                      two differ by the factor (3F / pi F_0)^(1/2) of the tunnelling
+#                      limit, as in the literature's forms
+#   reasons            why, per choice
+#   status             (optional) validated, provisional, untested or comparison, with
+#                      status_reason; `default` is validated and the other models
+#                      comparison unless it says otherwise
+# Keys of a gas within a model:
+#   electrons             N_eff: the atom's rate over the one-electron rate
+#   fine_structure_level  the ion's 2P1/2 level (a level_energy dataset): the rate is
+#                         then 2/3 to 2P3/2 and 1/3 to 2P1/2; omitted for one level
+#   tong_lin_alpha        Tong & Lin's alpha where they fitted none for the gas
+#   uncertainty_factor    the factor within which the rate is expected to be right
+#   reasons               why, per choice
+
+[models.default]
+description = "optmat's validated rate: the rate of Perelomov, Popov & Terent'ev with a Coulomb factor that depends on the frequency (the static factor times (1 + 2 gamma/e)^(-2 n* c s), s = n* omega/2 I_p, c = 5.25), Tong & Lin's static correction, Tong, Zhao & Lin's structure coefficients, the fine structure of the ion and an effective number of electrons per gas from all-electron calculations and measurements."
+coulomb = "frequency"
+static_correction = "tong-lin"
+structure = "tong_2002"
+channel_sum = "integral"
+[models.default.reasons]
+coulomb = "The static factor (2 F_0/F)^(2n*) times (1 + 2 gamma/e)^(-2 n* c s), s = n* omega/2 I_p, c = 5.25, fitted to one-electron TDSE yields of argon for one 10 fs pulse at 400, 800 and 1030 nm (travers_2026_trecx; rms factor 1.17, against 1.78 with the static factor alone; TC-831). Not fitted to, and within 0.84 to 1.16 of on geometric average: the 6 fs, 30 fs and Wallace-pulse argon, krypton (its static normalisation 1.08 to 1.17 included) and xenon at 800 nm, and the hydrogen, helium and neon calculations of Zhao et al., Le et al., Bauer and Deng and tRecX below gamma = 2 (TC-833 to TC-845); with it van der Hart's all-electron argon at 390 nm is 0.87 of one electron, as haCC's at 800 nm (TC-842, TC-847). It tends to the static factor as omega -> 0, so the static references and the effective numbers of electrons set from them are unchanged. Above gamma = 2, in the multiphoton regime with resonances, it is low for hydrogen (0.37 to 0.83). The static factor alone, the default until TC-848, was 1.1 to 4 times the one-electron calculations above gamma = 1, the more the higher the frequency; Popruzhenko et al.'s is 2 to 4 times low (TC-653, TC-812, TC-824, TC-848)."
+static_correction = "Tong & Lin's factor reproduces the exact one-electron static rates of argon in Tong & Lin's potential (zhang_2014 Table IX) within 7 % up to 1.7 times the barrier-suppression field, and those in the other two potentials within 20 %, is smooth, and tends to 1 at low field; Zhang et al.'s agrees with it there but does not tend to 1 (TC-655)."
+structure = "The constants of Tong & Lin and of Zhang et al. were fitted relative to the tunnelling rate with Tong, Zhao & Lin's C_l and m = 0; with the Hartree coefficient the rate would be off by 0.57 (Ne) to 2.0 (Xe) (TC-657)."
+channel_sum = "The sum over channels has a step at every channel closing; the integral is smooth, within 10 % of the sum for gamma < 1.5 and 50 % for gamma up to 3 (TC-654)."
+electrons = "The weak-field limit is 2 per doubly occupied orbital (Tolstikhin, Madsen & Morishita 2014, section II G). At working fields the first-order corrections of the atom exceed those of the one-electron model, and the all-electron static rates give 1.0 to 1.5 (TC-658)."
+averaging = "The theory gives the rate averaged over a cycle. Dividing it by the factor of the tunnelling limit, (3F / pi F_0)^(1/2), to obtain an instantaneous rate, as propagation codes do, gives a rate whose average over a cycle exceeds the cycle-averaged rate by up to 1.4 at 800 nm and 1.9 at 400 nm (argon, Keldysh parameters 2.6 and 5.1); with the local slope and curvature of the rate in place of the tunnelling exponent the two agree to 3 % up to the barrier-suppression field (TC-662)."
+fine_structure = "A p shell's m = 0 orbital leaves the ion in 2P3/2 with weight 2/3 and in 2P1/2 with weight 1/3 (the Clebsch-Gordan coefficients), each with its own ionisation energy; no calculation or model among the references includes it (TC-659)."
+
+[models.default.gases.He]
+electrons = 1.47
+uncertainty_factor = 1.3
+[models.default.gases.He.reasons]
+electrons = "The geometric mean of the ratio of Parker et al.'s two-electron static rate (parker_2009 Table 1) to the one-electron rate of this model, over 0.07 to 0.25 au; the ratio runs from 1.27 to 1.59 there (TC-658)."
+uncertainty_factor = "Static: within 8 % of the all-electron rates from 0.07 to 0.15 au and 17 % to 0.3 au. 780 nm: 0.85 to 1.13 of Parker et al.'s fit from 1e14 to 1.4e15 W/cm2; 390 nm: 0.85 to 1.28 of it. One electron: 1.10 to 1.14 times the TDSE at 800 nm and 6 fs. At 390 nm with A2's 6 fs pulse the two-electron calculation of the atom is 0.99 to 1.05 times Parker et al.'s rate integrated over the pulse, and 1.69 to 1.79 times one electron at the same ionisation energy; haCC's helium is 0.76 to 0.81 of it (TC-660, TC-848, TC-1050)."
+
+[models.default.gases.Ne]
+electrons = 1.0
+fine_structure_level = "nist_asd_2026/level_Ne+_2P12"
+uncertainty_factor = 1.5
+[models.default.gases.Ne.reasons]
+electrons = "Jagau's coupled-cluster static rates, all electrons correlated (jagau_2016 Table S4), are 1.03 to 1.10 times the one-electron rate of this model from 0.16 to 0.24 au and 1.20 times at 0.14 au; from 0.08 to 0.12 au they are 1.4 to 2.6 times it and not smooth in the field (TC-668, TC-669). Majety & Scrinzi's haCC(4) rates, read from their Fig. 1, which holds the only values, are 0.97 to 1.07 times it from 0.05 to 0.16 au (TC-658)."
+uncertainty_factor = "Static: 0.82 to 0.96 of Jagau's all-electron rates from 0.14 to 0.24 au (TC-669). One electron at 400 nm: 1.14 times Zhao et al.'s calculation on geometric average (TC-831); no all-electron reference at finite frequency."
+
+[models.default.gases.Ar]
+electrons = 1.0
+fine_structure_level = "nist_asd_2026/level_Ar+_2P12"
+uncertainty_factor = 1.5
+[models.default.gases.Ar.reasons]
+electrons = "Jagau's coupled-cluster static rates, all electrons correlated (jagau_2016 Table S5), are 0.83 to 1.00 times the one-electron rate of this model from 0.08 to 0.16 au (2e14 to 9e14 W/cm2), 1.21 times at 0.07 au and 1.57 times at 0.06 au (TC-669); Majety & Scrinzi's haCC(4) rates, read from their Fig. 1, 0.79 to 1.05 times from 0.08 to 0.16 au and 1.3 to 1.7 times from 0.04 to 0.06 au (TC-658); Wallace et al.'s measured yields (wallace_2016) are matched by the exact one-electron calculation in their pulse at a scale of 1.002, inside their calibration (TC-836); haCC's all-electron argon in a 6 fs pulse is 0.76 to 0.87 of one electron at the same ionisation energy (TC-847)."
+uncertainty_factor = "Static: 0.78 to 1.16 of Jagau's all-electron rates from 0.07 to 0.16 au (TC-669). One electron: 0.90 to 1.07 times the ionised fraction of the TDSE at 800 nm and 6 fs, 0.97 to 1.19 at 10 fs, 0.83 to 1.04 at 1030 nm, 0.59 to 1.36 at 400 nm (through resonances), 0.86 to 1.04 in Wallace et al.'s pulse (TC-848). The atom: 0.76 to 0.87 of one electron in haCC at 800 nm, about 0.87 in van der Hart's R-matrix rates at 390 nm (TC-842, TC-847). Wallace et al.'s yields are matched with the intensities scaled by 1.033, against 1.002 for the exact one-electron calculation (calibration 1.3 %; TC-836). Wahlstrand et al.'s absolute yields (42 fs) are 1.2 to 3.1 times lower than the model's, where the intensity's 13 % allows 1.9 (TC-660)."
+
+[models.default.gases.Kr]
+electrons = 1.35
+fine_structure_level = "nist_asd_2026/level_Kr+_2P12"
+tong_lin_alpha = 9.0
+uncertainty_factor = 2.0
+[models.default.gases.Kr.reasons]
+electrons = "Wallace et al.'s yields, against the model's one electron: through their test the exact one-electron calculation of krypton in their pulse needs the intensities scaled by 1.045, beyond the calibration of 1.5 %, and a factor of about 1.4 on its rate matches (TC-846); with 1.35 the default is at 1.023, beside argon's 1.033 and xenon's 1.026 (TC-850). No all-electron rate of krypton exists: Santra et al.'s (santra_2006) is an independent-electron sum in a Herman-Skillman potential, of which the default is 1.04 at 0.10 au (TC-851). With the static Coulomb factor the default matched Wallace et al.'s krypton with 1 electron only because that factor's excess made up for the atom's (TC-848)."
+tong_lin_alpha = "Tong & Lin fitted no alpha for krypton; they 'suggest that one chooses ... alpha = 9.0 for ionization from the higher partial waves', with which the rates agree with the calculated ones 'within 50%' (tong_2005, p. 2596). Zhang et al.'s factor for Kr (zhang_2014 Table XI) corresponds to alpha = 9.7 at the barrier-suppression field (TC-655)."
+uncertainty_factor = "Static: one electron 1.08 to 1.22 of tRecX's and Bahl et al.'s one-electron rates; 1.04 of Santra et al.'s spin-orbit-resolved independent-electron sum (Herman-Skillman potential) at 0.10 au (TC-821, TC-845, TC-846). One electron: 1.16 (6 fs) and 1.20 (Wallace et al.'s pulse) times the TDSE at 800 nm, the static normalisation included. Wallace et al.'s yields are matched with the intensities scaled by 1.023 (calibration 1.5 %); Wahlstrand et al.'s are 1.4 to 3.8 times lower than the model's (TC-660, TC-848)."
+
+[models.default.gases.Xe]
+electrons = 1.5
+fine_structure_level = "nist_asd_2026/level_Xe+_2P12"
+tong_lin_alpha = 9.0
+uncertainty_factor = 3.0
+[models.default.gases.Xe.reasons]
+electrons = "Wallace et al.'s yields, against the model's one electron: the exact one-electron calculation of xenon in their pulse passes their test at 1.019 (calibration 2.5 %) and a factor of 1.09 on its rate gives 1.000; the model's one electron is 0.96 to 1.00 times the calculation there, and its rate weighted over the ion's two levels 0.71 to 0.79 times that of one level, so the atom is about 1.09/(0.98 x 0.75), 1.5, of the model's electron. With it Wallace et al.'s yields are matched with the intensities scaled by 1.026 (argon 1.033, krypton 1.023). No all-electron rate of xenon exists; the number rests on one measurement (TC-849, TC-850)."
+tong_lin_alpha = "As for krypton; Zhang et al.'s factor for Xe corresponds to alpha = 8.3 at the barrier-suppression field (TC-655)."
+uncertainty_factor = "Static: one electron 0.84 to 1.05 of tRecX's and Bahl et al.'s one-electron rates (TC-821, TC-845). One electron: 0.94 times the TDSE at 800 nm and 6 fs, 0.96 to 1.00 in Wallace et al.'s pulse (TC-849). The atom's 1.5 electrons rest on Wallace et al.'s yields alone (scale 1.026, calibration 2.5 %). Against it, within the absolute measurements at 800 nm, where one calibration serves all gases, xenon's intensity scale is 0.86 (Nambu et al.) and 0.81 (Nie et al.) of argon's, the model's xenon high against its argon by a factor of 2 to 3.5 in the rate (TC-819); at 400 nm Nambu et al.'s is 1.09. Wahlstrand et al.'s yields are 2.9 to 6.8 times lower than the model's. The structure coefficients of the sources differ by a factor of 3 in C^2 for xenon (TC-657, TC-660, TC-850)."
+
+# The forms of the literature, for comparison and to reproduce rates computed with
+# them. Each is the rate of ONE electron in the orbital (l, m = 0), as its source
+# gives it: no effective number of electrons, no fine structure, no static correction.
+
+[models.ppt_larochelle]
+description = "Perelomov, Popov & Terent'ev's rate with the static Coulomb factor and the Hartree coefficient: Larochelle, Talebpour & Chin 1998, eqs. (3) and (10), for m = 0."
+coulomb = "static"
+static_correction = "none"
+structure = "hartree"
+averaging = "tunnelling"
+[models.ppt_larochelle.gases]
+He = { electrons = 1.0 }
+Ne = { electrons = 1.0 }
+Ar = { electrons = 1.0 }
+Kr = { electrons = 1.0 }
+Xe = { electrons = 1.0 }
+
+[models.ppt_ilkov]
+description = "The same with the factor (1 + gamma^2)^(-n*) in the Coulomb term: Ilkov, Decker & Chin 1992, eq. (8) (with its prefactor corrected, TC-656), and Bergé et al. 2007, eq. (B14), for m = 0. The rate of Luna and solprop before their occupancy, Stark-shift, dipole and barrier-suppression factors."
+coulomb = "ilkov"
+static_correction = "none"
+structure = "hartree"
+averaging = "tunnelling"
+[models.ppt_ilkov.gases]
+He = { electrons = 1.0 }
+Ne = { electrons = 1.0 }
+Ar = { electrons = 1.0 }
+Kr = { electrons = 1.0 }
+Xe = { electrons = 1.0 }
+
+[models.ppt_popruzhenko]
+description = "Perelomov, Popov & Terent'ev's rate with Popruzhenko, Mur, Popov & Bauer's (2008) Coulomb factor and Tong, Zhao & Lin's structure coefficients: the rate Zhao et al. (2016, eq. 7) recommend, for m = 0."
+coulomb = "popruzhenko"
+static_correction = "none"
+structure = "tong_2002"
+averaging = "tunnelling"
+[models.ppt_popruzhenko.gases]
+He = { electrons = 1.0 }
+Ne = { electrons = 1.0 }
+Ar = { electrons = 1.0 }
+Kr = { electrons = 1.0 }
+Xe = { electrons = 1.0 }
+
+[models.one_electron]
+description = "The default's rate of one electron, without the effective number of electrons or the fine structure: what a single-active-electron calculation in Tong & Lin's model potential gives, and the rate to compare with one."
+coulomb = "frequency"
+static_correction = "tong-lin"
+structure = "tong_2002"
+[models.one_electron.gases]
+He = { electrons = 1.0 }
+Ne = { electrons = 1.0 }
+Ar = { electrons = 1.0 }
+Kr = { electrons = 1.0, tong_lin_alpha = 9.0 }
+Xe = { electrons = 1.0, tong_lin_alpha = 9.0 }
+
+# The default until TC-848, with the static Coulomb factor: kept for comparison and to
+# reproduce the comparisons made with it (TC-653 to TC-847).
+
+[models.default_static]
+description = "optmat's default until TC-848: the default with the static Coulomb factor (Perelomov & Popov 1967), which the one-electron calculations put 1.1 to 4 times high at Keldysh parameters above 1, the more the higher the frequency, and with argon's one electron for krypton."
+coulomb = "static"
+static_correction = "tong-lin"
+structure = "tong_2002"
+channel_sum = "integral"
+status = "comparison"
+status_reason = "Superseded as the default by the frequency-dependent Coulomb factor (TC-848)."
+[models.default_static.reasons]
+coulomb = "The static factor; see the default's history (TC-653, TC-812, TC-824, TC-848)."
+[models.default_static.gases]
+He = { electrons = 1.47 }
+Ne = { electrons = 1.0, fine_structure_level = "nist_asd_2026/level_Ne+_2P12" }
+Ar = { electrons = 1.0, fine_structure_level = "nist_asd_2026/level_Ar+_2P12" }
+Kr = { electrons = 1.0, fine_structure_level = "nist_asd_2026/level_Kr+_2P12", tong_lin_alpha = 9.0 }
+Xe = { electrons = 1.0, fine_structure_level = "nist_asd_2026/level_Xe+_2P12", tong_lin_alpha = 9.0 }
+
+[models.one_electron_static]
+description = "The rate of one electron with the static Coulomb factor (one_electron until TC-848): the comparisons of TC-653 to TC-847 are made with it."
+coulomb = "static"
+static_correction = "tong-lin"
+structure = "tong_2002"
+status = "comparison"
+status_reason = "Superseded as one_electron by the frequency-dependent Coulomb factor (TC-848)."
+[models.one_electron_static.gases]
+He = { electrons = 1.0 }
+Ne = { electrons = 1.0 }
+Ar = { electrons = 1.0 }
+Kr = { electrons = 1.0, tong_lin_alpha = 9.0 }
+Xe = { electrons = 1.0, tong_lin_alpha = 9.0 }

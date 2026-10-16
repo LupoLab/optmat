@@ -1,0 +1,41 @@
+import csv, math
+R={r['name']:r for r in csv.DictReader(open('all_runs.csv'))}
+f=lambda r,k: float(r[k]) if r and r.get(k) not in (None,'','nan') else float('nan')
+def fam(prefix,n):
+    return [R.get(f"{prefix}_{i:02d}") for i in range(n)]
+def g(x): return '' if x!=x else f"{x:.4e}"
+# Ar
+rows=[]
+for i in range(10):
+    s,m,si,mi=R.get(f"ar_scan_{i:02d}"),R.get(f"ar_m1_{i:02d}"),R.get(f"ar_isurff_{i:02d}"),R.get(f"ar_m1isurff_{i:02d}")
+    I=f(s,'I'); E0=math.sqrt(I/3.50945e16); w=0.0569542; Ip=0.579689
+    gam=w*math.sqrt(2*Ip)/E0
+    c0,n0,c1,n1=f(s,'chi_loss_outf'),f(s,'norm_loss_outf'),f(m,'chi_loss_outf'),f(m,'norm_loss_outf')
+    i0,i1=f(si,'isurff'),f(mi,'isurff')
+    c0c,n0c=f(si,'chi_loss_outf'),f(si,'norm_loss_outf'); c1c,n1c=f(mi,'chi_loss_outf'),f(mi,'norm_loss_outf')
+    shell=lambda a,b: 1-(1-a)**2*(1-b)**4
+    rows.append(dict(index=i,I_Wcm2=I,E0_au=E0,gamma=gam,
+      m0_gauss_chi_loss=c0,m0_gauss_norm_loss=n0,m1_gauss_chi_loss=c1,m1_gauss_norm_loss=n1,
+      m0_cos8_chi_loss=c0c,m0_cos8_norm_loss=n0c,m0_cos8_iSurff=i0,
+      m1_cos8_chi_loss=c1c,m1_cos8_norm_loss=n1c,m1_cos8_iSurff=i1,
+      shell_chi_gauss=shell(c0,c1),shell_norm_gauss=shell(n0,n1),shell_iSurff_cos8=shell(i0,i1),
+      mavg_chi_gauss=(c0+2*c1)/3, mavg_iSurff_cos8=(i0+2*i1)/3,
+      ratio_iSurff_over_chi_m0=i0/c0c, ratio_iSurff_over_norm_m0=i0/n0c,ratio_m1_over_m0_chi=c1/c0))
+with open('ar_results.csv','w',newline='') as fh:
+    w=csv.DictWriter(fh,list(rows[0].keys())); w.writeheader()
+    for r in rows: w.writerow({k:(v if isinstance(v,int) else g(v)) for k,v in r.items()})
+print("AR")
+for r in rows: print(' | '.join(str(v) if isinstance(v,int) else g(v) for v in r.values()))
+rows=[]
+for i in range(10):
+    s,si=R.get(f"he_scan_{i:02d}"),R.get(f"he_isurff_{i:02d}")
+    I=f(s,'I'); E0=math.sqrt(I/3.50945e16); w=0.0569542; Ip=0.903801
+    rows.append(dict(index=i,I_Wcm2=I,E0_au=E0,gamma=w*math.sqrt(2*Ip)/E0,box=f(s,'box'),
+      gauss_chi_loss=f(s,'chi_loss_outf'),gauss_norm_loss=f(s,'norm_loss_outf'),gauss_norm_max=f(s,'norm_max'),
+      cos8_chi_loss=f(si,'chi_loss_outf'),cos8_norm_loss=f(si,'norm_loss_outf'),cos8_iSurff=f(si,'isurff'),
+      ratio_iSurff_over_chi=f(si,'isurff')/f(si,'chi_loss_outf'),ratio_iSurff_over_norm=f(si,'isurff')/f(si,'norm_loss_outf')))
+with open('he_results.csv','w',newline='') as fh:
+    w=csv.DictWriter(fh,list(rows[0].keys())); w.writeheader()
+    for r in rows: w.writerow({k:(v if isinstance(v,int) else g(v)) for k,v in r.items()})
+print("HE")
+for r in rows: print(' | '.join(str(v) if isinstance(v,int) else g(v) for v in r.values()))

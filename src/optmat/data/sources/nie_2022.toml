@@ -1,0 +1,415 @@
+citation = "Z. Nie, N. Nambu, K. A. Marsh, E. Welch, D. Matteo, C. Zhang, Y. Wu, S. Patchkovskii, F. Morales, O. Smirnova and C. Joshi, \"Cross-polarized common-path temporal interferometry for high-sensitivity strong-field ionization measurements\", Opt. Express 30, 25696-25706 (2022)"
+doi = "10.1364/OE.463424"
+library = "Nie_2022_CrossPolarizedCommon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Cross-polarised common-path temporal interferometry (pp. 3-5): a weak \
+linearly polarised probe pulse is split by a 2 mm calcite plate into a reference \
+(extraordinary) and a probe (ordinary) pulse about 1.6 ps apart, arriving before and \
+after the pump; a second, orthogonal plate recombines them, and a Wollaston prism and a \
+balanced photodiode (Thorlabs PDB210A) give a signal U proportional to sin(phi_0 + \
+Delta phi - pi/2), linear in the plasma's phase shift Delta phi at the balanced \
+position, Eq. (5). Calibrated by rotating a birefringent plate without the pump (2 pi \
+= 1316.4 motor steps, 4.8 mrad per step; 15.75 mV/mrad in the example of Fig. 2, 'The \
+signal amplitude error bar was about 10-20 mV, which correlated to the phase error bar \
+of about 0.6-1.2 mrad', p. 5). The phase is Delta phi = int (2 pi / lambda_probe) n_p \
+/ (2 n_c) dz, Eq. (7), integrated along the probe and averaged over its profile \
+('In the experiment the measured phase shift must be averaged transversely', p. 4). \
+Pump: a Ti:sapphire laser (Spectra-Physics Solstice ACE), 1 kHz, 800 nm, 'energy \
+stability of 0.5% (r.m.s)', 'a Gaussian beam with a measured beam quality of M2 = \
+1.25', bandwidth set to 30 nm so that 'the pulse duration of the 800 nm laser was 55 \
+fs measured by Spectral Phase Interferometry for Direct Electric-field Reconstruction \
+(SPIDER)' (p. 5); 400 and 267 nm pumps for H2 (Table 1). Static-filled gas tube; the \
+pressure is set so that the measured phase stays below 300 mrad (0.6 mrad is the \
+smallest measurable), from 3 to 1500 Torr for He, and the phases are normalised to one \
+atmosphere: 'This is reasonable because the phase shifts are linearly scaled with the \
+gas pressure at the same laser intensity as long as self-focusing of the ionizing \
+laser is negligible', checked by monitoring the pump's spot size (p. 6)."""
+notes = """Journal pp. 25696-25706 = pdf pages 1-11 (Vol. 30, No. 14, 4 Jul 2022). \
+Identity checked on the first page (eleven authors, UCLA and the Max Born Institute) on \
+2026-10-01; the library's status is VALIDATED_WITH_WARNINGS (figure-grouping notices \
+only). Not to be confused with nie_2025 (Z.-L. Nie et al., a different paper).
+
+WHAT IS MEASURED. The phase shift Delta Phi (rad) that the electrons left by a pump \
+pulse impose on a later probe, integrated along the probe's path and averaged over its \
+transverse profile ('the measured phase shift must be averaged transversely because the \
+intensities of both the pump laser and the probe laser are not uniform transversely \
+(focal volume averaging effect)', p. 4), normalised to a gas pressure of one atmosphere, \
+against the pump's peak intensity. It is not an ionisation probability: the authors \
+compare it with models by computing the 3D ionisation fraction in the measured focus \
+and the probe-averaged phase (Fig. 3(b), (c); p. 7). The quantity is \
+ionization_phase_shift; the beams' parameters needed to model it are the datasets' \
+parameters (Table 1, p. 7, checked against the library table tbl_01fff8291f09 by \
+tools/extract/nie_2022.py). 'Spot size' (Table 1) is the Gaussian beam radius w at \
+the focus: Fig. 3(b) draws the pump's and probe's w(z) ('the spot size evolution of \
+the pump and probe laser, respectively (Gaussian beam with M2 = 1.25 assumed)'), with \
+minima at 60 and 42 um, Table 1's 60.0 and 42.0; its definition (1/e^2 of the \
+intensity, conventionally) is not stated. The probe wavelength: 'when we use 800 nm \
+pump laser, the wavelength of the probe beam is 400 nm; when we use 400 nm or 267 nm \
+pump lasers, the wavelength of the probe beam is 800 nm instead' (pp. 8-9). The pulse \
+durations are as printed; their measure (FWHM of the intensity, presumably) is not \
+stated.
+
+HOW THE INTENSITY WAS OBTAINED (p. 7): 'By carefully measuring the spot size, pulse \
+duration, laser energy and gas pressure at each experimental condition, we could \
+accurately model the theoretical 3D distribution of the pump laser intensities based \
+on these measured parameters'. No uncertainty of the intensity is stated.
+
+STATISTICS AND UNCERTAINTY. 'At each experimental condition, we took 100 shots for \
+statistics' (p. 6). The figures' error bars are not defined (their level is not \
+stated): taken here as the per-point sigma (half the bar's full length, in rad). The \
+caps of a bar symmetric in rad are not symmetric on the logarithmic axis; in Fig. 6's \
+drawing the upper half-bar is 0.94-1.03 times the lower in rad (all 36 points), so the \
+bars are symmetric in rad, and Figs. 3 and 4 agree within their pixels (0.83-1.12, the \
+asymmetry tools/extract/nie_2022.py's bar_asymmetry computes). Where no bar shows \
+beyond the marker, sigma is empty: the bar is then shorter than the marker's half \
+height (Fig. 3, 4.5 pixels, 12 %; Fig. 4, 3 pixels, 9 %). Each dataset adds the \
+digitising uncertainty as a relative uncertainty (its notes). The sensitivity is 0.6 \
+mrad (p. 5); the measured, unnormalised phases were kept below 300 mrad (p. 5).
+
+DATA AVAILABILITY (p. 10): 'Data underlying the results presented in this paper are \
+not publicly available at this time but may be obtained from the authors upon \
+reasonable request.' No number of a measured phase shift is printed in the text or a \
+table; the values are therefore read from the figures (data rule 8, TC-699) by \
+tools/extract/nie_2022.py, whose docstring describes the reading.
+
+EXTRACTED (2026-10-01). Fig. 3(a) (p. 6, an embedded lossless image, 929 x 918 \
+pixels): the eight He points, the axes calibrated from 39 intensity ticks (2.2-9.8e14 \
+W/cm2 in 0.2 steps; log axis) and 35 phase ticks (2e-3 to 9 rad; log axis), every \
+tick within 0.21 and 0.27 pixel of the fitted scales; one pixel is 0.20 % in intensity \
+and 2.7 % in phase. Fig. 4 (p. 8, an embedded lossless image, 1153 x 543 pixels, three \
+panels): Ar, Kr and Xe, LP (blue squares) and CP (red circles), 57 points; the axes \
+from the ticks inside each panel's frame (Ar 10, Kr 9, Xe 10 intensity ticks, the \
+long one under '10^14' being 1e14; 53 phase ticks, 1e-3 to 1e3), every tick within \
+0.31 pixel of the scales; one pixel is 0.79-0.94 % in intensity and 3.0 % in phase. \
+The markers lie on theory curves of their own colour, so each is seeded at a pixel by \
+inspection and located by rule (the heaviest 6 x 6 window of its colour, then the \
+weighted centroid); the bars' caps likewise (the script's FIG4_CAPS). Fig. 6 (p. 9, a \
+vector drawing): H2, 36 points, the markers' and bars' vertices, the axes from the \
+drawing's tick segments matched to the labels of its text layer, every tick within \
+0.011 pt of the scales (0.1 % in phase). The theory curves (ADK, PPT, MO-PPT, the \
+fitted atomic + molecular mixtures) and the Keldysh lines are not taken.
+
+CHECKS. (1) Every tick on its fitted scale (above). (2) The extracted points drawn on \
+the images (Figs. 3, 4) and inspected on 2026-10-01: every marker captured once, the \
+legends' excluded, LP blue and CP red not swapped, the bar ends on the caps. (3) The \
+pressures printed beside Fig. 3(a)'s markers (1500, 800, 400, 100, 50, 12.5, 6 and 3 \
+Torr, read on the image; the extremes are in the text, p. 6): the unnormalised phases \
+they imply, value x p / 760 Torr, are 11.6, 17.8, 17.2, 20.4, 25.6, 14.0, 11.9 and \
+11.8 mrad, all of the same size, as the pressure was chosen to make them (p. 5). (4) \
+Fig. 6's intensities fall on round numbers: at 800 nm 6.008, 8.009, 10.01, 12.01 ... \
+48.07e13 W/cm2 (0.1-0.2 % above 6, 8, 10, 12 ... 48); at 400 nm 0.995 times 3.0, \
+3.6, 4.8, 6.0 ... 24e13. (5) The paper prints no number of the same quantity to check \
+against. Fig. 3(c) draws the computed average phase for He at 5e14 W/cm2 (PPT-LP) as \
+a dashed line, at about 0.27 rad by eye (not printed), and Fig. 3(b) the ionisation \
+fraction on a colour bar to about 5.5e-3 (not printed). The Fig. 4 caption: 'a maximum \
+phase change of 500 rad corresponds to 100% ionization of these noble gases (plasma \
+density of 2.7 x 10^19 cm^-3)'; the highest Xe points are read at 517 and 583 rad \
+(LP, 2.37 and 2.75e14 W/cm2), above that 500 rad, and the theory curves of the panel \
+reach about 600 rad: the number is for one interaction length, not a ceiling, since \
+the fully ionised column lengthens with the intensity (TC-817). (6) Nambu et al. 2026 (JOSA B 43, 750, Fig. 6, \
+library Nambu_2026_StrongFieldPhysics) says these Ar, Kr and Xe results 'are \
+reproduced'; by eye its points lie at lower intensities for the same phase (Kr CP's \
+lowest, 0.1 rad, near 6e13 there and 7.3e13 here; Kr LP's 1.9 rad near 6e13 there and \
+7.3e13 here), and it omits the lowest Ar LP (0.014 rad) and Kr LP (0.49 rad) points \
+of Fig. 4. Point by point (nambu_2026, read from its vector drawing), at equal phase \
+Nambu et al.'s intensities are 0.88 to 0.89 times these for Ar and Kr and 0.82 for Xe \
+(medians), alike for LP and CP (TC-818).
+
+The pulse durations (55 fs at 800 nm) are those of the pump; the probe's are Table 1's \
+(130 fs at 400 nm, 55 fs at 800 nm)."""
+
+[[datasets]]
+id = "fig3_He"
+material = "He"
+file = "He/nie_2022__fig3_He.csv"
+table = "fig_b4bda677c9ff"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+columns = { pressure = "torr" }
+notes = "Fig. 3(a), p. 6, 'Expt.-LP' (orange squares): He, 800 nm pump, 55 fs, linear polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 2.91-7.28e14 W/cm2, 5.9e-3 to 3.0 rad; read from the image (the record's notes). The column pressure is the gas pressure printed beside each marker (Torr; read on the image, the extremes 3 and 1500 Torr also in the text, p. 6). sigma: half the error bar, where a bar shows beyond the marker (5 of 8). 4 %: the digitising, 1.5 pixels of 2.7 % (marker centre and pixel); the intensity is read to 0.2 % per pixel."
+[datasets.uncertainty]
+column = true
+relative = 0.04
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+
+[[datasets]]
+id = "fig4_Ar_LP"
+material = "Ar"
+file = "Ar/nie_2022__fig4_Ar_LP.csv"
+table = "fig_5947c22a506f"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, p. 8, panel 'Argon (800 nm)', 'Expt.-LP' (blue squares): Ar, 800 nm pump, 55 fs, linear polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 10 points, 5.43e13-3.64e14 W/cm2, 0.014-229 rad; read from the image (the record's notes). sigma: half the error bar where one shows beyond the marker (7 of 10). 5 %: the digitising, about 1.7 pixels of 3.0 % (the marker's centre, where a theory curve of the same colour crosses it, and the pixel); the intensity is read to about 0.9 % per pixel. The caption: 500 rad is 100 % ionisation (2.7e19 cm-3), approximate (the record's notes)."
+[datasets.uncertainty]
+column = true
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+density_per_atm_cm3 = 2.7e19
+
+[[datasets]]
+id = "fig4_Ar_CP"
+material = "Ar"
+file = "Ar/nie_2022__fig4_Ar_CP.csv"
+table = "fig_5947c22a506f"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, p. 8, panel 'Argon (800 nm)', 'Expt.-CP' (red circles): Ar, 800 nm pump, 55 fs, circular polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 8 points, 1.09e14-4.37e14 W/cm2, 0.082-136 rad; read from the image (the record's notes). sigma: half the error bar where one shows beyond the marker (3 of 8). 5 %: the digitising, about 1.7 pixels of 3.0 % (the marker's centre, where a theory curve of the same colour crosses it, and the pixel); the intensity is read to about 0.9 % per pixel. The caption: 500 rad is 100 % ionisation (2.7e19 cm-3), approximate (the record's notes)."
+[datasets.uncertainty]
+column = true
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "circular"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+density_per_atm_cm3 = 2.7e19
+
+[[datasets]]
+id = "fig4_Kr_LP"
+material = "Kr"
+file = "Kr/nie_2022__fig4_Kr_LP.csv"
+table = "fig_5947c22a506f"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, p. 8, panel 'Krypton (800 nm)', 'Expt.-LP' (blue squares): Kr, 800 nm pump, 55 fs, linear polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 10 points, 5.48e13-3.27e14 W/cm2, 0.49-395 rad; read from the image (the record's notes). sigma: half the error bar where one shows beyond the marker (2 of 10). 5 %: the digitising, about 1.7 pixels of 3.0 % (the marker's centre, where a theory curve of the same colour crosses it, and the pixel); the intensity is read to about 0.9 % per pixel. The caption: 500 rad is 100 % ionisation (2.7e19 cm-3), approximate (the record's notes)."
+[datasets.uncertainty]
+column = true
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+density_per_atm_cm3 = 2.7e19
+
+[[datasets]]
+id = "fig4_Kr_CP"
+material = "Kr"
+file = "Kr/nie_2022__fig4_Kr_CP.csv"
+table = "fig_5947c22a506f"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, p. 8, panel 'Krypton (800 nm)', 'Expt.-CP' (red circles): Kr, 800 nm pump, 55 fs, circular polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 10 points, 7.28e13-3.63e14 W/cm2, 0.095-224 rad; read from the image (the record's notes). sigma: half the error bar where one shows beyond the marker (1 of 10). 5 %: the digitising, about 1.7 pixels of 3.0 % (the marker's centre, where a theory curve of the same colour crosses it, and the pixel); the intensity is read to about 0.9 % per pixel. The caption: 500 rad is 100 % ionisation (2.7e19 cm-3), approximate (the record's notes)."
+[datasets.uncertainty]
+column = true
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "circular"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+density_per_atm_cm3 = 2.7e19
+
+[[datasets]]
+id = "fig4_Xe_LP"
+material = "Xe"
+file = "Xe/nie_2022__fig4_Xe_LP.csv"
+table = "fig_5947c22a506f"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, p. 8, panel 'Xenon (800 nm)', 'Expt.-LP' (blue squares): Xe, 800 nm pump, 55 fs, linear polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 9 points, 3.93e13-2.75e14 W/cm2, 1.22-583 rad; read from the image (the record's notes). sigma: half the error bar where one shows beyond the marker (3 of 9). 5 %: the digitising, about 1.7 pixels of 3.0 % (the marker's centre, where a theory curve of the same colour crosses it, and the pixel); the intensity is read to about 0.9 % per pixel. The caption: 500 rad is 100 % ionisation (2.7e19 cm-3), approximate (the record's notes)."
+[datasets.uncertainty]
+column = true
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+density_per_atm_cm3 = 2.7e19
+
+[[datasets]]
+id = "fig4_Xe_CP"
+material = "Xe"
+file = "Xe/nie_2022__fig4_Xe_CP.csv"
+table = "fig_5947c22a506f"
+digitised = "raster"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, p. 8, panel 'Xenon (800 nm)', 'Expt.-CP' (red circles): Xe, 800 nm pump, 55 fs, circular polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 10 points, 3.95e13-3.14e14 W/cm2, 0.063-434 rad; read from the image (the record's notes). sigma: half the error bar where one shows beyond the marker (1 of 10). 5 %: the digitising, about 1.7 pixels of 3.0 % (the marker's centre, where a theory curve of the same colour crosses it, and the pixel); the intensity is read to about 0.9 % per pixel. The caption: 500 rad is 100 % ionisation (2.7e19 cm-3), approximate (the record's notes)."
+[datasets.uncertainty]
+column = true
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "circular"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+density_per_atm_cm3 = 2.7e19
+
+[[datasets]]
+id = "fig6_H2_800nm"
+material = "H2"
+file = "H2/nie_2022__fig6_H2_800nm.csv"
+table = "fig_4b9d5a21931f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6, p. 9, panel 'Hydrogen (800 nm)', 'Exp. data' (blue squares): H2, 800 nm pump, 55 fs, linear polarisation, 400 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 11 points, 6.01e13-4.81e14 W/cm2, 9.2e-3 to 357 rad; read from the vector drawing (the record's notes); the points lie along the MO-PPT curve. The phase counts electrons from both H2 -> H2+ and the dissociation-then-ionisation pathway (pp. 8-9). sigma: half the error bar, every point. 0.2 %: the drawing's precision (the ticks lie within 0.011 pt of the scale, 0.1 % in phase)."
+[datasets.uncertainty]
+column = true
+relative = 0.002
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+m2 = 1.25
+
+[[datasets]]
+id = "fig6_H2_400nm"
+material = "H2"
+file = "H2/nie_2022__fig6_H2_400nm.csv"
+table = "fig_4b9d5a21931f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6, p. 9, panel 'Hydrogen (400 nm)', 'Exp. data' (blue squares): H2, 400 nm pump, 130 fs, linear polarisation, 800 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 12 points, 2.99e13-2.39e14 W/cm2, 0.033-54.5 rad; read from the vector drawing (the record's notes); the points lie along the fitted '10% atomic + 90% molecular' curve. The phase counts electrons from both H2 -> H2+ and the dissociation-then-ionisation pathway (pp. 8-9). sigma: half the error bar, every point. 0.2 %: the drawing's precision (the ticks lie within 0.011 pt of the scale, 0.1 % in phase). The beam quality of the harmonic pump is not stated (m2 omitted)."
+[datasets.uncertainty]
+column = true
+relative = 0.002
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1
+
+[[datasets]]
+id = "fig6_H2_267nm"
+material = "H2"
+file = "H2/nie_2022__fig6_H2_267nm.csv"
+table = "fig_4b9d5a21931f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 6, p. 9, panel 'Hydrogen (267 nm)', 'Exp. data' (blue squares): H2, 267 nm pump, 160 fs, linear polarisation, 800 nm probe; Delta Phi normalised to 1 atm (rad) against the peak intensity (W/cm2), 13 points, 5.55e12-7.75e13 W/cm2, 0.022-28.1 rad; read from the vector drawing (the record's notes); the points lie along the fitted '50% atomic + 50% molecular' curve. The phase counts electrons from both H2 -> H2+ and the dissociation-then-ionisation pathway (pp. 8-9). sigma: half the error bar, every point. 0.2 %: the drawing's precision (the ticks lie within 0.011 pt of the scale, 0.1 % in phase). The beam quality of the harmonic pump is not stated (m2 omitted)."
+[datasets.uncertainty]
+column = true
+relative = 0.002
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 267
+pulse_fs = 160
+pulse_fs_definition = "as printed (Table 1; at 800 nm 'measured by ... SPIDER', p. 5); the measure, FWHM of the intensity presumably, is not stated"
+polarization = "linear"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 25.0
+probe_waist_um = 23.3
+waist_definition = "Table 1 'Spot size': the Gaussian beam radius w at the focus (Fig. 3(b)); 1/e^2 of the intensity conventionally, not stated"
+pressure_atm = 1

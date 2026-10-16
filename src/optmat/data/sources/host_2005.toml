@@ -1,0 +1,553 @@
+citation = "S. Host, P. Jorgensen, A. Kohn, F. Pawlowski, W. Klopper and C. Hattig, \"Frequency-dependent hyperpolarizabilities of the Ne, Ar, and Kr atoms using the approximate coupled cluster triples model CC3\", J. Chem. Phys. 123, 094303 (2005)"
+doi = "10.1063/1.2008211"
+library = "Host_2005_FrequencyDependentHyperpolarizabilities"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Coupled-cluster cubic response (CCS, CC2, CCSD, CC3; DALTON) for the ESHG gamma_par \
+and gamma_perp of Ne, Ar, Kr in n-aug-cc-pVXZ basis sets (production t-aug-cc-pV5Z; Ne, \
+Ar all electrons correlated, Kr with a 1s-3p frozen core), benchmarked against full CI \
+(LUCIA) in d-aug-cc-pVDZ (valence electrons only); scalar relativistic corrections by \
+direct perturbation theory (Klopper et al.), in t-aug-cc-pCVXZ and uncontracted bases \
+(pp. 094303-2, -3)."""
+notes = """Identity: pdf page 1 is the publisher's cover; pages 094303-1 to -10 = pdf pages \
+2-11. Page numbers below are the article's.
+
+QUANTITIES (p. 094303-2): the isotropic ESHG components gamma_par(-2w; w, w, 0) = (1/15) \
+sum (gamma_xxyy + gamma_xyyx + gamma_xyxy) and gamma_perp = (1/15) sum (2 gamma_xyyx - \
+gamma_xxyy); for atoms gamma_par = gamma_zzzz and gamma_perp = gamma_zxxz, and in the \
+static limit gamma_zzzz = 3 gamma_zzxx (Eqs. 1-5). Process eshg, components parallel and \
+perpendicular. The expansion convention is not written out; the values are response \
+functions compared directly with Shelton's ESHG gammas (Shelton and Rice's T convention) \
+and their static limits are the usual fourth energy derivative (compare rice_1991): \
+convention T. Atomic units. Part electronic (atoms). Nonrelativistic unless stated.
+
+FREQUENCIES: omega = 0.042 823 a.u. (1064.0 nm), 0.088 559 (514.5 nm) and 0.093 368 \
+(488.0 nm) (p. 094303-2): vacuum wavelengths (45.5634 / 514.5 = 0.088 558). Tables V and \
+X print the second frequency as 0.088 558.
+
+DATASETS (Tables II, VI, XI, t-aug-cc-pV5Z, images checked): gamma_par and gamma_perp for \
+CCS, CC2, CCSD, CC3 (datasets <method>_par_<gas>, <method>_perp_<gas>), and the \
+experimental gamma_par column (reproduced, expt_<gas>). CC3 is the paper's method; CCS \
+and CC2 are 'not reliable enough for any quantitative assertion' (p. 094303-3).
+
+ACCURACY AND BEST ESTIMATES (text; datasets best_<gas>). Ne: CC3/t-aug-cc-pV5Z static \
+108.0 is 'about 0.97 a.u. above the CC3 basis set limit', relativity +0.58, beyond-CC3 \
+correlation -0.17 (FCI benchmark): best estimate 107.4 a.u. (abstract; 108.0 - 0.97 + \
+0.58 - 0.17 = 107.44); the CC3/t-aug-cc-pV5Z values 'should therefore reproduce the \
+experimental results with an uncertainty of about 0.5 %' at all frequencies (p. \
+094303-4). Ar: basis error -19 (Table IV, 56-extrapolation), correlation -3, \
+relativity +9 (Table VII, CC3 +8.90 to +8.92): 'Our best estimate is thus 1159 a.u.' \
+(p. 094303-6); the frequency-dependent CC3 values 'may be expected to have an accuracy \
+similar to the one for the static limit' (about 13 a.u. too high). Kr: basis-set error \
+'50-100 a.u. above the basis set limit' at t-aug-cc-pV5Z, cancelling the relativistic \
+correction (Table XII, CCSD/uncontracted: +29.3, +33.9, +57.8, +62.9 a.u. at the four \
+frequencies, image checked), so 'the CC3/t-aug-cc-pV5Z results' are used directly: 2589 \
+a.u. static (pp. 094303-8, -9). No uncertainty is stated for the best estimates \
+themselves.
+
+NOT EXTRACTED (summarised): Tables I, V, X (FCI in d-aug-cc-pVDZ, recovering only 70-80 \
+% of gamma, and the CC deviations from it: CC3 within 0.3 % (Ne, Ar) and 0.5 % (Kr)); \
+Tables III, IV, VIII, IX (basis-set convergence of the static gamma: Ar CCSD 1157.1 at \
+q-aug-cc-pV6Z, CC3 correlation extrapolated 192.3 + SCF 960.7 = 1153 limit; Kr CCSD \
+2602.1 at q-aug-cc-pV5Z). Earlier values quoted (p. 094303-2): Pawlowski et al. CC3 \
+t-aug-cc-pV6Z Ne 107.77; Soldan et al. CCSD(T) Ne 106.5, Ar 1186.6 (t-aug-cc-pV6Z), Kr \
+2690 (t-aug-cc-pV5Z); Hattig and Jorgensen CCSD q-aug-cc-pV5Z Ne 110.2, Ar 1179.0; \
+Nakajima and Hirao relativistic corrections +0.6 (Ne), +9 (Ar), +28 (Kr) a.u. The ratios \
+gamma_par / gamma_perp (Eq. 6, Figs. 1, 2, 5, 8) are figures only: the authors conclude \
+the measured ratios of Ne and Kr are flawed (p. 094303-9).
+
+EXPERIMENTAL COLUMN (reproduced): Ne 'From Refs. 24 and 25' (Shelton 1990 = shelton_1990; \
+Shelton and Donley, Chem. Phys. Lett. 195, 591 (1992) = shelton_1992); Ar \
+'From Refs. 24 and 21' (shelton_1990; Mizrahi and Shelton, Phys. Rev. A 31, 3145 (1985), \
+not in the library); Kr 'From Refs. 24 and 22' (shelton_1990; Shelton, J. Chem. Phys. \
+84, 404 (1986) = shelton_1986_krxe). Which row comes from which reference is not \
+stated. Note Ar static '1167 +- 20' here against '1167 +- 6' in rice_1991."""
+
+[[datasets]]
+id = "ccs_par_Ne"
+material = "Ne"
+file = "Ne/host_2005__ccs_par_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CCS/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_perp_Ne"
+material = "Ne"
+file = "Ne/host_2005__ccs_perp_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CCS/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "cc2_par_Ne"
+material = "Ne"
+file = "Ne/host_2005__cc2_par_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CC2/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_perp_Ne"
+material = "Ne"
+file = "Ne/host_2005__cc2_perp_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CC2/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "ccsd_par_Ne"
+material = "Ne"
+file = "Ne/host_2005__ccsd_par_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CCSD/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_perp_Ne"
+material = "Ne"
+file = "Ne/host_2005__ccsd_perp_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CCSD/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "cc3_par_Ne"
+material = "Ne"
+file = "Ne/host_2005__cc3_par_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CC3/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm). Nonrelativistic; see the source notes for the estimated basis, correlation and relativistic corrections."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc3_perp_Ne"
+material = "Ne"
+file = "Ne/host_2005__cc3_perp_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, CC3/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm). Nonrelativistic; see the source notes for the estimated basis, correlation and relativistic corrections."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "expt_Ne"
+material = "Ne"
+file = "Ne/host_2005__expt_Ne.csv"
+table = "tbl_91f67ab85870"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "shelton_1992"]
+notes = "Table II 'Expt.' (footnote a): experimental ESHG gamma_par (static row: Shelton's extrapolation), placed at the table's frequencies. Uncertainty as printed, level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_par_Ar"
+material = "Ar"
+file = "Ar/host_2005__ccs_par_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CCS/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_perp_Ar"
+material = "Ar"
+file = "Ar/host_2005__ccs_perp_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CCS/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "cc2_par_Ar"
+material = "Ar"
+file = "Ar/host_2005__cc2_par_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CC2/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_perp_Ar"
+material = "Ar"
+file = "Ar/host_2005__cc2_perp_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CC2/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "ccsd_par_Ar"
+material = "Ar"
+file = "Ar/host_2005__ccsd_par_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CCSD/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_perp_Ar"
+material = "Ar"
+file = "Ar/host_2005__ccsd_perp_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CCSD/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "cc3_par_Ar"
+material = "Ar"
+file = "Ar/host_2005__cc3_par_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CC3/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm). Nonrelativistic; see the source notes for the estimated basis, correlation and relativistic corrections."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc3_perp_Ar"
+material = "Ar"
+file = "Ar/host_2005__cc3_perp_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CC3/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm). Nonrelativistic; see the source notes for the estimated basis, correlation and relativistic corrections."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "expt_Ar"
+material = "Ar"
+file = "Ar/host_2005__expt_Ar.csv"
+table = "tbl_1441d7637357"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "V. Mizrahi and D. P. Shelton, Phys. Rev. A 31, 3145 (1985)"]
+notes = "Table VI 'Expt.' (footnote a): experimental ESHG gamma_par (static row: Shelton's extrapolation), placed at the table's frequencies. Uncertainty as printed, level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_par_Kr"
+material = "Kr"
+file = "Kr/host_2005__ccs_par_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CCS/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_perp_Kr"
+material = "Kr"
+file = "Kr/host_2005__ccs_perp_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CCS/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "cc2_par_Kr"
+material = "Kr"
+file = "Kr/host_2005__cc2_par_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CC2/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_perp_Kr"
+material = "Kr"
+file = "Kr/host_2005__cc2_perp_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CC2/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "ccsd_par_Kr"
+material = "Kr"
+file = "Kr/host_2005__ccsd_par_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CCSD/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_perp_Kr"
+material = "Kr"
+file = "Kr/host_2005__ccsd_perp_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CCSD/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "cc3_par_Kr"
+material = "Kr"
+file = "Kr/host_2005__cc3_par_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CC3/t-aug-cc-pV5Z ESHG gamma_par at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm). Nonrelativistic; see the source notes for the estimated basis, correlation and relativistic corrections."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc3_perp_Kr"
+material = "Kr"
+file = "Kr/host_2005__cc3_perp_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI, CC3/t-aug-cc-pV5Z ESHG gamma_perp at omega = 0 (static) and 0.042823, 0.088559, 0.093368 a.u. (1064.0, 514.5, 488.0 nm). Nonrelativistic; see the source notes for the estimated basis, correlation and relativistic corrections."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "perpendicular"
+
+[[datasets]]
+id = "expt_Kr"
+material = "Kr"
+file = "Kr/host_2005__expt_Kr.csv"
+table = "tbl_51b4b06ed8e7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "shelton_1986_krxe"]
+notes = "Table XI 'Expt.' (footnote a): experimental ESHG gamma_par (static row: Shelton's extrapolation), placed at the table's frequencies. Uncertainty as printed, level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_Ne"
+material = "Ne"
+points = [["best", "0", "107.4"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Best estimate of the static gamma_0 (relativistic, basis-set limit), abstract and p. 094303-4: CC3/t-aug-cc-pV5Z 108.0 minus 0.97 (basis limit) plus 0.58 (relativity) minus 0.17 (beyond CC3). No uncertainty stated."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "best_Ar"
+material = "Ar"
+points = [["best", "0", "1159"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Best estimate of the static gamma_0 (relativistic, basis-set limit), abstract and p. 094303-6: CC3/t-aug-cc-pV5Z 1172.4 with basis error -19, correlation error -3 and relativity +9. No uncertainty stated."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "best_Kr"
+material = "Kr"
+points = [["best", "0", "2589"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Best estimate of the static gamma_0 (relativistic, basis-set limit), abstract and p. 094303-9: CC3/t-aug-cc-pV5Z 2589.0 taken directly (basis error and relativistic correction cancel). No uncertainty stated."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"

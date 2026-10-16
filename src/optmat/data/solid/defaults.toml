@@ -1,0 +1,54 @@
+# The recommended dielectric-function model of each solid, and why (TC-321). A fitted
+# model where the curated data support one; otherwise the best published model, stated
+# range and all.
+
+[SiO2]
+model = "fit/SiO2"
+reason = "Franta et al.'s universal dispersion model of Lithosil Q2 refitted to the absolute refractometry of the transparent window (TC-399): Leviton & Frey's CHARMS indices of Corning 7980 and Malitson's three prisms, taken from room air to vacuum, which agree with each other to 1e-5. The published model (franta_2016/udm_lithosil_q2) lies 0.8-3.4e-4 below them with 1.5 % less GVD at 800 nm; the refit keeps its band-edge, vacuum-ultraviolet and infrared absorption and is analytic, causal and passive from 24.8 nm to 125 um."
+
+# The window crystals (TC-546). Each is the published Sellmeier formula of its primary
+# source, made absolute: the sources measured the index relative to the gas around the
+# prism (nitrogen for Daimon & Masumura, room air for the NBS prism papers), and the
+# models multiply by that gas's index (TC-398, TC-545). solprop uses the same
+# coefficients as absolute indices, 3.7-5.5e-4 too low.
+[CaF2]
+model = "daimon_2002/sellmeier_20C"
+reason = "Daimon & Masumura's four-term Sellmeier at 20 C, fitted to 69 indices from 138 to 2326 nm measured relative to nitrogen at 1013.25 hPa (rms 6.1e-7) and made absolute with optmat's N2 model (TC-545). It reaches the vacuum ultraviolet, which Malitson's 1963 formula (230 nm-9.7 um, 24 C, relative to air) does not; the two agree within 3.3e-5 once both are absolute and at one temperature (TC-546). Beyond 2.33 um use malitson_1963/sellmeier: Daimon's infrared term is weakly determined and differs between 20 and 25 C."
+
+[MgF2]
+model = { o = "dodge_1984/sellmeier_o", e = "dodge_1984/sellmeier_e" }
+reason = "Dodge's Sellmeier formulas of both rays at 19 C, 0.2026-7.04 um, fitted to 45 minimum-deviation indices per ray (uncertainty better than 2e-5), relative to room air (inferred from the NBS method; the paper does not state it) and made absolute with Edlen's air (TC-546). The only primary source of MgF2's index in the library."
+
+[BaF2]
+model = "malitson_1964/sellmeier"
+reason = "Malitson's Sellmeier formula at 25 C, 0.265-10.35 um, fitted to 46 minimum-deviation indices of a Harshaw prism (it reproduces 44 of his 46 computed values to the printed digit), relative to room air (inferred) and made absolute with Edlen's air (TC-546). The only primary source of BaF2's index in the library."
+
+[Al2O3]
+model = { o = "weber_2003/sellmeier_o", e = "weber_2003/sellmeier_e" }
+reason = "Malitson & Dodge's (1972) Sellmeier formulas of both rays at room temperature (read as 20 C), 0.22-5.0 um, as Weber's Handbook of Optical Materials (2003) reprints them, relative to room air (inferred, as for the NBS prism papers) and made absolute with Edlen's air (TC-651). One pair from one determination, so that the birefringence (0.0091 at 0.3 um to 0.0056 at 5 um) is consistent, and it reaches 220 nm. The same formulas as solprop's sapphire (refractiveindex.info's Malitson-o, from Dodge's 1986 handbook). Malitson's 1962 formula (malitson_1962/sellmeier_o, 24 C, 0.265-5.58 um), fitted to 46 measured indices, is the check: 5-8e-5 above the ordinary ray at 0.4-2 um, about the 4 K difference in temperature."
+
+[N-BK7]
+model = "schott_2023/sellmeier"
+reason = "SCHOTT's catalogue Sellmeier formula of N-BK7 (data sheet of 01-Dec-2023), 312.6-2325.4 nm, for a melt of nominal nd and vd, relative to air at 20 C and 0.10133 MPa (TIE-29) and made absolute with Edlen's air (TC-651). The same coefficients as solprop's N-BK7 (the Zemax catalogue of 2017-01-20), which solprop uses as absolute indices, 4e-4 low. A catalogue value: a given melt departs from it by up to the tolerance grade (+-5e-4 for Step 3; TIE-29). The data sheet's internal transmittance and dn/dT are curated (schott_2023) but not part of this lossless model."
+
+# The metals (TC-619, TC-646, TC-647): curated tables joined by range
+# (optmat.solid.models.tabulated); each range's reason is in data/solid/tables/.
+[Ag]
+model = "table/Ag"
+reason = "Babar & Weaver's Kramers-Kronig analysis of single crystals (with Leveque et al.'s reflectance above 6 eV) from 70.5 nm to 12.4 um, Werner et al.'s REELS permittivity from 25 to 70 nm, and the DESY report's film data (Hagemann et al.) from 4.1 to 25 nm, each join where the neighbours agree to a few per cent (data/solid/tables/Ag.toml). In the vacuum ultraviolet (40-200 nm) the curated sources spread by 20-50 % in k, and the table follows one of them: see docs/metals.md. No measured silver beyond 12.4 um: the table holds its end value there."
+
+[Au]
+model = "table/Au"
+reason = "Babar & Weaver's Kramers-Kronig analysis of electropolished Au(110) (Weaver's and Olson & Lynch's reflectance) from 70.5 nm to 12.4 um, Werner et al.'s REELS permittivity from 25 to 70 nm, and the DESY report's Table 6 (Hagemann et al.) from 3.5 to 25 nm (data/solid/tables/Au.toml). A single crystal: Johnson & Christy's evaporated films have 2-3 times its n in the near infrared. No measured gold beyond 12.4 um in the table."
+
+[Cu]
+model = "table/Cu"
+reason = "The DESY report's film data (Hagemann et al.) from 3.1 to 41 nm, Babar & Weaver's Kramers-Kronig analysis of single crystals (joined by them to Johnson & Christy's and Hagemann et al.'s data above 6 eV) from 41 nm to 12.4 um, and Ordal et al.'s (1985) infrared from 12.5 to 55.6 um, with an 11 % step in k at 12.4 um (data/solid/tables/Cu.toml)."
+
+[Al]
+model = "table/Al"
+reason = "Shiles et al.'s self-consistent analysis of bulk aluminium (Weaver et al.'s tabulation) from 31.8 nm to 31 um, continued by Rakic's five-figure table (whose k there is Shiles et al.'s) through the L edge to 0.79 nm, and by Ordal et al.'s far infrared to 200 um (data/solid/tables/Al.toml). Bulk constants: an evaporated film (McPeak et al.) has |epsilon| 21-31 % smaller in the ultraviolet to near infrared."
+
+[Si]
+model = "fit/Si"
+reason = "Franta et al.'s universal dispersion model of float-zone silicon (newAD2's c-Si parameter file, franta_2017/udm_c_si) refitted at 20 C (TC-1088): to Frey, Leviton & Madison's absolute CHARMS indices (1.2-5.5 um, +-1e-4, taken from 295 K with their own dn/dT), to Schinke et al.'s absorption coefficient (250-1200 nm) and, outside those ranges, to Franta et al.'s temperature-dependent model at 20 C (the 31-250 nm ultraviolet and the infrared lattice bands). The published parameter file is 0.015 high in n in the near infrared and 2.6 times high in k at 633 nm. The refit is analytic, causal and passive from 31 nm to 143 um; its k beyond 1.2 um (alpha < 0.1 cm-1) is an upper bound, not the band-to-band absorption, and it describes 20 C only."

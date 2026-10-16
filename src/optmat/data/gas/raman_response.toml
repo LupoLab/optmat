@@ -1,0 +1,127 @@
+# The choices of the gases' Raman responses (optmat.gas.raman_response, TC-685 to TC-690)
+# beyond the lines of raman.toml: the temperatures each band's widths are supported at,
+# the mass in the Doppler widths, the line shifts, and the mixtures.
+#
+# [gases.<gas>]
+#   mass_u                     the molecular mass in the forward-scattering Doppler
+#                              width, u (nominal mass numbers: the width only caps a
+#                              Dicke term and sets the lowest density; 1 % in the mass
+#                              is 0.5 % in the width)
+#   temperature_range_k        by band kind (rotation, vibration): [low, high], K, the
+#                              temperatures of the width measurements widened by 5 K
+#                              at a measured end (room temperature, stated without a
+#                              number, is taken as 290-300 K); a formula's stated range
+#                              as printed
+#   shifts.<kind>              a line shift law for every line of the band kind:
+#                              law = "polynomial", formula (coefficients C0, C1, C2
+#                              and T0: C = C0 + C1 (T - T0) + C2 (T - T0)^2, MHz/amagat)
+#   sources, reasons           what the choices rest on, and why
+#   status, status_reason      (optional) provisional, untested or comparison, and why;
+#                              validated where absent. A response has the worst status
+#                              of its Raman-active constituents
+# [mixtures.<name>]            a composition of optmat.gas.composition: species (the
+#                              constituents kept, renormalised), reason. The name is one
+#                              of optmat.gas.composition.REDUCED; "dry air" is an alias of
+#                              "dry air (N2, O2, Ar)"
+
+[gases.N2]
+mass_u = 28
+
+[gases.N2.temperature_range_k]
+rotation = [75, 300]
+vibration = [293, 1505]
+
+[gases.N2.reasons]
+temperature_range = "Rotation: Herring et al. 1986 measured the S-line widths at 80, 195 and 295 K and fitted their power law over 80-295 K (their Eq. (9), 'better than 3 % over the range of 80-300 K', p. 7); above 295 K the law is extrapolated. Vibration: Rosasco et al. 1983 at 298 K and Rahn & Palmer 1986 at 500-1500 K."
+shifts = "No N2 line shifts are used: Rosasco et al. 1983 (p. 438) report the Q-branch shifts below 0.001 cm-1/atm, under 1 % of the widths' coefficients (0.06-0.13 cm-1/atm, FWHM) (TC-688)."
+
+[gases.O2]
+mass_u = 32
+
+[gases.O2.temperature_range_k]
+rotation = [290, 1905]
+vibration = [290, 1322]
+
+[gases.O2.reasons]
+temperature_range = "Rotation: Hölzer et al. 2021, self 295-1900 K and in air 295-1900 K, at 1 bar. Vibration: Millot et al. 1992, self 295-1317 K (N2 as partner 295-990 K)."
+shifts = "Millot et al.'s Q-branch shifts are curated (Tables IV and VIII) but not used: at 295 K they are -2.3 to -3.5e-3 cm-1/atm (N = 13-21, self), 3-5 % of the widths' coefficients (TC-688)."
+
+[gases.H2]
+mass_u = 2
+
+[gases.H2.temperature_range_k]
+rotation = [75, 300]
+vibration = [77, 500]
+
+[gases.H2.shifts.vibration]
+law = "polynomial"
+formula = "bischel_1986/eq4_line_shift"
+
+[gases.H2.sources]
+vibrational_shift = "bischel_1986/eq4_line_shift"
+
+[gases.H2.reasons]
+mass = "Herring et al.'s Eq. (4) reproduces their Table IV Doppler widths with m = 2 amu (herring_1986/eq4_doppler)."
+temperature_range = "Rotation: Herring et al. 1986's S(0) and S(1) widths at 80 and 295 K. Vibration: Bischel & Dyer 1986's Eq. (2), 77-500 K."
+vibrational_shift = "Bischel & Dyer 1986's Eq. (4), the Q(1) self-shift, -96.1 MHz/amagat at 298 K (the shift is 1.85 times the collisional width's coefficient, 51.8 MHz/amagat), used for every Q(J) as the width law is (their Q(0) shift is -64 MHz/amagat at 298 K, Table II; Q(0) holds 13 % of the molecules at 295 K). The S lines shift by +6 MHz/amagat (Herring et al. Table VI), 5 % of their widths' coefficient: not used (TC-688)."
+
+[gases.D2]
+mass_u = 4
+
+[gases.D2.temperature_range_k]
+rotation = [288, 298]
+vibration = [291, 303.5]
+
+[gases.D2.reasons]
+mass = "The nominal mass number, the rule Herring et al. use for H2 (m = 2 amu)."
+temperature_range = "Rotation: Keijser et al. 1974 at 293 K only (no temperature law). Vibration: Smyth et al. 1987 at 296.0-298.5 K."
+shifts = "No D2 shift is used: Murray & Javan's are doubtful (TC-586) and Smyth et al.'s are not curated."
+
+[gases.CH4]
+mass_u = 16
+
+[gases.CH4.temperature_range_k]
+vibration = [290, 300]
+
+[gases.CH4.reasons]
+temperature_range = "Ottusch & Rockwell's width law (from Lopert's thesis) is for room temperature, taken as 295 K."
+
+[gases.SF6]
+mass_u = 146
+
+[gases.SF6.temperature_range_k]
+vibration = [290, 300]
+
+[gases.SF6.reasons]
+temperature_range = "Everall et al.'s 1.6 cm-1 at 5 atm, room temperature."
+
+[gases.CO2]
+mass_u = 44
+status = "provisional"
+status_reason = "No Q-branch width is curated: the S lines' coefficient stands in (TC-542)."
+
+[gases.CO2.temperature_range_k]
+rotation = [283, 300]
+vibration = [283, 300]
+
+[gases.CO2.reasons]
+temperature_range = "Pinter's S-line widths (as Jammu et al. 1966 reprint them) were measured at room temperature in a tube water-cooled to about 15 degrees C; raman.toml takes 295 K. The Q bands borrow them (a stopgap, TC-542)."
+
+[gases.N2O]
+mass_u = 44
+status = "provisional"
+status_reason = "Vibrational lines only, with rho = 0 and Chen et al.'s T2 taken as collisional (TC-542)."
+
+[gases.N2O.temperature_range_k]
+vibration = [290, 300]
+
+[gases.N2O.reasons]
+temperature_range = "Chen et al. 2007's dephasing time, room temperature (the stopgap of raman.toml, TC-542)."
+
+[mixtures."dry air (N2, O2, Ar)"]
+species = ["N2", "O2", "Ar"]
+reason = "The CIPM-2007 composition (TC-548) with N2, O2 and Ar kept (99.957 % of the molecules) and renormalised: CO2 (0.040 %) has no broadening coefficients by N2 and O2 and would add 0.3 % to the rotational response (its long-pulse rotational index is 10 times N2's); the trace constituents are smaller still. Ar has no Raman lines and takes part as a collision partner (raman.toml's substitutes)."
+
+[mixtures."dry air (N2, O2)"]
+species = ["N2", "O2"]
+reason = "The CIPM-2007 composition with N2 and O2 kept (99.02 % of the molecules) and renormalised: solprop's argon-free recipe (OEP 1, section 4.4)."

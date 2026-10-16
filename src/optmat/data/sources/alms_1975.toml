@@ -1,0 +1,140 @@
+citation = "G. R. Alms, A. K. Burnham and W. H. Flygare, J. Chem. Phys. 63, 3321 (1975)"
+doi = "10.1063/1.431821"
+library = "Alms_1975_MeasurementDispersionPolarizability"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Depolarization ratio of Rayleigh-scattered light at 90 degrees from dilute gases \
+(up to 1 atm), argon-ion laser at 4579, 4880, 5145 A and krypton-ion laser at 5682, \
+6471 A, photon counting (p. 3); depolarization ratios at 6328 A from Bridge and \
+Buckingham (Proc. R. Soc. A 295, 334 (1966)). The mean polarizabilities are not \
+measured here: they are taken from the refractive indices in Landolt-Bornstein (1962), \
+Vol. 2, Pt. 8, p. 871 (Ref. 4) with n - 1 = 2 pi N alpha (Eq. 1)."""
+notes = """The paper measures the dispersion of the depolarization ratio and so of the \
+polarizability anisotropy; the mean polarizability alpha of Table I (A^3, a \
+polarizability volume) is 'obtained from refractive index [Eq. (1)] measurements as a \
+function of wavelength listed in the Landolt-Bornstein tables, except for CS2 and \
+2-butyne' (p. 3): for the curated gases (N2, N2O, CO2) every alpha is a reproduction \
+of Landolt-Bornstein, whose original measurements are not named. 'The uncertainties \
+in alpha are 0.5%-2.0% from the smaller to the larger molecules in Table I' (p. 3). \
+The anisotropies, alpha_parallel and alpha_perp (Tables I, IV, V) are not extracted \
+(left for later), nor the depolarization ratios (Tables I, II), which have no quantity \
+in the vocabulary. The other molecules (OCS, CS2, CH3Cl, CHCl3, HCCH, propyne, \
+2-butyne, C6H6, CH3CN) are not curated species.
+
+Wavelengths are the laser lines as printed to 1 A (Ar+ 4579, 4880, 5145; Kr+ 5682, \
+6471; He-Ne 6328), air wavelengths: recorded as standard air.
+
+The 'inf' row of each molecule is the zero-frequency value: for alpha, the paper does \
+not say how it was extrapolated. It is the electronic polarizability only: 'the \
+resultant extrapolation to zero frequency ... [does] not include the vibrational \
+contribution' (p. 6), so for N2O and CO2 it is not the static polarizability. The row \
+is excluded from the datasets.
+
+Table III lists band oscillator strengths (N2 958 A, CO2 1121 A, N2O 1284 A), three \
+times the orientationally averaged experimental values of Lawrence et al. (1968) and \
+Rabalais et al. (1971): reproduced and rescaled, not extracted.
+
+Table V (Stuart 1952) static electronic polarizabilities are extracted as reproduced \
+(excluded) values. They are 'derived variously from light scattering, Kerr, \
+refractive index, and dielectric measurements' and 'in many cases they differ by as \
+much as 10% from our determinations' (p. 7).
+
+The library holds a second copy, Alms_1975_MeasurementDispersionPolarizability_b51bf6 \
+(same DOI): its text is identical but for figure ids and machine descriptions, and its \
+Table I cells are identical; it is not extracted twice."""
+
+[[datasets]]
+id = "alpha_N2"
+material = "N2"
+file = "N2/alms_1975__alpha_N2.csv"
+table = "tbl_24841f218204"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Landolt-Bornstein, Zahlenwerte und Funktionen (Springer, Berlin, 1962), Vol. 2, Pt. 8, p. 871"]
+excluded_rows = { "inf" = "zero-frequency extrapolation of the optical values (electronic only; method not stated)" }
+notes = "Table I, alpha column; the last digit is printed as a subscript (a guard digit). The 5148 A row is the 5145 A argon-ion line (erratum). The 6328 A depolarization ratio is Bridge and Buckingham's; the alpha is Landolt-Bornstein's like the others. Uncertainty: 0.5 %, the paper's value for 'the smaller' molecules (p. 3)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+
+[[datasets]]
+id = "alpha_N2O"
+material = "N2O"
+file = "N2O/alms_1975__alpha_N2O.csv"
+table = "tbl_24841f218204"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Landolt-Bornstein, Zahlenwerte und Funktionen (Springer, Berlin, 1962), Vol. 2, Pt. 8, p. 871"]
+excluded_rows = { "inf" = "zero-frequency extrapolation of the optical values (electronic only, without the vibrational part; method not stated)" }
+notes = "Table I, alpha column. Uncertainty: the paper's range 0.5-2.0 % (p. 3), its upper end taken as a bound."
+[datasets.uncertainty]
+relative = 0.02
+level = "bound"
+
+[[datasets]]
+id = "alpha_CO2"
+material = "CO2"
+file = "CO2/alms_1975__alpha_CO2.csv"
+table = "tbl_24841f218204"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Landolt-Bornstein, Zahlenwerte und Funktionen (Springer, Berlin, 1962), Vol. 2, Pt. 8, p. 871"]
+excluded_rows = { "inf" = "zero-frequency extrapolation of the optical values (electronic only, without the vibrational part; method not stated)" }
+notes = "Table I, alpha column. Uncertainty: the paper's range 0.5-2.0 % (p. 3), its upper end taken as a bound."
+[datasets.uncertainty]
+relative = 0.02
+level = "bound"
+
+[[datasets]]
+id = "stuart_alpha_N2"
+material = "N2"
+file = "N2/alms_1975__stuart_alpha_N2.csv"
+table = "tbl_e60dab9bc511"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+use = "excluded"
+reproduced_from = ["H. A. Stuart, Die Struktur des freien Molekuls (Springer, Berlin, 1952)"]
+notes = "Table V, Stuart's zero-frequency electronic mean polarizability (before the parenthesis). Excluded: a compiled value of mixed origin, electronic only (no vibrational part), with no stated uncertainty or method."
+
+[[datasets]]
+id = "stuart_alpha_N2O"
+material = "N2O"
+file = "N2O/alms_1975__stuart_alpha_N2O.csv"
+table = "tbl_e60dab9bc511"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+use = "excluded"
+reproduced_from = ["H. A. Stuart, Die Struktur des freien Molekuls (Springer, Berlin, 1952)"]
+notes = "Table V, as stuart_alpha_N2."
+
+[[datasets]]
+id = "stuart_alpha_CO2"
+material = "CO2"
+file = "CO2/alms_1975__stuart_alpha_CO2.csv"
+table = "tbl_e60dab9bc511"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+use = "excluded"
+reproduced_from = ["H. A. Stuart, Die Struktur des freien Molekuls (Springer, Berlin, 1952)"]
+notes = "Table V, as stuart_alpha_N2."
+
+[[errata]]
+dataset = "alpha_N2"
+row = "5148"
+column = "x"
+printed = "5148"
+corrected = "5145"
+reason = "The argon-ion line used is 5145 A (p. 3, 'Depolarization ratios were measured at 4579, 4880, and 5145 A'); every other molecule of Table I prints 5145 in that row."
+evidence = "Table I image checked: nitrogen's row reads 5148. The 3 A difference changes the Landolt-Bornstein alpha by about 4e-5 A^3 (not 4e-4, (second reading, 2026-09-25; TC-157)), below its printed precision."

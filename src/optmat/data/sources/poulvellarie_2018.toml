@@ -1,0 +1,64 @@
+citation = "N. Poulvellarie, C. Ciret, B. Kuyken, F. Leo and S.-P. Gorza, \"Highly nondegenerate two-photon absorption in silicon wire waveguides\", Phys. Rev. Appl. 10, 024033 (2018)"
+doi = "10.1103/PhysRevApplied.10.024033"
+library = "Poulvellarie_2018_HighlyNondegenerateTwo"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Pump-signal transmission of a silicon-on-insulator wire waveguide (2 cm long, \
+220 nm high, 780 nm wide; the Fig. 1 caption says 220 x 789 nm2), quasi-TE mode, \
+dispersion-engineered so that ~1850 nm and ~1300 nm are group-velocity matched. An \
+optical parametric oscillator synchronously pumped by a mode-locked Ti:sapphire laser \
+(82 MHz) gives the pump at 1848 nm (chirped Gaussian, 200 fs FWHM unchirped, quadratic \
+spectral phase b = 4.3e-27 s2) and the signal at 1322 nm (GVM) or 1298 nm (chirped sech, \
+152 fs unchirped, b = 2.3e-27 s2), combined on a dichroic mirror with a variable delay; \
+output by lensed fibre into an optical spectrum analyser. Signal spectra and signal \
+energy against delay are compared with coupled generalized nonlinear Schroedinger \
+equations (pp. 024033-2 to -4)."""
+notes = """Article pages 024033-1 to -9 = PDF pages 1-9. Identity checked against the \
+first page. No tables. The Supplemental Material (the relation between the coupled \
+equations and the single GNLSE, Ref. [35]) is not in the library.
+
+NOTHING IS EXTRACTED AS DATA: the paper measures a waveguide, not bulk silicon, and \
+gives no material coefficient of its own. Its nonlinear coefficients are computed from \
+Bristow et al.'s degenerate data (bristow_2007, 'on the basis of the data from Ref. \
+[13]', p. 024033-4) under the approximation it tests, and the experiment is reproduced by \
+simulation with 'the input pump power as the only free parameter (all the other \
+parameters are either computed or precisely measured)' (p. 024033-5). The waveguide \
+values, as printed (p. 024033-4): effective areas A_pp = 0.241, A_ss = 0.147, A_ps = 0.176 \
+um2; gamma_pp = (164 + 14i), gamma_ss = (154 + 59i), gamma_ps = (97 + 31i), gamma_sp = (138 \
++ 45i) W^-1 m^-1 (p pump 1848 nm, s signal 1322 nm); linear loss alpha_p = alpha_s = 2 \
+dB/cm (measured); carrier lifetime tau_c and free-carrier sigma, k_c not given. Fig. 5 and \
+6: the dispersion of gamma and the GNLSE shock times s_R, s_I (first order 1.5 and 9 fs; \
+'s_R = 0 fs and s_I = 7.5 fs'; 'approx-cross' s_R = -0.39 fs and s_I = 5.15 fs).
+
+THE FINDING THAT BEARS ON A MODEL (p. 024033-6 and conclusion): 'the excellent agreement \
+between theory and experiment confirms that the simplification of reducing the \
+nondegenerate nonlinear coefficients n2(omega_p, omega_s) and beta_TPA(omega_p, omega_s) \
+to their value at the average frequency omega-bar is valid for indirect-band-gap \
+semiconductors, at least for photon energy in the range from 0.6 E_g to 0.85 E_g' (the \
+pump at 1848 nm is 0.60 E_g and the signal at 1322 nm 0.84 E_g for E_g = 1.12 eV); 'in \
+silicon nanophotonic waveguides, the dispersion of the nonlinear absorption is much \
+larger than the dispersion of the Kerr effect' (abstract); the self-TPA coefficient \
+'varies by more than a factor of 4' between pump and signal, 'and the signal cross-TPA \
+coefficient is three times larger than the self-TPA coefficient at the pump wavelength' \
+(p. 024033-5). The Raman effect is neglected ('negligible when one is dealing with short \
+pulses in silicon [5,23]', p. 024033-3). A 10-dB attenuation of the signal with a 1.2-pJ \
+(6-W peak) pump; free-carrier absorption 'responsible for only 2% of the signal \
+attenuation' (p. 024033-6). This contrasts with direct-gap semiconductors, where extreme \
+nondegenerate 2PA is enhanced up to 1000 times (Refs. [18], [19], p. 024033-1).
+
+CONSISTENCY WITH bristow_2007 (computed here, 2026-09-27, assuming the self-overlap \
+factors eta_pp = eta_ss = 1, which the paper does not print): Im gamma = beta / (2 A) \
+gives beta = 0.67 cm/GW at 1848 nm and 1.73 cm/GW at 1322 nm; Bristow's fitted form \
+(bristow_2007/beta_indirect_gk) gives 0.60 and 1.73. Re gamma = 2 pi n2 / (lambda A) gives \
+n2 = 1.16e-13 cm2/W at 1848 nm and 4.8e-14 cm2/W at 1322 nm, against Bristow's peak \
+1.2e-13 at 1800 nm and 4.7e-14 at 1220 nm. So the gammas are Bristow's degenerate values \
+at the mean frequency, as stated: no independent material datum."""
+
+[[formulas]]
+id = "gamma_mean_frequency"
+equation = "Eq. (5), p. 024033-4"
+printed = "gamma_mu_nu = omega_mu eta_mu_nu nbar^2 n2(omegabar) / (c sqrt(A_mu_mu A_nu_nu) n_mu n_nu) + i omega_mu eta_mu_nu nbar^2 beta_TPA(omegabar) / (2 omegabar sqrt(A_mu_mu A_nu_nu) n_mu n_nu)"
+variable = "omegabar = (omega_mu + omega_nu) / 2; n_nu the mode index at omega_nu, nbar at omegabar; A the effective areas; eta_mu_nu the mode-overlap factors of Lin et al. (lin_2007, Ref. [20]); n2 and beta_TPA the degenerate Kerr and 2PA coefficients of the material"
+coefficients = { A_pp_um2 = "0.241", A_ss_um2 = "0.147", A_ps_um2 = "0.176" }
+check = "Not reproducible from the paper alone (the mode indices and eta are not printed). The self terms, with eta = 1, give back Bristow's degenerate beta and n2 (see notes): consistent with the stated use of bristow_2007."
+notes = "The nondegenerate (cross) coefficients taken as the degenerate ones at the mean frequency; the paper's experiment supports this for silicon for photon energies 0.6-0.85 E_g (p. 024033-6). Coupled equations (1)-(2) and the carrier rate equation (4) as printed on p. 024033-3."

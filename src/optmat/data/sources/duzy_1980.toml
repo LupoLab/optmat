@@ -1,0 +1,264 @@
+citation = "C. Duzy and H. A. Hyman, \"Photoionization of excited rare-gas atoms\", Phys. Rev. A 22, 1878 (1980)"
+doi = "10.1103/PhysRevA.22.1878"
+library = "Duzy_1980_PhotoionizationExcitedRare"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Calculated one-photon photoionisation cross sections of the first excited \
+s, p and d configurations of Ne (3s, 3p, 3d), Ar (4s, 4p, 3d), Kr (5s, 5p, 4d) and Xe \
+(6s, 6p, 5d), each averaged over all its J levels (Sec. II, p. 1878): Eq. 1, sigma_nl \
+= 2.69e-18 (I_nl + epsilon) [(l + 1)/(2l + 1) R_l+1^2 + l/(2l + 1) R_l-1^2] cm^2, \
+energies in Ry, R the radial matrix element of r (Eq. 2, the length form). A \
+single-channel central-field model, the bound and continuum orbitals of one potential \
+(Eq. 4): the static potential of the parent ion X+ (p5) from Clementi and Roetti's \
+Hartree-Fock functions plus a polarisation potential alpha/(r^2 + r0^2)^2, r0 the \
+Hartree-Fock mean radius of the core's outer shell and alpha fitted (least squares) to \
+the J-averaged experimental binding energies (Eq. 5, Moore's tables) of the first five \
+ns, four np, four nd and two or three nf configurations (Table I). The method of \
+hyman_1977 (TC-933) with the new alpha; no spin-orbit, no channel coupling."""
+notes = """Phys. Rev. A 22(5), 1878-1883 (November 1980) = PDF pages 1-6 (journal page = \
+PDF page + 1877); a scan, each page one image (4807 x 6331 pixels) with a text layer. \
+Identity checked against the first page (journal, volume, number, date, title, \
+authors, pages). Tables I and II checked cell by cell against the table images and \
+the rendered pages.
+
+LEVELS. Every 'state' is a configuration average, 'averaged over all J levels of each \
+excited-state configuration' (p. 1878): Xe 6p is the mean of the ten 5p5 6p levels \
+(6p[1/2]0 at 80 118.962 cm^-1 among them; nist_asd_2026 Xe_I_levels.tsv), Ar 4p of the \
+ten 3p5 4p levels, and so on. Table II's d rows ('3d', '4d', '5d') are 3p5 3d, 4p5 4d, \
+5p5 5d (Fig. 5's caption) and Ne's are 2p5 3p and 2p5 3d. No level energy or \
+threshold is printed. So none of these values is a J-resolved cross section: compared \
+with a single level (6p[1/2]0, 6p[3/2]2) they are the average the paper computes.
+
+WHAT IS TAKEN (tools/extract/duzy_1980.py). (1) Table II (p. 1882), the cross sections \
+'relevant to the KrF and XeCl lasers', in 10^-18 cm^2: Ar 3p5 4p 5.4 and 3p5 3d 2.4, \
+Kr 4p5 5p 5.2 and 4p5 4d 2.8 at 248 nm (KrF); Ne 2p5 3p 2.3 and 2p5 3d 0.6, Xe 5p5 6p \
+7.6 and 5p5 5d 9.3 at 308 nm (XeCl), one dataset each (the s states are left out of \
+the table as 'negligible at the wavelengths of interest', p. 1882). The wavelengths \
+are the lasers', as printed; air or vacuum is not said (0.07-0.09 nm, below the last \
+digit). No uncertainty is stated. (2) Fig. 3 (p. 1880, raster), the Xe 6p \
+(dash-dot) curve against the photon wavelength (nm, linear, as drawn), 514 to 109 nm \
+where it can be told from the others (the rules in the script's docstring): alone \
+above the others from 514 to 392 nm; drawn on the Kr 5p (solid) curve from 333 to \
+246 nm, where the two are one line (the value read is the line's, Kr and Xe at once); \
+the middle of three separate lines (Kr, Xe, Ar) from 219 to 205 nm and from 146 to 109 \
+nm. Not read: 392-333 nm (the Xe, Kr and Ar curves cross), 246-219 nm (Xe leaves the \
+Kr curve; the two lines touch), 205-146 nm (Xe and Ar run together). One point every \
+10 columns (3.5 nm). Use 'check' throughout: a semiempirical, J-averaged calculation, \
+held for comparison with the level-resolved values (below), as hyman_1977 and \
+chang_1982 are.
+
+DIGITISING. Fig. 3's frame is hand-drafted and the scan turned by about 0.25 degree: \
+each side has its own calibration from its tick marks (sigma: 1, 2, 4, 6, 8 x 10^k, \
+one logarithmic fit per decade because the decades are 559 to 545 pixels long, every \
+tick within 2.5 pixels; wavelength: every 100 nm, within 3.5 pixels), and a point is \
+interpolated between the two sides. One pixel is 0.35 nm and 0.0018 decade (0.4 %); \
+the lines are 8-12 pixels wide. Relative uncertainty 5 %: the calibration (2 pixels), \
+half a line width (6 pixels) and, where Kr and Xe are drawn on each other, up to 4 \
+pixels more (0.012 decade together, 3 %), rounded up. The overlay (the points and the \
+calibrated decade and wavelength grid drawn on the page image) was inspected: the \
+grid falls on every labelled tick and the points on the dash-dot line.
+
+CHECKED (the script). Fig. 3 read at Table II's wavelengths, against Table II: Ne 3p \
+at 308 nm 0.98 (2.25 against 2.3); Kr 5p at 248 nm 1.07 (the solid line, 5.57 against \
+5.2). FINDING: the figure and Table II disagree for Ar and Xe beyond the reading: Ar \
+4p at 248 nm, the long-dashed curve, reads 4.55 x 10^-18 cm^2, 0.84 of Table II's 5.4, \
+and Xe 6p at 308 nm, the dash-dot curve (on the solid one there), reads 8.48, 1.12 of \
+Table II's 7.6. The curves are identified by their dashes and by where they begin \
+(Xe, the longest wavelength, about 520 nm; Kr 485; Ar 470; Ne 415: the order of the \
+J-averaged binding energies). The text sides with Table II for Ar: 'only ~25% higher \
+at lambda = 250 nm' than hyman_1977 (p. 1880), and 5.4/4.3 = 1.26 (the figure gives \
+1.06); for Kr 'within ~30%', 5.2/4.5 = 1.16. Which of figure and table is right for \
+Xe is not known; both are kept, and the Xe curve's 5 % does not cover it. Table I's \
+alpha for Ar and Kr (15.64 and 28.82 a0^3) are 1.77 and 1.93 times hyman_1977's 8.85 \
+and 14.9, 'almost twice' (p. 1881).
+
+COMPARISONS (Xe 6p, the level of OEP 8). At 248-250 nm Fig. 3 gives 5.56 (248 nm) \
+and 5.63 x 10^-18 cm^2 (249.6 nm), the Kr and Xe line: 1.29 and 1.50 times kroll_1990's \
+measured 4.3 +- 0.7 (6p[1/2]0) and 3.7 +- 0.7 (6p[3/2]2) at 248 nm (TC-890); 1.6 times \
+chang_1982's velocity curve (3.47, TC-931); 1.85 times pindzola_1981's (TC-932) \
+Dirac-Fock length total of 6p[1/2]0 at 4.97 eV (3.049) and 2.4 times its Hartree-Fock length (2.376); \
+1.9 times payne_1981's 'sigma_I ~ 3 x 10^-18' at 2496 A (Pindzola, unpublished). At \
+308 nm Table II's 7.6 is 1.10 times chang_1982's length value 6.9 (Table II there, 'about \
+5-15% below those of Duzy and Hyman'), and 1.65 and 2.1 times pindzola_1981's Dirac-Fock \
+and Hartree-Fock length totals at 4.03 eV (4.62 and 3.64, log-interpolated between its \
+3.20 and 4.20 eV rows). The J average is the largest of the calculations held and \
+lies above the measurement. Other gases: Ar 4p 5.4 and Kr 5p 5.2 at 248 nm are 1.26 \
+and 1.16 times hyman_1977's 4.3 and 4.5 (2486 A), and 1.13 and 1.16 times chang_1982's \
+4.8 and 4.5; Ne 3p 2.3 at 308 nm is 1.15 times chang_1982's 2.0. Kr 5p at 215 nm \
+(Fig. 3's solid line, the top of three, read by the same method, 4.07 x 10^-18 cm^2) \
+against dakka_2018's 2p6 (5p[3/2]2) 3.8 +- 1.7 x 10^-18 as printed, defined with half \
+the photon flux (its record): 1.07 as printed, 2.1 on the photon flux. payne_1981's \
+'sigma_I = 10^-18' for Kr 5p[1/2]0 at 3262 A is a ninth of Fig. 3's Kr line there \
+(9.3 x 10^-18 at 327 nm, the Kr and Xe line). hummer_1998 is helium, which this paper \
+does not treat: no level is common.
+
+QUOTED ELSEWHERE. chang_1982's 'Duzy and Hyman' column (reproduced there, TC-931) is \
+this Table II exactly (Ne 2.3, Ar 5.4, Kr 5.2, Xe 7.6 x 10^-18 cm^2 = Mb); chang_1982 \
+cites the paper as 'Phys. Rev. A 22, 1978 (1980)', a misprinted page (1878), and its \
+record says the original is not in the library, which it now is. payne_1982's Figs. 5-7 \
+'taken from Duzy and Hyman (1980)' are this paper's Figs. 2, 3 and 5, cited correctly.
+
+NOT TAKEN. Table I (r0, alpha and the fit's average deviation per gas): parameters of \
+the model potential; alpha is an effective value, 'much larger than ... the "true" \
+dipole polarizability of the core' (p. 1879), and no quantity holds it. Fig. 1 (Ne \
+3s against the photoelectron energy, with McCann and Flannery's and Hazi and \
+Rescigno's curves), Fig. 2 (the s states, against wavelength, linear sigma 0-3 x \
+10^-19 cm^2, Cooper minima near threshold), Fig. 5 (the d states) and Fig. 3's Ne, Ar \
+and Kr curves: raster figures of configurations OEP 8 does not use; Fig. 3's other \
+curves are read only at Table II's wavelengths and, for Kr, at 215 and 327 nm \
+(above). Fig. 4 (the oscillator-strength \
+distributions of np -> n'd, discrete transitions as Fano-Cooper histograms): no \
+oscillator strength is printed as a number. The positions of the minima (Ne 3p -> ed \
+at epsilon = 0.37 Ry; Xe 5d -> ep at 0.31 Ry and 5d -> ef at 0.75 Ry; p. 1881): \
+features, not values of a quantity. Dunning and Stebbings's experimental upper bounds \
+for the Ar(4s 3P0,2) and Kr(5s 3P0,2) cross sections at threshold, 1.1 x 10^-18 and \
+4.9 x 10^-19 cm^2 (p. 1880, quoted): bounds at an unstated threshold wavelength, from \
+F. B. Dunning and R. F. Stebbings, Phys. Rev. A 9, 2378 (1974), not in the library. \
+Nothing here is two-photon data, and no further two-photon data is cited."""
+
+[[datasets]]
+id = "table2_Ar_4p"
+material = "Ar"
+file = "Ar/duzy_1980__table2_4p.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Ar* 3p5 4p at 248 nm (KrF): 5.4 x 10^-18 cm2. No uncertainty is stated. Fig. 3's long-dashed curve reads 4.55 x 10^-18 cm2 at 248 nm, 0.84 times this (the record's notes)."
+[datasets.parameters]
+initial_level = "Ar 3p5 4p, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Ar_3d"
+material = "Ar"
+file = "Ar/duzy_1980__table2_3d.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Ar* 3p5 3d ('3d' under Ar*) at 248 nm (KrF): 2.4 x 10^-18 cm2. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Ar 3p5 3d, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Kr_5p"
+material = "Kr"
+file = "Kr/duzy_1980__table2_5p.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Kr* 4p5 5p at 248 nm (KrF): 5.2 x 10^-18 cm2. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Kr 4p5 5p, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Kr_4d"
+material = "Kr"
+file = "Kr/duzy_1980__table2_4d.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Kr* 4p5 4d ('4d' under Kr*) at 248 nm (KrF): 2.8 x 10^-18 cm2. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Kr 4p5 4d, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Ne_3p"
+material = "Ne"
+file = "Ne/duzy_1980__table2_3p.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Ne* 2p5 3p at 308 nm (XeCl): 2.3 x 10^-18 cm2. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Ne 2p5 3p, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Ne_3d"
+material = "Ne"
+file = "Ne/duzy_1980__table2_3d.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Ne* 2p5 3d ('3d' under Ne*) at 308 nm (XeCl): 0.6 x 10^-18 cm2. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Ne 2p5 3d, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Xe_6p"
+material = "Xe"
+file = "Xe/duzy_1980__table2_6p.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Xe* 5p5 6p at 308 nm (XeCl): 7.6 x 10^-18 cm2. No uncertainty is stated. Fig. 3's dash-dot curve reads 8.48 x 10^-18 cm2 at 308 nm, 1.12 times this (the record's notes)."
+[datasets.parameters]
+initial_level = "Xe 5p5 6p, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "table2_Xe_5d"
+material = "Xe"
+file = "Xe/duzy_1980__table2_5d.csv"
+table = "tbl_398a22d38504"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 1882), Xe* 5p5 5d ('5d' under Xe*) at 308 nm (XeCl): 9.3 x 10^-18 cm2. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 5d, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"
+
+[[datasets]]
+id = "fig3_Xe_6p"
+material = "Xe"
+file = "Xe/duzy_1980__fig3_6p.csv"
+table = "fig_1e192e00a6b7"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Fig. 3 (p. 1880), the Xe 6p (dash-dot) curve against the photon wavelength as drawn, read from the image where it can be told from the others: 514-392 nm (alone), 333-246 nm (drawn on the Kr 5p curve: the line's value), 219-205 and 146-109 nm (the middle of three lines); each point's pixel and rule in 'printed'. At 308 nm it reads 1.12 times Table II's 7.6 x 10^-18 cm2 (the record's notes). 5 %: the reading."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 5p5 6p, averaged over all J levels of the configuration (p. 1878)"
+method = "semiempirical central-field model: Hartree-Fock ion potential plus a polarisation potential fitted to the J-averaged binding energies (Table I); single channel, no spin-orbit"
+gauge = "length"

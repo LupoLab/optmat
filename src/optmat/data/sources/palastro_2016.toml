@@ -1,0 +1,96 @@
+citation = "J. P. Palastro, J. Penano, L. A. Johnson, B. Hafizi, J. K. Wahlstrand and H. M. Milchberg, \"Two-photon vibrational excitation of air by long-wave infrared laser pulses\", Phys. Rev. A 94, 023816 (2016)"
+doi = "10.1103/PhysRevA.94.023816"
+library = "Palastro_2016_TwoPhotonVibrational"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Simulations and analytic theory of long-wave infrared (8.4 or 12.6 um, near half \
+the vibrational frequency of N2 or O2) ultrashort-pulse propagation in air with \
+electronic, rotational and vibrational (two-photon resonant) responses from \
+density-matrix theory (secs. II-IV)."""
+notes = """Journal pages 023816-1 to -7 = PDF pages 1-7; the library copy is marked \
+'published 5 August 2016; corrected 28 December 2017' (the corrected version). Identity \
+checked against the first page. Air (0.8 N2 + 0.2 O2) is the medium; the N2 and O2 \
+parameters of Table I are taken.
+
+DEFINITIONS (SI; p. 2): P_e = eps0 chi_e E, 'chi_e = 4 c eps0 n2 E^2 / 3' (Eq. (1)), E the \
+real transverse field (so with E = E_hat sin(omega t) the cycle-averaged index change is \
+n2 (c eps0 E_hat^2 / 2) = n2 I: n2 is the self coefficient); rotational Eq. (2), \
+vibrational Eq. (3): (d^2/dt^2 + Omega_v^2) chi_v = (4 pi^2 eps0 eta / mu)(d alpha/dQ)^2 E^2 \
+(eta the number density, mu the reduced mass, d alpha/dQ the isotropic polarizability \
+derivative). Refractive limit, Eq. (11): <chi_v> = gamma E_hat^2 / 2 Omega_v^2 + ...
+
+TABLE I (p. 2; CSV and image checked; tools/extract/palastro_2016.py): N2, O2: fraction \
+0.8, 0.2; n2 (m2/W) 7.3e-24, 9.3e-24 '[6,16]'; Omega_v (s^-1) 4.5e14, 3.0e14 '[12]'; I_M (J \
+s2) 1.46e-46, 1.9e-46 '[4]'; Delta a (m3) 6.7e-31, 10.2e-31 '[6]'; mu (kg) 1.2e-26, 1.3e-26; \
+d a/dQ (m2) 1.75e-20, 1.46e-20 '[20]'. Only n2 and Delta a are extracted (no quantity for \
+the others). The n2 are 'adjusted in Table I to only include the electronic \
+contribution n2 -> n2 - (3 pi^2 eta / c Omega_v^2 mu)(d alpha/dQ)^2' from 'the n2 values \
+measured in Refs. [7,17], which include both the electronic and the vibrational \
+contributions' (p. 3) = wahlstrand_2012 and zahedpour_2015. REFERENCE NUMBERS: Table I's \
+'[6,16]' and '[6]' do not match that text: [6] is Palastro, Antonsen and Pearson 2011 \
+(palastro_2011, which gives no Delta alpha) and [16] Mitrofanov et al. 2015; the values \
+(Delta a 6.7 and 10.2 x 1e-31 m3 = wahlstrand_2012's 6.7, 10.2 x 1e-25 cm3) show that [7] \
+and [17] are meant (an off-by-one after the correction; [12] for Omega_v, = \
+wahlstrand_2015 on H2 and D2, is likely [13] Demtroder, and [4] for I_M is Lin et al.). \
+reproduced_from names the sources of the values. The reference state of n2 is not \
+stated (that of the sources, 1 atm)."""
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+file = "N2/palastro_2016__n2_N2.csv"
+table = "tbl_8f0115c294cd"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012", "zahedpour_2015"]
+notes = "Table I, n2 = 7.3e-24 m2/W: the measured n2 (wahlstrand_2012 7.4, zahedpour_2015 7.9 x 1e-20 cm2/W at 800 nm) with the adiabatic vibrational part subtracted (p. 3): reproduced and rescaled. Recorded at the sources' 800 nm and 1 atm (293.15 K assumed); the paper uses it frequency-independently at 8.4-12.6 um."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_O2"
+material = "O2"
+file = "O2/palastro_2016__n2_O2.csv"
+table = "tbl_8f0115c294cd"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012", "zahedpour_2015"]
+notes = "Table I, n2 = 9.3e-24 m2/W: as n2_N2 (sources 9.5 and 8.1 x 1e-20 cm2/W at 800 nm), vibrational part subtracted."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "dalpha_N2"
+material = "N2"
+file = "N2/palastro_2016__dalpha_N2.csv"
+table = "tbl_8f0115c294cd"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table I, Delta a = 6.7 x 10^-31 m3 (= 6.7 x 1e-25 cm3; scale set so), wahlstrand_2012's value (the printed reference [6] is off by one, source notes)."
+
+[[datasets]]
+id = "dalpha_O2"
+material = "O2"
+file = "O2/palastro_2016__dalpha_O2.csv"
+table = "tbl_8f0115c294cd"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table I, Delta a = 10.2 x 10^-31 m3 (= 10.2 x 1e-25 cm3), wahlstrand_2012's value."

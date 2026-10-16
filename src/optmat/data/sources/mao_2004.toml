@@ -1,0 +1,157 @@
+citation = "S. S. Mao, F. Quere, S. Guizard, X. Mao, R. E. Russo, G. Petite and P. Martin, \"Dynamics of femtosecond laser interactions with dielectrics\", Appl. Phys. A 79, 1695 (2004)"
+doi = "10.1007/s00339-004-2684-0"
+library = "Mao_2004_DynamicsFemtosecondLaser"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Review of femtosecond laser excitation of wide-gap dielectrics: carrier \
+excitation (Keldysh photoionization, free-carrier absorption, avalanche), nonlinear \
+propagation, self-trapped excitons and defects; the authors' time-resolved imaging, \
+spectral interferometry and transient-absorption experiments on SiO2, MgO, alkali \
+halides; semiclassical against quantum relaxation of hot electrons in quartz."""
+notes = """Journal pages 1695-1709 = PDF pages 1-15 (the PDF's running heads give the \
+odd page numbers). Identity validated with warnings (the library's check on the \
+caption layout); title, authors and journal checked against page 1695.
+
+MATERIAL VALUES (datasets): the alkali-halide band gaps 'ranging from 5.9 eV (NaI) to \
+13.7 eV (LiF)' (ref. 32, N. Itoh, Adv. Phys. 31, 491 (1982); p. 1699); 'E_g(SiO2) ~ 9 eV' \
+and 'E_g(MgO) ~ 7.7 eV', used to count the photons of the I^6 and I^5 laws of Fig. 11 \
+(6 x 1.57 = 9.42 eV, 5 x 1.57 = 7.85 eV, checked; p. 1703; no source cited); the quartz \
+band gap 9.8 eV of the seven-photon relaxation example (p. 1704, an input of the \
+calculation); the SiO2 carrier trapping time 150 fs (spectral interferometry, ref. 49, \
+Martin et al., Phys. Rev. B 55, 5799 (1997); p. 1702).
+
+QUALITATIVE OR NO QUANTITY (not extracted): in diamond, MgO and Al2O3 'the negative phase \
+shift was observed to persist for tens of picoseconds' (no trapping), in NaCl, KBr and \
+SiO2 (amorphous and crystalline) fast STE formation, 'carrier lifetimes two orders of \
+magnitude smaller' (p. 1703); the SiO2 STE absorption band at 5.2 eV (Fig. 12), its first \
+excited level ~4.2 eV, the ~2.8 eV luminescence of quartz (ref. 37); the Frohlich \
+coupling constant alpha 'from 6 x 10^-2 for semiconductors such as GaAs ... to larger than \
+unity for SiO2, and even 5 for NaCl' (p. 1704); the two LO phonon branches of quartz \
+(150 and 60 meV) and the collision time 'smaller than 1 fs' in SiO2 (pp. 1704-1705); the \
+imaged electron densities in silica glass at 1.3 x 10^13 W/cm2, ~2e19 cm^-3 at 333 fs \
+and ~5e19 cm^-3 at 1333 fs (ref. 44, Mao et al. 2003; p. 1701). Fig. 7 (the fused-silica \
+damage threshold at 800 nm against pulse duration, 'Data from reference [39]', Tien et \
+al. 1999) and Fig. 11 (with the breakdown threshold of ref. 19, Stuart et al.) are \
+figure-only reproductions.
+
+FORMULAS: the rate equations are printed dN/dt = a I N + sigma N I^m, 'proposed' by \
+Stuart et al. (ref. 19 = stuart_1996), whose Eq. (21) has a multiphoton term independent \
+of N: the N in the second term is as printed here (a misprint or a different model; \
+not resolvable)."""
+
+[[datasets]]
+id = "band_gap_NaI"
+material = "NaI"
+table = "text"
+points = [["1", "", "5.9"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["N. Itoh, Adv. Phys. 31, 491 (1982)"]
+notes = "p. 1699: 'In alkali halide crystals [32], which have an energy bandgap ranging from 5.9 eV (NaI) to 13.7 eV (LiF)'. Kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_LiF"
+material = "LiF"
+table = "text"
+points = [["1", "", "13.7"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["N. Itoh, Adv. Phys. 31, 491 (1982)"]
+notes = "p. 1699, as for NaI."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_SiO2"
+material = "SiO2"
+table = "text"
+points = [["1", "", "9"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 1703: '6 omega = 9.42 eV > E_g(SiO2) ~ 9 eV', used to identify the six-photon law of the phase shift at 790 nm, 60 fs (Fig. 11, data of ref. 50, Quere et al. 2001); no source."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "band_gap_MgO"
+material = "MgO"
+table = "text"
+points = [["1", "", "7.7"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 1703: '5 omega = 7.85 eV > E_g(MgO) ~ 7.7 eV', the five-photon law in MgO; no source."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "band_gap_quartz"
+material = "SiO2_quartz"
+table = "text"
+points = [["1", "", "9.8"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 1704: 'We consider as an example a seven-photon injection process (1.57 eV photons) in a quartz sample with bandgap of 9.8 eV', an input of the relaxation calculation (ref. 55, Daguzan et al. 1995); initial kinetic energy about 1.2 eV."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "trapping_time_SiO2"
+material = "SiO2"
+table = "text"
+points = [["1", "", "150"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["P. Martin, S. Guizard, P. Daguzan, G. Petite, P. D'Oliviera, P. Meynadier and M. Perdrix, Phys. Rev. B 55, 5799 (1997)"]
+notes = "p. 1702 (Fig. 10): 'In SiO2, this relaxation occurs with a time constant of 150 fs. It has been demonstrated that this second type of evolution is due to the trapping of most of the excited carriers as self-trapped excitons [49]'; 800-nm pump, 400-nm probe. The trapping time is independent of the excitation density in SiO2 (p. 1703)."
+
+[[formulas]]
+id = "keldysh_parameter"
+equation = "Sect. 1.1.1, p. 1696"
+printed = "gamma = omega (2 m* E_g)^(1/2) / (e E)"
+variable = "m*, e: the effective mass and charge of the electron; E the amplitude of the laser field at frequency omega; E_g the band gap"
+check = "Nothing to reproduce."
+notes = "Note the factor 2 under the root (compare couairon_2005 and jing_2012: omega sqrt(m U_i)/(e E) with m the reduced mass)."
+
+[[formulas]]
+id = "rate_equations"
+equation = "Sect. 1.1.3, p. 1697"
+printed = "dN/dt = a I N + sigma N I^m; with trapping: dN/dt = a I N + sigma N I^m + sigma_x N_STE I^(m_x) - N/tau_x, dN_STE/dt = -sigma_x N_STE p I^(m_x) + N/tau_x"
+variable = "N: conduction-band density; a a constant (avalanche); sigma the m-photon cross section; N_STE the self-trapped-exciton density; sigma_x the m_x-photon cross section of STEs; tau_x the trapping time"
+reproduced_from = ["stuart_1996"]
+check = "Nothing to reproduce."
+notes = "As printed, the multiphoton term sigma N I^m is proportional to N; in stuart_1996 (Eq. 21), cited as ref. 19 for the first equation, the photoionization rate P(I) does not multiply n. The symbol p in the STE equation is not defined."
+
+[[formulas]]
+id = "drude_and_plasma_index"
+equation = "Sects. 1.1.2 and 1.2.2, pp. 1696-1698; Sect. 2.2, p. 1702"
+printed = "eps = 1 - omega_p^2 [tau^2/(1 + omega^2 tau^2) + i tau^2/(omega tau (1 + omega^2 tau^2))], omega_p = sqrt(e^2 N/(eps0 m*)); n = n0 - N/(2 n0 N_c), N_c = omega^2 eps0 m*/e^2; Delta n = N_STE e^2/(2 n0 m eps0) x 1/(omega_tr^2 - omega^2); P_cr = 3.77 lambda^2/(8 pi n0 n2); n2 = 3 chi(3)/(4 eps0 c n0^2), I = (1/2) eps0 c n0 E^2"
+variable = "tau: the scattering time; omega_tr the STE resonance (~4.2 eV in SiO2)"
+coefficients = { factor = "3.77" }
+check = "Nothing to reproduce."
+notes = "The STE (Lorentz) index change explains the positive phase shift in SiO2 after ~150 fs (p. 1702)."
+
+[[formulas]]
+id = "frohlich_coupling"
+equation = "Sect. 2.4, p. 1704"
+printed = "alpha = (e^2/hbar) (m*/(2 hbar omega_LO))^(1/2) (1/eps_inf - 1/eps_0)"
+variable = "omega_LO: the LO phonon frequency at the zone centre; eps_inf, eps_0 the high-frequency and static dielectric constants; m* the electron effective mass"
+reproduced_from = ["G. D. Mahan, Many Particles Physics (Plenum, New York, 1990)"]
+check = "Nothing to reproduce."
+notes = "Gaussian-unit form, as printed."

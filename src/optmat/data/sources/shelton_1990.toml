@@ -1,0 +1,1562 @@
+citation = "D. P. Shelton, Phys. Rev. A 42, 2578 (1990)"
+doi = "10.1103/physreva.42.2578"
+library = "Shelton_1990_NonlinearOpticalSusceptibilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Electric-field-induced second-harmonic generation (ESHG) with periodic phase \
+matching, as in Shelton & Mizrahi (1986) but with a Q-switched Nd:YAG laser at 1064 or \
+1319 nm (150 ns pulses) and coarser electrode arrays (N = 8, L = 20.320 cm at \
+1319 nm); z0 = 20 cm. Sample (A) and reference (B) gases measured alternately in \
+coupled triplets (ABABA...); the phase-match pressure found from a quadratic fit to the \
+signal within 15 % of its peak. Densities from pressure (Bourdon gauge, 0.1 % of \
+160 bar full scale, or capacitance manometer, 0.15 % relative) and temperature \
+(thermistor in the gas, 0.1 C; room temperature 21-23 C) by the virial equation of \
+state (Dymond & Smith); virial corrections typically below 1 %, 5 % for He (p. 5)."""
+notes = """The paper's aim is the hyperpolarizability gamma; its by-product, the ratio of \
+phase-match densities of a sample A and a reference B at the same apparatus \
+|Delta k|_opt, measures refractive-index dispersion: 'rho_B/rho_A ~ (alpha_2w - \
+alpha_w)_A / (alpha_2w - alpha_w)_B' (p. 6), with Delta k = (-2 pi / (lambda eps0)) \
+(alpha_2w - alpha_w) rho (Eq. 4), lambda the fundamental. The process is ESHG (second \
+harmonic, n(2 omega) - n(omega)), not third-harmonic generation.
+
+Table I prints rho_B/rho_A, the reference's density over the sample's. The package's \
+phase_match_density_ratio is rho_gas / rho_reference, so each ratio is filed under \
+Shelton's reference gas B as 'gas', with Shelton's sample A as 'reference_material': the \
+printed number is then the quantity as defined, not inverted (parameters.sample_gas \
+and parameters.shelton_reference_gas keep Shelton's roles). Rows for CF4, C2H6, C3H8, \
+n-C4H10 and C4H6 are skipped (not curated species); the hyperpolarizability ratios \
+and the gamma tables (II-IV) are not refractive-index data and are not extracted.
+
+Wavelengths: Table I prints 1319 and 1064 nm; Table III's caption says 'Wavelengths \
+lambda are those measured in air, while wavenumbers nu are those measured in vacuum', \
+and gives 7581 and 9395 cm^-1 for these two lines, so the wavelengths are recorded as \
+standard air (the vacuum wavelengths 1319.09 and 1064.40 nm from the wavenumbers differ \
+by at most 0.02 % from the converted ones, far below any effect on the ratios).
+
+Uncertainty: the per-ratio +- of Table I (level not stated). 'The random uncertainty \
+is 0.1 % for a single phase-match-density determination' (p. 5); for rho_H2/rho_D2 and \
+rho_N2/rho_Ar 'the stated uncertainty ... is essentially the statistical uncertainty' \
+(Table I caption). The caption also says the Ar/He, N2/He and Ar/N2 measurements 'form \
+an overdetermined set; the values given in the table have been adjusted to maximize \
+the self-consistency of this set' (said of the gamma ratios; the density ratios are \
+consistent: 19.83 x 0.9282 = 18.406 against 18.41 at 1319 nm, 19.93 x 0.9295 = 18.525 \
+against 18.54 at 1064 nm). O2 purity was only 99.6 %, with possible systematic errors \
+above 0.1 % (p. 6).
+
+Cross-check with Shelton & Mizrahi (1986): rho_H2/rho_D2 = 0.9720 and 0.9717 here, \
+against 1/1.0290 = 0.9718 for the 1986 zero-frequency limit of rho_D2/rho_H2.
+
+The library holds a second copy of this paper (Shelton_1990_NonlinearOpticalSusceptibilities_9e0b1a, \
+same DOI) with the identical Table I; it is not extracted twice.
+
+THIRD-ORDER DATA (added 2026-09-26; the remark above that the gamma tables \
+are not extracted predates it). Definitions: <gamma> is the isotropically averaged \
+<gamma>_zzzz, all fields parallel, in SI units C^4 m^4 J^-3 (1 au = 6.235377e-65 with \
+mu = m_e, p. 14); the same gamma as Shelton & Rice's Taylor-series convention \
+(shelton_1994 reproduces these values in au). The ESHG susceptibility of a low-density \
+gas is chi^(3) = (1/4) L_0 L_omega^2 L_2omega <gamma> rho (Eq. 2, p. 2), L_omega = \
+(n_omega^2 + 2)/3 the Lorentz local-field factor, rho the number density; the \
+second-harmonic power is Eq. (1) (proportional to (chi^(3) P^(omega) E_0^(0))^2 for a \
+static field E_0^(0) sin Kz); the field convention of chi^(3) is not spelled out beyond \
+Eqs (1)-(2). The ratio <gamma_A>/<gamma_B> follows from the peak signals, phase-match \
+densities and electrode voltages by Eq. (5) with the refractive-index factor n' = \
+(n_0^4 n_omega^(2+3 xi) n_2omega)^(1/6) (Eq. 6, 3 xi = 1). Calibration: every value \
+rests on Bishop & Pipin's ab initio gamma_He (bishop_1989), fitted by the author \
+(Table II, formulas table2_He_*); Ar, H2, N2 and Ne are measured against He, D2 against \
+H2's curve, O2, SF6, CH4, CO2 against N2's, Kr and Xe against Ar's (Table III caption). \
+Parts: for H2 and D2 the calculated <gamma^vR> (Eqs 9-11) and for N2, O2 Eq. (15) with \
+Table V are subtracted before fitting <gamma^e> (Table IV: diatomics electronic); for \
+the atoms <gamma> is electronic; for CO2, SF6, CH4 the fits are to the total <gamma> \
+(vibrational part not separated: 'we are unable to accurately determine <gamma^e> or \
+its static limit for these molecules', p. 13). ESHG's rotational part is negligible. \
+Accuracy (p. 13): 'the absolute accuracy of the <gamma> dispersion curves for Ar, H2, \
+and N2 (calibrated directly against He) is expected to be about 0.2% over the fitted \
+range. The extrapolation to the static limit of <gamma^e> for the atoms and diatomic \
+molecules should be accurate to about 0.5%' (Ne about 2 %); but He pair interactions \
+'may increase chi^(3) ... by 1%' (ref 46), so 'all the experimental estimates of \
+<gamma> given here should be adjusted upward by about 1%, except gamma_Ne which should \
+only increase half as much' (not applied), and 'Until the above-mentioned defects are \
+corrected or resolved, the effective accuracy of our results is only about 1%, even for \
+the atoms and diatomic molecules' (p. 13). Datasets: Table I gamma ratios \
+(gamma_<A>_over_<B>, check: the raw measurement behind the calibrated values); Table \
+III present-work values (table3_<gas>_present, primary), the rescaled literature values \
+(table3_<gas>_literature, reproduced; Ne's excluded as spurious), H2 and D2 \
+gamma^vR; text values (p. 14). Formulas: Table II (He calibration, with the misprinted \
+C corrected), Table IV (gamma_0, A, B per gas), Table V (G, H of gamma^vR). Only curated \
+species: CF4, C2H6, C3H8, n-C4H10 and C4H6 are skipped (their Table I, III, IV values \
+and, in the text, CF4's Hartree-Fock 143 au against 985 au). The dipolar-molecule \
+mu beta/3kT remark concerns only the skipped C3H8, n-C4H10, C4H6. The second library \
+copy (..._9e0b1a) agrees number for number in all six tables (checked 2026-09-26)."""
+
+[[datasets]]
+id = "density_He_over_Ne"
+material = "He"
+file = "He/shelton_1990__density_He_over_Ne.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = Ne, B = He: rho_He / rho_Ne as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ne"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Ne"
+shelton_reference_gas = "He"
+
+[[datasets]]
+id = "density_He_over_Ar"
+material = "He"
+file = "He/shelton_1990__density_He_over_Ar.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = Ar, B = He: rho_He / rho_Ar as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Ar"
+shelton_reference_gas = "He"
+
+[[datasets]]
+id = "density_Ar_over_Kr"
+material = "Ar"
+file = "Ar/shelton_1990__density_Ar_over_Kr.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = Kr, B = Ar: rho_Ar / rho_Kr as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Kr"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Kr"
+shelton_reference_gas = "Ar"
+
+[[datasets]]
+id = "density_Ar_over_Xe"
+material = "Ar"
+file = "Ar/shelton_1990__density_Ar_over_Xe.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = Xe, B = Ar: rho_Ar / rho_Xe as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Xe"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Xe"
+shelton_reference_gas = "Ar"
+
+[[datasets]]
+id = "density_He_over_H2"
+material = "He"
+file = "He/shelton_1990__density_He_over_H2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = H2, B = He: rho_He / rho_H2 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "H2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "H2"
+shelton_reference_gas = "He"
+
+[[datasets]]
+id = "density_H2_over_D2"
+material = "H2"
+file = "H2/shelton_1990__density_H2_over_D2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = D2, B = H2: rho_H2 / rho_D2 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "D2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "D2"
+shelton_reference_gas = "H2"
+
+[[datasets]]
+id = "density_He_over_N2"
+material = "He"
+file = "He/shelton_1990__density_He_over_N2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = N2, B = He: rho_He / rho_N2 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "N2"
+shelton_reference_gas = "He"
+
+[[datasets]]
+id = "density_N2_over_O2"
+material = "N2"
+file = "N2/shelton_1990__density_N2_over_O2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = O2, B = N2: rho_N2 / rho_O2 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "O2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "O2"
+shelton_reference_gas = "N2"
+
+[[datasets]]
+id = "density_N2_over_Ar"
+material = "N2"
+file = "N2/shelton_1990__density_N2_over_Ar.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = Ar, B = N2: rho_N2 / rho_Ar as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "Ar"
+shelton_reference_gas = "N2"
+
+[[datasets]]
+id = "density_N2_over_CO2"
+material = "N2"
+file = "N2/shelton_1990__density_N2_over_CO2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = CO2, B = N2: rho_N2 / rho_CO2 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "CO2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "CO2"
+shelton_reference_gas = "N2"
+
+[[datasets]]
+id = "density_N2_over_SF6"
+material = "N2"
+file = "N2/shelton_1990__density_N2_over_SF6.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = SF6, B = N2: rho_N2 / rho_SF6 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "SF6"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "SF6"
+shelton_reference_gas = "N2"
+
+[[datasets]]
+id = "density_N2_over_CH4"
+material = "N2"
+file = "N2/shelton_1990__density_N2_over_CH4.csv"
+table = "tbl_5295cecf2a78"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+density = "real"
+use = "primary"
+notes = "Table I row A = CH4, B = N2: rho_N2 / rho_CH4 as printed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "CH4"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_reference_gas at equal wave-vector mismatch |Delta k| = (4 pi / lambda) |n(2w) - n(w)|; to first order in density = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; lambda = fundamental"
+sample_gas = "CH4"
+shelton_reference_gas = "N2"
+
+[[datasets]]
+id = "gamma_Ne_over_He"
+material = "Ne"
+file = "Ne/shelton_1990__gamma_Ne_over_He.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = Ne (sample), B = He (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "electronic"
+convention = "T"
+
+[[datasets]]
+id = "gamma_Ar_over_He"
+material = "Ar"
+file = "Ar/shelton_1990__gamma_Ar_over_He.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = Ar (sample), B = He (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated. Caption: 'The measurements of gamma_Ar/gamma_He, <gamma_N2>/gamma_He, and gamma_Ar/<gamma_N2> form an overdetermined set; the values given in the table have been adjusted to maximize the self-consistency of this set.'"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "electronic"
+convention = "T"
+
+[[datasets]]
+id = "gamma_Kr_over_Ar"
+material = "Kr"
+file = "Kr/shelton_1990__gamma_Kr_over_Ar.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = Kr (sample), B = Ar (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "eshg"
+part = "electronic"
+convention = "T"
+
+[[datasets]]
+id = "gamma_Xe_over_Ar"
+material = "Xe"
+file = "Xe/shelton_1990__gamma_Xe_over_Ar.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = Xe (sample), B = Ar (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "eshg"
+part = "electronic"
+convention = "T"
+
+[[datasets]]
+id = "gamma_H2_over_He"
+material = "H2"
+file = "H2/shelton_1990__gamma_H2_over_He.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = H2 (sample), B = He (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_D2_over_H2"
+material = "D2"
+file = "D2/shelton_1990__gamma_D2_over_H2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = D2 (sample), B = H2 (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated. Caption: the stated uncertainty of rho_H2/rho_D2 'is essentially the statistical uncertainty' (said of the density ratio)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "H2"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_N2_over_He"
+material = "N2"
+file = "N2/shelton_1990__gamma_N2_over_He.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = N2 (sample), B = He (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated. Caption: 'The measurements of gamma_Ar/gamma_He, <gamma_N2>/gamma_He, and gamma_Ar/<gamma_N2> form an overdetermined set; the values given in the table have been adjusted to maximize the self-consistency of this set.'"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "He"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_O2_over_N2"
+material = "O2"
+file = "O2/shelton_1990__gamma_O2_over_N2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = O2 (sample), B = N2 (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated. O2 purity was 99.6 %: 'sample impurities may possibly introduce systematic errors >0.1%' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_Ar_over_N2"
+material = "Ar"
+file = "Ar/shelton_1990__gamma_Ar_over_N2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = Ar (sample), B = N2 (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated. Caption: 'The measurements of gamma_Ar/gamma_He, <gamma_N2>/gamma_He, and gamma_Ar/<gamma_N2> form an overdetermined set; the values given in the table have been adjusted to maximize the self-consistency of this set.'"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_CO2_over_N2"
+material = "CO2"
+file = "CO2/shelton_1990__gamma_CO2_over_N2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = CO2 (sample), B = N2 (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_SF6_over_N2"
+material = "SF6"
+file = "SF6/shelton_1990__gamma_SF6_over_N2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = SF6 (sample), B = N2 (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "gamma_CH4_over_N2"
+material = "CH4"
+file = "CH4/shelton_1990__gamma_CH4_over_N2.csv"
+table = "tbl_5295cecf2a78"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table I, <gamma_A>/<gamma_B> with A = CH4 (sample), B = N2 (reference), as printed, at 1319 and 1064 nm (air). The ESHG measurement itself; Table III's 1319 and 1064 nm <gamma> follow from it and the calibrant's curve, so the two are not independent (the calibrated values are the primary dataset). 'The uncertainty of the ratio ... is about +-0.4% (range +-0.1-+-0.7%)' (p. 6), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "N2"
+process = "eshg"
+part = "total"
+convention = "T"
+
+[[datasets]]
+id = "table3_Ar_present"
+material = "Ar"
+file = "Ar/shelton_1990__table3_Ar_present.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated directly against He (Bishop & Pipin's curve, Table II)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_Ar_literature"
+material = "Ar"
+file = "Ar/shelton_1990__table3_Ar_literature.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["mizrahi_1985_arn2o2"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 28 (Mizrahi & Shelton, Phys. Rev. Lett. 55, 696 (1985)), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated directly against He (Bishop & Pipin's curve, Table II); the older papers used an older He value)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_H2_present"
+material = "H2"
+file = "H2/shelton_1990__table3_H2_present.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated directly against He. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_H2_literature"
+material = "H2"
+file = "H2/shelton_1990__table3_H2_literature.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["mizrahi_1985_h2d2"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 13 (Mizrahi & Shelton, Phys. Rev. A 32, 3454 (1985)), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated directly against He; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible). Total <gamma> (the gamma^vR column is separate)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_H2_gammavR"
+material = "H2"
+file = "H2/shelton_1990__table3_H2_gammavR.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Column H2^vR: <gamma^vR> 'at T = 295 K ... calculated as discussed in the text': Eqs 9-11 (p. 9) with the static polarizability matrix elements of Hunt, Poll & Wolniewicz (Can. J. Phys. 62, 1719 (1984)) and, for the overtones, the static limits of Schwartz & Le Roy (J. Mol. Spectrosc. 121, 420 (1987)) (p. 12). It is gamma^v + gamma^R together (the vocabulary has no combined part: recorded as 'vibrational'; the rotational share for ESHG is small, cf. shelton_1994 Table VIII: H2 ESHG 694.3 nm gamma^v = -13.5, gamma^R = -0.6 au). Subtracted from <gamma> to give <gamma^e> for the Table IV fit. Eq. (15) with Table V's G, H is 'significantly in error for the near-infrared wavelengths, but ... accurate to better than 0.01e-63 C^4 m^4 J^-3 for all visible wavelengths' (p. 12)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational_rotational"
+temperature_k = 295.0
+
+[[datasets]]
+id = "table3_D2_present"
+material = "D2"
+file = "D2/shelton_1990__table3_D2_present.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for <gamma_H2>. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_D2_literature"
+material = "D2"
+file = "D2/shelton_1990__table3_D2_literature.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["mizrahi_1985_h2d2"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 13 (Mizrahi & Shelton 1985), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for <gamma_H2>; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible). Total <gamma> (the gamma^vR column is separate)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_D2_gammavR"
+material = "D2"
+file = "D2/shelton_1990__table3_D2_gammavR.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Column D2^vR: <gamma^vR> 'at T = 295 K ... calculated as discussed in the text': Eqs 9-11 (p. 9) with the static polarizability matrix elements of Hunt, Poll & Wolniewicz (Can. J. Phys. 62, 1719 (1984)) and, for the overtones, the static limits of Schwartz & Le Roy (J. Mol. Spectrosc. 121, 420 (1987)) (p. 12). It is gamma^v + gamma^R together (the vocabulary has no combined part: recorded as 'vibrational'; the rotational share for ESHG is small, cf. shelton_1994 Table VIII: H2 ESHG 694.3 nm gamma^v = -13.5, gamma^R = -0.6 au). Subtracted from <gamma> to give <gamma^e> for the Table IV fit. Eq. (15) with Table V's G, H is 'significantly in error for the near-infrared wavelengths, but ... accurate to better than 0.01e-63 C^4 m^4 J^-3 for all visible wavelengths' (p. 12)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational_rotational"
+temperature_k = 295.0
+
+[[datasets]]
+id = "table3_N2_present"
+material = "N2"
+file = "N2/shelton_1990__table3_N2_present.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated directly against He. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_N2_literature"
+material = "N2"
+file = "N2/shelton_1990__table3_N2_literature.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["mizrahi_1985_arn2o2"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 28 (Mizrahi & Shelton 1985), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated directly against He; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_O2_present"
+material = "O2"
+file = "O2/shelton_1990__table3_O2_present.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for <gamma_N2>. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible). O2 purity 99.6 % (possible systematic error >0.1 %, p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_O2_literature"
+material = "O2"
+file = "O2/shelton_1990__table3_O2_literature.csv"
+table = "tbl_33fb8f18316f"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["mizrahi_1985_arn2o2"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 28 (Mizrahi & Shelton 1985), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for <gamma_N2>; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_Ne_present"
+material = "Ne"
+file = "Ne/shelton_1990__table3_Ne_present.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated directly against He. These two values were first published in shelton_1989 (the same measurements; its Table I 'present work' rows at 7581 and 9395 cm^-1). shelton_1992 re-expresses them as 111.0 +- 0.8 and 109.9 +- 0.5 au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_Ne_literature"
+material = "Ne"
+file = "Ne/shelton_1990__table3_Ne_literature.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "excluded"
+reproduced_from = ["D. P. Shelton and Z. Lu, Phys. Rev. A 37, 3813 (1988)"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 30 (Shelton, Phys. Rev. Lett. 62, 2660 (1989); Shelton & Lu, Phys. Rev. A 37, 3813 (1988)): the visible rows are Shelton & Lu's, reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated directly against He; the older papers used an older He value). EXCLUDED: shelton_1992 shows these Shelton & Lu measurements to be spurious (unnoticed electrical breakdown in neon: 'the last three measurements ... should be discarded'); they produced the anomalous negative Ne dispersion of Table IV. Shelton 1990 prints 594.4 nm where shelton_1992 prints 594.5 (both 16817 cm^-1)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_Kr_present"
+material = "Kr"
+file = "Kr/shelton_1990__table3_Kr_present.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for gamma_Ar."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_Kr_literature"
+material = "Kr"
+file = "Kr/shelton_1990__table3_Kr_literature.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1986_krxe"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 29 (Shelton, J. Chem. Phys. 84, 404 (1986)), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for gamma_Ar; the older papers used an older He value)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_Xe_present"
+material = "Xe"
+file = "Xe/shelton_1990__table3_Xe_present.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for gamma_Ar."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_Xe_literature"
+material = "Xe"
+file = "Xe/shelton_1990__table3_Xe_literature.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1986_krxe"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 29 (Shelton 1986), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for gamma_Ar; the older papers used an older He value)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "table3_SF6_present"
+material = "SF6"
+file = "SF6/shelton_1990__table3_SF6_present.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for <gamma_N2>. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_SF6_literature"
+material = "SF6"
+file = "SF6/shelton_1990__table3_SF6_literature.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1985_sf6"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 31 (Shelton & Mizrahi, Chem. Phys. Lett. 120, 318 (1985)), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for <gamma_N2>; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_CH4_present"
+material = "CH4"
+file = "CH4/shelton_1990__table3_CH4_present.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for <gamma_N2>. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible). The 1319 nm point 'misses the dispersion curve by 12 standard deviations' and was excluded from the Table IV fit (p. 13): 'a clear indication that the curve should actually bend down at low frequencies as in the case of H2'. It is kept here (a valid measurement)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_CH4_literature"
+material = "CH4"
+file = "CH4/shelton_1990__table3_CH4_literature.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1986_ch4"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 32 (Shelton, Phys. Rev. A 34, 304 (1986)), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for <gamma_N2>; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_CO2_present"
+material = "CO2"
+file = "CO2/shelton_1990__table3_CO2_present.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Rows 1319 and 1064 nm, marked 'a' (present work), calibrated with the smooth fitted curve for <gamma_N2>. <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "table3_CO2_literature"
+material = "CO2"
+file = "CO2/shelton_1990__table3_CO2_literature.csv"
+table = "tbl_9bb3e64084db"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-63
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shelton_1986_co2"]
+notes = "Table III (pp. 7-8): <gamma>_zzzz from ESHG in 1e-63 C^4 m^4 J^-3 (unit SI, scale 1e-63), per molecule, all fields parallel. 'The stated uncertainties for <gamma> do not include an allowance for the calibration uncertainty' (caption). Row = the printed air wavelength (nm), abscissa = the printed vacuum wavenumber (cm^-1). Visible rows: Ref. 22 (Shelton, J. Chem. Phys. 85, 4234 (1986)), reproduced by the author 'from the literature' and rescaled: 'The values ... at the other wavelengths are from the literature' (caption), re-derived from the published ratios with the new calibration (calibrated with the smooth fitted curve for <gamma_N2>; the older papers used an older He value). <gamma> is the total ESHG hyperpolarizability, gamma^e + gamma^vR (Shelton & Rice label such values gamma^ev: the rotational part of ESHG is negligible). shelton_1986_co2 measured at 692.9 nm etc.; the author's CO2 visible values rescaled to the new He calibration."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+
+[[datasets]]
+id = "text_static_expt_Ar"
+material = "Ar"
+points = [
+    ["static", "inf", "1167", "6"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 14: 'Converting the values of gamma_0 given in Table IV for Ne, Ar, and H2 to atomic units (conversion factor with mu = m_e is 6.235377e-65 C^4 m^4 J^-3), one has the experimental estimates <gamma^e>_omega=0 = 119 +- 2 a.u., 1167 +- 6 a.u., and 686 +- 4 a.u. ... The stated uncertainties do not include possible systematic errors in the calibration due to the effect of He pair interactions.' The abstract gives gamma_Ar = 1167 +- 20 a.u. (the wider error bar). The static intercept of the Table IV fit (the formula is the primary form)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_expt_H2"
+material = "H2"
+points = [
+    ["static", "inf", "686", "4"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 14 (as for Ar): <gamma^e>_omega=0 = 686 +- 4 a.u.; abstract: 686 +- 10 a.u. Electronic: gamma^vR subtracted before the fit."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_expt_Ne"
+material = "Ne"
+points = [
+    ["static", "inf", "119", "2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "p. 14: gamma_Ne(omega = 0) = 119 +- 2 a.u. (abstract: 119 +- 3). EXCLUDED: extrapolated with the spurious Shelton & Lu visible data (anomalous negative A); superseded by shelton_1992 (108 +- 2 au)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_abinitio_Ne"
+material = "Ne"
+points = [
+    ["ref 49", "inf", "119", "4"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. R. Taylor, T. J. Lee, J. E. Rice and J. Almlof, Chem. Phys. Lett. 163, 282 (1989)"]
+notes = "p. 14: 'The corresponding ab initio results are <gamma^e>_omega=0 = 119 +- 4 a.u., 1220 +- 30 a.u., and 671 +- 6 a.u.' (Ne ref 49, Ar ref 50, H2 ref 9); Ne and Ar calculations 'include triple excitations in a coupled-cluster correlation treatment'. Shelton & Rice 1994 cite this Taylor et al. paper as Chem. Phys. Lett. 163, 359 (1989), with an erratum in 189, 197 (1992): the page differs (282 here)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_abinitio_Ar"
+material = "Ar"
+points = [
+    ["ref 50", "inf", "1220", "30"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. R. Taylor (unpublished), as cited by Shelton 1990 (ref. 50)"]
+notes = "p. 14: ab initio 1220 +- 30 a.u. (ref 50, P. R. Taylor, unpublished; later rice_1991's CCSD(T) 1220 au)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_abinitio_H2"
+material = "H2"
+points = [
+    ["ref 9", "inf", "671", "6"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "p. 14: ab initio 671 +- 6 a.u. (ref 9). Also p. 14: 'the experimental and ab initio values of <gamma^e_H2> at lambda = 488.0 nm are 992 and 969 a.u.' (datasets text_488_*)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_488_expt_H2"
+material = "H2"
+points = [
+    ["488.0 nm", "488.0", "992"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "p. 14: 'the experimental and ab initio values of <gamma^e_H2> at lambda = 488.0 nm are 992 and 969 a.u., respectively; the -2.4% discrepancy at optical frequencies is consistent with the -2.2% static discrepancy'. <gamma^vR> 'only contributes 0.6% of <gamma_H2> at lambda = 488.0 nm'. Electronic ESHG value (from the Table III(a) data minus gamma^vR, or the fit)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_488_abinitio_H2"
+material = "H2"
+points = [
+    ["488.0 nm", "488.0", "969"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "p. 14: ab initio <gamma^e_H2> = 969 a.u. at 488.0 nm (ref 9)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_ratio_H2_over_D2"
+material = "H2"
+points = [
+    ["experiment", "inf", "1.026"],
+    ["ab initio (ref 9)", "inf", "1.029"],
+]
+table = "text"
+quantity = "hyperpolarizability_ratio"
+unit = "1"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 14: 'The experimental and ab initio results for <gamma^e_H2>/<gamma^e_D2> in the static limit are 1.026 and 1.029 (ref 9), respectively.' The experimental row is the ratio of the Table IV gamma_0 (42.80/41.71 = 1.0261); the ab initio row is reproduced from Bishop et al. (ref 9)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+reference_material = "D2"
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_scf_N2"
+material = "N2"
+points = [
+    ["ref 51", "inf", "700"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. J. Jameson and P. W. Fowler, J. Chem. Phys. 85, 3432 (1986)"]
+notes = "p. 14: 'Hartree-Fock calculations for N2 (ref 51), CH4, and CF4 (Ref. 52) give the static values of <gamma> = 700, 452, 143 a.u., respectively, to be compared with 917, 2590, and 985 a.u. from the static limit of our experimental results. The agreement is rather poor, possibly due to the neglect of electron correlation.'"
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "text_static_scf_CH4"
+material = "CH4"
+points = [
+    ["ref 52", "inf", "452"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. Sekino and R. J. Bartlett, J. Chem. Phys. 85, 976 (1986)"]
+notes = "p. 14: Hartree-Fock static <gamma> of CH4 = 452 a.u. (ref 52), against 2590 a.u. from the static limit of the experimental fit (the 1319 nm point excluded; for CH4 the static intercept is not a valid electronic estimate, see table3_CH4_present)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+# ---- Third-order formulas ------------------------------------------------
+
+[[formulas]]
+id = "table2_He_au"
+material = "He"
+equation = "Eq. (8), p. 7; Table II, p. 7"
+printed = "gamma(-omega_s; omega_1, omega_2, omega_3) = gamma_0 (1 + A omega_L^2 + B omega_L^4 + C omega_L^6 + ...); Table II, atomic units: gamma_0 = 43.104, A = 2.191, B = 3.381, C = 6.748"
+variable = "omega_L^2 = omega_s^2 + omega_1^2 + omega_2^2 + omega_3^2 in au (omega_L^2 = 6 omega^2 for ESHG); the au of frequency for these coefficients is not stated (the SI column uses the He reduced-mass value 1 au = 219444.5464 cm^-1)"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "fitted over 0.004 <= omega_L^2 <= 0.08 au (lambda >= 395 nm), 'to better than 0.01%' (p. 9)"
+coefficients = { gamma0 = "43.104", A = "2.191", B = "3.381", C = "6.748" }
+coefficient_units = { gamma0 = "au", A = "au", B = "au", C = "au" }
+reproduced_from = ["bishop_1989"]
+check = "A = 2.191 / 219444.5464^2 = 4.5498e-11 cm^2 and B = 3.381 / 219444.5464^4 = 1.4580e-21 cm^4 reproduce the SI column; C = 6.748 / 219444.5464^6 = 6.043e-32 cm^6 (see table2_He_si). Checked 2026-09-26."
+notes = "The author's fit to Bishop & Pipin's ab initio gamma_He (ref 24 = bishop_1989) for DFWM, dc Kerr, ESHG and THG, 'the coefficient A was constrained to be identical for all four ... A = 2.191 a.u. obtained in this way is a good estimate (+-0.001 a.u.) of the coefficient A in the infinite power series expansion, though the coefficients B and C are not. The fit coefficients obtained for the ESHG process in He are given in Table II' (pp. 7-9). The ab initio values' 'estimated convergence error of about 0.02% is also the estimated accuracy'. The ultimate calibration of every ESHG value here."
+
+[[formulas]]
+id = "table2_He_si"
+material = "He"
+equation = "Eq. (8), p. 7; Table II, p. 7"
+printed = "Table II, SI units: gamma_0 = 2.6903 x 10^-63 C^4 m^4 J^-3, A = 4.550 x 10^-11 cm^2, B = 1.458 x 10^-21 cm^4, C = 6.043 x 10^-31 cm^6"
+variable = "nu_L^2 = 6 nu^2 in cm^-2 for ESHG, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "lambda >= 395 nm"
+coefficients = { gamma0 = "2.6903e-63", A = "4.550e-11", B = "1.458e-21", C = "6.043e-31" }
+coefficient_units = { gamma0 = "C^4 m^4 J^-3", A = "cm^2", B = "cm^4", C = "cm^6" }
+reproduced_from = ["bishop_1989"]
+check = "gamma_0 = 43.104 x 6.241363e-65 = 2.6903e-63 (the He reduced-mass conversion, p. 9). C IS MISPRINTED: 6.748 / 219444.5464^6 = 6.043e-32 cm^6, and shelton_1992 (p. 3) states 'table 2 of ref. [1] ... has a misprint: 10^-31 in the last line should be 10^-32'; shelton_1994 Table VII prints C = 0.060 4 x 10^-30 cm^6 (= 6.04e-32). The corrected C is 6.043e-32 cm^6. Checked 2026-09-26."
+notes = "Converted with the He reduced-mass factors: 'omega, 1 a.u. = 219444.5464 cm^-1; and gamma, 1 a.u. = 6.241363 x 10^-65 C^4 m^4 J^-3' (p. 9; 1986 CODATA). The C term contributes only ~5e-5 at 457.9 nm, so the misprint does not change the calibration."
+
+[[formulas.corrections]]
+term = "C"
+printed = "6.043e-31"
+corrected = "6.043e-32"
+reason = "Table II's exponent is misprinted: the atomic-unit C, 6.748, is 6.043e-32 cm^6 (6.748 / 219444.5464^6)."
+evidence = "shelton_1992 (p. 3): 'table 2 of ref. [1] ... has a misprint: 10^-31 in the last line should be 10^-32'; shelton_1994 Table VII prints C = 0.0604 x 10^-30 cm^6. Checked 2026-09-26."
+
+[[formulas]]
+id = "table5_gammavR_H2"
+material = "H2"
+equation = "Eq. (15), p. 10; Table V, p. 11"
+printed = "<gamma^vR> ~ G omega^-2 + H omega^-4 (Eq. 15); Table V caption: <gamma^vR> = G nu^-2 + H nu^-4 at T = 295 K; H2: G = -1.591 x 10^-55 C^4 m^4 J^-3 cm^-2, H = -2.492 x 10^-48 C^4 m^4 J^-3 cm^-4"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1 (the caption's nu; Eq. 15 writes omega)"
+process = "eshg"
+convention = "T"
+part = "vibrational (vibrational + rotational: gamma^vR)"
+range = "optical frequencies far above the rovibrational ones; for H2 and D2 accurate in the visible only (p. 12)"
+coefficients = { G = "-1.591e-55", H = "-2.492e-48" }
+coefficient_units = { G = "C^4 m^4 J^-3 cm^-2", H = "C^4 m^4 J^-3 cm^-4" }
+check = "At 632.8 nm (15798 cm^-1) it gives -0.678e-63 against Table III's H2^vR -0.68; at 1064 nm -2.12e-63 against -2.25 (the text: Eq. 15 'is significantly in error for the near-infrared wavelengths'). Checked 2026-09-26."
+notes = "Eq. (12)-(14): <gamma^vR> ~ sum_v (2/hbar Omega_0v)(alpha_bar^2 + (4/45) Delta alpha^2)_0v F(Omega_0v; omega) + (Delta alpha_00^2/15kT) F(Omega_rms; omega), F(Omega; omega) = [1 - (2 omega/Omega)^2]^-1 + 2 [1 - (omega/Omega)^2]^-1 (Eq. 11) ~ -(9/4)(Omega/omega)^2 - (33/16)(Omega/omega)^4 (Eq. 14), Omega_rms = 4 B_0/(hbar B_0/kT)^(1/2) (Eq. 13). Table V inputs for H2 (note a: 'From Refs. 5 and 39-43 for J = 1'): B_0 = 59.3 (cm^-1), nu_0,v = 4156 and 8075 cm^-1 (v = 1, 2), Delta alpha_0,0 = 33.8e-42 C^2 m^2 J^-1, (alpha_bar^2 + (4/45) Delta alpha^2)_0,v^(1/2) = 12.58e-42 and 1.10e-42 C^2 m^2 J^-1 (v = 1, 2). 'For H2 and D2 the values of Omega_rms from Eq. (13) have been slightly adjusted to improve the estimate of <gamma^R>' (caption). The Table III gamma^vR of H2 come from the full Eqs 9-11, not from this formula."
+
+[[formulas]]
+id = "table5_gammavR_D2"
+material = "D2"
+equation = "Eq. (15), p. 10; Table V, p. 11"
+printed = "D2: G = -0.788 x 10^-55 C^4 m^4 J^-3 cm^-2, H = -0.632 x 10^-48 C^4 m^4 J^-3 cm^-4"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "vibrational (vibrational + rotational: gamma^vR)"
+range = "the visible (see table5_gammavR_H2)"
+coefficients = { G = "-0.788e-55", H = "-0.632e-48" }
+coefficient_units = { G = "C^4 m^4 J^-3 cm^-2", H = "C^4 m^4 J^-3 cm^-4" }
+check = "At 632.8 nm it gives -0.33e-63 against Table III's D2^vR -0.33. Checked 2026-09-26."
+notes = "Table V (note b: 'From Refs. 5 and 39-43 for J = 2'): B_0 = 29.9, nu_0,v = 2988 and 5856 cm^-1, Delta alpha_0,0 = 32.7e-42 C^2 m^2 J^-1, (alpha_bar^2 + (4/45) Delta alpha^2)^(1/2) = 10.48e-42 and 0.75e-42. Form as in table5_gammavR_H2."
+
+[[formulas]]
+id = "table5_gammavR_N2"
+material = "N2"
+equation = "Eq. (15), p. 10; Table V, p. 11"
+printed = "N2: G = -0.221 x 10^-55 C^4 m^4 J^-3 cm^-2, H = -0.104 x 10^-48 C^4 m^4 J^-3 cm^-4"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "vibrational (vibrational + rotational: gamma^vR)"
+range = "all wavelengths of the paper: 'Eq. (15) is more than adequately accurate for N2 and O2' (p. 12)"
+coefficients = { G = "-0.221e-55", H = "-0.104e-48" }
+coefficient_units = { G = "C^4 m^4 J^-3 cm^-2", H = "C^4 m^4 J^-3 cm^-4" }
+check = "At 694.3 nm (14399 cm^-1) it gives -0.109e-63 = -1.75 au, against shelton_1994 Table VIII's gamma^v + gamma^R = -1.6 - 0.11 = -1.71 au for ESHG at 694.3 nm. Checked 2026-09-26."
+notes = "Table V (note c: 'From Refs. 5, 39, 42, and 43'): B_0 = 1.99, nu_0,v = 2330 and 4631 cm^-1, Delta alpha_0,0 = 77e-42 C^2 m^2 J^-1, (alpha_bar^2 + (4/45) Delta alpha^2)^(1/2) = 6.25e-42 and 0.24e-42. Subtracted from the N2 data to give <gamma^e>; 'For N2 and O2 the <gamma^vR> contribution is much smaller (0.1% of <gamma> in the visible)' (p. 12)."
+
+[[formulas]]
+id = "table5_gammavR_O2"
+material = "O2"
+equation = "Eq. (15), p. 10; Table V, p. 11"
+printed = "O2: G = -0.159 x 10^-55 C^4 m^4 J^-3 cm^-2, H = -0.030 x 10^-48 C^4 m^4 J^-3 cm^-4"
+variable = "nu: vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "vibrational (vibrational + rotational: gamma^vR)"
+range = "all wavelengths of the paper"
+coefficients = { G = "-0.159e-55", H = "-0.030e-48" }
+coefficient_units = { G = "C^4 m^4 J^-3 cm^-2", H = "C^4 m^4 J^-3 cm^-4" }
+check = "Used with table4_O2 to reproduce Table III(a)'s O2 values (reduced chi^2 0.29). Checked 2026-09-26."
+notes = "Table V (note c): B_0 = 1.44, nu_0,v = 1556 and 3089 cm^-1, Delta alpha_0,0 = 122e-42 C^2 m^2 J^-1, (alpha_bar^2 + (4/45) Delta alpha^2)^(1/2) = 6.15e-42 and 0.12e-42."
+
+[[formulas]]
+id = "table4_Ne"
+material = "Ne"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 7.435 x 10^-63 C^4 m^4 J^-3, A = -1.924 x 10^-10 cm^2, B = 6.901 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "7.435", A = "-1.924", B = "6.901" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si)"
+check = "Reproduces this paper's Table III data: 5 points (1319, 1064 and the three spurious Shelton & Lu rows), reduced chi^2 0.98. gamma_0 = 119.2 au (1 au = 6.235377e-65); shelton_1994 does not use it (it takes shelton_1992's 108 au). Checked 2026-09-26."
+notes = "SUPERSEDED: the negative A is the artefact of Shelton & Lu's spurious visible data (shelton_1992, which refits Ne as gamma_0 = 108.1 au, A = 2.47 au). Kept for the record, not for use. Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_Ar"
+material = "Ar"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 72.75 x 10^-63 C^4 m^4 J^-3, A = 1.066 x 10^-10 cm^2, B = 2.033 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data, 1319-457.9 nm (Table III)"
+coefficients = { gamma0 = "72.75", A = "1.066", B = "2.033" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si)"
+check = "Reproduces this paper's Table III data: 21 points, reduced chi^2 0.80 (max 1.6 sigma, 670.0 nm). gamma_0 = 1166.7 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_Kr"
+material = "Kr"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 162.1 x 10^-63 C^4 m^4 J^-3, A = 1.389 x 10^-10 cm^2, B = 3.465 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "162.1", A = "1.389", B = "3.465" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the Ar curve"
+check = "Reproduces this paper's Table III data: 6 points, reduced chi^2 3.4 (max 3.6 sigma, 1064 nm). gamma_0 = 2599.7 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_Xe"
+material = "Xe"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 429.5 x 10^-63 C^4 m^4 J^-3, A = 1.499 x 10^-10 cm^2, B = 8.048 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "429.5", A = "1.499", B = "8.048" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the Ar curve"
+check = "Reproduces this paper's Table III data: 6 points, reduced chi^2 0.91. gamma_0 = 6888.1 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_H2"
+material = "H2"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 42.80 x 10^-63 C^4 m^4 J^-3, A = 1.200 x 10^-10 cm^2, B = 2.254 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data, 1319-457.9 nm (Table III)"
+coefficients = { gamma0 = "42.80", A = "1.200", B = "2.254" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si)"
+check = "Reproduces this paper's Table III data: 21 points of Table III(a) with its gamma^vR column added, reduced chi^2 1.03. gamma_0 = 686.4 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Fitted to <gamma^e> = <gamma> - <gamma^vR> (Table IV caption); the total ESHG <gamma> is this plus the table5_gammavR term (H2, D2: Table III's column). Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_D2"
+material = "D2"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 41.71 x 10^-63 C^4 m^4 J^-3, A = 1.184 x 10^-10 cm^2, B = 2.104 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "41.71", A = "1.184", B = "2.104" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the H2 curve (total <gamma>)"
+check = "Reproduces this paper's Table III data: 11 points with its gamma^vR column added, reduced chi^2 0.60. gamma_0 = 668.9 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Fitted to <gamma^e> = <gamma> - <gamma^vR> (Table IV caption); the total ESHG <gamma> is this plus the table5_gammavR term (H2, D2: Table III's column). Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_N2"
+material = "N2"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 57.20 x 10^-63 C^4 m^4 J^-3, A = 1.003 x 10^-10 cm^2, B = 1.852 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data, 1319-457.9 nm (Table III)"
+coefficients = { gamma0 = "57.20", A = "1.003", B = "1.852" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si)"
+check = "Reproduces this paper's Table III data: 21 points with table5_gammavR_N2 added, reduced chi^2 1.01. gamma_0 = 917.3 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Fitted to <gamma^e> = <gamma> - <gamma^vR> (Table IV caption); the total ESHG <gamma> is this plus the table5_gammavR term (H2, D2: Table III's column). Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_O2"
+material = "O2"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 60.03 x 10^-63 C^4 m^4 J^-3, A = 1.112 x 10^-10 cm^2, B = 4.603 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "electronic"
+range = "the fitted data, 1319-457.9 nm (Table III)"
+coefficients = { gamma0 = "60.03", A = "1.112", B = "4.603" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the N2 curve (total <gamma>)"
+check = "Reproduces this paper's Table III data: 20 points with table5_gammavR_O2 added, reduced chi^2 0.29. gamma_0 = 962.7 au (1 au = 6.235377e-65), as reproduced by shelton_1994 (Tables VII, IX, X). Checked 2026-09-26."
+notes = "Fitted to <gamma^e> = <gamma> - <gamma^vR> (Table IV caption); the total ESHG <gamma> is this plus the table5_gammavR term (H2, D2: Table III's column). Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_CO2"
+material = "CO2"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 71.50 x 10^-63 C^4 m^4 J^-3, A = 1.252 x 10^-10 cm^2, B = 2.405 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "71.50", A = "1.252", B = "2.405" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the N2 curve"
+check = "Reproduces this paper's Table III data: 7 points, reduced chi^2 0.36. gamma_0 = 1146.7 au (1 au = 6.235377e-65); evaluated at 694.3 nm (14399 cm^-1) it gives 1368.0 (printed 1368 +- 7) au, the ESHG value of shelton_1994 Table XII (note x). Checked 2026-09-26."
+notes = "Fitted to the total <gamma> 'without separately accounting for <gamma^vR>' (Fig. 5 caption): 'These curves will not adequately represent <gamma> near nu_L^2 = 0' and 'we are unable to accurately determine <gamma^e> or its static limit for these molecules' (p. 13). Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_SF6"
+material = "SF6"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 89.10 x 10^-63 C^4 m^4 J^-3, A = 0.500 x 10^-10 cm^2, B = 2.124 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "89.10", A = "0.500", B = "2.124" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the N2 curve"
+check = "Reproduces this paper's Table III data: 8 points, reduced chi^2 0.43. gamma_0 = 1428.9 au (1 au = 6.235377e-65); evaluated at 694.3 nm (14399 cm^-1) it gives 1564.8 (printed 1565 +- 8) au, the ESHG value of shelton_1994 Table XII (note x). Checked 2026-09-26."
+notes = "Fitted to the total <gamma> 'without separately accounting for <gamma^vR>' (Fig. 5 caption): 'These curves will not adequately represent <gamma> near nu_L^2 = 0' and 'we are unable to accurately determine <gamma^e> or its static limit for these molecules' (p. 13). 'the dispersion coefficients for CF4 and SF6 indicate that the <gamma> dispersion curve for CF4 is unusually straight, while the curve for SF6 has an unusually small initial slope. These may be the signatures of unusually large vibrational contributions' (p. 13). Weighted least-squares fit (Table IV caption)."
+
+[[formulas]]
+id = "table4_CH4"
+material = "CH4"
+equation = "Eq. (8), p. 7; Table IV, p. 9"
+printed = "<gamma> = gamma_0 [1 + A nu_L^2 + B nu_L^4]; Table IV: gamma_0 = 161.5 x 10^-63 C^4 m^4 J^-3, A = 1.532 x 10^-10 cm^2, B = 4.334 x 10^-20 cm^4"
+variable = "nu_L^2 = 6 nu^2 (ESHG) in cm^-2, nu the vacuum wavenumber of the fundamental in cm^-1"
+process = "eshg"
+convention = "T"
+part = "total"
+range = "the fitted data of Table III"
+coefficients = { gamma0 = "161.5", A = "1.532", B = "4.334" }
+coefficient_units = { gamma0 = "1e-63 C^4 m^4 J^-3", A = "1e-10 cm^2", B = "1e-20 cm^4" }
+calibration = "He: Bishop & Pipin (table2_He_si), through the N2 curve"
+check = "Reproduces this paper's Table III data: 13 points without 1319 nm, reduced chi^2 0.16; the 1319 nm point is 12.0 sigma off (as stated, p. 13). gamma_0 = 2590.1 au (1 au = 6.235377e-65); evaluated at 694.3 nm (14399 cm^-1) it gives 3257.4 (printed 3257 +- 16) au, the ESHG value of shelton_1994 Table XII (note x). Checked 2026-09-26."
+notes = "Fitted to the total <gamma> 'without separately accounting for <gamma^vR>' (Fig. 5 caption): 'These curves will not adequately represent <gamma> near nu_L^2 = 0' and 'we are unable to accurately determine <gamma^e> or its static limit for these molecules' (p. 13). 'For CH4, the lambda = 1319 nm point was excluded from the fit' (Table IV caption). Weighted least-squares fit (Table IV caption)."

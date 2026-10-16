@@ -1,0 +1,166 @@
+citation = "J. J. Pigeon, S. Ya. Tochitsky, E. C. Welch and C. Joshi, Opt. Lett. 41, 3924 (2016)"
+doi = "10.1364/ol.41.003924"
+library = "Pigeon_2016_MeasurementsNonlinearRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Collinear nondegenerate four-wave mixing of a dual-line CO2-laser beat wave \
+(10P20 at 10.59 um and 10R16 at 10.27 um, 882 GHz beat, 200 MW, 197 +- 21 ps FWHM, 1 Hz; \
+UCLA Neptune laboratory) focused by a 2.5 m NaCl lens (600 um 1/e^2 spot, elliptical) \
+into a 2 m gas cell (25 cm interaction length); first Stokes sideband (10.9 um) \
+isolated by grating and monochromator and measured with a cooled HgCdTe detector; \
+background from the same pressure of He (about 20 times smaller nonlinearity); \
+quantitative data at <= 380 Torr of high-purity gas (dry air < 3 ppm water) to avoid \
+collisional ionisation (breakdown fluorescence above 630 Torr); peak intensity about \
+15 GW/cm^2."""
+notes = """Defining equation (p. 2): the first-Stokes energy W_10.9 = k_10.9^2 n2,eff^2 \
+W_10.6^2 W_10.3 A_10.9 / (sqrt(3) tau^2) (int_0^L dz / (pi a b)^(3/2))^2 (Eq. 1), 'assuming \
+perfect phase-matching, negligible pump depletion, and a linear relationship between \
+n2 and pressure'; k the wavenumber, A the (iris-defined, 4 mm) area of the Stokes beam, \
+tau the pulse length, a and b the beam axes; sqrt(3) because the sideband is sqrt(3) \
+shorter than the pump. n2,eff is taken from the difference of the sample and He slopes \
+of W_10.9 against W_10.6^2 W_10.3 (Fig. 4). The effective index is 'n2,eff = \
+n2,electronic + n2,molecular' (p. 2): with 200 ps pulses the rotational (Rayleigh, \
+Delta J = 0) response is adiabatic, so part = total; the paper checks that the nearest \
+Raman line (N2 J = 4 -> 2 at 840 GHz, 42 GHz from the beat) adds no resonant \
+contribution (p. 2). The index is the single-beam n in n = n0 + n2 I implied by the \
+FWM formula (coefficient = self; the formula's normalisation is the paper's). \
+Uncertainty (p. 3): least-squares slopes of sample and background, pulse length and \
+the beam integral, dominated by the slope fits (level not stated).
+
+Table 1 (tbl_a7c0c0dc1804, 'Scaled to Atmospheric Pressure'; image checked): n2,eff in \
+10^-19 cm^2/W. The pressure scaling from <= 380 Torr is linear (the paper's \
+assumption); the temperature is not stated: 101325 Pa and 293.15 K are assumed. The \
+wavelength column is labelled 10.6 um (the pumps are 10.59 and 10.27 um). The 0.8 um \
+column is Nibbering et al. (J. Opt. Soc. Am. B 14, 650, 1997; ref. 11) and the 2.4 um \
+column is 'Calculated from measurements in Zahedpour et al. using n2,eff = n2 + \
+n2,rot' (ref. 13, Opt. Lett. 40, 5794, 2015; footnote b, '+' read from the page image): \
+both long-pulse (total) effective values chosen to compare with the 200 ps \
+measurement (as pigeon_2018 says, p. 4). Nibbering's 0.8 um values quoted here (N2 3 +- \
+0.7, O2 8 +- 2.2) are not the instantaneous ones Loriot and Wahlstrand quote from the \
+same paper (2.3 and 5.1), consistent with Nibbering's long-pulse (inertial) values; \
+check against nibbering_1997. Air (5.0 +- 0.9 at 10.6 um; 4 +- 1.1 at 0.8 um 'calculated \
+from measurements of N2, O2, and Ar', footnote a) is skipped.
+
+Other gases (p. 4): Kr and Xe gave symmetric FWM spectra with lower yield; no signal \
+above noise in Ar. Their values are in pigeon_2018. The asymmetric (red) FWM spectrum \
+of air shows rotational Raman scattering matters for 200 ps, 10 um pulses."""
+
+[[datasets]]
+id = "fwm_N2"
+material = "N2"
+file = "N2/pigeon_2016__fwm_N2.csv"
+table = "tbl_a7c0c0dc1804"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 1, 10.6 um column: n2,eff (electronic plus molecular, 200 ps) scaled linearly from <= 380 Torr to atmospheric pressure; 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 197000
+
+[[datasets]]
+id = "fwm_O2"
+material = "O2"
+file = "O2/pigeon_2016__fwm_O2.csv"
+table = "tbl_a7c0c0dc1804"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 1, 10.6 um column: n2,eff (electronic plus molecular, 200 ps) scaled linearly to atmospheric pressure (the O2 data of Fig. 4 were taken at 250 Torr); 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 197000
+
+[[datasets]]
+id = "nibbering_1997_N2"
+material = "N2"
+file = "N2/pigeon_2016__nibbering_1997_N2.csv"
+table = "tbl_a7c0c0dc1804"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table 1, 0.8 um column (ref. 11, Nibbering et al. 1997): a long-pulse (total) value; the state is Pigeon's 'atmospheric pressure'. Use the nibbering_1997 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "nibbering_1997_O2"
+material = "O2"
+file = "O2/pigeon_2016__nibbering_1997_O2.csv"
+table = "tbl_a7c0c0dc1804"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["nibbering_1997"]
+notes = "Table 1, 0.8 um column (ref. 11, Nibbering et al. 1997): a long-pulse (total) value. Use the nibbering_1997 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "zahedpour_2015_N2"
+material = "N2"
+file = "N2/pigeon_2016__zahedpour_2015_N2.csv"
+table = "tbl_a7c0c0dc1804"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["zahedpour_2015"]
+notes = "Table 1, 2.4 um column, footnote b: computed by Pigeon et al. from Zahedpour et al.'s (2015) n2 and n2,rot as n2,eff = n2 + n2,rot (the long-pulse sum), not printed by Zahedpour. Use the zahedpour_2015 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+
+[[datasets]]
+id = "zahedpour_2015_O2"
+material = "O2"
+file = "O2/pigeon_2016__zahedpour_2015_O2.csv"
+table = "tbl_a7c0c0dc1804"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["zahedpour_2015"]
+notes = "Table 1, 2.4 um column, footnote b: n2 + n2,rot computed by Pigeon et al. from Zahedpour et al. (2015). Use the zahedpour_2015 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"

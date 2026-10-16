@@ -1,0 +1,270 @@
+citation = "D. P. Shelton and B. Rugar, Chem. Phys. Lett. 201, 364 (1993)"
+doi = "10.1016/0009-2614(93)85084-2"
+library = "Shelton_1993_KerrEffectHydrogen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute dc Kerr effect of H2 gas at 632.8 nm (He-Ne laser): a gas Kerr cell \
+and a calibrated liquid Kerr cell between crossed polarizers, ac and dc voltages, \
+lock-in detection of the modulated retardation (0.1-0.7 urad); stainless-steel \
+electrodes 456.7 mm long, effective separation <d^-2>^-1/2 = 3.195 +- 0.007 mm; 99.999 % \
+H2 at 1300-9900 Torr and 25.1-25.4 C, all results adjusted to 25.2 C with \
+gamma_eff^-1 d gamma_eff/dT ~ -0.11 %/C; density from pressure (+-1 Torr) and \
+temperature (+-0.1 C) with the virial equation of state; extrapolation to zero density \
+(pp. 1-3)."""
+notes = """Definitions (p. 2): 'The quantity derived from the experimental measurements is \
+gamma_eff = 3 eps0 lambda_0 phi / (pi rho integral F^2 dz)' (Eq. 1), lambda_0 the vacuum \
+wavelength, phi the induced retardation, rho the number density, F the transverse \
+static field along the beam; its zero-density limit is gamma^evR = gamma^ev + gamma^R, \
+with gamma^R = (Delta alpha_eff)^2/5kT in the simple form (p. 1) and Eq. (2) in full \
+(Delta J = 0 M-sublevel redistribution plus Delta J = +-2 virtual Raman terms, with \
+centrifugal distortion, a resonance factor 1 + Delta (Eq. 5) and the dispersion factor Q \
+(Eq. 6)). This is the dc Kerr gamma_K of Shelton & Rice's Taylor-series convention \
+(shelton_1994 reproduces 697 au as gamma^R for dc Kerr at 632.8 nm, Table VIII). The \
+paper gives no Kerr constant B or K: gamma_eff is the reported quantity. Units: 1 au of \
+gamma = 6.235377e-65 C^4 m^4 J^-3, of alpha = 1.648778e-41 C^2 m^2 J^-1, E/hc: 1 au = \
+219474.63 cm^-1 (Table 2 caption); rotational constants B_0 = 59.3392 cm^-1, D_0 = \
+0.04599 cm^-1 (ref. [17], Weber 1979, curated as weber_1979: Table 3.2 from Stoicheff \
+1957, where the H2 B_0 is misprinted [56.3392]; the erratum there cites this quotation).
+
+Part separation: by calculation, not by temperature dependence: 'it should be \
+sufficient to measure the Kerr effect for H2 at a single temperature and subtract the \
+calculated value of gamma^R' (p. 1), justified by Tammer & Huttner's temperature study. \
+The result depends on the gamma^R expression: 718.5 au with Eq. (2), 730.3 au with \
+Tammer & Huttner's (both recorded). 'Either choice of gamma^R results in an \
+experimental value of gamma^ev within 1% of the ab initio value, which indicates that the \
+previously observed discrepancies between theory and experiment for the dc Kerr effect \
+in H2 were due to systematic errors in the experiments' (p. 5).
+
+Uncertainties (pp. 2-3): LKC calibration scatter +-0.16 %, systematic +-0.05 %; ac \
+voltage +-0.1 %; GKC/LKC signal ratio +-0.2-0.5 % (statistical); geometrical \
+calibration constant of the GKC +-0.46 % (the largest); total systematic 0.48 %, \
+overall +-0.51 % on gamma^evR. The text writes the minimum electrode separation as \
+'3.171 nm' (p. 2), evidently mm (the average is 3.195 mm); not a value used here. \
+Table 2's anisotropies are reproduced ab initio values (with the authors' \
+interpolations), recorded as polarizability_anisotropy per rotational level."""
+
+[[datasets]]
+id = "gamma_evR"
+material = "H2"
+file = "H2/shelton_1993__gamma_evR.csv"
+table = "tbl_c405d96f0062"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "Table 1 row 'a)' (p. 3): the zero-density limit of gamma_eff, 'Extrapolated value from least-squares fit in fig. 1': gamma^evR = (8.827 +- 0.045) x 10^-62 C^4 m^4 J^-3 (1415.6 +- 7.2 au), at 25.2 C and 632.8 nm. The uncertainty 'also includes the 0.48% systematic uncertainty added in quadrature' (caption); '+-0.51%' overall (p. 3). This is the total dc Kerr hyperpolarizability, including the orientational gamma^R (697.1 au) and the vibrational part."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+temperature_k = 298.35
+
+[[datasets]]
+id = "gamma_eff"
+material = "H2"
+file = "H2/shelton_1993__gamma_eff.csv"
+table = "tbl_c405d96f0062"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table 1 (p. 3): gamma_eff = 3 eps0 lambda_0 phi / (pi rho integral F^2 dz) (Eq. 1) at finite density (row: rho in mol/m^3), 25.2 C, 632.8 nm; 'The tabulated error bars include only the statistical uncertainties' (the 0.48 % systematic part excluded). The weighted fit gamma_eff = gamma^evR (1 + A rho) gives A = (1.2 +- 0.4) x 10^-5 m^3/mol (Fig. 1 caption; 1.4 +- 0.1 from Tammer and Huttner's data): 'The dielectric, refractive and Kerr virial coefficients all contribute to the coefficient A.' Finite-density values (local field and pair effects included): the zero-density gamma_evR is the molecular value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+temperature_k = 298.35
+
+[[datasets]]
+id = "gamma_R"
+material = "H2"
+points = [
+    ["Eq. (2)", "632.8", "697.1"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "p. 4: 'The result obtained using eq. (2) is gamma^R = 4.347 x 10^-62 C^4 m^4 J^-3 (697.1 au) at 25.2 C' (the orientational contribution for a gas of quantum rotors, Eqs 2-6, with Table 2's anisotropies and B_0 = 59.3392, D_0 = 0.04599 cm^-1, nuclear-spin weights n_J = 1, 3 for even, odd J). 'The largest contributions ... are from the J = 0 and J = 1 rotational levels (16% and 70%), and there are about equal contributions to the total from the Delta J = 0 and Delta J = +-2 terms (42% and 58%); the rotational resonance term Delta is negligible, contributing only 0.03%.' Reproduced by shelton_1994 Table VIII (697)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "rotational"
+temperature_k = 298.35
+
+[[datasets]]
+id = "gamma_R_tammer"
+material = "H2"
+points = [
+    ["Tammer-Huttner Eq. (6)", "632.8", "685.3"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+reproduced_from = ["tammer_1990"]
+notes = "p. 4: 'The result for gamma^R obtained using eq. (6) of ref. [2] instead is significantly different: gamma^R = 685.3 au. This result for gamma^R is 2% smaller because the rotational transition frequencies are overestimated by 1% and because Delta alpha_J,J is 1% smaller than Delta alpha_J,J+2 (for J = 1).' The authors' evaluation of the alternative expression (Tammer and Huttner, Chem. Phys. 146, 155 (1990) = tammer_1990, now in the library): tammer_1990 prints no gamma^R, only its orientation-term expression (Eqs. 5-7) and the gamma it leaves (Table 1); reproduced_from marks the expression's origin, not a copied number. tammer_1990's calibration was superseded by tammer_1992 (K, mK, A_K x 1.0637), which does not change the orientation term."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "rotational"
+temperature_k = 298.35
+
+[[datasets]]
+id = "gamma_ev"
+material = "H2"
+points = [
+    ["gamma^evR - gamma^R", "632.8", "718.5", "7.2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "p. 4: 'Subtracting gamma^R = 697.1 au, calculated using eq. (2), from the experimentally determined value for gamma^evR, gives gamma^ev = 718.5 +- 7.2 au'; abstract: gamma^ev = (4.48 +- 0.05) x 10^-62 C^4 m^4 J^-3 (719 +- 7 au). Electronic plus vibrational dc Kerr gamma of H2 at 632.8 nm and 25.2 C (the vibrational part is not separated here; shelton_1994 Table VIII gives gamma^v(dc Kerr, 632.8 nm) = -7.2 au from bishop_1991). 'The present best experimental estimate of gamma^ev, obtained using eq. (2) for gamma^R, is significantly below the ab initio result' (p. 5)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+temperature_k = 298.35
+
+[[datasets]]
+id = "gamma_ev_tammer"
+material = "H2"
+points = [
+    ["with Tammer-Huttner gamma^R", "632.8", "730.3", "7.2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "p. 4: 'If instead one subtracts gamma^R = 685.3 au calculated using the expression in ref. [2], one obtains gamma^ev = 730.3 +- 7.2 au, in somewhat better agreement with the ab initio result.'"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+temperature_k = 298.35
+
+[[datasets]]
+id = "gamma_ev_abinitio"
+material = "H2"
+points = [
+    ["Bishop, Pipin and Cybulski", "632.8", "726.2"],
+]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["bishop_1991"]
+notes = "p. 4: 'the ab initio value gamma^ev = 726.2 au from Bishop et al. [1] ... thought to be accurate to better than 1%' (bishop_1991), dc Kerr at 632.8 nm."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+temperature_k = 298.35
+
+[[datasets]]
+id = "anisotropy_JJ_static"
+material = "H2"
+file = "H2/shelton_1993__anisotropy_JJ_static.csv"
+table = "tbl_84bb0efc5489"
+quantity = "polarizability_anisotropy"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. J. LeRoy and C. Schwartz, U. Waterloo Chemical Physics Research Report CP-301R (1987)"]
+notes = "Table 2 (p. 4): 'ab initio values of Delta alpha_JJ'^(omega) for H2, in the static limit and for lambda = 632.8 nm ... either transcribed or interpolated from tabulated values in refs. [14,16] which have an estimated accuracy of 0.01%' (1 au = 1.648778e-41 C^2 m^2 J^-1). Row = the rotational level J of the ground vibrational state. Delta alpha_JJ^(0), static, 'From ref. [14]' (LeRoy & Schwartz 1987) (note a). v = 0 matrix elements <v=0,J|Delta alpha|v=0,J'>; each row is a different rotational level (not a dispersion series)."
+[datasets.uncertainty]
+relative = 0.0001
+level = "not stated"
+[datasets.parameters]
+vibrational_state_v = 0
+transition = "J,J"
+
+[[datasets]]
+id = "anisotropy_JJ_632nm"
+material = "H2"
+file = "H2/shelton_1993__anisotropy_JJ_632nm.csv"
+table = "tbl_84bb0efc5489"
+quantity = "polarizability_anisotropy"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["R. J. LeRoy and C. Schwartz, U. Waterloo Chemical Physics Research Report CP-301R (1987)", "D. M. Bishop and L. M. Cheung, J. Chem. Phys. 72, 5125 (1980)"]
+notes = "Table 2 (p. 4): 'ab initio values of Delta alpha_JJ'^(omega) for H2, in the static limit and for lambda = 632.8 nm ... either transcribed or interpolated from tabulated values in refs. [14,16] which have an estimated accuracy of 0.01%' (1 au = 1.648778e-41 C^2 m^2 J^-1). Row = the rotational level J of the ground vibrational state. Delta alpha_JJ^(omega) at 632.8 nm: 'Interpolation of results in ref. [14] using dispersion function from results in table VI of ref. [15]' (note b; Bishop & Cheung 1980); J = 5, 6 marked e) 'Interpolation of results in ref. [14]'. v = 0 matrix elements <v=0,J|Delta alpha|v=0,J'>; each row is a different rotational level (not a dispersion series)."
+[datasets.uncertainty]
+relative = 0.0001
+level = "not stated"
+[datasets.parameters]
+vibrational_state_v = 0
+transition = "J,J"
+
+[[datasets]]
+id = "anisotropy_JJ2_static"
+material = "H2"
+file = "H2/shelton_1993__anisotropy_JJ2_static.csv"
+table = "tbl_84bb0efc5489"
+quantity = "polarizability_anisotropy"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and J. Pipin, J. Chem. Phys. 94, 6073 (1991)"]
+notes = "Table 2 (p. 4): 'ab initio values of Delta alpha_JJ'^(omega) for H2, in the static limit and for lambda = 632.8 nm ... either transcribed or interpolated from tabulated values in refs. [14,16] which have an estimated accuracy of 0.01%' (1 au = 1.648778e-41 C^2 m^2 J^-1). Row = the rotational level J of the ground vibrational state. Delta alpha_J,J+2^(0), static transition anisotropy for J -> J+2: 'From table X of ref. [16]' (Bishop & Pipin, J. Chem. Phys. 94, 6073 (1991)) (note c). v = 0 matrix elements <v=0,J|Delta alpha|v=0,J'>; each row is a different rotational level (not a dispersion series)."
+[datasets.uncertainty]
+relative = 0.0001
+level = "not stated"
+[datasets.parameters]
+vibrational_state_v = 0
+transition = "J,J+2"
+
+[[datasets]]
+id = "anisotropy_JJ2_632nm"
+material = "H2"
+file = "H2/shelton_1993__anisotropy_JJ2_632nm.csv"
+table = "tbl_84bb0efc5489"
+quantity = "polarizability_anisotropy"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and J. Pipin, J. Chem. Phys. 94, 6073 (1991)"]
+notes = "Table 2 (p. 4): 'ab initio values of Delta alpha_JJ'^(omega) for H2, in the static limit and for lambda = 632.8 nm ... either transcribed or interpolated from tabulated values in refs. [14,16] which have an estimated accuracy of 0.01%' (1 au = 1.648778e-41 C^2 m^2 J^-1). Row = the rotational level J of the ground vibrational state. Delta alpha_J,J+2^(omega) at 632.8 nm: 'Interpolation of results in table X of ref. [16]' (note d). v = 0 matrix elements <v=0,J|Delta alpha|v=0,J'>; each row is a different rotational level (not a dispersion series)."
+[datasets.uncertainty]
+relative = 0.0001
+level = "not stated"
+[datasets.parameters]
+vibrational_state_v = 0
+transition = "J,J+2"
+

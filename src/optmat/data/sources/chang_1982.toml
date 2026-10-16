@@ -1,0 +1,332 @@
+citation = "T. N. Chang and Y. S. Kim, \"Photoionization from the excited p states of the rare-gas atoms\", Phys. Rev. A 26, 2728 (1982)"
+doi = "10.1103/PhysRevA.26.2728"
+library = "Chang_1982_PhotoionizationExcitedStates"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Calculated one-photon photoionisation cross sections of the excited np5 mp \
+(1S) states of Ne (n = 2), Ar (3), Kr (4) and Xe (5), m = n + 1 to n + 4, into np5 ks \
+and np5 kd (1P) (Eq. 1), LS-coupled: a single-configuration calculation in which the \
+excited and continuum orbitals are eigenfunctions of an effective Hamiltonian H^(N-1) \
+(Eq. 5), the ground state's Hartree-Fock Hamiltonian corrected for the np hole by its \
+average effect (Eqs. 6-7), with the occupied orbitals projected out. Dipole length and \
+velocity forms (Eqs. 2-4); 'the length and velocity results generally agree with each \
+other to 10% or less near the ionization threshold (to about 5 eV above)' for Ne, Ar \
+and Kr, more for Xe (p. 2730). No many-body corrections (the authors' earlier work on \
+neon found them small, p. 2728)."""
+notes = """Phys. Rev. A 26(5), 2728-2732 (November 1982) = PDF pages 1-5 (journal page = \
+PDF page + 2727); a scan, each page one image (4938 x 6686 pixels) with a text layer. \
+Identity checked against the first page (journal, volume, number, date, title, \
+authors). Tables I and II checked against the table images and the rendered pages.
+
+STATES. Each is the LS-coupled np5 mp (1S), J = 0 state of the calculation; 'for a J = \
+0 state' (p. 2731). Table I (p. 2730) prints the calculated effective quantum numbers \
+n* (from the orbital eigenvalues of Eq. 5), which differ from the observed n* of the \
+np[1/2]0 levels by 2.3 % (Ne 3p) to 0.9 % (Xe 9p). The paper prints no threshold or \
+binding energy.
+
+WHAT IS TAKEN (tools/extract/chang_1982.py). (1) Table II (p. 2731), 'Calculated \
+photoionization cross sections (in megabarns) at lambda = 308 and 248 nm': the present \
+work for Ne 2p5 3p and Xe 5p5 6p at 308 nm, Ar 3p5 4p and Kr 4p5 5p at 248 nm, the \
+length form ('we compare quantitatively the length calculation at wavelengths lambda \
+= 248 and 308 nm in Table II', p. 2732); wavelengths as printed (the XeCl and KrF \
+lasers, air or vacuum not said). (2) Table II's 'Duzy and Hyman' column, 'taken from \
+Ref. 7' (C. Duzy and H. A. Hyman, Phys. Rev. A 22, 1978 (1980), not in the library), \
+as reproduced values. (3) The text's Kr 6p value, '7.4 x 10^-19 cm2 in the velocity \
+approximation for a J = 0 state' at 'lambda = 193.5 nm' (p. 2731), inline. (4) Figs. \
+1-4 (pp. 2729-2730, raster scans), the velocity-form cross sections against the \
+photoelectron energy (eV, log, 0.1 to about 400): the first excited p state of each \
+gas (Ne 3p, Ar 4p, Kr 5p, Xe 6p) and Kr 6p, read from the page images at native \
+resolution (the method in the script's docstring), one point every 20 columns (0.06 \
+decade).
+
+THE PHOTON ENERGY OF THE FIGURES (a conversion this record makes): photoelectron \
+energy (as drawn) plus the state's binding energy from Table I, Ry / n*^2 with Ry = \
+13.605693 eV (the paper's energies are in Rydberg units, p. 2728): Ne 3p 2.9905, Ar \
+4p 2.5630, Kr 5p 2.4182, Kr 6p 1.1749, Xe 6p 2.2538 eV, the calculation's own \
+thresholds; the experimental thresholds differ (for Kr 6p[1/2]0 1.1348 eV, NIST ASD \
+in data/external/nist_asd/Kr_I_levels.tsv, nist_asd_2026), and nothing is shifted to \
+them. The photoelectron energy read is in each point's 'printed'. The range read is \
+where the four curves of a figure are resolved: from 2.6 (Ne 3p, where the four \
+curves cross near 1 eV), 0.61 (Ar), 0.69 (Kr) or 0.88 eV (Xe), where they merge, to \
+the curves' ends at 52-60 eV; the threshold region (0.1 eV up) is not read.
+
+DIGITISING. The figures are hand-drafted on scanned pages turned by up to 0.3 degree: \
+each side of a frame has its own scale, from its decade ticks (written in the script, \
+residuals within 5 pixels), and a point is interpolated between the two sides; every \
+minor tick lies within 10 pixels of the position its decades give it (the drafting). \
+350-360 pixels per decade on both axes; the lines are 6-10 pixels wide. Relative \
+uncertainty 8 %: 5 pixels on the drafted scale (3 %) and the half line width (2-3 %) \
+in sigma, and the same in energy, which on the steepest parts (slopes of -3 to -5 \
+decades per decade) moves sigma by more. The overlays (the points and the calibrated \
+decade grid drawn on the page images) were inspected.
+
+CHECKED (the script). Table II (length) against the figures (velocity) at the same \
+wavelength, with the calculation's thresholds: Ar 4p at 248 nm 0.971, Kr 5p at 248 nm \
+0.991 (the 10 % the paper allows between the forms), Xe 6p at 308 nm 0.885 ('For Xe, \
+this difference is generally larger', p. 2730); Ne 3p at 308 nm (1.03 eV above \
+threshold) lies where the Ne curves cross and is not read. FINDING: Fig. 3's 6p curve \
+at 193.5 nm (5.23 eV above the threshold) reads 8.2 x 10^-19 cm2, 1.10 times the \
+text's 7.4 x 10^-19, although both are the velocity form; with the experimental J = \
+0 threshold (1.1348 eV) the figure gives 1.8 % less, so the threshold does not \
+account for it; the 10 % exceeds the reading's 3 % at that level (the Ar and Kr \
+checks). Which is right is not known; both are kept.
+
+COMPARISONS. geohegan_1986 (TC-886) quotes 'Chang and Kim' for Kr 6p[3/2]2 as 8.0 x \
+10^-19 cm2 and cites 'Phys. Rev. A 26, 2278 (1982)' (page 2728 transposed): the text \
+prints 7.4 x 10^-19 (velocity, J = 0); 8.0 is within 2 % of Fig. 3's curve at 193.5 \
+nm. The same p. 2731 compares the calculation with Bokor, Zavelovich and Rhodes's \
+(Phys. Rev. A 21, 1453 (1980), bokor_1980) '(3.2 +- 2.0) x 10^-19 cm2 at lambda = \
+193.5 nm' for Kr 6p[3/2]2, geohegan_1986's second value. kroll_1990 (TC-890, Table II, \
+ref. 14) quotes this paper for Xe 6p as 3.7 (248 nm) and 1.8 x 10^-18 cm2 (193 nm), \
+'an average over the 5p5 6p configuration': the paper prints no Xe value at either \
+wavelength; Fig. 4's 6p curve (velocity) gives 3.47 and 1.74 Mb there, 6 and 3 % \
+below the quotations, and the length form, 13 % above the velocity at 308 nm, would \
+be about 3.9 and 2.0: the quotations are this calculation within the reading, from \
+the figure or the authors' tabulation ('made available upon request', p. 2732); which \
+form cannot be told. hyman_1977 \
+(Table I, 4.3 and 4.5 x 10^-18 cm2 at 248.6 nm for Ar 4p and Kr 5p) is 'the earlier \
+calculated values of Hyman' that Table II agrees with more closely than with Duzy and \
+Hyman's (5-15 % above the present work, p. 2732). pindzola_1981 is cited as 'M. A. \
+Pindzola, Phys. Rev. A 23, 20 (1981)' (initial and page misprinted; it is 23, 201): \
+this Xe 6p cross section is 'higher than the Hartree-Fock calculation of Pindzola by a \
+factor of two or more' (p. 2732); at 308 nm (4.03 eV) pindzola_1981's Hartree-Fock \
+length total is about 3.6 x 10^-18 cm2 (between its 3.20 and 4.20 eV rows), 0.52 of \
+Table II's 6.9 Mb.
+
+NOT TAKEN. Table I's effective quantum numbers (no quantity holds an effective quantum \
+number; used for the photon energy). The figures' other curves (Ne 4p-6p, Ar 5p-7p, \
+Kr 7p-8p, Xe 7p-9p): the higher members, not read. Fig. 5 (radial wave functions of \
+Xe) and Fig. 6 (the asymmetry parameter beta of the first excited p states, a quantity \
+the vocabulary does not hold). The length-form curves are not drawn. Further \
+experimental data cited: Bokor et al. above (bokor_1980, in the library)."""
+
+[[datasets]]
+id = "table2_3p"
+material = "Ne"
+file = "Ne/chang_1982__table2_3p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 2731), present work at 308 nm: 2.0 Mb, the length form (p. 2732). No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Ne 2p5 3p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "length"
+
+[[datasets]]
+id = "table2_4p"
+material = "Ar"
+file = "Ar/chang_1982__table2_4p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 2731), present work at 248 nm: 4.8 Mb, the length form (p. 2732). No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Ar 3p5 4p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "length"
+
+[[datasets]]
+id = "table2_5p"
+material = "Kr"
+file = "Kr/chang_1982__table2_5p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 2731), present work at 248 nm: 4.5 Mb, the length form (p. 2732). No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Kr 4p5 5p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "length"
+
+[[datasets]]
+id = "table2_6p"
+material = "Xe"
+file = "Xe/chang_1982__table2_6p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II (p. 2731), present work at 308 nm: 6.9 Mb, the length form (p. 2732). No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 6p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "length"
+
+[[datasets]]
+id = "table2_duzy_hyman_3p"
+material = "Ne"
+file = "Ne/chang_1982__table2_duzy_hyman_3p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Duzy and H. A. Hyman, Phys. Rev. A 22, 1978 (1980)"]
+notes = "Table II (p. 2731), 'Duzy and Hyman' at 308 nm: 2.3 Mb, 'taken from Ref. 7', a 'semiempirical calculation' (p. 2731); the original is not in the library."
+[datasets.parameters]
+initial_level = "Ne 2p5 3p, as Table II labels it"
+method = "semiempirical calculation (Duzy and Hyman), as reproduced"
+
+[[datasets]]
+id = "table2_duzy_hyman_4p"
+material = "Ar"
+file = "Ar/chang_1982__table2_duzy_hyman_4p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Duzy and H. A. Hyman, Phys. Rev. A 22, 1978 (1980)"]
+notes = "Table II (p. 2731), 'Duzy and Hyman' at 248 nm: 5.4 Mb, 'taken from Ref. 7', a 'semiempirical calculation' (p. 2731); the original is not in the library."
+[datasets.parameters]
+initial_level = "Ar 3p5 4p, as Table II labels it"
+method = "semiempirical calculation (Duzy and Hyman), as reproduced"
+
+[[datasets]]
+id = "table2_duzy_hyman_5p"
+material = "Kr"
+file = "Kr/chang_1982__table2_duzy_hyman_5p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Duzy and H. A. Hyman, Phys. Rev. A 22, 1978 (1980)"]
+notes = "Table II (p. 2731), 'Duzy and Hyman' at 248 nm: 5.2 Mb, 'taken from Ref. 7', a 'semiempirical calculation' (p. 2731); the original is not in the library."
+[datasets.parameters]
+initial_level = "Kr 4p5 5p, as Table II labels it"
+method = "semiempirical calculation (Duzy and Hyman), as reproduced"
+
+[[datasets]]
+id = "table2_duzy_hyman_6p"
+material = "Xe"
+file = "Xe/chang_1982__table2_duzy_hyman_6p.csv"
+table = "tbl_c2bfbdfde088"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Duzy and H. A. Hyman, Phys. Rev. A 22, 1978 (1980)"]
+notes = "Table II (p. 2731), 'Duzy and Hyman' at 308 nm: 7.6 Mb, 'taken from Ref. 7', a 'semiempirical calculation' (p. 2731); the original is not in the library."
+[datasets.parameters]
+initial_level = "Xe 5p5 6p, as Table II labels it"
+method = "semiempirical calculation (Duzy and Hyman), as reproduced"
+
+[[datasets]]
+id = "text_6p_Kr"
+material = "Kr"
+table = "text"
+points = [["193.5", "193.5", "7.4", ""]]
+scale = 1e-19
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 2731: 'our calculated value of 7.4 x 10^-19 cm2 in the velocity approximation for a J = 0 state' at 'lambda = 193.5 nm', compared with Bokor et al.'s measurement for 6p[3/2]2. Fig. 3's 6p curve reads 1.10 times this at 193.5 nm (the record's notes)."
+[datasets.parameters]
+initial_level = "Kr 4p5 6p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "velocity"
+
+[[datasets]]
+id = "fig1_3p"
+material = "Ne"
+file = "Ne/chang_1982__fig_3p.csv"
+table = "fig_b8e5ffd05efa"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 1 (p. 2729), the 3p curve (velocity), read from the image from 2.6 eV above threshold (below it the four curves cross) to 58 eV, through the Cooper-minimum shoulder near 10 eV (p. 2731). Photon energy = photoelectron energy + 2.9905 eV (Table I's n* = 2.133; the record's notes). 8 %: the reading."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ne 2p5 3p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "velocity"
+
+[[datasets]]
+id = "fig2_4p"
+material = "Ar"
+file = "Ar/chang_1982__fig_4p.csv"
+table = "fig_d4adf2172464"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 2 (p. 2729), the 4p curve (velocity), read from the image from 0.61 eV above threshold (below it the curves merge) to 56 eV, through the Cooper minimum near 35 eV (p. 2731). Photon energy = photoelectron energy + 2.5630 eV (Table I's n* = 2.304; the record's notes). At 248 nm it reads 0.97 times Table II's length value. 8 %: the reading."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 3p5 4p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "velocity"
+
+[[datasets]]
+id = "fig3_5p"
+material = "Kr"
+file = "Kr/chang_1982__fig_5p.csv"
+table = "fig_0aeec97192fc"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 2730), the 5p curve (velocity), read from the image from 0.69 eV above threshold (below it the curves merge) to 57 eV. Photon energy = photoelectron energy + 2.4182 eV (Table I's n* = 2.372; the record's notes). At 248 nm it reads 0.99 times Table II's length value. 8 %: the reading."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 4p5 5p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "velocity"
+
+[[datasets]]
+id = "fig3_6p"
+material = "Kr"
+file = "Kr/chang_1982__fig_6p.csv"
+table = "fig_0aeec97192fc"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 2730), the 6p curve (velocity), read from the image from 0.69 eV above threshold (below it the curves merge) to 57 eV. Photon energy = photoelectron energy + 1.1749 eV (Table I's n* = 3.403; the record's notes). At 193.5 nm it reads 1.10 times the text's 7.4e-19 cm2 (a finding, the record's notes). 8 %: the reading."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 4p5 6p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "velocity"
+
+[[datasets]]
+id = "fig4_6p"
+material = "Xe"
+file = "Xe/chang_1982__fig_6p.csv"
+table = "fig_26a28978918d"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 2730), the 6p curve (velocity), read from the image from 0.88 eV above threshold (below it the curves merge) to 57 eV. Photon energy = photoelectron energy + 2.2538 eV (Table I's n* = 2.457; the record's notes). At 308 nm it reads 0.89 times Table II's length value (the forms differ more for Xe, p. 2730). 8 %: the reading."
+[datasets.uncertainty]
+relative = 0.08
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 5p5 6p (1S), J = 0, LS-coupled (the calculation's state)"
+method = "single-configuration, hole-corrected Hartree-Fock effective Hamiltonian H^(N-1) (Eq. 5)"
+gauge = "velocity"

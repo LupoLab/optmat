@@ -1,0 +1,192 @@
+citation = "D. P. Shelton and L. Ulivi, J. Chem. Phys. 89, 149 (1988)"
+doi = "10.1063/1.455497"
+library = "Shelton_1988_VibrationalHyperpolarizabilitySF6"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Perturbation-theory expressions (from Orr & Ward's sum over states, Eq. 1) for \
+the vibrational second hyperpolarizability of a spherical-top (Td or Oh) molecule in \
+the static limit and for the dc Kerr effect, ESHG and THG (Eqs. 5-8), evaluated for SF6 \
+with infrared transition dipoles from the literature (Kim, McDowell & King 1980; Person \
+& Overend 1977), Raman transition polarizabilities from the authors' own Raman \
+cross-section measurements (514.5 nm, 1 W, 22 C, 2-10 atm, calibrated on H2 rotational \
+lines), and an estimated hyper-Raman beta for nu_3 (pp. 149-153)."""
+notes = """Shelton & Rice 1994 cite this paper as ref 130 (Shelton, D. P.; Ulivi, L.). \
+Definitions: gamma(-omega_s; omega_1, omega_2, omega_3) of Orr & Ward (Eq. 1); the \
+observables are the isotropic averages <gamma>_XXXX = (1/15)(gamma_aabb + gamma_abab + \
+gamma_abba) and, for the dc Kerr effect, (3/2)(<gamma>_XXXX - <gamma>_XYYX), \
+<gamma>_XYYX = (1/30)(-gamma_aabb - gamma_abab + 4 gamma_abba) (Eqs. 4a, 4b), the same \
+gamma as Shelton's ESHG papers (Taylor-series convention, SI units C^4 m^4 J^-3). The \
+vibrational part is 'the sum of all those terms for which at least one of the \
+intermediate states is a vibrationally excited state in the ground electronic manifold' \
+(p. 149). The expressions correct the earlier CF4 treatment (lu_1987): 'That work is in \
+agreement with the present work except for Eqs. (18) and (23), which are incorrect by \
+factors of 2 and 3' (p. 150); CF4's beta is 2x the value reported there.
+
+Rough experimental check (p. 155, rounded values quoted from the literature, not \
+extracted): gamma_Kerr = 15e-62 C^4 m^4 J^-3 at 632.8 nm (Buckingham & Dunmur 1968 = \
+buckingham_1968), gamma_ESHG = 10e-62 at 632.8 nm (shelton_1985_sf6; Ward & Miller \
+1979), gamma_THG = 11e-62 at 694.3 nm (Ward & Elliott 1984); observed gamma_Kerr - \
+gamma_ESHG = 5e-62 against the calculated gamma^v difference 5.6e-62, and gamma_THG - \
+gamma_ESHG = 1e-62 against 2.4e-62 ('about as good as can be expected', accuracy \
++-1e-62). The Table III caption gives the measured ESHG gamma = gamma^e + gamma^v at nu = \
+20000 cm^-1 as 11e-62.
+
+Not extracted (no matching quantity; kept here for the record): Table I, Raman \
+scattering cross sections of 15 SF6 bands (and Holzer & Ouillon's), hot-band factors F \
+and {(a_gm)^2 + 7/45 (Delta alpha_gm)^2}^(1/2); Table II, transition dipoles and \
+polarizability matrix elements (e.g. nu_3 948 cm^-1, |mu^x| = 146e-32 C m; nu_4 615 \
+cm^-1, 42e-32 C m; nu_1 775 cm^-1, |a| = 11.6e-42 C^2 m^2 J^-1; nu_2 643 cm^-1, \
+|alpha^xx - alpha^yy| = 14.0e-42; nu_5 524 cm^-1, |alpha^xy| = 4.60e-42) and the \
+ground-state a_gg = 500e-42 C^2 m^2 J^-1 with nu_eg = 167 000 cm^-1 'derived from \
+refractive index data' (Bogaard & Orr; Landolt-Bornstein; reproduced). The H2 \
+rotational transition anisotropies used for calibration, (alpha_par - alpha_perp)_J,J+2 \
+= 35.19 and 35.46e-42 C^2 m^2 J^-1 for S(0) and S(1) at 514.5 nm (p. 152), are values \
+'deduced by considering' three ab initio calculations: not extracted (the H2 \
+anisotropies are in shelton_1993). The library notes two unmatched figure captions \
+(the publisher's cover page); the table cells agree with the images. Figure 1 \
+(gamma^v against frequency) is not digitised."""
+
+[[datasets]]
+id = "gammav_static"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_static.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. Row 'total'. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154). 'gamma^v_static is more than 20x the estimated value of gamma^e_static' (p. 154), dominated by the mu^4 terms; in the molecular frame gamma^v_xyyx ~ 10 gamma^v_xxxx in the static limit. The printed total 239.4 against the sum of the printed terms 239.3 (rounding)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_dc_kerr"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_dc_kerr.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. Row 'total'. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154). The four terms cancel: 3.6 - 10.4 + 5.6 + 1.5 = 0.3. gamma^v_Kerr depends strongly on frequency (Fig. 1, not digitised)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_eshg"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_eshg.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. Row 'total'. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_thg"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_thg.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "primary"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. Row 'total'. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_terms_static"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_terms_static.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. The four terms (parts a-d of Eqs. 5-8), rows mu^4, mu^2 alpha + mu alpha mu, mu beta, alpha^2; they sum to gammav_static (not independent values). Cells printed with their own power of ten are kept in E notation. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_terms_dc_kerr"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_terms_dc_kerr.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. The four terms (parts a-d of Eqs. 5-8), rows mu^4, mu^2 alpha + mu alpha mu, mu beta, alpha^2; they sum to gammav_dc_kerr (not independent values). Cells printed with their own power of ten are kept in E notation. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_terms_eshg"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_terms_eshg.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. The four terms (parts a-d of Eqs. 5-8), rows mu^4, mu^2 alpha + mu alpha mu, mu beta, alpha^2; they sum to gammav_eshg (not independent values). Cells printed with their own power of ten are kept in E notation. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "gammav_terms_thg"
+material = "SF6"
+file = "SF6/shelton_1988__gammav_terms_thg.csv"
+table = "tbl_5ed5e11e4508"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-62
+abscissa_unit = "cm-1"
+use = "check"
+notes = "Table III (p. 154): vibrational contributions to the isotropically averaged gamma of SF6 'in the static limit and for the dc Kerr effect, ESHG, and THG, evaluated at the optical frequency nu = 20000 cm^-1 using Eqs. (5)-(8)', in 1e-62 C^4 m^4 J^-3 (unit SI, scale 1e-62), for molecules in the ground vibrational state ('we will assume for simplicity that all the molecules are in the ground vibrational state, even though this is not the case at room temperature'; the room-temperature gamma^v 'may be substantially larger', p. 152). dc Kerr: the observable (3/2)(<gamma>_XXXX - <gamma>_XYYX); the others <gamma>_XXXX. The four terms (parts a-d of Eqs. 5-8), rows mu^4, mu^2 alpha + mu alpha mu, mu beta, alpha^2; they sum to gammav_thg (not independent values). Cells printed with their own power of ten are kept in E notation. 'The expected uncertainty ranges from a few percent at best to perhaps a factor of 2 at worst' (mu^4 and alpha^2 terms accurate, mu^2 alpha + mu alpha mu less reliable, mu beta possibly poor: beta of the nu_3 transition is an educated guess, 3e-52 C^3 m^3 J^-2) (p. 154)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+

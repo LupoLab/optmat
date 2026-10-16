@@ -1,0 +1,268 @@
+citation = "A. Picard, R. S. Davis, M. Gläser and K. Fujii, \"Revised formula for the density of moist air (CIPM-2007)\", Metrologia 45, 149 (2008)"
+doi = "10.1088/0026-1394/45/2/004"
+library = "Picard_2008_RevisedFormulaDensity"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """The CIPM-2007 equation of state for moist air, approved by the 96th CIPM \
+meeting (November 2007): the CIPM-81/91 equation with two constants amended, the mole \
+fraction of argon (from the KRISS mass-spectrometric and LNE gas-chromatographic \
+determinations against gravimetric standards) and the molar gas constant (CODATA), and \
+an uncertainty evaluation following the GUM. The composition of dry air is a reference \
+(conventional) composition, the mole fractions of the US Standard Atmosphere 1976 with \
+new argon, the default carbon dioxide and the oxygen that follows from it (pp. \
+149-151)."""
+notes = """Identity checked against the first page (Metrologia 45 (2008) 149-155, \
+published 18 February 2008). Page numbers are the journal's: p. = pdf page + 148.
+
+THE COMPOSITION (Table 1, p. 151; image checked digit by digit). Mole fractions of the \
+twelve constituents of dry air, recorded as mole_fraction datasets with \
+parameters.mixture = 'dry air (CIPM-2007)', one per constituent (all twelve are \
+registered gases; no material is registered for air, which is a mixture, TC-543). N2 \
+0.780848, O2 0.209390, Ar 0.009332, CO2 0.00040, Ne 18.2e-6, He 5.2e-6, CH4 1.5e-6, Kr \
+1.1e-6, H2 0.5e-6, N2O 0.3e-6, CO 0.2e-6, Xe 0.1e-6. Every printed contribution x_i M_i \
+is reproduced by the printed x_i and M_i to the last digit (e.g. 0.780848 x 28.0134 = \
+21.874207), which confirms each digit of the major fractions; sum x_i = 1 - 2.9e-6, as \
+the paper says (p. 150: 'presumably due to minor rounding errors in [12]', hence the \
+normalisation in Eq. 3); M_a = sum x_i M_i/sum x_i = 28.96546 g/mol, as printed \
+(computed 2026-09-27). Which values are whose: N2, O2, CO2 and Ar are set by this paper \
+(Ar measured by KRISS and LNE, N2 the remainder, CO2 the conventional default, O2 = S - \
+x_CO2); the eight minor constituents are the US Standard Atmosphere 1976's, unchanged \
+(reproduced). Water vapour is not a constituent of dry air: moist air enters through x_v \
+(Eq. 1, Appendix A).
+
+THE MOLAR MASSES of Table 1 (10^-3 kg/mol: N2 28.0134, O2 31.9988, Ar 39.948, CO2 44.01, \
+Ne 20.18, He 4.0, CH4 16.0, Kr 83.8, H2 2, N2O 44, CO 28, Xe 131) are IUPAC 2005's [17], \
+'rounded for convenience' from CO2 on (p. 150); no quantity, kept here and in the \
+formula eq3_molar_mass.
+
+UNCERTAINTY (Table 2, p. 152, standard uncertainties per the GUM, assuming x_CO2 known \
+exactly). Parameter, standard uncertainty (1e-6 of its unit), relative contribution to \
+u(rho_a)/rho_a (1e-6): R, 15 (in 8.314472), 1.7; M_N2, 200 (in g/mol), 5.4; M_O2, 300, \
+2.2; M_Ar, 500, 0.2; M_CO2, 500, 0.0; x_Ar, 3 umol/mol, 1.2; S = x_O2 + x_CO2, 60 \
+umol/mol, 8.3; Delta x_O2, 60, 8.3 (type A); Delta x_CO2, 60, 8.3 (type A); Z, 15 (1e-6), \
+15. Quadratic sums 18.2 (type B), 11.7 (type A); combined standard uncertainty of the \
+formula itself 22e-6 relative. Only x_Ar has a standard uncertainty of its own (the \
+dataset x_Ar); the oxygen components are in x_O2's notes. The sensitivities to the \
+measured inputs (Eq. 6, p. 152): +1e-5 Pa^-1 u(p), -4e-3 K^-1 u(T), -9e-3 u(h), -3e-4 \
+K^-1 u(t_d), +0.4 u(x_CO2) (relative).
+
+THE DENSITY FORMULA (Eqs. 1-5, p. 150-151; Appendix A, pp. 153-154) is recorded as \
+formulas without a form: the composition's molar mass (Eqs. 3-4), the density (Eqs. \
+5a/5b), and Appendix A's saturation vapour pressure (A1.1), enhancement factor (A1.2), \
+water-vapour mole fraction (A1.3) and compressibility factor (A1.4), valid for 600-1100 \
+hPa and 15-27 degrees C (Appendix A.3). R = 8.314472(15) J/(mol K), 'recommended by \
+CODATA 2006 [15]' (p. 150; the reference list's [15] is Mohr and Taylor's CODATA 2002, \
+whose R is the same number). The formula omits a term of about 0.26 rho_a x_v (0.0004 - \
+x_CO2) (p. 152). CIPM-2007 against CIPM-81/91 (3.48349 in Eq. 5b): +72e-6 relative, from \
+x_Ar (+67.7e-6) and R (+4.6e-6) (p. 152); 3.483740/3.48349 - 1 = 71.8e-6 (computed).
+
+OTHER VALUES (notes only): the gravimetric-minus-formula air density difference that \
+prompted the revision, 6.4e-5 with standard uncertainty 1.2e-5 (p. 149; Picard et al. \
+2004, Euromet project 144, Madec et al. 2007)."""
+
+
+[[datasets]]
+id = "x_N2"
+material = "N2"
+file = "N2/picard_2008__x_N2.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+abscissa = "none"
+use = "primary"
+notes = "Table 1 (p. 151): x_N2 = 0.780848 mol/mol in the reference composition of dry air of the CIPM-2007 equation. N2: 'not directly measured. It is simply determined as the remainder when the mole fractions of all other components of dry air have been subtracted from 1' (p. 150); it changed with the new argon value. No uncertainty of its own is given (Table 2 budgets S, x_Ar and the molar masses)."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_O2"
+material = "O2"
+file = "O2/picard_2008__x_O2.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+abscissa = "none"
+use = "primary"
+notes = "Table 1 (p. 151): x_O2 = 0.209390 mol/mol in the reference composition of dry air of the CIPM-2007 equation. O2: x_O2 = S - x_CO2 with S = x_O2 + x_CO2 = 0.20979 mol/mol (Eq. 2, p. 150; Appendix B), the value of S accepted from CIPM-81 and -81/91 [1, 2], so 0.209390 = 0.20979 - 0.00040 (checked). Uncertainty (Table 2, Appendix B): u(S) = 60 umol/mol ('each determination is within 50 umol/mol of the accepted value for S', KRISS's two air samples of different continents and elevations, each with u = 60 umol/mol) and a further u(Delta x_O2) = 60 umol/mol for oxygen changes not anticorrelated with CO2 (standard uncertainties; the earlier estimate of 170 umol/mol rested on unconfirmed nineteenth-century data). No single u(x_O2) is printed: not recorded as the dataset's uncertainty."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_Ar"
+material = "Ar"
+file = "Ar/picard_2008__x_Ar.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+abscissa = "none"
+use = "primary"
+notes = "Table 1 (p. 151): x_Ar = 0.009332 mol/mol in the reference composition of dry air of the CIPM-2007 equation. Ar: 'x_Ar = 9.332(3) mmol/mol' (pp. 150, 153), the new value of CIPM-2007: 'A weighted average gives essentially the KRISS result' (KRISS 2002, Park et al. [11]: 9.332(3) mmol/mol by mass spectrometry; LNE 2006, Sutour et al. [14]: 9.330(16) by gas chromatography; both calibrated with gravimetric synthetic standards). CIPM-81 and -81/91 used 9.17 mmol/mol; atmospheric science had kept Moissan's 1903 9.34. The change raises the CIPM air density by 67.7e-6 (p. 152). Standard uncertainty 3 umol/mol (Table 2, the GUM evaluation)."
+[datasets.uncertainty]
+absolute = 0.000003
+level = "standard"
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_CO2"
+material = "CO2"
+file = "CO2/picard_2008__x_CO2.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+abscissa = "none"
+use = "primary"
+notes = "Table 1 (p. 151): x_CO2 = 0.00040 mol/mol in the reference composition of dry air of the CIPM-2007 equation. CO2: 'the average mole fraction of carbon dioxide in laboratory air, x_CO2, has a default value of 0.00040' (p. 150), 'as in the previous CIPM formulas': a conventional reference value, not a measurement. The formula is to be used with a measured x_CO2 where available (Eq. 4); otherwise an uncertainty for the assumption must be added (Eq. 6, 0.4 u(x_CO2) relative in density): Euromet project 503 found 440 umol/mol on average among twelve laboratories, with maxima averaging 660 and reaching 1000 umol/mol (p. 152). No uncertainty given for the default."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_Ne"
+material = "Ne"
+file = "Ne/picard_2008__x_Ne.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_Ne = 18.2 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_He"
+material = "He"
+file = "He/picard_2008__x_He.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_He = 5.2 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_CH4"
+material = "CH4"
+file = "CH4/picard_2008__x_CH4.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_CH4 = 1.5 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_Kr"
+material = "Kr"
+file = "Kr/picard_2008__x_Kr.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_Kr = 1.1 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_H2"
+material = "H2"
+file = "H2/picard_2008__x_H2.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_H2 = 0.5 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_N2O"
+material = "N2O"
+file = "N2O/picard_2008__x_N2O.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_N2O = 0.3 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_CO"
+material = "CO"
+file = "CO/picard_2008__x_CO.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_CO = 0.2 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+[[datasets]]
+id = "x_Xe"
+material = "Xe"
+file = "Xe/picard_2008__x_Xe.csv"
+table = "tbl_b2ed47a88f5d"
+quantity = "mole_fraction"
+unit = "1"
+scale = 1e-6
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["US Standard Atmosphere 1976 (Washington, DC: US Government Printing Office) pp. 3, 33"]
+notes = "Table 1 (p. 151): x_Xe = 0.1 x 10^-6 mol/mol (printed with its factor; scale 1e-6), a minor constituent of the CIPM-2007 reference composition of dry air, taken unchanged from the mole fractions of [12], the US Standard Atmosphere 1976 (p. 150: 'based on the mole fractions found in [12] with the following exceptions': argon, carbon dioxide and oxygen). No uncertainty given; the minor constituents' molar masses are rounded (p. 150). Adopted by CIPM-2007 as part of its definition of dry air; the US Standard Atmosphere is not in the library."
+[datasets.parameters]
+mixture = "dry air (CIPM-2007)"
+
+
+[[formulas]]
+id = "eq3_molar_mass"
+equation = "Eqs. (2)-(4), p. 150, with Table 1"
+printed = "M_a = sum x_i M_i / sum x_i (Eq. 3) = 28.96546 x 10^-3 kg mol^-1; with a measured x_CO2: M_a = [28.96546 + 12.011 (x_CO2 - 0.0004)] x 10^-3 kg mol^-1 (Eq. 4); x_O2 + x_CO2 = 0.20979 mol mol^-1 = S (Eq. 2)"
+variable = "x_CO2: mole fraction of carbon dioxide in dry air (mol/mol); M_a: molar mass of dry air"
+range = "dry air of the Table 1 composition, x_CO2 near 0.0004"
+coefficients = { M_a = "28.96546e-3", dM_dxCO2 = "12.011e-3", x_CO2_ref = "0.0004", S = "0.20979" }
+check = "Table 1's x_i and M_i give sum x_i M_i/sum x_i = 28.965456 x 10^-3 kg/mol (sum x_i = 0.9999971), the printed 28.96546; 12.011 = M_CO2 - M_O2 = 44.01 - 31.9988 = 12.0112 (checked 2026-09-27)."
+notes = "The molar mass of the CIPM-2007 dry air; Eq. (4) moves CO2 against O2 at fixed S (Eq. 2). Air is not a material: this formula is recorded for review (solprop's air)."
+
+[[formulas]]
+id = "eq5_density"
+equation = "Eqs. (1), (5a), (5b), pp. 150-151"
+printed = "rho_a = (p M_a/(Z R T)) [1 - x_v (1 - M_v/M_a)] (Eq. 1); rho_a/(10^-3 kg m^-3) = [28.96546 + 12.011 (x_CO2 - 0.0004)]/8.314472 x (p/(Z T)) (1 - 0.3780 x_v) (Eq. 5a) = [3.483740 + 1.4446 (x_CO2 - 0.0004)] (p/(Z T)) (1 - 0.3780 x_v) (Eq. 5b); R = 8.314472(15) J mol^-1 K^-1; M_v = 18.01528(17) x 10^-3 kg mol^-1; 1 - M_v/M_a = 0.3780"
+variable = "p: pressure in Pa; T = 273.15 + t/degrees C, the thermodynamic temperature in K; x_v: mole fraction of water vapour (Appendix A, formula appendix_a); Z: compressibility factor (Appendix A); rho_a in 10^-3 kg m^-3 as written (i.e. g m^-3 for p in Pa)"
+range = "600-1100 hPa, 15-27 degrees C (Appendix A.3)"
+coefficients = { M_a = "28.96546", dM_dxCO2 = "12.011", R = "8.314472", R_sigma = "0.000015", c0 = "3.483740", c1 = "1.4446", x_CO2_ref = "0.0004", water = "0.3780", M_v = "18.01528" }
+check = "28.96546/8.314472 = 3.483740 (5b's constant, checked); 12.011/8.314472 = 1.4446; 1 - 18.01528/28.96546 = 0.37803 (0.3780 printed). At 20 degrees C, 101 325 Pa, x_v = 0, x_CO2 = 0.0004, with appendix_a's Z = 0.99964: rho_a = 1.20456 kg/m^3 (computed; the paper prints no worked example). Checked 2026-09-27."
+notes = "Combined relative standard uncertainty of the formula itself 22e-6 (Table 2), to which the measured inputs' uncertainties are added with Eq. (6)'s sensitivities. The coefficient 0.3780 is treated as constant; the missing term is about 0.26 rho_a x_v (0.0004 - x_CO2) (p. 152). The density of moist air, not an optical quantity: recorded for the air model."
+
+[[formulas]]
+id = "appendix_a"
+equation = "Eqs. (A1.1)-(A1.4), Appendix A, pp. 153-154"
+printed = "p_sv = 1 Pa x exp(A T^2 + B T + C + D/T), A = 1.2378847 x 10^-5 K^-2, B = -1.9121316 x 10^-2 K^-1, C = 33.93711047, D = -6.3431645 x 10^3 K (A1.1); f = alpha + beta p + gamma t^2, alpha = 1.00062, beta = 3.14 x 10^-8 Pa^-1, gamma = 5.6 x 10^-7 K^-2 (A1.2); x_v = h f(p, t) p_sv(t)/p = f(p, t_d) p_sv(t_d)/p (A1.3); Z = 1 - (p/T)[a0 + a1 t + a2 t^2 + (b0 + b1 t) x_v + (c0 + c1 t) x_v^2] + (p^2/T^2)(d + e x_v^2), a0 = 1.58123 x 10^-6 K Pa^-1, a1 = -2.9331 x 10^-8 Pa^-1, a2 = 1.1043 x 10^-10 K^-1 Pa^-1, b0 = 5.707 x 10^-6 K Pa^-1, b1 = -2.051 x 10^-8 Pa^-1, c0 = 1.9898 x 10^-4 K Pa^-1, c1 = -2.376 x 10^-6 Pa^-1, d = 1.83 x 10^-11 K^2 Pa^-2, e = -0.765 x 10^-8 K^2 Pa^-2 (A1.4)"
+variable = "T in K, t in degrees C, p in Pa; h the relative humidity (0-1), t_d the dew-point temperature"
+range = "600-1100 hPa, 15-27 degrees C (Appendix A.3)"
+coefficients = { A = "1.2378847e-5", B = "-1.9121316e-2", C = "33.93711047", D = "-6.3431645e3", alpha = "1.00062", beta = "3.14e-8", gamma = "5.6e-7", a0 = "1.58123e-6", a1 = "-2.9331e-8", a2 = "1.1043e-10", b0 = "5.707e-6", b1 = "-2.051e-8", c0 = "1.9898e-4", c1 = "-2.376e-6", d = "1.83e-11", e = "-0.765e-8" }
+check = "No worked values are printed. Computed (2026-09-27): p_sv(20 degrees C) = 2339 Pa; Z(20 degrees C, 101 325 Pa, x_v = 0) = 0.999643. The constants are unchanged from CIPM-81/91 (p. 153); not checked against a printed value."
+notes = "The interpolating formulas for x_v and Z of the CIPM-81/91 equation, 'listed here for completeness' (p. 153). Z's uncertainty is dominated by the second virial coefficient of dry air (15e-6, Table 2)."

@@ -1,0 +1,39 @@
+citation = "P. A. Zhokhov and A. M. Zheltikov, \"Field-cycle-resolved photoionization in solids\", arXiv:1402.5530v2 [physics.optics] (2014)"
+doi = "10.48550/arxiv.1402.5530"
+library = "Zhokhov_2014_FieldCycleResolved"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Keldysh's two-band photoionization theory of a solid generalized to pulses of \
+arbitrary waveform: the momentum integral is done first, for a periodic (cosine) band \
+dispersion, giving the conduction-band population as a double time integral (Eqs. 6-9), \
+with a phenomenological decoherence factor; a closed-form tunnelling rate in the \
+strong-field limit (Eq. 12)."""
+notes = """THE LIBRARY COPY IS THE arXiv PREPRINT (arXiv:1402.5530v2, dated 4 July 2014; \
+document_version 'preprint', 5 pages). A journal version is not in the library and the \
+preprint does not cite one; pages below are the preprint's.
+
+NO MATERIAL, NO DATASET. The calculations are for a model solid: E_g/omega = 6.45 at \
+lambda0 = 800 nm, band-width ratio delta = Delta/E_g = 1 or 0.1, one dimension, B = 1 (no \
+decoherence) unless stated, FWHM 10 fs and 2.4 fs (Figs. 1-2). E_g/omega = 6.45 at 800 nm \
+is a 10.0-eV gap (6.45 x 1.5498 eV = 9.996 eV; computed), not named as any material. Results are \
+figures only: the conduction-band population against gamma^-2 and time, compared with \
+Keldysh's formula (agreement for gamma > 2/(pi sqrt(delta)) and long pulses; Franz-Keldysh \
+steps), its carrier-envelope-phase dependence for 2.4-fs pulses, and the effect of \
+decoherence."""
+
+[[formulas]]
+id = "cycle_resolved_population"
+equation = "Eqs. (4), (6)-(9), pp. 1-2"
+printed = "E(p) = E_g + Delta - (Delta/D) sum_{k=1}^{D} cos(d_k p_k) (4); W_c(t) = |N~|^2 int_-inf^t dt1 int_-inf^t dt2 E(t1) E(t2) G(t1, t2) (6); G(t1, t2) = (2 pi)^D exp{-i (E_g + Delta)(t2 - t1)} B(|t2 - t1|) prod_{k=1}^{D} J_0(|Phi_k|) (9); B(|t2 - t1|) = <exp{i phi(t2) - i phi(t1)}> (8); Phi_k = (Delta/D) int_{t1}^{t2} exp{i mu_k(tau)} dtau, mu_k = A_k d_k"
+variable = "E(t): the field of arbitrary waveform; A(t) = -int E dt the vector potential; d_k the lattice constants; Delta the band width, m_eff = (Delta sum_k d_k^2)^-1 the electron-hole effective mass; D the dimension; atomic units"
+coefficients = { E_g_over_omega = "6.45 (examples)", delta = "Delta/E_g = 1 or 0.1 (examples)" }
+check = "No rate values printed; figures only."
+notes = "Agrees with the Keldysh formula only where the cosine band is near-parabolic over the excursion, gamma > 2/(pi sqrt(delta)), with gamma = omega sqrt(m Delta)/E_0. Decoherence ansatz B(tau) = exp(-Gamma E_g tau), coherence time tau_c = (Gamma E_g)^-1 (p. 4)."
+
+[[formulas]]
+id = "tunnelling_limit"
+equation = "Eqs. (10)-(12), pp. 3-4"
+printed = "G(t1, t2) = 2 pi E^2 exp{-2i ((E_g + Delta)/|eps|) xi} J_0((2 Delta/|eps|) |sin xi|), xi = (|eps|/2)(t2 - t1), eps = d_1 E (10); w(E) = dW_c/dt = 4 (|E|/d_1) |N|^2 Re int_-pi^pi d eta int_-inf^inf d xi exp{-i s nu(xi, eta)}, s = 2 Delta/|eps|, nu = (1/delta + 1) xi + sin xi sin eta (11); w(E) = K E^2 exp{-(4/3) sqrt(2/delta) E_g/|eps|} = K E^2 exp{-(4/3) (2m)^(1/2) E_g^(3/2)/|E|} (12)"
+variable = "K: a field-independent factor; one dimension; valid for 2/(pi sqrt(delta)) < gamma < 1, which needs delta > (pi/2)^2"
+check = "Nothing numeric to reproduce."
+notes = "Recovers the tunnelling exponential and the E^2 pre-exponential scaling (refs. 17, 26)."

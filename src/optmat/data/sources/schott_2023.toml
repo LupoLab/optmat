@@ -1,0 +1,239 @@
+citation = "SCHOTT AG, \"Datasheet SCHOTT N-BK7(R) 517642.251\", as of 01-Dec-2023; with SCHOTT Technical Information TIE-29, \"Refractive Index and Dispersion\", version August 2023"
+library = "Unverified_b3287ae9ef98"
+identity = "UNVERIFIED"
+kind = "database"
+technique = """The glass manufacturer's catalogue data sheet of N-BK7: the refractive indices \
+at 23 wavelengths (20 printed, 312.6-2325.4 nm), the Sellmeier formula and its \
+coefficients, the internal transmittance of 10 mm and 25 mm samples (250-2500 nm), the \
+temperature coefficients of the relative and absolute index, and the constants of the \
+dn/dT formula. TIE-29 states the conventions: the indices 'are measured relative to the \
+refractive index measured in air' (p. 1) and 'represent values for a melt with nominal \
+nd-vd position for the glass type', 'exact to five decimal places (for lambda > 2 um: +- \
+2 x 10^-5)', and 'All data apply to room temperature and normal air pressure (0.10133 x \
+10^6 Pa)' (section 5, p. 7); the Sellmeier coefficients were determined 'on the basis of \
+precision measurements by fitting the dispersion equation to the measurement values' \
+(section 2.3, p. 4)."""
+notes = """Not a paper: the data sheet is in the paper library as a document without \
+a DOI (its entry is named from the PDF's SHA-256, b3287ae9ef98...). Its text layer (the \
+PDF is generated from a spreadsheet), rendered with pdftotext -layout (poppler 26.08.0) \
+on 2026-09-28 and checked against the page image cell by cell, is attached to that \
+entry as n-bk7-datasheet.txt, and tools/extract/schott_2023.py reads it. TIE-29 is \
+cited for its conventions only (PDF SHA-256 \
+9d07414c481e624c139b392313b02b9a771ad2fa6fc544ae5908d6419eb43c79).
+
+THE AIR. The indices are relative to air (TIE-29, p. 1) at 'normal air pressure \
+(0.10133 x 10^6 Pa)' and 'room temperature' (section 5); the catalogue value is at the \
+reference temperature 20 C (TIE-29 section 4: 'Reference temperature (20 C)', and \
+Fig. 3's 'catalog value at 20 C'). The temperature coefficients of the relative index \
+'apply for an air pressure of 0.10133 x 10^6 Pa' and those of the absolute index 'apply \
+for vacuum' (section 4, p. 5): the data sheet prints both, which confirms that its \
+indices are relative.
+
+THE WAVELENGTHS. The formula's wavelengths are in um and must be inserted 'with the same \
+number of digits as listed in Table 1' (TIE-29, section 2.3), whose lines are printed at \
+their standard-air wavelengths (C, hydrogen, 656.2725 nm; d, helium, 587.5618 nm; e, \
+mercury, 546.074 nm): recorded as standard air, an inference from those values (TIE-29 \
+does not say 'air wavelength'). The data sheet rounds them to 0.1 nm. TIE-29's dn/dT \
+formula (Eq. 11) takes the wavelength 'in a vacuum'.
+
+VALIDITY. 'The dispersion equation is only valid within the spectral region in which \
+refractive indices are listed in the data sheet of each glass' (TIE-29, section 2.3): \
+312.6-2325.4 nm here (the rows at 296.7, 280.4 and 248.3 nm print no index). The dn/dT \
+constants 'in general are valid for a temperature range from -100 C to +140 C and a \
+wavelength range from 0.3650 um to 1.014 um', 'guideline values' (section 4).
+
+NOT RECORDED (no quantity): nd, ne, vd, ve, the principal dispersions, the relative \
+partial dispersions P and P' and their deviations, the colour code (33/29), the \
+chemical, thermal and mechanical properties (Tg 557 C, density 2.51 g/cm3, expansion \
+7.1e-6/K at -30/+70 C, Young's modulus 82e3 N/mm2, Poisson's ratio 0.206, photoelastic \
+constant K = 2.76e-6 mm2/N). SCHOTT's Zemax catalogue of 2017-01-20, which solprop \
+cites through refractiveindex.info, has the same six Sellmeier coefficients \
+(refractiveindex.info specs/schott/optical/N-BK7; tests/data/solprop_solids.json)."""
+
+[[formulas]]
+id = "sellmeier"
+material = "N-BK7"
+form = "n2_sellmeier"
+wavelength_medium = "standard_air"
+index_medium = "air"
+air_temperature_k = 293.15
+air_pressure_pa = 101330
+# The vacuum wavelengths of the data sheet's first and last indices, 312.6 and 2325.4 nm
+# in standard air.
+range_nm = [312.691, 2326.035]
+parameters = { temperature_k = 293.15, grade = "catalogue (nominal melt)" }
+equation = "TIE-29 Eq. (10), section 2.3, with the data sheet's 'Constants of Dispersion Formula'"
+printed = "n^2(lambda) - 1 = B1 lambda^2/(lambda^2 - C1) + B2 lambda^2/(lambda^2 - C2) + B3 lambda^2/(lambda^2 - C3)"
+variable = "lambda: wavelength in um, the standard-air wavelengths of TIE-29's Table 1 (see the source notes)"
+range = "312.6-2325.4 nm, the wavelengths at which the data sheet lists indices ('only valid within the spectral region in which refractive indices are listed', TIE-29); 20 C; relative to air at 0.10133 MPa"
+coefficients = { B1 = "1.039612120", B2 = "0.231792344", B3 = "1.010469450", C1 = "0.006000699", C2 = "0.0200179144", C3 = "103.56065300" }
+terms = { B = ["1.039612120", "0.231792344", "1.010469450"], C = ["0.006000699", "0.0200179144", "103.56065300"] }
+check = "At the lines' wavelengths of TIE-29 Table 1 (e.g. g 435.8343, i 365.0146 nm) it reproduces all 20 printed indices to their five decimals (g gives 1.526685, on the rounding boundary of the printed 1.52668), and nd = 1.51680, ne = 1.51872; at the data sheet's wavelengths, rounded to 0.1 nm, four of the ultraviolet and blue indices (g, h, 334.1 and 312.6 nm) come out one unit off. Checked 2026-09-28."
+notes = "SCHOTT's catalogue formula for a melt of nominal nd and vd; TIE-29 gives its precision as 'generally better than 1 x 10^-5 in the visible'. Relative to air at 20 C and 101 330 Pa. The same coefficients as solprop's N-BK7 (the Zemax catalogue of 2017-01-20), which solprop evaluates as an absolute index at the vacuum wavelength."
+
+[[formulas]]
+id = "dndT_abs"
+material = "N-BK7"
+equation = "TIE-29 Eq. (11), section 4 (p. 5), with the data sheet's 'Constants of Formula for dn/dT'"
+printed = "dn_abs(lambda, T)/dT = (n^2(lambda, T0) - 1)/(2 n(lambda, T0)) (D0 + 2 D1 dT + 3 D2 dT^2 + (E0 + 2 E1 dT)/(lambda^2 - lambda_TK^2))"
+variable = "lambda: vacuum wavelength in um; T0 = 20 C; dT = T - T0 in C; n the catalogue index at T0"
+range = "-100 to +140 C, 0.3650-1.014 um; 'guideline values' (TIE-29, section 4)"
+coefficients = { D0 = "1.86E-06", D1 = "1.31E-08", D2 = "-1.37E-11", E0 = "4.34E-07", E1 = "6.27E-10", lambda_TK = "0.170" }
+check = "Averaged over each printed interval (the difference of the integrated formula over the interval width), with n from the Sellmeier formula, it reproduces the data sheet's dn_abs/dT at 1060.0 nm, e and g for -40/-20, +20/+40 and +60/+80 C to their one decimal (e.g. 1060.0 nm, +20/+40 C: 1.07e-6 against 1.1e-6). Checked 2026-09-28."
+notes = "The absolute (vacuum) temperature coefficient. The data sheet's relative coefficients (dn_rel/dT) are for air at 0.10133 MPa."
+
+[[datasets]]
+id = "n_catalogue"
+material = "N-BK7"
+file = "N-BK7/schott_2023__n_catalogue.csv"
+table = "Refractive Indices"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "The data sheet's 'Refractive Indices', 20 printed values from 312.6 to 2325.4 nm (the rows at 296.7, 280.4 and 248.3 nm print none), the row id the line's label as printed (n2325.4, nt, nC' ...). Values for a melt of nominal nd and vd, 'exact to five decimal places (for lambda > 2 um: +- 2 x 10^-5)' (TIE-29); the Sellmeier formula reproduces every one: they are the catalogue's nominal values, not one melt's measurements, so check. Relative to air at 20 C and 0.10133 MPa; wavelengths rounded to 0.1 nm."
+[datasets.parameters]
+temperature_k = 293.15
+grade = "catalogue (nominal melt)"
+form = "bulk"
+index_medium = "air"
+air_temperature_k = 293.15
+air_pressure_pa = 101330
+
+[[datasets]]
+id = "tau_10mm"
+material = "N-BK7"
+file = "N-BK7/schott_2023__tau_10mm.csv"
+table = "Internal Transmittance"
+quantity = "internal_transmittance"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "The data sheet's internal transmittance of a 10 mm path, 290-2500 nm (26 values; 250-280 nm print none). Catalogue values for the glass type; no uncertainty stated. Standard-air wavelengths presumed, as for the indices."
+[datasets.parameters]
+thickness_mm = 10
+grade = "catalogue (nominal melt)"
+form = "bulk"
+
+[[datasets]]
+id = "tau_25mm"
+material = "N-BK7"
+file = "N-BK7/schott_2023__tau_25mm.csv"
+table = "Internal Transmittance"
+quantity = "internal_transmittance"
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "The data sheet's internal transmittance of a 25 mm path, 300-2500 nm (25 values; 250-290 nm print none). Catalogue values for the glass type; no uncertainty stated. Standard-air wavelengths presumed."
+[datasets.parameters]
+thickness_mm = 25
+grade = "catalogue (nominal melt)"
+form = "bulk"
+
+[[datasets]]
+id = "dndT_rel_m30C"
+material = "N-BK7"
+file = "N-BK7/schott_2023__dndT_rel_m30C.csv"
+table = "Temperature Coefficients of the Refractive Index"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "dn_rel/dT, relative to air at 0.10133 MPa, averaged over -40 to -20 C (printed '-40/-20'; temperature_k is the interval's middle), at 1060.0 nm, e (546.1 nm) and g (435.8 nm): the data sheet prints the lines' letters, the abscissae are the data sheet's wavelengths of those lines. 'Guideline values' (TIE-29)."
+[datasets.parameters]
+temperature_k = 243.15
+grade = "catalogue (nominal melt)"
+form = "bulk"
+index_medium = "air"
+air_pressure_pa = 101330
+
+[[datasets]]
+id = "dndT_rel_30C"
+material = "N-BK7"
+file = "N-BK7/schott_2023__dndT_rel_30C.csv"
+table = "Temperature Coefficients of the Refractive Index"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "dn_rel/dT, relative to air at 0.10133 MPa, averaged over +20 to +40 C (printed '+20/+40'; temperature_k is the interval's middle), at 1060.0 nm, e and g. 'Guideline values' (TIE-29)."
+[datasets.parameters]
+temperature_k = 303.15
+grade = "catalogue (nominal melt)"
+form = "bulk"
+index_medium = "air"
+air_pressure_pa = 101330
+
+[[datasets]]
+id = "dndT_rel_70C"
+material = "N-BK7"
+file = "N-BK7/schott_2023__dndT_rel_70C.csv"
+table = "Temperature Coefficients of the Refractive Index"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "dn_rel/dT, relative to air at 0.10133 MPa, averaged over +60 to +80 C (printed '+60/+80'; temperature_k is the interval's middle), at 1060.0 nm, e and g. 'Guideline values' (TIE-29)."
+[datasets.parameters]
+temperature_k = 343.15
+grade = "catalogue (nominal melt)"
+form = "bulk"
+index_medium = "air"
+air_pressure_pa = 101330
+
+[[datasets]]
+id = "dndT_abs_m30C"
+material = "N-BK7"
+file = "N-BK7/schott_2023__dndT_abs_m30C.csv"
+table = "Temperature Coefficients of the Refractive Index"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "dn_abs/dT (vacuum), averaged over -40 to -20 C (printed '-40/-20'; temperature_k is the interval's middle), at 1060.0 nm, e and g. 'Guideline values' (TIE-29)."
+[datasets.parameters]
+temperature_k = 243.15
+grade = "catalogue (nominal melt)"
+form = "bulk"
+
+[[datasets]]
+id = "dndT_abs_30C"
+material = "N-BK7"
+file = "N-BK7/schott_2023__dndT_abs_30C.csv"
+table = "Temperature Coefficients of the Refractive Index"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "dn_abs/dT (vacuum), averaged over +20 to +40 C (printed '+20/+40'; temperature_k is the interval's middle), at 1060.0 nm, e and g. 'Guideline values' (TIE-29)."
+[datasets.parameters]
+temperature_k = 303.15
+grade = "catalogue (nominal melt)"
+form = "bulk"
+
+[[datasets]]
+id = "dndT_abs_70C"
+material = "N-BK7"
+file = "N-BK7/schott_2023__dndT_abs_70C.csv"
+table = "Temperature Coefficients of the Refractive Index"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "primary"
+notes = "dn_abs/dT (vacuum), averaged over +60 to +80 C (printed '+60/+80'; temperature_k is the interval's middle), at 1060.0 nm, e and g. 'Guideline values' (TIE-29)."
+[datasets.parameters]
+temperature_k = 343.15
+grade = "catalogue (nominal melt)"
+form = "bulk"

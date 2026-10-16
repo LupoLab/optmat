@@ -1,0 +1,456 @@
+# The bound two-photon levels of the noble gases (OEP 6, Phase 2a: curation only).
+#
+# Per gas: the assessment of its curated bound strengths, and the curated values each
+# attached to a NIST level: two-photon strengths (calculated delta^TP, or a
+# frequency-integrated cross section sigma_0^(2), measured or calculated) and the
+# photoionisation of the level. The levels themselves are every even level with J = 0,
+# 1 or 2 below the ionisation energy in the NIST lists held as returned
+# (data/external/nist_asd/<gas>_I_levels.tsv, nist_asd_2026); helium's singlets only
+# (two photons from 1 1S do not reach a triplet). The derivation
+# (optmat.gas._two_photon_bound_derivation) reads this file, and
+# tools/fit/two_photon_bound_record.py writes the stored records
+# (data/gas/models/two_photon_bound/<gas>.json); a test checks they are fresh.
+#
+# A level is "configuration|term|J" as NIST prints it. An entry with no level is held
+# unassigned, with its reason. The canonical strength is delta^TP per level (summed
+# over M_J), parallel linear polarisation, equal photons, atomic units; a measured
+# sigma_0^(2) is in m^4, profile normalised in the two-photon angular frequency,
+# corrected for photon statistics. sigma_0 = 2 pi^3 alpha^2 a0^4 omega_au^2 delta^TP at
+# the NIST level's photon frequency (TC-952).
+#
+# Keys of a strength:
+#   dataset, row            the curated value
+#   level                   the NIST level, or absent (unassigned) with "unassigned"
+#   convention              "per_level" (delta as printed), "one_component" (a J = 2
+#                           level's single tensor component S_xy^2, times 4/3: a
+#                           derived value), or "sigma0" (a cross section as printed)
+#   reason                  why this level
+
+[He]
+assessment = "checked"
+assessment_reason = "Hattig et al.'s CCSD 1s2s 1S strength agrees within 1 to 4 % with Drake's exact two-photon decay rate (through Bassi and Baluja), Kumar et al.'s and Kapralova-Zdanska's two-photon couplings and Bassi and Baluja's partial closure; the simpler calculations (CCS, CC2, Henriksson et al.'s TDDHF) are 0.85 to 0.94 of it (TC-952). No measured cross section."
+
+[[He.strengths]]
+dataset = "hattig_1998b/S_He_CCSD_degenerate"
+row = "CCSD"
+level = "1s.2s|1S|0"
+convention = "per_level"
+reason = "1s2s 1S0, the only level of 1s2s 1S; a J = 0 level's strength is the same in both conventions."
+
+[[He.strengths]]
+dataset = "hattig_1998b/S_He_CC2_degenerate"
+row = "CC2"
+level = "1s.2s|1S|0"
+convention = "per_level"
+reason = "As CCSD."
+
+[[He.strengths]]
+dataset = "hattig_1998b/S_He_CCS_degenerate"
+row = "CCS"
+level = "1s.2s|1S|0"
+convention = "per_level"
+reason = "As CCSD."
+
+[[He.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_He"
+row = "J = 0, 21.126 eV"
+level = "1s.2s|1S|0"
+convention = "per_level"
+reason = "The lowest J = 0 row: 1s2s 1S0."
+
+[[He.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_He"
+row = "J = 0, 23.405 eV"
+level = "1s.3s|1S|0"
+convention = "per_level"
+reason = "The second J = 0 row: 1s3s 1S0."
+
+[[He.photoionisation]]
+dataset = "hummer_1998/table1_1s2s_1S"
+level = "1s.2s|1S|0"
+
+[[He.photoionisation]]
+dataset = "hummer_1998/table1_1s3s_1S"
+level = "1s.3s|1S|0"
+
+[[He.photoionisation]]
+dataset = "hummer_1998/table1_1s4s_1S"
+level = "1s.4s|1S|0"
+
+[[He.photoionisation]]
+dataset = "hummer_1998/table1_1s3d_1D"
+level = "1s.3d|1D|2"
+
+[[He.photoionisation]]
+dataset = "hummer_1998/table1_1s4d_1D"
+level = "1s.4d|1D|2"
+
+[Ne]
+assessment = "unresolved"
+assessment_reason = "Calculations only (Henriksson et al.'s TDDHF, whose 2p5 3p energies are about 1.4 eV above NIST's; Hattig et al.'s LS-coupled 1S); no measured strength."
+
+[[Ne.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ne"
+row = "J = 2, 19.950 eV"
+level = "2s2.2p5.(2P*<3/2>).3p|2[5/2]|2"
+convention = "per_level"
+reason = "The 2p5 3p rows, assigned by order within J: the lowest J = 2 row is 3p[5/2]2."
+
+[[Ne.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ne"
+row = "J = 2, 20.090 eV"
+level = "2s2.2p5.(2P*<3/2>).3p|2[3/2]|2"
+convention = "per_level"
+reason = "By order within J: the second J = 2 row is 3p[3/2]2."
+
+[[Ne.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ne"
+row = "J = 2, 20.164 eV"
+level = "2s2.2p5.(2P*<1/2>).3p|2[3/2]|2"
+convention = "per_level"
+reason = "By order within J: the third J = 2 row is 3p'[3/2]2."
+
+[[Ne.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ne"
+row = "J = 0, 20.173 eV"
+level = "2s2.2p5.(2P*<3/2>).3p|2[1/2]|0"
+convention = "per_level"
+reason = "By order within J: the lower J = 0 row is 3p[1/2]0."
+
+[[Ne.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ne"
+row = "J = 0, 20.554 eV"
+level = "2s2.2p5.(2P*<1/2>).3p|2[1/2]|0"
+convention = "per_level"
+reason = "By order within J: the upper J = 0 row is 3p'[1/2]0."
+
+[[Ne.strengths]]
+dataset = "hattig_1998b/S_Ne_CCSD_degenerate"
+row = "CCSD"
+unassigned = "An LS-coupled 2p5 3p 1S: the jj-coupled J = 0 levels mix 1S and 3P."
+convention = "per_level"
+
+[[Ne.photoionisation]]
+dataset = "chang_1982/table2_3p"
+unassigned = "An LS-coupled 2p5 3p (1S), J = 0, not resolved by core."
+
+[Ar]
+assessment = "unresolved"
+assessment_reason = "The only measured strength, McCann et al.'s, is uncertain by a factor of about 4.5 within its own laser widths, which spans the factor of 5 between conventions (TC-952); the calculations are unchecked."
+
+[[Ar.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ar"
+row = "J = 2, 13.332 eV"
+level = "3s2.3p5.(2P*<3/2>).4p|2[5/2]|2"
+convention = "per_level"
+reason = "The 3p5 4p rows, assigned by order within J: the lowest J = 2 row is 4p[5/2]2."
+
+[[Ar.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ar"
+row = "J = 2, 13.459 eV"
+level = "3s2.3p5.(2P*<3/2>).4p|2[3/2]|2"
+convention = "per_level"
+reason = "By order within J: 4p[3/2]2."
+
+[[Ar.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ar"
+row = "J = 2, 13.598 eV"
+level = "3s2.3p5.(2P*<1/2>).4p|2[3/2]|2"
+convention = "per_level"
+reason = "By order within J: 4p'[3/2]2."
+
+[[Ar.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ar"
+row = "J = 0, 13.575 eV"
+level = "3s2.3p5.(2P*<3/2>).4p|2[1/2]|0"
+convention = "per_level"
+reason = "By order within J: 4p[1/2]0."
+
+[[Ar.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Ar"
+row = "J = 0, 13.806 eV"
+level = "3s2.3p5.(2P*<1/2>).4p|2[1/2]|0"
+convention = "per_level"
+reason = "By order within J: 4p'[1/2]0."
+
+[[Ar.strengths]]
+dataset = "hattig_1998b/S_Ar_CCSD_degenerate"
+row = "CCSD"
+unassigned = "An LS-coupled 3p5 4p 1S: the jj-coupled J = 0 levels mix 1S and 3P."
+convention = "per_level"
+
+[[Ar.photoionisation]]
+dataset = "payne_1981/sigma_pi_Ar_4p12_0"
+level = "3s2.3p5.(2P*<3/2>).4p|2[1/2]|0"
+
+[[Ar.photoionisation]]
+dataset = "chang_1982/table2_4p"
+unassigned = "An LS-coupled 3p5 4p (1S), J = 0, not resolved by core."
+
+[[Ar.photoionisation]]
+dataset = "hyman_1977/table1_4p"
+unassigned = "Averaged over J and the core state."
+
+[Kr]
+assessment = "unresolved"
+assessment_reason = "The measurements disagree among themselves: Shekhtman et al.'s calculation is 94 times Khambatta et al.'s measurement at 6p[3/2]2, and Henriksson et al.'s TDDHF is 0.16 of Dakka et al.'s at 5p[3/2]2 (TC-952)."
+
+[[Kr.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Kr"
+row = "J = 2, 11.471 eV"
+level = "4s2.4p5.(2P*<3/2>).5p|2[5/2]|2"
+convention = "per_level"
+reason = "The 4p5 5p rows, assigned by order within J: 5p[5/2]2."
+
+[[Kr.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Kr"
+row = "J = 2, 11.609 eV"
+level = "4s2.4p5.(2P*<3/2>).5p|2[3/2]|2"
+convention = "per_level"
+reason = "By order within J: 5p[3/2]2."
+
+[[Kr.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Kr"
+row = "J = 2, 12.240 eV"
+level = "4s2.4p5.(2P*<1/2>).5p|2[3/2]|2"
+convention = "per_level"
+reason = "By order within J: 5p'[3/2]2."
+
+[[Kr.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Kr"
+row = "J = 0, 11.736 eV"
+level = "4s2.4p5.(2P*<3/2>).5p|2[1/2]|0"
+convention = "per_level"
+reason = "By order within J: 5p[1/2]0."
+
+[[Kr.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Kr"
+row = "J = 0, 12.395 eV"
+level = "4s2.4p5.(2P*<1/2>).5p|2[1/2]|0"
+convention = "per_level"
+reason = "By order within J: 5p'[1/2]0."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "5p[5/2]2"
+level = "4s2.4p5.(2P*<3/2>).5p|2[5/2]|2"
+convention = "sigma0"
+reason = "As the row names it (Racah notation of Table 3)."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "5p[3/2]2"
+level = "4s2.4p5.(2P*<3/2>).5p|2[3/2]|2"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "5p[1/2]0"
+level = "4s2.4p5.(2P*<3/2>).5p|2[1/2]|0"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "5p'[3/2]2"
+level = "4s2.4p5.(2P*<1/2>).5p|2[3/2]|2"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "5p'[1/2]0"
+level = "4s2.4p5.(2P*<1/2>).5p|2[1/2]|0"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "6p[5/2]2"
+level = "4s2.4p5.(2P*<3/2>).6p|2[5/2]|2"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "6p[3/2]2"
+level = "4s2.4p5.(2P*<3/2>).6p|2[3/2]|2"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "shekhtman_2020/qdos_basis3"
+row = "6p[1/2]0"
+level = "4s2.4p5.(2P*<3/2>).6p|2[1/2]|0"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.strengths]]
+dataset = "dakka_2018/sigma0_2p6"
+row = "2p6"
+level = "4s2.4p5.(2P*<3/2>).5p|2[3/2]|2"
+convention = "sigma0"
+reason = "Paschen 2p6 = 5p[3/2]2, as the record states."
+
+[[Kr.strengths]]
+dataset = "khambatta_1988/sigma0_6p32_2"
+row = "6p[3/2]2"
+level = "4s2.4p5.(2P*<3/2>).6p|2[3/2]|2"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Kr.photoionisation]]
+dataset = "dakka_2018/photoionization_2p6"
+level = "4s2.4p5.(2P*<3/2>).5p|2[3/2]|2"
+
+[[Kr.photoionisation]]
+dataset = "khambatta_1988/sigma_pi_6p32_2"
+level = "4s2.4p5.(2P*<3/2>).6p|2[3/2]|2"
+
+[[Kr.photoionisation]]
+dataset = "bokor_1980/sigma_pi_6p32_2"
+level = "4s2.4p5.(2P*<3/2>).6p|2[3/2]|2"
+
+[[Kr.photoionisation]]
+dataset = "geohegan_1986/sigma_pi_6p_Kr"
+level = "4s2.4p5.(2P*<3/2>).6p|2[3/2]|2"
+
+[[Kr.photoionisation]]
+dataset = "payne_1981/sigma_pi_Kr_6p12_0"
+level = "4s2.4p5.(2P*<3/2>).6p|2[1/2]|0"
+
+[[Kr.photoionisation]]
+dataset = "payne_1981/sigma_pi_Kr_5p12_0"
+level = "4s2.4p5.(2P*<3/2>).5p|2[1/2]|0"
+
+[[Kr.photoionisation]]
+dataset = "chang_1982/table2_5p"
+unassigned = "An LS-coupled 4p5 5p (1S), J = 0, not resolved by core."
+
+[[Kr.photoionisation]]
+dataset = "chang_1982/text_6p_Kr"
+unassigned = "An LS-coupled 4p5 6p (1S), J = 0, not resolved by core."
+
+[[Kr.photoionisation]]
+dataset = "hyman_1977/table1_5p"
+unassigned = "Averaged over J and the core state."
+
+[Xe]
+assessment = "checked"
+assessment_reason = "The 6p and 6p' levels: within one experiment, the measured ratios of J = 2 to J = 0 strengths follow the per-level convention (Drag et al. 1.38, per level 1.41), and Henriksson et al.'s TDDHF is 0.83 to 1.30 of Kroll and Bischel's and Drag et al.'s measurements (TC-952)."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 2, 9.594 eV"
+level = "5p5.(2P*<3/2>).6p|2[5/2]|2"
+convention = "per_level"
+reason = "The 6p and 7p rows, assigned by order within J and cluster: the lowest J = 2 row is 6p[5/2]2."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 2, 9.758 eV"
+level = "5p5.(2P*<3/2>).6p|2[3/2]|2"
+convention = "per_level"
+reason = "The second J = 2 row: 6p[3/2]2."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 0, 9.858 eV"
+level = "5p5.(2P*<3/2>).6p|2[1/2]|0"
+convention = "per_level"
+reason = "The lowest J = 0 row: 6p[1/2]0."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 2, 10.812 eV"
+level = "5p5.(2P*<3/2>).7p|2[5/2]|2"
+convention = "per_level"
+reason = "In the cluster where 7p and 6p' interleave, the J = 2 rows in order: 7p[5/2]2 (a J = 3 row beside it marks 7p)."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 2, 10.866 eV"
+level = "5p5.(2P*<3/2>).7p|2[3/2]|2"
+convention = "per_level"
+reason = "The next J = 2 row: 7p[3/2]2."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 2, 11.072 eV"
+level = "5p5.(2P*<1/2>).6p|2[3/2]|2"
+convention = "per_level"
+reason = "The highest J = 2 row of the cluster: 6p'[3/2]2; other assignments give 0.17 to 0.60 of Drag et al.'s measurement (TC-952)."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 0, 10.901 eV"
+level = "5p5.(2P*<3/2>).7p|2[1/2]|0"
+convention = "per_level"
+reason = "The lower J = 0 row of the cluster: 7p[1/2]0."
+
+[[Xe.strengths]]
+dataset = "henriksson_2005/tddhf_tpa_Xe"
+row = "J = 0, 11.187 eV"
+level = "5p5.(2P*<1/2>).6p|2[1/2]|0"
+convention = "per_level"
+reason = "The highest J = 0 row of the cluster: 6p'[1/2]0."
+
+[[Xe.strengths]]
+dataset = "kroll_1990/sigma_tot"
+row = "2p5"
+level = "5p5.(2P*<3/2>).6p|2[1/2]|0"
+convention = "sigma0"
+reason = "Paschen 2p5 = 6p[1/2]0."
+
+[[Xe.strengths]]
+dataset = "kroll_1990/sigma_tot"
+row = "2p6"
+level = "5p5.(2P*<3/2>).6p|2[3/2]|2"
+convention = "sigma0"
+reason = "Paschen 2p6 = 6p[3/2]2."
+
+[[Xe.strengths]]
+dataset = "kroll_1990/sigma_tot"
+row = "2p9"
+level = "5p5.(2P*<3/2>).6p|2[5/2]|2"
+convention = "sigma0"
+reason = "Paschen 2p9 = 6p[5/2]2."
+
+[[Xe.strengths]]
+dataset = "drag_2021/sigma_6p1_32_2"
+row = "6p'[3/2]2"
+level = "5p5.(2P*<1/2>).6p|2[3/2]|2"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Xe.strengths]]
+dataset = "drag_2021/sigma_6p1_12_0"
+row = "6p'[1/2]0"
+level = "5p5.(2P*<1/2>).6p|2[1/2]|0"
+convention = "sigma0"
+reason = "As the row names it."
+
+[[Xe.photoionisation]]
+dataset = "kroll_1990/photoionization_2p5"
+level = "5p5.(2P*<3/2>).6p|2[1/2]|0"
+
+[[Xe.photoionisation]]
+dataset = "kroll_1990/photoionization_2p6"
+level = "5p5.(2P*<3/2>).6p|2[3/2]|2"
+
+[[Xe.photoionisation]]
+dataset = "payne_1981/sigma_pi_Xe_6p12_0"
+level = "5p5.(2P*<3/2>).6p|2[1/2]|0"
+
+[[Xe.photoionisation]]
+dataset = "pindzola_1981/total_dfl"
+level = "5p5.(2P*<3/2>).6p|2[1/2]|0"
+
+[[Xe.photoionisation]]
+dataset = "pindzola_1981/total_dfv"
+level = "5p5.(2P*<3/2>).6p|2[1/2]|0"
+
+[[Xe.photoionisation]]
+dataset = "chang_1982/table2_6p"
+unassigned = "An LS-coupled 5p5 6p (1S), J = 0, not resolved by core."

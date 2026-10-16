@@ -1,0 +1,1016 @@
+citation = "E. S. Naves, M. A. Castro and T. L. Fonseca, \"Dynamic (hyper)polarizabilities of the ozone molecule: Coupled cluster calculations including vibrational corrections\", J. Chem. Phys. 134, 054315 (2011)"
+doi = "10.1063/1.3552072"
+library = "Naves_2011_DynamicHyperPolarizabilities"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Coupled-cluster theory with the d-aug-cc-pVTZ basis (chosen against aug- and \
+t-aug-cc-pVTZ, Table I). Electronic contributions: analytical CCSD linear, quadratic and \
+cubic response (DALTON; orbital-unrelaxed) at omega = 0, 0.0239, 0.0428 and 0.0656 \
+hartree, at the CCSD-optimised geometry (R = 1.249 A, 117.7 deg) and at the \
+experimental geometry (R = 1.272 A, 116.8 deg); static CCSD and CCSD(T) by finite fields \
+(orbital-relaxed) at the experimental geometry; dynamic CCSD(T) estimated by the \
+multiplicative scheme p_CCSD(T)(omega) = p_CCSD(T)(0) / p_CCSD(0) x p_CCSD(omega) (Eq. 29). \
+Vibrational corrections by the Bishop-Kirtman perturbation-theoretical method to first \
+order (electrical + mechanical), at the CCSD level at the CCSD-optimised geometry with \
+CCSD harmonic frequencies (761, 1273, 1255 cm^-1, 6-15 % above experiment) and \
+finite-difference property and cubic-force-field derivatives (GAUSSIAN 03 normal \
+coordinates scaled by lambda = 0.01, 0.02 for the potential) (pp. 054315-1 to -4)."""
+notes = """Identity checked against the first page (PDF page 2, journal p. 054315-1): \
+Naves, Castro and Fonseca, J. Chem. Phys. 134, 054315 (2011). PDF page 1 is the \
+publisher's cover; journal pages 054315-1 to -8 = PDF pages 2-9. O3 only. Atomic \
+units throughout.
+
+THE ZERO-POINT VIBRATIONAL CORRECTION (Table IV, image checked, p. 054315-6), mean \
+polarizability, CCSD, optimised geometry, a.u.:
+  omega (hartree)   zpva [ ]^{1,0}   zpva [ ]^{0,1}   pv [mu^2]^{0,0}
+  0                 1.43             0.03             1.41
+  0.0239            1.45             0.03             -0.08
+  0.0428            1.51             0.03             -0.02
+  0.0656            1.63             0.03             -0.01
+  infinity          -                -                0.00
+[ ]^{1,0} = (1/4) sum_a (1/omega_a) d^2 alpha / dQ_a^2 (Eq. 5, the curvature term) and \
+[ ]^{0,1} = -(1/4) sum_ab (1/(omega_a^2 omega_b)) (d^3V/dQ_a^2 dQ_b) (d alpha / dQ_b) \
+(Eq. 6, the anharmonicity term); the zpva is their sum (Eq. 4), so the TOTAL static \
+zpva is 1.43 + 0.03 = 1.46 a.u. 'The total zpva correction represents approximately 8% \
+of the electronic contribution' (p. 054315-6; 1.46/17.12 = 8.5 %, 1.46/19.33 = 7.6 %). \
+The pv column is the pure vibrational (infrared) term [mu^2]^{0,0} (Eq. 7, 10): 1.41 \
+a.u. static, negligible at optical frequencies.
+- Kumar and Thakkar's (kumar_2011) '1.43 au' is the [ ]^{1,0} term alone. So is Naves \
+et al.'s own best estimate: 'given by the sum of the electronic contribution computed at \
+the CCSD(T) level at the experimental geometry and the zpva correction computed at the \
+CCSD level at the optimized geometry, is 18.55 a.u.' (p. 054315-7) = 17.12 + 1.43 (with \
+1.46 it would be 18.58).
+- Sharipov et al. (sharipov_2017, Table 2) tabulate Naves's values as ZPV 0.216 A^3 = \
+1.46 a.u. (the total) and PV 0.209 A^3 = 1.41 a.u.; their own ZPV is 0.013 A^3 = 0.088 \
+a.u. from DFT (B97-2) geometries and frequencies with MP4 polarizabilities, and they \
+call their O3 treatment inadequate for its multireference ground state (sharipov_2017 \
+notes).
+- What in this paper bears on the difference (the paper does not compare): (i) the \
+corrections are CCSD at the CCSD-optimised geometry, whose harmonic frequencies are 6, \
+12 and 15 % above experiment (p. 054315-4; the [ ]^{1,0} term scales as 1/omega_a, so \
+experimental frequencies would raise it, all else equal); (ii) the property derivatives \
+are those of CCSD, which is far from converged for O3: orbital relaxation alone lowers \
+the static mean by 15 % (19.77 -> 16.74) and the authors state that 'Since the zpva \
+correction was calculated at the optimized geometry and does not include contributions \
+of the connected triple excitations, some inaccuracy is expected for this correction' \
+(p. 054315-7); (iii) the zpva's frequency dependence (1.43 to 1.63 over 0-0.0656 \
+hartree) follows the curvature of alpha(omega) near low-lying excited states (the CCSD \
+excitation energies 0.0839 and 0.0851 hartree, p. 054315-6). Whether the dynamic \
+derivatives are orbital-relaxed is not stated; since dynamic values in this paper come \
+only from the (orbital-unrelaxed) analytical CCSD response, the dynamic zpva presumably \
+is too (an inference, TC-190). A factor of 16 between 1.43 and 0.088 is not explained \
+by (i)-(iii) quantitatively; it needs a third calculation.
+- FORMAT NEED: no vocabulary quantity for a vibrational correction to the polarizability \
+(as in sharipov_2017); the values are recorded here, not as datasets.
+
+Electronic results (datasets, all 'check': clamped-nucleus, not the gas's polarizability): \
+Table III means at the four frequencies, CCSD at the optimised and experimental \
+geometries and CCSD(T) (experimental geometry; the dynamic values scaled by Eq. 29); \
+Table II's orbital-relaxed CCSD static mean. Static components (Table II, image checked): \
+CCSD(T) alpha_xx 29.73, alpha_yy 10.12, alpha_zz 11.50 (mean 17.12, checked); analytical \
+CCSD 33.21, 11.87, 14.22 (19.77). 'Comparisons between CCSD(T) results show that our \
+values for alpha-bar ... are 11% ... smaller than those obtained by Maroulis' \
+(maroulis_1999, 19.27) (p. 054315-5). The frequencies: 0.0239, 0.0428, 0.0656 hartree = \
+1906, 1064.6, 694.6 nm.
+
+Best estimate (text, p. 054315-7): 18.55 a.u., static, CCSD(T) electronic plus zpva, \
+without the pure vibrational term (the 'optical' static limit): dataset \
+'best_estimate'. Compared there with 'Two experimental results ... 18.90 a.u. \
+referenced by Mack and Muenter [maroulis_1994/mack_muenter] and ... 19.33 a.u. \
+referenced by Maroulis [maroulis_1999/hohm_refractivity]', 2 % and 4 % above it: both \
+already curated as reproductions, not extracted again.
+
+kumar_2011/static_i (17.12, CCSD(T)) reproduces this paper's ccsd_t_expt static value \
+(the original is now in the library).
+
+Not extracted (for a later phase): the first and second hyperpolarizabilities (Tables I, \
+II, III beta and gamma rows, V, VI), the dipole-moment-related definitions.
+
+THIRD-ORDER DATA (2026-09-26; the gamma tables are now extracted, the beta \
+rows and Table V are not). Definitions (Eq. 1, p. 054315-2): E(F) = -mu F - (1/2) alpha \
+F F - (1/6) beta F F F - (1/24) gamma F F F F: the T convention; the molecule in the xz \
+plane, z the C2 axis (as maroulis_1994/1999). Processes: THG gamma(-3w; w, w, w), dc-SHG \
+(eshg), IDRI gamma(-w; w, w, -w) (kerr), dc-K gamma(-w; w, 0, 0) (dc_kerr). Isotropic \
+means (p. 054315-3): Eq. (24) gamma-bar = (1/15) sum (gamma_aabb + gamma_abab + \
+gamma_abba) for THG, dc-SHG and IDRI (component 'parallel'); Eq. (25) gamma-bar = (1/10) \
+sum (3 gamma_abab - gamma_abba) for dc-K (component 'K', the dc Kerr combination). \
+Frequencies 0.0239, 0.0428, 0.0656 hartree (1906, 1064.6, 694.6 nm).
+
+ELECTRONIC gamma (Table III, p. 054315-4, image checked): CCSD analytic response at \
+the optimised and experimental geometries, and CCSD(T) at the experimental geometry, \
+static by finite field (orbital-relaxed) and dynamic by the multiplicative scheme Eq. \
+(29), p_CCSD(T)(w) = p_CCSD(T)(0)/p_CCSD(0) x p_CCSD(w), applied component by component. \
+Static gamma-bar: 1857, 1876, 2710 (CCSD(T), 'practically doubling', p. 054315-8; \
+maroulis_1999 has 2642). RESONANCES: the two lowest CCSD excitation energies are \
+0.0839 and 0.0851 hartree and the third 0.1966 (p. 054315-5): 'This excludes the dc-SHG \
+and THG values at w = 0.0428 and w = 0.0656 hartree' from the smooth regime; 'The \
+remarkable THG value at the experimental geometry for w = 0.0656 hartree [18626, and \
+CCSD(T) 449600] is consequence of the proximity between 3w and the third electronic \
+excitation energy'. Those rows are kept in the files and excluded from the datasets \
+(excluded_rows). 'the dynamic CCSD(T) results quoted in Table III for frequencies \
+smaller than the resonance frequencies are reasonable estimates' (p. 054315-5). The \
+IDRI and dc-K values are smooth at all three frequencies (IDRI CCSD(T): 2738, 2792, 2942 \
+against 2710 static), although 2w passes the 0.084 hartree states at 0.0428 hartree for \
+IDRI too (the authors do not comment; these states carry little two-photon strength, \
+apparently).
+
+STATIC COMPONENTS: Table I (basis sets aug-, d-aug-, t-aug-cc-pVTZ, HF and CCSD; images \
+checked; datasets gamma_basis_*) and Table II (analytic CCSD, finite-field CCSD \
+orbital-unrelaxed and relaxed, CCSD(T) relaxed; datasets gamma_method_*). Orbital \
+relaxation lowers the CCSD gamma-bar from 1876 to 1437 and triples raise it to 2710 \
+(gamma_xxxx 2798 -> 8756): 'The large contributions of the triple excitations obtained \
+for the hyperpolarizabilities of O3 seem to be related to the multireference nature of \
+this molecule' (p. 054315-4). Checked: (8756 + 539 + 778 + 2 (794 + 721 + 224))/5 = \
+2710.2.
+
+VIBRATIONAL gamma (Table VI, p. 054315-7, image checked; datasets gamma_pv_<process>_<term>): \
+the pure vibrational terms [alpha^2]^(0,0), [mu beta]^(0,0), [mu^2 alpha]^(1,0), [mu^2 \
+alpha]^(0,1) (Eqs. 14-17, Bishop-Kirtman first order), CCSD/d-aug-cc-pVTZ at the \
+optimised geometry, static and at the three frequencies and the w -> infinity limit \
+(row 'inf', kept in the files but excluded from the datasets: no finite wavelength). Their sum is the pure vibrational gamma (not printed as a total): static \
+217 + 686 + 650 - 6 = 1547, 'more than 80 % of electronic counterpart' (p. 054315-7); \
+IDRI 144 - 43 + 0 + 0 = 101 at 0.0239 (145 - 5 = 140 at 0.0656); dc-SHG -5 + 148 - 13 = 130 \
+at 0.0239; THG negligible; dc-K 472 at 0.0239 ('approximately 25 %'). The zpva correction \
+to gamma is 'negligible': static [ ]^(1,0) = -4, [ ]^(0,1) = +4 a.u. (p. 054315-7). \
+Library's merged cells rebuilt from the image in the script (assertion on each cell). \
+No uncertainty is stated for any gamma."""
+
+[[datasets]]
+id = "ccsd_t_expt"
+material = "O3"
+file = "O3/naves_2011__ccsd_t_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III 'CCSD(T) Expt. Geom.': electronic mean polarizability, static (finite-field, orbital-relaxed CCSD(T)) and at 0.0239, 0.0428, 0.0656 hartree (scaled from CCSD by Eq. 29). Clamped nuclei at the experimental geometry: no zpva (add 1.43-1.63 a.u., source notes). No uncertainty stated."
+[datasets.parameters]
+electronic_only = true
+
+[[datasets]]
+id = "ccsd_expt"
+material = "O3"
+file = "O3/naves_2011__ccsd_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III 'CCSD Expt. Geom.': analytical (orbital-unrelaxed) CCSD response at the experimental geometry; electronic only."
+[datasets.parameters]
+electronic_only = true
+
+[[datasets]]
+id = "ccsd_opt"
+material = "O3"
+file = "O3/naves_2011__ccsd_opt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III 'CCSD Opt. Geom.': analytical CCSD response at the CCSD-optimised geometry (the geometry of the vibrational corrections); electronic only; 2-3 % below the experimental-geometry values."
+[datasets.parameters]
+electronic_only = true
+
+[[datasets]]
+id = "ccsd_relaxed_static"
+material = "O3"
+file = "O3/naves_2011__ccsd_relaxed_static.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II 'CCSD Orbital relaxed' (finite field), static mean at the experimental geometry: 16.74, 15 % below the orbital-unrelaxed 19.77 (p. 054315-4); electronic only."
+[datasets.parameters]
+electronic_only = true
+
+[[datasets]]
+id = "best_estimate"
+material = "O3"
+points = [["alpha_bar", "0", "18.55"]]
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "p. 054315-7: 'Our best estimation for this property, given by the sum of the electronic contribution computed at the CCSD(T) level at the experimental geometry and the zpva correction computed at the CCSD level at the optimized geometry, is 18.55 a.u.' = 17.12 + 1.43 (the [ ]^{1,0} term only; with the total zpva 1.46 it would be 18.58). Static, vibrationally averaged, without the pure vibrational (infrared) 1.41 a.u.: the quantity a photoabsorption DOSD's S(-2) estimates. No uncertainty stated."
+
+[[datasets]]
+id = "gamma_static_ccsd_opt"
+material = "O3"
+file = "O3/naves_2011__gamma_static_ccsd_opt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma-bar, CCSD, optimised geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_static_ccsd_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_static_ccsd_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma-bar, CCSD, experimental geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_static_ccsd_t_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_static_ccsd_t_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma-bar, CCSD(T), experimental geometry (static finite-field; dynamic by Eq. 29); rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_ccsd_opt"
+material = "O3"
+file = "O3/naves_2011__gamma_thg_ccsd_opt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "0.0428" = "2w above the lowest excitation energies (0.0839, 0.0851 hartree): excluded by the authors from the smooth regime (p. 054315-5)", "0.0656" = "near resonance (2w, and for THG 3w near 0.1966 hartree): excluded by the authors (p. 054315-5)" }
+notes = "Table III, THG gamma-bar (Eq. 24), CCSD, optimised geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_thg_ccsd_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_thg_ccsd_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "0.0428" = "2w above the lowest excitation energies (0.0839, 0.0851 hartree): excluded by the authors from the smooth regime (p. 054315-5)", "0.0656" = "near resonance (2w, and for THG 3w near 0.1966 hartree): excluded by the authors (p. 054315-5)" }
+notes = "Table III, THG gamma-bar (Eq. 24), CCSD, experimental geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_thg_ccsd_t_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_thg_ccsd_t_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "0.0428" = "2w above the lowest excitation energies (0.0839, 0.0851 hartree): excluded by the authors from the smooth regime (p. 054315-5)", "0.0656" = "near resonance (2w, and for THG 3w near 0.1966 hartree): excluded by the authors (p. 054315-5)" }
+notes = "Table III, THG gamma-bar (Eq. 24), CCSD(T), experimental geometry (static finite-field; dynamic by Eq. 29); rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_eshg_ccsd_opt"
+material = "O3"
+file = "O3/naves_2011__gamma_eshg_ccsd_opt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "0.0428" = "2w above the lowest excitation energies (0.0839, 0.0851 hartree): excluded by the authors from the smooth regime (p. 054315-5)", "0.0656" = "near resonance (2w, and for THG 3w near 0.1966 hartree): excluded by the authors (p. 054315-5)" }
+notes = "Table III, dc-SHG gamma-bar (Eq. 24), CCSD, optimised geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_eshg_ccsd_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_eshg_ccsd_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "0.0428" = "2w above the lowest excitation energies (0.0839, 0.0851 hartree): excluded by the authors from the smooth regime (p. 054315-5)", "0.0656" = "near resonance (2w, and for THG 3w near 0.1966 hartree): excluded by the authors (p. 054315-5)" }
+notes = "Table III, dc-SHG gamma-bar (Eq. 24), CCSD, experimental geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_eshg_ccsd_t_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_eshg_ccsd_t_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "0.0428" = "2w above the lowest excitation energies (0.0839, 0.0851 hartree): excluded by the authors from the smooth regime (p. 054315-5)", "0.0656" = "near resonance (2w, and for THG 3w near 0.1966 hartree): excluded by the authors (p. 054315-5)" }
+notes = "Table III, dc-SHG gamma-bar (Eq. 24), CCSD(T), experimental geometry (static finite-field; dynamic by Eq. 29); rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_kerr_ccsd_opt"
+material = "O3"
+file = "O3/naves_2011__gamma_kerr_ccsd_opt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, IDRI gamma-bar (Eq. 24), the intensity-dependent index, CCSD, optimised geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_kerr_ccsd_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_kerr_ccsd_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, IDRI gamma-bar (Eq. 24), the intensity-dependent index, CCSD, experimental geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_kerr_ccsd_t_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_kerr_ccsd_t_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, IDRI gamma-bar (Eq. 24), the intensity-dependent index, CCSD(T), experimental geometry (static finite-field; dynamic by Eq. 29); rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_dc_kerr_ccsd_opt"
+material = "O3"
+file = "O3/naves_2011__gamma_dc_kerr_ccsd_opt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, dc-K gamma-bar (Eq. 25), CCSD, optimised geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "gamma_dc_kerr_ccsd_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_dc_kerr_ccsd_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, dc-K gamma-bar (Eq. 25), CCSD, experimental geometry; rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "gamma_dc_kerr_ccsd_t_expt"
+material = "O3"
+file = "O3/naves_2011__gamma_dc_kerr_ccsd_t_expt.csv"
+table = "tbl_a5631d2a2b1a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, dc-K gamma-bar (Eq. 25), CCSD(T), experimental geometry (static finite-field; dynamic by Eq. 29); rows omega in hartree. Electronic, clamped nuclei; add the pure vibrational terms (gamma_pv_*) for the total."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "gamma_basis_xxxx"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_xxxx.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma_xxxx (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "gamma_basis_xxyy"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_xxyy.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma_xxyy (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxyy"
+
+[[datasets]]
+id = "gamma_basis_xxzz"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_xxzz.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma_xxzz (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "gamma_basis_yyyy"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_yyyy.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma_yyyy (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyyy"
+
+[[datasets]]
+id = "gamma_basis_yyzz"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_yyzz.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma_yyzz (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyzz"
+
+[[datasets]]
+id = "gamma_basis_zzzz"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_zzzz.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma_zzzz (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "gamma_basis_mean"
+material = "O3"
+file = "O3/naves_2011__gamma_basis_mean.csv"
+table = "tbl_4dfc86410542"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I, static gamma-bar (x, z in the molecular plane, z the C2 axis); rows <basis>_<method>: aug-, d-aug-, t-aug-cc-pVTZ with HF and analytic CCSD, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_method_xxxx"
+material = "O3"
+file = "O3/naves_2011__gamma_method_xxxx.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_xxxx (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "gamma_method_xxyy"
+material = "O3"
+file = "O3/naves_2011__gamma_method_xxyy.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_xxyy (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxyy"
+
+[[datasets]]
+id = "gamma_method_xxzz"
+material = "O3"
+file = "O3/naves_2011__gamma_method_xxzz.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_xxzz (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "gamma_method_yyyy"
+material = "O3"
+file = "O3/naves_2011__gamma_method_yyyy.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_yyyy (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyyy"
+
+[[datasets]]
+id = "gamma_method_yyzz"
+material = "O3"
+file = "O3/naves_2011__gamma_method_yyzz.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_yyzz (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyzz"
+
+[[datasets]]
+id = "gamma_method_zzzz"
+material = "O3"
+file = "O3/naves_2011__gamma_method_zzzz.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_zzzz (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "gamma_method_mean"
+material = "O3"
+file = "O3/naves_2011__gamma_method_mean.csv"
+table = "tbl_6e45fd86f96d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma-bar (x, z in the molecular plane, z the C2 axis); rows CCSD_analytical, CCSD_ff_unrelaxed, CCSD_ff_relaxed, CCSD(T)_ff_relaxed (finite field), d-aug-cc-pVTZ, experimental geometry. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_pv_static_alpha2_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_static_alpha2_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, the pure vibrational term [alpha^2]^(0,0) of the static gamma-bar; static. CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+term = "alpha2_00"
+
+[[datasets]]
+id = "gamma_pv_static_mubeta_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_static_mubeta_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, the pure vibrational term [mu beta]^(0,0) of the static gamma-bar; static. CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+term = "mubeta_00"
+
+[[datasets]]
+id = "gamma_pv_static_mu2alpha_10"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_static_mu2alpha_10.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(1,0) of the static gamma-bar; static. CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_10"
+
+[[datasets]]
+id = "gamma_pv_static_mu2alpha_01"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_static_mu2alpha_01.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(0,1) of the static gamma-bar; static. CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_01"
+
+[[datasets]]
+id = "gamma_pv_thg_alpha2_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_thg_alpha2_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [alpha^2]^(0,0) of the THG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+term = "alpha2_00"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_thg_mubeta_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_thg_mubeta_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu beta]^(0,0) of the THG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+term = "mubeta_00"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_thg_mu2alpha_10"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_thg_mu2alpha_10.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(1,0) of the THG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_10"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_thg_mu2alpha_01"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_thg_mu2alpha_01.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(0,1) of the THG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_01"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_eshg_alpha2_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_eshg_alpha2_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [alpha^2]^(0,0) of the dc-SHG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+term = "alpha2_00"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_eshg_mubeta_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_eshg_mubeta_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu beta]^(0,0) of the dc-SHG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+term = "mubeta_00"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_eshg_mu2alpha_10"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_eshg_mu2alpha_10.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(1,0) of the dc-SHG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_10"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_eshg_mu2alpha_01"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_eshg_mu2alpha_01.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(0,1) of the dc-SHG gamma-bar (Eq. 24); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_01"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_kerr_alpha2_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_kerr_alpha2_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [alpha^2]^(0,0) of the IDRI gamma-bar (Eq. 24), the intensity-dependent index; rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+term = "alpha2_00"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_kerr_mubeta_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_kerr_mubeta_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu beta]^(0,0) of the IDRI gamma-bar (Eq. 24), the intensity-dependent index; rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+term = "mubeta_00"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_kerr_mu2alpha_10"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_kerr_mu2alpha_10.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(1,0) of the IDRI gamma-bar (Eq. 24), the intensity-dependent index; rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_10"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_kerr_mu2alpha_01"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_kerr_mu2alpha_01.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(0,1) of the IDRI gamma-bar (Eq. 24), the intensity-dependent index; rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_01"
+component = "parallel"
+
+[[datasets]]
+id = "gamma_pv_dc_kerr_alpha2_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_dc_kerr_alpha2_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [alpha^2]^(0,0) of the dc-K gamma-bar (Eq. 25); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+term = "alpha2_00"
+component = "K"
+
+[[datasets]]
+id = "gamma_pv_dc_kerr_mubeta_00"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_dc_kerr_mubeta_00.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu beta]^(0,0) of the dc-K gamma-bar (Eq. 25); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+term = "mubeta_00"
+component = "K"
+
+[[datasets]]
+id = "gamma_pv_dc_kerr_mu2alpha_10"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_dc_kerr_mu2alpha_10.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(1,0) of the dc-K gamma-bar (Eq. 25); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_10"
+component = "K"
+
+[[datasets]]
+id = "gamma_pv_dc_kerr_mu2alpha_01"
+material = "O3"
+file = "O3/naves_2011__gamma_pv_dc_kerr_mu2alpha_01.csv"
+table = "tbl_cb8015ae109a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+excluded_rows = { "inf" = "the w -> infinity limit of the term (no finite wavelength); kept in the file as printed" }
+notes = "Table VI, the pure vibrational term [mu^2 alpha]^(0,1) of the dc-K gamma-bar (Eq. 25); rows omega = 0.0239, 0.0428, 0.0656 hartree and 'inf' (the w -> infinity limit). CCSD/d-aug-cc-pVTZ, optimised geometry, Bishop-Kirtman perturbation theory. One term of gamma^pv (the sum of the four terms is the pure vibrational gamma)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+term = "mu2alpha_01"
+component = "K"

@@ -1,0 +1,211 @@
+citation = "C. J. G. J. Uiterwaal, D. Xenakis, D. Charalambidis, P. Maragakis, H. Schroder and P. Lambropoulos, \"Generalized multiphoton-ionization cross sections of the rare gases for 500-fs, 248.6-nm pulses\", Phys. Rev. A 57, 392 (1998)"
+doi = "10.1103/PhysRevA.57.392"
+library = "Uiterwaal_1998_GeneralizedMultiphotonIonization"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Photoelectron (ATI) spectra of He, Ne, Ar and Kr in 500 fs, 248.6 nm pulses \
+(a hybrid dye-excimer laser, 4.99 eV photons, 15 cm focusing lens, a 20 cm magnetically \
+shielded electron time-of-flight spectrometer; ion yields with the same instrument or a \
+confined-volume reflection time-of-flight spectrometer, p. 393). The maximum \
+ponderomotive shift of the first ATI peak against the laser energy rises linearly and \
+stops where the atom saturates; with a single-rate model, dP/dt = [1 - P] sigma_(N) \
+Phi^N (Eqs. 1-3), and the shift U_p = 5.7e-15 I (eV, W/cm2; Eq. 7) the plateau gives \
+the saturation intensity I_sat, defined by sigma_(N) (I_sat/hbar omega)^N t_eff = 1 \
+(Eq. 9), and the generalized cross section (Eqs. 13-14), t_eff = int F^N dt the \
+effective duration. 'As our method relies on photoelectron kinetic energy measurements \
+and not on laser intensity measurements' (p. 393), neither needs the focal spot or an \
+intensity calibration; the order N is the lowest-order perturbative one (He 5, Ar 4, \
+Kr 3)."""
+notes = """Journal pp. 392-400 = PDF pages 1-9. Identity checked against the first page.
+
+WHAT IS TAKEN. The saturation intensities of He, Ar and Kr printed in the text (Sec. \
+VI, p. 399: 'I_sat,He = (6.9 +- 0.8) x 10^14 W cm^-2, I_sat,Ar = (1.0 +- 0.15) x 10^14 \
+W cm^-2, and I_sat,Kr = (2.4 +- 0.6) x 10^13 W cm^-2'), and the experimental \
+generalized cross sections of Table I (p. 399, tbl_02103ed7cb91; cells checked against \
+the table image): He sigma_(5), Ar sigma_(4), Kr sigma_(3), and Xe sigma_(3), the last \
+'calculated with Eq. (5) using the saturation intensity taken from the Xe-ion yield \
+curve given in Ref. [6]' (Charalambidis et al., Phys. Rev. A 50, R2822 (1994)), 'with \
+errors including uncertainties in the intensity calibration': not from the \
+ponderomotive shift. Not taken: Table I's scaling-law, TDSE, TDHF and MQDT values \
+(other papers' theory), and neon, for which 'a single-rate description is not valid' \
+(the ion yield's slope reaches 6.4 +- 0.4 near saturation, against N = 5; four-photon \
+resonances with the 3p, 3p' manifold, p. 397), so the table prints '?'.
+
+THE ERRORS OF TABLE I are printed as superscript and subscript, the superscript \
+negative for He, Ar and Kr: '(0.9^-0.4_+9)', '(1.3^-0.5_+1)', '(1.2^-0.6_+1.7)', and \
+'(50^+350_-45)' for Xe. Read as +9/-0.4, +1/-0.5, +1.7/-0.6 and +350/-45 (the larger \
+error upwards, as sigma ~ I_sat^-N with N = 3 to 5 makes it); the schema holds no \
+asymmetric uncertainty, so they are the parameters error_plus and error_minus, in the \
+printed scale. The intensities' errors are not defined (level not stated).
+
+CONSISTENCY (tools/extract/uiterwaal_1998.py). Eq. (9) with a sech^2 pulse of 500 fs \
+FWHM reproduces Table I from the saturation intensities: He 0.91e-152, Ar 1.57e-116 \
+(printed 1.3e-116), Kr 1.22e-82.
+
+WHAT THEY TEST. The rate's multiphoton limit: the Keldysh parameter at I_sat is about \
+1.8 (He), 3.7 (Ar) and 7 (Kr); 248.6 nm is below the default's range (350 nm) \
+(TC-853)."""
+
+[[datasets]]
+id = "isat_He"
+material = "He"
+table = "text"
+points = [["He", "248.6", "6.9", "0.8"]]
+scale = 1e14
+quantity = "saturation_intensity"
+unit = "W/cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 399 (Sec. VI): I_sat,He = (6.9 +- 0.8) x 10^14 W/cm2, from the plateau of the maximum ponderomotive shift (Fig. 6) through Eq. (14), the 5-photon order; defined by Eq. (9). Independent of an intensity calibration (the record's notes). The error is not defined."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 5
+definition = "sigma_(N) (I_sat / hbar omega)^N t_eff = 1 (Eq. 9): the peak intensity at which a single rate sigma_(N) Phi^N ionises 1 - 1/e of the atoms over the pulse, t_eff = int F^N dt"
+
+[[datasets]]
+id = "isat_Ar"
+material = "Ar"
+table = "text"
+points = [["Ar", "248.6", "1.0", "0.15"]]
+scale = 1e14
+quantity = "saturation_intensity"
+unit = "W/cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 399 (Sec. VI): I_sat,Ar = (1.0 +- 0.15) x 10^14 W/cm2, from the plateau of the maximum ponderomotive shift (Fig. 6) through Eq. (14), the 4-photon order; defined by Eq. (9). Independent of an intensity calibration (the record's notes). The error is not defined."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 4
+definition = "sigma_(N) (I_sat / hbar omega)^N t_eff = 1 (Eq. 9): the peak intensity at which a single rate sigma_(N) Phi^N ionises 1 - 1/e of the atoms over the pulse, t_eff = int F^N dt"
+
+[[datasets]]
+id = "isat_Kr"
+material = "Kr"
+table = "text"
+points = [["Kr", "248.6", "2.4", "0.6"]]
+scale = 1e13
+quantity = "saturation_intensity"
+unit = "W/cm2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 399 (Sec. VI): I_sat,Kr = (2.4 +- 0.6) x 10^13 W/cm2, from the plateau of the maximum ponderomotive shift (Fig. 6) through Eq. (14), the 3-photon order; defined by Eq. (9). Independent of an intensity calibration (the record's notes). The error is not defined."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 3
+definition = "sigma_(N) (I_sat / hbar omega)^N t_eff = 1 (Eq. 9): the peak intensity at which a single rate sigma_(N) Phi^N ionises 1 - 1/e of the atoms over the pulse, t_eff = int F^N dt"
+
+[[datasets]]
+id = "sigma5_He"
+material = "He"
+table = "text"
+points = [["sigma5", "248.6", "0.9"]]
+scale = 1e-152
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm10 s4"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 399), row Experiment: sigma_(5)^He printed with errors +9/-0.4 in the same scale (the record's notes on their printing), from the ponderomotive shift (Eq. 13). The rate is sigma_(N) Phi^N, Phi the photon flux in cm^-2 s^-1."
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 5
+error_plus = 9
+error_minus = 0.4
+error_definition = "as printed in Table I, superscript and subscript read as plus and minus (the record's notes); not a defined confidence level"
+
+[[datasets]]
+id = "sigma4_Ar"
+material = "Ar"
+table = "text"
+points = [["sigma4", "248.6", "1.3"]]
+scale = 1e-116
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 399), row Experiment: sigma_(4)^Ar printed with errors +1/-0.5 in the same scale (the record's notes on their printing), from the ponderomotive shift (Eq. 13). The rate is sigma_(N) Phi^N, Phi the photon flux in cm^-2 s^-1."
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 4
+error_plus = 1
+error_minus = 0.5
+error_definition = "as printed in Table I, superscript and subscript read as plus and minus (the record's notes); not a defined confidence level"
+
+[[datasets]]
+id = "sigma3_Kr"
+material = "Kr"
+table = "text"
+points = [["sigma3", "248.6", "1.2"]]
+scale = 1e-82
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 399), row Experiment: sigma_(3)^Kr printed with errors +1.7/-0.6 in the same scale (the record's notes on their printing), from the ponderomotive shift (Eq. 13). The rate is sigma_(N) Phi^N, Phi the photon flux in cm^-2 s^-1."
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 3
+error_plus = 1.7
+error_minus = 0.6
+error_definition = "as printed in Table I, superscript and subscript read as plus and minus (the record's notes); not a defined confidence level"
+
+[[datasets]]
+id = "sigma3_Xe"
+material = "Xe"
+table = "text"
+points = [["sigma3", "248.6", "50"]]
+scale = 1e-82
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I (p. 399), row Experiment: sigma_(3)^Xe printed with errors +350/-45 in the same scale (the record's notes on their printing), calculated by the authors with Eq. (5) from the saturation intensity of Ref. [6]'s Xe-ion yield curve (Charalambidis et al. 1994), with errors including the intensity calibration; NOT from the ponderomotive shift. The rate is sigma_(N) Phi^N, Phi the photon flux in cm^-2 s^-1."
+[datasets.parameters]
+wavelength_nm = 248.6
+photon_energy_ev = 4.99
+pulse_fs = 500
+pulse_fs_definition = "FWHM of the intensity, '~500-fs' (p. 393); modelled by the authors as a hyperbolic-secant-squared pulse of 500 fs FWHM (Figs. 7, 8, p. 397), which defines t_eff"
+pulse_shape = "sech2"
+polarization = "linear"
+photons = 3
+error_plus = 350
+error_minus = 45
+error_definition = "as printed in Table I, superscript and subscript read as plus and minus (the record's notes); not a defined confidence level"

@@ -1,0 +1,39 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "Ne"
+description = "Neon: Shelton's 1990 ESHG at 1064 and 1319 nm and Shelton 1992's corrected 488-515 nm values, with Haettig & Jorgensen's CCSD Kerr, ESHG and THG dispersion (one free scale) for the process dependence."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 0.07]
+validators = [
+    "wahlstrand_2012b/n2_Ne",
+    "wang_2013/n2_Ne",
+    "borzsonyi_2010/n2_Ne",
+    "lehmeier_1985/gamma_thg_Ne",
+    "ward_1969/chi_i_Ne",
+    "buckingham_1968/gamma_Ne",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_Ne_present"
+
+[[fitted]]
+key = "shelton_1992/gamma_present"
+
+[[fitted]]
+key = "hattig_1998/ccsd_kerr_Ne"
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003
+
+[[fitted]]
+key = "hattig_1998/ccsd_eshg_Ne"
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003
+
+[[fitted]]
+key = "hattig_1998/ccsd_thg_Ne"
+range_nm = [650.0, "inf"]   # THG output above 217 nm: the fourth-order form holds
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003

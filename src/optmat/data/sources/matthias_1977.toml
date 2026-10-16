@@ -1,0 +1,174 @@
+citation = "E. Matthias, R. A. Rosenberg, E. D. Poliakoff, M. G. White, S.-T. Lee and D. A. Shirley, \"Time resolved VUV spectroscopy using synchrotron radiation: fluorescent lifetimes of atomic Kr and Xe\", Chem. Phys. Lett. 52, 239-244 (1977)"
+doi = "10.1016/0009-2614(77)80532-0"
+library = "Matthias_1977_TimeResolvedVUV"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Resonance fluorescence after pulsed excitation by synchrotron radiation \
+(SPEAR/SSRP 8 degree line, 0.4 ns pulses every 780 ns; 1 m Seya-Namioka monochromator, \
+2 Angstrom band pass; LiF window, so excitation above 1050 Angstrom; light 97 % plane \
+polarised). Fluorescence on a CsI/LiF photomultiplier (1050-1850 Angstrom, no \
+wavelength selection) perpendicular to the beam and its polarisation; time-correlated \
+single-photon counting, time resolution about 1.8 ns. Gas at 1e-6 to 1e-5 Torr (99.995 \
+%, flowing); the decay fitted beyond the prompt (Rayleigh) peak, and the lifetimes \
+extrapolated linearly to zero pressure to remove radiation trapping (appendix: \
+Barrat's theory, tau = tau_0 + K L N)."""
+notes = """Chem. Phys. Lett. 52(2), 239-244 (1 December 1977) = PDF pages 1-6 (journal \
+page = PDF page + 238); a scanned (raster) PDF. Identity checked on the first page (PDF \
+p. 1: journal, volume 52 number 2, title, authors, Lawrence Berkeley Laboratory, \
+received 9 August 1977, page 239) on 2026-10-09. Tables 1 and 2 checked cell by cell \
+against the table images.
+
+LEVELS. The paper names the levels in jl notation in the abstract and the figures \
+('tau(5s[3/2]1) = 3.18 +- 0.12 ns, tau(5s[1/2]1) = 3.11 +- 0.12 ns; for Xe, \
+tau(6s[3/2]1) = 3.46 +- 0.09 ns; tau(6s[1/2]1) = 3.44 +- 0.07 ns', p. 239, the primes \
+of the 2P1/2-core levels omitted) and as 3P1 and 1P1 in the tables (captions: 'the two \
+transitions 3P1 -> 1S0 and 1P1 -> 1S0'). Mapping to NIST (src/optmat/data/external/ \
+nist_asd/<gas>_I_lines.tsv): 3P1 = 5s[3/2]1 = 4p5(2P*3/2)5s 2[3/2]*, J = 1 (Kr, \
+123.5838 nm) and 6s[3/2]1 = 5p5(2P*3/2)6s 2[3/2]*, J = 1 (Xe, 146.9610 nm); 1P1 = \
+5s'[1/2]1 = 4p5(2P*1/2)5s 2[1/2]*, J = 1 (Kr, 116.4867 nm) and 6s'[1/2]1 = \
+5p5(2P*1/2)6s 2[1/2]*, J = 1 (Xe, 129.5588 nm). Evidence: the column headings' \
+wavelengths (Xe 1470 and 1296 Angstrom, Kr 1165 Angstrom; Kr 1263 is a misprint, \
+erratum), Fig. 2's '5s(3/2)1 1237 A' and '5s(1/2)1 1166 A', and the J = 1 levels being \
+the only s levels with a resonance line.
+
+TAKEN (oscillator_strength, use = check): the f values of the row 'this work', the absorption oscillator \
+strengths of the two resonance lines, 'Cumulative errors' (p. 242: pressure, about 2 \
+%, and statistics, about 1 %). They are derived from the lifetimes, and three of the \
+four are not the f of the paper's own printed lifetime (below), so they are a check, \
+not a fit input.
+
+FINDING (internal consistency, the extraction script's checks): every other row of \
+both tables (39 pairs of tau and f, measurements and theory) obeys the Ladenburg \
+relation f = eps0 m_e c lambda^2 (g_u/g_l) / (2 pi e^2 tau), g_u/g_l = 3, at the NIST \
+wavelengths to within 1 % (Table 1's Ref. [15], 2.3 %). The row 'this work' does not: \
+Kr 3P1, tau = 3.18 ns gives f = 0.216 against the printed 0.208; Xe 3P1, 3.46 ns gives \
+0.281 against 0.263; Xe 1P1, 3.44 ns gives 0.219 against 0.229; only Kr 1P1 (3.11 ns, \
+0.196 against 0.197) agrees. The printed f values correspond to lifetimes of 3.30, \
+3.69 and 3.30 ns. The lifetimes are what the paper measured (abstract, Figs. 3-4, \
+text), so its f values are the doubtful ones; the paper gives no conversion.
+
+FINDING (NIST). NIST's A values (accuracy A+, tp_ref T7227) give 1/A = 3.356 ns (Kr \
+3P1), 3.236 ns (Kr 1P1), 3.663 ns (Xe 3P1) and 3.953 ns (Xe 1P1), each level's only \
+decay (the levels below are the ground state and the J = 0, 2 metastables of the same \
+configuration); the measured 3.18 +- 0.12, 3.11 +- 0.12, 3.46 +- 0.09 and 3.44 +- \
+0.07 ns are 5.2, 3.9, 5.5 and 13.0 % shorter. NIST's f values are 0.205, 0.189, 0.265 \
+and 0.191 against the printed 0.208, 0.197, 0.263 and 0.229: within 1.5 % for Kr 3P1 \
+and Xe 3P1, 4 % for Kr 1P1, 20 % for Xe 1P1. Matthias et al. call Anderson's \
+zero-field level crossing (Table 2, Ref. [5]: 3.79 +- 0.12 ns, f = 0.256; 3.17 +- 0.19 \
+ns, f = 0.238) 'the most reliable set of earlier results' (p. 242).
+
+FINDING (gornik_1981). Gornik et al. take 'The f value of the 1S0 -> 6s|3/2|1 \
+transition is 0.28 (Ref. 18)' (their Table I caption), Ref. 18 being this paper. This \
+paper prints 0.263 +- 0.007; 0.28 is the Ladenburg f of its lifetime 3.46 ns (0.281), \
+and also the printed f of Table 2's Refs. [8] (Chashchina and Shreider, 0.28 +- 0.05) \
+and [19] (Gruzdev, intermediate coupling, 0.28). Gornik et al. (Matthias a co-author) \
+evidently converted the lifetime. NIST's 0.265 is 5 % below 0.28.
+
+TAKEN (radiative_lifetime, TC-1011; use = primary): the radiative lifetimes, the \
+paper's primary results: Table 1 'this work' Kr 3.18 +- 0.12 (3P1) and 3.11 +- 0.12 \
+ns (1P1) (tau_Kr); Table 2 'this work' Xe 3.46 +- 0.09 (3P1) and 3.44 +- 0.07 ns (1P1) \
+(tau_Xe); and the Xe 5p5(2P3/2)5d J = 1 level (1192 Angstrom; NIST \
+5p5.(2P*<3/2>).5d 2[3/2]* J = 1, 119.2038 nm), 'tau = 1.40 +- 0.07 ns' (p. 242 and \
+abstract; in no table; tau_5d_Xe, inline). The same values are in the abstract. \
+NIST's A values for the 5d[3/2]1 level (119.20 nm, 5.93e8 s-1, B+; four infrared \
+lines 0.16-2.40e6 s-1) give 1/sum A = 1.68 ns, 20 % above 1.40 ns.
+
+NOT TAKEN (reproduced): the other rows of Tables 1 and 2, other papers' lifetimes and \
+f values (Turner; Anderson; Wilkinson; Chashchina and Shreider; Vaughan; Kim et al.; \
+Griffin and Hutcherson; Geiger; Lu; de Jongh and van Eck; Wieme and Mortier; Delage \
+and Carette; Dow and Knox; Gruzdev; Gruzdev and Loginov), not needed beside NIST; \
+Table 2's Ref. [7] f '0.260 +- 0.20' is probably +- 0.020 (as printed in the image). \
+Not taken: the figures (decay curves, lifetime against pressure: the slopes' ratios, \
+Kr 1.2 +- 0.2 : 1 and Xe 1.9 +- 0.5 : 1.0 +- 0.3 : 1.0, appendix)."""
+
+[[datasets]]
+id = "f_Kr"
+material = "Kr"
+file = "Kr/matthias_1977__f_Kr.csv"
+table = "tbl_a11562a4d474"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 242), row 'this work': absorption oscillator strengths of the resonance lines 3P1 -> 1S0 (5s[3/2]1, 123.58 nm) and 1P1 -> 1S0 (5s'[1/2]1, 116.49 nm), derived from the measured lifetimes. Row: the line; x: the column heading as printed (the 3P1 heading's 1263 Angstrom corrected to 1236 by an erratum). The 3P1 value is 0.963 times the Ladenburg f of the row's own lifetime (record notes); NIST: 0.205 and 0.189."
+[datasets.parameters]
+method = "resonance fluorescence lifetimes after synchrotron excitation, extrapolated to zero pressure; f from the lifetime"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_Xe"
+material = "Xe"
+file = "Xe/matthias_1977__f_Xe.csv"
+table = "tbl_b97e7277fc92"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table 2 (p. 242), row 'this work': absorption oscillator strengths of the resonance lines 3P1 -> 1S0 (6s[3/2]1, 146.96 nm) and 1P1 -> 1S0 (6s'[1/2]1, 129.56 nm), derived from the measured lifetimes. Row: the line; x: the column heading as printed. The values are 0.937 (3P1) and 1.043 (1P1) times the Ladenburg f of the row's own lifetimes (record notes); NIST: 0.265 and 0.191. gornik_1981 quotes 0.28 for 3P1 from this paper."
+[datasets.parameters]
+method = "resonance fluorescence lifetimes after synchrotron excitation, extrapolated to zero pressure; f from the lifetime"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[errata]]
+dataset = "f_Kr"
+row = "3P1"
+column = "x"
+printed = "^3f(1263\\AA)"
+corrected = "^3f(1236\\AA)"
+reason = "The heading's wavelength of the Kr 3P1 -> 1S0 line has its digits transposed: the line is at 1235.84 Angstrom."
+evidence = "NIST ASD Kr I 4p6 1S0 - 4p5(2P*3/2)5s 2[3/2]* J = 1, 123.5838 nm (src/optmat/data/external/nist_asd/Kr_I_lines.tsv); the paper's Fig. 2 labels 5s(3/2)1 '1237 A'; Table 1's other rows (e.g. Turner, 4.14 ns and 0.166) satisfy the Ladenburg relation at 1236 Angstrom and not at 1263 (which gives 0.173)."
+
+[[datasets]]
+id = "tau_Kr"
+material = "Kr"
+file = "Kr/matthias_1977__tau_Kr.csv"
+table = "tbl_a11562a4d474"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 242), row 'this work', also the abstract: the lifetimes of 3P1 = 5s[3/2]1 (4p5.(2P*<3/2>).5s 2[3/2]* J = 1) and 1P1 = 5s'[1/2]1 (4p5.(2P*<1/2>).5s 2[1/2]* J = 1), whose only decay is the resonance line. Row: the level; x: the column heading as printed. 'Cumulative errors' (pressure about 2 %, statistics about 1 %; p. 242), level not stated. NIST 1/A: 3.356 and 3.236 ns."
+[datasets.parameters]
+method = "resonance fluorescence after pulsed synchrotron excitation (1e-6 to 1e-5 Torr), time-correlated photon counting, extrapolated linearly to zero pressure to remove radiation trapping"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "tau_Xe"
+material = "Xe"
+file = "Xe/matthias_1977__tau_Xe.csv"
+table = "tbl_b97e7277fc92"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 242), row 'this work', also the abstract: the lifetimes of 3P1 = 6s[3/2]1 (5p5.(2P*<3/2>).6s 2[3/2]* J = 1) and 1P1 = 6s'[1/2]1 (5p5.(2P*<1/2>).6s 2[1/2]* J = 1). Row: the level; x: the column heading as printed. 'Cumulative errors', level not stated. NIST 1/A: 3.663 and 3.953 ns; Anderson's level crossing (Table 2, Ref. [5]) 3.79 and 3.17 ns. gornik_1981's f = 0.28 is the 3P1 lifetime converted (record notes)."
+[datasets.parameters]
+method = "resonance fluorescence after pulsed synchrotron excitation (1e-6 to 1e-5 Torr), time-correlated photon counting, extrapolated linearly to zero pressure to remove radiation trapping"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "tau_5d_Xe"
+material = "Xe"
+table = "text"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "primary"
+points = [["5d[3/2]1", "5p5(2P3/2)5d J = 1", "1.40", "0.07"]]
+notes = "Text p. 242 ('The lifetime of the 5p5(2P3/2)5d J = 1 state at 1192 A in Xe was determined in the same manner. The result tau = 1.40 +- 0.07 ns') and the abstract ('the Xe 5p5[3/2]5d[3/2] J = 1 state'); Fig. 4's triangles. NIST level 5p5.(2P*<3/2>).5d 2[3/2]* J = 1 (119.2038 nm); NIST 1/sum A = 1.68 ns. Level of the uncertainty not stated."
+[datasets.parameters]
+method = "resonance fluorescence after pulsed synchrotron excitation (1e-6 to 1e-5 Torr), time-correlated photon counting, extrapolated linearly to zero pressure to remove radiation trapping"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"

@@ -1,0 +1,20 @@
+Title:
+eigrun_eta15 - He Tong-Lin SAE field-free spectrum; Eta=15; BOX=40
+
+#define BOX 40
+#define TongLinHeV (1.0+1.231*exp(-0.662*Q)-1.325*Q*exp(-1.236*Q)-0.231*exp(-0.480*Q))/Q
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1
+ Eta,15,-1,1,assocLegendre{Phi}
+ Rn,14,0.,2.,polynomial,3
+ Rn,12,2.,20.,RpowL*polynomial,4
+ Rn,12,20.,BOX,RpowL*polynomial,5
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.15,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinHeV>
+
+Eigen: select=SmallReal[80]

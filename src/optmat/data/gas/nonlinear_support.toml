@@ -1,0 +1,428 @@
+# The resonance limits of each gas's hyperpolarizability support record (OEP 5; TC-870).
+#
+# Each gas names the datasets of its limits and says why each was chosen.
+# `tools/fit/nonlinear_support_record.py` derives the records from this file, the stored
+# fits and the datasets, and writes `data/gas/models/nonlinear_support/<gas>.json`; a
+# test checks they are fresh. The resonances are those of the electronic response in
+# the electric-dipole approximation, from the ground state (OEP 5, section 4).
+#
+# Keys of a gas:
+#   ionisation            the `ionization_energy` dataset (`source/dataset`, or
+#                         `source/dataset#row` for one row of a table)
+#   ionisation_registers  the register entries of that choice
+#   ionisation_qualifications
+#   [<gas>.e1]            the lowest included level dipole-coupled to the ground state
+#   [<gas>.e2]            the lowest included level two dipole steps from it, for one
+#                         linear polarisation common to all legs
+#   [<gas>.e2_any]        the same for any polarisation
+#   [<gas>.missing]       why each of e1, e2, e2_any that is not given is missing
+#
+# Keys of a limit:
+#   kind            `level`, `band_origin` or `absorption_evidence`
+#   candidates      level: `level_energy` datasets; band_origin: chains `a + b + ...` of
+#                   `electronic_state_energy` datasets whose 0-0 bands (`nu00_cm1`) sum to
+#                   the state's origin above the ground state's v = 0. The limit is the
+#                   smallest candidate.
+#   dataset, at,    absorption_evidence: the measured dataset, the end of its sampled
+#   detected        window taken (`lowest` or `highest` wavenumber), and whether
+#                   absorption was detected there
+#   registers       the register entries of the choice
+#   qualifications  why, and the assumptions behind it
+
+[He]
+ionisation = "nist_asd_2026/ie_He_I"
+ionisation_registers = ["TC-443"]
+ionisation_qualifications = ["NIST ASD 5.12, to He+ 1s 2S1/2."]
+
+[He.e1]
+kind = "level"
+candidates = ["nist_asd_2026/level_He_1s2p_1P1"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "1s2p 1P1, the lowest odd-parity singlet J = 1 level: the lowest dipole-coupled to the 1s2 1S0 ground level. The triplets are spin-forbidden.",
+    "NIST ASD brackets the value as semi-empirical; the dataset is use = check (TC-862).",
+]
+
+[He.e2]
+kind = "level"
+candidates = ["nist_asd_2026/level_He_1s2s_1S0"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "1s2s 1S0, the lowest even-parity singlet level of J = 0 or 2, two dipole steps from the ground level through the 1snp 1P1 levels. 1s2s 3S1 is spin-forbidden.",
+    "NIST ASD brackets the value as semi-empirical; the dataset is use = check (TC-862).",
+]
+
+[He.e2_any]
+kind = "level"
+candidates = ["nist_asd_2026/level_He_1s2s_1S0"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "As e2: a singly excited 1snl singlet has J = L = l, which is even for even parity, so no singly excited level is even with J = 1, and any polarisation adds no candidate.",
+]
+
+[Ne]
+ionisation = "nist_asd_2026/ie_Ne_I"
+ionisation_registers = ["TC-443"]
+ionisation_qualifications = ["NIST ASD 5.12, to Ne+ 2p5 2P3/2."]
+
+[Ne.e1]
+kind = "level"
+candidates = ["nist_asd_2026/level_Ne_odd_J1"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest odd-parity J = 1 level, 2p5 3s [3/2]1: the lowest dipole-coupled to the 2p6 1S0 ground level.",
+]
+
+[Ne.e2]
+kind = "level"
+candidates = ["nist_asd_2026/level_Ne_even_J0", "nist_asd_2026/level_Ne_even_J2"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest even-parity levels of J = 0 and 2 (2p5 3p), reached by two photons through the symmetric part of the two-photon tensor. An even J = 1 level is reached only through its antisymmetric part, which vanishes for one common linear polarisation (DeMille et al. 1999, eqs. 1-4).",
+]
+
+[Ne.e2_any]
+kind = "level"
+candidates = [
+    "nist_asd_2026/level_Ne_even_J0",
+    "nist_asd_2026/level_Ne_even_J1",
+    "nist_asd_2026/level_Ne_even_J2",
+]
+registers = ["TC-862", "TC-865", "TC-869"]
+qualifications = [
+    "The smallest of the lowest even-parity levels of J = 0, 1 and 2: for any polarisation the antisymmetric part of the two-photon tensor reaches J = 1. It vanishes for two photons of equal frequency.",
+]
+
+[Ar]
+ionisation = "nist_asd_2026/ie_Ar_I"
+ionisation_registers = ["TC-443"]
+ionisation_qualifications = ["NIST ASD 5.12, to Ar+ 3p5 2P3/2."]
+
+[Ar.e1]
+kind = "level"
+candidates = ["nist_asd_2026/level_Ar_odd_J1"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest odd-parity J = 1 level, 3p5 4s [3/2]1: the lowest dipole-coupled to the 3p6 1S0 ground level.",
+]
+
+[Ar.e2]
+kind = "level"
+candidates = ["nist_asd_2026/level_Ar_even_J0", "nist_asd_2026/level_Ar_even_J2"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest even-parity levels of J = 0 and 2 (3p5 4p), reached by two photons through the symmetric part of the two-photon tensor. An even J = 1 level is reached only through its antisymmetric part, which vanishes for one common linear polarisation (DeMille et al. 1999, eqs. 1-4).",
+]
+
+[Ar.e2_any]
+kind = "level"
+candidates = [
+    "nist_asd_2026/level_Ar_even_J0",
+    "nist_asd_2026/level_Ar_even_J1",
+    "nist_asd_2026/level_Ar_even_J2",
+]
+registers = ["TC-862", "TC-865", "TC-869"]
+qualifications = [
+    "The smallest of the lowest even-parity levels of J = 0, 1 and 2: for any polarisation the antisymmetric part of the two-photon tensor reaches J = 1. It vanishes for two photons of equal frequency.",
+]
+
+[Kr]
+ionisation = "nist_asd_2026/ie_Kr_I"
+ionisation_registers = ["TC-443"]
+ionisation_qualifications = ["NIST ASD 5.12, to Kr+ 4p5 2P3/2."]
+
+[Kr.e1]
+kind = "level"
+candidates = ["nist_asd_2026/level_Kr_odd_J1"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest odd-parity J = 1 level, 4p5 5s [3/2]1: the lowest dipole-coupled to the 4p6 1S0 ground level.",
+]
+
+[Kr.e2]
+kind = "level"
+candidates = ["nist_asd_2026/level_Kr_even_J0", "nist_asd_2026/level_Kr_even_J2"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest even-parity levels of J = 0 and 2 (4p5 5p), reached by two photons through the symmetric part of the two-photon tensor. An even J = 1 level is reached only through its antisymmetric part, which vanishes for one common linear polarisation (DeMille et al. 1999, eqs. 1-4).",
+]
+
+[Kr.e2_any]
+kind = "level"
+candidates = [
+    "nist_asd_2026/level_Kr_even_J0",
+    "nist_asd_2026/level_Kr_even_J1",
+    "nist_asd_2026/level_Kr_even_J2",
+]
+registers = ["TC-862", "TC-865", "TC-869"]
+qualifications = [
+    "The smallest of the lowest even-parity levels of J = 0, 1 and 2: for any polarisation the antisymmetric part of the two-photon tensor reaches J = 1. It vanishes for two photons of equal frequency.",
+]
+
+[Xe]
+ionisation = "nist_asd_2026/ie_Xe_I"
+ionisation_registers = ["TC-443"]
+ionisation_qualifications = ["NIST ASD 5.12, to Xe+ 5p5 2P3/2."]
+
+[Xe.e1]
+kind = "level"
+candidates = ["nist_asd_2026/level_Xe_odd_J1"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest odd-parity J = 1 level, 5p5 6s [3/2]1: the lowest dipole-coupled to the 5p6 1S0 ground level.",
+]
+
+[Xe.e2]
+kind = "level"
+candidates = ["nist_asd_2026/level_Xe_even_J0", "nist_asd_2026/level_Xe_even_J2"]
+registers = ["TC-862", "TC-865"]
+qualifications = [
+    "The lowest even-parity levels of J = 0 and 2 (5p5 6p), reached by two photons through the symmetric part of the two-photon tensor. An even J = 1 level is reached only through its antisymmetric part, which vanishes for one common linear polarisation (DeMille et al. 1999, eqs. 1-4).",
+    "Lehmberg et al.'s two-photon resonance with 6p[1/2]0, at a 249.6 nm fundamental, lies above this level (TC-854).",
+]
+
+[Xe.e2_any]
+kind = "level"
+candidates = [
+    "nist_asd_2026/level_Xe_even_J0",
+    "nist_asd_2026/level_Xe_even_J1",
+    "nist_asd_2026/level_Xe_even_J2",
+]
+registers = ["TC-862", "TC-865", "TC-869"]
+qualifications = [
+    "The smallest of the lowest even-parity levels of J = 0, 1 and 2: for any polarisation the antisymmetric part of the two-photon tensor reaches J = 1. It vanishes for two photons of equal frequency.",
+]
+
+[H2]
+ionisation = "liu_2009/ie_para_H2"
+ionisation_registers = ["TC-547"]
+ionisation_qualifications = ["Liu et al. 2009, N = 0 to N+ = 0."]
+
+[H2.e1]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_H2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "B 1Sigma_u+, the lowest singlet state dipole-coupled to X 1Sigma_g+; its origin is the B-X 0-0 band.",
+]
+
+[H2.e2]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_H2_E + nist_webbook_2026/state_H2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "EF 1Sigma_g+, the lowest gerade singlet state, two-photon allowed from X 1Sigma_g+; its origin is the E-B 0-0 band plus the B-X 0-0 band.",
+]
+
+[H2.e2_any]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_H2_E + nist_webbook_2026/state_H2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "As e2: no curated state below EF is reached only through the antisymmetric part of the two-photon tensor.",
+]
+
+[D2]
+ionisation = "liu_2010/ie_ortho_D2"
+ionisation_registers = ["TC-542"]
+ionisation_qualifications = ["Liu et al. 2010, N = 0 to N+ = 0."]
+
+[D2.e1]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_D2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "B 1Sigma_u+, the lowest singlet state dipole-coupled to X 1Sigma_g+; its origin is the B-X 0-0 band.",
+]
+
+[D2.e2]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_D2_E + nist_webbook_2026/state_D2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "EF 1Sigma_g+, the lowest gerade singlet state, two-photon allowed from X 1Sigma_g+; its origin is the E-B 0-0 band plus the B-X 0-0 band.",
+]
+
+[D2.e2_any]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_D2_E + nist_webbook_2026/state_D2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "As e2: no curated state below EF is reached only through the antisymmetric part of the two-photon tensor.",
+]
+
+[N2]
+ionisation = "trickl_1989/ie_N2"
+ionisation_registers = ["TC-542"]
+ionisation_qualifications = ["Trickl et al. 1989, rotationless to rotationless."]
+
+[N2.e1]
+kind = "band_origin"
+candidates = [
+    "nist_webbook_2026/state_N2_b + nist_webbook_2026/state_N2_a + nist_webbook_2026/state_N2_ap",
+]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "b 1Pi_u, the lowest singlet state dipole-coupled to X 1Sigma_g+ (a' 1Sigma_u- is dipole-forbidden from X, A 3Sigma_u+ spin-forbidden); its origin is the chain of 0-0 bands b-a, a-a' and a'-X.",
+]
+
+[N2.e2]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_N2_a + nist_webbook_2026/state_N2_ap"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "a 1Pi_g, the lowest gerade singlet state, two-photon allowed from X 1Sigma_g+; its origin is the chain of 0-0 bands a-a' and a'-X. A discrete vibronic band system, narrower than the limit suggests.",
+]
+
+[N2.e2_any]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_N2_a + nist_webbook_2026/state_N2_ap"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "As e2: a 1Pi_g is reached through both parts of the two-photon tensor, and no curated state below it only through the antisymmetric part.",
+]
+
+[O2]
+ionisation = "tonkyn_1989/ie_O2"
+ionisation_registers = ["TC-542"]
+ionisation_qualifications = ["Tonkyn et al. 1989, to X 2Pi_(1/2)g J+ = 1/2."]
+
+[O2.e1]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_O2_B"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "B 3Sigma_u-, the lowest state dipole-coupled to X 3Sigma_g- (the Schumann-Runge bands); its origin is the B-X 0-0 band. A 3Sigma_u+ is dipole-forbidden from X, and a 1Delta_g and b 1Sigma_g+ are spin-forbidden: not counted (TC-865).",
+]
+
+[O2.e2]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_O2_C"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "C 3Pi_g, two-photon allowed from X 3Sigma_g-; its origin is the C-X 0-0 band. A discrete vibronic band system, narrower than the limit suggests.",
+    "The spin-forbidden a 1Delta_g and b 1Sigma_g+ states, reached by pair differences inside the range, are not counted (TC-865, OEP 5 Q6).",
+]
+
+[O2.e2_any]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_O2_C"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "As e2: no curated triplet gerade state below C is reached only through the antisymmetric part of the two-photon tensor.",
+]
+
+[CO2]
+ionisation = "wang_1988/adiabatic_CO2#X"
+ionisation_registers = ["TC-542", "TC-547"]
+ionisation_qualifications = ["Wang et al. 1988, to X 2Pi_3/2g (000)."]
+
+[CO2.missing]
+e1 = "CO2's absorption onset is not curated: its weak absorption below the first band (about 147.5 nm, Inn et al. 1953; 8.38 eV, Chan et al. 1993) needs a curated dataset (TC-865)."
+e2 = "No two-photon state of CO2 is curated (TC-865)."
+e2_any = "No two-photon state of CO2 is curated (TC-865)."
+
+[CH4]
+ionisation = "berkowitz_1987/adiabatic_CH4"
+ionisation_registers = ["TC-542", "TC-547"]
+ionisation_qualifications = ["Berkowitz et al. 1987, the photoion onset at 78 K."]
+
+[CH4.e1]
+kind = "absorption_evidence"
+dataset = "ityaksov_2008/rayleigh_CH4"
+at = "highest"
+detected = false
+registers = ["TC-865", "TC-869"]
+qualifications = [
+    "Ityaksov et al. detected no absorption at their sampled wavelengths, the shortest 197.7 nm. This is not a proven absence of lower electronic resonances, nor a bound on the lowest level.",
+]
+
+[CH4.missing]
+e2 = "No two-photon state of CH4 is curated (TC-865)."
+e2_any = "No two-photon state of CH4 is curated (TC-865)."
+
+[SF6]
+ionisation = "frost_1967/first_threshold_SF6"
+ionisation_registers = ["TC-542", "TC-547"]
+ionisation_qualifications = ["Frost et al. 1967, the first retarding-potential threshold; its kind is not stated by the paper."]
+
+[SF6.e1]
+kind = "absorption_evidence"
+dataset = "ityaksov_2008/rayleigh_SF6"
+at = "highest"
+detected = false
+registers = ["TC-865", "TC-869"]
+qualifications = [
+    "Ityaksov et al. detected no absorption at their sampled wavelengths, the shortest 197.7 nm. This is not a proven absence of lower electronic resonances, nor a bound on the lowest level; SF6's onset is not curated.",
+]
+
+[SF6.missing]
+e2 = "No two-photon state of SF6 is curated (TC-865)."
+e2_any = "No two-photon state of SF6 is curated (TC-865)."
+
+[CO]
+ionisation = "potts_1974/hei_CO#3sigma"
+ionisation_registers = ["TC-547", "TC-683"]
+ionisation_qualifications = ["No adiabatic energy of CO is curated: the vertical 14.01 eV, the 3sigma band maximum (Turner et al. 1970, as Potts & Williams 1974 reprint it), stands for both."]
+
+[CO.e1]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_CO_A"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "A 1Pi, the lowest singlet state dipole-coupled to X 1Sigma+ (a 3Pi is spin-forbidden); its origin is the A-X 0-0 band.",
+]
+
+[CO.e2]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_CO_A"]
+registers = ["TC-863", "TC-865"]
+qualifications = [
+    "Without an inversion centre, A 1Pi is also two-photon allowed, and is the lowest such singlet state. I 1Sigma- is reached only through the antisymmetric part of the two-photon tensor, which vanishes for one common linear polarisation.",
+]
+
+[CO.e2_any]
+kind = "band_origin"
+candidates = ["nist_webbook_2026/state_CO_A", "nist_webbook_2026/state_CO_I"]
+registers = ["TC-863", "TC-865", "TC-869"]
+qualifications = [
+    "The smaller of A 1Pi and I 1Sigma-: for any polarisation the antisymmetric part of the two-photon tensor reaches I.",
+]
+
+[N2O]
+ionisation = "berkowitz_1977/adiabatic_N2O"
+ionisation_registers = ["TC-542", "TC-547"]
+ionisation_qualifications = ["Berkowitz & Eland 1977, to X 2Pi_3/2."]
+
+[N2O.e1]
+kind = "absorption_evidence"
+dataset = "chan_1994/intervals_present"
+at = "lowest"
+detected = true
+registers = ["TC-865", "TC-869"]
+qualifications = [
+    "5.70 eV is the lower boundary of Chan et al.'s integration over N2O's B 1Delta band: absorption is detected above it, but it is not an onset or a level.",
+]
+
+[N2O.missing]
+e2 = "No two-photon state of N2O is curated (TC-865)."
+e2_any = "No two-photon state of N2O is curated (TC-865)."
+
+[O3]
+ionisation = "mahla_2025/expt_willitsch_O3#2B2 (4b2^-1)"
+ionisation_registers = ["TC-865"]
+ionisation_qualifications = ["The lower of Mahla et al.'s two measured thresholds (12.66 eV)."]
+
+[O3.e1]
+kind = "absorption_evidence"
+dataset = "serdyuchenko_2014/this_work_223"
+at = "lowest"
+detected = true
+registers = ["TC-865", "TC-869"]
+qualifications = [
+    "O3 absorbs throughout the curated table, 543.7-1046.8 nm (the Chappuis and Wulf bands), inside its declared range. 1046.8 nm is the end of the curated table (Serdyuchenko et al. measured 213-1100 nm), not an onset.",
+]
+
+[O3.missing]
+e2 = "No two-photon state of O3 is curated (TC-865)."
+e2_any = "No two-photon state of O3 is curated (TC-865)."

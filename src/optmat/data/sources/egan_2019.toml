@@ -1,0 +1,635 @@
+citation = "P. F. Egan, J. A. Stone, J. K. Scherschligt, and A. H. Harvey, J. Vac. Sci. Technol. A 37, 031603 (2019)"
+doi = "10.1116/1.5092185"
+library = "Egan_2019_MeasuredRelationshipBetween"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Heterodyne laser refractometry in the MIRE triple-cell apparatus (NIST), \
+He-Ne laser at 632.9908(2) nm, on the isotherm T_90 = 293.15 K (thermodynamic T = \
+293.1529(13) K with T - T_90 = 2.9(4) mK). Pressure from transducers calibrated in \
+situ against helium refractivity at a known temperature (the helium relation from ab \
+initio theory), so the pressure is thermodynamic, not mechanical. Refractivity \
+measured at 50-500 kPa in 30 kPa steps; p adjusted to the isotherm with (dp/dT)_rho \
+from REFPROP; Eq. (3) p = c_1 (n-1) + c_2 (n-1)^2 + c_3 (n-1)^3 fitted by weighted \
+orthogonal distance regression (ODRPACK); A_R = 2RT/(3 c_1) with R = k_B N_A (CODATA \
+2017 values, exact in the 2019 SI) (pp. 4, 9-10). Gas grades: Ne 99.9995 %, Ar \
+99.9999 %, Xe 99.9995 %, N2 99.9999 %, CO2 99.9995 %, N2O 99.9999 % (p. 12)."""
+notes = """Page numbers are the library pdf pages (pdf page 1 is a publisher's cover). A_R is the zero-density molar refractivity (n^2 - 1)/((n^2 + 2) rho) at 632.9908 \
+nm, 'A_R = (4 pi/3) N_A (alpha + chi)', i.e. it includes the magnetic susceptibility \
+(p. 3). Wavelength: vacuum (632.9908 nm is the He-Ne vacuum wavelength; the paper does \
+not say 'vacuum' but gives the value to 0.2 pm). Temperature 293.1529 K: only nitrogen's \
+A_R is expected to depend on it (p. 13).
+
+Uncertainty: Table II, relative standard uncertainty of A_R (x 10^-6): combined Ne \
+16.0, Ar 15.1, Xe 15.5, N2 15.1, CO2 15.1, N2O 15.3, dominated by the pressure \
+calibration (14.2-14.5); T 4.5, n - 1 (5.2 Ne ... 0.5 Xe), impurity (3.0 Xe, 2.5 Ne), \
+regression (1.2-2.2). Table III's parenthesised values are these standard \
+uncertainties; Table I's bracketed c_1, c_2, c_3 uncertainties are statistical only. \
+A_R from Eq. (3) and from the exact Lorentz-Lorenz form agree to 8e-7 (p. 10); the \
+zero-density intercept of the EOS analysis (Fig. 4) agrees within 1e-6 (2e-6 for Ne).
+
+Checks (2026-09-25): 2RT/(3 c_1) with Table I's c_1 and T = 293.1529 K reproduces Table \
+III's A_R to 4e-7 for all six gases; Egan et al.'s 2016 nitrogen c_1^303K = \
+3.7764715e8 Pa at 302.919 K (p. 13) gives 4.446141, Table III's 4.446139(16).
+
+Table III's literature values are extracted as reproduced datasets (stored at '633 nm', \
+the caption's wording; the literature temperatures are not given, which matters for \
+N2 only). Egan and Stone's 2011 values are printed adjusted by +19.3e-6 A_R (note a; \
+check, see egan_2011). Egan et al. treat all tabulated uncertainties as standard \
+uncertainties (Birch's converted from 99 % with k = 2.58); whether Achtermann et al.'s \
+were one sigma is not discussed (achtermann_1991 states three standard deviations for \
+its virial coefficients).
+
+Text values: A_eps -> R of Ne 1.00028(6) and Ar 4.1956(6) cm^3/mol at 633 nm, derived by \
+the authors from Gaiser and Fellmuth's (2018) static A_eps with Kumar and Thakkar's \
+(2010) Cauchy moments and Barter et al.'s magnetic susceptibilities (p. 12; inline \
+dataset, check). Egan et al. 2016 (N2, 302.919 K, p < 180 kPa): c_1 = 3.7764715e8 Pa \
+(printed with an unmapped dot glyph over the last digits in the library text), c_2 = \
+-2.982e8 Pa, c_3 = 1.24e10 Pa (p. 13; not extracted). Temperature dependence of \
+N2's A_R (p. 13, not extracted: no quantity): Hohm and Kerl 78(47)e-7, Schmidt and \
+Moldover 62(11)e-7 (static), Harvey and Lemmon 82e-7, Buldakov et al. 48(1)e-7 \
+(optical, theory), Sharipov et al. 51e-7 (static, theory), a fit to Fig. 5's literature \
+137e-7, this work with Egan 2016 33e-7 (cm^3/mol)/K.
+
+Not extracted: the n - 1, p, T data (supplementary material, not in the library); Table \
+II (budget, summarised above)."""
+
+[[datasets]]
+id = "A_R_Ne"
+material = "Ne"
+file = "Ne/egan_2019__A_R_Ne.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_R = 1.000211(16) cm^3/mol at 632.9908 nm, 293.1529 K (= 2RT/(3 c_1), Table I). 38 ppm below Rourke's (2021) theory-plus-DCGT estimate 1.000249(14) (rourke_2021)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "A_R_Ar"
+material = "Ar"
+file = "Ar/egan_2019__A_R_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_R = 4.195685(64) cm^3/mol at 632.9908 nm, 293.1529 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "A_R_Xe"
+material = "Xe"
+file = "Xe/egan_2019__A_R_Xe.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_R = 10.39081(16) cm^3/mol at 632.9908 nm, 293.1529 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "A_R_N2"
+material = "N2"
+file = "N2/egan_2019__A_R_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_R = 4.446107(68) cm^3/mol at 632.9908 nm and 293.1529 K (nitrogen's A_R depends on temperature, p. 13)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "A_R_CO2"
+material = "CO2"
+file = "CO2/egan_2019__A_R_CO2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_R = 6.64343(11) cm^3/mol at 632.9908 nm, 293.1529 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "A_R_N2O"
+material = "N2O"
+file = "N2O/egan_2019__A_R_N2O.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III 'This work': A_R = 7.49921(12) cm^3/mol at 632.9908 nm, 293.1529 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 293.1529
+
+[[datasets]]
+id = "A_eps_to_R_Ne"
+material = "Ne"
+table = "text"
+points = [["632.9908", "632.9908", "1.00028", "0.00006"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["gaiser_2018", "kumar_2010", "C. Barter, R. G. Meisenheimer, and D. P. Stevenson, J. Phys. Chem. 64, 1312 (1960)"]
+notes = "p. 12: A_eps->R(Ne) = 1.00028(6) cm^3/mol, Gaiser and Fellmuth's static A_eps corrected to 633 nm with Kumar and Thakkar's Cauchy moments plus Barter et al.'s chi; 'uncertainty ... dominated by that of the dispersion correction'. Derived by the authors: a check (agrees with this work's 1.000211(16) within mutual uncertainties)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_eps_to_R_Ar"
+material = "Ar"
+table = "text"
+points = [["632.9908", "632.9908", "4.1956", "0.0006"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["gaiser_2018", "kumar_2010", "C. Barter, R. G. Meisenheimer, and D. P. Stevenson, J. Phys. Chem. 64, 1312 (1960)"]
+notes = "p. 12: A_eps->R(Ar) = 4.1956(6) cm^3/mol, as for neon; 'in excellent agreement with our result for argon'. A check."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1993_Ne"
+material = "Ne"
+file = "Ne/egan_2019__achtermann_1993_Ne.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, J. G. Hong, G. Magnus, R. A. Aziz, and M. J. Slaman, J. Chem. Phys. 98, 2308 (1993)"]
+notes = "Table III: A_R = 1.0012(0.0002) cm^3/mol, Achtermann et al. (Ref. 26); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "birch_1991_Ne"
+material = "Ne"
+file = "Ne/egan_2019__birch_1991_Ne.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table III: A_R = 1.00170(0.00008) cm^3/mol, Birch (Ref. 47); 'measured at 633 nm' (caption; stored at 633 nm). Birch stated '<= 2.0 parts per 10^4' at 99 % confidence; Egan et al. divide by 2.58 to give the standard uncertainty (p. 12)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_Ne"
+material = "Ne"
+file = "Ne/egan_2019__burns_1986_Ne.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table III: A_R = 0.999(0.001) cm^3/mol, Burns et al. (Ref. 45); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hohm_kerl_1990_Ne"
+material = "Ne"
+file = "Ne/egan_2019__hohm_kerl_1990_Ne.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["U. Hohm and K. Kerl, Mol. Phys. 69, 803 (1990)"]
+notes = "Table III: A_R = 1.001(0.001) cm^3/mol, Hohm and Kerl (Ref. 46); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1993_Ar"
+material = "Ar"
+file = "Ar/egan_2019__achtermann_1993_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, J. G. Hong, G. Magnus, R. A. Aziz, and M. J. Slaman, J. Chem. Phys. 98, 2308 (1993)"]
+notes = "Table III: A_R = 4.1955(0.0003) cm^3/mol, Achtermann et al. (Ref. 26); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "birch_1991_Ar"
+material = "Ar"
+file = "Ar/egan_2019__birch_1991_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table III: A_R = 4.1953(0.0003) cm^3/mol, Birch (Ref. 47); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "coulon_1981_Ar"
+material = "Ar"
+file = "Ar/egan_2019__coulon_1981_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. Coulon, G. Montixi, and R. Occelli, Can. J. Phys. 59, 1555 (1981)"]
+notes = "Table III: A_R = 4.1973(0.0005) cm^3/mol, Coulon et al. (Ref. 48); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "egan_2011_adjusted_Ar"
+material = "Ar"
+file = "Ar/egan_2019__egan_2011_adjusted_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["egan_2011"]
+notes = "Table III: A_R = 4.19553(0.00006) cm^3/mol, Egan and Stone (Ref. 50), note a: 'Adjusted by +19.3 x 10^-6 A_R from what was reported in Ref. 50 to account for two biases' (T - T90 = 2.9 mK, 9.9 ppm; a blundered helium-permeation extrapolation, 9.4 ppm; p. 12). The authors 'consider the present measurements to supersede those of 2011': a check, not the original; 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hohm_1994_Ar"
+material = "Ar"
+file = "Ar/egan_2019__hohm_1994_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["U. Hohm, Mol. Phys. 81, 157 (1994)"]
+notes = "Table III: A_R = 4.1962(0.0007) cm^3/mol, Hohm (Ref. 27); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hou_1994_Ar"
+material = "Ar"
+file = "Ar/egan_2019__hou_1994_Ar.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. Hou and R. Thalmann, Measurement 13, 307 (1994)"]
+notes = "Table III: A_R = 4.1955(0.0006) cm^3/mol, Hou and Thalmann (Ref. 49); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1993_Xe"
+material = "Xe"
+file = "Xe/egan_2019__achtermann_1993_Xe.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, J. G. Hong, G. Magnus, R. A. Aziz, and M. J. Slaman, J. Chem. Phys. 98, 2308 (1993)"]
+notes = "Table III: A_R = 10.345(0.002) cm^3/mol, Achtermann et al. (Ref. 26); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_Xe"
+material = "Xe"
+file = "Xe/egan_2019__burns_1986_Xe.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table III: A_R = 10.36(0.01) cm^3/mol, Burns et al. (Ref. 45); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hohm_trumper_1996_Xe"
+material = "Xe"
+file = "Xe/egan_2019__hohm_trumper_1996_Xe.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["U. Hohm and U. Trümper, Mol. Phys. 89, 943 (1996)"]
+notes = "Table III: A_R = 10.395(0.006) cm^3/mol, Hohm and Trümper (Ref. 51); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1986_N2"
+material = "N2"
+file = "N2/egan_2019__achtermann_1986_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, T. K. Bose, H. Rögener, and J. M. St-Arnaud, Int. J. Thermophys. 7, 709 (1986)"]
+notes = "Table III: A_R = 4.446(0.001) cm^3/mol, Achtermann et al. (Ref. 53); 'measured at 633 nm' (caption; stored at 633 nm). Temperature not given in the table (nitrogen's A_R depends on T; Fig. 5, figure only)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1991_N2"
+material = "N2"
+file = "N2/egan_2019__achtermann_1991_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["achtermann_1991"]
+notes = "Table III: A_R = 4.4464(0.0005) cm^3/mol, Achtermann et al. (Ref. 25); 'measured at 633 nm' (caption; stored at 633 nm). Temperature not given in the table (nitrogen's A_R depends on T; Fig. 5, figure only)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "birch_1991_N2"
+material = "N2"
+file = "N2/egan_2019__birch_1991_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table III: A_R = 4.4457(0.0003) cm^3/mol, Birch (Ref. 47); 'measured at 633 nm' (caption; stored at 633 nm). Temperature not given in the table (nitrogen's A_R depends on T; Fig. 5, figure only)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "egan_2011_adjusted_N2"
+material = "N2"
+file = "N2/egan_2019__egan_2011_adjusted_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["egan_2011"]
+notes = "Table III: A_R = 4.44594(0.00006) cm^3/mol, Egan and Stone (Ref. 50), note a: 'Adjusted by +19.3 x 10^-6 A_R from what was reported in Ref. 50 to account for two biases' (T - T90 = 2.9 mK, 9.9 ppm; a blundered helium-permeation extrapolation, 9.4 ppm; p. 12). The authors 'consider the present measurements to supersede those of 2011': a check, not the original; 'measured at 633 nm' (caption; stored at 633 nm). Temperature not given in the table (nitrogen's A_R depends on T; Fig. 5, figure only)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "egan_2016_N2"
+material = "N2"
+file = "N2/egan_2019__egan_2016_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. F. Egan, J. A. Stone, J. E. Ricker, and J. H. Hendricks, Rev. Sci. Instrum. 87, 053113 (2016)"]
+notes = "Table III: A_R = 4.446139(0.000016) cm^3/mol, Egan et al. (Ref. 12), Fabry-Perot refractometer at 302.919 K with a mercury manometer (p. 13); about 4 times more accurate than this work for N2; 'measured at 633 nm' (caption; stored at 633 nm). Temperature 302.919 K (p. 13)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 302.919
+
+[[datasets]]
+id = "hou_1994_N2"
+material = "N2"
+file = "N2/egan_2019__hou_1994_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. Hou and R. Thalmann, Measurement 13, 307 (1994)"]
+notes = "Table III: A_R = 4.4455(0.0006) cm^3/mol, Hou and Thalmann (Ref. 49); 'measured at 633 nm' (caption; stored at 633 nm). Temperature not given in the table (nitrogen's A_R depends on T; Fig. 5, figure only)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "montixi_1983_N2"
+material = "N2"
+file = "N2/egan_2019__montixi_1983_N2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. Montixi, R. Coulon, and R. Occelli, Can. J. Phys. 61, 473 (1983)"]
+notes = "Table III: A_R = 4.4454(0.0005) cm^3/mol, Montixi et al. (Ref. 52); 'measured at 633 nm' (caption; stored at 633 nm). Temperature not given in the table (nitrogen's A_R depends on T; Fig. 5, figure only)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "achtermann_1991_CO2"
+material = "CO2"
+file = "CO2/egan_2019__achtermann_1991_CO2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["achtermann_1991"]
+notes = "Table III: A_R = 6.644(0.001) cm^3/mol, Achtermann et al. (Ref. 25); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "birch_1991_CO2"
+material = "CO2"
+file = "CO2/egan_2019__birch_1991_CO2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table III: A_R = 6.6418(0.0005) cm^3/mol, Birch (Ref. 47); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hohm_1994_CO2"
+material = "CO2"
+file = "CO2/egan_2019__hohm_1994_CO2.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["U. Hohm, Mol. Phys. 81, 157 (1994)"]
+notes = "Table III: A_R = 6.646(0.003) cm^3/mol, Hohm (Ref. 27); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "birch_1991_N2O"
+material = "N2O"
+file = "N2O/egan_2019__birch_1991_N2O.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["birch_1991"]
+notes = "Table III: A_R = 7.5021(0.0007) cm^3/mol, Birch (Ref. 47); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hohm_1994_N2O"
+material = "N2O"
+file = "N2O/egan_2019__hohm_1994_N2O.csv"
+table = "tbl_6d3145de2fcf"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["U. Hohm, Mol. Phys. 81, 157 (1994)"]
+notes = "Table III: A_R = 7.5114(0.0006) cm^3/mol, Hohm (Ref. 27); 'measured at 633 nm' (caption; stored at 633 nm)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[formulas]]
+id = "pressure_Ne"
+material = "Ne"
+equation = "Eq. (3), p. 4, with Table I"
+printed = "p = c_1 (n - 1) + c_2 (n - 1)^2 + c_3 (n - 1)^3; c_1 x 10^-8 = 16.245968(29) Pa, c_2 x 10^-8 = 119.84(36) Pa, c_3 x 10^-10 = 32.5(98) Pa"
+variable = "n - 1: refractivity at 632.9908 nm; p: thermodynamic pressure in Pa"
+state = "T = 293.1529 K, p <= 500 kPa"
+density = "real"
+range = "632.9908 nm only; 50-500 kPa at 293.1529 K"
+coefficients = { c1 = "16.245968e8", c2 = "119.84e8", c3 = "32.5e10" }
+check = "A_R = 2RT/(3 c_1) = 1.0002108 cm^3/mol, Table III's 1.000211 (checked 2026-09-25)."
+notes = "Not a dispersion formula: the pressure-refractivity relation at one wavelength and temperature, c_2 and c_3 lump parameters combining B_rho, B_R, C_rho, C_R (Eq. (4)). Bracketed uncertainties are statistical only (Table I caption)."
+
+[[formulas]]
+id = "pressure_Ar"
+material = "Ar"
+equation = "Eq. (3), p. 4, with Table I"
+printed = "p = c_1 (n - 1) + c_2 (n - 1)^2 + c_3 (n - 1)^3; c_1 x 10^-8 = 3.8728820(80) Pa, c_2 x 10^-8 = -11.371(25) Pa, c_3 x 10^-10 = 2.66(17) Pa"
+variable = "n - 1: refractivity at 632.9908 nm; p: thermodynamic pressure in Pa"
+state = "T = 293.1529 K, p <= 500 kPa"
+density = "real"
+range = "632.9908 nm only; 50-500 kPa at 293.1529 K"
+coefficients = { c1 = "3.8728820e8", c2 = "-11.371e8", c3 = "2.66e10" }
+check = "A_R = 2RT/(3 c_1) = 4.1956848 cm^3/mol, Table III's 4.195685 (checked 2026-09-25)."
+notes = "As pressure_Ne."
+
+[[formulas]]
+id = "pressure_Xe"
+material = "Xe"
+equation = "Eq. (3), p. 4, with Table I"
+printed = "p = c_1 (n - 1) + c_2 (n - 1)^2 + c_3 (n - 1)^3; c_1 x 10^-8 = 1.5638229(21) Pa, c_2 x 10^-8 = -14.0785(26) Pa, c_3 x 10^-10 = 0.4956(67) Pa"
+variable = "n - 1: refractivity at 632.9908 nm; p: thermodynamic pressure in Pa"
+state = "T = 293.1529 K, p <= 500 kPa"
+density = "real"
+range = "632.9908 nm only; 50-500 kPa at 293.1529 K"
+coefficients = { c1 = "1.5638229e8", c2 = "-14.0785e8", c3 = "0.4956e10" }
+check = "A_R = 2RT/(3 c_1) = 10.390814 cm^3/mol, Table III's 10.39081 (checked 2026-09-25)."
+notes = "As pressure_Ne."
+
+[[formulas]]
+id = "pressure_N2"
+material = "N2"
+equation = "Eq. (3), p. 4, with Table I"
+printed = "p = c_1 (n - 1) + c_2 (n - 1)^2 + c_3 (n - 1)^3; c_1 x 10^-8 = 3.6547460(79) Pa, c_2 x 10^-8 = -4.005(23) Pa, c_3 x 10^-10 = 1.47(15) Pa"
+variable = "n - 1: refractivity at 632.9908 nm; p: thermodynamic pressure in Pa"
+state = "T = 293.1529 K, p <= 500 kPa"
+density = "real"
+range = "632.9908 nm only; 50-500 kPa at 293.1529 K"
+coefficients = { c1 = "3.6547460e8", c2 = "-4.005e8", c3 = "1.47e10" }
+check = "A_R = 2RT/(3 c_1) = 4.4461071 cm^3/mol, Table III's 4.446107 (checked 2026-09-25)."
+notes = "As pressure_Ne. Egan et al. 2016 give c_1 = 3.7764715e8, c_2 = -2.982e8, c_3 = 1.24e10 Pa at 302.919 K, p < 180 kPa (p. 13, text only)."
+
+[[formulas]]
+id = "pressure_CO2"
+material = "CO2"
+equation = "Eq. (3), p. 4, with Table I"
+printed = "p = c_1 (n - 1) + c_2 (n - 1)^2 + c_3 (n - 1)^3; c_1 x 10^-8 = 2.4459350(40) Pa, c_2 x 10^-8 = -31.8197(76) Pa, c_3 x 10^-10 = -1.372(31) Pa"
+variable = "n - 1: refractivity at 632.9908 nm; p: thermodynamic pressure in Pa"
+state = "T = 293.1529 K, p <= 500 kPa"
+density = "real"
+range = "632.9908 nm only; 50-500 kPa at 293.1529 K"
+coefficients = { c1 = "2.4459350e8", c2 = "-31.8197e8", c3 = "-1.372e10" }
+check = "A_R = 2RT/(3 c_1) = 6.6434276 cm^3/mol, Table III's 6.64343 (checked 2026-09-25)."
+notes = "As pressure_Ne."
+
+[[formulas]]
+id = "pressure_N2O"
+material = "N2O"
+equation = "Eq. (3), p. 4, with Table I"
+printed = "p = c_1 (n - 1) + c_2 (n - 1)^2 + c_3 (n - 1)^3; c_1 x 10^-8 = 2.1668132(27) Pa, c_2 x 10^-8 = -26.7190(45) Pa, c_3 x 10^-10 = 0.920(16) Pa"
+variable = "n - 1: refractivity at 632.9908 nm; p: thermodynamic pressure in Pa"
+state = "T = 293.1529 K, p <= 500 kPa"
+density = "real"
+range = "632.9908 nm only; 50-500 kPa at 293.1529 K"
+coefficients = { c1 = "2.1668132e8", c2 = "-26.7190e8", c3 = "0.920e10" }
+check = "A_R = 2RT/(3 c_1) = 7.4992123 cm^3/mol, Table III's 7.49921 (checked 2026-09-25)."
+notes = "As pressure_Ne."

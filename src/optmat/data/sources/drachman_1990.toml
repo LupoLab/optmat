@@ -1,0 +1,142 @@
+citation = "R. J. Drachman, A. K. Bhatia and A. A. Shabazz, \"Two-photon transitions in hydrogen: A test of pseudostate summation\", Phys. Rev. A 42, 6333-6335 (1990)"
+doi = "10.1103/PhysRevA.42.6333"
+library = "Drachman_1990_TwoPhotonTransitions"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Second-order perturbation theory of the hydrogen 1S-2S two-photon \
+transition with the intermediate p states replaced by N0 pseudostates, the \
+eigenvectors of H0 = -nabla^2 - 2/r (rydberg) in the basis exp(-a r) r^(1+j) P1, j = \
+0..N0-1 (Eqs. 1-4), and their eigenvalues in the energy denominators; length form D1 \
+(Eq. 5), momentum form D2 (Eq. 6) and the momentum form rewritten by the commutator \
+relation, D3 (Eq. 8). Scale a = 1 (and 0.55); N0 = 5, 10, 15, 20; multiple precision \
+for the larger N0. Non-relativistic, infinite nuclear mass."""
+notes = """Journal pp. 6333-6335 = PDF pages 1-3 (journal page = PDF page + 6332). \
+Identity checked on the first page (PDF p. 1: 'PHYSICAL REVIEW A VOLUME 42, NUMBER 11 \
+1 DECEMBER 1990', Richard J. Drachman and A. K. Bhatia (Goddard), Abdulalim A. \
+Shabazz (Clark Atlanta), received 25 June 1990; footer '6333') on 2026-10-09. Atomic \
+hydrogen is the optmat material H; Table IV is taken under \
+two_photon_transition_amplitude (approved for bound final levels, TC-1040).
+
+THE AMPLITUDE (Eq. 5, p. 6334): D1 = (1/2) sum_N [1/(1 + E_N - omega) + 1/(1/4 + E_N + \
+omega)] R_1S^N R_2S^N, with R the radial integrals of r (Eq. 7), energies in rydberg \
+and omega one photon's energy, the other 3/4 - omega. It is quattropani_1982's D_1^n \
+(its Eq. 3a) for n = 2: in atomic units M_zz = (4/3) D and, at omega = 3/8, delta^TP = \
+(16/9) D^2 = 246.7196 au for D = -11.780483 (sigma_0 = 2.246e-35 cm4 in TC-952's \
+convention); D(omega)/D(3/8) is OEP 8's two-colour kernel M(omega_a, omega_b)/M(Omega/2, \
+Omega/2) of the 1S-2S level, with omega_a = omega and omega_b = 3/4 - omega (rydberg). \
+Kernel at the printed omega: 1.2505 (0.5250), 3.4929 (0.6750), 4.2178 (0.6875), 5.3189 \
+(0.7000), 7.1750 (0.7125), 10.923 (0.7250), 22.254 (0.7375), 113.27 (0.7475), the last \
+0.0025 rydberg below the 2p pole at 0.75. Its curvature at omega = 3/8 gives OEP 8's \
+kappa = 36.83 hartree^-2 and D_eff = 0.879 D_1 (quattropani_1982's notes).
+
+TAKEN (tools/extract/drachman_1990.py, from the library's JSON cells, checked against \
+the table image): Table IV (p. 6335, tbl_a9b929131d75), at nine omega (0.3750-0.7475 \
+rydberg), the N0 = 15 lines (a = 1) of D1 (gauge length, use = primary), D2 (gauge \
+velocity, use = primary) and D3 (the velocity form rewritten by the commutator \
+relation, use = check: exact only for true eigenstates, it converges more slowly), and \
+the column 'Ref. 1' (use = reproduced, from F. Bassani, J.-J. Forney and A. \
+Quattropani, Phys. Rev. Lett. 39, 1070 (1977), not in the library). m_zz_per_unit = \
+4/3 (above; quattropani_1982's notes). The printed digit groups ('-11.780 483') are \
+joined in value and kept in printed. Not taken: the N0 = 5 and 10 lines \
+(convergence).
+
+CHECKED by the script against the exact amplitude (quattropani_1982's script, a \
+Dalgarno-Lewis solution in Decimal arithmetic): at all nine omega the N0 = 15 D1 and D2 \
+agree with the exact values to the printed digits (D2 at 0.7475, -1334.3262, against \
+-1334.32614, one in the last digit), and the 'Ref. 1' column agrees with them to its \
+printing (e.g. -11.7805, -1334.33). D3 converges more slowly, as the text says (N0 = \
+15: 2e-6 to 3e-6 relative). Tables II and III (p. 6334-6335, tbl_91240e2dabf7 and \
+tbl_d35f7eb262b9), the cumulative sums at omega = 0.3750 for a = 1 and 0.55, end at \
+-11.78048 for D1 and D2 in both, the exact value; their first term, -17.87845, is the \
+2p term alone, (1/2)(8/3 + 8/3) R_1S^2p R_2S^2p with R = 1.29027 and -5.19615. The \
+parenthesised 'Ref. 1' discrete sums (-13.3824, -4.6924) are reproduced, not checked.
+
+TABLE I (p. 6334, tbl_c412b3ea6782), the pseudostate energies (not physical values; \
+NOT TAKEN), recomputed here from Eqs. (3)-(4) with N0 = 20: the first column (a = 1) \
+to every printed digit (-0.111110988, -0.062144252, ..., 87.071218883), and the second \
+to every printed digit with a = 0.55 (-0.0399937373, ..., 24.376920544), not with the \
+heading's 'a = 0.5' (a misprint; the caption and Table III say 0.55). With a = 0.55 \
+six energies are negative, as printed; the text's 'seven' is what a = 0.5 gives. \
+Eq. (4)'s H and Delta are the matrices of Eq. (1)'s functions with j and k counted \
+from 1 (with j = 0 they hold r^0 exp(-a r), not a p function, and give other energies).
+
+The paper's omega grid at 0.6750-0.7475 is that of quattropani_1982's Table I(a) \
+(1s-3s); the two papers share no final level, so they are compared through the exact \
+amplitude, which both match."""
+
+[[datasets]]
+id = "D1_N15"
+material = "H"
+file = "H/drachman_1990__D1_N15.csv"
+table = "tbl_a9b929131d75"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table IV, column D1, the third line of each omega (N0 = 15, a = 1). Agrees with the exact amplitude to the printed digits (tools/extract/drachman_1990.py). x and row: omega, one photon's energy as printed (rydberg)."
+[datasets.parameters]
+final_level = "2s"
+gauge = "length"
+polarization = "linear_parallel"
+definition = "D1 = (1/2) sum_N [1/(1 + E_N - omega) + 1/(1/4 + E_N + omega)] R_1S^N R_2S^N (Eq. 5), R_kS^N = int dr r^3 chi_N chi_kS (Eq. 7), energies in rydberg, the second photon 3/4 - omega"
+m_zz_per_unit = 1.3333333333333333
+method = "pseudostate summation, N0 = 15 eigenvectors of H0 in the basis exp(-a r) r^(1+j) P1, a = 1, eigenvalues in the denominators; non-relativistic, infinite nuclear mass"
+
+[[datasets]]
+id = "D2_N15"
+material = "H"
+file = "H/drachman_1990__D2_N15.csv"
+table = "tbl_a9b929131d75"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "primary"
+notes = "Table IV, column D2, the third line of each omega (N0 = 15, a = 1). Agrees with the exact amplitude to the printed digits, within one unit of the last at 0.7475 (-1334.3262 against -1334.32614). x and row: omega, one photon's energy as printed (rydberg)."
+[datasets.parameters]
+final_level = "2s"
+gauge = "velocity"
+polarization = "linear_parallel"
+definition = "D2 = -2 sum_N [1/(1 + E_N - omega) + 1/(1/4 + E_N + omega)] Q_1S^N Q_2S^N / (omega (3/4 - omega)) (Eq. 6), Q_kS^N = int dr r^2 chi_N chi_kS' (Eq. 7), energies in rydberg, the second photon 3/4 - omega"
+m_zz_per_unit = 1.3333333333333333
+method = "pseudostate summation, N0 = 15 eigenvectors of H0 in the basis exp(-a r) r^(1+j) P1, a = 1, eigenvalues in the denominators; non-relativistic, infinite nuclear mass"
+
+[[datasets]]
+id = "D3_N15"
+material = "H"
+file = "H/drachman_1990__D3_N15.csv"
+table = "tbl_a9b929131d75"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table IV, column D3, the third line of each omega (N0 = 15, a = 1). The commutator form is exact only for true eigenstates; with pseudostates it converges more slowly (the text): 2e-6 to 3e-6 relative from the exact amplitude at N0 = 15. Kept as a check, not fitted beside D1 and D2. x and row: omega, one photon's energy as printed (rydberg)."
+[datasets.parameters]
+final_level = "2s"
+gauge = "velocity, rewritten by the commutator relation (Eq. 8)"
+polarization = "linear_parallel"
+definition = "D3 = -(1/2) sum_N [1/(1 + E_N - omega) + 1/(1/4 + E_N + omega)] R_1S^N R_2S^N (1 + E_N)(1/4 + E_N) / (omega (3/4 - omega)) (Eq. 8), Eq. 6 rewritten by nabla = [r, H0]/2, energies in rydberg"
+m_zz_per_unit = 1.3333333333333333
+method = "pseudostate summation, N0 = 15 eigenvectors of H0 in the basis exp(-a r) r^(1+j) P1, a = 1, eigenvalues in the denominators; non-relativistic, infinite nuclear mass"
+
+[[datasets]]
+id = "ref1_bassani_1977"
+material = "H"
+file = "H/drachman_1990__ref1_bassani_1977.csv"
+table = "tbl_a9b929131d75"
+quantity = "two_photon_transition_amplitude"
+unit = "1"
+abscissa = "wavelength"
+abscissa_unit = "rydberg"
+use = "reproduced"
+reproduced_from = "bassani_1977"
+notes = "Table IV, column 'Ref. 1': F. Bassani, J.-J. Forney and A. Quattropani, Phys. Rev. Lett. 39, 1070 (1977), held as bassani_1977 (TC-1044): the column is its length-gauge Table I (D[J0]), string for string, including -49.6878 at nu_1 = 0.6875 where its velocity table prints -49.6877. Agrees with the exact amplitude to its printing. x and row: omega, one photon's energy as printed (rydberg)."
+[datasets.parameters]
+final_level = "2s"
+gauge = "length (Ref. 1, Table I, D[J0]; TC-1044)"
+polarization = "linear_parallel"
+definition = "the dimensionless 1s-2s amplitude of Ref. 1, the convention of Eq. 5 (Drachman et al. compare it term by term)"
+m_zz_per_unit = 1.3333333333333333
+method = "exact intermediate states, discrete sum and continuum integral (Bassani, Forney and Quattropani 1977)"

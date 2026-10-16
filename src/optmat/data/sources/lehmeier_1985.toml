@@ -1,0 +1,1006 @@
+citation = "H. J. Lehmeier, W. Leupacher and A. Penzkofer, Opt. Commun. 56, 67 (1985)"
+doi = "10.1016/0030-4018(85)90069-0"
+library = "Lehmeier_1985_NonresonantThirdOrder"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Third-harmonic generation of a mode-locked Nd:glass laser (1.055 um) in He, Ne, \
+Ar, Kr, Xe and N2, measuring the third-order hyperpolarizability; the standard \
+refractive indices at the fundamental and the harmonic needed for the phase mismatch are \
+taken from the literature."""
+notes = """The linear refractivities of Table 1 are at standard pressure and \
+temperature (1 atm, 0 degrees C, Table 1 caption); they are reproductions (Dalgarno and \
+Kingston for the rare gases, Landolt-Boernstein for N2), not measurements of this \
+paper. The library's Table 1 header is garbled but its cells are correct (checked \
+against the image). Delta k_0 and the coherence length follow from the refractivities \
+and are not extracted. Wavelengths are taken as vacuum (lambda_1 = 2 pi c / omega_1).
+
+Third-order data (added 2026-09-26): the paper's own THG \
+gamma(3)(-w3; w1, w1, w1) at 1.055 um for He, Ne, Ar, Kr, Xe and N2 (Table 1, SI and \
+esu columns, the chi ratio to He, chi_0(He) from note c), and Table 2's comparison at \
+694.3 nm (this work transferred, Ward and New normalised, six theories, and the dc Kerr \
+gamma(-w; w, 0, 0) of Buckingham and Dunmur). These are the values solprop and Luna \
+inherited for He, Ne, Ar, Kr, Xe and N2.
+
+Defining equations, exactly (the conversions depend on them):
+- Eq. (1), p. 67: P_NL = 4 eps0 chi(3) : EEE, 'SI units in the notation of ref. [17]' \
+(Minck, Terhune and Wang 1966).
+- p. 67: E_j = {E_j0 exp[i(k_j z - w_j t)] + c.c.}/2 and P_NL,j = {P_NL,j0 exp[i(k_j z - \
+w_j t)] + c.c.}/2, so the field amplitude is E0 with E = E0 cos(...) (the E/2 \
+convention for the complex amplitude).
+- Eq. (2), p. 67: P_NL,30 = eps0 chi_1111(3)(-w3; w1, w1, w1) E_10^3 exp(-i Delta k z) \
+(the 4 of Eq. (1) cancels the 1/4 of cos^3 -> cos 3wt).
+- p. 68: I_j = (n_j c eps0 / 2) |E_j0|^2.
+- Eq. (13), p. 69: chi_1111(3)(-w3; w1, w1, w1) = eps0^-1 N L(4) gamma_1111(3)(-w3; w1, w1, \
+w1) = (N0 p T0 L(4) / eps0 p0 T) gamma(3), with the Lorentz local-field factor L(4) = \
+(n1^2 + 2)^3 (n3^2 + 2)/81, N0 = p0/k T0 = 2.6869e19 cm^-3 at p0 = 1 atm (printed \
+'1 atm^-1 1.0133 x 10^5 Pa', a garbled '1 atm = 1.0133 x 10^5 Pa') and T0 = 273.15 K: \
+an ideal-gas density.
+- Hence per molecule p(3w) amplitude = gamma(3) E_10^3 and, on the real field, \
+p = 4 gamma(3) E^3. In Shelton and Rice's Taylor convention (p = ... + gamma_T E^3/6, \
+with the same K factors) gamma_T = 24 gamma(3). Example: He 24 x 1.13e-64 / \
+6.2354e-65 = 43.5 au. gamma(3) is in C m^4/V^3 = C^4 m^4 J^-3, the SI unit of the \
+atomic unit.
+- Table 2 caption: gamma(3)[esu] = 8.0888e24 gamma(3)[SI] (Ref. 17). Table 2 note b: \
+Ward and New's values are 'a factor 4 smaller [here] than those in refs. [1] and [3] \
+because of our definition of gamma(3)': Lehmeier's gamma(3) = Ward's chi / 4 = \
+gamma_T / 24.
+- Eq. (14)-(15), p. 69: n at (p, T) from n0 by Lorentz-Lorenz with ideal-gas scaling.
+- Eq. (16)-(17), p. 71: Miller's rule, the anharmonic coupling xi/f^2 of Table 1 (not \
+extracted).
+- Eq. (18), p. 72: gamma(-w3a; w1a, w1a, w1a) = (omega_0 - omega_3b)/(omega_0 - \
+omega_3a) gamma(-w3b; ...), the single-resonance transfer from 1.055 um to 694.3 nm used \
+for Table 2 column (a).
+
+Measurement (pp. 69-70): single ~5 ps pulses of a mode-locked Nd-phosphate glass laser, \
+lambda_1 = 1.055 um, I10(z_m) ~ 2e9 W/cm^2; cells 4.52 cm (He, Ne; 0.9-2.5 x 10^5 Pa) \
+and 1.18 cm (others; 0-0.9 x 10^5 Pa) centred 8 cm behind the focus (b = 0.44 cm, f = \
+30.5 cm), in a vacuum chamber with Maker-fringe-minimum windows; T = 296 K (Figs. 2, 3 \
+captions). gamma(3) is the best fit of Eq. (12) to eta/I10^2 against pressure, using \
+the refractivities of Table 1. Absolute: energies calibrated against a pyroelectric \
+meter. Part: THG has no rotational contribution and the atoms' values are electronic; \
+N2's contains its (small) vibrational THG part, recorded as total. Lehmeier's density \
+is the ideal gas at 296 K (Eq. (13)); the local-field factor is included."""
+
+[[datasets]]
+id = "standard_He"
+material = "He"
+file = "He/lehmeier_1985__standard_He.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960"]
+notes = "Rows n1 (lambda_1 = 1.055 um) and n3 (the third harmonic, 0.3516667 um = lambda_1/3). Table 1, footnote a): taken from Dalgarno and Kingston (Ref. 21, cited as Proc. Roy. Soc. A259 (1966) 424; the paper is of 1960). The helium n30 value carries the mark c), the note giving chi(3) of helium, presumably a misprint for a). Used by the paper to compute Delta k_0 and chi(3); not measured here."
+
+[[datasets]]
+id = "standard_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__standard_Ne.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960"]
+notes = "Rows n1 (lambda_1 = 1.055 um) and n3 (the third harmonic, 0.3516667 um = lambda_1/3). Table 1, footnote a): taken from Dalgarno and Kingston (Ref. 21, cited as Proc. Roy. Soc. A259 (1966) 424; the paper is of 1960). Used by the paper to compute Delta k_0 and chi(3); not measured here."
+
+[[datasets]]
+id = "standard_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__standard_Ar.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960"]
+notes = "Rows n1 (lambda_1 = 1.055 um) and n3 (the third harmonic, 0.3516667 um = lambda_1/3). Table 1, footnote a): taken from Dalgarno and Kingston (Ref. 21, cited as Proc. Roy. Soc. A259 (1966) 424; the paper is of 1960). Used by the paper to compute Delta k_0 and chi(3); not measured here."
+
+[[datasets]]
+id = "standard_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__standard_Kr.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960"]
+notes = "Rows n1 (lambda_1 = 1.055 um) and n3 (the third harmonic, 0.3516667 um = lambda_1/3). Table 1, footnote a): taken from Dalgarno and Kingston (Ref. 21, cited as Proc. Roy. Soc. A259 (1966) 424; the paper is of 1960). Used by the paper to compute Delta k_0 and chi(3); not measured here."
+
+[[datasets]]
+id = "standard_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__standard_Xe.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960"]
+notes = "Rows n1 (lambda_1 = 1.055 um) and n3 (the third harmonic, 0.3516667 um = lambda_1/3). Table 1, footnote a): taken from Dalgarno and Kingston (Ref. 21, cited as Proc. Roy. Soc. A259 (1966) 424; the paper is of 1960). Used by the paper to compute Delta k_0 and chi(3); not measured here."
+
+[[datasets]]
+id = "standard_N2"
+material = "N2"
+file = "N2/lehmeier_1985__standard_N2.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "refractivity"
+scale = 1e-5
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Landolt-Boernstein, Teil 8, Optische Konstanten, eds. K. H. Hellwege and A. M. Hellwege (Springer, Berlin, 1962) p. 6-885"]
+notes = "Rows n1 (lambda_1 = 1.055 um) and n3 (the third harmonic, 0.3516667 um = lambda_1/3). Table 1, footnote b): taken from Landolt-Boernstein (Ref. 22); the original compilation is not in the library. Used by the paper to compute Delta k_0 and chi(3); not measured here."
+
+[[datasets]]
+id = "gamma_thg_He"
+material = "He"
+file = "He/lehmeier_1985__gamma_thg_He.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-64
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1 (p. 71), gamma_1111(3)(-w3; w1, w1, w1) in 10^-64 C m^4/V^3, the paper's measurement at lambda_1 = 1.055 um (vacuum: lambda_1 = 2 pi c/omega_1), 5 ps pulses, 296 K, 0-2.5 x 10^5 Pa, fitted with Eqs. (12), (13), (15) (ideal-gas N, Lorentz local field). Relative error +-0.1 (p. 71: 'The relative error of the normalized energy conversion is estimated to be about +-0.2 leading to a relative error of the third hyperpolarizabilities of +-0.1'). Convention: Lehmeier's own (p. 67, Eq. (1)): P_NL = 4 eps0 chi(3) EEE on the real field, chi(3) = eps0^-1 N L(4) gamma(3) (Eq. (13), p. 69), so the per-molecule dipole is p = 4 gamma(3) E^3 and gamma_T = 24 gamma(3) (Shelton and Rice's Taylor series, p = ... + gamma_T E^3/6). An atom: THG has no nuclear contribution; the value is electronic."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__gamma_thg_Ne.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-64
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1 (p. 71), gamma_1111(3)(-w3; w1, w1, w1) in 10^-64 C m^4/V^3, the paper's measurement at lambda_1 = 1.055 um (vacuum: lambda_1 = 2 pi c/omega_1), 5 ps pulses, 296 K, 0-2.5 x 10^5 Pa, fitted with Eqs. (12), (13), (15) (ideal-gas N, Lorentz local field). Relative error +-0.1 (p. 71: 'The relative error of the normalized energy conversion is estimated to be about +-0.2 leading to a relative error of the third hyperpolarizabilities of +-0.1'). Convention: Lehmeier's own (p. 67, Eq. (1)): P_NL = 4 eps0 chi(3) EEE on the real field, chi(3) = eps0^-1 N L(4) gamma(3) (Eq. (13), p. 69), so the per-molecule dipole is p = 4 gamma(3) E^3 and gamma_T = 24 gamma(3) (Shelton and Rice's Taylor series, p = ... + gamma_T E^3/6). An atom: THG has no nuclear contribution; the value is electronic."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__gamma_thg_Ar.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-64
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1 (p. 71), gamma_1111(3)(-w3; w1, w1, w1) in 10^-64 C m^4/V^3, the paper's measurement at lambda_1 = 1.055 um (vacuum: lambda_1 = 2 pi c/omega_1), 5 ps pulses, 296 K, 0-2.5 x 10^5 Pa, fitted with Eqs. (12), (13), (15) (ideal-gas N, Lorentz local field). Relative error +-0.1 (p. 71: 'The relative error of the normalized energy conversion is estimated to be about +-0.2 leading to a relative error of the third hyperpolarizabilities of +-0.1'). Convention: Lehmeier's own (p. 67, Eq. (1)): P_NL = 4 eps0 chi(3) EEE on the real field, chi(3) = eps0^-1 N L(4) gamma(3) (Eq. (13), p. 69), so the per-molecule dipole is p = 4 gamma(3) E^3 and gamma_T = 24 gamma(3) (Shelton and Rice's Taylor series, p = ... + gamma_T E^3/6). An atom: THG has no nuclear contribution; the value is electronic."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__gamma_thg_Kr.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-64
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1 (p. 71), gamma_1111(3)(-w3; w1, w1, w1) in 10^-64 C m^4/V^3, the paper's measurement at lambda_1 = 1.055 um (vacuum: lambda_1 = 2 pi c/omega_1), 5 ps pulses, 296 K, 0-2.5 x 10^5 Pa, fitted with Eqs. (12), (13), (15) (ideal-gas N, Lorentz local field). Relative error +-0.1 (p. 71: 'The relative error of the normalized energy conversion is estimated to be about +-0.2 leading to a relative error of the third hyperpolarizabilities of +-0.1'). Convention: Lehmeier's own (p. 67, Eq. (1)): P_NL = 4 eps0 chi(3) EEE on the real field, chi(3) = eps0^-1 N L(4) gamma(3) (Eq. (13), p. 69), so the per-molecule dipole is p = 4 gamma(3) E^3 and gamma_T = 24 gamma(3) (Shelton and Rice's Taylor series, p = ... + gamma_T E^3/6). An atom: THG has no nuclear contribution; the value is electronic."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__gamma_thg_Xe.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-64
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1 (p. 71), gamma_1111(3)(-w3; w1, w1, w1) in 10^-64 C m^4/V^3, the paper's measurement at lambda_1 = 1.055 um (vacuum: lambda_1 = 2 pi c/omega_1), 5 ps pulses, 296 K, 0-2.5 x 10^5 Pa, fitted with Eqs. (12), (13), (15) (ideal-gas N, Lorentz local field). Relative error +-0.1 (p. 71: 'The relative error of the normalized energy conversion is estimated to be about +-0.2 leading to a relative error of the third hyperpolarizabilities of +-0.1'). Convention: Lehmeier's own (p. 67, Eq. (1)): P_NL = 4 eps0 chi(3) EEE on the real field, chi(3) = eps0^-1 N L(4) gamma(3) (Eq. (13), p. 69), so the per-molecule dipole is p = 4 gamma(3) E^3 and gamma_T = 24 gamma(3) (Shelton and Rice's Taylor series, p = ... + gamma_T E^3/6). An atom: THG has no nuclear contribution; the value is electronic."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_N2"
+material = "N2"
+file = "N2/lehmeier_1985__gamma_thg_N2.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "SI"
+scale = 1e-64
+abscissa_unit = "um"
+use = "primary"
+notes = "Table 1 (p. 71), gamma_1111(3)(-w3; w1, w1, w1) in 10^-64 C m^4/V^3, the paper's measurement at lambda_1 = 1.055 um (vacuum: lambda_1 = 2 pi c/omega_1), 5 ps pulses, 296 K, 0-2.5 x 10^5 Pa, fitted with Eqs. (12), (13), (15) (ideal-gas N, Lorentz local field). Relative error +-0.1 (p. 71: 'The relative error of the normalized energy conversion is estimated to be about +-0.2 leading to a relative error of the third hyperpolarizabilities of +-0.1'). Convention: Lehmeier's own (p. 67, Eq. (1)): P_NL = 4 eps0 chi(3) EEE on the real field, chi(3) = eps0^-1 N L(4) gamma(3) (Eq. (13), p. 69), so the per-molecule dipole is p = 4 gamma(3) E^3 and gamma_T = 24 gamma(3) (Shelton and Rice's Taylor series, p = ... + gamma_T E^3/6). N2: the paper does not separate a vibrational part; THG's is small (gamma(-3w; w, w, w) has no rotational part), so the value is nearly electronic, recorded as total."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "total"
+
+[[datasets]]
+id = "gamma_thg_esu_He"
+material = "He"
+file = "He/lehmeier_1985__gamma_thg_esu_He.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), the same gamma(3) in 10^-39 esu: gamma_thg_He times 8.0888e24 (the conversion printed in Table 2's caption, from Minck et al., Ref. 17), in Lehmeier's convention (a quarter of Ward and New's esu chi, Table 2 note b). Not independent of the SI column."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_esu_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__gamma_thg_esu_Ne.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), the same gamma(3) in 10^-39 esu: gamma_thg_Ne times 8.0888e24 (the conversion printed in Table 2's caption, from Minck et al., Ref. 17), in Lehmeier's convention (a quarter of Ward and New's esu chi, Table 2 note b). Not independent of the SI column."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_esu_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__gamma_thg_esu_Ar.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), the same gamma(3) in 10^-39 esu: gamma_thg_Ar times 8.0888e24 (the conversion printed in Table 2's caption, from Minck et al., Ref. 17), in Lehmeier's convention (a quarter of Ward and New's esu chi, Table 2 note b). Not independent of the SI column."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_esu_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__gamma_thg_esu_Kr.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), the same gamma(3) in 10^-39 esu: gamma_thg_Kr times 8.0888e24 (the conversion printed in Table 2's caption, from Minck et al., Ref. 17), in Lehmeier's convention (a quarter of Ward and New's esu chi, Table 2 note b). Not independent of the SI column."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_esu_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__gamma_thg_esu_Xe.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), the same gamma(3) in 10^-39 esu: gamma_thg_Xe times 8.0888e24 (the conversion printed in Table 2's caption, from Minck et al., Ref. 17), in Lehmeier's convention (a quarter of Ward and New's esu chi, Table 2 note b). Not independent of the SI column."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_thg_esu_N2"
+material = "N2"
+file = "N2/lehmeier_1985__gamma_thg_esu_N2.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), the same gamma(3) in 10^-39 esu: gamma_thg_N2 times 8.0888e24 (the conversion printed in Table 2's caption, from Minck et al., Ref. 17), in Lehmeier's convention (a quarter of Ward and New's esu chi, Table 2 note b). Not independent of the SI column."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "total"
+
+[[datasets]]
+id = "chi_ratio_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__chi_ratio_Ne.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), chi_0(3)/chi_0(3)(He): the ratio of the susceptibilities at standard conditions (1 atm, 0 degrees C), so the ratio of gamma(3) times the ratio of the Lorentz factors L(4) (which differ from 1 by less than 0.3 %). Derived from the gamma column, not independent."
+[datasets.parameters]
+reference_material = "He"
+process = "thg"
+part = "electronic"
+
+[[datasets]]
+id = "chi_ratio_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__chi_ratio_Ar.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), chi_0(3)/chi_0(3)(He): the ratio of the susceptibilities at standard conditions (1 atm, 0 degrees C), so the ratio of gamma(3) times the ratio of the Lorentz factors L(4) (which differ from 1 by less than 0.3 %). Derived from the gamma column, not independent."
+[datasets.parameters]
+reference_material = "He"
+process = "thg"
+part = "electronic"
+
+[[datasets]]
+id = "chi_ratio_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__chi_ratio_Kr.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), chi_0(3)/chi_0(3)(He): the ratio of the susceptibilities at standard conditions (1 atm, 0 degrees C), so the ratio of gamma(3) times the ratio of the Lorentz factors L(4) (which differ from 1 by less than 0.3 %). Derived from the gamma column, not independent."
+[datasets.parameters]
+reference_material = "He"
+process = "thg"
+part = "electronic"
+
+[[datasets]]
+id = "chi_ratio_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__chi_ratio_Xe.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), chi_0(3)/chi_0(3)(He): the ratio of the susceptibilities at standard conditions (1 atm, 0 degrees C), so the ratio of gamma(3) times the ratio of the Lorentz factors L(4) (which differ from 1 by less than 0.3 %). Derived from the gamma column, not independent."
+[datasets.parameters]
+reference_material = "He"
+process = "thg"
+part = "electronic"
+
+[[datasets]]
+id = "chi_ratio_N2"
+material = "N2"
+file = "N2/lehmeier_1985__chi_ratio_N2.csv"
+table = "tbl_3d2f3ba324ee"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1 (p. 71), chi_0(3)/chi_0(3)(He): the ratio of the susceptibilities at standard conditions (1 atm, 0 degrees C), so the ratio of gamma(3) times the ratio of the Lorentz factors L(4) (which differ from 1 by less than 0.3 %). Derived from the gamma column, not independent."
+[datasets.parameters]
+reference_material = "He"
+process = "thg"
+part = "total"
+
+[[datasets]]
+id = "gamma_694_He"
+material = "He"
+file = "He/lehmeier_1985__gamma_694_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (a): this work's 1.055 um values transferred to 694.3 nm with the one-resonance approximation Eq. (18), p. 72, gamma(-w3a; ...) = (omega_0 - omega_3b)/(omega_0 - omega_3a) gamma(-w3b; ...), omega_0 from Table 2's nu_0 column (the lowest transition entering the dispersion formula). A model extrapolation of gamma_thg, not a measurement. Lehmeier's convention (see gamma_thg_He)."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_694_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__gamma_694_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (a): this work's 1.055 um values transferred to 694.3 nm with the one-resonance approximation Eq. (18), p. 72, gamma(-w3a; ...) = (omega_0 - omega_3b)/(omega_0 - omega_3a) gamma(-w3b; ...), omega_0 from Table 2's nu_0 column (the lowest transition entering the dispersion formula). A model extrapolation of gamma_thg, not a measurement. Lehmeier's convention (see gamma_thg_Ne)."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_694_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__gamma_694_Ar.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (a): this work's 1.055 um values transferred to 694.3 nm with the one-resonance approximation Eq. (18), p. 72, gamma(-w3a; ...) = (omega_0 - omega_3b)/(omega_0 - omega_3a) gamma(-w3b; ...), omega_0 from Table 2's nu_0 column (the lowest transition entering the dispersion formula). A model extrapolation of gamma_thg, not a measurement. Lehmeier's convention (see gamma_thg_Ar)."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_694_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__gamma_694_Kr.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (a): this work's 1.055 um values transferred to 694.3 nm with the one-resonance approximation Eq. (18), p. 72, gamma(-w3a; ...) = (omega_0 - omega_3b)/(omega_0 - omega_3a) gamma(-w3b; ...), omega_0 from Table 2's nu_0 column (the lowest transition entering the dispersion formula). A model extrapolation of gamma_thg, not a measurement. Lehmeier's convention (see gamma_thg_Kr)."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_694_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__gamma_694_Xe.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (a): this work's 1.055 um values transferred to 694.3 nm with the one-resonance approximation Eq. (18), p. 72, gamma(-w3a; ...) = (omega_0 - omega_3b)/(omega_0 - omega_3a) gamma(-w3b; ...), omega_0 from Table 2's nu_0 column (the lowest transition entering the dispersion formula). A model extrapolation of gamma_thg, not a measurement. Lehmeier's convention (see gamma_thg_Xe)."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_694_N2"
+material = "N2"
+file = "N2/lehmeier_1985__gamma_694_N2.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (a): this work's 1.055 um values transferred to 694.3 nm with the one-resonance approximation Eq. (18), p. 72, gamma(-w3a; ...) = (omega_0 - omega_3b)/(omega_0 - omega_3a) gamma(-w3b; ...), omega_0 from Table 2's nu_0 column (the lowest transition entering the dispersion formula). A model extrapolation of gamma_thg, not a measurement. Lehmeier's convention (see gamma_thg_N2)."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "total"
+
+[[datasets]]
+id = "ward_new_normalized_He"
+material = "He"
+file = "He/lehmeier_1985__ward_new_normalized_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (c): Ward and New's (Refs. 1, 3) THG coefficients 'normalized to helium with gamma_1111(3)(He) = 1 x 10^-39 esu' (note c), i.e. Ward and New's set (i) ratios to He times 1e-39 esu. Reproduced and rescaled: Ward and New scale to chi_He = 4.0e-39 esu (Sitz and Yaris), so these are ward_1969's set (i) divided by 4 (Ne 8.9/4 = 2.23, Ar 126/4 = 31.5, Kr 386/4 = 96.5, Xe 979/4 = 245, N2 107/4 = 26.8: all reproduce). Column (b), Ward and New's ranges divided by 4 (note b), is not extracted."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "ward_new_normalized_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__ward_new_normalized_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (c): Ward and New's (Refs. 1, 3) THG coefficients 'normalized to helium with gamma_1111(3)(He) = 1 x 10^-39 esu' (note c), i.e. Ward and New's set (i) ratios to He times 1e-39 esu. Reproduced and rescaled: Ward and New scale to chi_He = 4.0e-39 esu (Sitz and Yaris), so these are ward_1969's set (i) divided by 4 (Ne 8.9/4 = 2.23, Ar 126/4 = 31.5, Kr 386/4 = 96.5, Xe 979/4 = 245, N2 107/4 = 26.8: all reproduce). Column (b), Ward and New's ranges divided by 4 (note b), is not extracted."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "ward_new_normalized_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__ward_new_normalized_Ar.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (c): Ward and New's (Refs. 1, 3) THG coefficients 'normalized to helium with gamma_1111(3)(He) = 1 x 10^-39 esu' (note c), i.e. Ward and New's set (i) ratios to He times 1e-39 esu. Reproduced and rescaled: Ward and New scale to chi_He = 4.0e-39 esu (Sitz and Yaris), so these are ward_1969's set (i) divided by 4 (Ne 8.9/4 = 2.23, Ar 126/4 = 31.5, Kr 386/4 = 96.5, Xe 979/4 = 245, N2 107/4 = 26.8: all reproduce). Column (b), Ward and New's ranges divided by 4 (note b), is not extracted."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "ward_new_normalized_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__ward_new_normalized_Kr.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (c): Ward and New's (Refs. 1, 3) THG coefficients 'normalized to helium with gamma_1111(3)(He) = 1 x 10^-39 esu' (note c), i.e. Ward and New's set (i) ratios to He times 1e-39 esu. Reproduced and rescaled: Ward and New scale to chi_He = 4.0e-39 esu (Sitz and Yaris), so these are ward_1969's set (i) divided by 4 (Ne 8.9/4 = 2.23, Ar 126/4 = 31.5, Kr 386/4 = 96.5, Xe 979/4 = 245, N2 107/4 = 26.8: all reproduce). Column (b), Ward and New's ranges divided by 4 (note b), is not extracted."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "ward_new_normalized_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__ward_new_normalized_Xe.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (c): Ward and New's (Refs. 1, 3) THG coefficients 'normalized to helium with gamma_1111(3)(He) = 1 x 10^-39 esu' (note c), i.e. Ward and New's set (i) ratios to He times 1e-39 esu. Reproduced and rescaled: Ward and New scale to chi_He = 4.0e-39 esu (Sitz and Yaris), so these are ward_1969's set (i) divided by 4 (Ne 8.9/4 = 2.23, Ar 126/4 = 31.5, Kr 386/4 = 96.5, Xe 979/4 = 245, N2 107/4 = 26.8: all reproduce). Column (b), Ward and New's ranges divided by 4 (note b), is not extracted."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "ward_new_normalized_N2"
+material = "N2"
+file = "N2/lehmeier_1985__ward_new_normalized_N2.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1969"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (c): Ward and New's (Refs. 1, 3) THG coefficients 'normalized to helium with gamma_1111(3)(He) = 1 x 10^-39 esu' (note c), i.e. Ward and New's set (i) ratios to He times 1e-39 esu. Reproduced and rescaled: Ward and New scale to chi_He = 4.0e-39 esu (Sitz and Yaris), so these are ward_1969's set (i) divided by 4 (Ne 8.9/4 = 2.23, Ar 126/4 = 31.5, Kr 386/4 = 96.5, Xe 979/4 = 245, N2 107/4 = 26.8: all reproduce). Column (b), Ward and New's ranges divided by 4 (note b), is not extracted."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "total"
+
+[[datasets]]
+id = "sitz_yaris_He"
+material = "He"
+file = "He/lehmeier_1985__sitz_yaris_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. Sitz and R. Yaris, J. Chem. Phys. 49, 3546 (1968)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (d), Ref. 12: P. Sitz and R. Yaris, J. Chem. Phys. 49 (1965) 3546 (as printed; Ward and New cite it as J. Chem. Phys. 49, 3546 (1968)). A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "mizuno_He"
+material = "He"
+file = "He/lehmeier_1985__mizuno_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Mizuno, J. Phys. B: Atom. Molec. Phys. 5, 1875 (1972)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (e), Ref. 16: J. Mizuno, J. Phys. B 5 (1972) 1875. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "mizuno_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__mizuno_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Mizuno, J. Phys. B: Atom. Molec. Phys. 5, 1875 (1972)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (e), Ref. 16: J. Mizuno, J. Phys. B 5 (1972) 1875. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "klingbeil_He"
+material = "He"
+file = "He/lehmeier_1985__klingbeil_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. Klingbeil, V. G. Kaveeshwar and R. P. Hurst, Phys. Rev. A 4, 1760 (1971)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (f), Ref. 15: R. Klingbeil, V. G. Kaveeshwar and R. P. Hurst, Phys. Rev. A 4 (1971) 1760. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_He"
+material = "He"
+file = "He/lehmeier_1985__dawes_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (g), Ref. 11: E. L. Dawes, Phys. Rev. 169 (1968) 47. Reproduced and rescaled: Dawes's Table I absolute values (in Ward's esu, 0.9, 1.7, 28, 71, 222) divided by 4 into Lehmeier's convention (0.225, 0.425, 7, 17.75, 55.5; the printed Kr 17.8 is rounded, the printed Xe 55.4 is 0.2 % below 222/4). A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__dawes_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (g), Ref. 11: E. L. Dawes, Phys. Rev. 169 (1968) 47. Reproduced and rescaled: Dawes's Table I absolute values (in Ward's esu, 0.9, 1.7, 28, 71, 222) divided by 4 into Lehmeier's convention (0.225, 0.425, 7, 17.75, 55.5; the printed Kr 17.8 is rounded, the printed Xe 55.4 is 0.2 % below 222/4). A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__dawes_Ar.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (g), Ref. 11: E. L. Dawes, Phys. Rev. 169 (1968) 47. Reproduced and rescaled: Dawes's Table I absolute values (in Ward's esu, 0.9, 1.7, 28, 71, 222) divided by 4 into Lehmeier's convention (0.225, 0.425, 7, 17.75, 55.5; the printed Kr 17.8 is rounded, the printed Xe 55.4 is 0.2 % below 222/4). A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__dawes_Kr.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (g), Ref. 11: E. L. Dawes, Phys. Rev. 169 (1968) 47. Reproduced and rescaled: Dawes's Table I absolute values (in Ward's esu, 0.9, 1.7, 28, 71, 222) divided by 4 into Lehmeier's convention (0.225, 0.425, 7, 17.75, 55.5; the printed Kr 17.8 is rounded, the printed Xe 55.4 is 0.2 % below 222/4). A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__dawes_Xe.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (g), Ref. 11: E. L. Dawes, Phys. Rev. 169 (1968) 47. Reproduced and rescaled: Dawes's Table I absolute values (in Ward's esu, 0.9, 1.7, 28, 71, 222) divided by 4 into Lehmeier's convention (0.225, 0.425, 7, 17.75, 55.5; the printed Kr 17.8 is rounded, the printed Xe 55.4 is 0.2 % below 222/4). A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "tripathi_He"
+material = "He"
+file = "He/lehmeier_1985__tripathi_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4, 2076 (1971)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (h), Ref. 14: B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4 (1971) 2076. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "tripathi_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__tripathi_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4, 2076 (1971)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (h), Ref. 14: B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4 (1971) 2076. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "tripathi_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__tripathi_Ar.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4, 2076 (1971)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (h), Ref. 14: B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4 (1971) 2076. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "tripathi_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__tripathi_Kr.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4, 2076 (1971)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (h), Ref. 14: B. P. Tripathi, R. K. Laloraya and S. L. Srivastava, Phys. Rev. A 4 (1971) 2076. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "langhoff_He"
+material = "He"
+file = "He/lehmeier_1985__langhoff_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148, 18 (1966)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (i), Ref. 10: P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148 (1966) 18. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "langhoff_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__langhoff_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148, 18 (1966)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (i), Ref. 10: P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148 (1966) 18. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "langhoff_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__langhoff_Ar.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148, 18 (1966)"]
+notes = "Table 2 (p. 71, unlabelled in the library), gamma_1111(3)(-w3; w1, w1, w1) in 10^-39 esu at the ruby fundamental 694.3 nm (as printed; air or vacuum not stated), column (i), Ref. 10: P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148 (1966) 18. A theoretical value as Lehmeier prints it; whether Lehmeier rescaled it into his convention (a factor 4 below Ward and New's) is stated only for column (b) and can be checked only for Dawes. Theories are electronic."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_buckingham_He"
+material = "He"
+file = "He/lehmeier_1985__dc_kerr_buckingham_He.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table 2 (p. 71), last column: gamma_1111(3)(-w; w, 0, 0) in 10^-39 esu from dc Kerr measurements (Ref. 25, Buckingham and Dunmur 1968) at 632.8 nm (p. 72). As printed these are Buckingham and Dunmur's gamma (their table, 10^36 gamma in esu: He 0.027, Ne 0.051, Ar 0.59, Kr 1.4, Xe 3.9, in the Taylor convention of their Eq. (1), Pi = alpha + gamma F F/2) divided by 24 (1.125, 2.125, 24.58, 58.33, 162.5 x 10^-39: all reproduce), i.e. converted into Lehmeier's convention (gamma_T/24); Lehmeier does not state the route (checked 2026-09-26). ward_1969's chi^K are the same values divided by 6. Atoms: electronic."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_buckingham_Ne"
+material = "Ne"
+file = "Ne/lehmeier_1985__dc_kerr_buckingham_Ne.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table 2 (p. 71), last column: gamma_1111(3)(-w; w, 0, 0) in 10^-39 esu from dc Kerr measurements (Ref. 25, Buckingham and Dunmur 1968) at 632.8 nm (p. 72). As printed these are Buckingham and Dunmur's gamma (their table, 10^36 gamma in esu: He 0.027, Ne 0.051, Ar 0.59, Kr 1.4, Xe 3.9, in the Taylor convention of their Eq. (1), Pi = alpha + gamma F F/2) divided by 24 (1.125, 2.125, 24.58, 58.33, 162.5 x 10^-39: all reproduce), i.e. converted into Lehmeier's convention (gamma_T/24); Lehmeier does not state the route (checked 2026-09-26). ward_1969's chi^K are the same values divided by 6. Atoms: electronic."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_buckingham_Ar"
+material = "Ar"
+file = "Ar/lehmeier_1985__dc_kerr_buckingham_Ar.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table 2 (p. 71), last column: gamma_1111(3)(-w; w, 0, 0) in 10^-39 esu from dc Kerr measurements (Ref. 25, Buckingham and Dunmur 1968) at 632.8 nm (p. 72). As printed these are Buckingham and Dunmur's gamma (their table, 10^36 gamma in esu: He 0.027, Ne 0.051, Ar 0.59, Kr 1.4, Xe 3.9, in the Taylor convention of their Eq. (1), Pi = alpha + gamma F F/2) divided by 24 (1.125, 2.125, 24.58, 58.33, 162.5 x 10^-39: all reproduce), i.e. converted into Lehmeier's convention (gamma_T/24); Lehmeier does not state the route (checked 2026-09-26). ward_1969's chi^K are the same values divided by 6. Atoms: electronic."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_buckingham_Kr"
+material = "Kr"
+file = "Kr/lehmeier_1985__dc_kerr_buckingham_Kr.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table 2 (p. 71), last column: gamma_1111(3)(-w; w, 0, 0) in 10^-39 esu from dc Kerr measurements (Ref. 25, Buckingham and Dunmur 1968) at 632.8 nm (p. 72). As printed these are Buckingham and Dunmur's gamma (their table, 10^36 gamma in esu: He 0.027, Ne 0.051, Ar 0.59, Kr 1.4, Xe 3.9, in the Taylor convention of their Eq. (1), Pi = alpha + gamma F F/2) divided by 24 (1.125, 2.125, 24.58, 58.33, 162.5 x 10^-39: all reproduce), i.e. converted into Lehmeier's convention (gamma_T/24); Lehmeier does not state the route (checked 2026-09-26). ward_1969's chi^K are the same values divided by 6. Atoms: electronic."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "dc_kerr_buckingham_Xe"
+material = "Xe"
+file = "Xe/lehmeier_1985__dc_kerr_buckingham_Xe.csv"
+table = "tbl_905211afbf03"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table 2 (p. 71), last column: gamma_1111(3)(-w; w, 0, 0) in 10^-39 esu from dc Kerr measurements (Ref. 25, Buckingham and Dunmur 1968) at 632.8 nm (p. 72). As printed these are Buckingham and Dunmur's gamma (their table, 10^36 gamma in esu: He 0.027, Ne 0.051, Ar 0.59, Kr 1.4, Xe 3.9, in the Taylor convention of their Eq. (1), Pi = alpha + gamma F F/2) divided by 24 (1.125, 2.125, 24.58, 58.33, 162.5 x 10^-39: all reproduce), i.e. converted into Lehmeier's convention (gamma_T/24); Lehmeier does not state the route (checked 2026-09-26). ward_1969's chi^K are the same values divided by 6. Atoms: electronic."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "lehmeier_1985"
+part = "electronic"
+
+[[datasets]]
+id = "chi_He"
+material = "He"
+table = "text"
+points = [["chi0", "1.055", "3.43"]]
+quantity = "nonlinear_susceptibility"
+unit = "m2/V2"
+scale = 1e-28
+abscissa_unit = "um"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table 1 note c) (p. 71): chi_0(3)(He) = 3.43 x 10^-28 m^2/V^2, chi_1111(3)(-w3; w1, w1, w1) of helium at standard conditions (p0 = 1 atm, T0 = 0 degrees C; N0 = 2.6869e19 cm^-3, ideal gas, p. 69) in Lehmeier's convention P_NL = 4 eps0 chi(3) EEE (Eq. (1), p. 67). It is Eq. (13) applied to gamma_thg_He: 2.6869e25 m^-3 x 1.13e-64 / 8.854e-12 = 3.43e-28 (L(4) = 1.0001; checked 2026-09-26). Not independent."
+[datasets.parameters]
+process = "thg"
+convention = "lehmeier_1985"
+part = "electronic"
+

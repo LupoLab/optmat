@@ -1,0 +1,349 @@
+citation = "C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. London A 135, 40 (1932)"
+doi = "10.1098/rspa.1932.0019"
+library = "Cuthbertson_1932_RefractionDispersionNeon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Jamin interferometer with refractometer tubes 274.06 cm long, all-quartz \
+optics, a quartz mercury-amalgam lamp; the interference pattern at each line was \
+photographed before and after about 500-600 bands (at 5462.23 A) passed a crosswire \
+while gas flowed in or out, and the fractional orders of the other lines fixed their \
+band counts. The refractivity at the green mercury line was measured absolutely and \
+the others from the band ratios, (mu_l - 1)/(mu_5462 - 1) = N_l l / (N_5462 5462) \
+(p. 42). Neon: 2 litres from Keesom (Leiden), 'very pure, freed from helium'; helium: \
+British Oxygen Company 'spectrally pure', measured immediately after opening."""
+notes = """The paper states neither the temperature and pressure the refractivities refer \
+to nor how they were reduced (Leonard 1974 attributes the spread of the older absolute \
+values to 'the different definitions adopted for a standard state and inadequate \
+corrections for nonideality'). The authors compare \
+them directly with their 1909-1910 values, which are for 0 degrees C and 760 mm, so the \
+state is taken as 1 atm, 0 degrees C, with the density convention unknown (TC-9).
+
+Wavelengths: neon's are 'those of Styles reduced to vacuum' (Table II heading 'in \
+vacuo', p. 44). Helium's Table III prints them to 'four figures', truncated: the eleven \
+lines it shares with Table II are corrected to Table II's values by errata; 3126, 2926 \
+and 2753 A stay truncated (up to 1 A short: about 2e-5 in n - 1 at 275 nm).
+
+Formulas: mu - 1 = C / (n0^2 - n^2) with 'n = V/lambda', V the speed of light. The \
+paper does not give V; V = 3e10 cm/s reproduces both calculated columns to within \
+0.14e-8, the rounding of the printed constants, and 2.99796e10 does worse (up to \
+0.25e-8), so 3e10 is implied.
+
+Accuracy (p. 45): neon, 'no discrepancy greater than 5 in the ninth decimal place' \
+between observation and formula, 'and since the average number of bands read was about \
+600 and the bands were read to 1/20 we have no right to expect greater accuracy'. The \
+absolute values at the green line: neon, four series 6725, 6727, 6725, 6725 e-8 \
+(tbl_9c520fc15186, p. 43), with drift of 2-3 bands per hour the 'principal source of \
+error' ('much difficulty was experienced in carrying the accuracy beyond the third \
+significant figure' before drift corrections); helium, three pairs of measurements \
+3489, 3485, 3492 e-8, mean 3489 (p. 45; the library's Markdown drops the 3485, \
+checked on the page image). The per-point uncertainties below are the rms of the \
+paper's obs - calc columns; the systematic ones the spread of the absolute values \
+(neon 2 in 6725, helium the standard deviation 3.5 in 3489).
+
+Also in the paper, reproduced: Koch's (1913) helium formula (recorded as a formula \
+below), the 1909 and 1910 neon formulas (cuthbertson_1910b, cuthbertson_1910) and Table \
+I, the 1910 constants of all five gases, which are half the 1910 paper's (whose \
+formulas are for 2(mu - 1); recorded with cuthbertson_1910). Table IV repeats the 1910 \
+constants for Ar, Kr and Xe beside the new He and Ne ones."""
+
+[[datasets]]
+id = "experiment_Ne"
+material = "Ne"
+file = "Ne/cuthbertson_1932__experiment_Ne.csv"
+table = "tbl_4ee024d8daf8"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table II, observed column. The state is assumed (see the source notes)."
+[datasets.uncertainty]
+absolute = 0.29
+level = "rms"
+systematic_relative = 0.0003
+
+[[datasets]]
+id = "fit_Ne"
+material = "Ne"
+file = "Ne/cuthbertson_1932__fit_Ne.csv"
+table = "tbl_4ee024d8daf8"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table II, calculated column: the paper's one-term formula (formula ne_1932)."
+
+[[datasets]]
+id = "experiment_He"
+material = "He"
+file = "He/cuthbertson_1932__experiment_He.csv"
+table = "tbl_01cd89e4e3aa"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = """Table III, observed column; wavelengths corrected from four figures where \
+Table II gives them. The 5462 A value (3489.0) is quoted by Mansfield and Peck (1969, \
+Table III). The state is assumed (see the source \
+notes)."""
+[datasets.uncertainty]
+absolute = 0.15
+level = "rms"
+systematic_relative = 0.001
+
+[[datasets]]
+id = "fit_He"
+material = "He"
+file = "He/cuthbertson_1932__fit_He.csv"
+table = "tbl_01cd89e4e3aa"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table III, calculated column: the paper's one-term formula (formula he_1932)."
+
+[[formulas]]
+id = "ne_1932"
+material = "Ne"
+equation = "unnumbered, p. 45; Table IV, p. 47"
+printed = "mu - 1 = 2.61303 x 10^27 / (39160 x 10^27 - n^2)"
+variable = "n = V/lambda: frequency in s^-1, lambda the vacuum wavelength in cm, V = 3e10 cm/s (implied, see notes)"
+state = "1atm_0C"
+density = "unknown"
+range = "289.4-546.2 nm (Table II)"
+coefficients = { C = "2.61303e27", n0_squared = "39160e27" }
+check = "With V = 3e10 cm/s it reproduces Table II's calculated column to within 0.14e-8 (the rounding of the constants). Checked 2026-09-24."
+notes = "Least-squares fit to Table II and the absolute green-line value (p. 45); free wavelength V/n0 = 479.4 A."
+
+[[formulas]]
+id = "he_1932"
+material = "He"
+equation = "unnumbered, p. 45; Table IV, p. 47"
+printed = "mu - 1 = 1.32614 x 10^27 / (38313.7 x 10^27 - n^2)"
+variable = "n = V/lambda: frequency in s^-1, lambda the vacuum wavelength in cm, V = 3e10 cm/s (implied, see notes)"
+state = "1atm_0C"
+density = "unknown"
+range = "275.3-546.2 nm (Table III)"
+coefficients = { C = "1.32614e27", n0_squared = "38313.7e27" }
+check = "With V = 3e10 cm/s it reproduces Table III's calculated column to within 0.1e-8; lambda0 = V/n0 = 484.67 A, the paper's 'our determination leads to 484.67 A.U.' (p. 46). Checked 2026-09-24."
+
+[[formulas]]
+id = "koch_1913_he"
+material = "He"
+equation = "unnumbered, p. 46 (Koch 1913, reproduced)"
+printed = "(2/3)(mu^2 + 2)/(mu^2 - 1) = 28860.8 - 67.763 x 10^-8 / lambda^2 (lambda in centimetres); Sellmeier form mu - 1 = 1.32816 x 10^27 / (38331.7 x 10^27 - n^2)"
+variable = "lambda: wavelength in cm (medium not stated); n = V/lambda"
+state = "1atm_0C"
+density = "unknown"
+range = "230.3-546.2 nm ('over the range 5462-2303')"
+coefficients = { A = "28860.8", B = "67.763e-8", C = "1.32816e27", n0_squared = "38331.7e27" }
+check = "The first form gives 3.4924e-5 at 5462 A (Koch's green-line value, quoted p. 45: 0.000034925); its Sellmeier equivalent follows with V = 3e10 cm/s (C = V^2/B = 1.32816e27, n0^2 = A C = 38331.7e27). Checked 2026-09-24."
+notes = "Reproduced from J. Koch, Ark. Mat. Astr. Fys. 9, No. 6 (1913), not in the library; the paper says Koch counted only 53 bands. Koch's free wavelength 484.55 A."
+[[errata]]
+dataset = "experiment_He"
+row = "5462"
+column = "x"
+printed = "5462"
+corrected = "5462.23"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 5462.23; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "4359"
+column = "x"
+printed = "4359"
+corrected = "4359.54"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 4359.54; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "4078"
+column = "x"
+printed = "4078"
+corrected = "4078.97"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 4078.97; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "4047"
+column = "x"
+printed = "4047"
+corrected = "4047.68"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 4047.68; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "3907"
+column = "x"
+printed = "3907"
+corrected = "3907.56"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3907.56; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "3664"
+column = "x"
+printed = "3664"
+corrected = "3664.10"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3664.10; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "3342"
+column = "x"
+printed = "3342"
+corrected = "3342.42"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3342.42; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "3132"
+column = "x"
+printed = "3132"
+corrected = "3132.59"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3132.59; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "3022"
+column = "x"
+printed = "3022"
+corrected = "3022.37"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3022.37; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "2968"
+column = "x"
+printed = "2968"
+corrected = "2968.13"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 2968.13; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "experiment_He"
+row = "2894"
+column = "x"
+printed = "2894"
+corrected = "2894.44"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 2894.44; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "5462"
+column = "x"
+printed = "5462"
+corrected = "5462.23"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 5462.23; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "4359"
+column = "x"
+printed = "4359"
+corrected = "4359.54"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 4359.54; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "4078"
+column = "x"
+printed = "4078"
+corrected = "4078.97"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 4078.97; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "4047"
+column = "x"
+printed = "4047"
+corrected = "4047.68"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 4047.68; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "3907"
+column = "x"
+printed = "3907"
+corrected = "3907.56"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3907.56; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "3664"
+column = "x"
+printed = "3664"
+corrected = "3664.10"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3664.10; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "3342"
+column = "x"
+printed = "3342"
+corrected = "3342.42"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3342.42; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "3132"
+column = "x"
+printed = "3132"
+corrected = "3132.59"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3132.59; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "3022"
+column = "x"
+printed = "3022"
+corrected = "3022.37"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 3022.37; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "2968"
+column = "x"
+printed = "2968"
+corrected = "2968.13"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 2968.13; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."
+
+[[errata]]
+dataset = "fit_He"
+row = "2894"
+column = "x"
+printed = "2894"
+corrected = "2894.44"
+reason = "Table III prints the wavelengths truncated to 'four figures'; this mercury line is printed in full, in vacuo, in Table II (neon), measured with the same lamp and interferometer."
+evidence = "Table II (tbl_4ee024d8daf8.jpg) lists 2894.44; every four-figure helium wavelength shared with it is its truncation, not its rounding (4078.97 -> 4078, 3132.59 -> 3132). The one-term He formula reproduces the calculated column to within 0.1e-8 with either the truncated or the full wavelengths (checked 2026-09-24), so the column does not show which the authors used."

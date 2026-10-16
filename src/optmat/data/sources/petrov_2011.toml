@@ -1,0 +1,2151 @@
+citation = "I. D. Petrov, V. L. Sukhorukov, M.-W. Ruf, D. Klar and H. Hotop, \"Near-threshold photoionization from the excited mp5(m + 1)p J = 0-3 levels of Ar, Kr and Xe (m = 3-5)\", Eur. Phys. J. D 62, 347-359 (2011)"
+doi = "10.1140/epjd/e2011-10667-5"
+library = "Petrov_2011_NearThresholdPhotoionization"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Calculated one-photon photoionisation cross sections of the ten levels mp5 \
+(m+1)p, J = 0-3 (Paschen 2p1-2p10) of Ar, Kr and Xe, total and partial (into the \
+2P3/2 and 2P1/2 ion), near threshold, including the autoionising mp5(2P1/2) ns', nd', \
+ng' resonances between the two thresholds, in the configuration interaction \
+Pauli-Fock approach with core polarisation (CIPFCP): Pauli-Fock orbitals with the \
+relativistic compression of the core, initial- and final-state configuration \
+interaction (scheme (2): intershell 4p4 n/epsilon l, 4s 4p6 epsilon l, 4p5 p/f, and \
+the coupling of the channels and resonances) in second-order perturbation theory, the \
+Slater integrals scaled by the factors of Table 1. Length and velocity gauges agree \
+(Fig. 2); the length gauge is shown. Selected autoionisation spectra (Ar, Kr) are \
+compared with atomic-beam measurements (cw two-step laser excitation of metastables, \
+ion detection), convolved with the experiment's 0.4-1 cm-1 resolution."""
+notes = """Eur. Phys. J. D 62(3), 347-359 (2011) = PDF pages 1-13 (journal page = PDF page \
++ 346). Identity checked on the first page (PDF p. 1: journal, volume, pages, DOI, \
+title, authors, Rostov-on-Don and Kaiserslautern, received 22 November 2010, final form \
+4 February 2011, published online 17 May 2011) on 2026-10-12. Table 2 checked cell by \
+cell against the table image; Figs. 3-5 read from the vector drawing and inspected as \
+overlays (below).
+
+LEVELS. The paper names each level by its Paschen label and its jK label (pair-coupling \
+nl[K]J, a prime for the 2P1/2 core); NIST's configuration, term and J follow from the \
+jK label directly (src/optmat/data/external/nist_asd/<X>_I_levels.tsv), and each \
+dataset's initial_level gives both. The figures' panels carry each gas's own Paschen \
+label: Kr 2p2 = 5p'[3/2]2 and 2p3 = 5p'[1/2]1, Xe 2p8 = 6p[5/2]3 and 2p9 = 6p[5/2]2, \
+the reverse of Ar (Table 2's footnote e), as NIST's energies order them (Kr 5p'[3/2]2 \
+97945.17 above 5p'[1/2]1 97919.15 cm-1; Xe 6p[5/2]3 78403.06 above 6p[5/2]2 78119.80). \
+Table 2's rows carry Ar's Paschen labels with one jK column, and its values for Kr and \
+Xe belong to the jK label: the curves at threshold match Table 2 by jK within 0.06 Mb \
+(Kr [3/2]2' 15.82 against 15.81 and [1/2]1' 16.13 against 16.09; by the Paschen label \
+they would miss by 0.27 and 0.32 Mb; Xe [5/2]3 6.78 against 6.77, [5/2]2 7.58 against \
+7.58, by Paschen 0.8 Mb), so the datasets are named by jK (pp12_0 = p'[1/2]0, p52_3 = \
+p[5/2]3 and so on) and their rows keep Table 2's printed Paschen label.
+
+ENERGY AXIS (a decision of this record). Figs. 3-5 and Table 2 give the cross sections \
+against the 'relative (photon) energy' omega_1/2 above the level's mp5 2P1/2 ionisation \
+threshold (pp. 350-351), 0 to 6 eV; at omega_1/2 = 0 the photoelectron of the 2P3/2 channel \
+has Delta_FS, that of the 2P1/2 channel none. The quantity is held against the photon \
+energy, so the scripts add the level's 2P1/2 threshold, E(2P3/2 limit) + Delta_FS - \
+E(level), from NIST's levels (the paper's energies are experimental, Fig. 1's caption, \
+ref. 55): Ar 2.4572 (4p'[1/2]0) to 3.0301 eV (4p[1/2]1), Kr 2.4089 to 3.3620, Xe \
+2.2950 to 3.8561 (each dataset's notes). Delta_FS (NIST, Ar_II, Kr_II, Xe_II_levels.tsv) \
+is 0.17749, 0.66581 and 1.30642 eV; the paper prints 0.178, 0.666 and 1.306 (p. 349) \
+and 177.5 meV for Ar (p. 353) (script check). Nothing is shifted beyond this \
+conversion; the printed omega_1/2 of each vertex is kept in printed.
+
+RANGE AGAINST OEP 8's DRIVES. 0-6 eV above the 2P1/2 threshold covers every drive: Ar \
+4p'[1/2]0 at 184.0 nm (6.738 eV) is omega_1/2 = 4.28 eV, 4p[1/2]0 at 186.8 nm 3.97 eV, \
+4p[3/2]2 at 188.3 nm 3.82 eV, 4p[5/2]2 at 189.4 nm 3.70 eV (the third photon of the \
+two-photon drive; photoelectron about 3.9-4.1 eV above the 2P3/2 threshold); Xe \
+6p[1/2]0 at 248 nm (5.0 eV) 1.50 eV; Kr 5p[1/2]0 at 212.6 nm (5.83 eV) 2.83 eV. Read \
+off the curves (linear interpolation of the vertices): Ar 2p1 2.39 Mb at 184.0 nm, 2p5 \
+2.03 at 186.8 nm, 2p6 2.31 at 188.3 nm, 2p8 2.55 at 189.4 nm; Xe 6p[1/2]0 3.35 Mb at \
+248 nm and 1.47 at 193 nm, 6p[3/2]2 2.70 and 1.21; Kr 5p[1/2]0 3.03 Mb at 212.6 nm. \
+These are bound-free continuum values: the autoionising resonances lie between the \
+2P3/2 and 2P1/2 thresholds (omega_1/2 < 0), below every drive.
+
+WHAT IS TAKEN (tools/extract/petrov_2011.py). Per gas and level (30 levels, 120 \
+datasets): (1) Table 2 (p. 352), sigma_tot^0 (tot_*), sigma_3/2^0 (s32_*) and \
+sigma_1/2^Delta_FS (s12_*), one point each, channel total, '2P3/2 ion', '2P1/2 ion', \
+use primary (the paper's own calculation; no uncertainty stated). No unit is printed \
+in Table 2; it is Mb, the figures' unit, with which the totals agree. The ratio column \
+r(Delta_FS) = sigma_1/2^DFS / sigma_3/2^0 is derived (checked by the script for all 30 \
+rows to the rounding) and not taken. (2) Figs. 3-5 (p. 351), the total sigma_tot \
+against the photon energy, every vertex of the drawn line inside the frame (42-61 per \
+level, omega_1/2 from 0 or 0.02-0.05 eV, where the drawn lines start, to 5.5-6.0 eV, \
+where the frame clips them), fig_*, digitised vector, use check (data rule 8). The \
+drawn lines begin at omega_1/2 = -0.02 to 0.05 eV and there equal Table 2's \
+sigma_tot^0 within 0.06 Mb for all 30 levels (script check); the ticks lie on their \
+scales within 0.05 pt. Uncertainty 0.1 Mb absolute, not stated by the paper: the \
+drawing's reproduction of the printed threshold values (0.06 Mb) with margin; the line \
+is 0.85 pt wide, 0.23-0.34 Mb on the three y scales (Ar 14.5 pt per 4 Mb, Kr 12.1, Xe \
+9.9). Overlays inspected: the extracted vertices drawn back on the rendered page lie on \
+the black lines of all 30 panels (overlays made at curation, not archived).
+
+NOT TAKEN. The partial curves sigma_3/2 (blue) and sigma_1/2 (dashed red) of Figs. 3-5: \
+Table 2 prints their threshold values, the total is drawn and read, and several \
+partial curves are drawn x10 (marked by arrows) and dashed. Figs. 2 and 6-8 (lineshapes \
+of the autoionising resonances between the thresholds, against binding energy) and \
+Figs. 9-12 (comparisons with experiment, relative units): resonance structure below \
+the 2P1/2 threshold, not near OEP 8's drives; nothing in them is printed as a number. \
+Table 1 (scaling factors of the Slater integrals): method parameters. The text's \
+reduced widths of the nd'[5/2]3 series (81, 9501, 5955, 3796 cm-1 for Ne, Ar, Kr, Xe, \
+p. 353) and r(J = 3) of Ne: no quantity.
+
+FINDINGS (comparison with the held excited-state cross sections; Petrov read at the \
+photon energy of each). Ar 4p at 248 nm: the (2J+1)-weighted mean of the ten levels \
+4.72 Mb, 2p5 (4p[1/2]0) 4.31, 2p1 4.18; duzy_1980 (configuration average) 5.4, \
+chang_1982 (4p 1S, J = 0) 4.8, hyman_1977 (J-averaged, 248.6 nm) 4.3 Mb. payne_1981's \
+Ar 4p[1/2]0 '~1 x 10^-18 cm2' at 157.6 nm: Petrov 1.18 Mb. Kr 5p at 248 nm: mean 4.51 \
+Mb; duzy_1980 5.2, chang_1982 4.5. payne_1981's Kr 5p[1/2]0 '10^-18 cm2' at 326.2 nm: \
+Petrov 7.02 Mb, seven times larger. Xe 6p at 308 nm: mean 5.81 Mb; duzy_1980 7.6, \
+chang_1982 6.9. Xe 6p[1/2]0 (2p5): kroll_1990 (measured) 4.3 +- 0.7 Mb at 248 nm and \
+1.9 +- 0.7 at 193 nm against Petrov 3.35 and 1.47 (both within 1.4 sigma, low); \
+pindzola_1981 Dirac-Fock length 3.05 at 4.97 eV and 1.85 at 6.20 eV against 3.40 and \
+1.71, Hartree-Fock velocity 1.32 at 4.97 eV; payne_1981's '3 x 10^-18' at 249.6 nm \
+against 3.41. Xe 6p[3/2]2 (2p6): kroll_1990 3.7 +- 0.7 and 1.8 +- 0.5 Mb against 2.70 \
+and 1.21 (1.4 and 1.2 sigma low). The single-electron calculations (duzy_1980, \
+chang_1982) lie 0-31 % above Petrov's level means; Petrov says its totals agree with \
+them 'in general behaviour' (p. 352).
+
+TWO-PHOTON DATA CITED, NOT IN THE LIBRARY: M. Stellpflug, M. Johnsson, I. D. Petrov, \
+T. Halfmann, Eur. Phys. J. D 23, 35 (2003) (ref. 56: Xe 2p1 and 2p5 two-photon \
+excited from the ground state, autoionisation spectra above them and the 5p6 \
+admixture of the J = 0 levels). The single-electron calculations it compares with, \
+Duzy and Hyman (ref. 65) and Chang and Kim (ref. 66), are duzy_1980 and chang_1982."""
+
+[[datasets]]
+id = "fig_Ar_pp12_0"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_pp12_0.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p1 4p'[1/2]0: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.4572 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]0 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 0 (NIST, 108722.619 cm-1); Paschen 2p1 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_pp12_0"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.4572 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]0 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 0 (NIST, 108722.619 cm-1); Paschen 2p1 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_pp12_0"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.4572 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]0 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 0 (NIST, 108722.619 cm-1); Paschen 2p1 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_pp12_0"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.6347 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]0 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 0 (NIST, 108722.619 cm-1); Paschen 2p1 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_pp12_1"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_pp12_1.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p2 4p'[1/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.6092 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 1 (NIST, 107496.417 cm-1); Paschen 2p2 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_pp12_1"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.6092 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 1 (NIST, 107496.417 cm-1); Paschen 2p2 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_pp12_1"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.6092 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 1 (NIST, 107496.417 cm-1); Paschen 2p2 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_pp12_1"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.7867 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[1/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 1 (NIST, 107496.417 cm-1); Paschen 2p2 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_pp32_2"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_pp32_2.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p3 4p'[3/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.6349 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]2 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 2 (NIST, 107289.700 cm-1); Paschen 2p3 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_pp32_2"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.6349 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]2 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 2 (NIST, 107289.700 cm-1); Paschen 2p3 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_pp32_2"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.6349 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]2 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 2 (NIST, 107289.700 cm-1); Paschen 2p3 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_pp32_2"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.8124 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]2 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 2 (NIST, 107289.700 cm-1); Paschen 2p3 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_pp32_1"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_pp32_1.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p4 4p'[3/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.6545 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 1 (NIST, 107131.709 cm-1); Paschen 2p4 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_pp32_1"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.6545 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 1 (NIST, 107131.709 cm-1); Paschen 2p4 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_pp32_1"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.6545 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 1 (NIST, 107131.709 cm-1); Paschen 2p4 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_pp32_1"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.8320 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p'[3/2]1 = 3s2.3p5.(2P*<1/2>).4p 2[3/2] J = 1 (NIST, 107131.709 cm-1); Paschen 2p4 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_p12_0"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_p12_0.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p5 4p[1/2]0: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.6641 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]0 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 0 (NIST, 107054.272 cm-1); Paschen 2p5 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_p12_0"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.6641 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]0 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 0 (NIST, 107054.272 cm-1); Paschen 2p5 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_p12_0"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.6641 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]0 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 0 (NIST, 107054.272 cm-1); Paschen 2p5 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_p12_0"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.8416 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]0 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 0 (NIST, 107054.272 cm-1); Paschen 2p5 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_p32_2"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_p32_2.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p6 4p[3/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.7653 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 2 (NIST, 106237.552 cm-1); Paschen 2p6 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_p32_2"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.7653 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 2 (NIST, 106237.552 cm-1); Paschen 2p6 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_p32_2"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.7653 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 2 (NIST, 106237.552 cm-1); Paschen 2p6 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_p32_2"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.9428 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 2 (NIST, 106237.552 cm-1); Paschen 2p6 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_p32_1"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_p32_1.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p7 4p[3/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.7840 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 1 (NIST, 106087.260 cm-1); Paschen 2p7 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_p32_1"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.7840 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 1 (NIST, 106087.260 cm-1); Paschen 2p7 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_p32_1"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.7840 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 1 (NIST, 106087.260 cm-1); Paschen 2p7 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_p32_1"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 2.9615 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[3/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[3/2] J = 1 (NIST, 106087.260 cm-1); Paschen 2p7 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_p52_2"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_p52_2.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p8 4p[5/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.8422 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 2 (NIST, 105617.270 cm-1); Paschen 2p8 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_p52_2"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.8422 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 2 (NIST, 105617.270 cm-1); Paschen 2p8 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_p52_2"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.8422 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 2 (NIST, 105617.270 cm-1); Paschen 2p8 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_p52_2"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.0197 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]2 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 2 (NIST, 105617.270 cm-1); Paschen 2p8 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_p52_3"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_p52_3.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p9 4p[5/2]3: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.8614 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]3 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 3 (NIST, 105462.760 cm-1); Paschen 2p9 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_p52_3"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.8614 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]3 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 3 (NIST, 105462.760 cm-1); Paschen 2p9 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_p52_3"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.8614 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]3 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 3 (NIST, 105462.760 cm-1); Paschen 2p9 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_p52_3"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.0389 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[5/2]3 = 3s2.3p5.(2P*<3/2>).4p 2[5/2] J = 3 (NIST, 105462.760 cm-1); Paschen 2p9 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Ar_p12_1"
+material = "Ar"
+file = "Ar/petrov_2011__fig_Ar_p12_1.csv"
+table = "fig_cdcdef4cd679"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 351), panel 2p10 4p[1/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.0301 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 1 (NIST, 104102.099 cm-1); Paschen 2p10 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Ar_p12_1"
+material = "Ar"
+file = "Ar/petrov_2011__tot_Ar_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.0301 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 1 (NIST, 104102.099 cm-1); Paschen 2p10 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Ar_p12_1"
+material = "Ar"
+file = "Ar/petrov_2011__s32_Ar_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.0301 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 1 (NIST, 104102.099 cm-1); Paschen 2p10 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Ar_p12_1"
+material = "Ar"
+file = "Ar/petrov_2011__s12_Ar_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Ar: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.2076 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Ar 4p[1/2]1 = 3s2.3p5.(2P*<3/2>).4p 2[1/2] J = 1 (NIST, 104102.099 cm-1); Paschen 2p10 of Ar"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_pp12_0"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_pp12_0.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p1 5p'[1/2]0: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.4089 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]0 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 0 (NIST, 98855.070 cm-1); Paschen 2p1 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_pp12_0"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.4089 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]0 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 0 (NIST, 98855.070 cm-1); Paschen 2p1 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_pp12_0"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.4089 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]0 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 0 (NIST, 98855.070 cm-1); Paschen 2p1 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_pp12_0"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.0748 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]0 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 0 (NIST, 98855.070 cm-1); Paschen 2p1 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_pp32_2"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_pp32_2.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p2 5p'[3/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.5218 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]2 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 2 (NIST, 97945.166 cm-1); Paschen 2p2 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_pp32_2"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.5218 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]2 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 2 (NIST, 97945.166 cm-1); Paschen 2p2 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_pp32_2"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.5218 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]2 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 2 (NIST, 97945.166 cm-1); Paschen 2p2 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_pp32_2"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.1876 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]2 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 2 (NIST, 97945.166 cm-1); Paschen 2p2 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_pp12_1"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_pp12_1.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p3 5p'[1/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.5250 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 1 (NIST, 97919.147 cm-1); Paschen 2p3 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_pp12_1"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.5250 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 1 (NIST, 97919.147 cm-1); Paschen 2p3 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_pp12_1"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.5250 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 1 (NIST, 97919.147 cm-1); Paschen 2p3 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_pp12_1"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.1908 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[1/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[1/2] J = 1 (NIST, 97919.147 cm-1); Paschen 2p3 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_pp32_1"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_pp32_1.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p4 5p'[3/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.5651 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 1 (NIST, 97595.915 cm-1); Paschen 2p4 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_pp32_1"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.5651 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 1 (NIST, 97595.915 cm-1); Paschen 2p4 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_pp32_1"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.5651 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 1 (NIST, 97595.915 cm-1); Paschen 2p4 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_pp32_1"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.2309 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p'[3/2]1 = 4s2.4p5.(2P*<1/2>).5p 2[3/2] J = 1 (NIST, 97595.915 cm-1); Paschen 2p4 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_p12_0"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_p12_0.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p5 5p[1/2]0: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.9994 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]0 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 0 (NIST, 94092.863 cm-1); Paschen 2p5 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_p12_0"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.9994 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]0 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 0 (NIST, 94092.863 cm-1); Paschen 2p5 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_p12_0"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.9994 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]0 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 0 (NIST, 94092.863 cm-1); Paschen 2p5 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_p12_0"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.6652 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]0 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 0 (NIST, 94092.863 cm-1); Paschen 2p5 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_p32_2"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_p32_2.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p6 5p[3/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.1196 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 2 (NIST, 93123.341 cm-1); Paschen 2p6 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_p32_2"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.1196 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 2 (NIST, 93123.341 cm-1); Paschen 2p6 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_p32_2"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.1196 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 2 (NIST, 93123.341 cm-1); Paschen 2p6 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_p32_2"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.7854 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 2 (NIST, 93123.341 cm-1); Paschen 2p6 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_p32_1"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_p32_1.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p7 5p[3/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.1393 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 1 (NIST, 92964.394 cm-1); Paschen 2p7 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_p32_1"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.1393 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 1 (NIST, 92964.394 cm-1); Paschen 2p7 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_p32_1"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.1393 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 1 (NIST, 92964.394 cm-1); Paschen 2p7 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_p32_1"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.8051 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[3/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[3/2] J = 1 (NIST, 92964.394 cm-1); Paschen 2p7 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_p52_2"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_p52_2.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p8 5p[5/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.2208 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 2 (NIST, 92307.379 cm-1); Paschen 2p8 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_p52_2"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.2208 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 2 (NIST, 92307.379 cm-1); Paschen 2p8 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_p52_2"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.2208 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 2 (NIST, 92307.379 cm-1); Paschen 2p8 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_p52_2"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.8866 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]2 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 2 (NIST, 92307.379 cm-1); Paschen 2p8 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_p52_3"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_p52_3.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p9 5p[5/2]3: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.2224 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]3 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 3 (NIST, 92294.401 cm-1); Paschen 2p9 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_p52_3"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.2224 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]3 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 3 (NIST, 92294.401 cm-1); Paschen 2p9 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_p52_3"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.2224 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]3 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 3 (NIST, 92294.401 cm-1); Paschen 2p9 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_p52_3"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.8882 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[5/2]3 = 4s2.4p5.(2P*<3/2>).5p 2[5/2] J = 3 (NIST, 92294.401 cm-1); Paschen 2p9 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Kr_p12_1"
+material = "Kr"
+file = "Kr/petrov_2011__fig_Kr_p12_1.csv"
+table = "fig_c5f6d8609180"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 351), panel 2p10 5p[1/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.3620 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 1 (NIST, 91168.515 cm-1); Paschen 2p10 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Kr_p12_1"
+material = "Kr"
+file = "Kr/petrov_2011__tot_Kr_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.3620 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 1 (NIST, 91168.515 cm-1); Paschen 2p10 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Kr_p12_1"
+material = "Kr"
+file = "Kr/petrov_2011__s32_Kr_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.3620 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 1 (NIST, 91168.515 cm-1); Paschen 2p10 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Kr_p12_1"
+material = "Kr"
+file = "Kr/petrov_2011__s12_Kr_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Kr: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 4.0278 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Kr 5p[1/2]1 = 4s2.4p5.(2P*<3/2>).5p 2[1/2] J = 1 (NIST, 91168.515 cm-1); Paschen 2p10 of Kr"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_pp12_0"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_pp12_0.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p1 6p'[1/2]0: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.2950 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]0 = 5p5.(2P*<1/2>).6p 2[1/2] J = 0 (NIST, 89860.015 cm-1); Paschen 2p1 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_pp12_0"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.2950 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]0 = 5p5.(2P*<1/2>).6p 2[1/2] J = 0 (NIST, 89860.015 cm-1); Paschen 2p1 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_pp12_0"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.2950 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]0 = 5p5.(2P*<1/2>).6p 2[1/2] J = 0 (NIST, 89860.015 cm-1); Paschen 2p1 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_pp12_0"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_pp12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p1 [1/2]0' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.6015 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]0 = 5p5.(2P*<1/2>).6p 2[1/2] J = 0 (NIST, 89860.015 cm-1); Paschen 2p1 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_pp12_1"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_pp12_1.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p2 6p'[1/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.3671 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]1 = 5p5.(2P*<1/2>).6p 2[1/2] J = 1 (NIST, 89278.706 cm-1); Paschen 2p2 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_pp12_1"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.3671 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]1 = 5p5.(2P*<1/2>).6p 2[1/2] J = 1 (NIST, 89278.706 cm-1); Paschen 2p2 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_pp12_1"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.3671 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]1 = 5p5.(2P*<1/2>).6p 2[1/2] J = 1 (NIST, 89278.706 cm-1); Paschen 2p2 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_pp12_1"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_pp12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p2 [1/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.6735 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[1/2]1 = 5p5.(2P*<1/2>).6p 2[1/2] J = 1 (NIST, 89278.706 cm-1); Paschen 2p2 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_pp32_2"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_pp32_2.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p3 6p'[3/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.3815 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]2 = 5p5.(2P*<1/2>).6p 2[3/2] J = 2 (NIST, 89162.356 cm-1); Paschen 2p3 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_pp32_2"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.3815 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]2 = 5p5.(2P*<1/2>).6p 2[3/2] J = 2 (NIST, 89162.356 cm-1); Paschen 2p3 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_pp32_2"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.3815 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]2 = 5p5.(2P*<1/2>).6p 2[3/2] J = 2 (NIST, 89162.356 cm-1); Paschen 2p3 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_pp32_2"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_pp32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p3 [3/2]2' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.6880 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]2 = 5p5.(2P*<1/2>).6p 2[3/2] J = 2 (NIST, 89162.356 cm-1); Paschen 2p3 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_pp32_1"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_pp32_1.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p4 6p'[3/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 2.4787 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]1 = 5p5.(2P*<1/2>).6p 2[3/2] J = 1 (NIST, 88379.126 cm-1); Paschen 2p4 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_pp32_1"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 2.4787 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]1 = 5p5.(2P*<1/2>).6p 2[3/2] J = 1 (NIST, 88379.126 cm-1); Paschen 2p4 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_pp32_1"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 2.4787 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]1 = 5p5.(2P*<1/2>).6p 2[3/2] J = 1 (NIST, 88379.126 cm-1); Paschen 2p4 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_pp32_1"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_pp32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p4 [3/2]1' (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 3.7851 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p'[3/2]1 = 5p5.(2P*<1/2>).6p 2[3/2] J = 1 (NIST, 88379.126 cm-1); Paschen 2p4 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_p12_0"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_p12_0.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p5 6p[1/2]0: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.5028 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]0 = 5p5.(2P*<3/2>).6p 2[1/2] J = 0 (NIST, 80118.962 cm-1); Paschen 2p5 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_p12_0"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.5028 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]0 = 5p5.(2P*<3/2>).6p 2[1/2] J = 0 (NIST, 80118.962 cm-1); Paschen 2p5 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_p12_0"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.5028 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]0 = 5p5.(2P*<3/2>).6p 2[1/2] J = 0 (NIST, 80118.962 cm-1); Paschen 2p5 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_p12_0"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_p12_0.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p5 [1/2]0 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 4.8092 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]0 = 5p5.(2P*<3/2>).6p 2[1/2] J = 0 (NIST, 80118.962 cm-1); Paschen 2p5 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_p32_2"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_p32_2.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p6 6p[3/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.6152 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]2 = 5p5.(2P*<3/2>).6p 2[3/2] J = 2 (NIST, 79212.465 cm-1); Paschen 2p6 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_p32_2"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.6152 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]2 = 5p5.(2P*<3/2>).6p 2[3/2] J = 2 (NIST, 79212.465 cm-1); Paschen 2p6 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_p32_2"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.6152 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]2 = 5p5.(2P*<3/2>).6p 2[3/2] J = 2 (NIST, 79212.465 cm-1); Paschen 2p6 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_p32_2"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_p32_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p6 [3/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 4.9216 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]2 = 5p5.(2P*<3/2>).6p 2[3/2] J = 2 (NIST, 79212.465 cm-1); Paschen 2p6 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_p32_1"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_p32_1.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p7 6p[3/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.6470 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]1 = 5p5.(2P*<3/2>).6p 2[3/2] J = 1 (NIST, 78956.031 cm-1); Paschen 2p7 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_p32_1"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.6470 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]1 = 5p5.(2P*<3/2>).6p 2[3/2] J = 1 (NIST, 78956.031 cm-1); Paschen 2p7 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_p32_1"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.6470 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]1 = 5p5.(2P*<3/2>).6p 2[3/2] J = 1 (NIST, 78956.031 cm-1); Paschen 2p7 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_p32_1"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_p32_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p7 [3/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 4.9534 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[3/2]1 = 5p5.(2P*<3/2>).6p 2[3/2] J = 1 (NIST, 78956.031 cm-1); Paschen 2p7 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_p52_3"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_p52_3.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p8 6p[5/2]3: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.7155 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]3 = 5p5.(2P*<3/2>).6p 2[5/2] J = 3 (NIST, 78403.061 cm-1); Paschen 2p8 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_p52_3"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.7155 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]3 = 5p5.(2P*<3/2>).6p 2[5/2] J = 3 (NIST, 78403.061 cm-1); Paschen 2p8 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_p52_3"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.7155 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]3 = 5p5.(2P*<3/2>).6p 2[5/2] J = 3 (NIST, 78403.061 cm-1); Paschen 2p8 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_p52_3"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_p52_3.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p9 [5/2]3 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 5.0219 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]3 = 5p5.(2P*<3/2>).6p 2[5/2] J = 3 (NIST, 78403.061 cm-1); Paschen 2p8 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_p52_2"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_p52_2.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p9 6p[5/2]2: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.7506 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]2 = 5p5.(2P*<3/2>).6p 2[5/2] J = 2 (NIST, 78119.798 cm-1); Paschen 2p9 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_p52_2"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.7506 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]2 = 5p5.(2P*<3/2>).6p 2[5/2] J = 2 (NIST, 78119.798 cm-1); Paschen 2p9 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_p52_2"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.7506 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]2 = 5p5.(2P*<3/2>).6p 2[5/2] J = 2 (NIST, 78119.798 cm-1); Paschen 2p9 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_p52_2"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_p52_2.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p8 [5/2]2 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 5.0571 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[5/2]2 = 5p5.(2P*<3/2>).6p 2[5/2] J = 2 (NIST, 78119.798 cm-1); Paschen 2p9 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+
+[[datasets]]
+id = "fig_Xe_p12_1"
+material = "Xe"
+file = "Xe/petrov_2011__fig_Xe_p12_1.csv"
+table = "fig_f7565eddc4c9"
+digitised = "vector"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 351), panel 2p10 6p[1/2]1: the total cross section sigma_tot (black line) against the photon energy, converted from the printed omega_1/2 (0 to 6 eV above the 2P1/2 threshold) by adding 3.8561 eV (record notes); every vertex of the drawn line inside the frame. At omega_1/2 = 0 it is Table 2's sigma_tot^0 within 0.06 Mb (script check). 0.1 Mb: the digitising uncertainty (record notes)."
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]1 = 5p5.(2P*<3/2>).6p 2[1/2] J = 1 (NIST, 77269.145 cm-1); Paschen 2p10 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "tot_Xe_p12_1"
+material = "Xe"
+file = "Xe/petrov_2011__tot_Xe_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_tot^0 (footnote a), the total at the 2P1/2 threshold (omega_1/2 = 0), at the photon energy 3.8561 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]1 = 5p5.(2P*<3/2>).6p 2[1/2] J = 1 (NIST, 77269.145 cm-1); Paschen 2p10 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "total"
+
+[[datasets]]
+id = "s32_Xe_p12_1"
+material = "Xe"
+file = "Xe/petrov_2011__s32_Xe_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_3/2^0 (b), the partial into the 2P3/2 ion at the 2P1/2 threshold (omega_1/2 = 0, photoelectron energy Delta_FS), at the photon energy 3.8561 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]1 = 5p5.(2P*<3/2>).6p 2[1/2] J = 1 (NIST, 77269.145 cm-1); Paschen 2p10 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P3/2 ion"
+
+[[datasets]]
+id = "s12_Xe_p12_1"
+material = "Xe"
+file = "Xe/petrov_2011__s12_Xe_p12_1.csv"
+table = "tbl_63001e98ed74"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 2 (p. 352), row 2p10 [1/2]1 (Ar's Paschen label with the jK label; the level is identified by jK, footnote e), Xe: sigma_1/2^Delta_FS (c), the partial into the 2P1/2 ion at omega_1/2 = Delta_FS (photoelectron energy Delta_FS), at the photon energy 5.1625 eV (record notes). No unit printed: Mb (Figs. 3-5). No uncertainty stated."
+[datasets.parameters]
+initial_level = "Xe 6p[1/2]1 = 5p5.(2P*<3/2>).6p 2[1/2] J = 1 (NIST, 77269.145 cm-1); Paschen 2p10 of Xe"
+gauge = "length"
+method = "CIPFCP: configuration interaction Pauli-Fock with core polarisation (the paper's Sec. 3; Slater integrals scaled as Table 1), length gauge"
+channel = "2P1/2 ion"
+

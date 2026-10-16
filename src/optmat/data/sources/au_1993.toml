@@ -1,0 +1,107 @@
+citation = "J. W. Au, G. Cooper, G. R. Burton, T. N. Olney and C. E. Brion, \"The valence shell photoabsorption of the linear alkanes, CnH2n+2 (n=1-8): absolute oscillator strengths (7-220 eV)\", Chem. Phys. 173, 209 (1993)"
+doi = "10.1016/0301-0104(93)80142-v"
+library = "Au_1993_ValenceShellPhotoabsorption"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Dipole (e,e) spectroscopy. Low resolution (1 eV FWHM, 8 keV, zero mean scattering \
+angle): background-subtracted energy-loss spectra at 0.5, 1.0 and 2.0 eV intervals \
+over 7-40, 40-80 and 80-220 eV, Bethe-Born converted; the valence-shell fraction above \
+220 eV from a fit of Eq. (1), df/dE = A E^-2 + B E^-3 + C E^-4, to 130-220 eV; the \
+whole TRK-normalised to the number of valence electrons plus about 5 % for \
+Pauli-excluded inner-shell transitions (8.33 for CH4). High resolution (0.048 eV FWHM, \
+3 keV): from the first threshold to at least 50 eV, normalised to the low resolution \
+in the smooth continuum above about 20 eV (figures only). Matheson CH4, 99.8 % (pp. \
+2-4)."""
+notes = """Values per molecule; no density or state involved (room-temperature gas, not stated). \
+Only CH4 is curated. 'The absolute oscillator strength scales are estimated to have an \
+accuracy of +-5%' (p. 3).
+
+CH4 (datasets): Table 7 (p. 22), the low-resolution df/dE at 7.5-220 eV (176 points); \
+the Eq. (1) tail fit with Table 2's CH4 coefficients (formula tail_fit_CH4); Table 1's \
+quoted vertical ionisation potentials (13.6, 14.4, 15.0 eV for the Jahn-Teller split \
+1t2^-1 band, Kimura et al.'s HeI handbook; 22.91 eV for 2a1^-1, Potts and Streets \
+1974). Sums computed from Table 7 (2026-09-27; trapezoid plus the tail above 220 eV): \
+S(0) = 7.915 over 7.5-220 eV and 8.330 in all (the normalisation 8.33); S(-1) = \
+10.533, S(-2) = 17.063 au, S(-3) = 31.45, S(-4) = 63.56, S(-5) = 137.9, S(-6) = 316.6. \
+The paper prints no S(k). Olney et al. (1997, olney_1997) refine this spectrum for \
+their CH4 dipole sums. Comparisons (pp. 4-6): good agreement with Okabe and Becker, \
+Samson et al. and Backx et al. (1975; the last higher above 48 eV, attributed to its \
+background subtraction); de Reilhac and Damany differ below 45 eV; Koch and Skibowski \
+and Metzger and Cook differ in shape; the present data fall between Koch and \
+Skibowski's and Lee et al.'s synchrotron data at 21-24 eV. The recommended average \
+DOSD values of Jhanwar, Meath and MacDonald (Can. J. Phys. 59, 185 (1981), not in the \
+library) are compared in the figures only.
+
+Table 3 (p. 7): the energies (experimental and calculated), term values and proposed \
+Rydberg assignments of eight features of the high-resolution CH4 spectrum (1: 9.7 eV \
+and 2: 10.5 eV, the Jahn-Teller split 1t2 -> 3s; 3-8 at 11.8-14.1 eV, 1t2 -> 4s, 3p, \
+3d, 4d), from Eq. (2) with R = 13.606 eV and quantum defects 1.13 (s), 0.6 (p), 0 (d): \
+no quantity for a band position or term value; not extracted. Figs. 1-2 (CH4 low- and \
+high-resolution spectra) are figures only.
+
+THE OTHER ALKANES (not curated; not extracted): Table 1 also lists the vertical IPs of \
+C2H6, C3H8 and C4H10; Table 2 the Eq. (1) coefficients of C2H6 ... C8H18 (5.4, 5.3, \
+4.4, 4.4, 4.4, 4.4, 5.1 % above 220 eV); Tables 4-6 the feature assignments of C2H6, \
+C3H8, C4H10; Tables 8-14 the df/dE of C2H6 (7.5-220 eV), C3H8, C4H10, C5H12, C6H14, \
+C7H16 and C8H18; TRK normalisations 14.54, 20.75, 26.96, 33.17, 39.38, 45.59, 51.80. \
+Fig. 4 caption: the C2H6 1e_g -> 3s band (Gaussian fit centred at 8.7 eV) holds \
+2.15e-2; the C2H6 band at 8.7-10.1 eV about 0.26 (p. 10). Small peaks at 12.97 eV in \
+the C2H6 and C4H10 spectra are N2 impurity (p. 4)."""
+
+[[datasets]]
+id = "continuum"
+material = "CH4"
+file = "CH4/au_1993__continuum.csv"
+table = "tbl_f5a4c303b9e9"
+quantity = "differential_oscillator_strength"
+unit = "1/eV"
+scale = 0.01
+abscissa_unit = "eV"
+use = "primary"
+notes = "Table 7 (unlabelled in the extraction): low-resolution (1 eV FWHM) dipole (e,e) absolute df/dE of CH4 (10^-2 eV^-1), 7.5-220 eV, 176 points in print order (0.5 eV steps to 40 eV, 1 eV to 80 eV, 2 eV to 220 eV); TRK-normalised to 8.33 with the Eq. (1) tail (formula tail_fit_CH4). Uncertainty +-5 % (p. 3)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "vertical_outer"
+material = "CH4"
+file = "CH4/au_1993__vertical_outer.csv"
+table = "tbl_8bb88b5f26fe"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. Kimura, S. Katsumata, Y. Achiba, T. Yamazaki and S. Iwata, Handbook of HeI Photoelectron Spectra of Fundamental Organic Molecules (Japan Scientific Society, Tokyo, 1981)"]
+notes = "Table 1, CH4 outer valence: the vertical ionisation potentials of the 1t2 orbital, three values (13.6, 14.4, 15.0 eV) for the Jahn-Teller split band (the paper's discussion, p. 6), rows 1t2_1-1t2_3, quoted from Kimura et al.'s handbook (Ref. [32]). The same three maxima as bieri_1977's vertical_CH4 (Heilbronner et al.). No uncertainty printed."
+[datasets.parameters]
+kind = "vertical"
+final_state = "1t2^-1 (X 2T2), the Jahn-Teller components"
+
+[[datasets]]
+id = "vertical_inner"
+material = "CH4"
+file = "CH4/au_1993__vertical_inner.csv"
+table = "tbl_8bb88b5f26fe"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. W. Potts and D. G. Streets, J. Chem. Soc. Faraday Trans. II 70, 875 (1974)"]
+notes = "Table 1, CH4 inner valence: the vertical ionisation potential of the 2a1 orbital, 22.91 eV (row 2a1), quoted from Potts and Streets (Ref. [33]). bieri_1977 gives 22.9 eV. No uncertainty printed."
+[datasets.parameters]
+kind = "vertical"
+final_state = "2a1^-1 (2A1)"
+
+[[formulas]]
+id = "tail_fit_CH4"
+material = "CH4"
+equation = "Eq. (1), p. 4, with Table 2 (p. 4), CH4 row"
+printed = "df/dE = A E^-2 + B E^-3 + C E^-4; CH4: A (eV) = 1.4128x10^2, B (eV^2) = -2.8212x10^4, C (eV^3) = 2.0379x10^6, 5.0 % area above 220 eV"
+variable = "E: photon energy in eV; df/dE in eV^-1"
+state = "none (per molecule)"
+density = "none"
+range = "fitted over 130-220 eV; integrated from 220 eV to infinity for the valence-shell tail"
+coefficients = { A = "1.4128e2", B = "-2.8212e4", C = "2.0379e6" }
+check = "The integral from 220 eV to infinity is 0.4145, 4.98 % of 8.33 (Table 2: 5.0 %); the curve gives 0.114e-2 /eV at 220 eV, 0.146e-2 at 180 eV and 0.265e-2 at 130 eV against Table 7's 0.12, 0.15 and 0.26 (computed 2026-09-27)."
+notes = "The paper's high-energy extrapolation of the CH4 low-resolution df/dE (Fig. 1a insert). Printed as mantissa x 10^n; stored in e-notation, digits unchanged. The other alkanes' coefficients are in the source notes."

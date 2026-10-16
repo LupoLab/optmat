@@ -1,0 +1,74 @@
+# Krypton: the refractive polarizability from 125 nm (red of the 123.6 nm line) to the
+# static limit. The only ab initio dispersion in the library (Pawlowski et al.'s CC3
+# moments) is not converged per its authors: a validator. The fit rests on data.
+gas = "Kr"
+description = "Krypton: the 116.5 nm and 123.6 nm resonance lines at their NIST energies and two effective oscillators, fitted to the dielectric static polarizabilities (Huot & Bose via Kumar & Thakkar; Orcutt & Cole), Birch's and Hohm & Kerl's 633 nm values, Burns et al.'s 458-633 nm molar refractivity, Smith, Huber & Parkinson's ultraviolet interferometry (0.06 %), Bideau-Mehu's revised (1976) and vacuum-ultraviolet (1981) values and the Cuthbertsons' visible shape and Hohm's 325-633 nm dispersion (its shape at 4e-5, the level free). chi_0 (about -25 ppm of alpha) is not in the library and is neglected, below the static values' uncertainty."
+range_nm = [125.0, "inf"]
+
+validators = [
+    "leonard_1974/absolute_Kr",
+    "leonard_1974/recommended_Kr",
+    "bideau_mehu_1981/chashchina_shreider_1969_Kr",
+    "kumar_2010/moments_Kr",
+    "borzsonyi_2008/sgdd_Kr",
+    "ferrell_1987/experiment_Kr",
+    "chopra_1974/refractivity_Kr",
+    "pawlowski_2005/cc3_Kr",   # CC3 moments: the first ab initio krypton dispersion, not converged per the authors (TC-175)
+]
+
+[model]
+effective = 2
+# Above the 116.49 nm line (0.39115 hartree); the next lines are at 100-103 nm.
+effective_min_energy_hartree = 0.40
+chi0_au = 0.0
+
+[[model.lines]]
+label = "Kr 4p6 1S0 - 4p5(2P1/2)5s [1/2]1"
+wavelength_nm = 116.4867079  # NIST ASD Ritz vacuum wavelength
+f_prior = 0.189              # NIST ASD fik, grade A+ (<= 2 %); the bound as sigma
+f_sigma = 0.0038
+
+[[model.lines]]
+label = "Kr 4p6 1S0 - 4p5(2P3/2)5s [3/2]1"
+wavelength_nm = 123.583779
+f_prior = 0.205              # NIST ASD fik, grade A+
+f_sigma = 0.0041
+
+[[fitted]]
+key = "kumar_2010/huot_bose_1991_Kr"   # dielectric static polarizability
+electric = true
+
+[[fitted]]
+key = "orcutt_1967/A_this_work_Kr"     # dielectric
+electric = true
+
+[[fitted]]
+key = "birch_1991/alpha_Kr"
+
+[[fitted]]
+key = "smith_1976/experiment_Kr"
+
+[[fitted]]
+key = "bideau_mehu_1981/experiment_Kr"
+
+[[fitted]]
+key = "cuthbertson_1910/experiment_Kr"
+free_scale = true                       # shape only: the standard state is ambiguous
+
+# Near-infrared dispersion relative to a partner gas: Ar/Kr ratio, argon fixed: the only near-infrared dispersion of krypton.
+[[fitted]]
+key = "shelton_1990/density_Ar_over_Kr"
+
+[[fitted]]
+key = "bideau_mehu_1976/experiment_Kr"   # the revised krypton (164-229 nm)
+
+[[fitted]]
+key = "burns_1986/A_R_Kr"   # 458-633 nm molar refractivity, 0.1 %
+
+[[fitted]]
+key = "hohm_1990/this_work_Kr"   # 632.99 nm
+
+[[fitted]]
+key = "hohm_1994b/alpha_Kr"   # 325-633 nm dispersion
+free_scale = true             # level free: Hohm's absolute levels scatter by 0.1-0.5 % (TC-400)
+shape_relative = 4e-5         # the shape's precision, from his argon against theory (TC-400)

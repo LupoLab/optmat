@@ -1,0 +1,388 @@
+citation = "X. Jing, Y. Tian, J. Zhang, S. Chen, Y. Jin, J. Shao and Z. Fan, \"Modeling validity of femtosecond laser breakdown in wide bandgap dielectrics\", Appl. Surf. Sci. 258, 4741 (2012)"
+doi = "10.1016/j.apsusc.2012.01.070"
+library = "Jing_2012_ModelingValidityFemtosecond"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Rate-equation calculations of the femtosecond breakdown threshold of a 9-eV \
+dielectric (fused silica): Keldysh photoionization (Eqs. 3-5) combined in turn with four \
+avalanche models (Stuart, Sparks-Duthler, Thornber, Drude; Eqs. 6-9), a density-dependent \
+collision time (Starke, Eq. 10) and a 100-fs relaxation (Eq. 11), with the critical \
+density as the damage criterion; compared with published surface thresholds against \
+pulse duration and wavelength (Figs. 7-8)."""
+notes = """Journal pages 4741-4749 = PDF pages 1-9. Identity validated.
+
+MODEL INPUTS (datasets assumed): E_g = 9 eV; m_e* = 0.635 m_e, 'a measured value accepted \
+generally to be accurate for fused silica' [1] (Sudrie et al., Phys. Rev. Lett. 89, 186601 \
+(2002)), the reduced mass m_e m_h/(m_e + m_h) (p. 4742-4743); n0 = 1.46 (Fig. 4 caption); \
+tau_r = 100 fs (p. 4744: 'Li et al. had indicated that the plasma energy in dielectrics \
+experienced ultra-fast decay which lasted only ~100 fs ... In our calculation, the \
+relaxation time tau_r = 100 fs was applied'); the Starke collision time Eq. (10); the \
+critical density n_cr = eps0 m_e* omega^2/e^2 = 1.1e21 cm^-3 (Fig. 4; 1.106e21 with m_e* = \
+0.635 m_e at 800 nm, checked); e = 1.6e-19 C, eps0 = 8.854e-12 F/m.
+
+LITERATURE (datasets reproduced), p. 4742: 'The effective electron mass of m_e [24], \
+0.86 m_e [20], 0.635 m_e [1], 0.64 m_e [2], and 0.5 m_e [4,13] ... were often used in \
+theoretical calculation of photoionization rate and avalanche ionization rate for fused \
+silica' (refs. 24 Kaiser et al. 2000, 20 Wu et al. 2005, 1 Sudrie et al. 2002, 2 \
+couairon_2005, 4 Vaidyanathan et al. 1980, 13 Yuan et al. 2007); the relaxation time \
+'between 150 and 250 fs for fused silica was found [41-43]' and 150 fs 'often used' \
+[1,2,20] (a range: not extracted); tau_c 'in the range from 10^-16 s to 10^-14 s \
+[1,8,19,20,35-37]' (range, not extracted); sigma_6 of Lenzner et al. [11] 6.0e-52 and of Li \
+et al. [10] 3.0e-56 cm^-3 s^-1 (cm2/W)^6 (p. 4743); Stuart's alpha ~ 0.01 cm2 ps^-1/GW \
+(stuart_1996); the Sparks model's tau_c = 1.36e-15 s 'In Refs. [4,13]'; the measured \
+collision time 1.7 fs near 5e19 cm^-3 [39] (Sun et al., Opt. Lett. 30, 320 (2005)); surface \
+thresholds 2.8 J/cm2 ('a typical surface damage threshold ... measured in the experiment \
+with parameters similar to our calculation [11,16,27]'), 1.5 J/cm2 (Li et al. [10], 25 fs \
+single pulse) and 2.3 J/cm2 (Jia et al. [3], 800 nm, 150 fs, three shots) (pp. 4745, 4747).
+
+CHECKS (2026-09-26): the fluence 2.74 J/cm2 = (pi/ln 2)^(1/2) I0 tau_p/2 with I0 = 25.74 \
+TW/cm2 (a lost glyph in the library text, 'TW/cm2' in the pdf text layer) and tau_p = 100 fs \
+(2.7399); sigma_6 I^6 at 3.5e13 W/cm2 = 4.04e34 cm^-3 s^-1 (printed 4.1e34); the Starke \
+tau_c at 5e19 cm^-3 with m_e* = 0.635 m_e, E_g = 9 eV: 3.52 fs (printed 'about 3.5 fs'; \
+4.42 fs with m_e); gamma = 1 at 3.5e13 W/cm2 (0.999 with gamma = omega sqrt(m_e* E_g)/(eE), \
+I = c n0 eps0 E^2/2, n0 = 1.46). The Keldysh-limit sigma_6 = 2.2e-47 per volume is \
+couairon_2005's 9.6e-70 per atom times 2.1e22 cm^-3 (2.0e-47), and the paper's W_MPI \
+(4.1e34) and W_PI (1.6e32) at 3.5e13 W/cm2, gamma = 1, are couairon_2005's (3.7e34, 1.6e32): \
+the paper says 'we calculated' Fig. 1; the agreement of W_PI suggests the same \
+implementation or a reproduction (not cited as such). The Lenzner and Li sigma_6 here \
+disagree by ~1e7 with couairon_2005's per-atom values (see couairon_2005's notes).
+
+EFFECTIVE GAP: Eq. (4) prints E'_g = E_g[1 + 1/(2 gamma^2)]; hamam_2018 prints eps_eff = \
+eps_g[1 + 1/(4 gamma^2)]: the factor differs (and so do the gamma conventions); not \
+resolvable here. Eq. (4)'s <E'_g/hbar omega + 1> is typeset as <E'_g/(hbar omega + 1)> in \
+the library text; as printed in the rendering.
+
+FIGURES ONLY: Fig. 1 (Keldysh, multiphoton and tunnel rates for 9 eV silica at 800 nm, \
+with the two literature sigma_6), Fig. 2 (Eq. 10), Fig. 3 (avalanche rates against field), \
+Figs. 4-9 (electron density; calculated thresholds against duration, wavelength and \
+collision time; comparison with Lenzner, Jia, Varel, Li)."""
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "9"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "'the damage threshold of wide band-gap dielectric (9 eV)' (p. 4742) and Fig. 4's caption 'band gap (9 eV)'; no source."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_reduced_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.635"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+reproduced_from = ["L. Sudrie, A. Couairon, M. Franco, B. Lamouroux, B. Prade, S. Tzortzakis and A. Mysyrowicz, Phys. Rev. Lett. 89, 186601 (2002)"]
+notes = "p. 4743: 'the effective electron mass of m_e* = 0.635 m_e which is a measured value accepted generally to be accurate for fused silica was used to estimate photoionization rate and avalanche ionization rate [1]'; defined as the reduced mass of electron and hole (p. 4742)."
+[datasets.parameters]
+carrier = "reduced"
+assumed = true
+
+[[datasets]]
+id = "mass_kaiser"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Kaiser, B. Rethfeld, M. Vicanek and G. Simon, Phys. Rev. B 61, 11437 (2000)"]
+notes = "p. 4742: 'The effective electron mass of m_e [24] ...', one of the values 'often used' for fused silica; which mass (electron or reduced) the original means is not said here."
+[datasets.parameters]
+carrier = "not stated (Jing: 'effective electron mass')"
+
+[[datasets]]
+id = "mass_wu"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.86"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Q. Wu, I. H. Chowdhury and X. Xu, Phys. Rev. B 72, 085128 (2005)"]
+notes = "p. 4742: '0.86 m_e [20]', as for mass_kaiser."
+[datasets.parameters]
+carrier = "not stated (Jing: 'effective electron mass')"
+
+[[datasets]]
+id = "mass_sudrie"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.635"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["L. Sudrie, A. Couairon, M. Franco, B. Lamouroux, B. Prade, S. Tzortzakis and A. Mysyrowicz, Phys. Rev. Lett. 89, 186601 (2002)"]
+notes = "p. 4742: '0.635 m_e [1]', the value the paper adopts (model_reduced_mass)."
+[datasets.parameters]
+carrier = "not stated (Jing: 'effective electron mass')"
+
+[[datasets]]
+id = "mass_couairon"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.64"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["couairon_2005"]
+notes = "p. 4742: '0.64 m_e [2]'; couairon_2005 defines it as the electron-hole reduced mass (from Fischetti et al. 1985)."
+[datasets.parameters]
+carrier = "reduced"
+
+[[datasets]]
+id = "mass_vaidyanathan_yuan"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.5"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Vaidyanathan, T. W. Walker and A. H. Guenther, IEEE J. Quantum Electron. QE-16, 89 (1980)", "L. Yuan, Y. Zhao, G. Shang, C. Wang, H. He, J. Shao and Z. Fan, J. Opt. Soc. Am. B 24, 538 (2007)"]
+notes = "p. 4742: '0.5 m_e [4,13]', as for mass_kaiser."
+[datasets.parameters]
+carrier = "not stated (Jing: 'effective electron mass')"
+
+[[datasets]]
+id = "model_refractive_index"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "1.46"]]
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Fig. 4 caption: 'The material parameters of the refractive index n0 = 1.46 and band gap (9 eV) were applied', at 800 nm."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_relaxation_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "100"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["M. Li, S. Menon, J. P. Nibarger and G. N. Gibson, Phys. Rev. Lett. 82, 2394 (1999)"]
+notes = "p. 4744: the decay of Eq. (11), 'the relaxation time tau_r = 100 fs was applied', following Li et al.'s '~100 fs' plasma-energy decay."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "sigma6_keldysh_limit"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "2.2e-47"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm-3 s-1 (cm2/W)6"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 4743: 'at the laser intensity I < 4.0 x 10^12 W/cm2, Keldysh's theory coincides with the multiphoton ionization rate W_MPI = sigma_6 I^6, where sigma_6 = 2.2 x 10^-47 cm^-3 s^-1 (cm2/W)^6', per volume (printed '(cm2/w)^6'); the weak-field limit of their Keldysh rate for 9 eV, m_e* = 0.635 m_e."
+[datasets.parameters]
+photons = 6
+
+[[datasets]]
+id = "sigma6_lenzner"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "6.0e-52"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm-3 s-1 (cm2/W)6"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lenzner_1998"]
+notes = "p. 4743: 'sigma_6 = 6.0 x 10^-52 cm^-3 s^-1 (cm2/w)^6 for fused silica was estimated by Lenzner et al. [11]'; the same as schaffer_2001's 6.0e8 cm^-3 ps^-1 (cm2/TW)^6. The original, lenzner_1998 (p. 4078), prints 6 x 10^(8 +- 0.9) cm^-3 ps^-1 (cm2/TW)^6 = 6.0e-52 cm^-3 s^-1 (cm2/W)^6: agrees."
+[datasets.parameters]
+photons = 6
+
+[[datasets]]
+id = "sigma6_li"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "3.0e-56"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm-3 s-1 (cm2/W)6"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["M. Li, S. Menon, J. P. Nibarger and G. N. Gibson, Phys. Rev. Lett. 82, 2394 (1999)"]
+notes = "p. 4743: 'the value of sigma_6 = 3.0 x 10^-56 cm^-3 s^-1 (cm2/w)^6 reported by Li et al. [10]'. couairon_2005 quotes Li's value per atom as 1.5e-71 s^-1 cm12/W6, ~1e7 larger than this per-volume value divided by 2.1e22 cm^-3."
+[datasets.parameters]
+photons = 6
+
+[[datasets]]
+id = "keldysh_rate"
+material = "SiO2"
+table = "text"
+points = [["gamma1", "3.5e13", "1.6e32"]]
+quantity = "ionization_rate"
+unit = "cm-3 s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "p. 4743: 'at I = 3.5 x 10^13 w/cm2 (gamma = 1), the multiphoton ionization approximation of W_MPI = 4.1 x 10^34 cm^-3 s^-1 clearly overestimates the full Keldysh photoionization rate W_PI = 1.6 x 10^32 cm^-3 s^-1 by 2 orders of magnitude'; the same numbers as couairon_2005 (W_MPI there 3.7e34)."
+[datasets.parameters]
+wavelength_nm = 800
+polarization = "not stated"
+
+[[datasets]]
+id = "alpha_stuart"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "0.01"]]
+quantity = "avalanche_coefficient"
+unit = "cm2/(ps GW)"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["stuart_1996"]
+notes = "p. 4743: 'the avalanche coefficient alpha ~ 0.01 cm2 ps^-1/GW was found by numerically solving a Fokker-Planck equation' (refs. 5-7, Stuart et al.); stuart_1996 gives 0.011 at 1053 nm and 0.013 at 526 nm."
+[datasets.parameters]
+definition = "alpha in W_Av = alpha I(t) (Eq. 6)"
+
+[[datasets]]
+id = "tau_c_sparks"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1.36e-15"]]
+quantity = "electron_collision_time"
+unit = "s"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Vaidyanathan, T. W. Walker and A. H. Guenther, IEEE J. Quantum Electron. QE-16, 89 (1980)", "L. Yuan, Y. Zhao, G. Shang, C. Wang, H. He, J. Shao and Z. Fan, J. Opt. Soc. Am. B 24, 538 (2007)"]
+notes = "p. 4743: 'In Refs. [4,13], tau_c = 1.36 x 10^-15 s was used for their theoretical calculation' with the Sparks-Duthler rate, Eq. (7)."
+
+[[datasets]]
+id = "tau_c_starke"
+material = "SiO2"
+table = "text"
+points = [["5e19", "", "3.5"]]
+quantity = "electron_collision_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+notes = "p. 4744: from Eq. (10) (Starke et al.), 'the tau_c of about 3.5 fs at the electron density of 5 x 10^19 cm^-3 was obtained numerically'. Checked: 3.52 fs with m_e* = 0.635 m_e, E_g = 9 eV (2026-09-26). The density is in the row id; the abscissa has no density option for this quantity."
+
+[[datasets]]
+id = "tau_c_sun"
+material = "SiO2"
+table = "text"
+points = [["5e19", "", "1.7"]]
+quantity = "electron_collision_time"
+unit = "fs"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["Q. Sun, H. Jiang, Y. Liu, Z. Wu, H. Yang and Q. Gong, Opt. Lett. 30, 320 (2005)"]
+notes = "p. 4744: 'it agrees well with the measured collision time of 1.7 fs at the electron density near 5 x 10^19 cm^-3 [39]'."
+
+[[datasets]]
+id = "lidt_model"
+material = "SiO2"
+table = "text"
+points = [["1", "100", "2.74"]]
+quantity = "damage_threshold_fluence"
+unit = "J/cm2"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "check"
+notes = "p. 4744: 'the fluence of 2.74 J/cm2 is the single pulse LIDT predicted by this combining ionization model' (Keldysh + Drude, 800 nm, 100 fs, critical density criterion, Fig. 4). Calculated. Checked: (pi/ln 2)^(1/2) I0 tau_p/2 = 2.740 J/cm2 with I0 = 25.74 TW/cm2."
+[datasets.parameters]
+site = "surface"
+criterion = "calculated: conduction-electron density reaching n_cr = 1.1e21 cm^-3"
+shots = 1
+wavelength_nm = 800
+
+[[datasets]]
+id = "lidt_typical"
+material = "SiO2"
+table = "text"
+points = [["1", "800", "2.8"]]
+quantity = "damage_threshold_fluence"
+unit = "J/cm2"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lenzner_1998", "A.-C. Tien et al., Phys. Rev. Lett. 82, 3883 (1999)", "K. Starke et al., Proc. SPIE 5273, 501 (2004)"]
+notes = "p. 4745: 'a typical surface damage threshold of phi' ~ 2.8 J/cm2 was measured in the experiment with parameters similar to our calculation [11,16,27]' (i.e. about 100 fs, 800 nm); which paper gives exactly 2.8 is not said. lenzner_1998 prints no 2.8 J/cm2 (its thresholds are in Fig. 3; its fitted rate equation gives 3.8 J/cm2 at 100 fs, computed in lenzner_1998's notes)."
+[datasets.parameters]
+site = "surface"
+criterion = "not stated (literature)"
+
+[[datasets]]
+id = "lidt_li"
+material = "SiO2"
+table = "text"
+points = [["1", "25", "1.5"]]
+quantity = "damage_threshold_fluence"
+unit = "J/cm2"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "reproduced"
+reproduced_from = ["M. Li, S. Menon, J. P. Nibarger and G. N. Gibson, Phys. Rev. Lett. 82, 2394 (1999)"]
+notes = "p. 4747: 'for a 25 fs single pulse, the threshold was measured to be 1.5 J/cm2 by Li et al. [10]'; wavelength not stated."
+[datasets.parameters]
+site = "surface"
+criterion = "not stated (literature)"
+shots = 1
+
+[[datasets]]
+id = "lidt_jia"
+material = "SiO2"
+table = "text"
+points = [["1", "150", "2.3"]]
+quantity = "damage_threshold_fluence"
+unit = "J/cm2"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "reproduced"
+reproduced_from = ["T. Q. Jia, H. X. Chen, M. Huang, F. L. Zhao, X. X. Li, S. Z. Xu, H. Y. Sun, D. H. Feng, C. B. Li, X. F. Wang, R. X. Li, Z. Z. Xu, X. K. He and H. Kuroda, Phys. Rev. B 73, 054105 (2006)"]
+notes = "p. 4747: 'at 800 nm 150 fs three shots pulse the threshold of 2.3 J/cm2 on fused silica sample was obtained by Jia et al. [3]'."
+[datasets.parameters]
+site = "surface"
+criterion = "not stated (literature)"
+shots = 3
+wavelength_nm = 800
+
+[[formulas]]
+id = "keldysh_rate"
+material = "SiO2"
+equation = "Eqs. (3)-(5), pp. 4742-4743"
+printed = "W_PI = (2 omega/9 pi) (omega m_e*/(sqrt(gamma_1) h))^(3/2) Q(gamma, x) exp{-pi <x + 1> [K(gamma_1) - E(gamma_1)]/E(gamma_2)} (3), gamma = omega sqrt(m_e* E_g)/(eE), m_e* = m_e m_h/(m_e + m_h), gamma_1 = gamma^2/(1 + gamma^2), gamma_2 = 1/(1 + gamma^2); W_multpt = (2 omega/9 pi)(m_e* omega/hbar)^(3/2) Phi(sqrt(2 <E'_g/hbar omega + 1> - 2 E'_g/hbar omega)) exp{2 <E'_g/hbar omega + 1> (1 - 1/(4 gamma^2))} (1/(16 gamma^2))^<E'_g/hbar omega + 1> (4), E'_g = E_g [1 + 1/(2 gamma^2)]; W_tunnel = (2 E_g/(9 pi^2 hbar)) (m_e* E_g/hbar^2)^(3/2) (hbar omega/(E_g gamma))^(5/2) exp{-(pi/2)(E_g gamma/hbar omega)(1 - gamma^2/8)} (5)"
+variable = "K, E: complete elliptic integrals of the first and second kinds; <.> the integer part; Phi the Dawson function; E the field amplitude"
+coefficients = { E_g = "9 eV", m_e_star = "0.635 m_e" }
+reproduced_from = ["L. V. Keldysh, Sov. Phys. JETP 20, 1307 (1965)"]
+check = "gamma = 1 at 3.5e13 W/cm2 with I = c n0 eps0 E^2/2, n0 = 1.46 (0.999, 2026-09-26); the rate values (dataset keldysh_rate) are the reference to reproduce. Eq. (3) prints h (not hbar) under the root and the definition of Q is only partly legible in the library text (the Dawson integral is rendered, Q is not)."
+notes = "Compare couairon_2005 Eqs. (7)-(8) and hamam_2018 Eqs. (3)-(4); the effective gap in Eq. (4) differs from hamam_2018's by a factor 2 in the 1/gamma^2 term (source notes)."
+
+[[formulas]]
+id = "avalanche_models"
+material = "SiO2"
+equation = "Eqs. (6)-(9), p. 4743"
+printed = "W_Av_Stuart = alpha I(t), alpha ~ 0.01 cm2 ps^-1/GW (6); W_Av_Sparks = 0.693 e^2 E^2 tau_c/(m_e* E_g (1 + omega^2 tau_c^2)) - 0.693 hbar omega_p/(E_g tau_L) (7); W_Av_Thornber = (v_s e E/E_g) exp{-E_I/(E (1 + E/E_phonon) + E_kT)} (8); W_Av_Drude = (sigma/E_g) I(t), sigma = (e^2/(c eps0 n0 m_e*)) tau_c/(1 + omega^2 tau_c^2) (9)"
+variable = "E: field; tau_c the mean collision time; I(t) = (1/2) c n0 eps0 |E(t)|^2"
+coefficients = { tau_c_sparks = "1.36e-15 s", tau_L = "8.77e-16 s", hbar_omega_p = "0.025 eV", v_s = "2e7 cm/s", E_I = "30 MV/cm", E_phonon = "3.2 MV/cm", E_kT = "0.01 MV/cm" }
+reproduced_from = ["stuart_1996", "M. Sparks and C. J. Duthler, Fifth Tech. Rep., Xonics Inc. (1975)", "K. K. Thornber, J. Appl. Phys. 52, 279 (1981)"]
+check = "Nothing numeric printed to reproduce beyond the constants."
+notes = "The dc-to-optical scaling E_th^ac(omega) = E_th^dc (1 + omega^2 tau_c^2)^(1/2) accompanies Thornber's rate (p. 4743)."
+
+[[formulas]]
+id = "rate_equation_and_collision_time"
+material = "SiO2"
+equation = "Eqs. (1), (2), (10), (11), pp. 4742-4744"
+printed = "n_cr = eps0 m_e* omega^2/e^2 (1); dn_e/dt = W_PI(I(t)) + W_Av(I(t)) n_e(t) - W_rel (2); tau_c = 16 pi eps0^2 sqrt(m_e* (0.1 E_g)^3)/(sqrt(2) e^4 n(t)) (10); W_rel = n(t)/tau_r (11)"
+variable = "n(t): conduction-electron density; tau_r the relaxation time"
+coefficients = { tau_r = "100 fs", n_cr = "1.1e21 cm^-3" }
+reproduced_from = ["K. Starke, D. Ristau, H. Welling, T. V. Amotchkina, M. Trubetskov, A. A. Tikhonravov and A. S. Chirkin, Proc. SPIE 5273, 501 (2004)"]
+check = "Eq. (10): 3.52 fs at 5e19 cm^-3 (printed ~3.5 fs); Eq. (1): 1.106e21 cm^-3 with 0.635 m_e at 800 nm (printed 1.1e21) (checked 2026-09-26)."
+notes = "Eq. (10) is Starke et al.'s inverse-bremsstrahlung estimate (ref. 27); the Gaussian pulse I = I0 exp[-4 ln(2)(t/tau_p)^2], fluence (pi/ln 2)^(1/2) I0 tau_p/2."

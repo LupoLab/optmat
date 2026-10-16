@@ -1,0 +1,352 @@
+citation = "P. D. Chopra and D. W. O. Heddle, J. Phys. B: Atom. Mol. Phys. 7, 2421 (1974)"
+library = "Chopra_1974_PolarizationFreeMeasurements"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Rayleigh scattering of H Lyman alpha (1216 A) from a microwave discharge in \
+He-H2 (2:1), dispersed by a 1 m Seya monochromator (8 A pass band), through a \
+multicapillary gas barrier and a LiF window into a stainless-steel scattering chamber at \
+pressures up to atmospheric. The scattered light was observed at 54 deg 44' to the \
+incident beam in a plane at 45 deg to the vertical, equally inclined to the principal \
+polarisation axes of the grating light, so that the observed intensity is the true \
+average and the total cross section follows without a polarisation correction \
+('polarization free', Samson 1969). Photomultipliers with sodium salicylate. The \
+pressure gradient of (S_p - S_0)/I was compared for pairs of gases in four sequences \
+of 6-10 runs of about seven pressures each (H2-Ar, H2-N2, N2-Kr; N2-Xe); water vapour \
+removed with a cooled copper-turnings trap (pp. 2422-2423)."""
+notes = """Identity unverified by the library; the PDF's cover and header give 'P D Chopra and \
+D W O Heddle 1974 J. Phys. B: Atom. Mol. Phys. 7 2421', received 12 June 1974. No DOI \
+recorded. Journal pages: PDF page 2 is p. 2421.
+
+The measurement is RELATIVE (Table 1, 'Relative cross sections', p. 2423): argon/hydrogen \
+2.40 +- 0.02, nitrogen/hydrogen 2.34 +- 0.02, krypton/nitrogen 3.05 +- 0.06. The format \
+has no quantity for a ratio of scattering cross sections, so Table 1 is recorded here \
+only. The absolute values of Table 2 are NORMALISED to the hydrogen Rayleigh cross \
+section calculated by Dalgarno, Ford and Browne (1971), 2.28 barn at 1216 A, 'believed \
+accurate to <1% and takes account of the anisotropy of the molecular polarizability' \
+(p. 2423). Shardanand and Mikawa (1967) normalised to a calculated helium value (Chan \
+and Dalgarno 1965); Gill and Heddle (1963) to Heddle et al.'s (1963) nitrogen \
+refractivity (p. 2425).
+
+Consistency (checked 2026-09-24): argon 2.40 x 2.28 = 5.47, as printed; nitrogen 2.34 x \
+2.28 = 5.34 against the printed 5.37 (abstract and Table 2); krypton 3.05 x 5.34 = 16.3 \
+as printed (3.05 x 5.37 would be 16.4), but molecular xenon (3.18 x 10^6) x 5.37 = 17.1 \
+Mb as printed (x 5.34 gives 17.0). The nitrogen value used is therefore not the same \
+in the krypton and xenon results; which is right is not decidable from the paper. Kept \
+as printed: TC-69.
+
+Refractivity from Rayleigh scattering (p. 2426): for an atom (rho_n = 0), (n - 1)^2 = 3 \
+lambda^4 N_0^2 sigma / 32 pi^3 = 4.8 x 10^16 sigma at 1216 A ('atmospheric pressure \
+refractivity'; the constant implies N_0 = 2.69 x 10^19 cm^-3, Loschmidt's number, so \
+the state is 1 atm, 0 degrees C, ideal gas). Rayleigh scattering gives (n - 1)^2 only: \
+THE SIGN OF n - 1 IS NOT MEASURED. For argon (first resonance 11.62 eV, above Lyman \
+alpha's 10.20 eV) n - 1 is positive. For krypton Lyman alpha lies between the \
+4p^5 5s (10.03 eV) and 5s' (10.64 eV) resonance lines, beyond the first resonance: the \
+paper's own estimate of the contributions (Table 5: -10.3 from the 5s line, +3.9 from \
+5s', +2 to +7 from nd, +0.5 Beutler lines, +3.7 continuum, x 10^-4) 'account for at most \
+half of the observed value' (8.8 x 10^-4), and the sum can be of either sign. The \
+authors suspect contributions to d orbitals or a systematic error from other lines in \
+the 8 A pass band or Kr2 molecules (p. 2427).
+
+Xenon: the scattered signal is quadratic in pressure, dominated by Xe2 molecules \
+(k = -B = 2.16 x 10^-25 mole^-1 at 298 K; P_Xe2 = 7.0 x 10^-6 P_Xe^2, Torr): sigma(Xe2)/sigma(N2) \
+= (3.18 +- 0.15) x 10^6, sigma(Xe2) = 17.1 Mbarn; atomic xenon scattering could not be \
+separated. Xe2 is not a species; not extracted. Attenuation cross sections of xenon at \
+1216 A (Table 3): atomic sigma_1 = 530 barn, molecular sigma_2 = 18.7 Mbarn (Shardanand \
+1967: 500 barn, 18.5 Mbarn), 'less accurate than the results of the scattering \
+experiments'; the format has no quantity for a total attenuation (absorption) cross \
+section below the ionisation threshold, so they are not extracted.
+
+Wavelength: Lyman alpha, printed '1216 A' throughout (a vacuum wavelength; the line is \
+at 1215.67 A); the rows keep 1216 as printed."""
+
+[[datasets]]
+id = "rayleigh_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__rayleigh_Ar.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2 'Present work', 5.47 barn at 1216 A (also the abstract): the measured ratio to hydrogen, 2.40 +- 0.02 (Table 1), times Dalgarno et al.'s calculated 2.28 barn. relative = 0.02/2.40; systematic 1 % from the hydrogen normalisation ('<1%')."
+[datasets.parameters]
+king_factor = 1.0
+[datasets.uncertainty]
+relative = 0.0083
+systematic_relative = 0.01
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_N2"
+material = "N2"
+file = "N2/chopra_1974__rayleigh_N2.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2 'Present work', 5.37 barn at 1216 A (also the abstract); Table 1 gives nitrogen/hydrogen = 2.34 +- 0.02, which with 2.28 barn is 5.34 (source notes). The total cross section of the anisotropic molecule, observed at the polarisation-free angle; no King factor applied or stated. relative = 0.02/2.34; systematic 1 % from the hydrogen normalisation."
+[datasets.uncertainty]
+relative = 0.0085
+systematic_relative = 0.01
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_Kr"
+material = "Kr"
+file = "Kr/chopra_1974__rayleigh_Kr.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 2 'Present work', 16.3 barn at 1216 A (also the abstract): krypton/nitrogen 3.05 +- 0.06 (Table 1) times nitrogen. Lyman alpha lies between the Kr 5s (10.03 eV) and 5s' (10.64 eV) resonance lines (beyond the first resonance); a possible systematic error from other lines in the 8 A pass band or Kr2 is not excluded by the authors (p. 2427). relative = 0.06/3.05 combined with nitrogen's 0.0085; systematic 1 % from the hydrogen normalisation."
+[datasets.parameters]
+king_factor = 1.0
+beyond_resonance = true
+[datasets.uncertainty]
+relative = 0.021
+systematic_relative = 0.01
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_H2"
+material = "H2"
+file = "H2/chopra_1974__rayleigh_H2.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. Dalgarno, A. L. Ford and J. C. Browne, Phys. Rev. Lett. 27, 1033 (1971)"]
+notes = "Table 2 'Present work' hydrogen, 2.28 barn at 1216 A: not measured here but Dalgarno et al.'s calculated value, the normalisation of all the present absolute values; 'believed accurate to <1%', includes the anisotropy (p. 2423). The original is not in the library."
+[datasets.uncertainty]
+relative = 0.01
+level = "bound"
+
+[[datasets]]
+id = "shardanand_1967_H2"
+material = "H2"
+file = "H2/chopra_1974__shardanand_1967_H2.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Shardanand and Y. Mikawa, J. Quant. Spectrosc. Radiat. Transfer 7, 605 (1967)"]
+notes = "Table 2, Shardanand and Mikawa (1967), 90-degree scattering normalised to a calculated helium cross section (Chan and Dalgarno 1965). Chopra and Heddle suggest their argon and nitrogen values are too high relative to hydrogen because of wavelengths other than 1216 A in the discharge-tube source (p. 2426)."
+
+[[datasets]]
+id = "shardanand_1967_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__shardanand_1967_Ar.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Shardanand and Y. Mikawa, J. Quant. Spectrosc. Radiat. Transfer 7, 605 (1967)"]
+notes = "Table 2, Shardanand and Mikawa (1967); see shardanand_1967_H2 (probably too high: other wavelengths in the source, p. 2426)."
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "shardanand_1967_N2"
+material = "N2"
+file = "N2/chopra_1974__shardanand_1967_N2.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Shardanand and Y. Mikawa, J. Quant. Spectrosc. Radiat. Transfer 7, 605 (1967)"]
+notes = "Table 2, Shardanand and Mikawa (1967); see shardanand_1967_H2 (probably too high: other wavelengths in the source, p. 2426)."
+
+[[datasets]]
+id = "gill_1963_H2"
+material = "H2"
+file = "H2/chopra_1974__gill_1963_H2.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["gill_1963"]
+notes = "Table 2, Gill and Heddle (1963) as cross sections (gill_1963 records their refractivities), normalised to Heddle et al.'s (1963) nitrogen refractivity; 'the quoted uncertainty in the effective wavelength ... corresponds to an uncertainty of about 1 Barn' (p. 2426)."
+
+[[datasets]]
+id = "gill_1963_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__gill_1963_Ar.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["gill_1963"]
+notes = "Table 2, Gill and Heddle (1963); see gill_1963_H2. Relatively too strong compared with hydrogen, attributed to other wavelengths in the source (p. 2426)."
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "gill_1963_N2"
+material = "N2"
+file = "N2/chopra_1974__gill_1963_N2.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["gill_1963"]
+notes = "Table 2, Gill and Heddle (1963); see gill_1963_H2."
+
+[[datasets]]
+id = "gill_1963_Kr"
+material = "Kr"
+file = "Kr/chopra_1974__gill_1963_Kr.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "excluded"
+reproduced_from = ["gill_1963"]
+notes = "Table 2, Gill and Heddle (1963), 580 barn: excluded, 'the effect can be seen to a very marked extent in the results of Gill and Heddle (1963) for krypton and xenon where the resonance lines lie within the spectrum range of the detectors' (p. 2426), 36 times the present value."
+[datasets.parameters]
+king_factor = 1.0
+beyond_resonance = true
+
+[[datasets]]
+id = "gill_1963_Xe"
+material = "Xe"
+file = "Xe/chopra_1974__gill_1963_Xe.csv"
+table = "tbl_6ff9e885d7c3"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-24
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "excluded"
+reproduced_from = ["gill_1963"]
+notes = "Table 2, Gill and Heddle (1963), 6100 barn: excluded for the same reason as gill_1963_Kr (resonance lines within the detectors' range, p. 2426); the present work finds the xenon scattering dominated by Xe2 molecules."
+[datasets.parameters]
+king_factor = 1.0
+beyond_resonance = true
+
+[[datasets]]
+id = "refractivity_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__refractivity_Ar.csv"
+table = "tbl_d63bbf88a338"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table 4 'Present work', 10^4 (n - 1) = 5.2 at 1216 A: derived from rayleigh_Ar with (n - 1)^2 = 4.8 x 10^16 sigma (p. 2426), so a check, not fitted beside it. A magnitude (Rayleigh scattering gives (n - 1)^2), positive for argon below its first resonance. Misprinted: the relation gives 5.1 (erratum)."
+
+[[datasets]]
+id = "refractivity_Kr"
+material = "Kr"
+table = "text"
+points = [["1216", "1216", "8.8"]]
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "p. 2426: 'For krypton we find that the atmospheric pressure refractivity at 1216 A is 8.8 x 10^-4', from rayleigh_Kr with (n - 1)^2 = 4.8 x 10^16 sigma (sqrt(4.8e16 x 16.3e-24) = 8.85e-4, reproduces). A MAGNITUDE: the sign is not measured, and Lyman alpha is beyond krypton's first resonance (source notes); the paper's estimate of the contributions accounts for at most half of it. Derived: a check."
+[datasets.parameters]
+beyond_resonance = true
+
+[[datasets]]
+id = "heddle_1963_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__heddle_1963_Ar.csv"
+table = "tbl_d63bbf88a338"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["heddle_1963"]
+notes = "Table 4 'Cerenkov radiation' (note: Heddle et al. 1963), 5.6 'at 1210 +- 30 A'; heddle_1963 has 5.59 +- 0.10."
+
+[[datasets]]
+id = "gashchina_1968_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__gashchina_1968_Ar.csv"
+table = "tbl_d63bbf88a338"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. I. Gashchina, V. I. Gladushchak and E. Y. Schreider, Opt. Spectrosc. 24, 542 (1968)"]
+notes = "Table 4 'Line displacement' (Gashchina et al. 1968, i.e. Chashchina), 5.0 at 1216 A. The original is not in the library."
+
+[[datasets]]
+id = "kingston_1964_Ar"
+material = "Ar"
+file = "Ar/chopra_1974__kingston_1964_Ar.csv"
+table = "tbl_d63bbf88a338"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "Table 4 'Calculation' (Kingston 1964), 5.3 at 1216 A."
+
+[[formulas]]
+id = "rayleigh_refractivity"
+material = "Ar"
+equation = "unnumbered, p. 2426, from Eqs. (1) and (2)"
+printed = "(n - 1)^2 = 3 lambda^4 N_0^2 sigma / 32 pi^3 = 4.8 x 10^16 sigma, for lambda = 1216 A"
+variable = "sigma: Rayleigh scattering cross section in cm^2; lambda = 1216 A; N_0 the number density at atmospheric pressure (not printed; the constant implies 2.69e19 cm^-3)"
+state = "1atm_0C"
+density = "ideal"
+range = "1216 A only; atoms (rho_n = 0)"
+coefficients = { constant = "4.8e16" }
+check = "3 (1216e-8 cm)^4 (2.687e19)^2 / (32 pi^3) = 4.77e16, the printed 4.8e16. With it, krypton's 16.3 barn gives 8.85e-4 (printed 8.8e-4) but argon's 5.47 barn gives 5.12e-4, not the printed 5.2e-4 (erratum on refractivity_Ar; Mahon 1979 quotes n - 1 = 1.90e-23 N for Chopra and Heddle's argon, i.e. 5.1e-4 at N_0). Checked 2026-09-24."
+notes = "Not a dispersion model: a conversion from a Rayleigh cross section to |n - 1| at one wavelength, valid for an isotropic atom (Eq. (1) with rho_n = 0 and Eq. (2), (n^2 - 1) = 4 pi alpha N ~ 2 (n - 1)). Applies equally to krypton (and argon); recorded once. It gives the magnitude only."
+
+[[errata]]
+dataset = "refractivity_Ar"
+row = "1216"
+column = "value"
+printed = "5.2"
+corrected = "5.1"
+reason = "Table 4's 'present work' is derived from the argon cross section with the paper's own relation (n - 1)^2 = 4.8 x 10^16 sigma: sqrt(4.8e16 x 5.47e-24) = 5.12e-4 (5.11e-4 with the unrounded constant), which rounds to 5.1, not 5.2. The same relation reproduces the krypton value (8.85e-4, printed 8.8e-4)."
+evidence = "Table image tbl_d63bbf88a338.jpg prints 5.2; Table 2 (image) prints argon 5.47 barn; Mahon et al. (1979, mahon_1979/chopra_heddle_1974_Ar) quote Chopra and Heddle's argon as n - 1 = 1.90 x 10^-23 N, i.e. 5.11e-4 at 2.687e19 cm^-3. Computed 2026-09-24."

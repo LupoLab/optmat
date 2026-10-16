@@ -1,0 +1,100 @@
+citation = "J. G. Old, K. L. Gentili and E. R. Peck, J. Opt. Soc. Am. 61, 89 (1971)"
+library = "Old_1971_DispersionCarbonDioxide"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Modified Michelson interferometer with corner-cube reflectors (the apparatus \
+of Peck & Khanna and Peck & Fisher), the mercury green line (0.5462258 um) as \
+reference; refractivity ratios to other lines from 0.48 to 1.82 um. CO2 with at most \
+100 ppm impurities (N2, O2, H2O)."""
+notes = """Identity: the library record is UNVERIFIED; the text is 'Dispersion of Carbon \
+Dioxide' by J. G. Old, K. L. Gentili and E. R. Peck (University of Idaho, received \
+29 June 1970), from the M.S. theses of Old and Gentili. The citation J. Opt. Soc. Am. \
+61, 89 (1971) is the one assigned here; it could not be checked against the \
+record (no DOI or page numbers are recorded) and is to be verified.
+
+Reduction to 1 atm and 0 C with 'a simple virial expansion for the compressibility', \
+Z = 1 - P (9.0143 - 0.048529 T + 6.980e-5 T^2) 1e-5 fitted to Hilsenrath's tables \
+(pdf p. 1; the unit of P is not stated): density = real. Wavelengths are vacuum. The \
+absolute value at 0.5462 um is (n - 1) 10^7 = 4505.0 +- 0.6 (pdf p. 1; the level is not \
+stated); 'to preserve the accuracy of the ratio of refractivities ... three decimals \
+have been added'. The rms difference between the experimental values and the fit is \
+0.030 (pdf p. 1), taken as the per-point uncertainty (absolute = 0.030, rms), and the \
+absolute value's 0.6/4505 = 1.33e-4 as the scale uncertainty (systematic_relative). \
+Impurities are said to affect the data less than the stated error.
+
+The Sellmeier formula's left-hand side, (n - 1) 10^5, is only in the equation image \
+(eq_8da9a196527f); the library's Markdown loses it. Table II gives a derived Verdet \
+'S' factor (the ratio of Ingersoll & Liebenberg's measured Verdet constants to the \
+normal Verdet constant from this dispersion formula); it is not refractive-index \
+data and is not extracted. Its values are not monotonic at 0.8000 um (0.463, 0.400, \
+0.416, 0.366 at 0.75, 0.80, 0.85, 0.90 um), suggesting a misprint there, which cannot \
+be resolved from the paper. Other results (pdf p. 2): absorption wavelengths 4.13, \
+0.1290 and 0.0689 um with oscillator strengths 1.28e-4, 0.240 and 6.90; \
+(n^2 - 1)_inf 1e6 = 936 against the measured dielectric constant 922 +- 1; Rayleigh \
+cross section 1.17e-28 cm^2 at 0.6943 um and 60 degrees."""
+
+[[datasets]]
+id = "experiment"
+material = "CO2"
+file = "CO2/old_1971__experiment.csv"
+table = "tbl_02a196e116e3"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "All 19 points (none excluded from the fit in the paper)."
+[datasets.uncertainty]
+absolute = 0.030
+level = "rms"
+systematic_relative = 0.000133
+
+[[datasets]]
+id = "predicted"
+material = "CO2"
+file = "CO2/old_1971__predicted.csv"
+table = "tbl_02a196e116e3"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table I 'Predicted': the three-term Sellmeier formula at the measured wavelengths (two errata)."
+
+[[errata]]
+dataset = "predicted"
+row = "0.9227030"
+column = "value"
+printed = "4434.595"
+corrected = "4435.595"
+reason = "The predicted value is printed 1.000 too low: the row's difference column (-0.011) with the experimental 4435.584 requires 4435.595, and the column would otherwise fall by 1 between two neighbours 1.0 apart."
+evidence = "The paper's Sellmeier formula at 0.9227030 um gives 4435.595 (checked 2026-09-24); image tbl_02a196e116e3.jpg prints 4434.595."
+
+[[errata]]
+dataset = "predicted"
+row = "0.8777160"
+column = "value"
+printed = "4440.310"
+corrected = "4440.332"
+reason = "The printed predicted value is 0.022 below the formula, which every other row reproduces to 0.001; with the formula's 4440.332 the difference from the experimental 4440.321 is -0.011, the printed difference's magnitude with the opposite sign (printed +0.011, consistent with the misprinted prediction)."
+evidence = "The paper's Sellmeier formula at 0.8777160 um gives 4440.332 (checked 2026-09-24); image tbl_02a196e116e3.jpg prints 4440.310 and +0.011. The experimental value 4440.321 is kept as printed: the printed difference +0.011 is printed experiment minus printed prediction, so the prediction was miscomputed; the alternative needs two misprints (the experimental value and the prediction) (second read 2026-09-25; TC-102)."
+
+[[formulas]]
+id = "sellmeier"
+form = "dn_sigma2"
+terms = { scale = "1e-5", B = ["0.154489", "8309.1927", "287.64190"], C = ["0.0584738", "210.92417", "60.122959"] }
+range_nm = [480.1, 1817.2]
+material = "CO2"
+equation = "pdf p. 1 (unnumbered; equation image eq_8da9a196527f)"
+printed = "(n - 1) 10^5 = 0.154489/(0.0584738 - sigma^2) + 8309.1927/(210.92417 - sigma^2) + 287.64190/(60.122959 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "0.4801-1.8172 um (the data)"
+coefficients = { B1 = "0.154489", C1 = "0.0584738", B2 = "8309.1927", C2 = "210.92417", B3 = "287.64190", C3 = "60.122959" }
+check = "Reproduces Table I's predicted column to 0.001 at 17 of 19 wavelengths (the other two are the errata); rms 0.029 against the experimental values (paper: 0.030); poles at 4.135, 0.1290 and 0.0689 um and (n^2 - 1)_inf = 936.6e-6 as stated (checked 2026-09-24)."
+notes = "The left-hand side (n - 1) 10^5 is only in the equation image; with it the formula gives (n - 1) 10^7 directly after multiplying by 100. The first term is the 4.25 um infrared band."

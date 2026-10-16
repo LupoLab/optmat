@@ -1,0 +1,65 @@
+citation = "D. Wang, L. Qiao, Z. Huang and Y. Leng, \"Measuring electronic Kerr and rotational parameters of gases with hollow-core fibers\", J. Opt. Soc. Am. B 32, 2238 (2015)"
+doi = "10.1364/JOSAB.32.002238"
+library = "Wang_2015_MeasuringElectronicKerr"
+identity = "VALIDATED"
+kind = "theory"
+technique = """A proposed method, tested only by numerical experiments: n2 from the \
+self-phase-modulation broadening of a pulse in a gas-filled hollow-core fiber (Ar, 40 \
+fs, 800 nm, 250 um, 50-1000 mbar), and for molecules (N2) n2,instant from few-cycle (5.3 \
+fs) pulses plus the rotational constant and spin statistics from pump-probe spectral \
+shifts, simulated with a nonlinear Schroedinger equation (Kerr, self-steepening, PPT \
+ionization, plasma, rotational density matrix) whose inputs are the 'true values' of \
+Table 2 (pp. 2239-2243). No measurement."""
+notes = """Journal pages 2238-2245 = PDF pages 1-8. Identity checked against the first page.
+
+NO MEASURED VALUE. The 'retrieved' n2 are outputs of simulations run with known inputs: \
+Ar in um2/(TW bar) in Figs. 1-2 only; N2 n2,instant retrieved with a 20-cm fiber '5.3834 +- \
+0.6277 um2/(TW bar)' (800 nm) and '5.7077 +- 0.5510' (400 nm) against the inputs 5.5 and \
+6.0 (p. 2242); B0 retrieved 1.984844 cm^-1 against 1.989581 (p. 2243). Not extracted \
+(simulation outputs).
+
+DEFINITIONS (p. 2239): Eq. (1) dE/dz = -(alpha/2) E + i (omega0/c) n2 |E|^2 E, E normalized to \
+intensity (so n2 is the self coefficient), gamma = omega0 n2 / (c A_eff); Eq. (5): n2 bar = \
+n2 per unit gas pressure ('nonlinear refractive index per unit gas pressure'); p. 2242: \
+Delta n_rot-Raman = (2 pi rho_nt Delta alpha / n0)(<<cos^2 theta>> - 1/3).
+
+TABLE 2 (p. 2242; image checked; tools/extract/wang_2015.py): the N2 inputs. n2,instant at \
+800 nm = 5.5 um2/(TW bar), note a: 'As it is the instantaneous part of n2, the value is \
+half that in [23]' ([23] = Loriot et al.'s erratum, Opt. Express 18, 3011 (2010), N2 11 x \
+10^-20 cm2/W at 1 bar). That erratum already gives the self coefficient (the factor 2 of \
+the degenerate probe removed; wahlstrand_2013), so the halving is WRONG: 'excluded'. \
+n2,instant at 400 nm = 6.0, note b: 'Derived according to generalized Miller formulas in \
+[33]' (Ettoumi et al. 2010 = ettoumi_2010) from the halved value: excluded with it. B0 = \
+1.989581 cm^-1, D0 = 5.76e-6 cm^-1, Delta alpha = 1.0 A^3, g_even = 2, g_odd = 1, note c \
+= Ref. [29] (Herzberg, Molecular Spectra and Molecular Structure, 1989). Units: 1 \
+um2/(TW bar) = 1e-20 cm2/W per bar."""
+
+[[datasets]]
+id = "n2_instant_N2"
+material = "N2"
+file = "N2/wang_2015__n2_instant_N2.csv"
+table = "tbl_1bb9ec2e9554"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "excluded"
+reproduced_from = ["loriot_2010", "ettoumi_2010"]
+notes = "Table 2, n2,instant of N2 used as the simulations' input, in um2/(TW bar) = 1e-20 cm2/W per bar (293.15 K assumed): 800 nm = half of Loriot et al.'s erratum value (11), wrongly (the erratum value is already the self coefficient); 400 nm derived from it with the generalized Miller formulas. Excluded: an erroneous reproduction."
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+
+[[datasets]]
+id = "dalpha_herzberg_N2"
+material = "N2"
+file = "N2/wang_2015__dalpha_herzberg_N2.csv"
+table = "tbl_1bb9ec2e9554"
+quantity = "polarizability_anisotropy"
+unit = "angstrom3"
+scale = 1.0
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. Herzberg, Molecular Spectra and Molecular Structure (Krieger, 1989)"]
+notes = "Table 2, Delta alpha = 1.0 A^3 (note c: Herzberg). One significant figure; wavelength not stated."

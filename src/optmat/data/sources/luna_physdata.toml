@@ -1,0 +1,71 @@
+citation = "Luna.jl, src/PhysData.jl (https://github.com/LupoLab/Luna.jl), branch modal-fixed and PR #425"
+kind = "fit"
+technique = "Dispersion formulas used by Luna that have no publication of their own."
+notes = """Legacy models, kept to compare Luna's and solprop's choices with the data. \
+Luna evaluates every Sellmeier gamma as n^2 - 1 at 0 degrees C and 1 bar divided by the \
+real-gas density there (dens_1bar_0degC), whatever state the source used (LB-106 to \
+LB-108 in solprop's LUNABUGS.md); the entries here keep Luna's own reference state.
+
+The argon fit (Luna commit 56cc3ab, C. Brahms, 2025-10-02, 'improved argon ref index') \
+and the krypton fit (PR #425, T. Grigorova) are three-term fits of the same form as \
+Ermolov's helium formula to Kingston's (1964) vacuum-ultraviolet values joined to \
+Borzsonyi et al.'s (2008) visible and near-infrared formula; their construction is \
+described only in PR #425's notebook. solprop found the krypton fit's ratio to \
+Borzsonyi to be the 1 atm / 1 bar density ratio and so references it to 1 atm; both \
+readings are recorded."""
+
+[[formulas]]
+id = "jct_He"
+material = "He"
+equation = "PhysData.jl, sellmeier_gas(:He), gamma_JCT"
+printed = "B1 2.16463842e-05, C1 -6.80769781e-04, B2 2.10561127e-07, C2 5.13251289e-03, B3 4.75092720e-05, C3 3.18621354e-03"
+variable = "lambda: wavelength in um"
+form = "n2_sellmeier"
+terms = { B = ["2.16463842e-05", "2.10561127e-07", "4.75092720e-05"], C = ["-6.80769781e-04", "5.13251289e-03", "3.18621354e-03"] }
+state = "1bar_0C"
+density = "real"
+range_nm = [90.0, 1000.0]
+kind = "legacy"
+notes = "Ermolov et al. (2015) with the coefficients to more digits; Luna's default helium."
+
+[[formulas]]
+id = "kingston_fit_Ar"
+material = "Ar"
+equation = "PhysData.jl, sellmeier_gas(:Ar), gamma_JCT, commit 56cc3ab"
+printed = "B1 0.00032323117217767093, C1 0.0045416501944977915, B2 0.00011557814904827939, C2 0.011120847461156543, B3 0.00010909808164540697, C3 0.0006827046691889898"
+variable = "lambda: wavelength in um"
+form = "n2_sellmeier"
+terms = { B = ["0.00032323117217767093", "0.00011557814904827939", "0.00010909808164540697"], C = ["0.0045416501944977915", "0.011120847461156543", "0.0006827046691889898"] }
+state = "1bar_0C"
+density = "real"
+range_nm = [110.0, 1000.0]
+kind = "legacy"
+notes = "Luna's default argon since 56cc3ab; solprop's 'kingston' argon source. 110 nm is PR #425's phase-matching limit for argon."
+
+[[formulas]]
+id = "kingston_fit_Kr_1bar"
+material = "Kr"
+equation = "PR #425, sellmeier_gas(:Kr), gamma_JCT"
+printed = "B1 7.156207185088921e-6, C1 0.016126479267946525, B2 0.00023020614937540427, C2 0.01348822574907029, B3 0.000604323109684193, C3 0.004204161467601559"
+variable = "lambda: wavelength in um"
+form = "n2_sellmeier"
+terms = { B = ["7.156207185088921e-6", "0.00023020614937540427", "0.000604323109684193"], C = ["0.016126479267946525", "0.01348822574907029", "0.004204161467601559"] }
+state = "1bar_0C"
+density = "real"
+range_nm = [130.0, 1000.0]
+kind = "legacy"
+notes = "As Luna PR #425 evaluates it (divided by the 1 bar density)."
+
+[[formulas]]
+id = "kingston_fit_Kr_1atm"
+material = "Kr"
+equation = "PR #425, sellmeier_gas(:Kr), gamma_JCT, referenced to 1 atm"
+printed = "as kingston_fit_Kr_1bar"
+variable = "lambda: wavelength in um"
+form = "n2_sellmeier"
+terms = { B = ["7.156207185088921e-6", "0.00023020614937540427", "0.000604323109684193"], C = ["0.016126479267946525", "0.01348822574907029", "0.004204161467601559"] }
+state = "1atm_0C"
+density = "real"
+range_nm = [130.0, 1000.0]
+kind = "legacy"
+notes = "solprop's reading (sellmeier.py): the fit's ratio to Borzsonyi is 1.01307-1.01343, the 1 atm / 1 bar density ratio."

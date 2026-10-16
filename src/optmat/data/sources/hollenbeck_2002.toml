@@ -1,0 +1,122 @@
+citation = "D. Hollenbeck and C. D. Cantrell, \"Multiple-vibrational-mode model for fiber-optic Raman gain spectrum and response function\", J. Opt. Soc. Am. B 19, 2886 (2002)"
+doi = "10.1364/josab.19.002886"
+library = "Hollenbeck_2002_MultipleVibrationalMode"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A model, fitted by hand, of the Raman response function and gain spectrum of \
+silica-core fibre: 13 vibrational modes, each a Lorentzian convolved with a Gaussian \
+(intermediate broadening), fitted simultaneously to Stolen et al.'s measured gain \
+spectrum (J. Opt. Soc. Am. B 1, 652 (1984)) and response function (stolen_1989, Fig. 2). \
+The mode frequencies and Gaussian widths start from Walrafen & Krishnan's 13-Gaussian \
+table (Appl. Opt. 21, 359 (1982)); mainly the amplitudes were adjusted (p. 2890)."""
+notes = """Journal pages 2886-2892 = PDF pages 1-7. Identity checked against the first \
+page. The material is silica-core single-mode fibre ('most single-mode silica fibers \
+will have frequency and linewidth parameters that are close to those given in Table 1, \
+although the amplitudes of some modes may vary', p. 2890); no fibre type, dopant or \
+pump wavelength is given.
+
+THE RESPONSE FUNCTION (Eq. (9), p. 2889), verbatim: h_R(t) = sum_{i=1}^{13} (A_i'/omega_{v,i}) \
+exp(-gamma_i t) exp(-Gamma_i^2 t^2/4) sin(omega_{v,i} t) theta(t), with theta the unit \
+step (Eq. (10): 1 for t >= 0, 0 for t < 0); A_i' the amplitude of mode i, omega_{v,i} its \
+centre vibrational frequency, gamma_i its Lorentzian and Gamma_i its Gaussian linewidth. \
+TABLE 1 FOOTNOTE (p. 2889), verbatim: 'A_i = A_i'/omega_{v,i}, Gamma_i = pi c x Gaussian \
+FWHM, gamma_i = pi c x Lorentzian FWHM, and omega_{v,i} = 2 pi c x component position.' \
+So h_R(t) = sum_i A_i exp(-gamma_i t) exp(-Gamma_i^2 t^2/4) sin(omega_{v,i} t) theta(t) \
+with the tabulated A_i; c in cm/s makes the rates s^-1 from the cm^-1 columns. The \
+normalisation of h_R is not stated (the tabulated amplitudes are relative; mode 1 has \
+A = 1.00): a user normalises the integral of h_R to 1 as in stolen_1989 Eq. (6).
+
+WHAT THE WIDTH COLUMNS MEAN. The Lorentzian column is a true FWHM: exp(-gamma t) gives a \
+Lorentzian of angular half width gamma, so FWHM = 2 gamma/(2 pi c) = gamma/(pi c) = the \
+column. The Gaussian column is NOT the FWHM of the Gaussian that Eq. (9) produces: \
+exp(-Gamma^2 t^2/4) transforms to exp(-omega^2/Gamma^2), whose FWHM is 2 sqrt(ln 2) Gamma \
+in angular frequency, i.e. sqrt(ln 2) = 0.8326 times the column in cm^-1; the column is \
+the full width at 1/e. The dataset keeps the paper's label (parameters.width = 'fwhm'), \
+and a model must use Gamma_i = pi c x column, as the footnote says (TC-382).
+
+GAUSSIAN-TO-LORENTZIAN RATIO. 'We chose the ratio of the Gaussian linewidth to the \
+Lorentzian linewidth Gamma_i/gamma_i to be 3' (p. 2890). Table 1 gives 3.000 +- 0.001 for \
+12 modes; mode 2 gives 110.42/38.81 = 2.845 (3 x 36.81 = 110.43). 38.81 may be a misprint \
+of 36.81, but the paper does not say every mode has exactly 3, so no erratum is made \
+(TC-382).
+
+CHECK (scratch computation, 2026-09-26): Eq. (9) with Table 1 and the footnote \
+conversions gives a response with its first maximum at 16 fs, near-total decay by \
+~350-450 fs and a recurrence at ~490-560 fs (the features the paper names for Fig. 7, \
+p. 2889: 'the initial sharp peak, the phase reversal around 160 fs, and the recurrence \
+around 500 fs'), and a gain spectrum (the sine transform, Eq. (11)) peaking at 448 cm^-1 \
+(the measured peak is at ~440 cm^-1, Fig. 1). Figures 7-9 cannot be compared \
+numerically (not digitised).
+
+OTHER EQUATIONS. Eq. (4), p. 2887: instantaneous polarization P_{S,i} proportional to (1 - \
+f_R) E_S [|E_S|^2 + 2|E_L|^2], with 'the Raman fraction f_R = 0.18, which can be derived \
+from the maximum Raman gain' (no citation; stolen_1989's alpha). Eq. (5): P_{S,R}(t) \
+proportional to i f_R E_L int h_R(t - t''') exp[-i(omega_L - omega_S)(t - t''')] E_L* E_S \
+dt'''. Eq. (7), p. 2888 (from Agrawal, Eq. (2.3.42)): g_R(omega) = (omega_0/(c n_0)) f_R \
+chi(3) Im[h_R~(omega)]. Eq. (6)/(8): the single damped oscillator of Blow & Wood, h_R \
+proportional to exp(-t/tau_2) sin(t/tau_1), tau_1 = 1/omega_v = 12.2 fs, tau_2 = 1/gamma = \
+32 fs (p. 2887). Appendix A (Eq. (A2)): the purely inhomogeneous limit (gamma_i = 0); \
+Appendix B (Eq. (B1)): the purely homogeneous limit (Gamma_i = 0); both with Table 1's \
+parameters, and both fit worse (pp. 2890-2892).
+
+WALRAFEN & KRISHNAN. 'Walrafen's and Krishnan's Table 1 is mislabeled. They tabulated \
+full widths not half-widths' (p. 2890). Their spectrum is not corrected for the thermal \
+population factor, unlike Stolen's (p. 2888). Table 1 here is not a reproduction of \
+theirs (the amplitudes were refitted and the Lorentzian widths are new), so it is this \
+paper's own model."""
+
+[[datasets]]
+id = "modes"
+material = "SiO2"
+file = "SiO2/hollenbeck_2002__modes.csv"
+table = "tbl_3554e41bb9a2"
+quantity = "raman_mode"
+unit = "arbitrary"
+abscissa = "label"
+columns = { shift = "cm-1", gaussian_width = "cm-1", lorentzian_width = "cm-1" }
+use = "primary"
+notes = "Table 1 (p. 2889): the row label is the mode number i; value = 'Peak Intensity A_i' (A_i = A_i'/omega_{v,i}, relative units); shift = 'Component Position'; gaussian_width and lorentzian_width = the columns headed 'Gaussian FWHM' and 'Lorentzian FWHM'. Gamma_i = pi c x gaussian_width and gamma_i = pi c x lorentzian_width enter Eq. (9); the Gaussian column is the full width at 1/e of the Gaussian that Eq. (9) makes, not its FWHM (source notes, TC-382). Mode 2's width ratio is 2.845, the others 3.000 (TC-382). Fitted by hand; no uncertainty stated."
+[datasets.parameters]
+width = "fwhm"
+form = "fibre"
+model = "intermediate broadening, Eq. (9)"
+
+[[datasets]]
+id = "f_R"
+material = "SiO2"
+table = "text"
+points = [["f_R", "f_R", "0.18"]]
+quantity = "raman_fraction"
+abscissa = "label"
+use = "check"
+notes = "p. 2887, below Eq. (4): 'the Raman fraction f_R = 0.18, which can be derived from the maximum Raman gain, represents the fraction of the polarization contributed by the Raman effect.' Stated without a citation; it is the alpha of stolen_1989. A model input here (assumed)."
+[datasets.parameters]
+definition = "fraction of the nonlinear polarization contributed by the Raman effect: P_{S,i} proportional to (1 - f_R), P_{S,R} proportional to f_R (Eqs. (4), (5))"
+form = "fibre"
+assumed = true
+
+[[datasets]]
+id = "blow_wood_times"
+material = "SiO2"
+table = "text"
+points = [["tau1", "tau1", "12.2"], ["tau2", "tau2", "32"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["blow_1989"]
+notes = "p. 2887, relation (6): h_R(t) proportional to exp(-t/tau_2) sin(t/tau_1), tau_1 = 1/omega_v, tau_2 = 1/gamma, 'taken to be tau_1 = 12.2 fs and tau_2 = 32 fs' (Blow & Wood, ref. 6). blow_1989 (p. 2666) prints tau_1 = 0.0122 ps and tau_2 = 0.032 ps: agrees."
+[datasets.parameters]
+constant = "tau1, tau2 (per row)"
+model = "single damped oscillator (Blow and Wood): h_R(t) proportional to exp(-t/tau2) sin(t/tau1)"
+form = "fibre"
+
+[[formulas]]
+id = "response_eq9"
+material = "SiO2"
+equation = "Eq. (9), p. 2889, with Table 1 and its footnote"
+printed = "h_R(t) = \\sum_{i=1}^{13} \\frac{A_i'}{\\omega_{v,i}} \\exp(-\\gamma_i t) \\exp(-\\Gamma_i^2 t^2/4) \\sin(\\omega_{v,i} t) \\theta(t)"
+variable = "t: time after the impulse (s); A_i = A_i'/omega_{v,i} (Table 1 'Peak Intensity'), omega_{v,i} = 2 pi c x position, Gamma_i = pi c x 'Gaussian FWHM', gamma_i = pi c x 'Lorentzian FWHM' (c in cm/s, columns in cm^-1)"
+coefficients = { modes = "hollenbeck_2002/modes (13 rows)", width_ratio = "3" }
+check = "Scratch computation (2026-09-26): first maximum at 16 fs, near-total decay by ~350-450 fs, recurrence at ~490-560 fs; the sine transform (Eq. (11)) peaks at 448 cm^-1 (measured ~440 cm^-1). Qualitative agreement with the features the paper states for Figs. 7 and 8; no printed number to compare."
+notes = "Normalisation not stated. The gain spectrum is Eq. (11), s(omega) = sum_l (A_l'/(2 omega_{v,l})) int_0^inf {cos[(omega_{v,l} - omega) t] - cos[(omega_{v,l} + omega) t]} exp(-gamma_l t) exp(-Gamma_l^2 t^2/4) dt; the real part Eq. (12) with sines and a + sign (p. 2889). Eq. (11) is the sine transform int_0^inf h_R(t) sin(omega t) dt of Eq. (9), which the check computed directly. width_ratio: Gamma_i/gamma_i chosen as 3 (p. 2890)."

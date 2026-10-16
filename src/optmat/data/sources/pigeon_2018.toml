@@ -1,0 +1,211 @@
+citation = "J. J. Pigeon, S. Ya. Tochitsky, E. C. Welch and C. Joshi, Phys. Rev. A 97, 043829 (2018)"
+doi = "10.1103/physreva.97.043829"
+library = "Pigeon_2018_ExperimentalStudyThird"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """As pigeon_2016: collinear nondegenerate four-wave mixing of 200 ps (FWHM), \
+200 MW, dual-line (10.59 and 10.27 um) CO2-laser pulses at about 15 GW/cm^2 in a 2 m \
+cell (25 cm interaction length, astigmatic beam integrated from pyroelectric-camera \
+profiles, Fig. 2); Stokes sideband at 10.93 um (anti-Stokes 9.97 um); He background at \
+equal pressure; quantitative data at <= 380 Torr. New here: Kr and Xe."""
+notes = """Defining equation (p. 2-3): Eq. (1) as pigeon_2016, W_10.9 = k_10.9^2 n2,eff^2 \
+W_10.6^2 W_10.3 A_10.9 / (sqrt(3) tau^2) (int_0^L dz/(pi a b)^(3/2))^2, k_10.9 'the vacuum \
+wave number of the Stokes sideband'; n2,eff = n2,elec + n2,molecular (p. 4). For the \
+atoms 'the nonlinear response in this case is purely electronic' (p. 4): part = \
+electronic. Uncertainty propagated from the pulse duration, the beam integral and the \
+slope fits, the last dominating (p. 3-4); 'The large experimental uncertainties \
+(10%-30%) reported for this work' (p. 4); level not stated.
+
+Table I ('Nonlinear refractive indices for noble gases scaled to 1 atm'; \
+tbl_d5296ec423fe, image checked), n2 in 10^-19 cm^2/W: 0.8 um from ref. 27 (Wahlstrand, \
+Cheng & Milchberg, Phys. Rev. Lett. 109, 113904 (2012), record wahlstrand_2012b): Ar 0.97 \
++- 0.12, Kr 2.2 +- 0.4, Xe 5.8 +- 1.1 (reproduced); 10.6 um 'calculated using Miller's \
+formula [7]' (Owyoung's thesis): 0.95 +- 0.12, 2.2 +- 0.4, 5.6 +- 1.1 (reproduced: a \
+scaling of the 0.8 um values); 10.6 um measured: Ar '<1' ('Not measurable in this \
+experiment'; not extracted), Kr 2.9 +- 0.6, Xe 5.0 +- 1.4 (primary). The measured values \
+were taken at 380 Torr (Xe, Fig. 5) and scaled to 1 atm; the temperature is not \
+stated: 101325 Pa and 293.15 K are assumed.
+
+Check of the 'calculated' column (2026-09-26): with optmat's default dispersion the \
+(n^2 - 1) ratio between 10.6 and 0.8 um is 0.99183 (Ar), 0.98917 (Kr), 0.98459 (Xe). \
+Ettoumi's Eq. (29) (exponent 4 for n2) gives 0.94, 2.11, 5.45, which does not reproduce \
+the printed 0.95, 2.2, 5.6; exponent 2 gives 0.954, 2.15, 5.62, which does (exponent 1: 0.962, 2.18, 5.71). The text says \
+Miller's rule predicts a '1%-2% decrease' (p. 4). The column therefore used a weaker \
+scaling than the generalized Miller rule for the Kerr index; the source of the \
+difference (formula or dispersion data) is not stated in the paper.
+
+Table II (tbl_2537ec41e92d; N2, O2, air, 'Effective nonlinear refractive indices ... \
+scaled to 1 atm') is garbled in the library (rows and digits interleaved in the CSV and \
+JSON). Its image shows exactly pigeon_2016's Table 1 (0.8 um: N2 3 +- 0.7, O2 8 +- 2.2, \
+air 4 +- 1.1; 2.4 um: N2 3.2 +- 0.5, O2 6.4 +- 0.8; 10.6 um: N2 4.5 +- 0.9, O2 8.4 +- 1.3, air \
+5.0 +- 0.9): the same measurement, recorded in pigeon_2016 and not extracted again. In \
+this table the footnote marks are swapped against their texts: the 2.4 um values carry \
+'a' ('Calculated from measurements of N2, O2, and Ar') and air at 0.8 um carries 'b' \
+('Calculated from measurements in Zahedpour et al. using n2,eff = n2 + n2,rot'); \
+pigeon_2016 has them the right way round. The text says the 0.8 and 2.4 um values 'were \
+calculated in the long-pulse limit to make a reasonable comparison' (p. 4).
+
+Also (p. 5): the nearest rotational Raman lines (N2 J = 4 -> 2 near 840 GHz, O2 J = 6 -> 4 \
+near 950 GHz) are 40-70 GHz from the 882 GHz beat with about 2 GHz widths, so the \
+resonant enhancement is taken as small. The paper does not report the 3 ps \
+electronic/molecular separation it proposes as future work."""
+
+[[datasets]]
+id = "fwm_Kr"
+material = "Kr"
+file = "Kr/pigeon_2018__fwm_Kr.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table I, 10.6 um measured: FWM with 200 ps pulses, scaled to 1 atm from <= 380 Torr; 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 200000
+
+[[datasets]]
+id = "fwm_Xe"
+material = "Xe"
+file = "Xe/pigeon_2018__fwm_Xe.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table I, 10.6 um measured: FWM with 200 ps pulses at 380 Torr (Fig. 5), scaled to 1 atm; 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 200000
+
+[[datasets]]
+id = "wahlstrand_2012b_Ar"
+material = "Ar"
+file = "Ar/pigeon_2018__wahlstrand_2012b_Ar.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012b"]
+notes = "Table I, 0.8 um column (ref. 27). Use the wahlstrand_2012b record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "wahlstrand_2012b_Kr"
+material = "Kr"
+file = "Kr/pigeon_2018__wahlstrand_2012b_Kr.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012b"]
+notes = "Table I, 0.8 um column (ref. 27). Use the wahlstrand_2012b record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "wahlstrand_2012b_Xe"
+material = "Xe"
+file = "Xe/pigeon_2018__wahlstrand_2012b_Xe.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012b"]
+notes = "Table I, 0.8 um column (ref. 27). Use the wahlstrand_2012b record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "miller_Ar"
+material = "Ar"
+file = "Ar/pigeon_2018__miller_Ar.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012b"]
+notes = "Table I, 10.6 um 'calculated': the 0.8 um value scaled with 'Miller's formula' (footnote a); not an independent value. Not reproduced by Ettoumi's exponent-4 rule (see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "miller_Kr"
+material = "Kr"
+file = "Kr/pigeon_2018__miller_Kr.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012b"]
+notes = "Table I, 10.6 um 'calculated' from the 0.8 um value by Miller's formula; not an independent value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "miller_Xe"
+material = "Xe"
+file = "Xe/pigeon_2018__miller_Xe.csv"
+table = "tbl_d5296ec423fe"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012b"]
+notes = "Table I, 10.6 um 'calculated' from the 0.8 um value by Miller's formula; not an independent value."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"

@@ -1,0 +1,170 @@
+citation = "A. Serdyuchenko, V. Gorshelev, M. Weber, W. Chehade and J. P. Burrows, \"High spectral resolution ozone absorption cross-sections - Part 2: Temperature dependence\", Atmos. Meas. Tech. 7, 625 (2014)"
+doi = "10.5194/amt-7-625-2014"
+library = "Serdyuchenko_2014_HighSpectralResolution"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """The setup of gorshelev_2014 (Part 1) at eleven temperatures, 293 K down to 193 K \
+in 10 K steps: echelle (213-310 and 350-450 nm, 0.02 nm) and FTS (1 cm^-1; 2 cm^-1 in \
+780-1100 nm); absolute measurements with pure O3 at 310-335 and 450-780 nm (FTS, 1 \
+cm^-1), calibrated 'individually at each temperature', the relative spectra (O2/O3 \
+flow, pre-cooled through a passivated 10 m copper coil) scaled and concatenated to them \
+per temperature; Haake cryostats (fluctuations below +-0.3 K); the gas temperature \
+checked by the O2 A-band rotational temperature (HITRAN 2008 line parameters), agreeing \
+with the Pt and cryostat sensors within 1-3 K (pp. 626-627)."""
+notes = """Identity checked against the first page (PDF page 1, journal p. 625): Serdyuchenko, \
+Gorshelev, Weber, Chehade and Burrows, Atmos. Meas. Tech. 7, 625-636 (2014), Part 2 \
+(temperature dependence; Part 1 is gorshelev_2014). Journal pages 625-636 = PDF pages \
+1-12. O3 only.
+
+Facts for the data files (the Bremen 'Serdyuchenko/Gorshelev' set, the model's primary \
+absorption term):
+- Temperatures: 293, 283, ..., 193 K (eleven, 10 K steps) (abstract, p. 627).
+- Resolution: '0.02-0.24 nm (full width at half maximum, FWHM)' (abstract); echelle \
+0.02 nm in 213-450 nm; FTS 1 and 2 cm^-1 (p. 627); details, sampling and the 0.01 nm \
+interpolated grid in gorshelev_2014.
+- Wavelengths: VACUUM (gorshelev_2014: echelle air wavelengths converted with Edlen \
+1966, FTS wavenumbers); here too the comparison data were 'converted to vacuum \
+wavelength' (p. 631).
+- Absolute scale: pure-O3 pressure at each temperature separately (310-335 and 450-780 \
+nm), 'independent for every temperature and free from uncertainties of previous \
+studies' (p. 627); the O3 decay matters only above 243 K.
+- Uncertainty (Table 2, image checked, p. 628): systematic below 1.2-2.6 % 'depending on \
+temperature' (pressure sensors 0.5 %, temperature measurements below 0.3-1.6 % (1-3 K), \
+temperature non-uniformity below 0.3 %, cell length below 0.04-0.07 %, leaks below \
+0.1 %, O2 impurity 0.005 %); statistical below 1-2.2 % 'depending on spectral region' \
+(ozone decay below 1 %, light source 0.2 % (vis) / 2 % (UV), pressure below 0.08 %, \
+temperature below 0.1-0.16 %). 'A relative uncertainty of 1.5 % can be taken as the upper \
+limit for the temperature-related uncertainty' (p. 627); 'in the spectral regions with \
+weak absorption (350-450 nm and longer than 900 nm) statistical uncertainty can reach \
+up to 30 %' (p. 627). Levels not stated.
+- The published file: 'available on the homepage of the Molecular Spectroscopy \
+Laboratory of the Institute of the Environmental Physics, University of Bremen ... \
+Cross-section updates from future measurements are expected' (p. 635): the version \
+fetched must be named (TC-189).
+
+Temperature parametrisation (p. 630): Eq. (1), sigma(lambda) = 10^-20 [C0(lambda) + \
+C1(lambda) T + C2(lambda) T^2], T in degrees Celsius, cm^2 molecule^-1, fitted per \
+wavelength (the Bass-Paur form); it reproduces the Huggins-band data 'to within 1.5 %' \
+at most wavelengths and generally within 2 % at 193 and 293 K. The coefficients are not \
+printed (a data product, not a formula entry).
+
+Temperature effects (pp. 629-634): the Hartley band's Gaussian centre moves 0.14 nm from \
+203 to 293 K (BP 0.18, Bogumil 0.05, BMD 0.36 nm from 218 to 295 K); about 2 % increase \
+at the Hartley maximum over 293-193 K; about 1 % near 600 nm over 193-293 K, increasing \
+as the temperature falls; a clear temperature dependence in the Wulf band.
+
+Band-integrated cross sections (Table 3, image checked, p. 629; cm^2 molecule^-1 nm, \
+columns 295 +- 3, 273 +- 3, 243 +- 3, 221 +- 3 and 203 +- 1 K; ratios to this work in \
+brackets): this work, Hartley 245-340 nm (x 10^-16) 3.53, 3.53, 3.53, 3.54, 3.52; \
+Huggins 325-340 nm (x 10^-20) 8.29, 7.41, 6.28, 5.77, 5.46; Chappuis 410-690 nm (x \
+10^-19) 6.22, 6.2, 6.16, 6.15, 6.13; Wulf 663-1000 nm (x 10^-19) 1.040, 1.030, 1.009, \
+1.003, 0.988. The table also gives BMD, Paur and Bass, Guer et al. (2005), Chehade et \
+al. (2013), Bogumil et al. (2003), Burrows et al. (1999) and Orphal (2003) (tables/ \
+tbl_41ebb553ca3e.json). Not extracted: no vocabulary quantity for a cross section \
+integrated over wavelength (format need). The Wulf limits here are 663-1000 nm (the \
+text of both papers), against 633-1000 nm in gorshelev_2014's Table 3.
+
+Datasets: Table 4 (image checked, p. 634), 'x 10^-22 cm^2 molecule^-1', at vacuum \
+wavelengths 'taken from El Helou et al. (2005)', one per column with its temperature. \
+'This work' at 223 K: points of the 223 K file, 'check'. Burkholder and Talukdar's \
+779.416 nm value, 1.541, is half every other value there (3.15-3.33) and lies outside \
+their range 407-762 nm (Table 1): suspect, kept as printed (TC-189)."""
+
+[[datasets]]
+id = "this_work_223"
+material = "O3"
+file = "O3/serdyuchenko_2014__this_work_223.csv"
+table = "tbl_75e505961474"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-22
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 4 'This work, 223 K': 13 wavelengths 543.667-1046.766 nm. About 3 % (Table 2: systematic below 1.2-2.6 %, statistical below 1-2.2 %); 'up to 30 %' beyond 900 nm (p. 627), used for 944.259-1046.766 nm. Level not stated."
+[datasets.uncertainty]
+relative = 0.03
+level = "not stated"
+relative_rows = { "944.259" = 0.3, "991.841" = 0.3, "1046.766" = 0.3 }
+[datasets.parameters]
+temperature_k = 223.0
+
+[[datasets]]
+id = "el_helou_2005_223"
+material = "O3"
+file = "O3/serdyuchenko_2014__el_helou_2005_223.csv"
+table = "tbl_75e505961474"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-22
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["El Helou, Z., Churassy, S., Wannous, G., Bacis, R., and Boursey, E.: Absolute cross sections of ozone at atmospheric temperatures for the Wulf and the Chappuis bands, J. Chem. Phys., 122, 244311, 2005"]  # codespell:ignore bacis
+notes = "Table 4 'El Helou et al. (2005), 222-223 K' (the temperature recorded as 222.5 K, the middle of the printed range): 10 wavelengths to 898.247 nm."
+[datasets.parameters]
+temperature_k = 222.5
+
+[[datasets]]
+id = "el_helou_2005_150"
+material = "O3"
+file = "O3/serdyuchenko_2014__el_helou_2005_150.csv"
+table = "tbl_75e505961474"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-22
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["El Helou, Z., Churassy, S., Wannous, G., Bacis, R., and Boursey, E.: Absolute cross sections of ozone at atmospheric temperatures for the Wulf and the Chappuis bands, J. Chem. Phys., 122, 244311, 2005"]  # codespell:ignore bacis
+notes = "Table 4 'El Helou et al. (2005), 150 K': 8 wavelengths 748.721-1046.766 nm; 'only slightly different from those at 223 K' (p. 634)."
+[datasets.parameters]
+temperature_k = 150.0
+
+[[datasets]]
+id = "burkholder_talukdar_1994_220"
+material = "O3"
+file = "O3/serdyuchenko_2014__burkholder_talukdar_1994_220.csv"
+table = "tbl_75e505961474"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-22
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Burkholder, J. B. and Talukdar, R. K.: Temperature dependence of the ozone absorption spectrum over the wavelength range 410-760 nm, Geophys. Res. Lett., 21, 581-584, 1994"]
+notes = "Table 4 'Burkholder and Talukdar (1994), 220 K': 7 wavelengths; normalised to Anderson and Mauersberger (1992) (p. 626). The 779.416 nm value 1.541 is suspect (source notes)."
+[datasets.parameters]
+temperature_k = 220.0
+
+[[datasets]]
+id = "bogumil_2003_223"
+material = "O3"
+file = "O3/serdyuchenko_2014__bogumil_2003_223.csv"
+table = "tbl_75e505961474"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-22
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Bogumil, K., Orphal, J., Homann, T., Voigt, S., Spietz, P., Fleischmann, O. C., Vogel, A., Hartmann, M., Bovensmann, H., Frerick, J., and Burrows, J. P.: Measurements of molecular absorption spectra with the SCIAMACHY pre-flight model: instrument characterization and reference data for atmospheric remote-sensing in the 230-2380 nm region, J. Photoch. Photobiol. A., 157, 157-167, 2003"]
+notes = "Table 4 'Bogumil et al. (2003), 223 K': 13 wavelengths."
+[datasets.parameters]
+temperature_k = 223.0
+
+[[datasets]]
+id = "bmd_218"
+material = "O3"
+file = "O3/serdyuchenko_2014__bmd_218.csv"
+table = "tbl_75e505961474"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-22
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["brion_1998"]
+notes = "Table 4 'BMD, Brion et al. (1993, 1998), Malicet et al. (1989, 1995), 218 K': 5 visible wavelengths (543.667-632.991 nm), the 218 K Chappuis data of brion_1998 (515-650 nm at 218 K). This work is 2-3 % lower (p. 633)."
+[datasets.parameters]
+temperature_k = 218.0

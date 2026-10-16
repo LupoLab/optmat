@@ -1,0 +1,134 @@
+citation = "C. Gaiser and B. Fellmuth, Europhys. Lett. 90, 63002 (2010)"
+doi = "10.1209/0295-5075/90/63002"
+library = "Gaiser_2010_ExperimentalBenchmarkValue"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Dielectric-constant gas thermometry (DCGT) at PTB: the relative capacitance \
+change gamma = eps_r - 1 + eps_r kappa_eff p of a gas-filled capacitor measured along \
+isotherms at 26-36 K (seven pairs of helium and neon isotherms at identical \
+temperatures, 7-19 points each), fitted by the third-order expansion p = A_1 (mu + A_2 \
+mu^2 + A_3 mu^3) in mu = gamma/(gamma + 3) (Eq. (1)). Combining the helium and neon \
+A_1 at the same temperature eliminates RT (Eq. (3)); the neon molar polarizability \
+follows from the ab initio helium value (Lach et al. 2004). Very low measuring \
+frequency: the static polarizability. Neon 99.9993 % (5 ppm He and 4 ppm H2 measured), \
+helium 99.9999 % through a cold trap (pp. 2-3)."""
+notes = """The molar polarizability is A_eps = N_A alpha_0 / (3 eps0) (p. 2), the package's \
+molar refractivity (unit cm3/mol, printed values x 1e-7 m^3/mol = 0.1 cm^3/mol: scale \
+0.1). It is a density-independent (zero-density) static quantity: the virial terms are \
+in A_2, A_3 of the isotherm fit, which the paper does not report, so there is no \
+refractivity virial coefficient to extract. alpha_0 in a.u. is derived 'via the \
+fundamental constants given in [10]' (CODATA 2006): 3 A_eps/(4 pi N_A a0^3) gives \
+2.661098 for the mean (checked 2026-09-24; 2.661099 with CODATA 2018).
+
+Uncertainty: 'relative standard uncertainty of about 11 parts in 10^6' (abstract); \
+Table 2's weighted mean has u_r = 10.6 ppm (one standard uncertainty). The weights are \
+the inverse squared combined uncertainties; the type-B part 'almost independent of \
+temperature on the level of 8 ppm' is common to all temperatures, which is why the \
+mean's 10.6 ppm exceeds the 8.5 ppm an independent average would give (recomputed \
+2026-09-24; the weighted mean itself reproduces, 9.947271). Table 1 gives the budgets \
+at 26 and 36 K (67.2 and 16.8 ppm), not extracted.
+
+Comparison values in the text (not in tables): Christiansen et al. (1998) \
+non-relativistic CCSD(T) A_eps = 9.943(37) x 10^-7 m^3/mol; the authors' rescaling of \
+Klopper et al. (2004) to a quasi-FCI plus relativistic estimate, 9.950(08) x 10^-7 \
+m^3/mol (uncertainty 7.5 x 10^-10 m^3/mol, private communication), and of Franke et \
+al. (2001), 9.956(22) x 10^-7 m^3/mol (p. 5). Orcutt and Cole's (1967) value deviates by \
+about 0.3 % with a stated 0.1 % (p. 4), and their helium value deviates from theory by \
+about 0.4 %, suggesting a systematic excess; shown in Fig. 2 only. The two optical \
+He-Ne-laser measurements (Burns et al. 1986; Hohm and Kerl 1990) are shown in Fig. 2 \
+only, transferred to static values with a correction of about -5.6 x 10^-9 m^3/mol from \
+Klopper et al.'s frequency dependence (p. 4)."""
+
+[[datasets]]
+id = "molar_polarizability"
+material = "Ne"
+file = "Ne/gaiser_2010__molar_polarizability.csv"
+table = "tbl_7249e8b90cbe"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.1
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2 'Weighted mean': A_eps = 9.94727 x 10^-7 m^3/mol, static (DCGT at very low frequency), the paper's result (abstract, p. 4)."
+[datasets.uncertainty]
+relative = 10.6e-6
+level = "1 sigma"
+
+[[datasets]]
+id = "molar_polarizability_by_temperature"
+material = "Ne"
+file = "Ne/gaiser_2010__molar_polarizability_by_temperature.csv"
+table = "tbl_7249e8b90cbe"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.1
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2, the seven per-isotherm values (row ids are the temperatures T_i in K), whose weighted mean is molar_polarizability: a check, not fitted beside it. Per-row relative standard uncertainties from the u_r column; about 8 ppm of each is common type-B. relative = 290e-6 is only a fallback (the largest row): every row has its own value in relative_rows, but the loader counts an uncertainty as stated only when relative, absolute or column is set."
+[datasets.uncertainty]
+relative = 290e-6
+level = "1 sigma"
+relative_rows = { "26" = 67.2e-6, "27" = 31.9e-6, "28" = 290e-6, "30" = 26.1e-6, "32" = 15.8e-6, "34" = 16.9e-6, "36" = 16.8e-6 }
+systematic_relative = 8e-6
+
+[[datasets]]
+id = "alpha_au"
+material = "Ne"
+file = "Ne/gaiser_2010__alpha_au.csv"
+table = "tbl_7249e8b90cbe"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 'Weighted mean', alpha_0 = 2.66110 a.u.: the same measurement as molar_polarizability converted with CODATA 2006 (reproduces, source notes); a check. Reproduced as 2.66110(3) by Lesiuk et al. 2020 and Wang et al. 2021."
+[datasets.uncertainty]
+relative = 10.6e-6
+level = "1 sigma"
+
+[[datasets]]
+id = "christiansen_1998"
+material = "Ne"
+table = "text"
+points = [["1", "inf", "9.943", "0.037"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.1
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["O. Christiansen, C. Hättig and J. Gauss, J. Chem. Phys. 109, 4745 (1998)"]
+notes = "p. 5: 'The final, non-relativistic estimate for A_eps^Ne = 9.943(37) x 10^-7 m^3/mol' (CCSD(T)). Theory without relativistic corrections."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "klopper_2004_rescaled"
+material = "Ne"
+table = "text"
+points = [["1", "inf", "9.950", "0.008"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.1
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["W. Klopper, S. Coriani, T. Helgaker and P. Jørgensen, J. Phys. B: At. Mol. Opt. Phys. 37, 3753 (2004)"]
+notes = "p. 5: the authors' quasi-FCI estimate from Klopper et al.'s CCSD(T) and CCSD[T] results (CCSD(T) + 1/9 of the difference, following Franke et al.) plus Klopper et al.'s relativistic corrections: 9.950(08) x 10^-7 m^3/mol, uncertainty 7.5 x 10^-10 m^3/mol (Klopper, private communication). Derived by Gaiser and Fellmuth from theory: a check."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "franke_2001_rescaled"
+material = "Ne"
+table = "text"
+points = [["1", "inf", "9.956", "0.022"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+scale = 0.1
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["R. Franke, H. Müller and J. Noga, J. Chem. Phys. 114, 7746 (2001)"]
+notes = "p. 5: Franke et al.'s CCSD(T) and CCSD[T] data rescaled by the same one-ninth rule: 9.956(22) x 10^-7 m^3/mol. Derived by Gaiser and Fellmuth: a check. (Franke et al.'s own final estimate is shown in Fig. 2 only.)"
+[datasets.uncertainty]
+column = true
+level = "not stated"

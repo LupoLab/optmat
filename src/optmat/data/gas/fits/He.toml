@@ -1,0 +1,93 @@
+# Helium: the refractive polarizability from 60 nm (red of the 58.4 nm resonance) to the
+# static limit, on the ab initio backbone of Puchalski et al. (2016).
+gas = "He"
+description = "Helium: the 1s2p (58.4 nm) and 1s3p (53.7 nm) lines at their NIST energies and four effective oscillators, fitted to Puchalski et al.'s corrected 4He dispersion coefficients S(-2)...S(-16) and Schmidt et al.'s microwave static polarizability; the optical experiments are fitted at their demonstrated accuracy (Mansfield & Peck with a free scale and a 1e-4 shape allowance, TC-44) and cannot move a model that theory fixes to 1e-7. The magnetic term chi_0 and Pachucki & Puchalski's retardation term make the electric polarizability the refractive one."
+range_nm = [60.0, "inf"]
+
+# Compared with the fit, not fitted. (Top-level keys must precede the tables.)
+validators = [
+    { key = "puchalski_2020/alpha_static", electric = true },   # alpha^3 QED static, 7.5 ppb above puchalski_2016 (TC-704)
+    "willetts_1982/measured_He",      # 10.59 um, 2.5-6 %
+    { key = "puchalski_2016/alpha", electric = true },   # Table VII totals: static, 632.99 nm
+    { key = "orcutt_1967/A_this_work_He", electric = true },  # dielectric, 0.19 %
+    "newell_1965/newell_baird_cylindrical_He",   # 47.7 GHz: -0.30 % (4 sigma)
+    "birch_1991/alpha_He",                        # 632.99 nm: +0.32 % (TC-81)
+    "achtermann_1991/A_R_this_work_He",           # +0.20 %, flagged by Puchalski et al.
+    "cuthbertson_1910/experiment_He",             # +0.24 %
+    "liu_1997/alpha",                             # infinite-mass, nonrelativistic theory
+    "migneron_1965/theory",
+    "huber_1974/victor_theory",
+    "smith_1976/victor_theory_He",
+    "wang_2021/expt_newell_grohmann_He",
+    "stone_2004/birch_1991_He",
+    "borzsonyi_2008/sgdd_He",
+    "burns_1986/A_R_He",
+    "hohm_1990/this_work_He",
+    "bideau_mehu_1976/experiment_He",
+]
+
+[model]
+# Four effective oscillators reproduce the eight coefficients to their uncertainties
+# (chi2 0.02 on theory alone); two or three leave chi2 above 100.
+effective = 4
+# Above the 1s3p line (0.8484 hartree); the next line, 1s4p, is at 52.2 nm (0.873).
+effective_min_energy_hartree = 0.85
+# Magnetic susceptibility chi_0 = -0.000021194(1) a.u. (Bruch & Weinhold 2002, quoted
+# by Puchalski et al. 2016, p. 11; A_mu = -0.0000079224 cm^3/mol).
+chi0_au = -2.1194e-5
+# Retardation of the forward-scattering amplitude, Pachucki & Puchalski (2019) Eqs.
+# (29)-(30) and Table I (pachucki_2019, formula `retardation`): [alpha + chi]_ret =
+# kappa alpha_nrel (a0 k)^2 = kappa alpha_nrel alpha_em^2 omega^2 (omega in hartree), with
+# kappa = -0.5069525 and alpha_nrel = (2/3) alpha_0(0) = 1.3831922 a.u.: the coefficient
+# of omega^2 is -3.73405e-5 a.u., -24 ppm of S(-4). Refractive, not electric (TC-705).
+retardation_au = -3.73405e-5
+
+# The Thomas-Reiche-Kuhn sum S(0) = 2, the electron count. The moments S(-2)...S(-16) do
+# not fix the highest oscillator: with the retardation term it ran away to 5e13 hartree
+# with f = 4e-18 at the same chi-squared (38.09), leaving a singular covariance. With the
+# sum it settles at 10.5 hartree, f = 0.24, and the polarizability is unchanged to 0.01
+# ppm above 100 nm (TC-728). The allowance, 5e-4 of the sum, is a judgement.
+[model.sum_priors]
+"0" = [2.0, 0.001]
+
+[[model.lines]]
+label = "He 1s2 1S - 1s2p 1P"
+wavelength_nm = 58.4334366   # NIST ASD Ritz vacuum wavelength
+f_prior = 0.27625            # NIST ASD fik, grade AAA (<= 0.3 %); the bound as sigma
+f_sigma = 0.00083
+
+[[model.lines]]
+label = "He 1s2 1S - 1s3p 1P"
+wavelength_nm = 53.7029926
+f_prior = 0.07346            # NIST ASD fik, grade AAA
+f_sigma = 0.00022
+
+# --- the backbone: ab initio 4He dispersion coefficients (electric) and the static
+# polarizability measured with a microwave resonator (the magnetic term subtracted)
+[[fitted]]
+key = "puchalski_2016/cauchy_total"
+
+[[fitted]]
+key = "schmidt_2007/molar_polarizability"
+electric = true
+
+# --- optical refractometry, at the accuracy each has shown against theory
+[[fitted]]
+key = "mansfield_peck_1969/experiment"
+free_scale = true           # shape only (TC-44)
+extra_relative = 1e-4       # its shape departs from theory by up to 1.1e-4 (TC-89)
+
+[[fitted]]
+key = "cuthbertson_1932/experiment_He"
+
+[[fitted]]
+key = "smith_1976/experiment_He"
+
+[[fitted]]
+key = "huber_1974/experiment"
+
+[[fitted]]
+key = "swift_1988/experiment_He"
+
+[[fitted]]
+key = "marchetti_2006/alpha_p_He"

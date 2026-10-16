@@ -1,0 +1,75 @@
+citation = "R. J. Mathar, \"Refractive index of humid air in the infrared: model fits\", J. Opt. A: Pure Appl. Opt. 9, 470 (2007)"
+doi = "10.1088/1464-4258/9/5/008"
+library = "Mathar_2007_RefractiveIndexHumid"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Least-squares fits of polynomials to a line-by-line calculation of the \
+refractive index of humid air (mathar_2004's method, with the HITRAN 2004 list updated \
+to August 2006): chi_m of each species from its line intensities (Eq. 2), combined by \
+Lorentz-Lorenz (Eq. 4), with virial densities and temperature-dependent line \
+strengths, for 10-25 degrees C, 500-1023 hPa and 5-60 % relative humidity at a fixed \
+370 ppm CO2; fitted by a fifth-degree polynomial in wavenumber in each of five \
+infrared windows with coefficients quadratic in 1/T, p and H (Eqs. 5-6, Tables 1-5; \
+pp. 470-475)."""
+notes = """Identity VALIDATED. Journal pages 470-476 = pdf pages 2-8 (pdf page 1 is the \
+publisher's cover sheet). Nothing is extracted: the fits are of moist air, which is \
+not a curated species, and their coefficients are not refractive-index data of a \
+species (TC-722).
+
+THE CALCULATION (Section 2, pp. 470-471). chi_m(omega) = 2 N_m c^2 sum_l (S_ml / \
+omega_0ml) [1/(omega + omega_0ml - i Gamma/2) - 1/(omega - omega_0ml - i Gamma/2)] (Eq. \
+2), S_ml the line intensities, for N2, O2, Ar, Ne, CO2, H2O, O3, CH4 and CO; the \
+macroscopic chi = sum chi_m / (1 - sum chi_m / 3) (Eq. 4, Lorentz-Lorenz, about 2e-8 in \
+n); real-gas densities (second virials of N2 about -7.5e-6 and O2 about -1.9e-5 m^3/mol \
+at 12 degrees C: 2e-4 in density and refractivity; water from Wagner and Pruss); line \
+strengths scaled line by line with temperature (changes below 2e-9 in c_0ref, below \
+3e-5 K in c_0T); widths left at HITRAN's 1 atm values; O2's magnetic-dipole lines \
+included; volume susceptibility of dry air about 3.7e-7 at 1013 hPa. The relative \
+accuracy of the calculated susceptibility is estimated at 2e-4 (p. 470).
+
+THE FITS (Eqs. 5-6, p. 471; Tables 1-5, pp. 472-473). n - 1 = sum_{j=0..5} c_j(T, p, H) \
+(sigma - sigma_ref)^j, sigma in cm^-1, with c_j = c_jref + c_jT (1/T - 1/T_ref) + c_jTT \
+(1/T - 1/T_ref)^2 + c_jH (H - H_ref) + c_jHH (H - H_ref)^2 + c_jp (p - p_ref) + c_jpp (p - \
+p_ref)^2 + c_jTH (1/T - 1/T_ref)(H - H_ref) + c_jTp (1/T - 1/T_ref)(p - p_ref) + c_jHp (H - \
+H_ref)(p - p_ref); T_ref = 290.65 K (17.5 degrees C), p_ref = 75,000 Pa, H_ref = 10 % \
+relative humidity. Windows and sigma_ref (vacuum wavelength 1e4/sigma_ref um): Table 1, \
+1.3-2.5 um, 2.25; Table 2, 2.8-4.2 um, 3.4; Table 3, 4.35-5.2 um, 4.8; Table 4, 7.5-14.1 \
+um, 10.1; Table 5, 16-24 um, 20. Printed c_0ref (n - 1 at the reference conditions and \
+sigma_ref): 0.200192e-3, 0.200049e-3, 0.200020e-3, 0.199885e-3, 0.199436e-3 (Tables \
+1-5, cells checked against tbl_07ea871716f6, tbl_fcbe84f7dc81, tbl_593b3ec40c45, \
+tbl_2bdb93f28b56, tbl_e82d13934a0a; the library's text rendering attaches no caption to \
+Tables 3 and 5, whose captions and sigma_ref were checked on the page). The CO2 \
+fraction is fixed at 370 ppm and enters no coefficient: no term gives CO2's (or \
+water's) contribution on its own.
+
+ON POLES (p. 473): the polynomial has 'artificial wiggles'; at any fixed (T, p, H) 'a \
+Sellmeier format with two resonances' (Peck 1983) fits the raw data better, but \
+expanding its five parameters in T, p and H 'did not achieve competitive stability', \
+so it is not given.
+
+COMPARISONS STATED (Section 4, pp. 473-475). The raw theory lies about 4e-8 above dry \
+air measured in the visible and near infrared (Peck and Reeder; Fig. 1), about 0.8e-8 \
+of it from the temperature scale and 1e-8 from Peck and Reeder's lower CO2 (300 ppm); \
+Table 4's pressure coefficient at 10.57 um and 23 degrees C (0.2618e-8 per Pa) is 6e-3 \
+below Marchetti and Simili's 0.2633e-8 per Pa, within their 5e-3; within 3.5e-8 of \
+Bonsch and Potulski's humid air at 508.7 and 644 nm (Fig. 2); about 1e-8 from \
+Matsumoto's water vapour and moist air at 3.4 um (Figs. 3, 4).
+
+CHECK (computed 2026-09-29, a comparison, not a reproduction). Tables 1-5 at 17.5 \
+degrees C, 750 hPa and H = 0 (a linear extrapolation from the fitted 5-60 %), against \
+optmat's dry air: the stored fits of the CIPM-2007 constituents (picard_2008) with CO2 \
+set to 370 ppm, combined by Lorentz-Lorenz at CoolProp's density of air. Level: \
+Mathar's n - 1 is higher by 5.4e-8 (2.7e-4 relative) over 1.3-2.5 um, 5.1e-8 at 3.5 um, \
+6.2e-8 at 4.8 um, 7.8e-8 at 10.8 um and 16e-8 at 20 um; at 15 degrees C and 1013.25 hPa \
+(outside the fitted pressures) 5.0e-8 at 1.3-1.7 um, where the same optmat sum lies \
+3.0e-8 below Edlen's 1966 standard air (edlen_1966, whose level is uncertain by \
++-5e-8). Dispersion within each window (n - 1 relative to its value at sigma_ref): \
+agrees within 0.23e-8 over 1.3-2.5 um and 0.34e-8 over 4.49-5.2 um, within 1.4e-8 over \
+3.0-4.0 um; it departs by 1.9e-8 at 2.8 um, 3.4e-8 at 4.2 um and 2.1e-8 at 4.35 um \
+(the edges of the 2.7 and 4.3 um bands), from -1.25e-8 at 7.5 um to +2.4e-8 at 14.1 \
+um, and by -3.4e-8 to +7.1e-8 over 16-24 um (next to CO2's 15 um band). At 370 ppm \
+CO2's own infrared term is 1e-9 to 6e-8 of n - 1 inside the windows (optmat: -1.0e-9 at \
+1.5 um, -1.4e-8 at 3.5 um, +3.0e-8 at 4.8 um, +1.9e-9 at 10.1 um, -4.5e-8 at 14.1 um) \
+and 1.5-2.2e-7 at 4.35 and 4.2 um (4.2 um, 2381 cm^-1, lies inside the 4.3 um band's R \
+branch): the fits test optmat's CO2 bands only to about 1e-8, and not at the band \
+edges, where the polynomials' wiggles and the one pole per band both fail."""

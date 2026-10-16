@@ -1,0 +1,596 @@
+citation = "N. Sakamoto, H. Tsuchida, T. Kato, S. Kamakura, H. Ogawa, K. Ishii, I. Murakami, D. Kato, H. Sakaue, M. Kato, J. Berkowitz and M. Inokuti, \"Oscillator strength spectra and related quantities of 9 atoms and 23 molecules over the entire energy region\", NIFS-DATA-109 (National Institute for Fusion Science, Toki, 2010)"
+library = "Sakamoto_2010_OscillatorStrengthSpectra"
+identity = "ASSERTED"
+kind = "compilation"
+technique = """Reconstruction of Berkowitz's recommended photoabsorption (J. Berkowitz, Atomic \
+and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), \
+'Berkowitz's book' below) over the whole energy range, per species: the book's tables \
+of discrete oscillator strengths; its continuum given as tables, as four-term \
+polynomials df/dE = a y^2 + b y^3 + c y^4 + d y^5 (y proportional to 1/E), as \
+figures (digitised by the authors) or only as partial moments S(p) (then the original \
+papers' data were used and adjusted until S(0) and S(1) of the interval agreed with \
+the book's to +-1 %); above 10^4 eV Chantler (1995) and above 10^5 eV a hydrogenic \
+K-shell formula. Every partial moment was recomputed and compared with the book; the \
+disagreements were settled with Berkowitz (a coauthor) (PDF pp. 5-7). Per species: \
+Table I (and II ...) discrete f, then df/dE, sigma_a = 109.76097 df/dE (Mb, df/dE in \
+eV^-1) and the mass absorption coefficient against photon energy (eV), and a table \
+of the source of each energy interval."""
+notes = """Identity checked against the title page (PDF p. 3): the title, the twelve \
+authors and 'NIFS-DATA-109' as cited; the library's identity is ASSERTED (a BibTeX entry supplied with the files), no DOI. A 'preprint' of NIFS (PDF p. 1). Page \
+numbers below are PDF pages. The electronic tables are the NIFS database's text \
+files, attached to the report in the library with their URLs (retrieved 2026-09-25). \
+Only He, Ne, Ar, H2, N2, O2, CO, \
+CO2, N2O, O3, CH4 and SF6 are curated; H, Li, N, O, Na, Cl, NO, HCl, H2O, NO2, H2S, \
+SO2, NH3, C2H2, C2H4, C2H6, CH3OH, C6H6, SiH4 and C60 are skipped.
+
+DEFINITIONS (pp. 4-5): S(p) = sum_n f_n E_n^p + integral_IP^inf E^p (df/dE) dE, -2 <= \
+p <= 2, 'we use the Rydberg energy Ry = 13.606 eV as the unit of E throughout' (so \
+alpha = 4 S(-2) in atomic units); S(-2) and S(0) 'we used ... as constraints to the \
+selection of the magnitude of a measured oscillator-strength spectrum'; the TRK sum \
+rule 'should be accurate to ~0.1%'. No uncertainty is stated for any value, and no \
+S(p) total or polarizability is printed for any species: the report gives the \
+distributions only.
+
+WHAT IS EXTRACTED: the discrete tables (22 datasets, 443 rows; extraction script \
+sakamoto_2010.py, which reads the NIFS text files, not the library's cells: see its \
+docstring). All rows are Berkowitz's recommended values copied from his book's tables \
+(the sources tables below), so every dataset is 'reproduced' from the book (not in \
+the library), helium Table I from berkowitz_1997. No uncertainty stated. The \
+continuum tables are not extracted: they are the NIFS files themselves.
+
+CHECK OF THE NIFS FILES AGAINST THE PDF (2026-09-25): pdftotext -layout of pp. 14-258 \
+against every file: each numeric row of each file (discrete, interval and continuum; \
+102 He, 96 Ne, 226 Ar, 326 H2, 289 N2, 741 O2, 352 CO, 1217 CO2, 682 N2O, 540 O3, 285 \
+CH4, 487 SF6) is a run of cells on one printed line, and the multisets of the numbers \
+agree exactly for every species. Page images checked by eye: every discrete table \
+(pp. 14, 28, 37, 42-44, 47, 53, 65, 120) and a continuum page per species (pp. 15, \
+29, 39, 44, 47, 53 and 60, 65, 110, 120, 173, 190, 254). Internal consistency of every \
+row: E x lambda = hc to 2e-4, sigma_a = 109.76097 df/dE and mu_m = sigma_a N_A / M_A \
+to 3e-4, with one exception: HELIUM's df/dE column from 1.25e4 to 1e5 eV (17 rows) \
+prints '.80404E-10' ... '.62035E-13', a factor 10 too small (sigma_a/df/dE = 1097.6, \
+not 109.76; the page image prints the same; the sigma_a and mu_m columns are right \
+and agree with the high-energy formula below to 1e-5 at 2e4 and 1e5 eV). A loader of \
+the helium file must use sigma_a (or df/dE x 10) there.
+
+HOW THE CONTINUUM JOINS THE LINES (first continuum row; the NIFS files):
+  He: lines 21.218-24.572 eV (n = 2-20, and the sum n >= 21 at 24.572 eV); continuum \
+from 24.587 eV (the IP, 24.5874). Table II's 'excess' strengths of the two-electron \
+resonances (60.15-72.55 eV) are added to the smooth continuum (tabulated on a 10 eV \
+grid there).
+  Ne: lines 16.671-21.622 eV; continuum from 21.661 eV (the sources table's first \
+boundary); the 2s -> np resonances (44.98-48.83 eV) sit on the \
+continuum; the K-edge resonances (867.05-869.63 eV) below the continuum step at \
+870.25 eV (printed twice).
+  Ar: lines 11.624-15.852 eV, including series sums and the 'underlying continuum \
+between 2P3/2 and 2P1/2' as one f (mark d, at 15.852 eV); continuum from 15.937 eV. \
+Table II's NEGATIVE strengths (26.61-29.10 eV) are the window resonances of the 3s -> \
+np series: to be subtracted from the smooth continuum (tabulated at 25, 27.5, 30 eV). \
+K-edge line at 3203.3 eV (Deslattes et al.), continuum step at 3206 eV.
+  H2: bands below the IP (Lyman 11.18-14.67, Werner 12.29-14.67, B' 13.70-14.67, \
+D 13.99-16.52, higher Rydbergs 14.60-15.40 eV) and above it (D-state bands to 16.52, \
+predissociation 15.58-16.21, autoionisation 15.435-16.975 eV), on a continuum that \
+starts at 15.426 eV (the IP, 15.4258) with only two points below 17.5 eV (0.0130 and \
+0.0959 eV^-1). The sources table lists Glass-Maujean et al.'s dissociation continua \
+below and above the IP, but no table holds them: they are missing or folded into the \
+bands (TC-219).
+  N2: lines 12.500-14.839 eV; continuum from 14.920 eV, below the IP (15.58: \
+Chan et al.'s spectrum as df/dE from 14.92 eV); K-edge resonances 401.0-406.8 eV \
+(Table II), continuum from 407.4 eV (Zhadenov et al.).
+  O2: continuum 7.125-9.75 eV (the Schumann-Runge continuum; df/dE = 0 is printed at \
+9.75 eV), then Table I's eleven interval strengths 9.75-12.07 eV (df/dE is not \
+tabulated there), continuum again from 12.07 eV (the IP). The Schumann-Runge BANDS \
+below 7.125 eV are not included (the sources table starts at 7.125 eV). K-edge line \
+at 530.90 eV (Barrus et al.).
+  CO: lines 8.028-11.789 eV (A 1Pi 8.03-9.95, B 10.78-11.03, C 11.40-11.66, E \
+11.52-11.79 eV: rule-separated groups on the page); continuum from 12.130 eV, below \
+the IP (14.0136; Chan et al.'s 12.13-14.01 eV region as df/dE); K-edge resonances \
+287.40 and 534.11 eV (Table II).
+  CO2: no discrete table: continuum from 7.0 eV (Chan et al. 1993 below and above the \
+IP 13.7763 as df/dE); the K-edge resonances at 291.0 and 534.6 eV (book Table 5.4) \
+are in the continuum grid.
+  N2O: five interval strengths 5.70-12.8898 eV (Table I, the IP included); continuum \
+from 12.890 eV.
+  O3: continuum from 1.65 eV; the Wulf region 1.31-1.65 eV is printed with a dash (no \
+data) in the sources table and is not included.
+  CH4: continuum from 8.61 eV (df/dE = 0 printed there); SF6: continuum from 9.5572 eV.
+
+SUMS COMPUTED HERE (not printed in the report; 2026-09-25): discrete lines + interval \
+strengths (at the interval's geometric-mean energy) + the trapezoidal integral of the \
+continuum on its printed grid (sigma_a/109.76097, which bypasses the helium df/dE \
+misprint) + the tail formulas above 10^5 eV. S(-2) (Ry^-2; alpha = 4 S(-2) au) and \
+S(0) (against Z): He 0.3490 (1.396 au), 1.9958 (Z 2); Ne 0.6469 (2.588), 9.693 (10); \
+Ar 2.7493 (10.997), 18.031 (18); H2 1.3184 (5.274), 1.960 (2); N2 3.0037 (12.015), \
+14.031 (14); O2 2.7135 (10.854), 16.004 (16); CO 3.3152 (13.261), 14.027 (14); CO2 \
+4.3584 (17.434), 22.205 (22); N2O 4.8519 (19.408), 22.309 (22); O3 4.3474 (17.390), \
+22.163 (24); CH4 4.1977 (16.791), 9.903 (10); SF6 7.6052 (30.421), 69.042 (70). The \
+trapezoid on the printed grid is a crude integration where the grid is coarse (the \
+book integrated its polynomials): it reproduces the printed corrected partial moments \
+below to 0.03 % (CO2 S(2), 35.93-107.08 eV), 0.6-1.0 % (Ar, 243-253 eV) and 3.5-4 % \
+(CO, IP-17.712 eV; Ar S(1), 500-929.7 eV). S(0) misses Z by 2 % (H2), 3 % (Ne) and \
+7.7 % (O3): more than the grid can explain; the tables alone do not satisfy TRK for \
+these (TC-219).
+
+CORRECTIONS TO BERKOWITZ'S BOOK (pp. 6-7; book tables and pages; curated species \
+only): Ar, 243.0-253.0 eV (Table 2.34, p. 89): S(1) = 3.5471, S(2) = 64.8246; Ar, \
+500-929.7 eV (Table 2.35, p. 90): coefficient c = 8315.576, 'not 8315576', and S(1) = \
+111.9896; CO, IP-17.712 eV (Table 4.14, p. 160): S(p), p = -2, -1, 0, 1, 2 = 0.6587, \
+0.7582, 0.8771, 1.0195, 1.1908 ('corrected slightly'); CO2, 35.93-107.08 eV (Table \
+5.4, p. 192): S(2) = 145.296, 'not 15.296'. These are the only moments the report \
+prints: partial moments of one interval (in Ry^p), with no quantity in the format (a \
+cauchy_moment is a total): kept here, not as datasets (format need). (The other \
+corrections concern Li, O, Cl, NO, HCl, SO2, NH3, SiH4.)
+
+SOURCES PER ENERGY INTERVAL (the table after each species; images checked; 'book' = \
+Berkowitz's book; as printed, including the report's own slips):
+  He (p. 16): 21.2-24.5874 (IP) Berkowitz, J. Phys. B 30, 881 (1997) (berkowitz_1997); \
+IP-120, 120-280, 280-1000, 1000-13600 book Table 2.2 p. 15; 60-72 Berkowitz 1997 and \
+Schulz et al., Phys. Rev. Lett. 77, 3086 (1996); 13600-inf 'formura described in \
+text', Salpeter and Zaidi, Phys. Rev. 125, 248 (1962).
+  Ne (p. 30): 0-21.661 book Table 2.19 p. 49; 21.661-48.475, 48.475-250.0 (printed \
+'250 0'), 250.0-280.0, 280.0-870.25, 870.25-2984.3, 2984.3-10000 book Table 2.21 p. \
+52; 45.5-48.8 Codling et al., Phys. Rev. 155, 26 (1967), Aleksandrov et al., Opt. \
+Spectrosc. (USSR) 54, 4 (1983), Langer et al., J. Phys. B 30, 593 (1997); \
+867.25-870.25 Hitchcock and Brion, J. Phys. B 13, 3269 (1980), Esteva et al., J. \
+Phys. B 16, L263 (1983); 10^4-10^5 Chantler, J. Phys. Chem. Ref. Data 24, 71 (1995); \
+10^5-inf Bethe and Salpeter (K-shell only; Quantum Mechanics of One and Two-Electron \
+Atoms (Plenum, 1977), p. 305).
+  Ar (p. 41): 0-15.93711 book Table 2.33 p. 88; 15.937-29.239, 29.239-48.0, 48.0-79.3, \
+79.3-243.0, 336-500, 500-929.7, 929.7-3203, 3206-6199.3, 6199.3-10^4 'Table 2.35 p. \
+35' (sic: p. 90 per the corrections list); 26.6-29.2 Berrah et al., J. Phys. B 29, \
+5351 (1996), Madden et al., Phys. Rev. 177, 136 (1969); 243.0-253, 253-264, 264-271, \
+271-321, 321-336 'Cham et al., Phys. Rev. A 46 (1992) 149' (sic: Chan et al., \
+chan_1992, whose continuum these intervals REPRODUCE); 3203.3 Deslattes et al., Phys. \
+Rev. A 27, 923 (1983); 10^4-10^5 Chantler; 10^5-inf Bethe and Salpeter.
+  H2 (p. 46): 11.18-14.67 book Table 4.1 p. 127 (Lyman bands); 12.29-14.47 Table 4.1 \
+(Werner bands); 13.70-14.67 and 13.99-16.52 Table 4.2 p. 128; higher Rydbergs - \
+15.4258 (IP) Glass-Maujean et al., Z. Phys. D 5, 189 (1987) and 'a.3 p.128' (sic, \
+probably Fig. 4.3); dissociation continuum below and above the IP Glass-Maujean et \
+al.; predissociation above the IP Table 4.4 p. 131; autoionisation Table 4.5 p. 132; \
+15.4258-17.0 and 17.0-18.0 'b.4 p.131' (sic); 18.0-40.0, 40-80, 80-160, 160-300, \
+300-1800, 1800-10^4 Table 4.6 p. 134; 10^4-inf sigma(H2) = 1.444 x 2 x sigma(H).
+  N2 (p. 52): 12.500-13.788, 12.854-14.808, 12.912-13.922, 12.934-14.482, \
+13.103-14.275 book Table 4.7 p. 142; 14.330-14.860 (e 1Pi_u), 14.364 (e' 1Sigma_u+), \
+14.839 (n = 5, 1Pi_u), 14.92-15.58 (IP) and IP-18.786 Chan et al., Chem. Phys. 170, 81 \
+(1993); 18.786-107.07, 200-407.4, 430-1253.6, 1253.6-3691.7, 3691.7-10^4 Table 4.9 p. \
+144; 107.07-200 Henke et al., At. Data Nucl. Data Tables 54, 181 (1993) (henke_1993); \
+401.0, 405.6, 406.8 Table 4.8 p. 143; 407.4-430 Zhadenov et al., Opt. Spectrosc. \
+(USSR) 62, 204 (1987); 10^4-10^5 Chantler; 10^5-inf Bethe and Salpeter.
+  O2 (p. 64): 7.125-12.07 (IP) book Table 4.10 p. 151; IP-24.53 Holland et al., Chem. \
+Phys. 173, 315 (1993); 24.53-107.07, 107.07-206.06, 206.06-506, 600-2622.4, 2622.4-10^4 \
+Table 4.12 p. 153; 530.9 and 506-600 Barrus et al., Phys. Rev. A 20, 1045 (1979); \
+10^4-10^5 sigma(O2) = 2 x sigma(O), Chantler; 10^5-inf Bethe and Salpeter.
+  CO (p. 71): 8.028-9.950, 10.776-11.034, 11.397-11.662, 11.522-11.789 book Table 4.13 \
+p. 159; 12.130-14.013 Chan et al., Chem. Phys. 170, 123 (1993); 14.0136 (IP)-17.712, \
+17.712-20.68, 20.68-26.84 'Chan et al., Can. J. Phys. 43 (1965) 1706' (sic: as \
+printed); 26.84-124.37, 124.37-292.5, 350-539.5, 598-1486.7, 1486.7-3691.7, \
+3691.7-10^4 Table 4.15 p. 161; 287.4 and 534.1 Table 4.14 p. 160; 292.5-350 Fig. 4.6; \
+539.5-598 Barrus et al. ('Can. Phys. Rev. A 20 (1979) 1045', sic); 10^4-10^5 \
+Chantler; 10^5-inf Bethe and Salpeter.
+  CO2 (p. 119): 7.0-10.33, 10.66-13.7763 (IP), IP-35.93 Chan et al., Chem. Phys. 178, \
+401 (1993); 35.93-107.08 Fig. 5.5 p. 194; 107.08-290.0, 341.3-524.9, 572.8-2293.2, \
+2293.2-10000 Table 5.5 p. 194; 291.0, 290-341.3, 534.6, 524.9-572.8 Table 5.4 p. 192; \
+10^4-10^5 Chantler; 10^5-inf Bethe and Salpeter.
+  N2O (p. 131): 5.70-12.8898 (IP) book Table 5.6 p. 199; IP-20.19, 20.19-25.56, \
+25.56-108.5 Chan et al., Chem. Phys. 180, 77 (1994); 108.5-400.0, 603-2042.4, \
+2042-10000 Table 5.8 p. 203; 401.16, 404.92 Table 5.7 p. 201; 405-455 Fig. 5.7 p. 203; \
+455-506 Henke et al. (henke_1993); 506-533 Table 5.7 and Fig. 5.8; 533-545, 545-603 \
+Fig. 5.8 p. 204; 10^4-10^5 Chantler; 10^5-inf Bethe and Salpeter.
+  O3 (p. 178): 1.31-1.65 a dash (no data); 1.65-2.75 book Table 5.15 p. 232 and Brion \
+et al., J. Atmos. Chem. 30, 291 (1998) (brion_1998); 2.75-3.54 Brion et al. \
+(brion_1998); 3.54-6.70 Mason et al., J. Phys. B 29, 3075 (1996) (mason_1996); \
+6.70-11.24, 11.24-20.66 Fig. 5.12 p. 229; 20.66-108.5 Fig. 5.13 p. 230; 108.5-535, \
+555.9-2622.4, 2622.4-10000 Table 5.16 p. 234; 527.5-555.9 Table 5.15 p. 232; \
+10^4-10^5 Chantler; 10^5-inf Bethe and Salpeter.
+  CH4 (p. 193): 8.61-11.27, 11.27-12.61 (IP), IP-13.62, 13.62-24.0 book Fig. 6.3 p. \
+246; 24.0-112.7, 112.7-150.0 Fig. 6.4 p. 250; 150.0-285.0, 340.0-1740.0, 1740.0-10^4 \
+Table 6.5 p. 250; 285.0-340.0 Kivimaki et al., J. Phys. B 29, 2701 (1996); 10^4-10^5 \
+Chantler; 10^5-inf Bethe and Salpeter.
+  SF6 (p. 258): 10.0-14.9 Blechschmidt et al., Chem. Phys. Lett. 14, 33 (1972); \
+14.9-26.38 Holland et al., J. Phys. B 25, 4823 (1992); 26.38-70.85 Fig. 6.23 p. 303; \
+70.85-171.0, 277-685, 735-2490, 2580-10^4 Table 6.21 p. 305; the resonances 172.3-173.4, \
+177.4-177.5, 180.9, 183.4-184.6, 196.2, 205.8, 241.2, 689.0, 694.7, 699.9, 713.2, 2486 \
+and the intervals 171.0-210, 210-243, 243-277, 685-735, 2490-2580 Table 6.20 p. 304 \
+(2490-2580 also LaVilla, J. Chem. Phys. 57, 899 (1972)); 10^4-10^5 Chantler; \
+10^5-inf Bethe and Salpeter.
+
+REPRODUCTIONS IN THE CONTINUUM (for the loader of the NIFS files; not datasets \
+here): Ar 243-336 eV from chan_1992; N2 and N2O 107-200 and 455-506 eV from \
+henke_1993; O3 1.65-3.54 eV from brion_1998 and 3.54-6.70 eV from mason_1996. The \
+comparison with those records is open."""
+
+[[datasets]]
+id = "discrete_He"
+material = "He"
+file = "He/sakamoto_2010__discrete_He.csv"
+table = "NIFS He_table.txt.gz, Table I (PDF p. 14)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["berkowitz_1997"]
+notes = "Table I, 1 1S -> n 1P, n = 2-20 (21.218-24.553 eV) and row I-20 (24.572 eV, mark a): 'Represents sum_{n=21}^inf f_n for the 1 1S -> n 1P transitions'. These are berkowitz_1997 Table 1: Kono and Hattori's (1984) f for n = 2-9 (to the digits printed there), the author's extrapolation for n = 10-20 and the sum 0.002 076 for n >= 21 (row printed there, not extracted in that record). Not fitted beside berkowitz_1997."
+
+[[datasets]]
+id = "excess_He"
+material = "He"
+file = "He/sakamoto_2010__excess_He.csv"
+table = "NIFS He_table.txt.gz, Table II (PDF p. 14)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002)", "K. Schulz et al., Phys. Rev. Lett. 77, 3086 (1996)"]
+notes = "Table II, 'Excess oscillator strength, f_n, for the two-electron excitation series' above the IP: rows II-1 to II-9 the dominant 2snp series (60.151-65.263 eV), II-10 to II-18 weaker series (62.76-72.55 eV). Added to the smooth continuum. NOT berkowitz_1997's Table 2 (f_excess), whose values for the same 60.151-65.263 eV members differ by 3-10 % (4.386e-3 there, 4.861e-3 here at 60.151 eV): the sources table cites both Berkowitz 1997 and Schulz et al. for 60-72 eV."
+
+[[datasets]]
+id = "discrete_Ne"
+material = "Ne"
+file = "Ne/sakamoto_2010__discrete_Ne.csv"
+table = "NIFS Ne_table.txt.gz, Table I (PDF p. 28)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 2.19"]
+notes = "Table I, 'Discrete oscillator strength, f_n, for nl and nl' transitions', 16.671-21.622 eV (left column pair the nl lines from 16.671 eV, right pair the nl' lines from 16.848 eV); no series sums printed. Berkowitz's recommended values (e.g. 0.0110 and 0.145 for the resonance lines against chan_1992_neon's 0.0118 and 0.159): not a copy of chan_1992_neon."
+
+[[datasets]]
+id = "resonance_2s_Ne"
+material = "Ne"
+file = "Ne/sakamoto_2010__resonance_2s_Ne.csv"
+table = "NIFS Ne_table.txt.gz, Table II (PDF p. 28)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 2.21"]
+notes = "Table II, 'Discrete oscillator strength, f_n, for resonance transitions', the rows above the rule: 44.979-48.832 eV (2s -> np; sources Codling et al. 1967, Aleksandrov et al. 1983, Langer et al. 1997 via the book), on top of the continuum."
+
+[[datasets]]
+id = "k_edge_Ne"
+material = "Ne"
+file = "Ne/sakamoto_2010__k_edge_Ne.csv"
+table = "NIFS Ne_table.txt.gz, Table II (PDF p. 28)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 2.21"]
+notes = "Table II below the rule: 867.05-869.63 eV, 1s -> np resonances below the K-edge (870.25 eV; sources Hitchcock and Brion 1980, Esteva et al. 1983 via the book)."
+
+[[datasets]]
+id = "discrete_Ar"
+material = "Ar"
+file = "Ar/sakamoto_2010__discrete_Ar.csv"
+table = "NIFS Ar_table.txt.gz, Table I (PDF p. 37)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 2.33"]
+notes = "Table I, ns, nd, nd(underlined), ns' and nd' series, 11.624-15.852 eV, groups separated by rules on the page: ns rows I-1 to I-5 (I-5, mark a: sum over n >= 8), nd I-6 to I-9 (I-9, b: n >= 6), nd(underlined) I-10 to I-13 (I-13, c: n >= 6), I-14 (mark d, 15.852 eV): 'f for underlying continuum between 2P3/2 and 2P1/2' (an integral, not a line), ns' I-15 to I-18 (I-18, e: n >= 7), nd' I-19 to I-21 (I-21, f: n >= 5). Row I-6 prints 13.606 eV for the 3d line (erratum: 13.864). Against chan_1992's energies (Moore) several lines differ by 10-50 meV (7s 15.159 vs 15.186, 5d 15.170 vs 15.118, 4d' 14.984 vs 15.004 eV): kept as printed (TC-219)."
+
+[[datasets]]
+id = "window_Ar"
+material = "Ar"
+file = "Ar/sakamoto_2010__window_Ar.csv"
+table = "NIFS Ar_table.txt.gz, Table II (PDF p. 37)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 2.35", "N. Berrah et al., J. Phys. B 29, 5351 (1996)", "R. P. Madden et al., Phys. Rev. 177, 136 (1969)"]
+notes = "Table II above the rule: seven NEGATIVE strengths, 26.614-29.100 eV: the 3s -> np window resonances, the strength each removes from the smooth continuum (which is tabulated only at 25, 27.5 and 30 eV). Not absorption lines: a model must subtract them."
+
+[[datasets]]
+id = "k_edge_Ar"
+material = "Ar"
+file = "Ar/sakamoto_2010__k_edge_Ar.csv"
+table = "NIFS Ar_table.txt.gz, Table II (PDF p. 37)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["R. D. Deslattes et al., Phys. Rev. A 27, 923 (1983)"]
+notes = "Table II below the rule: the K-edge resonance at 3203.3 eV (f = 0.0022), below the continuum step at 3206 eV."
+
+[[datasets]]
+id = "lyman_H2"
+material = "H2"
+file = "H2/sakamoto_2010__lyman_H2.csv"
+table = "NIFS H2_table.txt.gz, Table I (PDF p. 42)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.1"]
+notes = "Table I, Lyman bands (B 1Sigma_u+ <- X), 11.184-14.672 eV, one band per row (the vibrational progression; rotational structure summed). Band strengths of normal H2 as the book gives them (no temperature stated)."
+
+[[datasets]]
+id = "werner_H2"
+material = "H2"
+file = "H2/sakamoto_2010__werner_H2.csv"
+table = "NIFS H2_table.txt.gz, Table II (PDF p. 42)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.1"]
+notes = "Table II, Werner bands (C 1Pi_u <- X), 12.285-14.672 eV, one band per row."
+
+[[datasets]]
+id = "b_prime_H2"
+material = "H2"
+file = "H2/sakamoto_2010__b_prime_H2.csv"
+table = "NIFS H2_table.txt.gz, Table III (PDF p. 42)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.2"]
+notes = "Table III, X 1Sigma_g+ -> 3p sigma_u, B' 1Sigma_u+ bands, 13.698-14.672 eV."
+
+[[datasets]]
+id = "d_H2"
+material = "H2"
+file = "H2/sakamoto_2010__d_H2.csv"
+table = "NIFS H2_table.txt.gz, Table IV (PDF p. 42)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.2"]
+notes = "Table IV, X 1Sigma_g+ -> 3p pi_u, D 1Pi_u bands, 13.994-16.516 eV; the nine bands from 15.602 eV lie above the IP (15.4258 eV) and sit on the ionisation continuum."
+
+[[datasets]]
+id = "rydberg_H2"
+material = "H2"
+file = "H2/sakamoto_2010__rydberg_H2.csv"
+table = "NIFS H2_table.txt.gz, Table V (PDF p. 42)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["M. Glass-Maujean et al., Z. Phys. D 5, 189 (1987)"]
+notes = "Table V, X 1Sigma_g+ -> higher Rydberg states (up to the IP), 14.598-15.402 eV, not in energy order on the page (several series)."
+
+[[datasets]]
+id = "predissociation_H2"
+material = "H2"
+file = "H2/sakamoto_2010__predissociation_H2.csv"
+table = "NIFS H2_table.txt.gz, Table VI (PDF p. 42)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.4"]
+notes = "Table VI, 'attributed to predissociation above the IP', 15.576-16.207 eV, on top of the ionisation continuum; rows VI-3 and VI-4 both print 15.601 eV (2.4e-3 and 1.5e-3), two features at one energy."
+
+[[datasets]]
+id = "autoionization_H2"
+material = "H2"
+file = "H2/sakamoto_2010__autoionization_H2.csv"
+table = "NIFS H2_table.txt.gz, Table VII (PDF pp. 43-44)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.5"]
+notes = "Table VII, autoionisation oscillator strengths, 15.435-16.975 eV (146 rows over three pages, in the page order, not sorted), on top of the ionisation continuum (tabulated only at 15.426 and 17.5 eV there)."
+
+[[datasets]]
+id = "discrete_N2"
+material = "N2"
+file = "N2/sakamoto_2010__discrete_N2.csv"
+table = "NIFS N2_table.txt.gz, Table I (PDF p. 47)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.7", "chan_1993_n2"]
+notes = "Table I, bands to the valence states (b 1Pi_u, b' 1Sigma_u+), the lowest Rydberg states (c 1Pi_u, c' 1Sigma_u+, o 1Pi_u) and higher bands to the IP (e 1Pi_u, e' 1Sigma_u+, n = 5 1Pi_u), 12.500-14.839 eV; rule-separated groups on the page, one per progression (rows I-1 to I-13 from 12.500 eV, I-14 to I-28 from 13.390 eV, I-29 to I-32, I-33 to I-38, I-39 to I-43, I-44 and I-45 (e 1Pi_u, 14.330-14.585 eV), I-46 (e', 14.364 eV), I-47 (n = 5, 14.839 eV)); the page names no state per row (in the caption's order b, b', c, c', o, as the sources table's ranges suggest)."
+
+[[datasets]]
+id = "k_edge_N2"
+material = "N2"
+file = "N2/sakamoto_2010__k_edge_N2.csv"
+table = "NIFS N2_table.txt.gz, Table II (PDF p. 47)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.8"]
+notes = "Table II, resonances before the K-edge (caption, misspelt): 401.0 eV (f = 0.21, the 1s -> pi* resonance), 405.6 and 406.8 eV."
+
+[[datasets]]
+id = "intervals_O2"
+material = "O2"
+file = "O2/sakamoto_2010__intervals_O2.csv"
+table = "NIFS O2_table.txt.gz, Table I (PDF p. 53)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.10"]
+notes = "Table I above the rule: the oscillator strength integrated over each of eleven contiguous intervals, 9.75-12.07 eV (the IP), where the continuum table prints no df/dE. Row = the interval as printed; abscissa = its lower edge (eV), the upper edge is the next row's (the last ends at 12.07 eV, not at twice its lower edge). Sum 0.02769. Not lines: an interval integral (format need, as kumar_2011_supplement)."
+
+[[datasets]]
+id = "k_edge_O2"
+material = "O2"
+file = "O2/sakamoto_2010__k_edge_O2.csv"
+table = "NIFS O2_table.txt.gz, Table I (PDF p. 53)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. A. Barrus et al., Phys. Rev. A 20, 1045 (1979)"]
+notes = "Table I below the rule: 'a resonance transition around the K-edge', 530.90 eV, f = 0.054891."
+
+[[datasets]]
+id = "discrete_CO"
+material = "CO"
+file = "CO/sakamoto_2010__discrete_CO.csv"
+table = "NIFS CO_table.txt.gz, Table I (PDF p. 65)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.13"]
+notes = "Table I, bands to the A 1Pi (rows I-1 to I-13, 8.028-9.950 eV, the vibrational progression), B 1Sigma+ (I-14, I-15, 10.776 and 11.034 eV), C 1Sigma+ (I-16, I-17, 11.396 and 11.663 eV) and E 1Pi states (I-18, I-19, 11.522 and 11.789 eV); groups separated by rules on the page, the state order of the caption and of the sources table. The NIFS caption drops the 'C1' of C 1Sigma+."
+
+[[datasets]]
+id = "k_edge_CO"
+material = "CO"
+file = "CO/sakamoto_2010__k_edge_CO.csv"
+table = "NIFS CO_table.txt.gz, Table II (PDF p. 65)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 4.14"]
+notes = "Table II, 'the pre-K-edge resonances of carbon and oxygen atoms': 287.40 eV (C 1s, f = 0.17) and 534.11 eV (O 1s, f = 0.076001)."
+
+[[datasets]]
+id = "intervals_N2O"
+material = "N2O"
+file = "N2O/sakamoto_2010__intervals_N2O.csv"
+table = "NIFS N2O_table.txt.gz, Table I (PDF p. 120)"
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic Press, 2002), Table 5.6"]
+notes = "Table I, 'Integrated oscillator strength, f, for transitions below the IP': five contiguous intervals 5.70-12.8898 eV (the IP), sum 0.9921. Row = the interval as printed; abscissa = its lower edge (eV), the upper edge the next row's (the last ends at the IP, 12.8898 eV). An interval integral, not a line (format need)."
+
+[[errata]]
+dataset = "discrete_Ar"
+row = "I-6"
+column = "x"
+printed = "1.3606E+01"
+corrected = "1.3864E+01"
+reason = "The first member of the nd series (Table I rows I-6 to I-9: 3d, 4d, 5d and the sum n >= 6) is printed at 13.606 eV (with lambda = 911.27 A computed from it), which is the Rydberg energy (the report's unit, 13.606 eV, p. 4) and the Lyman limit of the hydrogen table (p. 11), not an argon line; the 3d line of argon is at 13.864 eV."
+evidence = "chan_1992 (Table IV, energies from Moore's tables): (2P3/2)3d at 13.864 eV with f = 0.0013, the only 3d line near; the report's other nd rows match chan_1992's 4d (f 0.0019) and 5d (f 0.0041) strengths. Page image (PDF p. 37) checked: it prints 1.3606E+01 and 9.1127E+02."
+
+[[formulas]]
+id = "tail_He"
+material = "He"
+equation = "Text below Table III, PDF p. 15"
+printed = "df/dE = 308.98 E^{-3.5} - 1941.38 E^{-4} + 7082.8 E^{-4.5}, 'in Rydberg units' ... 'Here E is photon energy in Rydberg units', 'When photon energy is higher than 13 600 eV'"
+variable = "E: photon energy in Ry (13.606 eV); df/dE per Ry (divide by 13.606 for eV^-1)"
+state = "none (per atom)"
+density = "none"
+range = "above 13 600 eV (Salpeter and Zaidi 1962, per the sources table); the table's rows 1.5e4-1e5 eV are this formula"
+coefficients = { a = "308.98", b = "1941.38", c = "7082.8" }
+check = "Reproduces the printed sigma_a column (sigma_a = 109.76097 df/dE) at 2e4 and 1e5 eV to 1e-5 (and 1.25e4 eV, below the formula's range, to 1.7 %); the printed df/dE column there is a factor 10 too small (source notes) (checked 2026-09-25)."
+notes = "The continuum above 10^5 eV (beyond the table) follows from this formula."
+
+[[formulas]]
+id = "tail_H2"
+material = "H2"
+equation = "Text below Table VIII, PDF p. 45 (the hydrogen-atom formula, p. 11)"
+printed = "df/dE = [2^7 / (3 (1 + k^2)^4)] exp[-(4/k) tan^{-1} k] [1 - exp(-2 pi / k)]^{-1}, 'where epsilon = k^2 is the electron kinetic energy, and incident photon energy E = 1 + epsilon. Here energies are given in Rydberg unit.' ... 'used to calculate sigma(H) ... from 10 keV to infinity. In this energy interval ... sigma(H2) = 2.888 x sigma(H).'"
+variable = "E: photon energy in Ry (13.606 eV), k^2 = E - 1; df/dE per Ry"
+state = "none (per molecule)"
+density = "none"
+range = "above 10 keV (the sources table: 10^4-inf, sigma(H2) = 1.444 x 2 x sigma(H))"
+coefficients = { ratio = "2.888" }
+check = "2.888 x the hydrogen formula reproduces the table's df/dE from 12.5 keV to 1e5 eV to 6e-5, and gives 0.057434 eV^-1 for H at threshold (the hydrogen table prints 5.7437E-02). At 10 keV the table (book value) is 27 % below the formula: a step at the join (checked 2026-09-25)."
+notes = "The page renders the numerator '2^7' as '27' in the text layer; the image prints 2 with superscript 7, and only 2^7/3 reproduces the threshold value."
+
+[[formulas]]
+id = "k_shell_tail_Ne"
+material = "Ne"
+equation = "Text beside Table III, PDF p. 29 (the same form for every species with Z > 2)"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)], chi = sqrt(E_K / (E - E_K)), 'where E_K = 870.25 eV'; 'When photon energy, E, is higher than 10^5 eV, the photoabsorption cross section, sigma_a, in Mb'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb"
+state = "none (per atom)"
+density = "none"
+range = "above 10^5 eV ('Bethe and Salpeter (K-shell only)')"
+coefficients = { Z = "10", E_K = "870.25" }
+check = "At 1e5 eV the formula gives 2.508e-7 Mb against the table's 2.389e-7 (+5.0 %): the join is not continuous (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_Ar"
+material = "Ar"
+equation = "Text below Table III, PDF p. 40"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)], chi = sqrt(E_K/(E - E_K)), 'where E_K = 3206.3 eV'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb"
+state = "none (per atom)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z = "18", E_K = "3206.3" }
+check = "At 1e5 eV: 3.821e-6 Mb against the table's 3.642e-6 (+4.9 %) (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_N2"
+material = "N2"
+equation = "Text below Table III, PDF p. 51"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)], chi = sqrt(E_K/(E - E_K)), 'where E_K = 409.9 eV'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, per N atom"
+state = "none (per molecule: twice the atomic value)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z = "7", E_K = "409.9", atoms = "2" }
+check = "The text does not say 'of each atom' for N2; the sum over the two atoms gives 8.633e-8 Mb at 1e5 eV against the table's 8.592e-8 (+0.5 %), one atom half that: the sum is meant (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_O2"
+material = "O2"
+equation = "Text below Table II, PDF p. 63"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)], chi = sqrt(E_K/(E - E_K)), 'where E_K = 543.9 eV'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, per O atom"
+state = "none (per molecule: twice the atomic value)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z = "8", E_K = "543.9", atoms = "2" }
+check = "Two atoms: 1.679e-7 Mb at 1e5 eV against the table's 1.633e-7 (+2.8 %); the sources table's 10^4-10^5 eV row is 'sigma(O2) = 2 x sigma(O)' (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_CO"
+material = "CO"
+equation = "Text below Table III, PDF p. 70"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)] ('of atoms'), chi = sqrt(E_K/(E - E_K)), 'where E_K = 296.2 and 543.9 eV for carbon and oxygen atoms, respectively'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, summed over the atoms"
+state = "none (per molecule)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z_C = "6", E_K_C = "296.2", Z_O = "8", E_K_O = "543.9" }
+check = "C + O: 1.037e-7 Mb at 1e5 eV against the table's 1.020e-7 (+1.7 %) (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_CO2"
+material = "CO2"
+equation = "Text below Table I, PDF p. 118"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)] ('of each atom'), chi = sqrt(E_K/(E - E_K)), 'where E_K = 297.65 and 541.1 eV for carbon and oxygen atoms, respectively'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, summed over the atoms"
+state = "none (per molecule)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z_C = "6", E_K_C = "297.65", Z_O = "8", E_K_O = "541.1" }
+check = "C + 2 O: 1.881e-7 Mb at 1e5 eV against the table's 1.836e-7 (+2.5 %) (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_N2O"
+material = "N2O"
+equation = "Text below Table II, PDF p. 129"
+printed = "sigma_a = 680 (Z - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)] ('of each atom'), chi = sqrt(E_K/(E - E_K)), 'where E_K = 412.6 and 541.4 eV for nitrogen and oxygen atoms, respectively'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, summed over the atoms"
+state = "none (per molecule)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z_N = "7", E_K_N = "412.6", Z_O = "8", E_K_O = "541.4" }
+check = "2 N + O: 1.702e-7 Mb at 1e5 eV against the table's 1.675e-7 (+1.6 %) (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_O3"
+material = "O3"
+equation = "Text below Table I, PDF p. 176"
+printed = "sigma_a = 680 (Zc - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)], 'Zc denotes the atomic number of constituent atoms', chi = sqrt(E_K/(E - E_K)), 'where E_K = 541.5 eV for oxygen atoms in ozone'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, summed over the atoms"
+state = "none (per molecule)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z = "8", E_K = "541.5", atoms = "3" }
+check = "3 O: 2.525e-7 Mb at 1e5 eV against the table's 2.449e-7 (+3.1 %) (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_CH4"
+material = "CH4"
+equation = "Text below Table II, PDF p. 192"
+printed = "sigma_a = 680 (Zc - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)] ('of each atom'), chi = sqrt(E_K/(E - E_K)), 'where E_K = 13.6 and 290.707 eV for hydrogen and carbon atoms, respectively'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, summed over the atoms"
+state = "none (per molecule)"
+density = "none"
+range = "above 10^5 eV (K shell only; for H the 1s shell with Zc - 0.3 = 0.7)"
+coefficients = { Z_C = "6", E_K_C = "290.707", Z_H = "1", E_K_H = "13.6" }
+check = "C + 4 H: 2.002e-8 Mb at 1e5 eV against the table's 2.035e-8 (-1.6 %) (checked 2026-09-25)."
+
+[[formulas]]
+id = "k_shell_tail_SF6"
+material = "SF6"
+equation = "Text below Table I, PDF p. 257"
+printed = "sigma_a = 680 (Zc - 0.3)^6 (Ry/E)^4 exp[-4 chi arctan(chi^{-1})] / [1 - exp(-2 pi chi)] ('of each atom'), chi = sqrt(E_K/(E - E_K)), 'where E_K = 696.7 and 2472.0 eV for fluorine and sulfur atoms, respectively'"
+variable = "E: photon energy in eV; Ry = 13.606 eV; sigma_a in Mb, summed over the atoms"
+state = "none (per molecule)"
+density = "none"
+range = "above 10^5 eV (K shell only)"
+coefficients = { Z_S = "16", E_K_S = "2472.0", Z_F = "9", E_K_F = "696.7" }
+check = "S + 6 F: 3.145e-6 Mb at 1e5 eV against the table's 3.005e-6 (+4.7 %) (checked 2026-09-25)."

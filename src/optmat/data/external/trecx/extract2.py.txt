@@ -1,0 +1,30 @@
+import os, re, glob, csv
+import numpy as np
+ROOT="<directory of the runs>"
+rows_in={r['name']:r for r in csv.DictReader(open('all_runs.csv'))}
+pat=re.compile(r'^\s+([\d.eE+-]+)\s+([\d.]+)\s+(-?[\d.eE+-]+)\s+([\d.eE+-]+)\s+(-?[\d.eE+-]+)\s+([\d.eE+-]+)\s*$')
+res=[]
+for name,r in rows_in.items():
+    fam='ar_intensity_scan' if name.startswith('ar') else 'he_intensity_scan'
+    rd=f"{ROOT}/{fam}/{name}/0000"
+    tab=[]
+    for line in open(rd+"/outf"):
+        m=pat.match(line)
+        if m: tab.append([float(x) for x in m.groups()])
+    tab=np.array(tab)
+    # first pass only (isurff runs may have 2 passes): take up to first time t reaching max
+    t=tab[:,2]; iend=np.argmax(t)  # first occurrence of max
+    tab=tab[:iend+1]
+    r['outf_rows']=len(tab); r['t_end_outf']=tab[-1,2]
+    r['norm_max']=tab[:,3].max()
+    r['chi_loss_outf']=1-tab[-1,5]; r['norm_loss_outf']=1-tab[-1,3]
+    # chi-loss variation over the last 4 print intervals (~1 opt cycle)
+    last=1-tab[-5:,5]; r['chi_last5_min']=last.min(); r['chi_last5_max']=last.max()
+    # pre-pulse noise: norm loss at t ~ -2 FWHM (-496)
+    i=np.argmin(abs(tab[:,2]+450)); r['norm_loss_prepulse']=1-tab[i,3]; r['chi_loss_prepulse']=1-tab[i,5]
+    res.append(r)
+keys=list(res[0].keys())
+with open('all_runs.csv','w',newline='') as f:
+    w=csv.DictWriter(f,keys); w.writeheader(); [w.writerow(r) for r in res]
+for r in res:
+    print(f"{r['name']:15s} rows={r['outf_rows']} tend={r['t_end_outf']:.1f} normmax={r['norm_max']:.6f} chi={r['chi_loss_outf']:.4e} norm={r['norm_loss_outf']:.4e} chi_last5=[{r['chi_last5_min']:.4e},{r['chi_last5_max']:.4e}] prepulse norm={r['norm_loss_prepulse']:.2e} chi={r['chi_loss_prepulse']:.2e}")

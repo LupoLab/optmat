@@ -1,0 +1,16 @@
+# Ozone: theory only (no measurement of any third-order quantity).
+gas = "O3"
+description = "Ozone: Naves et al.'s 2011 CCSD(T) static and Kerr (IDRI) gamma at 1906, 1065 and 695 nm, with 12 % allowed for the spread between the triples-corrected methods; ozone's gamma changes sign between lower correlated methods (Maroulis 1994, 1999: -2360 to +3540 au), so the value rests on CCSD(T) (Maroulis 1999 CCSD(T) 2642, Christodouleas 2009 2470, Maroulis 1994 CCD+ST 3250 au static). B' fixed at 0. Valid in the near infrared, away from the Chappuis and Hartley bands."
+range_nm = [700.0, 20000.0]
+validators = [
+    { key = "maroulis_1999/gamma_mean", rows = ["CCSD(T)"] },
+    { key = "maroulis_1994/gamma_corr_mean", rows = ["CCD+ST(CCD)"] },
+]
+
+[[fitted]]
+key = "naves_2011/gamma_static_ccsd_t_expt"
+extra_relative = 0.12
+
+[[fitted]]
+key = "naves_2011/gamma_kerr_ccsd_t_expt"
+extra_relative = 0.12

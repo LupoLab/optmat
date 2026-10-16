@@ -1,0 +1,364 @@
+citation = "C. Meißner, J. I. Hölzer and T. Seeger, \"Determination of N2-N2 and N2-O2 S-branch Raman linewidths using time-resolved picosecond pure rotational coherent anti-Stokes Raman scattering\", Appl. Opt. 58, C47 (2019)"
+doi = "10.1364/AO.58.000C47"
+library = "Meissner_2019_DeterminationBranchRaman"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Picosecond time-resolved dual-broadband pure rotational CARS (pp. 2-3): a \
+frequency-doubled Nd:YAG probe (532 nm, about 1 cm-1, 100 ps) delayed up to 700 ps \
+against broadband DCM dye pump and Stokes (626 nm, about 460 cm-1), planar BOXCARS, in \
+an electrically heated furnace at 295-1900 K and ambient pressure, in pure N2 and in \
+air; 500-shot averages per delay. Each S(J'') time trace fitted with a \
+monoexponential decay from 230 to 667 ps (after the nonresonant signal has vanished); \
+the width follows from Eq. (1)."""
+notes = """Identity checked against the first page (Appl. Opt. 58(12), C47-C54, 2019). \
+Page numbers are pdf pages 1-7. Material: 14N2, S-branch lines labelled by the lower \
+level J''. No isotopologue is measured.
+
+WIDTH CONVENTION. FULL widths: p. 2, 'the Raman Lorentzian linewidth Gamma_J'' [full \
+width at half-maximum (FWHM)] is given by Gamma_J'' = (2 pi c tau_CARS,J'')^-1' (Eq. \
+(1)), tau the decay constant of the CARS signal; table heads 'Gamma_J''(FWHM)'. UNIT: \
+the heads print '/10^-3 cm' (images checked), where cm-1 is meant (Eq. (1) gives a \
+wavenumber): recorded as unit cm-1, scale 1e-3. PRESSURE: these are WIDTHS at the \
+measurement pressure, not coefficients per atm: the heads carry no pressure unit and \
+the measurements were 'at ambient pressure' (pp. 3 and 7), the pressure not given \
+numerically; the same group's holzer_2021 divides by the pressure and prints per atm. \
+Recorded with parameters.pressure = "ambient, not stated numerically" and no state: \
+how to use them must be decided at review (about 1 atm; the N2 values at 295 K are about \
+14 % below herring_1986's per-amagat coefficients converted to 1 atm).
+
+UNCERTAINTIES: 'The standard deviation was determined from the 95% confidence \
+intervals of the fitting process' (pp. 4 and 6): a fit standard deviation (recorded as \
+1 sigma; statistical only).
+
+TABLE 2 is N2 IN AIR. The paper calls these 'N2-O2 S-branch Raman linewidths' but they \
+are measured 'in air' ('The resulting N2-O2 S-branch Raman linewidths for the gas \
+mixture air', p. 4; air 'basically considered a mixture of N2 (79%) and O2 (21%)'); no \
+separation of the O2 contribution by a mixing rule is made. Recorded with perturber = \
+"air". J'' lines coinciding with O2 lines are excluded (blank). They are up to 29 % \
+below Table 1's, most at low J'' (p. 4).
+
+As printed, some values stand out from their neighbours (not errata; images checked): \
+Table 1 295 K J'' = 23 36.7 (22: 48.1, 24: 40.4); 870 K J'' = 33 17.7; 1650 K J'' = 6 \
+49.6 and J'' = 9 39.4; Table 2 at 1900 K lies above 1650 K throughout. The O2 lines in \
+air could not be fitted monoexponentially (quantum beats, Fig. 9): no O2 widths here \
+(holzer_2021 gives them).
+
+Comparisons (figures only, not extracted): Kliewer et al. 2012 (Ref. 13) and Miller et \
+al. 2011 (Ref. 16) S-branch N2 widths; Fanjoux et al. 1996 (Ref. 33) and Rahn and \
+Palmer 1986 (Ref. 8) Q-branch widths at 295 K (Figs. 5, 8)."""
+
+[[datasets]]
+id = "table1_self_295K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_295K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 295 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 295
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_500K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_500K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 500 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 500
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_870K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_870K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 870 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 870
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_1000K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_1000K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1000 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1000
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_1200K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_1200K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1200 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1200
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_1400K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_1400K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1400 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1400
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_1650K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_1650K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1650 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1650
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_1750K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_1750K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1750 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1750
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table1_self_1900K"
+material = "N2"
+file = "N2/meissner_2019__table1_self_1900K.csv"
+table = "tbl_a526fa9af339"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1900 K: FWHM of the S(J'') lines of pure N2 at ambient pressure, 1e-3 cm-1 (printed '10^-3 cm'), from the monoexponential coherence decay; +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1900
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table2_air_295K"
+material = "N2"
+file = "N2/meissner_2019__table2_air_295K.csv"
+table = "tbl_2fa66b541f5b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 6), 295 K: FWHM of the N2 S(J'') lines in air at ambient pressure ('N2-O2' in the paper), 1e-3 cm-1 (printed '10^-3 cm'); +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 295
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table2_air_500K"
+material = "N2"
+file = "N2/meissner_2019__table2_air_500K.csv"
+table = "tbl_2fa66b541f5b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 6), 500 K: FWHM of the N2 S(J'') lines in air at ambient pressure ('N2-O2' in the paper), 1e-3 cm-1 (printed '10^-3 cm'); +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 500
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table2_air_870K"
+material = "N2"
+file = "N2/meissner_2019__table2_air_870K.csv"
+table = "tbl_2fa66b541f5b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 6), 870 K: FWHM of the N2 S(J'') lines in air at ambient pressure ('N2-O2' in the paper), 1e-3 cm-1 (printed '10^-3 cm'); +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 870
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table2_air_1400K"
+material = "N2"
+file = "N2/meissner_2019__table2_air_1400K.csv"
+table = "tbl_2fa66b541f5b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 6), 1400 K: FWHM of the N2 S(J'') lines in air at ambient pressure ('N2-O2' in the paper), 1e-3 cm-1 (printed '10^-3 cm'); +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 1400
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table2_air_1650K"
+material = "N2"
+file = "N2/meissner_2019__table2_air_1650K.csv"
+table = "tbl_2fa66b541f5b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 6), 1650 K: FWHM of the N2 S(J'') lines in air at ambient pressure ('N2-O2' in the paper), 1e-3 cm-1 (printed '10^-3 cm'); +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 1650
+pressure = "ambient, not stated numerically"
+
+[[datasets]]
+id = "table2_air_1900K"
+material = "N2"
+file = "N2/meissner_2019__table2_air_1900K.csv"
+table = "tbl_2fa66b541f5b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 6), 1900 K: FWHM of the N2 S(J'') lines in air at ambient pressure ('N2-O2' in the paper), 1e-3 cm-1 (printed '10^-3 cm'); +- a fit standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(J''), J'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 1900
+pressure = "ambient, not stated numerically"
+

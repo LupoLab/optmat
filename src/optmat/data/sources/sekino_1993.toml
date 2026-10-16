@@ -1,0 +1,860 @@
+citation = "H. Sekino and R. J. Bartlett, \"Molecular hyperpolarizabilities\", J. Chem. Phys. 98, 3022 (1993)"
+doi = "10.1063/1.464129"
+library = "Sekino_1993_MolecularHyperpolarizabilities"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Static alpha, beta, gamma by SCF (analytic TDHF at w = 0), MBPT(2), CCSD and CCSD(T) \
+(ACES II; analytic dipole in finite fields of 0.005 a.u. and numerical differentiation, \
+or energy derivatives), in Sadlej's polarizability-consistent (POL) basis ('basis 1'), \
+with a diffuse d set on H ('basis 2'); frequency dependence by analytic time-dependent \
+Hartree-Fock (TDHF) at the ruby frequency w = 0.0656 a.u., the correlated dynamic values \
+scaled by the TDHF percentage dispersion; experimental equilibrium geometries (Table I), \
+no vibrational corrections (pp. 3023-3024)."""
+notes = """Identity: pdf page 1 is the publisher's cover; journal pages 3022-3037 = pdf \
+pages 2-17 (page = pdf page + 3020). Curated species: CO2 (Table II), N2 (III), H2 (IV), \
+CO (VII); C2H4, HF, H2O, NH3, H2S are skipped. The text rendering of the library is poor \
+in the footnotes; they were read on the rendered page image (pdf page 4).
+
+DEFINITIONS (p. 3022): 'In the static case this expansion becomes E(F) = E0 - mu_i F_i - \
+(1/2) alpha_ij F_i F_j - (1/3!) beta_ijk F_i F_j F_k - (1/4!) gamma_ijkl F_i F_j F_k F_l \
++ ...': the T convention. gamma_par = (gamma_iijj + gamma_ijij + gamma_ijji)/15 \
+(Table II footnote e). Processes (footnotes h-k): THG gamma(-3w; w, w, w); dc-SHG \
+gamma(-2w; w, w, 0) (eshg); IDRI 'intensity dependent refractive index, gamma(-w; w, w, \
+-w)' (kerr); EOKE 'electro-optic Kerr effect, gamma(-w; w, 0, 0)' (dc_kerr; 'dc-OR, \
+gamma(0; w, -w, 0) is numerically the same as EOKE after averaging'). All dynamic values \
+are gamma_par (the isotropic parallel average), component 'parallel', not the dc Kerr \
+gamma_K. Footnote b: 'frequency dependent polarizabilities are evaluated at w = 0.0656 \
+a.u. = 6443 A' (image checked; 0.0656 a.u. is 6946 A, so '6443' is a misprint; the \
+wavelength column holds 0.0656 hartree). Footnote g: 'Correlated frequency dependent \
+values are estimated by gamma_par CORR(w) = (gamma_par TDHF(w) / gamma_par SCF(0)) x \
+gamma_par CORR(0)'. Atomic units. Part electronic (clamped nuclei at the experimental \
+geometry; for H2 R = 1.4 a0).
+
+ESU CONVERSION (Table II footnote l, Table XVII): 'Since chi_par^(3) = gamma_par/6 \
+conversion factor is (1/6) x 5.037 x 10^-40 esu/molecule/a.u. = 8.395 x 10^-41 \
+esu/molecule/a.u.': Ward's per-molecule chi^(3) is gamma_T/6. Table XVII (p. 3033) lists \
+chi^(3) = gamma_par^dc-SHG / 6 in 10^-39 esu/molecule: conversions of the dc-SHG rows \
+(checked: CO2 experiment 111.9 +- 1.3 -> 1333 a.u., Table II 1332 +- 15; N2 86.6 -> 1032, \
+1030; CO 144.0 -> 1715, 1720; H2 exact 60.5 -> 721); not recorded again. Table XVIII \
+(static gamma_par, CCSD(T) against CCSD+T(CCSD), two figures: CO2 1100/1200, N2 \
+1000/1000, CO 1600/1600) and the HF discussion (Table XIX) are not recorded.
+
+DATASETS: for each gas, <quantity>_<gas> with rows the methods scf_tdhf, mbpt2, ccsd, \
+ccsd_t (H2: scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d]; CCSD is full CI \
+for H2): static_xxxx, static_zzzz, static_xxzz (the library's cells print 'gamma_xxxz', \
+the images gamma_xxzz), static_par, thg, eshg, kerr, dc_kerr. The accuracy claimed: \
+'agreement to about 10 %' with gas-phase experiment for H2, N2, CO2, C2H4 and CO \
+(abstract). Values are printed to two or three significant figures (e.g. 1300.0).
+
+H2 'EXACT' COLUMN (Table IV footnote b: 'evaluated by the formulas in the footnotes c-e in \
+Table II using the pure electronic values from Ref. 48', Bishop, Pipin and Cybulski 1991 \
+= bishop_1991, and earlier Bishop papers): at R = 1.4 a0, not vibrationally averaged: \
+static components 575.9, 682.5, 211.9 (bishop_1991 Table IV, R = 1.4), gamma_par 613.2 \
+(= (8 x 575.9 + 3 x 682.5 + 12 x 211.9)/15 = 613.17, checked), THG 858.0 (footnote f), \
+dc-SHG 721.0, EOKE 646.0: reproduced datasets exact_*. The text (p. 3025): 'After \
+averaging over the vibrational zero-point wave function the exact gamma_par becomes \
+682.7 a.u. at the static limit and 811.6 a.u. at lambda = 694.3 nm for dc-SHG', with the \
+pure vibrational +183.7 (static) and -13.5 (694.3 nm), totals 866.4 and 798.1 (these are \
+bishop_1991's values).
+
+EXPERIMENTAL COLUMN (reproduced, datasets expt_<process>_<gas>): CO2 THG 1860 +- 270 \
+(footnote l, Ref. 5: Ward and Elliott, J. Chem. Phys. 69, 5438 (1978), not in the \
+library), dc-SHG 1332 +- 15 (m, Ref. 4: Ward and Miller, Phys. Rev. A 19, 826 (1979) = \
+ward_1979); N2 THG 1270.0 and dc-SHG 1030 +- 12 (d, Ref. 4, ward_1979; a THG value from \
+the ESHG paper is odd: ward_1979 to be checked); CO dc-SHG 1720 +- 48 (e, Ref. 4, \
+ward_1979); H2 THG 950 +- 140 and dc-SHG 801 +- 4.5 (e: 'from D. P. Shelton, Phys. Rev. A \
+42, 2578 (1990), and include vibrational effects'), EOKE 560 +- 60 (the library reads its \
+footnote as c, Newell and Baird, a polarizability paper; the image is unclear; source \
+uncertain). Experimental values are totals (electronic + vibrational, and for the Kerr \
+effect possibly more), placed at w = 0.0656 a.u. (the ruby line, 694.3 nm)."""
+
+[[datasets]]
+id = "static_xxxx_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__static_xxxx_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_xxxx (z the molecular axis); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "static_zzzz_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__static_zzzz_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_zzzz; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "static_xxzz_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__static_xxzz_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_xxzz (printed 'gamma_xxxz' in the library's cells); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "static_par_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__static_par_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, static gamma_par = (gamma_iijj + gamma_ijij + gamma_ijji)/15; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "thg_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__thg_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, THG gamma_par(-3w; w, w, w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "eshg_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__eshg_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, dc-SHG gamma_par(-2w; w, w, 0) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "kerr_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__kerr_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, IDRI gamma_par(-w; w, w, -w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "dc_kerr_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__dc_kerr_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II, EOKE gamma_par(-w; w, 0, 0) at w = 0.0656 a.u. (the isotropic parallel average, not gamma_K); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "static_xxxx_N2"
+material = "N2"
+file = "N2/sekino_1993__static_xxxx_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_xxxx (z the molecular axis); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "static_zzzz_N2"
+material = "N2"
+file = "N2/sekino_1993__static_zzzz_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_zzzz; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "static_xxzz_N2"
+material = "N2"
+file = "N2/sekino_1993__static_xxzz_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_xxzz (printed 'gamma_xxxz' in the library's cells); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "static_par_N2"
+material = "N2"
+file = "N2/sekino_1993__static_par_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_par = (gamma_iijj + gamma_ijij + gamma_ijji)/15; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "thg_N2"
+material = "N2"
+file = "N2/sekino_1993__thg_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, THG gamma_par(-3w; w, w, w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "eshg_N2"
+material = "N2"
+file = "N2/sekino_1993__eshg_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, dc-SHG gamma_par(-2w; w, w, 0) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "kerr_N2"
+material = "N2"
+file = "N2/sekino_1993__kerr_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, IDRI gamma_par(-w; w, w, -w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "dc_kerr_N2"
+material = "N2"
+file = "N2/sekino_1993__dc_kerr_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, EOKE gamma_par(-w; w, 0, 0) at w = 0.0656 a.u. (the isotropic parallel average, not gamma_K); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "static_xxxx_H2"
+material = "H2"
+file = "H2/sekino_1993__static_xxxx_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, static gamma_xxxx (z the molecular axis); rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "static_zzzz_H2"
+material = "H2"
+file = "H2/sekino_1993__static_zzzz_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, static gamma_zzzz; rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "static_xxzz_H2"
+material = "H2"
+file = "H2/sekino_1993__static_xxzz_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, static gamma_xxzz (printed 'gamma_xxxz' in the library's cells); rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "static_par_H2"
+material = "H2"
+file = "H2/sekino_1993__static_par_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, static gamma_par = (gamma_iijj + gamma_ijij + gamma_ijji)/15; rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "thg_H2"
+material = "H2"
+file = "H2/sekino_1993__thg_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, THG gamma_par(-3w; w, w, w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "eshg_H2"
+material = "H2"
+file = "H2/sekino_1993__eshg_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, dc-SHG gamma_par(-2w; w, w, 0) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "kerr_H2"
+material = "H2"
+file = "H2/sekino_1993__kerr_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, IDRI gamma_par(-w; w, w, -w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "dc_kerr_H2"
+material = "H2"
+file = "H2/sekino_1993__dc_kerr_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV, EOKE gamma_par(-w; w, 0, 0) at w = 0.0656 a.u. (the isotropic parallel average, not gamma_K); rows scf_tdhf, mbpt2, ccsd for basis1 [3s2p] and basis2 [3s2p1d] (footnote a); CCSD is full CI for H2. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "static_xxxx_CO"
+material = "CO"
+file = "CO/sekino_1993__static_xxxx_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, static gamma_xxxx (z the molecular axis); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "static_zzzz_CO"
+material = "CO"
+file = "CO/sekino_1993__static_zzzz_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, static gamma_zzzz; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "static_xxzz_CO"
+material = "CO"
+file = "CO/sekino_1993__static_xxzz_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, static gamma_xxzz (printed 'gamma_xxxz' in the library's cells); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "static_par_CO"
+material = "CO"
+file = "CO/sekino_1993__static_par_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, static gamma_par = (gamma_iijj + gamma_ijij + gamma_ijji)/15; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "thg_CO"
+material = "CO"
+file = "CO/sekino_1993__thg_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, THG gamma_par(-3w; w, w, w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "eshg_CO"
+material = "CO"
+file = "CO/sekino_1993__eshg_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, dc-SHG gamma_par(-2w; w, w, 0) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "kerr_CO"
+material = "CO"
+file = "CO/sekino_1993__kerr_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, IDRI gamma_par(-w; w, w, -w) at w = 0.0656 a.u.; rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "dc_kerr_CO"
+material = "CO"
+file = "CO/sekino_1993__dc_kerr_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII, EOKE gamma_par(-w; w, 0, 0) at w = 0.0656 a.u. (the isotropic parallel average, not gamma_K); rows scf_tdhf, mbpt2, ccsd, ccsd_t. Correlated values = static correlated x TDHF percentage dispersion (footnote g). Electronic, experimental geometry, no vibrational correction."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "exact_static_xxxx_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_static_xxxx_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas. Not vibrationally averaged."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "exact_static_zzzz_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_static_zzzz_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas. Not vibrationally averaged."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "exact_static_xxzz_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_static_xxzz_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas. Not vibrationally averaged."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxzz"
+
+[[datasets]]
+id = "exact_static_par_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_static_par_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas. Not vibrationally averaged."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "exact_thg_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_thg_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas; footnote f. Not vibrationally averaged."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "exact_eshg_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_eshg_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas. Not vibrationally averaged."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "exact_dc_kerr_H2"
+material = "H2"
+file = "H2/sekino_1993__exact_dc_kerr_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["bishop_1991", "D. M. Bishop and B. Lam, J. Chem. Phys. 89, 1571 (1988)", "bishop_1990b"]
+notes = "Table IV 'Exact' (footnote b): Bishop et al.'s pure electronic H2 values at R = 1.4 a0 (Ref. 48), combined with the Table II formulas. Not vibrationally averaged."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__expt_thg_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["J. F. Ward and D. S. Elliott, J. Chem. Phys. 69, 5438 (1978)"]
+notes = "Table II 'EXP': THG 1860 +- 270, footnote l (Ref. 5). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_CO2"
+material = "CO2"
+file = "CO2/sekino_1993__expt_eshg_CO2.csv"
+table = "tbl_b4418052253e"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["ward_1979"]
+notes = "Table II 'EXP': dc-SHG 1332 +- 15, footnote m (Ref. 4, Ward and Miller 1979). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_N2"
+material = "N2"
+file = "N2/sekino_1993__expt_thg_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["ward_1979"]
+notes = "Table III 'EXP': THG 1270.0, footnote d (Ref. 4, Ward and Miller 1979, as printed; a THG value attributed to the ESHG paper: check). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_N2"
+material = "N2"
+file = "N2/sekino_1993__expt_eshg_N2.csv"
+table = "tbl_bb8355cdb8fd"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["ward_1979"]
+notes = "Table III 'EXP': dc-SHG 1030 +- 12, footnote d (Ref. 4). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_CO"
+material = "CO"
+file = "CO/sekino_1993__expt_eshg_CO.csv"
+table = "tbl_e455f4ab1704"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["ward_1979"]
+notes = "Table VII 'EXP': dc-SHG 1720 +- 48, footnote e (Ref. 4). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_H2"
+material = "H2"
+file = "H2/sekino_1993__expt_thg_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "Table IV 'EXP': THG 950 +- 140, footnote e (Shelton 1990, 'include vibrational effects'; a THG value from Shelton's ESHG paper, as printed). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_eshg_H2"
+material = "H2"
+file = "H2/sekino_1993__expt_eshg_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "Table IV 'EXP': dc-SHG 801 +- 4.5, footnote e (Shelton 1990, including vibrational effects). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_H2"
+material = "H2"
+file = "H2/sekino_1993__expt_dc_kerr_H2.csv"
+table = "tbl_91e0d5d3a5bb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["As printed: Table IV footnote c, A. C. Newell and R. C. Baird, J. Appl. Phys. 36, 3751 (1965), a polarizability paper; the true source of this Kerr value is uncertain"]
+notes = "Table IV 'EXP': EOKE 560 +- 60, footnote c as the library reads it (image unclear). A measured total (electronic plus vibrational), at the ruby frequency; the level of the uncertainty is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+component = "parallel"

@@ -1,0 +1,40 @@
+# Deuterium (normal D2 at room temperature): theory only.
+gas = "D2"
+description = "Deuterium, on theory: effective oscillators fitted to Raj et al.'s ab initio polarizability of normal D2 averaged at 293 K (182 nm to the static limit), Rychlewski's below 182 nm, and Shelton's D2/H2 and H2/D2 ratios. Orr's single 546 nm measurement (built on an outdated H2 value) is a validator."
+range_nm = [112.0, "inf"]
+
+validators = [
+    "orr_1936/n_D2",
+    "essen_1953/microwave_D2",
+    { key = "rychlewski_1983/alpha_293K", electric = true },
+]
+
+[model]
+# The temperature the polarizability refers to: a molecule's zero-density polarizability
+# changes with temperature (rotational and vibrational averaging), which the model does
+# not carry; datasets measured elsewhere are brought here where the coefficient is
+# measured (TC-730).
+reference_temperature_k = 293.15
+effective = 2
+effective_min_energy_hartree = 0.411
+chi0_au = 0.0
+starts = 20                   # six starts leave one effective oscillator at zero strength
+
+[[fitted]]
+key = "raj_2018/normal_293K_D2"
+extra_relative = 1e-3         # as for H2 (TC-95): the spread of the ab initio calculations
+electric = true
+
+[[fitted]]
+key = "rychlewski_1983/alpha_293K"
+range_nm = [0.0, 182.0]       # the vacuum ultraviolet, below Raj's 182.25 nm
+extra_relative = 1.7e-3
+electric = true
+
+# Near-infrared dispersion relative to a partner gas: H2/D2 ratio at 1319 and 1064 nm, hydrogen fixed at fit/H2.
+[[fitted]]
+key = "shelton_1990/density_H2_over_D2"
+
+# Near-infrared dispersion relative to a partner gas: D2/H2 ratios at 477-695 nm (Shelton & Mizrahi 1986).
+[[fitted]]
+key = "shelton_1986/ratio_D2_H2"

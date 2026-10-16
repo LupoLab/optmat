@@ -1,0 +1,246 @@
+"""The two-photon TDSE campaign (for optmat): two-photon ionisation of He (and later Ar) with tRecX.
+A separate campaign from round 2: local testruns/two_photon/, on the cluster $RUN_ROOT/, jobs tp_*.
+
+    python3 make_inputs.py pulse      # pulse/gauss20fs_<E>eV_A.dat for every photon energy
+    python3 make_inputs.py run1       # run1/sae/<name>/<name>.inp and run1/hacc/<name>/<name>.inp (+ spectra)
+
+Run 1 (the brief's priority 1, the set-up check): helium, degenerate two-photon ionisation, photon energies 13, 14,
+16, 18 and 20 eV, a 20 fs Gaussian (FWHM of the intensity) on the vector potential, CEP 0,
+A(t) = A0 exp(-2 ln2 t^2/T^2) sin(omega t), from a file over [-3T, +3T]; window [-3T, +3T + 1000 au]; velocity gauge.
+Intensity I0 = (1/2) eps0 c E0^2 (cycle-averaged peak) = E0^2 x 3.50944758e16 W/cm2; A0 = E0/omega.
+Intensities 1e11, 1e12 (the brief) and 1e13 W/cm2 (a third point for P ~ I^2).
+Two models:
+- sae: one electron, Tong-Lin helium (A2's set-up: Eta, A2's radial grid, ECS 0.15, cutEnergy 100, OccDual), BOX 40,
+  Eta 10 (two photons need l <= 2; convergence Eta 15), iSurff spectrum;
+- hacc: haCC He19_Standard, 1 channel (He+ 1s), lMax 10, rMax 40, iSurff channel spectrum.
+Measures: P = 1 - bound (OccDual, all labelled bound states; sae only), the norm-loss at +1000 au, and the iSurff
+spectrum (its integral over the two-photon peak is free of the numerical drift that floors the norm-loss).
+"""
+import math, os, sys
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+# RUN_ROOT: the run directory on the cluster; TRECX_DATA: tRecX's data directory (holds chemical/He19_Standard).
+RUN_ROOT = os.environ.get("RUN_ROOT", "$RUN_ROOT")
+TRECX_DATA = os.environ.get("TRECX_DATA", "$TRECX_DATA")
+AU_T, AU_I, HC, HA = 2.4188843265857e-17, 3.50944758e16, 1239.84198, 27.211386245988
+FWHM_AU = 20e-15 / AU_T
+T3 = 3 * FWHM_AU
+END = T3 + 1000.
+PRINT = 10.
+E_PH = [13.0, 14.0, 16.0, 18.0, 20.0]
+I_LIST = [1e11, 1e12, 1e13]
+# 9 Oct: tRecX's default spectral range, max(12 Up, 3 Omega), came out as 2.5e-4 au (k <= 0.022) for these weak
+# fields, far below the two-photon peaks (k 0.3-1.1 au): set it to 1.5 au (40.8 eV, past the three-photon peaks),
+# 1200 points (dE ~ 11 meV at the slowest peak). The first version is kept as run1_v1_spec_kmax0p02/.
+SPEC = "Spectrum: radialPoints=1200, maxEnergy=1.5, plot={plot}, iSurff=true"
+TL_HE = "#define TongLinHeV (1.0+1.231*exp(-0.662*Q)-1.325*Q*exp(-1.236*Q)-0.231*exp(-0.480*Q))/Q"
+
+
+def omega(e_ev):
+    return e_ev / HA
+
+
+def tag(e_ev):
+    return f"{e_ev:g}eV".replace(".", "p")
+
+
+def pulse_file(e_ev, where=HERE):
+    return f"{where}/pulse/gauss20fs_{tag(e_ev)}_A.dat"
+
+
+def shape(t, w):
+    return np.exp(-2 * math.log(2) * (t / FWHM_AU) ** 2) * np.sin(w * t)
+
+
+def tgrid():
+    return np.linspace(-T3, T3, int(round(2 * T3 / 0.01)) + 1)
+
+
+def write_pulses():
+    os.makedirs(f"{HERE}/pulse", exist_ok=True)
+    t = tgrid()
+    out = []
+    for e in E_PH:
+        w = omega(e)
+        a = shape(t, w)
+        with open(pulse_file(e), "w") as f:
+            f.write(f"# A_z(t)/A0 = exp(-2 ln2 t^2/T^2) sin(omega t), T = 20 fs (FWHM of the intensity) = {FWHM_AU:.6f} au, "
+                    f"omega = {w:.10f} au ({e:g} eV, {HC / e:.4f} nm); t in au, [-3T, 3T], dt 0.01\n")
+            for ti, ai in zip(t, a):
+                f.write(f"{ti:.10f} {ai:.15e}\n")
+        en = -np.gradient(a, t, edge_order=2) / w
+        out.append(f"{e:g} eV: omega {w:.10f} au, {HC / e:.4f} nm, cycle {2 * math.pi / w:.4f} au, {FWHM_AU * w / (2 * math.pi):.1f} "
+                   f"cycles in the FWHM; max|shape| {np.abs(a).max():.12f}; max|E|/E0 {np.abs(en).max():.8f}")
+    out.append(f"window [{-T3:.6f}, {END:.6f}] au; bandwidth (intensity FWHM) {4 * math.log(2) / FWHM_AU * HA * 1000:.1f} meV")
+    open(f"{HERE}/pulse_check.txt", "w").write("\n".join(out) + "\n")
+    print("\n".join(out))
+
+
+def e0(I):
+    return math.sqrt(I / AU_I)
+
+
+def peak_A(I, e_ev):
+    return e0(I) / omega(e_ev) * np.abs(shape(tgrid(), omega(e_ev))).max()
+
+
+def fixstep(I, e_ev, cut=100., scale=1.):
+    emax = (math.sqrt(2 * cut) + e0(I) / omega(e_ev)) ** 2 / 2
+    return round(scale * min(0.03, 2 / emax), 5)
+
+
+def radial(box, nel_out, o=12):
+    if box == 40:
+        return f" Rn,14,0.,2.,polynomial,3\n Rn,12,2.,20.,RpowL*polynomial,4\n Rn,{o},20.,BOX,RpowL*polynomial,{nel_out}\n Rn,30,BOX,Infty,polExp[0.5]\n"
+    n1 = 5
+    return (f" Rn,14,0.,2.,polynomial,3\n Rn,12,2.,20.,RpowL*polynomial,4\n Rn,{o},20.,40.,RpowL*polynomial,{n1}\n"
+            f" Rn,{o},40.,BOX,RpowL*polynomial,{nel_out - n1}\n Rn,30,BOX,Infty,polExp[0.5]\n")
+
+
+def sae_input(name, I, e_ev, p, note, nofield=False):
+    box, eta, theta, cut, dts = p["box"], p["eta"], p["theta"], p["cut"], p["dtscale"]
+    nel = round(14 * (box - 20.) / 60.)
+    dt = fixstep(I, e_ev, cut, dts)
+    radii = sorted({20., 40., float(box)})
+    chis = ",".join(f"<1><1><chi[0,{r:g}]>" for r in radii)
+    laser = ("# no Laser: field-free propagation over the same window (drift)" if nofield else
+             f"Laser: shape, file, scale, scaleMode, timeUnits, lambda(nm)\nfile, {pulse_file(e_ev, RUN_ROOT)}, {peak_A(I, e_ev):.12e}, peakA, au, {HC / e_ev:.6f}")
+    return f"""Title:
+{name} - He 1s one electron (Tong-Lin SAE) two-photon; {e_ev:g} eV; 20 fs Gaussian (FWHM of the intensity); I={I:.3e} W/cm2
+
+# Two-photon TDSE campaign, run 1. {note}
+# E0 = {e0(I):.8e} au, A0 = E0/omega = {e0(I) / omega(e_ev):.8e} au; I0 = (1/2) eps0 c E0^2; fixStep {dt}.
+# A(t) = A0 exp(-2 ln2 t^2/T^2) sin(omega t), T = {FWHM_AU:.4f} au, file over [-3T,+3T]; window [-3T, +3T + 1000 au].
+
+#define BOX {box}
+{TL_HE}
+
+{"" if nofield else SPEC.format(plot="total")}
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1
+ Eta,{eta},-1,1,assocLegendre{{Phi}}
+{radial(box, nel)}
+Absorption: kind, axis, theta, radius
+ECS,Rn,{theta},BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinHeV>
+Operator: interaction='iLaserAz[t]<<D/DZ>>'
+Operator: expectationValue='{chis}'
+
+# populations of the field-free (complex-scaled) eigenstates of H0, SmallReal order, 0-based
+Occupation: states=0:70, operator=hamiltonian
+
+Initial: state=0
+
+{laser}
+
+TimePropagation: begin,end,print,store,cutEnergy,operatorThreshold,fixStep
+ {-T3:.6f},{END:.6f},{PRINT:g},0.05,{cut:g},1e-09,{dt}
+"""
+
+
+def sae_eigen(name, box, eta, theta=0.15):
+    nel = round(14 * (box - 20.) / 60.)
+    return f"""Title:
+{name} - He Tong-Lin SAE field-free spectrum; Eta={eta}; BOX={box}
+
+#define BOX {box}
+{TL_HE}
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1
+ Eta,{eta},-1,1,assocLegendre{{Phi}}
+{radial(box, nel)}
+Absorption: kind, axis, theta, radius
+ECS,Rn,{theta},BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinHeV>
+
+Eigen: select=SmallReal[80]
+"""
+
+
+def hacc_input(name, I, e_ev, lmax, rmax, note):
+    return f"""Title:
+{name} - He haCC (He19_Standard) 1 channel two-photon; {e_ev:g} eV; 20 fs Gaussian (FWHM of the intensity); I={I:.3e} W/cm2
+
+# Two-photon TDSE campaign, run 1. {note}
+# E0 = {e0(I):.8e} au; A(t) = A0 exp(-2 ln2 t^2/T^2) sin(omega t), T = {FWHM_AU:.4f} au; window [-3T, +3T + 1000 au].
+Chemical: data={TRECX_DATA}/chemical/He19_Standard
+AxisSystem: lMax={lmax}, nChan=1, rMax={rmax}
+{SPEC.format(plot="channels")}
+Laser: shape, file, scale, scaleMode, timeUnits, lambda(nm)
+file, {pulse_file(e_ev, RUN_ROOT)}, {peak_A(I, e_ev):.12e}, peakA, au, {HC / e_ev:.6f}
+
+TimePropagation: begin,end,print
+ {-T3:.6f},{END:.6f},{PRINT:g}
+"""
+
+
+def hacc_eigen(name, lmax, rmax):
+    return f"""Title:
+{name} - He haCC (He19_Standard) 1 channel field-free spectrum; lMax={lmax}; rMax={rmax}
+
+Chemical: data={TRECX_DATA}/chemical/He19_Standard
+AxisSystem: lMax={lmax}, nChan=1, rMax={rmax}
+Eigen: select=SmallReal[12]
+"""
+
+
+BASE = dict(box=40, eta=10, theta=0.15, cut=100., dtscale=1.)
+CONV = [("eta15", dict(eta=15)), ("box80", dict(box=80)), ("dt23", dict(dtscale=2 / 3)), ("cut150", dict(cut=150.)),
+        ("th23", dict(theta=0.1))]
+
+
+def write(d, name, text):
+    os.makedirs(f"{HERE}/{d}/{name}", exist_ok=True)
+    open(f"{HERE}/{d}/{name}/{name}.inp", "w").write(text)
+    return f"{RUN_ROOT}/{d}/{name}/{name}.inp"
+
+
+def write_run1():
+    lst_sae, lst_hacc = [], []
+    for e in E_PH:
+        for I in I_LIST:
+            n = f"he_{tag(e)}_I{I:.0e}".replace("+", "")
+            lst_sae.append(write("run1/sae", n, sae_input(n, I, e, BASE, "base")))
+            lst_hacc.append(write("run1/hacc", n, hacc_input(n, I, e, 10, 40, "base: lMax 10, rMax 40")))
+    # convergence at 16 eV, 1e12
+    for tg, ch in CONV:
+        n = f"he_16eV_I1e12_{tg}"
+        lst_sae.append(write("run1/sae", n, sae_input(n, 1e12, 16., dict(BASE, **ch), f"convergence: {tg}")))
+    for tg, lm, rm in (("l15", 15, 40), ("r60", 10, 60)):
+        n = f"he_16eV_I1e12_{tg}"
+        lst_hacc.append(write("run1/hacc", n, hacc_input(n, 1e12, 16., lm, rm, f"convergence: lMax {lm}, rMax {rm}")))
+    # added 9 Oct: the spectrum vs the projection differ by up to 11 % and the spectrum moved -4.4 % from BOX 40 to 80 at
+    # 16 eV: the box at every energy (1e12), and the drift of each varied discretisation (to subtract it per variant)
+    for e in E_PH:
+        for tg, ch in (("box80", dict(box=80)), ("box120", dict(box=120))):
+            n = f"he_{tag(e)}_I1e12_{tg}"
+            if e == 16. and tg == "box80":
+                continue
+            lst_sae.append(write("run1/sae", n, sae_input(n, 1e12, e, dict(BASE, **ch), f"box check: {tg}")))
+    for tg, ch in CONV + [("box120", dict(box=120))]:
+        n = f"he_nofield_{tg}"
+        lst_sae.append(write("run1/sae", n, sae_input(n, 1e12, 16., dict(BASE, **ch), f"no field, {tg}: drift", nofield=True)))
+    for tg, box in (("box120", 120),):
+        write("run1/sae", f"eigrun_{tg}", sae_eigen(f"eigrun_{tg}", box, 10))
+    # drift: no field, base settings
+    n = "he_nofield"
+    lst_sae.append(write("run1/sae", n, sae_input(n, 1e12, 16., BASE, "no field: the numerical drift", nofield=True)))
+    # field-free spectra: the code's own energies (Ip, 1s2p, ...)
+    for eta in (1, 2, 3):
+        lst_sae.append(write("run1/sae", f"eig_l{eta}", sae_eigen(f"eig_l{eta}", 40, eta)))
+    # added 9 Oct: the field-free spectrum of each run's own discretisation (to separate bound and ionised in OccDual)
+    for tg, box, eta, th in (("base", 40, 10, 0.15), ("eta15", 40, 15, 0.15), ("box80", 80, 10, 0.15), ("th23", 40, 10, 0.1)):
+        write("run1/sae", f"eigrun_{tg}", sae_eigen(f"eigrun_{tg}", box, eta, th))
+    lst_hacc.append(write("run1/hacc", "eig_l10_r40", hacc_eigen("eig_l10_r40", 10, 40)))
+    open(f"{HERE}/run1/list_sae", "w").write("\n".join(lst_sae) + "\n")
+    open(f"{HERE}/run1/list_hacc", "w").write("\n".join(lst_hacc) + "\n")
+    print(f"run1: {len(lst_sae)} sae inputs, {len(lst_hacc)} haCC inputs")
+
+
+if __name__ == "__main__":
+    {"pulse": write_pulses, "run1": write_run1}[sys.argv[1]]()

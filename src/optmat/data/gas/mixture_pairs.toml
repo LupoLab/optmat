@@ -1,0 +1,104 @@
+# The pairs of the mixture equations of state (OEP 4, sections 4.2 and 7.4).
+#
+# Each table is a pair of gases, named by its species in sorted order. `model` is the
+# reference key of CoolProp's binary model of the pair, which the loader checks against
+# CoolProp's own; `source` is its curated record. `qualified` says whether the
+# multi-fluid model passed the comparison with the measured cross and excess second
+# virials and mixture densities, under the rule fixed before the comparison (TC-778:
+# within twice the combined uncertainty for at least 95 % of the counted points of each
+# kind, and at least three points); `reason` gives the result (TC-779), and a test
+# keeps the flags in step with optmat.gas.mixture_validation.
+#
+# `fallback_qualified` applies the same rule to the fallback (method "virial") against the
+# measured mixture densities within its truncation bound, with `fallback_reason`.
+#
+# `prefer_multi_fluid` makes the multi-fluid model a mixture's default where every pair
+# prefers it, unqualified and provisional: dry air's pairs, whose fallback holds only at
+# Martin et al.'s 290-320 K while the multi-fluid air agrees with CIPM-2007 within its
+# uncertainty at every temperature (the author's decision, TC-796).
+#
+# `cross_virial` is the fallback's cross coefficient (method "virial"): a measured B_12,
+# or a measured excess E from which B_12 = E + (B_11 + B_22)/2 is built with the
+# reference equations' pure B's. Each is the set with stated uncertainties that has the
+# most points in 250-350 K, ties going to the smaller uncertainty (TC-778, amended
+# after the comparison to admit E: TC-779). Outside its measured temperatures the
+# fallback refuses the state. A pair not listed here, or CoolProp's placeholder pairs
+# (all reducing parameters one, no departure function), is not qualified.
+
+[pairs.Ar-He]
+model = "Tkaczuk-JPCRD-2020"
+source = "tkaczuk_2020"
+qualified = false
+reason = "The multi-fluid model's cross virial is about 10 cm^3/mol below the measured ones (E 9.3 against Brewer and Vaughn's 20.1 and Martin et al.'s 20.4 at 298-300 K): 0 of 7 virial points pass (TC-779)."
+cross_virial = "brewer_1969/E_Ar_He"
+fallback_qualified = false
+fallback_reason = "The fallback against Blancett et al.'s Z within its truncation bound: 16 of 78 points pass; it lies up to 7.0e-4 below at 273 K (sigma 1e-5 to 1e-4), five to ten times closer than the multi-fluid model (TC-779)."
+
+[pairs.Ar-Ne]
+model = "Tkaczuk-JPCRD-2020"
+source = "tkaczuk_2020"
+qualified = false
+reason = "The multi-fluid model's E is 3.4 against Brewer and Vaughn's 13.0 cm^3/mol at 298 K: 0 of 3 virial points pass (TC-779)."
+cross_virial = "brewer_1969/E_Ar_Ne"
+fallback_qualified = false
+fallback_reason = "The fallback against Kestin et al.'s densities (0.1 %): 7 of 8 pass, the worst at 3.2 sigma: short of 95 % (TC-779)."
+
+[pairs.He-Ne]
+model = "Tkaczuk-JPCRD-2020"
+source = "tkaczuk_2020"
+qualified = false
+reason = "The multi-fluid model's E is -2.6 against Brewer and Vaughn's 0.76 cm^3/mol, and its Z lies 2.2e-3 below Vogl and Hall's at 36 bar (sigma 1.7e-4): 0 of 5 virial and 0 of 36 density points pass (TC-779)."
+cross_virial = "brewer_1969/E_He_Ne"
+fallback_qualified = true
+fallback_reason = "The fallback against Vogl and Hall's Z: 35 of 36 points pass (TC-779)."
+
+[pairs.N2-O2]
+model = "Gernert-Thesis-2013"
+source = "gernert_2013"
+qualified = false
+reason = "The multi-fluid model's E is -0.34 against Martin et al.'s -1.0(2) cm^3/mol: 0 of 3 virial points pass (TC-779). Its dry air agrees with CIPM-2007's Z within 8.6e-6."
+cross_virial = "martin_1982/E_N2_O2"
+fallback_qualified = false
+fallback_reason = "No density data of the pair. Dry air's fallback agrees with CIPM-2007's Z within 1.8e-6 (u(Z) = 1.5e-5), which is evidence for the mixture, not a counted comparison of the pair (TC-779)."
+prefer_multi_fluid = true  # dry air: the author's default over the fallback (TC-796)
+
+
+[pairs.Ar-N2]
+model = "Gernert-Thesis-2013"
+source = "gernert_2013"
+qualified = false
+reason = "The multi-fluid model's E is -0.16 against Brewer and Vaughn's -0.57(10) and Martin et al.'s -0.6(2) cm^3/mol: 0 of 6 virial points pass (TC-779)."
+cross_virial = "brewer_1969/E_Ar_N2"
+fallback_qualified = false
+fallback_reason = "No density data of the pair; CIPM-2007's air holds 1 % argon (TC-779)."
+prefer_multi_fluid = true  # dry air: the author's default over the fallback (TC-796)
+
+
+[pairs.Ar-O2]
+model = "Gernert-Thesis-2013"
+source = "gernert_2013"
+qualified = false
+reason = "3 of 4 virial points pass (Martin et al.'s E at 290 K fails by 0.42 cm^3/mol against 2 x 0.2), short of 95 % (TC-779)."
+cross_virial = "martin_1982/E_Ar_O2"
+fallback_qualified = false
+fallback_reason = "No density data of the pair; CIPM-2007's air holds 1 % argon (TC-779)."
+prefer_multi_fluid = true  # dry air: the author's default over the fallback (TC-796)
+
+
+[pairs.Ar-CH4]
+model = "Kunz-JCED-2012"
+source = "kunz_2012"
+qualified = true
+reason = "Martin et al.'s E at 290, 300 and 320 K: 3 of 3 pass (TC-779). No density data of the pair."
+
+[pairs.CH4-CO2]
+model = "Kunz-JCED-2012"
+source = "kunz_2012"
+qualified = true
+reason = "Martin et al.'s E at 290, 300 and 320 K: 3 of 3 pass (TC-779). No density data of the pair."
+
+[pairs.CH4-N2]
+model = "Kunz-JCED-2012"
+source = "kunz_2012"
+qualified = true
+reason = "Martin et al.'s E at 290, 300 and 320 K: 3 of 3 pass (TC-779). No density data of the pair."

@@ -1,0 +1,275 @@
+citation = "K. Kerl and H. Häusler, \"Mean polarizabilities and second virial coefficients of the gases Ar, CH4, C2H6, C3H8 and C(CH3)4\", Ber. Bunsenges. Phys. Chem. 88, 992 (1984)"
+doi = "10.1002/bbpc.19840881013"
+library = "Kerl_1984_MeanPolarizabilitiesSecond"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute refractivity at the green Hg line (546.226 nm, vacuum) with an \
+evacuated Michelson interferometer (Kerl and Jescheck's apparatus), 260-366 K and \
+0-3 bar: the gas is pumped out of the cell in about 10 steps (pressure to 5 Pa, \
+temperature to 1 mK) while the fringe number is counted, and n - 1 is fitted to a \
+quadratic in rho_0 = p/RT (Eqs. 2.1-2.3, p. 993). Two sample cells: the earlier one and \
+an improved one of length 126.49(2) cm at 20 C (starred isotherms). Gas purity better \
+than 99.99 % (CH4, Ar)."""
+notes = """Page numbers are the journal's (992-997; pdf page 1 = p. 992, which begins \
+with the end of the previous article's reference list, and the last pdf page carries \
+the start of the next article, Vogel on viscosities).
+
+Reduction (Eqs. 2.2-2.5, p. 993): n - 1 = a_1 rho_0 + a_2 rho_0^2 with the ideal-gas \
+density rho_0 = p/RT; A_R = (4/3) pi N_A alpha_0 = 2 a_1/3 is the molar refractivity \
+of the free molecule (zero density), so no state applies. B(T) (Table 1's last column, \
+Eq. 2.8) assumes b_R = a_1/6 (Eq. 2.7): an equation-of-state quantity, not extracted.
+
+Wavelength: the text (pp. 993 and 995) and Table 1's caption give lambda_0 = 546.226 \
+nm; the abstract (p. 992) prints 546.266 nm. 546.226 nm is right: it is the one used in \
+the evaluation, and it is the vacuum wavelength of the green Hg line (546.077 nm in \
+standard air by Edlén 1966, the line's familiar label 546.07-546.1 nm), while 546.266 nm \
+matches no Hg line; a transposition in the abstract. No dataset uses the abstract.
+
+Uncertainty (pp. 994-995): 'The figures in parenthesis behind the data in Table 1 are \
+standard deviations' (1 sigma, of the fit). Stated systematic parts: the cell length \
+(Delta l = 0.02 cm) gives Delta A_R/A_R = +-1.6e-4; a missetting of the monochromator \
+by 0.1 nm on the 6 nm-wide Hg line gives +-1.8e-4 (p. 995); a missetting of about 2 nm \
+'may be the reason for the low value A_R(299 K) = 4.2091' of Ar (bracketed, excluded). \
+Typical fit deviation Delta(n - 1)/(n - 1) = +-1e-4 (p. 993).
+
+Temperature (Section 3.3, p. 995): A_R rises slightly with T for the molecules, and \
+the authors propose A_R = c_0 + c_1 T (Eq. 3.5, Table 3; formulas A_R_T_Ar, A_R_T_CH4), \
+'Additional experiments with an improved technique shall give more accurate results'. \
+The same group later found no temperature dependence for the noble gases (hohm_1990, \
+which contradicts this paper's and Hohm and Kerl 1986's earlier 1 %-per-100 K increase) \
+and supersedes these values: all datasets are use = 'check'.
+
+Checks (2026-09-26): Table 2's means are the arithmetic means of the unbracketed Table \
+1 values (Ar 4.23073, CH4 6.64046) with the sample standard deviation of the values \
+(0.0063, 0.0396); a least-squares line through the same values gives c_0 = 4.1588 and \
+2.22e-4 (Ar, r = 0.67, s = 0.0057) and 6.2270 and 12.64e-4 (CH4, r = 0.91, s = 0.019), \
+Table 3's figures. Against optmat's fits at 546.226 nm (fit/Ar 4.2151, fit/CH4 6.6185 \
+cm^3/mol) the means are +0.37 % (Ar) and +0.34 % (CH4), far beyond the stated \
+standard deviations; hohm_1994b's Ar at 543.516 nm (4.2163 cm^3/mol) is 0.35 % lower too.
+
+Not extracted: C2H6, C3H8 and C(CH3)4 (not curated species); p_max, K, |s|, a_1, a_2 \
+and B of Table 1; Table 2's critical constants (from the Encyclopédie des Gaz) and \
+Boyle temperatures; Table 4 (fits of B(T)/V_c and B(T)/A_R against (T_c/T)^2, an \
+equation-of-state correlation); Eqs. (4.2)-(4.3) (A_R against V_c for 11 gases)."""
+
+[[datasets]]
+id = "A_R_299_12K_Ar"
+material = "Ar"
+file = "Ar/kerl_1984__A_R_299_12K_Ar.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1 (p. 994), Ar isotherm at 299.12(1) K, p_max 2.819 bar, K = 12, the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 299.12
+
+[[datasets]]
+id = "A_R_299_15K_Ar"
+material = "Ar"
+file = "Ar/kerl_1984__A_R_299_15K_Ar.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "excluded"
+notes = "Table 1, Ar at 299.15(1) K: printed in brackets ('uncertain ... by no means [used] in all further calculations', p. 994); the authors suspect a monochromator missetting of about 2 nm (p. 995)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 299.15
+
+[[datasets]]
+id = "A_R_323_47K_Ar"
+material = "Ar"
+file = "Ar/kerl_1984__A_R_323_47K_Ar.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, Ar at 323.47(1) K, the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 323.47
+
+[[datasets]]
+id = "A_R_325_53K_Ar"
+material = "Ar"
+file = "Ar/kerl_1984__A_R_325_53K_Ar.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, Ar at 325.53(1) K (its a_2 and B in brackets; A_R not), the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 325.53
+
+[[datasets]]
+id = "A_R_345_19K_Ar"
+material = "Ar"
+file = "Ar/kerl_1984__A_R_345_19K_Ar.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, Ar at 345.19(1) K (its a_2 and B in brackets; A_R not), the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 345.19
+
+[[datasets]]
+id = "A_R_299_44K_CH4"
+material = "CH4"
+file = "CH4/kerl_1984__A_R_299_44K_CH4.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, CH4 at 299.44(1) K, starred: the improved sample cell of length 126.49(2) cm at 20 C."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 299.44
+
+[[datasets]]
+id = "A_R_301_47K_CH4"
+material = "CH4"
+file = "CH4/kerl_1984__A_R_301_47K_CH4.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, CH4 at 301.47(1) K, the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 301.47
+
+[[datasets]]
+id = "A_R_323_01K_CH4"
+material = "CH4"
+file = "CH4/kerl_1984__A_R_323_01K_CH4.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, CH4 at 323.01(1) K, the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 323.01
+
+[[datasets]]
+id = "A_R_345_22K_CH4"
+material = "CH4"
+file = "CH4/kerl_1984__A_R_345_22K_CH4.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, CH4 at 345.22(1) K, the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 345.22
+
+[[datasets]]
+id = "A_R_365_63K_CH4"
+material = "CH4"
+file = "CH4/kerl_1984__A_R_365_63K_CH4.csv"
+table = "tbl_6ccbf5b10dc1"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, CH4 at 365.63(2) K, the old sample cell."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 365.63
+
+[[datasets]]
+id = "A_R_mean_Ar"
+material = "Ar"
+file = "Ar/kerl_1984__A_R_mean_Ar.csv"
+table = "tbl_44fdf7d2e6c3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2 (p. 994), A_R-bar: 'the arithmetic mean of the A_R-values of Table 1' (the four unbracketed Ar values, 299-345 K); the parenthesised figure is the sample standard deviation of those values (checked), not the uncertainty of the mean. No single temperature."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_R_mean_CH4"
+material = "CH4"
+file = "CH4/kerl_1984__A_R_mean_CH4.csv"
+table = "tbl_44fdf7d2e6c3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 2 (p. 994), A_R-bar of the five CH4 values (299-366 K), which rise with temperature (Table 3); the parenthesised figure is their sample standard deviation (checked). No single temperature."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[formulas]]
+id = "A_R_T_Ar"
+material = "Ar"
+equation = "Eq. (3.5) with Table 3, p. 995"
+printed = "A_R/cm^3 mol^-1 = c_0 + c_1 T; Ar: K = 4, |s| = 0.0057, r = 0.67, c_0 = 4.159(57), 10^4 c_1/K^-1 = 2.2(1.8), 10^4 (c_1/c_0)/K^-1 = 0.53"
+variable = "T: temperature in K; A_R: molar refractivity at 546.226 nm (vacuum), cm^3/mol"
+range = "299-345 K (the four unbracketed Table 1 isotherms)"
+coefficients = { c0 = "4.159", c0_sigma = "0.057", c1 = "2.2e-4", c1_sigma = "1.8e-4" }
+check = "A least-squares line through Table 1's four unbracketed Ar values gives c_0 = 4.1588, c_1 = 2.22e-4, r = 0.67, s = 0.0057: Table 3 to its printed digits. Checked 2026-09-26."
+notes = "The slope is not significant (1.2 sigma) and hohm_1990 found none for argon at 300-1100 K; a check only."
+
+[[formulas]]
+id = "A_R_T_CH4"
+material = "CH4"
+equation = "Eq. (3.5) with Table 3, p. 995"
+printed = "A_R/cm^3 mol^-1 = c_0 + c_1 T; CH4: K = 5, |s| = 0.019, r = 0.91, c_0 = 6.23(11), 10^4 c_1/K^-1 = 12.6(3.3), 10^4 (c_1/c_0)/K^-1 = 2.03"
+variable = "T: temperature in K; A_R: molar refractivity at 546.226 nm (vacuum), cm^3/mol"
+range = "299-366 K (Table 1's five CH4 isotherms)"
+coefficients = { c0 = "6.23", c0_sigma = "0.11", c1 = "12.6e-4", c1_sigma = "3.3e-4" }
+check = "A least-squares line through Table 1's five CH4 values gives c_0 = 6.2270, c_1 = 12.64e-4, r = 0.91, s = 0.0188: Table 3 to its printed digits. Checked 2026-09-26."
+notes = "c_1/c_0 = 2.0e-4 per K (20 % per 1000 K), about 17 times the rise of hohm_1990's CH4 alpha(T) (1.2 % per 1000 K) and of kerl_1992's Eq. (10): not borne out by the group's later work. The first CH4 point (299.44 K, the new cell) is 0.67 % below the second (301.47 K, the old cell); without it the slope is still about 9e-4 cm^3/mol per K."

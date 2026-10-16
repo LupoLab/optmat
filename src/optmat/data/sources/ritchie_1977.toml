@@ -1,0 +1,289 @@
+citation = "B. Ritchie, \"Calculation of cross sections for multiphoton ionization of complex atoms\", Phys. Rev. A 16, 2080-2088 (1977)"
+doi = "10.1103/PhysRevA.16.2080"
+library = "Ritchie_1977_CalculationCrossSections"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Lowest-order perturbation theory for two-photon ionisation of He 1 1S \
+(pp. 2080-2083): an independent-particle ('optical' electron) model in which the \
+first-order wave function is the symmetrised product of the zeroth-order 1s orbital \
+and a first-order function F^(1) (Eq. 3); projection onto the passive electron gives \
+an integro-differential equation with the static potential and an exchange term \
+(Eq. 4), turned into an integral equation with the Coulomb Green's function and solved \
+non-iteratively (Eqs. 6, A1-A8). Unlike coupled Hartree-Fock perturbation theory \
+(Dalgarno and Victor) there is no coupling of the positive- and negative-frequency \
+first-order functions. Final state: the exchange approximation of e-He+ scattering \
+(Eq. 7), l = 0 and 2. Zeroth-order ground state: the 12-term Roothaan-Sachs-Weiss \
+Hartree-Fock function, epsilon^(0) = -0.918 au (Table I), or the one-parameter \
+variational function 2 zeta^(3/2) exp(-zeta r), zeta = 27/16, epsilon^(0) = -0.896 au \
+(Table II). 'E' (exchange) keeps the exchange term and the factor sqrt(2) of Eq. 4; \
+'NE' (nonexchange) drops both (the amplitude still uses the symmetrised forms, p. \
+2085). Dipole-velocity form ('for linearly polarized light', Eq. 9a); one value in the \
+dipole-length form (p. 2084). No dynamic Stark shift or broadening. Numerical accuracy \
+'within about 5 %' (p. 2088)."""
+notes = """Phys. Rev. A 16, 2080-2088 (1977), NUMBER 5, November 1977: PDF pages 1-9 = \
+journal pp. 2080-2088. Identity checked on the first page (PDF p. 1: 'PHYSICAL REVIEW \
+A VOLUME 16, NUMBER 5 NOVEMBER 1977', 'Calculation of cross sections for multiphoton \
+ionization of complex atoms', Burke Ritchie, U. S. Army Missile Command, Redstone \
+Arsenal; received 10 June 1976, revised 21 January 1977) on 2026-10-09. The library's \
+identity is VALIDATED_WITH_WARNINGS; the copy is the version of record. The PDF is a \
+scan (pdfimages: one 4938 x 6686 bilevel JBIG2 image per page, 612 dpi; pdffonts: \
+only a non-embedded Times-Roman text layer).
+
+HELIUM ONLY. Ritchie's tables are the only numbers: two-photon ionisation of He 1 1S \
+with linear polarisation, below the one-photon threshold (E_p 0.456 to 0.868 au, \
+12.41 to 23.62 eV). No other gas and no other order of ionisation is calculated: in \
+particular NO KRYPTON (nor xenon, argon or neon) values of any kind. The \
+introduction cites calculations for other atoms (Pindzola and Kelly's Ar, Bebb's \
+alkalis, hydrogenic ions, metastable He; pp. 2080-2081) and prints none of their \
+numbers; the title's 'complex atoms' refers to the method.
+
+THE QUANTITY. Tables I and II print 'Values of sigma^(2) x I_0/2I in a_0^2' (the \
+captions), Fig. 1's axis 'sigma^(2) (2I/I_0 a_0^2)'. Eq. 1 defines sigma^(N) through \
+d sigma^(N) / d Omega = (alpha a_0^2 / 2 pi)(k / E_p)(I / I_0 E_p^2)^(N-1) |...|^2 with \
+'I the light intensity in W/cm^2, I_0 = 14.038 x 10^16 W/cm^2': sigma^(2) is a cross \
+section in cm^2 proportional to I, for the rate sigma^(2) Phi (Phi the photon flux). \
+For a printed value v the generalised cross section of Gamma = sigma_2 Phi^2 (Phi = I / \
+hbar omega) is therefore sigma_2 = 2 v a_0^2 E_p E_h / I_0, and W / I^2 = sigma_2 / \
+(hbar omega)^2 = 9.151 x 10^-17 v / E_p (au) s^-1 W^-2 cm^4. Not converted in the data \
+(the values are as printed, unit a0^2, the definition in each dataset's parameters); \
+the conversion is confirmed by lhuillier_1986's Fig. 13, which draws Table I's E column \
+as W / I^2: its dashed line is 0.93, 0.95 and 1.01 times the converted values at \
+0.506, 0.570 and 0.651 au (lhuillier_1986's checks; a factor-2 misreading of 2I / I_0 \
+would give 0.5 or 2). At 0.456 au, v = 1.267 is sigma_2 = 1.005 x 10^-51 cm^4 s.
+
+THE ENERGY AXIS is the photon energy E_p in au as printed (Table I prints the \
+wavelength in angstrom beside it, kept in 'printed'; the abscissa is E_p). The final \
+state's energy uses the accurate ionisation potential, 'N E_p = k^2/2 + V_I' with V_I \
+= 0.904 au (p. 2081), but the intermediate (Green's-function) spectrum is the model's: \
+the poles sit at the orbital energy, so the 1s2p and 1s3p resonances are displaced. \
+Table I's first resonance lies near 0.786-0.802 au (unshifted pole 0.793 au), against \
+the accurate 0.780 au; Table II's near 0.763-0.782 (unshifted 0.771). The author \
+applied no shift ('We recommend use of a semiempirical modification ... in the vicinity \
+of resonances', p. 2085, not done here). LS coupling, non-relativistic.
+
+EXTRACTED (tools/extract/ritchie_1977.py): Tables I and II, every column, the plain \
+values and the parenthesised ones (the latter 'obtained ignoring final-state, \
+perturbed-initial-state nonorthogonality', i.e. with phi_0 instead of the \
+Schmidt-orthogonalised phi-hat_0 of Eq. 10): eight datasets. The p. 2084 \
+dipole-length value at 1000 angstrom as an inline point. Every cell of both tables \
+checked against the table images and the page image at its native pixels: all agree. \
+The specks over the decimal points of five of Table II's E cells ('1:469', '1/361', \
+'0:8283', '0:6248', '(0:6199)' in a low-resolution view) are dust on the scan; the \
+digits are unambiguous.
+
+THE CHECKS (the script fails if one is missed): every wavelength of Table I against \
+its E_p (hc / E_h = 455.634 angstrom au; within the roundings of both: 0.760 au at 600 \
+angstrom is the largest miss, 455.634 / 600 = 0.7594, within 0.0011); the unshifted \
+first resonance |epsilon^(0)| - 1/8 = 0.793 (-0.918) and 0.771 (-0.896) au (pp. 2084-2085: \
+nu = 2 in Eq. A1); epsilon^(0) = zeta^2/2 - 2 zeta + 5 zeta/8 = -0.8965 for zeta = \
+27/16 ('-0.896'); the accurate V_I = 0.904 au and resonance 0.780 au (nist_asd_2026's \
+He IE 24.587389 eV = 0.90357 au and 1s2p 1P1 171134.89 cm-1 = 0.77975 au); 'about 20 \
+%' dynamical error at threshold: 1 - E / 2 NE at 0.456 au = 0.199 (Table I) and 0.200 \
+(Table II).
+
+COMPARISON with the curated He calculations (Table I's E column as sigma_2, \
+interpolated in log sigma; reported by the script, not checked): Ritchie over \
+mihelic_2021 (L = 0 + 2; OEP 6's He model, TC-943, the same) 0.77, 0.81, 0.84, 0.85, \
+0.89 at E_p = 0.456, 0.506, 0.570, 0.651, 0.701 au (12.41-19.08 eV); over saenz_1999 \
+(1S + 1D, velocity) 0.71, 0.79, 0.87, 0.96 (from 0.506 au); over nikolopoulos_2001 (S \
++ D) 0.62, 0.77, 0.90, 1.03, 1.18; over bachau_1990's Table I L^2 value at 0.5 au \
+(Table I interpolated to 0.5 au, 1.036 x 10^-51 cm^4 s) 0.79. The independent-particle \
+Hartree-Fock values lie 10-30 % below the correlated calculations near threshold, \
+closer at 18-19 eV. lhuillier_1986 (LDA-RPA) calls its own curve and Ritchie's 'in very \
+good agreement' for 0.90 < omega < 1.40 Ry; its Fig. 13 draws Ritchie's about 20 % \
+below its own there (1.98 against 2.51 at 1 Ry, both read from the page images).
+
+UNCERTAINTY. 'We estimate that the use of these procedures provides cross sections \
+accurate to within about 5 %' (p. 2088): the numerical accuracy of the solution of Eq. \
+6, taken as relative 0.05 (level not stated). It does not include the model's error \
+(an independent-particle Hartree-Fock model, no correlation; the length and velocity \
+forms differ by 11 % at 1000 angstrom, 1.403 against 1.267), nor the error of the \
+resonance positions.
+
+NOT TAKEN. Fig. 1 (p. 2084): Table I's E column plotted with a hand-drawn line through \
+the points (the points are the table). Figs. 2-4: radial response functions u_1^(1)(r) \
+at 585, 568 and 555 angstrom, no quantity. The comparison with Victor's dipole-length \
+result 'in excellent agreement' at 1000 angstrom: graphical in Victor's paper, no \
+number printed here.
+
+FURTHER TWO-PHOTON DATA CITED, not in the library: G. A. Victor, Proc. Phys. Soc. 91, \
+825 (1967) (He, coupled Hartree-Fock, length form, graphical); M. S. Pindzola and H. \
+P. Kelly, Phys. Rev. A 11, 1543 (1975) (Ar, many-body perturbation theory; in the \
+library as Pindzola_1975, record pindzola_1975)."""
+
+[[datasets]]
+id = "tbl1_E"
+material = "He"
+file = "He/ritchie_1977__tbl1_E_He.csv"
+table = "tbl_2491aff218c3"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I (p. 2083), column E, the plain values: sigma^(2) x I_0/2I in a_0^2 for two-photon ionisation of He, Hartree-Fock ground state (epsilon^(0) = -0.918 au), exchange, at 22 photon energies 0.456-0.868 au (1000-525 angstrom), below the one-photon threshold, across the 1s2p (near 0.79 au) and 1s3p (near 0.86 au) resonances at the model's positions (the record's notes). 1.267 at threshold, 0.5877 at 0.701 au, 2.419 at 0.786 au. The author's preferred set (plotted in Fig. 1). The total over the final 1S and 1D states. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "independent-particle lowest-order perturbation theory, Coulomb Green's function, static-exchange first-order equation (exchange, 'E'), Roothaan-Sachs-Weiss Hartree-Fock ground state, exchange-approximation final state"
+definition = "sigma^(2) x I_0 / 2I in a0^2 (the caption): sigma^(2) the intensity-dependent cross section of Eq. 1 (rate sigma^(2) Phi), I in W/cm2, I_0 = 14.038e16 W/cm2; for Gamma = sigma_2 Phi^2, sigma_2 = 2 v a0^2 E_p E_h / I_0"
+
+[[datasets]]
+id = "tbl1_E_nonorth"
+material = "He"
+file = "He/ritchie_1977__tbl1_E_nonorth_He.csv"
+table = "tbl_2491aff218c3"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I (p. 2083), column E, the values in parentheses: as tbl1_E but 'obtained ignoring final-state, perturbed-initial-state nonorthogonality' (phi_0 for phi-hat_0, Eq. 10). Within 4 % of tbl1_E off resonance (1.320 against 1.267 at threshold), up to 7 % near the resonances. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl1_E, the final state not orthogonalised to the perturbed initial state"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "tbl1_NE"
+material = "He"
+file = "He/ritchie_1977__tbl1_NE_He.csv"
+table = "tbl_2491aff218c3"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I (p. 2083), column NE, the plain values: the nonexchange model (the exchange term and the sqrt(2) of Eq. 4 dropped), Hartree-Fock ground state. A factor 1.6 below tbl1_E at threshold (0.7911 against 1.267), mostly the missing normalisation factor of the symmetrised wave function (p. 2085); its resonances lie elsewhere (6.289 at 0.786 au). Not a physical model: a measure of the exchange effect. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl1_E without the exchange term and the sqrt(2) normalisation of the inhomogeneous term ('NE')"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "tbl1_NE_nonorth"
+material = "He"
+file = "He/ritchie_1977__tbl1_NE_nonorth_He.csv"
+table = "tbl_2491aff218c3"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table I (p. 2083), column NE, the values in parentheses: the nonexchange model without the final-state orthogonalisation. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl1_NE, the final state not orthogonalised to the perturbed initial state"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "tbl2_E"
+material = "He"
+file = "He/ritchie_1977__tbl2_E_He.csv"
+table = "tbl_7b95e928b8ad"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II (p. 2083), column E, the plain values: as tbl1_E with the one-parameter variational ground state (zeta = 27/16, epsilon^(0) = -0.896 au), at ten photon energies 0.456-0.799 au, through the first resonance only (near 0.776 au in this model, p. 2085). 7 % above tbl1_E at threshold (1.359 against 1.267); 'we expect the Hartree-Fock results to be of greater accuracy in the nonresonant region' (p. 2085). 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl1_E with the one-parameter variational ground state 2 zeta^(3/2) exp(-zeta r), zeta = 27/16"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "tbl2_E_nonorth"
+material = "He"
+file = "He/ritchie_1977__tbl2_E_nonorth_He.csv"
+table = "tbl_7b95e928b8ad"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II (p. 2083), column E, the values in parentheses: as tbl2_E without the final-state orthogonalisation. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl2_E, the final state not orthogonalised to the perturbed initial state"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "tbl2_NE"
+material = "He"
+file = "He/ritchie_1977__tbl2_NE_He.csv"
+table = "tbl_7b95e928b8ad"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II (p. 2083), column NE, the plain values: the nonexchange model with the one-parameter variational ground state. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl2_E without the exchange term and the sqrt(2) normalisation ('NE')"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "tbl2_NE_nonorth"
+material = "He"
+file = "He/ritchie_1977__tbl2_NE_nonorth_He.csv"
+table = "tbl_7b95e928b8ad"
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table II (p. 2083), column NE, the values in parentheses: the nonexchange model without the final-state orthogonalisation. 5 %: the numerical accuracy (p. 2088)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "as tbl2_NE, the final state not orthogonalised to the perturbed initial state"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"
+
+[[datasets]]
+id = "text_length_1000A"
+material = "He"
+table = "text"
+points = [["1000 A", "0.456", "1.403"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "a0^2"
+abscissa_unit = "hartree"
+use = "check"
+notes = "p. 2084: 'we did use the dipole length form at 1000 A, obtaining 1.403 (2I/I_0) a_0^2', against the velocity form's 1.267 (tbl1_E at 0.456 au, the 1000 angstrom row): 11 % higher. Which zeroth-order function and exchange treatment are not restated; the sentence follows Table I's discussion and is compared with Victor's Hartree-Fock length result, so Table I's model with exchange is implied (not stated). The abscissa is Table I's E_p for 1000 angstrom. No uncertainty stated."
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "length"
+method = "as tbl1_E (implied, not restated), dipole-length form"
+definition = "sigma^(2) x I_0 / 2I in a0^2, as tbl1_E"

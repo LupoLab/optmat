@@ -1,0 +1,90 @@
+citation = "R. V. Hodges, L. C. Lee and J. T. Moseley, \"Multiphoton ionization of Xe and several small molecules at 193 and 248 nm\", Int. J. Mass Spectrom. Ion Phys. 39, 133-143 (1981)"
+doi = "10.1016/0020-7381(81)80027-7"
+library = "Hodges_1981_MultiphotonIonizationXe"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Multiphoton ionisation in a drift-tube mass spectrometer (pp. 134-137): a \
+Lambda Physik EMG 500 excimer laser (ArF 193 nm, KrF 248 nm) focused by a 50 cm \
+radius mirror to an oval of about 0.5 x 1 cm2 in front of the exit aperture of a \
+drift tube filled to 50-200 mtorr (most gases diluted in He); the positive ions \
+extracted by the drift field (90 Td) into a quadrupole mass spectrometer and counted \
+in a multichannel analyser with a time-of-flight module triggered by the laser. Laser \
+power measured after the tube with a surface-absorbing calorimeter and varied by the \
+discharge voltage, the gas circulation speed or wire screens. The power density at \
+the aperture estimated from the beam area and average power measured at the \
+aperture's position and 'the manufacturer's specified pulse duration (10-15 ns)': \
+'0.8 and 3 MW cm^-2' at 193 and 248 nm (p. 137). Xe at 5, 10 and 20 mtorr (193 nm, \
+Table 2) and 50 mtorr (248 nm, Table 1)."""
+notes = """Journal pp. 133-143 = PDF pages 1-11 (a scan with a text layer). Identity \
+checked on the first page (International Journal of Mass Spectrometry and Ion \
+Physics, 39 (1981) 133-143; Ronald V. Hodges, L. C. Lee and J. T. Moseley, SRI \
+International; first received 25 September 1980, in final form 14 November 1980) on \
+2026-10-09.
+
+WHAT THE PAPER MEASURES: relative multiphoton ionisation rates, 'the ratio between \
+the average number of ions formed per pulse and the partial pressure of the ionized \
+gas' (p. 138), in ion counts/(pulse mtorr), with no correction for the mass \
+dependence of the quadrupole's transmission; 'the uncertainty in the relative \
+ionization rates within each Table is probably less than a factor of two' (p. 138). \
+Xe: 0.4 at 193 nm and 0.8 MW/cm2 (Table 2, p. 137), 0.0004 at 248 nm and 3 MW/cm2 \
+(Table 1, p. 136; three photons). The power dependence of Xe at 193 nm (Fig. 2) has a \
+non-integral slope, attributed to the spatial non-uniformity of the beam (p. 135).
+
+THE DEFINITION (p. 138, Eq. 1), quoted: 'The two-photon cross-section, alpha, at 193 \
+nm can be estimated from our data using the expression [3] n+/n0 = alpha I^2 tau / h \
+nu (1) where n+ is the number of ions detected per pulse, n0 is the number of Xe \
+atoms in the volume sampled by the exit aperture and intersected by the laser beam \
+(~0.004 cm3), I is the laser flux, and tau is the pulse duration.' So the \
+ionisation rate per atom is alpha I^2 / h nu, I in W cm^-2: the definition of \
+mccown_1982's Eq. (9) and of bischel_1979's W_fg = alpha I^2 / hbar omega (the \
+paper's Ref. 3), with a square pulse. The generalised cross section on the photon \
+flux is sigma_2 = alpha h nu (h nu = 6.42 eV at 193 nm): 5.1e-52 cm4 s for alpha = \
+5e-34 cm4 W-1 (not printed by the paper).
+
+THE VALUE (p. 138): 'At 193 nm, for a laser flux of 0.8 MW cm^-2, we obtain alpha = \
+5 x 10^-34 cm4 W^-1. This value should be considered a lower limit, since eqn. (1) \
+does not include the mass-spectrometer detection efficiency.' CONSISTENCY: Eq. (1) \
+with Table 2's 0.4 ion counts/(pulse mtorr), the 0.004 cm3 volume (Xe at 296 K, the \
+temperature not stated: 1.3e11 atoms per mtorr), 0.8 MW/cm2 and h nu = 6.42 eV \
+gives 4.9e-34 cm4 W-1 for tau = 10 ns and 3.3e-34 for 15 ns (the specified 10-15 \
+ns): the printed 5e-34 is the 10 ns end.
+
+QUOTED ELSEWHERE, CHECKED: mccown_1982 (TC-884) quotes 'the lower limit for alpha to \
+be 5 x 10^-34 cm4 W-1' and holds it in Table I as Hodges, Lee and Moseley's: the \
+value and its being a lower limit match. McCown et al.'s 4e-32 cm4 W-1 is 80 times \
+this lower limit. The paper quotes Bischel et al. (Ref. 3): 'Bischel et al. [3] have \
+estimated a cross-section of 1 x 10^-34 cm4 W^-1. However, they point out that \
+participation of autoionizing states could increase this value by a factor of \
+~10^2' (p. 138): both match bischel_1979 (Table I and p. 386).
+
+NOT TAKEN: the relative ionisation rates of Tables 1 and 2 (ion counts per pulse and \
+mtorr, not a quantity of the vocabulary, and uncorrected for the mass filter's \
+transmission), including Xe's three-photon rate at 248 nm; Fig. 2 (the power \
+dependence of Xe at 193 nm, relative). Nothing else is in cm4 W-1. Further two-photon \
+data the paper cites, not in the library: D. Kligler, D. Pritchard, W. K. Bischel and \
+C. K. Rhodes, J. Appl. Phys. 49, 2219 (1978) (Xe two-photon excitation at 248 nm, its \
+Ref. 9)."""
+
+[[datasets]]
+id = "alpha_Xe"
+material = "Xe"
+table = "text"
+points = [["193", "193", "5"]]
+scale = 1e-34
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 W-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 138: 'At 193 nm, for a laser flux of 0.8 MW cm^-2, we obtain alpha = 5 x 10^-34 cm4 W^-1. This value should be considered a lower limit, since eqn. (1) does not include the mass-spectrometer detection efficiency.' The source's own coefficient (rate per atom alpha I^2 / h nu), not the photon-flux cross section (sigma_2 = alpha h nu = 5.1e-52 cm4 s). A lower limit: use = check."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "not stated"
+method = "ions per pulse counted by a quadrupole mass spectrometer behind a drift tube, Xe at 5-20 mtorr, ArF laser; Eq. (1) with an estimated sampled volume (0.004 cm3), power density and pulse duration; detection efficiency not included"
+definition = "n+/n0 = alpha I^2 tau / h nu (Eq. 1, p. 138): n+ the ions detected per pulse, n0 the Xe atoms in the sampled volume (~0.004 cm3), I the laser flux (W cm^-2), tau the pulse duration; alpha in cm4 W^-1"
+wavelength_nm = 193
+intensity_w_cm2 = 8e5
+intensity_definition = "'laser power fluxes of 0.8 ... MW cm^-2' at the exit aperture, from the measured beam area and average power and 'the manufacturer's specified pulse duration (10-15 ns)' (p. 137)"
+pressure_range_mtorr = [5, 20]
+limit = "lower"

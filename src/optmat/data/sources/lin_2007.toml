@@ -1,0 +1,190 @@
+citation = "Q. Lin, O. J. Painter and G. P. Agrawal, \"Nonlinear optical phenomena in silicon waveguides: modeling and applications\", Opt. Express 15, 16604 (2007)"
+doi = "10.1364/oe.15.016604"
+library = "Lin_2007_NonlinearOpticalPhenomena"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A theoretical review of third-order nonlinear propagation in silicon-on-\
+insulator (SOI) waveguides: the tensor chi(3) of crystalline silicon (electronic Kerr \
+and TPA, the one-phonon Raman response), the Drude free-carrier index and absorption, \
+the carrier continuity equation, and the resulting generalized nonlinear Schroedinger \
+and coupled-wave equations. It measures nothing; its material numbers are quoted from \
+the literature or chosen as typical."""
+notes = """Journal pages 16604-16644 = PDF pages 1-41 (journal page = PDF page + 16603; \
+the references occupy PDF pages 1-7). Identity checked against the first page. The \
+material is crystalline silicon (Si); the waveguide-specific numbers (modal indices, \
+waveguide GVD, effective areas) are not material properties and are not extracted. \
+There are no tables; every value below is from the text.
+
+EXTRACTED (datasets below): the band gap 'near 1.12 eV' (p. 16610; 'E_g ~ 1.12 eV for \
+silicon corresponds to a wavelength of 1.1 um', p. 16613); the material index 'n_0 = \
+3.48' at 1.55 um (p. 16618; 'around 3.48', p. 16622); the typical TPA coefficient 'beta_T \
+~ 0.5 cm/GW' used in an estimate near 1550 nm (p. 16624); the one-phonon Raman gain \
+FWHM 'Gamma_R/pi ~ 105 GHz at room temperature' (p. 16612, ref. 108) and the times of Eq. \
+(41), 'tau_2 ~ 3 ps', 'tau_1 ~ 10 fs' (p. 16620); the effective carrier lifetimes: typical \
+1 ns (p. 16632, '~1 ns', p. 16631), 25 ns (ref. 33), 100 ns reduced to 1.9 ns by helium \
+implantation (ref. 140), and the bound < 60 ns for net Raman gain with 0.2 dB/cm loss \
+(p. 16633).
+
+NOT EXTRACTED (no quantity, or not a number for silicon): the Raman shift 'Omega_R/2pi \
+= 15.6 THz at room temperature' (p. 16612, refs. 108-110; raman_shift takes cm^-1 only, \
+and the paper prints THz); its temperature dependence ('Omega_R/2pi decreases by ~40 \
+GHz, while Gamma_R/pi increases by ~10 GHz, if temperature increases by 50 C', p. \
+16612); the phonon lifetime 'about 3 ps' (p. 16612); the second-order Raman peaks near \
+29 THz (two TO phonons) and 9 THz (two TA phonons), 'more than 50 and 200 times smaller' \
+(p. 16612); Brillouin 'nearly two orders of magnitude smaller' than first-order Raman \
+(p. 16612); the Raman gain coefficient 'in the range of 4.3 to 76 cm/GW' in the 1.55-um \
+band (p. 16620, refs. 6, 27, 29, 30, 32, 34, 41, 145, 146; no quantity for a Raman gain \
+coefficient, TC-384); the Raman index 'n_2^R ~ c g_R/(4 omega_s) ~ 1.2 x 10^-4 cm2/GW' \
+(p. 16641); the nonlinear anisotropy 'rho is close to 1.27 in the telecom band, with a \
+negligible imaginary part' (p. 16614, ref. 87; rho = 3 chi_1122/chi_1111, Eq. (7)); the \
+nonlinear figure of merit F_n = n2/(lambda beta_T) 'only about 0.3' at 1.55 um (p. \
+16613); n2 'more than 100 times larger in the 1.55-um region than that of fused silica', \
+peaking near 1.8-1.9 um, always positive below E_g (p. 16613); mobilities '100-1000 \
+cm2/(V s) for densities of up to 10^18 cm^-3' (p. 16614); the SiO2 zero-dispersion \
+wavelength 'around 1.276 um' (p. 16622, no quantity). No numerical n2 is given.
+
+DEFINITIONS. Eq. (8), p. 16613: (omega/c) n2 + (i/2) beta_T = 3 omega chi_1111^e/(4 eps0 c^2 \
+n0^2), with P(3) of Eq. (1) in Butcher and Cotter's convention (3 eps0/(4 (2 pi)^2) ...). \
+Eq. (3): H_R(Omega) = Omega_R^2/(Omega_R^2 - Omega^2 - 2 i Gamma_R Omega). Eq. (41), p. \
+16620: h_R(t) = Omega_R^2 tau_1 exp(-t/tau_2) sin(t/tau_1), tau_2 = 1/Gamma_R, tau_1 = \
+1/(Omega_R^2 - Gamma_R^2)^(1/2) ~ 1/Omega_R. The TPA power loss dP/dz = -beta_T |A|^4/a \
+(p. 16624), i.e. dI/dz = -beta_T I^2. Free-carrier index and absorption: Drude, Eqs. \
+(16)-(17); the empirical 1550-nm formulas (18)-(19) and Eq. (20) are recorded as \
+formulas below. Carrier dynamics: dN/dt = G - N/tau_0, Eq. (36), with tau_0 the \
+effective lifetime (recombination, diffusion and drift)."""
+
+[[datasets]]
+id = "band_gap"
+material = "Si"
+table = "text"
+points = [["E_g", "E_g", "1.12"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "p. 16610: 'Silicon crystals, with a band gap near 1.12 eV'; p. 16613: 'E_g ~ 1.12 eV for silicon corresponds to a wavelength of 1.1 um'; the indirect gap (TPA 'has to be assisted by phonons ... because of the indirect nature of the band gap', p. 16613). Quoted without a citation."
+[datasets.parameters]
+kind = "optical"
+
+[[datasets]]
+id = "n0"
+material = "Si"
+table = "text"
+points = [["1", "1.55", "3.48"]]
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "p. 16618: 'the material index (n_0 = 3.48)' at lambda = 1.55 um (also 'around 3.48', p. 16622). Quoted without a citation or temperature."
+
+[[datasets]]
+id = "beta_T"
+material = "Si"
+table = "text"
+points = [["1", "1550", "0.5"]]
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 16624: 'With r_a << 1 and beta_T ~ 0.5 cm/GW, alpha_fm << 0.4 dB/cm at a peak intensity of 0.2 GW/cm2', 'using typical parameter values at wavelengths near 1550 nm'. A typical value for an estimate, uncited. Definition: dP/dz = -beta_T |A|^4/a (p. 16624)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "raman_linewidth"
+material = "Si"
+table = "text"
+points = [["1", "", "105"]]
+quantity = "raman_linewidth"
+unit = "GHz"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["P. A. Temple and C. E. Hathaway, Phys. Rev. B 7, 3685-3697 (1973)"]
+notes = "p. 16612: 'Gamma_R is related inversely to the phonon lifetime (about 3 ps), resulting in a full width at half-maximum (FWHM) of the Raman-gain spectrum of Gamma_R/pi ~ 105 GHz at room temperature [108].' The Raman shift is 15.6 THz (not extracted: printed in THz)."
+[datasets.parameters]
+transition = "first-order Raman, zone-centre optical phonon (Gamma_25')"
+width = "fwhm"
+
+[[datasets]]
+id = "raman_tau1"
+material = "Si"
+table = "text"
+points = [["tau1", "tau1", "10"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "label"
+use = "check"
+notes = "p. 16620: 'the Raman shift of 15.6 THz corresponds to tau_1 ~ 10 fs.' Derived by the paper from the quoted shift."
+[datasets.parameters]
+constant = "tau1"
+model = "h_R(t) = Omega_R^2 tau_1 exp(-t/tau_2) sin(t/tau_1), tau_2 = 1/Gamma_R, tau_1 = 1/(Omega_R^2 - Gamma_R^2)^(1/2) (Eq. (41))"
+
+[[datasets]]
+id = "raman_tau2"
+material = "Si"
+table = "text"
+points = [["tau2", "tau2", "3"]]
+quantity = "raman_response_time"
+unit = "ps"
+abscissa = "label"
+use = "check"
+notes = "p. 16620: 'The Raman-gain bandwidth of 105 GHz in silicon corresponds to a response time of tau_2 ~ 3 ps.' Derived by the paper from the quoted width (also 'the phonon lifetime (about 3 ps)', p. 16612)."
+[datasets.parameters]
+constant = "tau2"
+model = "h_R(t) = Omega_R^2 tau_1 exp(-t/tau_2) sin(t/tau_1), tau_2 = 1/Gamma_R, tau_1 = 1/(Omega_R^2 - Gamma_R^2)^(1/2) (Eq. (41))"
+
+[[datasets]]
+id = "carrier_lifetime_typical"
+material = "Si"
+table = "text"
+points = [["tau_0", "tau_0", "1"]]
+quantity = "electron_trapping_time"
+unit = "ns"
+abscissa = "label"
+use = "check"
+notes = "p. 16632: the estimate 'for an SOI waveguide with tau_0 = 1 ns'; p. 16631: 'the carrier lifetime (typically ~1 ns)'; p. 16619: 'For SOI waveguides commonly used for photonic applications, the effective lifetime varies from subnanosecond [54, 90, 141] to tens of nanoseconds [41, 42].' tau_0 is the effective lifetime of Eq. (36), including recombination, diffusion and drift out of the waveguide core: a property of the waveguide, not of bulk silicon."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "carrier_lifetime_rong"
+material = "Si"
+table = "text"
+points = [["tau_0", "tau_0", "25"]]
+quantity = "electron_trapping_time"
+unit = "ns"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["H. Rong, A. Liu, R. Nicolaescu, M. Paniccia, O. Cohen, and D. Hak, Appl. Phys. Lett. 85, 2196-2198 (2004)"]
+notes = "p. 16633: 'positive Raman amplification with CW pumping was observed inside a waveguide with a linear loss of 0.22 dB/cm and a carrier lifetime of 25 ns [33].' An SOI-waveguide effective lifetime."
+
+[[datasets]]
+id = "carrier_lifetime_implanted"
+material = "Si"
+table = "text"
+points = [["before", "before implantation", "100"], ["after", "after implantation", "1.9"]]
+quantity = "electron_trapping_time"
+unit = "ns"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["Y. Liu and H. K. Tsang, Opt. Lett. 31, 1714-1716 (2006)"]
+notes = "p. 16633: 'the effective lifetime could be reduced in one experiment from 100 ns to 1.9 ns through helium-ion implantation, thereby enabling positive Raman amplification [140].' SOI-waveguide effective lifetimes."
+
+[[formulas]]
+id = "free_carrier_index_1550"
+material = "Si"
+equation = "Eq. (18), p. 16615"
+printed = "n_f(\\omega_r, N_e, N_h) = -(8.8 \\times 10^{-4} N_e + 8.5 N_h^{0.8}) \\times 10^{-18}"
+variable = "N_e, N_h: electron and hole densities in cm^-3; at lambda_r = 2 pi c/omega_r = 1550 nm"
+coefficients = { electron = "8.8e-4", hole = "8.5", hole_exponent = "0.8", scale = "1e-18" }
+check = "The paper's statements follow (computed 2026-09-26): the hole term over the electron term is 3.85 at 1e17 cm^-3 and 6.1 at 1e16 cm^-3 (printed 'about 3.8 and 6.1'); with holes taken as 5 times the electron term, sigma_n = -6 x 8.8e-22 = -5.3e-21 cm3 (printed zeta ~ -5.3e-21 cm3)."
+notes = "Reproduced from Soref and Bennett (IEEE J. Quantum Electron. 23, 123 (1987); Proc. SPIE 704, 32 (1987)), refs. 81 and 135, 'it is common to employ the following empirical formulas'. For TPA-generated carriers (N_e = N_h = N), Eq. (20): n_f = sigma_n N with sigma_n = zeta (omega_r/omega)^2, zeta ~ -5.3e-21 cm3 (the paper's assumption that holes contribute 5 times the electrons)."
+
+[[formulas]]
+id = "free_carrier_absorption_1550"
+material = "Si"
+equation = "Eq. (19), p. 16615"
+printed = "\\alpha_f(\\omega_r, N_e, N_h) = (8.5 N_e + 6.0 N_h) \\times 10^{-18}"
+variable = "N_e, N_h: electron and hole densities in cm^-3; alpha_f in cm^-1; at 1550 nm"
+coefficients = { electron = "8.5", hole = "6.0", scale = "1e-18" }
+check = "With N_e = N_h = N it gives alpha_f = 1.45e-17 N cm^-1, the printed sigma_a = 1.45 x 10^-17 cm2 of Eq. (20) at omega = omega_r (computed 2026-09-26)."
+notes = "Reproduced from Soref and Bennett (refs. 81, 135). Eq. (20): alpha_f = sigma_a N, sigma_a = 1.45 x 10^-17 (omega_r/omega)^2 cm2, the Drude lambda^2 scaling applied to the empirical coefficient."

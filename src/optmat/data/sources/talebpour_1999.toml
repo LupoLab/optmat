@@ -1,0 +1,131 @@
+citation = "A. Talebpour, J. Yang and S. L. Chin, \"Semi-empirical model for the rate of tunnel ionization of N2 and O2 molecule in an intense Ti:sapphire laser pulse\", Opt. Commun. 163, 29 (1999)"
+doi = "10.1016/S0030-4018(99)00113-3"
+library = "Talebpour_1999_SemiEmpiricalModel"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """N2+ and O2+ ion yields against peak intensity (about 1e13 to 1e15 W/cm^2), \
+with Ar+ and Xe+ for comparison: Ti:sapphire laser, 800 nm, 200 fs, linearly \
+polarised ('stable linearly polarized laser pulses', Fig. 1 caption); ions detected \
+with an electron multiplier tube; the experimental technique is that of Talebpour et \
+al. (their ref. 15, J. Phys. B 30, 1927 (1997)) and is not described here. The yields \
+are compared with curves from the PPT rate (Appendix A, Eqs. (1)-(11)) integrated over \
+the pulse and the focal volume (their ref. 18, Chang et al.), with an effective charge \
+Z_eff fitted per molecule, and with Szoke's model, the SFA and ADK (pp. 30-31)."""
+notes = """Journal pp. 29-32 = pdf pages 1-4. Identity checked against pdf p. 1: the \
+authors are A. Talebpour, J. Yang and S. L. Chin. solprop's source \
+(src/solprop/physdata/ionisation_data.py, species.py, docs/model/ionisation.md) cites \
+'A. Talebpour, C.-Y. Chien and S. L. Chin, Opt. Commun. 163, 29 (1999)': the journal, \
+volume, page and DOI are right, the second author is wrong (Chien is a co-author of \
+the group's J. Phys. B papers of 1996-1997, not of this one).
+
+WHAT IS TAKEN. The effective charges of the text (p. 30): 'we have presented the \
+cycle averaged TI rate in the case of the PPT model with Z_eff = 0.9 for N2 and Z_eff \
+= 0.53 for O2' (also the legends of Figs. 1-2, 'PPT Z_eff = 0.9', 'PPT Z_eff = \
+0.53'), and the ionisation potential used for O2 in that fit, 12.55 eV (p. 31). The \
+model is PPT (Perelomov, Popov and Terent'ev 1966 with Krainov 1997, their refs. 12-13; \
+Appendix A) with 'l = 0 and m = 0' (Appendix A, p. 31), not ADK: the ADK curves with \
+Z_eff = 1 and 0.9 (N2) or 0.53 (O2) are shown and rejected, 'the predicted slope by \
+this model, regardless the amount of Z_eff, always overestimates the experimental \
+slope' (p. 31), since gamma is of order 1 here. Z_eff enters through n* (Eq. (2)), \
+'the electron tunnels through a barrier ... given by Z_eff/r (Z_eff < 1 ...) ... a \
+fitting parameter to simulate the effective Coulomb potential felt by the electron \
+that tunnels out. This parameter depends principally on the random orientation of the \
+ground state neutral molecule' (p. 29). The fit is by eye to the ion-yield curves; no \
+uncertainty of Z_eff is given, nor any value tried other than 1 and the fitted one.
+
+HOW THE YIELDS WERE COMPARED (p. 30). The ion signal is not absolute: 'due to the type \
+of detector used (EMT), it is very difficult to know the precise number of ions \
+detected in each shot. To compare a theoretically calculated ion signal with the \
+experimental measurement, it is sufficient to multiply the measured signal by a \
+factor to bring the theoretical and measured signal at the same level in their \
+respective saturation intensities.' The intensity calibration is not stated here (the \
+companion paper larochelle_1998 calibrates against ADK's He saturation intensity with \
+the same apparatus). Fragmentation: 'N+/N2+ ~ 10^-2 and O+/O2+ ~ 10^-2 in our \
+experiment, thus this fraction is not taken into account' (p. 30). The ion yields are \
+in Figs. 1 (N2, Ar) and 2 (O2, Xe) only, with an inset of the cycle-averaged PPT rate \
+(ps^-1) against intensity; not digitised. The molecular yields lie below those of the \
+companion atoms of similar ionisation potential (Xe for O2, Ar for N2), 'The \
+suppression might be explained to result from the random orientation of the neutral \
+molecules with respect to the polarization of the laser' (p. 30).
+
+THE O2 IONISATION POTENTIAL (p. 31): 'In the case of O2 we have used a value of 12.55 \
+eV for the ionization potential. The reason is that the TI rate of any molecule is a \
+weighted average ... of the TI rate to different vibrational levels of the ground \
+potential surface of the molecular ion'; from Samson and Gardner's photoionisation \
+results the Franck-Condon factors to the first five vibrational levels of O2+ are \
+'nearly similar', so the average is taken as the rate 'to the second vibrational level \
+of O2+ with ionization potential of 12.55 eV'. N2 is taken to ionise to the lowest \
+level of N2+ ('while N2 molecule will most probably ionize to the first vibrational \
+level of its ion'), so its fit uses the ordinary ionisation potential. The Z_eff = \
+0.53 of O2 belongs with 12.55 eV: used with the adiabatic 12.07 eV it gives a larger \
+rate than the paper fitted.
+
+IONISATION POTENTIALS QUOTED (p. 30, from the CRC Handbook, 70th edition (1990), their \
+ref. 16; not taken as data): Xe 12.130 eV, O2 12.063 eV, Ar 15.759 eV, N2 15.576 eV.
+
+THE PPT FORMULA OF APPENDIX A (pp. 31-32), as printed, in atomic units: Eq. (1) \
+W_PPT = |C_n*l*|^2 f_lm E_i sqrt(6/pi) (2(2E_i)^(3/2)/F)^(2n* - |m| - 3/2) (1 + \
+gamma^2)^(|m|/2 + 3/4) A_m(omega, gamma) exp(-(2(2E_i)^(3e2)/(2F)) g(gamma)); Eq. (2) \
+n* = sqrt(2E_i)/Z^2; Eq. (3) gamma = omega F/sqrt(2E_i); Eq. (4) l* ~ n* - 1; Eq. (5) \
+f_lm = (2l + 1)(l + |m|)!/(2^|m| |m|! (l - |m|)!); Eq. (6) g(gamma) = (3/(2 gamma)) [(1 \
++ 1/(2 gamma^2)) sinh^-1(gamma) - sqrt(1 + gamma^2)/(2 gamma)]; Eq. (7) |C_n*l*|^2 = \
+2^(2n*)/(n* Gamma(n* + l* + 1) Gamma(n* l*)); Eq. (8) A_m = (4/sqrt(3 pi)) (1/|m|!) \
+(gamma^2/(1 + gamma^2)) sum_(n > v) W_m(sqrt((2 gamma/sqrt(1 + gamma^2))(n - v))) \
+e^(-(n - v) alpha(gamma)); Eq. (9) w_m(x) = e^(-x^2) int_0^x (x^2 - y^2)^|m| e^(y^2) \
+dy; Eq. (10) alpha(gamma) = 2 (sinh^-1(gamma) - gamma/sqrt(1 + gamma^2)); Eq. (11) v \
+= (E_i/omega)(1 + 1/(2 gamma^2)). Misprints (page image checked; the standard PPT \
+form, as printed correctly in larochelle_1998 Eqs. (1)-(3), (10)-(11) by the same \
+group): Eq. (2) should read n* = Z/sqrt(2E_i) (as printed n* grows with E_i and \
+falls as Z^-2, where the effective quantum number is Z/kappa, larochelle_1998 p. 4 \
+'E_i = Z*^2/2n*^2' and Ammosov et al.'s n*); Eq. (3) should read gamma = omega sqrt(2E_i)/F (the Keldysh \
+parameter falls with F); the exponent of Eq. (1) should be 2(2E_i)^(3/2)/(3F) g(gamma) \
+('3e2' for 3/2 and '2F' for 3F; larochelle_1998 Eq. (10) prints 3F); Eq. (7) should \
+have Gamma(n* - l*) (larochelle_1998 Eq. (3)); in Eq. (8) the summand W_m is the w_m \
+of Eq. (9). None is a value, so no erratum is recorded; the rate is not reproduced \
+here (the paper prints no rate value to check against)."""
+
+[[datasets]]
+id = "zeff_N2"
+material = "N2"
+table = "text"
+points = [["Z_eff", "", "0.9"]]
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Text p. 30 and Fig. 1 legend (p. 30): the effective charge of the PPT rate (Appendix A, Eqs. (1)-(11), with l = 0, m = 0) fitted by eye to the N2+ ion yield against intensity at 800 nm, 200 fs, linear polarisation, with N2's ordinary ionisation potential (15.576 eV quoted on p. 30 from the CRC Handbook). No uncertainty is stated. solprop's N2 charge (0.9, with l = 0) is this value."
+[datasets.parameters]
+model = "ppt"
+parameter = "Z_eff"
+l = 0
+m = 0
+
+[[datasets]]
+id = "zeff_O2"
+material = "O2"
+table = "text"
+points = [["Z_eff", "", "0.53"]]
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Text p. 30 and Fig. 2 legend (p. 30): the effective charge of the PPT rate (Appendix A, with l = 0, m = 0) fitted by eye to the O2+ ion yield at 800 nm, 200 fs, linear polarisation, with the ionisation potential set to 12.55 eV (ei_O2, p. 31), not the adiabatic 12.06 eV. No uncertainty is stated. solprop's O2 charge (0.53, with l = 0) is this value, but solprop pairs it with I_p = 12.0697 eV."
+[datasets.parameters]
+model = "ppt"
+parameter = "Z_eff"
+l = 0
+m = 0
+
+[[datasets]]
+id = "ei_O2"
+material = "O2"
+table = "text"
+points = [["E_i", "", "12.55"]]
+quantity = "ionization_model_parameter"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Text p. 31: 'In the case of O2 we have used a value of 12.55 eV for the ionization potential', the energy of ionisation to the second vibrational level of O2+ taken as the Franck-Condon-weighted average (Samson and Gardner, Can. J. Phys. 53, 1948 (1975), their ref. 22). A model input chosen with the fit of zeff_O2, not a measured ionisation energy of O2, hence a model parameter."
+[datasets.parameters]
+model = "ppt"
+parameter = "E_i"

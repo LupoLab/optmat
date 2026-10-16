@@ -1,0 +1,139 @@
+citation = "A. M. Zheltikov, \"Raman response function of atmospheric air\", Opt. Lett. 32, 2052 (2007)"
+doi = "10.1364/OL.32.002052"
+library = "Zheltikov_2007_RamanResponseFunction"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Model calculation (no measurement): the Raman response function R(t) of air \
+taken as 80 % N2 and 20 % O2, the sum of rotational (Eq. 2, a sum of J-resolved \
+sinusoids weighted by thermal population differences and nuclear-spin weights) and \
+vibrational (Eq. 3, the Q-branch lines of each molecule) parts, at 290 K and 1000 K, and \
+the probe frequency shifts it produces for 50 fs and 10 fs pumps and pulse trains (pp. \
+2052-2054; results in figures only)."""
+notes = """Opt. Lett. 32, 2052-2054 (2007) = PDF pages 1-3 (p. = pdf page + 2051). \
+Identity checked against the first page. The library's two UNMAPPED_GLYPHS warnings \
+(pdf page 3) touch the symbols of the text (tau, lambda, 'Delta t'), not the numbers; \
+the numbers on p. 2053 were checked against the PDF's text layer.
+
+MODEL (with its numbers). Eq. (1): R(t) = sum_i R_ri + R_vi over the mixture's \
+components (i = 1 N2, i = 2 O2), normalised as integral R(t) dt = 1 [16] (Stolen et al. \
+1989, curated as stolen_1989) (p. 2053). Eq. (2), after Nibbering et al. [14] \
+(curated as nibbering_1997): R_r(t) proportional to sum_J F_1J sin(-omega_1J t) + F_2J \
+sin(-omega_2J t), F_J = (rho_{J+1} - rho_J) Z_J (J + 2)(J + 1)/(2J + 3) (as printed, \
+text layer checked; the cited Nibbering et al. Eq. (16) has rho_{J+2} - rho_J, the \
+population difference of the two levels of the J -> J + 2 line: rho_{J+1} is a misprint \
+or a slip of this paper, noted, not corrected, as no dataset depends on it), rho_J = \
+exp[-chB J(J+1)/kT] / {sum_J Z_J (2J + 1) exp[-chB J(J+1)/kT]}, omega_J = 4 pi B c (2J \
++ 3), Z_1J (N2) = 1 and 2 for odd and even J, Z_2J (O2) = 1 and 0 for odd and even J, B_1 \
+~ 1.99 and B_2 ~ 1.44 cm^-1 (p. 2053). The main revivals are separated by (4Bc)^-1. Eq. \
+(3): R_v(t) proportional to sum_J V_1J sin(-Omega_1J t) + V_2J sin(-Omega_2J t), \
+Omega_J ~ Omega_bar - alpha J(J+1), Omega_bar_1 ~ 2330 and Omega_bar_2 ~ 1556 cm^-1 'the \
+central frequencies of rovibrational Q-branch transitions', alpha_1 ~ 0.0173 and alpha_2 \
+~ 0.0159 cm^-1 'the constants of rotation-vibration interaction [17]' ([17] = D. A. \
+Long, The Raman Effect (Wiley, 2002), not in the library), V_J = g_J (2J + 1) sigma'_J \
+q_J^-1 exp[-hcB J(J+1)/kT], sigma'_J 'the relative line strengths' (not given), g_J 'the \
+nuclear spin' weight, q_J the partition sum (p. 2053). The relative amplitude of the \
+rotational and vibrational parts 'is chosen in such a way as to fit the results of \
+experiments on three-color coherent anti-Stokes Raman scattering' of Lucht et al. \
+[18] (Opt. Lett. 12, 386 (1987)); its value is not printed. No dephasing is included \
+in Eqs. (2)-(3). The probe frequency shift: Delta n(t) proportional to I_0 integral_0^inf \
+R(eta) psi(t - eta) d eta, Delta omega(t) = (2 pi l/lambda) d[Delta n(t)]/dt (p. 2054).
+
+VALUES. The constants are model inputs, marked approximate ('~') in the text: \
+recorded as inline points, use = 'check', parameters.assumed = true. B_1 and B_2 carry \
+no citation; the single citation of the Eq. (3) sentence, [17], follows the alpha values \
+and is recorded as their source (reproduced_from); Omega_bar are recorded without a \
+source. For comparison: bendtsen_1974's 14N2 B_0 = 1.989574, nu_0 = 2329.9168 and alpha \
+= 0.017292 cm^-1; hajigeorgiou_2013's 16O2 B_0 = 1.437675 and G_1 - G_0 = 1556.3906 \
+cm^-1. 'Omega_bar' is called the central frequency of the Q branch, a band origin to \
+this precision.
+
+Results (figures only): the rotational response at 290 and 1000 K (Fig. 1), the full \
+response (Fig. 2), probe frequency deviations for 50 and 10 fs pumps (Fig. 3) and for \
+trains of 10 fs pulses spaced by 10 T_v, T_v the N2 vibrational period (Fig. 4). Not \
+digitised. Air is not a curated material; N2 and O2 are the datasets' materials."""
+
+[[datasets]]
+id = "B_N2"
+material = "N2"
+table = "text"
+points = [["B_1", "B_1", "1.99"]]
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "p. 2053: 'B_1 ~ 1.99 cm^-1 ... the rotational constants for N2', a model input of Eq. (2), uncited, approximate."
+[datasets.parameters]
+constant = "B"
+assumed = true
+
+[[datasets]]
+id = "B_O2"
+material = "O2"
+table = "text"
+points = [["B_2", "B_2", "1.44"]]
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "p. 2053: 'B_2 ~ 1.44 cm^-1 ... for O2', a model input of Eq. (2), uncited, approximate (only odd J populated, Z_2J = 0 for even J)."
+[datasets.parameters]
+constant = "B"
+assumed = true
+
+[[datasets]]
+id = "alpha_N2"
+material = "N2"
+table = "text"
+points = [["alpha_1", "alpha_1", "0.0173"]]
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+reproduced_from = ["D. A. Long, The Raman Effect: A Unified Treatment of the Theory of Raman Scattering by Molecules (Wiley, 2002)"]
+notes = "p. 2053: 'alpha_1 ~ 0.0173 cm^-1 ... the constants of rotation-vibration interaction [17]', N2: the Q-branch lines Omega_J ~ Omega_bar - alpha J(J+1) of Eq. (3) (so alpha here is B_0 - B_1, the Q-branch spacing constant, called the rotation-vibration interaction constant). A model input, approximate."
+[datasets.parameters]
+constant = "alpha_e"
+assumed = true
+
+[[datasets]]
+id = "alpha_O2"
+material = "O2"
+table = "text"
+points = [["alpha_2", "alpha_2", "0.0159"]]
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+reproduced_from = ["D. A. Long, The Raman Effect: A Unified Treatment of the Theory of Raman Scattering by Molecules (Wiley, 2002)"]
+notes = "p. 2053: 'alpha_2 ~ 0.0159 cm^-1' for O2, as alpha_N2 (the extraction's accent over the 9 is an unmapped glyph; the text layer reads 0.0159)."
+[datasets.parameters]
+constant = "alpha_e"
+assumed = true
+
+[[datasets]]
+id = "Omega_N2"
+material = "N2"
+table = "text"
+points = [["Omega_bar_1", "Omega_bar_1", "2330"]]
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "p. 2053: 'Omega_bar_1 ~ 2330 cm^-1 ... the central frequencies of rovibrational Q-branch transitions', N2; a model input, approximate, without its own citation."
+[datasets.parameters]
+transition = "v = 0 -> 1 Q branch, central frequency (Omega_bar)"
+assumed = true
+
+[[datasets]]
+id = "Omega_O2"
+material = "O2"
+table = "text"
+points = [["Omega_bar_2", "Omega_bar_2", "1556"]]
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "p. 2053: 'Omega_bar_2 ~ 1556 cm^-1', O2; as Omega_N2."
+[datasets.parameters]
+transition = "v = 0 -> 1 Q branch, central frequency (Omega_bar)"
+assumed = true

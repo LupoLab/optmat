@@ -1,0 +1,1118 @@
+citation = "J. L. Hunt, J. D. Poll and L. Wolniewicz, \"Ab initio calculation of properties of the neutral diatomic hydrogen molecules H2, HD, D2, HT, DT, and T2\", Can. J. Phys. 62, 1719 (1984)"
+doi = "10.1139/p84-217"
+library = "Hunt_1984_AbInitioCalculation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Adiabatic calculation: the vibrational-rotational wave functions chi_vJ(R) of \
+the adiabatic potential (Poll and Wolniewicz 1978, ref. 2), and the matrix elements \
+<vJ|X|v'J'> = integral chi_vJ(R) X(R) chi_v'J'(R) dR (Eq. 1) of the clamped-nucleus \
+quadrupole moment function Q(R) (ref. 2) and of the parallel and perpendicular \
+polarizability functions alpha_par(R) and alpha_perp(R) of Kolos and Wolniewicz (1967, \
+ref. 7 = kolos_1967), for H2, HD, D2, HT, DT and T2, v = 0-5 (p. 1719-1720). \
+'Nonadiabatic contributions to these quantities are, therefore, expected to be quite \
+small and we will not consider them here' (p. 1719)."""
+notes = """Journal pages 1719-1723 = PDF pages 1-5 (page n of the PDF is p. 1718 + n). \
+Identity checked on the first page (the library's VALIDATED_WITH_WARNINGS). Received \
+19 July 1984. Only H2 and D2 are curated materials; HD, HT, DT and T2 (the other four \
+columns of every table) are not transcribed. H2 and D2 are single rovibrational levels \
+here: no ortho:para mixture enters.
+
+WHAT IS TAKEN. Tables 5-10 (pp. 1721-1723), the matrix elements of the parallel \
+(Tables 5, 7, 9) and perpendicular (6, 8, 10) polarizability between the ground \
+vibrational level (v = 0, J) and the level (v, J') for v = 0-5: Delta J = 0 (Tables \
+5-6, J = 0-5), J' = J + 2 (Tables 7-8, J = 0-3) and J' = J - 2 (Tables 9-10, J = 2-5), \
+'in atomic units' (a0^3, e^2 a0^2/E_h). One dataset per table, gas and final v, one \
+row per J (id <par|perp>_<dJ0|dJp2|dJm2>_v<v>_<gas>): 68 datasets, 320 values, \
+raman_transition_polarizability with invariant parallel or perpendicular (the \
+vocabulary's component form). v = 0 of Tables 5-6 \
+are the diagonal elements (the polarizability of the level); v = 0 of Tables 7-8 the \
+pure rotational S(J) elements; v >= 1 the vibrational Raman Q, S and O lines of the \
+v-0 bands. The overtones (v >= 2) are tabulated as compactly as the fundamentals and are \
+kept; their small elements carry few significant digits.
+
+STATIC. The paper does not say 'static', but its polarizability functions are Kolos and \
+Wolniewicz's 1967 static ones (kolos_1967: 'Static only'), and its diagonal elements \
+reproduce kolos_1967's static per-level values (see CHECKED). Recorded with \
+parameters.wavelength_nm = inf.
+
+MEAN AND ANISOTROPY (for review): the invariants follow as alpha_mean = (alpha_par + 2 \
+alpha_perp)/3 and gamma = alpha_par - alpha_perp of the same element (the Q-line \
+strength needs both, an S or O line only gamma). Evaluated from the tables (scratch, \
+2026-09-27), a.u.: H2 Q(J) of the 1-0 band, J = 0-5: mean 0.73923, 0.74027, 0.74234, \
+0.74544, 0.74953, 0.75462; gamma 0.61001, 0.61175, 0.61524, 0.62049, 0.62741, 0.63612. \
+D2 Q(J): mean 0.61633, 0.61677, 0.61765, 0.61898, 0.62075, 0.62294; gamma 0.50004, \
+0.50077, 0.50224, 0.50443, 0.50735, 0.51101. Pure rotational S(J), gamma of <0J|..|0J+2>, \
+J = 0-3: H2 2.0351, 2.0500, 2.0725, 2.1025; D2 1.9639, 1.9713, 1.9825, 1.9974. 1-0 band \
+S(J) gamma: H2 0.57081, 0.54630, 0.52323, 0.50152; D2 0.47749, 0.46313, 0.44943, 0.43633; \
+O(J), J = 2-5: H2 0.65436, 0.68591, 0.71931, 0.75486; D2 0.52513, 0.54204, 0.56016, \
+0.57906.
+
+CHECKED (2026-09-27): the diagonal elements (Tables 5-6, v = 0) give mean and anisotropy \
+equal to kolos_1967's static per-level Table III for J = 0-5 within one unit of the \
+fourth decimal (H2 J = 0: 5.41380 and 2.0238 against 5.4139 and 2.0239; D2 J = 0: \
+5.34520 and 1.9584 against 5.3453 and 1.9584). rychlewski_1983's Table VII (static \
+column, H2 only, not extracted there) prints alpha_00,10 = 0.74006, gamma_00,10 = \
+0.61204, alpha_00,02 = 5.4304, gamma_00,02 = 2.0409: 0.11 %, 0.33 %, 0.06 % and 0.28 % \
+above these (another polarizability function).
+
+UNCERTAINTY: none is stated. 'Comparison with experiment has shown that for these simple \
+molecules the theoretical calculations are highly reliable' (p. 1719) is general.
+
+STRUCTURE (tools/extract/hunt_1984.py): every H2 and D2 cell was compared with the table \
+images. Table 7's v = 1 block is shifted one column in the library's cells (the page \
+prints 'v J' of its first row as '1 0' with a stray mark); Table 5's D2 column is headed \
+'v_2' in the cells. ERRATUM: Table 5 prints D2's <00|alpha_par|20> as 0.05292, without \
+a minus sign; the neighbouring J = 1-5 elements (-0.05304 ... -0.05478), every other \
+v = 2 element of Tables 5-8 in all six columns, and the smooth J dependence show it is \
+-0.05292 (corrected below).
+
+NOT TAKEN (notes only):
+- Table 1 (p. 1720), the adiabatic dissociation energies D_vJ (cm-1) for v, J = 0-5 and \
+the reduced masses (a.u.): H2 919.0764, D2 1835.2395. H2: D_00 = 36117.572, D_10 = \
+31955.529, D_01 = 35999.077; D2: D_00 = 36748.162, D_10 = 33754.207, D_01 = 36688.379. \
+Differences give adiabatic level energies (H2: G(1) - G(0) = 4162.043 cm-1 for J = 0, \
+F(1) - F(0) = 118.495; D2: 2993.955 and 59.783); nonadiabatic corrections are not \
+included (the paper cites Wolniewicz 1983, ref. 1, for them).
+- Tables 2-4 (p. 1721), the quadrupole-moment elements <0J|Q|vJ>, <0J|Q|vJ+2>, \
+<0J|Q|vJ-2> (a.u., with the footnote: 'Many authors use a definition in which the \
+quadrupole moment has half the size of the one used in this paper', i.e. Q = R^2 - \
+2(3z^2 - r^2) summed as defined on p. 1719). H2 <00|Q|00> = 0.9671, <00|Q|10> = 0.1758; \
+D2 0.9517 and 0.1478. No vocabulary quantity; not needed for Raman.
+- The 'complete tables' (v, v' = 0-5, J = 0-5, total energies, <R^-2>) deposited with \
+the Depository of Unpublished Data, NRC Canada (p. 1723): not in the library.
+
+REPRODUCTIONS ELSEWHERE (not re-pointed: they are values computed from these, not \
+reproduced datasets): mizrahi_1985_h2d2's Table II quotes Hunt et al.'s H2 alpha_01,11 = \
+0.74027, gamma_01,11 = 0.61175 and D2 alpha_02,12 = 0.61765, gamma_02,12 = 0.50224 (a.u.): \
+from Tables 5-6 H2 J = 1 (1.1481, 0.53635) and D2 J = 2 (0.95248, 0.45024) exactly. \
+shelton_1987's Table 2 (notes only there) prints H2 12.21 and 10.09, D2 10.18 and 8.28 \
+(10^-42 C2 m2 J^-1): the same numbers times 1.64878e-41."""
+
+[[datasets]]
+id = "par_dJ0_v0_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJ0_v0_H2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|0J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J (the expectation value in level (0, J); per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v1_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJ0_v1_H2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|1J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J (Q(J) of the 1-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v2_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJ0_v2_H2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|2J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J (Q(J) of the 2-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v3_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJ0_v3_H2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|3J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J (Q(J) of the 3-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v4_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJ0_v4_H2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|4J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J (Q(J) of the 4-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v5_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJ0_v5_H2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|5J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J (Q(J) of the 5-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v0_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJ0_v0_H2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|0J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J (the expectation value in level (0, J); per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v1_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJ0_v1_H2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|1J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J (Q(J) of the 1-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v2_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJ0_v2_H2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|2J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J (Q(J) of the 2-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v3_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJ0_v3_H2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|3J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J (Q(J) of the 3-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v4_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJ0_v4_H2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|4J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J (Q(J) of the 4-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v5_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJ0_v5_H2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|5J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J (Q(J) of the 5-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v0_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJp2_v0_H2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|0J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J+2 (pure rotational S(J); per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v1_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJp2_v1_H2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|1J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J+2 (S(J) of the 1-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v2_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJp2_v2_H2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|2J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J+2 (S(J) of the 2-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v3_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJp2_v3_H2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|3J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J+2 (S(J) of the 3-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v4_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJp2_v4_H2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|4J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J+2 (S(J) of the 4-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v5_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJp2_v5_H2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|5J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J+2 (S(J) of the 5-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v0_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJp2_v0_H2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|0J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J+2 (pure rotational S(J); per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v1_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJp2_v1_H2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|1J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J+2 (S(J) of the 1-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v2_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJp2_v2_H2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|2J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J+2 (S(J) of the 2-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v3_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJp2_v3_H2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|3J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J+2 (S(J) of the 3-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v4_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJp2_v4_H2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|4J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J+2 (S(J) of the 4-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v5_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJp2_v5_H2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|5J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J+2 (S(J) of the 5-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v1_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJm2_v1_H2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|1J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J-2 (O(J) of the 1-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v2_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJm2_v2_H2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|2J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J-2 (O(J) of the 2-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v3_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJm2_v3_H2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|3J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J-2 (O(J) of the 3-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v4_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJm2_v4_H2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|4J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J-2 (O(J) of the 4-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v5_H2"
+material = "H2"
+file = "H2/hunt_1984__par_dJm2_v5_H2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|5J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J-2 (O(J) of the 5-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v1_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJm2_v1_H2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|1J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J-2 (O(J) of the 1-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v2_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJm2_v2_H2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|2J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J-2 (O(J) of the 2-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v3_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJm2_v3_H2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|3J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J-2 (O(J) of the 3-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v4_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJm2_v4_H2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|4J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J-2 (O(J) of the 4-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v5_H2"
+material = "H2"
+file = "H2/hunt_1984__perp_dJm2_v5_H2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|5J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J-2 (O(J) of the 5-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v0_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJ0_v0_D2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|0J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J (the expectation value in level (0, J); per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v1_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJ0_v1_D2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|1J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J (Q(J) of the 1-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v2_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJ0_v2_D2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|2J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J (Q(J) of the 2-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v3_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJ0_v3_D2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|3J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J (Q(J) of the 3-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v4_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJ0_v4_D2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|4J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J (Q(J) of the 4-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJ0_v5_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJ0_v5_D2.csv"
+table = "tbl_d342fdc7648a"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 5 (p. 1721): <0J|alpha_par|5J>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J (Q(J) of the 5-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v0_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJ0_v0_D2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|0J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J (the expectation value in level (0, J); per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v1_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJ0_v1_D2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|1J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J (Q(J) of the 1-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v2_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJ0_v2_D2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|2J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J (Q(J) of the 2-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v3_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJ0_v3_D2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|3J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J (Q(J) of the 3-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v4_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJ0_v4_D2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|4J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J (Q(J) of the 4-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJ0_v5_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJ0_v5_D2.csv"
+table = "tbl_67070dd33681"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 6 (p. 1722): <0J|alpha_perp|5J>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J (Q(J) of the 5-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v0_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJp2_v0_D2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|0J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J+2 (pure rotational S(J); per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v1_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJp2_v1_D2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|1J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J+2 (S(J) of the 1-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v2_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJp2_v2_D2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|2J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J+2 (S(J) of the 2-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v3_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJp2_v3_D2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|3J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J+2 (S(J) of the 3-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v4_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJp2_v4_D2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|4J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J+2 (S(J) of the 4-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJp2_v5_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJp2_v5_D2.csv"
+table = "tbl_96e803fab9c9"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 7 (p. 1722): <0J|alpha_par|5J+2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J+2 (S(J) of the 5-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v0_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJp2_v0_D2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|0J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=0,J+2 (pure rotational S(J); per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v1_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJp2_v1_D2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|1J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J+2 (S(J) of the 1-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v2_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJp2_v2_D2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|2J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J+2 (S(J) of the 2-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v3_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJp2_v3_D2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|3J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J+2 (S(J) of the 3-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v4_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJp2_v4_D2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|4J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J+2 (S(J) of the 4-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJp2_v5_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJp2_v5_D2.csv"
+table = "tbl_9fd840e5f3aa"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 8 (p. 1722): <0J|alpha_perp|5J+2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 0-3 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J+2 (S(J) of the 5-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v1_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJm2_v1_D2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|1J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J-2 (O(J) of the 1-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v2_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJm2_v2_D2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|2J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J-2 (O(J) of the 2-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v3_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJm2_v3_D2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|3J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J-2 (O(J) of the 3-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v4_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJm2_v4_D2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|4J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J-2 (O(J) of the 4-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "par_dJm2_v5_D2"
+material = "D2"
+file = "D2/hunt_1984__par_dJm2_v5_D2.csv"
+table = "tbl_69944584e92c"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 9 (p. 1722): <0J|alpha_par|5J-2>, the parallel component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J-2 (O(J) of the 5-0 band; per row: J)"
+invariant = "parallel"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v1_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJm2_v1_D2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|1J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=1,J-2 (O(J) of the 1-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v2_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJm2_v2_D2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|2J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated."
+[datasets.parameters]
+transition = "v=0,J -> v=2,J-2 (O(J) of the 2-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v3_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJm2_v3_D2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|3J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=3,J-2 (O(J) of the 3-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v4_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJm2_v4_D2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|4J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=4,J-2 (O(J) of the 4-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[datasets]]
+id = "perp_dJm2_v5_D2"
+material = "D2"
+file = "D2/hunt_1984__perp_dJm2_v5_D2.csv"
+table = "tbl_62b45dba2e04"
+quantity = "raman_transition_polarizability"
+unit = "au"
+abscissa = "label"
+use = "primary"
+notes = "Table 10 (p. 1723): <0J|alpha_perp|5J-2>, the perpendicular component of the static polarizability (Kolos and Wolniewicz's functions), atomic units, J = 2-5 (the row), adiabatic; no uncertainty stated. Small elements printed to 1e-5 a.u.: few significant digits."
+[datasets.parameters]
+transition = "v=0,J -> v=5,J-2 (O(J) of the 5-0 band; per row: J)"
+invariant = "perpendicular"
+wavelength_nm = inf
+
+[[errata]]
+dataset = "par_dJ0_v2_D2"
+row = "J=0"
+column = "value"
+printed = "0.05292"
+corrected = "-0.05292"
+reason = "Table 5 prints D2's <00|alpha_par|20> without its minus sign."
+evidence = "The table image (tbl_d342fdc7648a, p. 1721) shows 0.05292 unsigned. The D2 elements of the same block for J = 1-5 are -0.05304, -0.05329, -0.05366, -0.05416, -0.05478 (a smooth J dependence that continues to J = 0 at about -0.0529); every other v = 2 element of Tables 5-8, in all six isotopologue columns, is negative (HD -0.06692, HT -0.06248, DT -0.04773 in the same row); and D2's perpendicular element <00|alpha_perp|20> is -0.04662 (Table 6). Checked 2026-09-27."

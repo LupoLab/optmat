@@ -1,0 +1,107 @@
+citation = "K. W. Brown, N. H. Rich and J. W. Nibler, \"High resolution rotational CARS spectrum of oxygen\", J. Mol. Spectrosc. 151, 482 (1992)"
+doi = "10.1016/0022-2852(92)90581-8"
+library = "Brown_1992_HighResolutionRotational"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """High-resolution pure rotational CARS (pp. 483-485): two yellow pump beams, the \
+568.2 nm single-mode Kr+ line and a tunable single-mode ring dye laser, each amplified \
+by dye cells pumped by a seeded single-frequency Nd:YAG, with its 532 nm output as the \
+probe; folded BOXCARS, crossed polarisations and an iodine cell to suppress the 532 nm \
+background; the dye laser calibrated against the iodine atlas (2 sigma = 0.002 cm-1). \
+O2 in a 10 cm cell at 70 Torr and room temperature (300 K), and in a free-jet expansion \
+(rotational temperature about 25 K) for the S(1) triplet. Line positions and \
+intensities from simulations of the CARS spectrum (interference of chi' and chi'', \
+Lorentzian collisional, Doppler and 0.010 cm-1 instrumental widths; pp. 487-490)."""
+notes = """Identity checked against the first page. PAGES: pdf page n is journal p. \
+481 + n (Table I p. 486). MATERIAL: 16O2 (O2 as supplied), X 3Sigma_g-, v = 0: the \
+pure rotational ^SS lines (Delta N = Delta J = +2), labelled S(J,N) with J and N of \
+the lower level (S(2,1) is N = 1, J = 2 -> N = 3, J = 4). The ^SR and ^SQ satellites \
+were not measured.
+
+WHAT THE COLUMNS ARE (p. 485 and p. 490). 'Observed': the wavenumbers of the CARS peak \
+maxima; 'Corrected': 'the more correct transition values from spectral simulations', \
+the peak positions after modelling the |chi|^2 interference of the triplet members \
+(the outer members of a triplet are pushed apart in CARS), differing from the maxima \
+by up to 0.003 cm-1 (p. 490). The corrected values are the transition wavenumbers \
+(primary); the observed maxima are kept as a check. Wavenumbers in cm-1 from the \
+vacuum iodine-atlas calibration (vacuum not stated).
+
+UNCERTAINTIES (p. 485): 'A combination of the uncertainties in the I2 lines (2 sigma = \
+0.002 cm-1) and in the CARS peak determination leads us to an estimated uncertainty \
+of +-0.005 cm-1 for the absolute rotational wavenumbers reported in Table I; relative \
+wavenumbers within each triplet are believed to be accurate to 0.001 cm-1.'
+
+CALCULATED LINES (Eqs. 1-2, pp. 485-486; formula eq2_levels). The 'Corrected - \
+calculated' column compares with lines calculated from Eq. (2) and 'the microwave \
+constants suggested by Johns and Lepard (14)' (J. W. C. Johns and D. W. Lepard, J. \
+Mol. Spectrosc. 55, 374 (1975), not in the library); the constants themselves are not \
+printed. 'Virtually all of the wavenumbers agree with the calculated values within the \
+0.005 cm-1 level of uncertainty' (p. 490); the S(20,19) difference is 0.006.
+
+INTENSITIES (notes; no quantity). Table I's 'Simulated intensity' (from the 300 K \
+CARS simulations, converted to spontaneous Raman intensities, normalised to the \
+highest-J member of each triplet) against Altmann et al.'s calculated 298 K intensities \
+(Ref. 2, Z. Naturforsch. 27, 56 (1972)): the low-J members are systematically higher \
+than calculated (e.g. S(9,9) 1.00 against 0.90), which the authors suspect is a J \
+dependence of the linewidth within a triplet (p. 491).
+
+LINEWIDTHS (model inputs, not measurements; notes). The collisional (Lorentzian) FWHM \
+at 70 Torr 'was estimated from earlier O2 pressure broadening studies (4, 10, 16, 17) \
+to be 0.006-0.009 cm-1, depending on the N value'; 0.001 cm-1 in the jet (p. 489). \
+Doppler FWHM in the crossed-beam geometry (Eq. 4, 1.95 degree crossing): 0.00140-0.00142 \
+cm-1 at 300 K for N = 3-19, x 0.29 in the jet; instrumental FWHM 0.010 cm-1 (the best \
+fit; 0.005 expected, p. 490). Not taken as data (assumed, from Refs. 4, 10, 16, 17: \
+jammu_1966 is Ref. 4).
+
+FIGURES (not digitised): Fig. 1 level scheme; Fig. 3 S(9) in the jet and the cell; Figs. \
+4-5 interference shifts of CARS against Raman line pairs.
+
+RELATION TO OTHER RECORDS. yu_2012 uses these 30 lines (+-0.005 cm-1, N'' = 3-21 as \
+it states) in its global fit. rouille_1992's v = 0 constants reproduce this Table I's \
+'Corrected - calculated' column to +-0.0005 cm-1 (see eq2_levels): the Johns-Lepard \
+and Rouille constants agree at that level."""
+
+[[datasets]]
+id = "table1_corrected"
+material = "O2"
+file = "O2/brown_1992__table1_corrected.csv"
+table = "tbl_ad5d63e4a91f"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 486), 'Corrected': the ^SS(N) triplet lines of the pure rotational Raman spectrum of 16O2 (v = 0), N = 1-19, J = N + 1, N, N - 1 (rows S(J,N) as printed, lower level), from simulations of the CARS spectra at 70 Torr and 300 K (the S(1) triplet from the 25 K jet). Estimated absolute uncertainty +-0.005 cm-1 (relative within a triplet 0.001; p. 485)."
+[datasets.uncertainty]
+absolute = 0.005
+level = "not stated"
+[datasets.parameters]
+transition = "S(J,N): v = 0, Delta N = Delta J = +2, per row"
+
+[[datasets]]
+id = "table1_observed"
+material = "O2"
+file = "O2/brown_1992__table1_observed.csv"
+table = "tbl_ad5d63e4a91f"
+quantity = "raman_shift"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 486), 'Observed': the CARS peak maxima, shifted from the true line positions by the triplet interference (up to 0.003 cm-1, p. 490): check, beside table1_corrected."
+[datasets.uncertainty]
+absolute = 0.005
+level = "not stated"
+[datasets.parameters]
+transition = "S(J,N): v = 0, Delta N = Delta J = +2, per row"
+
+[[formulas]]
+id = "eq2_levels"
+material = "O2"
+equation = "Eqs. (1)-(2), pp. 485-486"
+printed = "H_rot = B (J - S)^2 + 2 lambda (S_z^2 - S^2) + gamma (J - S).S; F1(N) = F2(N) + B_0 (2N + 3) - lambda - gamma/2 - [lambda^2 - 2 lambda (B_0 - gamma/2) + (2N + 3)^2 (B_0 - gamma/2)^2]^(1/2); F2(N) = B_0 N(N + 1) - D_0 N^2 (N + 1)^2; F3(N) = F2(N) - B_0 (2N - 1) - lambda - gamma/2 + [lambda^2 - 2 lambda (B_0 - gamma/2) + (2N - 1)^2 (B_0 - gamma/2)^2]^(1/2)"
+variable = "N the rotational quantum number (odd for 16O2); F1, F2, F3 the term values of J = N + 1, N, N - 1 in cm-1; B_0, D_0, lambda (spin-spin) and gamma (spin-rotation) of v = 0; the S(J,N) line = F_i(N + 2) - F_i(N) with the same i"
+state = "16O2 X 3Sigma_g-, v = 0"
+density = "unknown"
+range = "v = 0, N = 1-21 (the lines of Table I)"
+coefficients = { constants = "not printed: 'the microwave constants suggested by Johns and Lepard (14)'" }
+check = "Scratch (2026-09-27), with rouille_1992's v = 0 constants (B_0 1.437676476, D_0 4.84256e-6, lambda 1.984751322, gamma = mu_0 -8.42539e-3 cm-1) in place of the unprinted Johns-Lepard ones: the Corrected - calculated column is reproduced to +-0.0005 cm-1 for S(1,1)-S(20,19) (e.g. S(4,3) +0.0026 against +0.003, S(20,19) +0.0061 against +0.006, S(9,9) -0.0003 against 0.000). EXCEPTION: F3(1) (N = 1, J = 0) as printed is wrong by 1.085 cm-1 (S(0,1) comes out 15.167 against 16.252): for N = 1, (2N - 1)(B_0 - gamma/2) < lambda, and the square root must be taken as -(lambda - B_0 + gamma/2); rouille_1992's special-case Eq. (10) gives 16.2529, the printed difference -0.001. Brown et al.'s own calculation evidently treated it correctly."
+notes = "The Hamiltonian's spin-spin term 2 lambda (S_z^2 - S^2) differs from the (2/3) lambda (3 S_z^2 - S^2) of rouille_1992 only by a constant, so lambda has the same meaning in both; gamma is rouille_1992's mu."

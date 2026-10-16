@@ -1,0 +1,599 @@
+citation = "N. Sadeghi, D. W. Setser, A. Francis, U. Czarnetzki and H. F. Döbele, \"Quenching rate constants for reactions of Ar(4p'[1/2]0, 4p[1/2]0, 4p[3/2]2, and 4p[5/2]2) atoms with 22 reagent gases\", J. Chem. Phys. 115, 3144-3154 (2001)"
+doi = "10.1063/1.1388037"
+library = "Sadeghi_2001_QuenchingRateConstants"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """One-colour two-photon excitation of Ar 2p1, 2p5, 2p6 and 2p8 (Paschen) from the \
+ground state by VUV pulses at 184.0, 186.8, 188.3 and 189.4 nm (Table I): the seventh \
+(2p1) or sixth stimulated anti-Stokes Raman order of an excimer-pumped dye laser \
+(349.7-395.7 nm, 30 mJ, 0.3 cm-1) in 0.7 bar of hydrogen at 77 K, 1-10 uJ in 5 ns \
+FWHM, 'an intensity of 10^7-10^8 W cm-2' at the focus of an f = 11 cm LiF lens; the \
+4p population rose as the square of the pulse energy. Static stainless-steel cell, 0.5 \
+mbar of argon plus the reagent gas (F2, Cl2 and NO2 as 5 %, 2 % and 2 % mixtures in \
+He, the He quenching subtracted); fluorescence on the 750.4, 751.5, 763.5 and 842.5 + \
+801.5 nm lines through interference or high-pass filters onto a photomultiplier, 25-50 \
+shots averaged on a 2 GS/s oscilloscope, single-exponential fits after the first 20-25 \
+ns. Total quenching rate constants from the slopes of Stern-Volmer plots, 1/tau_d = \
+1/tau_0 + k_Ar [Ar] + k_Q [Q] (Eq. 1), at room temperature; radiative lifetimes from the \
+zero-pressure intercepts."""
+notes = """J. Chem. Phys. 115(7), 3144-3154 (15 August 2001) = PDF pages 2-12 (PDF page 1 \
+is the AIP download cover; journal page = PDF page + 3142). Identity checked on the \
+first page of the article (PDF p. 2: title, authors, Grenoble and Essen, received 22 \
+January 2001, accepted 5 June 2001; running head J. Chem. Phys., Vol. 115, No. 7, 15 \
+August 2001) on 2026-10-12. Tables I-III checked cell by cell against the table images \
+and the rendered pages (pp. 3146, 3148, 3150).
+
+EXCITATION (OEP 8). The four levels are the J = 0 and J = 2 levels of Ar 3p5 4p that \
+one-colour two-photon absorption reaches from the ground state; the excitation is \
+two-photon ('selectively prepared by two-photon excitation from the ground state using \
+VUV (184-190 nm range) laser pulses', abstract; population quadratic in the pulse \
+energy, p. 3145), at 184.0 nm (2p1), 186.8 (2p5), 188.3 (2p6) and 189.4 nm (2p8), \
+vacuum wavelengths: 2 / lambda_VUV gives Table I's energies within the 0.1 nm \
+rounding (script check). These are OEP 8's argon levels and its 185-195 nm drive. The \
+paper notes that the two-photon cross sections of Ar are smaller than those of Xe, \
+which with 1e7-1e8 W/cm2 avoided amplified spontaneous emission (p. 3145).
+
+LEVELS. The paper's Paschen labels with its jK and LS names (pp. 3144-3145) and NIST's \
+(src/optmat/data/external/nist_asd/Ar_I_levels.tsv): 2p1 = 4p'[1/2]0 (1S0) = \
+3s2.3p5.(2P*<1/2>).4p 2[1/2] J = 0, 108722.6194 cm-1; 2p5 = 4p[1/2]0 (3P0) = \
+(2P*<3/2>).4p 2[1/2] J = 0, 107054.2720; 2p6 = 4p[3/2]2 (1D2) = (2P*<3/2>).4p 2[3/2] J \
+= 2, 106237.5518; 2p8 = 4p[5/2]2 (3D2) = (2P*<3/2>).4p 2[5/2] J = 2, 105617.2700. \
+Evidence: Table I's energies, 108 722, 107 054, 106 237 and 105 617 cm-1, equal NIST's \
+within 1 cm-1 (script check), and its fluorescence lines 750.4, 751.5, 763.5, 842.5 \
+and 801.5 nm are NIST's 2p1, 2p5, 2p6 and 2p8 lines to 4s. DOUBT (a misprint in a \
+label, no value affected): Table I prints '4p[1/2]0' for all of 2p5, 2p6 and 2p8; the \
+title, abstract and text name 2p6 and 2p8 4p[3/2]2 and 4p[5/2]2, and the energies are \
+those levels'.
+
+TAKEN (collisional_quenching_rate_coefficient and radiative_lifetime, TC-1011; script \
+tools/extract/sadeghi_2001.py for the tables, inline points for the text):
+- Tables II (p. 3148) and III (p. 3150), the k_Q columns, 10^-10 cm3 s-1: the total \
+quenching of the four levels by each of the 22 gases, one dataset per gas (kq_<gas>; \
+argon itself is perturber self, kq_self), order 2, channel total, rows 2p1, 2p5, 2p6, \
+2p8. 23 datasets: Kr's 2p6 has two values (kq_Kr and kq_Kr_full, below). 0.0021 \
+(2p1 + Ne) to 23 (2p5 + NO2). Uncertainties as the footnotes give them: 10 % unless \
+noted, 30 % for footnote d (Table II: He 2p1 and 2p8, all of Ne, Kr 2p6 and 2p8; Table \
+III: all of NO2), 20 % for Table III's f (Cl2 2p5, 2p6, 2p8). 'Least-square \
+uncertainties' (p. 3146); no confidence level stated. Room temperature, not given as \
+a number (300 K is used in an energy argument, p. 3147): no temperature_k.
+- Footnote c (lower limits): 2p5 in Ar (the 750 nm filter may pass 2p6's line; 'it \
+should be close to the total quenching constant', p. 3147), kept in kq_self; Kr 2p6, \
+0.47 (c, d; the fit to all of Fig. 5's data), kept apart as kq_Kr_full (use check); \
+the Kr row's 2p6 is the second line, 0.75 (d, f), the fit at low Kr pressure the text \
+prefers (p. 3148). Footnote e: the 2p8 rates in He, Ne and Ar are the sum of the \
+quenching of the coupled 2p8 + 2p9 pair to other states (both emit through the filter; \
+Ar transfers 2p8 to 2p9 at 0.18e-10 cm3/s, refs. 9, 10) and 'may be lower limits' \
+(p. 3147). 2p1 in Ar excludes the transfer to 2p5 (the filter passes it).
+- Text p. 3147, radiative lifetimes, inline points (tau_Ar, primary): 'average \
+radiative lifetimes of 24 +- 2, 24 +- 2, 28 +- 3, and 29 +- 3 for 2p1, 2p5, 2p6, and \
+2p8' from the low-pressure limits of the 22 Stern-Volmer plots of each level. No unit \
+is printed with them; it is ns: the radiative decay rates printed on the same page, \
+(4.2 +- 0.3), (4.2 +- 0.3), (3.6 +- 0.4) and (3.4 +- 0.4) x 10^7 s-1, are their \
+inverses to the printed figures (script check). The rates are the same measurement and \
+are not taken again. The lifetimes 'differ slightly' from the authors' earlier ones \
+(ref. 33, Francis et al., Eur. Phys. J. Appl. Phys. 4, 239 (1998), not in the library).
+- Not taken: the sigma_Q columns (k_Q / <v>, derived); Table III's last column, Ref. \
+1's averages for Ar(4s[3/2]2) and Ar(4s'[1/2]0) and an estimate for NO2 (another \
+paper's values for other levels); Table I's wavelengths (experimental settings); the \
+Stern-Volmer figures (Figs. 4-8), whose slopes are the tables' values; the text's \
+quotations of refs. 9-11 (0.29 +- 0.14, 0.22, <= 0.2, 0.11, <= 0.18 and 0.47 +- 0.07 \
+x 10^-10, Ar quenching of 2p1, 2p5, 2p6, 2p8, other papers).
+
+FINDING (radiative lifetimes against wiese_1989, TC-1012, and NIST, TC-985). NIST's \
+1/sum A over the lines from each level (Ar_I_lines_nir.tsv; every line with an A): \
+2p1 22.1 ns (2 lines), 2p5 25.0 (1), 2p6 29.07 (3), 2p8 30.99 (3); wiese_1989's \
+radiative widths give 22.35, 24.88, 29.04 and 31.01 ns (its notes). The measured 24 \
++- 2, 24 +- 2, 28 +- 3 and 29 +- 3 ns agree with both within the stated errors (2p1 \
+1.0 error long, 2p5 0.5 short, 2p6 and 2p8 within 0.7). This is an independent \
+measurement (time-resolved decay of two-photon excited atoms); wiese_1989's A values \
+are scaled to other lifetimes (Quadfasel and Helbig's), and NIST's A values for these \
+lines are wiese_1989's, so NIST is not independent of wiese_1989.
+
+DOUBTS (printed inconsistencies; no value corrected). Table II's footnote b prints \
+the unit as '10^-10 cm^-3 s^-1' and the uncertainties as '+10%' and (d) '+30%' (Table \
+III and the text: cm3 s-1, +-10 %, +-30 %). Table II's footnote f says 0.75 was \
+'deduced from the Stern-Volmer plot of full data', but the text (p. 3148) says the fit \
+to all of the data gives the smaller value and the low-pressure fit 'an approximately \
+twofold larger' one, and footnote c marks 0.47 as the lower limit, so f describes 0.47 \
+and 0.75 is the low-pressure fit; the text's low-pressure range is 'below 25 mbar', \
+Fig. 5's caption 'below 15 mbar'. The text (p. 3149) gives Cl2 +-30 %, Table III's \
+footnote f +-20 % (2p5, 2p6, 2p8) and no mark (10 %) for Cl2 2p1: the table's are \
+recorded.
+
+BEARING ON OEP 8 (for scale, not data): quenching depopulates the level and is not \
+the pure dephasing. In pure argon at 296 K (2.45e19 cm-3 per bar) the self-quenching \
+rates are 3.9e8 (2p1), 2.9e8 (2p5), 3.2e8 (2p6) and 5.9e8 s-1 (2p8) per bar, 7-17 \
+times the radiative rates: at 1 bar the 4p levels live 1.6-3.0 ns, and the \
+corresponding Lorentzian FWHM is 46-94 MHz per bar (k [Ar] / 2 pi). Molecular \
+impurities quench at 1e-10 to 1e-9 cm3/s: 10 ppm of O2 in 1 bar of Ar adds 1.8e5 \
+s-1 (2p5), negligible.
+
+TWO-PHOTON DATA CITED: M. P. McCann, C. H. Chen and M. G. Payne, J. Chem. Phys. 89, \
+5429 (1988) (two-colour two-photon excitation of Ar 4p, 4p'; in the library, \
+mccann_1988). Not in the library: A. Francis, U. Czarnetzki, H. F. Döbele and N. \
+Sadeghi, Appl. Phys. Lett. 21, 3790 (1997) (as printed) and Eur. Phys. J. \
+Appl. Phys. 4, 239 (1998) (the same two-photon Ar(4p) quenching and lifetimes, \
+earlier); R. S. F. Chang and D. W. Setser, J. Chem. Phys. 69, 3885 (1978), T. D. \
+Nguyen and N. Sadeghi, Phys. Rev. A 18, 1388 (1978) and G. Inoue, D. W. Setser and N. \
+Sadeghi, J. Chem. Phys. 76, 977 (1982) (Ar 4p state-to-state and total quenching in \
+argon, one-photon from the metastables)."""
+
+[[datasets]]
+id = "tau_Ar"
+material = "Ar"
+table = "text"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "primary"
+points = [["2p1", "2p1", "24", "2"], ["2p5", "2p5", "24", "2"], ["2p6", "2p6", "28", "3"], ["2p8", "2p8", "29", "3"]]
+notes = "Text p. 3147: 'average radiative lifetimes of 24 +- 2, 24 +- 2, 28 +- 3, and 29 +- 3 for 2p1, 2p5, 2p6, and 2p8' (no unit printed; ns, the inverses of the radiative decay rates 4.2, 4.2, 3.6 and 3.4 x 10^7 s-1 printed on the same page). NIST 1/sum A: 22.1, 25.0, 29.07, 30.99 ns; wiese_1989: 22.35, 24.88, 29.04, 31.01 ns (record notes)."
+[datasets.parameters]
+method = "two-photon excitation at 184-189 nm, time-resolved fluorescence, average of the zero-pressure intercepts of the 22 Stern-Volmer plots of each level"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kq_He"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_He.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by He at room temperature. 2p1 (footnote d: about 1 bar of He needed; 30 %) and 2p8 (d, e: the 2p8 and 2p9 emissions both pass the filter, so the sum of the quenching of the coupled pair to other states; 30 %). For 2p5 and 2p6 the coupling to 2p4 and 2p7 (equilibrium constants 2.1 and 0.81) 'needs to be questioned' though the decays were single exponential (p. 3148)."
+[datasets.parameters]
+perturber = "He"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+relative_rows = { "2p1" = 0.3, "2p8" = 0.3 }
+
+[[datasets]]
+id = "kq_Ne"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_Ne.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by Ne at room temperature. All four footnoted d (about 1 bar of Ne, small quenching: 30 %); 2p8 also e (the 2p8 + 2p9 sum)."
+[datasets.parameters]
+perturber = "Ne"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.3
+level = "not stated"
+
+[[datasets]]
+id = "kq_self"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_self.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by argon (self) at room temperature. Quenching by argon itself (the slopes of Fig. 4, Ar to 180 mbar, strictly single-exponential decays). 2p5 is footnoted c, a lower limit (the 750 nm filter may pass 2p6's 763.5 nm line), 'but it should be close to the total quenching constant'; 2p1 does not include the transfer to 2p5 (which the filter passes), 'a lower limit ... expected to be close to the total' (text 0.16 +- 0.02); 2p8 is footnoted e, the sum of the quenching of the coupled 2p8 + 2p9 pair to other states (Ar transfers 2p8 to 2p9 at 0.18e-10, refs. 9, 10), and 2p6, 0.13, 'a reliable total quenching constant' (p. 3147). Reconciled with chang_1978 and nguyen_1978 (TC-1074): the 2p5 total is about 1.9 times this table's 0.12 (Nguyen's transfers sum to 0.225), and the 2p8 total is about twice it (0.24 plus the 2p8-to-2p9 transfer 0.18 gives 0.42, inside Chang's 0.47 +- 0.07); 2p6 is consistent; 2p1 is not measured elsewhere."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_Kr"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_Kr.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by Kr at room temperature. 2p6 is the second line of the Kr row, 0.75 (footnotes d, f), the fit to the points at low Kr pressure (Fig. 5's solid line 'below 15 mbar'; the text says 'below 25 mbar ... approximately twofold larger'), which the text prefers because Kr(5p[3/2]2) made by excitation transfer from the metastables radiates at 760.3 nm inside the filter; the first line, 0.47, is the dataset kq_Kr_full. 2p8 (d), 1.6 +- 0.3 in the text, from the fast component of a double-exponential decay. 30 % on both."
+[datasets.parameters]
+perturber = "Kr"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+relative_rows = { "2p6" = 0.3, "2p8" = 0.3 }
+
+[[datasets]]
+id = "kq_Kr_full"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_Kr_full.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by Kr at room temperature. Kr, 2p6, first line: 0.47 (footnotes c, d), the linear fit to all the data of Fig. 5 (to 60 mbar), 'lower limits to the total quenching constant'; contaminated by Kr* emission at 760.3 nm at higher Kr pressure; the text prefers the low-pressure fit (kq_Kr). 30 %."
+[datasets.parameters]
+perturber = "Kr"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.3
+level = "not stated"
+
+[[datasets]]
+id = "kq_Xe"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_Xe.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by Xe at room temperature. Strictly single-exponential decays; Penning and associative ionisation are the likely products (p. 3148)."
+[datasets.parameters]
+perturber = "Xe"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_H2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_H2.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by H2 at room temperature. The 2p1 rate, 20 times smaller, was verified with D2 (p. 3149)."
+[datasets.parameters]
+perturber = "H2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_D2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_D2.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by D2 at room temperature."
+[datasets.parameters]
+perturber = "D2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_N2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_N2.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by N2 at room temperature. Fig. 7 shows the Stern-Volmer plots."
+[datasets.parameters]
+perturber = "N2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_CO"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_CO.csv"
+table = "tbl_4c7e7e30c054"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3148), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by CO at room temperature."
+[datasets.parameters]
+perturber = "CO"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_O2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_O2.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by O2 at room temperature."
+[datasets.parameters]
+perturber = "O2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_NO"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_NO.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by NO at room temperature."
+[datasets.parameters]
+perturber = "NO"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_CO2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_CO2.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by CO2 at room temperature."
+[datasets.parameters]
+perturber = "CO2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_CF4"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_CF4.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by CF4 at room temperature."
+[datasets.parameters]
+perturber = "CF4"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_CHF3"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_CHF3.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by CHF3 at room temperature."
+[datasets.parameters]
+perturber = "CHF3"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_CH4"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_CH4.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by CH4 at room temperature."
+[datasets.parameters]
+perturber = "CH4"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_C2H2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_C2H2.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by C2H2 at room temperature."
+[datasets.parameters]
+perturber = "C2H2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_C2H4"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_C2H4.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by C2H4 at room temperature."
+[datasets.parameters]
+perturber = "C2H4"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_C2H6"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_C2H6.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by C2H6 at room temperature."
+[datasets.parameters]
+perturber = "C2H6"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_SF6"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_SF6.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by SF6 at room temperature."
+[datasets.parameters]
+perturber = "SF6"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_NO2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_NO2.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by NO2 at room temperature. All four footnoted d (30 %: the He of the 2 % NO2/He mixture subtracted, and a slow second decay component from NO2 photolysis fluorescence, 10-50 % of the fast one, Fig. 9)."
+[datasets.parameters]
+perturber = "NO2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.3
+level = "not stated"
+
+[[datasets]]
+id = "kq_F2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_F2.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by F2 at room temperature. From a 5 % F2/He mixture, the He quenching subtracted; the cell passivated."
+[datasets.parameters]
+perturber = "F2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "kq_Cl2"
+material = "Ar"
+file = "Ar/sadeghi_2001__kq_Cl2.csv"
+table = "tbl_f1b459c74236"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-10
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3150), k_Q in 10^-10 cm3/s, quenching of Ar 2p1, 2p5, 2p6, 2p8 by Cl2 at room temperature. From a 2 % Cl2/He mixture, the He quenching subtracted. 2p5, 2p6, 2p8 footnoted f (20 %); 2p1 carries no mark (10 %); the text says Cl2 has +-30 % (record notes, doubt). Fig. 8 shows the plots (against the total He + Cl2 pressure)."
+[datasets.parameters]
+perturber = "Cl2"
+order = 2
+channel = "total"
+method = "two-photon excitation from the ground state by 184-190 nm SARS pulses (5 ns, 1e7-1e8 W/cm2), time-resolved 4p-4s fluorescence, slope of the Stern-Volmer plot of the decay rate against the reagent pressure at 0.5 mbar Ar"
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+relative_rows = { "2p5" = 0.2, "2p6" = 0.2, "2p8" = 0.2 }
+

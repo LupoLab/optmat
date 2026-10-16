@@ -1,0 +1,937 @@
+citation = "S.-F. Zhao, C. Jin, A.-T. Le, T. F. Jiang and C. D. Lin, \"Determination of structure parameters in strong-field tunneling ionization theory of molecules\", Phys. Rev. A 81, 033423 (2010)"
+doi = "10.1103/PhysRevA.81.033423"
+library = "Zhao_2010_DeterminationStructureParameters"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Single-active-electron model potentials for linear molecules from density \
+functional theory, exchange-only LDA plus the van Leeuwen-Baerends (LB) gradient \
+correction (alpha = 1.0, beta = 0.05, Eqs. (1)-(12)), built from GAMESS or GAUSSIAN \
+Hartree-Fock orbitals and iterated once so that the potential has the right -1/r tail \
+(p. 3, Fig. 1); the one-electron Schrodinger equation solved in a one-centre expansion \
+(l_max = 40) with B-splines (Eqs. (13)-(18)); the asymptotic radial functions fitted \
+to Eq. (20) for the MO-ADK coefficients C_lm."""
+notes = """Journal pages 033423-1 to -11 = PDF pages 1-11. Authors checked on the first \
+page. solprop's default MO-ADK parameters (moadk_zhao2010, for 'D2/H2', N2 and O2) are \
+this paper's Table III.
+
+THE ERRATUM. Phys. Rev. A 82, 049903(E) (2010) (zhao_2010_erratum, one page, image \
+checked) corrects two things only: 'In Table V, the C_2m of the HOMO-1 (1 pi) of CO \
+molecule should be 0.014' (printed 0.14; applied here as an erratum of \
+table5_homo1_CO), and 'In Table VI, the binding energies of 2p pi_g and 2p pi_u of H2+ \
+should be 0.2267 and 0.4288, respectively' (printed the other way round; Table VI is \
+in these notes only, corrected below). Nothing else changes: Tables I-IV, Table III's \
+C_lm of every molecule (so solprop's H2, D2, N2 and O2 rows), and Table V's other \
+rows stand as printed. solprop's statement that the erratum 'leaves these neutral \
+rows unchanged' is confirmed.
+
+EXTRACTED. Table I (p. 4): rare-gas ionisation energies (au), this work's LDA + LB \
+orbital energies, Banerjee and Harbola's (ref. 26) for He, Ne, Ar, and the \
+experimental values (Emsley, ref. 27). Table II (p. 4): R (angstrom), the LDA + LB \
+HOMO energy and the 'experimental vertical ionization potentials' (eV) of H2+, the \
+hydrogen molecule (printed 'D_2/H_2'), N2, O2, CO and CO2. Table III (p. 4): the newly \
+fitted C_lm and the earlier values the table reprints ([9] = tong_2002, [30] = \
+awasthi_2008, [17] = Le et al. 2007), one dataset per molecule and row. Table IV (p. \
+6): HOMO, HOMO-1 and HOMO-2 binding energies (N2, O2, CO2; HOMO and HOMO-1 for CO): \
+LDA + LB, LB-alpha (refs. 29 and 6) and experimental vertical (refs. 43-45). Table V \
+(p. 6): C_l of HOMO-1 and HOMO-2 of N2, O2, CO2 and of HOMO-1 of CO (the HOMO rows \
+repeat Table III, checked by the script). Not curated, not taken: F2, S2, NO, SO, C2H2, \
+HF, HCl, HCN. Every C_l file carries Table II's R as the column internuclear_distance.
+
+THE COEFFICIENTS (p. 3). Eq. (19): psi_n^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi); \
+'In the MO-ADK theory, the radial functions in the asymptotic region are fitted to \
+the following form', Eq. (20): F_lm(r) = C_lm r^((Z_c/kappa) - 1) e^(-kappa r), 'where \
+Z_c is the asymptotic charge and kappa = sqrt(2 I_p), I_p is the ionization energy' \
+(Tong et al. 2002's convention). m: 'For sigma orbital, m = 0 and pi orbital, m = 1' \
+(Table V caption). The fitting range of r is not stated anywhere in the paper, nor an \
+accuracy of the coefficients. Which I_p enters kappa in the fit is not stated either; \
+for the rates the paper says 'we \
+always use experimental binding energy' (p. 4) and 'one should always use the \
+experimental vertical ionization energy since the tunneling ionization rate depends \
+exponentially on the ionization potential' (p. 4).
+
+THE RATES. The alignment-dependent rates are Tong et al.'s analytic formula \
+(tong_2002, its Eqs. (7)-(10)) with these C_lm, per orbital; 'probabilities in Fig. 2 \
+from MO-ADK include ionization from the HOMO only' (p. 5), while TDDFT shows inner \
+orbitals contributing. For a heteronuclear molecule the static rate differs for the \
+two orientations AB and BA along the field, and 'MO-ADK-S' averages theta and pi - \
+theta (p. 7). CO: the on-axis ratio (2.32 + 1.62)/(2.32 - 1.62) = 5.6 gives a rate \
+ratio of 32 (p. 6). H2 parallel:perpendicular rate ratio 1.45 with the new \
+coefficients, 1.15 with the old (p. 9).
+
+THE IONISATION ENERGIES. Table I's experimental and Table II's I_p columns are the \
+values used for the rates. Table II's I_p agree digit for digit (and with R) with \
+tong_2002's Table I for all ten molecules the two share, and are reproduced from it \
+(the identity is this record's inference: Table II cites no source). The caption calls \
+them 'experimental vertical', but tong_2002's text says its Table I values for D2 and \
+O2 are about 0.88 and 0.33 eV below the vertical energies it used; kind is \
+recorded as the caption says. Table IV's experimental O2 HOMO energy (12.3 eV, Baltzer \
+et al.) differs from Table II's 12.03. CO2's 13.78 eV (Table II) and 13.8 (Table IV) \
+are not in tong_2002.
+
+THE HYDROGEN ROW is printed 'D_2/H_2' in Tables II and III and is used for H2 in the \
+figures (Fig. 2(e), Fig. 6(c), Staudte et al.'s H2 data). Recorded as H2; the fixed- \
+nuclei orbital at a given R does not depend on the nuclear masses, and solprop uses \
+the row for H2 and D2 alike (TC-439). The reprinted Tong row [9] was printed 'D_2' by \
+Tong.
+
+TABLE VI (p. 10, notes only): H2+ at R = 2.0-4.0 a.u.: binding energies (au) \
+'Present' and 'Exact' and C_l of the 1s sigma_g, 1s sigma_u, 2p pi_g and 2p pi_u \
+states. The 1s sigma_g ground state at R = 2.0 (equilibrium): 1.1025 and 1.1026 \
+hartree, C_0m, C_2m, C_4m = 4.52, 0.62, 0.03, identical to Table III's H2+ row \
+(checked by the script), which is the dataset. The other rows are excited states or \
+stretched geometries: 1s sigma_g at R = 2.5, 3.0, 3.5, 4.0: 0.9937/0.9938, \
+0.9107/0.9109, 0.8463/0.8466, 0.7958/0.7961 hartree; C_0m 4.25, 4.10, 4.00, 3.96; C_2m \
+0.81, 1.04, 1.31, 1.60; C_4m 0.05, 0.08, 0.12, 0.19. 1s sigma_u at R = 2.0: \
+0.6674/0.6675, C_1m 1.89, C_3m 0.08, C_5m 0.00; 2p pi_g at 2.0: 0.4288/0.4288, C_2m \
+0.11, C_4m 0.002; 2p pi_u at 2.0: 0.2267/0.2267, C_1m 0.90, C_3m 0.02 (the library \
+merges two coefficients per cell; read on the image). The 2p pi_g and 2p pi_u binding \
+energies above are as printed; the erratum (zhao_2010_erratum) swaps them: 2p pi_g \
+0.2267, 2p pi_u 0.4288 (the bonding pi_u state is the more deeply bound). The table \
+image also prints 1s sigma_u at R = 2.5, 3.0, 3.5, 4.0 (0.6920/0.6921, 0.7012/0.7014, \
+0.7009/0.7012, 0.6952/0.6956; C_1m 2.18, 2.48, 2.79, 3.13; C_3m 0.15, 0.25, 0.37, \
+0.53; C_5m 0.00, 0.01, 0.02, 0.04), untouched by the erratum.
+
+FIGURES (not digitised): Fig. 1 effective charges of Ne and CO2; Fig. 2 normalised \
+alignment dependence for N2, O2 (1e14 W/cm^2), F2, H2+ (5e14), H2 (2.3e14), C2H2 \
+against TDDFT and TDSE; Fig. 3 HOMO, HOMO-1, HOMO-2 rates against angle for N2 (1.5e14), \
+O2 (1.3e14), CO2 (1.1e14), C2H2; Fig. 4 CO (4e14) and HCl; Fig. 5 CO2 against Spanner \
+and Patchkovskii and Smirnova et al.; Fig. 6 against the measurements of Pavicic et al. \
+(N2, O2; linear), Staudte et al. (H2) and Akagi et al. (HCl; circular); Figs. 7-8 \
+H2+."""
+
+[[datasets]]
+id = "table1_ldalb_He"
+material = "He"
+file = "He/zhao_2010__table1_ldalb_He.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table I, 'LDA + LB (a.u.)': the binding energy of the outer orbital in this paper's exchange-only LDA + LB single-active-electron potential (alpha = 1.0, beta = 0.05, Eq. (9)); 'the present one-electron model is still not sufficiently accurate for predicting the binding energy' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_banerjee_He"
+material = "He"
+file = "He/zhao_2010__table1_banerjee_He.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Banerjee and M. K. Harbola, Phys. Rev. A 60, 3599 (1999)"]
+notes = "Table I, LDA + LB column, second value marked b (ref. 26), 'the same approximate exchange potential' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_expt_He"
+material = "He"
+file = "He/zhao_2010__table1_expt_He.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["J. Emsley, The Elements (Clarendon Press, Oxford, 1998)"]
+notes = "Table I, 'I_p (a.u.)', experimental, mark a (ref. 27, Emsley's The Elements); the first ionisation energy, to the ion's ground state (adiabatic and vertical coincide for an atom)."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_ldalb_Ne"
+material = "Ne"
+file = "Ne/zhao_2010__table1_ldalb_Ne.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table I, 'LDA + LB (a.u.)': the binding energy of the outer orbital in this paper's exchange-only LDA + LB single-active-electron potential (alpha = 1.0, beta = 0.05, Eq. (9)); 'the present one-electron model is still not sufficiently accurate for predicting the binding energy' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_banerjee_Ne"
+material = "Ne"
+file = "Ne/zhao_2010__table1_banerjee_Ne.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Banerjee and M. K. Harbola, Phys. Rev. A 60, 3599 (1999)"]
+notes = "Table I, LDA + LB column, second value marked b (ref. 26), 'the same approximate exchange potential' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_expt_Ne"
+material = "Ne"
+file = "Ne/zhao_2010__table1_expt_Ne.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["J. Emsley, The Elements (Clarendon Press, Oxford, 1998)"]
+notes = "Table I, 'I_p (a.u.)', experimental, mark a (ref. 27, Emsley's The Elements); the first ionisation energy, to the ion's ground state (adiabatic and vertical coincide for an atom)."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_ldalb_Ar"
+material = "Ar"
+file = "Ar/zhao_2010__table1_ldalb_Ar.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table I, 'LDA + LB (a.u.)': the binding energy of the outer orbital in this paper's exchange-only LDA + LB single-active-electron potential (alpha = 1.0, beta = 0.05, Eq. (9)); 'the present one-electron model is still not sufficiently accurate for predicting the binding energy' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_banerjee_Ar"
+material = "Ar"
+file = "Ar/zhao_2010__table1_banerjee_Ar.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. Banerjee and M. K. Harbola, Phys. Rev. A 60, 3599 (1999)"]
+notes = "Table I, LDA + LB column, second value marked b (ref. 26), 'the same approximate exchange potential' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_expt_Ar"
+material = "Ar"
+file = "Ar/zhao_2010__table1_expt_Ar.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["J. Emsley, The Elements (Clarendon Press, Oxford, 1998)"]
+notes = "Table I, 'I_p (a.u.)', experimental, mark a (ref. 27, Emsley's The Elements); the first ionisation energy, to the ion's ground state (adiabatic and vertical coincide for an atom)."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_ldalb_Kr"
+material = "Kr"
+file = "Kr/zhao_2010__table1_ldalb_Kr.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table I, 'LDA + LB (a.u.)': the binding energy of the outer orbital in this paper's exchange-only LDA + LB single-active-electron potential (alpha = 1.0, beta = 0.05, Eq. (9)); 'the present one-electron model is still not sufficiently accurate for predicting the binding energy' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_expt_Kr"
+material = "Kr"
+file = "Kr/zhao_2010__table1_expt_Kr.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["J. Emsley, The Elements (Clarendon Press, Oxford, 1998)"]
+notes = "Table I, 'I_p (a.u.)', experimental, mark a (ref. 27, Emsley's The Elements); the first ionisation energy, to the ion's ground state (adiabatic and vertical coincide for an atom)."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_ldalb_Xe"
+material = "Xe"
+file = "Xe/zhao_2010__table1_ldalb_Xe.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table I, 'LDA + LB (a.u.)': the binding energy of the outer orbital in this paper's exchange-only LDA + LB single-active-electron potential (alpha = 1.0, beta = 0.05, Eq. (9)); 'the present one-electron model is still not sufficiently accurate for predicting the binding energy' (p. 4). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table1_expt_Xe"
+material = "Xe"
+file = "Xe/zhao_2010__table1_expt_Xe.csv"
+table = "tbl_fba864ad07cc"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["J. Emsley, The Elements (Clarendon Press, Oxford, 1998)"]
+notes = "Table I, 'I_p (a.u.)', experimental, mark a (ref. 27, Emsley's The Elements); the first ionisation energy, to the ion's ground state (adiabatic and vertical coincide for an atom)."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "table2_ldalb_H2+"
+material = "H2+"
+file = "H2+/zhao_2010__table2_ldalb_H2+.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'LDA + LB (eV)': the HOMO binding energy of this paper's exchange-only LDA + LB potential at the fixed internuclear distance of the table; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "1s sigma_g"
+
+[[datasets]]
+id = "table2_ip_H2+"
+material = "H2+"
+file = "H2+/zhao_2010__table2_ip_H2+.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table II, 'I_p (eV)', captioned 'experimental vertical ionization potentials' without a reference; digit-identical (with R) to tong_2002 Table I, whose text says its values are not the vertical energies (see the record's notes). Kind as the caption says."
+[datasets.parameters]
+kind = "vertical"
+orbital = "1s sigma_g"
+
+[[datasets]]
+id = "table2_ldalb_H2"
+material = "H2"
+file = "H2/zhao_2010__table2_ldalb_H2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'LDA + LB (eV)': the HOMO binding energy of this paper's exchange-only LDA + LB potential at the fixed internuclear distance of the table; kind not stated. The row is printed 'D_2/H_2' (recorded as H2; see the record's notes)."
+[datasets.parameters]
+kind = "not stated"
+orbital = "HOMO 1 sigma_g"
+
+[[datasets]]
+id = "table2_ip_H2"
+material = "H2"
+file = "H2/zhao_2010__table2_ip_H2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table II, 'I_p (eV)', captioned 'experimental vertical ionization potentials' without a reference; digit-identical (with R) to tong_2002 Table I, whose text says its values are not the vertical energies (see the record's notes). Kind as the caption says. The row is printed 'D_2/H_2' (recorded as H2; see the record's notes)."
+[datasets.parameters]
+kind = "vertical"
+orbital = "HOMO 1 sigma_g"
+
+[[datasets]]
+id = "table2_ldalb_N2"
+material = "N2"
+file = "N2/zhao_2010__table2_ldalb_N2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'LDA + LB (eV)': the HOMO binding energy of this paper's exchange-only LDA + LB potential at the fixed internuclear distance of the table; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "HOMO 3 sigma_g"
+
+[[datasets]]
+id = "table2_ip_N2"
+material = "N2"
+file = "N2/zhao_2010__table2_ip_N2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table II, 'I_p (eV)', captioned 'experimental vertical ionization potentials' without a reference; digit-identical (with R) to tong_2002 Table I, whose text says its values are not the vertical energies (see the record's notes). Kind as the caption says."
+[datasets.parameters]
+kind = "vertical"
+orbital = "HOMO 3 sigma_g"
+
+[[datasets]]
+id = "table2_ldalb_O2"
+material = "O2"
+file = "O2/zhao_2010__table2_ldalb_O2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'LDA + LB (eV)': the HOMO binding energy of this paper's exchange-only LDA + LB potential at the fixed internuclear distance of the table; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "HOMO 1 pi_g"
+
+[[datasets]]
+id = "table2_ip_O2"
+material = "O2"
+file = "O2/zhao_2010__table2_ip_O2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table II, 'I_p (eV)', captioned 'experimental vertical ionization potentials' without a reference; digit-identical (with R) to tong_2002 Table I, whose text says its values are not the vertical energies (see the record's notes). Kind as the caption says."
+[datasets.parameters]
+kind = "vertical"
+orbital = "HOMO 1 pi_g"
+
+[[datasets]]
+id = "table2_ldalb_CO"
+material = "CO"
+file = "CO/zhao_2010__table2_ldalb_CO.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'LDA + LB (eV)': the HOMO binding energy of this paper's exchange-only LDA + LB potential at the fixed internuclear distance of the table; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "HOMO 5 sigma"
+
+[[datasets]]
+id = "table2_ip_CO"
+material = "CO"
+file = "CO/zhao_2010__table2_ip_CO.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table II, 'I_p (eV)', captioned 'experimental vertical ionization potentials' without a reference; digit-identical (with R) to tong_2002 Table I, whose text says its values are not the vertical energies (see the record's notes). Kind as the caption says."
+[datasets.parameters]
+kind = "vertical"
+orbital = "HOMO 5 sigma"
+
+[[datasets]]
+id = "table2_ldalb_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table2_ldalb_CO2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'LDA + LB (eV)': the HOMO binding energy of this paper's exchange-only LDA + LB potential at the fixed internuclear distance of the table; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "HOMO 1 pi_g"
+
+[[datasets]]
+id = "table2_ip_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table2_ip_CO2.csv"
+table = "tbl_b4bf810303ee"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, 'I_p (eV)', 'experimental vertical ionization potentials' (caption); no reference is given (not in tong_2002)."
+[datasets.parameters]
+kind = "vertical"
+orbital = "HOMO 1 pi_g"
+
+[[datasets]]
+id = "table3_H2+"
+material = "H2+"
+file = "H2+/zhao_2010__table3_H2+.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table III, H2+ (sigma_g), this work: the 1s sigma_g ground state at R = 2.0 a0 (Table VI's first row repeats it). The internuclear_distance column is Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "1s sigma_g"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table3_tong_H2+"
+material = "H2+"
+file = "H2+/zhao_2010__table3_tong_H2+.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table III, H_2^+ row marked [9] (Tong et al. 2002, Table I; the printed values agree with tong_2002). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "1s sigma_g"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "table3_H2"
+material = "H2"
+file = "H2/zhao_2010__table3_H2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table III, 'D_2/H_2 (sigma_g)', this work (recorded as H2; the same fixed-nuclei orbital serves D2). solprop's moadk_zhao2010 for H2 and D2 is this row. The internuclear_distance column is Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table3_tong_H2"
+material = "H2"
+file = "H2/zhao_2010__table3_tong_H2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table III, D_2/H_2 row marked [9] (Tong et al. 2002, Table I; the printed values agree with tong_2002). Tong prints the row as 'D_2'. internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "table3_awasthi_H2"
+material = "H2"
+file = "H2/zhao_2010__table3_awasthi_H2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["awasthi_2008"]
+notes = "Table III, 'D_2/H_2' row marked [30] (Awasthi et al. 2008): awasthi_2008's LB94 row (1.146, 0.0666, 0.0008 at R = 1.4 a0) rounded to 1.15, 0.067, 0.001. internuclear_distance: Table II's R (0.742 A; Awasthi's 1.4 a0 is 0.741 A)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g"
+m = 0
+normalisation = "Awasthi et al. 2008 Eq. (19): phi(r) ~ sum_l C_l r^(nu - 1) exp(-kappa r) Y_l0(r^), nu = Z/kappa, kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "table3_N2"
+material = "N2"
+file = "N2/zhao_2010__table3_N2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table III, N2 (sigma_g), this work = Table V's 3 sigma_g (HOMO). solprop's moadk_zhao2010 for N2 is this row. The internuclear_distance column is Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3 sigma_g"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table3_tong_N2"
+material = "N2"
+file = "N2/zhao_2010__table3_tong_N2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table III, N_2 row marked [9] (Tong et al. 2002, Table I; the printed values agree with tong_2002). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3 sigma_g"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "table3_O2"
+material = "O2"
+file = "O2/zhao_2010__table3_O2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table III, O2 (pi_g), this work: C_2m and C_4m (no s wave) = Table V's 1 pi_g (HOMO). solprop's moadk_zhao2010 for O2 is this row. The internuclear_distance column is Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 pi_g"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table3_tong_O2"
+material = "O2"
+file = "O2/zhao_2010__table3_tong_O2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table III, O_2 row marked [9] (Tong et al. 2002, Table I; the printed values agree with tong_2002). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 pi_g"
+m = 1
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "table3_CO"
+material = "CO"
+file = "CO/zhao_2010__table3_CO.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table III, CO (sigma), this work: C_0m ... C_4m (the fifth value, C_4m = 0.05, is lost from Table V's CO row in the library but kept here). The internuclear_distance column is Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 5 sigma"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table3_tong_CO"
+material = "CO"
+file = "CO/zhao_2010__table3_tong_CO.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["tong_2002"]
+notes = "Table III, CO row marked [9] (Tong et al. 2002, Table I; the printed values agree with tong_2002). Tong's Table I prints no l = 4 for CO; Zhao's reprint adds C_4m = 0.00. internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 5 sigma"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "table3_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table3_CO2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table III, CO2 (pi_g), this work: C_2m, C_4m, C_6m = Table V's 1 pi_g (HOMO). The internuclear_distance column is Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 pi_g"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table3_le_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table3_le_CO2.csv"
+table = "tbl_7f5181e18a32"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "reproduced"
+reproduced_from = ["A.-T. Le, X. M. Tong and C. D. Lin, J. Mod. Opt. 54, 967 (2007)"]
+notes = "Table III, CO2 row marked [17] (Le, Tong and Lin 2007): the earlier coefficients from Gaussian-basis orbitals, which the text calls inaccurate for CO2 (p. 9, ref. 19). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 pi_g"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table4_ldalb_N2"
+material = "N2"
+file = "N2/zhao_2010__table4_ldalb_N2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table IV, 'LDA + LB': binding energies of the HOMO, HOMO-1 and HOMO-2 orbitals (rows, labelled by the orbital) in this paper's model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_lbalpha_N2"
+material = "N2"
+file = "N2/zhao_2010__table4_lbalpha_N2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["D. A. Telnov and Shih I. Chu, Phys. Rev. A 79, 041401(R) (2009)"]
+notes = "Table IV, 'LB alpha' column, mark a (ref. 29): binding energies of the HOMO, HOMO-1 and HOMO-2 orbitals in the LB-alpha model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_expt_N2"
+material = "N2"
+file = "N2/zhao_2010__table4_expt_N2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. Lofthus and P. H. Krupenie, J. Phys. Chem. Ref. Data 6, 113 (1977)"]
+notes = "Table IV, 'I_p', 'experimental vertical ionization potential' (caption), mark b (ref. 43); rows labelled by the orbital ionised (the ionic states are not named)."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "table4_ldalb_O2"
+material = "O2"
+file = "O2/zhao_2010__table4_ldalb_O2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table IV, 'LDA + LB': binding energies of the HOMO, HOMO-1 and HOMO-2 orbitals (rows, labelled by the orbital) in this paper's model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_lbalpha_O2"
+material = "O2"
+file = "O2/zhao_2010__table4_lbalpha_O2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["D. A. Telnov and Shih I. Chu, Phys. Rev. A 79, 041401(R) (2009)"]
+notes = "Table IV, 'LB alpha' column, mark a (ref. 29): binding energies of the HOMO, HOMO-1 and HOMO-2 orbitals in the LB-alpha model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_expt_O2"
+material = "O2"
+file = "O2/zhao_2010__table4_expt_O2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["P. Baltzer, B. Wannberg, L. Karlsson, M. Carlsson Gothe and M. Larsson, Phys. Rev. A 45, 4374 (1992)"]
+notes = "Table IV, 'I_p', 'experimental vertical ionization potential' (caption), mark c (ref. 44); rows labelled by the orbital ionised (the ionic states are not named)."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "table4_ldalb_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table4_ldalb_CO2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table IV, 'LDA + LB': binding energies of the HOMO, HOMO-1 and HOMO-2 orbitals (rows, labelled by the orbital) in this paper's model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_lbalpha_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table4_lbalpha_CO2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. K. Son and Shih I. Chu, Phys. Rev. A 80, 011403(R) (2009)"]
+notes = "Table IV, 'LB alpha' column, mark d (ref. 6; the note is lost from the library's text and was read on the page): binding energies of the HOMO, HOMO-1 and HOMO-2 orbitals in the LB-alpha model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_expt_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table4_expt_CO2.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["D. W. Turner et al., Molecular Photoelectron Spectroscopy (Wiley Interscience, London, 1970)"]
+notes = "Table IV, 'I_p', 'experimental vertical ionization potential' (caption), mark e (ref. 45); rows labelled by the orbital ionised (the ionic states are not named)."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "table4_ldalb_CO"
+material = "CO"
+file = "CO/zhao_2010__table4_ldalb_CO.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table IV, 'LDA + LB': binding energies of the HOMO and HOMO-1 orbitals (rows, labelled by the orbital) in this paper's model; kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "table4_expt_CO"
+material = "CO"
+file = "CO/zhao_2010__table4_expt_CO.csv"
+table = "tbl_2bc9b27f5a3b"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["D. W. Turner et al., Molecular Photoelectron Spectroscopy (Wiley Interscience, London, 1970)"]
+notes = "Table IV, 'I_p', 'experimental vertical ionization potential' (caption), mark e (ref. 45); rows labelled by the orbital ionised (the ionic states are not named)."
+[datasets.parameters]
+kind = "vertical"
+
+[[datasets]]
+id = "table5_homo1_N2"
+material = "N2"
+file = "N2/zhao_2010__table5_homo1_N2.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 1 pi_u (HOMO-1); m = 1 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1 pi_u"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table5_homo2_N2"
+material = "N2"
+file = "N2/zhao_2010__table5_homo2_N2.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 2 sigma_u (HOMO-2); m = 0 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 2 sigma_u"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table5_homo1_O2"
+material = "O2"
+file = "O2/zhao_2010__table5_homo1_O2.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 1 pi_u (HOMO-1); m = 1 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1 pi_u"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table5_homo2_O2"
+material = "O2"
+file = "O2/zhao_2010__table5_homo2_O2.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 3 sigma_g (HOMO-2); m = 0 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 3 sigma_g"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table5_homo1_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table5_homo1_CO2.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 1 pi_u (HOMO-1); m = 1 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1 pi_u"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table5_homo2_CO2"
+material = "CO2"
+file = "CO2/zhao_2010__table5_homo2_CO2.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 3 sigma_u (HOMO-2); m = 0 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-2 3 sigma_u"
+m = 0
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+[[datasets]]
+id = "table5_homo1_CO"
+material = "CO"
+file = "CO/zhao_2010__table5_homo1_CO.csv"
+table = "tbl_825e661a911b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table V, 1 pi (HOMO-1); m = 1 per the caption ('For sigma orbital, m = 0 and pi orbital, m = 1'). The binding energy for the rate is the experimental one of Table IV (p. 6). The cells file drops the fifth printed column: C_5m = 0.02 is read from the table image (p. 6) by the script, guarded by the extracted row. C_2m is printed 0.14 and corrected to 0.014 by the authors' erratum (zhao_2010_erratum; the [[errata]] entry below). internuclear_distance: Table II's R."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO-1 1 pi"
+m = 1
+normalisation = "Zhao et al. 2010 Eqs. (19)-(20), p. 3 (Tong et al. 2002's convention): psi^(m)(r) = sum_l F_lm(r) Y_lm(theta, phi), F_lm(r) = C_lm r^(Z_c/kappa - 1) exp(-kappa r) in the asymptotic region, Z_c the asymptotic charge, kappa = sqrt(2 I_p), atomic units; one-centre expansion, m along the molecular axis"
+
+
+[[errata]]
+dataset = "table5_homo1_CO"
+row = "2"
+column = "value"
+printed = "0.14"
+corrected = "0.014"
+reason = "The authors' erratum, Phys. Rev. A 82, 049903(E) (2010): 'In Table V, the C_2m of the HOMO-1 (1 pi) of CO molecule should be 0.014.' A misprint of the paper, not of the extraction."
+evidence = "Table V image (tbl_825e661a911b, p. 6) prints 0.14 for C_2m of CO 1 pi (HOMO-1) (checked 2026-09-27); the erratum (zhao_2010_erratum, library Zhao_2010_ErratumDeterminationStructure, p. 1, page image checked) gives 0.014."

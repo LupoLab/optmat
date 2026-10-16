@@ -1,0 +1,146 @@
+citation = "C. Bree, A. Demircan and G. Steinmeyer, Phys. Rev. A 85, 033806 (2012)"
+doi = "10.1103/physreva.85.033806"
+library = "Bree_2012_KramersKronigRelations"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The Kramers-Kronig model of bree_2011 (n_2k from (k + 1)-photon PPT \
+ionisation cross sections, nondegenerate absorption at the mean frequency) applied to \
+the n2 dispersion of all noble gases, the saturation of the intensity-dependent index, \
+its wavelength dependence and the radius of convergence of the series."""
+notes = """Defining equations (p. 2-5). n(I) = sum_(k>=0) n_2k I^k (Eq. 1; self \
+coefficients, degenerate case). Eq. (10): n_2k = 2^(k-1) C^(k) / (n0 (n0 eps0 c)^k) Re \
+chi^(2k+1), with C^(k) = (2k + 1)! / (2^(2k) k! (k + 1)!) (Eq. 12); for k = 1, n2 = 3 \
+Re chi^(3) / (4 n0^2 eps0 c). Eq. (11): beta_K = (w0/c) 2^(K-1) C^(K-1) / (n0 (n0 eps0 \
+c)^(K-1)) Im chi^(2K-1); Eq. (13): beta_K = K rho0 hbar w sigma_K. Eq. (16): n_2k(w) = \
+(rho0 hbar c / pi) P int_0^inf (Omega + k w) sigma_(k+1)((Omega + k w)/(k + 1)) / \
+(Omega^2 - w^2) dOmega (the same as bree_2011 Eq. 3). Eq. (18): gamma^(3)(0) = 8 eps0^2 \
+c n2(0) / rho0 'using the Lorentz-Lorenz law' in the far-infrared limit, i.e. n2 = \
+rho0 gamma / (8 eps0^2 c) with n0 = 1: Shelton & Rice's Taylor (T) convention (p = \
+... + gamma E^3/6), the relation of the manual page Third-order nonlinearity. Eq. (17) quotes Bishop's \
+dispersion n2(w) = n2(0) (1 + A w_L^2 + B w_L^4 + ...), w_L^2 = nu w^2 with nu = 12, 6, 4 \
+for THG, ESHG and DFWM, 'the far-infrared limit n2 ~ chi(3)(0; 0, 0, 0) and the \
+coefficient A do not depend on the nonlinear optical process' (p. 3). rho0 is not \
+restated; the 2011 paper's rho_nt = 2.7e19 cm^-3 ('standard conditions') is assumed. \
+Ionisation potentials used: 24.59, 21.56, 15.76, 14.00, 12.13 eV; two-photon edges \
+lambda_TPA = 101, 115, 157, 177 and 204 nm (He ... Xe) (p. 4).
+
+Table I (tbl_934361b8054e, image checked): 'n2 values in cm^2/TW for characteristic \
+wavelength emitted by various laser materials', 193, 248, 400, 800 and 2000 nm, He ... \
+Xe, printed m(e) = m x 10^e. Extracted as kk_<gas> (5 points each; use = check, a \
+model; its authors state agreement within 20 % of the reference data in the infrared, \
+within 10 % for Ar and Kr from 0.2 to 6 um, p. 4). The 800 nm row equals bree_2011's \
+Table I Z = 1 column rounded to two digits (5.2, 13, 130, 310, 920 against 5.2, 13.1, \
+126.8, 306.9, 915.8 x 10^-9 cm^2/TW) and is excluded as a duplicate. Xe at 193 nm lies \
+beyond Xe's two-photon edge (204 nm) and Xe at 248 nm is near a bound two-photon resonance (measured strongly negative there, Lehmberg et al. 1995, not in the library), which the \
+ionisation-based model does not contain (it has no \
+bound-state resonances): do not trust the UV rows near bound two-photon resonances.
+
+Table II (tbl_150d29e385da, notes only): inversion intensities I_inv (the nontrivial \
+root of sum n_2k I^k = 0) against the plasma clamping intensity I_c (90 fs Gaussian \
+pulses) at 800 nm: He 113/301, Ne 89/204, Ar 49/81, Kr 40/57, Xe 30/37, O2 36/44, N2 \
+50/82 TW/cm^2.
+
+Higher-order Kerr claim (notes only): the saturation and inversion of the index \
+'stems from much higher orders' (for Ar at 800 nm chi(21) and above; chi(5) ... chi(19) \
+do not contribute, p. 7); the series converges for Keldysh gamma > e/2 (Eq. 28); \
+I_inv(lambda) crosses the clamping intensity near 560 nm, so HOKE-dominated filaments \
+are predicted in the infrared. The coefficients n2 ... n32 are in bree_2011's \
+supplement (not in the library). Status: the saturation follows from using \
+multiphoton-ionisation rates beyond their validity in the KK integral (Wahlstrand et \
+al. 2012, Phys. Rev. Lett. 109, 113904, p. 2-3: with the full rate the KK response is \
+linear in intensity, as measured up to ionisation). Not to be used.
+
+Second copy: Unverified_df851ddaf7be is the WIAS Berlin preprint No. 1651 of this \
+paper (ISSN 0946-8633, 'submitted: October 6, 2011'; identified from its first page). \
+Its Table 1 prints the same values as 7.8e-9 etc. with one misprint, Kr at 2000 nm \
+'2.7e.7' (journal 2.7(-7)); its Table 2 equals Table II. Not extracted twice."""
+
+[[datasets]]
+id = "kk_He"
+material = "He"
+file = "He/bree_2012__kk_He.csv"
+table = "tbl_934361b8054e"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-12
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+excluded_rows = { "800" = "The 800 nm row repeats bree_2011 Table I (Z = 1), rounded; use that one." }
+notes = "Table I, n2 in cm^2/TW (printed m(e), stored as me e) at 193, 248, 400, 800, 2000 nm. Kramers-Kronig model; density assumed 2.7e19 cm^-3 as in bree_2011."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Ne"
+material = "Ne"
+file = "Ne/bree_2012__kk_Ne.csv"
+table = "tbl_934361b8054e"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-12
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+excluded_rows = { "800" = "The 800 nm row repeats bree_2011 Table I (Z = 1), rounded; use that one." }
+notes = "Table I, n2 in cm^2/TW at 193, 248, 400, 800, 2000 nm. Kramers-Kronig model."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Ar"
+material = "Ar"
+file = "Ar/bree_2012__kk_Ar.csv"
+table = "tbl_934361b8054e"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-12
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+excluded_rows = { "800" = "The 800 nm row repeats bree_2011 Table I (Z = 1), rounded; use that one." }
+notes = "Table I, n2 in cm^2/TW at 193, 248, 400, 800, 2000 nm. Kramers-Kronig model."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Kr"
+material = "Kr"
+file = "Kr/bree_2012__kk_Kr.csv"
+table = "tbl_934361b8054e"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-12
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+excluded_rows = { "800" = "The 800 nm row repeats bree_2011 Table I (Z = 1), rounded; use that one." }
+notes = "Table I, n2 in cm^2/TW at 193, 248, 400, 800, 2000 nm. Kramers-Kronig model."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "kk_Xe"
+material = "Xe"
+file = "Xe/bree_2012__kk_Xe.csv"
+table = "tbl_934361b8054e"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-12
+abscissa_unit = "nm"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+excluded_rows = { "800" = "The 800 nm row repeats bree_2011 Table I (Z = 1), rounded; use that one.", "193" = "Beyond Xe's two-photon edge (204 nm, p. 4); the model has no bound-state resonances." }
+notes = "Table I, n2 in cm^2/TW at 193, 248, 400, 800, 2000 nm. Kramers-Kronig model; the 248 nm value ignores the bound two-photon resonance near which Xe's measured n2 is negative (Lehmberg et al. 1995, not in the curators' library)."
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"

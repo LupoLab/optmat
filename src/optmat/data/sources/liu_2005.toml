@@ -1,0 +1,198 @@
+citation = "Y. Liu, H. Jiang, Q. Sun, Z. Wu, H. Yang, and Q. Gong, \"Different tendencies of breakdown threshold on pulse duration in the subpicosecond regime in fused silica\", J. Opt. A: Pure Appl. Opt. 7, 198-203 (2005)"
+doi = "10.1088/1464-4258/7/4/008"
+library = "Liu_2005_DifferentTendenciesBreakdown"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single-shot laser-induced breakdown inside bulk fused silica (polished, 10 x 5 x 3 \
+mm^3; grade not stated) at 800 nm, pulse durations 240 fs to 2.5 ps (compressor \
+grating), each site irradiated once. The spatially filtered beam underfills (by ~3) a \
+0.4 or 0.85 NA objective; the beam radius omega after the objective and its distance \
+d to the focus measured by knife edge give the effective NA = omega/(omega^2 + \
+d^2)^0.5 = 0.126 and 0.255 (focal radii ~2.0 and 0.95 um for a Gaussian beam). \
+Breakdown detected by imaging the plasma luminescence from the side onto a cooled CCD \
+(Princeton Instruments TE/CCD-512/SB, a filter blocking 800 nm), the threshold being \
+the lowest input energy giving a plasma image (p. 199). Depths 6, 170 and 300 um (+-5 \
+um); the detailed data at 300 um. Simulated with a 3-D nonlinear envelope equation \
+(Eq. 1: diffraction, GVD, Kerr, plasma absorption and defocusing, multiphoton \
+absorption) coupled to an electron-density rate equation (Eq. 2: avalanche and \
+multiphoton ionization, no recombination) solved by an ADI method."""
+notes = """Journal pages 198-203 = pdf pages 2-7 (journal page = 196 + pdf page; pdf page 1 is \
+the IOP download cover). Identity checked against the first page.
+
+WHAT WAS MEASURED. Fig. 2 (p. 200): the threshold energy against pulse duration \
+(240 fs - 2.5 ps) at 300 um depth for effective NA 0.126 (squares) and 0.255 \
+(triangles): with NA 0.126 the threshold rises for pulses shorter than 700 fs; with \
+NA 0.255 it keeps decreasing from 2.5 ps to 240 fs (figure only, not digitised). The \
+depth changed the threshold by at most 10 % without changing the trend (p. 200). The \
+one threshold printed in the text: Fig. 1's example, NA 0.255, 400 fs, 'For E_in = \
+0.17 uJ, an image of pure noise is obtained while for E_in = 0.18 uJ a clear image of \
+the plasma can be seen. Therefore the threshold in this case can be defined as 0.18 uJ \
+with an error of 0.01 uJ' (p. 199): dataset threshold_energy_400fs (the depth of this \
+example is not stated). The energies are the input pulse energies (E_in).
+
+THE MODEL AND ITS INPUTS (p. 200; assumed, datasets check): Eq. (1), (i 2k d/dz \
++ nabla_perp^2) eps = k k'' d^2 eps/d xi^2 - 2 k k0 n2 |eps|^2 eps - i k sigma (1 + i \
+omega0 tau_c) rho eps - i k beta^(K) |eps|^(2K-2) eps, with n2 = 3.54 x 10^-16 cm^2/W \
+(Ref. 17, Sudrie et al., Phys. Rev. Lett. 89, 186601 (2002)), beta^(K) = K hbar \
+omega0 sigma_K rho_at; 'A band gap potential E_g = 9 eV of the material yields the K = \
+6 required for the ionization and the multiphoton ionization (MPI) coefficient sigma_K \
+= 9.8 x 10^-70 s^-1 cm^12 W^-6' (Ref. 17); the inverse-bremsstrahlung cross section \
+sigma = k e^2 tau_c / omega0 m_e eps0 (1 + (omega0 tau_c)^2) = 1.55 x 10^-18 cm^2 with \
+tau_c = 2.33 x 10^-14 s (Ref. 17); 'The critical plasma density rho_c, and the \
+background atom density, rho_at = 2.1 x 10^21 cm^-3, are in the ratio rho_at/rho_c ~ \
+12' (Ref. 18, Ward and Berge 2003). Eq. (2): d rho/d xi = sigma/(n0^2 E_g) rho |eps|^2 \
++ sigma_K rho_at |eps|^(2K) (|eps|^2 the intensity); rho_0 = 1.0 x 10^8 cm^-3 initial \
+electrons (Ref. 8, Tien et al. 1999); recombination omitted (a test with it changed \
+little). The MPI term is used 'not expressed by Keldysh's formula ... because the \
+adiabaticity parameter gamma >> 1 in our experiments'. k'' and n0 are not given.
+
+CHECKS (computed 2026-09-27). rho_c = eps0 m_e omega0^2/e^2 = 1.742e21 cm^-3 at 800 nm, \
+so rho_at/rho_c ~ 12 requires rho_at = 2.1e22 cm^-3 (12.06), not the printed 2.1e21 \
+(1.21): erratum (couairon_2005, the same group's model inputs, prints rho_at = 2.1e22). \
+The printed sigma = 1.55e-18 cm^2 is not reproduced by its own formula with tau_c = \
+2.33e-14 s: with k = n0 omega0/c and n0 = 1.45 it gives 1.19e-18 cm^2 (1.55e-18 needs \
+tau_c ~ 1.8e-14 s); not decidable, no erratum. sigma_K = 9.8e-70 against \
+couairon_2005's 9.6e-70 s^-1 cm^12/W^6 for the same Keldysh limit.
+
+THRESHOLD DENSITIES (model results, notes only). The simulated plasma density \
+saturates below 1e19 cm^-3 (p. 200); with rho_th = 1.8e19 and 1.45e19 cm^-3 the \
+NA 0.126 thresholds rise below 1000 and 550 fs, with 1.3e19 they are flat after 500 fs, \
+with 1.0e19 they keep decreasing (Fig. 3a); the experiment matches rho_th = 1.45e19 \
+cm^-3 (NA 0.126) and 6.11e19 cm^-3 (NA 0.255), the integrated densities agreeing to 6 % \
+(p. 201); for NA 0.126 the 300 and 700 fs density curves cross at 1.4e19 cm^-3; for NA \
+0.255 slight saturation above 5.6e19 cm^-3 at 300 fs (p. 202). The rise at loose \
+focusing is attributed to plasma defocusing (Figs. 4-6). Figs. 3-6 are figures only.
+
+FINDING (the NA). The paper prints 'effective NA = 0.225' once (p. 202, in the \
+discussion of Fig. 6) and 0.255 everywhere else (abstract, p. 199, Figs. 1-4 \
+captions): a misprint in this paper, which hamam_2018 carries into its tables.
+
+REPRODUCTIONS OF THIS PAPER. hamam_2018 Table 2 attributes its threshold intensities \
+and powers against pulse width to this paper, but this paper prints no intensities \
+and no table (Fig. 2 gives input energies only): hamam_2018's values are its own \
+conversion of Fig. 2 (listed for review; hamam_2018 is another extraction's record)."""
+
+[[datasets]]
+id = "threshold_energy_400fs"
+material = "SiO2"
+table = "text"
+points = [["1", "400", "0.18", "0.01"]]
+quantity = "damage_threshold_energy"
+unit = "uJ"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "primary"
+notes = "p. 199 (Fig. 1): the breakdown threshold for effective NA = 0.255 and 400-fs pulses, 0.18 uJ 'with an error of 0.01 uJ' (the energy step between no plasma image at 0.17 uJ and a clear one at 0.18 uJ). Input pulse energy, single shot, bulk; the focus depth of this example is not stated (the Fig. 2 series is at 300 um)."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+site = "bulk"
+criterion = "plasma luminescence imaged from the side by a cooled CCD (first input energy giving a plasma image)"
+shots = 1
+wavelength_nm = 800
+numerical_aperture = 0.255
+form = "bulk"
+
+[[datasets]]
+id = "model_n2"
+material = "SiO2"
+table = "text"
+points = [["1", "800", "3.54"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["L. Sudrie, A. Couairon, M. Franco, B. Lamouroux, B. Prade, S. Tzortzakis and A. Mysyrowicz, Phys. Rev. Lett. 89, 186601 (2002)"]
+notes = "p. 200: 'the Kerr effect of the material with n2 = 3.54 x 10^-16 cm^2 W^-1 [17]', a model input of Eq. (1) (couairon_2005 derives the same number from a measured critical power at 800 nm, 160 fs). Part not stated."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+assumed = true
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "9"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 200: 'A band gap potential E_g = 9 eV of the material yields the K = 6 required for the ionization', a model input (with Ref. 17's sigma_K)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_sigma6"
+material = "SiO2"
+table = "text"
+points = [["1", "800", "9.8e-70"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm12/W6"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["L. Sudrie, A. Couairon, M. Franco, B. Lamouroux, B. Prade, S. Tzortzakis and A. Mysyrowicz, Phys. Rev. Lett. 89, 186601 (2002)"]
+notes = "p. 200: 'the multiphoton ionization (MPI) coefficient sigma_K = 9.8 x 10^-70 s^-1 cm^12 W^-6 [17]', per atom: the MPI rate is sigma_K rho_at |eps|^(2K) (Eq. 2) and the MPA coefficient beta^(K) = K hbar omega0 sigma_K rho_at. couairon_2005 prints 9.6e-70 for its Keldysh limit."
+[datasets.parameters]
+photons = 6
+assumed = true
+
+[[datasets]]
+id = "model_collision_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "2.33e-14"]]
+quantity = "electron_collision_time"
+unit = "s"
+abscissa = "none"
+use = "check"
+reproduced_from = ["L. Sudrie, A. Couairon, M. Franco, B. Lamouroux, B. Prade, S. Tzortzakis and A. Mysyrowicz, Phys. Rev. Lett. 89, 186601 (2002)"]
+notes = "p. 200: 'the electron collision time tau_c = 2.33 x 10^-14 s [17]', the Drude input of sigma. With it the printed sigma = 1.55e-18 cm^2 is not reproduced (1.19e-18 with n0 = 1.45; source notes). couairon_2005 uses 1e-14 s."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_atom_density"
+material = "SiO2"
+table = "text"
+points = [["1", "", "2.1e21"]]
+quantity = "atom_density"
+unit = "cm-3"
+abscissa = "none"
+use = "check"
+reproduced_from = ["H. Ward and L. Berge, Phys. Rev. Lett. 90, 053901 (2003)"]
+notes = "p. 200: 'The critical plasma density rho_c, and the background atom density, rho_at = 2.1 x 10^21 cm^-3, are in the ratio rho_at/rho_c ~ 12 [18]'. Printed 2.1e21; corrected to 2.1e22 by the erratum (the stated ratio 12)."
+[datasets.parameters]
+counts = "atoms"
+assumed = true
+
+[[errata]]
+dataset = "model_atom_density"
+row = "1"
+column = "value"
+printed = "2.1e21"
+corrected = "2.1e22"
+reason = "The paper states that rho_at and the critical plasma density are 'in the ratio rho_at/rho_c ~ 12' (p. 200); with the printed 2.1 x 10^21 cm^-3 the ratio is 1.2. The power of ten is misprinted."
+evidence = "rho_c = eps0 m_e omega0^2/e^2 = 1.742e21 cm^-3 at 800 nm (computed 2026-09-27), so the stated ratio of 12 gives rho_at = 2.1e22 cm^-3 (2.1e22/1.742e21 = 12.06); couairon_2005, the model of the reference the paper takes its inputs from (Sudrie, Couairon et al.), prints 'rho_at = 2.1 x 10^22 cm^-3, the background atom density' (p. 125435-3); fused silica's molecular density is 2.2e22 cm^-3 (2.2 g/cm^3, 60.08 g/mol)."
+
+[[formulas]]
+id = "rate_equation"
+material = "SiO2"
+equation = "Eq. (2), p. 200, with the inputs of p. 200"
+printed = "\\frac{\\partial \\rho}{\\partial \\xi} = \\frac{\\sigma}{n_0^2 E_g} \\rho |\\varepsilon|^2 + \\sigma_K \\rho_{at} |\\varepsilon|^{2K}, \\quad \\sigma = \\frac{k e^2 \\tau_c}{\\omega_0 m_e \\epsilon_0 (1 + (\\omega_0 \\tau_c)^2)}"
+variable = "rho: conduction-electron density (cm^-3); |eps|^2: intensity (W/cm^2); xi = t - z/v_g; K = 6; k = n0 omega0/c"
+range = "800 nm, 240 fs - 2.5 ps; no recombination"
+coefficients = { sigma = "1.55e-18 cm^2", E_g = "9 eV", K = "6", sigma_K = "9.8e-70 s^-1 cm^12 W^-6", tau_c = "2.33e-14 s", rho_at = "2.1e21 cm^-3", rho_0 = "1.0e8 cm^-3" }
+check = "rho_at/rho_c ~ 12 as stated requires rho_at = 2.1e22 cm^-3 (rho_c = 1.742e21 cm^-3 at 800 nm; the printed 2.1e21 gives 1.2; erratum on the dataset). sigma from its formula with tau_c = 2.33e-14 s and n0 = 1.45 is 1.19e-18 cm^2, not the printed 1.55e-18 (computed 2026-09-27)."
+notes = "The avalanche term 'comes from Drude model'; the threshold criterion is a density rho_th chosen per focusing (1.45e19 and 6.11e19 cm^-3; source notes). rho_at is corrected as on the dataset model_atom_density."
+
+[[formulas.corrections]]
+term = "rho_at"
+printed = "2.1e21 cm^-3"
+corrected = "2.1e22 cm^-3"
+reason = "The paper states rho_at/rho_c ~ 12 (p. 200); the printed 2.1 x 10^21 cm^-3 gives 1.2."
+evidence = "rho_c = 1.742e21 cm^-3 at 800 nm (computed 2026-09-27), 2.1e22/rho_c = 12.06; couairon_2005 prints rho_at = 2.1 x 10^22 cm^-3 for the same model inputs."
+

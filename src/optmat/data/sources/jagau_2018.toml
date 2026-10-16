@@ -1,0 +1,995 @@
+citation = "T.-C. Jagau, \"Coupled-cluster treatment of molecular strong-field ionization\", J. Chem. Phys. 148, 204102 (2018)"
+doi = "10.1063/1.5028179"
+library = "Jagau_2018_CoupledClusterTreatment"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field (Stark) resonances of molecules from Gaussian basis sets whose \
+diffuse functions have complex-scaled exponents ('complex basis functions', an \
+approximation to exterior complex scaling), with Hartree-Fock (HF) and coupled \
+cluster with singles and doubles (CCSD; full CI for the two-electron He and H2), in a \
+development version of Q-Chem 5.0 (pp. 2-3). The ground state in the field becomes a \
+resonance of complex energy; Gamma, its imaginary part times -2, is the ionisation \
+rate of the molecule (all electrons, fixed nuclei at the structures of Table S1). \
+The field-free energy's spurious imaginary part is removed (Eq. (2)), and Gamma is \
+taken at the scaling angle where the energy is stationary (typically 10-25 degrees). \
+Bases: cc-pVQZ plus the diffuse functions of aug-cc-pVQZ and even-tempered s, p, d, f \
+shells (Table S1), 188 (H2) to 312 (CH4) functions. 1s orbitals are frozen in the \
+correlated calculations of CO, CH4 and O2 (the captions of Tables S6, S8, S9, S10)."""
+notes = """Main text pp. 1-10 (J. Chem. Phys. 148, 204102); supplementary material \
+(supplement_01) pp. 1-16, which gives 'numerical results corresponding to Figs. 1-6' \
+(p. 10 of the article). Identity checked against the article's first page and the \
+supplement's title (2026-09-29): single author Thomas-C. Jagau.
+
+EXTRACTED (tools/extract/jagau_2018.py), the rates Gamma (au) against F (au):
+- Table S3 (SM p. 4, tbl_f34ab4e8be6f): H2 at R(HH) = 0.74 A (Table S1), field \
+parallel (0 deg) and perpendicular (90 deg), full CI and HF in the standard basis \
+aug-cc-pVQZ+3s3p3d3f. The two other bases and 'Ref. 4' (explicitly correlated rates of \
+the literature, reproduced) are not taken.
+- Table S6 (SM p. 7, tbl_aef780ef04ac): CO at R(CO) = 1.128 A, HF and CCSD at 13 angles \
+phi and F = 0.06 and 0.09. phi = 0 deg is 'the field pointing from C to O'; \
+majety_2015's CO angle 0 deg is the field from O to C, so phi = 180 deg - theta(Majety).
+- Table S8 (SM p. 9, tbl_b453fabca2b8): CH4 at R(CH) = 1.087 A, HF and CCSD in three \
+orientations: 'A - along a CH bond towards the hydrogen atom', 'B - along a CH bond \
+towards the carbon atom', 'C - bisecting the angle between two CH bonds'.
+- Table S9 (SM p. 10, tbl_13bba2b740f3): O2 (triplet ground state) at R(OO) = 1.210 A, \
+HF and CCSD, parallel and perpendicular, F = 0.04 to 0.16.
+- Table S10 (SM p. 10, tbl_9352914b0c27): O2 at phi = 0, 15, 30, 40, 45, 50, 60, 75, 90 \
+deg and F = 0.06 and 0.10; its 0 and 90 deg rows repeat Table S9's and are taken from \
+Table S9 only.
+Every rate cell was checked against the table images (2026-09-29). A dash (no \
+resonance found at that level) is not a value.
+
+NOT EXTRACTED: Table S1 (structures and bases; quoted above); Table S2 (He, the \
+calibration of the method: complex basis functions overestimate the explicitly \
+complex-scaled rates by about 5 % at F = 0.14 to 0.45, p. 4 of the article, and by more \
+at lower fields: 0.000013 against 0.000032 at F = 0.12); Tables S4, S5 (H2 against the \
+bond length); Table S7 (H2O, not an optmat gas); Tables S11 onward (moments of the \
+charge distribution); the Stark shifts.
+
+RELIABILITY, as the paper states it (p. 4): 'reliable calculations in a complex-scaled \
+basis require somewhat larger Gamma values of at least ~1e-5 a.u.'; 'In the low-field \
+limit, ... Gamma itself becomes very small and its dependence on the scaling angle \
+theta masks the effect of the field.' Hence the excluded rows: O2's CCSD rate at F = \
+0.04 (0.000007), below 1e-5; and CH4 at F = 0.04 in all orientations, whose rates \
+(0.000042 to 0.000122) rise to F = 0.06 by a factor 7 to 14 where a tunnelling rate \
+of CH4 rises by some 400 (computed 2026-09-29 with the rate of TC-698): the low-field \
+limit the paper describes, not a rate.
+
+COMPARISONS the paper prints: H2 parallel at R = 0.74 A agrees with explicitly \
+correlated rates within 3 % at F = 0.06-0.14 (p. 5; Table S3's 'Ref. 4'). CO against \
+haCC(6) of majety_2015: 'At F = 0.06 a.u., ... haCC(6) yields Gamma values that are \
+consistently larger (4-8.10-4 a.u., 7 %-15 %). At F = 0.09 a.u., CCSD and haCC(6) agree \
+very well (1.10-4 a.u., 2 %-3 %) when the electron leaves toward the O atom (180 \
+deg), but the deviation grows up to 0.002 a.u. (16 %) at 0 deg' (p. 6); the printed \
+'4-8.10-4' does not fit the tables (majety_2015's rates at F = 0.06 are 1.54e-4 to \
+7.51e-4, so 7-15 % of them is 1e-5 to 1e-4) and is read as a misprint of 10-5. The (T) \
+correction raises CO's Gamma by about 20 % at F = 0.06 (p. 6). O2: 'HF underestimates \
+Gamma by a factor 3-20 at F = 0.06'; CCSD gives Gamma_par/Gamma_perp = 1.2-1.5 at all \
+fields (p. 7). CH4: HF is low by a factor of about 2 at F = 0.06 and by 10-20 % at \
+0.12 (p. 9). Ionisation energies from EOM-IP-CCSD, field-free: CO 14.23 eV, O2 12.37 \
+eV, CH4 14.43 eV (pp. 6-9)."""
+
+[[datasets]]
+id = "tableS3_fci_H2_0deg"
+material = "H2"
+file = "H2/jagau_2018__tableS3_fci_H2_0deg.csv"
+table = "tbl_f34ab4e8be6f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S3 (SM p. 4), column Gamma, full CI: H2 at R(HH) = 0.74 A, parallel (the standard basis); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full CI/aug-cc-pVQZ+3s3p3d3f, complex basis functions"
+angle_deg = 0
+
+[[datasets]]
+id = "tableS3_hf_H2_0deg"
+material = "H2"
+file = "H2/jagau_2018__tableS3_hf_H2_0deg.csv"
+table = "tbl_f34ab4e8be6f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S3 (SM p. 4), column Gamma, HF: H2 at R(HH) = 0.74 A, parallel (the standard basis); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 0
+
+[[datasets]]
+id = "tableS3_fci_H2_90deg"
+material = "H2"
+file = "H2/jagau_2018__tableS3_fci_H2_90deg.csv"
+table = "tbl_f34ab4e8be6f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S3 (SM p. 4), column Gamma, full CI: H2 at R(HH) = 0.74 A, perpendicular (the standard basis); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full CI/aug-cc-pVQZ+3s3p3d3f, complex basis functions"
+angle_deg = 90
+
+[[datasets]]
+id = "tableS3_hf_H2_90deg"
+material = "H2"
+file = "H2/jagau_2018__tableS3_hf_H2_90deg.csv"
+table = "tbl_f34ab4e8be6f"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S3 (SM p. 4), column Gamma, HF: H2 at R(HH) = 0.74 A, perpendicular (the standard basis); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 90
+
+[[datasets]]
+id = "tableS6_hf_CO_0deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_0deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 0 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 0
+
+[[datasets]]
+id = "tableS6_ccsd_CO_0deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_0deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 0 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 0
+
+[[datasets]]
+id = "tableS6_hf_CO_15deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_15deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 15 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 15
+
+[[datasets]]
+id = "tableS6_ccsd_CO_15deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_15deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 15 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 15
+
+[[datasets]]
+id = "tableS6_hf_CO_30deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_30deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 30 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 30
+
+[[datasets]]
+id = "tableS6_ccsd_CO_30deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_30deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 30 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 30
+
+[[datasets]]
+id = "tableS6_hf_CO_45deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_45deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 45 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 45
+
+[[datasets]]
+id = "tableS6_ccsd_CO_45deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_45deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 45 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 45
+
+[[datasets]]
+id = "tableS6_hf_CO_60deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_60deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 60 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 60
+
+[[datasets]]
+id = "tableS6_ccsd_CO_60deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_60deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 60 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 60
+
+[[datasets]]
+id = "tableS6_hf_CO_75deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_75deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 75 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 75
+
+[[datasets]]
+id = "tableS6_ccsd_CO_75deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_75deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 75 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 75
+
+[[datasets]]
+id = "tableS6_hf_CO_90deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_90deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 90 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 90
+
+[[datasets]]
+id = "tableS6_ccsd_CO_90deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_90deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 90 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 90
+
+[[datasets]]
+id = "tableS6_hf_CO_105deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_105deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 105 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 105
+
+[[datasets]]
+id = "tableS6_ccsd_CO_105deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_105deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 105 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 105
+
+[[datasets]]
+id = "tableS6_hf_CO_120deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_120deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 120 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 120
+
+[[datasets]]
+id = "tableS6_ccsd_CO_120deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_120deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 120 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 120
+
+[[datasets]]
+id = "tableS6_hf_CO_135deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_135deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 135 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 135
+
+[[datasets]]
+id = "tableS6_ccsd_CO_135deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_135deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 135 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 135
+
+[[datasets]]
+id = "tableS6_hf_CO_150deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_150deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 150 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 150
+
+[[datasets]]
+id = "tableS6_ccsd_CO_150deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_150deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 150 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 150
+
+[[datasets]]
+id = "tableS6_hf_CO_165deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_165deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 165 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 165
+
+[[datasets]]
+id = "tableS6_ccsd_CO_165deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_165deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 165 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 165
+
+[[datasets]]
+id = "tableS6_hf_CO_180deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_hf_CO_180deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S6 (SM p. 7), column Gamma, HF: CO, phi = 180 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 180
+
+[[datasets]]
+id = "tableS6_ccsd_CO_180deg"
+material = "CO"
+file = "CO/jagau_2018__tableS6_ccsd_CO_180deg.csv"
+table = "tbl_aef780ef04ac"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S6 (SM p. 7), column Gamma, CCSD: CO, phi = 180 deg between the axis and the field (0 deg: the field from C to O, majety_2015's 180 deg); the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.09. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 180
+
+[[datasets]]
+id = "tableS8_hf_CH4_A"
+material = "CH4"
+file = "CH4/jagau_2018__tableS8_hf_CH4_A.csv"
+table = "tbl_b453fabca2b8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+excluded_rows = { "0.04" = "the low-field limit of the method (p. 4 of the article): the rate rises to F = 0.06 by a factor 7 to 14 where a tunnelling rate rises by some 400; not a rate" }
+notes = "Table S8 (SM p. 9), column Gamma, HF: CH4, orientation A: along a CH bond, towards the hydrogen atom; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+orientation = "A: along a CH bond, towards the hydrogen atom"
+
+[[datasets]]
+id = "tableS8_ccsd_CH4_A"
+material = "CH4"
+file = "CH4/jagau_2018__tableS8_ccsd_CH4_A.csv"
+table = "tbl_b453fabca2b8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.04" = "the low-field limit of the method (p. 4 of the article): the rate rises to F = 0.06 by a factor 7 to 14 where a tunnelling rate rises by some 400; not a rate" }
+notes = "Table S8 (SM p. 9), column Gamma, CCSD: CH4, orientation A: along a CH bond, towards the hydrogen atom; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+orientation = "A: along a CH bond, towards the hydrogen atom"
+
+[[datasets]]
+id = "tableS8_hf_CH4_B"
+material = "CH4"
+file = "CH4/jagau_2018__tableS8_hf_CH4_B.csv"
+table = "tbl_b453fabca2b8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+excluded_rows = { "0.04" = "the low-field limit of the method (p. 4 of the article): the rate rises to F = 0.06 by a factor 7 to 14 where a tunnelling rate rises by some 400; not a rate" }
+notes = "Table S8 (SM p. 9), column Gamma, HF: CH4, orientation B: along a CH bond, towards the carbon atom; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+orientation = "B: along a CH bond, towards the carbon atom"
+
+[[datasets]]
+id = "tableS8_ccsd_CH4_B"
+material = "CH4"
+file = "CH4/jagau_2018__tableS8_ccsd_CH4_B.csv"
+table = "tbl_b453fabca2b8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.04" = "the low-field limit of the method (p. 4 of the article): the rate rises to F = 0.06 by a factor 7 to 14 where a tunnelling rate rises by some 400; not a rate" }
+notes = "Table S8 (SM p. 9), column Gamma, CCSD: CH4, orientation B: along a CH bond, towards the carbon atom; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+orientation = "B: along a CH bond, towards the carbon atom"
+
+[[datasets]]
+id = "tableS8_hf_CH4_C"
+material = "CH4"
+file = "CH4/jagau_2018__tableS8_hf_CH4_C.csv"
+table = "tbl_b453fabca2b8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+excluded_rows = { "0.04" = "the low-field limit of the method (p. 4 of the article): the rate rises to F = 0.06 by a factor 7 to 14 where a tunnelling rate rises by some 400; not a rate" }
+notes = "Table S8 (SM p. 9), column Gamma, HF: CH4, orientation C: bisecting the angle between two CH bonds; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+orientation = "C: bisecting the angle between two CH bonds"
+
+[[datasets]]
+id = "tableS8_ccsd_CH4_C"
+material = "CH4"
+file = "CH4/jagau_2018__tableS8_ccsd_CH4_C.csv"
+table = "tbl_b453fabca2b8"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.04" = "the low-field limit of the method (p. 4 of the article): the rate rises to F = 0.06 by a factor 7 to 14 where a tunnelling rate rises by some 400; not a rate" }
+notes = "Table S8 (SM p. 9), column Gamma, CCSD: CH4, orientation C: bisecting the angle between two CH bonds; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+orientation = "C: bisecting the angle between two CH bonds"
+
+[[datasets]]
+id = "tableS9_ccsd_O2_0deg"
+material = "O2"
+file = "O2/jagau_2018__tableS9_ccsd_O2_0deg.csv"
+table = "tbl_13bba2b740f3"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+excluded_rows = { "0.04" = "0.000007: below the ~1e-5 a.u. the method needs (p. 4 of the article)" }
+notes = "Table S9 (SM p. 10), column Gamma, CCSD: O2, phi = 0 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 0
+
+[[datasets]]
+id = "tableS9_hf_O2_0deg"
+material = "O2"
+file = "O2/jagau_2018__tableS9_hf_O2_0deg.csv"
+table = "tbl_13bba2b740f3"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S9 (SM p. 10), column Gamma, HF: O2, phi = 0 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14, 0.16. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 0
+
+[[datasets]]
+id = "tableS9_hf_O2_90deg"
+material = "O2"
+file = "O2/jagau_2018__tableS9_hf_O2_90deg.csv"
+table = "tbl_13bba2b740f3"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S9 (SM p. 10), column Gamma, HF: O2, phi = 90 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14, 0.16. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 90
+
+[[datasets]]
+id = "tableS9_ccsd_O2_90deg"
+material = "O2"
+file = "O2/jagau_2018__tableS9_ccsd_O2_90deg.csv"
+table = "tbl_13bba2b740f3"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S9 (SM p. 10), column Gamma, CCSD: O2, phi = 90 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.08, 0.10, 0.12, 0.14, 0.16. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 90
+
+[[datasets]]
+id = "tableS10_hf_O2_15deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_15deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 15 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 15
+
+[[datasets]]
+id = "tableS10_ccsd_O2_15deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_15deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 15 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 15
+
+[[datasets]]
+id = "tableS10_hf_O2_30deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_30deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 30 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 30
+
+[[datasets]]
+id = "tableS10_ccsd_O2_30deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_30deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 30 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 30
+
+[[datasets]]
+id = "tableS10_hf_O2_40deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_40deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 40 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 40
+
+[[datasets]]
+id = "tableS10_ccsd_O2_40deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_40deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 40 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 40
+
+[[datasets]]
+id = "tableS10_hf_O2_45deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_45deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 45 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 45
+
+[[datasets]]
+id = "tableS10_ccsd_O2_45deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_45deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 45 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 45
+
+[[datasets]]
+id = "tableS10_hf_O2_50deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_50deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 50 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 50
+
+[[datasets]]
+id = "tableS10_ccsd_O2_50deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_50deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 50 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 50
+
+[[datasets]]
+id = "tableS10_hf_O2_60deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_60deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 60 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 60
+
+[[datasets]]
+id = "tableS10_ccsd_O2_60deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_60deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 60 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 60
+
+[[datasets]]
+id = "tableS10_hf_O2_75deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_hf_O2_75deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table S10 (SM p. 10), column Gamma, HF: O2, phi = 75 deg between the axis and the field; without electron correlation: a step of the paper's study, not a reference. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "HF/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f"
+angle_deg = 75
+
+[[datasets]]
+id = "tableS10_ccsd_O2_75deg"
+material = "O2"
+file = "O2/jagau_2018__tableS10_ccsd_O2_75deg.csv"
+table = "tbl_9352914b0c27"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table S10 (SM p. 10), column Gamma, CCSD: O2, phi = 75 deg between the axis and the field; the correlated rate: a reference of the molecule's static rate. Rate of the molecule (all electrons, fixed nuclei), au, against F in au: 0.06, 0.10. No uncertainty is stated; see the record's notes for the method's reliability."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "CCSD/cc-pVQZ+complex-scaled aug-cc-pVQZ+3s3p3d3f, 1s frozen"
+angle_deg = 75

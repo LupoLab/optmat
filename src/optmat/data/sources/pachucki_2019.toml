@@ -1,0 +1,71 @@
+citation = "K. Pachucki and M. Puchalski, \"Refractive index and generalized polarizability\", Phys. Rev. A 99, 041803(R) (2019)"
+doi = "10.1103/PhysRevA.99.041803"
+library = "Pachucki_2019_RefractiveIndexGeneralized"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Theory (QED of a dilute medium): the refractive index from the pole of the \
+photon propagator in a gas of atoms, to first order in the density, with the forward \
+off-shell scattering amplitude t^ij = 4 pi [omega^2 alpha(omega, k) delta^ij + k^2 \
+chi(omega, k) (delta^ij - k^i k^j/k^2)] defining the generalized electric and magnetic \
+polarizabilities (Eq. 4); n^2 = 1 + 4 pi rho [alpha(omega, omega) + chi(omega, omega)] \
+on shell (Eqs. 10-12). The multipole expansion of the atom-field coupling to cubic \
+terms in a0/lambda (Eq. 2) gives the retardation correction (electric quadrupole, \
+electric dipole-octupole, and the magnetic-quadrupole and orbital terms), Eqs. 20-29, \
+for the helium atom with infinite nuclear mass and nonrelativistic wave functions; the \
+static second-order expectation values alpha_0 ... alpha_3 are computed for He (Table \
+I). 4 pages."""
+notes = """Page numbers are the article pages 041803-1 to -4 (= pdf pages). Theoretical \
+units hbar = c = eps0 = 1 in Secs. II-V; atomic units in Eqs. 28-29 and Table I.
+
+THE RESULT (Eqs. 28-30, p. 3): for small real frequencies the retardation adds to the \
+refractive polarizability alpha + chi the term [alpha + chi]_ret = alpha_nrel (a0 k)^2 \
+kappa, with alpha_nrel = (2/3) alpha_0(0) the nonrelativistic static polarizability and \
+kappa = [alpha_1(0)/20 - 2 alpha_2(0)/45 + alpha_3(0)/9]/alpha_nrel, a dimensionless \
+coefficient; kappa = -0.507 for He, so that delta_ret n/(n - 1) = (2 pi a0/lambda)^2 \
+kappa = -1.40e-7 at 633 nm (Eq. 30) and -1.98e-7 at 532 nm (p. 4). In atomic units, \
+with k = alpha_em omega, the correction is kappa alpha_nrel alpha_em^2 omega^2 = \
+-3.7341e-5 omega^2 (a0^3, omega in hartree; computed here): a correction of -24.2 ppm to \
+the omega^2 coefficient S(-4) of the refractive polarizability. The authors call it \
+'larger than the previously calculated omega^2 term in the expansion of the \
+relativistic polarizability', delta n = -1.24e-7 (n - 1) at 633 nm (puchalski_2016's \
+alpha_2^(20) + alpha_2^(21)). Only t_ret is new: the relativistic Breit-Pauli \
+correction and the diamagnetic term (the magnetizability chi_0, Eq. 19) were in \
+puchalski_2016 (p. 3). No uncertainty is stated for kappa; Table I prints eight \
+significant figures.
+
+TABLE I (p. 3, 'Expectation values in a.u. in the helium atom'; read on the image: the \
+extracted cells merge the last two rows into one garbled cell, '--04..54016796562945', \
+the interleaved digits of -4.4176694 and -0.5069525): alpha_0(0) = 2.0747883, \
+alpha_1(0) = 4.0751385, alpha_2(0) = 9.3176426, alpha_3(0) = -4.4176694, kappa = \
+-0.5069525. alpha_0 is defined without the 1/3 of the isotropic average (Eq. 21): \
+(2/3) alpha_0(0) = 1.3831922 a0^3 is the infinite-mass nonrelativistic static \
+polarizability (liu_1997: 1.38319194). alpha_1 (quadrupole-quadrupole, Eq. 22), \
+alpha_2 (dipole-r^2 dipole, Eq. 23), alpha_3 (dipole-orbital, Eq. 24) and alpha_4 \
+(monopole r^2, Eq. 25; not printed: it cancels in alpha + chi on shell) have no \
+quantity in the package; they are recorded as the coefficients of the formula \
+'retardation', not as data.
+
+LIMITS: the derivation is to first order in the atomic density ('we limit ourselves \
+only to terms which are linear in the atomic density', p. 2); the authors could not \
+derive the Clausius-Mossotti analogue. The expansion uses the static alpha_i(0), valid \
+for photon frequencies much below the excitation energy (p. 1); the omega^4 terms are \
+not given. For a general field (not a plane wave) the k dependence makes the D-E \
+relation nonlocal (Eq. 16), which the authors suggest may matter for boundary \
+conditions near metal walls (p. 2); not relevant to propagation in a bulk gas.
+
+Referred to by puchalski_2020 (Ref. 20: the index depends 'at the 10^-7 level' on \
+these terms), rourke_2021 (A_R_He: -0.140 ppm at 633 nm) and yang_2025 (puchalski_He, \
+he_A2: the theoretical A_2 = 1.332465(5)e-4 cm^3/mol includes it)."""
+
+[[formulas]]
+id = "retardation"
+material = "He"
+equation = "Eqs. (29)-(30), p. 3, with Table I (p. 3)"
+printed = "[alpha + chi]_ret = a0^5 k^2 [alpha_1(0)/20 - 2 alpha_2(0)/45 + alpha_3(0)/9] = alpha_nrel (a0 k)^2 kappa; delta_ret n/(n - 1) = (2 pi a0/lambda)^2 kappa = -1.40e-7 (lambda = 633 nm); kappa = -0.5069525"
+variable = "k = 2 pi/lambda (lambda the vacuum wavelength; a0 k = alpha_em omega with omega in hartree); a0 = 0.529e-10 m in Eq. (30); alpha_nrel = (2/3) alpha_0(0) in a0^3"
+state = "none (per atom; the relative correction to n - 1 holds at any density to first order)"
+density = "none"
+range = "Photon frequencies well below the first excitation of He (58.4 nm; the paper evaluates 633 and 532 nm); first order in the density; the omega^4 terms (the frequency dependence of alpha_1 ... alpha_3) are not given"
+coefficients = { alpha_0 = "2.0747883", alpha_1 = "4.0751385", alpha_2 = "9.3176426", alpha_3 = "-4.4176694", kappa = "-0.5069525" }
+check = "From the printed alpha_i(0): alpha_nrel = 1.3831922, kappa = (0.20375693 - 0.41411745 - 0.49085216)/1.3831922 = -0.50695245 (printed -0.5069525). Eq. (30) with a0 = 0.529e-10 m: -1.3978e-7 at 633 nm (printed -1.40e-7) and -1.9789e-7 at 532 nm (printed -1.98e-7, p. 4); with CODATA a0 -1.3987e-7 and -1.9802e-7. The comparison term: puchalski_2016's (alpha_2^(20) + alpha_2^(21)) omega^2/alpha(633 nm) = -33.20976e-6 x 0.0051811/1.391812 = -1.236e-7 (printed -1.24e-7). Computed 2026-09-29."
+notes = "The correction to the refractive polarizability as a coefficient of omega^2 (atomic units, computed here): kappa alpha_nrel alpha_em^2 = -3.73405e-5 a0^3 per hartree^2, -24.2 ppm of S(-4) = 1.5432395. It lowers n - 1 by 0.087 ppm at 800 nm, 0.140 ppm at 633 nm and 0.196 ppm at 532 nm; since it is all in the omega^2 term, it lowers the group-velocity dispersion by 23.9 ppm at 800 nm and 23.6 ppm at 633 nm (against fit/He, 2026-09-29). Not a form: the package has no quantity or correction part for it (a polarizability_correction part 'retardation', or a fixed omega^2 term in the fit configuration, would take it)."

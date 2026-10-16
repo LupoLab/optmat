@@ -1,0 +1,95 @@
+citation = "J. Zhu, W. Guo, Y. Wang and L. Wang, \"Dissociation of NO2 in femtosecond intense fields\", Chin. Sci. Bull. 51, 1185 (2006)"
+doi = "10.1007/s11434-006-1185-2"
+library = "Zhu_2006_DissociationNO2Femtosecond"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Time-of-flight mass spectrometry of NO2 (2 % in Ar, pulsed valve, 0.5 mm \
+orifice) in a home-made solid-state femtosecond laser at 810 nm (~50 nm bandwidth, \
+about 60 fs by single-shot autocorrelation, 20 Hz) and its second (405 nm) and third \
+(270 nm) harmonics from BBO, focused by a 30 cm fused-quartz lens; intensity varied by \
+neutral-density attenuators; 40 cm field-free flight, two-stage microchannel plates, \
+each spectrum averaged over 532 shots (p. 1186)."""
+notes = """Journal pp. 1185-1190 = pdf pages 1-6. Identity checked on pdf page 1 (title, \
+authors, Chin. Sci. Bull. 51(10) 1185-1190, DOI).
+
+INTENSITIES (p. 1186): 'estimated to vary from 1.12 x 10^15 to 2.48 x 10^15 W/cm2 for \
+800 nm, from 1.43 x 10^15 to 3.86 x 10^15 W/cm2 for the SHG light and from 0.11 x 10^14 \
+to 1.62 x 10^14 W/cm2 for THG'. How they were estimated is not stated; the Keldysh \
+parameters quoted (0.18-0.26 at 810 nm, 0.28-0.47 at 405 nm, 2.1-8.0 at 270 nm) follow \
+from them. Doubt: no calibration or uncertainty is given, so the ranges are nominal; \
+which intensity each typical spectrum of Fig. 1 had is not stated. The pulse durations \
+at 405 and 270 nm are not stated ('kept quite similarly', p. 1186).
+
+POLARISATION (doubt, TC-967): 'The laser polarizations of 810, 405 and 270 nm are set \
+to be perpendicular to the detector' (p. 1186), but 'the polarizations of employed laser \
+are parallel to the time of flight axis' (p. 1189). Linear in both statements.
+
+TEXT VALUES (pp. 1186-1187; TC-967): at 810 nm 'the parent ion is about three times \
+stronger than fragment ion NO+ while no other fragment ion can be detected'; at 405 nm \
+'NO+ becomes about threefold stronger than the parent ion, while tiny O+ is observed'; \
+at 270 nm 'NO+ becomes almost equal to that of NO2+, while further fragment ions, N+ and \
+O+, increase remarkably' (no number; not taken). These describe the 'typical' spectra \
+of Fig. 1, intensity not stated for each. The NO2+/NO+ ratios are 'independent of the \
+laser intensity' at each wavelength (abstract; Fig. 3).
+
+SLOPES (notes only; log-log slopes of the yields against intensity, Fig. 2): 810 nm NO2+ \
+5.0, NO+ 4.8, N+ and O+ 'about 11' ('twice of those of NO2+ and NO+'); 405 nm NO2+ 3.5, \
+NO+ 3.2, O+ and N+ close to those; 270 nm NO2+ and NO+ 1 (pp. 1187-1188). No quantity \
+holds a yield's slope. The paper reads the equal slopes of NO2+ and NO+ as NO+ coming \
+from the field-induced dissociation of NO2+ (not neutral dissociation followed by \
+ionisation, as Singhal et al. proposed), and the absence of double peaks as 'little \
+kinetic energy released' in forming N+, O+ and NO+ (p. 1189). The 405 nm photon reaches \
+the NO2 A 2B2 state (conical intersection with X 2A1, below 397.9 nm).
+
+QUOTED (not taken): ionisation potentials NO2 9.6 eV, NO 9.3 eV; appearance potentials \
+of NO+ (12.3 eV) and O+ (16.8 eV) from neutral NO2 (pp. 1187-1188).
+
+FIGURES FOR LATER (TC-967; raster, embedded images): Fig. 3, NO2+/NO+ against the \
+Keldysh parameter at the three wavelengths (the ratios this paper is about); Fig. 2, \
+the ion yields against intensity, log-log; Fig. 1, the mass spectra."""
+
+[[datasets]]
+id = "parent_over_NOplus_810"
+material = "NO2"
+table = "text"
+quantity = "fragmentation_branching_ratio"
+unit = "1"
+abscissa = "none"
+use = "check"
+points = [["810", "", "3"]]
+notes = """p. 1186 (TC-967): at 810 nm 'the parent ion is about three times stronger than \
+fragment ion NO+ while no other fragment ion can be detected', from the typical \
+spectrum of Fig. 1(a); the ratio is independent of intensity over the range (Fig. 3). \
+Printed as 'about three times'; no uncertainty. The channel is the undissociated parent \
+over NO+, as printed (NO+/NO2+ about 1/3)."""
+[datasets.parameters]
+channel = "NO2+ (no dissociation)"
+reference = "NO+ + O"
+excitation = "strong-field pulse"
+wavelength_nm = 810
+pulse_fs = 60
+polarization = "linear (perpendicular or parallel to the TOF axis: the paper says both)"
+detection_correction = "none stated"
+intensity_range = "1.12e15-2.48e15 W/cm2, estimated (p. 1186); the spectrum's own intensity not stated"
+
+[[datasets]]
+id = "NOplus_over_parent_405"
+material = "NO2"
+table = "text"
+quantity = "fragmentation_branching_ratio"
+unit = "1"
+abscissa = "none"
+use = "check"
+points = [["405", "", "3"]]
+notes = """p. 1187 (TC-967): at 405 nm 'NO+ becomes about threefold stronger than the \
+parent ion, while tiny O+ is observed' (Fig. 1(b)); NO+ 'always dominate[s] the mass \
+spectra' at 405 nm (p. 1188). Printed as 'about threefold'; no uncertainty. The pulse \
+duration at 405 nm is not stated (similar to 810 nm's 60 fs, p. 1186)."""
+[datasets.parameters]
+channel = "NO+ + O"
+reference = "NO2+ (the parent ion)"
+excitation = "strong-field pulse"
+wavelength_nm = 405
+polarization = "linear (perpendicular or parallel to the TOF axis: the paper says both)"
+detection_correction = "none stated"
+intensity_range = "1.43e15-3.86e15 W/cm2, estimated (p. 1186); the spectrum's own intensity not stated"

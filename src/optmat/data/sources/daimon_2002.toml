@@ -1,0 +1,194 @@
+citation = "M. Daimon and A. Masumura, \"High-accuracy measurements of the refractive index and its temperature coefficient of calcium fluoride in a wide wavelength range from 138 to 2326 nm\", Appl. Opt. 41, 5275 (2002)"
+doi = "10.1364/ao.41.005275"
+library = "Daimon_2002_HighAccuracyMeasurements"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Minimum deviation (double minimum-deviation angle, Eq. (1)) on one prism of \
+synthetic single-crystal CaF2 ('not made for a dedicated application for \
+photolithography at a wavelength of 157 nm'; apex 65 degrees, faces 25 mm high and 40 \
+mm wide, flatness about lambda/5), on a Moller-Wedel goniometer-spectrometer (model 1 \
+UV-VIS-IR) with mirrors M1-M5 recoated for use below 150 nm (p. 5276). 69 wavelengths, \
+137.9-2326 nm: a Pt-Ne hollow-cathode lamp below 283 nm (line wavelengths from Reader et \
+al. and Sansonetti et al.), Hg, Cd, He and Cs lamps above 297 nm; photomultiplier \
+(Cs-Te) below 283 nm, UV-enhanced CCD 297-1014 nm, cooled PbS above 1129 nm. The light \
+path was purged with nitrogen (oxygen 20 ppm or less), the prism held at 20 +- 0.1 and \
+25 +- 0.1 degrees C by the room temperature (K-type thermocouple; quartz thermometers \
+for the junction and the nitrogen), pressure by a silicon-oscillator barometer (pp. \
+5276-5277). Apex angle the mean of 8 readings, minimum deviation of 3."""
+notes = """Journal pages 5275-5281 are pdf pages 1-7. Identity checked against the first \
+page (the PDF prints no DOI; the library found it by title).
+
+MEDIUM (the key fact about this paper). The index is relative to NITROGEN, not air and \
+not vacuum: 'we applied the minimum-deviation method to determine the relative \
+refractive index of CaF2 ... in a nitrogen environment' (p. 5275); 'We used the \
+refractive index of nitrogen given in Refs. 11-13 [Koch 1913; Peck and Khanna 1966; \
+Griesmann and Burnett 1999] to convert measured values of the relative refractive index \
+to those values, n(lambda, t), at 1013.25 hPa' (p. 5276); Table 1's heading, 'Relative \
+Refractive Index in Nitrogen (1013.25 hPa)'. The nitrogen is at the prism temperature: \
+Figs. 3 and 4 compare 'in nitrogen gas at 25 C and 1013.25 hPa' and 'at 20 C and \
+1013.25 hPa' (pp. 5279-5280). optmat's index_medium (vacuum, air or not stated) cannot \
+say this, so the datasets omit it and state the reference gas in their parameters \
+(reference_gas = N2, its pressure and temperature). The formulas state index_medium \
+= nitrogen, which the formula models take (added at review, TC-545). To make the index absolute, multiply by the index of N2 at \
+1013.25 hPa and the stated temperature: n_N2 - 1 is 2.80e-4 at 500 nm, 2.75e-4 at 1 um \
+and 2.74e-4 at 2 um at 20 C (Peck and Khanna's formula, peck_1966/eq4, recomputed here \
+2026-09-27), 0.5-0.6e-5 above dry air's (Edlen) at the same temperature and pressure. \
+The absolute index is therefore about 4e-4 above the tabulated one (n_rel x 2.75e-4 = \
+3.9e-4 at 1 um). WAVELENGTHS are vacuum wavelengths ('Vacuum Wavelength (nm)', Table 1; \
+'lambda is the wavelength in vacuum ... To convert the wavelength in air to that in \
+vacuum we used Edlen's equation', p. 5276).
+
+dn/dt. Relative (to nitrogen at 1013.25 hPa, at the temperature of the prism), from the \
+indices at t1 near 20 C and t2 near 25 C, Eq. (2) (p. 5276); the indices at exactly 20 \
+and 25 C then follow from Eqs. (3)-(4). Table 1's dn/dt equals (n(25) - n(20))/5 to \
+within the rounding (largest difference 0.02e-6/K, checked 2026-09-27). Being relative \
+to nitrogen whose refractivity falls with temperature at constant pressure (by 0.93e-6/K \
+at 20-25 C and 1 um, peck_1966/eq4), the absolute dn/dT is n_N2 dn_rel/dt + n_rel \
+dn_N2/dt, about 1.3e-6/K below the tabulated relative values (e.g. -11.4e-6/K absolute \
+for the printed -10.06e-6/K at 587.7 nm). Not discussed in the paper, which says that \
+Eq. (6) of Hoffmann et al. for the absolute dn/dT 'is equally applicable to' the \
+relative one (p. 5277).
+
+ACCURACY. Table 1 gives the uncertainty of each index (8-17 x 1e-7 without the \
+wavelength's, up to 21 x 1e-7 with it below 283 nm) and of each dn/dt (0.15-0.43 x \
+1e-6/C); text: 'Without the wavelength uncertainty, the uncertainties in the relative \
+refractive index and in dn_rel/dt are estimated to be 8e-7-17e-7 and 0.15e-6/C-0.43e-6/C, \
+respectively' (p. 5279). The level is not stated. Table 4 (main sources): apex \
+angle 0.2 arcsec, double minimum deviation 0.4 arcsec, temperature 0.05 C, nitrogen \
+pressure 0.1 hPa, wavelength 4-20 x 1e-5 nm (apex angle and wavelength do not affect \
+dn/dt). Standard deviation of the fit residuals 6.1e-7 (20 C) and 5.7e-7 (25 C), and \
+0.130e-6/C for dn/dt (Table 1, last row; abstract).
+
+TABLE 1 RESIDUALS (x 1e-7 for n, x 1e-6/C for dn/dt) are measured minus the Table 2 \
+Sellmeier at the same temperature, and measured minus Eq. (7) with Table 3 for dn/dt; not \
+extracted as data (they are the formulas' checks). Every residual is reproduced (see \
+each formula's check).
+
+COMPARISONS (figures, not digitised). Fig. 3: Malitson's (1963) measured indices and \
+formula, 'measurements in air at 24 C. As there was no value of atmospheric pressure \
+given for those data we assumed that they were corrected to 1013.25 hPa. We converted \
+those data to the values in nitrogen gas at 25 C and compared the result with our \
+dispersion formula at 25 C' (pp. 5279-5280). Fig. 4: the NIST absolute indices near 193 and \
+157 nm (Gupta et al. 1998; Burnett et al. 2000), converted to nitrogen at 20 C. Fig. 5: \
+dn/dt against Malitson's, Gupta's and Burnett's, 'converted ... to those of nitrogen gas' \
+(p. 5280). The figures' axes: Delta n (x 1e-5 or 1e-6) against wavelength.
+
+REFRACTIVEINDEX.INFO (main/CaF2/nk/Daimon-20.yml and Daimon-25.yml, compared \
+2026-09-27): formula 2 with coefficients identical to Table 2 (0.443749998, \
+0.00178027854, ... 8.85319946, 2752.28175 at 20 C; ... 13.0020420, 4039.76541 at 25 C), \
+range 0.138-2.326 um, comment '20 C [25 C], Nitrogen atmosphere'. The pages give the \
+relative index as n with no conversion: used as an absolute index (as solprop's \
+default CaF2 does), it is about 3.9e-4 low."""
+
+[[formulas]]
+id = "sellmeier_20C"
+material = "CaF2"
+form = "n2_sellmeier"
+# The form and the medium were added at review once the formula models could take an
+# index relative to nitrogen (TC-545).
+index_medium = "nitrogen"
+nitrogen_temperature_k = 293.15
+nitrogen_pressure_pa = 101325
+equation = "Eq. (5), p. 5276, with Table 2 (p. 5277), 20 C"
+printed = "n^2(lambda, t) - 1 = sum_{i=1}^{4} A_i lambda^2 / (lambda^2 - lambda_i^2)"
+variable = "lambda: vacuum wavelength in um ('lambda is given in units of micrometers', p. 5276; vacuum, p. 5276)"
+range = "137.9-2326 nm, the 69 wavelengths fitted; 20 C; the index relative to nitrogen at 1013.25 hPa (and 20 C)"
+coefficients = { A1 = "4.43749998 x 10^-1", lambda1_sq = "1.78027854 x 10^-3", A2 = "4.44930066 x 10^-1", lambda2_sq = "7.88536061 x 10^-3", A3 = "1.50133991 x 10^-1", lambda3_sq = "1.24119491 x 10^-2", A4 = "8.85319946", lambda4_sq = "2.75228175 x 10^3" }
+# The shape of n2_sellmeier (B = A_i, C = lambda_i^2 in um^2).
+terms = { B = ["4.43749998e-1", "4.44930066e-1", "1.50133991e-1", "8.85319946"], C = ["1.78027854e-3", "7.88536061e-3", "1.24119491e-2", "2.75228175e3"] }
+range_nm = [137.89572, 2326.05]
+parameters = { temperature_k = 293.15, reference_gas = "N2", reference_gas_pressure_pa = 101325, reference_gas_temperature_k = 293.15 }
+check = "Reproduces Table 1's 20 C residuals (measured minus formula, x 1e-7) at all 69 wavelengths to within 0.95e-7, the rounding of the seven-decimal index and of the integer residual; the rms residual is 6.12e-7 against the printed standard deviation 6.1e-7. Checked 2026-09-27 against the printed coefficients."
+notes = "Four-term Sellmeier, one infrared term and three ultraviolet terms, 'because a three-term dispersion formula could not approximate the true dispersion sufficiently' (p. 5276); eight constants fitted by least squares to n(lambda, 20). The poles are printed as lambda_i^2 (um^2). The formula's index is relative to nitrogen at 1013.25 hPa and 20 C (index_medium nitrogen, TC-545); read as an absolute index it would be about 3.9e-4 too low. Identical to refractiveindex.info main/CaF2/nk/Daimon-20 and to solprop's default CaF2 (which uses it as absolute)."
+
+[[formulas]]
+id = "sellmeier_25C"
+material = "CaF2"
+form = "n2_sellmeier"
+# The form and the medium were added at review once the formula models could take an
+# index relative to nitrogen (TC-545).
+index_medium = "nitrogen"
+nitrogen_temperature_k = 298.15
+nitrogen_pressure_pa = 101325
+equation = "Eq. (5), p. 5276, with Table 2 (p. 5277), 25 C"
+printed = "n^2(lambda, t) - 1 = sum_{i=1}^{4} A_i lambda^2 / (lambda^2 - lambda_i^2)"
+variable = "lambda: vacuum wavelength in um ('lambda is given in units of micrometers', p. 5276; vacuum, p. 5276)"
+range = "137.9-2326 nm, the 69 wavelengths fitted; 25 C; the index relative to nitrogen at 1013.25 hPa (and 25 C)"
+coefficients = { A1 = "4.37387571 x 10^-1", lambda1_sq = "1.73799328 x 10^-3", A2 = "4.49211397 x 10^-1", lambda2_sq = "7.82718648 x 10^-3", A3 = "1.52068715 x 10^-1", lambda3_sq = "1.24086125 x 10^-2", A4 = "1.30020420 x 10^1", lambda4_sq = "4.03976541 x 10^3" }
+terms = { B = ["4.37387571e-1", "4.49211397e-1", "1.52068715e-1", "1.30020420e1"], C = ["1.73799328e-3", "7.82718648e-3", "1.24086125e-2", "4.03976541e3"] }
+range_nm = [137.89572, 2326.05]
+parameters = { temperature_k = 298.15, reference_gas = "N2", reference_gas_pressure_pa = 101325, reference_gas_temperature_k = 298.15 }
+check = "Reproduces Table 1's 25 C residuals at all 69 wavelengths to within 1.04e-7 (the rounding of index and residual); rms residual 5.77e-7 against the printed standard deviation 5.7e-7. Checked 2026-09-27 against the printed coefficients."
+notes = "As sellmeier_20C, fitted to n(lambda, 25). The infrared term differs strongly between the two temperatures (A4 = 8.85 at 20 C, 13.0 at 25 C; lambda4^2 = 2752 and 4040 um^2): the term is weakly determined by data ending at 2.33 um, so the two formulas must not be extrapolated beyond 2.33 um, and their difference is not a dn/dT outside the range. Relative to nitrogen at 1013.25 hPa and 25 C, as sellmeier_20C. Identical to refractiveindex.info main/CaF2/nk/Daimon-25."
+
+[[formulas]]
+id = "dndt"
+material = "CaF2"
+equation = "Eq. (7), p. 5277, with Table 3 (p. 5277)"
+printed = "dn_rel(lambda)/dt = [n^2(lambda) - 1] [D_0 + E_0/(lambda^2 - lambda_0^2)] / [2 n(lambda)]"
+variable = "lambda: vacuum wavelength in um; n(lambda): the relative index at 20 C, n(lambda, 20) ('using n(lambda, 20) as the value of n(lambda)', p. 5277); dn_rel/dt in 1/C"
+range = "137.9-2326 nm; between 20 and 25 C (D, E and lambda_0 'considered constant', p. 5277); relative to nitrogen at 1013.25 hPa"
+coefficients = { D0 = "-2.8422 x 10^-5", E0 = "4.6988 x 10^-7", lambda0_sq = "1.3459 x 10^-2" }
+check = "With n from sellmeier_20C, reproduces Table 1's dn/dt residuals (measured minus Eq. (7), x 1e-6/C) at all 69 wavelengths to within 0.011e-6/C (the rounding of two-decimal values); rms residual 0.130e-6/C, as printed. Checked 2026-09-27 against the printed coefficients."
+notes = "Hoffmann et al.'s form (Proc. SPIE 1327, 219 (1990), Eq. (6)) with D, E and lambda_0 constant over 20-25 C (p. 5277); lambda_0^2 in um^2, units of D_0 and E_0 not printed (1/C and um^2/C by the equation). It gives the relative dn/dt (see the source notes for the absolute one)."
+
+[[datasets]]
+id = "n_20C"
+material = "CaF2"
+file = "CaF2/daimon_2002__n_20C.csv"
+table = "tbl_8ae247914098"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1 (pdf pp. 4-5, both parts: tbl_8ae247914098 and its continuation tbl_b68ea97710c0), 'Relative Refractive Index in Nitrogen (1013.25 hPa)', At 20 C, Measured: 69 vacuum wavelengths, 137.9-2326 nm. The index is relative to nitrogen at 1013.25 hPa and 20 C, not to vacuum or air (see the source notes); it is about 3.9e-4 below the absolute index. Reduced to exactly 20 C from t1 near 20 C by Eq. (3). The sigma column is Table 1's uncertainty, including the wavelength's where printed (below 283 nm); level not stated."
+[datasets.parameters]
+temperature_k = 293.15
+form = "bulk"
+technique = "minimum deviation"
+reference_gas = "N2"
+reference_gas_pressure_pa = 101325
+reference_gas_temperature_k = 293.15
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "n_25C"
+material = "CaF2"
+file = "CaF2/daimon_2002__n_25C.csv"
+table = "tbl_8ae247914098"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1 (both parts), 'Relative Refractive Index in Nitrogen (1013.25 hPa)', At 25 C, Measured: 69 vacuum wavelengths, 137.9-2326 nm. Relative to nitrogen at 1013.25 hPa and 25 C (see the source notes). Reduced to exactly 25 C from t2 near 25 C by Eq. (4). The sigma column is Table 1's uncertainty (one column for both temperatures), including the wavelength's where printed; level not stated."
+[datasets.parameters]
+temperature_k = 298.15
+form = "bulk"
+technique = "minimum deviation"
+reference_gas = "N2"
+reference_gas_pressure_pa = 101325
+reference_gas_temperature_k = 298.15
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dndt"
+material = "CaF2"
+file = "CaF2/daimon_2002__dndt.csv"
+table = "tbl_8ae247914098"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-6
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1 (both parts), 'Relative dn/dt in Nitrogen (1013.25 hPa), (x 10^-6/C)', Measured, with the Uncertainty column as sigma (level not stated): 69 vacuum wavelengths. From the indices near 20 and 25 C by Eq. (2); temperature_k is the midpoint, 22.5 C. RELATIVE to nitrogen at 1013.25 hPa and the prism temperature: the absolute dn/dT is about 1.3e-6/K lower (see the source notes). Negative above 173 nm, positive below."
+[datasets.parameters]
+temperature_k = 295.65
+form = "bulk"
+technique = "minimum deviation"
+reference_gas = "N2"
+reference_gas_pressure_pa = 101325
+[datasets.uncertainty]
+column = true
+level = "not stated"

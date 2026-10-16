@@ -1,0 +1,235 @@
+citation = "M. Lesiuk and B. Jeziorski, Phys. Rev. A 107, 042805 (2023)"
+doi = "10.1103/physreva.107.042805"
+library = "Lesiuk_2023_FirstPrinciplesCalculation"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ab initio composite calculation of the static dipole polarizability alpha_0 \
+and the dispersion (Cauchy) coefficients alpha_2, alpha_4 (and alpha_6) of the argon \
+atom (40Ar, 39.962 383 Da), alpha(omega) = alpha_0 + alpha_2 omega^2 + alpha_4 omega^4 + \
+... (Eq. (6)). Nonrelativistic clamped-nucleus part: Hartree-Fock in a 40s40p40d basis, \
+then frozen-core coupled-cluster increments CCSD, CC3, CCSDT, CCSDTQ, CCSDTQP, CCSDTQPH \
+(orbital-unrelaxed linear response) in purpose-built basis sets up to nonuple zeta \
+(X = 9, triply augmented), extrapolated to the complete basis set with a Riemann-zeta \
+formula (Eq. (8)); core-core and core-valence correlation (all-electron CC3, CCSDT, \
+CCSDTQ). Relativistic corrections: one-electron by DKH2 (checked against Breit-Pauli \
+mass-velocity + Darwin), two-electron Darwin and Breit (Breit for alpha_2, alpha_4 at \
+the Hartree-Fock level, Appendix), second-order spin-orbit estimated from four-component \
+Dirac-Coulomb Hartree-Fock (alpha_0 only). QED: leading-order one-electron term, Eq. (24), \
+with the Bethe logarithm ln k_0 = 8.7610, and the one-loop 1/c^4 term, Eq. (27). Finite \
+nuclear size (Eq. (29), negligible) and finite nuclear mass (diagonal Born-Oppenheimer \
+correction, MP1, alpha_0 only). CODATA constants; c = 137.035999084 a.u."""
+notes = """Atomic units throughout (polarizability in e^2 a0^2/Eh = 4 pi eps0 a0^3, omega in \
+hartree). All corrections are included in alpha_0 (relativistic 1/c^2 incl. Breit and \
+two-electron Darwin, spin-orbit, QED incl. one-loop 1/c^4, finite nuclear size and mass \
+for 40Ar); alpha_2 and alpha_4 include the same except the two-electron Darwin, \
+spin-orbit and finite-mass terms, judged negligible (pp. 9-11). Uncertainties are the \
+authors' estimates for each contribution (typically twice the spread of the basis-set \
+extrapolations, 10-50 % for small corrections) combined in quadrature ('the standard \
+error propagation formulas under the assumption that all contributions ... are \
+independent', p. 13); no confidence level is stated. alpha_6 = 382.5 (Eq. (36)) is from \
+Hartree-Fock + valence CCSD + valence CC3 only, 'relative error no larger than 10%' \
+(p. 13).
+
+The authors claim 'accuracy of around 10 ppm for wavelengths above roughly 450 nm' \
+(omega <= 0.1 a.u.) when their dispersion coefficients are combined with Gaiser and \
+Fellmuth's (2018) measured static polarizability (abstract, pp. 3-4); the first \
+resonance is at omega about 0.42 a.u. (Minnhagen 1973, their Ref. 36). Their own \
+alpha_0 = 11.0775(19) agrees with Gaiser and Fellmuth's 11.077183(27).
+
+alpha here is the electric dipole polarizability only. For the refractive index the \
+paper uses the Lorentz-Lorenz form (n^2-1)/(n^2+2) = (4 pi/3)(alpha + chi_0) rho \
+(Eq. (3)), with the static magnetic susceptibility chi_0 = -2.30(2) x 10^-4 a.u. (Eq. \
+(39); -2.3004(6) x 10^-4 from <r^2> = 25.9193(64), Eq. (35), nonrelativistic only, 1 % \
+allowed for missing corrections). The package's polarizability recovered from a \
+refractivity is alpha + chi_0: the chi_0 term (-21 ppm of alpha_0) must be added to \
+these alpha values before they are compared with refractive-index data. The magnetic \
+susceptibility itself is not a quantity of the package and is not extracted (Table \
+XIII, the chi_0 comparison, likewise).
+
+Conversion used by the authors (p. 2): 1 cm^3/mol = 11.205 872 a0^3, i.e. their molar \
+polarizability is N_A alpha (polarizability volume), not the molar refractivity \
+(4 pi/3) N_A alpha.
+
+Not extracted: Tables I-X (individual contributions by basis set and their CBS limits), \
+Table XI's contribution rows (components of the Total row), Table XIII (chi_0). The \
+budget rows of Table XI sum to its totals (11.0775, 27.9755, 95.0182; quadrature \
+0.00194, 0.0154, 0.106; checked 2026-09-24)."""
+
+[[datasets]]
+id = "cauchy_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__cauchy_Ar.csv"
+table = "tbl_cb5cfdf665dc"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Table XI 'Total': alpha_0, alpha_2, alpha_4 = S(-2), S(-4), S(-6), rows by moment order k. Electric polarizability only (add chi_0 = -2.30e-4 a.u. for refractive-index comparisons; source notes). Also Table XII 'This work' and the abstract. The sum of the budget rows reproduces the totals (checked 2026-09-24)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "cauchy_alpha6_Ar"
+material = "Ar"
+table = "text"
+points = [["-8", "-8", "382.5"]]
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Eq. (36), p. 13: alpha_6 = S(-8) = 382.5 from the Hartree-Fock (297.775(6), Eq. (7)), valence CCSD (67.906(26), Eq. (10)) and valence CC3 (16.85(30), Eq. (12)) contributions only (sum 382.53); 'relative error no larger than 10%' (read as a bound)."
+[datasets.uncertainty]
+relative = 0.1
+level = "bound"
+
+[[datasets]]
+id = "egan_2019_Ar"
+material = "Ar"
+table = "text"
+points = [["632.9908", "632.9908", "11.22431", "0.00017"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["egan_2019"]
+notes = "Eq. (37), p. 14: Egan et al.'s molar polarizability of argon from laser refractometry at lambda_E = 632.9908(2) nm (omega_E = 0.071981 a.u., red He-Ne laser; a vacuum wavelength), converted by Lesiuk and Jeziorski to atomic units: 11.22431(17). From refractometry, so it is alpha(omega_E) + chi_0 (p. 14), which is what the package's refractivity-derived polarizability means. The conversion from cm^3/mol is the authors' (1 cm^3/mol = 11.205872 a0^3). The original is now curated (egan_2019), which the fits use instead."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "theory_egan_wavelength_Ar"
+material = "Ar"
+table = "text"
+points = [["632.9908", "632.9908", "11.22445", "0.00011"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Eq. (38), p. 14: alpha_theory(omega_E) = 11.22445(11), Gaiser and Fellmuth's static alpha_0 plus chi_0 (Eq. (35)) plus alpha_2 omega^2 + alpha_4 omega^4 from Table XI (formula recommended). Reproduced: 11.077183 - 0.00023004 + 27.976 omega^2 + 95.02 omega^4 at omega = 45.56335/632.9908 = 0.0719811 gives 11.224455 (checked 2026-09-24). Includes chi_0, so comparable with refractive data."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kumar_2010_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__kumar_2010_Ar.csv"
+table = "tbl_787fa31e3c55"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_2010"]
+notes = "Table XII, 'Kumar and Thakkar [93]' (experimental or semiempirical: the constrained DOSD), S(-2), S(-4), S(-6) rounded, with 1 % uncertainties; see kumar_2010 for the originals."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "orcutt_1967_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__orcutt_1967_Ar.csv"
+table = "tbl_787fa31e3c55"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. Orcutt and R. Cole, J. Chem. Phys. 46, 697 (1967)"]
+notes = "Table XII, 'Orcutt and Cole [94]': static polarizability from dielectric-constant measurements, 11.0753(54), converted to atomic units by Lesiuk and Jeziorski. The original is in the library (Orcutt_1967_DielectricConstantsImperfect) but has no source record yet; switch reproduced_from to its id when it gets one."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "buckley_2000_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__buckley_2000_Ar.csv"
+table = "tbl_787fa31e3c55"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. J. Buckley, J. Hamelin, and M. R. Moldover, Rev. Sci. Instrum. 71, 2914 (2000)"]
+notes = "Table XII, 'Buckley at al. [95]' (sic): static polarizability 11.0774(10) (dielectric-constant measurement, converted to atomic units by Lesiuk and Jeziorski). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "gaiser_2018_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__gaiser_2018_Ar.csv"
+table = "tbl_787fa31e3c55"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2018"]
+notes = "Table XII, 'Gaiser and Fellmuth [21]': static polarizability 11.077183(27) from dielectric-constant gas thermometry, 'accurate to about 2 parts per million' (p. 2); the most accurate argon value, which the authors combine with their dispersion coefficients (Eq. (38)). The original is now curated (gaiser_2018), which the fits use instead."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "pawlowski_2005_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__pawlowski_2005_Ar.csv"
+table = "tbl_787fa31e3c55"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. Pawłowski, P. Jørgensen, and C. Hättig, in Advances in Quantum Chemistry, edited by J. R. Sabin, Vol. 48 (Academic Press, 2005), pp. 9-21"]
+notes = "Table XII, 'Pawłowski et al.': CC3, sextuple-zeta basis (note a), nonrelativistic; S(-2), S(-4), S(-6); no uncertainty given."
+
+[[datasets]]
+id = "lupinetti_2005_Ar"
+material = "Ar"
+file = "Ar/lesiuk_2023__lupinetti_2005_Ar.csv"
+table = "tbl_787fa31e3c55"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Lupinetti and A. J. Thakkar, J. Chem. Phys. 122, 044301 (2005)"]
+notes = "Table XII, 'Lupinetti et al.': finite-field CCSD(T) static polarizability 11.07 (note b); no uncertainty given."
+
+[[formulas]]
+id = "cauchy_theory"
+form = "alpha_series"
+terms = { c = ["11.0775", "27.976", "95.02", "382.5"] }
+range_nm = [450.0, "inf"]
+material = "Ar"
+equation = "Eq. (6), p. 3, with Table XI (Total) and Eq. (36)"
+printed = "alpha(omega) = alpha_0 + alpha_2 omega^2 + alpha_4 omega^4 + ...; alpha_0 = 11.0775(19), alpha_2 = 27.976(15), alpha_4 = 95.02(11), alpha_6 = 382.5"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree); alpha in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "wavelengths above roughly 450 nm (omega <= 0.1 a.u.; first resonance at about 0.42 a.u.)"
+coefficients = { alpha_0 = "11.0775", alpha_2 = "27.976", alpha_4 = "95.02", alpha_6 = "382.5" }
+check = "The Table XI contributions sum to the totals (checked 2026-09-24). At omega_E = 0.0719811 a.u. (632.9908 nm) it gives alpha = 11.225055 with alpha_6 (11.225002 without); with chi_0 = -2.3004e-4 added and alpha_6 omitted, 11.224772: 0.00032 above Eq. (38) (the difference of the two alpha_0 values, 11.0775 against 11.077183) and 0.00046 (41 ppm) above Egan et al.'s 11.22431(17), within the theory's 0.0019 uncertainty. Checked 2026-09-24."
+notes = "The paper's own ab initio series (all corrections included, source notes). ELECTRIC polarizability: it omits the magnetic susceptibility chi_0 = -2.30(2)e-4 a.u. that the Lorentz-Lorenz relation for the refractive index needs (Eq. (3)); a refractivity computed from this model is low by 21 ppm unless chi_0 is added. alpha_6 has a 10 % uncertainty and contributes 4e-4 a.u. (37 ppm) at 450 nm."
+
+[[formulas]]
+id = "recommended"
+form = "alpha_series"
+terms = { c = ["11.077183", "27.976", "95.02"] }
+range_nm = [450.0, "inf"]
+material = "Ar"
+equation = "Eq. (6) with Table XI and Gaiser and Fellmuth's alpha_0, as used for Eq. (38), p. 14"
+printed = "alpha(omega) = alpha_0 + alpha_2 omega^2 + alpha_4 omega^4, alpha_0 = 11.077183(27) (Gaiser and Fellmuth), alpha_2 = 27.976(15), alpha_4 = 95.02(11); plus chi_0 = -2.3004(6) x 10^-4 for refraction"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree); alpha in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "wavelengths above roughly 450 nm, 'accuracy of around 10 ppm' (abstract)"
+coefficients = { alpha_0 = "11.077183", alpha_2 = "27.976", alpha_4 = "95.02", chi_0 = "-2.3004e-4" }
+check = "With chi_0 added: 11.224455 at 632.9908 nm, Eq. (38)'s 11.22445(11); Egan et al.'s measured 11.22431(17) lies 1.4e-4 (12 ppm) below, 'within their combined uncertainty' (p. 14). Checked 2026-09-24."
+notes = "The combination the paper recommends (Sec. IX): the measured static polarizability with the calculated dispersion coefficients. As structured (terms c) it is the electric polarizability; chi_0 (Eq. (35), -2.3004(6)e-4 a.u.) is NOT in the terms and must be added for the refractive index (n from Lorentz-Lorenz with alpha + chi_0). alpha_6 is omitted as in Eq. (38) (it adds 5e-5 a.u. at 633 nm)."

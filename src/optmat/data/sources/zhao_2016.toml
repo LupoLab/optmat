@@ -1,0 +1,431 @@
+citation = "S.-F. Zhao, A.-T. Le, C. Jin, X. Wang and C. D. Lin, \"Analytical model for calibrating laser intensity in strong-field-ionization experiments\", Phys. Rev. A 93, 023413 (2016)"
+doi = "10.1103/PhysRevA.93.023413"
+library = "Zhao_2016_AnalyticalModelCalibrating"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Numerical solution of the time-dependent Schrodinger equation (TDSE) of a \
+one-electron model atom in a linearly polarised field, in the length gauge (Eqs. 1-4, \
+p. 2), by the time-dependent generalized pseudospectral method (refs. 59, 60): 'The \
+truncated radii are r_max = 400 a.u., r_0 = 390 a.u., the total spatial grid points N \
+= 800, time step dt = 0.1 a.u., and up to 80 partial waves are used', with the \
+absorbing function cos^0.25[pi (r - r_0)/2(r_max - r_0)] for r >= r_0 (Eq. 5). The \
+potential, Eq. (3): V(r) = -[1 + beta (a_1 e^(-a_2 r) + a_3 r e^(-a_4 r) + a_5 e^(-a_6 \
+r))]/r, beta = 1 for real atoms; He, Ne and Ar with Tong and Lin's parameters (ref. \
+57, tong_2005), Xe with the parameters the text prints (text_potential_Xe), Kr with \
+Garvey et al.'s potential (ref. 58, Phys. Rev. A 12, 1144 (1975), not given here), H \
+the bare Coulomb potential (not written out). The ionisation probability is P_tot = 1 \
+- sum_n |<phi_n|psi(t_final)>|^2 over all the bound states at the end of the pulse \
+(Eq. 6). Compared with the 'improved PPT' cycle-averaged rate (Eq. 7, Popruzhenko et \
+al. 2008, ref. 47: PPT with the Coulomb factor (1 + 2 gamma/e)^(-2 Z_c/kappa)) and the \
+ADK rate, P = 1 - exp(-int w dt) (Eq. 13)."""
+notes = """PDF pages 1-10 = journal pages 023413-1 to -10. Identity checked on the \
+first page (2026-10-01): 'Analytical model for calibrating laser intensity in \
+strong-field-ionization experiments', Song-Feng Zhao, Anh-Thu Le, Cheng Jin, Xu Wang \
+and C. D. Lin (Kansas State University; Northwest Normal University, Lanzhou; Nanjing \
+University of Science and Technology), Phys. Rev. A 93, 023413 (2016), '(Received 28 \
+September 2015; published 11 February 2016)', DOI 10.1103/PhysRevA.93.023413.
+
+WHAT IS PRINTED. No table of the calculations: the TDSE probabilities, the PPT and ADK \
+curves and the correction factors are in Figs. 1-4 only (vector drawings; no \
+supplement). Printed numbers (all checked against the figures, below): the correction \
+factor 'The average of the correction factors is taken to be 1.49' (Fig. 1 caption; \
+the text: 'For simplicity, we took the average correction factor to be 1.49 for an \
+800-nm laser', p. 2); Fig. 2's legends 'PPTX1.42' (600 nm), 'PPTX1.49' (800), \
+'PPTX1.36' (1000), 'PPTX1.26' (1200) (read on the page; glyphs, not text); the text \
+on Fig. 1(b): 'the value oscillates with laser wavelength. By drawing a smooth curve \
+again, the correction is between 1.1 and 1.4'; on Fig. 1(c): 'a fictitious Ar atom \
+where the parameter beta in Eq. (3) has been adjusted such that the ionization \
+potential from the 3p shell is ranging from 8 to 16 eV. The smoothed correction factor \
+thus derived covers from 1.4 to 1.1. These two results indicate the correction factor \
+typically is within about a factor of 2' (p. 2); on Fig. 1(a): 'The correction factor \
+oscillates but is within about a factor of 2 over the intensity range shown. The \
+oscillation is due to the ionization probability from the TDSE calculations [61]' \
+(p. 2). Fig. 2 (p. 5): 'ionization probabilities from the PPT and TDSE agree very \
+well, whether the correction factor for PPT is used or not', and 'to read laser \
+intensity from the PPT with and without the correction factor would amount to only a \
+few percents in the retrieved peak laser intensity' (p. 6). Fig. 3 (p. 6): 'The \
+uncorrected PPT probabilities are in good agreement with those from the TDSE in \
+general'; 'at gamma = 1.5, error from the ADK model is already a factor of about 10'. \
+Conclusions (p. 9): the PPT model fits 'the single-electron TDSE results and the \
+experimental data over a broad range of laser intensities from the typical multiphoton \
+regime to the tunneling ionization regime without the need of introducing a \
+normalization factor', and 'is quite adequate for a broad range of Keldysh parameters \
+where strong-field-ionization probability is significant (say higher than 10^-6)'. \
+The recommendation: use the PPT (Eq. 7) without a factor in place of ADK. The pulses: \
+'A Gaussian pulse with duration of 15 fs (FWHM)' (Fig. 2) and 'a Gaussian pulse with \
+FWHM of 15 fs' at 800 nm (Ar, Kr, Xe) and 400 nm (He, Ne) (Fig. 3); whether the FWHM \
+is of the intensity or of the field, the carrier-envelope phase and Fig. 1's pulse are \
+not stated. The model atoms' ionisation energies are not printed (Fig. 1(c)'s last \
+point lies at 15.76 eV, Ar's), nor which m of the p-shell atoms was propagated.
+
+THE CORRECTION FACTOR IS ON THE RATE. Fig. 2's insets plot the PPT (red stars) and \
+'PPTX<factor>' (black line): the line is 1 - (1 - P)^factor of the stars' P, the \
+factor multiplying the rate (the integral of Eq. 13), not the probability: at 800 nm, \
+1.3e14 W/cm^2, P = 0.0687 and the line 0.1006, a factor of 1.485 on the rate but 1.464 \
+on P. Solved from the line, the factors are (where P >= 0.02) 1.42-1.44 (600 nm), \
+1.48-1.50 (800), 1.355-1.365 (1000), 1.255-1.265 (1200), the legends' 1.42, 1.49, \
+1.36, 1.26 (the script's checks).
+
+EXTRACTED (2026-10-01) by tools/extract/zhao_2016.py from the vector drawing of Figs. 2 \
+and 3 (p. 3), whose docstring describes the reading: the axes calibrated from the \
+frames' own ticks (Fig. 2: x 2 ... 14 x 10^13 W/cm^2, 186.4 pt per decade, y 10^-9 to \
+1, 13.49 pt per decade; Fig. 3: y 10^-7 to 1, 10.57 pt per decade, x 93-116 pt per \
+decade), every tick within 0.07 pt of its fitted scale, the labels' glyphs at the long \
+ticks (checked); the TDSE markers' centres (blue open circles), the legends' excluded. \
+Fig. 2: 25 points per wavelength at 2.0, 2.5, ..., 14.0 x 10^13 W/cm^2 (on that grid \
+within 0.1 %). Fig. 3: equally spaced intensities, He 32 points 1.91e14-1.46e15 \
+W/cm^2, Ne 31 points 9.6e13-8.6e14, Ar 41 points 4.0e13-2.5e14, Kr 37 points \
+2.0e13-1.53e14, Xe 29 points 1.17e13-8.6e13; He's first point (1.908e14) is centred \
+2.1 pt left of the axis's start (2e14) and Kr's last (1.529e14) 0.9 pt beyond its end \
+(1.5e14): read on the axis extended. Not curated as data: Fig. 2's and 3's PPT and ADK \
+curves (models; optmat has its own), Fig. 2's insets (the same TDSE points, a check), \
+Fig. 4 (PPT/TDSE and ADK/TDSE of Fig. 3's data), Fig. 5 (Awasthi et al. 2008's H2 \
+SAE-TDSE, awasthi_2008), Figs. 6-12 (measurements of others, molecular PPT), Tables I \
+and II (molecules' structure coefficients and geometries).
+
+CHECKS (the script's checks(), 2026-10-01). (1) Fig. 2's insets, a linear axis \
+labelled 6.0x10^13 ... 1.2x10^14 W/cm^2, put the same TDSE points (6.0 ... 13.0 x \
+10^13) at the same intensities within 0.1 % and the same probabilities within 1.6 % \
+where P >= 0.01 (the largest difference, 600 nm at 1.3e14; 7e-4 absolute below): \
+this confirms the main panels' x axis, whose ticks are read as consecutive multiples \
+of 10^13 W/cm^2 with one labelled long tick. (2) The Keldysh-parameter arrows \
+('gamma=2', 'gamma=1.3', ... read on the page) lie within 1.1 % (Fig. 2, hydrogen's \
+gamma with I_p = 0.5 hartree) and 1.3 % (Fig. 3, each gas's ionisation energy) of the \
+intensity of the printed gamma: an independent check of every x axis. (3) Fig. 1(a)'s \
+dashed 'Fitting with a constant' lies at 1.4896 ('1.49'); the solid curve averages \
+1.490 over 6.0e13-1.2e14 W/cm^2. (4) Fig. 1(b)'s averages at 600, 800, 1000 and 1200 nm \
+read 1.4199, 1.4900, 1.3595, 1.2600: the legends' 1.42, 1.49, 1.36, 1.26. (5) The \
+insets' 'PPTX' lines give the legends' factors (above). (6) The extracted points drawn \
+on the rendered page and inspected (2026-10-01): every TDSE marker captured once, the \
+legends' excluded.
+
+FIG. 1 (p. 2, read by the script, NOT DATA: no quantity holds a ratio of a calculation \
+to a model). (a) 'The correction factor (TDSE/PPT) for the two cycle-averaged \
+ionization probabilities of H atom versus laser intensity', 800 nm: a smooth curve \
+(1428 vertices) from 2.26 at 6.0e13 W/cm^2 down to 1.12 at 1.2e14, oscillating: \
+minima 1.81 (6.5e13), 1.34 (8.05e13), 1.33 (9.0e13), 1.22 (1.03e14), maxima 2.09 \
+(7.2e13), 1.52 (8.5e13), 1.45 (9.45e13), 1.26 (1.09e14); its mean over intensity \
+1.490. Fig. 2(b)'s TDSE/PPT (below) at the same intensities agrees with it within 3 % \
+at 6.5, 7.0 and 8.5e13 W/cm^2 but not between: 1.63 against 1.34 at 8.0e13, 1.52 \
+against 1.26 at 1.0e14, the coarser points of Fig. 2 sampling the oscillation \
+differently, or another pulse (Fig. 1's is not stated). (b) 'The average \
+correction factor of H atom versus laser central wavelength' (red circles, two \
+decimals as read; nm: factor): 600: 1.42, 650: 1.32, 700: 1.34, 750: 1.26, 800: 1.49, \
+850: 1.24, 900: 1.22, 950: 1.13, 1000: 1.36, 1050: 1.09, 1100: 1.10, 1150: 1.07, 1200: \
+1.26, 1250: 1.02, 1300: 1.03, 1350: 1.02, 1400: 1.19, 1450: 1.00, 1500: 1.14, 1550: \
+0.98, 1600: 1.09; the 'Polynomial fit' from 1.42 at 600 nm to 1.05 at 1600 nm. Over \
+which intensities each average is taken (and the pulse) is not stated. (c) 'The \
+average correction factor of the scaled Ar atom versus ionization potential', 800 nm \
+(eV: factor): 8.0: 1.00, 8.5: 1.45, 8.75: 1.67, 9.0: 1.60, 9.25: 1.61, 9.5: 1.61, 9.6: \
+1.70, 9.7: 1.64, 9.8: 1.21, 9.9: 1.16, 10.0: 1.12, 10.5: 1.50, 11.0: 1.30, 11.5: 1.34, \
+12.0: 1.27, 12.5: 1.21, 13.0: 1.30, 13.5: 1.13, 14.0: 1.12, 14.5: 1.09, 15.0: 1.05, \
+15.76: 1.06; the fit from 1.44 at 8 eV to 1.10 at 14.6 eV and 0.93 at 16 eV. Every \
+value read lies within 0.0006 of a two-decimal number. The averages oscillate by up to \
+0.3 between neighbours (channel closings); only the smoothed trend is meaningful.
+
+TDSE OVER PPT FROM FIG. 2 (the script's tdse_over_ppt(), reported; the PPT taken from \
+the 'PPTX' line with the factor removed from the rate; ratios of P, those of the \
+rates within 4 %): the ratio is not a constant but falls with intensity at every \
+wavelength, oscillating: 600 nm 4.8 at 2e13 W/cm^2, 1.9-2.0 at 7-9e13, 1.3-1.6 at \
+1.1-1.35e14; 800 nm 5.3 at 2e13, 2.4-2.5 at 4-5.5e13, 1.5 at 9e13, 1.1-1.3 at \
+1.15-1.35e14; 1000 nm 3.6 at 2e13, 1.4-1.8 at 6-9e13, 1.1-1.3 at 1.1-1.35e14; 1200 nm \
+3.9 at 2e13, 1.5-1.9 at 6-7e13, 0.96-1.14 at 1.2-1.35e14. Hydrogen's Keldysh \
+parameter over Fig. 2's 2.0e13-1.4e14 W/cm^2: 3.2-1.2 (600 nm), 2.4-0.90 (800), \
+1.9-0.72 (1000), 1.6-0.60 (1200). Over which intensities the printed factors are \
+averaged is not stated (Fig. 1(a)'s 800 nm curve spans 6-12 x 10^13 W/cm^2, where \
+gamma is 1.4-0.97); Fig. 2's points over the insets' 6-13 x 10^13 (gamma 1.8-1.2, \
+1.4-0.94, 1.1-0.75, 0.92-0.62) average 1.72, 1.56, 1.39 and 1.29 against the printed \
+1.42, 1.49, 1.36, 1.26: the coarse points sample the oscillation differently (at 800 \
+nm Fig. 1(a)'s finer curve averages 1.49).
+
+THE PPT CURVES REPRODUCED (2026-10-01, a calculation outside the record, with \
+optmat.gas.ionisation_rates: short_range_rate_au with channel_sum = 'sum', times \
+coulomb_factor 'popruzhenko', hydrogen I_p = 0.5, |C|^2 = 4, l = m = 0, integrated \
+over a Gaussian of 15 fs FWHM of the intensity): Fig. 2's PPT (the PPTX line with \
+the factor removed) is 0.98 times it on average at every wavelength (0.92-1.00 over \
+2.0-1.35e14 W/cm^2). With the smooth channel integral it scatters 0.57-1.59 at 600 \
+nm; with 15 fs as the FWHM of the field (10.6 fs of the intensity) the PPT is 1.38-1.40 \
+times higher. So the paper's Eq. (7) is optmat's PPT with Popruzhenko's factor and the \
+discrete channel sum, and its 15 fs is the FWHM of the intensity (inferred, not \
+stated).
+
+THE XE POTENTIAL (text p. 2, text_potential_Xe): 'For a Xe atom, a_1, a_2, a_3, a_4, \
+a_5, and a_6 are taken to be 51.355 5, 2.111 6, -99.927 5, 3.737 2, 1.644 5 and 0.430 6, \
+respectively' (the digits grouped by thin spaces); Z_c = 1 (Eq. 3, beta = 1); 1 + a_1 \
++ a_5 = 54.0000, xenon's nuclear charge (checked). zhang_2014's Table I row for Xe \
+(tableI_Xe, of unstated origin) is this potential rounded to three decimals (51.356, \
+2.112, -99.927, 3.737, 1.644, 0.431). No source is cited for it here either.
+
+WHAT THE TDSE YIELD IS. The probability that the one electron of the model atom has \
+left (Eq. 6), not the yield of the real atom (no rule for equivalent electrons, no \
+other m), as for travers_2026_trecx. The TDSE's numerical accuracy is not stated; the \
+datasets' uncertainty is the digitising (2 %)."""
+
+[[datasets]]
+id = "fig2a_tdse_H_600nm"
+material = "H"
+file = "H/zhao_2016__fig2a_tdse_H_600nm.csv"
+table = "fig_962af80d9355"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of atomic hydrogen (Eq. 6: 1 - the bound-state populations at the end of the pulse) at 600 nm against the peak intensity, 25 points, 2.0e13-1.4e14 W/cm^2, 4.56e-5 to 0.167, read from the vector drawing (the record's notes). The PPT with Popruzhenko et al.'s Coulomb factor is below it by a factor 4.8 at 2e13 W/cm^2, 1.9-2.0 at 7-9e13 and 1.3-1.6 at 1.1-1.35e14 (the legend's average factor 1.42). 2 %: the digitising (the inset's reading of the same points agrees within 1.6 %; the y scale's 0.07 pt quantum is 1.2 %); the intensity to 0.1 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 600
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('A Gaussian pulse with duration of 15 fs (FWHM)', Fig. 2 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one electron (atomic hydrogen)"
+orbital = "1s"
+potential = "the Coulomb potential -1/r (not written out; Eq. 3 with the a_i zero)"
+model_ionization_energy_au = 0.5
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig2b_tdse_H_800nm"
+material = "H"
+file = "H/zhao_2016__fig2b_tdse_H_800nm.csv"
+table = "fig_962af80d9355"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(b), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of atomic hydrogen (Eq. 6) at 800 nm against the peak intensity, 25 points, 2.0e13-1.4e14 W/cm^2, 4.46e-6 to 0.0983, read from the vector drawing (the record's notes). The PPT with Popruzhenko et al.'s Coulomb factor is below it by a factor 5.3 at 2e13 W/cm^2, 2.4-2.5 at 4-5.5e13 and 1.1-1.3 at 1.15-1.35e14; Fig. 1(a)'s 'correction factor' at 800 nm averages 1.49 over 6e13-1.2e14 (the legend's factor). 2 %: the digitising (the inset's reading agrees within 1.5 %; the y scale's 0.07 pt quantum is 1.2 %); the intensity to 0.1 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('A Gaussian pulse with duration of 15 fs (FWHM)', Fig. 2 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one electron (atomic hydrogen)"
+orbital = "1s"
+potential = "the Coulomb potential -1/r (not written out; Eq. 3 with the a_i zero)"
+model_ionization_energy_au = 0.5
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig2c_tdse_H_1000nm"
+material = "H"
+file = "H/zhao_2016__fig2c_tdse_H_1000nm.csv"
+table = "fig_962af80d9355"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(c), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of atomic hydrogen (Eq. 6) at 1000 nm against the peak intensity, 25 points, 2.0e13-1.4e14 W/cm^2, 6.93e-7 to 0.0875, read from the vector drawing (the record's notes). The PPT with Popruzhenko et al.'s Coulomb factor is below it by a factor 3.6 at 2e13 W/cm^2, 1.4-1.8 at 6-9e13 and 1.1-1.3 at 1.1-1.35e14 (the legend's average factor 1.36). 2 %: the digitising (the inset's reading agrees within 1.3 %; the y scale's 0.07 pt quantum is 1.2 %); the intensity to 0.1 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1000
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('A Gaussian pulse with duration of 15 fs (FWHM)', Fig. 2 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one electron (atomic hydrogen)"
+orbital = "1s"
+potential = "the Coulomb potential -1/r (not written out; Eq. 3 with the a_i zero)"
+model_ionization_energy_au = 0.5
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig2d_tdse_H_1200nm"
+material = "H"
+file = "H/zhao_2016__fig2d_tdse_H_1200nm.csv"
+table = "fig_962af80d9355"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(d), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of atomic hydrogen (Eq. 6) at 1200 nm against the peak intensity, 25 points, 2.0e13-1.4e14 W/cm^2, 3.46e-7 to 0.083, read from the vector drawing (the record's notes). The PPT with Popruzhenko et al.'s Coulomb factor is below it by a factor 3.9 at 2e13 W/cm^2, 1.5-1.9 at 6-7e13 and 0.96-1.14 at 1.2-1.35e14 (the legend's average factor 1.26). 2 %: the digitising (the inset's reading agrees within 1.4 %; the y scale's 0.07 pt quantum is 1.2 %); the intensity to 0.1 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1200
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('A Gaussian pulse with duration of 15 fs (FWHM)', Fig. 2 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one electron (atomic hydrogen)"
+orbital = "1s"
+potential = "the Coulomb potential -1/r (not written out; Eq. 3 with the a_i zero)"
+model_ionization_energy_au = 0.5
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig3a_tdse_He_400nm"
+material = "He"
+file = "He/zhao_2016__fig3a_tdse_He_400nm.csv"
+table = "fig_2ad80701eb1d"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of helium in Tong and Lin's potential (Eq. 6) at 400 nm against the peak intensity, 32 points, 1.91e14-1.46e15 W/cm^2 (equally spaced, 4.1e13 apart; the first centred 2.1 pt before the axis's start, read on the axis extended), 2.61e-5 to 0.335, read from the vector drawing (the record's notes). The yield of the one electron, not of the atom. 2 %: the digitising (the y scale's 0.07 pt quantum against 10.57 pt per decade is 1.5 %); the intensity to 0.2 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('a Gaussian pulse with FWHM of 15 fs', Fig. 3 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one active electron"
+orbital = "1s"
+potential = "Tong and Lin 2005 (ref. 57, tong_2005 Table 1), Eq. (3) with beta = 1"
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig3b_tdse_Ne_400nm"
+material = "Ne"
+file = "Ne/zhao_2016__fig3b_tdse_Ne_400nm.csv"
+table = "fig_2ad80701eb1d"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of neon in Tong and Lin's potential (Eq. 6) at 400 nm against the peak intensity, 31 points, 9.6e13-8.6e14 W/cm^2 (equally spaced, 2.56e13 apart), 3.38e-5 to 0.314, read from the vector drawing (the record's notes). Which m of the 2p shell was propagated is not stated. The yield of the one electron, not of the atom. 2 %: the digitising (the y scale's 0.07 pt quantum against 10.57 pt per decade is 1.5 %); the intensity to 0.2 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('a Gaussian pulse with FWHM of 15 fs', Fig. 3 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one active electron"
+orbital = "2p, m not stated"
+potential = "Tong and Lin 2005 (ref. 57, tong_2005 Table 1), Eq. (3) with beta = 1"
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig3c_tdse_Ar_800nm"
+material = "Ar"
+file = "Ar/zhao_2016__fig3c_tdse_Ar_800nm.csv"
+table = "fig_2ad80701eb1d"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(c), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of argon in Tong and Lin's potential (Eq. 6) at 800 nm against the peak intensity, 41 points, 4.0e13-2.46e14 W/cm^2 (equally spaced, 5.1e12 apart), 2.23e-5 to 0.289, read from the vector drawing (the record's notes). Which m of the 3p shell was propagated is not stated. The yield of the one electron, not of the atom. 2 %: the digitising (the y scale's 0.07 pt quantum against 10.57 pt per decade is 1.5 %); the intensity to 0.2 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('a Gaussian pulse with FWHM of 15 fs', Fig. 3 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one active electron"
+orbital = "3p, m not stated"
+potential = "Tong and Lin 2005 (ref. 57, tong_2005 Table 1), Eq. (3) with beta = 1"
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig3d_tdse_Kr_800nm"
+material = "Kr"
+file = "Kr/zhao_2016__fig3d_tdse_Kr_800nm.csv"
+table = "fig_2ad80701eb1d"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(d), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of krypton in Garvey et al.'s potential (ref. 58; not given in the paper) (Eq. 6) at 800 nm against the peak intensity, 37 points, 2.0e13-1.53e14 W/cm^2 (equally spaced, 3.7e12 apart; the last centred 0.9 pt beyond the axis's end, read on the axis extended), 1.12e-5 to 0.167, read from the vector drawing (the record's notes). Which m of the 4p shell was propagated is not stated. The yield of the one electron, not of the atom. 2 %: the digitising (the y scale's 0.07 pt quantum against 10.57 pt per decade is 1.5 %); the intensity to 0.2 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('a Gaussian pulse with FWHM of 15 fs', Fig. 3 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one active electron"
+orbital = "4p, m not stated"
+potential = "Garvey, Jackman and Green, Phys. Rev. A 12, 1144 (1975) (ref. 58); not given in the paper"
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "fig3e_tdse_Xe_800nm"
+material = "Xe"
+file = "Xe/zhao_2016__fig3e_tdse_Xe_800nm.csv"
+table = "fig_2ad80701eb1d"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(e), p. 3, 'TDSE' (blue open circles): the one-electron TDSE ionisation probability of xenon in the potential of Eq. (3) with the text's parameters (text_potential_Xe) at 800 nm against the peak intensity, 29 points, 1.17e13-8.6e13 W/cm^2 (equally spaced, 2.66e12 apart), 1.08e-5 to 0.256, read from the vector drawing (the record's notes). Which m of the 5p shell was propagated is not stated. The yield of the one electron, not of the atom. 2 %: the digitising (the y scale's 0.07 pt quantum against 10.15 pt per decade is 1.6 %); the intensity to 0.2 %. The TDSE's own accuracy is not stated."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 15
+pulse_fs_definition = "FWHM ('a Gaussian pulse with FWHM of 15 fs', Fig. 3 caption); of the intensity or of the field not stated, the paper's PPT curves reproduced with the intensity's (the record's notes)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+cep = "not stated"
+measure = "1 - sum over all bound states of |<phi_n|psi(t_final)>|^2 at the end of the pulse (Eq. 6)"
+electrons = "one active electron"
+orbital = "5p, m not stated"
+potential = "Eq. (3) with beta = 1 and the text's a_1 ... a_6 (text_potential_Xe)"
+method = "TDSE, time-dependent generalized pseudospectral method, length gauge; r_max = 400 au, absorber from r_0 = 390 au, N = 800, dt = 0.1 au, up to 80 partial waves"
+
+[[datasets]]
+id = "text_potential_Xe"
+material = "Xe"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+points = [["a_1", "a_1", "51.3555"], ["a_2", "a_2", "2.1116"], ["a_3", "a_3", "-99.9275"], ["a_4", "a_4", "3.7372"], ["a_5", "a_5", "1.6445"], ["a_6", "a_6", "0.4306"]]
+notes = "Text, p. 2: 'For a Xe atom, a_1, a_2, a_3, a_4, a_5, and a_6 are taken to be 51.355 5, 2.111 6, -99.927 5, 3.737 2, 1.644 5 and 0.430 6, respectively' (the digits grouped by thin spaces, joined here): the single-active-electron potential of Eq. (3), V(r) = -[1 + beta (a_1 e^(-a_2 r) + a_3 r e^(-a_4 r) + a_5 e^(-a_6 r))]/r with beta = 1 (Z_c = 1), atomic units (a_1, a_5 charges, a_3 per bohr, a_2, a_4, a_6 inverse bohr); Tong and Lin's form (tong_2005 Eq. 4). No source cited for it. 1 + a_1 + a_5 = 54.0000, the nuclear charge (checked). zhang_2014 tableI_Xe is the same potential to three decimals. Used for Fig. 3(e)'s TDSE."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "a_1 ... a_6 of Eq. (3) (Tong and Lin's Eq. (4) form, Z_c = 1, beta = 1), the row label"

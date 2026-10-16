@@ -1,0 +1,201 @@
+citation = "W. F. Vogl and K. R. Hall, \"Compressibility data and virial coefficients for helium, neon and one mixture\", Physica 59, 529 (1972)"
+doi = "10.1016/0031-8914(72)90204-2"
+library = "Vogl_1972_CompressibilityDataVirial"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """A low-pressure Burnett apparatus (University of Virginia; Vogl's 1971 \
+dissertation, their ref. 1): the cells in a gas-bath thermostat (Hallikainen 1053 \
+thermotrol), the temperature from a calibrated platinum-resistance thermometer (Leeds \
+and Northrup 8164-B) with a Mueller bridge (Rubicon 1551), the pressure from an \
+air-piston gauge (Ruska 2465) with a differential pressure-cell indicator (Ruska \
+2413/2416). Isotherms of two Burnett runs each at 40, 0 and -40 C, between about 1 and \
+37 atm, for pure He, pure Ne and one He-Ne mixture of 49.4 mole % He. The Burnett \
+constants and virial coefficients are fitted simultaneously by non-linear least squares \
+(Hall and Canfield 1970, their ref. 2), the number of virial coefficients chosen by \
+Hall and Canfield's criterion (their ref. 3); a pressure-distortion correction, Eq. \
+(4), is applied."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library (the PDF's 2002 scan date against \
+the 1972 registry year); the first page reads 'Physica 59 (1972) 529-535', checked \
+against its image. Received 6 August 1971. Printed pp. 529-535 (pdf pages 1-7).
+
+TABLE I (pp. 530-531; the mixture's 51 points checked cell by cell against the image of \
+p. 530, 2026-10-01, every cell agreeing): P (atm), Z and sigma_z (x 10^5) at \
++40, 0 and -40 C, for 100.00 % He, 49.4 % He and 100.00 % Ne. Each isotherm is two \
+Burnett runs, printed one after the other with a blank line between them; the cells \
+file drops the blank line and the script splits the runs where the pressure rises \
+again. Only the 49.4 % He mixture is extracted: three datasets, one per isotherm, 18 \
+points at 40 C and at 0 C (1.07-36.6 atm) and 15 at -40 C (1.55-35.4 atm). The pure \
+gases' Z (He 18, 17, 16 points; Ne 18, 17, 16) are not extracted: optmat takes pure \
+fluids from reference equations of state. No pressure cut was needed (all below 38 atm).
+
+TABLE II (p. 531, image checked): B_2 (sigma_B2) of He, the mixture and Ne at the three \
+temperatures, and B_3 (sigma_B3) where fitted (He at 40 and 0 C, 153.7192 (279) and \
+133.4656 (132); Ne at -40 C, 393.9654 (179)). The table prints no unit; B_2 is in \
+cm^3/mol (Table III's unit, and reproduced from Table I below). The page prints seven \
+digits with the imprecise ones staggered (set as subscripts: 11.7_1858); the text (p. \
+533) says all seven are needed to regenerate Z within experimental accuracy, though \
+they are not that accurate. The digits are kept as printed. The B_3 are not extracted: \
+the vocabulary has no third virial coefficient.
+
+TABLE III (p. 532, image checked): B_12 for the 49.4 % He-50.6 % Ne mixture at +40, 0 \
+and -40 C, cm^3/mole, without an uncertainty. Eq. (2), from which it is computed, is \
+printed with subscripts He and Ar for He and Ne (a misprint of the labels; no number is \
+affected).
+
+Not extracted: Table IV (the Burnett cell and run constants), Tables V and VI (this \
+work's Z at round pressures and B_2 at 0 C, compared with other authors' values).
+
+REPRODUCED (computed 2026-10-01, R = 82.0574 cm^3 atm/(mol K), T = t + 273.15 K):
+- B_2 of the mixture from the printed Z of both runs by Z = 1 + B rho, rho = P/(Z R T), \
+weighted by 1/sigma_z (Table II fits no B_3 for the mixture): 12.306, 12.000 and \
+11.452 cm^3/mol at 40, 0 and -40 C against the printed 12.30729, 11.99564 and 11.44466, \
+within 0.01, a tenth of the stated sigma. He with B and C: 11.70 and 11.93 at 40 and 0 C \
+(printed 11.719, 11.944), with B alone 12.214 at -40 C (12.217); Ne with B alone 12.340 \
+and 11.375 at 40 and 0 C (12.328, 11.382), with B and C 9.061 at -40 C (9.059).
+- B_12 from Table II by Eq. (2) with x_He = 0.494: 12.58, 12.34 and 12.29 cm^3/mol \
+against the printed 12.57, 12.33 and 12.26; the paper's least-squares route is not \
+described further.
+
+UNCERTAINTY: 'All errors tabulated in this article have been calculated by propagation \
+of error analysis' (p. 534, Hall and Canfield's method): standard deviations, taken as 1 \
+sigma. The standard deviations of Z increase with pressure between 0.001 % and 0.035 % \
+(p. 534; the synopsis says 0.02 to 0.04 %); those of B_2 range from 0.8 % to 6 %, which \
+the printed sigma_B2 (0.1 to 0.6 cm^3/mol) match as absolute values. No uncertainty is \
+stated for the mole fraction, for the temperature or for B_12; propagating the sigma_B2 \
+through Eq. (2) gives 0.36, 0.25 and 0.48 cm^3/mol at 40, 0 and -40 C (computed, not in \
+the paper). The temperature scale is not stated.
+
+DOUBTS (computed 2026-10-01 with CoolProp 8.0.0's reference equations, Ortiz Vega et al. \
+2019 for He, Thol et al. 2019 for Ne, B from the equation's zero-density limit):
+- Pure Ne: B_2 = 12.33, 11.38 and 9.06 cm^3/mol at 40, 0 and -40 C against 11.81, \
+10.97 and 9.73 from Thol et al.: +4 % at 40 and 0 C (five and four stated sigma) and \
+-7 % at -40 C (1.3 sigma). The authors note their neon values 'appear to be \
+consistently larger' than earlier work (p. 534; Table VI: 11.38 against 10.90 and 10.81 at 0 C). The -40 C \
+neon isotherm is the least precise of Table I (sigma_z up to 42 x 10^-5) and needed a \
+B_3 of 394 cm^6/mol^2. Any such error in B_Ne enters B_12 through Eq. (2) with the \
+weight x_Ne^2/(2 x_He x_Ne) = 0.51.
+- Pure He: 11.72, 11.94 and 12.22 cm^3/mol against 11.78, 11.95 and 12.09 (-0.5 %, 0 %, \
++1.0 %), within the stated sigma.
+- Hence the mixture's B_2 and Z, measured directly, are the primary datasets; the pure \
+B_2 and the B_12 (which carries the pure B_2 of this work) are kept as checks."""
+
+[[datasets]]
+id = "Z_x0494_40C"
+material = "He"
+file = "He/vogl_1972__Z_x0494_40C.csv"
+table = "tbl_b47536f1a05a"
+quantity = "mixture_compressibility_factor"
+unit = "1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "primary"
+notes = "Table I (p. 530): Z of the 49.4 mole % He-Ne mixture at +40 C, two Burnett runs (rows run1_k, run2_k in the printed order); sigma_z printed x 10^5, written in units of Z."
+[datasets.parameters]
+partner = "Ne"
+mole_fraction = 0.494
+temperature_k = 313.15
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "Z_x0494_0C"
+material = "He"
+file = "He/vogl_1972__Z_x0494_0C.csv"
+table = "tbl_b47536f1a05a"
+quantity = "mixture_compressibility_factor"
+unit = "1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "primary"
+notes = "Table I (p. 530): Z of the 49.4 mole % He-Ne mixture at 0 C, two Burnett runs (rows run1_k, run2_k in the printed order); sigma_z printed x 10^5, written in units of Z."
+[datasets.parameters]
+partner = "Ne"
+mole_fraction = 0.494
+temperature_k = 273.15
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "Z_x0494_m40C"
+material = "He"
+file = "He/vogl_1972__Z_x0494_m40C.csv"
+table = "tbl_b47536f1a05a"
+quantity = "mixture_compressibility_factor"
+unit = "1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "primary"
+notes = "Table I (p. 530): Z of the 49.4 mole % He-Ne mixture at -40 C, two Burnett runs (rows run1_k, run2_k in the printed order); sigma_z printed x 10^5, written in units of Z."
+[datasets.parameters]
+partner = "Ne"
+mole_fraction = 0.494
+temperature_k = 233.15
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "B_mix_x0494"
+material = "He"
+file = "He/vogl_1972__B_mix_x0494.csv"
+table = "tbl_00584e89d11b"
+quantity = "mixture_second_virial_coefficient"
+unit = "cm3/mol"
+abscissa = "temperature"
+abscissa_unit = "C"
+use = "primary"
+notes = "Table II (p. 531): B_2 of the 49.4 mole % He-Ne mixture at 40, 0 and -40 C, seven digits as printed (the last ones staggered on the page as imprecise), sigma_B2 in parentheses. Reproduced from Table I's Z within 0.01 cm^3/mol (the record's notes)."
+[datasets.parameters]
+partner = "Ne"
+mole_fraction = 0.494
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "B12"
+material = "He"
+file = "He/vogl_1972__B12_Ne.csv"
+table = "tbl_aa7d07823f8a"
+quantity = "cross_second_virial_coefficient"
+unit = "cm3/mol"
+abscissa = "temperature"
+abscissa_unit = "C"
+use = "check"
+notes = "Table III (p. 532): B_12 of He-Ne from Table II by Eq. (2); no uncertainty printed (0.25-0.48 cm^3/mol propagated from Table II's sigma, computed). A check, not fitted beside B_mix_x0494, from which it is derived with this work's pure-gas B_2 (the record's doubts on neon)."
+[datasets.parameters]
+partner = "Ne"
+[datasets.uncertainty]
+level = "not stated"
+
+[[datasets]]
+id = "B_He"
+material = "He"
+file = "He/vogl_1972__B_He.csv"
+table = "tbl_00584e89d11b"
+quantity = "second_virial_coefficient"
+unit = "cm3/mol"
+abscissa = "temperature"
+abscissa_unit = "C"
+use = "check"
+notes = "Table II (p. 531): B_2 of pure He at 40, 0 and -40 C, as printed, sigma_B2 in parentheses. A check: optmat takes pure-gas B from the reference equations of state."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "B_Ne"
+material = "Ne"
+file = "Ne/vogl_1972__B_Ne.csv"
+table = "tbl_00584e89d11b"
+quantity = "second_virial_coefficient"
+unit = "cm3/mol"
+abscissa = "temperature"
+abscissa_unit = "C"
+use = "check"
+notes = "Table II (p. 531): B_2 of pure Ne at 40, 0 and -40 C, as printed, sigma_B2 in parentheses. A check: 4 % above Thol et al. (2019) at 40 and 0 C and 7 % below at -40 C (the record's doubts)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"

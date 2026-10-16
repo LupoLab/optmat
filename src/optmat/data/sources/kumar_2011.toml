@@ -1,0 +1,230 @@
+citation = "A. Kumar and A. J. Thakkar, J. Chem. Phys. 135, 074303 (2011)"
+doi = "10.1063/1.3626523"
+library = "Kumar_2011_OzoneUnresolvedDiscrepancies"
+identity = "VALIDATED"
+kind = "compilation"
+technique = """Constrained dipole oscillator strength distributions (DOSDs) built from \
+experimental photoabsorption cross sections (the Meath method, refined by an \
+iterative Pade high-energy tail, Eqs. 6-9), constrained by the Kuhn-Reiche-Thomas sum \
+rule and molar refractivities. O2: 32 initial distributions, constrained by the \
+refractivities of Smith et al. at 2208.7 A and Stoll at 9224 A. O3: 42 initial \
+distributions; no photoabsorption data between 24 and 524 eV, filled with scaled O2 \
+data (x 1.9, 1.7 and 1.5); distributions A (KRT only), B1 (plus Swift et al.'s \
+refractivity at 1.315 um), B2 (plus the Cuthbertsons' at 546.1 nm), C and D (Swift's \
+value x 0.95 and x 0.90)."""
+notes = """The data are dipole sums (Cauchy moments for k <= -2) S_k = sum f_i E_i^k + \
+integral (df/dE) E^k dE in atomic units (Eq. 1); S_-2 is the static polarizability, \
+S_0 = N electrons (exact by construction), and the S_-2k (k >= 2) are the Taylor \
+coefficients of alpha(omega). They are derived from measured photoabsorption data \
+with refractivity constraints, so for O2 they are not independent of Smith et al.'s \
+and Stoll's refractivities, and for O3 of Swift et al.'s or the Cuthbertsons'.
+
+O2 (Table I): estimated uncertainties '+-3 % for k = 2, +-2 % for k = 1, +-1 % for \
+0 > k >= -6, and +-3 % for -7 >= k >= -8' (caption; level not stated). The earlier \
+constrained DOSDs (Zeiss et al. 1977; Kumar et al. 1996) agree except for S_2 and \
+S_1.
+
+O3 (Table III): 'The true S_k probably lie between the predictions of the B1 and C \
+distributions' (caption). A and D are rejected (p. 074303-4: they give S_-2 below the range \
+18.55-20.70 of ab initio plus zero-point estimates); B2 is 'nearly identical' to B1 and \
+ignored. The refractivity data are 'incompatible with the photoabsorption data in the \
+12-20.6 eV energy range. (p. 074303-4). C, the authors' compromise, is recorded as primary \
+and B1 as a check (an alternative is to carry the B1-C spread, about 5 % in S_-2 and \
+S_-3, as the uncertainty); no uncertainties are stated. The ratio of the O3 and O2 \
+refractivities quoted from the Cuthbertsons (1.91 at 546.1 nm) and Swift et al. (1.87 \
+at 1.315 um) is used, not measured, here.
+
+The 'Other' column's k = -2 values are static polarizabilities from other work, each \
+recorded as a reproduced one-point polarizability: f CASPT2 and g MRCI (Andersson et \
+al. 1992), h CCSD(T) (Maroulis 1999), i CCSD(T) (Naves et al. 2011), j Berkowitz's \
+extrapolation of the Cuthbertsons' refractivity, k Berkowitz's estimate from \
+Epprecht's dielectric measurement. The ab initio values f-i are electronic \
+(equilibrium geometry), without the zero-point vibrational correction of about +1.43 \
+au (Naves et al., quoted p. 074303-4); j and k refer to the real molecule. The other rows of \
+'Other' (additive-model and Berkowitz S_k) are not extracted.
+
+Not extracted: Tables II and IV (mean excitation energies I_k; Table IV's merged cells, \
+read from the image: k = 2, 1, 0, -1, -2 give B1 19760, 944.0, 81.95, 27.60, 16.62 eV \
+and C 19020, 957.0, 86.61, 28.27, 16.67 eV, 'Other' 99.7 eV at k = 0), no vocabulary \
+quantity; Table V (C6 coefficients). The DOSDs themselves are the supplementary material, \
+curated as kumar_2011_supplement."""
+
+[[datasets]]
+id = "o2"
+material = "O2"
+file = "O2/kumar_2011__o2.csv"
+table = "tbl_46bad8286a3e"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Table I 'This work': the recommended constrained DOSD of O2. S_0 = 16 exact (KRT constraint)."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0, "-7" = 0.03, "-8" = 0.03 }
+
+[[datasets]]
+id = "o2_zeiss_1977"
+material = "O2"
+file = "O2/kumar_2011__o2_zeiss_1977.csv"
+table = "tbl_46bad8286a3e"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["G. D. Zeiss, W. J. Meath, J. C. F. MacDonald and D. J. Dawson, Can. J. Phys. 55, 2080 (1977)"]
+notes = "Table I 'Zeiss': earlier constrained DOSD (k = -5 and -7 not given)."
+
+[[datasets]]
+id = "o2_kumar_1996"
+material = "O2"
+file = "O2/kumar_2011__o2_kumar_1996.csv"
+table = "tbl_46bad8286a3e"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["A. Kumar, W. J. Meath, P. Bundgen and A. J. Thakkar, J. Chem. Phys. 105, 4927 (1996)"]
+notes = "Table I 'Kumar': earlier constrained DOSD (k = -7 not given)."
+
+[[datasets]]
+id = "o3_C"
+material = "O3"
+file = "O3/kumar_2011__o3_C.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Distribution C (KRT and 0.95 x Swift et al.'s refractivity at 1.315 um): the authors' compromise between the extremes A/D and B1; the true values 'probably lie between' B1 and C."
+
+[[datasets]]
+id = "o3_B1"
+material = "O3"
+file = "O3/kumar_2011__o3_B1.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Distribution B1 (KRT and Swift et al.'s refractivity at 1.315 um): the other bound of the recommended range."
+
+[[datasets]]
+id = "o3_B2"
+material = "O3"
+file = "O3/kumar_2011__o3_B2.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Distribution B2 (KRT and the Cuthbertsons' refractivity at 546.1 nm): within 0.4 % of B1 and 'ignored' by the authors."
+
+[[datasets]]
+id = "o3_A"
+material = "O3"
+file = "O3/kumar_2011__o3_A.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "excluded"
+notes = "Distribution A (KRT only): rejected by the authors (S_-2 = 17.54 below the plausible range; photoabsorption data at 12-20.6 eV judged inaccurate, p. 074303-4)."
+
+[[datasets]]
+id = "o3_D"
+material = "O3"
+file = "O3/kumar_2011__o3_D.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "excluded"
+notes = "Distribution D (0.90 x Swift et al.'s refractivity): rejected with A (p. 074303-4)."
+
+[[datasets]]
+id = "static_f"
+material = "O3"
+file = "O3/kumar_2011__static_f.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. Andersson, P. Borowski, P. W. Fowler, P. A. Malmqvist, B. O. Roos and A. J. Sadlej, Chem. Phys. Lett. 190, 367 (1992)"]
+notes = "Table III 'Other', k = -2, footnote f: CASPT2 (electronic, no zero-point correction)."
+
+[[datasets]]
+id = "static_g"
+material = "O3"
+file = "O3/kumar_2011__static_g.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. Andersson, P. Borowski, P. W. Fowler, P. A. Malmqvist, B. O. Roos and A. J. Sadlej, Chem. Phys. Lett. 190, 367 (1992)"]
+notes = "Table III 'Other', k = -2, footnote g: MRCI (electronic, no zero-point correction)."
+
+[[datasets]]
+id = "static_h"
+material = "O3"
+file = "O3/kumar_2011__static_h.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["maroulis_1999"]
+notes = "Table III 'Other', k = -2, footnote h: CCSD(T) (electronic, no zero-point correction)."
+
+[[datasets]]
+id = "static_i"
+material = "O3"
+file = "O3/kumar_2011__static_i.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["naves_2011"]
+notes = "Table III 'Other', k = -2, footnote i: CCSD(T)/d-aug-cc-pVTZ (electronic, no zero-point correction)."
+
+[[datasets]]
+id = "static_j"
+material = "O3"
+file = "O3/kumar_2011__static_j.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic, San Diego, 2002)"]
+notes = "Table III 'Other', k = -2, footnote j: Berkowitz's extrapolation of the Cuthbertsons' (1914) refractivity (19.7 +- 0.2 quoted on p. 074303-4)."
+
+[[datasets]]
+id = "static_k"
+material = "O3"
+file = "O3/kumar_2011__static_k.csv"
+table = "tbl_ce305bfd8b15"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["J. Berkowitz, Atomic and Molecular Photoabsorption: Absolute Total Cross Sections (Academic, San Diego, 2002)"]
+notes = "Table III 'Other', k = -2, footnote k: Berkowitz's estimate from Epprecht's (1950) dielectric measurement (20.2 +- 0.4 quoted on p. 074303-4)."

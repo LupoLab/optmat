@@ -1,0 +1,219 @@
+citation = "A. K. Bhatia and R. J. Drachman, \"Optical properties of helium including relativistic corrections\", Phys. Rev. A 58, 4470 (1998)"
+doi = "10.1103/PhysRevA.58.4470"
+library = "Bhatia_1998_OpticalPropertiesHelium"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Variational (Hylleraas-basis pseudostate) calculation of the helium \
+dynamic polarizability as a series in omega^2 (Eq. 6) from generalized dipole \
+polarizabilities (Eq. 5), with the Breit-Pauli alpha^2 corrections to the first three \
+coefficients from third-order perturbation theory (Eqs. 8-12); converted to a series \
+in lambda^-2, to n - 1 through Lorentz-Lorenz at Loschmidt's density and to the \
+Verdet constant (Eqs. 13-18), pp. 4470-4472."""
+notes = """Units (p. 4470): the Hamiltonian is in reduced Rydberg units with lengths in \
+reduced Bohrs, K = 2 m_e/(M + m_e) = 2.741 493e-4 for 4He; the polarizabilities of \
+Eqs. (5), (12), (13) are in reduced atomic units (a_mu^3) and omega in reduced Rydberg \
+units. Eq. (15) onwards is in a0^3 with lambda in A (vacuum wavelengths: omega = 4 pi \
+a0/(alpha (1 - K/2) lambda), Eq. 14). No QED; the relativistic terms are for the 4He \
+reduced mass (Puchalski et al. 2016 show that their mass dependence is not the true \
+recoil correction). No uncertainties are given for the coefficients ('it is not clear \
+that they are all accurate', p. 4471).
+
+Generalized polarizabilities for 4He in reduced atomic units (p. 4471; the first five \
+'calculated recently with high accuracy' in Bhatia and Drachman, Can. J. Phys. 75, 11 \
+(1997), the last two new here): alpha_1 = 1.383 241 01, beta_1 = 0.707 521 493, \
+gamma_1 = 0.385 538 368, delta_1 = 0.218 735 026, epsilon_1 = 0.127 538 649, zeta_1 = \
+0.075 827 657, eta_1 = 0.045 731 135 (the sums of <0|Z|p><p|Z|0>/(E_p - E_0)^j, j = \
+1..7, Z = 2(z_1 + z_2), energies in reduced Rydbergs). They are not extracted as Cauchy \
+moments: the conversion to atomic units, S(-2k-2) = c_k 4^k (1 + m_e/m_alpha)^(3+2k) for \
+alpha_1, gamma_1, epsilon_1, eta_1 (checked: it gives Puchalski's converted BD values \
+of Table II, e.g. 4 gamma_1 (1 + 1/7294.2995)^5 = 1.543 210 9), is not expressible \
+as one dataset scale; Puchalski et al. 2016 print alpha_0..alpha_6 so converted \
+(puchalski_2016 dataset cauchy_bhatia_drachman) and 1e3 to 1e5 times more accurate \
+values.
+
+Unit-conversion errors (Puchalski et al. 2016, Table VI notes c-e; confirmed here): \
+Eq. (15)'s lambda^-2 and lambda^-6 coefficients carry (1 + m_e/m_alpha)^(3+2k) \
+instead of (1 + m_e/m_alpha)^3 (with omega already scaled by (1 - K/2) in Eq. 14): \
+3.204 546e5 and 2.624 092e16 are reproduced that way from Eq. (13), while the correct \
+conversion gives 3.2036675e5 and 2.621934e16 (Puchalski's BD column); the lambda^-4 \
+coefficient 8.822 907e10 is reproduced by neither (correct: 8.8032341e10), a \
+typographical error. Eqs. (17) and (18) inherit the errors: Eq. (17) as printed gives \
+34.88646 and 34.81673 (the printed values), the corrected coefficients 34.88638 and \
+34.81667 (x 1e-6), i.e. 2.3 and 1.7 ppm lower (computed here). Eq. (13) and Stone \
+and Stejskal's use of it (stone_2004 Eq. 5: the same dynamic coefficients 0.385530216, \
+0.12753895, 0.04573114, with its static term replaced by Lach et al.'s QED value) are \
+unaffected; stone_2004's Eq. (8) lambda^-2 coefficient 1197.5410 agrees with \
+Puchalski's nonrelativistic + relativistic A_2 converted to cm^3/mol to 4e-7 \
+(checked 2026-09-24).
+
+Comparisons in the text (p. 4472): Leonard's recommended (n - 1) x 1e6 = 34.895 +- \
+0.01 at 5462.258 A (which is Leonard's value derived from theory, see leonard_1974 \
+recommended_He) and Achtermann et al.'s (1993) 34.887 +- 0.007 at 6329.9 A, 'differ by \
+10 times the standard deviation' from Eq. (17); Verdet constants from Leonard's table \
+(Ingersoll and Liebenberg), 0.637 at 5000 A and 0.246 at 8000 A. Pendrill (1996), cited \
+for the comparison, is not in the library."""
+
+[[datasets]]
+id = "alpha_static"
+material = "He"
+table = "text"
+points = [["static", "inf", "1.383729930"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Eq. (15), p. 4472: the constant term 1.383 729 930 a0^3, the 4He static polarizability with the alpha^2 relativistic correction (-8.0029e-5 in reduced units, Eq. 12), no QED; Eq. (13) gives it in reduced units as 1.383 160 981. Puchalski et al. (2016) quote 1.383729929; their recommended total is 1.38376077(14), 22 ppm higher, mostly QED. Superseded: a check."
+
+[[datasets]]
+id = "refractivity_theory"
+material = "He"
+table = "text"
+points = [
+  ["5462.258", "5462.258", "34.88646"],
+  ["6329.9", "6329.9", "34.81673"],
+]
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "p. 4472: Eq. (17) evaluated, '34.886 46 +- 0.000 02' at 5462.258 A and '34.816 73 +- 0.000 01' at 6329.9 A, (n - 1) x 1e6 at Loschmidt's density (Eq. 16: 0 degrees C, 1 atm, ideal gas); the +- is 'the value of the last term included', not an uncertainty, and is not stored. Eq. (17) as printed reproduces both; with the corrected coefficients they are 34.88638 and 34.81667 (see the source notes). A check."
+
+[[datasets]]
+id = "leonard_1974"
+material = "He"
+table = "text"
+points = [["5462.258", "5462.258", "34.895", "0.01"]]
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["leonard_1974"]
+notes = "p. 4472: 'one absolute value of n - 1 has been recommended by Leonard [9] at the common calibration wavelength lambda = 5462.258 A: (n - 1) x 1e6 = 34.895 +- 0.01'. Leonard's recommended value (leonard_1974 recommended_He, a probable error, derived from a calculated static polarizability); state and level as recorded there."
+[datasets.uncertainty]
+column = true
+level = "probable error"
+
+[[datasets]]
+id = "achtermann_1993"
+material = "He"
+table = "text"
+points = [["6329.9", "6329.9", "34.887", "0.007"]]
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, J. G. Hong, G. Magnus, R. A. Aziz and M. J. Slaman, J. Chem. Phys. 98, 2308 (1993)"]
+notes = "p. 4472: 'the single carefully analyzed point given by Achtermann et al. [10] at lambda = 6329.9 A gives the value (n - 1) x 1e6 = 34.887 +- 0.007', compared with Eq. (17) at Loschmidt's density; the state (taken as 0 degrees C, 1 atm) and the level are not stated. The original (J. Chem. Phys. 98, 2308) is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "verdet_theory"
+material = "He"
+table = "text"
+points = [
+  ["5000", "5000", "0.66122"],
+  ["8000", "8000", "0.254816"],
+]
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "p. 4472: 'At lambda = 5000 A, Eq. (18) gives V = 0.661 22 +- 0.000 25 ... while at lambda = 8000 A we get V = 0.254 816 +- 0.000 015' ('all in units of u min/oer cm'); the +- is presumably the size of the last term, as for n - 1, and is not stored. Eq. (18) as printed reproduces both (0.6612242, 0.2548158). It inherits Eq. (17)'s conversion errors."
+
+[[datasets]]
+id = "verdet_leonard_1974"
+material = "He"
+table = "text"
+points = [
+  ["5000", "5000", "0.637"],
+  ["8000", "8000", "0.246"],
+]
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["leonard_1974"]
+notes = "p. 4472: 'the experimental value of 0.637' (5000 A) and '0.246' (8000 A) from 'a table of values of the Verdet constant' in Leonard (1974): Ingersoll and Liebenberg's smoothed values (leonard_1974 verdet_ingersoll_liebenberg_He, 0.637 at 5000 A); medium and state as recorded there."
+
+[[formulas]]
+id = "eq12"
+material = "He"
+equation = "Eq. (12), p. 4471"
+printed = "Delta alpha(omega) = -8.0029 x 10^-5 - 8.1516 x 10^-6 omega^2 + 3.006 x 10^-7 omega^4"
+variable = "omega in reduced Rydberg units; Delta alpha in reduced atomic units (4He)"
+state = "none (per atom)"
+density = "none"
+range = "visible light (omega/(E_p - E_0) <= 0.2)"
+coefficients = { C0 = "-8.0029e-5", C1 = "-8.1516e-6", C2 = "3.006e-7" }
+check = "alpha_1 + C0 = 1.383160981, gamma_1 + C1 = 0.3855302164 and epsilon_1 + C2 = 0.1275389496 give Eq. (13)'s coefficients (checked 2026-09-24)."
+notes = "The Breit-Pauli alpha^2 correction to the dynamic polarizability (Eqs. 9-11)."
+
+[[formulas]]
+id = "eq13"
+material = "He"
+equation = "Eq. (13), p. 4471"
+printed = "alpha_rel(omega) = 1.383 160 981 + 0.385 530 216 omega^2 + 0.127 538 95 omega^4 + 0.045 731 14 omega^6"
+variable = "omega: photon energy in reduced Rydberg units, omega = 911.391 98/lambda with lambda in A (Eq. 14); alpha in reduced atomic units a_mu^3 (4He)"
+state = "none (per atom)"
+density = "none"
+range = "visible light (omega/(E_p - E_0) <= 0.2, p. 4471)"
+coefficients = { c0 = "1.383160981", c2 = "0.385530216", c4 = "0.12753895", c6 = "0.04573114" }
+check = "Equals the generalized polarizabilities plus Eq. (12) (the omega^6 term unchanged: eta_1 = 0.045 731 135 rounded). Converted with (1 + m_e/m_alpha)^3 for a0^3 and Eq. (14) for omega it gives Puchalski's BD column 1.3837299, 3.2036675e5, 8.8032341e10, 2.621934e16 (checked 2026-09-24)."
+notes = "The series Stone and Stejskal (2004) use for their dynamic terms. No form: alpha_series is in atomic, not reduced, units (a reduced-unit variant with the mass ratio as a parameter would take it; the equivalent atomic-unit series is c_k 4^k (1 + m_e/m_alpha)^(3+2k) omega_au^(2k))."
+
+[[formulas]]
+id = "eq15"
+material = "He"
+equation = "Eq. (15), p. 4472"
+printed = "alpha(lambda) = 1.383 729 930 + 3.204 546 x 10^5/lambda^2 + 8.822 907 x 10^10/lambda^4 + 2.624 092 x 10^16/lambda^6 a0^3"
+variable = "lambda: vacuum wavelength in A; alpha in a0^3"
+state = "none (per atom)"
+density = "none"
+range = "visible light (as Eq. 13)"
+coefficients = { A0 = "1.383729930", A2 = "3.204546e5", A4 = "8.822907e10", A6 = "2.624092e16" }
+check = "Does not follow from Eq. (13): the correct conversion gives A2 = 3.2036675e5, A4 = 8.8032341e10, A6 = 2.621934e16 (Puchalski et al. 2016, Table VI, BD column; reproduced here). The printed A2 and A6 are Eq. (13) times (1 + m_e/m_alpha)^(3+2k) with k = 1, 3; A4 is a misprint (the same wrong conversion would give 8.80806e10). Checked 2026-09-24."
+notes = "Corrected coefficients (no form takes this lambda^-2 series in A, see puchalski_2016 table6_total): A0 = 1.383729930, A2 = 3.2036675e5, A4 = 8.8032341e10, A6 = 2.621934e16 (Puchalski's correctly converted values; printed evidence: puchalski_2016 Table VI notes c-e). Nonrelativistic + alpha^2 only, no QED: superseded by puchalski_2016."
+
+[[formulas]]
+id = "eq17"
+material = "He"
+equation = "Eqs. (16)-(17), p. 4472"
+printed = "(n^2 - 1)/(n^2 + 2) = (4 pi/3) N_L a0^3 alpha(lambda) = 16.677 18 x 10^-6 alpha(lambda) = z; n - 1 = (3/2) z + 3z^2/8 = 34.615 27 x 10^-6 + 8.016 511/lambda^2 + 2.207 154 x 10^6/lambda^4 + 6.564 503 x 10^11/lambda^6"
+variable = "lambda: vacuum wavelength in A; N_L Loschmidt's number"
+state = "1atm_0C"
+density = "ideal"
+range = "visible light"
+coefficients = { A = "34.61527e-6", B = "8.016511", C = "2.207154e6", D = "6.564503e11" }
+check = "Reproduces the printed 34.886 46e-6 at 5462.258 A and 34.816 73e-6 at 6329.9 A (checked 2026-09-24); it is Eq. (15) with its conversion errors (the corrected coefficients give values 2.3 and 1.7 ppm lower)."
+notes = "No form: n - 1 as a polynomial in lambda^-2 (lambda in A) at a stated state; a form 'dn_lambda_series' (n - 1 = sum_k B_k lambda^(-2k)) would take it. Superseded by puchalski_2016."
+
+[[formulas]]
+id = "eq18"
+material = "He"
+equation = "Eq. (18), p. 4472"
+printed = "V = -(e/2mc^2) lambda dn/dlambda = (1.616 813 x 10^7/lambda^2) [1 + 5.506 521 x 10^5/lambda^2 + 2.456 618 x 10^11/lambda^4] u min/oer cm"
+variable = "lambda: vacuum wavelength in A; V in microminutes of arc per oersted per cm"
+state = "1atm_0C"
+density = "ideal"
+range = "visible light"
+coefficients = { V0 = "1.616813e7", V2 = "5.506521e5", V4 = "2.456618e11" }
+check = "Gives 0.6612242 at 5000 A and 0.2548158 at 8000 A, the printed 0.661 22 and 0.254 816; its bracket terms are 4C/2B and 6D/2B of Eq. (17) (checked 2026-09-24)."
+notes = "Becquerel's relation applied to Eq. (17); inherits its conversion errors."

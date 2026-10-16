@@ -1,0 +1,85 @@
+citation = "H. Matsumoto, \"The refractivity of CO2 gas in the region of 10 um\", Appl. Phys. B 44, 147 (1987)"
+doi = "10.1007/bf00692315"
+library = "Matsumoto_1987_RefractivityCO2Gas"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Two-beam interferometer with a ZnSe beam splitter and a 2 m vacuum cell with \
+BaF2 windows, run simultaneously with a 0.63 um He-Ne laser and a 10.6 um CO2 laser on \
+the 10.4 um band's P(20) line; fringes recorded while CO2 is admitted gradually, the \
+phase from the intensity between its extremes (Eq. 4), the CO2 laser's extremes found \
+by scanning a PZT. The laser's frequency is swept by +-25 MHz through the gain curve \
+and measured by beating with a second, stabilised CO2 laser (pp. 147-148, Fig. 1). \
+Maximum pressure 600-1300 Pa ('several hundreds of pascals', p. 148), the fringe \
+order changing by less than one, its fraction read to better than 1/100 of a fringe \
+(p. 149); room at 18-21 degrees C (p. 148)."""
+notes = """Page numbers are the journal's (147-149; pdf page 1 = p. 147).
+
+What was measured (p. 148, Table 1): the ratio R = (n - 1)_infrared/(n - 1)_visible of \
+the CO2-laser and He-Ne fringe counts in the same gas at the same time, at the line \
+centre v0 and at v0 -+ 25 MHz: 0.981 (sigma 0.024, N = 14), 0.989 (0.016, 7) and \
+0.972 (0.011, 5), sigma the standard deviation of the N measurements. The pressure is \
+not measured: 'Utilizing the Koch's formula in the visible region, the pressure of the \
+CO2 gas in the cell is determined from the values by the He-Ne laser' (p. 148), so \
+Table 2's refractivities at 101325 Pa and 20 degrees C are R times Koch's visible \
+refractivity there: each is R x 417.0e-6 to the printed digit (409.08, 412.41, \
+405.32), the visible value implied by all three rows lying in 416.97-417.03 (checked \
+2026-10-01). The ratio is not extracted: the vocabulary has no quantity for a gas's \
+refractivity over its own at another wavelength (refractivity_ratio is against another \
+material at the same density).
+
+State and density: 'at 101325 Pa and 20 °C' (Table 2's caption), through Koch's \
+formula (the paper cites Owens, Appl. Opt. 6, 51 (1967)); how that formula relates the \
+refractivity to the density is not stated here. The real and ideal densities of CO2 \
+at 1 atm and 20 degrees C differ by about 0.5 %, a quarter of the stated accuracy: \
+the density is recorded as unknown (the loader then uses the real-gas density).
+
+Wavelength: the 10.4 um band's P(20) line (p. 148), called the '10.6-um CO2-laser' \
+in the text (p. 148) and 'lambda = 10.6 um' on Fig. 2. No wavelength or wavenumber of \
+the line is printed; 10.6 um is stored, as vacuum. The same line is 944.2 cm^-1 \
+(10.591 um) in marchetti_2007's table (1P20): the 0.09 % in wavelength changes CO2's \
+refractivity by 0.03 % (marchetti_2007's Eq. 4 and fit/CO2 alike), far below the \
+precision. The three rows are 25 MHz apart (1e-6 of the frequency); the paper finds \
+'The measured values are not different in the gain curve' (p. 148), its Eq. (3) \
+putting the line's own anomalous dispersion at about 1e-7 at 1 atm (0.02 % of n - 1; \
+p. 147).
+
+Uncertainty: 'the over-all accuracy of the measurement is better than 2%' (p. 149; \
+'an experimental error of 2%', abstract, p. 147), level not stated; the errors of the \
+pressure and the cell length cancel in the ratio (p. 149). The per-row standard \
+deviations of R (1.1-2.4 % of a single measurement; 0.5-0.6 % as standard errors of \
+the means) are not the refractivity's uncertainty and are not stored. The three rows \
+spread by 1.7 % (0.972 to 0.989), more than their standard errors.
+
+Doubtful: Table 2's last column, (n_m - n_c) x 10^6 against Koch's formula, prints \
+-1.3, 2.1 and 5.0 (image checked). The first two give Koch's value at 10.6 um as \
+410.4 and 410.3 (the text's 'about 410 x 10^-6', p. 147); the third gives 400.3, \
+unless the printed 5.0 should be -5.0 (405.3 - 410.3). That column is a calculation \
+and is not extracted, so no erratum is needed; the sign of its last row cannot be \
+settled from the paper.
+
+Consistency (2026-10-01): Koch's implied 417.0e-6 at 0.63 um is 0.12 % above fit/CO2 \
+at 632.99 nm, 101325 Pa and 20 degrees C with the real-gas density (0.66 % with the \
+ideal; 632.99 nm is the He-Ne line's vacuum wavelength, quoted from memory: the paper \
+says 0.63 um). The ratio R, free of Koch's formula and of the density, averages 0.9794 \
+(+-0.0033, the rows weighted by their standard errors; chi-squared 4.8 for 2 degrees \
+of freedom) against fit/CO2's 0.9909 for 10.6 um over 632.99 nm, -1.2 %. Marchetti and \
+Simili's 1P20 value (marchetti_2007) is 1.4 % above the rows' mean, Simmons's 944 \
+cm^-1 and Willetts and Harris's 10.59 um values 1.0-1.9 % below it (in the \
+polarizability): all within the 2 %."""
+
+[[datasets]]
+id = "measured_CO2"
+material = "CO2"
+file = "CO2/matsumoto_1987__measured_CO2.csv"
+table = "tbl_a8b02d951b7a"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_pa = 101325.0, temperature_c = 20.0 }
+density = "unknown"
+use = "check"
+notes = "Table 2 (p. 148), column (n - 1)_m x 10^6: CO2 on the 10.4 um band's P(20) line (10.6 um as printed) at its centre (v0) and 25 MHz either side (v0-dv, v0+dv), each R of Table 1 times Koch's visible refractivity at 101325 Pa and 20 degrees C (417.0e-6, implied). A check: the three rows are one line, and their 2 % is larger than Marchetti and Simili's 0.3-0.7 %."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"

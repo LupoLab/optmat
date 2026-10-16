@@ -1,0 +1,681 @@
+citation = "P. J. Linstrom and W. G. Mallard (eds.), NIST Chemistry WebBook, NIST Standard Reference Database 69, National Institute of Standards and Technology, https://webbook.nist.gov, gas-phase ion energetics (ionization energy determinations), queried 2026-09-26, and constants of diatomic molecules (K. P. Huber and G. Herzberg), queried 2026-10-07"
+doi = "10.18434/T4D303"
+kind = "database"
+technique = """The WebBook's ion-energetics pages list, for each molecule, the published \
+determinations of the first ionisation energy (eV) with the method (S spectroscopy, \
+PE photoelectron, PI photoionisation, EI electron impact, EVAL evaluation), the \
+reference and a comment ('Vertical value' where the determination is vertical). \
+The compilations behind them are Lias et al. (J. Phys. Chem. Ref. Data 17, Suppl. 1, \
+1988) and its updates."""
+notes = """A stopgap for the molecules' ionisation energies until the primary \
+papers are in the library (TC-444; they are requested on the roadmap page). Every \
+value here is the WebBook's listing of one primary determination, recorded as \
+reproduced from it, with the reference as the WebBook prints it: one adiabatic \
+determination per molecule (the most precise spectroscopic or threshold value \
+listed) and, where listed, one vertical value. The WebBook pages were read, not \
+stored (NIST Standard Reference Data). The uncertainty level is not stated. \
+Page URLs: https://webbook.nist.gov/cgi/cbook.cgi?ID=<CAS>&Mask=20 with CAS \
+C1333740 (H2), C7782390 (D2), C7727379 (N2), C7782447 (O2), C74828 (CH4), \
+C2551624 (SF6), C10024972 (N2O), C124389 (CO2).
+
+RE-POINTED: the primaries of eight datasets are now curated, and \
+their reproduced_from names the curated record: adiabatic_N2 (trickl_1989), \
+adiabatic_O2 (tonkyn_1989), adiabatic_CH4 (berkowitz_1987), vertical_CH4 \
+(bieri_1977, itself a reprint of Heilbronner, Jones & Maier 1977), adiabatic_SF6 \
+(frost_1967), vertical_SF6 (potts_1970), adiabatic_N2O (berkowitz_1977) and \
+adiabatic_CO2 (wang_1988). No value was changed; each dataset's notes compare the \
+WebBook's number with the paper's. Still not curated: McCormack et al. 1989 (H2; \
+shiner_1993 recombines its Rydberg measurement, and liu_2010 quotes Liu et al. \
+2009), Takezawa & Tanaka 1975 (D2; liu_2010 reprints it with a -1.0 cm^-1 correction), \
+Banna & Shirley 1976 (O2 vertical) and Potts & Williams 1974 (N2O and CO2 vertical).
+
+ELECTRONIC STATES (queried 2026-10-07). The WebBook's 'Constants of diatomic \
+molecules' of H2, D2, N2, O2 and CO (Mask=1000), compiled by K. P. Huber and G. H. \
+Herzberg (data collected through February 1977), are stored as returned, \
+gzip-compressed, in data/external/nist_webbook/<gas>_diatomic_constants.html.gz \
+(PROVENANCE.md there, with the sha256 of each). The datasets state_<gas>_<state> hold \
+the Te of the states that bound where the third-order response is off resonance: the \
+lowest dipole-allowed, two-photon-allowed and spin-forbidden excited states, with the \
+0-0 band of the transition the page lists (parameters.nu00_cm1, .transition) and the \
+selection rules from the ground state (.one_photon, .two_photon: allowed, forbidden, \
+spin_forbidden; the curators' reading of the state's symmetry, TC-863). The strings are \
+the page's, checked against the files by tests/test_nist_webbook_states.py; H&H's \
+parentheses and brackets (a doubtful or deduced value) are stated in each dataset's \
+notes. Two Trans. cells are garbled on the page: D2's C state reads 'CX ↔' (C ↔ X) and \
+its E state 'E → N', which is E → B: with B's 0-0 band it gives the EF(0)-X(0) interval \
+within 0.4 cm^-1 of liu_2010's (TC-863)."""
+
+[[datasets]]
+id = "adiabatic_H2"
+material = "H2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. McCormack, J. M. Gilligan, C. Cornaggia and E. E. Eyler, Phys. Rev. A 39, 2260 (1989)"]
+points = [["1", "H2", "15.425932", "0.000002"]]
+notes = """As listed by the WebBook: 15.425932 +- 0.000002 eV, method S \
+(spectroscopy (Rydberg series or threshold)), comment: 'T = 0 K'. Not re-pointed (the \
+original is not in the library). Against the curated values of the same (N = 0 -> \
+N+ = 0) interval: shiner_1993/mccormack_H2 (McCormack et al.'s measurement with \
+Shiner et al.'s recalibration) 124 417.507(12) cm^-1 = 15.425805 eV, and \
+liu_2010/liu_2009_H2 124 417.491 13(37) cm^-1 = 15.425803 eV (hc = 1.239841984e-4 eV \
+cm). The WebBook's number is 0.13 meV (1.0 cm^-1) higher, 60 times its stated \
+uncertainty. It is what a value near 124 417.5 cm^-1 gives with the old conversion \
+1 eV = 8065.479 cm^-1 (124 417.507 / 8065.479 = 15.425929 eV), so the difference is \
+the conversion factor, not the measurement (an inference: the WebBook states no \
+factor)."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "adiabatic_D2"
+material = "D2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Takezawa and Y. Tanaka, J. Mol. Spectrosc. 54, 379 (1975)"]
+points = [["1", "D2", "15.4667", "0.0001"]]
+notes = """As listed by the WebBook: 15.4667 +- 0.0001 eV, method S \
+(spectroscopy (Rydberg series or threshold)). Not re-pointed (Takezawa & Tanaka 1975 \
+is not in the library). Against liu_2010/ie_ortho_D2 (X (0, N = 0) -> X+ (0, N+ = 0)), \
+124 745.394 07(58) cm^-1 = 15.466458 eV: the WebBook's number is 0.24 meV (2.0 cm^-1) \
+higher. liu_2010's Table IV lists Takezawa & Tanaka's value as 124 745.6(6) cm^-1 with \
+a -1.0 cm^-1 pressure-shift correction included (liu_2010/takezawa_1975_D2), i.e. \
+124 746.6 cm^-1 as published; with 1 eV = 8065.479 cm^-1 that gives 15.46673 eV, the \
+WebBook's value to its last digit (an inference). So the WebBook's D2 value carries \
+both the uncorrected pressure shift and the old conversion factor."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "adiabatic_N2"
+material = "N2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["trickl_1989"]
+points = [["1", "N2", "15.581", "0.008"]]
+notes = """As listed by the WebBook: 15.581 +- 0.008 eV, method S \
+(spectroscopy (Rydberg series or threshold)). The original, trickl_1989/ie_N2, is \
+125 666.959(67) cm^-1 = 15.580717 eV (hc = 1.239841984e-4 eV cm) from X (v = 0, J = 0) \
+to X+ (v+ = 0, N+ = 0): the WebBook's rounding is 0.28 meV high, within its +-0.008 eV; \
+the paper's uncertainty is 8.3e-6 eV."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "adiabatic_O2"
+material = "O2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tonkyn_1989"]
+points = [["1", "O2", "12.0697", "0.0002"]]
+notes = """As listed by the WebBook: 12.0697 +- 0.0002 eV, method S \
+(spectroscopy (Rydberg series or threshold)). The original, tonkyn_1989/ie_O2, is \
+97348 +- 2 cm^-1 = 12.069614 eV (+-0.00025 eV), from O2 X 3Sigma_g- F2 (v = 0, J = 1) \
+to O2+ X 2Pi_(1/2)g (v+ = 0, J+ = 1/2): the WebBook's 12.0697 is 0.09 meV (0.7 cm^-1) \
+above the conversion with the CODATA 2018 factor, within both uncertainties; with the \
+old factor 1 eV = 8065.479 cm^-1, 97348 cm^-1 gives 12.06971 eV, the WebBook's value."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "vertical_O2"
+material = "O2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["M. S. Banna and D. A. Shirley, J. Electron Spectrosc. Relat. Phenom. 8, 255 (1976)"]
+points = [["1", "O2", "12.33", "0.01"]]
+notes = """As listed by the WebBook: 12.33 +- 0.01 eV, method PE \
+(photoelectron spectroscopy), comment: 'vertical value'."""
+[datasets.parameters]
+kind = "vertical"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "adiabatic_CH4"
+material = "CH4"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["berkowitz_1987"]
+points = [["1", "CH4", "12.61", "0.01"]]
+notes = """As listed by the WebBook: 12.61 +- 0.01 eV, method PI \
+(photoionisation mass spectrometry). The original, berkowitz_1987/adiabatic_CH4, \
+prints 12.61 (+0.01, -0.00) eV (983 (+0, -1) A), the photoion-yield onset at 78 K; the \
+WebBook symmetrises the uncertainty. By the paper's own rotational model the \
+rotationless (J = 0 -> 0) value is about 0.005 eV above the onset."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "vertical_CH4"
+material = "CH4"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["bieri_1977"]
+points = [["1", "CH4", "13.6", "0.1"]]
+notes = """As listed by the WebBook: 13.6 +- 0.1 eV, method PE \
+(photoelectron spectroscopy), comment: 'vertical value'. The paper it cites, \
+bieri_1977/vertical_CH4, prints 13.6 eV (+-0.1 eV) as the first of three Jahn-Teller \
+maxima (13.6, 14.4, 15.0 eV) of the 1t2 band, taken from Heilbronner, Jones & Maier, \
+Helv. Chim. Acta 60, 1697 (1977) (its reference [17]; curated as heilbronner_1977, TC-547); the same value."""
+[datasets.parameters]
+kind = "vertical"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "adiabatic_SF6"
+material = "SF6"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["frost_1967"]
+points = [["1", "SF6", "15.35", "0.02"]]
+notes = """As listed by the WebBook: 15.35 +- 0.02 eV, method PE \
+(photoelectron spectroscopy). The original, frost_1967/first_threshold_SF6, prints \
+15.35 eV (standard deviation 0.02 eV), the first of four thresholds of the integrated \
+retarding-potential photoelectron curve; the paper does not call it adiabatic (the \
+WebBook's reading)."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "vertical_SF6"
+material = "SF6"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["potts_1970"]
+points = [["1", "SF6", "15.69"]]
+notes = """As listed by the WebBook: 15.69 eV, method PE \
+(photoelectron spectroscopy), comment: 'vertical value'. The original, \
+potts_1970/vertical_SF6, prints 15.69 eV (t1u, the 3t1u band maximum; Table 8, p. 75), \
+without uncertainty; the same value."""
+[datasets.parameters]
+kind = "vertical"
+final_state = "the cation's ground state"
+
+[[datasets]]
+id = "adiabatic_N2O"
+material = "N2O"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["berkowitz_1977"]
+points = [["1", "N2O", "12.886", "0.002"]]
+notes = """As listed by the WebBook: 12.886 +- 0.002 eV, method PE \
+(photoelectron spectroscopy). The original, berkowitz_1977/adiabatic_N2O, prints \
+12.886 +- 0.002 eV (to X 2Pi_3/2, the midpoint of the linear threshold rise, an \
+approximation to the rotationless transition); the same value. The method is \
+photoionisation mass spectrometry, not photoelectron spectroscopy as the WebBook \
+lists it."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "vertical_N2O"
+material = "N2O"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["potts_1974"]
+points = [["1", "N2O", "12.89"]]
+notes = """As listed by the WebBook: 12.89 eV, method PE \
+(photoelectron spectroscopy), comment: 'vertical value'."""
+[datasets.parameters]
+kind = "vertical"
+final_state = "the cation's ground state"
+
+[[datasets]]
+id = "adiabatic_CO2"
+material = "CO2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["wang_1988"]
+points = [["1", "CO2", "13.778", "0.002"]]
+notes = """As listed by the WebBook: 13.778 +- 0.002 eV, method PE \
+(photoelectron spectroscopy). The original, wang_1988/adiabatic_CO2, prints 13.778 eV \
+(Table 1, +-0.002 eV; X 2Pi_(3/2)g (000), 13.7778 in Table 3); the same value."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the cation's ground state"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "vertical_CO2"
+material = "CO2"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["potts_1974"]
+points = [["1", "CO2", "13.79"]]
+notes = """As listed by the WebBook: 13.79 eV, method PE \
+(photoelectron spectroscopy), comment: 'vertical value'."""
+[datasets.parameters]
+kind = "vertical"
+final_state = "the cation's ground state"
+
+[[datasets]]
+id = "state_H2_B"
+material = "H2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "B 1Σu+ 2pσ", "91700.0", ""]]
+notes = """H2 B 1Σu+ 2pσ: the lowest dipole-allowed state: the Lyman bands. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/H2_diatomic_constants.html.gz); their Trans. column reads 'B ↔ X 115 116 117 R'. The 0-0 band of that transition is at 90203.35 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "B 1Σu+ 2pσ"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "forbidden"
+nu00_cm1 = "90203.35"
+transition = "B ↔ X 115 116 117 R"
+
+[[datasets]]
+id = "state_H2_C"
+material = "H2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "C 1Πu 2pπ", "100089.8", ""]]
+notes = """H2 C 1Πu 2pπ: the second dipole-allowed state: the Werner bands. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/H2_diatomic_constants.html.gz); their Trans. column reads 'C ↔ X 108 109 R'. The 0-0 band of that transition is at 99120.17 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "C 1Πu 2pπ"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "forbidden"
+nu00_cm1 = "99120.17"
+transition = "C ↔ X 108 109 R"
+
+[[datasets]]
+id = "state_H2_E"
+material = "H2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "E 1Σg+ 2sσ", "100082.3", ""]]
+notes = """H2 E 1Σg+ 2sσ: the lowest state two photons reach (the inner well of the EF double-well state). Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/H2_diatomic_constants.html.gz); their Trans. column reads 'E → B 102 V'. The 0-0 band of that transition is at 8961.23 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "E 1Σg+ 2sσ"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "allowed"
+nu00_cm1 = "8961.23"
+transition = "E → B 102 V"
+
+[[datasets]]
+id = "state_D2_B"
+material = "D2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "B 1Σu+ 2pσ", "91697.2", ""]]
+notes = """D2 B 1Σu+ 2pσ: the lowest dipole-allowed state: the Lyman bands. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/D2_diatomic_constants.html.gz); their Trans. column reads 'B ↔ X 64 65 R'. The 0-0 band of that transition is at 90633.79 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "B 1Σu+ 2pσ"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "forbidden"
+nu00_cm1 = "90633.79"
+transition = "B ↔ X 64 65 R"
+
+[[datasets]]
+id = "state_D2_C"
+material = "D2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "C 1Πu 2pπ", "100097.2", ""]]
+notes = """D2 C 1Πu 2pπ: the second dipole-allowed state: the Werner bands. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/D2_diatomic_constants.html.gz); their Trans. column reads 'CX ↔ 59 R'. The 0-0 band of that transition is at 99409.18 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "C 1Πu 2pπ"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "forbidden"
+nu00_cm1 = "99409.18"
+transition = "CX ↔ 59 R"
+
+[[datasets]]
+id = "state_D2_E"
+material = "D2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "E 1Σg+ 2sσ", "100128.1", ""]]
+notes = """D2 E 1Σg+ 2sσ: the lowest state two photons reach (the inner well of the EF double-well state). Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/D2_diatomic_constants.html.gz); their Trans. column reads 'E → N V'. The 0-0 band of that transition is at 8827.99 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "E 1Σg+ 2sσ"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "allowed"
+nu00_cm1 = "8827.99"
+transition = "E → N V"
+
+[[datasets]]
+id = "state_N2_A"
+material = "N2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "A 3Σu+", "50203.63", ""]]
+notes = """N2 A 3Σu+: the lowest excited state, a triplet: the Vegard-Kaplan bands. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/N2_diatomic_constants.html.gz); their Trans. column reads 'A↔X 108 104 R'. The 0-0 band of that transition is at 49754.78 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "A 3Σu+"
+kind = "Te"
+one_photon = "spin_forbidden"
+two_photon = "spin_forbidden"
+nu00_cm1 = "49754.78"
+transition = "A↔X 108 104 R"
+
+[[datasets]]
+id = "state_N2_ap"
+material = "N2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "a' 1Σu-", "68152.66", ""]]
+notes = """N2 a' 1Σu-: the lowest excited singlet, reached from X only by forbidden one-photon transitions (Ogawa-Tanaka-Wilkinson-Mulliken bands). Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/N2_diatomic_constants.html.gz); their Trans. column reads 'a' ↔ X 92 R'. The 0-0 band of that transition is at 67739.31 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "a' 1Σu-"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "forbidden"
+nu00_cm1 = "67739.31"
+transition = "a' ↔ X 92 R"
+
+[[datasets]]
+id = "state_N2_a"
+material = "N2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "a 1Πg", "69283.06", ""]]
+notes = """N2 a 1Πg: the lowest state two photons reach (one-photon only as the weak magnetic-dipole and quadrupole Lyman-Birge-Hopfield bands). Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/N2_diatomic_constants.html.gz); their Trans. column reads 'a → a' 84 V'. The 0-0 band of that transition is at 1212.28 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "a 1Πg"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "allowed"
+nu00_cm1 = "1212.28"
+transition = "a → a' 84 V"
+
+[[datasets]]
+id = "state_N2_app"
+material = "N2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "a\" 1Σg+", "100016.0", ""]]
+notes = """N2 a" 1Σg+: the second two-photon state. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/N2_diatomic_constants.html.gz); their Trans. column reads 'a" ← X 64'. The 0-0 band of that transition is at 98840.30 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level. H&H print it as [100016.0]: parentheses and brackets mark a doubtful or deduced value (the page's notes)."""
+[datasets.parameters]
+state = "a\" 1Σg+"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "allowed"
+nu00_cm1 = "98840.30"
+transition = "a\" ← X 64"
+
+[[datasets]]
+id = "state_N2_b"
+material = "N2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "b 1Πu", "101675", ""]]
+notes = """N2 b 1Πu: the lowest dipole-allowed state. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/N2_diatomic_constants.html.gz); their Trans. column reads 'b → a R'. The 0-0 band of that transition is at 31865.7 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level. H&H print it as (101675): parentheses and brackets mark a doubtful or deduced value (the page's notes)."""
+[datasets.parameters]
+state = "b 1Πu"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "forbidden"
+nu00_cm1 = "31865.7"
+transition = "b → a R"
+
+[[datasets]]
+id = "state_O2_a"
+material = "O2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "a 1Δg", "7918.1", ""]]
+notes = """O2 a 1Δg: the lowest excited state, a singlet (the 1.27 um band, magnetic dipole). Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/O2_diatomic_constants.html.gz); their Trans. column reads 'a ↔ X 67 68 65 R'. The 0-0 band of that transition is at 7882.39 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "a 1Δg"
+kind = "Te"
+one_photon = "spin_forbidden"
+two_photon = "spin_forbidden"
+nu00_cm1 = "7882.39"
+transition = "a ↔ X 67 68 65 R"
+
+[[datasets]]
+id = "state_O2_b"
+material = "O2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "b 1Σg+", "13195.1", ""]]
+notes = """O2 b 1Σg+: a singlet (the 762 nm atmospheric A band, magnetic dipole). Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/O2_diatomic_constants.html.gz); their Trans. column reads 'b → a 63'. The 0-0 band of that transition is at 5238.5 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "b 1Σg+"
+kind = "Te"
+one_photon = "spin_forbidden"
+two_photon = "spin_forbidden"
+nu00_cm1 = "5238.5"
+transition = "b → a 63"
+
+[[datasets]]
+id = "state_O2_A"
+material = "O2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "A 3Σu+", "35397.8", ""]]
+notes = """O2 A 3Σu+: the Herzberg I bands, forbidden as electric-dipole transitions. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/O2_diatomic_constants.html.gz); their Trans. column reads '(A → b) 50'. The 0-0 band of that transition is at 21886 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "A 3Σu+"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "forbidden"
+nu00_cm1 = "21886"
+transition = "(A → b) 50"
+
+[[datasets]]
+id = "state_O2_B"
+material = "O2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "B 3Σu-", "49793.28", ""]]
+notes = """O2 B 3Σu-: the lowest dipole-allowed state: the Schumann-Runge bands and continuum. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/O2_diatomic_constants.html.gz); their Trans. column reads 'B ↔ X 46 47 R'. The 0-0 band of that transition is at 49358.15 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "B 3Σu-"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "forbidden"
+nu00_cm1 = "49358.15"
+transition = "B ↔ X 46 47 R"
+
+[[datasets]]
+id = "state_O2_C"
+material = "O2"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "C (3Πg)", "65530", ""]]
+notes = """O2 C (3Πg): the lowest triplet gerade state, which two photons reach. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/O2_diatomic_constants.html.gz); their Trans. column reads '(C ← X)'. The 0-0 band of that transition is at 65670 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level. H&H print it as (65530): parentheses and brackets mark a doubtful or deduced value (the page's notes)."""
+[datasets.parameters]
+state = "C (3Πg)"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "allowed"
+nu00_cm1 = "65670"
+transition = "(C ← X)"
+
+[[datasets]]
+id = "state_CO_a"
+material = "CO"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "a 3Πr", "48686.7", ""]]
+notes = """CO a 3Πr: the lowest excited state, a triplet: the Cameron bands. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/CO_diatomic_constants.html.gz); their Trans. column reads 'a ↔ X 74 75 R'. The 0-0 band of that transition is at 48473.22 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "a 3Πr"
+kind = "Te"
+one_photon = "spin_forbidden"
+two_photon = "spin_forbidden"
+nu00_cm1 = "48473.22"
+transition = "a ↔ X 74 75 R"
+
+[[datasets]]
+id = "state_CO_A"
+material = "CO"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "A 1Π", "65075.77", ""]]
+notes = """CO A 1Π: the lowest dipole-allowed state (the fourth-positive bands); without an inversion centre it is also two-photon allowed. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/CO_diatomic_constants.html.gz); their Trans. column reads 'A ↔ X 50 51 52 R'. The 0-0 band of that transition is at 64748.48 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "A 1Π"
+kind = "Te"
+one_photon = "allowed"
+two_photon = "allowed"
+nu00_cm1 = "64748.48"
+transition = "A ↔ X 50 51 52 R"
+
+[[datasets]]
+id = "state_CO_I"
+material = "CO"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "I 1Σ-", "65084.40", ""]]
+notes = """CO I 1Σ-: reached by two photons only through the antisymmetric part of the two-photon tensor (Sigma+ to Sigma-), which vanishes for degenerate or parallel photons. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/CO_diatomic_constants.html.gz); their Trans. column reads 'I ← X R'. The 0-0 band of that transition is at 64546.26 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "I 1Σ-"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "forbidden"
+nu00_cm1 = "64546.26"
+transition = "I ← X R"
+
+[[datasets]]
+id = "state_CO_D"
+material = "CO"
+quantity = "electronic_state_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. P. Huber and G. Herzberg, Molecular Spectra and Molecular Structure IV. Constants of Diatomic Molecules (Van Nostrand Reinhold, New York, 1979), data collected through February 1977"]
+points = [["1", "D 1Δ", "65928", ""]]
+notes = """CO D 1Δ: a two-photon state just above A. Te (cm^-1), the minimum of the state's potential above that of X, as Huber & Herzberg tabulate it (WebBook constants of diatomic molecules, data/external/nist_webbook/CO_diatomic_constants.html.gz); their Trans. column reads 'D ← X R'. The 0-0 band of that transition is at 65391 cm^-1 (parameters.nu00_cm1, .transition); with the lower state's own 0-0 band to X it gives T0, the energy from the ground level."""
+[datasets.parameters]
+state = "D 1Δ"
+kind = "Te"
+one_photon = "forbidden"
+two_photon = "allowed"
+nu00_cm1 = "65391"
+transition = "D ← X R"
+

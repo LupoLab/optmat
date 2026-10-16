@@ -1,0 +1,233 @@
+citation = "J. Malicet, D. Daumont, J. Charbonnier, C. Parisse, A. Chakir and J. Brion, \"Ozone UV spectroscopy. II. Absorption cross-sections and temperature dependence\", J. Atmos. Chem. 21, 263 (1995)"
+doi = "10.1007/bf00696758"
+library = "Malicet_1995_OzoneUVSpectroscopy"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """As daumont_1992 (method 1: the ozone partial pressure P_O3 = 2[(P_O2)_i - P_T] \
+from the total pressure during decomposition, Eq. 1, at constant temperature and \
+volume): monochromatic light from a Jobin-Yvon THR 1500 or HR 640 spectrometer through \
+the cell onto a Hamamatsu R 925 photomultiplier, a second photomultiplier monitoring the \
+source; MKS Baratron; a two-stage cryostat and a double-walled cell with methanol \
+circulation, platinum sensors (accuracy 0.1 K; gradient along the cell at most 0.3 K, \
+stability 0.05 K over 3 h); O3 (about 92 %) prepared as Griggs (1968); impurities \
+(H2O, CO, CO2, N2O) below 0.1 % by FTIR; cells of 3.285 +- 0.001 cm (195-320 nm at \
+213-273 K, 195-335 nm at 295 K) and 99.90 +- 0.05 cm (310-350 nm, 213-273 K) or 81.50 \
++- 0.05 cm (320-350 nm, 295 K); spectral bandwidth 0.01-0.02 nm; optical density 0.5-2.0; \
+each spectrum the average of 10 recordings (Table I, pp. 264-265)."""
+notes = """Identity checked against the first page (PDF page 1, journal p. 263): Malicet, \
+Daumont, Charbonnier, Parisse, Chakir and Brion, J. Atmos. Chem. 21, 263-273 (1995), \
+'Ozone UV Spectroscopy. II'. Journal pages 263-273 = PDF pages 1-11. O3 only.
+
+Facts for the data files (the Brion/Daumont/Malicet 'BDM' temperature set):
+- Temperatures: 295, 273, 243, 228 and 218 K; 195-345 nm, except 273 K, 300-345 nm \
+only (p. 272). The 295 K spectrum is daumont_1992's; the low-temperature ones were \
+first reported by Brion et al. (1992, 1993: brion_1993) (p. 266).
+- Resolution: 'Spectral bandwidth Delta lambda = 0.01-0.02 nm' (Table I); 'determined \
+under high resolution' (abstract). Sampling not restated here (daumont_1992: 0.01 nm \
+steps).
+- Wavelengths: the medium is not stated in this paper; the method and calibration are \
+daumont_1992's, 'in air' (recorded as standard air). Wavelength uncertainty \
+0.005-0.015 nm (Table II; the HR 640 is 'slightly less precise in wavelength than the \
+THR 1500', p. 265).
+- Absolute scale: the pressure method (Eq. 1), not normalised; at 253.65 nm compared \
+with Barnes and Mauersberger (Table III: -0.26 to -0.48 %).
+- Uncertainty (Table II, image checked, p. 266): absorbance 1 %, optical path 0.05 %, \
+ozone pressure 0.1 %, temperature 0.02-0.15 %, impurities < 0.1 %, wavelength \
+0.005-0.015 nm; total systematic error 1.3-1.5 % (Hartley band) and 1.3-3.5 % (Huggins \
+band); random errors (RMS) 0.3-2.0 % (lambda < 340 nm). Level not stated. 'the \
+standard deviation calculated with 10 scans stays underneath total error estimations' \
+(p. 265).
+- The published file: 'All these data have been gathered together on a floppy disk, \
+available on request' (p. 267); the paper prints no spectrum (Figs. 2-4 only).
+
+Temperature dependence (pp. 267-270): weak in the Hartley band (at 253.6 nm the cross \
+section decreases by 1.0 % from 218 to 295 K; 1.15 % by the dew-point method of \
+Malicet et al. 1989; 0.8 % Molina and Molina); none in the 210 nm window; strong in the \
+Huggins bands (more than 50 % towards long wavelengths; sigma_218/sigma_295 about 0.4 \
+in the minima and 0.9 at the band tops), with a red shift of the structure below 0.06 \
+nm from 218 to 295 K. Parametrisation (p. 269): sigma = C0 + C1 theta + C2 theta^2, \
+theta the temperature in C, fitted per wavelength ('a 4-coefficient polynomial making \
+no significant improvement'); the coefficients are not printed (not a formula entry).
+
+Comparisons (p. 271): Molina and Molina (226 K) within 1 % below 240 nm, 1.5-3 % higher \
+above; Yoshino et al. (1993) 0-5 % too low below 254 nm; Bass and Paur within 1.5 % in \
+the Hartley band at 298, 243, 228 and 218 K, but their Huggins structure shifted by \
++0.05 nm (and -0.1 nm more at 218 K in 313-318 nm); Cacciani et al. (339-345 nm) agree \
+in the mean, with shallower band contrast.
+
+Datasets: Tables III and IV (images checked), in 10^-19 cm^2 (headers 'sigma x 10^19 \
+cm^2'); scale 1e-19 to cm^2. This work's values are points of the BDM spectra: 'check' \
+(the checks on the data files). Each temperature is its own dataset (a dataset has one \
+temperature). The relative-difference columns are derived and not extracted."""
+
+[[datasets]]
+id = "t228"
+material = "O3"
+file = "O3/malicet_1995__t228.csv"
+table = "tbl_418f10b3b9e9"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table IV 'Present work': 13 wavelengths 238.20-344.25 nm at 228 K (points of the 228 K spectrum). Total systematic error 1.5 % in the Hartley band (to 310 nm) and up to 3.5 % in the Huggins band (315-344 nm; Table II, level not stated). Table IV's 253.65 nm row (113.5) is Table III's 228 K value."
+[datasets.uncertainty]
+relative = 0.015
+level = "not stated"
+relative_rows = { "315.13" = 0.035, "322.07" = 0.035, "334.15" = 0.035, "344.25" = 0.035 }
+[datasets.parameters]
+temperature_k = 228.0
+
+[[datasets]]
+id = "yoshino_1988_228"
+material = "O3"
+file = "O3/malicet_1995__yoshino_1988_228.csv"
+table = "tbl_418f10b3b9e9"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Yoshino, K., Freeman, D. E., Esmond, J. R., and Parkinson, W. H., 1988, Absolute absorption cross-section measurements of ozone in the wavelength region 238-335 nm and the temperature dependence, Planet. Space Sci. 36, 395-398"]
+notes = "Table IV 'Yoshino et al.': their 228 K values at the same 13 wavelengths (Yoshino et al. 1988, 'at 13 fixed wavelengths covering the spectral range 230-345 nm', p. 270); within 1.5 % of this work except 272-289 nm (about 3 %)."
+[datasets.parameters]
+temperature_k = 228.0
+
+[[datasets]]
+id = "t295_253"
+material = "O3"
+file = "O3/malicet_1995__t295_253.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["daumont_1992"]
+notes = "Table III, this work at 295 K: 113.05 +- 1.1 at 253.65 nm, daumont_1992's method-1 value (daumont_1992/present, row 253.65)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 295.0
+
+[[datasets]]
+id = "t243_253"
+material = "O3"
+file = "O3/malicet_1995__t243_253.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table III, this work at 243 K: 113.7 +- 1.5 at 253.65 nm (a point of the 243 K spectrum)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 243.0
+
+[[datasets]]
+id = "t228_253"
+material = "O3"
+file = "O3/malicet_1995__t228_253.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table III, this work at 228 K: 113.5 +- 1.5 at 253.65 nm; the same value as t228's row 253.65 (Table IV), here with its uncertainty. Never fitted beside t228."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 228.0
+
+[[datasets]]
+id = "t218_253"
+material = "O3"
+file = "O3/malicet_1995__t218_253.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "check"
+notes = "Table III, this work at 218 K: 114.1 +- 1.5 at 253.65 nm (a point of the 218 K spectrum)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 218.0
+
+[[datasets]]
+id = "barnes_mauersberger_297"
+material = "O3"
+file = "O3/malicet_1995__barnes_mauersberger_297.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Barnes, J. and Mauersberger, K., 1987, Temperature dependence of the ozone absorption cross-section at the 253.7 nm mercury line, J. Geophys. Res. 92, 14861-14864"]
+notes = "Table III, Barnes and Mauersberger (1987) at 297 K, 253.65 nm (their paper names the 253.7 nm Hg line). The original is not in the library."
+[datasets.parameters]
+temperature_k = 297.0
+
+[[datasets]]
+id = "barnes_mauersberger_273"
+material = "O3"
+file = "O3/malicet_1995__barnes_mauersberger_273.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Barnes, J. and Mauersberger, K., 1987, Temperature dependence of the ozone absorption cross-section at the 253.7 nm mercury line, J. Geophys. Res. 92, 14861-14864"]
+notes = "Table III, Barnes and Mauersberger (1987) at 273 K, 253.65 nm (their paper names the 253.7 nm Hg line). The original is not in the library."
+[datasets.parameters]
+temperature_k = 273.0
+
+[[datasets]]
+id = "barnes_mauersberger_253"
+material = "O3"
+file = "O3/malicet_1995__barnes_mauersberger_253.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Barnes, J. and Mauersberger, K., 1987, Temperature dependence of the ozone absorption cross-section at the 253.7 nm mercury line, J. Geophys. Res. 92, 14861-14864"]
+notes = "Table III, Barnes and Mauersberger (1987) at 253 K, 253.65 nm (their paper names the 253.7 nm Hg line). The original is not in the library."
+[datasets.parameters]
+temperature_k = 253.0
+
+[[datasets]]
+id = "barnes_mauersberger_221"
+material = "O3"
+file = "O3/malicet_1995__barnes_mauersberger_221.csv"
+table = "tbl_b1fba2648b6c"
+quantity = "absorption_cross_section"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["Barnes, J. and Mauersberger, K., 1987, Temperature dependence of the ozone absorption cross-section at the 253.7 nm mercury line, J. Geophys. Res. 92, 14861-14864"]
+notes = "Table III, Barnes and Mauersberger (1987) at 221 K, 253.65 nm (their paper names the 253.7 nm Hg line). The original is not in the library."
+[datasets.parameters]
+temperature_k = 221.0

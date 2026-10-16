@@ -1,0 +1,162 @@
+citation = "J. S. Parker, G. S. J. Armstrong, M. Boca and K. T. Taylor, \"From the UV to the static-field limit: rates and scaling laws of intense-field ionization of helium\", J. Phys. B: At. Mol. Opt. Phys. 42, 134011 (2009)"
+doi = "10.1088/0953-4075/42/13/134011"
+library = "Parker_2009_UVStaticField"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Full-dimensional integration of the two-electron helium time-dependent \
+Schrodinger equation (the HELIUM code: finite differences in the radial variables, \
+coupled spherical harmonics; Smyth et al. 1998, smyth_1998), infinite nuclear mass. \
+Laser-driven single-ionisation rates at 195 nm up to 32e14 W/cm^2, and static-field \
+rates for E < 0.4 au: the field is ramped on smoothly, E = E_max (1 - cos(Omega t))/2 \
+for 0 < t < pi/Omega, and the rate is the exponential decay of the population within 18 \
+Bohr of the nucleus (p. 8)."""
+notes = """Pages are pdf pages: pdf page 1 is the IOPscience download cover, so the \
+article page is 134011-(n-1). Identity checked against pdf p. 2.
+
+WHAT IS TAKEN. Table 1 (p. 8), 'Static-field ionization rates from the ground state of \
+helium as a function of peak electric field strength E': Gamma (au) against E (au) for \
+'Present work', 'Scrinzi et al [3]', 'Themelis et al [4]' and 'ADK theory [9]', one \
+dataset per column (wavelength_nm = inf, polarization = static). The library's table is \
+scrambled (the characters of every row interleaved in one cell per column): the script \
+transcribes it from the image and checks each column's characters against the \
+scrambled cell (structural fix, no erratum). The rate is that of the atom: the decay \
+of the two-electron ground-state population (single ionisation), not per electron.
+
+CONVERGENCE (p. 8, quoted; no overall uncertainty is stated, so none is recorded): \
+'The integrations were repeated with increasingly large values for the maximum angular \
+momenta L_max and ramp-on times T, until no change was observed in the final results' \
+(L_max 12 at low field, 24 for E > 0.25 au); 'Reducing delta r to 0.2 au altered \
+ionization rates by 0.3% at E = 0.1 au and by 0.03% at E = 0.3 au'. 'No adiabatic \
+response was observed for E > 0.38 au ... Despite this source of uncertainty, at E = \
+0.40 au the measured ionization rate differed from Scrinzi's by only a few per cent' \
+(p. 8); the table has no present-work value at 0.40. A change of functional form at E = \
+0.175 au, a component scaling as E^4 (p. 3, p. 8).
+
+REPRODUCED AND CHECK COLUMNS. [3] = A. Scrinzi, M. Geissler and T. Brabec, Phys. Rev. \
+Lett. 83, 706 (1999) and [4] = S. I. Themelis, T. Mercouris and C. A. Nicolaides, Phys. \
+Rev. A 61, 024101 (1999), full-dimensional time-independent methods (p. 9); neither is \
+in the library. [9] ADK: 'The ADK formula used here is discussed in [1]' (parker_2007, \
+p. 9), whose AC-ADK is for 'a ground state one-electron atom with ionization potential \
+0.903724 au' and says that of the two-electron atom is twice it (parker_2007 p. 12). \
+Not reproduced exactly (computed 2026-09-26): the static ADK rate with the Gamma-function \
+C_n*l^2 (n* = 0.7438, l = m = 0), Ip = 0.903724 au and two electrons is 0.783 +- 0.001 \
+of the printed column at every E except 0.20 au; with Stirling's C_n*l^2 = (2e/n*)^(2n*) \
+/(2 pi n*) it is 0.970 +- 0.001. At E = 0.20 au the ratio is 0.809 (Gamma form) and \
+1.003 (Stirling): the printed 1.07e-2 departs by +3.3 % from the smooth trend of its \
+neighbours, which gives about 1.11e-2; probably a misprint of the ADK cell, not \
+corrected (a formula evaluation, use = check). majety_2015 Table 1 reprints this ADK \
+column digit for digit, 1.07e-2 at 0.20 included, as it reprints the other three \
+columns (at the 13 fields 0.06-0.20 au).
+
+FORMULAS. Eq. (8) (static fit) and Eq. (7) (the laser-driven fits of Figs. 3-5) are \
+recorded below. The empirical cycle-averaged static rate (p. 9): 'multiplying equation \
+(8) by 0.146 I^0.25 works well for I < 50.0 x 10^14 W cm^-2, (E < 0.3773)', with I = \
+14.0484 (E/0.2)^2 (I in 1e14 W/cm^2, E in au).
+
+195 nm AND THE SCALING LAWS (figures only, not taken). Fig. 1 (p. 3): rates at 195, \
+390 and 780 nm and the cycle-averaged static rates, 0 < I < 16e14 W/cm^2; Fig. 5 (p. \
+5): 195 nm, 1/ln^2(Gamma) against I, data up to I = 32.0e14 W/cm^2. Text values (pp. 3, \
+6-7): the 780 nm rates exceed the static rates by factors 100, 8, 3 and 2 at I = 1, 2, 3 \
+and 4e14 W/cm^2; Eq. (2) with A = 548000.0, d0 = 0.138, n = 7.735, xi = 0.456 \
+(ponderomotive shift xi0 = 0.4464 plus Stark xi2 = 0.0096, 390 nm units); b0 from the \
+figures 0.000247 (780 nm), 0.000990 (390 nm), 0.003920 (195 nm) against Eq. (6) \
+0.000250, 0.000989, 0.003856; b1 from the figures 0.001485, 0.001630, 0.001750 against \
+Eq. (5) 0.001470, 0.001680, 0.001930 ('the 10% error at R = 0.5 stands out'); a0 = \
+b0 R^2 from Eq. (6) 0.000993 (3120 nm), 0.001000 (1560 nm), 0.001000 (780 nm), 0.000989 \
+(390 nm), 0.000964 (195 nm); for neon's n = 6.7832, a0 = 0.00139 at R = 2. At 195 nm \
+Eq. (7) fails for I < 1.0e14 W/cm^2 (0.25e14 at 390 nm). The ABI onset: Scrinzi's 14e14 \
+W/cm^2 (E = 0.2 au) (p. 3, p. 9). None of these is a quantity: notes only. At \
+195 nm (omega = 2 x 0.11683 = 0.23366 au, parker_2007's omega_390) single ionisation \
+of He needs four photons (Ip/omega = 0.903724/0.23366 = 3.87 at zero intensity; \
+computed 2026-10-08): it is not two-photon ionisation, and no 195 nm rate is held.
+
+UNMAPPED_GLYPHS on p. 4 touch the ponderomotive-shift text; the Table 1 values do not \
+depend on it."""
+
+[[datasets]]
+id = "table1_present"
+material = "He"
+file = "He/parker_2009__table1_present.csv"
+table = "tbl_f4122d1f56cb"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "primary"
+notes = "Table 1 (p. 8), 'Present work': full-dimensional time-dependent static-field rates of He, 26 fields 0.045-0.3773 au (none at 0.40). Eq. (8) reproduces them within 2.6 % except at 0.05 au (+7.3 %) and 0.067 au (-6.5 %) (computed 2026-09-26). Convergence statements in the record's notes; uncertainty not stated."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional TDSE (HELIUM)"
+
+[[datasets]]
+id = "table1_scrinzi_1999"
+material = "He"
+file = "He/parker_2009__table1_scrinzi_1999.csv"
+table = "tbl_f4122d1f56cb"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "reproduced"
+reproduced_from = ["scrinzi_1999"]
+notes = "Table 1 (p. 8), 'Scrinzi et al [3]': full-dimensional time-independent (complex-scaling) He rates, 15 fields 0.08-0.40 au. majety_2015 reprints the 0.08-0.20 au values identically. The original, scrinzi_1999/table1_He (Table I), prints all 15 identically (checked 2026-09-27)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional complex scaling (Scrinzi et al. 1999)"
+
+[[datasets]]
+id = "table1_themelis_1999"
+material = "He"
+file = "He/parker_2009__table1_themelis_1999.csv"
+table = "tbl_f4122d1f56cb"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "reproduced"
+reproduced_from = ["S. I. Themelis, T. Mercouris and C. A. Nicolaides, Phys. Rev. A 61, 024101 (1999)"]
+notes = "Table 1 (p. 8), 'Themelis et al [4]': full-dimensional time-independent He rates, 19 fields 0.067-0.40 au. majety_2015 reprints the 0.07-0.20 au values identically."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "full-dimensional state-specific (Themelis et al. 1999)"
+
+[[datasets]]
+id = "table1_adk"
+material = "He"
+file = "He/parker_2009__table1_adk.csv"
+table = "tbl_f4122d1f56cb"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = "Table 1 (p. 8), 'ADK theory [9]': a formula evaluation, 27 fields 0.045-0.40 au. The E = 0.20 au cell (1.07e-2) is +3.3 % off the smooth trend of the rest (see the record's notes); not corrected."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "ADK formula"
+
+[[formulas]]
+id = "static_fit"
+material = "He"
+equation = "Eq. (8), pp. 8-9"
+printed = "Gamma(E) = (1/E^2) exp(-1/(1.47 x 10^-5 + 0.577 E)) + 6.183 (E - 0.1755)^4 Step(E - 0.1755)"
+variable = "E: static field in au (E < 0.4 au); Gamma in au; Step(x) = 1 for x > 0, else 0"
+range = "E < 0.4 au"
+coefficients = { c0 = "1.47e-5", c1 = "0.577", A4 = "6.183", E0 = "0.1755" }
+check = "Reproduces Table 1 'Present work' within 2.6 % at 24 of 26 fields; +7.3 % at 0.05 au and -6.5 % at 0.067 au; +0.2 % at 0.3773 au (computed 2026-09-26)."
+notes = "'the E^4 model is based on only five data points' (p. 9). Times 0.146 I^0.25 (I in 1e14 W/cm^2, I = 14.0484 (E/0.2)^2) it gives the cycle-averaged static rate of Fig. 1 for I < 50e14 W/cm^2 (p. 9)."
+
+[[formulas]]
+id = "laser_fit"
+material = "He"
+equation = "Eq. (7), p. 7"
+printed = "Gamma(Ibar, R) = exp(-R / sqrt(a0 + a1 Ibar)); 780 nm (R = 2.0): a0 = 0.0009882, a1 = 0.001485; 390 nm (R = 1.0): a0 = 0.0009900, a1 = 0.001630; 195 nm (R = 0.5): a0 = 0.0009800, a1 = 0.001750"
+variable = "R: wavelength in units of 390 nm; Ibar = I R^2, I the (cycle-averaged) intensity in 1e14 W/cm^2; Gamma in au"
+range = "Ibar < 16 (390 and 780 nm), Ibar < 8 (195 nm); fails at 195 nm below I = 1.0e14 W/cm^2 (p. 7)"
+coefficients = { a0_780 = "0.0009882", a1_780 = "0.001485", a0_390 = "0.0009900", a1_390 = "0.001630", a0_195 = "0.0009800", a1_195 = "0.001750" }
+check = "Not checkable: the laser-driven rates are in figures only."
+notes = "Fits (the dashed lines of Figs. 3-5) to the non-resonant trend of the TDSE rates; resonances smoothed away. 'Over higher intensity ranges, the curves given in equation (5) of [1] may be used' (parker_2007)."

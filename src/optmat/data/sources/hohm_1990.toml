@@ -1,0 +1,386 @@
+citation = "U. Hohm and K. Kerl, \"Interferometric measurements of the dipole polarizability alpha of molecules between 300 K and 1100 K. I. Monochromatic measurements at lambda = 632.99 nm for the noble gases and H2, N2, O2, and CH4\", Mol. Phys. 69, 803 (1990)"
+doi = "10.1080/00268979000100611"
+library = "Hohm_1990_InterferometricMeasurementsDipole"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Evacuated high-temperature Michelson twin interferometer (a gas-measuring and \
+an evacuated reference interferometer), quartz-glass sample cell of effective length \
+about 1 m, He-Ne laser at 632.99 nm. Absolute method: the cell is filled to below \
+1.5e5 Pa, thermostated 0.5-3 min, evacuated isothermally in 5-10 min while the fringe \
+shift N* is counted; n - 1 = N* lambda/l(T) (Eq. 17). Pressure to 10 Pa, temperature to \
+0.1 K; 300-1100 K. Gas purity better than 99.95 % (pp. 808-809)."""
+notes = """Page numbers are the journal's (803-817); pdf page 1 is the publisher's cover, so \
+p. = pdf page + 801.
+
+Reduction (pp. 807-808, Eqs. 13-16): (n^2 - 1)/(n^2 + 2) = (4 pi N_A/3) alpha(omega, \
+T, 0) rho_0 (1 - B(T) rho_0), rho_0 = p/RT, second virial coefficients B(T) from Kerl \
+(1986); the refractivity virial b_R is neglected. The values are the free-molecule \
+polarizability volumes alpha = alpha_SI/(4 pi eps0) in 10^-30 m^3 (angstrom^3). The \
+wavelength is 632.99 nm, a vacuum wavelength.
+
+Uncertainty (p. 809): |Delta rho_0/rho_0| = 3e-4, |Delta(n - 1)/(n - 1)| = 4e-4, 'the \
+polarizability may be determined with a precision of |Delta alpha/alpha| < 10^-3 in \
+the whole temperature range'. Table 1 (p. 811): 'As usual, standard deviations are \
+given in parentheses. The relative statistical error ... ranges from 0.03 per cent \
+(argon) to 0.11 per cent (neon)' (p. 810).
+
+Noble gases (pp. 809-810): no temperature dependence between 300 and 1100 K beyond \
+fluctuations of +-0.2 %; Table 1 gives the mean over all temperatures (helium below \
+700 K only: above it helium permeates the quartz cell). These results contradict the \
+authors' earlier 1 %-per-100 K increase (Hohm and Kerl 1986, Kerl and Hausler 1984). \
+The authors find their Kr and Xe values 'somewhat higher than the values given by \
+Burns et al.', closer to Koch's (p. 810).
+
+MOLECULES: the temperature-dependent polarizabilities of H2, N2, O2 and CH4 are shown \
+only in Figs. 2-5 (3-6 measurements per temperature, pp. 810-814); what the paper \
+prints are the empirical fits of alpha(T), 'without any physical meaning' (p. 810), \
+recorded as formulas (Eqs. 18-20): H2 +1.4 %, N2 +0.2 %, O2 +0.7 %, CH4 +1.2 % per \
+1000 K. The Eq. (11) theory curves and Table 2's spectroscopic inputs (Huber and \
+Herzberg; the alpha' and alpha'' derivatives from other authors) are not extracted. \
+Text values not extracted as data (p. 811): H2 extrapolated to 0 K, 8.190(18)e-31 \
+m^3 (the constant of Eq. 18), against Bishop and Cheung's ab initio 8.186e-31 m^3 at \
+632.8 nm (bishop_1980).
+
+Table 1's literature rows are reproduced datasets: Burns et al. (burns_1986: 3 A_R/(4 \
+pi N_A), 0.20622 from A_R = 0.5202 cm^3/mol), Kerl (Z. phys. Chem. 129, 129 (1982), a \
+dispersion formula; its helium 0.2106 is 2 % above every other helium value and looks \
+like a transposition of 0.2061, not checkable here), Koide, Meath and Allnatt (J. Phys. \
+Chem. 86, 1222 (1982), ab initio), Buckingham and Graham (Proc. R. Soc. A 336, 275 \
+(1974)), Koch (1949, a dispersion formula), Kumar and Meath (kumar_1985, DOSD) and \
+Bridge and Buckingham (J. Chem. Phys. 40, 2733 (1964)). The paper says 'the other \
+data ... are determined at lambda = 632.8 nm, if not stated otherwise' (p. 810); all \
+are stored at the caption's 632.99 nm.
+
+Reproductions elsewhere: egan_2019/hohm_kerl_1990_Ne (A_R = 1.001(0.001) cm^3/mol, this \
+paper's neon)."""
+
+[[datasets]]
+id = "this_work_He"
+material = "He"
+file = "He/hohm_1990__this_work_He.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 811), this work, mean of 300-700 K (the quartz cell leaks helium above); standard deviation in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_He"
+material = "He"
+file = "He/hohm_1990__burns_1986_He.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table 1: Burns et al., converted from their A_R."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "kerl_1982_He"
+material = "He"
+file = "He/hohm_1990__kerl_1982_He.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Frankf. Ausg. 129, 129 (1982)"]
+notes = "Table 1: Kerl, from a dispersion formula; 0.2106 is 2 % above this work, Burns and Koide (0.2061-0.2062) and looks like a transposed 0.2061 (not checkable: the original is not in the library)."
+
+[[datasets]]
+id = "koide_1982_He"
+material = "He"
+file = "He/hohm_1990__koide_1982_He.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. Koide, W. J. Meath and A. R. Allnatt, J. Phys. Chem. 86, 1222 (1982)"]
+notes = "Table 1: Koide et al., ab initio."
+
+[[datasets]]
+id = "this_work_Ne"
+material = "Ne"
+file = "Ne/hohm_1990__this_work_Ne.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 811), this work, mean of 300-1100 K; standard deviation in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_Ne"
+material = "Ne"
+file = "Ne/hohm_1990__burns_1986_Ne.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table 1: Burns et al., converted from their A_R."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "kerl_1982_Ne"
+material = "Ne"
+file = "Ne/hohm_1990__kerl_1982_Ne.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Frankf. Ausg. 129, 129 (1982)"]
+notes = "Table 1: Kerl, from a dispersion formula."
+
+[[datasets]]
+id = "buckingham_graham_1974_Ne"
+material = "Ne"
+file = "Ne/hohm_1990__buckingham_graham_1974_Ne.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 1: Buckingham and Graham."
+
+[[datasets]]
+id = "this_work_Ar"
+material = "Ar"
+file = "Ar/hohm_1990__this_work_Ar.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 811), this work, mean of 300-1100 K; standard deviation in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_Ar"
+material = "Ar"
+file = "Ar/hohm_1990__burns_1986_Ar.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table 1: Burns et al., converted from their A_R."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "kerl_1982_Ar"
+material = "Ar"
+file = "Ar/hohm_1990__kerl_1982_Ar.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. Kerl, Z. Phys. Chem. Frankf. Ausg. 129, 129 (1982)"]
+notes = "Table 1: Kerl, from a dispersion formula."
+
+[[datasets]]
+id = "buckingham_graham_1974_Ar"
+material = "Ar"
+file = "Ar/hohm_1990__buckingham_graham_1974_Ar.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and C. Graham, Proc. R. Soc. A 336, 275 (1974)"]
+notes = "Table 1: Buckingham and Graham."
+
+[[datasets]]
+id = "this_work_Kr"
+material = "Kr"
+file = "Kr/hohm_1990__this_work_Kr.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 811), this work, mean of 300-1100 K; standard deviation in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_Kr"
+material = "Kr"
+file = "Kr/hohm_1990__burns_1986_Kr.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table 1: Burns et al., converted from their A_R."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "koch_1949_Kr"
+material = "Kr"
+file = "Kr/hohm_1990__koch_1949_Kr.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["J. Koch, Kgl. Fysiograf. Sallskap. Lund Forh. 19, 173 (1949)"]
+notes = "Table 1: Koch, from a dispersion formula."
+
+[[datasets]]
+id = "kumar_1985_Kr"
+material = "Kr"
+file = "Kr/hohm_1990__kumar_1985_Kr.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["kumar_1985"]
+notes = "Table 1: Kumar and Meath, from a DOSD."
+
+[[datasets]]
+id = "this_work_Xe"
+material = "Xe"
+file = "Xe/hohm_1990__this_work_Xe.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 811), this work, mean of 300-1100 K; standard deviation in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "burns_1986_Xe"
+material = "Xe"
+file = "Xe/hohm_1990__burns_1986_Xe.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table 1: Burns et al., converted from their A_R."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "koch_1949_Xe"
+material = "Xe"
+file = "Xe/hohm_1990__koch_1949_Xe.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["J. Koch, Kgl. Fysiograf. Sallskap. Lund Forh. 19, 173 (1949)"]
+notes = "Table 1: Koch, from a dispersion formula."
+
+[[datasets]]
+id = "bridge_1964_Xe"
+material = "Xe"
+file = "Xe/hohm_1990__bridge_1964_Xe.csv"
+table = "tbl_f8502d3f8f19"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["N. J. Bridge and A. D. Buckingham, J. Chem. Phys. 40, 2733 (1964)"]
+notes = "Table 1: Bridge and Buckingham."
+
+# The empirical temperature fits of the molecules at 632.99 nm (pp. 811-814), valid over
+# the measured 300-1100 K; not dispersion formulas, so no form.
+
+[[formulas]]
+id = "alpha_T_H2"
+material = "H2"
+equation = "Eq. (18), p. 811"
+printed = "10^31 alpha(T)/m^3 = 8.190(18) + 1.5(1.0) x 10^-4 (T/K) - 2.4(1.7) x 10^-7 (T/K)^2 + 2.05(88) x 10^-10 (T/K)^3"
+variable = "T: temperature in K; alpha: polarizability volume at 632.99 nm (vacuum)"
+range = "300-1100 K (the measurements, Fig. 2)"
+coefficients = { c0 = "8.190", c1 = "1.5e-4", c2 = "-2.4e-7", c3 = "2.05e-10", unit = "1e-31 m^3" }
+check = "Gives +1.4 % from 0 to 1000 K (8.305 at 1000 K), as the text states ('of the order of 1.4 per cent per 1000 K'). Checked 2026-09-25."
+notes = "The authors' least-squares polynomial of the part-I data (squares in Fig. 2); the standard uncertainties of the coefficients in parentheses. Its constant, 8.190(18)e-31 m^3, is an extrapolation to 0 K."
+
+[[formulas]]
+id = "alpha_T_N2"
+material = "N2"
+equation = "Eq. (19), p. 813"
+printed = "10^30 alpha(T)/m^3 = 1.7636(14) + 3.1(1.9) x 10^-6 (T/K)"
+variable = "T: temperature in K; alpha: polarizability volume at 632.99 nm (vacuum)"
+range = "300-1100 K (the measurements, Fig. 3)"
+coefficients = { c0 = "1.7636", c1 = "3.1e-6", unit = "1e-30 m^3" }
+check = "Gives +0.18 % per 1000 K; the text says 0.2 per cent. Checked 2026-09-25."
+notes = "Linear fit of data with an unexplained 'great scattering' (p. 813), N2 purity better than 99.999 %."
+
+[[formulas]]
+id = "alpha_T_O2"
+material = "O2"
+equation = "Eq. (20), p. 813"
+printed = "alpha(T) = a [exp(bT) - bT - cT^2]; a = alpha(omega, 0 K) = 1.5959 x 10^-30 m^3, b = 3.264 x 10^-4 K^-1, c = 5.301 x 10^-8 K^-2"
+variable = "T: temperature in K; alpha: polarizability volume at 632.99 nm (vacuum), m^3"
+range = "300-1100 K (the measurements, Fig. 4)"
+coefficients = { a = "1.5959e-30", b = "3.264e-4", c = "5.301e-8" }
+check = "Gives +0.66 % from 0 to 1000 K; the text says 0.7 per cent per 1000 K. Checked 2026-09-25."
+notes = "Chosen to rise monotonically with zero slope at 0 K; above about 700 K the data rise faster than the Eq. (11) theory (p. 814)."
+
+[[formulas]]
+id = "alpha_T_CH4"
+material = "CH4"
+equation = "Eq. (20), p. 814"
+printed = "alpha(T) = a [exp(bT) - bT - cT^2]; a = alpha(omega, 0 K) = 2.6049 x 10^-30 m^3, b = 2.723 x 10^-4 K^-1, c = 2.903 x 10^-8 K^-2"
+variable = "T: temperature in K; alpha: polarizability volume at 632.99 nm (vacuum), m^3"
+range = "300-1100 K (the measurements, Fig. 5)"
+coefficients = { a = "2.6049e-30", b = "2.723e-4", c = "2.903e-8" }
+check = "Gives +1.17 % from 0 to 1000 K; the text says 'about 1.2 per cent per 1000 K'. Checked 2026-09-25."

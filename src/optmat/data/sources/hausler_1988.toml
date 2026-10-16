@@ -1,0 +1,334 @@
+citation = "H. Häusler and K. Kerl, \"Mean polarizabilities and second and third virial coefficients of the gases C2H4, C2H6, and SF6\", Int. J. Thermophys. 9, 117 (1988)"
+doi = "10.1007/bf00504004"
+library = "Husler_1988_MeanPolarizabilitiesSecond"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute refractivity with an evacuated Michelson interferometer, He-Ne \
+laser at 632.99 nm (two isotherms at the green Hg line), stainless-steel sample cell \
+l(296.28 K) = 42.592(14) cm, 250-340 K and 0-3 MPa: the gas is pumped out in 12-35 \
+pressure steps (pressure to 1.8e-4 of the transducer's 3.5 MPa, temperature to 10 mK) \
+while the fringes are counted (Eq. 1, pp. 118-119). The Lorentz-Lorenz function of the \
+ideal-gas density is fitted by a recursive residual procedure (Eqs. 2-4), weighted \
+(w_k = p_k) and unweighted. SF6 purity 99.9 %."""
+notes = """Page numbers are the journal's (117-130; pdf page 1 = p. 117). The library \
+directory's author field is garbled ('H?usler'); the citation is the paper's.
+
+Reduction (Eqs. 2 and 5, pp. 119-120): LL* = (n^2 - 1)/(n^2 + 2)/rho_0 = sum_i A_i \
+rho_0^(i-1), rho_0 = p/RT (R = 8.31432); A_1 = 4 pi N_A alpha_0/3 is the molar \
+refractivity of the free molecule (zero density), so no state applies. B and C (Table \
+I, second part) assume b_R = A_1/4 (Eq. 9) and c_R = 0 (Eq. 10): equation-of-state \
+quantities, not extracted.
+
+Uncertainty: 'As usual, standard deviations Delta A_i of the corresponding last figures \
+are given in parentheses' (p. 121), 1 sigma of the fit. 'The uncertainties of the \
+unweighted data are always up to 10 times larger' (p. 121); the pressure measurement at \
+low density 'limits the accuracy of measured polarizabilities' (p. 118), and the scatter \
+of A_1 hides any temperature dependence (p. 124).
+
+Table I is split by the library into two tables (the second has lost its row labels; \
+its rows follow the first's order, checked on the image, pp. 122-123). Only A_1 is \
+taken; the second part's 10^24 alpha_0 (cm^3) is 3 A_1/(4 pi N_A).
+
+Means (p. 124, text): 'The averages of A_1 (633 nm) in cm^3 mol^-1 in Table I': SF6 \
+10.995(42) (w), 10.995(36) (uw), leaving out 'the obvious bad value 10.8477 in Table I \
+at 337 K' (the uw mean also leaves out 337 K). Checked: the mean and sample standard \
+deviation of the other five weighted values are 10.99518 and 0.0420; of the unweighted \
+10.99500 and 0.0365. Inline datasets A_1_mean_w_SF6 and A_1_mean_uw_SF6, use = 'check'.
+
+The authors compare with St-Arnaud and Bose's 11.348(21) ([24], st_arnaud_1979, at 323 \
+K): 'The reason for the pronounced deviation in the case of SF6 is not yet clear. \
+However, this deviation cannot be attributed only to the stated impurity of 0.1%' (pp. \
+124-125). This paper's mean is 3.1 % below St-Arnaud and Bose, and 2.9 % below optmat's \
+fit/SF6 at 632.99 nm (11.322 cm^3/mol, checked 2026-09-26): an outlier, a check only. \
+The 546.22 nm isotherm (10.9680 w) is 0.25 % below the 633 nm mean, which the authors \
+read as anomalous dispersion in the visible (p. 124); fit/SF6 has normal dispersion \
+there (11.362 at 546.22 nm, +0.35 % over 633 nm), and the difference is within the \
+scatter of the 633 nm isotherms (standard deviation 0.38 %). Their supporting argument, the higher static \
+A_eps(323 K) = 16.478 cm^3/mol of Sutter ([17]; inline dataset A_eps_sutter_SF6), \
+reflects SF6's large vibrational polarizability, not optical dispersion.
+
+Not extracted: C2H4 and C2H6 (not curated species; their means 10.567(38), 10.571(95) \
+and 11.159(41), 11.163(43), against 10.610(9) [22] and 11.26 [3]); \
+A_2-A_4, B and C of Table I; Table II (fits of C(T), Eq. 14); Figs. 1-4."""
+
+[[datasets]]
+id = "A_1_w_257_42K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_257_42K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 257.42(13) K, p_max 7.94e5 Pa, K = 12: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 257.42
+
+[[datasets]]
+id = "A_1_uw_257_42K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_257_42K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 257.42(13) K, p_max 7.94e5 Pa, K = 12: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 257.42
+
+[[datasets]]
+id = "A_1_w_268_86K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_268_86K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 268.86(1) K, p_max 10.95e5 Pa, K = 14: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 268.86
+
+[[datasets]]
+id = "A_1_uw_268_86K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_268_86K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 268.86(1) K, p_max 10.95e5 Pa, K = 14: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 268.86
+
+[[datasets]]
+id = "A_1_w_282_61K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_282_61K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 282.61(1) K, p_max 15.11e5 Pa, K = 18: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 282.61
+
+[[datasets]]
+id = "A_1_uw_282_61K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_282_61K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 282.61(1) K, p_max 15.11e5 Pa, K = 18: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 282.61
+
+[[datasets]]
+id = "A_1_w_298_31K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_298_31K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 298.31(1) K, p_max 22.44e5 Pa, K = 20: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 298.31
+
+[[datasets]]
+id = "A_1_uw_298_31K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_298_31K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 298.31(1) K, p_max 22.44e5 Pa, K = 20: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 298.31
+
+[[datasets]]
+id = "A_1_w_298_32K_hg_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_298_32K_hg_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 298.32(1) K at 546.22 nm (note a; 546.226 nm in the text, p. 124), p_max 17.19e5 Pa, K = 13: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column. Not in the authors' 633 nm means; the authors read its lower value as 'anomalous dispersion' of SF6 in the visible (p. 124), which the other SF6 data do not support (record notes)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 298.32
+
+[[datasets]]
+id = "A_1_uw_298_32K_hg_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_298_32K_hg_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 298.32(1) K at 546.22 nm (note a; 546.226 nm in the text, p. 124), p_max 17.19e5 Pa, K = 13: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column. Not in the authors' 633 nm means; the authors read its lower value as 'anomalous dispersion' of SF6 in the visible (p. 124), which the other SF6 data do not support (record notes)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 298.32
+
+[[datasets]]
+id = "A_1_w_318_04K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_318_04K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 318.04(1) K, p_max 23.47e5 Pa, K = 28: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 318.04
+
+[[datasets]]
+id = "A_1_uw_318_04K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_318_04K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table I (p. 122), SF6 isotherm 318.04(1) K, p_max 23.47e5 Pa, K = 28: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 318.04
+
+[[datasets]]
+id = "A_1_w_337_73K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_w_337_73K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "excluded"
+notes = "Table I (p. 122), SF6 isotherm 337.73(1) K, p_max 20.85e5 Pa, K = 20: A_1 of the weighted (w_k = p_k) fit, standard deviation of the last digits in the sigma column. Excluded: 'the obvious bad value 10.8477 in Table I at 337 K was not considered' in the authors' means (p. 124)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 337.73
+
+[[datasets]]
+id = "A_1_uw_337_73K_SF6"
+material = "SF6"
+file = "SF6/hausler_1988__A_1_uw_337_73K_SF6.csv"
+table = "tbl_e56cd39cc6f5"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "excluded"
+notes = "Table I (p. 122), SF6 isotherm 337.73(1) K, p_max 20.85e5 Pa, K = 20: A_1 of the unweighted fit, standard deviation of the last digits in the sigma column. Excluded: the authors leave the 337 K isotherm out of both means (p. 124; the unweighted mean 10.995 is that of the other five)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 337.73
+
+[[datasets]]
+id = "A_1_mean_w_SF6"
+material = "SF6"
+table = "text"
+points = [["632.99", "632.99", "10.995", "0.042"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "p. 124: the average of the weighted A_1 (633 nm) of SF6, 10.995(42) cm^3/mol, over the five isotherms 257-318 K (337 K left out); the parenthesised figure is the sample standard deviation of the values (checked). 3.1 % below st_arnaud_1979's 11.348(21)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_1_mean_uw_SF6"
+material = "SF6"
+table = "text"
+points = [["632.99", "632.99", "10.995", "0.036"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "p. 124: the average of the unweighted A_1 (633 nm) of SF6, 10.995(36) cm^3/mol, over the same five isotherms; the sample standard deviation of the values (checked)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "A_eps_sutter_SF6"
+material = "SF6"
+table = "text"
+points = [["inf", "inf", "16.478"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. Sutter, Dielectr. Relat. Mol. Process. 1, 66 (1972)"]
+notes = "p. 124: 'the even higher first dielectric virial coefficient A_eps(323 K) = 16.478 cm^3 mol^-1 [17]' (static, no uncertainty given here). The original is not in the library."
+[datasets.parameters]
+temperature_k = 323

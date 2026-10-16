@@ -1,0 +1,312 @@
+citation = "J. C. Travers, TDSE calculations of the two-photon ionisation and excitation of He and Ar with tRecX (A. Scrinzi, Comp. Phys. Comm. 270, 108146 (2022)), one-electron and haCC models, unpublished (2026)"
+kind = "theory"
+technique = """Numerical solution of the time-dependent Schrodinger equation with tRecX \
+(commit a987d7c), velocity gauge, linear polarisation along z, for optmat's two-photon \
+TDSE campaign (TC-1048; its brief and two addenda unpublished). Two models. (1) One active \
+electron in Tong and Lin's potential (tong_2005 Table 1; He 1s, Ar 3p with m = 0 and \
+m = 1): 10 associated Legendre functions in the polar angle (l <= 9), finite elements \
+in r (3 of order 14 on [0, 2], 4 of order 12 on [2, 20], elements of about 4.3 bohr \
+and order 12 to BOX, then 30 polExp functions), BOX 40 (run 1) or 80 (runs 2-6), \
+infinite-range exterior complex scaling from BOX (angle 0.15 for He, 0.3 for Ar), \
+fixed-step RK4 (step 2/Emax, capped at 0.03 au for He and 0.015 au for Ar), cutEnergy \
+100. (2) Helium in haCC (hybrid anti-symmetrised coupled channels, both electrons \
+antisymmetrised) with the Scrinzi group's He19_Standard data set, one ion channel \
+(He+ 1s), lMax 10, rMax 40 (haCC fixes cutEnergy 400 and its own complex scaling). \
+Pulses on the vector potential, A(t) = sum_i (E0_i/omega_i) g(t) sin(omega_i t), g = \
+exp(-2 ln2 t^2/T^2) with T the full width at half maximum of the intensity, \
+carrier-envelope phase 0 for each colour, colours sharing the envelope and centre; \
+I0 = (1/2) eps0 c E0^2 per colour; chirp as a quadratic spectral phase on A (phi2 > \
+0 an up-chirp), I0 then the transform-limited peak. Window [-3T_eff, +3T_eff + 1000 \
+au]. Ionisation read from the iSurff photoelectron spectrum (0 to 40.8 eV, 1200 \
+points; peak integrals over +-0.5 eV (run 1) or +-0.25 eV (runs 2-6) around each \
+two-photon peak), from the bi-orthogonal projection on the field-free bound states \
+(OccDual, one electron), and from the norm-loss (haCC)."""
+notes = """UNPUBLISHED CALCULATIONS OF J. C. TRAVERS, TIER 3: validators only (use = \
+check throughout), ranked below published ab initio calculations and measurements; \
+nothing is fitted to them. They answer the campaign's brief (OEP 6's Q9 and OEP 8). There is no \
+paper and no library entry: the result tables, the runs' report, summaries and working \
+notes, the input decks as generated and the scripts that made the inputs and read the \
+outputs are archived in data/external/trecx/two_photon, whose PROVENANCE.md gives the \
+code's commit, the run-5 patch, the machine (a Slurm cluster), the dates (9-11 October 2026), \
+the sha256 of every file and where the files that are not archived are. The three \
+cross-section files are written from the archived tables by \
+tools/extract/travers_2026_trecx_two_photon.py, which checks every value against the \
+runs' printed summaries (15 numbers, all equal to their printed digits).
+
+THE MODELS AND THEIR OWN ENERGIES (no NIST value was used in the runs; nothing is \
+shifted here). One-electron He (Tong and Lin): I_p 24.5937 eV (-0.903801 au, the \
+initial state's energy), 1s2p 21.056 eV, a one-electron 2s at 20.240 eV (not 1s2s \
+1S: the model has no singlet-triplet distinction). haCC He (He19, one channel): I_p \
+24.5410 eV (-E of its initial state, -0.901867 au); in run 5's projection basis \
+1s2s 20.636 eV and 1s2p 21.209 eV above its ground state. These Occupation energies \
+are not the propagated spectrum: run 5b puts the propagated 1s2s at 20.739 eV (see \
+run 5); the propagated 1s2p, 21.2089 eV (run 5c), equals the Occupation one. One-electron Ar (Tong and \
+Lin, 3p): I_p 15.774 eV (-0.579689 au); 4s 11.267 eV, 4p 12.926 eV, 3d 13.859 eV \
+above 3p. The model has no spin-orbit coupling and no LS terms: its 4s and 4p are \
+one-electron orbitals, not the atom's 4s[3/2]1, 1P1 or 3p5 4p levels.
+
+THE CROSS SECTIONS (multiphoton_ionization_cross_section, photons = 2). sigma2 = P / \
+int Phi^2 dt, Phi = I(t)/(hbar omega), I(t) = I0 exp(-4 ln2 t^2/T^2), T = 20 fs, so \
+int Phi^2 dt = (I0/hbar omega)^2 T sqrt(pi/(8 ln2)); I0 = 1e12 W/cm2. cm4 s, against \
+the photon energy (eV). The total over final symmetries (1S and 1D for He). The \
+datasets: sigma2_hacc_He (13-20 eV), sigma2_sae_He (13-20 eV), sigma2_sae_Ar (8-11 eV; \
+the atom = 2 P(m = 0) + 4 P(m = 1), the independent-electron combination agreed for \
+the runs). P is proportional to I^2 between 1e11 and 1e13 W/cm2 to 1.4 % (He, both \
+models, from the spectrum peak); for Ar the 1e11 rows give sigma2 within 0.3 % of \
+1e12 (1.1 % at 11 eV) and the 1e13 rows -3.4 to +1.6 % at 8-10 eV, but 11 eV, 0.27 eV \
+below the model's 4s, is near-resonant: -7.0 % at 1e13, its m = 0 yield 15 % below I^2 \
+scaling (the runs' summary). Comparisons with \
+the curated calculations are not made here.
+
+UNCERTAINTY (the curator's rule, computed by the script's uncertainties(); level \
+'bound'): the larger of (a) the largest change among the family's convergence runs at \
+one photon energy (one-electron variants each less their own no-field drift) and (b) \
+the row's disagreement between two readings of the same ionisation. haCC: lMax 15 \
++0.003 %, rMax 60 -0.25 % (the spectrum peak; -0.23 % on the norm-loss), the spectrum \
+peak and the norm-loss within 0.1 %: 0.25 %. One-electron He: angular functions 15 \
+0.000 %, ECS angle x 2/3 -0.25 %, step x 2/3 and cutEnergy 150 +1.6 % (their no-field \
+drift 1.9e-8 against the base's 1.43e-7, which is 5 to 11 % of the 1e12 signal), BOX \
+80 and 120 +0.003 % and +0.02 % on the projection (at most 0.29 % over the five \
+energies); the BOX 80 and BOX 120 spectra within 1.9 % of the projection: 1.6 to 1.9 \
+%. One-electron Ar: angular functions 15, \
+step x 2/3, ECS angle x 2/3 0.000 %, cutEnergy 150 +0.02 %, BOX 120 +0.18 % (9 eV, m = \
+0, the peak); but the spectrum and the drift-corrected projection disagree by +10.9 \
+% at 8 eV (photoelectrons of 0.23 eV), -1.2 to -3.7 % at 8.5-9.5 eV and +0.5 to +1.1 \
+% at 10-10.5 eV (both m alike), which sets the uncertainty: 0.18 to 10.9 %. Which \
+reading is right is not established; the runs' summary says the two agree 'elsewhere \
+<= 2 %', which holds at 8.5, 10, 10.5 and 11 eV and not at 9 and 9.5 eV (2.4 to 3.7 \
+%).
+
+THE AMPLITUDES (two_photon_transition_amplitude; run 4). One-electron Ar 3p -> 4p \
+with degenerate photons, the lowest-order amplitudes of run4/pt_two_photon.py \
+(Dalgarno-Lewis on a uniform radial grid in the same potential, length gauge): M_0 = \
++8.914061 au and M_1 = +2.418379 au (dr = 0.002 bohr; dr = 0.004 gives +8.902447 and \
++2.416898; R_s = +17.06867, R_d = +12.09189 au, M_0 = R_s/3 + 4 R_d/15, M_1 = R_d/5). \
+Rerun by the curator on 2026-10-11 with the archived script, to every printed digit. \
+Each is ONE time ordering, <4p m| z G z |3p m>; the vocabulary's kernel M_zz sums both \
+orderings, equal for degenerate photons, so m_zz_per_unit = 2 (the run's P = |M_m|^2 \
+|S|^2, S = int E+(t)^2 exp(i w_fi t) dt, is OEP 8's P = |M_zz|^2 |S2|^2 / 4). The TDSE \
+(velocity gauge) 4p populations of 30 and 50 fs pulses at 6.463 eV give TDSE/PT = \
+0.9982 to 0.9996 at 1e10 W/cm2 and 0.9875 to 0.9944 at 1e11 (both m), confirming \
+|M_m| to 0.1 %. The signs are perturbation theory's, not a projection of the TDSE \
+wave function (a deviation from the brief: tRecX writes psi(T) only in its binary \
+format with an arbitrary eigensolver phase). They are per initial 3p m of one \
+electron, not per LS level of the atom; the recoupling into 1S and 1D strengths is \
+not made here.
+
+HELD IN THE ARCHIVE, NO QUANTITY (runs 2, 3's two-colour points, 5 and 6; \
+summary_runs2to6.md and the run tables). NOT TAKEN (no quantity): a two-colour \
+continuum kernel is not in the vocabulary (a continuum two-photon amplitude was \
+declined, TC-1040).
+- Run 2, He two-colour kernel, each colour 1e12 W/cm2, 20 fs, both models (one-electron \
+at BOX 80): the integral of the cross peak at omega1 + omega2 - I_p against a \
+one-colour reference at Omega/2 with the per-colour intensity; the ratio includes the \
+two-colour factor 4. haCC at Omega/2 = 14 eV: 4.005, 4.025, 4.105, 4.451, 5.143 for nu \
+= omega1 - omega2 = 0.5, 1, 2, 4, 6 eV (one electron 4.007 to 5.358); at 17 eV 4.006 \
+to 6.244 (one electron 4.009 to 7.657); at 20 eV 4.106 (nu 0.5), 4.543 (1) and 1.937 \
+(4, omega1 = 22 eV beyond the 1s2p; one electron 1.133). The references reproduce run \
+1: haCC 12.805 (14 eV) and 10.176 (20 eV) e-52 cm4 s; one electron 7.399 (14 eV \
+spectrum) and 7.328 (14 eV projection, equal to run 1's at BOX 40), and at 17 eV, \
+which run 1 lacks, haCC 9.774 and one electron 6.268 (spectrum) or 6.312 \
+(projection) e-52 cm4 s.
+- Run 3, Ar two-colour, 1e12 per colour, 20 fs: the atom's cross peak at Omega/2 = \
+8.5, 9.5 (nu 0.5 to 2) and 10.5 eV (nu 0.5), e.g. 6.2158e-4 to 6.6544e-4 at 8.5 eV; \
+its one-colour references at 9.5 and 10.5 eV are the sigma2_sae_Ar rows 9.5 and 10.5, \
+which the runs' summary does not print (computed here the same way as its five).
+- Run 5, He 1s2s in haCC at 120.3 nm (10.306 eV per photon, 127 meV below haCC's \
+propagated two-photon resonance, 20.739 eV; see run 5b): final populations of 1s2s, 1s3s, 1s3d and the \
+ionised fraction for 1, 3 and 10 fs (transform-limited) and 3 fs with +-10 fs2 (9.72 \
+fs, peak field 0.556 E0) at 1e12, 1e13, 1e14 W/cm2. P(1s2s) at 1e12: 3.6453e-7 (1 \
+fs), 2.7243e-6 (3 fs), 1.5568e-5 (10 fs), 8.9781e-7 (+10 fs2), 7.7456e-7 (-10 fs2); \
+at 1e14 and 10 fs 1.2615e-2 with 2.433e-2 ionised. These are single samples at the \
+end of the window; the 16 % chirp difference at 1e12 is a beat (below). haCC's states 5 \
+(-0.05555 au from He+) and 6 (-0.05474) are 1s3d (populated) and 1s3p (not); state 3 \
+(-0.07776) is never populated and is unidentified. P(1s2s) against time is on the \
+cluster only (run5/hacc/<name>/pop_vs_t.csv).
+- Run 5b, the campaign's addendum 3 (11 haCC runs, 11 Oct 2026; run5b/results.csv, \
+run5b/scan_fit.csv). P(1s2s)(t) after the pulse does not decay (<= 0.3 % per 1000 au) \
+but beats at 0.7621 au (20.738 eV) with the ground state, through the OccDual \
+projector's floor |eps|^2 = 2.862e-9 (a no-field run); so the post-pulse mean, less \
+2.9e-9, is the population. A 10 fs, 1e12 carrier scan (+-75 meV per photon) fitted to \
+P = K |S2(Omega)|^2 gives Omega = 20.7386 eV (to a few meV) and K = 3.078 au, i.e. \
+|M|^2 = 4K = 12.31 au^2. With these, run 5 is lowest order to <= 1 % at 1e12 for 3 and \
+10 fs and both chirps (3 % at 1 fs); the +-10 fs2 means differ by 0.07 % at 1e12 \
+(accuracy 1e-9), 0.6 % at 1e13 and 6.6 % at 1e14. Ratios to lowest order at 1e13 and \
+1e14: 1.013, 0.952 (1 fs); 0.983, 0.748 (3 fs); 0.858, 0.079 (10 fs); 0.989, 0.839 \
+(+10 fs2); 0.983, 0.788 (-10 fs2). Not taken: no quantity holds a population (TC-1051).
+- Run 5c, the campaign's addendum 4 (5 haCC runs, 11-12 Oct 2026; run5c/results.csv, \
+run5c/scan_fit.csv): one photon at 21.21 eV + {0, +-50, +-100} meV, 10 fs, 1e9 W/cm2. \
+The P(1s2p) beat asked for cannot exist (the 1P projector cannot see the 1S ground \
+state; floor 1.27e-19), so the beat of <z>(t) after the pulse was fitted instead: \
+Delta = 0.7794133 au = 21.208918 eV in the length and velocity forms (spread 0.9 \
+micro-eV over 10 fits). A fit of P = K |S1(Omega)|^2 to the scan gives 21.20892 eV and \
+K = |z|^2 = 0.169939 au^2; P(1s2p) is first order to 5e-5. The propagated 1s2p is the \
+Occupation set's to 1e-8 au, so only the 1S excited level is misplaced in the \
+Occupation set, by +0.1 eV, cause unknown. The velocity-to-length ratio of the beat \
+amplitudes is 5.9 % from exact-eigenstate equality: the two dipole forms are not \
+equivalent in this one-channel basis. Taken: dz_1s2p_hacc (TC-1052).
+- Run 6, one-electron He at 14 eV, broadband: the yield from the spectrum, 1.1180e-7, \
+2.2234e-7, 5.5483e-7 for 1, 2, 5 fs at 1e12 (1.1162e-5, 2.2200e-5, 5.5405e-5 at \
+1e13); 1 fs with +5 and -5 fs2 (13.9 fs, peak field 0.269 E0) 7.9470e-9 and 7.9466e-9 \
+(equal to 0.01 %). The projection is biased by the no-field drift there (3.0e-8 over \
+the 1 fs window, longer for the chirped ones): use the spectrum.
+
+NOT TAKEN: the 1e11 and 1e13 rows (the perturbative check above; sigma2 is taken at \
+the one intensity the brief names); the one-electron spectra at BOX 40 (-7.4 to +9.0 % \
+from the projection); run 4's TDSE populations (they confirm the amplitudes); run 1's first version \
+(run1_v1_spec_kmax0p02, tRecX's default spectral range far below the peaks; not \
+archived). Not run: a length-gauge rerun and the optional haCC argon point (mMax 1, \
+9.5 eV, 6 fs), both available on request (the runs' report)."""
+
+[[datasets]]
+id = "sigma2_hacc_He"
+material = "He"
+file = "He/travers_2026_trecx_two_photon__sigma2_hacc_He.csv"
+table = "data/external/trecx/two_photon/run1/results_hacc.csv"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Helium in haCC (He19_Standard, one ion channel He+ 1s, lMax 10, rMax 40), run 1: the degenerate generalised two-photon ionisation cross section at 1e12 W/cm2 in a 20 fs Gaussian, P the integral of the iSurff photoelectron spectrum over +-0.5 eV around the two-photon peak (column sigma2_peak2_cm4s, the table's string; the script recomputes it from P_peak2 to 1e-12). Runs he_<E>eV_I1e12. The norm-loss gives the same to 0.1 %. Photon energies 13, 14, 16, 18, 20 eV, below the model's 1s2p (21.209 eV); the threshold is the model's, 24.5410 eV. Total over 1S and 1D. 0.25 %: the record's rule (rMax 60 the largest change; one photon energy, 16 eV)."
+[datasets.uncertainty]
+relative = 0.002535
+level = "bound"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+intensity_w_cm2 = 1e12
+pulse_fs = 20
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+channel = "total"
+method = "TDSE, tRecX a987d7c, haCC (He19_Standard, 1 ion channel, lMax 10, rMax 40), velocity gauge; P the two-photon peak of the iSurff spectrum"
+definition = "sigma2 = P / int Phi^2 dt, Phi = I(t)/(hbar omega), I(t) = I0 exp(-4 ln2 t^2/T^2), T = 20 fs; int Phi^2 dt = (I0/hbar omega)^2 T sqrt(pi/(8 ln2)); I0 = (1/2) eps0 c E0^2"
+energy_axis = "photon energy of the run; the model's own threshold, 24.5410 eV (-E of haCC's initial state), and its 1s2p 21.209 eV; no shift"
+electrons = "both (haCC)"
+model_ionization_energy_ev = 24.5410
+
+[[datasets]]
+id = "sigma2_sae_He"
+material = "He"
+file = "He/travers_2026_trecx_two_photon__sigma2_sae_He.csv"
+table = "data/external/trecx/two_photon/run1/results_sae.csv"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "One-electron helium (Tong and Lin's potential, 1s), run 1, BOX 40: the degenerate generalised two-photon ionisation cross section at 1e12 W/cm2 in a 20 fs Gaussian, P the bi-orthogonal projection 1 - (bound states, Re E < 0) at the end of the window (P_ion_proj_end) less that of the no-field run he_nofield (1.431520e-7, the discretisation's drift over 5961 au); the projection is nearly box-independent (BOX 80 and 120 within 0.02 % at 16 eV, 0.29 % at most over the five energies). Runs he_<E>eV_I1e12. The value is computed by the script (6 digits); the runs' summary prints it to 4 (7.456, 7.328, 6.524, 6.228, 9.346 e-52), all matched. Photon energies 13, 14, 16, 18, 20 eV, below the model's 1s2p (21.056 eV); the threshold is the model's, 24.5937 eV. Total over 1S and 1D (one electron: s and d waves). 1.6 to 1.9 %: the record's rule (step and cutEnergy after their own drift; the BOX 120 spectrum at 13 eV)."
+[datasets.uncertainty]
+relative_rows = { "13.0" = 0.01865, "14.0" = 0.01607, "16.0" = 0.01607, "18.0" = 0.01607, "20.0" = 0.01607 }
+level = "bound"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+intensity_w_cm2 = 1e12
+pulse_fs = 20
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+channel = "total"
+method = "TDSE, tRecX a987d7c, one active electron in Tong and Lin's He potential, velocity gauge, irECS, BOX 40; P the bi-orthogonal projection on the unbound states less the no-field drift"
+definition = "sigma2 = P / int Phi^2 dt, Phi = I(t)/(hbar omega), I(t) = I0 exp(-4 ln2 t^2/T^2), T = 20 fs; int Phi^2 dt = (I0/hbar omega)^2 T sqrt(pi/(8 ln2)); I0 = (1/2) eps0 c E0^2"
+energy_axis = "photon energy of the run; the model's own threshold, 24.5937 eV, and its 1s2p 21.056 eV; no shift"
+electrons = "one active electron"
+potential = "Tong and Lin 2005, Table 1, He: V = -(1 + 1.231 exp(-0.662 r) - 1.325 r exp(-1.236 r) - 0.231 exp(-0.480 r))/r"
+model_ionization_energy_ev = 24.5937
+
+[[datasets]]
+id = "sigma2_sae_Ar"
+material = "Ar"
+file = "Ar/travers_2026_trecx_two_photon__sigma2_sae_Ar.csv"
+table = "data/external/trecx/two_photon/run3/results.csv"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "One-electron argon (Tong and Lin's potential, 3p), run 3, BOX 80: the degenerate generalised two-photon ionisation cross section of the atom at 1e12 W/cm2 in a 20 fs Gaussian, P = 2 P(m = 0) + 4 P(m = 1) (the six 3p electrons as independent; agreed for the runs), each P the integral of its run's iSurff spectrum over +-0.25 eV around the two-photon peak (P_p11). Runs ar_m0_r3_<E>eV_I1e12 and ar_m1_r3_<E>eV_I1e12. The value is computed by the script (6 digits); the runs' summary prints 8, 8.5, 9, 10 and 11 eV to 4 (1.921, 1.916, 2.094, 2.503, 3.052 e-50), all matched; 9.5 and 10.5 eV are run 3's two-colour references, the same pulse and intensity, not printed. The model's threshold 15.774 eV and 4s 11.267 eV; 11 eV is 0.27 eV below the 4s and near-resonant (P at 1e13 15 % below I^2 scaling for m = 0; 1e11 within 1.1 % of 1e12). Not the atom's 4s[3/2]1 or 4s'[1/2]1 (no spin-orbit). The uncertainty is the record's rule: the spectrum against the drift-corrected projection dominates, +10.9 % at 8 eV (0.23 eV photoelectrons)."
+[datasets.uncertainty]
+relative_rows = { "8.0" = 0.109, "8.5" = 0.01757, "9.0" = 0.02607, "9.5" = 0.0364, "10.0" = 0.005204, "10.5" = 0.0113, "11.0" = 0.001754 }
+level = "bound"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+intensity_w_cm2 = 1e12
+pulse_fs = 20
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+channel = "total"
+method = "TDSE, tRecX a987d7c, one active electron in Tong and Lin's Ar potential (3p, m = 0 and m = 1), velocity gauge, irECS, BOX 80; P the two-photon peak of the iSurff spectrum; the atom 2 P(m = 0) + 4 P(m = 1)"
+definition = "sigma2 = P_atom / int Phi^2 dt, Phi = I(t)/(hbar omega), I(t) = I0 exp(-4 ln2 t^2/T^2), T = 20 fs; int Phi^2 dt = (I0/hbar omega)^2 T sqrt(pi/(8 ln2)); I0 = (1/2) eps0 c E0^2"
+energy_axis = "photon energy of the run; the model's own threshold, 15.774 eV, and its 4s 11.267 eV; no shift"
+electrons = "one active electron per 3p orbital; the atom as 2 P(m = 0) + 4 P(m = 1)"
+potential = "Tong and Lin 2005, Table 1, Ar: V = -(1 + 16.039 exp(-2.007 r) - 25.543 r exp(-4.525 r) + 0.961 exp(-0.443 r))/r"
+model_ionization_energy_ev = 15.774
+
+[[datasets]]
+id = "M_4p_m0"
+material = "Ar"
+table = "data/external/trecx/two_photon/extract_runs.py.txt"
+quantity = "two_photon_transition_amplitude"
+unit = "au"
+abscissa_unit = "eV"
+use = "check"
+points = [["4p_m0", "6.46351", "8.914061"]]
+notes = "One-electron argon 3p (m = 0) -> 4p (m = 0), degenerate photons at half the grid's 4p - 3p (6.46351 eV; the model's 4p 12.926 eV, the TDSE runs at 6.463 eV): the lowest-order length-gauge amplitude of run4/pt_two_photon.py (dr = 0.002 bohr), +8.914061 au as extract_runs.py holds it (M_PT) and as the curator's rerun prints it (+8.914061e+00); the runs' summary prints +8.914. ONE time ordering: m_zz_per_unit = 2 (the record's notes). TDSE/PT of the 4p population 0.9996 (30 fs) and 0.9990 (50 fs) at 1e10 W/cm2. 0.13 %: the change from dr = 0.004 (+8.902447). Sign from perturbation theory, not from the TDSE. Not an LS level of the atom."
+[datasets.uncertainty]
+relative = 0.0013
+level = "bound"
+[datasets.parameters]
+final_level = "4p (one-electron Tong-Lin model; m = 0)"
+gauge = "length"
+polarization = "linear_parallel"
+definition = "M_m = <4p m| z (E_3p + omega - H)^-1 z |3p m> (atomic units), one time ordering, hbar omega = (E_4p - E_3p)/2; M_0 = R_s/3 + 4 R_d/15, M_1 = R_d/5, R_l = int u_4p(r) r f_l(r) dr with (E_3p + omega - H_l) f_l = r u_3p (run4/pt_two_photon.py)"
+phase_convention = "u = rR real, normalised, positive near the origin; spherical harmonics with the Condon-Shortley phase"
+m_zz_per_unit = 2
+method = "lowest-order perturbation theory (Dalgarno-Lewis) in Tong and Lin's Ar potential, one electron, uniform radial grid dr = 0.002 bohr to 150 bohr, second-order differences; |M_m| confirmed by the velocity-gauge TDSE (tRecX a987d7c) to 0.1 %"
+potential = "Tong and Lin 2005, Table 1, Ar: V = -(1 + 16.039 exp(-2.007 r) - 25.543 r exp(-4.525 r) + 0.961 exp(-0.443 r))/r"
+
+[[datasets]]
+id = "M_4p_m1"
+material = "Ar"
+table = "data/external/trecx/two_photon/extract_runs.py.txt"
+quantity = "two_photon_transition_amplitude"
+unit = "au"
+abscissa_unit = "eV"
+use = "check"
+points = [["4p_m1", "6.46351", "2.418379"]]
+notes = "One-electron argon 3p (m = 1) -> 4p (m = 1), as M_4p_m0: +2.418379 au (extract_runs.py's M_PT and the curator's rerun, +2.418379e+00; the summary prints +2.418); M_1/M_0 = +0.2713. ONE time ordering: m_zz_per_unit = 2. TDSE/PT of the 4p population 0.9986 (30 fs) and 0.9982 (50 fs) at 1e10 W/cm2. 0.09 %: the larger of the change from dr = 0.004 (+2.416898, 0.06 %) and the TDSE's |M_1| (sqrt(0.9982), 0.09 %). Sign from perturbation theory (R_d > 0). Not an LS level of the atom."
+[datasets.uncertainty]
+relative = 0.0009
+level = "bound"
+[datasets.parameters]
+final_level = "4p (one-electron Tong-Lin model; m = 1)"
+gauge = "length"
+polarization = "linear_parallel"
+definition = "M_m = <4p m| z (E_3p + omega - H)^-1 z |3p m> (atomic units), one time ordering, hbar omega = (E_4p - E_3p)/2; M_0 = R_s/3 + 4 R_d/15, M_1 = R_d/5, R_l = int u_4p(r) r f_l(r) dr with (E_3p + omega - H_l) f_l = r u_3p (run4/pt_two_photon.py)"
+phase_convention = "u = rR real, normalised, positive near the origin; spherical harmonics with the Condon-Shortley phase"
+m_zz_per_unit = 2
+method = "lowest-order perturbation theory (Dalgarno-Lewis) in Tong and Lin's Ar potential, one electron, uniform radial grid dr = 0.002 bohr to 150 bohr, second-order differences; |M_m| confirmed by the velocity-gauge TDSE (tRecX a987d7c) to 0.1 %"
+potential = "Tong and Lin 2005, Table 1, Ar: V = -(1 + 16.039 exp(-2.007 r) - 25.543 r exp(-4.525 r) + 0.961 exp(-0.443 r))/r"
+
+[[datasets]]
+id = "dz_1s2p_hacc"
+material = "He"
+table = "text"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "check"
+points = [["1s2 1S0 - 1s2p 1P1", "1s2 1S0 - 1s2p 1P1", "0.41224"]]
+notes = "Run 5c (REPORT.md, addendum 4): haCC He19, one channel, lMax 10, rMax 40. |z| = sqrt(K) from the five-carrier scan fit P = K |S1(Omega)|^2 (K = 0.169939 au^2, gauge-free); the length-form beat amplitude with OccDual populations gives 0.412236. NIST's f = 0.2762 (f = 2 Delta |z|^2 for M = 0) gives 0.4208: haCC is 2.0 % low (f 0.2649, 4.1 % low). A model's value: a check."
+[datasets.parameters]
+states = "1s2 1S0 - 1s2p 1P1"
+component = "z, M = 0, linear polarisation the axis; magnitude"
+method = "two-electron TDSE (tRecX haCC, one ionic channel), first-order fit of a carrier scan"

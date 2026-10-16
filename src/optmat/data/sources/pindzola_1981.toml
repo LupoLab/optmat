@@ -1,0 +1,315 @@
+citation = "M. S. Pindzola, \"Photoionization of excited-state xenon\", Phys. Rev. A 23, 201 (1981)"
+doi = "10.1103/PhysRevA.23.201"
+library = "Pindzola_1981_PhotoionizationExcitedState"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Calculated one-photon photoionisation cross sections of the Xe 5p5 \
+2P3/2 6p (J = 0) level near threshold, in the dipole approximation, in two \
+frozen-core models: nonrelativistic Hartree-Fock (Froese Fischer's MCHF code for the \
+Xe+ 5p5 2P core, a 6p orbital for the 2P 6p 1S and 3P terms, continuum orbitals by a \
+noniterative exchange method; the jjJM amplitudes transformed to LS coupling, Eqs. \
+3-7) and relativistic Dirac-Fock (Desclaux's MCDF code for the Xe+ 5p5 2P3/2 core, \
+continuum by an iterative exchange method, Eqs. 8-14), each in the length (Eqs. 1, 8) \
+and velocity (Eqs. 2, 9) forms. Final channels 2P3/2 es, ed-bar and ed (J = 1), \
+summed for the total. No correlation beyond the frozen core."""
+notes = """Phys. Rev. A 23(1), 201-205 (January 1981) = PDF pages 1-5 (journal page = PDF \
+page + 200); a scan with a text layer. Identity checked against the first page \
+(journal, volume, number, date, title, author). Every number taken was checked against \
+the table images and the rendered page (Table I, p. 204).
+
+LEVEL. '2P3/2 6p(J = 0) state which is accessible by two-photon excitation of the \
+ground state' (p. 201): in Racah notation 6p[1/2]0, Paschen 2p5 (kroll_1990's 2p5, \
+80 119 cm-1). 'The experimental value for the threshold energy for photoionization is \
+2.1958 eV' (p. 201, from Moore's tables). 4.97 eV 'is the energy needed for \
+three-photon ionization of Xe I through an intermediate two-photon resonance with the \
+2P3/2 6p(J = 0) excited state' (p. 204), i.e. 249.5 nm.
+
+WHAT IS TAKEN (tools/extract/pindzola_1981.py). Table I (p. 204, 'Xe 2P3/2 6p(J=0) \
+photoionization cross sections (in cm2)'), all four parts: A, B and C, the partial \
+cross sections into 2P3/2 es, ed-bar (j = 3/2) and ed (j = 5/2) (J = 1), and D, the \
+total, each in four forms, Hartree-Fock length and velocity (HFL, HFV) and Dirac-Fock \
+length and velocity (DFL, DFV), at 2.70, 3.20, 4.20, 4.97, 6.20, 10.20 and 18.20 eV \
+photon energy. The entries print the power of ten as a superscript (note b). Row \
+2.70 eV of part A carries footnote marks on two values (1.367-18 b, the note on the \
+powers of ten, and 1.283-18 a, the note naming the columns); they do not change the \
+values. No uncertainty is stated. The paper prefers no form: 'differences of 12% \
+remain' between HF and DF in the velocity form, 25 % in the length form, and 'as much \
+as 75%' between the gauges, which 'suggests that unincluded electron correlation \
+effects may be important' (p. 204). All datasets are therefore checks.
+
+CHECKED (the script). The three partial cross sections add to the printed total \
+within the rounding of the four numbers in 27 of the 28 cells (at most 1.0 unit of \
+the total's last figure). DOUBT: at 6.20 eV, DFV, the partials (6.922e-20, 4.974e-20, \
+7.549e-19) add to 8.7386e-19 against the printed 8.735e-19, 3.6 units where rounding \
+allows 1.1 (0.04 %); every cell is as printed (images checked), so one of the four is \
+a slip, which one cannot be told; nothing is corrected.
+
+COMPARISONS. kroll_1990 (Table II, ref. 13) quotes this calculation for 2p5 as ranges \
+'Hartree-Fock velocity to Dirac-Fock length', 1.3-3.0 x 10^-18 cm2 at 248 nm and \
+0.7-1.8 at 193 nm: the 4.97 eV totals give HFV 1.321, DFL 3.049 (agrees); 193 nm \
+(6.424 eV) lies between the 6.20 and 10.20 eV rows, where log-log interpolation gives \
+HFV 0.71 and DFL 1.67 (the 6.20 eV row: 0.78, 1.85), so 0.7-1.8 mixes the two. \
+chang_1982 (p. 2732) finds its Xe 6p cross section 'higher than the Hartree-Fock \
+calculation of Pindzola by a factor of two or more' and cites this paper as 'M. A. \
+Pindzola, Phys. Rev. A 23, 20 (1981)' (initial and page misprinted).
+
+NOT TAKEN. Fig. 1 (p. 203), the four totals against photon energy from the threshold \
+(2.1958 eV) to 15 eV, a raster scan: it draws Table I's totals; only its stretch \
+between the threshold and 2.70 eV, where the totals rise steeply, is not printed; it \
+is not digitised."""
+
+[[datasets]]
+id = "es_hfl"
+material = "Xe"
+file = "Xe/pindzola_1981__es_hfl.csv"
+table = "tbl_933b3111b7ca"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IA (p. 204), column HFL: the 2P3/2 es (J = 1) partial cross section, Hartree-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "length"
+channel = "2P3/2 es (J = 1)"
+
+[[datasets]]
+id = "es_hfv"
+material = "Xe"
+file = "Xe/pindzola_1981__es_hfv.csv"
+table = "tbl_933b3111b7ca"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IA (p. 204), column HFV: the 2P3/2 es (J = 1) partial cross section, Hartree-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "velocity"
+channel = "2P3/2 es (J = 1)"
+
+[[datasets]]
+id = "es_dfl"
+material = "Xe"
+file = "Xe/pindzola_1981__es_dfl.csv"
+table = "tbl_933b3111b7ca"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IA (p. 204), column DFL: the 2P3/2 es (J = 1) partial cross section, Dirac-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "length"
+channel = "2P3/2 es (J = 1)"
+
+[[datasets]]
+id = "es_dfv"
+material = "Xe"
+file = "Xe/pindzola_1981__es_dfv.csv"
+table = "tbl_933b3111b7ca"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IA (p. 204), column DFV: the 2P3/2 es (J = 1) partial cross section, Dirac-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "velocity"
+channel = "2P3/2 es (J = 1)"
+
+[[datasets]]
+id = "dbar_hfl"
+material = "Xe"
+file = "Xe/pindzola_1981__dbar_hfl.csv"
+table = "tbl_e18e3ec44547"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IB (p. 204), column HFL: the 2P3/2 ed-bar (J = 1) partial cross section (d-bar: j = l - 1/2 = 3/2), Hartree-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "length"
+channel = "2P3/2 ed-bar (J = 1), j = 3/2"
+
+[[datasets]]
+id = "dbar_hfv"
+material = "Xe"
+file = "Xe/pindzola_1981__dbar_hfv.csv"
+table = "tbl_e18e3ec44547"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IB (p. 204), column HFV: the 2P3/2 ed-bar (J = 1) partial cross section (d-bar: j = l - 1/2 = 3/2), Hartree-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "velocity"
+channel = "2P3/2 ed-bar (J = 1), j = 3/2"
+
+[[datasets]]
+id = "dbar_dfl"
+material = "Xe"
+file = "Xe/pindzola_1981__dbar_dfl.csv"
+table = "tbl_e18e3ec44547"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IB (p. 204), column DFL: the 2P3/2 ed-bar (J = 1) partial cross section (d-bar: j = l - 1/2 = 3/2), Dirac-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "length"
+channel = "2P3/2 ed-bar (J = 1), j = 3/2"
+
+[[datasets]]
+id = "dbar_dfv"
+material = "Xe"
+file = "Xe/pindzola_1981__dbar_dfv.csv"
+table = "tbl_e18e3ec44547"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IB (p. 204), column DFV: the 2P3/2 ed-bar (J = 1) partial cross section (d-bar: j = l - 1/2 = 3/2), Dirac-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "velocity"
+channel = "2P3/2 ed-bar (J = 1), j = 3/2"
+
+[[datasets]]
+id = "d_hfl"
+material = "Xe"
+file = "Xe/pindzola_1981__d_hfl.csv"
+table = "tbl_6fcf7de022b4"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IC (p. 204), column HFL: the 2P3/2 ed (J = 1) partial cross section (j = l + 1/2 = 5/2), Hartree-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "length"
+channel = "2P3/2 ed (J = 1), j = 5/2"
+
+[[datasets]]
+id = "d_hfv"
+material = "Xe"
+file = "Xe/pindzola_1981__d_hfv.csv"
+table = "tbl_6fcf7de022b4"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IC (p. 204), column HFV: the 2P3/2 ed (J = 1) partial cross section (j = l + 1/2 = 5/2), Hartree-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "velocity"
+channel = "2P3/2 ed (J = 1), j = 5/2"
+
+[[datasets]]
+id = "d_dfl"
+material = "Xe"
+file = "Xe/pindzola_1981__d_dfl.csv"
+table = "tbl_6fcf7de022b4"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IC (p. 204), column DFL: the 2P3/2 ed (J = 1) partial cross section (j = l + 1/2 = 5/2), Dirac-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "length"
+channel = "2P3/2 ed (J = 1), j = 5/2"
+
+[[datasets]]
+id = "d_dfv"
+material = "Xe"
+file = "Xe/pindzola_1981__d_dfv.csv"
+table = "tbl_6fcf7de022b4"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table IC (p. 204), column DFV: the 2P3/2 ed (J = 1) partial cross section (j = l + 1/2 = 5/2), Dirac-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated. See the total's note at 6.20 eV."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "velocity"
+channel = "2P3/2 ed (J = 1), j = 5/2"
+
+[[datasets]]
+id = "total_hfl"
+material = "Xe"
+file = "Xe/pindzola_1981__total_hfl.csv"
+table = "tbl_a31586f75c71"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table ID (p. 204), column HFL: the total photoionisation cross section, Hartree-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "length"
+channel = "total (the sum of the three partial cross sections)"
+
+[[datasets]]
+id = "total_hfv"
+material = "Xe"
+file = "Xe/pindzola_1981__total_hfv.csv"
+table = "tbl_a31586f75c71"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table ID (p. 204), column HFV: the total photoionisation cross section, Hartree-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "nonrelativistic Hartree-Fock (frozen Xe+ 5p5 2P core, 6p orbital for 1S and 3P, continuum by noniterative exchange; jj to LS transformation)"
+gauge = "velocity"
+channel = "total (the sum of the three partial cross sections)"
+
+[[datasets]]
+id = "total_dfl"
+material = "Xe"
+file = "Xe/pindzola_1981__total_dfl.csv"
+table = "tbl_a31586f75c71"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table ID (p. 204), column DFL: the total photoionisation cross section, Dirac-Fock length, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "length"
+channel = "total (the sum of the three partial cross sections)"
+
+[[datasets]]
+id = "total_dfv"
+material = "Xe"
+file = "Xe/pindzola_1981__total_dfv.csv"
+table = "tbl_a31586f75c71"
+quantity = "excited_state_photoionization_cross_section"
+unit = "cm2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Table ID (p. 204), column DFV: the total photoionisation cross section, Dirac-Fock velocity, at seven photon energies from 2.70 to 18.20 eV. No uncertainty is stated. At 6.20 eV the printed total (8.735e-19) is 3.6 units of its last figure below the sum of the printed partials (8.7386e-19); rounding allows 1.1 (record notes)."
+[datasets.parameters]
+initial_level = "Xe 5p5 2P3/2 6p, J = 0 (6p[1/2]0; Paschen 2p5, as kroll_1990 names it)"
+method = "relativistic Dirac-Fock (frozen Xe+ 5p5 2P3/2 core, 6p (J = 0) orbital, continuum by iterative exchange)"
+gauge = "velocity"
+channel = "total (the sum of the three partial cross sections)"

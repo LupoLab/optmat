@@ -1,0 +1,588 @@
+citation = "A. Kumar and A. J. Thakkar, J. Chem. Phys. 132, 074301 (2010)"
+doi = "10.1063/1.3315418"
+library = "Kumar_2010_DipoleOscillatorStrength"
+identity = "VALIDATED"
+kind = "compilation"
+technique = """Constrained dipole oscillator strength distributions (the Meath method): \
+theoretical and experimental photoabsorption and dipole (e,e) oscillator-strength data \
+(Refs. 50-61: Chan et al. 1992 for Ne and for Ar/Kr/Xe, Henke et al. 1993, Samson and \
+Stolte 2002, Suzuki and Saito 2002-2005, Chantler, ...) divided into energy intervals, \
+each scaled by (1 + a_i) so that the distribution satisfies the Kuhn-Reiche-Thomas sum \
+rule S_0 = N and experimental refractivities at two well-separated wavelengths \
+(Refs. 62, 63, 79-82); the adopted DOSD has the smallest spread s of the a_i (Eq. (5)) \
+among 29, 39, 24 and 21 initial distributions. New here: the high-energy tail is a \
+[1/1] Pade form (Eq. (9)) of the asymptotic expansion df/dE = A E^-7/2 + beta E^-4 + \
+... with A = 2 sqrt(2) Z S_2/pi and beta = -2 Z^2 S_2 (Eqs. (6)-(8), Struensee), \
+iterated with the constraint procedure until S_2 converges (10-15 iterations), used \
+above 100 keV instead of the Stobbe formula (pp. 074301-2 to -3)."""
+notes = """Dipole sums S_k = sum f_i E_i^k + integral (df/dE) E^k dE in atomic units (Eq. \
+(1)); S_-2 is the static polarizability and S_-2k (k >= 2) are the Cauchy coefficients of \
+alpha(omega) (Eq. (4)); S_0 = N by construction. Table I caption: 'the numbers in \
+parentheses are powers of ten. The estimated uncertainties are +-3% for k=2, +-2% for \
+k=1, +-1% for 0 > k >= -6 and 3% for -7 >= k >= -10' (no confidence level). The text \
+(p. 074301-5) says '1%-2% for 0 > k > -6' and that more than 75 % of S_k for k <= -6 comes \
+from the discrete transitions, which limits their accuracy.
+
+Refractivity constraints: 'values of the refractivity at two well-separated \
+wavelengths, taken from experimental measurements' Refs. 62, 63 (U. Hohm, Mol. Phys. 81, \
+157 (1994); U. Hohm and U. Trumper, Mol. Phys. 89, 943 (1996)) and 79-82 (Cuthbertson \
+and Cuthbertson 1932; Coulon et al. 1981; Smith et al. 1976; Bideau-Mehu et al. 1981), \
+p. 074301-3. Which wavelengths and values were used for which gas is given only in \
+the supplementary material (Ref. 84), curated as kumar_2010_supplement; S_-2 is 'identical \
+to the earlier DOSD values of Kumar and Meath primarily because the refractivity \
+constraints we used are so similar' (p. 074301-4). The S_k (k < 0) are therefore not \
+independent of those refractivity data (cuthbertson_1932, smith_1976, \
+bideau_mehu_1981, and Coulon's and Hohm's, not in the library): fitting both double \
+counts part of the information.
+
+Pseudo-spectrum: the ten-term pseudospectra {f_i, epsilon_i} reproducing S_k for 2 >= \
+k >= -17 (p. 074301-5 to -6) are in the supplementary material only (with the \
+integrated DOS of the adopted distributions): recorded as formulas in \
+kumar_2010_supplement.
+
+Text values extracted (p. 074301-5): the polarizabilities recommended in Thakkar and \
+Lupinetti's (2006) review, experimental (dielectric constants) and theoretical; the \
+earlier DOSD and current S_-2 'given their +-1% uncertainties, are in good agreement'. \
+Neon's recommended experimental 2.6669(8) (Huot and Bose 1991) is 0.2 % above Gaiser and \
+Fellmuth's DCGT value (gaiser_2010), far outside both uncertainties.
+
+Tables II-IV compare S_2, S_1, S_-1 with other work; their constrained-DOSD rows repeat \
+Table I and kumar_1985's Table 12 (identical, checked) and are not extracted again. \
+Not extracted: Table V (mean excitation energies I_k, no quantity), Tables VI and VII \
+(C6 and C9 dispersion coefficients). The comparison with Pawlowski et al.'s CC3 Cauchy \
+moments, Bulanin and Kislyakov's and Olney et al.'s (Fig. 2) is graphical only."""
+
+[[datasets]]
+id = "moments_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__moments_Ne.csv"
+table = "tbl_2e89f4a65bc0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"  # TC-72: fitted to refractivity data already curated here
+notes = "Table I: S_k of the recommended constrained DOSD, k = 2 ... -10 (rows by k, including -0.5 and -1.5), atomic units. Not independent of the refractivity constraints (source notes). Uncertainties from the caption."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0, "-7" = 0.03, "-8" = 0.03, "-9" = 0.03, "-10" = 0.03 }
+
+[[datasets]]
+id = "moments_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__moments_Ar.csv"
+table = "tbl_2e89f4a65bc0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"  # TC-72
+notes = "Table I: S_k of the recommended constrained DOSD, k = 2 ... -10 (rows by k, including -0.5 and -1.5), atomic units. Not independent of the refractivity constraints (source notes). Uncertainties from the caption."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0, "-7" = 0.03, "-8" = 0.03, "-9" = 0.03, "-10" = 0.03 }
+
+[[datasets]]
+id = "moments_Kr"
+material = "Kr"
+file = "Kr/kumar_2010__moments_Kr.csv"
+table = "tbl_2e89f4a65bc0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"  # TC-72
+notes = "Table I: S_k of the recommended constrained DOSD, k = 2 ... -10 (rows by k, including -0.5 and -1.5), atomic units. Not independent of the refractivity constraints (source notes). Uncertainties from the caption."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0, "-7" = 0.03, "-8" = 0.03, "-9" = 0.03, "-10" = 0.03 }
+
+[[datasets]]
+id = "moments_Xe"
+material = "Xe"
+file = "Xe/kumar_2010__moments_Xe.csv"
+table = "tbl_2e89f4a65bc0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"  # TC-72
+notes = "Table I: S_k of the recommended constrained DOSD, k = 2 ... -10 (rows by k, including -0.5 and -1.5), atomic units. Not independent of the refractivity constraints (source notes). Uncertainties from the caption."
+[datasets.uncertainty]
+relative = 0.01
+level = "not stated"
+relative_rows = { "2" = 0.03, "1" = 0.02, "0" = 0.0, "-7" = 0.03, "-8" = 0.03, "-9" = 0.03, "-10" = 0.03 }
+
+[[datasets]]
+id = "s2_hf_koga_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s2_hf_koga_Ne.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["T. Koga, S. Watanabe, K. Kanayama, R. Yasuda, and A. J. Thakkar, J. Chem. Phys. 103, 3000 (1995); T. Koga, K. Kanayama, S. Watanabe, and A. J. Thakkar, Int. J. Quantum Chem. 71, 491 (1999)"]
+notes = "Table II (HF^a: numerical Hartree-Fock, Refs. 85-86): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s2_hf_koga_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__s2_hf_koga_Ar.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["T. Koga, S. Watanabe, K. Kanayama, R. Yasuda, and A. J. Thakkar, J. Chem. Phys. 103, 3000 (1995); T. Koga, K. Kanayama, S. Watanabe, and A. J. Thakkar, Int. J. Quantum Chem. 71, 491 (1999)"]
+notes = "Table II (HF^a: numerical Hartree-Fock, Refs. 85-86): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s2_hf_koga_Kr"
+material = "Kr"
+file = "Kr/kumar_2010__s2_hf_koga_Kr.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["T. Koga, S. Watanabe, K. Kanayama, R. Yasuda, and A. J. Thakkar, J. Chem. Phys. 103, 3000 (1995); T. Koga, K. Kanayama, S. Watanabe, and A. J. Thakkar, Int. J. Quantum Chem. 71, 491 (1999)"]
+notes = "Table II (HF^a: numerical Hartree-Fock, Refs. 85-86): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s2_hf_koga_Xe"
+material = "Xe"
+file = "Xe/kumar_2010__s2_hf_koga_Xe.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["T. Koga, S. Watanabe, K. Kanayama, R. Yasuda, and A. J. Thakkar, J. Chem. Phys. 103, 3000 (1995); T. Koga, K. Kanayama, S. Watanabe, and A. J. Thakkar, Int. J. Quantum Chem. 71, 491 (1999)"]
+notes = "Table II (HF^a: numerical Hartree-Fock, Refs. 85-86): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s2_ci_saxon_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s2_ci_saxon_Ne.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["R. P. Saxon, Phys. Rev. A 8, 839 (1973)"]
+notes = "Table II (CI^d, Ref. 87): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s2_ci_bunge_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s2_ci_bunge_Ne.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["A. V. Bunge and R. O. Esquivel, Phys. Rev. A 34, 853 (1986)"]
+notes = "Table II (CI^e, Ref. 88): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s2_ci_bundgen_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s2_ci_bundgen_Ne.csv"
+table = "tbl_4b977c5b7875"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. Bündgen, Ph.D. thesis, University of New Brunswick (1994)"]
+notes = "Table II (CI^f, Ref. 89): S_2. No uncertainty given."
+
+[[datasets]]
+id = "s1_hf_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s1_hf_Ne.csv"
+table = "tbl_9235bcb67ec8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table III (HF^a, Refs. 33, 90, 91): S_1. No uncertainty given."
+
+[[datasets]]
+id = "s1_hf_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__s1_hf_Ar.csv"
+table = "tbl_9235bcb67ec8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table III (HF^a, Refs. 33, 90, 91): S_1. No uncertainty given."
+
+[[datasets]]
+id = "s1_hf_Kr"
+material = "Kr"
+file = "Kr/kumar_2010__s1_hf_Kr.csv"
+table = "tbl_9235bcb67ec8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table III (HF^a, Refs. 33, 90, 91): S_1. No uncertainty given."
+
+[[datasets]]
+id = "s1_hf_Xe"
+material = "Xe"
+file = "Xe/kumar_2010__s1_hf_Xe.csv"
+table = "tbl_9235bcb67ec8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table III (HF^a, Refs. 33, 90, 91): S_1. No uncertainty given."
+
+[[datasets]]
+id = "s1_ci_saxon_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s1_ci_saxon_Ne.csv"
+table = "tbl_9235bcb67ec8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["R. P. Saxon, Phys. Rev. A 8, 839 (1973)"]
+notes = "Table III (CI^d, Ref. 87): S_1. No uncertainty given."
+
+[[datasets]]
+id = "s1_mrci_bundgen_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s1_mrci_bundgen_Ne.csv"
+table = "tbl_9235bcb67ec8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. Bündgen, Ph.D. thesis, University of New Brunswick (1994)"]
+notes = "Table III (MRCI^e, Ref. 89): S_1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_hf_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s-1_hf_Ne.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table IV (HF^a, Refs. 33, 90, 91): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_hf_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__s-1_hf_Ar.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table IV (HF^a, Refs. 33, 90, 91): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_hf_Kr"
+material = "Kr"
+file = "Kr/kumar_2010__s-1_hf_Kr.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table IV (HF^a, Refs. 33, 90, 91): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_hf_Xe"
+material = "Xe"
+file = "Xe/kumar_2010__s-1_hf_Xe.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. E. Cummings, J. Chem. Phys. 63, 4960 (1975); S. Fraga, J. Karwowski, and K. M. S. Saxena, Handbook of Atomic Data (Elsevier, New York, 1976); T. Koga and H. Matsuyama, J. Chem. Phys. 117, 55 (2002)"]
+notes = "Table IV (HF^a, Refs. 33, 90, 91): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_dosd_olney_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s-1_dosd_olney_Ne.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["olney_1997"]
+notes = "Table IV (DOSD^b: refined photoabsorption oscillator-strength spectra, Ref. 92): S_-1. No uncertainty given. The value, 3.601, is digit-identical to olney_1997's Table 3 Ne 'Expt' S(-1) (olney_1997/moments_Ne; checked 2026-09-26): a sum over Olney et al.'s dipole (e,e) spectrum renormalised to a polarizability, not a constrained DOSD despite the column label; Olney et al. say their S(-1) omits inner-shell contributions and is less accurate than their u <= -2 sums (olney_1997 notes). Re-pointed to olney_1997 (was a citation)."
+
+[[datasets]]
+id = "s-1_dosd_olney_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__s-1_dosd_olney_Ar.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["olney_1997"]
+notes = "Table IV (DOSD^b: refined photoabsorption oscillator-strength spectra, Ref. 92): S_-1. No uncertainty given. The value, 8.700, is digit-identical to olney_1997's Table 3 Ar 'Expt' S(-1) (olney_1997/moments_Ar; checked 2026-09-26): a sum over Olney et al.'s dipole (e,e) spectrum renormalised to a polarizability, not a constrained DOSD despite the column label; Olney et al. say their S(-1) omits inner-shell contributions and is less accurate than their u <= -2 sums (olney_1997 notes). Re-pointed to olney_1997 (was a citation)."
+
+[[datasets]]
+id = "s-1_dosd_olney_Kr"
+material = "Kr"
+file = "Kr/kumar_2010__s-1_dosd_olney_Kr.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["olney_1997"]
+notes = "Table IV (DOSD^b: refined photoabsorption oscillator-strength spectra, Ref. 92): S_-1. No uncertainty given. The value, 11.86, is digit-identical to olney_1997's Table 3 Kr 'Expt' S(-1) (olney_1997/moments_Kr; checked 2026-09-26): a sum over Olney et al.'s dipole (e,e) spectrum renormalised to a polarizability, not a constrained DOSD despite the column label; Olney et al. say their S(-1) omits inner-shell contributions and is less accurate than their u <= -2 sums (olney_1997 notes). Re-pointed to olney_1997 (was a citation)."
+
+[[datasets]]
+id = "s-1_dosd_olney_Xe"
+material = "Xe"
+file = "Xe/kumar_2010__s-1_dosd_olney_Xe.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["olney_1997"]
+notes = "Table IV (DOSD^b: refined photoabsorption oscillator-strength spectra, Ref. 92): S_-1. No uncertainty given. The value, 16.55, is digit-identical to olney_1997's Table 3 Xe 'Expt' S(-1) (olney_1997/moments_Xe; checked 2026-09-26): a sum over Olney et al.'s dipole (e,e) spectrum renormalised to a polarizability, not a constrained DOSD despite the column label; Olney et al. say their S(-1) omits inner-shell contributions and is less accurate than their u <= -2 sums (olney_1997 notes). Re-pointed to olney_1997 (was a citation)."
+
+[[datasets]]
+id = "s-1_tdmp2_hattig_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__s-1_tdmp2_hattig_Ar.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. Hättig and B. A. Hess, J. Phys. Chem. 100, 6243 (1996)"]
+notes = "Table IV (TDMP2^e, Ref. 93): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_tdmp2_hattig_Kr"
+material = "Kr"
+file = "Kr/kumar_2010__s-1_tdmp2_hattig_Kr.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. Hättig and B. A. Hess, J. Phys. Chem. 100, 6243 (1996)"]
+notes = "Table IV (TDMP2^e, Ref. 93): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_tdmp2_hattig_Xe"
+material = "Xe"
+file = "Xe/kumar_2010__s-1_tdmp2_hattig_Xe.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. Hättig and B. A. Hess, J. Phys. Chem. 100, 6243 (1996)"]
+notes = "Table IV (TDMP2^e, Ref. 93): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_ci_saxon_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s-1_ci_saxon_Ne.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["R. P. Saxon, Phys. Rev. A 8, 839 (1973)"]
+notes = "Table IV ('Correlated', note f: CI, Ref. 87): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_bethe_goldstone_naon_Ar"
+material = "Ar"
+file = "Ar/kumar_2010__s-1_bethe_goldstone_naon_Ar.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["M. Naon, M. Cornille, and Y.-K. Kim, J. Phys. B 8, 864 (1975)"]
+notes = "Table IV ('Correlated', note g: Bethe-Goldstone, Ref. 94): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "s-1_mrci_bundgen_Ne"
+material = "Ne"
+file = "Ne/kumar_2010__s-1_mrci_bundgen_Ne.csv"
+table = "tbl_f451ae7d305a"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["P. Bündgen, Ph.D. thesis, University of New Brunswick (1994)"]
+notes = "Table IV (MRCI^h, Ref. 89): S_-1. No uncertainty given."
+
+[[datasets]]
+id = "huot_bose_1991_Ne"
+material = "Ne"
+table = "text"
+points = [["1", "inf", "2.6669", "0.0008"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Huot and T. K. Bose, J. Chem. Phys. 95, 2683 (1991)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, experimental, dielectric constant (Ref. 97): 2.6669 +- 0.0008 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "johnston_1960_Ar"
+material = "Ar"
+table = "text"
+points = [["1", "inf", "11.078", "0.010"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. R. Johnston, G. J. Oudemans, and R. H. Cole, J. Chem. Phys. 33, 1310 (1960)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, experimental, dielectric constant (Ref. 98): 11.078 +- 0.010 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "huot_bose_1991_Kr"
+material = "Kr"
+table = "text"
+points = [["1", "inf", "16.782", "0.005"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Huot and T. K. Bose, J. Chem. Phys. 95, 2683 (1991)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, experimental, dielectric constant (Ref. 97): 16.782 +- 0.005 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "huot_bose_1991_Xe"
+material = "Xe"
+table = "text"
+points = [["1", "inf", "27.078", "0.005"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Huot and T. K. Bose, J. Chem. Phys. 95, 2683 (1991)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, experimental, dielectric constant (Ref. 97): 27.078 +- 0.005 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "klopper_2004_Ne"
+material = "Ne"
+table = "text"
+points = [["1", "inf", "2.661", "0.005"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. Klopper, S. Coriani, T. Helgaker, and P. Jørgensen, J. Phys. B 37, 3753 (2004)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, best theoretical (nonrelativistic plus relativistic corrections), Ref. 99: 2.661 +- 0.005 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "lupinetti_2005_Ar"
+material = "Ar"
+table = "text"
+points = [["1", "inf", "11.085", "0.06"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. Lupinetti and A. J. Thakkar, J. Chem. Phys. 122, 044301 (2005)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, best theoretical, Ref. 103: 11.085 +- 0.06 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "nakajima_2001_Kr"
+material = "Kr"
+table = "text"
+points = [["1", "inf", "16.80", "0.13"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. Nakajima and K. Hirao, Chem. Lett. 30, 766 (2001)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, best theoretical, Ref. 106: 16.80 +- 0.13 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "nakajima_2001_Xe"
+material = "Xe"
+table = "text"
+points = [["1", "inf", "27.06", "0.27"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. Nakajima and K. Hirao, Chem. Lett. 30, 766 (2001)", "A. J. Thakkar and C. Lupinetti, in Atoms, Molecules and Clusters in Electric Fields, edited by G. Maroulis (Imperial College Press, London, 2006), Vol. 1, pp. 505-529"]
+notes = "p. 074301-5: static polarizability recommended in Thakkar and Lupinetti's review, best theoretical, Ref. 106: 27.06 +- 0.27 a.u. (checked on the PDF page; the library text has unmapped +- glyphs). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"

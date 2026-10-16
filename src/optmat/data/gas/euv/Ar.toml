@@ -1,0 +1,21 @@
+gas = "Ar"
+description = "Chan et al.'s (1992) discrete lines (with the unlisted members to the 2P3/2 limit as one pseudo-line), their absolute continuum from 16 to 500 eV, Henke's f2 above 500 eV; the measured continuum scaled to Lesiuk & Jeziorski's static polarizability."
+chi0_au = -2.30e-4
+
+[lines]
+dataset = "chan_1992/present_Ar"
+total = "chan_1992/present_total_Ar"
+pseudo_line_ev = 15.70          # just below the 2P3/2 limit, 15.760 eV
+
+[[continuum]]
+dataset = "chan_1992/continuum_Ar"
+extend_to_ev = 15.760           # the 2P3/2 limit: the autoionising region at the first tabulated density
+
+[[continuum]]
+henke = "ar"
+min_ev = 501.0
+
+[constraint]
+dataset = "lesiuk_2023/cauchy_Ar"
+row = "-2"
+region_max_ev = 501.0

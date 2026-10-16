@@ -1,0 +1,285 @@
+citation = "R. Moccia, N. K. Rahman and A. Rizzo, \"Two-photon ionisation cross section calculations of noble gases: results for Ne and Ar\", J. Phys. B: At. Mol. Phys. 16, 2737-2751 (1983)"
+doi = "10.1088/0022-3700/16/15/016"
+library = "Moccia_1983_TwoPhotonIonisation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Lowest-order perturbation theory for two-photon ionisation of the outer p shell \
+of Ne and Ar below the one-photon threshold (Sec. 2). The sum over intermediate states \
+uses the RPA of a finite basis (Clementi-Roetti augmented with diffuse s, p, d \
+functions: 12s 10p 5d for Ne, 13s 12p 5d for Ar): RPA transition densities and \
+excitation energies, the first excitation energies replaced by the LS-weighted \
+experimental ones of Table 1 (Bashkin and Stoner 1975) so the resonances fall at \
+them (p. 7/2742). Final states: the relaxed SCF 2P ion times a continuum p or f wave \
+(1S(ep), 1D(ep), 1D(ef)) solved in one spherically averaged static-exchange potential, \
+70-80 basis functions, r0 = 45-60 au (pp. 4-6/2739-2741). Length and velocity forms of \
+the transition operator. Ionisation potentials 0.7925 au (Ne) and 0.5792 au (Ar) (p. \
+8/2743). 'The shift and width of the atomic energy levels ... are obviously absent in \
+this approach. Therefore the results may be valid only for photon energies not too \
+close to the unperturbed excitation energies' (p. 3/2738)."""
+notes = """Journal pp. 2737-2751 = PDF pages 2-16 (PDF p. 1 is an IOPscience cover \
+page); journal page = PDF page + 2735. Identity checked on PDF p. 2 ('J. Phys. B: At. \
+Mol. Phys. 16 (1983) 2737-2751. Printed in Great Britain'; R Moccia, N K Rahman and \
+A Rizzo, Pisa; received 9 November 1982, in final form 22 March 1983) on 2026-10-09. \
+The PDF is a scan: every article page is one embedded 1-bit image, 2076 x 2945 \
+pixels (about 250 dpi).
+
+THE QUANTITIES: the generalised two-photon cross section 'sigma_2TOT' for linearly \
+polarised light, cm4 s, in Figs. 1 (Ne, '10^52 sigma_2TOT (cm^4 s)', 0-15) and 2 (Ar, \
+'10^51 sigma_2TOT', 0-36), from Eq. 8, 'd sigma_2 / d Omega = 8 pi^3 alpha^2 a0^4 t0 \
+omega_p^g sum |M|^2' with g = +2 (length) or -2 (velocity) and 'a0^4 t0 corresponds to \
+1.8967 x 10^-50 cm^4 s' (p. 7/2742), integrated over angles by Eqs. A.6-A.7; and the \
+ratio sigma_2TOT^C / sigma_2TOT^L of the circular to the linear total in Figs. 4 (Ne) \
+and 5 (Ar), 0-2, with a full horizontal line at 1.5, the f-wave-only value (Eq. A.8, \
+p. 11/2746). In each figure 'Full curve: velocity operator results. Chain curve: \
+length operator results.'
+
+ENERGY AXIS: the photon energy in atomic units, omega_p (hartree); the photoelectron \
+energy from '2 omega_P = IP + epsilon' (p. 14/2749). 'In figures 1 and 2 the energy \
+scale has been enlarged after the second resonance energy' (p. 8/2743), and so in \
+Figs. 4 and 5: two linear scales on one axis, joined at a thick bar at the second \
+resonance (Ne 2p->4s 0.7269, Ar 3p->3d 0.5156 hartree). 'The vertical broken lines \
+indicate the position of the excitation energies evaluated as described above' \
+(Table 1's experimental values, LS-weighted averages of the J levels), and of the \
+thresholds. The resonances stand at those experimental energies by construction; no \
+other shift. LS coupling.
+
+EXTRACTED (tools/extract/moccia_1983.py), by data rule 8 (TC-699): the paper prints \
+no number of the cross sections or ratios (the differential coefficients are \
+'available upon request', p. 11/2746). Each curve read from the page image at its \
+native resolution: the axes calibrated from the tick marks (each found in the image; \
+each x scale's ticks on one line within 1.6 pixels except Ne's left scale, whose 0.70 \
+tick lies 5.6 pixels (0.003 hartree) off the line of the others, in both Figs. 1 and \
+4; the y ticks within 1.6 pixels); each curve traced column by column from a seed \
+pixel and its style checked (the full curve unbroken over 60 columns or more; the \
+chain broken at least 4 times per 100 columns, no dash longer than 50); samples every \
+0.005 hartree left of the axis break and every 0.001 right of it, where the line is \
+clear: no other dark pixel within 4 pixels of it within 4 columns either side, no \
+steeper than 2 pixels per column; across a gap of the chain, interpolated between the \
+nearest clear columns (at most 24 pixels apart). Samples within 6 pixels of the drawn \
+R = 1.5 line (Figs. 4, 5) are left out: a curve on the line cannot be told from it. \
+The samples left out are listed in the script, which fails if they change; each \
+value's pixel is in its printed cell. One pixel is 0.00051 hartree (Ne, left of the \
+break), 0.00035 (Ar), 0.00012 and 0.00011 right of the break; in y 2.2e-54 cm4 s \
+(Fig. 1), 5.0e-53 (Fig. 2), 0.0029 and 0.0028 (Figs. 4, 5); the lines are 2 to 4 pixels \
+wide. Nothing is read on the steep flanks and peaks of the resonances, in the narrow \
+windows between close resonances (Ne 0.727-0.737 and 0.762-0.773 in Figs. 1 and 4 \
+except where listed; Ar 0.516-0.524, 0.546-0.552, 0.564-0.579), or where the two \
+curves run within a line width of each other. The overlays of the values on the page \
+images were inspected (2026-10-09).
+
+THE X SCALE (reported by the script): the vertical broken lines found, on the tick \
+scales, against the thresholds (IP/2) and Table 1: Ne (Fig. 1) threshold 0.3949 \
+(0.39625: -0.0014), 2p->3s 0.6203 (0.6192: +0.0011), and within 0.0002 hartree right of \
+the break (4s, 3d, 5s, 4d, 6s and the ionisation potential 0.7925); Fig. 4 the same \
+within 0.0009. Ar (Figs. 2 and 5): the threshold line stands at 0.2847-0.2851 against \
+0.2896 (-0.0049 to -0.0045), 3p->4s at 0.4366 against 0.4347 (+0.0019); right of the \
+break the lines are within 0.0005 of Table 1 (3d, 5s, 4d, 7s, 8s) and of the ionisation \
+potential. So on Ar's left scale the drawing's thresholds and resonances, and the \
+curves drawn to them (the curves begin at the threshold line), sit up to 0.005 hartree \
+(0.13 eV) from the printed ticks; the energies are recorded as the ticks give them, \
+not shifted, and this is the x uncertainty there. The y scales read the drawn R = 1.5 \
+line as 1.500 and 1.485 (Fig. 4, left and right) and 1.504 (Fig. 5).
+
+DIGITISING UNCERTAINTY: 4 pixels in y (the tick residuals and the centring on a line \
+2-4 pixels wide): 1e-53 cm4 s (Fig. 1), 2e-52 (Fig. 2), 0.015 in the ratio (Fig. 5) \
+and 0.02 (Fig. 4, with the R = 1.5 line's 0.015); in x the scale offsets above. The \
+paper states no uncertainty.
+
+FINDING (Table 1): the Ar '3p->6s' experimental energy is printed 0.5221 hartree, \
+below 3p->5s (0.5239), though its RPA value (0.5583) lies 0.027 above 5s's (0.5314); \
+Figs. 2 and 5 draw no line at 0.5221 but one at 0.5522, between 4d (0.5461) and 7s \
+(0.5645): the printed 0.5221 is very likely a misprint of 0.5521. Table 1 is not taken, \
+so no erratum is entered; the curves are drawn with the line at 0.552.
+
+COMPARISONS (reported by the script; this paper over the other at the samples nearest \
+the energies named, eV = hartree x 27.2114). Ne, Fig. 1 against McKenna and van der \
+Hart 2004 (mckenna_2004/fig1_sigma2_Ne, TC-856; R-matrix Floquet): velocity 0.75 (11.2 \
+eV), 0.62 (12.0), 0.48 (13.1), 0.36 (14.0), 0.26 (15.0), 0.13 (16.1); length 0.20 (12.0), \
+0.11 (13.1), 0.08 (14.0), 0.05 (15.0), 0.02 (15.8). McKenna and van der Hart describe this \
+paper's Ne as 'up to a factor of 4' below theirs and 'strongly gauge dependent' \
+(mckenna_2004 notes): the velocity form is 1.3 to 4 times below up to 15 eV and further \
+below near the 3s resonance's low-energy minimum; the length form is 5 to 50 times \
+below; length over velocity 0.10 to 0.50 (Fig. 1). Ar, Fig. 2 against McKenna: \
+velocity 0.61 (8.0 eV), 0.69 (9.0), 0.76 (9.9), 0.81 (11.0); length 1.03, 0.88, 0.81 \
+(9.7), 0.75. Against Pan, Gao and Starace 1990's final length total (pan_1990b): \
+velocity 0.93 (9.0 eV), 1.10 (9.9), 1.29 (11.0); length 1.18, 1.14 (9.7), 1.20. Against \
+Starace and Jiang 1987's ESI length total (starace_1987, TC-878): velocity 0.82, 0.95, \
+1.09; length 1.05, 1.00, 1.01. Ar length over velocity 0.58 to 1.68 (Fig. 2). Pan et al. \
+(pan_1990b, Fig. 6(a)) and Starace and Jiang (TC-878, Figs. 6, 7) redraw this paper's \
+Ar length total beside theirs (not read there); their pictures put it above theirs \
+near threshold, as the comparisons here do.
+
+NOT TAKEN: (a) Fig. 3 (the matrix-element contributions K01, K21, K23 of the three \
+final states for Ne, velocity form) and Fig. 6 (the p-wave phase shifts): no quantity. \
+(b) Figs. 7 and 8 (the differential cross sections of Ne and Ar against the \
+photoelectron angle at 9 and 6 photon energies): no quantity of the vocabulary holds \
+an angular distribution. (c) Table 1 (RPA and LS-weighted experimental excitation \
+energies, hartree): model energies and averages of Bashkin and Stoner's levels, not a \
+primary; used by the script to identify the drawn lines. (d) The parts of the curves \
+not read (above).
+
+TWO-PHOTON REFERENCES the paper cites (data not in this record): Ar: M. S. Pindzola \
+and H. P. Kelly, Phys. Rev. A 11, 1543 (1975) (pindzola_1975), 'agree pretty well with \
+the present results'; E. J. McGuire, Phys. Rev. A 24, 835 (1981) (mcguire_1981, \
+TC-879), 'generally higher'; Xe at 193 nm, measured: A. W. McCown, M. N. Ediger and J. \
+G. Eden, Phys. Rev. A 26, 3318 (1982) (mccown_1982, TC-884; cited as 'McCowan'); He: B. \
+A. Zon, N. L. Manakov and L. P. Rapoport, Sov. Phys.-JETP 34, 515 (1972); T. Olsen, P. \
+Lambropoulos, S. Wheatley and S. Rountree, J. Phys. B 11, 4167 (1978); L. A. Lompre, \
+G. Mainfray, B. Mathieu, G. Watel, M. Aymar and M. Crance, J. Phys. B 13, 1799 (1980); \
+M. Aymar and M. Crance, J. Phys. B 13, 2527 (1980)."""
+
+[[datasets]]
+id = "fig1_sigma2_V_Ne"
+material = "Ne"
+file = "Ne/moccia_1983__fig1_sigma2_V_Ne.csv"
+table = "fig_b5118ea4e934"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 1 (p. 7/2742), full curve: the total generalised two-photon ionisation cross section of Ne, linear polarisation, velocity form, cm4 s against the photon energy (hartree), read from the scanned image (the record's notes), 0.410 and 0.430 to 0.595 (every 0.005), 0.675 to 0.715, and 0.743 to 0.755 hartree (every 0.001 right of the axis break); 2.1e-52 to 1.35e-51 cm4 s. +-1.0e-53 cm4 s in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 1.0e-53
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D)"
+definition = "generalised two-photon cross section in cm4 s, the angle integral of Eq. 8, d sigma_2 / d Omega = 8 pi^3 alpha^2 a0^4 t0 omega_p^g sum |M|^2 (g = +2 length, -2 velocity; a0^4 t0 = 1.8967e-50 cm4 s); the rate W = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1, as the unit implies (not written out)"
+
+[[datasets]]
+id = "fig1_sigma2_L_Ne"
+material = "Ne"
+file = "Ne/moccia_1983__fig1_sigma2_L_Ne.csv"
+table = "fig_b5118ea4e934"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 1 (p. 7/2742), chain curve: the total generalised two-photon ionisation cross section of Ne, linear polarisation, length form, cm4 s against the photon energy (hartree), read from the scanned image (the record's notes), 0.440 to 0.580, 0.660 to 0.720 and 0.743 to 0.756 hartree; 2.6e-53 to 3.4e-52 cm4 s (below 0.44 the curve falls steeply from the top of the frame). +-1.0e-53 cm4 s in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 1.0e-53
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "length"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D)"
+definition = "generalised two-photon cross section in cm4 s, the angle integral of Eq. 8, d sigma_2 / d Omega = 8 pi^3 alpha^2 a0^4 t0 omega_p^g sum |M|^2 (g = +2 length, -2 velocity; a0^4 t0 = 1.8967e-50 cm4 s); the rate W = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1, as the unit implies (not written out)"
+
+[[datasets]]
+id = "fig2_sigma2_V_Ar"
+material = "Ar"
+file = "Ar/moccia_1983__fig2_sigma2_V_Ar.csv"
+table = "fig_8d179928b5fc"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 2 (p. 8/2743), full curve: the total generalised two-photon ionisation cross section of Ar, linear polarisation, velocity form, cm4 s against the photon energy (hartree), read from the scanned image (the record's notes), 0.290 to 0.375, 0.390 to 0.425, 0.450 to 0.505, 0.529 to 0.541 and 0.555 to 0.562 hartree; 5.4e-51 to 1.03e-50 cm4 s. +-2.0e-52 cm4 s in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 2.0e-52
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "velocity"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D)"
+definition = "generalised two-photon cross section in cm4 s, the angle integral of Eq. 8, d sigma_2 / d Omega = 8 pi^3 alpha^2 a0^4 t0 omega_p^g sum |M|^2 (g = +2 length, -2 velocity; a0^4 t0 = 1.8967e-50 cm4 s); the rate W = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1, as the unit implies (not written out)"
+
+[[datasets]]
+id = "fig2_sigma2_L_Ar"
+material = "Ar"
+file = "Ar/moccia_1983__fig2_sigma2_L_Ar.csv"
+table = "fig_8d179928b5fc"
+digitised = "raster"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 2 (p. 8/2743), chain curve: the total generalised two-photon ionisation cross section of Ar, linear polarisation, length form, cm4 s against the photon energy (hartree), read from the scanned image (the record's notes), 0.295 to 0.355, 0.390 to 0.425, 0.445 to 0.510, 0.529 to 0.544 and 0.557 to 0.561 hartree; 4.1e-51 to 1.30e-50 cm4 s (0.360-0.385, where it crosses the full curve, left out). +-2.0e-52 cm4 s in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 2.0e-52
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+gauge = "length"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D)"
+definition = "generalised two-photon cross section in cm4 s, the angle integral of Eq. 8, d sigma_2 / d Omega = 8 pi^3 alpha^2 a0^4 t0 omega_p^g sum |M|^2 (g = +2 length, -2 velocity; a0^4 t0 = 1.8967e-50 cm4 s); the rate W = sigma_2 Phi^2, Phi the photon flux in cm^-2 s^-1, as the unit implies (not written out)"
+
+[[datasets]]
+id = "fig4_ratio_V_Ne"
+material = "Ne"
+file = "Ne/moccia_1983__fig4_ratio_V_Ne.csv"
+table = "fig_31f952447a04"
+digitised = "raster"
+quantity = "multiphoton_ionization_polarization_ratio"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 4 (p. 10/2745), full curve: sigma_2TOT^C / sigma_2TOT^L of Ne, the circular over the linear total two-photon cross section, velocity form, against the photon energy (hartree), read from the scanned image (the record's notes), 0.400 to 0.580, 0.635 to 0.710, 0.741 to 0.751 and 0.764 to 0.770 hartree; 0.33 to 0.72. +-0.02 in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 2
+gauge = "velocity"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D); R from Eqs. A.6-A.7"
+
+[[datasets]]
+id = "fig4_ratio_L_Ne"
+material = "Ne"
+file = "Ne/moccia_1983__fig4_ratio_L_Ne.csv"
+table = "fig_31f952447a04"
+digitised = "raster"
+quantity = "multiphoton_ionization_polarization_ratio"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 4 (p. 10/2745), chain curve: sigma_2TOT^C / sigma_2TOT^L of Ne, the circular over the linear total two-photon cross section, length form, against the photon energy (hartree), read from the scanned image (the record's notes), 0.420 to 0.455, 0.465 to 0.585, 0.630 to 0.705, 0.739 to 0.748 and 0.763 to 0.770 hartree; 0.70 to 1.44 (at threshold it starts on the drawn R = 1.5 line, not read there). +-0.02 in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 2
+gauge = "length"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D); R from Eqs. A.6-A.7"
+
+[[datasets]]
+id = "fig5_ratio_V_Ar"
+material = "Ar"
+file = "Ar/moccia_1983__fig5_ratio_V_Ar.csv"
+table = "fig_1d8254490151"
+digitised = "raster"
+quantity = "multiphoton_ionization_polarization_ratio"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 5 (p. 10/2745), full curve: sigma_2TOT^C / sigma_2TOT^L of Ar, the circular over the linear total two-photon cross section, velocity form, against the photon energy (hartree), read from the scanned image (the record's notes), 0.310 to 0.385 and 0.450 to 0.465 hartree; 1.20 to 1.48 (elsewhere on or within a line width of the drawn R = 1.5 line, or in the resonance dips). +-0.015 in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 0.015
+level = "not stated"
+[datasets.parameters]
+photons = 2
+gauge = "velocity"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D); R from Eqs. A.6-A.7"
+
+[[datasets]]
+id = "fig5_ratio_L_Ar"
+material = "Ar"
+file = "Ar/moccia_1983__fig5_ratio_L_Ar.csv"
+table = "fig_1d8254490151"
+digitised = "raster"
+quantity = "multiphoton_ionization_polarization_ratio"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Fig. 5 (p. 10/2745), chain curve: sigma_2TOT^C / sigma_2TOT^L of Ar, the circular over the linear total two-photon cross section, length form, against the photon energy (hartree), read from the scanned image (the record's notes), 0.310 to 0.415 and 0.450 to 0.495 hartree; 1.17 to 1.48 (as the full curve). +-0.015 in y: the reading (4 pixels and, for Figs. 4-5, the R = 1.5 line's offset); in x up to 0.003 hartree on the Ne scales left of the break and 0.005 on Ar's (the drawn thresholds and resonance lines against the ticks; the record's notes); the paper states none."
+[datasets.uncertainty]
+absolute = 0.015
+level = "not stated"
+[datasets.parameters]
+photons = 2
+gauge = "length"
+method = "lowest-order perturbation theory, the sum over intermediate states from a finite-basis RPA (Bethe-Salpeter amplitudes and RPA excitation energies, the first ones replaced by Table 1's LS-weighted experimental energies), Dalgarno-Lewis function below threshold; final continuum states in a static-exchange potential of the relaxed SCF 2P ion (one spherically averaged potential for all terms, no p-f coupling in 1D); R from Eqs. A.6-A.7"

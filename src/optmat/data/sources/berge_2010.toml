@@ -1,0 +1,312 @@
+citation = "L. Berge, S. Mauger and S. Skupin, \"Multifilamentation of powerful optical pulses in silica\", Phys. Rev. A 81, 013817 (2010)"
+doi = "10.1103/physreva.81.013817"
+library = "Berge_2010_MultifilamentationPowerfulOptical"
+identity = "VALIDATED"
+kind = "theory"
+technique = """3D numerical simulations of multiple filamentation in fused silica at 355 and \
+1550 nm (extended nonlinear Schrodinger equation with delayed Raman-Kerr response, \
+Keldysh ionization of crystals, Drude plasma, avalanche and recombination, Eqs. 1-3), \
+with a plane-wave modulational-instability analysis (Eqs. 5-9). No measurements."""
+notes = """Journal pages 013817-1 to -10 = PDF pages 1-10. Identity validated.
+
+EVERY VALUE IS A SIMULATION INPUT (recorded assumed, use = check), p. 013817-2: 'Values \
+for glass dispersion are taken from Ref. [20]' (Agrawal, Nonlinear Fiber Optics, 3rd ed., \
+2001); 'The nonlinear Kerr response includes a Raman-delayed contribution with ratio g \
+varying with the laser wavelength [20,22]' (Agrawal; Zozulya et al., Phys. Rev. Lett. 82, \
+1430 (1999)); 'The Keldysh rate for crystals is employed to model ionization in glass \
+[23], using a reduced (electron-hole) mass of silica equal to 0.635 and considering the \
+ionization potential U_i = 7.8 eV. The initial density of SiO2 molecules is rho_nt = 2.1 x \
+10^22 cm^-3 and the electron recombination time is set to tau_rec = 150 fs. Besides \
+dispersion coefficients and the constituents of the overall Kerr response Eq. (2), other \
+physical parameters such as the avalanche cross sections sigma have been recalled in Table \
+I.' Table I's caption: 'Kerr indices are taken from Refs. [20,24]' (ref. 24 is Milam, \
+Appl. Opt. 37, 546 (1998) = milam_1998). The reduced mass, U_i, rho_nt and tau_rec are \
+not attributed.
+
+TABLE I (p. 013817-2, tbl_3463a4cb91f2, image checked): k'', k''', n0, n2, P_cr, g, tau_R, \
+omega_R^-1, sigma at 355 and 1550 nm. The k''' row prints 'fs2/cm' (image confirmed), \
+dimensionally the unit of k''; a third-order dispersion is in fs3/cm, recorded so (a \
+misprinted unit, not a value: no erratum mechanism exists for a unit; see the dataset). \
+CHECKS (2026-09-26): P_cr = lambda0^2/(2 pi n0 n2) gives 0.379 MW at 355 nm (printed \
+0.37) and 12.07 MW at 1550 nm (printed 12). The Drude inverse-bremsstrahlung cross \
+section sigma = e^2 tau_c/(m_e n0 eps0 c (1 + omega0^2 tau_c^2)) (the form of \
+couairon_2005 Eq. 5 and gulley_2012) reproduces both printed sigma with the same \
+collision time, tau_c = 23.13 fs (n0 from Table I, m = m_e); the paper does not state \
+tau_c. The critical density rho_c ~ 1.11 x 10^21/lambda0^2[um] cm^-3 is omega0^2 eps0 \
+m_e/e^2 to 0.4 %.
+
+RAMAN RESPONSE, Eq. (2): R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 \
+tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t); in the modulational \
+instability analysis the Raman part is 'limited to only 18% of the overall Kerr \
+nonlinearity' (p. 013817-2). Note that at 355 nm tau_R = 50 fs, at 1550 nm 32 fs.
+
+MODEL RESULTS (not extracted): clamping intensities 15-20 TW/cm2 and peak densities \
+~4e19 cm^-3 (355 nm, 1 ps), 5.5 TW/cm2 and 5e19 (355 nm, 50 fs), ~20 TW/cm2 and 6e18 \
+(1550 nm, 1 ps), 26-30 TW/cm2 and 7.6-8.8e18 (1550 nm, 50 fs), from Eq. (10); fluences \
+~2.5 J/cm2 (355 nm, 1 ps), 0.32 (355 nm, 50 fs), 1.5-3 and 0.43 J/cm2 at 1550 nm, compared \
+with 'damage thresholds of dielectrics' (refs. 27-28: Tamura et al. 1990; stuart_1996), \
+pp. 013817-3 and -5. Literature quoted in the introduction (not extracted: plasma \
+densities and index changes of other works): 4e19 cm^-3 and 0.4e-3 for 248 nm, 450 fs \
+[17]; 5e-3 at 800 nm; 1.2e-3 at 1558 nm, 870 fs [19].
+
+The Keldysh 'rate for crystals' itself is not printed; W(I) enters Eqs. (1) and (3)."""
+
+[[datasets]]
+id = "gvd"
+material = "SiO2"
+file = "SiO2/berge_2010__gvd.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+scale = 100
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)"]
+notes = "Table I k'', printed in fs2/cm (scale 100 to fs2/m). 'Values for glass dispersion are taken from Ref. [20]' (p. 013817-2)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "tod"
+material = "SiO2"
+file = "SiO2/berge_2010__tod.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "third_order_dispersion"
+unit = "fs3/m"
+scale = 100
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)"]
+notes = "Table I k''', whose unit is printed 'fs2/cm' (image confirmed): a misprint for fs3/cm, the only unit of a third derivative of k in omega that fits the column; recorded as fs3/cm (scale 100 to fs3/m). The unit is an interpretation, not a printed value."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "refractive_index"
+material = "SiO2"
+file = "SiO2/berge_2010__refractive_index.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I n0, the linear index at the central frequency; source not stated (Agrawal for the dispersion, p. 013817-2)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "n2"
+material = "SiO2"
+file = "SiO2/berge_2010__n2.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "milam_1998"]
+notes = "Table I n2 (10^-16 cm2/W); 'Kerr indices are taken from Refs. [20,24]' (caption). Used as the total Kerr coefficient of Eq. (1), split by g into instantaneous and Raman parts (Eq. 2); which reference gave which wavelength is not said."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+assumed = true
+
+[[datasets]]
+id = "critical_power"
+material = "SiO2"
+file = "SiO2/berge_2010__critical_power.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "critical_power"
+unit = "MW"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I P_cr, from P_cr ~ lambda0^2/(2 pi n0 n2) (p. 013817-2). Checked: 0.379 MW at 355 nm (printed 0.37), 12.07 MW at 1550 nm (printed 12) (2026-09-26)."
+[datasets.parameters]
+definition = "P_cr = lambda0^2/(2 pi n0 n2) with Table I's n0 and n2"
+
+[[datasets]]
+id = "avalanche_cross_section"
+material = "SiO2"
+file = "SiO2/berge_2010__avalanche_cross_section.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "avalanche_coefficient"
+unit = "cm2"
+scale = 1e-19
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I sigma (10^-19 cm2), 'the avalanche cross sections' (p. 013817-2); the collision time behind them is not stated. Both are the Drude cross section with tau_c = 23.13 fs, m = m_e and Table I's n0 (source notes; checked 2026-09-26)."
+[datasets.parameters]
+definition = "sigma in d rho/dt = W(I)(rho_nt - rho) + sigma rho I/U_i - rho/tau_rec (Eq. 3), also the plasma absorption term -(sigma/2) rho E of Eq. (1)"
+assumed = true
+
+[[datasets]]
+id = "raman_fraction_355"
+material = "SiO2"
+file = "SiO2/berge_2010__raman_fraction_355.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "raman_fraction"
+abscissa = "none"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "A. A. Zozulya, S. A. Diddams, A. G. Van Engen and T. S. Clement, Phys. Rev. Lett. 82, 1430 (1999)"]
+notes = "Table I g at 355 nm ('ratio g varying with the laser wavelength [20,22]')."
+[datasets.parameters]
+definition = "g in R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t), Eq. (2)"
+wavelength_nm = 355
+assumed = true
+
+[[datasets]]
+id = "raman_fraction_1550"
+material = "SiO2"
+file = "SiO2/berge_2010__raman_fraction_1550.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "raman_fraction"
+abscissa = "none"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "A. A. Zozulya, S. A. Diddams, A. G. Van Engen and T. S. Clement, Phys. Rev. Lett. 82, 1430 (1999)"]
+notes = "Table I g at 1550 nm."
+[datasets.parameters]
+definition = "g in R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t), Eq. (2)"
+wavelength_nm = 1550
+assumed = true
+
+[[datasets]]
+id = "raman_tau_R_355"
+material = "SiO2"
+file = "SiO2/berge_2010__raman_tau_R_355.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "A. A. Zozulya, S. A. Diddams, A. G. Van Engen and T. S. Clement, Phys. Rev. Lett. 82, 1430 (1999)"]
+notes = "Table I tau_R at 355 nm."
+[datasets.parameters]
+constant = "tau_R (decay)"
+model = "R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t)"
+wavelength_nm = 355
+assumed = true
+
+[[datasets]]
+id = "raman_tau_R_1550"
+material = "SiO2"
+file = "SiO2/berge_2010__raman_tau_R_1550.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "A. A. Zozulya, S. A. Diddams, A. G. Van Engen and T. S. Clement, Phys. Rev. Lett. 82, 1430 (1999)"]
+notes = "Table I tau_R at 1550 nm."
+[datasets.parameters]
+constant = "tau_R (decay)"
+model = "R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t)"
+wavelength_nm = 1550
+assumed = true
+
+[[datasets]]
+id = "raman_inverse_omega_R_355"
+material = "SiO2"
+file = "SiO2/berge_2010__raman_inverse_omega_R_355.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "A. A. Zozulya, S. A. Diddams, A. G. Van Engen and T. S. Clement, Phys. Rev. Lett. 82, 1430 (1999)"]
+notes = "Table I omega_R^-1 at 355 nm."
+[datasets.parameters]
+constant = "1/omega_R (oscillation)"
+model = "R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t)"
+wavelength_nm = 355
+assumed = true
+
+[[datasets]]
+id = "raman_inverse_omega_R_1550"
+material = "SiO2"
+file = "SiO2/berge_2010__raman_inverse_omega_R_1550.csv"
+table = "tbl_3463a4cb91f2"
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear Fiber Optics, 3rd ed. (Academic Press, San Diego, 2001)", "A. A. Zozulya, S. A. Diddams, A. G. Van Engen and T. S. Clement, Phys. Rev. Lett. 82, 1430 (1999)"]
+notes = "Table I omega_R^-1 at 1550 nm."
+[datasets.parameters]
+constant = "1/omega_R (oscillation)"
+model = "R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t)"
+wavelength_nm = 1550
+assumed = true
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "7.8"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 013817-2: 'considering the ionization potential U_i = 7.8 eV' in the Keldysh rate for crystals; no source cited."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_reduced_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.635"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "p. 013817-2: 'using a reduced (electron-hole) mass of silica equal to 0.635'; no source cited."
+[datasets.parameters]
+carrier = "reduced"
+assumed = true
+
+[[datasets]]
+id = "model_molecule_density"
+material = "SiO2"
+table = "text"
+points = [["1", "", "2.1e22"]]
+quantity = "atom_density"
+unit = "cm-3"
+abscissa = "none"
+use = "check"
+notes = "p. 013817-2: 'The initial density of SiO2 molecules is rho_nt = 2.1 x 10^22 cm^-3'."
+[datasets.parameters]
+counts = "molecules"
+assumed = true
+
+[[datasets]]
+id = "model_recombination_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "150"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+notes = "p. 013817-2: 'the electron recombination time is set to tau_rec = 150 fs'; no source cited."
+[datasets.parameters]
+assumed = true
+
+[[formulas]]
+id = "propagation_model"
+material = "SiO2"
+equation = "Eqs. (1)-(3), p. 013817-2"
+printed = "dz E = (i/(2k0)) T^-1 nabla_perp^2 E + i D E - i (k0/(2 n0^2 rho_c)) T^-1 rho E - (sigma/2) rho E - U_i W(I)(rho_nt - rho)/(2I) E + i (omega0/c) n2 T int R(t - t')|E(t')|^2 dt' E (1); R(t) = (1 - g) delta(t) + g theta(t) [(1 + omega_R^2 tau_R^2)/(omega_R tau_R^2)] exp(-t/tau_R) sin(omega_R t) (2); dt rho = W(I)(rho_nt - rho) + sigma rho I/U_i - rho/tau_rec (3)"
+variable = "E: envelope with I = |E|^2; T = 1 + (i/omega0) dt; D = sum_{n>=2} (k^(n)/n!)(i dt)^n; rho_c ~ 1.11e21/lambda0^2[um] cm^-3; W(I) the Keldysh rate for crystals"
+coefficients = { U_i = "7.8 eV", reduced_mass = "0.635", rho_nt = "2.1e22 cm^-3", tau_rec = "150 fs" }
+check = "P_cr and sigma of Table I checked (see the datasets); W(I) is not printed."
+notes = "The input pulse is a second-order supergaussian in x and y with I0 = 2 pi P_in/[P_cr Gamma^2(5/4)] (Eq. 4)."
+
+[[formulas]]
+id = "clamping_estimate"
+material = "SiO2"
+equation = "Eq. (10), p. 013817-5"
+printed = "W(I) = 2 rho_c n0 n2 I / (Delta T rho_nt)"
+variable = "Delta T: the duration of the pulse after the first ionization front; I the clamping intensity"
+coefficients = { rho_nt = "2.1e22 cm^-3" }
+check = "Not reproduced: W(I) is not printed."
+notes = "The balance of Kerr focusing and plasma defocusing used to estimate the clamping intensity and peak density."

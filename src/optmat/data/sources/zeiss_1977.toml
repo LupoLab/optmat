@@ -1,0 +1,106 @@
+citation = "G. D. Zeiss, W. J. Meath, J. C. F. MacDonald, and D. J. Dawson, Can. J. Phys. 55, 2080 (1977)"
+library = "Zeiss_1977_DipoleOscillatorStrength"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Constrained dipole oscillator strength distributions (DOSDs) for Li, N, O, \
+H2, N2, O2, NH3, H2O, NO and N2O: discrete oscillator strengths, photoabsorption and \
+fast-electron inelastic scattering data (Sect. 2.A, per species), Henke-Elgin and \
+Veigele cross sections at high energy, the normalized Stobbe formula above 40 keV; each \
+molecular DOSD scaled region by region (weights = inverse data uncertainty, 20-40 \
+regions) to satisfy the Thomas-Reiche-Kuhn sum rule and two molar refractivities \
+R(lambda_a), R(lambda_b) (Sect. 2.B, Table 2), molar densities from the virial \
+equation with Dymond & Smith's B(T). S_k = integral (E/2R)^k (df/dE) dE (Eq. [8]), \
+atomic units."""
+notes = """Identity: an unverified library record; the article is identified by its own \
+printed line 'Can. J. Phys., 55, 2080 (1977)' (p. 2080) and is Margoliash & Meath's \
+(1978) Ref. 4. No DOI is recorded (none printed in the record). Page numbers: PDF page \
+n is p. 2079 + n.
+
+Table 3 (p. 2092) is extracted for the curated species H2, N2, O2 and N2O (Li, N, O, \
+NH3, H2O and NO are skipped); L_k and I_k (mean excitation energies) have no quantity. \
+STRUCTURAL: the library table lost the N2O column (the last of ten; image checked); \
+the N2O values are read from the image in the extraction script. Check: Margoliash & \
+Meath's ten-term N2O pseudospectrum (margoliash_1978), constructed to reproduce these \
+integer-k sums, gives them back to 0.001-0.022 % for k = 0 to -14 (the same for H2, N2, \
+O2: at most 0.05 %, the four printed figures), confirming both the image reading and \
+the library's H2, N2, O2 cells (computed 2026-09-25). The library also misreads Li's \
+S_-4 as 3.504(3) for the printed 3.504(4) (Li not extracted).
+
+Constraints (Table 2, p. 2091, sources of the refractivity data, '[wavelengths]' the \
+two constraining values): H2 Koch (1909, 1912) renormalized to Newell & Baird (1965), \
+Kirn (1921), Smith et al. (1976) [0.263, 0.168 um]; N2 Peck & Khanna (1966) [0.979 \
+um], Koch (1913) renormalized to Peck & Khanna [0.258 um], Abjean et al. (1970), \
+Wilkinson (1960); O2 Stoll (1922), Ladenburg & Wolfsohn (1932) [0.590 um], Smith et \
+al. (1976) [0.252 um]; N2O Watson & Ramaswamy (1936) [0.546 um], Cuthbertson & \
+Cuthbertson (1913), Koch (1924) renormalized to Watson & Ramaswamy [0.258 um]. The \
+maximum deviations between the DOSD refractivities and these data are 0.003-0.7 % (3 % \
+for Wilkinson's N2), 'generally less than a few tenths of a percent'. Hence the S_k (k \
+< 0) are NOT independent of those refractivity data (smith_1976, peck_1966 and \
+newell_1965 are curated; wilkinson_1960 and watson_1936 are being curated): use = check, \
+as for kumar_2010 (TC-72).
+
+Uncertainty (pp. 2093-2094): for k > 0 'several percent' (the high-energy data); for \
+k <= 0, the differences between the adopted and alternative DOSDs (Table 5, N2 and O2; \
+'representative of the analogous results obtained for all the other molecules') are \
+'reasonable estimates of the magnitude of the uncertainties' ... 'based on the \
+assumption that the refractivity data used to constrain the molecular DOSDs are \
+reliable'. They are quoted in the N2 and O2 dataset notes (S_-2 0.0 % by construction) but \
+not stored as uncertainties (none stated for k > 0 beyond 'several percent', none for \
+H2 and N2O). Table 5's own alternative \
+S_k are not extracted.
+
+Not extracted: Table 1 (O atom lines), Table 2 (as notes above), Table 4 (the \
+unconstrained initial sums), Tables 6-9 (S_2, S_1, S_-1, S_-3, I_2, I_-1 compared \
+with other work: for H2 'exact' wave-function S_-1 = 3.0974 (Kolos-Wolniewicz), CI \
+3.1176, empirical DOSDs 3.102 (Gerhart 1975) and 3.135 (Victor & Dalgarno); S_-3 \
+10.12 (Victor & Dalgarno) and N2 17.84 (Dalgarno et al. 1967); odd and positive k, \
+not refractive). The DOSDs themselves are in an Appendix deposited with CISTI (not in \
+the library)."""
+
+[[datasets]]
+id = "moments_H2"
+material = "H2"
+file = "H2/zeiss_1977__moments_H2.csv"
+table = "tbl_81ed6f008ff0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 S_k of the adopted H2 DOSD, k = 2, 1, 0, -1/2 ... -14 (rows by k in decimals), atomic units. Constrained to Smith et al.'s (1976) refractivities at 0.263 and 0.168 um; not independent of them."
+
+[[datasets]]
+id = "moments_N2"
+material = "N2"
+file = "N2/zeiss_1977__moments_N2.csv"
+table = "tbl_81ed6f008ff0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 S_k of the adopted N2 DOSD, k = 2 ... -14. Constrained to Peck & Khanna (0.979 um) and Koch (0.258 um). Table 5 (alternative DOSD, 'reasonable estimates' of the uncertainty): S_-1 0.1 %, S_-2 0.0 %, S_-3 0.1 %, S_-4 0.0 %, S_-6 0.3 %, S_-8 0.7 %, S_-10 1 %, S_-12 2 %, S_-14 2 %."
+
+[[datasets]]
+id = "moments_O2"
+material = "O2"
+file = "O2/zeiss_1977__moments_O2.csv"
+table = "tbl_81ed6f008ff0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 S_k of the adopted O2 DOSD, k = 2 ... -14. Constrained to Ladenburg & Wolfsohn (0.590 um) and Smith et al. (0.252 um). Table 5 (alternative DOSD): S_-1 0.4 %, S_-2 0.0 %, S_-3 0.6 %, S_-4 0.6 %, S_-6 0.8 %, S_-8 0.8 %, S_-10 2 %, S_-12 3 %, S_-14 4 %."
+
+[[datasets]]
+id = "moments_N2O"
+material = "N2O"
+file = "N2O/zeiss_1977__moments_N2O.csv"
+table = "tbl_81ed6f008ff0"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 S_k of the adopted N2O DOSD, k = 2 ... -14, READ FROM THE TABLE IMAGE (the library table lost this column; source notes). Constrained to Watson & Ramaswamy (0.546 um) and Koch (0.258 um)."

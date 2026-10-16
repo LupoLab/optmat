@@ -1,0 +1,220 @@
+[project]
+name = "optmat"
+description = "Curated, validated optical properties of gases, glasses, crystals and metals: dispersion, absorption, the nonlinear and Raman response, and ionisation, with the provenance of every value"
+readme = "README.md"
+# The package's code, source records and fits are MIT. Its published data (the values
+# transcribed into data/values/ and the files in data/external/) are the publishers',
+# shipped so that the package is self-contained, under the notice in
+# LICENSES/LicenseRef-optmat-third-party.txt; refractiveindex.info's are CC0. The
+# documentation's prose and figures, not in the wheel, are CC-BY-4.0. REUSE.toml maps
+# every file.
+license = "MIT AND CC0-1.0 AND LicenseRef-optmat-third-party"
+license-files = ["LICENSE", "LICENSES/*"]
+authors = [{ name = "John C. Travers", email = "jtravs@gmail.com" }]
+# The oldest versions that reproduce the stored results, not the newest available
+# (AGENTS.md); CI tests them. Python 3.12: PEP 695 type aliases and generics. numpy 2.3
+# and scipy 1.18: the stored fits and the models' identity digests, which hash computed
+# arrays (an FFT, a least-squares fit), reproduce bit for bit from these releases; the
+# code itself runs on numpy 2.0 and scipy 1.15, but its fits and digests then differ in
+# the last digits.
+requires-python = ">=3.12"
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy>=2.3",
+    "scipy>=1.18",
+    # Array annotations are evaluated at import time, so the annotation package is a
+    # runtime dependency; beartype (the checker) is dev-only, as in solprop.
+    "jaxtyping>=0.3",
+]
+
+[project.optional-dependencies]
+# Real-gas number densities for reducing measurements to a reference state (CoolProp's
+# Helmholtz equations of state), for optmat.gas only; the same dependency solprop uses
+# (TC-317, TC-318). optmat.gas.eos calls CoolProp directly; its version enters the models'
+# identities, so the floor is the release the stored results were computed with.
+gas = ["coolprop>=8"]
+
+[project.urls]
+Documentation = "https://optmat.readthedocs.io"
+Source = "https://github.com/LupoLab/optmat"
+Issues = "https://github.com/LupoLab/optmat/issues"
+Changelog = "https://github.com/LupoLab/optmat/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    # The tests and the gallery cover every medium.
+    "optmat[gas]",
+    # Pinned exactly, as in solprop: it releases weekly and an unpinned bump silently
+    # changes what "no new errors" means. Bump it deliberately, in its own commit.
+    "basedpyright==1.39.10",
+    "scipy-stubs",
+    "beartype",
+    "pytest>=8",
+    "pytest-randomly",
+    "hypothesis",
+    "poethepoet",
+    "codespell",
+    "numpydoc>=1.9",
+    "sphinx>=8",
+    "myst-parser",
+    "pydata-sphinx-theme",
+    "sphinx-gallery",
+    # The gallery's figures; the package itself draws nothing.
+    "matplotlib>=3.11",
+    "ruff>=0.16.6",
+    # The extraction scripts read figures' vector drawings from the papers' PDFs
+    # (TC-699); the package itself reads no PDF.
+    "pypdfium2>=5.13.0",
+    # Coverage of the workers and of ordinary-Python subprocesses (coverage's subprocess
+    # patch, which pytest-cov 7 relies on).
+    "coverage>=7.16",
+    "pytest-cov>=7",
+    "pytest-xdist>=3.8.0",
+    # Every file states its copyright and licence (REUSE).
+    "reuse>=5",
+]
+
+# ------------------------------------------------------------------- build / version
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.version.raw-options]
+fallback_version = "0.0.0"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/optmat"]
+
+# The sdist is the repository's tracked tree. hatchling reads only this repository's
+# .gitignore, so tools' local state that a global ignore hides (agents' worktrees under
+# .claude/) is excluded here (OEP 1, Phase 5; TC-789).
+[tool.hatch.build.targets.sdist]
+exclude = ["/.claude", "/.codex"]
+
+# ------------------------------------------------------------------------------ ruff
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src", "tests", "tools"]
+extend-exclude = ["docs/_build", "docs/auto_gallery", "docs/api/generated"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F", "I", "N", "D", "ANN", "UP", "B", "SIM", "C4", "PTH", "T20",
+    "TID", "RET", "ARG", "PGH", "NPY", "PL", "RUF",
+]
+ignore = [
+    "PLR2004",     # magic values: too noisy in numerical code
+    "ANN401",      # allow a commented, confined `Any`
+    "F722",        # jaxtyping shape strings are not Python expressions
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+known-first-party = ["optmat"]
+# The target is Python 3.12; tools/public_api.py runs on 3.14 and imports its stdlib.
+extra-standard-library = ["annotationlib"]
+
+[tool.ruff.lint.pylint]
+max-args = 6
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**"       = ["D", "ANN", "PLR2004", "ARG"]
+"docs/conf.py"   = ["D", "ANN"]
+"docs/gallery/**" = ["D", "ANN", "T20", "E402"]
+# Extraction and fit scripts are command-line tools run by hand; they report with print.
+"tools/**"       = ["T20"]
+
+# -------------------------------------------------------------------------- type check
+[tool.basedpyright]
+include = ["src", "tests", "tools"]
+typeCheckingMode = "standard"
+pythonVersion = "3.12"
+failOnWarnings = true
+reportMissingTypeStubs = false
+
+# ------------------------------------------------------------------------------ pytest
+[tool.pytest.ini_options]
+testpaths = ["tests", "src"]
+addopts = "-ra --strict-markers --strict-config --doctest-modules -m 'not library and not fits and not release'"
+filterwarnings = ["error"]
+markers = [
+    "library: needs the local paper library (re-runs the extraction); `poe test-library`",
+    "fits: re-runs every stored fit (about 30 s); `poe test-fits`",
+    "release: builds the wheel and sdist and installs them offline (minutes); `poe test-release`",
+]
+xfail_strict = true
+
+# The default test lane must cover every measured statement and branch.
+[tool.coverage.run]
+source = ["optmat"]
+branch = true
+# Include normal-Python integration tests without disabling the suite's type hook.
+patch = ["subprocess"]
+
+[tool.coverage.report]
+show_missing = true
+precision = 2
+fail_under = 100
+
+# ---------------------------------------------------------------------------- numpydoc
+[tool.numpydoc_validation]
+checks = ["all", "ES01", "SA01", "EX01", "GL01", "GL02"]
+exclude = ['\.__init__$', '^test_']
+
+# ----------------------------------------------------------------------------- codespell
+[tool.codespell]
+skip = "./build/*,./LICENSES/*,uv.lock,*.pdf,*.json,*.csv,*.nff,*.inv,*/_build/*,*/auto_gallery/*,*/generated/*,*/.venv/*,*/.git/*,*/data/external/*"
+quiet-level = 3
+# "commun" abbreviates Optics Communications, "lond" London (Proc. Phys. Soc. Lond.); the
+# rest are author names and German words in the historical references (Lorenz, "Ann. Physik"...);
+# "bloc" is newAD2's name of a localised state's width (Bloc1, ...).
+ignore-words-list = "commun,te,nd,ans,ser,fo,theses,lond,bloc,flem,querry,zink,lepard,hass,hart"
+
+# --------------------------------------------------------------------------- task runner
+[tool.poe.tasks]
+lint-fix   = "ruff check --fix ."
+fmt        = "ruff format ."
+lint       = "ruff check ."
+types      = "basedpyright"
+docstrings = "python -m numpydoc lint src/optmat/*.py src/optmat/**/*.py"
+spell      = "codespell"
+# The suites run on every core (pytest-xdist): the default lane a module's tests per
+# worker (its fixtures are module-scoped), the library and fits lanes test by test (each
+# is one file of independent extractions or refits). A focused `pytest tests/test_x.py`
+# stays serial; the release test builds and installs the package and stays serial.
+test       = "pytest -n auto --dist loadfile"
+test-library = "pytest -m library -n auto --dist load"
+test-fits  = "pytest -m fits -n auto --dist load"
+test-release = "pytest -m release"
+# Coverage (pytest-cov): the gate requires every statement and branch of src/optmat/; the
+# other lanes report without a threshold. Reports go to build/coverage/ (XML for CI).
+coverage-check = "pytest -n auto --dist loadfile --cov --cov-report=term-missing:skip-covered --cov-report=xml:build/coverage/coverage.xml --cov-report=html:build/coverage/html --cov-fail-under=100"
+coverage = "pytest -n auto --dist loadfile --cov --cov-report=term-missing:skip-covered --cov-report=html:build/coverage/html --cov-fail-under=0"
+coverage-fits = "pytest -m fits -n auto --dist load --cov --cov-report=term-missing:skip-covered --cov-report=html:build/coverage/fits --cov-fail-under=0"
+coverage-library = "pytest -m library -n auto --dist load --cov --cov-report=term-missing:skip-covered --cov-report=html:build/coverage/library --cov-fail-under=0"
+reuse      = "reuse lint"
+register-sync = "python tools/register_sync.py"
+docs       = "sphinx-build -b html -W -n --keep-going docs docs/_build/html"
+docs-clean = "rm -rf docs/_build docs/auto_gallery docs/api/generated docs/generated"
+
+[tool.poe.tasks.check]
+sequence = ["lint-fix", "fmt", "lint", "types", "docstrings", "spell", "reuse", "coverage-check", "docs"]
+help = "The definition-of-done gate, in order."

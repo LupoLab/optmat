@@ -1,0 +1,504 @@
+citation = "D. Franta, A. Dubroka, C. Wang, A. Giglia, J. Vohánka, P. Franta and I. Ohlídal, \"Temperature-dependent dispersion model of float zone crystalline silicon\", Appl. Surf. Sci. 421, 405 (2017)"
+doi = "10.1016/j.apsusc.2017.02.021"
+library = "Franta_2017_TemperatureDependentDispersion"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Temperature-dependent advanced dispersion model (ADM) of float-zone c-Si \
+(B-doped 5e13 cm-3, 80 Ohm cm, 0.58 mm, (100)), fitted in newAD2 to 37 749 points: \
+Woollam IR-VASE (cryostat 5-380 K, heating cell 300-600 K, 263-7800 cm-1), Woollam VASE \
+(cryostat 10-390 K, 0.6-6.5 eV), UVISEL2 VUV (300-700 K, 0.6-8.3 eV), UVISEL (300 K), \
+Bruker Vertex 80v R and T (70-7500 cm-1, 300 K), Lambda 1050 T (0.69-1.38 eV), Elettra \
+BEAR reflectance (6-40 eV), plus Frey et al.'s prism indices (1.1-5.5 um, 30-295 K) and \
+Eq. (3)'s extrapolation at 2 um, 5-700 K (Table 1, p. 407)."""
+notes = """Journal pages 405-419 = PDF pages 1-15. Identity checked against the first page. \
+Material: float-zone crystalline silicon (Si). No n, k table is printed (Figs. 10-17 \
+only); refractiveindex.info carries 'numerical data kindly provided by Daniel Franta' \
+for this paper at 10-500 K, 20 and 25 degrees C (main/Si/nk/Franta-*.yml): three of \
+its pages are curated here as this source's numbers, taken through the database as \
+for stahrenberg_2001 (datasets rii_*; see REFRACTIVEINDEX.INFO below). The newAD2 \
+site's unpublished UDM of float-zone Si (c-Si.par, c-Si.Enk), attached to this paper \
+in the library, is recorded as the formula udm_c_si and the check datasets newad2_* \
+(see NEWAD2 UDM below).
+
+MODEL MAP (journal pages; this is the ADM, not the UDM). Eq. (4), p. 407: F = E eps_i, J = \
+E^2 eps_i; Eq. (5): int_0^inf F dE = N; Eq. (6): N = Z N_a U (Z = 14, U = 1.0002735); Eq. \
+(7): eps = 1 + sum_t N_t eps0_t; Eqs. (8)-(9), p. 407: unit normalisation and the KK \
+integral eps0_r = (2/pi) int F0/(X^2 - E^2) dX; Eq. (10), p. 408: N_t = n_t N_a. Valence \
+electrons, Eqs. (11)-(13): N_ve(T) = n_ve N_a(T) (thermal expansion only), N_vx = \
+alpha_x N_ve, N_vc = (1 - alpha_x) N_ve, N_dt = N_vc - N_idt. Indirect transitions, \
+Eqs. (14)-(19), pp. 408-409: phonon-assisted absorption and emission edges \
+(Bose-Einstein weights, Eq. (15)), each edge a sum of five truncated Lorentzian terms \
+(Eq. (16), with 'the expression for the complex dielectric function and normalization \
+constant ... in Appendix A in [12]' = Thin Solid Films 539, 233 (2013), not in the \
+library), Eq. (17) the weights A_idt,j; free carriers Eq. (18) (factor (T/300)^(3/2) \
+exp[-(E_g/(2 k_B))(1/T - 1/300)]), alpha_fc = 8e-13 (from ref. [7], p. 409). Direct \
+transitions, Eqs. (20)-(51), pp. 409-411: five integration paths through four critical \
+points (Table 3), each with twelve 3D and 2D critical-point contributions J_0..J_11 (Eqs. \
+(22)-(48)) including Wannier-exciton factors R_k, normalised by Eq. (49), \
+eps-broadened (Eq. (50), Gauss-Dawson kernel of franta_2014) with widths B_1,k \
+(contributions 0, 1, 4, 6, 7, 10) and B_2,k (2, 3, 5, 8, 9, 11), summed by Eq. (51). High \
+energy excitations, Eq. (52)-(53), p. 411: the Campi-Coriasso form of the Tauc-Lorentz \
+model F0_vx = (2/pi) B_x (|E| - E_gx)^2 Pi/{[(|E| - E_gx)^2 - (E_cx - E_gx)^2]^2 + B_x^2 (|E| - \
+E_gx)^2}, real part numerically. Core electrons: 'the same simple model as ... in [12]' \
+(p. 411). Temperature dependence, Eqs. (54)-(56), p. 411: E(T) = E^0K + (E^300K - E^0K) \
+(exp(Theta/300) - 1)/(exp(Theta/T) - 1) for points with a Theta, and a logarithmic \
+coupling (Eqs. (55)-(56)) for the points marked 'T dep. by ...'; A, B, R interpolated \
+by cubic splines between tabulated temperatures (A at 0, 100, ..., 700 K). Phonons: \
+the model of franta_2014b extended with three-phonon absorption below 1000 cm-1 and a \
+substitutional-carbon line at 612.7 cm-1 (0 K) and 610.1 cm-1 (300 K); 'the parameter \
+values of the phonon absorption are not presented here with the exception of phonon \
+frequencies' (p. 412); common Theta_ph = 426.1 K.
+
+WHAT CANNOT BE IMPLEMENTED FROM THE PAPER: the A_0..A_11 of every path, the A and B of \
+the indirect terms, the vx parameters E_cx, B_x, alpha_x, the core-electron strengths \
+and all phonon amplitudes are not printed. The printed parameters are recorded as \
+formulas below.
+
+TEXT VALUES (not extracted unless noted): relative strengths of the indirect branches \
+at 300 K alpha_TA = 7e-5, alpha_L = 0.0014, alpha_TO = 0.00072, total 0.00214 (p. 414; the \
+earlier value 0.13 of ref. [7] 'can be explained by different separation'); f_L(X) = \
+12.13 THz (0 K) and 12 THz (300 K); n_ve = 4.51 (Jellison-Modine) or 4.37 (Campi-Coriasso; \
+'4.373' in the conclusion, p. 416), both 'too large' (p. 415). Comparisons (p. 417): \
+Herzinger's n is 2.0e-3 above Frey's at 295 K and 1.2e-3 above the extrapolated Frey at \
+300 K; Palik's n is 4.5e-3 below Frey's at 2 um and 295 K; the maximum k at E_2^X is 5.355 \
+in this model against 5.435 (Palik), 5.465 (Herzinger) and 5.448 (ref. [48]).
+
+TABLE CHECKS (2026-09-26, images): Table 2's JSON cells lose the primes of E'_0^Gamma, \
+E'_1^L, E'_2^X and E'_3^X; the formula keys follow the image. Table 4 prints degenerate \
+frequencies once ('The values of phonon frequencies in the empty fields are identical \
+with the values on the left', p. 412). Oddities as printed: E_0^Gamma rises from 4.068 \
+(0 K) to 4.149 eV (300 K) while every other critical point falls; at K, f_TO2 (14.18) < \
+f_TO1 (14.31) at 0 K but f_TO2 (14.87) > f_TO1 (13.89) at 300 K, and f_TA1(K) falls from \
+5.31 to 4.82 THz (TC-388).
+
+REFRACTIVEINDEX.INFO (2026-09-26, 2026-10-14). Thirteen pages, main/Si/nk/Franta-10K, \
+-50K, -100K, -150K, -200K, -250K, -300K, -350K, -400K, -450K, -500K, -20C and -25C.yml \
+(commit c5c2f18, kept in data/external/refractiveindex_info/). Their headers are \
+identical but for the temperature (and a trailing space in Franta-50K). REFERENCES: this \
+paper ('Temperature-dependent dispersion model of float zone crystalline silicon, Appl. \
+Surf. Sci. 421, 405-419 (2017)'; the link is printed as \
+https://doi.org/j.apsusc.2017.02.021, without the 10.1016/ prefix) and '(Numerical data \
+kindly provided by Daniel Franta)'. COMMENTS: 'Float zone c-Si;' then '[heterogeneous, \
+misspelt on the page] data processing combining ellipsometric and spectrophotometric \
+measurements with refractive index determined in' B. J. Frey, D. B. Leviton and T. J. Madison, 'Temperature-dependent \
+refractive index of silicon and germanium', Proc. SPIE 6273, 62732J (2006); 'Numerical \
+procedures updated in' D. Franta, P. Franta, J. Vohánka, M. Čermák and I. Ohlídal, J. \
+Appl. Phys. 123, 185707 (2018) (franta_2018); then 'Temperature 300 K.' (or '20 °C', \
+'25 °C', ...). CONDITIONS temperature: the kelvin value, except 293 for Franta-20C and \
+25 for Franta-25C (the Celsius value, where every other page gives kelvin). Each page \
+holds one 'tabulated nk' block of 4001 rows: vacuum wavelength (um), n and k, \
+0.0309963-309.963 um (40 eV to 0.004 eV), one logarithmic grid shared by all pages, n \
+and k to 12 significant digits. No uncertainty is stated.
+
+WHAT THE PAGES ARE (checked 2026-10-14). This paper's ADM as revised in franta_2018 \
+(the 0.25 mm wafer and 14.33 mm slab added, transmittance at 300-450 K, 1 cm-1 FIR \
+resolution, 85 078 points at 0.0086-40 eV and 5-700 K, franta_2018 Table III; the 2 um \
+pseudo-data from franta_2018's two-term Sellmeier formula instead of Eq. (3); \
+spline-based Gaussian broadening). Evidence: the pages' n at 2 um (interpolated in log \
+wavelength) follows franta_2018's two-term formula within 1e-5 at every page \
+temperature, 10-500 K (10 K -4e-7, 300 K +3.2e-6, 400 K +8.9e-6), as franta_2018 Fig. 11 \
+says of its model; this paper's Eq. (3) is 9e-4 lower at 500 K. Franta-20C agrees with \
+the two-term formula at 293.15 K (+2.7e-6), not at 293 K (+2.8e-5): its temperature is \
+20 degrees C = 293.15 K, the CONDITIONS value rounded. Franta-25C agrees at 298.15 K \
+(+4.4e-6). The pages are one temperature-dependent model: Franta-20C differs from the \
+linear interpolation of Franta-250K and Franta-300K to 293.15 K by at most 6.8e-5 in n \
+over 1.2-6 um (the curvature in T; up to 0.022 in the UV at 0.355 um, where E_1 moves). \
+n at 2 um: 3.453229 (20 C), 3.454084 (25 C), 3.454400 (300 K); n(300 K) - n(20 C) = \
+1.17e-3 there, between -0.029 and +0.017 over the whole grid (largest in the UV). k at \
+632.8 nm: 0.01522, 0.01547, 0.01556.
+
+WHAT IS CURATED. Franta-20C (the optmat reference temperature, 293.15 K) as primary, \
+Franta-25C and Franta-300K as checks, n and k as separate datasets, rows at most \
+142.857 um (70 cm-1, the lowest wavenumber measured, franta_2018 Table III): 3664 rows, \
+0.0309963-142.663 um; the 337 rows at 142.991-309.963 um are the model's extrapolation \
+and are not extracted. The upper end, 40 eV, is the top of the Elettra reflectance \
+(6-40 eV, at 300 K only). The other ten temperatures are not extracted. The numbers \
+are the model's table on a dense grid, not individual measurements: no uncertainty is \
+stated (the datasets state none; a fit sets its own sigma). franta_2018 gives the \
+model's statistical uncertainty of n as about 2e-5 at room temperature in the infrared \
+(Fig. 9) and ties the absolute n to Frey et al.'s data (uncertainty 1e-4). \
+DOUBLE COUNTING: in the transparent range the pages' n is tied to Frey et al. (2006) \
+through franta_2018's Sellmeier pseudo-data at 2 um (5-700 K); a fit that uses Frey et \
+al.'s silicon data must not also fit these pages' n there as independent.
+
+NEWAD2 UDM (formula udm_c_si; datasets newad2_n, newad2_k). The newAD2 site's \
+universal-dispersion-model file of float-zone c-Si and its table (c-Si.par, c-Si.Enk; \
+http://newad.physics.muni.cz/parfile-udm/c-Si and /table-udm/c-Si.Enk, retrieved \
+2026-09-26), attached to this paper in the library because they describe the same \
+material. The parameter file ends: 'material: Si, silicon', 'form: crystalline, Float \
+zone', 'characterization: ellipsometry & photometry', 'range: FIR (80&nbsp;1/cm) - VUV \
+(8.5&nbsp;eV)', 'published: unpublished', 'submitted: Daniel Franta'. It is not this \
+paper's ADM: a UDM (interband, four excitonic terms, higher-energy excitations, Urbach \
+tail, eleven Gaussian 'localised' terms that carry the E_1 and E_2 structure, 36 \
+phonon terms), at one temperature, which is not stated, and it is not tied to Frey et \
+al.'s index. It disagrees with the pages and with measurements (TC-388): c-Si.Enk's n \
+is higher than Franta-300K's by 0.013-0.018 at 0.02-1.1 eV and 0.021-0.026 at 1.2-1.5 \
+eV (3.468960 against 3.454400 at 2 um, where Eq. (3), fitted to Frey et al., gives \
+3.45351 at 295 K), and \
+its k near the gap is 2.4-2.6 times the page's at 1.5-2 eV (0.03988 against 0.01556 at \
+632.8 nm)."""
+
+[[datasets]]
+id = "band_gap_0K"
+material = "Si"
+file = "Si/franta_2017__band_gap_0K.csv"
+table = "tbl_3d660fe93b4a"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table 2 (p. 409), E_g '@ 0 K': the model's minimum energy of indirect transitions, extrapolated to 0 K by Eq. (54) with Theta = 248.6 K from data at 5-700 K. No uncertainty stated."
+[datasets.parameters]
+kind = "optical"
+temperature_k = 0
+
+[[datasets]]
+id = "band_gap_300K"
+material = "Si"
+file = "Si/franta_2017__band_gap_300K.csv"
+table = "tbl_3d660fe93b4a"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "primary"
+notes = "Table 2 (p. 409), E_g '@ 300 K': the model's minimum energy of indirect transitions (the onset of the phonon-assisted edges E_g +- E_p, Fig. 7). No uncertainty stated."
+[datasets.parameters]
+kind = "optical"
+temperature_k = 300
+
+[[formulas]]
+id = "frey_index_2um"
+material = "Si"
+equation = "Eq. (3), p. 407"
+printed = "n(T) = n_0 + \\Omega_1/(\\exp(\\Theta_1/T) - 1) + \\Omega_2/(\\exp(\\Theta_2/T) - 1)"
+variable = "T: temperature (K); n at the wavelength 2 um"
+range = "5-700 K (fitted to Frey et al.'s 30-295 K prism data)"
+coefficients = { n0 = "3.42477", Omega1 = "0.01992", Theta1 = "210.72", Omega2 = "0.0737318", Theta2 = "636.501" }
+check = "No printed value to compare (the extrapolation is plotted in Fig. 13). Computed 2026-09-26: n = 3.42477 at 0 K, 3.45351 at 295 K, 3.45436 at 300 K."
+notes = "'The constants in the formula were determined by fitting to Frey's data' (B. J. Frey, D. B. Leviton and T. J. Madison, Proc. SPIE 6273, 62732J (2006), printed as '6237 ... p. 62732J', not in the library). Used to generate pseudo-data at 2 um for 5-700 K."
+
+[[formulas]]
+id = "critical_points"
+material = "Si"
+equation = "Table 2, p. 409; Eq. (54), p. 411"
+printed = "E(T) = E^{0K} + (E^{300K} - E^{0K}) [\\exp(\\Theta/300) - 1]/[\\exp(\\Theta/T) - 1]"
+variable = "T: temperature (K); energies in eV, Theta in K"
+coefficients = { Eg_0K = "1.14", Eg_300K = "1.087", Eg_Theta = "248.6", Eh_0K = "24.6", E0p_Gamma_0K = "3.398", E0p_Gamma_300K = "3.367", E1_L_0K = "3.457", E1_L_300K = "3.393", E1_L_Theta = "115.7", E0_Gamma_0K = "4.068", E0_Gamma_300K = "4.149", E1_K_0K = "4.239", E1_K_300K = "4.195", E2_X_0K = "4.333", E2_X_300K = "4.302", E2_X_Theta = "349.2", E2_Sigma_0K = "4.517", E2_Sigma_300K = "4.427", E1p_L_0K = "5.442", E1p_L_300K = "5.398", E1p_L_Theta = "403.6", E3_Delta_0K = "7.159", E3_Delta_300K = "7.119", E2p_X_0K = "10.72", E2p_X_300K = "10.51", E3_X_0K = "12.18", E3p_X_0K = "19.33", Egx_0K = "8.748" }
+check = "Transcribed from the library JSON by a scratch generator with the row labels read from the table image (the cells lose the primes); compared with the image (2026-09-26)."
+notes = "Keys: p marks a primed critical point (E0p_Gamma = E'_0^Gamma), _0K, _300K and _Theta the three columns. Points without Theta follow another point ('T dep. by': E'_0^Gamma and E_2'^X by E_1^L; E_0^Gamma by E'_1^L; E_1^K, E_2^Sigma and E_3^Delta by E_2^X) through Eqs. (55)-(56); E_3^X, E'_3^X and E_gx are temperature independent (no data). E_h = 24.6 eV fixed (from ab initio). E_g's Theta = 248.6 K uses the average Bose-Einstein form of Eq. (54)."
+
+[[formulas]]
+id = "direct_transition_paths"
+material = "Si"
+equation = "Eqs. (20)-(51), pp. 409-411; Table 3, p. 410"
+printed = "\\hat\\varepsilon_{dt}(E) = N_{dt}(T) \\sum_{k=1}^{5} A_{dt,k}/(C_{N,k} \\sum_l A_{dt,l}) \\sum_{i=0}^{11} \\hat\\varepsilon_{i,k}(E)"
+variable = "E: photon energy; B (broadening) and R (Rydberg) in meV at the tabulated temperatures"
+coefficients = { path1_A_dt = "1", path1_B1_0K = "29.2", path1_B1_100K = "50.7", path1_B1_300K = "57.3", path1_B1_700K = "57.8", path1_B2_0K = "26", path1_B2_100K = "41", path1_B2_300K = "59.5", path1_B2_700K = "98.4", path1_R_0K = "7.93", path1_R_300K = "6.12", path2_A_dt = "0.683", path2_B1_0K = "70.6", path2_B1_100K = "295", path2_B1_300K = "360", path2_B1_700K = "170", path2_B2_0K = "456", path2_B2_100K = "456", path2_B2_300K = "456", path2_B2_700K = "456", path2_R_0K = "120", path2_R_300K = "132", path3_A_dt = "0.765", path3_B1_0K = "216", path3_B1_100K = "277", path3_B1_300K = "265", path3_B1_700K = "501", path3_B2_0K = "567", path3_B2_100K = "492", path3_B2_300K = "424", path3_B2_700K = "700", path3_R_0K = "3.68", path3_R_300K = "2.56", path4_A_dt = "0.914", path4_B1_0K = "97.3", path4_B1_100K = "149", path4_B1_300K = "155", path4_B1_700K = "134", path4_B2_0K = "106", path4_B2_100K = "112", path4_B2_300K = "120", path4_B2_700K = "190", path4_R_0K = "0.0113", path4_R_300K = "0.368", path5_A_dt = "0.739", path5_B1_0K = "89.7", path5_B1_100K = "127", path5_B1_300K = "145", path5_B1_700K = "83", path5_B2_0K = "201", path5_B2_100K = "201", path5_B2_300K = "201", path5_B2_700K = "201", path5_R_0K = "1.07", path5_R_300K = "1.73" }
+check = "Table 3 cells agree with the image (2026-09-26). The path amplitudes A_0..A_11 of Eqs. (22)-(48) are not printed, so the direct-transition model cannot be evaluated from the paper."
+notes = "Critical points of each path (from the image): path 1 E'_0^Gamma, E_1^L, E_2^X, E_3^Delta; path 2 E'_0^Gamma, E_1^L, E'_2^X, E_3^X; path 3 E'_0^Gamma, E_1^K, E_2^X, E_3^X; path 4 E'_0^Gamma, E_1^K, E_2^Sigma, E_3^X; path 5 E_0^Gamma, E'_1^L, E'_2^X, E'_3^X. A_dt,1 = 1 fixed. B_1,k broadens contributions 0, 1, 4, 6, 7, 10 and B_2,k contributions 2, 3, 5, 8, 9, 11 (p. 411); B at 0, 100, 300, 700 K and R at 0 and 300 K, spline-interpolated in logarithmic substitution (p. 411)."
+
+[[formulas]]
+id = "phonon_frequencies"
+material = "Si"
+equation = "Table 4, p. 412; Eq. (54) with Theta_ph = 426.1 K"
+printed = "Phonon frequencies in points of symmetry at 0 and 300 K (THz)"
+variable = "f: phonon frequency (THz) of branch and symmetry point at 0 K and 300 K; T dependence by Eq. (54), common Theta_ph = 426.1 K"
+coefficients = { f_TA1_Gamma_0K = "0", f_LO_Gamma_0K = "15.78", f_TA1_X_0K = "4.74", f_LA_X_0K = "12.13", f_TO1_X_0K = "14.17", f_TA1_L_0K = "3.13", f_LA_L_0K = "11.08", f_LO_L_0K = "13.02", f_TO1_L_0K = "15.05", f_TA1_W_0K = "6.37", f_LA_W_0K = "10.70", f_TO1_W_0K = "14.38", f_TA1_K_0K = "5.31", f_TA2_K_0K = "6.66", f_LA_K_0K = "10.77", f_LO_K_0K = "11.53", f_TO1_K_0K = "14.31", f_TO2_K_0K = "14.18", f_TA1_Gamma_300K = "0", f_LO_Gamma_300K = "15.59", f_TA1_X_300K = "4.72", f_LA_X_300K = "12.00", f_TO1_X_300K = "14.08", f_TA1_L_300K = "3.11", f_LA_L_300K = "11.04", f_LO_L_300K = "12.94", f_TO1_L_300K = "14.98", f_TA1_W_300K = "6.31", f_LA_W_300K = "10.65", f_TO1_W_300K = "14.28", f_TA1_K_300K = "4.82", f_TA2_K_300K = "6.74", f_LA_K_300K = "10.84", f_LO_K_300K = "11.34", f_TO1_K_300K = "13.89", f_TO2_K_300K = "14.87", Theta_ph = "426.1", nu_C_0K = "612.7", nu_C_300K = "610.1" }
+check = "Transcribed from the library JSON by a scratch generator; compared with the table image (2026-09-26)."
+notes = "Degenerate frequencies are printed once: an empty cell equals the value on its left (Gamma: TA1 = TA2 = LA = 0 fixed, LO = TO1 = TO2; X and W: TA1 = TA2, LA = LO, TO1 = TO2; L: TA1 = TA2, TO1 = TO2). nu_C (cm^-1) is the substitutional-carbon one-phonon line (p. 412). Supersedes franta_2014b's 300 K frequencies for this model."
+
+[[formulas]]
+id = "udm_c_si"
+material = "Si"
+form = "udm"
+# The file's stated range: 80 cm-1 (125 um) to 8.5 eV (145.9 nm) (TC-320).
+range_nm = [145.9, 125000.0]
+equation = "Universal Dispersion Model (franta_2015, franta_2015b); the newAD2 parameter file c-Si.par, not printed in this paper"
+printed = "not printed: the newAD2 parameter file c-Si.par (first line he:ex=4:ut:loc=11:ph=36), attached to this paper in the library"
+variable = "E: photon energy in eV (phonon terms in cm-1 in the parameter file)"
+range = "80 cm-1 to 8.5 eV (the file's stated range)"
+check = "Evaluated by optmat.solid.udm on the authors' grid E = 0.01 exp(i ln(1e4)/4000) eV, the terms reproduce c-Si.Enk (datasets newad2_n, newad2_k and the rows above 8.5 eV) to 0.57 unit of the seventh significant digit in n (5.7e-7 absolute) and 0.74 unit in k over 0.01-100 eV; above 1 eV to 0.50 unit, the table's rounding (2026-10-14). Terms transcribed from the file by a scratch generator and compared with it value by value (161 parameters). Total transition strength 550.6 eV^2."
+notes = "The newAD2 site's unpublished UDM of float-zone c-Si ('published: unpublished', 'submitted: Daniel Franta'; see the record's notes, NEWAD2 UDM). Not this paper's ADM, and not tied to Frey et al.'s index: n is about 0.015 too high in the near infrared and k at 633 nm 2.6 times the revised model's (TC-388). Temperature not stated."
+
+# The newAD2 parameter file's values, as it prints them (its first line is `attributes`).
+[formulas.terms]
+attributes = "he:ex=4:ut:loc=11:ph=36"
+Nvc = "81.30115375331408"
+Eg = "1.154263349577452"
+Eh = "20"
+A0 = "1"
+Aex1 = "0.009368005087823069"
+Eex1 = "2.733326155694987"
+Bex1 = "0.2704841987955389"
+Aex2 = "0.002019947860135561"
+Eex2 = "3.460898240727969"
+Bex2 = "0.03885004479935556"
+Aex3 = "0.01467215781459942"
+Eex3 = "3.77305167986899"
+Bex3 = "0.1096832259398034"
+Aex4 = "1"
+Eex4 = "8.261616387444027"
+Bex4 = "1.651586800696874"
+Nvx = "192.1499595612966"
+Ex = "10"
+Nut = "0.1430749737410301"
+Eu = "0.02133515193732241"
+Nloc1 = "1.770430613248772e-05"
+Eloc1 = "1.142885462446127"
+Bloc1 = "0.03743203160643455"
+Nloc2 = "7.838555221950799"
+Eloc2 = "3.387726279756712"
+Bloc2 = "0.06331392209166196"
+Nloc3 = "0.9045668866461022"
+Eloc3 = "3.501478337725957"
+Bloc3 = "0.04975919867627265"
+Nloc4 = "15.81943114205057"
+Eloc4 = "3.514069372744391"
+Bloc4 = "0.1486507609367912"
+Nloc5 = "120.9810136919951"
+Eloc5 = "3.984231467223562"
+Bloc5 = "0.4019484319407017"
+Nloc6 = "1.312570756860815"
+Eloc6 = "4.205552003772653"
+Bloc6 = "0.06834639646065176"
+Nloc7 = "1.477546100502294"
+Eloc7 = "4.267629856330998"
+Bloc7 = "0.04748735357891863"
+Nloc8 = "20.0977037024987"
+Eloc8 = "4.284139418079803"
+Bloc8 = "0.1479662477107001"
+Nloc9 = "59.78341238172252"
+Eloc9 = "4.882347447776118"
+Bloc9 = "0.5988863088838735"
+Nloc10 = "1.703966051667422"
+Eloc10 = "5.328740958240529"
+Bloc10 = "0.1285284377348826"
+Nloc11 = "47.05355282171399"
+Eloc11 = "5.967368050466333"
+Bloc11 = "0.8044671163003909"
+Nph1 = "6.774069789975263e-07"
+nuph1 = "127.2911774131523"
+betaph1 = "215.8067884572868"
+Nph2 = "6.305221982356534e-07"
+nuph2 = "346.0306867821822"
+betaph2 = "164.936107814922"
+Nph3 = "1.33167952614507e-08"
+nuph3 = "487.3875704500538"
+betaph3 = "15.03158136254495"
+Nph4 = "2.32866761000301e-06"
+nuph4 = "533.2654297521919"
+betaph4 = "127.1237018344496"
+Nph5 = "2.040610907029827e-07"
+nuph5 = "562.5328663110303"
+betaph5 = "30.28021022626772"
+Nph6 = "2.315099091767459e-08"
+nuph6 = "566.9488043966919"
+betaph6 = "9.642016803616613"
+Nph7 = "4.617579208734511e-07"
+nuph7 = "596.3732534063555"
+betaph7 = "29.94590172537489"
+Nph8 = "1.315885880086114e-06"
+nuph8 = "611.3005598397136"
+betaph8 = "20.86922511749248"
+Nph9 = "2.958614423742572e-07"
+nuph9 = "622.5547558172123"
+betaph9 = "9.891358244201557"
+Nph10 = "4.757113904063555e-08"
+nuph10 = "637.3755744511792"
+betaph10 = "13.509060168758"
+Nph11 = "1.512372444718182e-07"
+nuph11 = "648.5869410662701"
+betaph11 = "28.70744888670182"
+Nph12 = "2.909530915180708e-07"
+nuph12 = "675.3994699371316"
+betaph12 = "42.30735463438118"
+Nph13 = "2.042174277863381e-08"
+nuph13 = "691.1792812326518"
+betaph13 = "15.00803620589366"
+Nph14 = "1.14403096303541e-07"
+nuph14 = "721.2019958831605"
+betaph14 = "17.3173886200547"
+Nph15 = "1.338504613688474e-07"
+nuph15 = "736.93985675146"
+betaph15 = "16.85624584850092"
+Nph16 = "1.329065942141809e-06"
+nuph16 = "752.0400605873243"
+betaph16 = "67.61683388493948"
+Nph17 = "1.034238334387004e-07"
+nuph17 = "783.9910588563412"
+betaph17 = "22.68831126906468"
+Nph18 = "2.201518619164865e-08"
+nuph18 = "792.5318069225041"
+betaph18 = "10.39618017391396"
+Nph19 = "5.343952031791244e-07"
+nuph19 = "817.8014589174687"
+betaph19 = "35.23487393448573"
+Nph20 = "2.495899696131059e-08"
+nuph20 = "845.4126590121596"
+betaph20 = "13.64851561461072"
+Nph21 = "1.791597997819121e-07"
+nuph21 = "859.7543761220904"
+betaph21 = "32.03261457830419"
+Nph22 = "1.296564624761336e-06"
+nuph22 = "892.3509240146495"
+betaph22 = "69.72766034421376"
+Nph23 = "6.243672401331457e-07"
+nuph23 = "965.5851064212802"
+betaph23 = "60.15239160330872"
+Nph24 = "7.24638700745378e-07"
+nuph24 = "970.4088402117798"
+betaph24 = "506.928445769146"
+Nph25 = "3.507010660887544e-08"
+nuph25 = "1012.361863913366"
+betaph25 = "33.51278928719362"
+Nph26 = "4.104980156011211e-08"
+nuph26 = "1088.923194755017"
+betaph26 = "36.35844449155773"
+Nph27 = "6.253634952417066e-08"
+nuph27 = "1115.671287783847"
+betaph27 = "35.60780692789608"
+Nph28 = "4.864591899977273e-07"
+nuph28 = "1130.697291209247"
+betaph28 = "96.68576386446476"
+Nph29 = "7.90811260321137e-09"
+nuph29 = "1135.299793717337"
+betaph29 = "17.71079546537121"
+Nph30 = "1.986357914679878e-08"
+nuph30 = "1185.784977022886"
+betaph30 = "38.26210298715959"
+Nph31 = "2.214849284820777e-07"
+nuph31 = "1262.624136193195"
+betaph31 = "782.5762187841399"
+Nph32 = "1.068356554518524e-07"
+nuph32 = "1270.169441579431"
+betaph32 = "69.17399505830076"
+Nph33 = "1.196142778037096e-07"
+nuph33 = "1305.749171887789"
+betaph33 = "52.6791959049929"
+Nph34 = "1.763044981124857e-07"
+nuph34 = "1375.290487159784"
+betaph34 = "75.72580725548249"
+Nph35 = "1.788333493419276e-07"
+nuph35 = "1446.076879599615"
+betaph35 = "62.32337410662286"
+Nph36 = "2.927753333752857e-08"
+nuph36 = "1449.931390911309"
+betaph36 = "31.20405497004941"
+
+[[datasets]]
+id = "newad2_n"
+material = "Si"
+file = "Si/franta_2017__newad2_n.csv"
+table = "data/c-Si.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "check"
+notes = "n of the newAD2 site's unpublished UDM of float-zone c-Si (c-Si.Enk, computed from c-Si.par: formula udm_c_si), 0.01-8.49 eV (the file's stated range; 2930 of the table's 4001 rows; the rows above 8.5 eV are extrapolation and are not extracted). A check, not data: the model disagrees with measurements (n 0.015 high in the near infrared; TC-388). Temperature not stated."
+[datasets.parameters]
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (UDM fit)"
+
+[[datasets]]
+id = "newad2_k"
+material = "Si"
+file = "Si/franta_2017__newad2_k.csv"
+table = "data/c-Si.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "check"
+notes = "As newad2_n, k (2.4-2.6 times the revised model's near the gap, 1.5-2 eV; TC-388)."
+[datasets.parameters]
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (UDM fit)"
+
+[[datasets]]
+id = "rii_20C_n"
+material = "Si"
+file = "Si/franta_2017__rii_20C_n.csv"
+table = "data/external/refractiveindex_info/main/Si/nk/Franta-20C.yml"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "primary"
+notes = "n of the revised temperature-dependent model (this paper as updated in franta_2018) at 293.15 K, as the refractiveindex.info page Franta-20C.yml prints it ('Numerical data kindly provided by Daniel Franta'; see notes): 3664 rows, 0.0309963-142.663 um (40 eV to 70 cm-1), the rows beyond 70 cm-1 not extracted. The model at the optmat reference temperature, 20 degrees C (293.15 K: the page's n at 2 um matches franta_2018's two-term Sellmeier formula at 293.15 K, not at the CONDITIONS value 293 K; see notes). No uncertainty stated; the model table is dense, so a fit should weight it as one curve."
+[datasets.parameters]
+temperature_k = 293.15
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (ADM fit, tied to Frey et al.'s index at 2 um)"
+
+[[datasets]]
+id = "rii_20C_k"
+material = "Si"
+file = "Si/franta_2017__rii_20C_k.csv"
+table = "data/external/refractiveindex_info/main/Si/nk/Franta-20C.yml"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "primary"
+notes = "k of the revised temperature-dependent model (this paper as updated in franta_2018) at 293.15 K, as the refractiveindex.info page Franta-20C.yml prints it ('Numerical data kindly provided by Daniel Franta'; see notes): 3664 rows, 0.0309963-142.663 um (40 eV to 70 cm-1), the rows beyond 70 cm-1 not extracted. The model at the optmat reference temperature, 20 degrees C (293.15 K: the page's n at 2 um matches franta_2018's two-term Sellmeier formula at 293.15 K, not at the CONDITIONS value 293 K; see notes). No uncertainty stated; the model table is dense, so a fit should weight it as one curve."
+[datasets.parameters]
+temperature_k = 293.15
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (ADM fit, tied to Frey et al.'s index at 2 um)"
+
+[[datasets]]
+id = "rii_25C_n"
+material = "Si"
+file = "Si/franta_2017__rii_25C_n.csv"
+table = "data/external/refractiveindex_info/main/Si/nk/Franta-25C.yml"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "n of the revised temperature-dependent model (this paper as updated in franta_2018) at 298.15 K, as the refractiveindex.info page Franta-25C.yml prints it ('Numerical data kindly provided by Daniel Franta'; see notes): 3664 rows, 0.0309963-142.663 um (40 eV to 70 cm-1), the rows beyond 70 cm-1 not extracted. A check of the temperature dependence near the reference temperature (the model at another temperature, not independent data). No uncertainty stated; the model table is dense, so a fit should weight it as one curve."
+[datasets.parameters]
+temperature_k = 298.15
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (ADM fit, tied to Frey et al.'s index at 2 um)"
+
+[[datasets]]
+id = "rii_25C_k"
+material = "Si"
+file = "Si/franta_2017__rii_25C_k.csv"
+table = "data/external/refractiveindex_info/main/Si/nk/Franta-25C.yml"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "check"
+notes = "k of the revised temperature-dependent model (this paper as updated in franta_2018) at 298.15 K, as the refractiveindex.info page Franta-25C.yml prints it ('Numerical data kindly provided by Daniel Franta'; see notes): 3664 rows, 0.0309963-142.663 um (40 eV to 70 cm-1), the rows beyond 70 cm-1 not extracted. A check of the temperature dependence near the reference temperature (the model at another temperature, not independent data). No uncertainty stated; the model table is dense, so a fit should weight it as one curve."
+[datasets.parameters]
+temperature_k = 298.15
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (ADM fit, tied to Frey et al.'s index at 2 um)"
+
+[[datasets]]
+id = "rii_300K_n"
+material = "Si"
+file = "Si/franta_2017__rii_300K_n.csv"
+table = "data/external/refractiveindex_info/main/Si/nk/Franta-300K.yml"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "n of the revised temperature-dependent model (this paper as updated in franta_2018) at 300 K, as the refractiveindex.info page Franta-300K.yml prints it ('Numerical data kindly provided by Daniel Franta'; see notes): 3664 rows, 0.0309963-142.663 um (40 eV to 70 cm-1), the rows beyond 70 cm-1 not extracted. A check of the temperature dependence near the reference temperature (the model at another temperature, not independent data). No uncertainty stated; the model table is dense, so a fit should weight it as one curve."
+[datasets.parameters]
+temperature_k = 300
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (ADM fit, tied to Frey et al.'s index at 2 um)"
+
+[[datasets]]
+id = "rii_300K_k"
+material = "Si"
+file = "Si/franta_2017__rii_300K_k.csv"
+table = "data/external/refractiveindex_info/main/Si/nk/Franta-300K.yml"
+quantity = "extinction_coefficient"
+abscissa_unit = "um"
+use = "check"
+notes = "k of the revised temperature-dependent model (this paper as updated in franta_2018) at 300 K, as the refractiveindex.info page Franta-300K.yml prints it ('Numerical data kindly provided by Daniel Franta'; see notes): 3664 rows, 0.0309963-142.663 um (40 eV to 70 cm-1), the rows beyond 70 cm-1 not extracted. A check of the temperature dependence near the reference temperature (the model at another temperature, not independent data). No uncertainty stated; the model table is dense, so a fit should weight it as one curve."
+[datasets.parameters]
+temperature_k = 300
+grade = "float zone"
+form = "bulk"
+technique = "ellipsometry and spectrophotometry (ADM fit, tied to Frey et al.'s index at 2 um)"

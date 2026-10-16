@@ -1,0 +1,38 @@
+citation = "V. D. Arp, R. D. McCarty and D. G. Friend, \"Thermophysical Properties of Helium-4 from 0.8 to 1500 K with Pressures to 2000 MPa\", NIST Technical Note 1334 (revised) (1998)"
+doi = "10.6028/nist.tn.1334"
+library = "Arp_1998_ThermophysicalPropertiesHelium"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A compilation of correlations for the thermodynamic and transport properties \
+of helium-4 and the computer program that evaluates them. The viscosity is Steward and \
+Wallace's (1971) correlation below 100 K and, above 110 K, Maitland and Smith's (1971) \
+dilute-gas correlation of experimental data plus an excess term (section 4.2)."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library; the library's record names Arp \
+alone, the title page (pdf page 3) all three authors.
+
+THE DILUTE VISCOSITY (section 4.2.2, Eq. 8): eta_o(T) = 196 T^0.71938 exp(12.451/T - \
+295.67/T^2 - 4.1249), in ug/(cm s) (= 0.1 uPa s), T in K. It is Maitland and Smith's \
+correlation, used 'for all T > 110 K'; between 100 K and 110 K the program averages it \
+linearly with Steward's dilute values. The equations are given for 100-300 K and used \
+unchanged above 300 K, where only the excess term is frozen at its 300 K form (section \
+4.2.3); the tables run to 1500 K. optmat takes Eq. (8) over 110-1500 K.
+
+UNCERTAINTY: 'The uncertainty of the viscosity for T > 100 K is estimated to be maximum \
+of +-10 percent' (section 4.2.3), for the correlation as a whole, dilute gas and dense \
+fluid alike; no separate figure is given for the dilute gas.
+
+REPRODUCED: CoolProp 8.0.0's helium viscosity (reference key Arp-NIST-1998) at 1e-6 \
+mol/m^3 equals Eq. (8) to 1.1e-11 from 110 K to 900 K (computed 2026-09-30). At 105 K it \
+also equals Eq. (8), without the program's 100-110 K average. CoolProp reports the whole \
+value as its 'critical' contribution, not its 'dilute' one; optmat takes the total at \
+vanishing density."""
+
+[[formulas]]
+id = "eq8"
+material = "He"
+equation = "Eq. (8), section 4.2.2"
+printed = "eta_o(T) = 196 T^0.71938 exp(12.451/T - 295.67/T^2 - 4.1249)"
+variable = "T in K; eta_o in ug/(cm s), 1 ug/(cm s) = 1e-7 Pa s"
+range = "T > 110 K (Maitland and Smith); used to 1500 K"
+coefficients = { a = "196", b = "0.71938", c = "12.451", d = "295.67", e = "4.1249" }
+check = "CoolProp 8.0.0 equals it to 1.1e-11, 110-900 K (tests/test_transport.py)."

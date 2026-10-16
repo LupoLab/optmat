@@ -1,0 +1,436 @@
+citation = "K. T. Tang and K. K. Poon, J. Opt. Soc. Am. 64, 1582 (1974)"
+doi = "10.1364/josa.64.001582"
+library = "Tang_1974_ContinuedFactorizationMethod"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Continued-factorization series for the dynamic polarizability giving upper and \
+lower bounds on n - 1 from Cauchy moments and excitation energies, compared with the \
+Pade approximants of Langhoff and Karplus (1969); bounded estimates of oscillator \
+strengths from the moments."""
+notes = """All refractivities at NTP (0 degrees C, 1 atm) with n - 1 = 2 pi N_0 alpha(omega), \
+2 pi N_0 = 0.2502e-4 (Tables II-VI, note a): ideal-gas density. Wavelengths are nominal \
+vacuum wavelengths. The bounds are rigorous for the moments used, which are \
+themselves fits (Langhoff and Karplus's for Tables II-V); the paper shows that for Xe \
+those moments are incompatible with Kingston's calculation and the measurements and \
+recommends another set (Table I, row 2), used in Table VI. All computed columns are \
+checks; the columns reproduced from other papers name them.
+
+Tables VII and VIII (atomic hydrogen) are not extracted (hydrogen atoms are not a \
+species of the package); Tables X and XI (argon oscillator-strength bounds) are \
+summarised by their converged values, taken from the text. The figures (argon \
+refractivity between the resonance lines, Figs. 3-6) are not digitised."""
+
+[[datasets]]
+id = "cauchy_Ne"
+material = "Ne"
+file = "Ne/tang_1974__cauchy_Ne.csv"
+table = "tbl_d9080d4b7bd8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "Table I, S(-2)..S(-8) 'taken directly from' Langhoff and Karplus 1969 (footnote a), identical to langhoff_1969/cauchy_Ne (printed there with one more digit)."
+
+[[datasets]]
+id = "cauchy_Ar"
+material = "Ar"
+file = "Ar/tang_1974__cauchy_Ar.csv"
+table = "tbl_d9080d4b7bd8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "Table I, S(-2)..S(-8) 'taken directly from' Langhoff and Karplus 1969 (footnote a), identical to langhoff_1969/cauchy_Ar."
+
+[[datasets]]
+id = "cauchy_Kr"
+material = "Kr"
+file = "Kr/tang_1974__cauchy_Kr.csv"
+table = "tbl_d9080d4b7bd8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "Table I, S(-2)..S(-8) 'taken directly from' Langhoff and Karplus 1969 (footnote a), identical to langhoff_1969/cauchy_Kr (printed there with one more digit)."
+
+[[datasets]]
+id = "cauchy_Xe"
+material = "Xe"
+file = "Xe/tang_1974__cauchy_Xe.csv"
+table = "tbl_d9080d4b7bd8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "Table I, S(-2)..S(-8) 'taken directly from' Langhoff and Karplus 1969 (footnote a), identical to langhoff_1969/cauchy_Xe (printed there with one more digit)."
+
+[[datasets]]
+id = "cauchy_recommended_Xe"
+material = "Xe"
+file = "Xe/tang_1974__cauchy_recommended_Xe.csv"
+table = "tbl_d9080d4b7bd8"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, row (2), 'values we recommend for Xe' (footnote c): obtained 'by recasting the three-term empirical Sellmeier equation of Abjean et al. into the Cauchy equation', then 'modified so that they are within the bounds established by Starkschall and Gordon' (p. 6). Derived from a published fit, so a check."
+
+[[datasets]]
+id = "upper41_Ne"
+material = "Ne"
+file = "Ne/tang_1974__upper41_Ne.csv"
+table = "tbl_59039d75fc92"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Upper bound [alpha(omega)]_4,1 from the continued-factor series (Eq. (17)) with Table I's moments (Langhoff and Karplus's)."
+
+[[datasets]]
+id = "pade_Ne"
+material = "Ne"
+file = "Ne/tang_1974__pade_Ne.csv"
+table = "tbl_59039d75fc92"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "'Padé value' column: Langhoff and Karplus's Table III values, with the error bounds Tang and Poon computed by their method (sigma column; half the spread of the bounds, not declared as an uncertainty)."
+
+[[datasets]]
+id = "mean_Ne"
+material = "Ne"
+file = "Ne/tang_1974__mean_Ne.csv"
+table = "tbl_59039d75fc92"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Mean of the [alpha(omega)]_4,1 upper bound and the [2,1]_alpha Pade lower bound with the hybrid error bound (sigma column, not declared), 'the best value' from the information given (p. 5)."
+
+[[datasets]]
+id = "upper41_Ar"
+material = "Ar"
+file = "Ar/tang_1974__upper41_Ar.csv"
+table = "tbl_6787ce6f0228"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Upper bound [alpha(omega)]_4,1 from the continued-factor series (Eq. (17)) with Table I's moments (Langhoff and Karplus's)."
+
+[[datasets]]
+id = "pade_Ar"
+material = "Ar"
+file = "Ar/tang_1974__pade_Ar.csv"
+table = "tbl_6787ce6f0228"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "'Padé value' column: Langhoff and Karplus's Table III values, with the error bounds Tang and Poon computed by their method (sigma column; half the spread of the bounds, not declared as an uncertainty)."
+
+[[datasets]]
+id = "mean_Ar"
+material = "Ar"
+file = "Ar/tang_1974__mean_Ar.csv"
+table = "tbl_6787ce6f0228"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Mean of the [alpha(omega)]_4,1 upper bound and the [2,1]_alpha Pade lower bound with the hybrid error bound (sigma column, not declared), 'the best value' from the information given (p. 5)."
+
+[[datasets]]
+id = "upper41_Kr"
+material = "Kr"
+file = "Kr/tang_1974__upper41_Kr.csv"
+table = "tbl_fa3fc33a90fd"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Upper bound [alpha(omega)]_4,1 from the continued-factor series (Eq. (17)) with Table I's moments (Langhoff and Karplus's)."
+
+[[datasets]]
+id = "pade_Kr"
+material = "Kr"
+file = "Kr/tang_1974__pade_Kr.csv"
+table = "tbl_fa3fc33a90fd"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "'Padé value' column: Langhoff and Karplus's Table III values, with the error bounds Tang and Poon computed by their method (sigma column; half the spread of the bounds, not declared as an uncertainty)."
+
+[[datasets]]
+id = "mean_Kr"
+material = "Kr"
+file = "Kr/tang_1974__mean_Kr.csv"
+table = "tbl_fa3fc33a90fd"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Mean of the [alpha(omega)]_4,1 upper bound and the [2,1]_alpha Pade lower bound with the hybrid error bound (sigma column, not declared), 'the best value' from the information given (p. 5)."
+
+[[datasets]]
+id = "upper41_Xe"
+material = "Xe"
+file = "Xe/tang_1974__upper41_Xe.csv"
+table = "tbl_cc7175832502"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Upper bound [alpha(omega)]_4,1 from the continued-factor series (Eq. (17)) with Table I's moments (Langhoff and Karplus's)."
+
+[[datasets]]
+id = "pade_Xe"
+material = "Xe"
+file = "Xe/tang_1974__pade_Xe.csv"
+table = "tbl_cc7175832502"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["langhoff_1969"]
+notes = "'Lower bound Padé [2,1]_alpha': Langhoff and Karplus's xenon values, which Tang and Poon found to be lower bounds throughout (p. 5); at 1600 A this column prints 15.460 where Langhoff and Karplus misprint 15.640 (erratum in langhoff_1969)."
+
+[[datasets]]
+id = "lower42_Xe"
+material = "Xe"
+file = "Xe/tang_1974__lower42_Xe.csv"
+table = "tbl_cc7175832502"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Lower bound [alpha(omega)]_4,2 (Eq. (32)) with Table I's set (1) and epsilon_2 = 0.3516 au: above the Pade lower bound (p. 6)."
+
+[[datasets]]
+id = "mean_Xe"
+material = "Xe"
+file = "Xe/tang_1974__mean_Xe.csv"
+table = "tbl_cc7175832502"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Mean of [alpha(omega)]_4,1 and [alpha(omega)]_4,2 with the error bound (sigma column, not declared), from Langhoff and Karplus's moments, which Tang and Poon show to be unsatisfactory for Xe (p. 6)."
+
+[[datasets]]
+id = "saxon_1973_Ne"
+material = "Ne"
+file = "Ne/tang_1974__saxon_1973_Ne.csv"
+table = "tbl_59039d75fc92"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["R. P. Saxon, J. Chem. Phys. 59, 1539 (1973)"]
+notes = "Table II, 'Previous calculation': 'interpolated estimates based on' Saxon's calculated dynamic polarizabilities (footnote e, p. 6), not Saxon's own numbers. The original is not in the library."
+
+[[datasets]]
+id = "kingston_1964_Ar"
+material = "Ar"
+file = "Ar/tang_1974__kingston_1964_Ar.csv"
+table = "tbl_6787ce6f0228"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "'Previous calculation': 'quoted directly from Kingston' (p. 6), identical to kingston_1964."
+
+[[datasets]]
+id = "kingston_1964_Kr"
+material = "Kr"
+file = "Kr/tang_1974__kingston_1964_Kr.csv"
+table = "tbl_fa3fc33a90fd"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "'Previous calculation': 'quoted directly from Kingston' (p. 6), identical to kingston_1964."
+
+[[datasets]]
+id = "kingston_1964_Xe"
+material = "Xe"
+file = "Xe/tang_1974__kingston_1964_Xe.csv"
+table = "tbl_cc7175832502"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "'Previous calculation': 'quoted directly from Kingston' (p. 6), identical to kingston_1964."
+
+[[datasets]]
+id = "mean_recommended_Xe"
+material = "Xe"
+file = "Xe/tang_1974__mean_recommended_Xe.csv"
+table = "tbl_f64c046e444d"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table VI, mean of the [alpha(omega)]_4,1 and [2,1]_alpha bounds from the recommended moments (Table I, set (2)), with the error bound (sigma column, not declared). At 1500 A the bound spans +-11.6."
+
+[[datasets]]
+id = "kingston_1964_table6_Xe"
+material = "Xe"
+file = "Xe/tang_1974__kingston_1964_table6_Xe.csv"
+table = "tbl_f64c046e444d"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "Table VI, Kingston's values again; the 1900 A value is misreproduced (erratum)."
+
+[[datasets]]
+id = "starkschall_gordon_1971_Xe"
+material = "Xe"
+file = "Xe/tang_1974__starkschall_gordon_1971_Xe.csv"
+table = "tbl_f64c046e444d"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["G. Starkschall and R. Gordon, J. Chem. Phys. 54, 663 (1971)"]
+notes = "Table VI, 'Previous calculation': Starkschall and Gordon's linear-programming bounds, as midpoint and half-range (sigma column, not declared). The original is not in the library."
+
+[[datasets]]
+id = "abjean_1971_Xe"
+material = "Xe"
+file = "Xe/tang_1974__abjean_1971_Xe.csv"
+table = "tbl_f64c046e444d"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["abjean_1971"]
+notes = "Table VI, 'Measured', Abjean et al. (interferometry), 2200-1800 A at round wavelengths: the formula column of abjean_1971's Table 3 (values of their three-term fit, not measurements). The measurements themselves (abjean_1971/experiment_Xe) are fitted."
+
+[[datasets]]
+id = "chashchina_shreider_1969_Xe"
+material = "Xe"
+file = "Xe/tang_1974__chashchina_shreider_1969_Xe.csv"
+table = "tbl_f64c046e444d"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["G. I. Chashchina and E. Ya. Shreider, Opt. Spectrosc. 27, 79 (1969)"]
+notes = "Table VI, 'Measured', Chashchina and Shreider (line shifts), 2200-1600 A at round wavelengths: values of their smoothing Sellmeier formula. The 1500 A value (27.789) is not extracted: their xenon measurements stop at 1550 A, so it is an extrapolation. The original is not in the library."
+
+[[datasets]]
+id = "cauchy_chashchina_Ar"
+material = "Ar"
+file = "Ar/tang_1974__cauchy_chashchina_Ar.csv"
+table = "tbl_e64e93bfd6da"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table IX, the 18 Cauchy moments S(-2n), n = 1..18 (rows by moment order -2n), 'obtained by recasting the three-term Sellmeier formula of Chashchina, Gladushchak, and Shreider' (footnote a); printed as mantissa x 10^k and stored as mantissa e k. Derived from a published fit: a check. S(-2) = 11.044 and S(-4) = 29.236 against 11.052 and 29.26 from Leonard's (1974) adjusted version of that formula (+0.07 %, +0.08 %: Leonard's adjustment)."
+
+[[datasets]]
+id = "oscillator_strengths_Ar"
+material = "Ar"
+points = [["f1", "0.4272", "0.1385"], ["f2", "0.4347", "0.1418"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa_unit = "hartree"
+use = "check"
+notes = "p. 6: the continued-factor bounds on the oscillator strengths of argon's two resonance lines from Table IX's moments and Moore's energies (epsilon_1 = omega_1 = 0.4272 au from Table I, epsilon_2 = 0.4347 au from the text): '[f1]_n,2 and [f1]_n,3 have converged to 0.1385 from opposite directions. The value to which f2 converges is 0.1418'; their sum 0.2803 matches Chashchina et al.'s 0.28 +- 0.02 from Wolfsohn's method. Tables X and XI (the bounds for n = 1-18 moments) are not extracted. Derived from Chashchina et al.'s Sellmeier fit: a check."
+
+[[errata]]
+dataset = "kingston_1964_table6_Xe"
+row = "1900"
+column = "value"
+printed = "9.984"
+corrected = "9.884"
+reason = "Kingston's calculated xenon value at 1900 A is 9.884; Tang and Poon's Table VI misreproduces it as 9.984."
+evidence = "Kingston 1964, Table I (image tbl_368145603687.jpg) prints 9.884; Tang and Poon's own Table V (previous calculation, same source) prints 9.884; Langhoff and Karplus 1969, Table III, print 9.884. With 9.884 the column's increments grow steadily (0.289, 0.372, 0.499, 0.711, 1.118 from 2200 A down); 9.984 would make them 0.599 then 0.611. Table image tbl_f64c046e444d.jpg shows 9.984."

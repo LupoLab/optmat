@@ -1,0 +1,225 @@
+citation = "D. Ityaksov, H. Linnartz and W. Ubachs, Mol. Phys. 106, 2471 (2008)"
+doi = "10.1080/00268970802570334"
+library = "Ityaksov_2008_DeepUVRayleigh"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Cavity ring-down extinction with pressure ramps up to atmospheric pressure \
+(Eq. 4: the slope of the decay rate against density), frequency-doubled (270.15, \
+251.72, 215.38, 210.12 nm) or -tripled (203.76, 199.27, 198.48, 197.70 nm) pulsed dye \
+lasers, bandwidth below 0.2 cm^-1, wavelengths calibrated to about 0.01 nm; 40 cm and \
+82 cm cells; Baratron pressure (0.15 %); typically ten ramps per point; 293 +- 3 K \
+(pp. 3-4). Purities N2 99.999 %, CH4 99.995 %, SF6 99.8 %."""
+notes = """The measured quantity is the extinction cross section per molecule, identified \
+with the Rayleigh cross section (no absorption found for any of the three gases down \
+to 197.7 nm; an earlier CH4 sample of purity below 99.5 % showed an absorption onset \
+near 210 nm from impurities, p. 8). Table 1 gives the measured values with one-sigma \
+uncertainties ('with 1 sigma uncertainties', p. 4) and the values predicted by Eq. (2), \
+sigma = 24 pi^3 / (lambda^4 N^2) ((n^2 - 1)/(n^2 + 2))^2 F_k, from the formulas below \
+(check datasets). Wavelengths are not said to be vacuum or air; below 200 nm they can \
+only be vacuum, and all are taken as vacuum (the difference at 270 nm, 0.08 nm, moves \
+sigma by 0.1 %).
+
+King factors: N2 from Bates (Eq. 9, varying with wavelength, so no king_factor \
+parameter is attached to the N2 datasets); CH4 and SF6 set to 1 (p. 6-7).
+
+Check of the predictions (2026-09-25): with Eqs. (10) and (11) and N = 2.5469e19 \
+cm^-3 (the ideal gas at 288.15 K and 101 325 Pa, the reference of those formulas, \
+from sneep_2005) the CH4 and SF6 predicted columns are reproduced to 0.01 printed \
+units at all eight wavelengths; with the laboratory density at 293 K they come out \
+3.4 % high. The N2 column is reproduced by Eqs. (8) and (9) with the same 288.15 K \
+density to 0.5 % (the rounding of Eq. 8's four coefficients), not with the 293 K \
+density (3.6 % high), although Eq. (8) is said to be scaled to 293 K (see n2_eq8). \
+Since the cross section is a per-molecule quantity, the predictions stand \
+independently of the laboratory temperature.
+
+Table 2 gives power-law fits sigma = sigma_0 nu^(4 + epsilon) (Eq. 5, nu in cm^-1) to \
+the measured points ('Experimental') and to the predictions ('Predicted'), recorded as \
+formulas. The text (p. 6) prints N2's epsilon as 0.543, Table 2 and the Figure 1 \
+caption 0.534 (page image checked): the text transposes the digits.
+
+Figures 2, 4 and 6 show refractive indices, polarizabilities, King factors and \
+depolarization ratios derived from the fits; they are not tabulated and not \
+extracted."""
+
+[[datasets]]
+id = "rayleigh_N2"
+material = "N2"
+file = "N2/ityaksov_2008__rayleigh_N2.csv"
+table = "tbl_0ec99fd2f68e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, measured extinction cross section (seven wavelengths; 210.12 nm not measured). The total cross section of the anisotropic molecule; the paper's comparison uses Bates's F_k (Eq. 9). The 270.15 nm value lies outside the prediction's uncertainty, 'due to the relatively low experimental sensitivity at this wavelength' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "rayleigh_CH4"
+material = "CH4"
+file = "CH4/ityaksov_2008__rayleigh_CH4.csv"
+table = "tbl_0ec99fd2f68e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, measured (six wavelengths; 203.76 and 210.12 nm not measured). F_k = 1 assumed (CCl4's small depolarization, p. 6)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "rayleigh_SF6"
+material = "SF6"
+file = "SF6/ityaksov_2008__rayleigh_SF6.csv"
+table = "tbl_0ec99fd2f68e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1, measured (seven wavelengths; 203.76 nm not measured). F_k = 1 (p. 7)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "predicted_N2"
+material = "N2"
+file = "N2/ityaksov_2008__predicted_N2.csv"
+table = "tbl_0ec99fd2f68e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, predicted from Eqs. (8) and (9) (Griesmann and Burnett's refractive indices, Bates's King factor); +- from those formulas' uncertainties. Not a measurement."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "predicted_CH4"
+material = "CH4"
+file = "CH4/ityaksov_2008__predicted_CH4.csv"
+table = "tbl_0ec99fd2f68e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, predicted from Eq. (10) (sneep_2005's fit to Hohm 1993) with F_k = 1, extrapolated far below its 325 nm limit. Not a measurement."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+king_factor = 1.0
+
+[[datasets]]
+id = "predicted_SF6"
+material = "SF6"
+file = "SF6/ityaksov_2008__predicted_SF6.csv"
+table = "tbl_0ec99fd2f68e"
+quantity = "rayleigh_cross_section"
+unit = "cm2"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 1, predicted from Eq. (11) (sneep_2005's two-point fit to vukovic_1996) with F_k = 1; no uncertainty printed. Not a measurement."
+[datasets.parameters]
+king_factor = 1.0
+
+[[formulas]]
+id = "n2_eq8"
+material = "N2"
+equation = "Eq. (8), p. 5"
+printed = "n(lambda) - 1 = (3.635 lambda^2 / (43.878 x 10^-5 lambda^2 - 1) + 0.0261 lambda^2 / (0.134 x 10^-5 lambda^2 - 1)) x 10^-8"
+variable = "lambda: wavelength in Angstrom (the unit is not stated; only Angstrom gives n - 1 near 3e-4), vacuum"
+state = { pressure_pa = 101325.0, temperature_k = 293.0 }
+density = "real"
+range = "about 145-270 nm (Griesmann and Burnett's 31 values)"
+coefficients = { a1 = "3.635", b1 = "43.878e-5", a2 = "0.0261", b2 = "0.134e-5" }
+reproduced_from = ["griesmann_1999"]
+check = "The authors' two-term Sellmeier fit to Griesmann and Burnett's 273.15 K values after scaling them to 293 K and 101 325 Pa with Eqs. (6) and (7) (real gas, Z = 1 - (P/101325)(317.6 - T) x 10^-5). As printed (lambda in A) it gives 0.944-0.946 times griesmann_1999's 273.15 K values at every one of its N2 wavelengths (149-279 nm), whereas the stated scaling to 293 K gives 0.932 (and to 288.15 K, ideal, 0.948): the formula does not correspond to the stated 293 K. With Eq. (9) and N = 2.5469e19 cm^-3 it reproduces Table 1's predicted N2 column to 0.5 % (0.3-0.5 % high, the rounding of 0.0261 alone is 0.2 % of the dominant term). Checked 2026-09-25."
+notes = "The authors say 'the absolute uncertainty achieved during the fit is better than 0.1%' (p. 5). Not independent of griesmann_1999 (curated)."
+
+[[formulas]]
+id = "n2_king_eq9"
+material = "N2"
+equation = "Eq. (9), p. 5"
+printed = "F_k(lambda) = 1.03 + 3.17 x 10^-12 / lambda^2"
+variable = "lambda: wavelength in cm"
+range = "200-633 nm, 'with an uncertainty better than 1%'"
+coefficients = { a = "1.03", b = "3.17e-12" }
+reproduced_from = ["D. R. Bates, Planet. Space Sci. 32, 785 (1984)"]
+check = "Bates's King factor as quoted by sneep_2005 (Eq. 12) has the constant 1.034; here 1.03 (page image checked). With 1.03 Table 1's predicted N2 values are reproduced to 0.5 % (see n2_eq8); 1.034 would raise them by a further 0.4 %. Checked 2026-09-25."
+
+[[formulas]]
+id = "ch4_eq10"
+material = "CH4"
+equation = "Eq. (10), p. 6"
+printed = "n(lambda) - 1 = (46662 + 4.02 x 10^-6 / lambda^2) x 10^-8"
+variable = "lambda: wavelength in cm"
+state = "1atm_15C"
+density = "ideal"
+range = "325-633 nm (Hohm's data), extrapolated here to 197.7 nm"
+coefficients = { a = "46662", b = "4.02e-6" }
+reproduced_from = ["sneep_2005"]
+check = "Identical to sneep_2005's Eq. (18); with N = 2.5469e19 cm^-3 and F_k = 1 it reproduces Table 1's predicted CH4 column to 0.01 at all eight wavelengths. Checked 2026-09-25."
+
+[[formulas]]
+id = "sf6_eq11"
+material = "SF6"
+equation = "Eq. (11), p. 8"
+printed = "n(lambda) - 1 = (71517 + 5 x 10^-6 / lambda^2) x 10^-8"
+variable = "lambda: wavelength in cm"
+state = "1atm_15C"
+density = "ideal"
+range = "633-1300 nm (two points), extrapolated here to 197.7 nm"
+coefficients = { a = "71517", b = "5e-6" }
+reproduced_from = ["sneep_2005"]
+check = "sneep_2005's Eq. (21) with 4.996 rounded to 5; with N = 2.5469e19 cm^-3 and F_k = 1 it reproduces Table 1's predicted SF6 column to 0.01. Checked 2026-09-25."
+
+[[formulas]]
+id = "n2_power"
+material = "N2"
+equation = "Eq. (5) with Table 2, p. 5"
+printed = "sigma_R = sigma nu^(4 + epsilon); experimental sigma = 1.80 +- 0.06 x 10^-46, epsilon = 0.534 +- 0.003; predicted sigma = 1.796 x 10^-46, epsilon = 0.529"
+variable = "nu: vacuum wavenumber in cm^-1; sigma_R in cm^2"
+range = "197.70-270.15 nm"
+coefficients = { sigma_exp = "1.80e-46", epsilon_exp = "0.534", sigma_predicted = "1.796e-46", epsilon_predicted = "0.529" }
+check = "The predicted pair gives 3.62, 2.456, 0.88 x 10^-25 cm^2 at 197.70, 215.38, 270.15 nm against Table 1's predicted 3.62, 2.43, 0.89. Checked 2026-09-25."
+notes = "Fitted one parameter at a time (strong correlation). The text's epsilon = 0.543 (p. 6) is a transposition of 0.534."
+
+[[formulas]]
+id = "ch4_power"
+material = "CH4"
+equation = "Eq. (5) with Table 2, p. 5"
+printed = "experimental sigma = 0.94 +- 0.02 x 10^-46, epsilon = 0.699 +- 0.002; predicted sigma = 0.942 x 10^-46, epsilon = 0.689"
+variable = "nu: vacuum wavenumber in cm^-1; sigma_R in cm^2"
+range = "197.70-270.15 nm"
+coefficients = { sigma_exp = "0.94e-46", epsilon_exp = "0.699", sigma_predicted = "0.942e-46", epsilon_predicted = "0.689" }
+check = "The predicted pair gives 10.74, 7.19, 2.49 x 10^-25 cm^2 at 197.70, 215.38, 270.15 nm against Table 1's predicted 10.82, 7.25, 2.61 (5 % at 270 nm). Checked 2026-09-25."
+
+[[formulas]]
+id = "sf6_power"
+material = "SF6"
+equation = "Eq. (5) with Table 2, p. 5"
+printed = "experimental sigma = 17.90 +- 0.76 x 10^-46, epsilon = 0.490 +- 0.004; predicted sigma = 17.897 x 10^-46, epsilon = 0.490"
+variable = "nu: vacuum wavenumber in cm^-1; sigma_R in cm^2"
+range = "197.70-270.15 nm"
+coefficients = { sigma_exp = "17.90e-46", epsilon_exp = "0.490", sigma_predicted = "17.897e-46", epsilon_predicted = "0.490" }
+check = "The predicted pair gives 23.64, 16.10, 5.82 x 10^-25 cm^2 at 197.70, 215.38, 270.15 nm against Table 1's predicted 23.71, 16.04, 5.88. Checked 2026-09-25."

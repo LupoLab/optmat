@@ -1,0 +1,137 @@
+citation = "A. A. Mironov, E. G. Gelfer, I. I. Tupitsyn, A. Beck, M. Jirka, O. Klimo, S. Meuren, G. Oberreit, T. Smorodnikova, R. Taieb, S. Weber, C. Riconda, M. Grech and S. V. Popruzhenko, \"Strong-field ionization in particle-in-cell simulations\", arXiv:2501.11672v2 (2025)"
+doi = "10.48550/arXiv.2501.11672"
+library = "Mironov_2025_StrongFieldIonization"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Tunnel (PPT) ionisation rates in particle-in-cell codes (SMILEI) and rate \
+equations: the m dependence, nonsequential pathways through inner subshells, and \
+barrier-suppression corrections (Tong-Lin, Kostyukov-Artemenko-Golovanov), \
+benchmarked on argon Ar8+ -> Ar16+; the asymptotic coefficients C_n*l of argon's ions \
+from finite-difference Hartree-Fock orbitals compared with the Hartree and ADK \
+formulas (Appendix A)."""
+notes = """The library copy is the arXiv preprint 2501.11672v2 (21 PDF pages); no journal \
+version is in the library. Authors as on the first page.
+
+EXTRACTED. Table III (Appendix A, p. 17): C_n*l of Ar (charge 0, 3p^6: exact and ADK) \
+and Ar+ (charge 1, 3p^5: exact, Hartree and ADK). Ar2+ ... Ar17+ are not curated \
+materials (Table III gives them: exact 0.842, 0.876, 0.772, 0.689 for 3p^4 ... 3p^1, \
+0.954, 0.88 for 3s^2, 3s, 0.652 ... 0.623 for 2p^6 ... 2p, 1.043, 1.018 for 2s^2, 2s, \
+1.003, 1.003 for 1s^2, 1s). The neutral atom's Hartree entry '1.0*' is 'set manually, \
+as Eq. (11) is not applicable to neutral atoms [Eq. (11) can take zero or even a \
+complex value in this case]' (p. 17): not a coefficient, not taken. The relative \
+errors Delta_rel = |C^exact - C|/C^exact are in the dataset notes.
+
+THE NORMALISATION. Eq. (8), p. 4, as printed: psi_n*lm(r) ~ 2 C_n*l sqrt(kappa) (kappa \
+r)^(n* - 1) e^(-kappa r) Y_lm(r/r), kappa = sqrt(2 I_p) (page image checked: sqrt(kappa)). \
+Eq. (6), the PPT rate: w = 4 C_n*l^2 B_l|m| I_p (2/F(t))^(2n* - |m| - 1) exp(-2/(3F(t))), \
+B_l|m| = (2l + 1) Gamma(l + |m| + 1)/(2^|m| Gamma(|m| + 1) Gamma(l - |m| + 1)), n* = \
+Z*/sqrt(2 I_p), Z* = Z + 1, F = E/E_ch, E_ch = (2 I_p)^(3/2) (Eq. (7)). Eq. (11), \
+Hartree: C_n*l^2 = 2^(2n* - 2)/(n* Gamma(n* + l + 1) Gamma(n* - l)). DOUBT: for a \
+hydrogen-like ion (R_1s = 2 Z^(3/2) e^(-Z r)) Eq. (8) as printed gives C = Z, whereas \
+Eq. (6) gives the exact hydrogen-like static rate with C = 1 and Table III prints C = \
+1.003 and 1.0 for Ar17+ (1s, Z* = 18): the table's coefficients follow the rate, as \
+if Eq. (8) read kappa^(3/2) instead of sqrt(kappa). With kappa^(3/2), 2 C_n*l of this \
+paper is ADK's C_n*l* of Eq. (3) of ammosov_1986 (Eq. (11) here is ADK's Eq. (19) \
+divided by 4). For Ar (kappa = 1.076 with tong_2005's I_p = 0.579 au) the two \
+readings differ by 8 %, for Ar+ (kappa = 1.426, I_p = 1.016 au) by 43 %; it should be settled before converting to another normalisation. \
+The exact values are 'stable to 4-5 significant digits' around the matching point \
+(p. 17); no other accuracy is stated.
+
+OTHER CONTENT (notes only). Table I (p. 9): I_p (au), m and g_|m| for three ionisation \
+pathways of Ar8+ -> Ar15+ (not curated charge states), from the argon levels of ref. \
+89. Table II (p. 10): the order of extraction of electrons by |m| and the factor g_|m| \
+(2, 1, 4, 3, 2, 1, ...), the number of electrons left with that |m|, multiplying the \
+rate (Eq. (19)); Nuter et al.'s alternative, Eq. (16), N/(2l + 1) sum_m w, with N the \
+electrons in the l-shell (footnote 3: 'in the original work [23] the factor N/(2l+1) \
+is not present'). Barrier suppression: Tong-Lin, Eq. (14), w_TL = w_PPT exp(-(alpha/8) \
+(E/E_BS) n*), E_BS = I_p^2/(4 Z*) (Eq. (10)), used with alpha = 6 (p. 14; 'the best fit \
+was achieved for hydrogen in the interval alpha = 6..9', p. 5, a loose reading of \
+tong_2005, whose alpha 6-9 spans several atoms); Kostyukov-Artemenko-Golovanov, Eq. \
+(15), with alpha_1 = 2.4 and alpha_2 = 0.8 'following Refs. [64, 83]' (p. 6): model \
+constants, not argon properties. Figures: PIC and rate-equation ion profiles of argon \
+against peak field (0.8 um).
+
+The rate Eq. (6) is per electron in a given (l, m) state; the occupation enters as \
+g_|m| (Eq. (19)) or N/(2l + 1) (Eq. (16)), relevant to solprop's occupancy question \
+(TC-439)."""
+
+[[datasets]]
+id = "exact_Ar"
+material = "Ar"
+file = "Ar/mironov_2025__exact_Ar.csv"
+table = "tbl_bcc8c2bd802b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 17), ion charge 0, configuration 3p^6: C_n*l (exact) of the 3p orbital (row l = 1). 'C_n*l^exact is extracted from the numerical solution to the Schrodinger equation for asymptotic electron states' (caption): the finite-difference Hartree-Fock radial function matched to the hydrogen-like tail (Eq. (8)) where P_nl^2 is 0.01 of its maximum, stable to 4-5 significant digits around that point, with the correction A = A_HF (gamma_exp/gamma)^(Z_a/gamma + 1/2) (Eq. (A2)) for the difference between the HF and experimental I_p (pp. 16-17)."
+[datasets.parameters]
+model = "adk"
+orbital = "3p"
+m = "not stated (the coefficient does not depend on m; Eq. (6) carries it)"
+normalisation = "Mironov et al. 2025 Eq. (8), p. 4, as printed: psi_n*lm(r) ~ 2 C_n*l sqrt(kappa) (kappa r)^(n* - 1) exp(-kappa r) Y_lm(r/r), kappa = sqrt(2 I_p), n* = Z*/kappa, atomic units; the coefficient of the PPT rate Eq. (6), w = 4 C_n*l^2 B_l|m| I_p (2/F)^(2n* - |m| - 1) exp(-2/(3F)), F = E/(2 I_p)^(3/2) (see the record's notes on the sqrt(kappa))"
+approximation = "exact"
+
+[[datasets]]
+id = "adk_Ar"
+material = "Ar"
+file = "Ar/mironov_2025__adk_Ar.csv"
+table = "tbl_bcc8c2bd802b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 17), ion charge 0, configuration 3p^6: C_n*l (ADK) of the 3p orbital (row l = 1). The ADK variant of Eq. (11), l replaced by l* = n* - 1 (the B_l|m| factor keeps l; p. 16). Table III's relative error against the exact value: 0.015."
+[datasets.parameters]
+model = "adk"
+orbital = "3p"
+m = "not stated (the coefficient does not depend on m; Eq. (6) carries it)"
+normalisation = "Mironov et al. 2025 Eq. (8), p. 4, as printed: psi_n*lm(r) ~ 2 C_n*l sqrt(kappa) (kappa r)^(n* - 1) exp(-kappa r) Y_lm(r/r), kappa = sqrt(2 I_p), n* = Z*/kappa, atomic units; the coefficient of the PPT rate Eq. (6), w = 4 C_n*l^2 B_l|m| I_p (2/F)^(2n* - |m| - 1) exp(-2/(3F)), F = E/(2 I_p)^(3/2) (see the record's notes on the sqrt(kappa))"
+approximation = "ADK"
+
+[[datasets]]
+id = "exact_Ar+"
+material = "Ar+"
+file = "Ar+/mironov_2025__exact_Ar+.csv"
+table = "tbl_bcc8c2bd802b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 17), ion charge 1, configuration 3p^5: C_n*l (exact) of the 3p orbital (row l = 1). 'C_n*l^exact is extracted from the numerical solution to the Schrodinger equation for asymptotic electron states' (caption): the finite-difference Hartree-Fock radial function matched to the hydrogen-like tail (Eq. (8)) where P_nl^2 is 0.01 of its maximum, stable to 4-5 significant digits around that point, with the correction A = A_HF (gamma_exp/gamma)^(Z_a/gamma + 1/2) (Eq. (A2)) for the difference between the HF and experimental I_p (pp. 16-17)."
+[datasets.parameters]
+model = "adk"
+orbital = "3p"
+m = "not stated (the coefficient does not depend on m; Eq. (6) carries it)"
+normalisation = "Mironov et al. 2025 Eq. (8), p. 4, as printed: psi_n*lm(r) ~ 2 C_n*l sqrt(kappa) (kappa r)^(n* - 1) exp(-kappa r) Y_lm(r/r), kappa = sqrt(2 I_p), n* = Z*/kappa, atomic units; the coefficient of the PPT rate Eq. (6), w = 4 C_n*l^2 B_l|m| I_p (2/F)^(2n* - |m| - 1) exp(-2/(3F)), F = E/(2 I_p)^(3/2) (see the record's notes on the sqrt(kappa))"
+approximation = "exact"
+
+[[datasets]]
+id = "hartree_Ar+"
+material = "Ar+"
+file = "Ar+/mironov_2025__hartree_Ar+.csv"
+table = "tbl_bcc8c2bd802b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 17), ion charge 1, configuration 3p^5: C_n*l (Hartree) of the 3p orbital (row l = 1). The Hartree asymptotic formula Eq. (11), C_n*l^2 = 2^(2n* - 2)/(n* Gamma(n* + l + 1) Gamma(n* - l)), with the orbital's l. Table III's relative error against the exact value: 0.534."
+[datasets.parameters]
+model = "adk"
+orbital = "3p"
+m = "not stated (the coefficient does not depend on m; Eq. (6) carries it)"
+normalisation = "Mironov et al. 2025 Eq. (8), p. 4, as printed: psi_n*lm(r) ~ 2 C_n*l sqrt(kappa) (kappa r)^(n* - 1) exp(-kappa r) Y_lm(r/r), kappa = sqrt(2 I_p), n* = Z*/kappa, atomic units; the coefficient of the PPT rate Eq. (6), w = 4 C_n*l^2 B_l|m| I_p (2/F)^(2n* - |m| - 1) exp(-2/(3F)), F = E/(2 I_p)^(3/2) (see the record's notes on the sqrt(kappa))"
+approximation = "Hartree"
+
+[[datasets]]
+id = "adk_Ar+"
+material = "Ar+"
+file = "Ar+/mironov_2025__adk_Ar+.csv"
+table = "tbl_bcc8c2bd802b"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 17), ion charge 1, configuration 3p^5: C_n*l (ADK) of the 3p orbital (row l = 1). The ADK variant of Eq. (11), l replaced by l* = n* - 1 (the B_l|m| factor keeps l; p. 16). Table III's relative error against the exact value: 0.05."
+[datasets.parameters]
+model = "adk"
+orbital = "3p"
+m = "not stated (the coefficient does not depend on m; Eq. (6) carries it)"
+normalisation = "Mironov et al. 2025 Eq. (8), p. 4, as printed: psi_n*lm(r) ~ 2 C_n*l sqrt(kappa) (kappa r)^(n* - 1) exp(-kappa r) Y_lm(r/r), kappa = sqrt(2 I_p), n* = Z*/kappa, atomic units; the coefficient of the PPT rate Eq. (6), w = 4 C_n*l^2 B_l|m| I_p (2/F)^(2n* - |m| - 1) exp(-2/(3F)), F = E/(2 I_p)^(3/2) (see the record's notes on the sqrt(kappa))"
+approximation = "ADK"
+

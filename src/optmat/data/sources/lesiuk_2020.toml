@@ -1,0 +1,197 @@
+citation = "M. Lesiuk, M. Przybytek and B. Jeziorski, Phys. Rev. A 102, 052816 (2020)"
+doi = "10.1103/physreva.102.052816"
+library = "Lesiuk_2020_TheoreticalDeterminationPolarizability"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ab initio composite calculation of the static dipole polarizability alpha_0 \
+and the dispersion (Cauchy) coefficients alpha_2, alpha_4 of the neon atom (20Ne, \
+nuclear mass 36434.0 m_e), alpha(omega) = alpha_0 + alpha_2 omega^2 + alpha_4 omega^4 + \
+... (Eq. (3)). Nonrelativistic clamped-nucleus part: all-electron linear-response \
+(orbital-unrelaxed) CC3 in purpose-built Slater-type (wtccX) basis sets, extrapolated to \
+the complete basis set with the X^-3 formula; post-CC3 full triples and quadruples \
+(frozen 1s) for alpha_0 and a small-basis full-CI correction (50 % uncertainty) for all \
+three. Relativistic: one-electron Breit-Pauli (mass-velocity + one-electron Darwin) by \
+finite field/finite difference at CCSD(T) (alpha_0) and CC3 (alpha_2, alpha_4); \
+two-electron Darwin and Breit for alpha_0. QED: leading-order one-electron term with \
+the Bethe logarithm, Eq. (9); higher-order one-loop term, Eq. (10). Finite nuclear mass \
+by reduced-mass scaling, Eqs. (12)-(13) (mass polarization neglected); finite nuclear \
+size, Eq. (11). CODATA 2018 constants; c = 137.035999084 a.u."""
+notes = """Atomic units throughout (polarizability in e^2 a0^2/Eh = 4 pi eps0 a0^3, omega in \
+hartree). Corrections included in the Table IX totals: alpha_0 relativistic (one- and \
+two-electron Breit-Pauli), leading and higher-order QED, finite nuclear mass (reduced \
+mass) and size, all for 20Ne; alpha_2 and alpha_4 the one-electron relativistic, QED and \
+finite-mass terms (the two-electron relativistic, post-CC3 triples/quadruples and \
+nuclear-size terms not evaluated for them). 'The final error is obtained by summing the \
+errors in the individual components quadratically' (p. 7), dominated by the full-CI \
+correction; no confidence level stated. The budget rows sum to the totals (2.66080, \
+2.850, 4.932; checked 2026-09-24).
+
+Frequency range (p. 2): the expansion is used 'well below the first atomic resonant \
+frequency (omega about 0.6107 a.u.)'; at 633 nm (omega about 0.072 a.u.) 'the inclusion \
+of terms only up to omega^4 is sufficient to reach relative accuracy in alpha(omega) \
+better than 10^-6'.
+
+alpha is the electric polarizability only. The refractive index needs alpha + chi with \
+the static magnetic susceptibility (Eq. (2), n - 1 = 2 pi rho (alpha + chi) at low \
+density): chi_0 = -8.484(19) x 10^-5 a.u. (abstract, p. 10; -7.571(17) x 10^-6 cm^3/mol; \
+nonrelativistic -8.483(8) x 10^-5, Eq. (16), with an estimated relativistic allowance), \
+-32 ppm of alpha_0. The magnetic susceptibility is out of scope here and not extracted; \
+it must be added to these alpha before comparison with refractivity data.
+
+Table XI: the row labelled 'Kumar and Meath [29]' cites Kumar and Thakkar, J. Chem. \
+Phys. 132, 074301 (2010) (Ref. 29, and the text p. 10), and its numbers are that \
+paper's neon S(-2), S(-4), S(-6) (kumar_2010); the label is wrong, the values are \
+right. The best earlier theoretical alpha_0, 2.6617(20) (Klopper et al. with Larsen et \
+al.'s FCI correction, as combined in Gaiser and Fellmuth 2018, p. 10), is quoted in the \
+text only and not extracted.
+
+Not extracted: Tables I-VIII and X (helium test, CC3 by basis set, core, post-CC3, \
+relativistic and <r^2> components)."""
+
+[[datasets]]
+id = "cauchy_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__cauchy_Ne.csv"
+table = "tbl_68954d2edbcd"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "primary"
+notes = "Table IX 'Total': alpha_0, alpha_2, alpha_4 = S(-2), S(-4), S(-6), rows by moment order k; also the abstract and Table XI 'This work'. Electric polarizability only (add chi_0 = -8.484e-5 a.u. for refractive-index comparisons; source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "chan_1992_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__chan_1992_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["W. F. Chan, G. Cooper, X. Guo, and C. E. Brion, Phys. Rev. A 45, 1420 (1992)"]
+notes = "Table XI 'Chan et al. [89]' (experimental): S(-4) = 2.938, S(-6) = 5.137 from the dipole (e,e) photoabsorption oscillator strengths of neon; 'significantly less accurate than our values' (p. 10). The original is not in the library."
+
+[[datasets]]
+id = "kumar_2010_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__kumar_2010_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_2010"]
+notes = "Table XI, row labelled 'Kumar and Meath [29]' (wrong label: Ref. 29 is Kumar and Thakkar 2010, whose neon S(-2), S(-4), S(-6) these are); 'accurate to about +-1%' (p. 10)."
+
+[[datasets]]
+id = "orcutt_1967_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__orcutt_1967_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1967)"]
+notes = "Table XI 'Orcutt and Cole [90]', first value 2.658 (dielectric constant). The original is in the library (Orcutt_1967_DielectricConstantsImperfect) but has no source record yet."
+
+[[datasets]]
+id = "orcutt_1967_compressibility_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__orcutt_1967_compressibility_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1967)"]
+notes = "Table XI, second Orcutt and Cole value 2.663, note a: 'After applying the correction for the compressibility' (who applied it is not said). The original is in the library but has no source record yet."
+
+[[datasets]]
+id = "gaiser_2010_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__gaiser_2010_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2010"]
+notes = "Table XI 'Gaiser and Fallmuth [91]' (sic, Fellmuth): 2.66110(3), Europhys. Lett. 90, 63002 (2010), dielectric-constant gas thermometry; the original is gaiser_2010."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "gaiser_2018_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__gaiser_2018_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["gaiser_2018"]
+notes = "Table XI 'Gaiser and Fallmuth [7]' (sic): 2.661057(7), the most accurate static value, dielectric-constant gas thermometry; it 'lies within our error bars, but is about 50 times more accurate' (p. 10). The original is now curated (gaiser_2018), which the fits use instead."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "pawlowski_2005_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__pawlowski_2005_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["F. Pawłowski, P. Jørgensen, and C. Hättig, in Advances in Quantum Chemistry, Vol. 48 (Academic Press, San Diego, CA, 2005), pp. 9-21"]
+notes = "Table XI 'Pawlowski et al. [26]' (theoretical, CC3): S(-2), S(-4), S(-6); a similar accuracy to Kumar and Thakkar's (p. 10)."
+
+[[datasets]]
+id = "klopper_2004_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__klopper_2004_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["W. Klopper, S. Coriani, T. Helgaker, and P. Jørgensen, J. Phys. B: At. Mol. Opt. Phys. 37, 3753 (2004)"]
+notes = "Table XI 'Klopper et al. [22]' (theoretical, relativistic): static 2.66312."
+
+[[datasets]]
+id = "larsen_1999_Ne"
+material = "Ne"
+file = "Ne/lesiuk_2020__larsen_1999_Ne.csv"
+table = "tbl_c9bc797bccfd"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["H. Larsen, J. Olsen, C. Hättig, P. Jørgensen, O. Christiansen, and J. Gauss, J. Chem. Phys. 111, 1917 (1999)"]
+notes = "Table XI 'Larsen et al. [23]' (theoretical): static 2.673."
+
+[[formulas]]
+id = "cauchy_theory"
+form = "alpha_series"
+terms = { c = ["2.66080", "2.850", "4.932"] }
+range_nm = [450.0, "inf"]
+material = "Ne"
+equation = "Eq. (3), p. 2, with Table IX (Total)"
+printed = "alpha(omega) = alpha_0 + alpha_2 omega^2 + alpha_4 omega^4 + ...; alpha_0 = 2.66080(36), alpha_2 = 2.850(7), alpha_4 = 4.932(14)"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree); alpha in atomic units"
+state = "none (per atom)"
+density = "none"
+range = "'well below the first atomic resonant frequency (omega about 0.6107 a.u.)'; the paper quantifies the truncation only at 633 nm (better than 1e-6). range_nm = [450, inf] is the extractor's choice (omega <= 0.1 a.u., as Lesiuk and Jeziorski 2023 state for argon), not the paper's: TC-64."
+coefficients = { alpha_0 = "2.66080", alpha_2 = "2.850", alpha_4 = "4.932" }
+check = "The Table IX budget rows sum to the three totals. At 632.9908 nm (omega = 0.0719811 a.u.) it gives 2.675699 (alpha_2 term 0.014767, alpha_4 term 0.000132); with Gaiser and Fellmuth's 2018 alpha_0 instead, 2.675956. No dynamic value is printed in the paper to compare with. Checked 2026-09-24."
+notes = "The paper's own ab initio series. ELECTRIC polarizability: the magnetic susceptibility chi_0 = -8.484(19)e-5 a.u. (32 ppm of alpha_0) is not included; add it for the refractive index (Eq. (2))."

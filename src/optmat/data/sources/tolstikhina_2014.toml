@@ -1,0 +1,342 @@
+citation = "I. Yu. Tolstikhina, T. Morishita and O. I. Tolstikhin, \"Application of the many-electron weak-field asymptotic theory of tunneling ionization to atoms\", Phys. Rev. A 90, 053413 (2014)"
+doi = "10.1103/PhysRevA.90.053413"
+library = "Tolstikhina_2014_ApplicationManyElectron"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The many-electron weak-field asymptotic theory (ME-WFAT) of tunnelling \
+ionisation (Tolstikhin, Madsen & Morishita, Phys. Rev. A 89, 013421 (2014), ref. 2): in \
+a static field F the rate is Gamma = |g|^2 W(F) [1 + O(F ln F)] (Eq. 1), W(F) the \
+one-electron field factor (Eq. 2), and g the asymptotic coefficient of the Dyson \
+orbital (Eqs. 3-6), 'an exact asymptotic result, provided the wave functions in Eq. (3) \
+are exact' (apart from the nonrelativistic approximation; p. 053413-2). Implemented \
+here with Hartree-Fock orbitals of the atom and the ion (Froese Fischer's program, ref. \
+15, its 2008 version) in the one-configuration approximation: g = sqrt(p) R_N g_N \
+(Eq. 17), p the occupation factor (2 for a closed-shell atom: 'for S = 0 there are two \
+electrons in the atom that have equal ionization rates', p. -3), R_N the relaxation \
+coefficient from the overlaps of the ionic and atomic orbitals (Eq. 14, Appendix), g_N \
+the asymptotic coefficient of the ionising HF orbital (Eqs. 11-12), kappa from its \
+orbital energy (Eq. 10). Leading order in the weak-field limit; valid for F well below \
+F_c ~ kappa^4/8|2 - kappa| (p. -2)."""
+notes = """Journal pp. 053413-1 to -9 = PDF pages 1-9. Identity checked against the first \
+page.
+
+WHAT IS TAKEN. Table I (p. 053413-4, tbl_bb65aa194b35; every taken cell checked against \
+the table image): for He (1s), Ne (2p), Ar (3p), Kr (4p) and Xe (5p), all 1S with p = 2 \
+and M = 0, the orbital exponent kappa, the relaxation coefficient R_N, the orbital's \
+coefficient g_N and the atom's g. Not taken: H (g = sqrt 2 by definition), Li, Be, B, Na, \
+Mg, Al (not curated materials), and Tables II-IV (open shells, configuration \
+interaction).
+
+WHAT THEY ARE. Hartree-Fock, nonrelativistic, leading order in the weak-field limit. \
+'We also include in the table Kr and Xe, since they are of interest for applications \
+(although relativistic effects in these atoms may be non-negligible)' (p. -4). kappa is \
+the HF orbital exponent (Koopmans), 0.8 to 3.6 % above sqrt(2 I_p) of the measured \
+ionisation energies (He 1.354958 against 1.3443, Ne 1.304155 against 1.2590, Ar \
+1.087215 against 1.0762). For helium the accurate two-electron g is 2.932 (ref. 2), \
+'much closer' to Table I's 2.942 than 2.990 without R_N (p. -5): relaxation is weak \
+(R_N 0.977 to 0.985) and for helium correlation changes g by 0.3 %.
+
+WHAT THEY TEST. With tong_2002's C_l the same formula is optmat's one-electron static \
+rate at weak field, so (g/g_TZL)^2, g_TZL = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l, is the \
+atom's weak-field rate over the model's one electron: He 1.66, Ar 1.72, Kr 1.78, Xe \
+1.82, but Ne 0.53, its g_N half of what tong_2002's C_l implies (TC-852)."""
+
+[[datasets]]
+id = "g_He"
+material = "He"
+file = "He/tolstikhina_2014__g_He.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g: the atom's weak-field coefficient g = sqrt(p) R_N g_N (Eq. 17), p = 2, the ionising 1s orbital with m = 0, Hartree-Fock with relaxation; the rate Gamma = |g|^2 W(F) (Eq. 1). Includes the occupation factor: its square counts both electrons of the orbital."
+[datasets.parameters]
+model = "wfat"
+orbital = "1s"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "the atom (p = 2 included)"
+
+[[datasets]]
+id = "g_orbital_He"
+material = "He"
+file = "He/tolstikhina_2014__g_orbital_He.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g_N: the asymptotic coefficient of the ionising Hartree-Fock 1s orbital (Eqs. 11-12), m = 0, one electron, without relaxation."
+[datasets.parameters]
+model = "wfat"
+orbital = "1s"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "one electron (the orbital)"
+
+[[datasets]]
+id = "relaxation_He"
+material = "He"
+file = "He/tolstikhina_2014__relaxation_He.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column R_N: the relaxation coefficient of the ionising 1s orbital (Eq. 14), from the overlaps of the Hartree-Fock orbitals of the ion and the atom (Appendix)."
+[datasets.parameters]
+model = "wfat"
+parameter = "R_N"
+
+[[datasets]]
+id = "kappa_He"
+material = "He"
+file = "He/tolstikhina_2014__kappa_He.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column kappa (the CSV's header 'x'): the exponent of the ionising Hartree-Fock 1s orbital, kappa = sqrt(-2 epsilon_N) (Eq. 10), printed with its digits grouped by spaces. Not sqrt(2 I_p) of the measured ionisation energy."
+[datasets.parameters]
+model = "wfat"
+parameter = "kappa"
+
+[[datasets]]
+id = "g_Ne"
+material = "Ne"
+file = "Ne/tolstikhina_2014__g_Ne.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g: the atom's weak-field coefficient g = sqrt(p) R_N g_N (Eq. 17), p = 2, the ionising 2p orbital with m = 0, Hartree-Fock with relaxation; the rate Gamma = |g|^2 W(F) (Eq. 1). Includes the occupation factor: its square counts both electrons of the orbital."
+[datasets.parameters]
+model = "wfat"
+orbital = "2p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "the atom (p = 2 included)"
+
+[[datasets]]
+id = "g_orbital_Ne"
+material = "Ne"
+file = "Ne/tolstikhina_2014__g_orbital_Ne.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g_N: the asymptotic coefficient of the ionising Hartree-Fock 2p orbital (Eqs. 11-12), m = 0, one electron, without relaxation."
+[datasets.parameters]
+model = "wfat"
+orbital = "2p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "one electron (the orbital)"
+
+[[datasets]]
+id = "relaxation_Ne"
+material = "Ne"
+file = "Ne/tolstikhina_2014__relaxation_Ne.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column R_N: the relaxation coefficient of the ionising 2p orbital (Eq. 14), from the overlaps of the Hartree-Fock orbitals of the ion and the atom (Appendix)."
+[datasets.parameters]
+model = "wfat"
+parameter = "R_N"
+
+[[datasets]]
+id = "kappa_Ne"
+material = "Ne"
+file = "Ne/tolstikhina_2014__kappa_Ne.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column kappa (the CSV's header 'x'): the exponent of the ionising Hartree-Fock 2p orbital, kappa = sqrt(-2 epsilon_N) (Eq. 10), printed with its digits grouped by spaces. Not sqrt(2 I_p) of the measured ionisation energy."
+[datasets.parameters]
+model = "wfat"
+parameter = "kappa"
+
+[[datasets]]
+id = "g_Ar"
+material = "Ar"
+file = "Ar/tolstikhina_2014__g_Ar.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g: the atom's weak-field coefficient g = sqrt(p) R_N g_N (Eq. 17), p = 2, the ionising 3p orbital with m = 0, Hartree-Fock with relaxation; the rate Gamma = |g|^2 W(F) (Eq. 1). Includes the occupation factor: its square counts both electrons of the orbital."
+[datasets.parameters]
+model = "wfat"
+orbital = "3p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "the atom (p = 2 included)"
+
+[[datasets]]
+id = "g_orbital_Ar"
+material = "Ar"
+file = "Ar/tolstikhina_2014__g_orbital_Ar.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g_N: the asymptotic coefficient of the ionising Hartree-Fock 3p orbital (Eqs. 11-12), m = 0, one electron, without relaxation."
+[datasets.parameters]
+model = "wfat"
+orbital = "3p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "one electron (the orbital)"
+
+[[datasets]]
+id = "relaxation_Ar"
+material = "Ar"
+file = "Ar/tolstikhina_2014__relaxation_Ar.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column R_N: the relaxation coefficient of the ionising 3p orbital (Eq. 14), from the overlaps of the Hartree-Fock orbitals of the ion and the atom (Appendix)."
+[datasets.parameters]
+model = "wfat"
+parameter = "R_N"
+
+[[datasets]]
+id = "kappa_Ar"
+material = "Ar"
+file = "Ar/tolstikhina_2014__kappa_Ar.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column kappa (the CSV's header 'x'): the exponent of the ionising Hartree-Fock 3p orbital, kappa = sqrt(-2 epsilon_N) (Eq. 10), printed with its digits grouped by spaces. Not sqrt(2 I_p) of the measured ionisation energy."
+[datasets.parameters]
+model = "wfat"
+parameter = "kappa"
+
+[[datasets]]
+id = "g_Kr"
+material = "Kr"
+file = "Kr/tolstikhina_2014__g_Kr.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g: the atom's weak-field coefficient g = sqrt(p) R_N g_N (Eq. 17), p = 2, the ionising 4p orbital with m = 0, Hartree-Fock with relaxation; the rate Gamma = |g|^2 W(F) (Eq. 1). Includes the occupation factor: its square counts both electrons of the orbital."
+[datasets.parameters]
+model = "wfat"
+orbital = "4p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "the atom (p = 2 included)"
+
+[[datasets]]
+id = "g_orbital_Kr"
+material = "Kr"
+file = "Kr/tolstikhina_2014__g_orbital_Kr.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g_N: the asymptotic coefficient of the ionising Hartree-Fock 4p orbital (Eqs. 11-12), m = 0, one electron, without relaxation."
+[datasets.parameters]
+model = "wfat"
+orbital = "4p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "one electron (the orbital)"
+
+[[datasets]]
+id = "relaxation_Kr"
+material = "Kr"
+file = "Kr/tolstikhina_2014__relaxation_Kr.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column R_N: the relaxation coefficient of the ionising 4p orbital (Eq. 14), from the overlaps of the Hartree-Fock orbitals of the ion and the atom (Appendix)."
+[datasets.parameters]
+model = "wfat"
+parameter = "R_N"
+
+[[datasets]]
+id = "kappa_Kr"
+material = "Kr"
+file = "Kr/tolstikhina_2014__kappa_Kr.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column kappa (the CSV's header 'x'): the exponent of the ionising Hartree-Fock 4p orbital, kappa = sqrt(-2 epsilon_N) (Eq. 10), printed with its digits grouped by spaces. Not sqrt(2 I_p) of the measured ionisation energy."
+[datasets.parameters]
+model = "wfat"
+parameter = "kappa"
+
+[[datasets]]
+id = "g_Xe"
+material = "Xe"
+file = "Xe/tolstikhina_2014__g_Xe.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g: the atom's weak-field coefficient g = sqrt(p) R_N g_N (Eq. 17), p = 2, the ionising 5p orbital with m = 0, Hartree-Fock with relaxation; the rate Gamma = |g|^2 W(F) (Eq. 1). Includes the occupation factor: its square counts both electrons of the orbital."
+[datasets.parameters]
+model = "wfat"
+orbital = "5p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "the atom (p = 2 included)"
+
+[[datasets]]
+id = "g_orbital_Xe"
+material = "Xe"
+file = "Xe/tolstikhina_2014__g_orbital_Xe.csv"
+table = "tbl_bb65aa194b35"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 053413-4), column g_N: the asymptotic coefficient of the ionising Hartree-Fock 5p orbital (Eqs. 11-12), m = 0, one electron, without relaxation."
+[datasets.parameters]
+model = "wfat"
+orbital = "5p"
+m = 0
+normalisation = "Tolstikhina et al. 2014 Eqs. (11)-(12): g_N = lim r->inf sqrt(2(2l+1)/kappa) (2r)^(-1/kappa) e^(kappa r) P_nl(r), P_nl the radial orbital times r, kappa the orbital exponent (Eq. 10); g = sqrt(p) R_N g_N (Eq. 17); the static rate Gamma = |g|^2 (kappa/2) (4 kappa^2/F)^(2/kappa - 1) exp(-2 kappa^3/3F) (Eqs. 1-2), atomic units. Per electron, g_N R_N = sqrt(2(2l+1)/kappa) 2^(-1/kappa) C_l in Tong, Zhao & Lin's C_l (tong_2002), with which Eqs. (1)-(2) are the static ADK rate"
+electrons = "one electron (the orbital)"
+
+[[datasets]]
+id = "relaxation_Xe"
+material = "Xe"
+file = "Xe/tolstikhina_2014__relaxation_Xe.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column R_N: the relaxation coefficient of the ionising 5p orbital (Eq. 14), from the overlaps of the Hartree-Fock orbitals of the ion and the atom (Appendix)."
+[datasets.parameters]
+model = "wfat"
+parameter = "R_N"
+
+[[datasets]]
+id = "kappa_Xe"
+material = "Xe"
+file = "Xe/tolstikhina_2014__kappa_Xe.csv"
+table = "tbl_bb65aa194b35"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "none"
+use = "check"
+notes = "Table I (p. 053413-4), column kappa (the CSV's header 'x'): the exponent of the ionising Hartree-Fock 5p orbital, kappa = sqrt(-2 epsilon_N) (Eq. 10), printed with its digits grouped by spaces. Not sqrt(2 I_p) of the measured ionisation energy."
+[datasets.parameters]
+model = "wfat"
+parameter = "kappa"

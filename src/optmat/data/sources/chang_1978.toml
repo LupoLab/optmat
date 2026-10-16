@@ -1,0 +1,343 @@
+citation = "R. S. F. Chang and D. W. Setser, \"Radiative lifetimes and two-body deactivation rate constants for Ar(3p5, 4p) and Ar(3p5, 4p') states\", J. Chem. Phys. 69, 3885-3897 (1978)"
+doi = "10.1063/1.437126"
+library = "Chang_1978_RadiativeLifetimesTwo"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Time-resolved laser-induced fluorescence in a flowing afterglow: Ar(4s, 3P2) \
+metastables (~5e10 cm-3, from a hollow cathode discharge; 3P0 : 3P2 about 1 : 8) pumped \
+to single 4p, 4p' levels by a nitrogen-laser-pumped dye laser (< 1 Angstrom, ~5 ns \
+FWHM; Table I's pump lines 696.5-912.3 nm), one-photon from 1s5; the strongest other \
+line of the level isolated by a 1 m (or 0.3 m) monochromator onto a cooled \
+photomultiplier and a boxcar (1 ns gate; response better than 3 ns). Single \
+exponential decays at 0.5-8 Torr of argon; the zero-pressure intercepts give the \
+radiative lifetimes, the slopes the two-body deactivation by ground-state argon (Eq. \
+3, k_I = 1/tau_rad + k_Q [Ar]), least squares. Product 4p, 4p' levels identified in \
+the emission spectra (300 ns gate) and their time profiles fitted with Eq. (6) for the \
+state-to-state k_nn'; the 4s, 4s' products (VUV) not observed, their sum by \
+difference. Branching ratios from a hollow-cathode lamp (0.1-0.2 Torr) on three \
+calibrated detection systems (550-1100 nm and an interferometer beyond 1000 nm), A = \
+branching ratio / tau_rad."""
+notes = """J. Chem. Phys. 69(9), 3885-3897 (1 November 1978) = PDF pages 2-14 (PDF page 1 \
+is the AIP download cover; journal page = PDF page + 3883). Identity checked on the \
+first page of the article (PDF p. 2: title, authors, Kansas State University, received \
+4 May 1978, footer J. Chem. Phys. 69(9), 1 Nov. 1978, 3885) on 2026-10-12. Tables II, \
+III and IV checked cell by cell against the table images and the rendered pages (pp. \
+3889, 3892).
+
+LEVELS. The paper's Paschen labels with its Racah labels (Tables II-IV, Fig. 1) and \
+NIST's (src/optmat/data/external/nist_asd/Ar_I_levels.tsv): 1s5, 1s4 = \
+3s2.3p5.(2P*<3/2>).4s 2[3/2]* J = 2, 1 (93143.76, 93750.60 cm-1); 1s3, 1s2 = \
+(2P*<1/2>).4s 2[1/2]* J = 0, 1 (94553.67, 95399.83); 2p1 = 4p'[1/2]0 = \
+(2P*<1/2>).4p 2[1/2] J = 0 (108722.62); 2p2 = 4p'[1/2]1 = (2P*<1/2>).4p 2[1/2] J = 1 \
+(107496.42); 2p3 = 4p'[3/2]2 = (2P*<1/2>).4p 2[3/2] J = 2 (107289.70); 2p4 = \
+4p'[3/2]1 = (2P*<1/2>).4p 2[3/2] J = 1 (107131.71); 2p5 = 4p[1/2]0 = (2P*<3/2>).4p \
+2[1/2] J = 0 (107054.27); 2p6 = 4p[3/2]2 (106237.55); 2p7 = 4p[3/2]1 (106087.26); \
+2p8 = 4p[5/2]2 (105617.27); 2p9 = 4p[5/2]3 (105462.76); 2p10 = 4p[1/2]1 (104102.10), \
+all (2P*<3/2>).4p 2[K] J. Evidence (script checks): every row's Paschen label agrees \
+with its printed Racah label; Table IV's 30 wavelengths (Angstrom, standard air) equal \
+NIST's level differences within the printed 1 Angstrom, and its g_k, g_i are the \
+levels' 2J + 1. OEP 8's two-photon levels are 2p1, 2p5 (J = 0) and 2p6, 2p8 (J = 2): \
+this paper has 2p6 and 2p8 only ('Due to the Delta J selection rules, the 2p1 and 2p5 \
+levels could not be excited starting from the Ar(3P2) or Ar(3P0) levels', p. 3887).
+
+TAKEN (radiative_lifetime, collisional_quenching_rate_coefficient and \
+transition_probability, TC-1011; extraction script tools/extract/chang_1978.py):
+- Table II (p. 3889), 'Present work', radiative lifetimes (ns) of 2p2, 2p3, 2p4, 2p6, \
+2p7, 2p8, 2p9, 2p10, 26.5-42.2 ns, with the printed +- ('typically +- 1 nsec', least \
+squares, p. 3889; level not stated) (tau_Ar, primary).
+- Table III (p. 3889), deactivation by ground-state argon, 10^-11 cm3 atom-1 s-1: the \
+total k_Q of 2p2, 2p3, 2p4, 2p7, 2p8, 2p9, 2p10 with their +- ('+-(10-20)%', p. 3889) \
+(kq_self, primary); 2p6 '<= 1.8', footnote b, an upper limit from the slope, held as \
+0 to 1.8 (kq_self_bound, check); the state-to-state k_nn' one dataset per product \
+level (k_2p4: 2p3 2.2; k_2p6: 2p3 4.1; k_2p7: 2p6 0.8; k_2p8: 2p6 0.8, 2p7 1.6; k_2p9: \
+2p6 0.2, 2p8 1.7; primary, fits of the product time profiles, no uncertainty stated); \
+k43 = 1.7 and k98 = 0.6, footnote c 'assigned using detailed balance and k34 or k89' \
+(k_2p3_db, k_2p8_db, check; script: 1.72 and 0.58 from NIST's energies at 300 K); the \
+intermultiplet sums to the 4s, 4s' manifold that are numbers, 2p2 5.3, 2p3 4.7, 2p4 \
+3.9, 2p7 6.1 (footnote e: 5.5 'if allowance is made for k76'), 2p10 2.0 (k_4s, check: \
+k_Q minus the k_nn', derived). Room temperature (the speeds use 300 K, p. 3888; not \
+stated as the gas temperature): no temperature_k.
+- Table IV (p. 3892), column CS, A_ki (10^6 s-1) of the 26 lines of the eight \
+measured levels, 0.02-33.20 (A_4p_4s, primary): the hollow-cathode branching ratios \
+times 1/tau_rad of Table II (sum A tau = 1 within 0.4 %, script). 'Typically +-10%' \
+(p. 3892; mainly the lifetimes'), level not stated.
+- NOT TAKEN: k_{9,10} '> 1.8' (a lower limit); the intermultiplet '<3.0' (2p8), \
+'<3.5' (2p9) and 0.0 (2p6, whose k_Q is a bound) and the k_nn' '0.0' of 2p2 and 2p10 \
+(no product seen); sigma (A^2) = k_Q / <v> (derived; script: <v> = 5.64e4 cm/s, the \
+Ar-Ar mean relative speed at 300 K, reproduces every sigma); Table IV's \
+parenthesised entries for 2p1 (0.994 to 1s2, 6.43e-3 to 1s4) and 2p5 (0.00 to 1s2, \
+1.00 to 1s4), measured branching ratios, no quantity (declined with wiese_1989's \
+100R, TC-1012); the f column (derived from A by footnote a); the other columns of \
+Tables II and IV (other papers' and Lilly's values, reproduced); Table I (pump lines); \
+Figs. 3-7 (decay curves and the branching fractions of Table III).
+
+FINDING (asghar_2020, TC-1060). Its dataset lifetime_chang_1978 (Table 1, footnote b) \
+quotes 26.5 +- 0.4, 27.6 +- 0.9, 33.2 +- 0.8, 27.0 +- 1.0, 29.8 +- 0.7, 32.8 +- 0.7, \
+30.1 +- 0.4 and 42.2 +- 1.0 ns for 2p2-2p4, 2p6-2p10: equal to Table II here, value \
+and uncertainty, level by level. wiese_1989's Table II column 'Chang and Setser' \
+(26.5, 27.6, 33.2, 27.0, 29.8, 32.8, 30.1, 42.2 ns) is also equal.
+
+FINDING (lifetimes against wiese_1989, TC-1012, and NIST, TC-985). wiese_1989's 1/sum \
+A, from Quadfasel and Helbig's lifetimes, are 28.39 (2p2), 28.93 (2p3), 30.17 (2p4), \
+29.04 (2p6), 29.70 (2p7), 31.01 (2p8), 30.21 (2p9) and 39.22 ns (2p10); NIST's (whose \
+A are wiese_1989's) 28.38, 28.90, 30.16, 29.07, 29.68, 30.99, 30.30 and 39.26 ns. \
+Chang and Setser / Wiese: 0.933, 0.954, 1.100, 0.930, 1.003, 1.058, 0.996, 1.076, \
+i.e. 4.7, 1.5, 3.8, 2.0, 0.1, 2.6, 0.3 and 3.0 times the printed +- (Wiese's own A \
+carry +-5-8 %): agreement for 2p7 and 2p9, differences of 5-10 % elsewhere in both \
+directions, not a common scale. sadeghi_2001 (TC-1066) overlaps at 2p6 (28 +- 3 \
+against 27.0 +- 1.0) and 2p8 (29 +- 3 against 32.8 +- 0.7, 1.3 of Sadeghi's +-); this \
+paper has no 2p1 or 2p5 lifetime (Table II lists only theory and other measurements \
+for them), so Sadeghi's 24 and 24 ns have no counterpart here.
+
+FINDING (transition probabilities against NIST, TC-985). CS / NIST (Ar_I_lines_nir.tsv) \
+for the 26 lines: 0.89-1.14 for the 13 lines with A >= 7e6 s-1 (2p2-1s5 1.13, 2p6-1s5 \
+1.14, 2p4-1s3 0.89, 2p8-1s4 0.93, 2p10-1s5 0.93), 0.74-1.21 for the 13 weaker ones; the \
+level ratios follow the lifetime ratios above. Independence: the lifetimes and the \
+branching are this paper's own; wiese_1989 used Chang and Setser's branching ratios \
+for the 2p8 and 2p10 lines Nick and Helbig did not measure (wiese_1989's notes), so \
+NIST's A of those lines share this paper's branching but not its scale.
+
+FINDING (state-to-state against nguyen_1978, the same argon process at 300 K). In \
+10^-11 cm3/s, this paper / Nguyen and Sadeghi: k34 2.2 / 2.75, k36 4.1 / 4.4, k43 1.7 \
+(detailed balance) / 2.3, k67 0.8 / 0.41, k68 0.8 / 0.6, k69 0.2 / 0.1, k78 1.6 / \
+1.43, k89 1.7 / 1.82, k98 0.6 (detailed balance) / 0.68; k79 not observed here, 2.33 \
+there (the note added in proof, p. 3896: 'possibly because of poor sensitivity'); \
+k_{9,10} '> 1.8' here against 0.51 there, a factor > 3.5 apart; the 2p2 -> 2p3 \
+transfer, 0.0 here, 0.05 there (below this paper's ~1e-11 limit). The note added in \
+proof quotes Nguyen and Sadeghi's preprint as k78 = 1.4, k79 = 2.3, k56 = 1.1, k58 = \
+0.9 (x 10^-11): their published Table II has 14.3, 23.3, 11.3 and 9.5 (x 10^-12), \
+the last rounding to 1.0, not 0.9.
+
+DOUBTS (printed inconsistencies; no taken value affected). Table IV's CS f of \
+2p10-1s2 is 0.028, but footnote a's formula gives 0.0028 from A = 0.14e6 (as WSM's \
+0.0049 does from 0.25e6): a misprint by a factor 10 in a column not taken; 2p10-1s5's \
+0.134 is 1.7 % above the formula's 0.1318; every other f agrees within 0.6 % (script). Table II's Lilly column here (2p2 25.7, 2p9 28.6) differs from \
+wiese_1989's Table II 'Theory Lilly' (25.6, 28.7) by 0.1 ns. sadeghi_2001 (p. 3147) \
+quotes the 2p6 upper limit as 'a total quenching constant of 0.18 x 10^-10 ... \
+reported previously', dropping the '<='.
+
+BEARING ON OEP 8 (for scale). Two-body quenching by argon, 10^-11 cm3/s: 2p6 <= 1.8 \
+(sadeghi_2001: 1.3) and 2p8 4.7 +- 0.7, of which 1.7 to 2p9 (sadeghi_2001's 2.4 is the \
+loss of the 2p8 + 2p9 pair to other states; 2.4 + Nguyen and Sadeghi's k89 1.82 = \
+4.2, within this paper's +-0.7 of 4.7). No three-body term up to 10 Torr; 'three-body \
+processes will not be important even at 1 atm' if k3 < 1e-31 cm6/s (p. 3889), an \
+assumption, not a measurement.
+
+DATA CITED, NOT IN THE LIBRARY: J. Z. Klose, J. Opt. Soc. Am. 57, 1242 (1967) (Ar 4p' \
+lifetimes, delayed coincidence); R. A. Lilly, J. Opt. Soc. Am. 66, 245 (1976) \
+(intermediate-coupling A of Ar and Kr); R. H. Garstang and J. Van Blerkom, J. Opt. Soc. \
+Am. 55, 1054 (1965); J. B. Shumaker and C. H. Popenoe, J. Opt. Soc. Am. 57, 8 (1967); \
+D. A. Landman, Phys. Rev. 173, 33 (1968) (level-crossing lifetimes)."""
+
+[[datasets]]
+id = "tau_Ar"
+material = "Ar"
+file = "Ar/chang_1978__tau_Ar.csv"
+table = "tbl_56408e2b767a"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 3889), 'Present work': the radiative lifetimes of 2p2, 2p3, 2p4, 2p6, 2p7, 2p8, 2p9, 2p10 (Paschen), 26.5-42.2 ns, with the printed +- (least squares, 'typically +- 1 nsec', level not stated). wiese_1989's 1/sum A: 28.39, 28.93, 30.17, 29.04, 29.70, 31.01, 30.21, 39.22 ns (record notes)."
+[datasets.parameters]
+method = "laser-induced fluorescence after one-photon dye-laser excitation from Ar(1s5) in a flowing afterglow, single-exponential decays at 0.5-8 Torr argon, zero-pressure intercept of the decay rate"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kq_self"
+material = "Ar"
+file = "Ar/chang_1978__kq_self.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3889), k_Q, the total two-body deactivation of 2p2, 2p3, 2p4, 2p7, 2p8, 2p9, 2p10 by ground-state argon, 2.0-11.0 x 10^-11 cm3/s, with the printed +- ('+-(10-20)%', least squares, level not stated). 2p8 includes the transfer to 2p9 (k89 = 1.7): sadeghi_2001's 2p8 value (0.24 x 10^-10) excludes it."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "total"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, slope of the single-exponential decay rate against argon pressure (0.5-8 Torr)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kq_self_bound"
+material = "Ar"
+file = "Ar/chang_1978__kq_self_bound.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 3889), 2p6: k_Q printed '<=1.8', footnote b, 'An upper limit determined from the slope of a plot such as shown in Fig. 4. The sum of k_nn' is nearly equivalent to k_Q' (0.8 + 0.8 + 0.2). Held as the interval 0 to 1.8 x 10^-11 cm3/s: value 0.9, bound half-width 0.9 (printed keeps '<=1.8'). sadeghi_2001's 1.3 and nguyen_1978's sum of transfers, 1.11, are inside it."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "total"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, slope of the decay rate against argon pressure (0.5-8 Torr)"
+
+[datasets.uncertainty]
+column = true
+level = "bound"
+
+[[datasets]]
+id = "k_2p4"
+material = "Ar"
+file = "Ar/chang_1978__k_2p4.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3889), k_nn' into 2p4 by argon: from 2p3, k34 = 2.2 x 10^-11 cm3/s. Rows are the initial levels. Assigned by fitting Eq. (6) to the product's time profile (Fig. 6); no uncertainty stated. nguyen_1978: 2.75."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p4"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, product-level time profile fitted with the rate equation (5)-(6)"
+
+[[datasets]]
+id = "k_2p6"
+material = "Ar"
+file = "Ar/chang_1978__k_2p6.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3889), k_nn' into 2p6 by argon: from 2p3, k36 = 4.1 x 10^-11 cm3/s. Rows are the initial levels. Assigned by fitting Eq. (6) to the product's time profile (Fig. 6); no uncertainty stated. nguyen_1978: 4.4."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p6"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, product-level time profile fitted with the rate equation (5)-(6)"
+
+[[datasets]]
+id = "k_2p7"
+material = "Ar"
+file = "Ar/chang_1978__k_2p7.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3889), k_nn' into 2p7 by argon: from 2p6, k67 = 0.8 x 10^-11 cm3/s. Rows are the initial levels. No uncertainty stated (the text: rate constants below 1e-11 are 'difficult to determine'). nguyen_1978: 0.41."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p7"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, product-level time profile fitted with the rate equation (5)-(6)"
+
+[[datasets]]
+id = "k_2p8"
+material = "Ar"
+file = "Ar/chang_1978__k_2p8.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3889), k_nn' into 2p8 by argon: from 2p6, k68 = 0.8, and from 2p7, k78 = 1.6 x 10^-11 cm3/s. Rows are the initial levels. No uncertainty stated. nguyen_1978: 0.6 and 1.43."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p8"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, product-level time profile fitted with the rate equation (5)-(6)"
+
+[[datasets]]
+id = "k_2p9"
+material = "Ar"
+file = "Ar/chang_1978__k_2p9.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "primary"
+notes = "Table III (p. 3889), k_nn' into 2p9 by argon: from 2p6, k69 = 0.2, and from 2p8, k89 = 1.7 x 10^-11 cm3/s. Rows are the initial levels. No uncertainty stated. nguyen_1978: 0.1 and 1.82; sadeghi_2001 quotes k89 as 0.18 x 10^-10 (refs. 9, 10)."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p9"
+method = "laser-induced fluorescence after one-photon excitation from Ar(1s5) in a flowing afterglow, product-level time profile fitted with the rate equation (5)-(6)"
+
+[[datasets]]
+id = "k_2p3_db"
+material = "Ar"
+file = "Ar/chang_1978__k_2p3_db.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 3889), 2p4 -> 2p3, k43 = 1.7 x 10^-11 cm3/s, footnote c: 'Assigned using detailed balance and k34' (2.2), not measured (script: 1.72 at 300 K from NIST's energies). nguyen_1978 measured 2.3."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p3"
+method = "detailed balance from the measured k34 (no temperature stated; 300 K reproduces it)"
+
+[[datasets]]
+id = "k_2p8_db"
+material = "Ar"
+file = "Ar/chang_1978__k_2p8_db.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 3889), 2p9 -> 2p8, k98 = 0.6 x 10^-11 cm3/s, footnote c: 'Assigned using detailed balance and k89' (1.7), not measured (script: 0.58 at 300 K from NIST's energies). nguyen_1978 measured 0.68."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "2p8"
+method = "detailed balance from the measured k89 (no temperature stated; 300 K reproduces it)"
+
+[[datasets]]
+id = "k_4s"
+material = "Ar"
+file = "Ar/chang_1978__k_4s.csv"
+table = "tbl_dda0b9a86083"
+quantity = "collisional_quenching_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-11
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 3889), sum_m' k_nm', the intermultiplet transfer to the 4s and 4s' manifold ('not individually specified'), by difference k_Q - sum k_nn' (the 4s products emit in the VUV and were not observed): 2p2 5.3, 2p3 4.7, 2p4 3.9, 2p7 6.1 (footnote e: 5.5 if k76 is allowed for), 2p10 2.0 x 10^-11 cm3/s. Derived, hence check. Not taken: 2p6 0.0 (its k_Q is an upper limit), 2p8 '<3.0' and 2p9 '<3.5'."
+[datasets.parameters]
+perturber = "self"
+order = 2
+channel = "4s and 4s' manifold (sum)"
+method = "difference of the measured total k_Q and the measured state-to-state k_nn' to 4p, 4p' levels"
+
+[[datasets]]
+id = "A_4p_4s"
+material = "Ar"
+file = "Ar/chang_1978__A_4p_4s.csv"
+table = "tbl_ea55ed0bd3cf"
+quantity = "transition_probability"
+unit = "1/s"
+scale = 1e6
+abscissa = "label"
+use = "primary"
+notes = "Table IV (p. 3892), column CS, A_ki (10^6 s-1) of the 26 4p-4s lines of 2p2, 2p3, 2p4, 2p6-2p10: hollow-cathode branching ratios divided by Table II's lifetimes. Rows and x are 'upper-lower' in Paschen notation (the record's notes give NIST's levels; printed air wavelengths, Angstrom, in printed). 'Typically +-10%', mainly the lifetimes' (p. 3892), level not stated. CS / NIST: 0.89-1.14 for A >= 7e6 s-1 (record notes)."
+[datasets.parameters]
+notation = "paschen"
+
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"

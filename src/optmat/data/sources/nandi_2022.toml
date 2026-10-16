@@ -1,0 +1,161 @@
+citation = "S. Nandi, E. Olofsson, M. Bertolino, S. Carlström, F. Zapata, D. Busto, C. Callegari, M. Di Fraia, P. Eng-Johnsson, R. Feifel, G. Gallician, M. Gisselbrecht, S. Maclot, L. Neoričić, J. Peschel, O. Plekan, K. C. Prince, R. J. Squibb, S. Zhong, P. V. Demekhin, M. Meyer, C. Miron, L. Badano, M. B. Danailov, L. Giannessi, M. Manfredda, F. Sottocorona, M. Zangrando and J. M. Dahlström, \"Observation of Rabi dynamics with a short-wavelength free-electron laser\", Nature 608, 488-493 (2022)"
+doi = "10.1038/s41586-022-04948-y"
+library = "Nandi_2022_ObservationRabiDynamics"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Photoelectron spectroscopy (2 m magnetic-bottle spectrometer, electrons retarded \
+below 1 eV, E/dE about 50) of helium in a pulsed Even-Lavie jet (2 mm cone) driven by \
+the seeded FERMI free-electron laser (fifth harmonic of a 261.08 nm, about 100 fs seed) \
+tuned across the 1s2 1S0 -> 1s4p 1P1 one-photon resonance ('round trip' scans 52.50 \
+<-> 51.80 nm, 304,192 of 355,000 shots kept after filtering on the PADRES photon \
+spectrum: bandwidth 20-65 meV FWHM, integrated intensity 0.8-1.6 x 10^5 a.u.; 30 \
+photon-energy bins about 13 meV apart); Richardson-Lucy blind deconvolution with \
+Tikhonov-Miller regularisation at three photon energies. Theory: TDCIS (velocity \
+gauge, Hartree-Fock B-spline orbitals, exterior complex scaling, t-SURFF and iSURF) and \
+an analytical model (Rabi two-level amplitudes in the rotating-wave approximation, \
+flat-top pulse; one-photon ionisation from 1s4p and non-resonant two-photon ionisation \
+from 1s2 by first- and second-order perturbation theory on top), pp. 489-491 and \
+Methods (PDF p. 7)."""
+notes = """Identity checked on the first page (PDF p. 1): Nandi et al., Nature 608, \
+488-493 (2022), 18 August 2022, open access (CC BY 4.0); 15 PDF pages: pp. 488-493 \
+(PDF pp. 1-6), Methods (PDF pp. 7-8), Extended Data Figs. 1-6 (PDF pp. 9-14) and \
+Extended Data Table 1 (PDF p. 15). The Supplementary Information (the analytical model, \
+the lifetimes tau_a, tau_b, the volume averaging) is not in the library. Every number \
+below was read on the PDF's text layer and, for Extended Data Table 1, on its image.
+
+WHAT IS DRIVEN. A ONE-photon resonance: |a> = 1s2 (1S0) and |b> = 1s4p (1P1), hbar \
+omega_ba = 23.742 eV (quoted from NIST ASD 5.9, p. 489). Photoelectrons come from |b> \
+by one photon (I) and from |a> by two photons (II, non-resonant, through the \
+'complement' states and the continuum); both reach the same continuum near 22.9 eV \
+kinetic energy. No two-photon bound resonance is involved: the 'two-photon' of TC-1010's \
+request ('He resonant two-photon ionisation') is the (1+1) resonant ionisation through \
+1s4p and the non-resonant two-photon ionisation of the ground state.
+
+THE CONVENTION. Omega = e E0 z_ba / hbar with E(t) = E0 cos(omega t), the Hamiltonian \
+(1/2) hbar omega_ba sigma_z + hbar Omega cos(omega t) sigma_x, so in the rotating-wave \
+approximation the off-diagonal element is hbar Omega / 2 and Omega is the full \
+(resonant) Rabi frequency, the Autler-Townes splitting; W = sqrt(Omega^2 + d omega^2) \
+the generalised one (p. 488-489, Eq. 1). This is OEP 8's Omega_R convention (twice the \
+off-diagonal element), here for one photon. z_ba is the M = 0 (z) matrix element, so f \
+= 2 dE z^2 (dE in hartree) for 1S0 -> 1P1.
+
+THE NUMBERS (pages of the journal; Methods = PDF p. 7):
+- measured AT splitting hbar Omega = 80 +- 2 meV (p. 489; the error from a fit of two \
+Voigt profiles of equal width to the deconvoluted symmetric doublet); Rabi period \
+2 pi / Omega 'about 52 fs' (recomputed h / 80 meV = 51.7 fs);
+- the symmetric doublet needs a blue detuning of about 11 meV: photon energy 23.753 eV \
+(Fig. 2a), +-13 meV either side for the asymmetric spectra; the avoided crossing (Fig. \
+4b) also at about 11 meV blue; TDCIS gives about 14 meV (24.157 eV against its own \
+24.1432 eV); the analytical model needs d omega = 62 meV (Fig. 3d) for the symmetric \
+doublet. The paper attributes the shift to interference between paths I and II and to \
+the pulse envelope, not to a light shift (pp. 490-491);
+- pulse: FWHM 56 +- 13 fs (the empirical range tau_seed/n^(1/2) to 7 tau_seed/(6 \
+n^(1/3)) with tau_seed = 100 fs, n = 5: 44.7-68.2 fs recomputed; PERSEO simulation about \
+66 fs); bandwidth 0.13 nm FWHM at 52.216 nm (59 meV, recomputed 59.1 meV); spot 12 um \
+FWHM, w0 = 10.2 um, Rayleigh length 6.3 mm (recomputed 6.26 mm); 87 uJ at the undulator \
+exit; peak intensity 'about 1.4 x 10^14 W cm-2' (Methods). DOUBT: a Gaussian pulse of \
+87 uJ, 56 fs and w0 = 10.2 um gives about 8.9 x 10^14 W cm-2 at full transmission; the \
+beamline transmission is not stated, so 1.4 x 10^14 presumably includes one \
+(inference, about 16 %);
+- the effective intensity 2 x 10^13 W cm-2 'as obtained from Omega' (p. 490) and E0 = \
+0.02388 au (p. 490): recomputed, 80 meV with the CIS dipole 0.124 a0 gives E0 = \
+0.02371 au and I = 1.97 x 10^13 W cm-2 (I = E0^2 x 3.51 x 10^16, Methods); E0 = \
+0.02388 au is sqrt(2 x 10^13 / 3.51 x 10^16) = 0.02387, i.e. from the rounded \
+intensity. With the experimental z_ba = 0.1318 a0 the same splitting would give E0 = \
+0.02231 au and 1.75 x 10^13 W cm-2. The effective intensity is about 7 times below the \
+estimated peak (shot-to-shot and volume averaging, Supplementary Information);
+- Omega / omega_ba = 0.34 % (p. 490; recomputed 0.337 %): the rotating-wave \
+approximation holds;
+- pulse area: the Gaussian field envelope exp(-2 ln 2 t^2 / tau^2) of Eq. 2 has area \
+sqrt(pi / (2 ln 2)) tau = 1.505 tau times E0 (the paper's factor 'about 1.5', p. 490), \
+so 56 fs at Omega = 80 meV is 1.63 Rabi periods: the paper's 'between 1 and 3/2 Rabi \
+periods' and its flat-top 3/2-period model;
+- ionisation is slow: spontaneous emission 'about 4 ns' (quoting Zitnik et al. 2003), \
+photoionisation lifetime of the Rabi-cycling atom tau_a+b 'about 100 ps' (p. 489, \
+Supplementary Information), so about 6 x 10^-4 of the atoms are ionised in 56 fs; \
+E0 = 0.02388 au 'implies an ionization-probability ratio of 10^4:1 in favour of the \
+one-photon process from |b>', while the atomic 'giant wave' scaling is 'about 1:10^4 \
+in favour of the two-photon process' (p. 490), so the two paths compete;
+- TDCIS (Methods): omega_ba = 0.887246 au = 24.1432 eV (HF ground state to CIS 1s4p), \
+z_ba = 0.124 a0, Koopmans Ip = 24.9788 eV, Gaussian A(t) of Eq. 2 with tau = 56 fs \
+(intensity FWHM) and 2 x 10^13 W cm-2; the 0.4 eV kinetic-energy offset from \
+experiment is ascribed to correlation missing in CIS (p. 490). The two-photon kinetic \
+energy 23.3076 eV of Fig. 3c,d is the CIS value 2 x 24.1432 - 24.9788 (recomputed), \
+not the experimental 2 x 23.742 - 24.5873 = 22.8967 eV. Ip = 24.5873 eV (p. 491) is \
+NIST's.
+
+DATASETS. The two transition dipoles of 1s2 1S0 - 1s4p 1P1:
+- z_ba_chan (0.1318 au, p. 489, reproduced from chan_1991): Chan et al.'s f = \
+0.0303(7) (chan_1991, f_present, row 4) converted, sqrt(0.0303 / (2 x 23.742 / \
+27.211386)) = 0.13177 (recomputed); chan_1991's other rows for n = 4 (Fernley et al. \
+0.03028, Wiese et al. 0.0302) give 0.1317 and 0.1316. This is the value the experiment \
+is interpreted with;
+- z_ba_cis (0.124 au, Methods, the paper's own CIS value, use = check: a model \
+property of the TDCIS calculation, not fitted): with the CIS omega_ba it is f = 2 x \
+0.887246 x 0.124^2 = 0.0273, 10 % below the measured 0.0303.
+No uncertainty is stated for either.
+
+NOT TAKEN:
+- the AT splitting hbar Omega = 80 +- 2 meV, the Rabi period, the effective intensity \
+and E0: no quantity holds a Rabi frequency, and the intensity is derived from the \
+splitting through the CIS dipole (circular); the numbers stand above as a validation \
+case;
+- the blue shifts (11, 14, 62 meV): interference and pulse-envelope effects, not a \
+light shift of the level, so not light_shift_coefficient;
+- Extended Data Table 1 (PDF p. 15), 'Values of the dipole transition elements z_i \
+computed using CIS functions' from |b> and from the 'giant wave' |rho_(!=b)> to the s \
+and d continua: 0.009311 and 0.1056 (s), 0.01298 and -1.300 (d) (checked against the \
+table image). No quantity: bound-free elements whose continuum normalisation, \
+photoelectron energy and units are not stated, and |rho_(!=b)> is a perturbative wave \
+built at the photon energy, not a state; not proposed as vocabulary;
+- hbar omega_ba = 23.742 eV and Ip = 24.5873 eV: quotations of NIST ASD, which optmat \
+holds directly; the CIS energies 0.887246 au and 24.9788 eV: Hartree-Fock/CIS model \
+values, off by 0.4 eV by the paper's own account;
+- the spontaneous-emission limit 'about 4 ns' of 1s4p 1P1: a rounded quotation of \
+Zitnik et al. (J. Phys. B 36, 4175 (2003), not in the library), not \
+radiative_lifetime; take it from the original;
+- the figures (spectra in arbitrary units): no absolute scale.
+
+FOR OEP 8. Nandi et al. test the ONE-photon analogue of OEP 8's effective-level \
+equations (7), not the two-photon model: a resonantly driven two-level system with \
+Omega_R = d E0 / hbar, populations through about 1.6 Rabi cycles in a 56 fs Gaussian, \
+excited-level photoionisation (Gamma^PI_b) and a direct non-resonant two-photon \
+continuum from the ground level. OEP 8 eliminates exactly such odd levels; here the odd \
+level is resonant, the case its spectral and field-strength conditions exclude. The \
+paper's central effect, the coherent interference of the one-photon (from |b>) and \
+two-photon (from |a>) ionisation amplitudes into one continuum, is outside OEP 8's \
+rate treatment of ionisation (incoherent Gamma^PI_f and a separate direct-continuum \
+rate); it shapes the photoelectron spectrum but, with about 6 x 10^-4 ionised, not the \
+bound populations or the polarisation that propagation needs. Usable as a check of a \
+one-photon Bloch integrator: Rabi period 51.7 fs from 80 meV, or from z_ba and E0 \
+(0.1318 x 0.02388 au gives 85.6 meV; the paper's 80 meV pairs with the CIS 0.124)."""
+
+[[datasets]]
+id = "z_ba_chan"
+material = "He"
+table = "text"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["chan_1991"]
+points = [["1s2 1S0 - 1s4p 1P1", "1s2 1S0 - 1s4p 1P1", "0.1318"]]
+notes = "p. 489: 'the dipole element z_ba = 0.1318 a0' (ref. 30, Chan, Cooper and Brion 1991): chan_1991's f = 0.0303(7) for 1 1S -> 4 1P converted with f = 2 dE z^2, dE = 23.742 eV (recomputed 0.13177). The M = 0 component along the linear polarisation. Uncertainty not stated (chan_1991's 2.3 % on f is 1.2 % on z, plus its 5 % scale)."
+[datasets.parameters]
+states = "1s2 1S0 - 1s4p 1P1"
+component = "z (M = 0, along the linear polarisation; f = 2 dE z^2)"
+
+[[datasets]]
+id = "z_ba_cis"
+material = "He"
+table = "text"
+quantity = "transition_dipole_moment"
+unit = "au"
+abscissa = "label"
+use = "check"
+points = [["1s2 1S0 - 1s4p 1P1", "1s2 1S0 - 1s4p 1P1", "0.124"]]
+notes = "Methods (PDF p. 7): 'The CIS dipole matrix element between the ground state and the excited state is given by z_ba = 0.124 a0', between the Hartree-Fock 1s2 and the CIS 1s4p 1P1 at the CIS omega_ba = 0.887246 au (24.1432 eV); with that energy f = 0.0273, 10 % below chan_1991's 0.0303. The input of the paper's TDCIS calculation and of its E0 = 0.02388 au; a model value, so check. Uncertainty not stated."
+[datasets.parameters]
+states = "1s2 1S0 - 1s4p 1P1"
+component = "z (M = 0, along the linear polarisation; f = 2 dE z^2)"
+method = "CIS (configuration-interaction singles on Hartree-Fock B-spline orbitals), the basis of the paper's TDCIS"

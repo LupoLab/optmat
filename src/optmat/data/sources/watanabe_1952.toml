@@ -1,0 +1,100 @@
+citation = "K. Watanabe, E. C. Y. Inn and M. Zelikoff, \"Absorption coefficients of gases in the vacuum ultraviolet\", J. Chem. Phys. 20, 1969 (1952)"
+doi = "10.1063/1.1700353"
+library = "Watanabe_1952_AbsorptionCoefficientsGases"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Photoelectric absorption (letter): a Baird 1 m vacuum monochromator (exit \
+slit 0.05 mm, band width 0.85 A), an H2 discharge source, an absorption cell with LiF \
+windows between the exit slit and a sodium-salicylate-coated 1P21 photomultiplier; \
+repeated measurements with the cell empty and filled against the source drifts (+-5 \
+percent); 1050-2500 A (p. 1969)."""
+notes = """Journal pages 1969-1970 = PDF pages 2-3 (page 1 is the publisher's cover; the \
+letter starts at the foot of the first column of p. 1969, after the end of another \
+letter). Identity checked against the page image (pdf 2): Watanabe, Inn and \
+Zelikoff, 'Absorption Coefficients of Gases in the Vacuum Ultraviolet', J. Chem. Phys. \
+20, 1969 (1952), \
+received 13 October 1952, a letter to the editor with no part number. It is the \
+preliminary communication of the series, not its Part I: Part III (inn_1953) refers to \
+'Part I of this series' for the method, which is the O2 paper (watanabe_1953, J. Chem. \
+Phys. 21, 1026 (1953)); Part II is zelikoff_1953 (N2O). The library's OCR of this page \
+is poor ('10SQ-2S00A', '14S0A'); the values below were read from the page images.
+
+Gases: O2 (Fig. 1, 1200-1550 A, log scale, with Ladenburg and Van Voorhis's curve L-V) \
+and CO2 (text only); 'several gases' are announced for a fuller report. Quantity: k in \
+cm^-1 'base e'; the reference state is not stated in the letter: NTP (0 C, 1 atm) as in \
+the full papers of the series (watanabe_1953, zelikoff_1953, inn_1953) is assumed, and \
+the datasets store k with scale = 1e18 / n0, n0 = 2.6867801e19 cm^-3 (ideal gas), to \
+Mb, as watanabe_1953 and inn_1953. Temperature not stated. No accuracy statement \
+beyond the source drifts (+-5 percent).
+
+O2 text (p. 1969): the Schumann-Runge continuum maximum 380 cm^-1 at 1420 A, 'in \
+contrast to the accepted value of about 490 cm^-1 at 1450A obtained by Ladenburg and \
+van Voorhis' (ladenburg_1933), and a more asymmetric distribution; narrow continua or \
+diffuse bands D, E, F at about 1352, 1330 and 1293 A (reported by Tanaka) and very \
+diffuse bands A, B, C below 1270 A (positions only, figure). These are the same \
+measurements that watanabe_1953 reports in full (380 cm^-1 at about 1420 A there too): \
+the O2 datasets here are checks, not independent. At Lyman alpha 0.33 cm^-1, 'in good \
+agreement with the value 0.315 cm^-1 found by Preston for a corresponding pressure (7.5 \
+cm Hg)' (pressure-dependent; watanabe_1953 extrapolates 0.27 cm^-1 to zero pressure). \
+Ditchburn and Heddle (ditchburn_1953, p. 69) quote this letter's maximum as '380 cm^-1 \
+at 71000 cm^-1' and suspect scattered light.
+
+CO2 text (pp. 1969-1970): 2.0 cm^-1 at Lyman alpha (Preston 2.01, reproduced, not \
+extracted); the continuum 'as much as a factor two greater' than Wilkinson and \
+Johnston's in 1450-1700 A, nearly forty diffuse bands on a continuum extending to about \
+1200 A (Wilkinson and Johnston's bands at 1662, 1673, 1690 A), and 'at least two maxima \
+of about 14 cm^-1 and 18.5 cm^-1 at 1475A and 1335A'. The full CO2 paper (inn_1953) \
+gives 1.97 cm^-1 at Lyman alpha and the continua maxima at about 1475, 1332 and 1121 A \
+but their k only in figures: the two maxima here are the only printed values."""
+
+[[datasets]]
+id = "o2_sr_maximum"
+material = "O2"
+points = [["maximum", "1420", "380"]]
+table = "text"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "p. 1969: 'the maximum coefficient of the Schumann-Runge continuum of O2 was found to be 380 cm^-1 (base e) at 1420A'. scale = 1e18 / n0 (NTP assumed) to Mb. The preliminary report of the measurement published in full as watanabe_1953 (sr_maximum, the same 380 cm^-1): a check, not fitted beside it. Uncertainty not stated."
+
+[[datasets]]
+id = "o2_lyman_alpha"
+material = "O2"
+points = [["Lyman alpha", "1215.7", "0.33"]]
+table = "text"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "excluded"
+notes = "p. 1969: 'At Lyman alpha, the absorption coefficient was 0.33 cm^-1', compared with Preston's 0.315 cm^-1 'for a corresponding pressure (7.5 cm Hg)'. Excluded: a pressure-dependent value at about 75 mm Hg in a window between bands; watanabe_1953 gives 0.30 at 70 mm and the zero-pressure 0.27 cm^-1 (its lyman_alpha dataset). The letter names the line only; 1215.7 A as in watanabe_1953 (from metzger_1964 Table 1)."
+
+[[datasets]]
+id = "co2_lyman_alpha"
+material = "CO2"
+points = [["Lyman alpha", "1215.7", "2.0"]]
+table = "text"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "p. 1969: 'Our result (2.0 cm^-1) for CO2 at Lyman alpha also agrees with his carefully determined value (2.01 cm^-1)' (Preston's). scale = 1e18 / n0 (NTP assumed) to Mb. The full paper inn_1953 gives 1.97 cm^-1 at 1216 A (its lyman_alpha, primary): this preliminary value is a check. The letter names the line only; 1215.7 A as in watanabe_1953."
+
+[[datasets]]
+id = "co2_continuum_maxima"
+material = "CO2"
+points = [["1475", "1475", "14"], ["1335", "1335", "18.5"]]
+table = "text"
+quantity = "absorption_cross_section"
+unit = "Mb"
+scale = 0.037219272080
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "p. 1970: 'The continuum itself has at least two maxima of about 14 cm^-1 and 18.5 cm^-1 at 1475A and 1335A, respectively' (the continuum under the diffuse bands). scale = 1e18 / n0 (NTP assumed) to Mb. Approximate ('about'); uncertainty not stated. The same group's full CO2 paper (inn_1953) places the maxima at about 1475 and 1332 A but gives k only in figures, so these are the only printed values: primary, preliminary (to confirm against inn_1953's Fig. 1)."

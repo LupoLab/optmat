@@ -1,0 +1,32 @@
+citation = "C. Guder and W. Wagner, \"A Reference Equation of State for the Thermodynamic Properties of Sulfur Hexafluoride (SF6) for Temperatures from the Melting Line to 625 K and Pressures up to 150 MPa\", J. Phys. Chem. Ref. Data 38, 33 (2009)"
+doi = "10.1063/1.3037344"
+library = "Guder_2009_ReferenceEquationState"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A reference Helmholtz-energy equation of state for sulfur hexafluoride from \
+the melting line to 625 K and 150 MPa, fitted to selected thermodynamic data, with an \
+ideal-gas part fitted to statistical-mechanics heat capacities."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library: its text layer has 269 unmapped \
+glyphs, and the tables of pdf pp. 25 and 39-58 are not certified by the extraction. \
+Nothing is taken from those pages. Pages cited are pdf pages.
+
+IDEAL GAS AND CONSTANTS: M = 146.0554192 g/mol (Loss et al. 2003) and R = 8.314472 \
+J/(mol K) (pdf p. 60); T_c = 318.7232 K. The ideal-gas heat capacity (Eq. 15, pdf p. \
+21; Table 21, pdf p. 22, checked against the table image) is c_p0/R = 1 + n3 + \
+sum_{i=4}^{6} n_i (theta_i tau)^2 exp(theta_i tau)/(exp(theta_i tau) - 1)^2, tau = \
+T_c/T, with n3 = 3, n4..n6 = 3.661182320, 7.878851030, 3.459816790 and theta4..theta6 = \
+1.617282065, 2.747115139, 4.232907175. It reproduces its input data to 6000 K within \
+0.001 %.
+
+AGAINST COOLPROP 8.0.0 (reference key Guder-JPCRD-2009): the same M and R, and Eq. \
+(15) to 2e-16 at 230-625 K (computed 2026-09-30)."""
+
+[[formulas]]
+id = "eq15"
+material = "SF6"
+equation = "Eq. (15), pdf p. 21; Table 21, pdf p. 22"
+printed = "c_p0/R = 1 + n3 + sum_{i=4}^{6} n_i (theta_i tau)^2 exp(theta_i tau)/(exp(theta_i tau) - 1)^2"
+variable = "tau = T_c/T, T_c = 318.7232 K"
+range = "the melting line to 625 K"
+coefficients = { n3 = "3.000000000", n4 = "3.661182320", n5 = "7.878851030", n6 = "3.459816790", theta4 = "1.617282065", theta5 = "2.747115139", theta6 = "4.232907175", critical_temperature = "318.7232" }
+check = "CoolProp 8.0.0 equals it to 2e-16 (tests/test_transport.py)."

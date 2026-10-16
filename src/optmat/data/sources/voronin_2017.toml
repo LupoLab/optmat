@@ -1,0 +1,147 @@
+citation = "A. A. Voronin and A. M. Zheltikov, \"The generalized Sellmeier equation for air\", Sci. Rep. 7, 46111 (2017)"
+doi = "10.1038/srep46111"
+library = "Voronin_2017_GeneralizedSellmeierEquation"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A 'full-model analysis' (FMA) of the refractive index of air, Eq. (1): a linear \
+sum of Lorentz oscillators over more than 650,000 lines of HITRAN 2012 (frequency, \
+width, oscillator strength) for N2, O2, H2O, CO2, O3, CH4, CO, Ar and Ne, with the \
+electronic (ultraviolet) oscillators from Margoliash and Meath (N2, O2, H2O) and \
+Eggarter, Chan et al. and Wuilleumier (Ar). Far from the lines (Eq. 3) the lines of \
+each absorption band r are replaced by two effective terms (Eq. 4) whose strengths \
+sum to the band's (A_1r + A_2r = sum_q f_rq / 2) and whose wavelengths are fitted: \
+the 'generalized Sellmeier equation' (GSE, Eq. 5), 15 bands, 30 poles, for one air \
+mixture (the densities of Fig. 1). No fitting procedure, weights or fitting range are \
+stated (pp. 2-6)."""
+notes = """Identity VALIDATED; the pdf is the version of record (11 pages, article 46111; \
+pages cited are pdf pages). CC BY 4.0.
+
+THE FORM (Eqs. 4-5, pp. 5-6). n(lambda) - 1 = (1/N_cr) sum_r N_r [A_1r lambda_1r^2 / \
+(lambda^2 - lambda_1r^2) + A_2r lambda_2r^2 / (lambda^2 - lambda_2r^2)], N_cr = m eps0 \
+omega^2 / e^2 the critical density at the light's frequency. Since lambda_j^2 / \
+(lambda^2 - lambda_j^2) = omega^2 / (omega_j^2 - omega^2), each term is n - 1 = N_r \
+e^2 A_jr / (m eps0 (omega_jr^2 - omega^2)): a Lorentz oscillator of strength f = 2 A_jr \
+and energy E = hc / lambda_jr, linear in the density of its species (n - 1, not n^2 \
+- 1; no Lorentz-Lorenz, no real-gas density). Per molecule, alpha = sum_j f_j / (E_j^2 - \
+omega^2) in atomic units, with E_j = 45.5634 nm / lambda_j hartree. The two terms of a \
+simple parallel band are its P and R branches; for the other bands and the \
+electronic terms they are placed near the band's edges (p. 6). GVD follows \
+analytically (Eq. 6).
+
+PRINTING (checked on the table image, tbl_0899b125f94c.jpg). (i) Table 1 heads A_1r and \
+A_2r 'ps^2', but the definitions make them dimensionless, and the electronic rows sum \
+to half the electron count, A_1r + A_2r = 7.000 (N2), 8.000 (O2), 5.000 (H2O) (Ar \
+8.149: 16.3 electrons): the unit is a misprint. (ii) Eq. (4) prints the second term's \
+numerator as A_2r lambda_1r^2; Eqs. (5) and (6) have lambda_2r^2, and only with \
+lambda_2r^2 do the rows reproduce Margoliash and Meath's S(-2) (below): Eq. (4) is \
+misprinted. (iii) The last column, N_r, is printed once per species (merged cells), and \
+for H2O reads 'Eq. (7) at T = 296 K' (the library's cell text is garbled). No coefficient \
+is corrected.
+
+THE TERMS (Table 1, p. 6). CO2 r = 1-4 (the 15, 4.3, 2.7 and 2.0 um bands) and the \
+electronic terms of N2 (r = 12), O2 (13) and Ar (14) are recorded as formulas \
+(gse_CO2_infrared, gse_N2, gse_O2, gse_Ar); tools/extract/voronin_2017.py asserts that \
+their coefficients equal the table's cells (it writes no data file). Water is not a \
+curated species; its rows as printed (r: A_1r, A_2r, lambda_1r nm, lambda_2r nm): 5 \
+(000-000, the pure rotational band, 'terahertz'): 2.945e-5, 6.583e-8, 47862, 16603; \
+6 (000-010): 3.273e-6, 3.094e-6, 6719.0, 5729.9; 7 (000-020, 000-100, 000-001): 1.862e-6, \
+2.788e-6, 2775.6, 2598.5; 8 (000-011, 000-110): 2.544e-7, 2.181e-7, 1835.6, 1904.8; 9 \
+(000-021, 000-200, 000-101): 1.126e-7, 2.336e-7, 1417.6, 1364.7; 10 (000-111, 000-210): \
+6.856e-9, 9.479e-9, 1145.3, 1123.2; 11 (000-201): 1.985e-9, 2.882e-9, 947.73, 935.09; 15 \
+(electronic): 0.25787285, 4.742131, 128, 34.924. No CO2 electronic term is given, nor \
+any for O3, CH4, CO or Ne. The water density is Eq. (7), N = h p_s / (k_B T) with the \
+Wagner-Pruss saturation pressure (p. 6).
+
+THE MIXTURE (Fig. 1 caption, p. 3; p. 6): N_N2 = 1.987e19, N_O2 = 5.3291e18, N_Ar = \
+2.3763e17, N_CO2 = 9.4136e15 cm^-3 (370 ppm of the dry gas), N_H2O = 7.0733e16 (10 % \
+humidity; 2.8305e17 at 40 %, Fig. 2), 'T = 296 K'. These densities total 2.551e19 \
+cm^-3, the density of 1 atm near 15 degrees C (2.547e19), not of 296 K (2.479e19).
+
+ACCURACY (pp. 7-8): the GSE differs from the FMA by |eta| ~ 1e-10 in n 'almost \
+everywhere within the transparency region' from 0.3 to 13 um (larger only in narrow \
+regions next to the strongest bands; below 1e-10 over 3.4-4.1 um), and in GVD by less \
+than 1 fs^2/cm below 4.1 um away from the bands and 1-2 fs^2/cm in most of the LWIR \
+window. These are agreements with the authors' own line sum, which shares the \
+electronic terms; no comparison with measurements of air is made beyond Fig. 5.
+
+CHECKS (computed 2026-09-29; TC-720). (1) The N2, O2 and H2O electronic \
+terms are two-pole condensations of Margoliash and Meath's pseudospectra \
+(margoliash_1978, Table I): they reproduce its S(0) and S(-2) to 1e-6 (N2 13.99935 and \
+11.73772; O2 16.00000 and 10.59006; H2O 10.00001 and 9.64240), S(-4) to 1e-4 (N2) and \
+1.2e-3 (O2), and depart at S(-6) and beyond. (2) The four electronic terms at the Fig. 1 \
+densities sum to Ciddor's standard-air formula as the paper prints it (dry, 15 degrees \
+C) within 1e-5 of n - 1 from 300 to 1500 nm (29154.7 against 29156.9e-8 at 300 nm, \
+27653.2 against 27653.0e-8 at 633 nm). (3) Per molecule, against the stored fits: N2 \
++185 ppm at 633 nm and +174 ppm static (11.7377 against 11.7357 au), O2 +178 and +277 \
+ppm; Ar -6.53 % at 633 nm and -6.50 % static (10.357 against 11.077 au). The Ar term \
+reproduces Peck and Fisher's 0 degrees C formula (peck_1964/peck_0C) at 633 nm to \
+0.12 % only at the density printed for argon in Fig. 5, 2.879e19 cm^-3, 7.1 % above \
+the 0 degrees C density (2.687e19) that formula refers to. (4) The CO2 terms' strengths \
+are those of HITRAN's principal isotopologue alone: 2(A_1 + A_2) is within 0.15 % of \
+the 12C16O2 bands of optmat's HITRAN 2024 table in the 15 and 4.3 um regions and 1.6 % \
+below all isotopologues together (details in the formula's check).
+
+OTHER FORMULAS PRINTED (verbatim, not recorded as formulas). The 'standard Sellmeier \
+equation' for air, Eq. (2) with B_1 = 0.05792105, B_2 = 0.00167917, C_1 = 238.0185, C_2 = \
+57.362 um^-2 (p. 2): Ciddor's (1996) standard-air formula, cited to refs. 11-15; air is \
+not a curated species. Fig. 5's single-term formulas (p. 8) are reproductions of \
+curated ones: N2, B_1 = 3.243157e-2, C_1 = 144.0, D = 6.8552e-5 (peck_1966, 0 degrees C); \
+O2, 9.708931e-3, 75.4, 1.181494e-4 (kren_2011/kren_O2, 20 degrees C); Ar, 3.0182943e-2, \
+144.0, 6.7867e-5 (peck_1964/peck_0C, whose constant 678.6711e-7 is rounded). Fig. 5 \
+plots them at N_N2 = 2.688e19, N_O2 = 2.504e19 and N_Ar = 2.879e19 cm^-3.
+
+LATER USE. egan_2026 (pdf p. 19) states that the GSE's water-vapour refractivity is \
+2.2 % too low at 0.633 um and adjusts its electronic pair (strengths +3.61 %, frequency \
++0.72 %) to its own two-colour ratio."""
+
+[[formulas]]
+id = "gse_CO2_infrared"
+material = "CO2"
+equation = "Eq. (5) with Table 1, rows r = 1-4 (p. 6)"
+printed = "CO2, N_r = 9.4136 x 10^15 cm^-3; r = 1: A_1r = 4.051 x 10^-6, A_2r = 1.010 x 10^-6, lambda_1r = 15131 nm, lambda_2r = 14218 nm; r = 2: 2.897 x 10^-5, 2.728 x 10^-5, 4290.9, 4223.1; r = 3: 8.573 x 10^-7, 6.620 x 10^-7, 2684.9, 2769.1; r = 4: 1.550 x 10^-8, 5.532 x 10^-9, 2011.3, 1964.6 (A headed 'ps^2', dimensionless in fact)"
+variable = "lambda: vacuum wavelength (nm); n - 1 = (N_r / N_cr) sum_j A_j lambda_j^2 / (lambda^2 - lambda_j^2), N_cr = m eps0 omega^2 / e^2; per molecule alpha = sum_j f_j / (E_j^2 - omega^2) (atomic units), f_j = 2 A_j, E_j = 45.5634 / lambda_j[nm] hartree"
+state = "none (per molecule; n - 1 linear in N_r)"
+density = "none"
+range = "0.3-13 um in the atmospheric transmission windows, outside the bands themselves (pp. 1, 7); fitted to the FMA of one air mixture (Fig. 1 densities)"
+coefficients = { A1_r1 = "4.051e-6", A2_r1 = "1.010e-6", lambda1_r1 = "15131", lambda2_r1 = "14218", A1_r2 = "2.897e-5", A2_r2 = "2.728e-5", lambda1_r2 = "4290.9", lambda2_r2 = "4223.1", A1_r3 = "8.573e-7", A2_r3 = "6.620e-7", lambda1_r3 = "2684.9", lambda2_r3 = "2769.1", A1_r4 = "1.550e-8", A2_r4 = "5.532e-9", lambda1_r4 = "2011.3", lambda2_r4 = "1964.6", N = "9.4136e15" }
+check = "Computed 2026-09-29 against optmat's HITRAN 2024 band table (data/external/hitran/CO2_bands.csv, one pole per band, all isotopologues) and fit/CO2 (TC-720). Total strength sum 2(A_1 + A_2) = 1.2570e-4 against 1.2787e-4 (-1.7 %); static vibrational polarizability sum f/E^2 = 2.0837 against 2.1212 au (-1.8 %). By region, against HITRAN's 12C16O2 bands alone: 15 um (r = 1, 0-1000 cm^-1) strength -0.15 %, static -0.14 %; 4.3 um (r = 2, 1500-2600 cm^-1) -0.10 %, -0.22 %; 2.7 um (r = 3) -2.5 %, -2.6 %; 2.0 um (r = 4) -35 %; against all isotopologues -1.7, -1.6, -3.9 and -36 %. The poles (cm^-1): 660.9 and 703.3 (optmat's one pole: 668.6), 2330.5 and 2367.9 (2346.2), 3724.5 and 3611.3 (3670.7), 4971.9 and 5090.1 (4982.0). The infrared polarizability against optmat's fixed bands in fit/CO2 (au; ppm of fit/CO2's total alpha): 633 nm -0.024791 against -0.025217 (+24 ppm); 1064 nm +72 ppm; 1550 nm +166 ppm; 3.5 um -2.0853 against -2.1077 (+1450 ppm); 4.0 um -8800 ppm (next to the 4.3 um band); 8 um -1055 ppm; 10 um +0.3266 against +0.3372 (-596 ppm); 10.6 um -536 ppm; 12 um -545 ppm. The infrared part of the GVD of pure CO2 (1 atm, 296 K, ideal gas, n - 1 linear): 3.5 um -16914 against -16831 fs^2/m; 10 um -4810 against -4900 fs^2/m; at 8, 10.6 and 12 um the two differ by 650-12000 fs^2/m because optmat's one-pole-per-band sum places weak bands (the 9.4 and 10.4 um 'laser' bands, hot bands) inside the window, which the GSE smooths over."
+notes = "The terms are CO2's infrared contribution alone (the GSE has no electronic CO2 term). Fitted to the line sum of air with 370 ppm CO2 and 10 % humidity; how the wavelengths were fitted and over what range is not stated. The strengths agree with HITRAN's principal isotopologue to 0.1-0.2 % in the two strong bands, so the other isotopologues (1.6 % of the strength) appear to be left out (inferred, not stated). Linear in density and per molecule with no temperature dependence (HITRAN's 296 K strengths)."
+
+[[formulas]]
+id = "gse_N2"
+material = "N2"
+equation = "Eq. (5) with Table 1, row r = 12 (p. 6)"
+printed = "N2, electronic transitions (ref. 7): A_1r = 1.2029482, A_2r = 5.796725 (headed 'ps^2'), lambda_1r = 85 nm, lambda_2r = 24.546 nm, N_r = 19870 x 10^15 cm^-3"
+variable = "as gse_CO2_infrared: per molecule alpha = sum_j 2 A_j / (E_j^2 - omega^2), E_j = 45.5634 / lambda_j[nm] hartree"
+state = "none (per molecule; n - 1 linear in N_r)"
+density = "none"
+range = "0.3-13 um (the GSE's stated range for air)"
+coefficients = { A1 = "1.2029482", A2 = "5.796725", lambda1 = "85", lambda2 = "24.546", N = "19870e15" }
+check = "Computed 2026-09-29: S(0) = 13.99935, S(-2) = 11.73772, S(-4) = 30.11653, equal to margoliash_1978's N2 pseudospectrum's 13.99935, 11.73773, 30.11384 (S(-6) 101.70 against 101.82, S(-8) 353.0 against 384.6). Against fit/N2: alpha(633 nm) = 11.89654 against 11.89434 au (+185 ppm), 300 nm +236 ppm, 1550 nm +176 ppm, static +174 ppm (11.73772 against 11.73567)."
+notes = "A two-pole condensation of Margoliash and Meath's (1978) N2 DOSD, keeping its S(0) and S(-2): the offset from fit/N2 is that DOSD's."
+
+[[formulas]]
+id = "gse_O2"
+material = "O2"
+equation = "Eq. (5) with Table 1, row r = 13 (p. 6)"
+printed = "O2, electronic transitions (ref. 7): A_1r = 0.26507582, A_2r = 7.734925 (headed 'ps^2'), lambda_1r = 127 nm, lambda_2r = 29.469 nm, N_r = 5329.1 x 10^15 cm^-3"
+variable = "as gse_CO2_infrared: per molecule alpha = sum_j 2 A_j / (E_j^2 - omega^2), E_j = 45.5634 / lambda_j[nm] hartree"
+state = "none (per molecule; n - 1 linear in N_r)"
+density = "none"
+range = "0.3-13 um (the GSE's stated range for air)"
+coefficients = { A1 = "0.26507582", A2 = "7.734925", lambda1 = "127", lambda2 = "29.469", N = "5329.1e15" }
+check = "Computed 2026-09-29: S(0) = 16.00000, S(-2) = 10.59006, S(-4) = 34.707, against margoliash_1978's O2 pseudospectrum's 16.00000, 10.59007, 34.749. Against fit/O2: alpha(633 nm) = 10.77687 against 10.77495 au (+178 ppm), 300 nm +172 ppm, 1550 nm +252 ppm, static +277 ppm (10.59006 against 10.58713)."
+notes = "A two-pole condensation of Margoliash and Meath's (1978) O2 DOSD, keeping its S(0) and S(-2)."
+
+[[formulas]]
+id = "gse_Ar"
+material = "Ar"
+equation = "Eq. (5) with Table 1, row r = 14 (p. 6)"
+printed = "Ar, electronic transitions (refs. 8-10): A_1r = 0.93132145, A_2r = 7.217322 (headed 'ps^2'), lambda_1r = 87 nm, lambda_2r = 22.645 nm, N_r = 237.63 x 10^15 cm^-3"
+variable = "as gse_CO2_infrared: per atom alpha = sum_j 2 A_j / (E_j^2 - omega^2), E_j = 45.5634 / lambda_j[nm] hartree"
+state = "none (per atom; n - 1 linear in N_r)"
+density = "none"
+range = "0.3-13 um (the GSE's stated range for air)"
+coefficients = { A1 = "0.93132145", A2 = "7.217322", lambda1 = "87", lambda2 = "22.645", N = "237.63e15" }
+check = "Computed 2026-09-29: S(0) = 16.297 (argon has 18 electrons; Mathar 2004's sum to 500 eV is 13.3), static alpha = S(-2) = 10.357 au against fit/Ar's 11.077 (-6.50 %); alpha(633 nm) = 10.49186 against 11.22448 au (-6.53 %), -6.54 % at 500 nm, -6.50 % at 10 um. At N = 2.879e19 cm^-3 (Fig. 5c) the term gives n - 1 = 2.8124e-4 at 633 nm, 0.12 % above Peck and Fisher's 0 degrees C formula (peck_1964/peck_0C, 2.8090e-4, whose density is 2.687e19); at 2.687e19 it gives 2.6246e-4, 6.6 % below. Not argon's polarizability."
+notes = "The GSE's argon term is 6.5 % below argon's polarizability at every wavelength: consistent with its having been matched to Peck and Fisher's 0 degrees C formula at the density printed for argon in Fig. 5 (2.879e19 cm^-3, 7.1 % above 0 degrees C, 1 atm). In air (0.93 % argon) this is -1.6e-7 in n - 1 at 1 atm, which the four electronic terms together hide: their sum reproduces Ciddor's formula for air (source notes)."

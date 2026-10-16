@@ -1,0 +1,87 @@
+citation = "D. M. Pennington, M. A. Henesian and R. W. Hellwarth, \"Nonlinear index of air at 1.053 um\", Phys. Rev. A 39, 3003 (1989)"
+doi = "10.1103/PhysRevA.39.3003"
+library = "Pennington_1989_NonlinearIndexAir"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Intensity-dependent rotation of the polarization ellipse (ICSP) of a 1-ns, \
+nearly square, 1.053-um Nova beam (unfocused, 1-in. subaperture, 0.5-1.5 GW/cm2) over a \
+68-m path at 20 +- 1 C: (a) air, (b) air with a 58-m cell (BK-7 windows) filled with air \
+at 1 atm, (c) that cell filled with argon at 1 atm; transmitted fractions through \
+analyzers at 0 and 45 degrees measured with calorimeters versus intensity (pp. \
+3003-3006)."""
+notes = """Journal pages 3003-3009 = PDF pages 1-7. Identity checked against the first page. \
+Air (the paper's subject) is not curated: its values are in these notes only.
+
+DEFINITIONS (Gaussian esu). Maker-Terhune c coefficients c1111 and c1221(-omega, omega, \
+omega, -omega) (p. 3003). Field (Eq. (5), p. 3005): E(z, t) = Re[e(z) E(z, t) exp(-i omega \
+t)], e*.e = 1. Eq. (9): P_i^NL = sum 3 c_ijkl(-omega, omega, omega, -omega) E_j E_k E_l*. \
+Eq. (10): the ellipse rotates by psi = (-6 pi omega c1221 z / n c)(|c+|^2 - |c-|^2) |E|^2; \
+Eqs. (13)-(17) relate the measured slopes f'_gamma to c1221 through H_gamma (2.616 at \
+gamma = 0, 3.348 at 45 degrees, nominal angles). p. 3009: 'This coefficient [c1111] is \
+often expressed in terms of a nonlinear index n2, in terms of which the self-induced \
+change in refractive index experienced by a linearly polarized beam equals n2 <E^2>. \
+Then n2 equals 12 pi c1111 / n.'
+
+RESULTS. Table II (p. 3007; image checked; tools/extract/pennington_1989.py): c1221 in \
+1e-19 esu: (a) air 17 +- 4 (gamma = 0), 19 +- 6 (45); (b) air 19 +- 3, 19 +- 9 (BK-7 windows \
+assumed c1221 = 1.8e-15 esu, n = 1.51, L = 3 cm); (c) argon 3 +- 2, 3 +- 6 (windows and 10 m \
+of air assumed, air at Eq. (19)). The errors are the extreme-consistency lines of the \
+fits, 'with Delta H_gamma = 0' (no angle errors). Final air value (Eq. (18), p. 3009): \
+c1221 = (20 +- 5) x 10^-19 esu at 1.053 um and 20 C, after the +9.3 % and +6.5 % angle \
+corrections of Table III; calculated (Eq. (19), 'Ref. 9' = hellwarth_1990, then \
+unpublished): (23 +- 2) x 10^-19; 'cw Kerr and harmonic-generation data imply c1111 = (3.0 \
++- 0.3) x 10^-18 esu for air' and n2 = (1.1 +- 0.1) x 10^-16 esu (air, 1.053 um, 20 C; \
+abstract: n2 = 1.0e-16 cm3 erg^-1 from the measured c1221). Air's c1221 is 92 % molecular \
+reorientation and 8 % electronic; 1-ns pulses may see ~5 % less than the steady state \
+(rotational Raman linewidths ~3 GHz) (p. 3009). Vlasov et al.'s 46e-19 esu is about twice \
+this value.
+
+ARGON. 'The results given in Tables I and II with argon gas in 58 m of the propagation \
+path give a very uncertain estimate for c1221 of argon' (p. 3009); the calculated value \
+(2.0 +- 0.1) x 10^-19 esu (Eq. (20), from hellwarth_1990) is 'quite consistent'. c1221 \
+governing ICSP is ~12 times smaller for argon than for air (p. 3004). State: argon 'at 1 \
+atm' / 'at ambient pressure and temperature', path at 20 +- 1 C."""
+
+[[datasets]]
+id = "c1221_Ar"
+material = "Ar"
+file = "Ar/pennington_1989__c1221_Ar.csv"
+table = "tbl_35e9b208bbb4"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_c = 20.0 }
+use = "check"
+notes = "Table II, configuration (c), argon: c1221(-omega, omega, omega, -omega) at 1053 nm with the analyzer at 0 (row gamma0) and 45 degrees (row gamma45). Depends on the assumed c1221 of the windows and of 10 m of air (23e-19 esu, Eq. (19)). 1-ns pulses. The paper calls it 'a very uncertain estimate' (p. 3009): 'check', not fitted."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+process = "kerr"
+convention = "maker_terhune_c"
+part = "total"
+component = "1221"
+pulse_fs = 1000000
+
+[[datasets]]
+id = "c1221_calculated_Ar"
+material = "Ar"
+table = "text"
+points = [["1053", "1053", "2.0", "0.1"]]
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_c = 20.0 }
+use = "reproduced"
+reproduced_from = ["hellwarth_1990"]
+notes = "Eq. (20), p. 3009: 'The value for c1221(-omega, omega, omega, -omega) of argon gas at 1.053 um, as calculated from recent Kerr and second-harmonic measurements, is (2.0 +- 0.1) x 10^-19 esu' (Ref. 9 = hellwarth_1990, then unpublished; there c1221(-w,w,w,-w) = c1122(-w,-w,w,w) = 2.05 (formula B) or 2.02 (A) at 1053 nm)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "maker_terhune_c"
+part = "total"
+component = "1221"

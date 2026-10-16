@@ -1,0 +1,143 @@
+citation = "W. Gornik, S. Kindt, E. Matthias and D. Schmidt, \"Two-photon excitation of xenon atoms and dimers in the energy region of the 5p5 6p configuration\", J. Chem. Phys. 75, 68-74 (1981)"
+doi = "10.1063/1.441856"
+library = "Gornik_1981_TwoPhotonExcitation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Two-photon excitation of xenon (10^-6 to 1.3 bar, room temperature) by a \
+frequency-doubled pulsed dye laser (Coumarin 307, 480-520 nm, 0.01 nm (12 GHz), 5 ns, \
+70 kW, 30 Hz; doubled in LFM to 300 W, bandwidth 18 GHz, 'about 2 MW/cm2' at the \
+focus), scanned over 246-260 nm; the VUV fluorescence on a solar-blind photomultiplier \
+(photon counting, or the current for the strong atomic lines) or the near-infrared \
+6p -> 6s fluorescence (823.2 nm for 6p[3/2]2), the UV energy recorded shot by shot. \
+The absolute rate of 6p[3/2]2 at 2.6 ubar with 'a reduced laser bandwidth of 2.8 GHz' \
+and 'an estimated power density of 1.8 MW/cm2' (p. 70); the other two from relative \
+line intensities. Pressure shifts against a 2 mbar reference cell (Fig. 5)."""
+notes = """J. Chem. Phys. 75(1), 68-74 (1 July 1981) = PDF pages 2-8 (PDF page 1 is the \
+AIP download cover; journal page = PDF page + 66). Identity checked against the first \
+page of the article (PDF p. 2: title, authors, Freie Universität Berlin; received 30 \
+January 1981, accepted 10 March 1981) on 2026-10-08. Every number below was read on the \
+rendered pages (pp. 70-71) and Table I's image. The paper writes the jl labels with \
+vertical bars (6p|3/2|2 for 6p[3/2]2).
+
+TAKEN (after TC-1040, pressure_line_coefficient): the pressure shifts and broadening \
+below (PRESSURE EFFECTS). NO TWO-PHOTON STRENGTH IS TAKEN. The paper's two-photon \
+results are transition rates, not \
+cross sections:
+- 'W(1S0 -> 6p|3/2|2) = 3.5 x 10^3 s-1', 'accurate within a factor of 3, due to \
+uncertainties in the quantum efficiency of the detector and geometrical factors' (p. \
+70), and the ratios 6p[1/2]0 : 6p[5/2]2 : 6p[3/2]2 = 9 : 5 : 1, 'about 20%' (laser \
+intensity fluctuations). Table I (p. 71), 'Measured and estimated two-photon \
+transition rates for I0 = 1.8 MW/cm2 and Delta omega / 2 pi = 4 GHz': measured 3.2 x \
+10^4, 3.5 x 10^3, 1.8 x 10^4 s-1 and single-path estimates 1.2 x 10^4, 5.1 x 10^3, 1.3 \
+x 10^4 s-1 for 6p[1/2]0 (249.63 nm), 6p[3/2]2 (252.48 nm), 6p[5/2]2 (256.01 nm).
+- A rate at one intensity and one bandwidth is not a quantity of the vocabulary; \
+converting it to two_photon_excitation_cross_section needs the intensity's spatial \
+and temporal averaging, which the paper does not give (an 'estimated power density'), \
+and is not done here. For comparison only: the paper's own line shape (the estimate's \
+expression on p. 70: a Gaussian of FWHM Delta omega with Delta omega^2 = 2 Delta \
+omega_L^2 + Delta omega_D^2, peak (4 ln 2 / pi)^(1/2) / Delta omega, unit area in the \
+two-photon angular frequency, and a factor 2 for 'temporal fluctuations of the laser \
+intensity', i.e. G2 = 2) with Delta omega / 2 pi = 4 GHz and I0 = 1.8 MW/cm2 turns \
+the measured rates into sigma G2 = W / (g Phi^2) = 16.7, 1.79 and 8.95 x 10^-35 cm4 \
+(6p[1/2]0, 6p[3/2]2, 6p[5/2]2), or 8.4, 0.89 and 4.5 x 10^-35 with G2 = 2 divided \
+out. Checked: Table I's Delta omega / 2 pi = 4 GHz is the absorption-line FWHM of the \
+2.8 GHz laser of the absolute measurement without the Doppler term, sqrt(2) x 2.8 = \
+3.96 GHz (Delta omega^2 = 2 Delta omega_L^2 + Delta omega_D^2; the Doppler width used \
+is not stated). The geohegan_1986 \
+quote is checked in the convention W = alpha I^2 / hbar omega (below).
+- The derived Delta C6 and C6 (Table II, p. 72), the Xe2 band positions (Table III): \
+no quantity.
+
+PRESSURE EFFECTS (p. 72, Figs. 5-6, Table II; image of Table II checked cell by cell; \
+tools/extract/gornik_1981.py). Self-perturbed (pure xenon, 10^-3 to 1.3 bar, room \
+temperature, not stated as a number), the peaks measured against a 2 mbar reference \
+cell. TAKEN: Table II's 'Shift beta/N (10^-9 s^-1 cm^3)', -2.5 (0.2), -2.7 (0.2), \
+-2.8 (0.2) for 1S0 -> 6p[1/2]0, 6p[3/2]2, 6p[5/2]2, 'beta is the line shift in angular \
+frequencies and N the number of atoms per cm^3' (beta_shift_Xe, primary; equal to the \
+abstract's values, script check); and the linewidth's pressure dependence for 6p[1/2]0, \
+'(~25 MHz/Torr)' from Fig. 6 (p. 72), which the authors did not deconvolve ('Lacking \
+knowledge of the precise spectral profile of the laser prevents us from deconvoluting \
+the observed line shape to determine the broadening parameter 2 gamma / N'), inline \
+(broadening_Xe, check). FREQUENCY SCALE: the transition's (two-photon) frequency, by \
+the paper's own numbers: beta/N = -2.5e-9 s^-1 cm^3 is -9.8 GHz/bar in ordinary \
+frequency at 295 K (script), the slope of Fig. 5's 6p[1/2]0 line (0 to about -15 GHz \
+over 1.5 bar, read by eye); Figs. 5 and 6 share the axis unit, and Fig. 6's \
+zero-pressure width, 'the expected value of around 30 GHz', is the two-photon-scale \
+width of the 18 GHz laser, sqrt(2) x 18 = 25 GHz with the 2.6 GHz Doppler term, not \
+the 18 GHz the laser scale would give; and Delta C6 is derived from beta as the \
+ground-6p difference potential. The paper does not state the scale in words. \
+Sign as printed: negative, a red shift. In ordinary frequency at 295 K the shifts are \
+-13.0, -14.1, -14.6 MHz/torr (script). Not taken: Hawkins et al.'s '(25 +- 15) \
+MHz/Torr', quoted as gamma / (pi p) (hawkins_1980 holds it); Fig. 4 (line shapes).
+
+FINDING: kroll_1990 (TC-890) and raymond_1984. Kroll and Bischel's Table I lists this \
+paper (their Ref. 8) as sigma_tot G2(0) = 6.8, 0.74 and 3.7 x 10^-35 cm4 ('Factor of \
+3'). Those numbers are raymond_1984's Table I values for this paper, 108, 12 and 61 \
+cm4/J^2 ('inferred from their measured transition rates'), multiplied by (hbar \
+omega)^2 at 249.63, 252.48 and 256.01 nm (6.84, 0.743, 3.67 x 10^-35): Kroll and \
+Bischel took them from Raymond et al., not from this paper. Raymond et al.'s values \
+correspond to g = W / (alpha I0^2) = 9.1 x 10^-11 s for all three levels at I0 = 1.8 \
+MW/cm2, 2.4 times this paper's own 3.74 x 10^-11 s; the step is not given and is not \
+reproduced here. So the 'Ref. 8' row of kroll_1990 is 2.4 times below what this \
+paper's printed rates give with its own stated line shape, intensity and bandwidth \
+(the ratios between the levels agree). Neither copy states the G2(0) convention: this \
+paper's rates include the factor 2 of chaotic light.
+
+FINDING: geohegan_1986 (TC-886). It quotes this paper for the two-photon excitation of \
+Xe 6p[3/2]2 as 'alpha ~ 1.2 x 10^-27 cm4 W-1' (its p. 275). In that convention (W = \
+alpha I^2 / hbar omega, bokor_1980's Eq. 1) the measured 3.5 x 10^3 s-1 at 1.8 MW/cm2 \
+and 252.48 nm gives 8.5 x 10^-28, the single-path estimate 5.1 x 10^3 s-1 gives 1.24 x \
+10^-27: the quoted value is the estimate, not the measurement.
+
+TWO-PHOTON DATA CITED, NOT IN THE LIBRARY (Hawkins et al. 1980, the broadening's \
+source, is now hawkins_1980; Gornik et al. 1980 is gornik_1980): B. Cagnac, G. Grynberg and F. Biraben, J. Phys. (Paris) 34, 845 (1973) and \
+G. Grynberg and B. Cagnac, Rep. Prog. Phys. 40, 791 (1977) (theory); K. Aron and P. M. Johnson, J. Chem. \
+Phys. 67, 5099 (1977) (multiphoton ionisation of Xe and Xe2)."""
+
+[[datasets]]
+id = "beta_shift_Xe"
+material = "Xe"
+file = "Xe/gornik_1981__beta_shift_Xe.csv"
+table = "tbl_2928c3b46e82"
+quantity = "pressure_line_coefficient"
+unit = "cm3/s"
+scale = 1e-9
+abscissa = "label"
+use = "primary"
+notes = "Table II (p. 72), 'Shift beta/N (10^-9 s^-1 cm^3)', the self-induced shifts of the two-photon lines from 1S0 to 6p[1/2]0, 6p[3/2]2, 6p[5/2]2 (NIST 5p5(2P*3/2)6p 2[1/2] J = 0, 2[3/2] J = 2, 2[5/2] J = 2), linear up to 1.3 bar (Fig. 5); beta in angular frequency on the transition's scale (record notes), N in atoms per cm^3; negative = red. The bracketed uncertainty as printed, level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+effect = "shift"
+transition = "1S0 -> 6p|J|K (Table II's rows)"
+photons = 2
+frequency_scale = "transition"
+width = "none"
+frequency_variable = "angular"
+perturber = "self"
+pressure_range = "1e-3 to 1.3 bar"
+method = "two-photon excitation spectra, the line maximum against a 2 mbar reference cell, linear fit to Fig. 5"
+
+[[datasets]]
+id = "broadening_Xe"
+material = "Xe"
+table = "text"
+quantity = "pressure_line_coefficient"
+unit = "MHz/torr"
+abscissa = "label"
+use = "check"
+points = [["6p[1/2]0", "6p[1/2]0", "25"]]
+notes = "p. 72: 'the pressure dependence of the linewidth in Fig. 6 (~25 MHz/Torr)', 1S0 -> 6p[1/2]0, the observed width (laser 18 GHz, not deconvolved; the authors decline to give the broadening parameter 2 gamma / N); approximate. A check: it agrees with hawkins_1980's 25 +- 15 MHz/Torr, as the paper says."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+effect = "broadening"
+transition = "1S0 -> 6p|1/2|0"
+photons = 2
+frequency_scale = "transition"
+width = "not stated"
+frequency_variable = "ordinary"
+perturber = "self"
+pressure_range = "1e-3 to 1.5 bar (Fig. 6)"
+method = "slope of the observed linewidth against pressure (Fig. 6), not deconvolved from the laser profile"

@@ -1,0 +1,114 @@
+citation = "J. Borysow, T. Capek, C. Mazzoleni and M. Moraldi, \"Corrections to the Raman fundamental band of N2 and O2 due to molecular non-rigidity: computations and experiment\", Mol. Phys. 118, e1663287 (2020) (published online 11 September 2019)"
+doi = "10.1080/00268976.2019.1663287"
+library = "Borysow_2019_CorrectionsRamanFundamental"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Spontaneous vibrational Raman spectra of the fundamental band of N2 and O2 in \
+room air (about 20 C), CW 10 W single-mode fibre laser at 532 nm in a 40-pass \
+two-mirror cell (about 400 W at the focus), 90-degree collection through a Dove prism \
+and a 535 nm long-pass filter into a 0.5 m imaging spectrograph with a CCD at -50 C; \
+configuration II (laser polarized in the scattering plane: depolarized light only) for \
+the intensities, 15 exposures of 60 s, lines integrated over fixed widths (8 cm-1 N2, \
+10 cm-1 O2) after baseline and spectral-response corrections (pp. 2-6 of the article). \
+The ratio Z^2(j) of the squared anisotropy matrix elements of the S and O lines from the \
+same j, from their intensities (Eqs. 2, 5), fitted by Hamaguchi, Suzuki and Buckingham's \
+third-order perturbative formula (Eqs. 16-18) for b0 = beta_e/(r_e beta_e')."""
+notes = """PDF page n is the article's page n - 1 (PDF page 1 is the publisher's cover); \
+page numbers below are the article's. Identity checked on the first page (DOI, authors).
+
+NOTHING IS EXTRACTED AS A DATASET: no quantity of the vocabulary holds these values \
+honestly (a second curator's decision; see the formulas).
+- Z^2(j) (Tables 1-2) is a ratio of squared matrix elements of the polarizability \
+anisotropy, <0 j|beta|1 j+2>^2/<0 j|beta|1 j-2>^2 (Eq. 15), from the S/O intensity ratio \
+corrected for the frequency factor and the Clebsch-Gordan coefficients (Eqs. 2, 5): \
+not a cross-section ratio (the Clebsch-Gordan factors are divided out), not a transition \
+polarizability (a ratio of two), and not a derivative. A quantity such as a 'Raman \
+matrix-element ratio' against j would hold it.
+- b0 = beta_e/(r_e beta_e') (Eq. 1) is a dimensionless ratio of the equilibrium \
+anisotropy to r_e times its first derivative, and b2 = beta_e'' r_e/beta_e' another: \
+neither is a polarizability derivative (the list of requested papers' reading of Table \
+3 as 'the polarizability derivative' does not hold). With an independent beta_e (e.g. \
+from wahlstrand_2012 or a polarizability_anisotropy dataset) and r_e, beta_e' = \
+beta_e/(r_e b0): a modelling step, not a value of this paper.
+The fits are recorded as the formulas z2_N2 and z2_O2; the tables are quoted here \
+(CSV cells checked against the table images).
+
+TABLE 1 (p. 9), 'Z^2 values for oxygen', j: Z^2 +- error: 5: 0.917 +- 0.013; 7: 0.902 +- \
+0.004; 9: 0.869 +- 0.004; 11: 0.850 +- 0.004; 13: 0.826 +- 0.012; 15: 0.797 +- 0.013. For \
+O2, j is the nuclear rotational quantum number (N, the paper's k; odd only for 16O2), the \
+intensity of each k -> k' triplet summed (Eqs. 11-14).
+TABLE 2 (p. 9), 'Z^2 values for nitrogen': 4: 0.940 +- 0.005; 8: 0.901 +- 0.004; 10: \
+0.873 +- 0.004; 12: 0.846 +- 0.005; 14: 0.817 +- 0.014; 16: 0.790 +- 0.015 (even j only: \
+the odd lines overlap their neighbours; j = 6 omitted, overlapped by the Q branch of \
+another isotopologue; p. 5). 'The errors shown in column 3 of Tables 1 and 2 are maximum \
+errors', 3 x the square root of the photo-electron count plus 1 % for isotopologue \
+overlap at N2 j = 14, 16 and O2 j = 5, 13, 15 (p. 9). Only j <= 16 is used because the \
+perturbative formula matches Langhoff's non-perturbative Z^2 to < 0.5 % there (p. 8). \
+The measurements are 'at a temperature of about 20 C but the results are independent on \
+the temperature' (p. 9).
+
+RESULT, Eq. (19), p. 10: b0(O2) = 0.49 +- 0.01, b0(N2) = 0.48 +- 0.01, with b2 = b3 = 0, \
+a1 = -2.716, a2 = 4.412 for N2 (Hamaguchi et al. [5]) and a1 = -2.99, a2 = 5.61 for O2 \
+(Herzberg [26]); chi^2/DOF (DOF = 5) 0.5 (O2) and 1.0 (N2). The error is stated as 'about \
+2%' (p. 10). DOUBT: the conclusions (p. 11) give 'For 14N2, the b0 parameter inferred from \
+our experiment (0.49 +- 0.01)'; the refit below gives 0.479, so Eq. (19)'s 0.48 is the \
+fitted value and the conclusions' 0.49 a slip.
+
+REFIT (2026-09-26, scratch; a second curator's check of Eqs. 16-18): weighted least \
+squares of Eq. (16) to Tables 1-2 with the stated a1, a2 and b2 = b3 = 0. O2: epsilon = 2 \
+B_e/omega_e with B_e = 1.445611834 and omega_e = 1579.833 cm-1 (Hajigeorgiou 2013, in \
+the library, p. 014309-4) gives b0 = 0.486 +- 0.009, chi^2/DOF = 0.50 (paper 0.49 +- 0.01, \
+0.5). N2: B_e = 1.998232 cm-1 (Bendtsen 1974 Table IX, in the library) and omega_e = \
+2358.57 cm-1 (QUOTED FROM MEMORY, Huber and Herzberg, for this check only; no library \
+source found) give b0 = 0.479 +- 0.009, chi^2/DOF = 1.03 (paper 0.48 +- 0.01, 1.0). Eq. \
+(16) at b0 = 0.48 gives Z^2(N2) = 0.943, 0.895, 0.872, 0.849, 0.828, 0.807 at j = 4-16 \
+against the printed 0.940, 0.901, 0.873, 0.846, 0.817, 0.790. Eq. (17) as printed \
+reproduces the paper's fits: no misprint found.
+
+TABLE 3 (p. 10), 'Historical values of b0 for O2 and N2' (all reproduced, 'derived from \
+measurements of Raman scattering cross sections apart the result taken from Ref. [3] \
+which is derived from ab initio calculations'): O2 0.339 +- 0.040, b2 = 2.5 +- 1.0 \
+(Buldakov [27]); O2 0.23 +- 0.07 (Rosenblatt [7] = Asawaroengchai and Rosenblatt, J. \
+Chem. Phys. 72, 2664 (1980)); O2 0.42 (Klemperer [2] = James and Klemperer, J. Chem. Phys. \
+31, 130 (1959)); N2 0.33, b2 = 1.2 (Langhoff [3] (th), Langhoff, Bauschlicher and Chong, \
+J. Chem. Phys. 78, 5287 (1983)); N2 0.318 +- 0.043, b2 = 1 +- 2 (Buldakov [27] = Buldakov \
+et al., J. Mol. Spectrosc. 217, 1 (2003) and Spectrochim. Acta 52A, 995 (1996)); N2 0.45 \
++- 0.09, b2 = 0.42 (Rosenblatt [7]); N2 0.4 (Klemperer [2]); N2 0.380 +- 0.042 \
+('Buckingham [6]' = Hamaguchi, Buckingham and Jones, Mol. Phys. 43, 1311 (1981)). No \
+level is stated for the +-. None of the cited works is in the library.
+
+For review (the Herman-Wallis correction of the fundamental): Z^2 < 1 means the S \
+lines of the fundamental are weaker, and the O lines stronger, than the rigid-rotor \
+values: to first order 1 - Z^2 ~ 8 b0 epsilon (2j + 1) in the S/O ratio (C ~ -4 b0 \
+epsilon), 6 % at j = 4 and 21 % at j = 16 for N2; the per-line factor is in the formulas.
+
+ISOTOPOLOGUES: the measurements are 14N2 and 16O2 in air; 14N15N (abundance 0.0075 of \
+14N2) and 16O18O (0.0038 of 16O2) overlap some lines and enter the error budget (pp. \
+6-7); their spectra (Figs. 12-13) are computed, not measured. Figures 3-13 are spectra \
+and Z^2 plots (digitised values of Rosenblatt's, Fig. 10-11): nothing digitised here."""
+
+[[formulas]]
+id = "z2_N2"
+material = "N2"
+equation = "Eqs. (16)-(18), pp. 9-10; fitted b0 Eq. (19), p. 10"
+printed = "Z^2(j) = [1 + C m(j, j+2) + D m(j, j+2)^2] / [1 + C m(j, j-2) + D m(j, j-2)^2]; C = (epsilon/G) (b0 (-4 - 12 epsilon - 15 a1 epsilon + 9 a2 epsilon - (41/4) a1^2 epsilon) + ((13/2) a1 + 3/2) epsilon - b2 epsilon); D = (C/2)^2 - (epsilon^2/G) ((3/2) a1 + 3/2 - 2 b2); G = 1 + (11/16) a1^2 epsilon - (3/4) a2 epsilon - (5/4) b2 a1 epsilon + (1/4) b3 epsilon; m(j, j') = (1/2) (j'(j'+1) - j(j+1)); epsilon = 2 B_e/omega_e"
+variable = "j: the rotational quantum number of the initial level (v = 0) of the S and O lines; Z^2 = <0 j|beta|1 j+2>^2/<0 j|beta|1 j-2>^2"
+state = "none (a molecular property; measured at about 20 C)"
+density = "unknown"
+range = "j = 4-16 (the data fitted, even j, j = 6 omitted)"
+coefficients = { b0 = "0.48", a1 = "-2.716", a2 = "4.412", b2 = "0", b3 = "0" }
+check = "Refit of Table 2 (2026-09-26): b0 = 0.479 +- 0.009, chi^2/DOF = 1.03, against the printed 0.48 +- 0.01 and 1.0, with epsilon = 2 x 1.998232/2358.57 (B_e from Bendtsen 1974 Table IX; omega_e quoted from memory for the check only). Eq. (16) at b0 = 0.48 differs from Table 2 by up to 1.5 times the stated error (j = 8: 0.895 against 0.901 +- 0.004; j = 16: 0.807 against 0.790 +- 0.015)."
+notes = "Hamaguchi, Suzuki and Buckingham's formula [5] (Mol. Phys. 43, 963 (1981)), third-order perturbation theory (p. 8); b0 = beta_e/(r_e beta_e') the fitted parameter (+- 0.01, 'about 2%'), b2 = b3 = 0 assumed (the second and third derivatives of the anisotropy neglected), a1 and a2 the Dunham anharmonic coefficients of Hamaguchi et al. [5]. B_e and omega_e (epsilon) are not printed in the paper. The conclusions (p. 11) print b0(14N2) = 0.49 +- 0.01, inconsistent with Eq. (19)'s 0.48, which the refit confirms. Isotopologue 14N2."
+
+[[formulas]]
+id = "z2_O2"
+material = "O2"
+equation = "Eqs. (16)-(18), pp. 9-10; fitted b0 Eq. (19), p. 10"
+printed = "Z^2(j) as for z2_N2 (the same Eqs. 16-18)"
+variable = "j: the nuclear rotational quantum number N (the paper's k) of the initial level, odd; the intensity of each k -> k' triplet summed over the spin components (Eqs. 11-14)"
+state = "none (a molecular property; measured at about 20 C)"
+density = "unknown"
+range = "j = 5-15 (the data fitted, odd j)"
+coefficients = { b0 = "0.49", a1 = "-2.99", a2 = "5.61", b2 = "0", b3 = "0" }
+check = "Refit of Table 1 (2026-09-26): b0 = 0.486 +- 0.009, chi^2/DOF = 0.50, against the printed 0.49 +- 0.01 and 0.5, with epsilon = 2 x 1.445611834/1579.833 (B_e and omega_e of Hajigeorgiou 2013, p. 014309-4, in the library). Eq. (16) at b0 = 0.49 gives 0.924, 0.897, 0.872, 0.847, 0.824, 0.801 at j = 5-15 against the printed 0.917, 0.902, 0.869, 0.850, 0.826, 0.797."
+notes = "As z2_N2, with a1 and a2 for O2 from Herzberg [26]. Isotopologue 16O2 X 3Sigma_g-. The paper's b0(O2) is twice Asawaroengchai and Rosenblatt's 0.23 +- 0.07 and 45 % above Buldakov et al.'s 0.339 +- 0.040 (Table 3)."

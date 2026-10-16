@@ -1,0 +1,1358 @@
+citation = "P. J. Leonard, At. Data Nucl. Data Tables 14, 21 (1974)"
+doi = "10.1016/s0092-640x(74)80028-8"
+library = "Leonard_1974_RefractiveIndicesVerdet"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Critical compilation of the interferometric refractive indices (absolute values \
+and dispersion), vacuum-ultraviolet values by other techniques (Rayleigh scattering, \
+Cerenkov threshold, hook method), displacement-interferometry kappa values, Verdet \
+constants and static polarizabilities of He, Ne, Ar, Kr and Xe, recalculated by the \
+compiler to a common standard state with modern PVT data."""
+notes = """STP is 273.16 K and 1 standard atmosphere (1.01325e6 erg cm^-3), pressures \
+corrected to standard gravity; 'for reduction from experimental to standard density it \
+is sufficient in all cases to use accurate second virial coefficients' (p. 2): a \
+real-gas reduction (state 273.16 K, 1 atm, density real). Table I gives each author's \
+absolute value at 5462.258 A (vacuum) recalculated to this STP, with Leonard's \
+reassessed probable errors, and the recommended value per gas (underlined). Table II \
+gives the dispersion data of each author with 'all values of (n-1) 10^6 adjusted to \
+the recommended values in TABLE I, so that the TABLE agrees in all cases with the \
+measured dispersion relative to those values' (legend, p. 11): the absolute level of \
+every Table II dataset is the recommended value, which is therefore not independent. \
+Table II wavelengths are in air at 15 degrees C (MIT Wavelength Tables, 'for \
+convenience in identifying the spectral line'); values in parentheses are 'discrepant \
+or low-accuracy', and the authors whose reference is printed in parentheses are \
+excluded datasets here.
+
+One dataset per original author and gas (Table II), per gas (Tables I and VI) or per \
+reference (Tables III-V); Leonard's reference numbers are in the dataset notes. Values \
+reproduced from papers in the library (Peck and Fisher 1964; C. and M. Cuthbertson \
+1910a/b, 1932; Heddle et al. 1963; Gill and Heddle 1963) name those sources, others \
+their citation as printed. The Table II values are Leonard's rescaled versions, not \
+the originals' numbers.
+
+Structural problems of the library tables (merged cells, braces, lost markers, lost \
+wavelength 4861.327 A in the argon half, a garbled Table III header, missing captions of \
+Table III(b)-(d)) are handled in the extraction script, with the image readings.
+
+Misprints noticed in the text, not affecting the data: 'the earliest measurements 31,35' \
+(p. 5) must be Refs. 34, 35; 'Measurements by Shardanand 12' (p. 5) is Ref. 42; \
+'Perv-Thorne 41' (p. 5) is Pery-Thorne, Ref. 44; the Verdet relation cites '18' for \
+van Vleck, Ref. 48; Table VI cites Ref. 42 (Shardanand) for its refractive-index \
+extrapolations, probably meaning Leonard's thesis, Ref. 47. The 'Quoted' column of \
+Table I (each author's value in his own convention) is not extracted.
+
+The formulas are Chashchina et al.'s three-term Sellmeier fits to their smoothed \
+line-shift data, 'after making the same adjustments as were made to the data of Koch \
+and Larsen' (pp. 4-5); Leonard includes none of their points in Table II and warns \
+that for Kr and Xe they are 'only a rough guide' and that 'in no case can the formulae \
+be used outside the range of the experiments'."""
+
+[[formulas]]
+id = "chashchina_Ar"
+form = "dn_sigma2"
+terms = { scale = "120.625e-6", B = ["14.0", "14.0", "430.63"], C = ["87.892", "91.011", "217.6"] }
+range_nm = [110.0, 270.0]
+material = "Ar"
+equation = "Eq. (Ar), p. 5"
+printed = "(n - 1) 10^6 = 120.625 (14.0/(87.892 - lambda^-2) + 14.0/(91.011 - lambda^-2) + 430.63/(217.6 - lambda^-2))"
+variable = "lambda: wavelength in 10^-6 m (vacuum; the fit covers the vacuum ultraviolet)"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+range = "about 2700-1100 A (Chashchina, Gladushchak and Shreider's line shifts, fitted together with Larsen's data)"
+coefficients = { scale = "120.625", f1 = "14.0", c1 = "87.892", f2 = "14.0", c2 = "91.011", f3 = "430.63", c3 = "217.6" }
+check = """Leonard prints no values from it. Compared with Chashchina et al.'s smoothed values \
+as reproduced (unadjusted, 0 degrees C) by Bideau-Mehu et al. 1981 (Table 3, 140.4-253.7 \
+nm), the formula is 0.05-0.08 % higher throughout, consistent with a small rescaling; at \
+5462.258 A it gives 281.69, 0.28 % below the recommended 282.4655 (outside its range). \
+Checked 2026-09-24 against bideau_mehu_1981/chashchina_1968_Ar."""
+notes = """Reproduced (with Leonard's adjustment) from G. I. Chashchina, V. I. Gladushchak and \
+E. Ya. Shreider, Opt. Spectrosc. 24, 542 (1968), not in the library. The resonance \
+oscillator strength 0.28 derived by the authors is split equally between the first two \
+terms, 'whereas the ratio is known to be nearer 10:1' (p. 5); fitted to n - 1, not to \
+the Lorentz-Lorenz function. Stated fit deviation 1.2 % (p. 4)."""
+
+[[formulas]]
+id = "chashchina_Kr"
+form = "dn_sigma2"
+terms = { scale = "120.884e-6", B = ["17.2", "18.9", "427.13"], C = ["65.474", "73.645", "146.305"] }
+range_nm = [130.0, 270.0]
+material = "Kr"
+equation = "Eq. (Kr), p. 5"
+printed = "(n - 1) 10^6 = 120.884 (17.2/(65.474 - lambda^-2) + 18.9/(73.645 - lambda^-2) + 427.13/(146.305 - lambda^-2))"
+variable = "lambda: wavelength in 10^-6 m (vacuum)"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+range = "about 6200-1330 A (Chashchina and Shreider's line shifts to 1330 A fitted together with Koch's data)"
+coefficients = { scale = "120.884", f1 = "17.2", c1 = "65.474", f2 = "18.9", c2 = "73.645", f3 = "427.13", c3 = "146.305" }
+check = """Compared with Chashchina and Shreider's values as reproduced by Bideau-Mehu et al. \
+1981 (Table 4, 0 degrees C), the formula is 0.14-0.30 % higher (0.89 % at 213.9 nm, \
+where the reproduced value itself looks low against its neighbours). At 5462.258 A it \
+gives 427.16, 0.85 % below the recommended 430.84; at 2302 A 0.6 % above Koch's value, \
+matching Leonard's description of a systematic deviation from -0.3 % to +0.8 % (p. 4). \
+Checked 2026-09-24."""
+notes = """Reproduced (adjusted) from G. I. Chashchina and E. Ya. Shreider, Opt. Spectrosc. \
+27, 79 (1969) (cited by Leonard as 25, 79 (1968)), not in the library. The resonance \
+pair's oscillator strengths and energies were imported, leaving two adjustable \
+constants; stated fit deviation 1.9 %; 'only ... a rough guide, giving results a \
+little too high near 2300 A and probably considerably too low near 1300 to 1500 A' \
+(p. 4)."""
+
+[[formulas]]
+id = "chashchina_Xe"
+form = "dn_sigma2"
+terms = { scale = "121.461e-6", B = ["25.6", "23.8", "523.770"], C = ["46.301", "59.578", "112.860"] }
+range_nm = [155.0, 270.0]
+material = "Xe"
+equation = "Eq. (Xe), p. 5"
+printed = "(n - 1) 10^6 = 121.461 (25.6/(46.301 - lambda^-2) + 23.8/(59.578 - lambda^-2) + 523.770/(112.860 - lambda^-2))"
+variable = "lambda: wavelength in 10^-6 m (vacuum)"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+range = "about 6200-1550 A (Chashchina and Shreider's line shifts to 1550 A fitted together with Koch's data)"
+coefficients = { scale = "121.461", f1 = "25.6", c1 = "46.301", f2 = "23.8", c2 = "59.578", f3 = "523.770", c3 = "112.860" }
+check = """Compared with Chashchina and Shreider's values as reproduced by Bideau-Mehu et al. \
+1981 (Table 5, 164.1-253.7 nm, 0 degrees C), the formula is 0.70-0.79 % higher. At \
+5462.258 A it gives 704.75, 0.26 % below the recommended 706.60. Checked 2026-09-24."""
+notes = """Reproduced (adjusted) from G. I. Chashchina and E. Ya. Shreider, Opt. Spectrosc. \
+27, 79 (1969), not in the library. Stated fit deviation 2.5 %; 'only ... a rough guide' \
+(p. 4)."""
+
+[[errata]]
+dataset = "damkohler_1934_Xe"
+row = "5717.7"
+column = "x"
+printed = "5717.7"
+corrected = "5117.7"
+reason = "Damkohler's xenon wavelengths are printed in descending order; 5717.7 A stands between 5141.2 A and 5085.824 A and its value, 710.30, lies between theirs (709.64, 710.31), so one digit is misprinted (7 for 1): 5117.7 A, the only single-digit change that restores the order."
+evidence = "Table image tbl_688a696b8c54.jpg shows 5717.7 in that position; at 5717.7 A the value would sit near its neighbours 704.90 and 705.37; the printed 710.30 is about 5 above them (second read 2026-09-25; TC-102)."
+
+[[errata]]
+dataset = "larsen_1934_Ar"
+row = "2893.565"
+column = "x"
+printed = "2893.565"
+corrected = "2893.595"
+reason = "The Hg line 2893.595 A (air) appears with this wavelength in the He, Ne, Kr and Xe parts of Table II; only the argon part prints 2893.565."
+evidence = "Table image tbl_b21803ae40ad.jpg shows 2893.565; Peck and Fisher 1964 (Table II) give Larsen's line as 2894.45 A in vacuum, which is 2893.60 A in air (Edlen 1966), nearer 2893.595. The 0.03 A difference changes n - 1 by about 1.4e-6 of itself, below the last printed digit (second read 2026-09-25; TC-102)."
+
+[[datasets]]
+id = "absolute_He"
+material = "He"
+file = "He/leonard_1974__absolute_He.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["K. Scheel and R. Schmidt, Verhandl. Deut. Physik. Gesellschaft 10, 207 (1908); Physik Z. 9, 921 (1908)", "K. Herrmann, Verhandl. Deut. Physik. Gesellschaft 10, 211, 476 (1908); Dissertation, Halle (1908)", "W. Burton, Proc. Roy. Soc. (London) Series A, 80, 390 (1908)", "C. Cuthbertson and E. P. Metcalfe, Proc. Roy. Soc. (London) Series A, 80, 411 (1908)", "cuthbertson_1910", "J. Koch, Arkiv. Mat. Astron. Fysik. 9, No. 6 (1913)", "cuthbertson_1932", "C. R. Mansfield and E. R. Peck, J. Opt. Soc. Am. 59, 199 (1969)", "K. T. Chung and R. P. Hurst, Phys. Rev. 152, 35 (1966)"]
+notes = "Table I, 'Recalculated' column: each author's absolute n - 1 at lambda_vac = 5462.258 A, recalculated by Leonard to his STP with modern PVT data (second virial coefficients); sigma is the 'Accuracy', an absolute probable error (Table I legend). The authors' 'Quoted' values (their own conventions) are not extracted. Rows by Leonard's reference number; ref7_18 is one recalculated value for Refs. 7 and 18 (a brace). Leonard accepts only Mansfield and Peck's (ref15) as a direct measurement and recommends the value derived from Chung and Hurst's calculated static polarizability (ref23, a theory value) through his dispersion curve (p. 4). ref15 is marked * (derived by interpolation or extrapolation)."
+[datasets.uncertainty]
+column = true
+level = "probable error"
+
+[[datasets]]
+id = "absolute_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__absolute_Ne.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910b", "cuthbertson_1910", "cuthbertson_1932", "R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1965)"]
+notes = "Table I, 'Recalculated' column: each author's absolute n - 1 at lambda_vac = 5462.258 A, recalculated by Leonard to his STP with modern PVT data (second virial coefficients); sigma is the 'Accuracy', an absolute probable error (Table I legend). The authors' 'Quoted' values (their own conventions) are not extracted. ref17_18 is Refs. 17 and 18 together. Only Orcutt and Cole's (ref24, an extrapolation of a static-polarizability measurement with the optical dispersion, marked *) is accepted and recommended (p. 4)."
+[datasets.uncertainty]
+column = true
+level = "probable error"
+
+[[datasets]]
+id = "absolute_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__absolute_Ar.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["W. Burton, Proc. Roy. Soc. (London) Series A, 80, 390 (1908)", "F. Ahrberg, Dissertation, Halle (1909)", "cuthbertson_1910", "M. Rusch, Ann. Physik, Series 4, 70, 373 (1923), (erratum) ib. Series 4, 85, 581 (1928); Dissertation, Breslau (1922)", "B. Quarder, Ann. Physik, Series 4, 74, 255 (1924); Dissertation, Breslau (1923)", "J. Tausz and H. Görlacher, Z. Tech. Physik 12, 123 (1931)", "G. Damköhler, Z. Physik. Chem., Abt. B, 27, 130 (1934)", "T. Larsén, Z. Physik 88, 389 (1934); Thesis, Lund (1939)", "peck_1964"]
+notes = "Table I, 'Recalculated' column: each author's absolute n - 1 at lambda_vac = 5462.258 A, recalculated by Leonard to his STP with modern PVT data (second virial coefficients); sigma is the 'Accuracy', an absolute probable error (Table I legend). The authors' 'Quoted' values (their own conventions) are not extracted. ref29a and ref29b are Rusch's two values (one reference, a brace in the image); ref29b's quoted value is bracketed (an interpolation or extrapolation), probably his infrared absolute value. Refs. 10, 11 and 14 are the three acceptable values (p. 3); their recalculations are marked *; Peck and Fisher's (ref14) is recommended."
+[datasets.uncertainty]
+column = true
+level = "probable error"
+
+[[datasets]]
+id = "absolute_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__absolute_Kr.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["C. and M. Cuthbertson, Proc. Roy. Soc. (London) Series A, 81, 440 (1908)", "cuthbertson_1910", "G. Damköhler, Z. Physik. Chem., Abt. B, 27, 130 (1934)", "W. Kronjäger, Z. Physik 98, 17 (1936); Dissertation, Braunschweig (1934)", "J. Koch, Kgl. Fysiograf Sallskap. Lund. Forh. 19, 173 (1949)"]
+notes = "Table I, 'Recalculated' column: each author's absolute n - 1 at lambda_vac = 5462.258 A, recalculated by Leonard to his STP with modern PVT data (second virial coefficients); sigma is the 'Accuracy', an absolute probable error (Table I legend). The authors' 'Quoted' values (their own conventions) are not extracted. Refs. 10 and 13 are the two acceptable values (p. 3), both marked *; the recommended value is their weighted average (430.84, Av.), extracted as recommended_Kr. Leonard finds the Cuthbertsons' krypton absolute value irreconcilable (p. 3)."
+[datasets.uncertainty]
+column = true
+level = "probable error"
+
+[[datasets]]
+id = "absolute_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__absolute_Xe.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["C. and M. Cuthbertson, Proc. Roy. Soc. (London) Series A, 81, 440 (1908)", "cuthbertson_1910", "G. Damköhler, Z. Physik. Chem., Abt. B, 27, 130 (1934)", "W. Kronjäger, Z. Physik 98, 17 (1936); Dissertation, Braunschweig (1934)", "J. Koch, Kgl. Fysiograf Sallskap. Lund. Forh. 19, 173 (1949)"]
+notes = "Table I, 'Recalculated' column: each author's absolute n - 1 at lambda_vac = 5462.258 A, recalculated by Leonard to his STP with modern PVT data (second virial coefficients); sigma is the 'Accuracy', an absolute probable error (Table I legend). The authors' 'Quoted' values (their own conventions) are not extracted. Refs. 10 and 13 are the two acceptable values (p. 3), both marked *; the recommended value is their weighted average (706.60, Av.), extracted as recommended_Xe."
+[datasets.uncertainty]
+column = true
+level = "probable error"
+
+[[datasets]]
+id = "recommended_He"
+material = "He"
+file = "He/leonard_1974__recommended_He.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "check"
+notes = "Table I, underlined: the value recommended by Leonard, derived from Chung and Hurst's (1966) calculated static polarizability through his dispersion curve (p. 4), with the probable error of that row. Every dataset of Table II is rescaled to this value, so it is not independent of them: kept as a check, not fitted beside Table II. It is also printed in Table II (5460.740 A in air, Ref. '*'), which is not extracted a second time."
+[datasets.uncertainty]
+absolute = 0.01
+level = "probable error"
+
+[[datasets]]
+id = "recommended_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__recommended_Ne.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "check"
+notes = "Table I, underlined: Orcutt and Cole's (1965) value, derived from a static-polarizability measurement and the optical dispersion (p. 4), with the probable error of that row. Every dataset of Table II is rescaled to this value, so it is not independent of them: kept as a check, not fitted beside Table II. It is also printed in Table II (5460.740 A in air, Ref. '*'), which is not extracted a second time."
+[datasets.uncertainty]
+absolute = 0.06
+level = "probable error"
+
+[[datasets]]
+id = "recommended_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__recommended_Ar.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "check"
+notes = "Table I, underlined: Peck and Fisher's (1964) value, which Leonard lets stand as the recommended value because the weighted average of the three acceptable values falls so close to it (p. 3); probable error of that row. Every dataset of Table II is rescaled to this value, so it is not independent of them: kept as a check, not fitted beside Table II. It is also printed in Table II (5460.740 A in air, Ref. '*'), which is not extracted a second time."
+[datasets.uncertainty]
+absolute = 0.042
+level = "probable error"
+
+[[datasets]]
+id = "recommended_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__recommended_Kr.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "check"
+notes = "Table I, underlined 'Av.': the weighted average of Damkohler's and Koch's recalculated values. No accuracy is printed; the text (p. 3) says the weighted averages 'are probably accurate to at least 0.05' (in n - 1 x 10^6). Every dataset of Table II is rescaled to this value, so it is not independent of them: kept as a check, not fitted beside Table II. It is also printed in Table II (5460.740 A in air, Ref. '*'), which is not extracted a second time."
+[datasets.uncertainty]
+absolute = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "recommended_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__recommended_Xe.csv"
+table = "tbl_c30192225841"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "check"
+notes = "Table I, underlined 'Av.': the weighted average of Damkohler's and Koch's recalculated values. No accuracy is printed; the text (p. 3) says the weighted averages 'are probably accurate to at least 0.05' (in n - 1 x 10^6). Every dataset of Table II is rescaled to this value, so it is not independent of them: kept as a check, not fitted beside Table II. It is also printed in Table II (5460.740 A in air, Ref. '*'), which is not extracted a second time."
+[datasets.uncertainty]
+absolute = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "ahrberg_1909_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__ahrberg_1909_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["F. Ahrberg, Dissertation, Halle (1909)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. 'Badly scattered'; neglected (p. 4); printed in parentheses. Leonard's Ref. 28."
+
+[[datasets]]
+id = "burton_1908_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__burton_1908_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["W. Burton, Proc. Roy. Soc. (London) Series A, 80, 390 (1908)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard's Ref. 26."
+
+[[datasets]]
+id = "cuthbertson_1911_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__cuthbertson_1911_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites the paper as Proc. Roy. Soc. A 84, 13 (1911); the library has it as 1910. Leonard's Ref. 18."
+
+[[datasets]]
+id = "larsen_1934_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__larsen_1934_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["T. Larsén, Z. Physik 88, 389 (1934); Thesis, Lund (1939)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard judges Larsen's and Koch's ultraviolet data the more accurate (p. 4). The 4108.066 A value is split off (larsen_1934_Ar_4108). Leonard's Ref. 11."
+
+[[datasets]]
+id = "peck_fisher_1964_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__peck_fisher_1964_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["peck_1964"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Peck and Fisher's 16 infrared-to-blue values rescaled to Leonard's STP; their 5462 A value is the recommended one. Leonard's Ref. 14."
+
+[[datasets]]
+id = "quarder_1924_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__quarder_1924_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["B. Quarder, Ann. Physik, Series 4, 74, 255 (1924); Dissertation, Breslau (1923)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. In the ultraviolet 'there is obvious discrepancy between the curves of Quarder and Larsen' (p. 4); every Quarder reference is printed in parentheses (5153.235 A's value is not, its reference is). Leonard's Ref. 30."
+
+[[datasets]]
+id = "rusch_1923_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__rusch_1923_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["M. Rusch, Ann. Physik, Series 4, 70, 373 (1923), (erratum) ib. Series 4, 85, 581 (1928); Dissertation, Breslau (1922)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Visible values only; the absolute infrared value is split off (rusch_1923_Ar_ir). Leonard's Ref. 29."
+
+[[datasets]]
+id = "tausz_gorlacher_1931_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__tausz_gorlacher_1931_Ar.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["J. Tausz and H. Görlacher, Z. Tech. Physik 12, 123 (1931)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Measured relative to air; 'in clear disagreement with the remaining six sets' (p. 4); printed in parentheses. Leonard's Ref. 9."
+
+[[datasets]]
+id = "burton_1908_He"
+material = "He"
+file = "He/leonard_1974__burton_1908_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["W. Burton, Proc. Roy. Soc. (London) Series A, 80, 390 (1908)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard's Ref. 26."
+
+[[datasets]]
+id = "cuthbertson_1911_He"
+material = "He"
+file = "He/leonard_1974__cuthbertson_1911_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites the paper as Proc. Roy. Soc. A 84, 13 (1911); the library has it as 1910. Leonard's Ref. 18."
+
+[[datasets]]
+id = "cuthbertson_1932_He"
+material = "He"
+file = "He/leonard_1974__cuthbertson_1932_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites p. 44; the library record gives pp. 40-47. Leonard's Ref. 19."
+
+[[datasets]]
+id = "herrmann_1908_He"
+material = "He"
+file = "He/leonard_1974__herrmann_1908_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["K. Herrmann, Verhandl. Deut. Physik. Gesellschaft 10, 211, 476 (1908); Dissertation, Halle (1908)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. 'Actually a series of rather rough absolute measurements'; neglected (p. 4); references printed in parentheses. Leonard's Ref. 25."
+
+[[datasets]]
+id = "koch_1913_He"
+material = "He"
+file = "He/leonard_1974__koch_1913_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["J. Koch, Arkiv. Mat. Astron. Fysik. 9, No. 6 (1913)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard's Ref. 27."
+
+[[datasets]]
+id = "mansfield_peck_1969_He"
+material = "He"
+file = "He/leonard_1974__mansfield_peck_1969_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["C. R. Mansfield and E. R. Peck, J. Opt. Soc. Am. 59, 199 (1969)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard's Ref. 15."
+
+[[datasets]]
+id = "scheel_schmidt_1908_He"
+material = "He"
+file = "He/leonard_1974__scheel_schmidt_1908_He.csv"
+table = "tbl_9d80fa2bdd50"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["K. Scheel and R. Schmidt, Verhandl. Deut. Physik. Gesellschaft 10, 207 (1908); Physik Z. 9, 921 (1908)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Measured relative to air; Leonard neglects them (p. 4) and prints them in parentheses (discrepant or low accuracy). Leonard's Ref. 8."
+
+[[datasets]]
+id = "cuthbertson_1911_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__cuthbertson_1911_Kr.csv"
+table = "tbl_bd18889f4119"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites the paper as Proc. Roy. Soc. A 84, 13 (1911); the library has it as 1910. Leonard's Ref. 18."
+
+[[datasets]]
+id = "damkohler_1934_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__damkohler_1934_Kr.csv"
+table = "tbl_bd18889f4119"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["G. Damköhler, Z. Physik. Chem., Abt. B, 27, 130 (1934)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Read by Leonard from Damkohler's graph; 'the wavelengths could not be correlated with spectral lines, since the resolution of the spectroscope was only 10 A. They are therefore presented as read' (p. 4). Rows 5268.7a-c and 4918.7a-b are several readings at one printed wavelength. Leonard's Ref. 10."
+
+[[datasets]]
+id = "koch_1949_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__koch_1949_Kr.csv"
+table = "tbl_bd18889f4119"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["J. Koch, Kgl. Fysiograf Sallskap. Lund. Forh. 19, 173 (1949)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard judges Koch's and Larsen's ultraviolet data the more accurate (p. 4). Leonard's Ref. 13."
+
+[[datasets]]
+id = "kronjager_1936_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__kronjager_1936_Kr.csv"
+table = "tbl_bd18889f4119"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["W. Kronjäger, Z. Physik 98, 17 (1936); Dissertation, Braunschweig (1934)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard's Ref. 12."
+
+[[datasets]]
+id = "cuthbertson_1911_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__cuthbertson_1911_Ne.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites the paper as Proc. Roy. Soc. A 84, 13 (1911); the library has it as 1910. Leonard's Ref. 18."
+
+[[datasets]]
+id = "cuthbertson_1932_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__cuthbertson_1932_Ne.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1932"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites p. 44; the library record gives pp. 40-47. Leonard's Ref. 19."
+
+[[datasets]]
+id = "cuthbertson_1911_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__cuthbertson_1911_Xe.csv"
+table = "tbl_688a696b8c54"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1910"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard cites the paper as Proc. Roy. Soc. A 84, 13 (1911); the library has it as 1910. Leonard's Ref. 18."
+
+[[datasets]]
+id = "damkohler_1934_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__damkohler_1934_Xe.csv"
+table = "tbl_688a696b8c54"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["G. Damköhler, Z. Physik. Chem., Abt. B, 27, 130 (1934)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Read by Leonard from Damkohler's graph; 'the wavelengths could not be correlated with spectral lines, since the resolution of the spectroscope was only 10 A. They are therefore presented as read' (p. 4). Rows 5268.7a-c and 4918.7a-b are several readings at one printed wavelength. Leonard's Ref. 10."
+
+[[datasets]]
+id = "koch_1949_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__koch_1949_Xe.csv"
+table = "tbl_688a696b8c54"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["J. Koch, Kgl. Fysiograf Sallskap. Lund. Forh. 19, 173 (1949)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Leonard judges Koch's and Larsen's ultraviolet data the more accurate (p. 4). Leonard's Ref. 13."
+
+[[datasets]]
+id = "kronjager_1936_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__kronjager_1936_Xe.csv"
+table = "tbl_688a696b8c54"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["W. Kronjäger, Z. Physik 98, 17 (1936); Dissertation, Braunschweig (1934)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Printed in parentheses in the xenon part (discrepant): Leonard prefers Koch's ultraviolet values to Kronjager's (p. 4). Leonard's Ref. 12."
+
+[[datasets]]
+id = "rusch_1923_Ar_ir"
+material = "Ar"
+file = "Ar/leonard_1974__rusch_1923_Ar_ir.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "check"
+reproduced_from = ["M. Rusch, Ann. Physik, Series 4, 70, 373 (1923), (erratum) ib. Series 4, 85, 581 (1928); Dissertation, Breslau (1922)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Rusch's single absolute value at 67628.5 A: 'like his absolute measurement at 5462 A it cannot be properly corrected to STP' (p. 4). Printed without parentheses; kept as a check, not fitted."
+
+[[datasets]]
+id = "larsen_1934_Ar_4108"
+material = "Ar"
+file = "Ar/leonard_1974__larsen_1934_Ar_4108.csv"
+table = "tbl_b21803ae40ad"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "excluded"
+reproduced_from = ["T. Larsén, Z. Physik 88, 389 (1934); Thesis, Lund (1939)"]
+notes = "Table II: n - 1 at Leonard's STP, rescaled by Leonard so that each author's dispersion is kept relative to the recommended absolute value of Table I (Table II legend); wavelengths in standard air at 15 degrees C, from the MIT Wavelength Tables. Row ids are the printed wavelengths. No uncertainty is given in Table II. Larsen's value at 4108.066 A as printed, 282.853, is 1.26 % below Peck and Fisher's formula and below both neighbours (285.81 at 4275 A, 288.064 at 3802 A), where every other Larsen value lies within 1e-4 to 5e-4 of that formula; Larsen's own value at this line (2865.41e-7 at 0 degrees C, reproduced by Peck and Fisher 1964, Table II) scaled by Leonard's Larsen factor (0.99970) gives about 286.45. No single-digit misprint turns 282.853 into that, so the value is excluded rather than corrected."
+
+[[datasets]]
+id = "rayleigh_Ar_ref34"
+material = "Ar"
+file = "Ar/leonard_1974__rayleigh_Ar_ref34.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "excluded"
+reproduced_from = ["J. Cabannes, Ann. Phys. (Paris), Series 9, 15, 5 (1921)"]
+notes = "Table III(a), absolute Rayleigh scattering. The earliest visible measurements 'were badly in error' (p. 5; the text prints the references as 31,35, which must be 34,35: Ref. 31 is Chashchina's line-shift work). 4358 A taken as the air wavelength of the Hg line (the medium is not stated; 3e-4 relative)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_Ar_ref36"
+material = "Ar"
+file = "Ar/leonard_1974__rayleigh_Ar_ref36.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. de Vaucouleurs, Ann. Phys. (Paris), Series 12, 6, 211 (1951)"]
+notes = "Table III(a), absolute Rayleigh scattering at 4350 +- 2 A (the +- 2 A is the printed wavelength spread). 'More recent work suggests that the method can give reliable results' (p. 5). Medium not stated; taken as air (3e-4 relative)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_Ne_ref35"
+material = "Ne"
+file = "Ne/leonard_1974__rayleigh_Ne_ref35.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "excluded"
+reproduced_from = ["T. V. George, L. Goldstein, L. Slama and M. Yokoyama, Phys. Rev. 137, A 369 (1965)"]
+notes = "Table III(a), absolute Rayleigh scattering at 6943 A (ruby laser; air wavelength assumed). George et al.'s are among the earliest laser measurements that 'were badly in error' (p. 5); the values are 35-40 % above the interferometric ones."
+
+[[datasets]]
+id = "rayleigh_Ar_ref35"
+material = "Ar"
+file = "Ar/leonard_1974__rayleigh_Ar_ref35.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "excluded"
+reproduced_from = ["T. V. George, L. Goldstein, L. Slama and M. Yokoyama, Phys. Rev. 137, A 369 (1965)"]
+notes = "Table III(a), absolute Rayleigh scattering at 6943 A (ruby laser; air wavelength assumed). George et al.'s are among the earliest laser measurements that 'were badly in error' (p. 5); the values are 35-40 % above the interferometric ones."
+
+[[datasets]]
+id = "rayleigh_Xe_ref35"
+material = "Xe"
+file = "Xe/leonard_1974__rayleigh_Xe_ref35.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "excluded"
+reproduced_from = ["T. V. George, L. Goldstein, L. Slama and M. Yokoyama, Phys. Rev. 137, A 369 (1965)"]
+notes = "Table III(a), absolute Rayleigh scattering at 6943 A (ruby laser; air wavelength assumed). George et al.'s are among the earliest laser measurements that 'were badly in error' (p. 5); the values are 35-40 % above the interferometric ones."
+
+[[datasets]]
+id = "rayleigh_He_ref37"
+material = "He"
+file = "He/leonard_1974__rayleigh_He_ref37.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. R. Rudder and D. R. Bach, J. Opt. Soc. Am. 58, 1260 (1968)"]
+notes = "Table III(a), absolute Rayleigh scattering at 6943 A (ruby laser; air wavelength assumed, 3e-4 relative). 'More recent work suggests that the method can give reliable results' (p. 5); the printed +- is 2.5-3 %."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_Ar_ref37"
+material = "Ar"
+file = "Ar/leonard_1974__rayleigh_Ar_ref37.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. R. Rudder and D. R. Bach, J. Opt. Soc. Am. 58, 1260 (1968)"]
+notes = "Table III(a), absolute Rayleigh scattering at 6943 A (ruby laser; air wavelength assumed, 3e-4 relative). 'More recent work suggests that the method can give reliable results' (p. 5); the printed +- is 2.5-3 %."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "rayleigh_Xe_ref37"
+material = "Xe"
+file = "Xe/leonard_1974__rayleigh_Xe_ref37.csv"
+table = "tbl_f7fa4d9454e9"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. R. Rudder and D. R. Bach, J. Opt. Soc. Am. 58, 1260 (1968)"]
+notes = "Table III(a), absolute Rayleigh scattering at 6943 A (ruby laser; air wavelength assumed, 3e-4 relative). 'More recent work suggests that the method can give reliable results' (p. 5); the printed +- is 2.5-3 %."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ratio_He_ref39"
+material = "He"
+file = "He/leonard_1974__ratio_He_ref39.csv"
+table = "tbl_10c2bb7d578a"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Shardanand and Y. Mikawa, J. Quant. Spectr. Rad. Transf. 7, 605 (1967)"]
+notes = "Table III(b), relative Rayleigh scattering: (n - 1) of the gas over that of argon, the argon column being the unit (1 +- .001). A ratio of refractivities, not of cross sections: Table III is headed '(n - 1) x 10^6' and Leonard presents the scattering results 'as ratios, expressing them relative to Ar' (p. 5); the magnitudes confirm it (Ne/Ar = 0.152 against Marmo's 0.845/5.57 = 0.152 in Liggett and Levinger's Table III; a ratio of cross sections would be its square). Most such measurements are calibrated on Chan and Dalgarno's calculated helium value (p. 5). Vacuum wavelength. The library table has no caption (CAPTION_UNMATCHED); its part label is read from the page image."
+[datasets.parameters]
+reference_material = "Ar"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ratio_He_ref40"
+material = "He"
+file = "He/leonard_1974__ratio_He_ref40.csv"
+table = "tbl_10c2bb7d578a"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["F. F. Marmo, quoted in G. Liggett and J. S. Levinger, J. Opt. Soc. Am. 58, 109 (1968)"]
+notes = "Table III(b), relative Rayleigh scattering: (n - 1) of the gas over that of argon, the argon column being the unit (1 +- .001). A ratio of refractivities, not of cross sections: Table III is headed '(n - 1) x 10^6' and Leonard presents the scattering results 'as ratios, expressing them relative to Ar' (p. 5); the magnitudes confirm it (Ne/Ar = 0.152 against Marmo's 0.845/5.57 = 0.152 in Liggett and Levinger's Table III; a ratio of cross sections would be its square). Most such measurements are calibrated on Chan and Dalgarno's calculated helium value (p. 5). Vacuum wavelength. The library table has no caption (CAPTION_UNMATCHED); its part label is read from the page image."
+[datasets.parameters]
+reference_material = "Ar"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ratio_He_ref41"
+material = "He"
+file = "He/leonard_1974__ratio_He_ref41.csv"
+table = "tbl_10c2bb7d578a"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. B. Cairns, F. F. Marmo and J. A. R. Samson, J. Opt. Soc. Am. 60, 211 (1970)"]
+notes = "Table III(b), relative Rayleigh scattering: (n - 1) of the gas over that of argon, the argon column being the unit (1 +- .001). A ratio of refractivities, not of cross sections: Table III is headed '(n - 1) x 10^6' and Leonard presents the scattering results 'as ratios, expressing them relative to Ar' (p. 5); the magnitudes confirm it (Ne/Ar = 0.152 against Marmo's 0.845/5.57 = 0.152 in Liggett and Levinger's Table III; a ratio of cross sections would be its square). Most such measurements are calibrated on Chan and Dalgarno's calculated helium value (p. 5). Vacuum wavelength. The library table has no caption (CAPTION_UNMATCHED); its part label is read from the page image."
+[datasets.parameters]
+reference_material = "Ar"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ratio_Ne_ref39"
+material = "Ne"
+file = "Ne/leonard_1974__ratio_Ne_ref39.csv"
+table = "tbl_10c2bb7d578a"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["Shardanand and Y. Mikawa, J. Quant. Spectr. Rad. Transf. 7, 605 (1967)"]
+notes = "Table III(b), relative Rayleigh scattering: (n - 1) of the gas over that of argon, the argon column being the unit (1 +- .001). A ratio of refractivities, not of cross sections: Table III is headed '(n - 1) x 10^6' and Leonard presents the scattering results 'as ratios, expressing them relative to Ar' (p. 5); the magnitudes confirm it (Ne/Ar = 0.152 against Marmo's 0.845/5.57 = 0.152 in Liggett and Levinger's Table III; a ratio of cross sections would be its square). Most such measurements are calibrated on Chan and Dalgarno's calculated helium value (p. 5). Vacuum wavelength. The library table has no caption (CAPTION_UNMATCHED); its part label is read from the page image."
+[datasets.parameters]
+reference_material = "Ar"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ratio_Ne_ref40"
+material = "Ne"
+file = "Ne/leonard_1974__ratio_Ne_ref40.csv"
+table = "tbl_10c2bb7d578a"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["F. F. Marmo, quoted in G. Liggett and J. S. Levinger, J. Opt. Soc. Am. 58, 109 (1968)"]
+notes = "Table III(b), relative Rayleigh scattering: (n - 1) of the gas over that of argon, the argon column being the unit (1 +- .001). A ratio of refractivities, not of cross sections: Table III is headed '(n - 1) x 10^6' and Leonard presents the scattering results 'as ratios, expressing them relative to Ar' (p. 5); the magnitudes confirm it (Ne/Ar = 0.152 against Marmo's 0.845/5.57 = 0.152 in Liggett and Levinger's Table III; a ratio of cross sections would be its square). Most such measurements are calibrated on Chan and Dalgarno's calculated helium value (p. 5). Vacuum wavelength. The library table has no caption (CAPTION_UNMATCHED); its part label is read from the page image."
+[datasets.parameters]
+reference_material = "Ar"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ratio_N2_ref38"
+material = "N2"
+points = [["ref38", "1215.7", "1.005", ".01"]]
+table = "text"
+quantity = "refractivity_ratio"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["gill_1963"]
+notes = "Table III(b), relative Rayleigh scattering: (n - 1) of the gas over that of argon, the argon column being the unit (1 +- .001). A ratio of refractivities, not of cross sections: Table III is headed '(n - 1) x 10^6' and Leonard presents the scattering results 'as ratios, expressing them relative to Ar' (p. 5); the magnitudes confirm it (Ne/Ar = 0.152 against Marmo's 0.845/5.57 = 0.152 in Liggett and Levinger's Table III; a ratio of cross sections would be its square). Most such measurements are calibrated on Chan and Dalgarno's calculated helium value (p. 5). Vacuum wavelength. Footnote dagger of Table III(b) (p. 15): Gill and Heddle's argon value is 'rel. to (n-1) x 10^6 for N2 = 1.005 +- .01', read as the nitrogen-to-argon ratio. Gill and Heddle's own Table I prints this ratio as 1.01 (|n0 - 1|_N2 / |n0 - 1|_Ar)."
+[datasets.parameters]
+reference_material = "Ar"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "cerenkov_Ar_ref43"
+material = "Ar"
+file = "Ar/leonard_1974__cerenkov_Ar_ref43.csv"
+table = "tbl_088071093ce3"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["heddle_1963"]
+notes = "Table III(c), Cerenkov threshold (Heddle et al.), at effective wavelengths 1850 +- 80, 1805 +- 80 and 1210 +- 30 A (the +- is the detector band). Identical to Heddle et al.'s Table I (x 10^-5 there). Leonard: in good agreement with Chashchina et al. near 1800 A but 10 % high at 1215 A (p. 5)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "hook_Ar_ref44"
+material = "Ar"
+file = "Ar/leonard_1974__hook_Ar_ref44.csv"
+table = "tbl_3f0c43ea8e18"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "excluded"
+reproduced_from = ["A. Pery-Thorne, J. Quant. Spectr. Rad. Transf. 2, 427 (1962)"]
+notes = "Table III(d), hook method at 1600 A (vacuum): 'only a rough preliminary measurement which does not appear to have been pursued' (pp. 5-6; the text misprints the reference as 'Perv-Thorne 41'). No uncertainty printed."
+
+[[datasets]]
+id = "kappa_Ar_ref45"
+material = "Ar"
+file = "Ar/leonard_1974__kappa_Ar_ref45.csv"
+table = "tbl_ef7f5e3531dc"
+quantity = "dispersion_kappa"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. Wolfsohn, Z. Physik 85, 366 (1933)"]
+notes = "Table IV, displacement interferometry: kappa = -lambda^2 d/dlambda[(n - 1)/lambda] = (n - 1) - lambda dn/dlambda, 'derived by working back from' Wolfsohn's results (p. 6); reproducibility only +-2 %, and Chashchina et al.'s curve gives a value 3 % higher. Not carefully reduced to STP ('only that of Bennett was sufficiently accurate', p. 6). The column is headed 'kappa x 10^6', but kappa is n - 1 plus a small positive term (2.9e-4 for argon at 5461 A; differentiating Peck and Fisher's formula gives 2.927e-4, 0.4 % above Bennett's 2.915, as Leonard says of his own curve), so the printed factor must be 10^4: scale 1e-4. Vacuum wavelength (1850 A)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kappa_Ar_ref46"
+material = "Ar"
+file = "Ar/leonard_1974__kappa_Ar_ref46.csv"
+table = "tbl_ef7f5e3531dc"
+quantity = "dispersion_kappa"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "real"
+use = "reproduced"
+reproduced_from = ["C. E. Bennett, Phys. Rev. 37, 262 (1931); ib. 58, 263 (1940)"]
+notes = "Table IV, Bennett's displacement interferometry, 'reproducible to within +-0.15 %'; differentiating Leonard's curve gives values 0.3 % higher (p. 6). The only kappa data Leonard reduced carefully to STP. Printed factor 'kappa x 10^6' is a misprint for 10^4 (see kappa_Ar_ref45): scale 1e-4. 4359, 5461 and 5780 A are the Hg lines in air (5780: the mean of the yellow pair)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "verdet_ingersoll_liebenberg_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__verdet_ingersoll_liebenberg_Ar.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 44, 566 (1954)", "L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 46, 538 (1956)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). Ingersoll and Liebenberg's smoothed curves (Refs. 56, 57). Leonard: they lie about 2 % below the Verdet constants predicted by differentiating the refractive index, and the smoothing (unknown function) gives the wrong limit E^-2 V as E -> 0 (p. 6); 'the differentiated results are probably more reliable than the direct measurements'."
+
+[[datasets]]
+id = "verdet_mallemann_1951_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__verdet_mallemann_1951_Ar.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 232, 1049 (1951)", "R. de Mallemann and F. Suhner, Compt. Rend. 233, 122 (1951)", "R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 236, 2366 (1953)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). De Mallemann, Suhner and Grange (Refs. 52-54): isolated wavelengths, 4 % to 10 % above Ingersoll's (p. 6)."
+
+[[datasets]]
+id = "verdet_mallemann_early_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__verdet_mallemann_early_Ar.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. H. van Vleck, The Theory of Electric and Magnetic Susceptibilities, p. 368, Oxford (1932)", "R. de Mallemann and P. Gabiano, Compt. Rend. 193, 1408 (1931)", "H. Bizette and B. Tsai, Compt. Rend. 204, 1870 (1937)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). The row cited as Ref. 48 (4360 and 5780 A) and Refs. 48, 49, 51 (5460 A): the older de Mallemann-laboratory values (Refs. 49-51, p. 6). Ref. 48 is van Vleck's book in Leonard's list, so '48' is probably a misnumbering; the citations are given as printed."
+
+[[datasets]]
+id = "verdet_ingersoll_liebenberg_He"
+material = "He"
+file = "He/leonard_1974__verdet_ingersoll_liebenberg_He.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 44, 566 (1954)", "L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 46, 538 (1956)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). Ingersoll and Liebenberg's smoothed curves (Refs. 56, 57). Leonard: they lie about 2 % below the Verdet constants predicted by differentiating the refractive index, and the smoothing (unknown function) gives the wrong limit E^-2 V as E -> 0 (p. 6); 'the differentiated results are probably more reliable than the direct measurements'."
+
+[[datasets]]
+id = "verdet_mallemann_early_He"
+material = "He"
+file = "He/leonard_1974__verdet_mallemann_early_He.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. H. van Vleck, The Theory of Electric and Magnetic Susceptibilities, p. 368, Oxford (1932)", "R. de Mallemann and P. Gabiano, Compt. Rend. 193, 1408 (1931)", "H. Bizette and B. Tsai, Compt. Rend. 204, 1870 (1937)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). The row cited as Ref. 48 (4360 and 5780 A) and Refs. 48, 49, 51 (5460 A): the older de Mallemann-laboratory values (Refs. 49-51, p. 6). Ref. 48 is van Vleck's book in Leonard's list, so '48' is probably a misnumbering; the citations are given as printed."
+
+[[datasets]]
+id = "verdet_ingersoll_liebenberg_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__verdet_ingersoll_liebenberg_Kr.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 44, 566 (1954)", "L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 46, 538 (1956)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). Ingersoll and Liebenberg's smoothed curves (Refs. 56, 57). Leonard: they lie about 2 % below the Verdet constants predicted by differentiating the refractive index, and the smoothing (unknown function) gives the wrong limit E^-2 V as E -> 0 (p. 6); 'the differentiated results are probably more reliable than the direct measurements'."
+
+[[datasets]]
+id = "verdet_mallemann_1951_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__verdet_mallemann_1951_Kr.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 232, 1049 (1951)", "R. de Mallemann and F. Suhner, Compt. Rend. 233, 122 (1951)", "R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 236, 2366 (1953)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). De Mallemann, Suhner and Grange (Refs. 52-54): isolated wavelengths, 4 % to 10 % above Ingersoll's (p. 6)."
+
+[[datasets]]
+id = "verdet_ingersoll_liebenberg_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__verdet_ingersoll_liebenberg_Ne.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 44, 566 (1954)", "L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 46, 538 (1956)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). Ingersoll and Liebenberg's smoothed curves (Refs. 56, 57). Leonard: they lie about 2 % below the Verdet constants predicted by differentiating the refractive index, and the smoothing (unknown function) gives the wrong limit E^-2 V as E -> 0 (p. 6); 'the differentiated results are probably more reliable than the direct measurements'."
+
+[[datasets]]
+id = "verdet_mallemann_1951_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__verdet_mallemann_1951_Ne.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 232, 1049 (1951)", "R. de Mallemann and F. Suhner, Compt. Rend. 233, 122 (1951)", "R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 236, 2366 (1953)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). De Mallemann, Suhner and Grange (Refs. 52-54): isolated wavelengths, 4 % to 10 % above Ingersoll's (p. 6)."
+
+[[datasets]]
+id = "verdet_mallemann_early_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__verdet_mallemann_early_Ne.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. H. van Vleck, The Theory of Electric and Magnetic Susceptibilities, p. 368, Oxford (1932)", "R. de Mallemann and P. Gabiano, Compt. Rend. 193, 1408 (1931)", "H. Bizette and B. Tsai, Compt. Rend. 204, 1870 (1937)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). The row cited as Ref. 48 (4360 and 5780 A) and Refs. 48, 49, 51 (5460 A): the older de Mallemann-laboratory values (Refs. 49-51, p. 6). Ref. 48 is van Vleck's book in Leonard's list, so '48' is probably a misnumbering; the citations are given as printed."
+
+[[datasets]]
+id = "verdet_ingersoll_liebenberg_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__verdet_ingersoll_liebenberg_Xe.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 44, 566 (1954)", "L. R. Ingersoll and D. H. Liebenberg, J. Opt. Soc. Am. 46, 538 (1956)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). Ingersoll and Liebenberg's smoothed curves (Refs. 56, 57). Leonard: they lie about 2 % below the Verdet constants predicted by differentiating the refractive index, and the smoothing (unknown function) gives the wrong limit E^-2 V as E -> 0 (p. 6); 'the differentiated results are probably more reliable than the direct measurements'."
+
+[[datasets]]
+id = "verdet_mallemann_1951_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__verdet_mallemann_1951_Xe.csv"
+table = "tbl_1bf9e7617fb4"
+quantity = "verdet_constant"
+unit = "micro-arcmin/(Oe cm)"
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 273.16 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 232, 1049 (1951)", "R. de Mallemann and F. Suhner, Compt. Rend. 233, 122 (1951)", "R. de Mallemann, F. Suhner and J. Grange, Compt. Rend. 236, 2366 (1953)"]
+notes = "Table V, Verdet constants 'V in micro-min cm^-1 oersted^-1' (microminutes of arc per cm per oersted). The table does not state the gas state; taken as Leonard's STP. Wavelengths are nominal (Hg lines for 4360, 5460, 5780 A; round values otherwise); the medium is not stated and taken as air (3e-4 relative, far below the accuracy). De Mallemann, Suhner and Grange (Refs. 52-54): isolated wavelengths, 4 % to 10 % above Ingersoll's (p. 6)."
+
+[[datasets]]
+id = "polarizability_experiment_He"
+material = "He"
+file = "He/leonard_1974__polarizability_experiment_He.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1965)", "E. Hochheim, Verhandl. Deut. Physik. Gesellschaft 10, 446 (1908)", "H. G. Watson, G. G. Rao and K. L. Ramaswamy, Proc. Roy. Soc. (London), Series A, 132, 569 (1931)", "H. G. Watson, G. G. Rao and K. L. Ramaswamy, Proc. Roy. Soc. (London), Series A, 143, 558 (1934)", "F. G. Keyes and J. L. Oncley, Chem. Revs. 19, 195 (1936)", "A. van Itterbeck and J. Spaepen, Physica 10, 173 (1943)", "L. G. Hector and D. L. Woernley, Phys. Rev. 69, 101 (1946)", "J. G. Jelatis, J. Appl. Phys. 19, 419 (1948)", "J. Clay and F. van der Maesen, Physica 15, 467 (1949)", "G. Birnbaum, S. J. Kryder and H. Lyons, J. Appl. Phys. 22, 95 (1951)", "W. F. Gabriel, Proc. Inst. Rad. Eng. 40, 940 (1952)", "M. S. Khaikin and L. A. Prozorova, Zh. Eksp. Teor. Fiz. 23, 733 (1952)", "L. Essen, Proc. Phys. Soc. (London), Series B, 66, 189 (1953)", "A. C. Newell and R. C. Baird, J. Appl. Phys. 36, 3751 (1965)", "E. Kerr and R. Sherman, quoted by D. H. Liebenberg, Phys. Letters 28A, 744 (1969)"]
+notes = "Table VI, static polarizabilities (polarizability volume, A^3) measured by dielectric-constant and microwave methods, 1908-1970, 'recalculated where necessary using modern PVT data' (p. 7); rows by Leonard's reference number (He ref82a/ref82b: two values of Ref. 82, a brace in the image). Leonard: even the recent values disagree beyond their claimed accuracy (up to 1 % for He); for Ar, Newell and Baird (82) and Orcutt and Cole (24, 83) agree with the refractive-index extrapolation to 0.05 %; for Ne and Kr only Orcutt and Cole's are modern (pp. 6-7)."
+
+[[datasets]]
+id = "polarizability_experiment_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__polarizability_experiment_Ne.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1965)", "A. B. Bryan, Phys. Rev. 34, 615 (1929)", "H. G. Watson, G. G. Rao and K. L. Ramaswamy, Proc. Roy. Soc. (London), Series A, 132, 569 (1931)", "L. G. Hector and D. L. Woernley, Phys. Rev. 69, 101 (1946)", "J. G. Jelatis, J. Appl. Phys. 19, 419 (1948)", "W. F. Gabriel, Proc. Inst. Rad. Eng. 40, 940 (1952)"]
+notes = "Table VI, static polarizabilities (polarizability volume, A^3) measured by dielectric-constant and microwave methods, 1908-1970, 'recalculated where necessary using modern PVT data' (p. 7); rows by Leonard's reference number (He ref82a/ref82b: two values of Ref. 82, a brace in the image). Leonard: even the recent values disagree beyond their claimed accuracy (up to 1 % for He); for Ar, Newell and Baird (82) and Orcutt and Cole (24, 83) agree with the refractive-index extrapolation to 0.05 %; for Ne and Kr only Orcutt and Cole's are modern (pp. 6-7)."
+
+[[datasets]]
+id = "polarizability_experiment_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__polarizability_experiment_Ar.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1965)", "J. von Braunmühl, Physik Z. 28, 141 (1927)", "A. B. Bryan, Phys. Rev. 34, 615 (1929)", "H. G. Watson, G. G. Rao and K. L. Ramaswamy, Proc. Roy. Soc. (London), Series A, 132, 569 (1931)", "L. G. Hector and D. L. Woernley, Phys. Rev. 69, 101 (1946)", "J. G. Jelatis, J. Appl. Phys. 19, 419 (1948)", "J. Clay and F. van der Maesen, Physica 15, 467 (1949)", "W. F. Lovering and L. Wiltshire, Proc. IEEE, Part III, 98, 557 (1951)", "L. Essen and K. D. Froome, Proc. Phys. Soc. (London), Series B, 64, 862 (1951)", "A. Michels, C. A. ten Seldam and S. D. J. Overdijk, Physica 17, 781 (1951)", "W. F. Gabriel, Proc. Inst. Rad. Eng. 40, 940 (1952)", "K. D. Froome, Nuovo Cimento 9, Suppl. 3, 277 (1952); Proc. Phys. Soc. B 68, 833 (1955)", "C. M. Zieman, J. Appl. Phys. 24, 110 (1953)", "F. W. Heineken and F. Bruin, Physica 20, 350 (1954)", "H. W. deWijn and F. W. Heineken, Physica 25, 615 (1959)", "D. R. Johnston, G. J. Oudemans and R. H. Cole, J. Chem. Phys. 33, 1310 (1960)", "W. Leidenfrost, Int. J. Heat Mass Transf. 7, 447 (1964)", "A. F. Dunn, Can. J. Phys. 42, 1489 (1964)", "A. C. Newell and R. C. Baird, J. Appl. Phys. 36, 3751 (1965)", "R. H. Orcutt and R. H. Cole, Physica 31, 1779 (1965)", "T. K. Bose and R. H. Cole, J. Chem. Phys. 52, 140 (1970)"]
+notes = "Table VI, static polarizabilities (polarizability volume, A^3) measured by dielectric-constant and microwave methods, 1908-1970, 'recalculated where necessary using modern PVT data' (p. 7); rows by Leonard's reference number (He ref82a/ref82b: two values of Ref. 82, a brace in the image). Leonard: even the recent values disagree beyond their claimed accuracy (up to 1 % for He); for Ar, Newell and Baird (82) and Orcutt and Cole (24, 83) agree with the refractive-index extrapolation to 0.05 %; for Ne and Kr only Orcutt and Cole's are modern (pp. 6-7)."
+
+[[datasets]]
+id = "polarizability_experiment_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__polarizability_experiment_Kr.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["R. H. Orcutt and R. H. Cole, J. Chem. Phys. 46, 697 (1965)", "H. G. Watson, G. G. Rao and K. L. Ramaswamy, Proc. Roy. Soc. (London), Series A, 132, 569 (1931)"]
+notes = "Table VI, static polarizabilities (polarizability volume, A^3) measured by dielectric-constant and microwave methods, 1908-1970, 'recalculated where necessary using modern PVT data' (p. 7); rows by Leonard's reference number (He ref82a/ref82b: two values of Ref. 82, a brace in the image). Leonard: even the recent values disagree beyond their claimed accuracy (up to 1 % for He); for Ar, Newell and Baird (82) and Orcutt and Cole (24, 83) agree with the refractive-index extrapolation to 0.05 %; for Ne and Kr only Orcutt and Cole's are modern (pp. 6-7)."
+
+[[datasets]]
+id = "polarizability_experiment_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__polarizability_experiment_Xe.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["H. G. Watson, G. G. Rao and K. L. Ramaswamy, Proc. Roy. Soc. (London), Series A, 132, 569 (1931)"]
+notes = "Table VI, static polarizabilities (polarizability volume, A^3) measured by dielectric-constant and microwave methods, 1908-1970, 'recalculated where necessary using modern PVT data' (p. 7); rows by Leonard's reference number (He ref82a/ref82b: two values of Ref. 82, a brace in the image). Leonard: even the recent values disagree beyond their claimed accuracy (up to 1 % for He); for Ar, Newell and Baird (82) and Orcutt and Cole (24, 83) agree with the refractive-index extrapolation to 0.05 %; for Ne and Kr only Orcutt and Cole's are modern (pp. 6-7)."
+
+[[datasets]]
+id = "polarizability_ri_extrapolated_He"
+material = "He"
+file = "He/leonard_1974__polarizability_ri_extrapolated_He.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VI, '(r.i. extrapolated)': Leonard's extrapolation of the refractive-index data (his Eq. (1) with an adjusted oscillator-strength spectrum) to zero frequency. Derived from the same refractive data as Tables I-II, so a check, not an independent value. Its printed reference, 42, is Shardanand's paper in the list; Leonard's own thesis (Ref. 47) is presumably meant (He prints '15,42')."
+
+[[datasets]]
+id = "polarizability_ri_extrapolated_Ne"
+material = "Ne"
+file = "Ne/leonard_1974__polarizability_ri_extrapolated_Ne.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VI, '(r.i. extrapolated)': Leonard's extrapolation of the refractive-index data (his Eq. (1) with an adjusted oscillator-strength spectrum) to zero frequency. Derived from the same refractive data as Tables I-II, so a check, not an independent value. Its printed reference, 42, is Shardanand's paper in the list; Leonard's own thesis (Ref. 47) is presumably meant (He prints '15,42')."
+
+[[datasets]]
+id = "polarizability_ri_extrapolated_Ar"
+material = "Ar"
+file = "Ar/leonard_1974__polarizability_ri_extrapolated_Ar.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VI, '(r.i. extrapolated)': Leonard's extrapolation of the refractive-index data (his Eq. (1) with an adjusted oscillator-strength spectrum) to zero frequency. Derived from the same refractive data as Tables I-II, so a check, not an independent value. Its printed reference, 42, is Shardanand's paper in the list; Leonard's own thesis (Ref. 47) is presumably meant (He prints '15,42')."
+
+[[datasets]]
+id = "polarizability_ri_extrapolated_Kr"
+material = "Kr"
+file = "Kr/leonard_1974__polarizability_ri_extrapolated_Kr.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VI, '(r.i. extrapolated)': Leonard's extrapolation of the refractive-index data (his Eq. (1) with an adjusted oscillator-strength spectrum) to zero frequency. Derived from the same refractive data as Tables I-II, so a check, not an independent value. Its printed reference, 42, is Shardanand's paper in the list; Leonard's own thesis (Ref. 47) is presumably meant (He prints '15,42')."
+
+[[datasets]]
+id = "polarizability_ri_extrapolated_Xe"
+material = "Xe"
+file = "Xe/leonard_1974__polarizability_ri_extrapolated_Xe.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table VI, '(r.i. extrapolated)': Leonard's extrapolation of the refractive-index data (his Eq. (1) with an adjusted oscillator-strength spectrum) to zero frequency. Derived from the same refractive data as Tables I-II, so a check, not an independent value. Its printed reference, 42, is Shardanand's paper in the list; Leonard's own thesis (Ref. 47) is presumably meant (He prints '15,42'). For Xe no modern measurement exists and this is 'the best available' (p. 7)."
+
+[[datasets]]
+id = "polarizability_theory_He"
+material = "He"
+file = "He/leonard_1974__polarizability_theory_He.csv"
+table = "tbl_034a45f4d3ef"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["C. Schwartz, Phys. Rev. 123, 1700 (1961)", "Y. M. Chan and A. Dalgarno, Proc. Phys. Soc. (London) 85, 227 (1965)", "W. D. Davison, Proc. Phys. Soc. (London) 87, 133 (1966)", "K. T. Chung and R. P. Hurst, Phys. Rev. 152, 35 (1966)"]
+notes = "Table VI, '(Accurate Calculations)' of the helium static polarizability, converted to A^3 with Cohen and DuMond's constants (p. 7). Leonard prefers Chung and Hurst's (ref23), which he argues is a lower bound and is the highest (p. 7)."
+
+[[errata]]
+dataset = "peck_fisher_1964_Ar"
+row = "7425.113"
+column = "x"
+printed = "7425.113"
+corrected = "7245.166"
+reason = "Peck and Fisher measured at 7247.163 A in vacuum (the Ne line, Peck 1964 Table I), which is 7245.166 A in standard air; every other Peck-Fisher wavelength of Table II is the air equivalent of one of theirs, and 7425.113 A is not. The value 280.2792 belongs to 7247.163 A (vacuum): Peck and Fisher's 0 degrees C formula gives 280.279 there, but 280.143 at 7425.113 A (air)."
+evidence = "Table image tbl_b21803ae40ad.jpg prints 7425.113 (7245 with two digits transposed). 7245.166 is Peck's 7247.163 A converted from vacuum to standard air with the package's Edlen conversion (2026-09-24)."
+
+[[errata]]
+dataset = "mansfield_peck_1969_He"
+row = "7425.113"
+column = "x"
+printed = "7425.113"
+corrected = "7245.166"
+reason = "The same misprinted line as in the argon part: Mansfield and Peck's helium wavelengths in Table II are Peck and Fisher's argon lines (every other one coincides), and 7425.113 A (air) is not the Ne line 7247.163 A (vacuum) = 7245.166 A (air) that both lists contain."
+evidence = "Table image tbl_9d80fa2bdd50.jpg prints 7425.113 between 8264.517 and 6678.149 A; Mansfield & Peck's Table I (tbl_aae92dff687e.jpg) prints 34829.74 x 10^-9 at the Ne line 7247.163 A (vacuum), and Leonard's helium column is that table times 0.99842627 at all seven shared lines, 34.77493 included, which confirms the line (second read 2026-09-25; TC-102). See the argon erratum."

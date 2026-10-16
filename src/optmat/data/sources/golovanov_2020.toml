@@ -1,0 +1,58 @@
+citation = "A. A. Golovanov and I. Yu. Kostyukov, \"Formula for the ionisation rate of an atom or ion in a strong electromagnetic field for numerical simulation\", Quantum Electron. 50, 350 (2020)"
+doi = "10.1070/qel17309"
+library = "Golovanov_2020_FormulaIonisationRate"
+identity = "VALIDATED"
+kind = "theory"
+technique = """A piecewise static-field ionisation rate for particle-in-cell codes: the \
+tunnelling (PPT/ADK) rate at low field, Bauer and Mulser's quadratic rate in the \
+transition region and the barrier-suppression (BSI) linear rate at high field, joined \
+where they cross (Eq. (6)); compared with published one-electron TDSE rates for H, He, \
+Ne and Ar (Fig. 2)."""
+notes = """Pages are pdf pages: pdf page 1 is the IOPscience download cover, so pdf pp. \
+2-5 are journal pp. 350-353 (translation of Kvantovaya Elektronika 50 (4) 350-353). \
+Identity checked against pdf p. 2. Gaussian units.
+
+WHY NOTHING IS TAKEN. No table; the comparison is Fig. 2 (p. 4): w_i (arb. units) \
+against E/E_cr from 1 to 100 (static fields) for (a) H, (b) He, (c) Ne, (d) Ar, with \
+TDSE points of Bauer and Mulser, Phys. Rev. A 59, 569 (1999) [21] (squares) and Zhang, \
+Lan and Lu, Phys. Rev. A 90, 043410 (2014) [22] (circles), and curves 1 = Eq. (6), 2 = \
+Eq. (3), 3 = Eq. (1), 4 = Eq. (5), 5 = the formula of Tong and Lin 2005 [20], 6 = Eq. \
+(3) with 1.4 in place of 0.8. The Ip, l and m used for He, Ne and Ar are not given. (The \
+library's unlabelled figure on p. 4 is a duplicate crop of Fig. 2 panels (a) and (c).) \
+Zhang, Lan and Lu's points are curated as zhang_2014 (Tables IX and X, the static rates \
+of Ar and Ar+); Bauer and Mulser's paper is not in the library.
+
+KEY FORMULAS (p. 3, checked against the equation image eq_38c11320ba48.jpg; for review):
+- Eq. (1), tunnelling [14-16]: w_TI(F) = w_a k^2 C_kl^2 (2l + 1) (2/F)^(2n*) (F/2)^(m+1) \
+(l + m)!/(2^m m! (l - m)!) exp(-2/(3F)), C_kl^2 = 2^(2n*)/(n* Gamma(n* + l* + 1) Gamma(n* \
+- l*)); F = E/(k^3 E_a) the instantaneous normalised field, k^2 = I_i/I_H, n* = Z/k, l* \
+= n* - 1, Z the charge number of the ion, l and m the orbital and magnetic quantum \
+numbers; I_H = m_e e^4/(2 hbar^2) ~ 13.6 eV, E_a = m_e^2 e^5 hbar^-4 ~ 5.1 x 10^9 V/cm, \
+w_a = m_e e^4 hbar^-3 ~ 4.1 x 10^16 s^-1. Valid for gamma_K << 1, E << E_cr, the \
+instantaneous (not cycle-averaged) field. FINDING (computed 2026-09-26): with k^2 = \
+I_i/I_H, w_a k^2 = 2 I_p in atomic units, where the quasistatic ADK rate with the same \
+coefficients A = C_kl^2 and B (yudin_2001 Eq. (1) at cos phi = 1) has I_p: Eq. (1) as \
+printed is twice that rate (for atomic hydrogen, k = n* = 1, l = m = 0, it gives 8/F \
+exp(-2/(3F)) w_a). Whether the factor 2 is intended is not said.
+- Eq. (2): W_i(t) = 1 - exp{-int_-inf^t w_i[E(t')] dt'}.
+- Barrier suppression sets in above E_cr = E_a k^4/(16 Z); for hydrogen E_a/16 ~ 3.2 x \
+10^8 V/cm, 1.4 x 10^14 W/cm^2 (p. 3).
+- Eq. (3), BSI high-field limit (E >> E_cr), from classical [10] and quantum [18] \
+calculations: w_BSI(E) ~ 0.8 w_a (E/E_a) sqrt(I_H/I_i).
+- Eq. (4), the earlier piecewise rate of [18]: w_TI for E <= E0, w_BSI for E > E0, with \
+w_TI(E0) = w_BSI(E0); 'small accuracy in the transition region' (p. 3).
+- Eq. (5), Bauer and Mulser [21]: w_BM ~ 2.4 w_a (E/E_a)^2 (I_H/I_i)^2, 'verified \
+approximation only for a hydrogen atom and hydrogen-like ions' (I_i = Z^2 I_H); its use \
+for other atoms by substituting I_i is the authors' assumption (p. 3).
+- Eq. (6), the proposed rate: w_TI for E <= E1, w_BM for E1 < E <= E2, w_BSI for E > E2, \
+with w_TI(E1) = w_BM(E1) and w_BM(E2) = w_BSI(E2). Curves 3 and 4 of Fig. 2 cross twice \
+(near E/E_cr ~ 1-2 and ~10-20); the paper does not say which crossing is E1.
+
+ACCURACY (qualitative only): for H the formula and the numerics 'agree fairly well', \
+linear at high field but with different coefficients (p. 4); Eq. (5) is 'a fairly good \
+approximation' in the transition region for He, Ne and Ar (p. 4); the [22] data do not \
+reach E >> E_cr, so the linear branch is tested for H only (p. 4); 'good agreement ... \
+hydrogen, helium, neon and argon; however, additional studies are needed' for other \
+species (p. 5). In the BSI regime the rate depends on the field history, so w_i(E) is \
+an approximation (p. 4). Keldysh: E_K = omega_las (2 m_e I_i)^(1/2)/e, gamma_K = \
+E_K/E_max (p. 2). References 9 and 29 are printed identically (Tamburini et al. 2017)."""

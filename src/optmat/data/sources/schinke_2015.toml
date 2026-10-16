@@ -1,0 +1,86 @@
+citation = "C. Schinke, P. C. Peest, J. Schmidt, R. Brendel, K. Bothe, M. R. Vogt, I. Kröger, S. Winter, A. Schirmacher, S. Lim, H. T. Nguyen and D. MacDonald, \"Uncertainty analysis for the coefficient of band-to-band absorption of crystalline silicon\", AIP Adv. 5, 067168 (2015)"  # codespell:ignore bothe
+doi = "10.1063/1.4923379"
+library = "Schinke_2015_UncertaintyAnalysisCoefficient"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Four methods at ISFH, PTB and ANU, each with a GUM uncertainty analysis \
+(Sections II-III), combined into one data set (Section IV). Spectroscopic ellipsometry \
+(J. A. Woollam M-2000 UI, 60-80 deg, WVASE32; a Si slab under a few nm of SiO2 with \
+Herzinger's 2008 thermal-oxide constants; Monte-Carlo uncertainty) at 250-930 nm on a \
+front-polished Czochralski p-type wafer, 5 Ohm cm, 1284 um. Above 650 nm the \
+ellipsometric alpha is replaced by a Tauc parametrisation alpha = [beta (hc/lambda - \
+E_G)]^2 fitted at 650-1050 nm to the ellipsometry and the reflectance/transmittance \
+data, its uncertainty interpolated between those of the data at 650 and 930 nm (PDF \
+p. 9). Reflectance and transmittance (RT; a Cary 5000 spectrophotometer with an integrating sphere \
+at ISFH; a Cary 6000i and PTB's reference reflectometer at PTB) on double-side-polished \
+Czochralski p-type wafers, 4-6 Ohm cm, 653.0 and 1284.0 um thick; the RT alpha is \
+corrected for free-carrier absorption with the parametrisation of Green's 1995 book \
+(Ref. 56) at 3e15 cm^-3 (below 2 % below 1150 nm). Electroluminescence (EL, \
+1100-1250 nm, polished lab cells, 711 um, 2.5 Ohm cm) scaled to the RT alpha at \
+1100-1140 nm (scale uncertainty 2.8 %); photoluminescence (PL, 1200-1450 nm, textured \
+Al2O3-passivated wafers) scaled to the EL alpha at 1200-1250 nm; spectral \
+responsivity (SR) of solar cells at PTB (1100-1320 nm). Overlapping results are \
+combined as weighted means (with hidden correlations for the ISFH RT data). Sample \
+temperature 295 +- 1 K (ellipsometry, RT) and 295 +- 0.5 K (EL, PL, SR); the \
+temperature uncertainty is included through the paper's c_T (Eq. 22)."""
+notes = """Article 067168 = PDF pages 1-23 (page 1 is the publisher's cover sheet); \
+Table I (Appendix A) is on PDF pp. 20-21. Identity checked against the first pages. \
+Open access (CC BY 3.0).
+
+WHAT IS TABULATED. Table I ('Coefficient of band-to-band absorption of crystalline \
+silicon at 295 K and its relative uncertainty as determined in this work'): alpha_bb \
+(cm^-1, four significant figures, each with its own power of ten) and the relative \
+expanded uncertainty U(alpha_bb)/alpha_bb (%), 250-1450 nm at 10 nm steps (121 rows). \
+Caption: 'The uncertainty is specified for a coverage factor k = 2 and rounded to two \
+significant digits'; the GUM expanded uncertainty with k = 2, 'approximately 95 %' \
+(PDF p. 6), recorded as relative_rows with level '2 sigma'. alpha_bb is alpha less \
+free-carrier absorption (corrections below 2 % (RT), 4.5 % (EL) and about 6 % \
+(industrial SR cells), each with an uncertainty equal to itself, rectangular). The \
+paper prints only alpha: no n or k. The wavelength medium is not stated; the \
+difference between air and vacuum wavelengths (about 0.3 nm) is far below the 10 nm \
+grid and the uncertainties. The paper says Table I is also provided in digital form \
+as supplementary material (Ref. 58); that file is not in the library, and Table I is \
+complete without it.
+
+UNCERTAINTY (k = 2). 0.18-0.66 % at 250-360 nm, rising through the absorption edge \
+near 370 nm to 13 % at 630-670 nm (the ellipsometry's signal-to-noise falls as k/n \
+falls), down to 0.98-2 % at 900-1060 nm (RT), then rising to 10-13 % at 1170-1220 \
+nm, 22 % at 1240-1250 nm, 36 % at 1350 nm and 180 % at 1450 nm. The abstract and \
+conclusion quote '0.4% at 250 nm' and '12% at 1200 nm', where Table I prints 0.26 and \
+11 (12 at 1190 and 1210 nm): the table's values are recorded; the paper does not \
+explain the difference. From 650 nm into the RT range the values are the Tauc \
+parametrisation's, a smooth function, not individual measurements.
+
+TEMPERATURE. Table II (Appendix B, PDF pp. 21-22) gives c_T = (1/alpha_bb) \
+d alpha_bb/dT at 295 K (Eq. 22), 250-1450 nm, the mean of the ISFH ellipsometry, the \
+ANU PL and Green (2008)'s coefficients, for use as alpha(T) = alpha(T0) (T/T0)^b, b = \
+c_T T0 (Eqs. 23-24). A normalised coefficient of alpha: no quantity, not extracted.
+
+COMPARISON IN THE PAPER (Fig. 16, PDF p. 19): deviations from the literature 'of the \
+order of up to 30% relative'; good agreement with Green (2008, green_2008) except \
+beyond 1200 nm, where Green's alpha had given luminescence spectra at odds with \
+measurement.
+
+REFRACTIVEINDEX.INFO. main/Si/nk/Schinke.yml (data/external/refractiveindex_info) \
+gives n and k at 0.25-1.45 um citing this paper and M. R. Vogt's PhD thesis (2015); \
+its n is not printed in the paper (it comes from the thesis) and is not used here; \
+see the register entry for the comparison of k."""
+
+[[datasets]]
+id = "alpha_295K"
+material = "Si"
+file = "Si/schinke_2015__alpha_295K.csv"
+table = "tbl_80266e561237"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I, PDF pp. 20-21 (tbl_80266e561237, tbl_8c2f326870f4): alpha_bb of crystalline silicon at 295 K, 250-1450 nm, 121 rows (1.804e6 to 9.447e-9 cm^-1), each cell's power of ten in e-notation. Relative uncertainty per row from the table (k = 2), checked against the table by the extraction script. Combined from ellipsometry, RT, EL, PL and SR; from 650 nm into the RT range a Tauc parametrisation (source notes)."
+[datasets.parameters]
+base = "e"
+temperature_k = 295
+form = "bulk"
+technique = "ellipsometry, reflectance/transmittance, luminescence and spectral responsivity, combined"
+[datasets.uncertainty]
+level = "2 sigma"
+relative_rows = { "250" = 0.0026, "260" = 0.0028, "270" = 0.0027, "280" = 0.0028, "290" = 0.0018, "300" = 0.0019, "310" = 0.002, "320" = 0.0025, "330" = 0.0032, "340" = 0.003, "350" = 0.0043, "360" = 0.0066, "370" = 0.011, "380" = 0.017, "390" = 0.024, "400" = 0.03, "410" = 0.037, "420" = 0.043, "430" = 0.05, "440" = 0.055, "450" = 0.061, "460" = 0.068, "470" = 0.075, "480" = 0.078, "490" = 0.08, "500" = 0.083, "510" = 0.089, "520" = 0.093, "530" = 0.11, "540" = 0.12, "550" = 0.11, "560" = 0.11, "570" = 0.1, "580" = 0.1, "590" = 0.11, "600" = 0.11, "610" = 0.12, "620" = 0.12, "630" = 0.13, "640" = 0.13, "650" = 0.13, "660" = 0.13, "670" = 0.13, "680" = 0.12, "690" = 0.12, "700" = 0.11, "710" = 0.11, "720" = 0.1, "730" = 0.098, "740" = 0.093, "750" = 0.089, "760" = 0.084, "770" = 0.079, "780" = 0.074, "790" = 0.07, "800" = 0.065, "810" = 0.06, "820" = 0.055, "830" = 0.051, "840" = 0.046, "850" = 0.041, "860" = 0.037, "870" = 0.032, "880" = 0.028, "890" = 0.023, "900" = 0.019, "910" = 0.015, "920" = 0.012, "930" = 0.01, "940" = 0.0098, "950" = 0.01, "960" = 0.011, "970" = 0.012, "980" = 0.013, "990" = 0.014, "1000" = 0.014, "1010" = 0.014, "1020" = 0.015, "1030" = 0.016, "1040" = 0.018, "1050" = 0.019, "1060" = 0.02, "1070" = 0.022, "1080" = 0.022, "1090" = 0.023, "1100" = 0.025, "1110" = 0.028, "1120" = 0.032, "1130" = 0.041, "1140" = 0.058, "1150" = 0.078, "1160" = 0.088, "1170" = 0.1, "1180" = 0.11, "1190" = 0.12, "1200" = 0.11, "1210" = 0.12, "1220" = 0.13, "1230" = 0.17, "1240" = 0.22, "1250" = 0.22, "1260" = 0.2, "1270" = 0.18, "1280" = 0.17, "1290" = 0.18, "1300" = 0.18, "1310" = 0.2, "1320" = 0.24, "1330" = 0.28, "1340" = 0.33, "1350" = 0.36, "1360" = 0.38, "1370" = 0.42, "1380" = 0.5, "1390" = 0.58, "1400" = 0.75, "1410" = 0.88, "1420" = 1.2, "1430" = 1.4, "1440" = 1.7, "1450" = 1.8 }

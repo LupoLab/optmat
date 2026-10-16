@@ -1,0 +1,24 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "CH4"
+description = "Methane: Shelton's 1990 ESHG (total, 477-1319 nm), B' from its prior only. Haettig & Jorgensen's CCSD dispersion is a validator: its shape conflicts with the measured ESHG (scale 0.87, chi2 350 for 18 when fitted). Shelton's 1319 nm point is excluded, as he excluded it (12 sigma low: the total ESHG turns down with its vibrational part)."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 1.3]
+validators = [
+    "buckingham_1969/text_gamma_CH4",   # absolute dc Kerr (TC-401)
+    "hattig_1998/ccsd_kerr_CH4",
+    "hattig_1998/ccsd_thg_CH4",
+    "lundeen_1983/fwm_532_CH4",
+    "ward_1984/thg_CH4",
+    "hahn_1995/electronic_CH4",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_CH4_present"
+range_nm = [0.0, 1200.0]   # 1319 nm excluded, as Shelton did (Table IV caption): 12 sigma low, the total ESHG turning down with its vibrational part
+
+[[fitted]]
+key = "shelton_1990/table3_CH4_literature"
+
+
+

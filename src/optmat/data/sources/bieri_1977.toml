@@ -1,0 +1,93 @@
+citation = "G. Bieri, F. Burger, E. Heilbronner and J. P. Maier, \"Valence Ionization Energies of Hydrocarbons\", Helv. Chim. Acta 60, 2213 (1977)"
+doi = "10.1002/hlca.19770600714"
+library = "Bieri_1977_ValenceIonizationEnergies"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """He(I alpha) (21.22 eV) and He(II alpha) (40.80 eV) photoelectron \
+spectroscopy (Turner-type cylindrical analysers, polystyrene-film filtered He(II) \
+source), calibrated on the He+ peaks at 24.58 and 17.02 eV, of 143 hydrocarbons; the \
+tables collect the band maxima from this laboratory and from the literature, each \
+column with its reference (pp. 2214-2218, 2230-2231)."""
+notes = """PDF pages 1-21 = journal pages 2213-2233. Identity checked on the first page. \
+CH4 is the only curated species.
+
+WHAT THE TABLES HOLD (legend, p. 2218; also p. 2218 above it): 'All ionization energies \
+listed (in eV) refer to the position of the corresponding band maximum I_j^m in the \
+photoelectron spectrum of the hydrocarbon with an accuracy of +-0.1 eV. For all \
+practical purposes I_j^m ~ I_j^v = vertical ionization energy. ... adiabatic \
+ionization energies I_j^a are given in italics or in the footnotes, with an estimated \
+accuracy of +-0.02 eV. Numbers in square brackets are the references and a star in \
+square brackets ([*]) indicates that these are new values determined in the course of \
+this work. A given reference number is valid also for all successive values in the \
+column until a new reference number appears.' The positions of maxima above 23 eV \
+are uncertain by +-0.2 eV or more (p. 2218).
+
+CH4 (first table of Section A, p. 2218, tbl_1342dbc497d6, cells only; image checked): \
+1t2: 13.6^a, 14.4^a, 15.0^a [17]; 2a1: 22.9^b. The only reference in the CH4 column is \
+[17] = E. Heilbronner, T. B. Jones and J. P. Maier, Helv. Chim. Acta 60, 1697 (1977), \
+so by the legend every CH4 value is reproduced from it; none is marked [*]. Footnotes \
+(printed after the Section A tables, p. 2222, page image checked): 'a) Band maxima of \
+Jahn-Teller distorted 2T_d-band [sic, the 2T2 band]. The adiabatic ionization \
+potential is I_1^a = 12.75 eV. b) Adiabatic ionization energy I_1^a = 22.39 eV.' The \
+footnoted adiabatic values are recorded as reproduced from the same reference (the \
+legend's rule; the footnotes cite nothing else).
+
+BEARING: the NIST WebBook's vertical CH4 value (13.6 +- 0.1 eV, nist_webbook_2026/ \
+vertical_CH4) cites this paper; it is Heilbronner, Jones & Maier's first Jahn-Teller \
+maximum. The adiabatic 12.75 eV of footnote a is 0.14 eV above Berkowitz et al.'s \
+photoionisation onset (berkowitz_1987, 12.61 eV); that paper lists Brundle, Robin & \
+Basch's 12.75 eV among the earlier adiabatic values, which range from 12.55 to \
+12.78 eV.
+
+NOT EXTRACTED: the other 142 hydrocarbons (C2H6, C2H4, C2H2 ...; out of scope), the \
+orbital assignment table of the C3 hydrocarbons (p. 2217) and the spectra of Figs. \
+1-8."""
+
+[[datasets]]
+id = "vertical_CH4"
+material = "CH4"
+file = "CH4/bieri_1977__vertical_CH4.csv"
+table = "tbl_1342dbc497d6"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["heilbronner_1977"]
+notes = """p. 2218, CH4 column: band maxima I^m ~ vertical ionisation energies. Rows 1t2_1, \
+1t2_2, 1t2_3: the three maxima (13.6, 14.4, 15.0 eV) of the Jahn-Teller distorted 2T2 \
+band (footnote a), the ionisation of the 1t2 orbital to CH4+ X 2T2; row 2a1: 22.9 eV, \
+the 2a1^-1 (2A1) band. Accuracy +-0.1 eV (legend). Reference [17] for the whole \
+column (record notes). The rows 1t2_1 to 1t2_3 equal heilbronner_1977/vertical_CH4 \
+(TC-547). The 2a1 row (22.9 eV) is not in Heilbronner et al. 1977, whose spectra end \
+near 21 eV: its origin is unknown."""
+[datasets.parameters]
+kind = "vertical"
+final_state = "the row's orbital hole: 1t2^-1 (X 2T2, Jahn-Teller maxima) or 2a1^-1 (2A1)"
+
+[datasets.uncertainty]
+absolute = 0.1
+level = "not stated"
+
+[[datasets]]
+id = "adiabatic_CH4"
+material = "CH4"
+table = "text"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. Heilbronner, T. B. Jones and J. P. Maier, Helv. Chim. Acta 60, 1697 (1977)"]
+points = [["1t2", "1t2", "12.75"], ["2a1", "2a1", "22.39"]]
+notes = """Footnotes a and b of the Section A tables (p. 2222): 'The adiabatic ionization \
+potential is I_1^a = 12.75 eV' (the 2T2 band) and 'Adiabatic ionization energy I_1^a \
+= 22.39 eV' (the 2a1 band, footnote b of 22.9). Estimated accuracy of adiabatic values \
++-0.02 eV (legend, p. 2218). Attributed to the column's reference [17], but neither \
+value is in Heilbronner et al. 1977 (heilbronner_1977 prints no adiabatic energy; TC-547): \
+their origin is unknown."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the row's orbital hole: 1t2^-1 (X 2T2) or 2a1^-1 (2A1)"
+
+[datasets.uncertainty]
+absolute = 0.02
+level = "not stated"

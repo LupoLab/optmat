@@ -1,0 +1,65 @@
+citation = "D. Franta, D. Nečas, L. Zajíčková and I. Ohlídal, \"Utilization of the sum rule for construction of advanced dispersion model of crystalline silicon containing interstitial oxygen\", Thin Solid Films 571, 490 (2014)"
+doi = "10.1016/j.tsf.2014.03.059"
+library = "Franta_2014_UtilizationSumRule"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Distribution of the total transition strength of c-Si (the Thomas-Reiche-Kuhn \
+sum rule) among its absorption processes, from a dispersion model fitted to \
+'ellipsometric and spectrophotometric characterizations of a set of double side \
+polished wafers and slabs produced using float zone and Czochralski processes', \
+8.7 meV (70 cm-1) to 8.7 eV, 300-600 K; 'Experimental details are out of scope of this \
+paper and will be published elsewhere' (pp. 490-491)."""
+notes = """Journal pages 490-495 = PDF pages 1-6. Identity checked against the first page. \
+A theory paper on the construction of the advanced dispersion model of c-Si (the model \
+of franta_2017): no n, k, epsilon or absorption value is printed, and the dispersion \
+formulas of the individual processes are 'out of this paper' (p. 492). Figs. 1-6 plot \
+N_a(T), the transition strength function F(E) above the gap at 300 and 600 K, n_eff(E), \
+F(E) below the gap at 300-600 K, the transition strengths below the gap against T, and \
+F(E) of pure c-Si against Czochralski Si with 20 ppm interstitial oxygen. Nothing printed \
+has an optmat quantity: the effective numbers of electrons of Table 1 and the relative \
+strengths in the text are recorded as the formula below.
+
+MODEL MAP. Eq. (8): int_0^inf F(E) dE = N, F(E) = E eps_i(E) (Eq. (9)), the total \
+transition strength. Eq. (10): F as a sum of damped harmonic oscillators, sum_j N_j = N, \
+N_j in eV^2. Eq. (14): N = N_e + N_Si + N_O; Eqs. (15)-(17): their dependence on T and the \
+atomic fraction f_Oi of interstitial oxygen through the density parameter N_a(T), Eq. \
+(18): N_a(T) = N_a(300 K) [(1 + e(300 K))/(1 + e(T))]^3, e(T) the linear thermal expansion \
+(Watanabe et al., Int. J. Thermophys. 25, 221 (2004); 'linear thermal expansion \
+coefficient' in the text), N_a(300 K) = 108.2 eV^2 (from franta_2013). Eq. (20): N ~ \
+N_ee ~ N_e ~ Z_Si N_a, Z_Si = 14; N = N_e U with U = 1.0002735 for silicon (p. 492). Eq. \
+(21): N_t(T) = n_t N_a(T), n_t the effective number of electrons of process t (K, L, vx, \
+vc), temperature independent; Eq. (22): n_ve = n_vc + n_vx; Eq. (26): n_idt(T) and \
+n_dt(T) depend on T, n_idt ~ 1 + 2 f_BE(E_p, T) (Eq. (27)), n_idt + n_dt = n_vc (Eq. (28)); \
+Eq. (29): N_fc ~ T^(3/2) exp(-E_g/(2 k_B T)). Interstitial oxygen: Eq. (30), N_A2u = \
+alpha_A2u N_O, alpha_A2u = 0.1914 ('corresponds to the effective charge of 3.5e determined \
+by ab initio calculations'; a value from the ASTM F1188 calibration was 'approximately 5% \
+larger'), A2u mode at 1107 cm-1; Eqs. (31)-(33), the A2u + A1g two-phonon peak at 1721 \
+cm-1, alpha_A2u+A1g(300 K) = 0.0025, temperature dependent through Bose-Einstein factors; \
+Eq. (34), the one-phonon Si band induced by O_i (0-520 cm-1), N_1ph = alpha_1ph [2 \
+f_Oi/(1 - f_Oi)] N_Si, alpha_1ph = 0.0172 (pp. 493-494).
+
+AS PRINTED (page images checked 2026-10-14): Eq. (17) prints N_O with \
+Z_Si^2 m_e/m_O, where Eq. (8) gives Z_O^2 m_e/m_O; Eq. (23) prints n_ve + n_L + n_L \
+~ 14, where Table 1 and the text (n_K = 1.55) read n_ve + n_L + n_K. Neither enters a \
+value recorded here. n_ve = 4.12, n_L = 8.33, n_K = 1.55 are Shiles et al.'s values for \
+aluminium (Phys. Rev. B 22, 1612 (1980)), taken for a-Si:H in franta_2013b and 'suitable \
+also for crystalline silicon' (p. 493): not determined for c-Si here. Their sum, 14.00, \
+checks Eq. (23).
+
+TABLE 1 CHECKS (2026-10-14, image): the CSV agrees with the image; n_ve = n_vx + n_vc \
+(0.24 + 3.88 = 4.12) and n_vc = n_idt + n_dt (0.50 + 3.38 = 3.88 at 300 K; 3.88 at \
+400-600 K) as the caption says; n_mph = n_2ph + n_3ph + n_4ph holds to rounding (1.00e-7 \
++ 1.51e-8 + 1.09e-9 = 1.162e-7, printed 1.16e-7). Later values: franta_2017 gives n_ve = \
+4.51 or 4.37 for its float-zone model (p. 415) and franta_2018 cites 4.12 for the 'real \
+strength of valence electrons determined using the advanced dispersion model'."""
+
+[[formulas]]
+id = "effective_electrons"
+material = "Si"
+equation = "Table 1, p. 493; Eqs. (18), (21)-(28), (30)-(34), pp. 492-494"
+printed = "N_t(T) = n_t N_a(T)"
+variable = "T: temperature (K); n_t: effective number of electrons of process t (dimensionless); N_a: density parameter (eV^2); alpha: relative transition strengths (dimensionless)"
+range = "300-600 K (Table 1)"
+coefficients = { N_a_300K = "108.2", U = "1.0002735", n_K = "1.55", n_L = "8.33", n_ve = "4.12", n_vx = "0.24", n_vc = "3.88", n_idt_300K = "0.50", n_idt_400K = "0.61", n_idt_500K = "0.72", n_idt_600K = "0.84", n_dt_300K = "3.38", n_dt_400K = "3.27", n_dt_500K = "3.16", n_dt_600K = "3.04", n_fc_300K = "3.23e-12", n_fc_400K = "1.01e-9", n_fc_500K = "3.42e-8", n_fc_600K = "3.76e-7", n_mph_300K = "1.16e-7", n_mph_400K = "1.48e-7", n_mph_500K = "1.84e-7", n_mph_600K = "2.22e-7", n_2ph_300K = "1.00e-7", n_2ph_400K = "1.26e-7", n_2ph_500K = "1.52e-7", n_2ph_600K = "1.79e-7", n_3ph_300K = "1.51e-8", n_3ph_400K = "2.08e-8", n_3ph_500K = "2.84e-8", n_3ph_600K = "3.78e-8", n_4ph_300K = "1.09e-9", n_4ph_400K = "1.91e-9", n_4ph_500K = "3.17e-9", n_4ph_600K = "5.01e-9", alpha_A2u = "0.1914", alpha_A2u_A1g_300K = "0.0025", alpha_1ph = "0.0172", nu_A2u = "1107", nu_A2u_A1g = "1721" }
+check = "Table 1 cells compared with the image (2026-10-14); 'a × 10^-b' printed, written here as ae-b. The sums of the caption hold (see notes). N_a_300K, U and the alphas are from the text (pp. 492-494); nu in cm-1."
+notes = "Table 1 rows above E_g (n_K, n_L, n_ve, n_vx, n_vc) are printed once, 'Const.' in T; n_idt, n_dt, n_mph and n_2ph are marked 'Lin.', n_3ph 'Quad.', n_4ph 'Cubic', n_fc 'Exp.' (Eq. (29)). Pure (oxygen-free) c-Si for the phonon rows (p. 493). The model's phonon, free-carrier and electronic formulas are not given; the values cannot be turned into n or k."

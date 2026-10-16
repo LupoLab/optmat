@@ -1,0 +1,72 @@
+citation = "J. A. Wheeler, Phys. Rev. 43, 258 (1933)"
+doi = "10.1103/physrev.43.258"
+library = "Wheeler_1933_TheoryDispersionAbsorption"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Variational calculation of the oscillator strength of the helium resonance \
+line (Hylleraas-type ground function, energy -1.8065 Rh against -1.8070) and of the \
+continuum oscillator-strength density df/dE (Eq. 12), checked against the f sum rule \
+and Cuthbertson and Cuthbertson's (1932) refractive index (pp. 258-263)."""
+notes = """Energies are in Rydberg units ('E is in units Rh'), E above the series limit \
+(photon energy 1.807 + E Rh; lambda = 911/(1.807 + E) A). Results (pp. 261-262): resonance \
+line f = 0.266 (max. error 'of the order of 30 percent'; Vinti's 0.349 is 31 % higher), \
+continuum total 1.58, the rest of the 1s np series estimated by the 1/n^3 law as \
+0.159, total 2.00. Table I (tbl_302e1ef04d88) tabulates Eq. (12), df/dE at 20 energies \
+E = 0-16 Rh: the format has no quantity for a differential oscillator strength, so \
+the table is not extracted as data; Eq. (12) is recorded as a \
+formula and checked against it. Table II (continuum strengths of H, Li, Na, K) holds \
+no curated species beyond helium's own 1.58 and 0.93.
+
+The one-term formula (Eq. 14) is the theory's equivalent of Cuthbertson's (Eq. 13, \
+reproduced from cuthbertson_1932, n0^2 = 3.83137e31, i.e. 38313.7e27) and differs \
+from it by 3 %. Superseded by later theory (liu_1997, stone_2004)."""
+
+[[datasets]]
+id = "f_resonance"
+material = "He"
+table = "text"
+points = [["2", "2", "0.266"]]
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "1 1S -> 2 1P resonance line (row and index n = 2; E1 - E0 = 1.56 Rh), p. 261; 'maximum error ... of the order of 30 percent' (p. 262)."
+[datasets.uncertainty]
+relative = 0.3
+level = "bound"
+
+[[datasets]]
+id = "vinti_f_resonance"
+material = "He"
+table = "text"
+points = [["2", "2", "0.349"]]
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. P. Vinti, Phys. Rev. 42, 632 (1932)"]
+notes = "'Vinti obtains an f value of 0.349, 31 percent higher' (p. 262), with a poorer ground function."
+
+[[formulas]]
+id = "eq12"
+material = "He"
+equation = "Eq. (12), p. 261"
+printed = "df/dE = Z0^2(E)(1.807 + E)/16 = (1.807 + E)(1 + E)^-1 (1 - e^{-2 pi E^-1/2})^-1 [(E + 3.31)^-5 (0.227 E^5 + 3.76 E^4 + 66.3 E^3 + 389 E^2 + 1250 E + 943) exp(-2 E^-1/2 arctan(E^1/2/1.82)) - (E + 31.8)^-3 (0.227 E^3 + 19.9 E^2 + 535 E + 3280) exp(-2 E^-1/2 arctan(E^1/2/5.64))]^2"
+variable = "E: photoelectron energy above the He ionisation limit in Rydberg units (photon energy 1.807 + E Rh); df/dE per Rh"
+state = "none (per atom)"
+density = "none"
+range = "E >= 0; 'inaccuracy ... of the order of 10 percent' at E = 0.01, decreasing with E; not below about 5 A"
+coefficients = { threshold = "1.807", c1 = "3.31", c2 = "31.8", k1 = "1.82", k2 = "5.64" }
+check = "Agrees with Table I within 1.2 % up to E = 4 (0.935, 0.820, 0.467, 0.248, 0.0936 at E = 0, 0.2, 1, 2, 4 against the printed 0.93, 0.81, 0.47, 0.25, 0.093); at E = 10 and 16 it gives 0.0159 and 0.0054 against 0.015 and 0.0056 (6 % and 4 %), so the printed constants are probably rounded. Checked 2026-09-24."
+notes = "Coefficients above are a selection; the full expression is the printed one. For large E, df/dE ~ 2.8e-8 lambda^3.5 (lambda in A, p. 262)."
+
+[[formulas]]
+id = "eq14"
+material = "He"
+equation = "Eq. (14), p. 263"
+printed = "n - 1 = 1.38 x 10^27 / (3.865 x 10^31 - epsilon^2)"
+variable = "epsilon: the light frequency in s^-1 (the paper's symbol; nu in Eq. 13)"
+state = "1atm_0C"
+density = "ideal"
+range = "visible (matched in value and slope at 3644 A to the theoretical Eq. 1)"
+coefficients = { C = "1.38e27", n0_squared = "3.865e31" }
+check = "At 5462 A (nu = c/lambda, c = 3e10 cm/s) it gives 3.598e-5 against Eq. (13)'s 3.4885e-5, 3.1 % higher: the paper's '3 percent difference'. Checked 2026-09-24."
+notes = "Effective electron number 1.27, effective frequency 1.89 Rh (482 A). The state is 'standard pressure and temperature' via N in Eq. (1)."

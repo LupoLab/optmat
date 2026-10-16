@@ -1,0 +1,738 @@
+citation = "A. Raj, H. Hamaguchi, and H. A. Witek, J. Chem. Phys. 148, 104308 (2018)"
+doi = "10.1063/1.5011433"
+library = "Raj_2018_PolarizabilityTensorInvariants"
+identity = "VALIDATED"
+kind = "theory"
+technique = """CCSD linear-response dynamic polarizabilities alpha_par(omega; r), \
+alpha_perp(omega; r) of H2 (DALTON; aug-mcc-pV6Z plus five sets of bond functions \
+8s6p) on 176 internuclear distances 0.2-12.0 a0 and 44 frequencies 0.25-0.0345 hartree \
+(182.25-1320.6 nm) plus the static limit; rovibrational wave functions of H2, HD and \
+D2 (v = 0-4, J = 0-15) from the radial equation with Wolniewicz's potential \
+(adiabatic, relativistic and radiative corrections), accurate to about 1 cm^-1; \
+matrix elements <v,J|Omega|v',J'> = integral psi psi Omega r^2 dr over 0.2-4.48 a0 \
+(Eq. (2)) with Omega = (2 alpha_perp + alpha_par)/3 for the mean polarizability, \
+cubic splines in r and in wavelength (pp. 3-5, PDF pp. 3-5)."""
+notes = """Units: atomic units (a0^3); wavelengths in nm are the program's vacuum \
+wavelengths lambda = 1e7/(omega 219474.6313702) for omega in hartree (rovibME.py), \
+so the printed laser wavelengths are vacuum wavelengths; the static limit is printed \
+'Static' and stored as inf. HD is not a curated species. The anisotropy gamma (Tables \
+T7-T15, Table II), the Raman transition elements (off-diagonal columns of T1-T6), the \
+static alpha(r) of Table T17 and the depolarization ratios of Table I are not \
+refractive-index quantities here and are not extracted.
+
+Accuracy: 'The computed matrix elements are accurate to about 10^-3, and for that \
+reason we tabulate them ... only up to four digits after the decimal point' (PDF p. \
+10); 'correct to about 10^-3 due to inaccuracies in the computed values of alpha_par \
+and alpha_perp' (PDF p. 5). The package README says 'the net numerical uncertainty in \
+the computed matrix element is +/- 1e-4' (integration about 1e-6). The datasets carry \
+1e-3 a.u. (absolute, level not stated). Against Bishop & Cheung (1980) the authors \
+find up to 0.25 % for the diagonal alpha elements and against Rychlewski (1983) 0.15 % \
+(PDF pp. 6-7); they cannot say which is more accurate.
+
+THE PROGRAM. The per-state values and the thermal averages are COMPUTED here, not \
+printed in the paper: tools/extract/raj_2018.py --program runs the authors' own Python \
+module rovibME.py (their GitHub package H2-PolarizabilityMatrixElements, Ref. 39, \
+'master' snapshot whose files are dated 24 Jan 2018, kept outside the repository (found at $RAJ_2018_PROGRAM by tools/extract/raj_2018.py); \
+python-module/rovibME.py SHA-256 75823f2ee89d6d649d980e84deaf82480a7424e8ae2b228ead70a78c68197570, \
+checked at every run) unmodified, through tools/extract/_raj_2018_program.py, in a \
+pinned environment (Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; uv inline script \
+metadata), because the module fails under NumPy 2 ((n,1) arrays converted to scalars) \
+and calls scipy.integrate.quadrature, removed in SciPy 1.15. Run 2026-09-25. The \
+package carries no licence for its own code (the only LICENSE.txt is SciPy's, in the \
+FORTRAN directory); nothing of it is copied into this repository. The module prints \
+each value rounded to seven decimals; that printed number is the stored value. The \
+same results came from an independent environment (Python 3.9, NumPy 1.21.6, SciPy \
+1.7.3) for the five states checked. Check: every <0,0|alpha|0,0> computed at T1's \
+and T5's 52 wavelengths and the static limit rounds to the printed four decimals \
+(asserted by the extraction script, 106 values).
+
+THE AVERAGE. normal_* datasets: normal H2 and normal D2, the nuclear-spin species in \
+their high-temperature proportions and each Boltzmann-distributed over its own \
+rotational levels: alpha(T) = sum_s f_s sum_{J in s} (2J+1) exp(-E_J/kT) alpha_J / \
+sum_{J in s} (2J+1) exp(-E_J/kT), f_s = g_s/(g_even + g_odd), v = 0, J = 0-10, kT from \
+CODATA (optmat.constants). Inputs and their sources: (1) alpha_J: the \
+program_J* datasets. (2) E_J: the authors' own S0(J) = E(0,J+2) - E(0,J) transition \
+energies, J = 0-8, Tables T26 (H2) and T29 (D2) 'Our' columns (supplement PDF pp. \
+31-32; images checked), computed with the same wave functions as the matrix elements; \
+they give the even levels relative to J = 0 and the odd levels relative to J = 1, up \
+to J = 10; each S0 agrees with S1(J) - Q1(J+2) and Q1(J) - O1(J+2) of the same tables \
+to 7e-4 cm^-1 (asserted to 1e-3). They lie 0.17-0.71 cm^-1 below experiment (the \
+tables' Delta columns); HITRAN's H2 lower-state energies (HITRAN API, 2026-09-25, \
+isotopologue 103, 4591 lines; not committed) differ from them by 0.17-2.6 cm^-1 up \
+to J = 10 and would change the H2 average by at most 1.3e-5 a.u. (3) Spin weights: \
+H2 1 (even J) and 3 (odd J), Bishop & Cheung (1980), text after Eq. (23) ('normal H2 \
+ortho:para ratio of 3:1'), and HITRAN's H2 g'' = 1 x (2J+1) for even and 3 x (2J+1) \
+for odd J; D2 6 (even) and 3 (odd): 'The spin of the D nucleus is I_N = 1, so that \
+for the D2 molecule, even j states are twice as populated as odd j' \
+(Unverified_09b870d2f279, observed title 'Single-shot, space- and time-resolved \
+measurement of rotational wavepacket revivals in H2, D2, N2, O2, and N2O', file name \
+Chen et al. 2007, PDF p. 15; the same page misstates H2 as even 3 times odd), and \
+for two spin-1 nuclei 'the multiplicity ... equals 6 for even j and 3 for odd j' \
+(Borysow et al., Mol. Phys. 118, e1663287 (2019), for 14N2, PDF p. 8). No library \
+paper or HITRAN (which has no D2) states the D2 weights directly as numbers; the 6:3 \
+weights also reproduce Rychlewski's D2 Table V from his Table II (rychlewski_1983 \
+notes). DIRECT SOURCE (TC-105, TC-173): Murphy & \
+Johnston (murphy_1934) measure g_s/g_a = 1.97 +- 0.03 from the D2 band intensity \
+alternation, 'agrees best with the theoretical ratio of 2', nuclear spin 1, even J \
+symmetric and more intense, Bose-Einstein statistics (pp. 95-98, Eq. (2)); the \
+ratio 2 : 1 is all the thermal average uses, and 6 : 3 is that ratio. Teal & MacWood \
+(teal_1935) confirm the even-J-stronger alternation in the Raman spectrum. (4) Temperatures 273.15, 293.15 and 296.15 K. (5) Omitted: v = 1 (Q1(0) = \
+4160.9359 and 2993.5309 cm^-1, T26/T29: population below 5e-7 at 296.15 K) and J > \
+10 (the last levels kept, J = 9 and 10, hold 1.7e-5 and 1.3e-6 of their D2 species \
+at 296.15 K, 3e-10 and 2e-12 for H2). Normal rather than equilibrium: at 293.15 K the \
+equilibrium ortho fraction of H2 (0.7491 with HITRAN's E(J=1) = 118.4869 cm^-1) \
+changes the average by 1.4e-5 a.u. at most.
+
+CHECKS OF THE AVERAGE. (a) The authors' own 293 K average of H2 (Table II, 'Our', \
+averaging up to v = 0, J = 7) is reproduced at all 15 wavelengths to 4e-5 a.u. \
+(0.001 %). (b) Against Bishop & Cheung's 293 K Table V (bishop_1980/alpha_293K) at \
+their 16 wavelengths in the program's range: -0.015 % static, rising to +0.146 % at \
+185.46 nm (mean +0.043 %), the trend the authors describe (up to 0.2 %). (c) Against \
+Rychlewski's 293 K H2 Table VI (rychlewski_1983/alpha_293K_H2), 14 wavelengths: \
++0.007 to +0.057 % (mean +0.030 %). (d) Against Rychlewski's D2 Table V \
+(rychlewski_1983/alpha_293K): +0.015 to +0.055 % (mean +0.031 %). Printed by \
+raj_2018.py --compare (T = 293.0 K for these), 2026-09-25. Bishop and Rychlewski's \
+wavelengths below 182.25 nm are outside the program's range. (e) The D2/H2 ESHG \
+phase-match density ratio [alpha_H2(2w) - alpha_H2(w)] / [alpha_D2(2w) - \
+alpha_D2(w)] from these normal-gas averages (295.15 K, the program run at the \
+fundamentals and harmonics) is 1.0317 at 694.5 nm rising to 1.0345 at 476.6 nm, \
+0.0009-0.0026 above Shelton & Mizrahi's measured shelton_1986/ratio_D2_H2 \
+(1.0301-1.0319, errors 0.0002-0.0007) and close to their evaluation of Rychlewski \
+(1.0310-1.0347): like Rychlewski's, this theory overestimates the H2-D2 difference in \
+dispersion at high frequency (computed in a one-off run, 2026-09-25, not stored).
+
+Table II also reproduces Bishop & Cheung's 293 K values (Ref. 75; identical to \
+bishop_1980/alpha_293K at the 15 shared wavelengths) and Victor & Dalgarno's \
+(Ref. 82, curated as the reproduction bishop_1980/victor_dalgarno); neither is \
+extracted again. The Bridge & Buckingham (Ref. 79) 632.8 nm values of \
+<0,0|alpha|0,0> (5.527(27) for H2) are not extracted: reproduced, derived with a \
+refractive index, and the D2 rows of alpha and gamma are printed swapped (alpha \
+'2.0254', gamma '5.4514'; T5 gives alpha = 5.4515 at 632.80 nm; image checked). Table \
+T29 prints D2 O1(8) Delta^a = 0.893 against a smooth 0.025-0.109 for J = 4-7, \
+probably 0.137 or similar; not used.
+
+Use: normal_293K is marked primary for both gases, normal_273K and normal_296K check \
+(the same theory at other temperatures; fit one). For H2 this is a third ab initio \
+set beside rychlewski_1983 and bishop_1980 (the three agree to 0.15 %); which to fit is a decision recorded in the register (TC-95)."""
+
+[[datasets]]
+id = "alpha_v0_J0_H2"
+material = "H2"
+file = "H2/raj_2018__alpha_v0_J0.csv"
+table = "tbl_b0cae9bc8235"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Supplement Table T1 column <alpha>_{00,00}: H2 in v = 0, J = 0 (para-H2 ground state) at 52 laser wavelengths and 'Static', four decimals (image checked). Reproduced by the program to the printed digits."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 0
+
+[[datasets]]
+id = "alpha_v1_J0_H2"
+material = "H2"
+file = "H2/raj_2018__alpha_v1_J0.csv"
+table = "tbl_b0cae9bc8235"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Supplement Table T1 column <alpha>_{10,10}: H2 in v = 1, J = 0 (image checked). Not populated in a gas at room temperature."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 1
+
+[[datasets]]
+id = "alpha_v0_J0_D2"
+material = "D2"
+file = "D2/raj_2018__alpha_v0_J0.csv"
+table = "tbl_3f331311ba2d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Supplement Table T5 column <alpha>_{00,00}: D2 in v = 0, J = 0 at 52 laser wavelengths and 'Static', four decimals (image checked). Reproduced by the program to the printed digits."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 0
+
+[[datasets]]
+id = "alpha_v1_J0_D2"
+material = "D2"
+file = "D2/raj_2018__alpha_v1_J0.csv"
+table = "tbl_3f331311ba2d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Supplement Table T5 column <alpha>_{10,10}: D2 in v = 1, J = 0 (image checked). Not populated in a gas at room temperature."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 1
+
+[[datasets]]
+id = "thermal_293K_table_ii"
+material = "H2"
+file = "H2/raj_2018__thermal_293K_table_ii.csv"
+table = "tbl_aa58a97e916a"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table II '<alpha> av' column 'Our' (footnote c: 'Averaging up to v = 0, J = 7 at 293 K'; f: 'Thermal rotational average'), 15 wavelengths, image checked. The spin weights and energies used are not stated. Reproduced to 4e-5 a.u. by normal_293K's procedure (source notes); normal_293K supersedes it."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293
+average = "thermal rotational average (normal H2 assumed), v = 0, J <= 7"
+
+[[datasets]]
+id = "normal_273K_H2"
+material = "H2"
+file = "H2/raj_2018__normal_273K.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "COMPUTED here from the authors' program (source notes: THE PROGRAM, THE AVERAGE): normal H2 (para:ortho 1:3) at 273.15 K, v = 0, J = 0-10, at T1's 52 wavelengths and the static limit, seven decimals (far below the 1e-3 accuracy)."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 273.15
+average = "normal H2: spin species 1:3 (even:odd J), each Boltzmann over its own levels; v = 0, J = 0-10"
+computed_with = "rovibME.py (sha256 75823f2e...) per-state values, raj_2018.py extract(); energies from Tables T26/T29; run 2026-09-25"
+
+[[datasets]]
+id = "normal_293K_H2"
+material = "H2"
+file = "H2/raj_2018__normal_293K.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "COMPUTED here from the authors' program (source notes: THE PROGRAM, THE AVERAGE): normal H2 (para:ortho 1:3) at 293.15 K, v = 0, J = 0-10, at T1's 52 wavelengths and the static limit, seven decimals. Reproduces the paper's own Table II average to 4e-5 a.u.; +0.03 % from Rychlewski (1983) and -0.015 to +0.15 % from Bishop & Cheung (1980)."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.15
+average = "normal H2: spin species 1:3 (even:odd J), each Boltzmann over its own levels; v = 0, J = 0-10"
+computed_with = "rovibME.py (sha256 75823f2e...) per-state values, raj_2018.py extract(); energies from Tables T26/T29; run 2026-09-25"
+
+[[datasets]]
+id = "normal_296K_H2"
+material = "H2"
+file = "H2/raj_2018__normal_296K.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "COMPUTED here from the authors' program (source notes: THE PROGRAM, THE AVERAGE): normal H2 (para:ortho 1:3) at 296.15 K (HITRAN's reference temperature), v = 0, J = 0-10, at T1's 52 wavelengths and the static limit, seven decimals."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 296.15
+average = "normal H2: spin species 1:3 (even:odd J), each Boltzmann over its own levels; v = 0, J = 0-10"
+computed_with = "rovibME.py (sha256 75823f2e...) per-state values, raj_2018.py extract(); energies from Tables T26/T29; run 2026-09-25"
+
+[[datasets]]
+id = "normal_273K_D2"
+material = "D2"
+file = "D2/raj_2018__normal_273K.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "COMPUTED here from the authors' program (source notes: THE PROGRAM, THE AVERAGE): normal D2 (ortho:para 2:1, spin weights 6 even J, 3 odd J) at 273.15 K, v = 0, J = 0-10, at T5's 52 wavelengths and the static limit, seven decimals."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 273.15
+average = "normal D2: spin species 6:3 (even:odd J), each Boltzmann over its own levels; v = 0, J = 0-10"
+computed_with = "rovibME.py (sha256 75823f2e...) per-state values, raj_2018.py extract(); energies from Tables T26/T29; run 2026-09-25"
+
+[[datasets]]
+id = "normal_293K_D2"
+material = "D2"
+file = "D2/raj_2018__normal_293K.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "COMPUTED here from the authors' program (source notes: THE PROGRAM, THE AVERAGE): normal D2 (ortho:para 2:1, spin weights 6 even J, 3 odd J) at 293.15 K, v = 0, J = 0-10, at T5's 52 wavelengths and the static limit, seven decimals. +0.015 to +0.055 % from Rychlewski's (1983) D2 average."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.15
+average = "normal D2: spin species 6:3 (even:odd J), each Boltzmann over its own levels; v = 0, J = 0-10"
+computed_with = "rovibME.py (sha256 75823f2e...) per-state values, raj_2018.py extract(); energies from Tables T26/T29; run 2026-09-25"
+
+[[datasets]]
+id = "normal_296K_D2"
+material = "D2"
+file = "D2/raj_2018__normal_296K.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "COMPUTED here from the authors' program (source notes: THE PROGRAM, THE AVERAGE): normal D2 (ortho:para 2:1, spin weights 6 even J, 3 odd J) at 296.15 K, v = 0, J = 0-10, at T5's 52 wavelengths and the static limit, seven decimals."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+temperature_k = 296.15
+average = "normal D2: spin species 6:3 (even:odd J), each Boltzmann over its own levels; v = 0, J = 0-10"
+computed_with = "rovibME.py (sha256 75823f2e...) per-state values, raj_2018.py extract(); energies from Tables T26/T29; run 2026-09-25"
+
+[[datasets]]
+id = "program_J0_H2"
+material = "H2"
+file = "H2/raj_2018__program_J0.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=0|alpha|v=0,J=0> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J1_H2"
+material = "H2"
+file = "H2/raj_2018__program_J1.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=1|alpha|v=0,J=1> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 1
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J2_H2"
+material = "H2"
+file = "H2/raj_2018__program_J2.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=2|alpha|v=0,J=2> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 2
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J3_H2"
+material = "H2"
+file = "H2/raj_2018__program_J3.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=3|alpha|v=0,J=3> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 3
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J4_H2"
+material = "H2"
+file = "H2/raj_2018__program_J4.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=4|alpha|v=0,J=4> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 4
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J5_H2"
+material = "H2"
+file = "H2/raj_2018__program_J5.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=5|alpha|v=0,J=5> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 5
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J6_H2"
+material = "H2"
+file = "H2/raj_2018__program_J6.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=6|alpha|v=0,J=6> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 6
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J7_H2"
+material = "H2"
+file = "H2/raj_2018__program_J7.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=7|alpha|v=0,J=7> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 7
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J8_H2"
+material = "H2"
+file = "H2/raj_2018__program_J8.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=8|alpha|v=0,J=8> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 8
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J9_H2"
+material = "H2"
+file = "H2/raj_2018__program_J9.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=9|alpha|v=0,J=9> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 9
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J10_H2"
+material = "H2"
+file = "H2/raj_2018__program_J10.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=10|alpha|v=0,J=10> of H2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 10
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J0_D2"
+material = "D2"
+file = "D2/raj_2018__program_J0.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=0|alpha|v=0,J=0> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J1_D2"
+material = "D2"
+file = "D2/raj_2018__program_J1.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=1|alpha|v=0,J=1> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 1
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J2_D2"
+material = "D2"
+file = "D2/raj_2018__program_J2.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=2|alpha|v=0,J=2> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 2
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J3_D2"
+material = "D2"
+file = "D2/raj_2018__program_J3.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=3|alpha|v=0,J=3> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 3
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J4_D2"
+material = "D2"
+file = "D2/raj_2018__program_J4.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=4|alpha|v=0,J=4> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 4
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J5_D2"
+material = "D2"
+file = "D2/raj_2018__program_J5.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=5|alpha|v=0,J=5> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 5
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J6_D2"
+material = "D2"
+file = "D2/raj_2018__program_J6.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=6|alpha|v=0,J=6> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 6
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J7_D2"
+material = "D2"
+file = "D2/raj_2018__program_J7.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=7|alpha|v=0,J=7> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 7
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J8_D2"
+material = "D2"
+file = "D2/raj_2018__program_J8.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=8|alpha|v=0,J=8> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 8
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J9_D2"
+material = "D2"
+file = "D2/raj_2018__program_J9.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=9|alpha|v=0,J=9> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 9
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"
+
+[[datasets]]
+id = "program_J10_D2"
+material = "D2"
+file = "D2/raj_2018__program_J10.csv"
+table = "text"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Computed (not printed in the paper): <v=0,J=10|alpha|v=0,J=10> of D2 from the authors' program rovibME at T1's wavelengths and the static limit (source notes: version, environment, inputs); the value is the program's printed number (seven decimals), its output line kept in the file's printed column. An ingredient of the normal_* averages."
+[datasets.uncertainty]
+absolute = 0.001
+level = "not stated"
+[datasets.parameters]
+rotational_state_J = 10
+vibrational_state_v = 0
+computed_with = "rovibME.py (sha256 75823f2e...), Python 3.11.16, NumPy 1.24.4, SciPy 1.10.1; run 2026-09-25"

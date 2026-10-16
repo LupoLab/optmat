@@ -1,0 +1,160 @@
+citation = "F. A. Ilkov, J. E. Decker and S. L. Chin, \"Ionization of atoms in the tunnelling regime with experimental evidence using Hg atoms\", J. Phys. B: At. Mol. Opt. Phys. 25, 4005 (1992)"
+doi = "10.1088/0953-4075/25/19/011"
+library = "Ilkov_1992_IonizationAtomsTunnelling"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Analysis of the 'Keldysh-like' rates for linearly polarised light: the \
+tunnelling (adiabatic, gamma << 1) rate of Perelomov, Popov & Terent'ev (PPT) with the \
+Coulomb factor of Perelomov & Popov (Eq. (2)), made species-dependent with n* and \
+l* = n0* - 1 and a Stirling-approximated C_n*l* (Eqs. (4)-(7)), compared with the \
+general PPT formula (Eq. (8)) to set the validity limit gamma < 0.5, and with the \
+barrier-suppression field to set F < F_BSI (pp. 4007-4012). One experiment: Hg ionised \
+by 3 ns, 10.6 um CO2-laser pulses (focal radius 33.8 +- 0.9 um, up to 6.7e12 W/cm^2, \
+time-of-flight ion detection) (p. 4013)."""
+notes = """PDF pages 1-17: page 1 is the IOPscience download cover, PDF p. 2 = journal \
+p. 4005 (pages cited are journal pages). Identity checked on the first page. There are \
+no tables; everything below was read on the rendered pages (pp. 4007-4009 for the \
+equations). Hg is not a curated species; no dataset is taken.
+
+THE FORMULAS (recorded below as [[formulas]] without a form, with their numbers): Eq. \
+(2), the cycle-averaged tunnelling rate w(F); Eqs. (3)-(4), |C_nl|^2 for hydrogen and \
+its Stirling form with n*, l*; Eq. (5), their product; Eq. (6), (5) at m = 0; Eq. (7), \
+(6) with l* = n_g* - 1 for a ground state, 'an ionization rate formula for any atom or \
+ion in the ground state ... with an arbitrary orbital momentum'; Eq. (8), the general \
+(PPT) formula with A_m, w_m, alpha, beta, g, nu, kappa; and the tunnelling-regime \
+conditions, Eqs. (9)-(11) with F_BSI.
+
+WHICH EQUATION SOLPROP'S PPT IS. solprop's PPT class and its manual cite 'the \
+Perelomov-Popov-Terent'ev rate in the form of Ilkov, Decker and Chin, as written out by \
+Berge et al. (Eq. A14)': W = N sum_m (4 sqrt(2)/pi) |C_n*l*|^2 (f_lm/|m|!) (2F0/(E \
+sqrt(1 + gamma^2)))^(2n* - |m| - 3/2) (Ip gamma^2/(1 + gamma^2)) exp(-2 nu (asinh gamma \
+- gamma sqrt(1 + gamma^2)/(1 + 2 gamma^2))) S_m. That is this paper's Eq. (8) with A_m \
+written out: the exponent is the same (-(2F0/3F) g(gamma) = -2 nu (asinh gamma - gamma \
+sqrt(1 + gamma^2)/(1 + 2 gamma^2)), with nu = (E0/omega)(1 + 1/(2 gamma^2)) = (Ip + \
+U_p)/omega), solprop's channel function phi_m(x) = e^(-x^2) int_0^x (x^2 - y^2)^|m| \
+e^(y^2) dy is the paper's w_m(x) (substitute t = 1 - y^2/x^2; w_0 is Dawson's integral, \
+checked numerically), and S_m is the paper's sum over kappa. Three differences: (1) \
+the prefactor: the paper prints (3/(2 pi))^(1/2) x 4/sqrt(3 pi) = 2 sqrt(2)/pi, solprop \
+4 sqrt(2)/pi = (6/pi)^(1/2) x 4/sqrt(3 pi); solprop's is the paper's corrected form \
+(see the correction of formula eq8_ppt: as printed, Eq. (8) tends to half of Eq. (2) as \
+gamma -> 0, contrary to the text); (2) solprop multiplies by an occupancy N and sums \
+over m, which this paper does not (it takes one l, m; for gamma << 1 it keeps m = 0 \
+only, p. 4008); (3) solprop's Stark shift (Ip -> Ip + Delta alpha E^2/2) and dipole \
+correction (exp(-2 alpha_ion E)), which solprop's manual attributes to 'Ilkov, Decker \
+and Chin', are NOT in this paper: no polarisability appears in it, and the only mention \
+of the Stark shift is that F_BSI is computed 'neglecting the Stark shift' (p. 4011). \
+Their source must be another paper.
+
+THE MISPRINTS THIS PAPER POINTS OUT IN AMMOSOV ET AL. 1986 (ammosov_1986): footnote \
+p. 4007, 'The expression for |C_n*l*|^2 given by (20) in Ammosov et al (1986) contains \
+an inaccuracy which is corrected in (4)'; footnote p. 4008, Ammosov's (13a) has 'a \
+misprint ... in the power of the coefficient (3e/pi)'.
+
+THE TUNNELLING REGIME (pp. 4009-4012): gamma < 0.5 (Fig. 1: Eqs. (7) and (8) coincide \
+for gamma <~ 0.5 for Cs, Mg, Hg, H and He at 10.6 um; at gamma ~ 0.55 they differ by \
+less than an order of magnitude, at gamma ~ 0.7 by 4 (Mg), 6 (Hg) and > 10 (H) orders) \
+and F < F_BSI = Z^3/(16 n*^4) = (E0/2)^2/Z (p. 4011). F0 = (2E0)^(3/2) = Z^3/n*^3 = n* \
+F_at, with F_at = Z^3/n*^4 (p. 4010; the footnote there lists the other uses of \
+'atomic field' in the literature). For hydrogen's ground state F_BSI ~ 1/6.6 au \
+(Shakeshaft et al. 1990; footnote p. 4011). The multiphoton (LOPT) regime is gamma >~ 5 \
+(p. 4015). At 1.06 um (text, pp. 4015-4016; V/cm and W/cm^2): Xe F_TI = 3.9e8 (I_TI = \
+2.3e14), F_BSI = 2.5e8 (I_BSI = 8.2e13); Kr F_TI = 4.2e8 (2.5e14), F_BSI = 3.3e8 \
+(1.4e14); Ar F_TI = 4.5e8 (2.8e14), F_BSI = 4.2e8 (2.3e14); Ne F_TI = 5.2e8 (3.8e14), \
+F_BSI = 7.9e8 (8.2e14); He F_TI = 5.6e8 (4.4e14), F_BSI = 1.03e9 (1.4e15): tunnelling at \
+1.06 um exists only for He and Ne. Kulander's (1987) numerical He rates at 1.06 um agree \
+with Eqs. (5)-(7) within a factor of 2 up to 0.1 F_at (p. 4019). Augst et al.'s (1991) He \
+data need the tunnelling curve shifted by a factor of about 2 to higher intensity, \
+Yergeau et al.'s (1987, 10.6 um) by the same factor to lower intensity (p. 4017). \
+These are model evaluations, not properties of the gases: notes only.
+
+HG (out of scope; pp. 4013-4014): appearance intensity 4.8e12 W/cm^2, at a rate w ~ 1e4 \
+s^-1 (minimum measurable probability W ~ 1e-5); 0.27 < gamma < 0.34; log-log slope ~13 \
+against kappa0 = 90 photons; calculated appearance intensity 1.3 times the measured; \
+intensity uncertainty about 35 %. Fig. 4: the Hg rate against intensity (figure only). \
+Other text values: sigma_22(He) ~ 2e-705 cm^44 s^21 estimated against L'Huillier et \
+al.'s ~2e-727 (p. 4017), not taken.
+
+FIGURES (not digitised): Fig. 1 (rates against intensity at 10.6 um for Cs, Mg, Hg, H, \
+He, Eqs. (7) and (8)); Fig. 2 (the TI and BSI regions in the field against ionisation \
+potential plane); Fig. 3 (Eq. (7) for Hg, K and He against field); Fig. 4 (Hg rate); \
+Fig. 5 (He at 1.06 um: Eq. (8), Eq. (7), LOPT, Kulander, and the experiments of \
+Yergeau, Boreham, Lompre, L'Huillier, Augst and Gibson)."""
+
+[[formulas]]
+id = "eq2_tunnel"
+equation = "Eq. (2) and f(l, m), p. 4007"
+printed = "w(F) = (3F/(pi F0))^(1/2) (2F0/F)^(2n) |C_nl|^2 (F/(2F0))^(m+1) f(l, m) E0 exp(-2F0/(3F)); f(l, m) = (2l + 1)(l + |m|)!/(2^|m| (|m|)! (l - |m|)!), f(0, 0) = 1, f(1, 0) = f(1, 1) = 3"
+variable = "Atomic units. F: amplitude of the (linearly polarised) field; E0: binding energy; F0 = (2E0)^(3/2); n = Z (2E0)^(-1/2); Z: charge of the resulting ion; l, m: orbital and magnetic quantum numbers"
+range = "Low frequency, gamma << 1 (the paper's criterion: gamma < 0.5) and F << F0 (and F < F_BSI for tunnelling proper)"
+coefficients = {}
+reproduced_from = ["A. M. Perelomov, V. S. Popov and M. V. Terent'ev, Sov. Phys. JETP 23, 924 (1966)", "A. M. Perelomov and V. S. Popov, Sov. Phys. JETP 25, 336 (1967)"]
+check = "Checked against the page image (p. 4007). For hydrogen 1s (E0 = 1/2, Z = 1, n = 1, l = m = 0, |C|^2 = 4 from Eq. (3)) it reduces to (3F/pi)^(1/2) (4/F) exp(-2/(3F)), the cycle average of the static hydrogen rate 4/F exp(-2/(3F)) (computed 2026-09-27, identical)."
+notes = "'The factor (3F/pi F0)^(1/2) appears from averaging over a period of the field, and (2F0/F)^(2n) is a factor which takes into account the Coulomb interaction (Perelomov and Popov 1967). The rest represents the tunnel ionization rate for a short-range potential (Perelomov et al 1966)' (p. 4007). The rate is per atom for one (l, m) state; no occupancy factor. For arbitrary polarisation the Coulomb factor is [2F0 C(gamma, epsilon)/F]^(2n), C = 1 for gamma << 1 and linear polarisation (footnote)."
+
+[[formulas]]
+id = "eq3_eq4_cnl"
+equation = "Eqs. (3) and (4), p. 4007"
+printed = "|C_nl|^2 = 2^(2n)/(n (n + l)! (n - l - 1)!) (3); |C_n*l*|^2 = (1/(2 pi n*)) (4e^2/(n*^2 - l*^2))^n* ((n* - l*)/(n* + l*))^(l* + 1/2) (4)"
+variable = "n* = n - delta_l = (2E0)^(-1/2) Z (the effective principal quantum number); l* = l - delta_l = n0* - 1 (the effective orbital quantum number, n0* that of the lowest state of the given l); e = 2.718..."
+range = "Eq. (3): hydrogen only (Landau & Lifshitz; Perelomov et al. 1967). Eq. (4): Stirling's approximation of Eq. (3) with n -> n*, l -> l*"
+coefficients = {}
+check = "Checked against the page image (p. 4007). For n* >> l* Eq. (4) reduces to (2 pi n*)^(-1) (2e/n*)^(2n*) (the paper's footnote; the l-independent ADK coefficient of augst_1991 Eq. (10) squared). Eq. (4) with l* = n* - 1 inserted in Eq. (2) reproduces Eq. (7) to 1e-14 relative for a He-like (E0 = 24.587 eV, l = 0) and an Ar-like (E0 = 15.76 eV, l = 1) case (computed 2026-09-27)."
+notes = "Footnote (p. 4007): 'The expression for |C_n*l*|^2 given by (20) in Ammosov et al (1986) contains an inaccuracy which is corrected in (4).'"
+
+[[formulas]]
+id = "eq5"
+equation = "Eq. (5), p. 4008"
+printed = "w = (3/(2 pi))^(3/2) (Z^2/(3 n*^3)) f(l, m) (4e^2/(n*^2 - l*^2))^n* ((n* - l*)/(n* + l*))^(l* + 1/2) x (2Z^3/(n*^3 F))^(2n* - |m| - 3/2) exp[-2Z^3/(3 n*^3 F)]"
+variable = "As Eqs. (2)-(4); atomic units"
+range = "As Eq. (2)"
+coefficients = {}
+check = "Checked against the page image (p. 4008). Equal to Eq. (2) with Eq. (4) (computed 2026-09-27: He-like case, E0 = 24.587 eV, F = 0.08 au, 1.0353377e-8 au from both, to 3e-15 relative)."
+notes = "Eq. (4) substituted in Eq. (2). 'The ionization rate is a maximum for |m| = 0 and decreases significantly for other values of |m| since w ~ f(l, m)(2F0/F)^(-m)' (p. 4008)."
+
+[[formulas]]
+id = "eq6_m0"
+equation = "Eq. (6), p. 4008"
+printed = "w_(l,m=0) = (3e/pi)^(3/2) (Z^2 (2l + 1)/(3 n*^3)) ((n* - l*)^(2l* + 1)/(n*^2 - l*^2)^(n* + l* + 1/2)) x (4e Z^3/(n*^3 F))^(2n* - 3/2) exp[-2Z^3/(3 n*^3 F)]"
+variable = "As Eqs. (2)-(4); atomic units; l in (2l + 1) is the integer orbital quantum number (footnote)"
+range = "F << F0: the |m| != 0 levels are ignored"
+coefficients = {}
+check = "Checked against the page image (p. 4008). Equal to Eq. (5) at m = 0 (computed 2026-09-27, the He-like case, to 1e-15 relative)."
+notes = "Footnote (p. 4008): for l = 1 and n* >> l*, (6) is analogous to Ammosov et al.'s (13a), 'where a misprint appears in the power of the coefficient (3e/pi)'; 'in the expression for the angular coefficient f(l, m) we naturally leave l as the integer number'."
+
+[[formulas]]
+id = "eq7_ground_state"
+equation = "Eq. (7), p. 4008"
+printed = "w_(g,m=0) = (3e/pi)^(3/2) (Z^2/(3 n_g*^3)) ((2l + 1)/(2 n_g* - 1)) (4e Z^3/((2 n_g* - 1) n_g*^3 F))^(2 n_g* - 3/2) exp[-2Z^3/(3 n_g*^3 F)]"
+variable = "n_g*: the effective principal quantum number of the ground state, n_g* = Z (2E0)^(-1/2); l*= n_g* - 1; l: the integer orbital quantum number; atomic units"
+range = "Tunnelling regime: gamma < 0.5 and F < F_BSI (Eqs. (9)-(11)); 'correct ... up until the formal limit (0.1 F_at) of its application' (p. 4019)"
+coefficients = {}
+check = "Checked against the page image (p. 4008). Equal to Eq. (6) with l* = n* - 1 (computed 2026-09-27: He-like and Ar-like cases agree with Eq. (2) + Eq. (4) to 1e-14 relative). Identical term by term to walsh_1993's formula adk_ilkov (its Eq. (1), 'the following modified (Ilkov et al 1992) equation')."
+notes = "The 'Ilkov-modified ADK' rate that walsh_1993 and, through it, saenz_2002's ADK rows use. The rate of one m = 0 electron, cycle-averaged, per atom; no occupancy factor. forster_2014's FC-ADK starts from this equation."
+
+[[formulas]]
+id = "eq8_ppt"
+equation = "Eq. (8) and its definitions, pp. 4008-4009"
+printed = "w(omega, F) = (3/(2 pi))^(1/2) |C_n*,l*|^2 f(l, m) E0 (2F0/(F sqrt(1 + gamma^2)))^(2n - |m| - 3/2) x A_m(omega, gamma) exp(-(2F0/(3F)) g(gamma)); A_m(omega, gamma) = (4/sqrt(3 pi)) (1/|m|!) (gamma^2/(1 + gamma^2)) sum_(kappa >= nu)^inf e^(-alpha (kappa - nu)) w_m(sqrt(beta (kappa - nu))); w_m(x) = (x^(2|m| + 1)/2) int_0^1 e^(-x^2 t) t^|m|/sqrt(1 - t) dt; beta(gamma) = 2 gamma/sqrt(1 + gamma^2); alpha(gamma) = 2[sinh^-1 gamma - gamma/sqrt(1 + gamma^2)] (= (2/3) gamma^3 for gamma << 1, 2(ln 2 gamma - 1) for gamma >> 1); g(gamma) = (3/(2 gamma))[(1 + 1/(2 gamma^2)) sinh^-1 gamma - sqrt(1 + gamma^2)/(2 gamma)] (= 1 - gamma^2/10 + 9 gamma^4/280 for gamma << 1, (3/2) gamma^-1 (ln 2 gamma - 1/2) for gamma >> 1); nu = (E0/omega)(1 + 1/(2 gamma^2)); kappa = <E0/omega + 1> + S, S = 0, 1, 2, 3 ...; <> the integer part"
+variable = "Atomic units; gamma = omega sqrt(2E0)/F (Eq. (1)); other symbols as Eq. (2) (the exponent's n is Eq. (2)'s n = Z (2E0)^(-1/2), i.e. n*); linear polarisation"
+range = "Any gamma (the general formula); it 'was derived for short-range potentials and takes into account Coulomb interaction in the manner described in Perelomov and Popov (1967)' (p. 4008)"
+coefficients = { prefactor = "(3/(2 pi))^(1/2)" }
+reproduced_from = ["A. M. Perelomov, V. S. Popov and M. V. Terent'ev, Sov. Phys. JETP 23, 924 (1966)", "A. M. Perelomov and V. S. Popov, Sov. Phys. JETP 25, 336 (1967)"]
+check = "Checked against the page images (pp. 4008-4009). As printed it does not reduce to Eq. (2) as gamma -> 0, contrary to the text: evaluated with the channel sum for a He-like atom (E0 = 24.587 eV, Z = 1, l = m = 0, Eq. (4) with l* = n* - 1) at 10.6 um, Eq. (8)/Eq. (2) = 0.5036 at gamma = 0.072 and 0.5017 at gamma = 0.058; with the prefactor (6/pi)^(1/2) the ratios are 1.0072 and 1.0034, tending to 1 as gamma^2 (computed 2026-09-27). Analytically: the channel sum tends to its integral, sqrt(3 pi)/(4 gamma^2), so A_0 -> 1 and Eq. (8) -> (3/(2 pi))^(1/2) |C|^2 f E0 (2F0/F)^(2n - 3/2) exp(-2F0/(3F)), half of Eq. (2)'s (6/pi)^(1/2). The exponent agrees with the form -2 nu (asinh gamma - gamma sqrt(1 + gamma^2)/(1 + 2 gamma^2)) exactly."
+notes = "'This formula is similar to the general Keldysh formula except with the addition of the corrected coefficient before the exponential, found in Perelomov et al (1966). In the adiabatic limit, gamma << 1, (8) transforms to (2)' (p. 4009). w_m(x) equals e^(-x^2) int_0^x (x^2 - y^2)^|m| e^(y^2) dy (Dawson's integral for m = 0; checked numerically at x = 1.3). With the corrected prefactor, (6/pi)^(1/2) x 4/sqrt(3 pi) = 4 sqrt(2)/pi, it is the form Berge et al. (Rep. Prog. Phys. 70, 1633 (2007), Eq. A14) write out and solprop's PPT uses (record notes); larochelle_1998's Eq. (10) prints sqrt(6/pi) as well. The paper uses it for one (l, m), without occupancy."
+
+[[formulas.corrections]]
+term = "prefactor"
+printed = "(3/(2 pi))^(1/2)"
+corrected = "(6/pi)^(1/2)"
+reason = "As printed, Eq. (8) tends to half of Eq. (2) in the adiabatic limit, while the paper states that 'In the adiabatic limit, gamma << 1, (8) transforms to (2)'. The factor of 2 could equally sit in A_m's 4/sqrt(3 pi); only the product (6/pi)^(1/2) x 4/sqrt(3 pi) = 4 sqrt(2)/pi is fixed by the limit, and it is placed on the prefactor because the other PPT forms print sqrt(6/pi) there."
+evidence = "The page images of Eqs. (2) and (8) (pp. 4007-4009) and the numerical limit in the check (ratio 0.5017 at gamma = 0.058, 1.0034 with the correction); larochelle_1998 Eq. (10) prints the PPT prefactor as sqrt(6/pi) with the same A_m."
+
+[[formulas]]
+id = "tunnelling_conditions"
+equation = "Eqs. (9)-(11) and F_BSI, pp. 4011-4012"
+printed = "F_BSI = Z^3/(16 n*^4); F_BSI [V cm^-1] = 1.7 x 10^6 (E0 [eV])^2/Z; gamma = omega sqrt(2E0)/F < 0.5, F < F_BSI = (E0/2)^2/Z; 2 omega sqrt(2E0) < F < (E0/2)^2/Z (9); 1.24 x 10^8 sqrt(E0 [eV])/lambda [um] < F [V cm^-1] < 1.7 x 10^6 (E0 [eV])^2/Z (10); 1.6 x 10^13 E0 [eV]/(lambda [um])^2 < I [W cm^-2] < 3.8 x 10^9 (E0 [eV])^4/Z^2 (11)"
+variable = "Atomic units in Eq. (9); E0 the binding energy, Z the ionic charge, omega the laser frequency, lambda the wavelength, I the intensity of linearly polarised light"
+range = "The paper's definition of the tunnelling regime; F_BSI is 'the field at which the potential barrier saddle point 2 sqrt(ZF) equals the electron binding energy E0 = Z^2/2n*^2, for a state with m = 0, and neglecting the Stark shift' (p. 4011)"
+coefficients = { field_lower = "1.24e8", field_upper = "1.7e6", intensity_lower = "1.6e13", intensity_upper = "3.8e9" }
+check = "Computed 2026-09-27 (hartree 27.2114 eV, F_au = 5.1422e9 V/cm, I = c eps0 F^2/2 = 1.32721e-3 F^2): the upper field constant is 1.736e6 (printed 1.7e6) and the upper intensity 4.00e9 (printed 3.8e9, the square of the rounded 1.7e6: 3.84e9); the lower field constant is 1.270e8 (printed 1.24e8, 2 % low), and the lower intensity, 2.0e13 from the printed 1.24e8 or 2.1e13 from 1.270e8, is not the printed 1.6e13 (25 % low). The text's per-atom values (record notes) follow Eq. (10) only roughly (He at 1.06 um: F_TI printed 5.6e8, 5.80e8 from 1.24e8)."
+notes = "Fig. 2 draws these limits; F_BSI = E0^2/4 (Z = 1) in its caption. Not corrected: the lower intensity bound's discrepancy is recorded, not explained."

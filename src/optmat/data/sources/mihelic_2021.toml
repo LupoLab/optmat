@@ -1,0 +1,713 @@
+citation = "A. Mihelič and M. Horvat, \"Calculation of multiphoton ionization amplitudes and cross sections of few-electron atoms\", Phys. Rev. A 103, 043108 (2021)"
+doi = "10.1103/PhysRevA.103.043108"
+library = "Mihelic_2021_CalculationMultiphotonIonization"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Time-independent lowest-order perturbation theory: K driven Schrodinger \
+equations (E_j - H) Psi_j = D Psi_(j-1), E_j = E_0 + j omega (Eqs. 28-30), solved with \
+exterior complex scaling (ECS); the partial amplitude of each channel is extracted from \
+the radial function at large r by a least-squares fit to a few outgoing Coulomb waves \
+with the wave numbers of the open intermediate and final channels (Eqs. 23-26), which \
+handles above-threshold ionisation and resonance-enhanced ionisation (pp. 043108-2 to \
+-5). Dipole operator in the velocity form ('Henceforth, we limit our attention to the \
+dipole operator in the velocity form', p. 043108-3). He: two-electron basis of \
+modified B-splines, single-particle angular momenta up to l_max = 6; below the \
+one-photon threshold (BTI) 150 B-splines of order seven per l, R_max = 170, R0 = 120; \
+above it (ATI) 85 B-splines per l, R_max = 85, R0 = 50; theta = 0.70 in both; \
+'Partial ionization cross sections of channels with n_a <= 5 were included in the sum \
+[Eq. (32)] to obtain the cross sections in Fig. 3' (p. 043108-6). Fig. 4's second \
+calculation: channels n_a <= 10, R0 = 120, R_max = 160, 120 B-splines per l for each \
+electron (p. 043108-7). Linear polarisation along z: final states M_L = S = M_S = 0 \
+(p. 043108-5). Checked by increasing R_max (R0) and the basis: 'Except for the \
+differences close to the ionization thresholds arising due to additional bound and \
+resonance states with high principal quantum numbers, the cross sections remained \
+unchanged' (p. 043108-6). The method fails exactly on a core resonance (40.8 eV) and \
+near bound intermediate states, where no decay or field dressing is included (pp. \
+043108-5, -7)."""
+notes = """PDF pages 1-11 = pp. 043108-1 to -11. Identity checked on the first page: \
+Phys. Rev. A 103, 043108 (2021), Andrej Mihelič (Jožef Stefan Institute and Faculty \
+of Mathematics and Physics, Ljubljana) and Martin Horvat (Faculty of Mathematics and \
+Physics, Ljubljana); received 11 December 2020, accepted 29 March 2021, published 13 \
+April 2021 (checked 2026-10-08).
+
+THE CROSS SECTION (p. 043108-5, Eq. 31): sigma_gamma^(K)(omega) = 2 pi (2 pi / (c \
+omega))^K |B_gamma|^2 in atomic units, 'converted to SI units by multiplying the \
+right-hand side of Eq. (31) with a0^2K t0^(K-1)'; the partial cross section sigma_L^(K) \
+is the sum over n_a, l_a, l of the channels of total angular momentum L (Eq. 32). The \
+paper does not write the rate; it relates its two-photon cross section to Karule's \
+intensity-normalised Q^(2)/I = (hbar omega)^-1 sigma^(2), I in W/cm2 and sigma in cm4 \
+s (p. 043108-5): the generalised cross section of uiterwaal_1998 and saenz_1999, the \
+rate sigma F^K with F the photon flux. Its He cross sections agree with Saenz and \
+Lambropoulos's (the comparison below).
+
+THE ENERGY AXES are the photon energy, as drawn; no shift is stated. Each order's \
+figure is split at the one-photon threshold, 24.6 eV: the frames run from 12.30 to \
+24.60 eV and 24.60 to 43.54 eV (two photons), 8.20 to 12.30 and 12.30 to 43.54 eV \
+(three), 6.15 to 8.20 and 8.20 to 43.54 eV (four), the (N+W)-photon ATI thresholds \
+'12.3 eV [Fig. 3(c)] and 24.6 eV [Fig. 3(d)]' and the 2 l_a eps l channels at '32.7, \
+21.8, and 16.35 eV in Figs. 3(b), 3(d), and 3(f)' (pp. 043108-6, -7); the second \
+ionisation threshold is 65.4 eV (p. 043108-8). The paper does not give its \
+ground-state energy.
+
+EXTRACTED (tools/extract/mihelic_2021.py). The paper prints no table and no \
+supplement; the cross sections are only in figures, drawn by matplotlib as vectors, \
+read from the PDF by data rule 8 (TC-699): Fig. 3 (p. 043108-6), the He partial cross \
+sections sigma_L for two (L = 0, 2), three (L = 1, 3) and four photons (L = 0, 2, 4), \
+each below (BTI) and above (ATI) the one-photon threshold, 14 curves; Fig. 4 (p. \
+043108-7), the total three-photon cross section from 25.25 to 27.35 eV in two \
+calculations (n_a <= 10 and n_a <= 5); Fig. 5 (p. 043108-7), the two-photon partial \
+cross sections of single channels n_a l_a eps l L near the lowest 1Po autoionising \
+states, 59.05 to 64.30 eV, L = 0 (the total and 1s eps s, 2s eps s, 2p eps p) and L = \
+2 (the total and 1s eps d, 2s eps d, 2p eps p, 2p eps f). Each curve is a stroked \
+polyline (Fig. 3(a) and (e)'s L = 0 in several pieces, joined in drawing order) \
+clipped to its plot's frame; every vertex inside the frame is taken (vertices beyond \
+the clip, which the figure does not show, are not). The drawing program simplified \
+the paths: there are fewer vertices than the calculation has energies (75 to 656 per \
+curve; the copy of Saenz and Lambropoulos's 1D curve in Fig. 3(a) has 118 against the \
+1729 of saenz_1999's own drawing), and between vertices the drawn line is straight. \
+Axes calibrated from the drawing's own ticks (matplotlib's major and minor ticks; the \
+labels, glyphs drawn as paths, read on the rendered page, and the ticks of the \
+unlabelled decades placed by their spacing): every tick within 0.001 pt of its \
+fitted scale. The right-hand axes of Fig. 3(b), (d), (f) carry no unit label; they \
+are taken in the unit of the row's left-hand label (10^-52 cm^4 s, 10^-84 cm^6 s^2, \
+10^-118 cm^8 s^3), as the caption's rows ('two- (top), three- (middle), and \
+four-photon (bottom)') and the continuity of the curves across the split at 24.6 eV \
+imply. The extracted values, mapped back through the calibrations and overlaid on the \
+rendered pages, follow every drawn line (inspected 2026-10-08).
+
+THE CHECKS (the script fails if one is missed), against every number the text \
+prints for these curves: the core-excited peak 'At hbar omega ~ 40.8 eV' in Figs. \
+3(b), (d), (f): read 40.803, 40.808 and 40.824 eV; the jumps at the 2 l_a eps l \
+thresholds: 32.708 eV in Fig. 3(b) (printed 32.7; 1.0 and 0.9 decades for L = 0 and \
+2), 21.801 eV in Fig. 3(d) L = 1 (printed 21.8); in Fig. 3(f) (printed 16.35) the \
+step is clear only for L = 2 (16.347 eV, 0.9 decade; reported); the dotted line of \
+Fig. 4 at 'the limit of 1 a.u. (27.2 eV)' reads 27.2114 eV (1 a.u. = 27.2114 eV). Fig. \
+4's n_a <= 5 curve is Fig. 3(d)'s L = 1 and 3 summed within 1.4 % (25.3 to 27.3 eV), \
+one calculation in two figures. The paper prints no value of a cross section of He.
+
+COMPARISON WITH saenz_1999 (not part of the extraction; read with both scripts, \
+2026-10-08). The dotted copies of Saenz and Lambropoulos's curves in Fig. 3(a) agree \
+with saenz_1999's own Fig. 1 (velocity gauge) within 1 % from 13 to 20 eV (2 % at 20.4 \
+eV), and differ from its length gauge by up to 22 %: the copies are the velocity \
+gauge, on Saenz and Lambropoulos's shifted axis as published. Mihelič and Horvat's \
+own cross sections are 0.75 to 1.06 times saenz_1999's (1S, L = 0) and 0.89 to 1.19 \
+times (1D, L = 2) from 13 to 20.5 eV; at 13.5 eV they read 0.151e-51 (L = 0) and \
+1.16e-51 cm4 s (L = 2), against saenz_1999's velocity 0.2 and 1.3e-51, length 0.15 and \
+1.35e-51, and complex-scaling 0.1 and 1.15e-51. Four photons at 7.5 eV: the sum of \
+L = 0, 2, 4 is 2.40e-118 cm8 s3, against saenz_1999's 2.65e-118; 'slightly larger \
+differences are present in the case of the four-photon partial cross sections' (p. \
+043108-6); L = 0 is 0.27 to 0.78 times saenz_1999's 1S from 6.5 to 7.5 eV. The caption \
+calls the copies 'dotted lines', the text '(dashed black line)' (p. 043108-6): they \
+are dotted.
+
+DIGITISING UNCERTAINTY: the drawing's coordinates are given to 0.001 pt and every tick \
+lies within 0.001 pt of its scale, against 6 to 33 pt per decade (Fig. 5(b) 6.0, Fig. \
+3(d), (f) 7.8, Fig. 3(a), (c), (e) 10.8, Fig. 4 33): 0.04 % of a value at a vertex. \
+0.5 % is taken for the value at a drawn vertex, to cover the line's simplification \
+by the drawing program (the vertices are the drawn line's; whether each is a point of \
+the calculation is not known). Between vertices the straight drawn line may depart \
+from the calculation by more, on a resonance by much more. In photon energy 0.0005 eV \
+or less. The paper states no uncertainty of the calculation.
+
+NOT TAKEN: the dotted copies of saenz_1999's curves in Fig. 3(a), (c), (e) (the \
+original is taken there; the comparison above); Fig. 2, the hydrogen cross sections \
+(two photons l = 0, 2 and their total; three photons l = 1, 3; four photons l = 0, 2, \
+4; up to 20 eV): in this PDF its lines are not stroked paths but filled \
+outlines of the strokes (the line's two edges, dashes as separate outlines, joins as \
+Bezier arcs), so the drawn line's centre is not in the file and would have to be \
+reconstructed from its edges; the paper says they 'agree perfectly with the results \
+of the analytic treatment by Karule' (p. 043108-5), whose tables, E. Karule, J. Phys. \
+B 11, 441 (1978) and J. Phys. B 21, 1997 (1988), not in the library, are the primary \
+numbers for hydrogen; its markers are Karule's. Fig. 1 (a radial function) and Fig. \
+6 (the asymmetry parameters beta_2 ... beta_8 of the photoelectron angular \
+distribution, compared with Boll et al., Phys. Rev. A 99, 023416 (2019)) hold no \
+quantity of the vocabulary. The text cites, without printing values: Proulx et al., \
+Phys. Rev. A 49, 1208 (1994) (three-photon rates of He, in 'excellent \
+agreement', not shown); none of the cited multiphoton papers is in the library \
+besides saenz_1999."""
+
+[[datasets]]
+id = "fig3a_sigma2_L0"
+material = "He"
+file = "He/mihelic_2021__fig3a_sigma2_L0_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(a) (p. 043108-6), solid blue: the generalised two-photon partial ionisation cross section of He to L = 0, below the one-photon threshold (BTI), 12.30 to 24.58 eV, 135 vertices. Through zero near 18.5 eV and 22.6 eV (clipped by the frame at 1e-55); the 1s2p resonance at 21.2 eV runs off the frame. 0.151e-51 at 13.5 eV (saenz_1999: 0.2e-51 velocity, 0.15e-51 length, 0.1e-51 complex scaling). cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3a_sigma2_L2"
+material = "He"
+file = "He/mihelic_2021__fig3a_sigma2_L2_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(a), dashed orange: the generalised two-photon partial ionisation cross section of He to L = 2, BTI, 12.30 to 24.58 eV, 117 vertices. 1.16e-51 at 13.5 eV (saenz_1999: 1.3e-51 velocity, 1.35e-51 length, 1.15e-51 complex scaling). cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3b_sigma2_L0"
+material = "He"
+file = "He/mihelic_2021__fig3b_sigma2_L0_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(b) (p. 043108-6), solid blue: the generalised two-photon partial ionisation cross section of He to L = 0 above the one-photon threshold (ATI), 24.61 to 43.36 eV, 229 vertices: one-photon ionisation is open, the second photon is absorbed in the continuum. 1Se autoionising resonances below the He+(n = 2) channels, which open with a jump at 32.7 eV (read 32.708 eV); the core-excited (1s eps p -> 2p eps p) peak at 40.8 eV (read 40.803 eV, 2.6e-47). The right-hand axis carries no unit label; the row's, 10^-52 cm^4 s, is taken (the record's notes). cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3b_sigma2_L2"
+material = "He"
+file = "He/mihelic_2021__fig3b_sigma2_L2_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(b), dashed orange: the generalised two-photon partial ionisation cross section of He to L = 2, ATI, 24.61 to 43.28 eV, 228 vertices. 1De resonances, the jump at 32.7 eV (read 32.708 eV), the core-excited peak at 40.8 eV (read 40.803 eV, 5.3e-47). Unit as Fig. 3(a) (the record's notes). cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3c_sigma3_L1"
+material = "He"
+file = "He/mihelic_2021__fig3c_sigma3_L1_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(c) (p. 043108-6), solid green: the generalised three-photon partial ionisation cross section of He to L = 1, BTI, 8.20 to 12.29 eV, 168 vertices. Two-photon resonances (drawn peak 10.3 eV, off the frame), a zero near 11.0 eV; the (2+1)-photon ATI threshold at 12.3 eV (the frame's edge). cm6 s2 (the axis prints 10^-84 cm^6 s^2), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "L = 1 (1P)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3c_sigma3_L3"
+material = "He"
+file = "He/mihelic_2021__fig3c_sigma3_L3_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(c), dashed purple: the generalised three-photon partial ionisation cross section of He to L = 3, BTI, 8.20 to 12.29 eV, 92 vertices; 1.0e-85 to 2e-85 below 11.4 eV. cm6 s2 (the axis prints 10^-84 cm^6 s^2), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "L = 3 (1F)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3d_sigma3_L1"
+material = "He"
+file = "He/mihelic_2021__fig3d_sigma3_L1_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(d) (p. 043108-6), solid green: the generalised three-photon partial ionisation cross section of He to L = 1 from the (2+1)-photon threshold, 12.32 to 43.53 eV, 481 vertices: a minimum near 17.9 eV, the (1+2)-photon threshold at 24.6 eV, the jump at 21.8 eV (read 21.801 eV), the core-excited peak at 40.8 eV (read 40.808 eV). The right-hand axis has major ticks every second decade; unit as Fig. 3(c) (the record's notes). cm6 s2 (the axis prints 10^-84 cm^6 s^2), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "L = 1 (1P)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3d_sigma3_L3"
+material = "He"
+file = "He/mihelic_2021__fig3d_sigma3_L3_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(d), dashed purple: the generalised three-photon partial ionisation cross section of He to L = 3, 12.32 to 43.50 eV, 384 vertices; the core-excited peak at 40.808 eV. cm6 s2 (the axis prints 10^-84 cm^6 s^2), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "L = 3 (1F)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3e_sigma4_L0"
+material = "He"
+file = "He/mihelic_2021__fig3e_sigma4_L0_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(e) (p. 043108-6), solid blue: the generalised four-photon partial ionisation cross section of He to L = 0, BTI, 6.15 to 8.20 eV, 143 vertices: three-photon resonance at 7.08 eV (off the frame), a zero near 7.63 eV. cm8 s3 (the axis prints 10^-118 cm^8 s^3), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3e_sigma4_L2"
+material = "He"
+file = "He/mihelic_2021__fig3e_sigma4_L2_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(e), dashed orange: the generalised four-photon partial ionisation cross section of He to L = 2, BTI, 6.15 to 8.20 eV, 140 vertices. cm8 s3 (the axis prints 10^-118 cm^8 s^3), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3e_sigma4_L4"
+material = "He"
+file = "He/mihelic_2021__fig3e_sigma4_L4_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(e), dashed red: the generalised four-photon partial ionisation cross section of He to L = 4, BTI, 6.15 to 8.20 eV, 75 vertices; 4.7e-120 to 1.3e-117. cm8 s3 (the axis prints 10^-118 cm^8 s^3), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "L = 4 (1G)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, l_max = 6, 150 B-splines of order 7 per l, R_max = 170, R0 = 120, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3f_sigma4_L0"
+material = "He"
+file = "He/mihelic_2021__fig3f_sigma4_L0_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(f) (p. 043108-6), solid blue: the generalised four-photon partial ionisation cross section of He to L = 0 from the (3+1)-photon threshold, 8.20 to 43.49 eV, 656 vertices; the core-excited peak at 40.8 eV (read 40.824 eV). At the printed threshold of the 2 l_a eps l channels, 16.35 eV, the drawn step (16.334 to 16.361 eV) is smaller than the resonances beside it. Unit as Fig. 3(e) (the record's notes). cm8 s3 (the axis prints 10^-118 cm^8 s^3), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3f_sigma4_L2"
+material = "He"
+file = "He/mihelic_2021__fig3f_sigma4_L2_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(f), dashed orange: the generalised four-photon partial ionisation cross section of He to L = 2, 8.20 to 43.49 eV, 631 vertices; a step of 0.9 decade at 16.347 eV (the printed 16.35 eV threshold); the core-excited peak at 40.824 eV. cm8 s3 (the axis prints 10^-118 cm^8 s^3), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig3f_sigma4_L4"
+material = "He"
+file = "He/mihelic_2021__fig3f_sigma4_L4_He.csv"
+table = "fig_5f3321672a12"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm8 s3"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3(f), dashed red: the generalised four-photon partial ionisation cross section of He to L = 4, 8.20 to 43.49 eV, 475 vertices; the core-excited peak at 40.824 eV. cm8 s3 (the axis prints 10^-118 cm^8 s^3), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 4
+polarization = "linear"
+final_symmetry = "L = 4 (1G)"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 85 B-splines per l, R_max = 85, R0 = 50, theta = 0.70; channels n_a <= 5"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig4_sigma3_na10"
+material = "He"
+file = "He/mihelic_2021__fig4_sigma3_na10_He.csv"
+table = "fig_9c2c2686d9cd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4 (p. 043108-7), solid black: the total generalised three-photon ionisation cross section of He (L = 1 and 3) in the region of (1+2)-photon ATI, 25.26 to 27.33 eV, 187 vertices, with the channels n_a <= 10: two resonances near 25.5 and 26.1 eV and a series of peaks converging to 1 a.u. (27.2 eV; pathways g.s. -> 1s eps1 p -> 1s eps2 l -> n_a p eps3 l, n_a >= 4, p. 043108-7). 0.5 to 170e-84. cm6 s2 (the axis prints 10^-84 cm^6 s^2), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "total (L = 1 and 3)"
+channels = "n_a <= 10"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, 120 B-splines per l for each electron, R_max = 160, R0 = 120; channels n_a <= 10"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig4_sigma3_na5"
+material = "He"
+file = "He/mihelic_2021__fig4_sigma3_na5_He.csv"
+table = "fig_9c2c2686d9cd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 4, dashed blue: the same with the channels n_a <= 5, 25.26 to 27.33 eV, 119 vertices: the two resonances near 25.5 and 26.1 eV only. Fig. 3(d)'s L = 1 and 3 summed, within 1.4 % (checked by the script). cm6 s2 (the axis prints 10^-84 cm^6 s^2), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+final_symmetry = "total (L = 1 and 3)"
+channels = "n_a <= 5"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-splines, channels n_a <= 5, as in Fig. 3 (the basis not restated)"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L0"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L0_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), upper panel: the generalised two-photon partial ionisation cross section of He, the total of L = 0 (black), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.21 to 64.29 eV, 127 vertices, 3.6e-54 to 9.2e-51 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+channel = "total"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L0_1ses"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L0_1ses_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), upper panel: the generalised two-photon partial ionisation cross section of He, the 1s eps s channel of L = 0 (blue), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 60.03 to 64.18 eV, 42 vertices, 1.6e-54 to 9.0e-54 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+channel = "1s eps s"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L0_2ses"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L0_2ses_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), upper panel: the generalised two-photon partial ionisation cross section of He, the 2s eps s channel of L = 0 (dashed orange), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.13 to 64.30 eV, 125 vertices, 4.0e-56 to 1.3e-51 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+channel = "2s eps s"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L0_2pep"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L0_2pep_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), upper panel: the generalised two-photon partial ionisation cross section of He, the 2p eps p channel of L = 0 (dotted red), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.13 to 64.30 eV, 132 vertices, 6.5e-56 to 1.9e-51 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 0 (1S)"
+channel = "2p eps p"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L2"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L2_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), lower panel: the generalised two-photon partial ionisation cross section of He, the total of L = 2 (black), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.25 to 64.29 eV, 108 vertices, 1.0e-53 to 2.3e-50 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+channel = "total"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L2_1sed"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L2_1sed_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), lower panel: the generalised two-photon partial ionisation cross section of He, the 1s eps d channel of L = 2 (blue), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.50 to 64.21 eV, 47 vertices, 4.1e-54 to 1.0e-52 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+channel = "1s eps d"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L2_2sed"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L2_2sed_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), lower panel: the generalised two-photon partial ionisation cross section of He, the 2s eps d channel of L = 2 (dashed orange), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.24 to 64.27 eV, 115 vertices, 4.7e-56 to 1.8e-51 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+channel = "2s eps d"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L2_2pep"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L2_2pep_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), lower panel: the generalised two-photon partial ionisation cross section of He, the 2p eps p channel of L = 2 (dotted red), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.18 to 64.29 eV, 115 vertices, 2.3e-55 to 7.6e-51 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+channel = "2p eps p"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"
+
+[[datasets]]
+id = "fig5_sigma2_L2_2pef"
+material = "He"
+file = "He/mihelic_2021__fig5_sigma2_L2_2pef_He.csv"
+table = "fig_1b0120cd87bd"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 043108-7), lower panel: the generalised two-photon partial ionisation cross section of He, the 2p eps f channel of L = 2 (dash-dotted green), in the region of the lowest 1Po autoionising intermediate states sp2+, sp3-, sp3+ and 2p3d (REMPI; drawn peaks 60.15, 62.76, 63.66, 64.12 eV), 59.18 to 64.26 eV, 120 vertices, 5.0e-60 to 4.5e-53 cm4 s (the axis prints 10^-52 cm^4 s), against the photon energy; every vertex inside the frame. 0.5 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+photons = 2
+polarization = "linear"
+final_symmetry = "L = 2 (1D)"
+channel = "2p eps f"
+gauge = "velocity"
+method = "ECS driven Schrodinger equations, amplitudes from Coulomb-wave fits (Eq. 23); two-electron B-spline basis not stated for this figure"
+definition = "sigma^(K) = 2 pi (2 pi / (c omega))^K |B|^2 (Eq. 31, atomic units; times a0^2K t0^(K-1) in SI), the partial sigma_L summed over n_a, l_a, l (Eq. 32)"
+energy_axis = "photon energy as drawn; no shift stated"

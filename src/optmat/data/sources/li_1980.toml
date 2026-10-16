@@ -1,0 +1,150 @@
+citation = "H. H. Li, \"Refractive index of silicon and germanium and its wavelength and temperature derivatives\", J. Phys. Chem. Ref. Data 9, 561 (1980)"
+doi = "10.1063/1.555624"
+library = "Li_1980_RefractiveIndexSilicon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A critical evaluation (CINDAS, Purdue) of the published refractive index of \
+silicon and germanium and its temperature derivative. The recommended values are \
+computed from a dispersion equation, n^2 = epsilon(T) + L(T) A(T)/lambda^2 (Eq. 22 for \
+Si), fitted by least squares to selected data sets: for Si those of Salzberg and Villa \
+(1957), Primak (1971) and Icenogle, Platt and Wolfe (1976) (p. 8), with epsilon(T) \
+scaled from Icenogle's n(T) at 10.27 um extrapolated with Lukes's high-temperature \
+curves (Eqs. 20-21), and L(T) = exp(-3 Delta L/L_293) from Touloukian's thermal \
+expansion (ref. 34). dn/dT and dn/dlambda (Tables 2, 3) are the first derivatives of \
+Eq. (22). Si: 1.2-14 um, 100-750 K. Ge: 1.9-16 um (abstract; 1.9-18 um, p. 2), 100-550 \
+K."""
+notes = """Pages 561-658; the library copy is AIP's scan behind a cover page, so a PDF \
+page is the journal page minus 558 (Table 1 is PDF p. 17, journal p. 575); pages cited \
+here are PDF pages. Identity checked against the first page. Secondary for all its measured values; primary only for its evaluation (the \
+recommended values and Eq. 22). Only the silicon 293 K columns of Tables 1 and 2 are \
+transcribed.
+
+WHAT IT RECOMMENDS FOR SI. Table 1, n at 35 wavelengths 1.20-14.00 um and 14 \
+temperatures 100-750 K; Table 2, dn/dT (10^-4 K^-1) on the same grid; Table 3, \
+-dn/dlambda (10^-4 um^-1) at 293 K. All three are computed from Eq. (22) (p. 9): 'calculated \
+values in tables 1, 2, and 3 are given with more digits than warranted merely for the \
+purpose of tabular smoothness ... indicated with an overstrike' (p. 9). Eq. (22) as \
+corrected below reproduces Table 1 within 0.7e-4 at 100-350 K and 0.8e-4 at 400-450 K \
+(its rounding; cells the library misreads aside), and within about 1.8e-4 at 500-750 K, \
+largest at 1.2-1.3 um (computed 2026-10-14). Its \
+one-sided T-derivative at 293 K reproduces Table 2's 293 K column within 0.001 (in \
+10^-4 K^-1) at every wavelength; the central difference straddles the two branches of \
+Delta L/L, which do not meet at 293 K (Delta L/L = +1.6e-6 and -2.5e-6 there).
+
+UNCERTAINTY. n: 'Equation (22) was used to calculate the recommended values of the \
+refractive index of silicon with uncertainties of +-2 x 10^-3' (p. 9); 'The accuracy of \
+the recommended refractive index values in this work is estimated to be 1 to 2 x \
+10^-3' (p. 6); the selected data agree with the equations 'to within +-2.0 x 10^-3' \
+(p. 3). Table 1's footnote prints '+-2X10^-3' (the scan's exponent is smeared; the \
+library's text reads 10^-4, the image and p. 9 give -3). dn/dT: '+-0.15 x 10^-4 K^-1' \
+(Table 2 footnote), taken from Icenogle et al.'s stated accuracy of their Delta n/Delta \
+T (p. 9). dn/dlambda: about +-10e-4/um at 2 um (p. 9), +-2.4e-4 at 2.55 um, +-0.6e-4 at 10 um, +-0.44e-4 at 14 um. No level stated.
+
+MEDIUM. Li never says whether the index is absolute or relative to air, nor whether \
+the wavelengths are vacuum or air values. The three selected Si data sets are prism \
+measurements (minimum deviation, autocollimation; pp. 7-8); for Ge, Li corrected Rank et \
+al.'s interferometric vacuum index 'from vacuum values to air values' (p. 24), which \
+suggests the evaluation is relative to air throughout, but this is not stated for Si. \
+The datasets record index_medium = 'not stated'. Relative to air at 293 K the index \
+would be 1.00027 times higher (about +9e-4 at n = 3.45), half the stated uncertainty. \
+The wavelength medium matters less: an air/vacuum wavelength difference moves n by at \
+most 6e-5 (1.2 um, -dn/dlambda = 0.169/um, Table 3). Wavelengths are taken as vacuum \
+(the default).
+
+COMPARISON WITH FREY ET AL. (frey_2006, CHARMS, absolute, checked 2026-10-14). At \
+293 K, Li minus Frey's Table 2 taken from 295 K to 293.15 K with their Table 4: -5.8e-3 \
+at 1.2 um, -4.2e-3 at 1.3 um, -3.3e-3 at 1.4 um, -2.8e-3 at 1.5 um, -2.2e-3 at 2.0 um, \
+-2.4e-3 at 2.5 um, -2.5e-3 at 3.0 um, -2.8e-3 at 4.0 um, -3.0e-3 at 5.0 um: outside \
+Li's +-2e-3 at every common wavelength, and still -1.3 to -3.3e-3 at 1.3-5.0 um \
+(-4.9e-3 at 1.2 um) if Li's values are relative to air (times 1.00027). Li's form has no term for the band gap \
+(B = 0 in Eq. 10), so it cannot follow the rise of n towards 1.1 um. dn/dT: Li's 293 K \
+column is 0.9-6.0 % below Frey's Table 4 at 295 K (1.983e-4 against 2.01e-4 at 1.2 um, \
+1.717e-4 against 1.78e-4 at 2.0 um, 1.588e-4 against 1.69e-4 at 5.0 um), within Li's \
++-0.15e-4 at every common wavelength.
+
+REFRACTIVEINDEX.INFO main/Si/nk/Li-293K.yml (data/external) tabulates Table 1's 293 K \
+column: all 35 values equal this record's file (with the corrected 1.50 um cell, \
+3.4799), compared 2026-10-14. Its citation gives the year as 1993.
+
+THE MEASUREMENTS IT TABULATES (Appendix, Tables A-1 to A-4 for Si, 55 data sets of n; \
+not transcribed; the originals are the primary sources): Briggs (1950, prism, 1.05-2.60 \
+um); Salzberg and Villa (1957, prism, 1.35-11.04 um); Cardona, Paul and Brooks (1959; \
+read from graphs); Lukes (1959, 1960; 1.259-5.156 um, 109-750 K; read from graphs; also \
+the only dn/dT data, Tables A-3 and A-4); Primak (1971, 1.12-2.16 um); Villa (1972); \
+Icenogle, Platt and Wolfe (1976, 2.554-10.27 um, 99-296 K); Simon (1951); Runyan \
+(1960); Philipp and Taft (1960); Archer (1962); Spitzer, Gobeli and Trumbore (1964, \
+heavily doped); Bennett and Booty (1966); Randall and Rawcliffe (1967, far infrared); \
+Sato (1967); Verleur (1968); Grigorovici and Vancu (1968, amorphous films); Vedam, \
+Knausenberger and Lukes (1969); Brodsky et al. (1970, amorphous films); Shevchenko et \
+al. (1972); Thutupalli and Tomlin (1977, films). Hertzberger and Salzberg's dispersion \
+formula (1962, from Salzberg and Villa's data, 1.3-11.0 um) is quoted on p. 7. Ge has \
+the same structure (Tables 4-6, A-5 to A-8; Eq. 28); not transcribed.
+
+NOT TRANSCRIBED. The other 13 columns of Tables 1 and 2: the scan is scratched across \
+rows 1.30-1.60 of both tables, and several cells there cannot be read with certainty \
+(e.g. Table 1 at 1.50 um and 350 K, at 1.55 um and 250 K; the library reads them \
+3.4756 and 3.4721, Eq. (22) gives 3.4908 and 3.4681); refractiveindex.info's Li-<T>K \
+files tabulate them. Table 3 (dn/dlambda; no quantity)."""
+
+[[formulas]]
+id = "eq22_Si"
+material = "Si"
+equation = "Eq. (22), p. 8, with Delta L/L_293 from ref. 34, p. 9"
+printed = "n^2(lambda, T) = epsilon(T) + L(T)/lambda^2 (A_0 + A_1 T + A_2 T^2); epsilon(T) = 11.4445 + 2.7739e-4 T + 1.7050e-6 T^2 - 8.1347e-10 T^3; L(T) = exp(-3 Delta L(T)/L_293); Delta L(T)/L_293 = -0.021 - 4.149e-7 T - 4.620e-10 T^2 + 1.482e-11 T^3 (20-293 K), = -0.071 + 1.887e-6 T + 1.934e-9 T^2 - 4.544e-13 T^3 (293-1600 K)"
+variable = "lambda: wavelength in um (medium not stated); T: temperature in K"
+range = "1.2-14 um, 100-750 K (p. 8)"
+coefficients = { eps0 = "11.4445", eps1 = "2.7739e-4", eps2 = "1.7050e-6", eps3 = "-8.1347e-10", A0 = "0.8948", A1 = "4.3977e-4", A2 = "7.3835e-8", dL_low0 = "-0.021", dL_low1 = "-4.149e-7", dL_low2 = "-4.620e-10", dL_low3 = "1.482e-11", dL_high0 = "-0.071", dL_high1 = "1.887e-6", dL_high2 = "1.934e-9", dL_high3 = "-4.544e-13" }
+check = "With the corrected constant terms, reproduces Table 1 within 0.7e-4 at 100-350 K and 0.8e-4 at 400-450 K (its rounding), within about 1.8e-4 at 500-750 K, and the 293 K column of Table 2 within 0.001 x 10^-4 K^-1 (one-sided derivative). Computed 2026-10-14 from the printed coefficients (image of pp. 8-9)."
+notes = "The room-temperature dielectric constant from epsilon(293 K) is 11.66 (p. 9). Coefficient names: eps0-eps3 for epsilon(T), A0-A2, and dL_low0-3 (20-293 K) and dL_high0-3 (293-1600 K) for Delta L/L_293. The second-order coefficient is printed 'A_2 T'^2' (a stray prime). No published model: the form (with the piecewise expansion) has no implementation."
+
+[[formulas.corrections]]
+term = "dL_low0"
+printed = "-0.021"
+corrected = "-0.00021"
+reason = "Delta L/L_293 must vanish at 293 K. With the other three printed terms it does with a constant of -2.1e-4 (+1.6e-6 at 293 K), not -0.021: the constant is printed in percent (Touloukian's Delta L/L is tabulated in percent), the other terms as fractions."
+evidence = "With -0.021, L(100 K) = 1.065 and n(2 um, 100 K) = 3.42617 against Table 1's 3.4240; with -0.00021, 3.42396. The corrected expansion reproduces Table 1 at 100-250 K to its rounding (computed 2026-10-14)."
+
+[[formulas.corrections]]
+term = "dL_high0"
+printed = "-0.071"
+corrected = "-0.00071"
+reason = "As for dL_low0: the constant is in percent; -7.1e-4 makes Delta L/L_293 = -2.5e-6 at 293 K."
+evidence = "With -0.00071 Eq. (22) reproduces Table 1 at 350-450 K to its rounding and at 500-750 K within about 1.8e-4; with -0.071, L(T) = 1.23 at 350-750 K and n is 0.009-0.010 too high at 2 um, 0.024-0.028 at 1.2 um (computed 2026-10-14)."
+
+[[datasets]]
+id = "n_293K"
+material = "Si"
+file = "Si/li_1980__n_293K.csv"
+table = "tbl_67c9bf1134a1"
+quantity = "refractive_index"
+abscissa_unit = "um"
+use = "check"
+notes = "Table 1, 293 K column: Li's recommended n at 35 wavelengths, 1.20-14.00 um, computed from Eq. (22), a fit to Salzberg and Villa, Primak and Icenogle et al.; printed to four decimals, the last overstruck as insignificant. One library misreading corrected in the script (1.50 um: page 3.4799). A check, not fitted: it is an evaluation of measurements that are primary elsewhere, its uncertainty (+-2e-3, p. 9 and the table footnote; level not stated) is 20 times Frey et al.'s, it lies 2.2-4.2e-3 below frey_2006 at 1.3-5 um (5.8e-3 at 1.2 um), and its medium (absolute or relative to air) is not stated (see the source notes)."
+[datasets.parameters]
+temperature_k = 293
+form = "bulk"
+technique = "evaluation"
+index_medium = "not stated"
+[datasets.uncertainty]
+absolute = 2e-3
+level = "not stated"
+
+[[datasets]]
+id = "dndt_293K"
+material = "Si"
+file = "Si/li_1980__dndt_293K.csv"
+table = "tbl_c785eb5d7e50"
+quantity = "thermo_optic_coefficient"
+unit = "1/K"
+scale = 1e-4
+abscissa_unit = "um"
+use = "check"
+notes = "Table 2, 293 K column: Li's recommended dn/dT at 35 wavelengths, 1.20-14.00 um, the T-derivative of Eq. (22). The table prints no unit; its footnote ('+-0.15X10^-4 K^-1') and the values (Figure 9) are in 10^-4 K^-1, hence the scale. One library misreading corrected in the script (1.20 um: page 1.983). Uncertainty +-0.15e-4 K^-1 (footnote; from Icenogle et al.'s stated accuracy, p. 9; level not stated). 0.9-6.0 % below frey_2006's measured dn/dT at 295 K, within its stated uncertainty (see the source notes)."
+[datasets.parameters]
+temperature_k = 293
+form = "bulk"
+technique = "evaluation"
+index_medium = "not stated"
+[datasets.uncertainty]
+absolute = 0.15
+level = "not stated"

@@ -1,0 +1,88 @@
+citation = "R. G. Tonkyn, J. W. Winniczek and M. G. White, \"Rotationally resolved photoionization of O2+ near threshold\", Chem. Phys. Lett. 164, 137 (1989)"
+doi = "10.1016/0009-2614(89)85005-5"
+library = "Tonkyn_1989_RotationallyResolvedPhotoionization"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Delayed pulsed-field ionisation of high Rydberg states (n >= 100, \
+within about 10 cm^-1 of each threshold) with coherent VUV light (UV near 308 nm \
+tripled in a pulsed argon jet; bandwidth 2.1 cm^-1, about 1e9 photons per pulse) in a \
+time-of-flight photoelectron spectrometer; O2 from a 40 um nozzle 3 cm from the \
+interaction region; field-ionisation pulse 0.3-3 V after 250-2000 ns delay. The \
+energy scale was calibrated against the ionisation potential of Xe (Yoshino & \
+Freeman 1985) present in trace amounts. The rotational structure of the X 2Pi_g <- \
+X 3Sigma_g- (0,0) ionising transition was fitted with Buckingham, Orr & Sichel's \
+rotationally resolved cross sections and the literature rotational and spin-orbit \
+constants (Huber & Herzberg), which 'did not require any refinement' (pp. 138-140)."""
+notes = """PDF pages 1-6 = journal pages 137-142. Identity checked on the first page. \
+Oxygen only.
+
+THE IONISATION ENERGY (pp. 137, 140, 141): the fit gave 'T0 = 97348 +- 2 cm^-1' \
+(p. 140), 'which we define as the energy for the transition X 2Pi_g, F1(v = 0, J = \
+1/2) <- X 3Sigma_g-, F2(v = 0, J = 1)' (p. 141). By the paper's footnote #1 (p. 140), \
+F1 is the Omega = 1/2 spin-orbit component of the ion (K = J - 1/2), so the final \
+level is O2+ X 2Pi_(1/2)g, v+ = 0, J+ = 1/2; the initial level is the neutral's F2 \
+(J = N) level with J = 1, i.e. N = 1. The confidence level of +-2 cm^-1 is not \
+stated. In eV (not printed; hc = 1.239841984e-4 eV cm): 97348 cm^-1 = 12.069614 eV \
+(+-0.00025 eV).
+
+OTHER FIT RESULTS (p. 140): intensity coefficients (C1, C2, C3, C4) = (0.16, 1.0, \
+0.87, 0.86); rotational temperature 220 +- 20 K; effective linewidth 3.0 +- 0.3 cm^-1. \
+The authors say the temperature and C_i 'cannot be considered to accurately reflect \
+the populations', only 'a qualitative description' (p. 141). The M branches require \
+an important l = 3 partial wave (p. 141).
+
+THE ACCEPTED VALUE THEN (pp. 138, 141): '97362 +- 9 cm^-1 obtained by Samson and \
+Gardner [16] from high resolution photoelectron spectroscopy', by modelling the \
+rotational contour of the v+ = 0 photoelectron band; recorded as a reproduced value. \
+Tonkyn et al.'s branch intensities contradict Samson and Gardner's (P, R):Q = 0 \
+(p. 141).
+
+NOT EXTRACTED: the unlabelled table (p. 140, tbl_3a97762d1a0c): the Delta K branch \
+designations of a 2Pi <- 3Sigma ionising transition for each photoelectron l and \
+lambda (l = 0: O-R (F1'), P-S (F2'); l = 1: N-S, O-T; l = 2: M-T, N-U; l = 3: L-U, \
+M-V; branches L ... V are Delta K = -5 ... +5). Branch labels, not values. The \
+xenon field-ionisation study (Fig. 1) and the spectra (Figs. 2-3) are figures only."""
+
+[[datasets]]
+id = "ie_O2"
+material = "O2"
+table = "text"
+quantity = "ionization_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "O2", "97348", "2"]]
+notes = """pp. 137, 140, 141: '97348 +- 2 cm^-1, which we define as the energy for the \
+transition X 2Pi_g, F1(v = 0, J = 1/2) <- X 3Sigma_g-, F2(v = 0, J = 1)'. F1 is \
+Omega = 1/2 (footnote #1, p. 140). Calibrated against the Xe ionisation potential. \
+= 12.069614 eV. Level of +-2 not stated."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "X 2Pi_(1/2)g (F1, Omega = 1/2), v+ = 0, J+ = 1/2"
+initial_state = "X 3Sigma_g- F2, v = 0, J = 1 (N = 1)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "samson_1975_O2"
+material = "O2"
+table = "text"
+quantity = "ionization_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. A. Samson and J. L. Gardner, Can. J. Phys. 53, 1948 (1975)"]
+points = [["1", "O2", "97362", "9"]]
+notes = """pp. 138 and 141: 'the presently accepted value of 97362 +- 9 cm^-1 obtained by \
+Samson and Gardner [16] from high resolution photoelectron spectroscopy', from a \
+rotational-contour model of the v+ = 0 band. The levels it refers to are not stated \
+here."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "X 2Pi_g (v+ = 0)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"

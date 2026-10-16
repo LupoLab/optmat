@@ -1,0 +1,111 @@
+citation = "D. Franta, J. Vohánka, M. Čermák, P. Franta and I. Ohlídal, \"Temperature dependent dispersion models applicable in solid state physics\", J. Electr. Eng. 70 (7s), 1 (2019)"
+doi = "10.2478/jee-2019-0036"
+library = "Franta_2019_TemperatureDependentDispersion"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """Theory of temperature-dependent dispersion models (time-reversal symmetry, \
+Kramers-Kronig consistency, the sum rule and the dissipative condition), illustrated by \
+the current version of the authors' temperature-dependent advanced dispersion model of \
+float-zone c-Si (franta_2017 as revised in franta_2018 and here), fitted in newAD2. No \
+new optical measurement is described; the thermal-expansion fits use Middelmann et al.'s \
+raw length data (PTB), Watanabe et al.'s and Ibach's data (pp. 3-4)."""
+notes = """Journal of Electrical Engineering 70 (2019) No. 7s, pp. 1-15 = PDF pages 1-15 \
+(the first page reads 'VOL 70 (2019), NO7S, 1-15'). Identity checked against the first \
+page; the library's metadata validation carries warnings (the issue is printed 7S, the \
+metadata say 7). Mostly theory: statistical factors of phonon (Eqs. (22)-(29)), \
+free-carrier (Eqs. (34)-(37)), indirect-transition (Eq. (38)), localised-state (Eq. \
+(39)) and direct-transition (Eq. (40)) contributions; the red shift of critical points \
+(Eqs. (42)-(45)), of phonon frequencies (Eq. (48), one Theta and one ratio f_nu for all \
+phonons, values not printed) and of broadenings (Eq. (49)) and the Urbach energy (Eq. \
+(50)). No n, k or epsilon is printed: the model is shown in Figs. 1, 4, 5, 8 (transition \
+strength functions), 9 (critical points against T) and 10 (n at 2 um against T).
+
+WHAT IS NEW FOR c-Si. (1) The linear thermal expansion refitted with Middelmann et al. \
+(Phys. Rev. B 92, 174113 (2015), not in the library) and Watanabe et al. (Table 1; \
+formula thermal_expansion); 'The updated version of the dispersion model of c-Si uses \
+the formula of linear thermal expansion based on these data and Watanabe et al data' \
+(p. 3), without saying which column. (2) The band gap and critical-point energies of \
+the current model (Table 2; formula critical_points; datasets band_gap_0K, \
+band_gap_300K). (3) Indirect transitions with four phonon energies (TO, LO, LA, TA) at \
+a point 'slightly shifted towards the Gamma point' instead of franta_2017's three at X \
+(p. 10); free carriers with the Bose-Einstein factor of Eq. (35); an Urbach tail from \
+the 14 mm slab's room-temperature transmittance, temperature independent (C = 0 in Eq. \
+(39)); high-energy valence and core excitations by 'simple models with the classical \
+asymptotic behavior' ('still under development', p. 11); two- and three-phonon bands \
+with temperature-independent Gaussian broadening; direct transitions with cubic splines \
+of the logarithms of the weights A_i and temperature-independent Rydberg parameters (p. \
+14). Total transition strength of c-Si at 300 K: N^300K = 1515 eV^2 (p. 3, from its ref. \
+[6]). Reference temperature 300 K, 'different from 293.15 K (20 degrees C) defined in ISO \
+1' (p. 3).
+
+NOT PRINTED (neither here nor in franta_2018): the ADM's path amplitudes A_0..A_11 and \
+their spline nodes, the indirect-transition strengths and phonon energies, the \
+free-carrier, vx, core-electron and Urbach parameters, the broadenings B and Rydberg \
+parameters, the phonon-band amplitudes, f_nu and the phonon Theta. Only the energies of \
+Table 2, the thermal expansion of Table 1 and the Sellmeier formula of Table 3 are \
+printed; the model cannot be evaluated from the papers.
+
+TABLE 3 (p. 13; image checked 2026-10-14): the two-term Sellmeier formula of Eq. (46), \
+identical cell for cell to franta_2018 Table II's two-term rows (formula \
+franta_2018/sellmeier_abesf); not recorded again. Frey et al.'s uncertainty is quoted as \
+1e-4 (p. 13).
+
+TABLE 2 COMPARED WITH franta_2017 TABLE 2 (eV at 0 K / 300 K, Theta in K). E_g 1.134 / \
+1.086, Theta 382.9 (franta_2017: 1.14 / 1.087, 248.6); E_1(L) 3.421 / 3.391, Theta 538.8 \
+(3.457 / 3.393, 115.7); E_2(X) 4.331 / 4.298, 674.8 (4.333 / 4.302, 349.2); E'_1(L) 5.347 \
+/ 5.307, 739.1 (5.442 / 5.398, 403.6); E_0(Gamma) 4.023 at 300 K (4.068 / 4.149: the rise \
+with T noted in TC-388 is gone); E_3(Delta) 6.759 / 6.766, Theta 1016.0 (7.159 / 7.119): \
+as printed it rises with T, by 7 meV. The temperature models differ: Eq. (42) for E_g, \
+E_1, E_2, E'_1 and E_3(Delta); Eq. (43) (five-parameter, the 'T dep.' partner's \
+Theta) for E'_0, E_1(K), E_2(Sigma); Eq. (45) (a constant offset at 300 K) for E_0 and \
+the points above E_3(Delta). The table's horizontal rules group each point with the \
+Eq. (42) point whose Theta it uses (image)."""
+
+[[datasets]]
+id = "band_gap_0K"
+material = "Si"
+file = "Si/franta_2019__band_gap_0K.csv"
+table = "tbl_09a36f80965c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 12), E_g, column E_j^0K: the current model's minimum energy of indirect transitions at 0 K, by Eq. (42) with Theta = 382.9 K. No uncertainty stated. A check: the same group's refit of the same float-zone samples and data as franta_2017's band_gap_0K (1.14 eV), not an independent value; a fit takes one of the two."
+[datasets.parameters]
+kind = "optical"
+temperature_k = 0
+
+[[datasets]]
+id = "band_gap_300K"
+material = "Si"
+file = "Si/franta_2019__band_gap_300K.csv"
+table = "tbl_09a36f80965c"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 12), E_g, column E_j^300K: the current model's band gap at the reference temperature 300 K. No uncertainty stated. A check, as band_gap_0K (franta_2017: 1.087 eV)."
+[datasets.parameters]
+kind = "optical"
+temperature_k = 300
+
+[[formulas]]
+id = "critical_points"
+material = "Si"
+equation = "Table 2, p. 12; Eqs. (42)-(45), pp. 12-13"
+printed = "E_j(T) = E_j^{0K} + (E_j^{300K} - E_j^{0K}) [\\exp(\\Theta_j/T_R) - 1]/[\\exp(\\Theta_j/T) - 1] (42); E'_j(T) = E_j(T) + (E'_j^{0K} - E_j^{0K}) \\exp(-\\mathcal{L} T/T_R) (43); E'_j(T) = E_j(T) + E'_j^{300K} - E_j^{300K} (45)"
+variable = "T: temperature (K), T_R = 300 K; energies in eV, Theta in K"
+coefficients = { E3p_X_300K = "18.37", E3_X_300K = "14.43", E2pp_X_300K = "14.01", E2p_X_300K = "10.07", E1_Gamma_300K = "8.501", E0_Sigma_300K = "7.657", E3_Sigma_300K = "7.066", E3_Delta_0K = "6.759", E3_Delta_300K = "6.766", E3_Delta_Theta = "1016.0", E1p_L_0K = "5.347", E1p_L_300K = "5.307", E1p_L_Theta = "739.1", E2_Sigma_0K = "4.456", E2_Sigma_300K = "4.384", E2_X_0K = "4.331", E2_X_300K = "4.298", E2_X_Theta = "674.8", E1_K_0K = "4.238", E1_K_300K = "4.204", E0_Gamma_300K = "4.023", E1_L_0K = "3.421", E1_L_300K = "3.391", E1_L_Theta = "538.8", E0p_Gamma_0K = "3.399", E0p_Gamma_300K = "3.369", Eg_0K = "1.134", Eg_300K = "1.086", Eg_Theta = "382.9" }
+check = "Generated from the library CSV by a scratch script and compared with the table image (2026-10-14): the CSV keeps the primes; '-' cells are omitted. Each point's model equation as printed: (45) for E'_3(X), E_3(X), E''_2(X), E'_2(X), E_1(Gamma), E_0(Sigma), E_3(Sigma), E_0(Gamma); (42) for E_3(Delta), E'_1(L), E_2(X), E_1(L), E_g; (43) for E_2(Sigma), E_1(K), E'_0(Gamma)."
+notes = "Keys: p (pp) marks a primed (double-primed) point; _0K, _300K and _Theta the columns. Standard notation as printed: E'_1 = E'_1(L), E_2 = E_2(X), E_0 = E_0(Gamma), E_1 = E_1(L), E'_0 = E'_0(Gamma). Groups by the table's rules (image): E'_3(X) to E_3(Delta) follow E_3(Delta); E'_1(L) alone; E_2(Sigma), E_2(X), E_1(K), E_0(Gamma) follow E_2(X); E_1(L), E'_0(Gamma) follow E_1(L); E_g alone. Supersedes franta_2017/critical_points for the current model (see notes)."
+
+[[formulas]]
+id = "thermal_expansion"
+material = "Si"
+equation = "Eqs. (16)-(21), p. 3; Table 1, p. 4"
+printed = "e(T) = e_0 + \\sum_j e_j/[\\exp(\\Theta_j/T) - 1] (20), e_0 = -\\sum_j e_j/[\\exp(\\Theta_j/T_R) - 1] (21)"
+variable = "T: temperature (K), T_R = 300 K; e: linear thermal expansion (dimensionless); Theta_j in K; keys ending _u: the parenthesised uncertainty in the last printed digits"
+range = "Middelmann et al. 7-293 K (length L(T)); Watanabe et al. 293-1000 K (e)"
+coefficients = { fit4_2018_e1 = "-0.00017", fit4_2018_e1_u = "0.00002", fit1_e1 = "-0.0001946", fit1_e1_u = "0.0000010", fit2_e1 = "-0.0001865", fit2_e1_u = "0.0000008", fit3_e1 = "-0.0001947", fit3_e1_u = "0.0000013", fit4_2018_e2 = "0.00332", fit4_2018_e2_u = "0.00003", fit1_e2 = "0.00262", fit1_e2_u = "0.00008", fit2_e2 = "0.003077", fit2_e2_u = "0.000012", fit3_e2 = "0.00262", fit3_e2_u = "0.00009", fit4_2018_e3 = "0.00186", fit4_2018_e3_u = "0.00012", fit1_e3 = "0.00089", fit1_e3_u = "0.00007", fit2_e3 = "0.000631", fit2_e3_u = "0.000008", fit3_e3 = "0.00088", fit3_e3_u = "0.00008", fit3_e4 = "0.0023", fit3_e4_u = "0.0003", fit4_2018_Theta1 = "198", fit4_2018_Theta1_u = "9", fit1_Theta1 = "199.6", fit1_Theta1_u = "0.3", fit2_Theta1 = "197.1", fit2_Theta1_u = "0.3", fit3_Theta1 = "199.6", fit3_Theta1_u = "0.4", fit4_2018_Theta2 = "652", fit4_2018_Theta2_u = "6", fit1_Theta2 = "612", fit1_Theta2_u = "3", fit2_Theta2 = "633.5", fit2_Theta2_u = "0.8", fit3_Theta2 = "612", fit3_Theta2_u = "4", fit4_2018_Theta3 = "3033", fit4_2018_Theta3_u = "133", fit1_Theta3 = "893", fit1_Theta3_u = "23", fit2_Theta3 = "1249", fit2_Theta3_u = "17", fit3_Theta3 = "894", fit3_Theta3_u = "24", fit3_Theta4 = "3721", fit3_Theta4_u = "141", chi_e_Watanabe_fit4_2018 = "0.275", chi_e_Watanabe_fit2 = "1.231", chi_e_Watanabe_fit3 = "0.372", chi_alpha_Watanabe_fit4_2018 = "0.115", chi_alpha_Ibach_fit4_2018 = "0.257", chi_L_Middelmann_fit1 = "0.561", chi_L_Middelmann_fit2 = "0.662", chi_L_Middelmann_fit3 = "0.561" }
+check = "Generated from the library JSON cells by a scratch script (value and parenthesised uncertainty split) and compared with the table image (2026-10-14). The column '4-th fit in [12]' is franta_2018's 4th fit rounded, and confirms that franta_2018 Table I prints its e_j without the factor 1e-4 (franta_2018 -1.748, 33.153, 18.635). e_0 from Eq. (21): -2.33e-4 (1st-3rd fits), -2.45e-4 from the rounded '4-th fit in [12]' (franta_2018 prints -2.3741e-4); e(293.15 K) = -1.77e-5 for the three new fits."
+notes = "The column keys: fit4_2018 (franta_2018's 4th fit, rounded, with uncertainties), fit1 (three terms fitted to Middelmann et al.'s raw length data of sample 2, supplied by PTB), fit2 (three terms, Middelmann et al. and Watanabe et al.), fit3 (four terms, both). e_0 is not printed: it follows from Eq. (21), e(300 K) = 0. Theta_1, Theta_2 of the new fits: 4.2 and 12.8 THz; Theta_3 and Theta_4 (18.6 and 77.5 THz) are correction terms (p. 5). The text does not say which fit the current model uses (p. 3). No optmat quantity."

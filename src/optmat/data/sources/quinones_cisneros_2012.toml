@@ -1,0 +1,37 @@
+citation = "S. E. Quiñones-Cisneros, M. L. Huber and U. K. Deiters, \"Correlation for the Viscosity of Sulfur Hexafluoride (SF6) from the Triple Point to 1000 K and Pressures to 50 MPa\", J. Phys. Chem. Ref. Data 41, 023102 (2012)"
+doi = "10.1063/1.3702441"
+library = "QuinonesCisneros_2012_CorrelationViscositySulfur"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A reference correlation of the viscosity of sulfur hexafluoride: an empirical \
+dilute-gas term fitted to the primary low-pressure data, and the generalized \
+friction theory on Guder and Wagner's equation of state for the dense fluid."""
+notes = """Identity VALIDATED by the library. Pages cited are pdf pages (the NIST reprint \
+includes a publisher's cover).
+
+THE DILUTE GAS (pdf p. 5, Eq. 6 and Table 2): eta0 = d0 + d1 Tr^(1/4) + d2 Tr^(1/2) + \
+d3 Tr^(3/4) + d4 Tr, in mPa s, Tr = T/T_c with T_c = 318.7232 K, Guder and Wagner's; \
+d = 0.118561, -0.378103, 0.416428, -0.165295, 0.0245381. Fitted to the primary data of \
+270-700 K (Kestin et al., Hoogland et al., Strehlow and Vogel, Hurly et al., Berg, \
+Wilhelm et al.), 'extrapolated with reasonable confidence from the triple point, \
+223.555 K, up to 1000 K'. optmat takes 223.555-1000 K.
+
+UNCERTAINTY (pdf p. 9): 'the dilute-gas model is estimated to have an uncertainty of \
+0.3% (at a coverage factor of two) for the temperature range 298 K to 700 K, rising to \
+1.5% at both the lowest (the triple point) and highest (1000 K) values'.
+
+REPRODUCED: CoolProp 8.0.0's viscosity (reference key QuinonesCisneros-JPCRD-2012) at \
+1e-6 mol/m^3 equals Eq. (6) to 1.4e-10, 230-1000 K (computed 2026-09-30). The paper's \
+check values at zero density (Table 3: 15.2887 uPa s at 300 K, 19.6796 at 400 K) lie \
+3.9e-5 and 3.2e-5 above Eq. (6) with the printed coefficients, presumably their \
+unrounded ones; far below the stated uncertainty."""
+
+[[formulas]]
+id = "eq6"
+material = "SF6"
+equation = "Eq. (6) and Table 2, pdf p. 5"
+printed = "eta0 = d0 + d1 Tr^(1/4) + d2 Tr^(1/2) + d3 Tr^(3/4) + d4 Tr"
+variable = "Tr = T/T_c, T_c = 318.7232 K; eta0 in mPa s"
+range = "223.555-1000 K"
+coefficients = { d0 = "0.118561", d1 = "-0.378103", d2 = "0.416428", d3 = "-0.165295", d4 = "0.0245381", critical_temperature = "318.7232" }
+check = "CoolProp 8.0.0 equals it to 1.4e-10 (tests/test_transport.py)."

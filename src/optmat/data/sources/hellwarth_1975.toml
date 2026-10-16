@@ -1,0 +1,571 @@
+citation = "R. Hellwarth, J. Cherlow and T.-T. Yang, \"Origin and frequency dependence of nonlinear optical susceptibilities of glasses\", Phys. Rev. B 11, 964-967 (1975)"
+doi = "10.1103/PhysRevB.11.964"
+library = "Hellwarth_1975_OriginFrequencyDependence"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute spontaneous Raman-scattering cross sections (90-degree scattering, the \
+514-nm argon-ion line, a double monochromator calibrated with a quartz-iodine standard \
+lamp, absolute scale by comparison with the 992-cm^-1 line of liquid benzene, known to 3 % \
+(Kato and Takuma), with index corrections), polarized and depolarized, of five glasses \
+(Fig. 1): Homosil fused quartz (Amersil, Inc.), LSO (American Optical Co.), ED-4 (Owens \
+Illinois, Inc.), SF-7 and LaSF-7 (Schott). Through the Born-Oppenheimer form of the \
+third-order polarization (Eqs. 1-2), the fluctuation-dissipation relation (Eq. 6) and \
+Kramers-Kronig (Eqs. 7-8), the zero-frequency nuclear transforms B0 and A0 + B0; combined \
+with Owyoung's intensity-induced polarization change (IIPC) sigma + 2 B0 at 694 nm (Eq. 3; \
+Ref. 1) to give the electronic sigma, the self-focusing index n2 (Eq. 9) and its \
+electronic fraction f_e (Table I). Room temperature (not stated)."""
+notes = """Journal pages 964-967 = pdf pages 1-4 (journal page = 963 + pdf page). Identity \
+checked against the first page (title, authors, Phys. Rev. B 11, No. 2; received 3 June \
+1974). Table I read on the page image (pdf p. 4, 150 dpi) cell by cell: the library's \
+cells (tbl_aa2b556d00dc, JSON only) are all as printed.
+
+DEFINITIONS (Gaussian esu throughout, pp. 964-965). Eq. (1): the electronic part of P^(3), \
+(1/2) sigma E(t) E^2(t), instantaneous, 'for frequencies well below the electronic band \
+gap'; sigma independent of temperature at fixed density. Eq. (2): the nuclear part, E(t) \
+int ds a(t - s) E^2(s) + int ds E(s) b(t - s) E(t).E(s), 'By \"Raman scattering\" we mean \
+inelastic light scattering from all nuclear motions, vibrations, rotations, librations, \
+etc., except macroscopic density fluctuations'; electrostriction and heating are \
+excluded. A_Delta, B_Delta = int dt a(t), b(t) e^(i Delta t); A0, B0 their values at Delta = \
+0. Eq. (3): the IIPC rotation theta = pi omega z <E^2(t)> (sigma + 2 B0) cos 2 phi/8 n c. \
+Eqs. (4)-(5): the Raman power gains g_par = (2 pi omega F^2/n c) Im(A + B), g_perp = (pi \
+omega F^2/n c) Im B, F the pump amplitude. Eq. (6): Im B_Delta = (pi c^4/hbar nu omega^3) \
+d^2 sigma_perp/d Omega d Delta (1 - e^(-hbar Delta/kT)), and A_Delta from (1/2) sigma_par - \
+sigma_perp; d^2 sigma_i/d Omega d Delta 'the fraction of incident photons ... scattered per \
+unit distance into solid angle d Omega and angular frequency range d Delta'. Eq. (8): B0 = \
+(2 c^4/hbar nu) int_0^inf (d Delta/omega^3 Delta) d^2 sigma_perp/d Omega d Delta (1 - \
+e^(-hbar Delta/kT)), 'and similarly for A0'. Eq. (9), p. 967: 'Since the change in \
+refractive index for linear polarization is defined as n2 <E^2(t)>, ... n2 = pi(3 sigma/2 \
++ 2 A0 + 2 B0)/n'. f_e 'according to (9), is [1 + 4(B0 + A0)/(3 sigma)]^-1' (p. 967). In \
+stolen_1989's notation N_2R f(t) = (2 pi/n)[a(t) + b(t)] (its p. 1165), so the nuclear \
+share of Eq. (9)'s n2 is that paper's alpha = N_2R/N_20.
+
+TABLE I (tbl_aa2b556d00dc, p. 967; tools/extract/hellwarth_1975.py). 'Nonlinear \
+polarization parameters defined in text as derived from our Raman data and \
+intensity-induced polarization change (IIPC) measurements. From these are derived the \
+self-focusing index n2 of Eq. (9) and the fraction f_e of it that is electronic in \
+origin. All quantities are in esu.' Columns: n; 10^16 B0 (a, this work); 10^16 (A0 + B0) \
+(a); 10^15 (sigma + 2 B0) (b, 'References 1 and 12'); 10^15 sigma; 10^14 n2 [Eq. (4)]; \
+10^14 n2 (Meas.); f_e (%). All five glasses are clean rows and all are recorded. Per \
+glass: sigma (nonlinear_susceptibility, convention hellwarth_sigma, part electronic, \
+primary), sigma + 2 B0 (the same quantity, part electronic_vibrational, reproduced from \
+Owyoung), n2 of Eq. (9) (nonlinear_index_field, part electronic_vibrational, primary); \
+fused quartz's and ED-4's measured n2 (reproduced). B0, A0 + B0 and f_e have no quantity \
+(weber_1978 does the same with Heiman and Hellwarth's A0, B0 and f_e) and stay in the \
+printed cells: B0 = 14 +- 2, 28 +- 3, 26 +- 3, 210 +- 20, 380 +- 40 (10^-16 esu); A0 + B0 = \
+57 +- 6, 70 +- 7, 68 +- 7, 315 +- 30, 540 +- 50 (10^-16 esu); f_e = 79 +- 3, 81 +- 3, 85 +- \
+3, 79 +- 3, 71 +- 3 % (fused quartz, LSO, ED-4, SF-7, LaSF-7). The column header '10^14 \
+n2 [Eq. (4)]' is printed so (image checked); the caption and the text make it Eq. (9) \
+(Eq. (4) is the gain): a header slip, not a value.
+
+CHECKS (computed 2026-09-28, all five rows). sigma = (sigma + 2 B0) - 2 B0: 28.2, 40.4, \
+51.8, 160.0, 176.0 (printed 28, 40, 52, 160, 176). Eq. (9) with the printed sigma, A0 + B0 \
+and n: 11.49, 15.29, 18.45, 57.69, 60.55 (printed 11, 15, 18, 58, 61). f_e = [1 + 4(A0 + \
+B0)/(3 sigma)]^-1: 78.65, 81.08, 85.15, 79.21, 70.97 % (printed 79, 81, 85, 79, 71). Every \
+derived column is reproduced to its printed digits.
+
+THE NUCLEAR SHARE (computed, not printed). 1 - f_e = 0.21 +- 0.03 for fused quartz \
+(0.2135 from the printed cells: 2 pi (A0 + B0)/n = 2.45e-14 esu of n2 = 11.49e-14 esu), \
+0.19 (LSO), 0.15 (ED-4), 0.21 (SF-7), 0.29 (LaSF-7). The fraction is of the long-pulse \
+(monochromatic, Delta = 0) n2 for linear polarization, n = n0 + n2 <E^2>, in the \
+Born-Oppenheimer limit, with electrostriction and heating excluded. boling_1978 (p. 604) \
+quotes these as 'nuclear contributions of 29, 21, 15, 19, and 21 percent' for LaSF-7, \
+SF-7, ED-4, LSO and fused silica. The paper warns (p. 966) that 'our values for A_Delta \
+and B_Delta are up to 10% to 20% larger than their values in the long-wavelength (BO) \
+limit': with A0 and B0 scaled by 0.9 or 0.8 (and sigma re-deduced from the IIPC) fused \
+quartz's nuclear share becomes 0.19 or 0.17. For comparison: stolen_1989 estimates 0.18 \
+'From Raman-scattering cross-section and gain measurements' (its Refs. 6 = this paper, \
+16 = stolen_1973); weber_1978's Table 3 gives f_e = 0.74 for SiO2 from Heiman and \
+Hellwarth's later parameters (a nuclear share of 0.26).
+
+UNCERTAINTY (p. 966). 'The estimated absolute uncertainty of the curves of Fig. 1 is \
+about +-10% for the polarized spectra and slightly greater for the depolarized spectra', \
+mostly calibration, so 'the errors are probably not smoothed out by the integrating \
+procedure and carry over to the values of B0 and A0 + B0'. Integration tails < 1 %; the \
+spectrum below 20 cm^-1 assumed linear to zero (truncating at 20 cm^-1 changed the \
+results by < 1 %). Dispersion: A and B may be 10-20 % above their long-wavelength values; \
+a 647-nm check in fused quartz gave the same scattering relative to benzene. The table's \
++- have no stated level.
+
+FOOTNOTES AND REFERENCES (a doubt, not corrected). Table I's footnotes c 'Reference 9', d \
+'Reference 8', e 'Reference 7' (measured n2) do not fit the reference list: Ref. 9 is \
+Bliss, Speck and Simmons (unpublished), but Ref. 8 is Stolen and Ippen's Raman-gain \
+letter (printed 'Appl. Phys. Lett. 22, 275 (1973)'; the letter begins on p. 276) and Ref. \
+7 Kato and Takuma's benzene cross section, neither an n2 measurement; footnote b's \
+'Reference 12' is Udagawa et al.'s benzene-vapour Raman paper, not an IIPC measurement. \
+The text names three n2 measurements: Bliss et al. (Ref. 9) and Moran et al. (Ref. 10), \
+'both made at 1.06 um', with which the predictions 'are seen to be consistent', and \
+Levenson (Ref. 4, three-wave mixing near 525 nm), 'about 30% lower' than whose values the \
+predictions are. The numbers fit that reading if c is Levenson's (fused quartz 11 against \
+18, ED-4 18 against 26: 39 % and 31 % lower) and d, e Bliss's and Moran's (ED-4 15 and 15 \
+against 18); but the paper does not say so, and the footnote letters are recorded as \
+printed. The measured n2 are reproduced values of uncertain origin and wavelength \
+('not stated').
+
+TEXT (notes only). The polarized cross sections of fused quartz 'yield Raman gains in (4) \
+about 20% greater than those reported by Stolen and Ippen, but within their limits of \
+error' (p. 965; stolen_1973). For benzene, sigma ~ 0.1 B0 (Ref. 4) and McComb's Kerr \
+dispersion gives B0 rising 4 % +- 3 % from 647 to 514 nm (p. 966). The complex A_nu and \
+B_nu at all nu were to appear in NBS Special Publication 'Damage in Laser Materials: \
+1974' (not in the library). Fig. 1 (the differential cross sections, 10^-10 cm^-1 sr^-1 \
+per cm^-1, 0-1300 cm^-1; fused quartz's polarized peak about 2.2 near 440 cm^-1, read by \
+eye) is not digitised."""
+
+[[datasets]]
+id = "sigma_SiO2"
+material = "SiO2"
+file = "SiO2/hellwarth_1975__sigma_SiO2.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'Fused quartz', column '10^15 sigma': the electronic coefficient of Eq. (1), P = (1/2) sigma E E^2, deduced as Owyoung's IIPC sigma + 2 B0 (694 nm) minus twice this paper's B0 (514-nm Raman spectra, Eq. 8); taken as frequency independent below the gap, recorded at the IIPC's 694 nm. Sample: Homosil fused quartz (Amersil, Inc.). sigma the printed +- (level not stated). Not independent of the same row's n2 (Eq. 9 uses it)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic"
+technique = "IIPC (Owyoung) minus 2 B0 from absolute spontaneous Raman cross sections (this work)"
+grade = "Homosil"
+form = "bulk"
+
+[[datasets]]
+id = "iipc_SiO2"
+material = "SiO2"
+file = "SiO2/hellwarth_1975__iipc_SiO2.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, IEEE J. Quantum Electron. 9, 1064 (1973); A. Owyoung, Nat. Bur. Stds. Spec. Publ. No. 387 (U. S. GPO, Washington, D. C., 1973); A. Owyoung, R. W. Hellwarth, and N. George, Phys. Rev. B 5, 628 (1972) (Ref. 1; Table I footnote b, 'References 1 and 12')"]
+notes = "Table I (p. 967), 'Fused quartz', column '10^15 (sigma + 2 B0)', footnote b: Owyoung's intensity-induced polarization change (ellipse rotation, Eq. 3), 'taken at 694 nm' (p. 966). The combination sigma + 2 B0 in the normalisation of Eqs. (1)-(2) (B0 the zero-frequency transform of the anisotropic nuclear kernel b(t)); 24 c1122 in Maker-Terhune terms (hellwarth_1990 Eq. 17). sigma the printed +- (level not stated). Footnote b's 'Reference 12' is Udagawa et al.'s benzene-vapour Raman paper (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic_vibrational"
+technique = "intensity-induced polarization change (ellipse rotation), Owyoung"
+polarization = "elliptical (ellipse rotation)"
+grade = "Homosil"
+form = "bulk"
+
+[[datasets]]
+id = "n2_SiO2"
+material = "SiO2"
+file = "SiO2/hellwarth_1975__n2_SiO2.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'Fused quartz', column '10^14 n2 [Eq. (4)]' (the header's 'Eq. (4)' is Eq. (9); the caption and the text say Eq. (9), Eq. (4) is the Raman gain): n2 = pi(3 sigma/2 + 2 A0 + 2 B0)/n, the index change n2 <E^2(t)> of a monochromatic beam for linear polarization in the Born-Oppenheimer (long-wavelength) limit, electronic plus nuclear, without electrostriction and heating; 'depend mainly on Owyoung's data' (p. 967). Wavelength not stated (a prediction for 'optical' frequencies, compared with 1.06-um measurements). Its electronic fraction f_e is in the printed cells (source notes). sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, <E^2(t)> the time average of the square of the real field, for linear polarization (p. 967)"
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "Eq. (9) from sigma (IIPC) and A0 + B0 (spontaneous Raman), long-wavelength limit"
+polarization = "linear"
+grade = "Homosil"
+form = "bulk"
+
+[[datasets]]
+id = "sigma_LSO"
+material = "LSO"
+file = "LSO/hellwarth_1975__sigma_LSO.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'LSO glass', column '10^15 sigma': the electronic coefficient of Eq. (1), P = (1/2) sigma E E^2, deduced as Owyoung's IIPC sigma + 2 B0 (694 nm) minus twice this paper's B0 (514-nm Raman spectra, Eq. 8); taken as frequency independent below the gap, recorded at the IIPC's 694 nm. Sample: LSO (American Optical Co.). sigma the printed +- (level not stated). Not independent of the same row's n2 (Eq. 9 uses it)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic"
+technique = "IIPC (Owyoung) minus 2 B0 from absolute spontaneous Raman cross sections (this work)"
+form = "bulk"
+
+[[datasets]]
+id = "iipc_LSO"
+material = "LSO"
+file = "LSO/hellwarth_1975__iipc_LSO.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, IEEE J. Quantum Electron. 9, 1064 (1973); A. Owyoung, Nat. Bur. Stds. Spec. Publ. No. 387 (U. S. GPO, Washington, D. C., 1973); A. Owyoung, R. W. Hellwarth, and N. George, Phys. Rev. B 5, 628 (1972) (Ref. 1; Table I footnote b, 'References 1 and 12')"]
+notes = "Table I (p. 967), 'LSO glass', column '10^15 (sigma + 2 B0)', footnote b: Owyoung's intensity-induced polarization change (ellipse rotation, Eq. 3), 'taken at 694 nm' (p. 966). The combination sigma + 2 B0 in the normalisation of Eqs. (1)-(2) (B0 the zero-frequency transform of the anisotropic nuclear kernel b(t)); 24 c1122 in Maker-Terhune terms (hellwarth_1990 Eq. 17). sigma the printed +- (level not stated). Footnote b's 'Reference 12' is Udagawa et al.'s benzene-vapour Raman paper (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic_vibrational"
+technique = "intensity-induced polarization change (ellipse rotation), Owyoung"
+polarization = "elliptical (ellipse rotation)"
+form = "bulk"
+
+[[datasets]]
+id = "n2_LSO"
+material = "LSO"
+file = "LSO/hellwarth_1975__n2_LSO.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'LSO glass', column '10^14 n2 [Eq. (4)]' (the header's 'Eq. (4)' is Eq. (9); the caption and the text say Eq. (9), Eq. (4) is the Raman gain): n2 = pi(3 sigma/2 + 2 A0 + 2 B0)/n, the index change n2 <E^2(t)> of a monochromatic beam for linear polarization in the Born-Oppenheimer (long-wavelength) limit, electronic plus nuclear, without electrostriction and heating; 'depend mainly on Owyoung's data' (p. 967). Wavelength not stated (a prediction for 'optical' frequencies, compared with 1.06-um measurements). Its electronic fraction f_e is in the printed cells (source notes). sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, <E^2(t)> the time average of the square of the real field, for linear polarization (p. 967)"
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "Eq. (9) from sigma (IIPC) and A0 + B0 (spontaneous Raman), long-wavelength limit"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "sigma_ED-4"
+material = "ED-4"
+file = "ED-4/hellwarth_1975__sigma_ED-4.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'ED-4 glass', column '10^15 sigma': the electronic coefficient of Eq. (1), P = (1/2) sigma E E^2, deduced as Owyoung's IIPC sigma + 2 B0 (694 nm) minus twice this paper's B0 (514-nm Raman spectra, Eq. 8); taken as frequency independent below the gap, recorded at the IIPC's 694 nm. Sample: ED-4 (Owens Illinois, Inc.). sigma the printed +- (level not stated). Not independent of the same row's n2 (Eq. 9 uses it)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic"
+technique = "IIPC (Owyoung) minus 2 B0 from absolute spontaneous Raman cross sections (this work)"
+form = "bulk"
+
+[[datasets]]
+id = "iipc_ED-4"
+material = "ED-4"
+file = "ED-4/hellwarth_1975__iipc_ED-4.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, IEEE J. Quantum Electron. 9, 1064 (1973); A. Owyoung, Nat. Bur. Stds. Spec. Publ. No. 387 (U. S. GPO, Washington, D. C., 1973); A. Owyoung, R. W. Hellwarth, and N. George, Phys. Rev. B 5, 628 (1972) (Ref. 1; Table I footnote b, 'References 1 and 12')"]
+notes = "Table I (p. 967), 'ED-4 glass', column '10^15 (sigma + 2 B0)', footnote b: Owyoung's intensity-induced polarization change (ellipse rotation, Eq. 3), 'taken at 694 nm' (p. 966). The combination sigma + 2 B0 in the normalisation of Eqs. (1)-(2) (B0 the zero-frequency transform of the anisotropic nuclear kernel b(t)); 24 c1122 in Maker-Terhune terms (hellwarth_1990 Eq. 17). sigma the printed +- (level not stated). Footnote b's 'Reference 12' is Udagawa et al.'s benzene-vapour Raman paper (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic_vibrational"
+technique = "intensity-induced polarization change (ellipse rotation), Owyoung"
+polarization = "elliptical (ellipse rotation)"
+form = "bulk"
+
+[[datasets]]
+id = "n2_ED-4"
+material = "ED-4"
+file = "ED-4/hellwarth_1975__n2_ED-4.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'ED-4 glass', column '10^14 n2 [Eq. (4)]' (the header's 'Eq. (4)' is Eq. (9); the caption and the text say Eq. (9), Eq. (4) is the Raman gain): n2 = pi(3 sigma/2 + 2 A0 + 2 B0)/n, the index change n2 <E^2(t)> of a monochromatic beam for linear polarization in the Born-Oppenheimer (long-wavelength) limit, electronic plus nuclear, without electrostriction and heating; 'depend mainly on Owyoung's data' (p. 967). Wavelength not stated (a prediction for 'optical' frequencies, compared with 1.06-um measurements). Its electronic fraction f_e is in the printed cells (source notes). sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, <E^2(t)> the time average of the square of the real field, for linear polarization (p. 967)"
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "Eq. (9) from sigma (IIPC) and A0 + B0 (spontaneous Raman), long-wavelength limit"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "sigma_SF-7"
+material = "SF-7"
+file = "SF-7/hellwarth_1975__sigma_SF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'SF-7 glass', column '10^15 sigma': the electronic coefficient of Eq. (1), P = (1/2) sigma E E^2, deduced as Owyoung's IIPC sigma + 2 B0 (694 nm) minus twice this paper's B0 (514-nm Raman spectra, Eq. 8); taken as frequency independent below the gap, recorded at the IIPC's 694 nm. Sample: SF-7 (Schott). sigma the printed +- (level not stated). Not independent of the same row's n2 (Eq. 9 uses it)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic"
+technique = "IIPC (Owyoung) minus 2 B0 from absolute spontaneous Raman cross sections (this work)"
+form = "bulk"
+
+[[datasets]]
+id = "iipc_SF-7"
+material = "SF-7"
+file = "SF-7/hellwarth_1975__iipc_SF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, IEEE J. Quantum Electron. 9, 1064 (1973); A. Owyoung, Nat. Bur. Stds. Spec. Publ. No. 387 (U. S. GPO, Washington, D. C., 1973); A. Owyoung, R. W. Hellwarth, and N. George, Phys. Rev. B 5, 628 (1972) (Ref. 1; Table I footnote b, 'References 1 and 12')"]
+notes = "Table I (p. 967), 'SF-7 glass', column '10^15 (sigma + 2 B0)', footnote b: Owyoung's intensity-induced polarization change (ellipse rotation, Eq. 3), 'taken at 694 nm' (p. 966). The combination sigma + 2 B0 in the normalisation of Eqs. (1)-(2) (B0 the zero-frequency transform of the anisotropic nuclear kernel b(t)); 24 c1122 in Maker-Terhune terms (hellwarth_1990 Eq. 17). sigma the printed +- (level not stated). Footnote b's 'Reference 12' is Udagawa et al.'s benzene-vapour Raman paper (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic_vibrational"
+technique = "intensity-induced polarization change (ellipse rotation), Owyoung"
+polarization = "elliptical (ellipse rotation)"
+form = "bulk"
+
+[[datasets]]
+id = "n2_SF-7"
+material = "SF-7"
+file = "SF-7/hellwarth_1975__n2_SF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'SF-7 glass', column '10^14 n2 [Eq. (4)]' (the header's 'Eq. (4)' is Eq. (9); the caption and the text say Eq. (9), Eq. (4) is the Raman gain): n2 = pi(3 sigma/2 + 2 A0 + 2 B0)/n, the index change n2 <E^2(t)> of a monochromatic beam for linear polarization in the Born-Oppenheimer (long-wavelength) limit, electronic plus nuclear, without electrostriction and heating; 'depend mainly on Owyoung's data' (p. 967). Wavelength not stated (a prediction for 'optical' frequencies, compared with 1.06-um measurements). Its electronic fraction f_e is in the printed cells (source notes). sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, <E^2(t)> the time average of the square of the real field, for linear polarization (p. 967)"
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "Eq. (9) from sigma (IIPC) and A0 + B0 (spontaneous Raman), long-wavelength limit"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "sigma_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/hellwarth_1975__sigma_LaSF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'LASF-7 glass', column '10^15 sigma': the electronic coefficient of Eq. (1), P = (1/2) sigma E E^2, deduced as Owyoung's IIPC sigma + 2 B0 (694 nm) minus twice this paper's B0 (514-nm Raman spectra, Eq. 8); taken as frequency independent below the gap, recorded at the IIPC's 694 nm. Sample: LaSF-7 (Schott). sigma the printed +- (level not stated). Not independent of the same row's n2 (Eq. 9 uses it)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic"
+technique = "IIPC (Owyoung) minus 2 B0 from absolute spontaneous Raman cross sections (this work)"
+form = "bulk"
+
+[[datasets]]
+id = "iipc_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/hellwarth_1975__iipc_LaSF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_susceptibility"
+unit = "esu"
+scale = 1e-15
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, IEEE J. Quantum Electron. 9, 1064 (1973); A. Owyoung, Nat. Bur. Stds. Spec. Publ. No. 387 (U. S. GPO, Washington, D. C., 1973); A. Owyoung, R. W. Hellwarth, and N. George, Phys. Rev. B 5, 628 (1972) (Ref. 1; Table I footnote b, 'References 1 and 12')"]
+notes = "Table I (p. 967), 'LASF-7 glass', column '10^15 (sigma + 2 B0)', footnote b: Owyoung's intensity-induced polarization change (ellipse rotation, Eq. 3), 'taken at 694 nm' (p. 966). The combination sigma + 2 B0 in the normalisation of Eqs. (1)-(2) (B0 the zero-frequency transform of the anisotropic nuclear kernel b(t)); 24 c1122 in Maker-Terhune terms (hellwarth_1990 Eq. 17). sigma the printed +- (level not stated). Footnote b's 'Reference 12' is Udagawa et al.'s benzene-vapour Raman paper (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "kerr"
+convention = "hellwarth_sigma"
+part = "electronic_vibrational"
+technique = "intensity-induced polarization change (ellipse rotation), Owyoung"
+polarization = "elliptical (ellipse rotation)"
+form = "bulk"
+
+[[datasets]]
+id = "n2_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/hellwarth_1975__n2_LaSF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 967), 'LASF-7 glass', column '10^14 n2 [Eq. (4)]' (the header's 'Eq. (4)' is Eq. (9); the caption and the text say Eq. (9), Eq. (4) is the Raman gain): n2 = pi(3 sigma/2 + 2 A0 + 2 B0)/n, the index change n2 <E^2(t)> of a monochromatic beam for linear polarization in the Born-Oppenheimer (long-wavelength) limit, electronic plus nuclear, without electrostriction and heating; 'depend mainly on Owyoung's data' (p. 967). Wavelength not stated (a prediction for 'optical' frequencies, compared with 1.06-um measurements). Its electronic fraction f_e is in the printed cells (source notes). sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, <E^2(t)> the time average of the square of the real field, for linear polarization (p. 967)"
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "Eq. (9) from sigma (IIPC) and A0 + B0 (spontaneous Raman), long-wavelength limit"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_measured_SiO2"
+material = "SiO2"
+file = "SiO2/hellwarth_1975__n2_measured_SiO2.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["Table I footnote c, 'Reference 9': E. R. Bliss, D. R. Speck, and W. W. Simmons (unpublished), as numbered; the text suggests M. D. Levenson, IEEE J. Quantum Electron. QE-10, 110 (1974) (source notes)"]
+notes = "Table I (p. 967), 'Fused quartz', column '10^14 n2 (Meas.)': '18 ± 3' with footnote c ('Reference 9', Bliss et al., unpublished, 1.06 um per the text). The paper calls its predictions (11 +- 1) 'consistent' with Bliss et al. and Moran et al. and 'about 30% lower' than Levenson's (near 525 nm), which fits this value better; the footnote numbering is doubtful (source notes). Wavelength and part not stated. sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, for linear polarization (p. 967), as the paper compares it"
+part = "unknown"
+coefficient = "self"
+technique = "not stated (a measurement of another laboratory)"
+
+[[datasets]]
+id = "n2_measured_ED-4"
+material = "ED-4"
+file = "ED-4/hellwarth_1975__n2_measured_ED-4.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["Table I footnote c, 'Reference 9': E. R. Bliss, D. R. Speck, and W. W. Simmons (unpublished)", "Table I footnote d, 'Reference 8': the reference list's Ref. 8 is R. H. Stolen and E. P. Ippen, Appl. Phys. Lett. 22, 275 [276] (1973), which has no n2 (not identifiable; source notes)", "Table I footnote e, 'Reference 7': the reference list's Ref. 7 is Y. Kato and H. Takuma, J. Opt. Soc. Am. 61, 347 (1971), which has no n2 (not identifiable; source notes)"]
+notes = "Table I (p. 967), 'ED-4 glass', column '10^14 n2 (Meas.)': three values under a brace, '26 ± 3 c', '15 ± 2 d', '15 ± 3 e' (rows c, d, e by footnote letter; image checked). The footnote numbers do not match the reference list (source notes); the text's three n2 measurements are Bliss et al. and Moran et al. (1.06 um) and Levenson (near 525 nm). Wavelength and part not stated. sigma the printed +- (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2(t)>, for linear polarization (p. 967), as the paper compares it"
+part = "unknown"
+coefficient = "self"
+technique = "not stated (measurements of other laboratories)"
+
+[[datasets]]
+id = "nuclear_fraction_SiO2"
+material = "SiO2"
+file = "SiO2/hellwarth_1975__nuclear_fraction_SiO2.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "raman_fraction"
+unit = "1"
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 967), 'Fused quartz', column 'f_e (%)': the electronic fraction of the long-pulse, long-wavelength n2 of Eq. (9) for linear polarization, f_e = [1 + 4(A0 + B0)/(3 sigma)]^-1, recorded as its complement 1 - f_e, the share of every nuclear (Raman) motion (the script subtracts the printed whole percent from 100; the +- kept, level not stated; TC-694). From absolute spontaneous Raman cross sections (this work) and Owyoung's IIPC; the paper warns that A0 and B0 may be 10-20 % above their long-wavelength values (p. 967)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "1 - f_e: the nuclear (Raman) share of the long-pulse n2 of Eq. (9), n2 = pi (3 sigma/2 + 2 A0 + 2 B0)/n, for linear polarization; f_e as printed in Table I"
+form = "bulk"
+
+[[datasets]]
+id = "nuclear_fraction_LSO"
+material = "LSO"
+file = "LSO/hellwarth_1975__nuclear_fraction_LSO.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "raman_fraction"
+unit = "1"
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 967), 'LSO glass', column 'f_e (%)': the electronic fraction of the long-pulse, long-wavelength n2 of Eq. (9) for linear polarization, f_e = [1 + 4(A0 + B0)/(3 sigma)]^-1, recorded as its complement 1 - f_e, the share of every nuclear (Raman) motion (the script subtracts the printed whole percent from 100; the +- kept, level not stated; TC-694). From absolute spontaneous Raman cross sections (this work) and Owyoung's IIPC; the paper warns that A0 and B0 may be 10-20 % above their long-wavelength values (p. 967)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "1 - f_e: the nuclear (Raman) share of the long-pulse n2 of Eq. (9), n2 = pi (3 sigma/2 + 2 A0 + 2 B0)/n, for linear polarization; f_e as printed in Table I"
+form = "bulk"
+
+[[datasets]]
+id = "nuclear_fraction_ED-4"
+material = "ED-4"
+file = "ED-4/hellwarth_1975__nuclear_fraction_ED-4.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "raman_fraction"
+unit = "1"
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 967), 'ED-4 glass', column 'f_e (%)': the electronic fraction of the long-pulse, long-wavelength n2 of Eq. (9) for linear polarization, f_e = [1 + 4(A0 + B0)/(3 sigma)]^-1, recorded as its complement 1 - f_e, the share of every nuclear (Raman) motion (the script subtracts the printed whole percent from 100; the +- kept, level not stated; TC-694). From absolute spontaneous Raman cross sections (this work) and Owyoung's IIPC; the paper warns that A0 and B0 may be 10-20 % above their long-wavelength values (p. 967)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "1 - f_e: the nuclear (Raman) share of the long-pulse n2 of Eq. (9), n2 = pi (3 sigma/2 + 2 A0 + 2 B0)/n, for linear polarization; f_e as printed in Table I"
+form = "bulk"
+
+[[datasets]]
+id = "nuclear_fraction_SF-7"
+material = "SF-7"
+file = "SF-7/hellwarth_1975__nuclear_fraction_SF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "raman_fraction"
+unit = "1"
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 967), 'SF-7 glass', column 'f_e (%)': the electronic fraction of the long-pulse, long-wavelength n2 of Eq. (9) for linear polarization, f_e = [1 + 4(A0 + B0)/(3 sigma)]^-1, recorded as its complement 1 - f_e, the share of every nuclear (Raman) motion (the script subtracts the printed whole percent from 100; the +- kept, level not stated; TC-694). From absolute spontaneous Raman cross sections (this work) and Owyoung's IIPC; the paper warns that A0 and B0 may be 10-20 % above their long-wavelength values (p. 967)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "1 - f_e: the nuclear (Raman) share of the long-pulse n2 of Eq. (9), n2 = pi (3 sigma/2 + 2 A0 + 2 B0)/n, for linear polarization; f_e as printed in Table I"
+form = "bulk"
+
+[[datasets]]
+id = "nuclear_fraction_LaSF-7"
+material = "LaSF-7"
+file = "LaSF-7/hellwarth_1975__nuclear_fraction_LaSF-7.csv"
+table = "tbl_aa2b556d00dc"
+quantity = "raman_fraction"
+unit = "1"
+abscissa = "label"
+use = "primary"
+notes = "Table I (p. 967), 'LASF-7 glass', column 'f_e (%)': the electronic fraction of the long-pulse, long-wavelength n2 of Eq. (9) for linear polarization, f_e = [1 + 4(A0 + B0)/(3 sigma)]^-1, recorded as its complement 1 - f_e, the share of every nuclear (Raman) motion (the script subtracts the printed whole percent from 100; the +- kept, level not stated; TC-694). From absolute spontaneous Raman cross sections (this work) and Owyoung's IIPC; the paper warns that A0 and B0 may be 10-20 % above their long-wavelength values (p. 967)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "1 - f_e: the nuclear (Raman) share of the long-pulse n2 of Eq. (9), n2 = pi (3 sigma/2 + 2 A0 + 2 B0)/n, for linear polarization; f_e as printed in Table I"
+form = "bulk"

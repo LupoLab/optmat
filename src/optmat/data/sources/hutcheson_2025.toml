@@ -1,0 +1,43 @@
+citation = "L. Hutcheson, M. Hartmann, G. D. Borisova, P. Birk, S. Hu, C. Ott, T. Pfeifer, H. W. van der Hart and A. C. Brown, \"Phase evolution of strong-field ionization\", Phys. Rev. Res. 7, L022074 (2025)"
+doi = "10.1103/PhysRevResearch.7.L022074"
+library = "Hutcheson_2025_PhaseEvolutionStrong"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Attosecond transient absorption of xenon in a few-cycle NIR pulse, measured and \
+calculated with R-matrix with time dependence (RMT); 'details of the RMT calculations/ \
+experimental setup can be found in Refs. [26,27]' (p. 1), ref. [26] being Hartmann et \
+al. 2022 (hartmann_2022): Hartree-Fock xenon with the 4d^-1, 5s^-1 and 5p^-1 channels \
+to total L = 40, no double ionisation (p. 4). Fig. 4 (p. 3): 'populations of various \
+states during SFI ionization as extracted from an RMT calculation using only the NIR \
+pulse, centered at 0 fs, for 0.8 x 10^14 W cm^-2 intensity': the ground state, a set of \
+excited 1P^o bound states, and 'the total population beyond a radial distance of 20 \
+a.u.', which 'comprises both ionized and bound electrons, as Xe supports several, \
+high-lying Rydberg states that extend beyond 20 a.u.' (p. 3)."""
+notes = """Journal pp. L022074-1 to -6 = PDF pages 1 to 6. Identity checked on PDF p. 1 \
+(received 17 January 2025, accepted 5 May 2025, published 24 June 2025); CC BY 4.0. \
+Curated 2026-10-12 (TC-1059).
+
+NOTHING IS TAKEN. The authors' archive (Zenodo 10.5281/zenodo.15432565, their ref. \
+[41]; attached to the paper in the library) holds the Fig. 4 populations against time, \
+RMTpopulations.csv, at eight NIR intensities (0.8 to 2.5e14 W/cm2, more than the paper \
+shows), to t = 2999.81 au: the ground state, the selected 1P^o bound states and the \
+population beyond 20 au. They would give a many-electron xenon in a stated pulse, but \
+the pulse is not the paper's.
+
+THE CARRIER (tools/extract/hutcheson_2025.py, which fails otherwise). The paper's NIR \
+is '760 nm' (p. 1). The populations oscillate at twice the carrier frequency (p. 2); \
+the spectrum of d(ground)/dt over 400 to 1400 au peaks at 2 omega with omega = 0.0675 to \
+0.0683 au at every intensity, i.e. 667 to 675 nm, not 0.05995 au (760 nm). The archive's \
+own bin/plot_rmt_populations.py draws Fig. 4 with pulse(0.8, IR_freq=0.06798), i.e. \
+0.06798 au (670 nm); helper_functions.pulse's other defaults are a field envelope \
+exp(-(t/186 au)^2) and E0 = 0.05336 sqrt(I / 1e14 W/cm2) au. So these NIR-only runs \
+were most likely made with omega = 0.06798 au, as the 2022 archive's example generator \
+(hartmann_2022's notes), and not with the 0.06 au of hartmann_2022's runs. They also \
+deplete the ground state less at the same label (0.883 against hartmann_2022's 0.812 at \
+1.1e14; 0.797 against 0.623 at 1.5e14), as a different pulse would. The pulse is to be \
+confirmed with the authors before any value is used; then the populations at the end \
+of the run would be the data.
+
+THE MEASURE, if taken: the population beyond 20 au includes Rydberg states (the \
+authors' warning) and falls after the pulse (0.0754 at +20 fs, 0.0703 at the end, \
+0.8e14); the ground-state survival is the cleaner measure, as in hartmann_2022."""

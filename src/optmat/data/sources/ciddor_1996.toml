@@ -1,0 +1,40 @@
+citation = "P. E. Ciddor, \"Refractive index of air: new equations for the visible and near infrared\", Appl. Opt. 35, 1566 (1996)"
+doi = "10.1364/ao.35.001566"
+library = "Ciddor_1996_RefractiveIndexAir"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Equations for the phase and group refractivity of moist air: the standard dry air's \
+dispersion (Peck and Reeder's, amended to ITS-90 and to 450 ppm CO2), a CO2 correction, \
+water vapour's (Erickson's, scaled by 1.022), and the BIPM 1981/91 density equation, \
+combined through Lorentz-Lorenz; compared with Birch and Downs's measurements at 633 nm \
+(1 part in 1e8) and Peck and Reeder's over 230-1690 nm. No new measurements."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library. Printed pp. 1566-1573.
+
+THE STANDARD DRY AIR (p. 1567, Eqs. 1-2, the constants from Appendix A, p. 1571,
+checked against the page image): standard air is dry air at 15 C, 101325 Pa and 450
+ppm CO2, and 10^8 (n_as - 1) = k1/(k0 - sigma^2) + k3/(k2 - sigma^2), sigma the vacuum
+wavenumber in um^-1, with k0 = 238.0185, k1 = 5792105, k2 = 57.362, k3 = 167917
+um^-2. For x_c ppm of CO2, (n_axs - 1) = (n_as - 1) [1 + 0.534e-6 (x_c - 450)] (Eq. 2),
+Birch and Downs's factor at 633 nm. Peck and Reeder's data span 230-1690 nm; the
+equations 'should apply over the wavelength range from approximately 300 nm to 1690
+nm' (p. 1571).
+
+Uncertainty (pp. 1566, 1568): refractometers disagree by 1-3e-8 (1 sigma) on one
+sample; 'one cannot expect an overall uncertainty of better than 2-5 x 10^-8' in n,
+with the BIPM density contributing 1.4-3.5e-8. The dispersion equations of Edlen and
+of Peck and Reeder differ by below 0.5e-8.
+
+The formula is recorded, not built into a model: its medium is air, which is not a
+curated species. OEP 1's air model is compared with it (TC-759)."""
+
+[[formulas]]
+id = "standard_dry_air"
+material = "dry air"
+equation = "Eqs. (1)-(2), p. 1567; constants Appendix A, p. 1571"
+printed = "10^8 (n_as - 1) = k1/(k0 - sigma^2) + k3/(k2 - sigma^2); (n_axs - 1) = (n_as - 1)[1 + 0.534e-6 (x_c - 450)]"
+variable = "sigma = 1/lambda, lambda the vacuum wavelength in micrometres; x_c the CO2 content, ppm"
+state = "15 C, 101325 Pa, dry, 450 ppm CO2"
+density = "real"
+range = "about 300-1690 nm (p. 1571)"
+coefficients = { k0 = "238.0185", k1 = "5792105", k2 = "57.362", k3 = "167917", co2 = "0.534e-6" }
+check = "The constants read from the page image of Appendix A (p. 1571), 2026-09-30. At 633 nm Eq. (1) gives 10^8 (n_as - 1) = 27653.0 for standard dry air. Table 1 compares moist air at laboratory states, through the full procedure (water vapour, BIPM density), which is not reproduced here."

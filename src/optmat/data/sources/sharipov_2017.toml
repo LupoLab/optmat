@@ -1,0 +1,116 @@
+citation = "A. S. Sharipov, B. I. Loukhovitski, and A. M. Starik, \"The influence of vibrations of polyatomic molecules on dipole moment and static dipole polarizability: theoretical study\", J. Phys. B: At. Mol. Opt. Phys. 50, 165101 (2017)"
+doi = "10.1088/1361-6455/aa7f80"
+library = "Sharipov_2017_InfluenceVibrationsPolyatomic"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Density-functional (B97-2/Sadlej pVTZ; aug-cc-pVTZ for atoms the Sadlej set \
+lacks) potential-energy, dipole-moment and polarizability surfaces along each normal \
+mode (harmonic normal modes; rectilinear displacements; modes as independent 1D \
+oscillators, degenerate modes treated separately; rotation ignored), 1D Schroedinger \
+equations solved by Numerov's method for levels below 10 000 cm^-1; finite-field \
+polarizabilities (field 1e-3 au) averaged over the vibrational wave functions without \
+('unperturbed potential', UP) and with ('perturbed potential', PP) the field's effect \
+on the potential. The electronic polarizability alpha_e at the equilibrium geometry \
+also by finite-field MP4(SDQ)/Sadlej//B97-2/Sadlej (MP4(SDTQ) where marked a) (pp. \
+3-5, Firefly/GAMESS)."""
+notes = """Page numbers are the library pdf pages (pdf page 1 is the publisher's cover). \
+Units: Angstrom^3 (polarizability volumes). Curated species in the paper: CO2, O3, CH4, \
+SF6 (no N2O, N2, O2, H2; the diatomics' corrections are the authors' earlier paper, \
+Ref. 36, Loukhovitski et al. 2016, not in the library). H2O and the other 46 species are \
+skipped.
+
+THE DECOMPOSITION (Eqs. 9-12, p. 4): alpha(omega = 0) = alpha_e + Delta alpha^ZPV + \
+Delta alpha^PV (Eq. 11) for a static field; alpha(omega) = alpha_e + Delta alpha^ZPV for \
+omega > 0.05 au, the UV-visible (Eq. 12), 'the pure vibrational contribution goes to \
+zero'. alpha_e is the clamped-nucleus electronic polarizability at the equilibrium \
+geometry, Delta alpha^ZPV the zero-point vibrational averaging correction (Eq. 9), \
+Delta alpha^PV the pure vibrational polarizability, the infrared-active modes' \
+static response (Eq. 10); 'the Delta alpha^PV value can be estimated as a difference \
+between the polarizability obtained from the measurements of dielectric permittivity \
+and refractive index' (p. 4). Rotation (orientation) is ignored. The thermal \
+population of excited vibrational levels adds Delta alpha^UP(T) = bT + cT^2 (Eq. 18; \
+Table A1's b, c).
+
+EXTRACTED: alpha_e(MP4) of CO2, O3, CH4, SF6 (Table A1), electronic only, static, \
+equilibrium geometry, no vibrational averaging: 'check' datasets (DFT-geometry MP4, no \
+stated accuracy; 'the present computational strategy overestimates slightly the \
+low-temperature values of polarizability of CO2 and CH4 (by 1 % and 0.3 %)', p. 12).
+
+NOT EXTRACTED (no quantity for a vibrational correction; a format need), Table A1 \
+(pp. 14-15; images checked), Angstrom^3, alpha_e(B97-2) / alpha_e(MP4) / ZPV / PV / b \
+x 10^6 (A^3/K) / c x 10^9 (A^3/K^2):
+  CO2 2.531 / 2.611 / 0.017 / 0.312 / 12.24 / 2.66
+  O3  2.727 / 2.801 (MP4(SDTQ)) / 0.013 / 0.312 (Table 2: 0.208, see below) / 5.25 / 2.03
+  CH4 2.507 / 2.464 / 0.099 / 0.035 / 10.05 / 12.72
+  SF6 4.682 / 4.665 / 0.023 / 1.893 / 38.18 / 5.43
+In atomic units (1 au = 0.148184711 A^3): pure vibrational PV = CO2 2.106, CH4 0.236, \
+SF6 12.77, O3 2.106 (Table A1) or 1.404 (Table 2); ZPV = CO2 0.115, CH4 0.668, SF6 0.155, \
+O3 0.088; Delta alpha^UP(296 K) = CO2 0.026, CH4 0.028, SF6 0.080, O3 0.012 au (computed \
+here from b, c).
+
+Table 2 (p. 9; image checked) repeats ZPV and PV ('This work') and lists other works' \
+values (A^3), reproduced here for the record: CO2 ZPV 0.004 [Bulanin et al. 1988], PV \
+0.26 [Bishop and Cheung 1982], 0.289 [Bishop and Kirtman 1991], 0.323 [Hohm 2013]; O3 \
+ZPV 0.216, PV 0.209 [Naves et al. 2011]; CH4 ZPV 0.123 [Raynes et al. 1988], 0.123 \
+[Marti et al. 1993], 0.130 [Russell and Spackman 1995], 0.133 [Kongsted and \
+Christiansen 2007], PV 0.034 [Hohm 2013], 0.041 [Kongsted and Christiansen 2007], 0.04 \
+[Pederson et al. 2005]; SF6 PV 2.035 [Hohm 2013], 2.29 [Pederson et al. 2005]. \
+(Hohm 2013's and Bishop and Cheung's values are 'from the measured intensities of the molecule's infrared-active bands', p. 9.)
+
+O3's PV: Table A1 prints 0.312 (the same digits as the CO2 row above it), Table 2 \
+0.208 'This work'; one is misprinted, probably Table A1's (a copy of the CO2 row); \
+not corrected, since neither is extracted (TC-153). The authors themselves call their \
+O3 treatment inadequate (multireference ground state; ZPV 15 times below Naves et al.'s \
+coupled-cluster value, p. 9).
+
+Also not extracted: Table 1 and Appendix B (dipole moments), the figures, the \
+parameters of the approximation formulas (Eqs. 14, 16: p0 = 36.88, p1 = -0.73, p2 = \
+1.33, p3 = 85.07, p4 = -1.50, p5 = 5.31, p6 = 4.72 D, p7 = 2.16; p. 11), and the \
+supplementary material (PP temperature coefficients, state-specific values; not in \
+the library). Fig. 12's experimental CH4 and CO2 points (Hohm and Kerl 1990; Kerl et \
+al. 1992) were corrected to static by a TDDFT factor 0.9813 at 633 nm (0.9750 at 546 \
+nm, p. 12)."""
+
+[[datasets]]
+id = "alpha_e_mp4_CO2"
+material = "CO2"
+file = "CO2/sharipov_2017__alpha_e_mp4_CO2.csv"
+table = "tbl_6536153eecc8"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table A1 alpha_e(MP4) = 2.611 A^3 (17.62 au): static electronic, clamped nuclei at the B97-2 equilibrium geometry; without ZPV (0.017), the pure vibrational PV (0.312) and the thermal Delta alpha^UP. No uncertainty stated."
+
+[[datasets]]
+id = "alpha_e_mp4_O3"
+material = "O3"
+file = "O3/sharipov_2017__alpha_e_mp4_O3.csv"
+table = "tbl_6536153eecc8"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table A1 alpha_e(MP4) = 2.801 A^3 (18.90 au), mark a: MP4(SDTQ) (triple substitutions included). Static electronic, clamped nuclei; the authors' DFT treatment of O3 is poor (multireference ground state, p. 9). No uncertainty stated."
+
+[[datasets]]
+id = "alpha_e_mp4_CH4"
+material = "CH4"
+file = "CH4/sharipov_2017__alpha_e_mp4_CH4.csv"
+table = "tbl_5c6a04a7a846"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table A1 alpha_e(MP4) = 2.464 A^3 (16.63 au): static electronic, clamped nuclei; the zero-point correction is large for CH4 (ZPV 0.099 A^3 = 0.668 au), so alpha_e + ZPV = 2.563 A^3 (17.30 au) is the comparable optical-limit value (Eq. 12). PV 0.035 A^3 (0.236 au). No uncertainty stated."
+
+[[datasets]]
+id = "alpha_e_mp4_SF6"
+material = "SF6"
+file = "SF6/sharipov_2017__alpha_e_mp4_SF6.csv"
+table = "tbl_5c6a04a7a846"
+quantity = "polarizability"
+unit = "angstrom3"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table A1 alpha_e(MP4) = 4.665 A^3 (31.48 au): static electronic, clamped nuclei; without ZPV (0.023) and the large pure vibrational PV (1.893 A^3 = 12.77 au). No uncertainty stated."

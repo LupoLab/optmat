@@ -1,0 +1,220 @@
+citation = "K. A. Hamam and Y. E. E.-D. Gamal, \"Numerical analysis of breakdown dynamics dependence on pulse width in laser-induced damage in fused silica: Role of optical system\", Results Phys. 9, 725 (2018)"
+doi = "10.1016/j.rinp.2018.03.042"
+library = "Hamam_2018_NumericalAnalysisBreakdown"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Rate-equation model of the conduction-electron density in fused silica \
+(Keldysh photoionization, Drude avalanche, diffusion and recombination losses, Eq. 2), \
+solved with fourth-order Runge-Kutta for Gaussian pulses in space and time, and \
+compared with the bulk breakdown thresholds that Liu et al. (2005) measured at 800 nm, \
+240 fs - 2.5 ps, with two focusing conditions (effective NA 0.126 and 0.255; focal \
+radii 2.0 and 0.95 um), single pulse per site. The measured thresholds are reproduced \
+in Tables 1 and 2; the breakdown criterion of the model is n_cr ~ 1.45e19 cm^-3 (from \
+Liu et al.)."""
+notes = """Journal pages 725-733 = PDF pages 1-9. Identity validated (DOI printed).
+
+THE THRESHOLDS ARE LIU ET AL.'S. 'The model is applied to investigate the threshold \
+intensity dependence on laser pulse width in the experimental measurements that are \
+given by Liu et al. (2005)' (abstract); Table 2's note: 'Laser power calculated \
+corresponding to the measured threshold intensity given by Liu et al., (2005) for the \
+two numerical apertures NA = 0.126 and 0.255.' Both datasets are therefore reproduced \
+(Liu et al. is not in the library). Liu's experiment as described here (pp. 725-726): \
+Ti:sapphire, 800 nm, FWHM 240 fs - 2.5 ps, a 10 x 5 x 3 mm3 fused-silica block, 'each \
+location of the sample only once' (single shot), a CCD behind a filter that blocks the \
+800-nm light; the effective NA = w/(w^2 + d^2)^0.5 from the knife-edge beam radius w \
+after the objective and the distance d to the focus; the objectives under-filled by \
+about 3; focal radii (FWHM, 'estimated') 2.0 and 0.95 um. The damage criterion of the \
+measurement is not stated here. Tables 1-2 list nine durations, 250 fs - 2.2 ps, not the \
+'240 fs - 2.5 ps' of the text.
+
+NA 0.225 OR 0.255 (finding). Table 1 and Table 2 head the second condition 'NA = 0.225' \
+(image checked); the abstract, the text (pp. 726-728) and the captions of Figs. 1-12 \
+give 0.255. Recorded as 0.255, with the table heading noted.
+
+TABLE 2's POWER COLUMN (not extracted: no quantity). Printed P (W), NA 0.126: 5.68E04, \
+2.93E04, 1.83E04, 1,13E04 (decimal comma, image checked), 9.33E03, 9.63E03, 8.83E03, \
+9.70E03, 9.75E03; NA 0.225/0.255: 4.05E04, 2.55E04, 1.55E04, 1.20E04, 1.04E04, 8.33E03, \
+7.95E03, 8.40E03, 8.45E03. Check (2026-09-26): P/I_th = 7.86e-9 cm2 (NA 0.126, except the \
+first row, 7.43e-9) and 7.09e-9 cm2 (NA 0.255), not pi w0^2 for the stated radii (1.26e-7 \
+and 2.84e-8 cm2): how P was calculated is not reproduced. The powers are compared with \
+P_cr = 2.19e6 W to argue that self-focusing is negligible (p. 727).
+
+TABLE 1's KELDYSH PARAMETER (not extracted: no quantity). Check (2026-09-26): every \
+printed gamma is sqrt(2) = 1.414 times Eq. (1) evaluated with the stated eps_eff = 9.0 eV \
+and m' = m/2 (to 4 digits), i.e. the table used m' = m_e (or a field convention differing \
+by 2 in I); except the NA 0.225 row at 2.05E-12 s, printed 7.696 where its I_th = 1.185E12 \
+gives 7.97 (7.696 would need I = 1.27e12). gamma > 3 throughout: multiphoton regime.
+
+MODEL INPUTS (pp. 726-727; datasets where a quantity exists): eps_eff = eps_g = 9.0 eV \
+('Following the values of gamma shown in Table 1, eps_eff is taken to be = 9.0 eV (the \
+energy gap for fused silica)'); 'm' is the reduced mass and is approximate ~m/2 [2]'; \
+Z0 = 377 Ohm; the momentum scattering rate '1/tau_m(eps) = 10^14 - 10^16 s^-1', 'adopted \
+... by others Arnold Cartier and de Maria [22]' (a range: no dataset); M ~ 9.98 x 10^-26 kg \
+in Eq. (5) (no quantity); the recombination time tau_rec = R^-1 = 1.5 x 10^-13 s, 'an \
+empirical value for fused silica ... [23,24]'; the breakdown criterion n_cr ~ 1.45e19 \
+cm^-3 [2]; for P_cr: n_r = 1.454, n2 = 3.2 x 10^-16 cm2/W [25,26], giving P_cr = 2.19 x \
+10^6 W (checked: 2.189e6 W, 2026-09-26). In Eq. (6) the Rayleigh length z_R = n_r pi w0^2 / \
+lambda0; z_R = 2.35e-3 cm (NA 0.126) and 5.313e-4 cm (NA 0.255) (pp. 729-730).
+
+MODEL RESULTS (figures only): calculated threshold against pulse width compared with \
+Liu's (Fig. 1), electron density and ionization rate against time (Figs. 2-4), their \
+spatial variation (Figs. 5-12). Table 3 (tbl_9f0fb5be3f74): the electron density at the \
+end of the pulse with and without losses (1.45e19 v 1.435e19 ... 1.2536e19 cm^-3), a \
+model diagnostic, not extracted. Text: I_th at r = z = 0 is 3.51e12 W/cm2 for 395 fs, \
+NA 0.126 (p. 730), model value.
+
+Reference [10] (Schaffer et al. 2001, schaffer_2001) is cited for the practical NA \
+limit 0.5."""
+
+[[datasets]]
+id = "threshold_NA0126"
+material = "SiO2"
+file = "SiO2/hamam_2018__threshold_NA0126.csv"
+table = "tbl_5037c0738f9f"
+quantity = "damage_threshold_intensity"
+unit = "W/cm2"
+abscissa = "duration"
+abscissa_unit = "s"
+use = "reproduced"
+reproduced_from = ["liu_2005"]
+notes = "Table 2, 'Beam spot size = 2.0 (um)' column I_th (the same values as Table 1). Liu et al.'s measured bulk breakdown thresholds (source notes); pulse FWHM as the abscissa. Grade of the fused silica not stated."
+[datasets.parameters]
+site = "bulk"
+criterion = "not stated here (Liu et al.'s single-shot observation with a CCD)"
+shots = 1
+wavelength_nm = 800
+numerical_aperture = 0.126
+
+[[datasets]]
+id = "threshold_NA0255"
+material = "SiO2"
+file = "SiO2/hamam_2018__threshold_NA0255.csv"
+table = "tbl_5037c0738f9f"
+quantity = "damage_threshold_intensity"
+unit = "W/cm2"
+abscissa = "duration"
+abscissa_unit = "s"
+use = "reproduced"
+reproduced_from = ["liu_2005"]
+notes = "Table 2, 'Beam spot size = 0.95 (um)' column I_th. The tables head this condition 'NA = 0.225', the text and captions 0.255 (source notes)."
+[datasets.parameters]
+site = "bulk"
+criterion = "not stated here (Liu et al.'s single-shot observation with a CCD)"
+shots = 1
+wavelength_nm = 800
+numerical_aperture = "0.255 (text, abstract, Figs. 1-12; Tables 1-2 print 0.225)"
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "9.0"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "p. 727: 'eps_eff is taken to be = 9.0 eV (the energy gap for fused silica, eps_g)'; no source cited for the value."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_reduced_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.5"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+reproduced_from = ["Yi Liu, Jiang Hongbing, Sun Quan, Wu Zhaoxin, Yang Hong, Gong Qihuang. J Opt A: Pure Appl Opt 2005;7:198"]
+notes = "p. 727: 'm' is the reduced mass and is approximate ~m/2 [2]' (printed as the fraction m/2). Table 1's Keldysh parameters are reproduced with m' = m_e instead (source notes)."
+[datasets.parameters]
+carrier = "reduced"
+assumed = true
+
+[[datasets]]
+id = "model_recombination_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1.5e-13"]]
+quantity = "electron_trapping_time"
+unit = "s"
+abscissa = "none"
+use = "check"
+reproduced_from = ["tzortzakis_2001", "P. Audebert et al., Phys. Rev. Lett. 73, 1990 (1994)"]
+notes = "Eq. (7), p. 727: 'As for the electron recombination time an empirical value for fused silica is estimated as [23,24]: tau_rec = R^-1 = 1.5 x 10^-13 s'. Ref. 23 is Tzortzakis et al. 2001 (who take 150 fs from Audebert et al.), ref. 24 Audebert et al. 1994."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_n2"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "3.2e-16"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["G. P. Agrawal, Nonlinear fiber optics, 3rd ed. (Academic Press, San Diego, 2001)", "S. Skupin and L. Berge, Physica D 220, 14 (2006)"]
+notes = "p. 727: 'n2 is the nonlinear refractive index for the used wavelength expressed in cm2/W (n2 = 3.2 x 10^-16 cm2/W) [25,26]', used only to estimate P_cr. No pulse duration or part stated."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+assumed = true
+
+[[datasets]]
+id = "model_refractive_index"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "1.454"]]
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 727: 'n_r is the fused silica linear refractive index (n_r = 1.454)', used for P_cr and z_R; no source cited."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_critical_power"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "2.19e6"]]
+quantity = "critical_power"
+unit = "W"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 727: 'The calculated critical power is found to be P_cr^silica = 2.19 x 10^6 W' from the assumed n_r and n2. Checked: lambda^2/(2 pi n_r n2) = 2.189e6 W (2026-09-26)."
+[datasets.parameters]
+definition = "P_cr = lambda^2 / (2 pi n_r n2), lambda = 800.0 nm, n_r = 1.454, n2 = 3.2e-16 cm2/W"
+
+[[formulas]]
+id = "keldysh_parameter"
+material = "SiO2"
+equation = "Eq. (1), p. 726"
+printed = "gamma = omega (eps_eff m' / (I Z0 e^2))^(1/2)"
+variable = "omega: laser angular frequency; eps_eff the effective band gap; m' the electron reduced mass; I the intensity; Z0 = 377 Ohm; SI units"
+coefficients = { eps_eff = "9.0 eV", m_prime = "~m/2", Z0 = "377 Ohm" }
+check = "Table 1's gamma are sqrt(2) times this formula with m' = m/2, i.e. equal to it with m' = m_e, to 4 digits, except one cell (2.05E-12 s, NA 0.225: 7.696 printed, 7.97 computed) (checked 2026-09-26)."
+notes = "gamma > 1 is taken as multiphoton ionization, gamma < 1 as tunnelling (p. 726)."
+
+[[formulas]]
+id = "keldysh_rate"
+material = "SiO2"
+equation = "Eqs. (3)-(4), pp. 726-727"
+printed = "W_MPI = (2 omega/9 pi) (m' omega/(hbar gamma gamma_1))^(3/2) Q(gamma, Delta) exp{-Gamma pi <Delta + 1>}; gamma_1 = (1 + gamma^2)^(-1/2); Delta = [2 eps_eff E'(gamma_1) / (pi hbar omega gamma gamma_1)]; eps_eff = eps_g + Z0 e^2 I/(4 m' omega^2) = eps_g [1 + 1/(4 gamma^2)]; Gamma = [K(gamma gamma_1) - E(gamma gamma_1)] / E(gamma_1); Q(gamma, Delta) = sqrt(pi/(2 K(gamma_1))) sum_n exp(-pi n Gamma) Phi(sqrt(pi^2 (2<Delta + 1> - 2 Delta + n)/(2 K(gamma_1) E(gamma_1)))); Phi(x) = int_0^x exp(y^2 - x^2) dy"
+variable = "E~ and K~: printed 'E~ and K~ are the complete elliptic integral of the first and second kinds' (in that order, the reverse of the usual K first kind, E second); <x> the integer part; Phi Dawson's integral"
+coefficients = { eps_eff = "9.0 eV" }
+reproduced_from = ["L. V. Keldysh, Sov. Phys. JETP 20, 1307 (1965)", "A. Tien et al., Phys. Rev. Lett. 82, 3883 (1999)"]
+check = "Not reproduced: the extraction of Eq. (3) is garbled in places (gamma_1 and Delta are typeset inline), and the paper prints no rate value to compare with."
+notes = "Transcribed as rendered in the library text; compare the forms in couairon_2005 (Eqs. 7-8) and jing_2012 (Eq. 3), which differ in the arguments of the elliptic integrals and in the effective gap (jing_2012 prints E_g[1 + 1/(2 gamma^2)])."
+
+[[formulas]]
+id = "rate_equation"
+material = "SiO2"
+equation = "Eqs. (2), (5)-(7), pp. 726-727"
+printed = "dn/dt = dn/dt|MPI + eta_AVI n - D n - R n^2 (2); eta_AVI = e^2 tau_m(eps) I(t) / (c n_r m' eps0 eps_g (omega^2 tau_m^2 + 1)) - m' omega^2 tau_m(eps) / (M (omega^2 tau_m^2 + 1)) (5); D = (tau_m eps_g/(3 m')) [(2.4/w0)^2 + (1/z_R)^2], z_R = n_r pi w0^2/lambda0 (6); tau_rec = R^-1 = 1.5 x 10^-13 s (7)"
+variable = "n: conduction-electron density; tau_m the electron-phonon momentum relaxation time; M ~ 9.98e-26 kg; w0 the beam radius; z_R the Rayleigh length"
+coefficients = { inverse_tau_m = "1e14 - 1e16 s^-1", M = "9.98e-26 kg", tau_rec = "1.5e-13 s", n_cr = "1.45e19 cm^-3" }
+check = "No rate values printed to reproduce."
+notes = "Eq. (2) writes the recombination loss as R n^2 while Eq. (7) defines tau_rec = R^-1 (a linear-loss time); as printed. The pulse is I(t, r, z) = I_max exp(-4 ln 2 (t - tau_p)^2/(4 tau_p^2)) exp(-2(r^2/w0^2 + z^2/z_R^2)) with 2 tau_p the pulse width (Eq. 8)."

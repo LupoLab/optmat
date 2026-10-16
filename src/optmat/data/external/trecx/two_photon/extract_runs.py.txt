@@ -1,0 +1,167 @@
+"""Two-photon TDSE campaign, runs 2-6 extraction -> run{2..6}/results.csv (+ run5/pop_1s2s_vs_t.csv)
+
+    python3 extract_runs.py        (on the cluster, with the run directories; reads manifest_runs2to6.csv)
+
+- P_proj = 1 - sum of OccDual{H0:k} over the states with Re E_k < 0 of the run's discretisation (one electron; the
+  energies from the matching field-free spectrum), at the end of the window, minus the drift of the no-field run of the
+  same discretisation (P_proj_corr). norm-loss = 1 - <Ovr> at the end.
+- iSurff spectrum (spec_total, spec_channels): P_spec = int sigma k^2 dk; peak integrals over |E - E_c| < 0.25 eV,
+  E = k^2/2, at E_c = 2 omega1 - Ip ("p11"), omega1 + omega2 - Ip ("cross"), 2 omega2 - Ip ("p22"), Ip the run's own
+  (-E of its initial state). For one colour, p11 = cross = p22.
+- run 4: the 4p population (OccDual of the state at the model's 4p energy), with the lowest-order prediction
+  |M_m|^2 |int E+(t)^2 exp(i w_fi t) dt|^2, M_m from run4/pt_two_photon.py (length gauge), E+ the positive-frequency
+  part of the field as run (from tRecX's Laser output, field = -column 5).
+- run 5: OccDual of every Occupation state at the end, with its energy (`occupation_energies`), and the 1s2s population
+  against time.
+"""
+import csv, glob, math, os, re
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+HA = 27.211386245988
+TR = getattr(np, "trapezoid", getattr(np, "trapz", None))
+M_PT = {0: 8.914061, 1: 2.418379}        # run 4 perturbative amplitudes (au), dr = 0.002
+
+
+def expec(f):
+    hdr = [l[2:].strip() for l in open(f) if l.startswith("# ") and not l.startswith("#  ")]
+    a = np.loadtxt(f, comments="#", ndmin=2)
+    a = a[: int(np.argmax(a[:, 0])) + 1]
+    return {n: j for j, n in enumerate(["Time", "CPU"] + hdr[: a.shape[1] - 2])}, a
+
+
+def eig_energies(path):
+    e = np.loadtxt(path, delimiter=",", comments="#", ndmin=2)
+    return e[:, 0]
+
+
+def spec(rd):
+    for nm in ("spec_total", "spec_channels"):
+        f = f"{rd}/{nm}"
+        if os.path.isfile(f):
+            s = np.loadtxt(f, delimiter=",", comments="#", ndmin=2)
+            return s[:, 0], s[:, 1:].sum(axis=1)
+    return None, None
+
+
+def peak(k, sg, Ec, hw=0.25):
+    E = k * k / 2 * HA
+    sel = np.abs(E - Ec) < hw
+    return float(TR((sg * k * k)[sel], k[sel])) if sel.sum() > 2 else float("nan")
+
+
+def eig_for(run, name, model):
+    if model != "sae":
+        return None
+    if name.startswith("he_"):
+        return f"{HERE}/run1/sae/eigrun_box80/eigrun_box80/0000/eig"
+    m = re.match(r"ar_m(\d)", name).group(1)
+    var = re.search(r"_(eta15|box120|th23)$", name)
+    tag = {"eta15": "b80_eta15", "box120": "b120", "th23": "b80_th23"}.get(var.group(1) if var else "", "b80")
+    return f"{HERE}/run3/sae/eig_ar_m{m}_{tag}/eig_ar_m{m}_{tag}/0000/eig"
+
+
+def main():
+    man = list(csv.DictReader(open(f"{HERE}/manifest_runs2to6.csv")))
+    rows = {}
+    drift = {}
+    for r in man:
+        name, run, model = r["name"], r["run"], r["model"]
+        if name.startswith("eig"):
+            continue
+        d = f"{HERE}/{run}/{model}/{name}"
+        rd = f"{d}/{name}/0000"
+        o = dict(run=run, model=model, name=name, done=os.path.isfile(f"{d}/{name}.done"))
+        for k in ("half_sum_eV", "nu_eV", "omega1_eV", "omega2_eV", "I_per_colour", "m", "variant", "fwhm_fs", "phi2_fs2", "chirp_fs2", "T_eff_fs", "E_peak", "peakA"):
+            if r.get(k) not in (None, ""):
+                o[k] = r[k]
+        if not (o["done"] and os.path.isfile(f"{rd}/expec")):
+            rows[(model, name)] = o; continue
+        col, a = expec(f"{rd}/expec")
+        jn = next(j for n, j in col.items() if n.startswith("Ovr") or n == "Overlap")
+        jh = next(j for n, j in col.items() if n.startswith("H0"))
+        o["E_init"] = a[0, jh]; o["Ip_eV"] = -a[0, jh] * HA
+        o["t_end"] = a[-1, 0]
+        o["norm_loss_end"] = 1 - a[-1, jn]
+        occ = [j for n, j in col.items() if n.startswith("OccDual")]
+        ef = eig_for(run, name, model)
+        if occ and ef and os.path.isfile(ef):
+            e = eig_energies(ef)[: len(occ)]
+            o["P_proj"] = 1 - sum(a[-1, j] for j, ek in zip(occ, e) if ek < 0)
+            if run == "run4":
+                k4 = int(np.argmin(np.abs(e + 0.104674)))
+                o["E_4p"] = e[k4]; o["P_4p"] = a[-1, occ[k4]]
+                for nm, ee in (("5p", -0.0474635), ("4f", None)):
+                    if ee:
+                        kk = int(np.argmin(np.abs(e - ee))); o[f"P_{nm}"] = a[-1, occ[kk]]; o[f"E_{nm}"] = e[kk]
+        if "nofield" in name:
+            drift[name] = o.get("P_proj", o["norm_loss_end"])
+        k, sg = spec(rd)
+        if k is not None and r.get("omega1_eV") not in (None, ""):
+            w1, w2 = float(r["omega1_eV"]), float(r.get("omega2_eV") or r["omega1_eV"])
+            ip = o["Ip_eV"]
+            o["P_spec"] = float(TR(sg * k * k, k))
+            o["P_p11"], o["P_cross"], o["P_p22"] = peak(k, sg, 2 * w1 - ip), peak(k, sg, w1 + w2 - ip), peak(k, sg, 2 * w2 - ip)
+            o["E_cross_eV"] = w1 + w2 - ip
+        if run == "run4" and "P_4p" in o:
+            # the field from the pulse file as run (dt 0.01 au; tRecX's Laser output is sampled too coarsely, ~9 au):
+            # A = peakA x file, E = -dA/dt; E+ ~ exp(-i omega t) is the conjugate of numpy's positive-frequency part
+            pf = re.search(r"^file, (\S+), (\S+), peakA", open(f"{d}/{name}.inp").read(), re.M)
+            P = np.loadtxt(pf.group(1), comments="#")
+            t, A = P[:, 0], P[:, 1] * float(pf.group(2))
+            E = -np.gradient(A, t, edge_order=2)
+            n = len(t); X = np.fft.fft(E); fq = np.fft.fftfreq(n); X[fq < 0] = 0; X[fq > 0] *= 2   # z = E + i H[E]
+            Ep = np.conj(np.fft.ifft(X)) / 2
+            wfi = (o["E_4p"] - o["E_init"])
+            S = TR(Ep ** 2 * np.exp(1j * wfi * t), t)
+            m = int(r["m"])
+            o["S_pair_abs"] = float(abs(S)); o["P_4p_PT"] = M_PT[m] ** 2 * abs(S) ** 2
+            o["P_4p_TDSE_over_PT"] = o["P_4p"] / o["P_4p_PT"]
+        if run == "run5":
+            enf = f"{rd}/occupation_energies"
+            if os.path.isfile(enf):
+                en = [l.split() for l in open(enf) if not l.startswith("#")]
+                for st, re_, im_ in en:
+                    o[f"E_state{st}"] = float(re_)
+                for st, re_, im_ in en:
+                    o[f"P_state{st}"] = a[-1, occ[int(st)]] if int(st) < len(occ) else float("nan")
+                with open(f"{d}/pop_vs_t.csv", "w") as fo:
+                    fo.write("t_au,P_ground,P_1s2s,P_state2,P_state4,P_state5,P_state6,norm\n")
+                    for row in a:
+                        fo.write(",".join(f"{x:.8e}" for x in (row[0], row[occ[0]], row[occ[1]], row[occ[2]], row[occ[4]], row[occ[5]], row[occ[6]], row[jn])) + "\n")
+        st = f"{d}/{name}.stderr"
+        if os.path.isfile(st):
+            mm = re.search(r"Elapsed \(wall clock\) time.*: (\S+)", open(st).read())
+            if mm:
+                p = [float(x) for x in mm.group(1).split(":")]
+                o["wall_s"] = sum(x * 60 ** i for i, x in enumerate(reversed(p)))
+        w = f"{rd}/WARNINGS"
+        o["warnings"] = " | ".join(sorted({l.strip()[:80] for l in open(w) if l.strip() and not l.startswith("---")})) if os.path.isfile(w) else ""
+        rows[(model, name)] = o
+    # drift subtraction per discretisation (one-electron rows only)
+    for (model, name), o in rows.items():
+        if "P_proj" not in o or "nofield" in name:
+            continue
+        if name.startswith("he_r2"):
+            dn = "he_r2_nofield"
+        elif name.startswith("he_r6"):
+            dn = "he_r6_nofield"
+        elif name.startswith("ar_m"):
+            m = name[4]; var = re.search(r"_(eta15|box120|th23|dt23|cut150)$", name)
+            dn = f"ar_m0_r3_nofield_{var.group(1)}" if var else f"ar_m{m}_r3_nofield"
+        else:
+            dn = None
+        if dn in drift:
+            o["drift"] = drift[dn]; o["P_proj_corr"] = o["P_proj"] - drift[dn]
+    for run in ("run2", "run3", "run4", "run5", "run6"):
+        R = [o for o in rows.values() if o["run"] == run]
+        keys = []
+        for o in R:
+            keys += [k for k in o if k not in keys]
+        with open(f"{HERE}/{run}/results.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=keys); w.writeheader(); w.writerows(R)
+        print(run, len(R), "rows")
+
+
+if __name__ == "__main__":
+    main()

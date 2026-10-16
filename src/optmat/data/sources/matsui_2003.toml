@@ -1,0 +1,131 @@
+citation = "T. Matsui, A. S.-C. Cheung, K. W.-S. Leung, K. Yoshino, W. H. Parkinson, A. P. Thorne, J. E. Murray, K. Ito and T. Imajo, \"High resolution absorption cross-section measurements of the Schumann-Runge bands of O2 by VUV Fourier transform spectroscopy\", J. Mol. Spectrosc. 219, 45 (2003)"
+doi = "10.1016/s0022-2852(03)00009-2"
+library = "Matsui_2003_HighResolutionAbsorption"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Vacuum-ultraviolet Fourier-transform spectroscopy (the Imperial College \
+spectrometer) with synchrotron radiation (Photon Factory beam line 12B, predisperser \
+2.5 nm wide at 177.5 and 180.0 nm), resolution 0.06 or 0.12 cm^-1; a 7.82 cm cell of O2 \
+at 2.00, 4.00 and 10.00 Torr, 295 K (column densities 0.51, 1.02 and 2.56e18 cm^-2), \
+capacitance manometer; lines fitted with Voigt profiles (GREMLIN), about 650 lines of \
+the (12,0)-(17,0) bands, 175-182.5 nm (pp. 45-47). Line intensities from the 2.00 Torr \
+spectra only (saturation at 4 and 10 Torr, p. 54)."""
+notes = """Journal pages 45-57 = PDF pages 1-13. O2 only, 295 K. Only the band values \
+are taken (Table 5); the line lists (Tables 1a, 1b: positions; Table 2: term values; \
+Tables 4a, 4b: integrated line cross sections with branch totals) and the molecular \
+constants (Table 3) are not extracted.
+
+Band oscillator strength (Eq. 1, p. 55): f(v', v'') = (m c^2 / (pi e^2)) (1 / \
+N(v'')) integral sigma(nu) dnu over all rotational lines of the band, N(v'') the \
+fractional Boltzmann population of the lower level, from the extended total \
+cross-sections of the principal branches (extrapolated to N'' = 41 with a Boltzmann \
+distribution) and the observed totals of the satellite and forbidden branches. Table 5 \
+also gives the total (observed) and extended integrated cross-sections in 10^-17 cm^2 \
+cm^-1 (not extracted: no vocabulary quantity). Check (2026-09-25): the extended values \
+times 1/(pi r_e) = 1.12958e12 cm^-1 give 2.372, 2.621, 2.700, 2.666, 2.395, 2.124e-5, \
+the printed f to their rounding (N(0) = 1 to 0.1 % at 295 K).
+
+Accuracy (p. 55): pressure (+-0.02 Torr), temperature (295 +- 2 K) and path (7.82 +- \
+0.01 cm) give 'a random error of less than 2 %'; the noise is +-3e-20 cm^2 (3-4 % for \
+the strong lines of 5-6e-19 cm^2 cm^-1, 10 % at 2.5e-19, 17 % at 1.0e-19); 'total \
+errors on the integrated cross-sections are estimated to be less than 5 %'. The band \
+values are line-by-line integrals at a resolution comparable to the Doppler widths, \
+free of the blending of neighbouring bands that the authors think inflated the earlier \
+low-resolution values (p. 56). The abstract's f values (2.38, 2.62, 2.70, 2.66, 2.40, \
+2.12e-5) are Table 5's.
+
+The five comparison columns are reproduced: LBC (Lewis et al. 1986, 1.4 cm^-1 \
+resolution without pressure broadening, 'near the present results, but still a little \
+larger'), YFEP (Yoshino et al. 1983, 0.40 cm^-1, (12,0) only, agreeing), GGMBL (Gies et \
+al. 1981), HCMK (Huebner et al. 1975, electron energy loss, 'much smaller' than theirs) \
+and Bethke (1959, bethke_1959). The Bethke column copies bethke_1959's Table I except \
+(17,0), printed 2.95 for Bethke's 2.94 (erratum). This work is 15-28 % below Bethke \
+((12,0) -15 %, (17,0) -28 %).
+
+Band positions: the rows are indexed by v'. The band origins T(v) of Table 3 (cm^-1, \
+relative to the hypothetical F2 N = J = 0 level of X(0); calibration uncertainty 0.03 \
+cm^-1) are 55783.011 (v' = 12), 56083.695, 56338.380, 56548.168, 56716.53 and 56848.56 \
+(v' = 17), about 179.3-175.9 nm (tbl_60e4f321647c, image checked; not extracted)."""
+
+[[datasets]]
+id = "present"
+material = "O2"
+file = "O2/matsui_2003__present.csv"
+table = "tbl_0c3259b06159"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "primary"
+notes = "Table 5 'Present': band oscillator strengths of the Schumann-Runge (v', 0) bands, v' = 12-17 (index v'), in 1e-5, at 295 K. Less than 5 % (stated as a bound on the integrated cross-sections)."
+[datasets.uncertainty]
+relative = 0.05
+level = "bound"
+
+[[datasets]]
+id = "lbc"
+material = "O2"
+file = "O2/matsui_2003__lbc.csv"
+table = "tbl_0c3259b06159"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["B. R. Lewis, L. Berzins, J. H. Carver, J. Quant. Spectrosc. Radiat. Transfer 36, 209 (1986)"]
+notes = "Table 5 'LBC' (note c), v' = 12-16 (none for 17), in 1e-5: Lewis et al.'s band oscillator strengths, reproduced."
+
+[[datasets]]
+id = "yfep"
+material = "O2"
+file = "O2/matsui_2003__yfep.csv"
+table = "tbl_0c3259b06159"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. Yoshino, D. E. Freeman, J. R. Esmond, W. H. Parkinson, Planet. Space Sci. 31, 339 (1983)"]
+notes = "Table 5 'YFEP' (note d), (12,0) only, in 1e-5: Yoshino et al.'s value from line-by-line cross sections at 0.40 cm^-1, reproduced. Merged with the LBC column in the library cells (structural fix in the script)."
+
+[[datasets]]
+id = "ggmbl"
+material = "O2"
+file = "O2/matsui_2003__ggmbl.csv"
+table = "tbl_0c3259b06159"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["H. P. Gies, S. T. Gibson, D. G. McCoy, A. J. Blake, B. R. Lewis, J. Quant. Spectrosc. Radiat. Transfer 26, 469 (1981)"]
+notes = "Table 5 'GGMBL' (note e), v' = 12-17, in 1e-5: Gies et al.'s band oscillator strengths, reproduced."
+
+[[datasets]]
+id = "hcmk"
+material = "O2"
+file = "O2/matsui_2003__hcmk.csv"
+table = "tbl_0c3259b06159"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. H. Huebner, R. J. Celotta, S. R. Mielczarek, C. E. Kuyatt, J. Chem. Phys. 63, 241 (1975)"]
+notes = "Table 5 'HCMK' (note f), v' = 12-17, in 1e-5: Huebner et al.'s electron-energy-loss band oscillator strengths, reproduced (the highest of the set)."
+
+[[datasets]]
+id = "bethke"
+material = "O2"
+file = "O2/matsui_2003__bethke.csv"
+table = "tbl_0c3259b06159"
+quantity = "oscillator_strength"
+scale = 1e-5
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["bethke_1959"]
+notes = "Table 5 'Bethke' (note g), v' = 12-17, in 1e-5: bethke_1959's Table I, reproduced; (17,0) printed 2.95 for Bethke's 2.94 (erratum)."
+
+[[errata]]
+dataset = "bethke"
+row = "(17,0)"
+column = "value"
+printed = "2.95"
+corrected = "2.94"
+reason = "The reproduction of Bethke's (17,0) band oscillator strength reads 2.95e-5; Bethke's Table I prints 2.94e-5, and his K_0 = 699 cm^-2 atm^-1 with his Eq. (2), 4.203e-8 K_0, gives 2.938e-5. The other five reproduced values equal Bethke's."
+evidence = "Table 5 image (tbl_0c3259b06159.jpg) prints 2.95; bethke_1959 Table I image (tbl_172bb90e7da2.jpg) prints 2.94; checked 2026-09-25."

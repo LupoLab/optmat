@@ -1,0 +1,491 @@
+citation = "N. Nambu, Z. Nie, K. Marsh and C. Joshi, \"Strong-field physics meets quantum electronics\", J. Opt. Soc. Am. B 43, 750-773 (2026)"
+doi = "10.1364/JOSAB.581433"
+library = "Nambu_2026_StrongFieldPhysics"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Cross-polarized common-path temporal interferometry (Sec. 4A, pp. 6-7, \
+Fig. 5; the method of Nie et al. 2022, the paper's ref. 75): a pump pulse focused into \
+a static-filled gas tube ionises the gas; a weaker probe pulse is split by a \
+birefringent crystal into two cross-polarized copies, the reference arriving before the \
+pump and the probe after it, and their phase difference is measured with a Wollaston \
+prism and a balanced photodetector. Pump and probe (Table 2, p. 20): 800 nm pump, 55 fs, \
+spot size 60.0 um, probed at 400 nm, 130 fs, 42.0 um; 400 nm pump, 130 fs, 27.5 um, \
+probed at 800 nm, 55 fs, 23.3 um. Which probe goes with which pump is not said in this \
+paper; Nie et al. 2022 (p. 8: 'when we use 800 nm pump laser, the wavelength of the \
+probe beam is 400 nm; when we use 400 nm or 267 nm pump lasers, the wavelength of the \
+probe beam is 800 nm instead', and their Table 1, p. 7, with the same durations and \
+spot sizes) say it. Both beams Gaussian with 'measured beam quality of M^2 = 1.25' \
+(App. C, p. 20). Ar, Kr and Xe, linearly and circularly polarized pump. The gas \
+pressure was adjusted at each pump intensity to keep the phase shift below 300 mrad \
+and the phase shifts normalised to 1 atm (p. 7); for Fig. 6, 0.25 Torr to 1 atm, total \
+phases 10 to 200 mrad, 'with a linear relationship between pressure and phase change' \
+(Fig. 6's caption)."""
+notes = """Journal pp. 750-773 = PDF pages 1-24 (journal page = PDF page + 749). Identity \
+checked on PDF p. 1 (title 'Strong-field physics meets quantum electronics'; Noa Nambu, \
+Zan Nie, Kenneth Marsh and Chan Joshi, UCLA; JOSA B 43(4), April 2026; received 20 \
+October 2025, published 18 March 2026) on 2026-10-01; the library's front matter agrees.
+
+THE QUANTITY (Sec. 4A, Eq. (3), p. 6), quoted: 'The phase change is related to the \
+plasma density as Delta phi = int_-inf^inf int_0^inf (2 pi / lambda_probe) \
+Ibar_probe(r, z) Delta eta(r, z) r dr dz, where lambda_probe is the probe wavelength, \
+Ibar_probe(r, z) = I_probe(r, z) / int_0^inf I_probe(r, z) r dr is the normalized \
+spatial intensity distribution of the probe, and I_pump(r, z) is the spatial intensity \
+distribution of the pump, which induces a change in refractive index Delta eta(r, z).' \
+For a plasma alone Delta eta = -n_p / 2 n_c with n_c = eps0 m_e omega_probe^2 / e^2 \
+(p. 7); electrons in excited atoms add to n_p where the probe is far above their \
+transitions (Eq. (4), p. 7). The measured phases were normalised to 1 atm (p. 7, Figs. 6 \
+and 7's captions), plotted as Delta Phi in rad/atm: here rad at pressure_atm = 1. The \
+sign is not kept: the figures plot the magnitude. App. C (p. 20) models both beams as \
+Gaussian, I(r, z) proportional to exp(-2 r^2 / w(z)^2) (Eq. (C1)), M^2 = 1.25, with the \
+spot sizes of Table 2; the 'spot size' is the radius w0 of that profile (Nie et al. \
+2022, Fig. 3(b), draws the pump's and the probe's w(z) with minima at 60 and 42 um).
+
+THE INTENSITY: the pump's peak intensity (App. C computes the ionisation 'as a function \
+of peak intensity'). How it was obtained (energy, duration and spot size) and its \
+uncertainty are not stated in this paper; Nie et al. 2022 (p. 6) measured 'the spot \
+size, pulse duration, laser energy and gas pressure at each experimental condition'. \
+Whether a circularly polarised pulse's intensity is its total is not stated. The pulse \
+duration's definition is not stated (Nie et al. 2022, p. 6: 55 fs 'measured by \
+Spectral Phase Interferometry for Direct Electric-field Reconstruction').
+
+EXTRACTED (tools/extract/nambu_2026.py), data rule 8, TC-699: the measured points, with \
+their error bars, of Fig. 6 (PDF p. 7, library figure fig_119981293e1f; 800 nm pump) \
+and Fig. 7 (PDF p. 8, fig_63d440c06a97; 400 nm pump), Ar, Kr and Xe, LP (blue squares) \
+and CP (red circles): 12 datasets, 251 points. The PPT and TDSE curves and Fig. 8 \
+(267 nm) are not taken. Both figures are vector drawings, each a form XObject on its \
+page, read from the drawing: the plot areas, legends and panel labels from the drawing \
+and its text objects; the log axes calibrated from each panel's own tick marks, every \
+tick on the fitted scale within 0.005 pt (x: 87.5 pt per decade in Fig. 6(a, b), 62.6 in \
+6(c), 57.5 in 7(a, b), 48.0 in 7(c); y: 17.6 pt per decade, 1e-3 to 1e3 rad/atm, 55 \
+ticks). Fig. 6(c) has no x major tick (the gamma = 1 line is drawn over the 10^14 tick): \
+its 12 minor ticks are read as 2e13 to 9e13 and 2e14 to 5e14, the only assignment of \
+consecutive multiples that puts them on one log scale. The markers are the filled \
+squares (1.17 pt) and circles (1.56 pt) outside the legends, their centres; every \
+marker's outline (squares) or ring (circles) is also in the drawing and their counts \
+agree panel by panel, so no marker is missed or doubled. Each error bar is two vertical \
+lines from the marker's centre with a cap at each end; each line is assigned to the \
+marker whose centre is within 0.008 pt of its first vertex and 0.003 pt nearer than any \
+other (two markers of Fig. 6(b) are 0.0105 pt apart), every marker has one line up and \
+one down, and every end has its cap. Points per dataset: Fig. 6: Ar LP 10, Ar CP 20, \
+Kr LP 22, Kr CP 23, Xe LP 19, Xe CP 17; Fig. 7: Ar LP 22, Ar CP 23, Kr LP 30, Kr CP 23, \
+Xe LP 23, Xe CP 19. Several markers share an intensity (Fig. 6's caption: 'At each \
+intensity, measurements were performed with different gas pressures'); each is kept \
+as its own row.
+
+THE ERROR BARS are symmetric in rad, not on the log axis: the upper and lower \
+half-lengths agree within 1 % of sigma or 0.005 pt (the script checks it; at most 2.7 % \
+for bars a few tenths of a point long), so the bars are +-sigma and sigma is half the \
+bar's length in rad. sigma/value is 0.009 to 0.69. Their level is not stated; Nie et \
+al. 2022 (p. 6): 'At each experimental condition, we took 100 shots for statistics'. 181 \
+of the 251 bars are shorter than the marker's half-width on both sides, hidden behind \
+the marker in print, but drawn: they are read like the others. The printed column \
+gives each marker's centre and its bar's ends in page points.
+
+DIGITISING: the drawing gives the marker centres and bar ends to 0.001 pt, with the \
+bars' first vertices up to 0.007 pt from the marker centres: 0.0004 decade in the \
+phase (0.1 %) and 0.00015 decade in the intensity (0.03 %), negligible beside the bars. \
+The markers' widths, 1.17 and 1.56 pt, are 0.066 and 0.089 decade of phase: what a \
+reading of the printed figure would face, not this one. No further uncertainty is \
+added to the bars.
+
+CHECKS: (1) every tick on its axis's fitted scale (above). (2) Fig. 6's vertical \
+dash-dot lines mark gamma = 1 (its caption): read on the x axis they are at 1.3196e14 \
+(Ar), 1.1723e14 (Kr) and 1.0157e14 W/cm2 (Xe), against I = I_p c eps0 m_e omega^2 / e^2 \
+at 800 nm from the paper's ionisation energies (p. 8: 15.76, 14.00, 12.13 eV): \
+1.3186e14, 1.1714e14, 1.0149e14: +0.074 to +0.076 %; this checks Fig. 6(c)'s calibration from \
+minor ticks alone. (3) The intensities fall on a grid: Fig. 6's are multiples of \
+1.6078e13 W/cm2 and Fig. 7's of 6.475e11 W/cm2, every one within 2e-4 of its multiple \
+(set pulse energies, presumably), across panels calibrated separately. (4) Overlays \
+of the extracted markers and bar ends on the PDF rendered at 10x, panel by panel: every \
+marker captured once, LP and CP as the legends draw them, the legends' markers \
+excluded. (5) Numbers printed for these quantities: none in the text for Figs. 6 and 7; \
+the captions' 10 to 200 mrad (Fig. 6) and the < 300 mrad (p. 7) are the raw phases \
+before normalisation, which are not given point by point.
+
+FIG. 6 AND NIE ET AL. 2022: the paper says the 800 nm results of ref. 75 'are \
+reproduced in Fig. 6' (p. 7), so the Fig. 6 datasets are marked reproduced_from \
+nie_2022 and are not independent of it. They are not a copy of Nie et al.'s Fig. 4: \
+that figure (a raster image, Opt. Express 30, 25696, p. 8) shows about one marker per \
+intensity, Fig. 6 several at many intensities (Ar CP: 20 markers at 7 intensities), and \
+Nie et al.'s y axis is labelled 'Delta Phi (rad)' normalised to 1 atm. Nie et al.'s \
+pressures were 3 to 1500 Torr (p. 6), Fig. 6's caption says 0.25 Torr to 1 atm. Nie et \
+al. (Fig. 4's caption): 'a maximum phase change of 500 rad corresponds to 100% \
+ionization of these noble gases (plasma density of 2.7 x 10^19 cm^-3)'; Fig. 6's Xe LP \
+reaches 584 rad (Kr LP 391 rad) at 2.89e14 W/cm2. That figure is not a ceiling: once \
+the gas is fully ionised near the focus, the ionised column lengthens as the intensity \
+rises (TC-817). Against nie_2022's Fig. 4, read from its image: at equal phase Fig. \
+6's intensities are 0.88 to 0.89 times Nie et al.'s for Ar and Kr and 0.82 for Xe \
+(medians; 0.80 to 0.95 point by point), alike for LP and CP, and Fig. 6 omits Nie et \
+al.'s lowest Ar LP and Kr LP points. The paper does not say why: the reproduction \
+changes the intensity scale by 11 to 18 % (TC-818).
+
+DOUBT: the probe wavelength for each pump is from Nie et al. 2022, not this paper; the \
+intensity calibration and its uncertainty are not stated; the error bars' level is not \
+stated; the phase is the probe-weighted, volume-integrated quantity of Eq. (3), so a \
+comparison with a model needs the beams' geometry (Table 2, M^2) as App. C does."""
+
+[[datasets]]
+id = "fig6_Ar_LP"
+material = "Ar"
+file = "Ar/nambu_2026__fig6_Ar_LP.csv"
+table = "fig_119981293e1f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+reproduced_from = ["nie_2022"]
+notes = "Fig. 6 (pdf p. 7), panel (a), measured points (blue squares, 'Exp. LP'): the phase shift of the 400 nm probe from Ar ionised by the 800 nm linearly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points. The 800 nm measurements are those of Nie et al. 2022 (the paper's ref. 75), 'reproduced in Fig. 6' (p. 7): reproduced_from nie_2022; the record's notes say how the two figures differ."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "0.25 Torr to 1 atm, total phases 10 to 200 mrad, linear in the pressure (Fig. 6's caption); adjusted at each intensity to keep the phase below 300 mrad (p. 7); Nie et al. 2022 (p. 6) state 3 Torr at the highest and 1500 Torr at the lowest intensity"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig6_Ar_CP"
+material = "Ar"
+file = "Ar/nambu_2026__fig6_Ar_CP.csv"
+table = "fig_119981293e1f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+reproduced_from = ["nie_2022"]
+notes = "Fig. 6 (pdf p. 7), panel (a), measured points (red circles, 'Exp. CP'): the phase shift of the 400 nm probe from Ar ionised by the 800 nm circularly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points. The 800 nm measurements are those of Nie et al. 2022 (the paper's ref. 75), 'reproduced in Fig. 6' (p. 7): reproduced_from nie_2022; the record's notes say how the two figures differ."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "circular"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "0.25 Torr to 1 atm, total phases 10 to 200 mrad, linear in the pressure (Fig. 6's caption); adjusted at each intensity to keep the phase below 300 mrad (p. 7); Nie et al. 2022 (p. 6) state 3 Torr at the highest and 1500 Torr at the lowest intensity"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig6_Kr_LP"
+material = "Kr"
+file = "Kr/nambu_2026__fig6_Kr_LP.csv"
+table = "fig_119981293e1f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+reproduced_from = ["nie_2022"]
+notes = "Fig. 6 (pdf p. 7), panel (b), measured points (blue squares, 'Exp. LP'): the phase shift of the 400 nm probe from Kr ionised by the 800 nm linearly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points. The 800 nm measurements are those of Nie et al. 2022 (the paper's ref. 75), 'reproduced in Fig. 6' (p. 7): reproduced_from nie_2022; the record's notes say how the two figures differ."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "0.25 Torr to 1 atm, total phases 10 to 200 mrad, linear in the pressure (Fig. 6's caption); adjusted at each intensity to keep the phase below 300 mrad (p. 7); Nie et al. 2022 (p. 6) state 3 Torr at the highest and 1500 Torr at the lowest intensity"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig6_Kr_CP"
+material = "Kr"
+file = "Kr/nambu_2026__fig6_Kr_CP.csv"
+table = "fig_119981293e1f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+reproduced_from = ["nie_2022"]
+notes = "Fig. 6 (pdf p. 7), panel (b), measured points (red circles, 'Exp. CP'): the phase shift of the 400 nm probe from Kr ionised by the 800 nm circularly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points. The 800 nm measurements are those of Nie et al. 2022 (the paper's ref. 75), 'reproduced in Fig. 6' (p. 7): reproduced_from nie_2022; the record's notes say how the two figures differ."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "circular"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "0.25 Torr to 1 atm, total phases 10 to 200 mrad, linear in the pressure (Fig. 6's caption); adjusted at each intensity to keep the phase below 300 mrad (p. 7); Nie et al. 2022 (p. 6) state 3 Torr at the highest and 1500 Torr at the lowest intensity"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig6_Xe_LP"
+material = "Xe"
+file = "Xe/nambu_2026__fig6_Xe_LP.csv"
+table = "fig_119981293e1f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+reproduced_from = ["nie_2022"]
+notes = "Fig. 6 (pdf p. 7), panel (c), measured points (blue squares, 'Exp. LP'): the phase shift of the 400 nm probe from Xe ionised by the 800 nm linearly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points. The 800 nm measurements are those of Nie et al. 2022 (the paper's ref. 75), 'reproduced in Fig. 6' (p. 7): reproduced_from nie_2022; the record's notes say how the two figures differ."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "linear"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "0.25 Torr to 1 atm, total phases 10 to 200 mrad, linear in the pressure (Fig. 6's caption); adjusted at each intensity to keep the phase below 300 mrad (p. 7); Nie et al. 2022 (p. 6) state 3 Torr at the highest and 1500 Torr at the lowest intensity"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig6_Xe_CP"
+material = "Xe"
+file = "Xe/nambu_2026__fig6_Xe_CP.csv"
+table = "fig_119981293e1f"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+reproduced_from = ["nie_2022"]
+notes = "Fig. 6 (pdf p. 7), panel (c), measured points (red circles, 'Exp. CP'): the phase shift of the 400 nm probe from Xe ionised by the 800 nm circularly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points. The 800 nm measurements are those of Nie et al. 2022 (the paper's ref. 75), 'reproduced in Fig. 6' (p. 7): reproduced_from nie_2022; the record's notes say how the two figures differ."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 55
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "circular"
+probe_wavelength_nm = 400
+probe_pulse_fs = 130
+pump_waist_um = 60.0
+probe_waist_um = 42.0
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "0.25 Torr to 1 atm, total phases 10 to 200 mrad, linear in the pressure (Fig. 6's caption); adjusted at each intensity to keep the phase below 300 mrad (p. 7); Nie et al. 2022 (p. 6) state 3 Torr at the highest and 1500 Torr at the lowest intensity"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig7_Ar_LP"
+material = "Ar"
+file = "Ar/nambu_2026__fig7_Ar_LP.csv"
+table = "fig_63d440c06a97"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 7 (pdf p. 8), panel (a), measured points (blue squares, 'Exp. LP'): the phase shift of the 800 nm probe from Ar ionised by the 400 nm linearly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "linear"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "not stated for Fig. 7; adjusted at each intensity to keep the phase below 300 mrad (p. 7), normalised to 1 atm 'as in Fig. 6' (Fig. 7's caption)"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig7_Ar_CP"
+material = "Ar"
+file = "Ar/nambu_2026__fig7_Ar_CP.csv"
+table = "fig_63d440c06a97"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 7 (pdf p. 8), panel (a), measured points (red circles, 'Exp. CP'): the phase shift of the 800 nm probe from Ar ionised by the 400 nm circularly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "circular"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "not stated for Fig. 7; adjusted at each intensity to keep the phase below 300 mrad (p. 7), normalised to 1 atm 'as in Fig. 6' (Fig. 7's caption)"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig7_Kr_LP"
+material = "Kr"
+file = "Kr/nambu_2026__fig7_Kr_LP.csv"
+table = "fig_63d440c06a97"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 7 (pdf p. 8), panel (b), measured points (blue squares, 'Exp. LP'): the phase shift of the 800 nm probe from Kr ionised by the 400 nm linearly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "linear"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "not stated for Fig. 7; adjusted at each intensity to keep the phase below 300 mrad (p. 7), normalised to 1 atm 'as in Fig. 6' (Fig. 7's caption)"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig7_Kr_CP"
+material = "Kr"
+file = "Kr/nambu_2026__fig7_Kr_CP.csv"
+table = "fig_63d440c06a97"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 7 (pdf p. 8), panel (b), measured points (red circles, 'Exp. CP'): the phase shift of the 800 nm probe from Kr ionised by the 400 nm circularly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "circular"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "not stated for Fig. 7; adjusted at each intensity to keep the phase below 300 mrad (p. 7), normalised to 1 atm 'as in Fig. 6' (Fig. 7's caption)"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig7_Xe_LP"
+material = "Xe"
+file = "Xe/nambu_2026__fig7_Xe_LP.csv"
+table = "fig_63d440c06a97"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 7 (pdf p. 8), panel (c), measured points (blue squares, 'Exp. LP'): the phase shift of the 800 nm probe from Xe ionised by the 400 nm linearly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "linear"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "not stated for Fig. 7; adjusted at each intensity to keep the phase below 300 mrad (p. 7), normalised to 1 atm 'as in Fig. 6' (Fig. 7's caption)"
+intensity = "the pump's peak intensity at focus (App. C)"
+
+[[datasets]]
+id = "fig7_Xe_CP"
+material = "Xe"
+file = "Xe/nambu_2026__fig7_Xe_CP.csv"
+table = "fig_63d440c06a97"
+digitised = "vector"
+quantity = "ionization_phase_shift"
+unit = "rad"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 7 (pdf p. 8), panel (c), measured points (red circles, 'Exp. CP'): the phase shift of the 800 nm probe from Xe ionised by the 400 nm circularly polarised pump, normalised to 1 atm, rad, against the pump's peak intensity, W/cm2; read from the vector drawing (the record's notes). sigma: half the error bar's length in rad (the bars are symmetric in rad), level not stated. The row numbers the panel's markers in order of intensity; some intensities carry several markers (measurements at different pressures, Fig. 6's caption). The printed column gives the marker's centre and the bar's ends in page points."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 400
+pulse_fs = 130
+pulse_fs_definition = "not stated: Table 2's 'Pulse Duration (fs)'"
+polarization = "circular"
+probe_wavelength_nm = 800
+probe_pulse_fs = 55
+pump_waist_um = 27.5
+probe_waist_um = 23.3
+waist_definition = "Table 2's 'Spot Size (um)': the radius w0 of the Gaussian beam's exp(-2 r^2/w^2) intensity profile (App. C, Eq. (C1); Nie et al. 2022, Fig. 3(b))"
+m2 = 1.25
+pressure_atm = 1
+pressure_range = "not stated for Fig. 7; adjusted at each intensity to keep the phase below 300 mrad (p. 7), normalised to 1 atm 'as in Fig. 6' (Fig. 7's caption)"
+intensity = "the pump's peak intensity at focus (App. C)"

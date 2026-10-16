@@ -1,0 +1,211 @@
+citation = "S. R. Flom, G. Beadie, S. S. Bayya, B. Shaw and J. M. Auxier, \"Ultrafast Z-scan measurements of nonlinear optical constants of window materials at 772, 1030, and 1550 nm\", Appl. Opt. 54, F123-F128 (2015)"
+doi = "10.1364/AO.54.00F123"
+library = "Flom_2015_UltrafastScanMeasurements"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Femtosecond Z-scan with simultaneous open- and closed-aperture detection, \
+ratioed to a reference photodiode, 100 shots per position (p. F124-F125). Source: Clark \
+CPA 2001 amplifier pumping a Clark NOPA (450-1600 nm); spatially filtered beam (M^2 < \
+1.1), 150 mm effective focal length lens; spot size by horizontal and vertical razor \
+scans (averaged; ~5.6 % astigmatism at 1550 nm); pulse width by SHG FROG: FWHM 275 +- \
+20 fs at 772 nm, 140 +- 10 fs at 1030 nm, 97 +- 7 fs at 1550 nm (p. F125). The whole \
+Z-scan is fitted (least squares) with the Gaussian-decomposition expressions of \
+Sheik-Bahae et al. [13] (Eq. (27) for the field, Eqs. (10)-(11) for power and \
+transmission): open aperture first (nonlinear absorption), then closed aperture with \
+it fixed. For all but fused silica and BK7, higher-intensity scans were divided by a \
+low-intensity (linear) scan to remove structural artefacts (p. F126)."""
+notes = """Journal pages F123-F128 = PDF pages 1-6 (Table 1 on p. F126). Identity checked \
+against the first page.
+
+TRANSCRIBED: Table 1 (tbl_5dfb2dc9eeb0, p. F126; JSON only), n2 with its +- at 772, \
+1030 and 1550 nm for six materials, and the intensity ranges (columns intensity_min, \
+intensity_max in GW/cm2); cells checked against the table image (agree). The header \
+prints the unit as 'n2 10^-7 cm2/GW', i.e. 1e-7 cm2/GW = 1e-16 cm2/W: recorded as unit \
+cm2/W with scale 1e-16 (the printed numbers unchanged). Text value (p. F126): one \
+fused-silica Z-scan at 1030 nm and 470 GW/cm2 gives n2 = 2.4e-7 cm2/GW (a single scan \
+inside Table 1's average; not extracted).
+
+DEFINITION: the paper prints no defining equation; n2 is the coefficient of the \
+Sheik-Bahae et al. Z-scan analysis [12, 13] in cm2/GW, i.e. n = n0 + n2 I (I the \
+peak intensity), linear polarization implied by the setup's wave-plate-polarizer \
+(p. F123) but not stated. Refractive indices 'were taken from [3] and [8]' (Bayya et \
+al. 2006 for BGG; refractiveindex.info). The paper does not discuss the Raman \
+(nuclear) part; with 97-275 fs pulses it contains part of it (the curators' rule): \
+part = 'unknown'.
+
+UNCERTAINTY (p. F126): 'In each case the error cited is the standard deviation of the \
+measurements at multiple intensities. In some cases it was only possible to measure \
+the response at a single relatively low intensity. In these cases no error estimate is \
+cited' (CLEARTRAN at 772 nm, 10 GW/cm2). Recorded as a sigma column, level '1 sigma' \
+(a scatter, not a calibration uncertainty; no absolute uncertainty is stated). The \
+fused-silica value at 1030 nm 'agrees to within 18 % of that cited by Milam [14] ... \
+at 1053 nm' (p. F126).
+
+INTENSITY DEPENDENCE: Table 1 footnotes a, b: BGG at 1030 nm, 'n2 increases \
+monotonically with I' (15-144 GW/cm2); at 1550 nm 'n2 decreases monotonically with I' \
+(16-228 GW/cm2). Spinel at 772 nm: '—' (no n2), intensity '<40': 'the Z-scan data was \
+inconsistent with simple two-photon absorption and nonlinear refraction models' (p. \
+F127); not extracted. CLEARTRAN and BGG show multiphoton absorption above 20-40 \
+GW/cm2; CLEARTRAN n2 'approximately 20-25 times that of fused silica' (p. F127).
+
+NONLINEAR ABSORPTION (text, p. F127): for fused silica, BK7 and AlON 'the nonlinear \
+absorption coefficients are less than 2 x 10^-4 cm/GW' (a bound, not extracted); BGG \
+at 1550 nm beta = 1.9 x 10^-3 cm/GW, 'follows the functional form expected for \
+two-photon absorption' (extracted: beta_BGG). Band edges: CLEARTRAN about 380 nm, BGG \
+about 290 nm (p. F127; not extracted).
+
+SAMPLES (p. F123-F124): fused silica from Heraeus Quartz America (product not named), \
+1.76 mm; BK7 from CVI Laser Optics, 2.07 mm (the paper writes 'BK7' and does not say \
+whether it is Schott BK7 or N-BK7: recorded as the registered 'BK7', to be checked); \
+CLEARTRAN (multispectral ZnS, Rohm and Haas), 2.03 mm (Fig. 6 caption says 2.02 mm); \
+AlON (Raytheon), 2.02 mm; spinel ceramic (MER Corp.), 1.91 mm; BGG glass (U.S. Naval \
+Research Laboratory), 2.02 mm.
+
+REFRACTIVEINDEX.INFO: the n2 pages 'Flom' (BK7: 1.47e-20, 2.42e-20, 2.24e-20 m2/W at \
+0.772, 1.03, 1.55 um; SiO2: 2.07e-20, 2.23e-20, 2.42e-20) agree with Table 1 (1e-7 \
+cm2/GW = 1e-20 m2/W). The pages give the 772-nm pulse as 280 fs; the paper says 275 \
++- 20 fs. AlON, spinel, BGG and CLEARTRAN have no page."""
+
+[[datasets]]
+id = "n2_SiO2"
+material = "SiO2"
+file = "SiO2/flom_2015__n2_SiO2.csv"
+table = "tbl_5dfb2dc9eeb0"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs", intensity_min = "GW/cm2", intensity_max = "GW/cm2" }
+use = "primary"
+notes = "Table 1 (p. F126), printed as n2 in 10^-7 cm2/GW. Fused silica (Heraeus Quartz America; product not named). pulse_fs: the SHG-FROG FWHM at that wavelength (p. F125); intensity_min/max: the range of peak intensities of the Z-scans averaged."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Z-scan"
+form = "bulk"
+
+[[datasets]]
+id = "n2_BK7"
+material = "BK7"
+file = "BK7/flom_2015__n2_BK7.csv"
+table = "tbl_5dfb2dc9eeb0"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs", intensity_min = "GW/cm2", intensity_max = "GW/cm2" }
+use = "primary"
+notes = "Table 1 (p. F126), printed as n2 in 10^-7 cm2/GW. BK7 from CVI Laser Optics; Schott BK7 or N-BK7 not stated (recorded as BK7). pulse_fs: the SHG-FROG FWHM at that wavelength (p. F125); intensity_min/max: the range of peak intensities of the Z-scans averaged."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Z-scan"
+form = "bulk"
+
+[[datasets]]
+id = "n2_AlON"
+material = "AlON"
+file = "AlON/flom_2015__n2_AlON.csv"
+table = "tbl_5dfb2dc9eeb0"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs", intensity_min = "GW/cm2", intensity_max = "GW/cm2" }
+use = "primary"
+notes = "Table 1 (p. F126), printed as n2 in 10^-7 cm2/GW. AlON polycrystalline ceramic (Raytheon). pulse_fs: the SHG-FROG FWHM at that wavelength (p. F125); intensity_min/max: the range of peak intensities of the Z-scans averaged."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Z-scan"
+form = "bulk"
+
+[[datasets]]
+id = "n2_MgAl2O4"
+material = "MgAl2O4"
+file = "MgAl2O4/flom_2015__n2_MgAl2O4.csv"
+table = "tbl_5dfb2dc9eeb0"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs", intensity_min = "GW/cm2", intensity_max = "GW/cm2" }
+use = "primary"
+notes = "Table 1 (p. F126), printed as n2 in 10^-7 cm2/GW. Spinel ceramic (MER Corp.); no n2 at 772 nm (see the source notes). pulse_fs: the SHG-FROG FWHM at that wavelength (p. F125); intensity_min/max: the range of peak intensities of the Z-scans averaged."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Z-scan"
+form = "bulk"
+
+[[datasets]]
+id = "n2_BGG"
+material = "BGG"
+file = "BGG/flom_2015__n2_BGG.csv"
+table = "tbl_5dfb2dc9eeb0"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs", intensity_min = "GW/cm2", intensity_max = "GW/cm2" }
+use = "primary"
+notes = "Table 1 (p. F126), printed as n2 in 10^-7 cm2/GW. Barium gallogermanate glass made at NRL. At 1030 nm n2 increases monotonically with I (15-144 GW/cm2), at 1550 nm it decreases (16-228 GW/cm2) (Table 1 footnotes a, b): the values are averages over those ranges. pulse_fs: the SHG-FROG FWHM at that wavelength (p. F125); intensity_min/max: the range of peak intensities of the Z-scans averaged."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Z-scan"
+form = "bulk"
+
+[[datasets]]
+id = "n2_ZnS"
+material = "ZnS"
+file = "ZnS/flom_2015__n2_ZnS.csv"
+table = "tbl_5dfb2dc9eeb0"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs", intensity_min = "GW/cm2", intensity_max = "GW/cm2" }
+use = "primary"
+notes = "Table 1 (p. F126), printed as n2 in 10^-7 cm2/GW. Multispectral ZnS, CLEARTRAN (Rohm and Haas). At 772 nm only one scan at 10 GW/cm2 could be fitted: no error estimate (p. F126). pulse_fs: the SHG-FROG FWHM at that wavelength (p. F125); intensity_min/max: the range of peak intensities of the Z-scans averaged."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "Z-scan"
+form = "bulk"
+grade = "CLEARTRAN"
+
+[[datasets]]
+id = "beta_BGG"
+material = "BGG"
+table = "text"
+points = [["1550", "1550", "1.9"]]
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+scale = 1e-3
+abscissa_unit = "nm"
+use = "primary"
+notes = "Text, p. F127: 'At 1550 nm, the nonlinear absorption coefficient is measured to be 1.9 x 10^-3 cm/GW and follows the functional form expected for two-photon absorption.' Open-aperture Z-scan; no uncertainty stated; whether reflection losses were removed is not stated. At 1030 and 772 nm the absorption is not two-photon-like (p. F127)."
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+pulse_fs = 97
+form = "bulk"
+

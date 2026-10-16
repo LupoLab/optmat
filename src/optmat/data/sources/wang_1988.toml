@@ -1,0 +1,88 @@
+citation = "L.-S. Wang, J. E. Reutt, Y. T. Lee and D. A. Shirley, \"High resolution UV photoelectron spectroscopy of CO2+, COS+ and CS2+ using supersonic molecular beams\", J. Electron Spectrosc. Relat. Phenom. 47, 167 (1988)"
+doi = "10.1016/0368-2048(88)85010-2"
+library = "Wang_1988_HighResolutionUV"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """He I (584 A) photoelectron spectroscopy of supersonic molecular beams \
+(CO2 expanded pure at 900 Torr through a 70 um nozzle; rotational cooling, no Doppler \
+broadening, no inelastic-scattering features), electrons detected at 90 deg to both \
+beams with a hemispherical analyser (pass energy 1 eV) and a multichannel detector; \
+an Ar photoelectron spectrum after each scan for calibration (energy-scale shift \
+within +-2 meV per scan); resolution 12 meV FWHM on Ar+ 2P3/2 for CO2 (pp. 168-169)."""
+notes = """PDF pages 1-20 = journal pages 167-186. Identity checked on the first page. \
+CO2 is the only curated species (COS and CS2 in notes).
+
+EXTRACTED:
+- Table 1 (p. 171, tbl_e1db285ab087, image checked), 'Adiabatic ionization potentials \
+(eV) of CO2, COS and CS2': CO2 X 2Pi_g 13.778, A 2Pi_u 17.314, B 2Sigma_u+ 18.077, C \
+2Sigma_g+ 19.394 eV. Footnote b (on the CO2 X value): 'The uncertainties are +-0.002 \
+eV'; Table 3's footnote a: 'The absolute peak positions can only be determined within \
++-0.002 eV'. The +-0.002 eV is applied to all four (level not stated). Each is the \
+(000) peak of the lower spin-orbit component where there is one: X 13.778 is Table \
+3's 13.7778 (000, Omega = 3/2), A 17.314 is Table 6's 17.3145 (000, Omega = 3/2), B \
+18.077 is Table 9's 18.0771 (000).
+- Table 3 (p. 173, tbl_25887e8a6993, cells only; image checked): the 23 peaks of the X \
+2Pi_g band with their vibrational assignments (v1 v2 v3) in the Omega = 3/2 and 1/2 \
+components; the parenthesised digits are the precision of the relative positions, \
+kept in the printed column only. Recorded as a check dataset: its (000) Omega = 3/2 \
+row is Table 1's X value unrounded (not a second determination), and the other rows \
+are vibronic levels of the ion. The first row, 13.7579 eV, is a hot band (2_1^1, from \
+the neutral's bending level): excluded.
+
+VERTICAL: the paper states no vertical ionisation energy. In the X band 'very little \
+vibrational excitation is observed' (p. 171); the (000) doublet, 13.7778 (Omega = 3/2) \
+and 13.7973 eV (Omega = 1/2), carries almost all the intensity, the two peaks of about \
+equal height (Fig. 3, p. 172), so the band maximum is at the (000) doublet. The NIST \
+WebBook's vertical value 13.79 eV (Potts & Williams 1974, potts_1974, itself from Turner et al. 1970) lies between them.
+
+SPECTROSCOPIC CONSTANTS (Table 2, p. 171; notes only): CO2+ X 2Pi_g nu1 1264(1), nu3 \
+1470(1) (= 1/2 of 2 nu3), A (spin-orbit) 158(4) cm^-1; A 2Pi_u nu1 1126(3), nu2 459(8), \
+A 96(8); B 2Sigma_u+ nu1 1275(1), nu2 557(4), nu3 1840(5); C 2Sigma_g+ nu1 1352(4) \
+(corrected for the Fermi resonance), nu2 614(4), nu3 1567(4) cm^-1.
+
+NOT EXTRACTED: Tables 4-5, 7-8, 10-11 (COS+ and CS2+ bands) and Tables 6 and 9 (the \
+CO2+ A, B and C bands' peaks) (pp. 174-181); COS and CS2 adiabatic IPs of Table 1: COS \
+11.185, 15.078, 16.042, 17.957; CS2 10.080, 12.698, 14.477, 16.190 eV (X, A, B, C)."""
+
+[[datasets]]
+id = "adiabatic_CO2"
+material = "CO2"
+file = "CO2/wang_1988__adiabatic_CO2.csv"
+table = "tbl_e1db285ab087"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+notes = """Table 1, p. 171: the adiabatic ionisation potentials of CO2 to the X, A, B and \
+C states of CO2+ (rows), each the (000) peak of the state's lower spin-orbit component \
+(record notes). +-0.002 eV (footnote b; Table 3 footnote a), level not stated."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the row's state of CO2+, (000) level (Omega = 3/2 for X and A)"
+
+[datasets.uncertainty]
+absolute = 0.002
+level = "not stated"
+
+[[datasets]]
+id = "x_band_CO2"
+material = "CO2"
+file = "CO2/wang_1988__x_band_CO2.csv"
+table = "tbl_25887e8a6993"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+excluded_rows = { "hot_band" = "a hot band (2_1^1, H.B.): from the neutral's excited bending level, not from its ground level" }
+notes = """Table 3, p. 173: the peak positions of the CO2+ X 2Pi_g band, one row per \
+assigned vibronic level (v1 v2 v3, Omega). Absolute positions +-0.002 eV (footnote a); \
+the relative-position precision is in the printed column. A check dataset: the (000) \
+Omega = 3/2 row is the adiabatic value of Table 1 (adiabatic_CO2), and the other rows \
+are ionisation energies to vibrationally or spin-orbit excited levels of the ion."""
+[datasets.parameters]
+kind = "adiabatic (to the row's vibronic level)"
+final_state = "the row's level of CO2+ X 2Pi_g (v1 v2 v3, Omega)"
+
+[datasets.uncertainty]
+absolute = 0.002
+level = "not stated"

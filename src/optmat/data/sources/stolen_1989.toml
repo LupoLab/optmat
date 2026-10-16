@@ -1,0 +1,142 @@
+citation = "R. H. Stolen, J. P. Gordon, W. J. Tomlinson and H. A. Haus, \"Raman response function of silica-core fibers\", J. Opt. Soc. Am. B 6, 1159 (1989)"
+doi = "10.1364/josab.6.001159"
+library = "Stolen_1989_RamanResponseFunction"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """The Raman response function of silica-core fibre computed by the sine \
+transform, Eq. (9), of the imaginary third-order susceptibility taken from room-\
+temperature spontaneous Raman-scattering spectra of silica-core fibres (ref. 15: \
+Stolen, Lee and Jain, J. Opt. Soc. Am. B 1, 652 (1984); Stolen and Bosch, Phys. Rev. \
+Lett. 48, 805 (1982)), converted to gain by dividing by 1 + n(Omega, T), n the thermal \
+phonon population factor (p. 1161). The Raman fraction is estimated from Raman \
+cross-section and gain measurements (refs. 6, 16). The response is then used in \
+nonlinear-Schroedinger simulations (pp. 1162-1164)."""
+notes = """Journal pages 1159-1166 = PDF pages 1-8. Identity checked against the first \
+page. The material is 'pure silica-core fibers': 'Some of the details of the gain \
+spectrum will vary from fiber to fiber depending on dopants in the core as well as \
+drawing temperature, but these data are a fairly representative curve' (p. 1161).
+
+DEFINITIONS (all waves linearly polarized, parallel polarizations; p. 1161). Expression \
+(6), p. 1160: N2 |u(t)|^2 -> N_2inf |u(t)|^2 + N_2R int_{-inf}^{t} dt' |u(t')|^2 f(t - t'), \
+'where the response function f(t - t') is real and is normalized such that its integral \
+is unity'. N_2inf is the (nearly instantaneous) electronic part, N_2R the delayed part. \
+Eq. (7): N2(Omega) = N_2R int_0^inf f(s) exp(i Omega s) ds, Omega = omega_p - omega_s. Eq. \
+(5): the Raman power gain g = (2 omega_p/c) N2''(Omega). Eq. (9), p. 1161: N_2R f(s) = \
+(2/pi) int_0^inf dOmega N2'(Omega) cos(Omega s) = (2/pi) int_0^inf dOmega N2''(Omega) \
+sin(Omega s). 'In the opposite limit of long pulses all the nonlinearity is essentially \
+instantaneous, with a strength N2(0) = N_20 = N_2inf + N_2R. It is N_20 that is usually \
+measured in self-focusing or self-phase modulation experiments ... N_2inf = N_20(1 - \
+alpha) and N_2R = alpha N_20' (p. 1161). The relation to Hellwarth's response: 'the \
+present N_2R f(t - t') is equal to the expression a(t - s) + b(t - s) of Refs. 5 and 6 \
+times a factor 2 pi/n' (p. 1165).
+
+THE RESPONSE FUNCTION ITSELF is given only as Fig. 2 (and Fig. 3 for spectral features \
+removed); not digitised. The gain spectrum (Fig. 1(a), normalised to unity at its peak \
+at 440 cm^-1) and its Kramers-Kronig real part (Fig. 1(b)) are figures only. Fig. 3: (a) \
+full gain and response, (b) sharp features removed, (c) the 604 cm^-1 line, (d) bands \
+beyond 750 cm^-1, (e) a Lorentzian through the half-gain points. The text calls the \
+line both 604 (caption) and 603 cm^-1 (p. 1162).
+
+EXPONENTIAL MODELS. Eq. (2) with Eq. (4), p. 1160: N2'(Omega) = N_2inf + N_2R/(1 + \
+Omega^2 tau^2), N2''(Omega) = N_2R Omega tau/(1 + Omega^2 tau^2); tau = 76 fs matches the \
+peak of the silica gain curve (Fig. 1, dashed). In the pulse-compression simulation \
+(p. 1162) an artificial tau = 391 fs with 40 % of the nonlinearity was used because the \
+122-fs grid could not resolve the real response ('This produces a peak Raman gain close \
+to that of fused silica'). Both are recorded as check values, the second as assumed.
+
+NONLINEAR INDEX. 'For silica the nonlinear index N2 is 3.2 x 10^-16 cm2/W. [Note that in \
+electrostatic units the nonlinear index is 1.1 x 10^-13 esu and is related to N2 by the \
+factor (4 pi/nc) x 10^7.]' (pp. 1159-1160), and n2 = 1.1e-13 esu 'for silica' in Eq. (13) \
+(p. 1162). No reference, wavelength or measurement is given: a model input. Check: \
+1.1e-13 x 4 pi/(1.45 x 2.998e10) x 1e7 = 3.18e-16 cm2/W with n = 1.45 (n is not stated). \
+Which part it is (N_20 or N_2inf) is not said.
+
+SOLITON SELF-FREQUENCY SHIFT (p. 1164, a check of the normalisation): 9.2 MHz/m at z/z0 = \
+4.0 for a 40-fs sech pulse at 1.5 um with 15 ps/(nm km); Gordon's formula gives 8.5 \
+MHz/m for a 45-fs pulse. Not a material property; not extracted."""
+
+[[datasets]]
+id = "alpha"
+material = "SiO2"
+table = "text"
+points = [["alpha", "alpha", "0.18"]]
+quantity = "raman_fraction"
+abscissa = "label"
+use = "primary"
+notes = "p. 1161-1162: 'From Raman-scattering cross-section and gain measurements, we estimate that the fractional contribution of the Raman response of N_20 is alpha = 0.18.' Repeated p. 1164: 'The Raman contribution represents 18% of N_20.' An estimate from refs. 6 (Hellwarth, Cherlow and Yang 1975) and 16 (Stolen and Ippen 1973); no uncertainty stated."
+[datasets.parameters]
+definition = "alpha = N_2R/N_20: the fraction of the long-pulse nonlinear index N_20 = N_2inf + N_2R that comes from the delayed Raman response, f(t) normalised to unit integral; parallel linear polarizations (Eq. (6), p. 1161)"
+form = "fibre"
+
+[[datasets]]
+id = "alpha_simulation"
+material = "SiO2"
+table = "text"
+points = [["alpha", "alpha", "0.40"]]
+quantity = "raman_fraction"
+abscissa = "label"
+use = "check"
+notes = "p. 1162: 'we chose a time constant tau = 391 fsec, and we assumed that 40% of the nonlinearity of the fiber had the exponential response. This produces a peak Raman gain close to that of fused silica'. An artificial model input for a coarse (122 fs) simulation grid, not a property of silica. Printed as '40%'."
+[datasets.parameters]
+definition = "fraction of the nonlinearity with the exponential response of Eq. (2) (tau = 391 fs), chosen to give silica's peak Raman gain"
+form = "fibre"
+assumed = true
+
+[[datasets]]
+id = "tau_exponential"
+material = "SiO2"
+table = "text"
+points = [["tau", "tau", "76"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "label"
+use = "check"
+notes = "p. 1160 and Fig. 1 caption: the relaxation time of the exponential response, Eqs. (2) and (4), 'chosen to match the peak of the Raman-gain curve of fused silica'. Illustrative: the exponential model does not reproduce silica's gain shape (Fig. 1)."
+[datasets.parameters]
+constant = "tau"
+model = "single exponential relaxation: N_2R/tau int |u(t')|^2 exp[-(t - t')/tau] dt' (Eq. (2))"
+form = "fibre"
+
+[[datasets]]
+id = "tau_simulation"
+material = "SiO2"
+table = "text"
+points = [["tau", "tau", "391"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "label"
+use = "check"
+notes = "p. 1162: the artificially large time constant of the pulse-compression simulation (with 40 % of the nonlinearity; see alpha_simulation). Not a property of silica."
+[datasets.parameters]
+constant = "tau"
+model = "single exponential relaxation (Eq. (2)), with 40 % of the nonlinearity"
+form = "fibre"
+assumed = true
+
+[[datasets]]
+id = "n2"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "3.2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 1159: 'For silica the nonlinear index N2 is 3.2 x 10^-16 cm2/W' (and 1.1 x 10^-13 esu, p. 1160, related by (4 pi/nc) x 10^7). No reference, wavelength or part given; used as a model input for the nonlinear Schroedinger equation (source notes)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+form = "fibre"
+assumed = true
+
+[[formulas]]
+id = "low_frequency_gain"
+material = "SiO2"
+equation = "Eq. (10), p. 1161"
+printed = "g = (a \\Omega + b \\Omega^3) cm/W, a = 7.67 \\times 10^{-4}, b = 1.33 \\times 10^{-6}"
+variable = "Omega: frequency shift in cm^-1 (valid below 25 cm^-1); g: the gain spectrum normalised to unity at its maximum at 440 cm^-1"
+range = "Omega < 25 cm^-1"
+coefficients = { a = "7.67e-4", b = "1.33e-6" }
+check = "No printed value to compare. At 25 cm^-1 it gives 0.0192 + 0.0208 = 0.040 of the peak (computed 2026-09-26)."
+notes = "The fit to the imaginary susceptibility below 25 cm^-1, joined to the measured spectrum above. 'This curve is within the experimental uncertainty of the actual gain for a pump wavelength of 1.0 um.' The unit printed, cm/W, sits oddly with the statement that the spectrum is normalised to unity at 440 cm^-1; the coefficients are recorded as printed (TC-383)."

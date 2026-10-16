@@ -1,0 +1,526 @@
+citation = "K. Wang, X. Wang, Z. Fan, H.-Y. Zhao, L. Miao, G.-J. Yin, R. Moro and L. Ma, Eur. Phys. J. D 75, 46 (2021)"
+doi = "10.1140/epjd/s10053-021-00054-2"
+library = "Wang_2021_StaticDipolePolarizabilities"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Coupled-cluster CCSD(T) with a Hartree-Fock reference and the aug-PC-4 / PC-4 \
+basis sets, finite-field static dipole polarizabilities of the atoms H-Ca and their \
+ions; basis quality benchmarked on first ionisation potentials (Table 1)."""
+notes = """Only He, Ne and Ar are curated species here (H is atomic hydrogen, not H2). \
+Table 2 (p. 4 of 11) gives, per atom, the paper's HF and CCSD(T) values and other \
+authors' calculations ('Calc.') and experiments ('Expt.') with footnoted references; \
+the footnotes gg-jj are missing from the library's Markdown and were read on the page \
+image. The paper's own CCSD(T) values are 'check' (He 1.3821 is 0.1 % below the \
+accurate theory); the quoted values are reproduced, one dataset each. Uncertainties \
+are as printed ('+-'), of unstated level.
+
+Units: atomic units, but the quoted helium values appear to differ in convention: \
+1.38319 (Yan et al. 1996; Pachucki and Sapirstein) matches the reduced-unit static \
+value of stone_2004's Eq. (5), 1.3831916, and 1.38376 (Lach et al. 2004) matches it \
+times stone_2004's Eq. (6) factor (1 + m_e/m_alpha)^3 = 1.000411, i.e. 1.383760, the \
+value for physical 4He (checked 2026-09-24; TC-19). The 'Expt.' 1.383746 +- 0.000007 attributed to Newell and \
+Baird (1965) and Grohmann and Luther (1992) has a precision (5e-6) implausible for \
+those works and is close to modern theory; kept as printed, TC-19. The 'Expt.' neon \
+value 2.663 is Dalgarno and Kingston (1960), a semi-empirical analysis (dalgarno_1960).
+
+The other atoms are not curated and are not extracted.
+
+ADDED 2026-09-26 (ionisation, TC-439/TC-440). Table 2's HF column (hf_*, 'check') and \
+the numerical Hartree-Fock column NHF (nhf_*, reproduced from Stiehler and Hinze 1995, \
+Ref. [64]) for He, Ne, Ar. Table 1 (p. 4): the first ionisation potentials (eV) of He, \
+Ne, Ar at the CCSD(T)/aug-PC-4 level and the experimental values it compares (from \
+Moore 1970, Ref. [63], reproduced). Table 3 (pp. 5-7, 'Comparison of calculated and \
+experimental (Expt.) polarizabilities of free ions'; the library splits it into three \
+tables, the continuation captioned 'Table 3 continued' and the last part unlabelled; \
+all three images checked): the cations He+, Ne+ and Ar+ (now materials, TC-440), the \
+paper's HF and CCSD(T) ('Ours.') values and the quoted CHF, Calc. and Expt. values; \
+'The uncertainties in the last digits are given in parentheses' (caption). ECC (CCSD(T) \
+- HF) is not extracted. Kr and Xe and their ions are beyond the paper's H-Ca.
+
+SOLPROP'S SIX NUMBERS (checked 2026-09-26). solprop cites Wang et al. 2021 for the \
+neutral polarizabilities He 1.3207, Ne 2.376, Ar 10.762 au and the cation \
+polarizabilities He+ 0.2811, Ne+ 1.2417, Ar+ 6.807 au. All six are the HF column: \
+Table 2's HF for the atoms (hf_He, hf_Ne, hf_Ar), and Table 3's HF row for the ions \
+(hf_He+, hf_Ne+, hf_Ar+). The paper's own correlated (CCSD(T)) values are He 1.3821, Ne \
+2.662, Ar 11.084 and He+ 0.2811, Ne+ 1.3110, Ar+ 6.834; the HF values are 4.4 % (He), \
+10.7 % (Ne) and 2.9 % (Ar) below them for the atoms, 0, 5.3 % and 0.4 % for the ions. \
+For He+, a one-electron ion, HF is exact within the basis (ECC 0.0000), and the quoted \
+Tang et al. (2012) value is 0.28119.
+
+Numbers are broken by spaces in the first Table 3 part's cells ('0. 281 1'); the image \
+prints 0.2811 (structural fix in the script). The Ar+ Calc. footnote reads 'ijj' in \
+the cells file and 'jjj' (Ref. [96], Medved et al.) on the page. Table 1's cells file \
+has lost the header rows of its second and third blocks into the experimental cells \
+above them ('24.587F'); the script reads the atoms from those suffixes."""
+
+[[datasets]]
+id = "ccsdt_He"
+material = "He"
+file = "He/wang_2021__ccsdt_He.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "The paper's CCSD(T)/aug-PC-4 value (Table 2)."
+
+[[datasets]]
+id = "ccsdt_Ne"
+material = "Ne"
+file = "Ne/wang_2021__ccsdt_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "The paper's CCSD(T)/aug-PC-4 value (Table 2)."
+
+[[datasets]]
+id = "ccsdt_Ar"
+material = "Ar"
+file = "Ar/wang_2021__ccsdt_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "The paper's CCSD(T)/aug-PC-4 value (Table 2)."
+
+[[datasets]]
+id = "yan_pachucki_He"
+material = "He"
+file = "He/wang_2021__yan_pachucki_He.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["Z.-C. Yan, J. F. Babb, A. Dalgarno and G. W. F. Drake, Phys. Rev. A 54, 2824 (1996)", "K. Pachucki and J. Sapirstein, Phys. Rev. A 63, 012504 (2000)"]
+notes = "Table 2 Calc., footnote d (Refs. 67, 70)."
+
+[[datasets]]
+id = "lach_2004_He"
+material = "He"
+file = "He/wang_2021__lach_2004_He.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["G. Lach, B. Jeziorski and K. Szalewicz, Phys. Rev. Lett. 92, 233001 (2004)"]
+notes = "Table 2 Calc., footnote e (Ref. 71)."
+
+[[datasets]]
+id = "expt_newell_grohmann_He"
+material = "He"
+file = "He/wang_2021__expt_newell_grohmann_He.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["A. C. Newell and R. D. Baird, J. Appl. Phys. 36, 3751 (1965)", "K. Grohmann and H. Luther, Temperature - Its Measurement and Control in Science and Industry, vol. 6 (AIP, New York, 1992), p. 21"]
+notes = "Table 2 Expt., footnote f (Refs. 72, 73): 1.383746 +- 0.000007; see the source notes on its provenance."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "calc_82_84_Ne"
+material = "Ne"
+file = "Ne/wang_2021__calc_82_84_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["K. Hald, F. Pawlowski, P. Jorgensen and C. Hattig, J. Chem. Phys. 118, 1292 (2003)", "H. Larsen, J. Olsen, C. Hattig, P. Jorgensen, O. Christiansen and J. Gauss, J. Chem. Phys. 111, 1917 (1999)", "T. Nakajima and K. Hirao, Chem. Lett. (Jpn.) 30, 766 (2001)"]  # codespell:ignore hald
+notes = "Table 2 Calc., footnote s (Refs. 82-84)."
+
+[[datasets]]
+id = "klopper_2004_Ne"
+material = "Ne"
+file = "Ne/wang_2021__klopper_2004_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["W. Klopper, S. Coriani, T. Helgaker and P. Jorgensen, J. Phys. B 37, 3753 (2004)"]
+notes = "Table 2 Calc., footnote t (Ref. 85)."
+
+[[datasets]]
+id = "dalgarno_kingston_1960_Ne"
+material = "Ne"
+file = "Ne/wang_2021__dalgarno_kingston_1960_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["dalgarno_1960"]
+notes = "Table 2 Expt., footnote u (Ref. 3): Dalgarno and Kingston's value, semi-empirical (from refractive-index data), listed as experimental."
+
+[[datasets]]
+id = "gaiser_fellmuth_2010_Ne"
+material = "Ne"
+file = "Ne/wang_2021__gaiser_fellmuth_2010_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["C. Gaiser and B. Fellmuth, Eur. Phys. Lett. 90, 63002 (2010)"]
+notes = "Table 2 Expt., footnote v (Ref. 86): 2.66110 +- 0.00003 (dielectric-constant gas thermometry). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "reinsch_meyer_1976_Ar"
+material = "Ar"
+file = "Ar/wang_2021__reinsch_meyer_1976_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["E. A. Reinsch and W. Meyer, Phys. Rev. A 14, 915 (1976)"]
+notes = "Table 2 Calc., footnote ee (Ref. 92)."
+
+[[datasets]]
+id = "lupinetti_hohm_Ar"
+material = "Ar"
+file = "Ar/wang_2021__lupinetti_hohm_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["C. Lupinetti and A. J. Thakkar, J. Chem. Phys. 122, 044301 (2005)", "U. Hohm and A. J. Thakkar, J. Phys. Chem. A 116, 697 (2012)"]
+notes = "Table 2 Calc., footnote jj (Refs. 93, 97; footnote read on the page image): 11.085 +- 0.060."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "newell_baird_1965_Ar"
+material = "Ar"
+file = "Ar/wang_2021__newell_baird_1965_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["A. C. Newell and R. D. Baird, J. Appl. Phys. 36, 3751 (1965)"]
+notes = "Table 2 Expt., footnote kk (Ref. 72): 11.083 +- 0.002."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "johnston_1966_Ar"
+material = "Ar"
+file = "Ar/wang_2021__johnston_1966_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["D. R. Johnston, G. J. Oudemans and R. H. Cole, J. Chem. Phys. 46, 697 (1966)"]
+notes = "Table 2 Expt., footnote ll (Ref. 98): 11.070 +- 0.007."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "hf_He"
+material = "He"
+file = "He/wang_2021__hf_He.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 2 (p. 4), column HF: the paper's finite-field Hartree-Fock value (aug-PC-4), without electron correlation (the ECC column, CCSD(T) - HF, is its correction). solprop's neutral polarizability of He, cited to Wang et al. 2021, is this value (1.3207 au), not the CCSD(T) one (ccsdt_He)."
+
+[[datasets]]
+id = "nhf_He"
+material = "He"
+file = "He/wang_2021__nhf_He.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["J. Stiehler and J. Hinze, J. Phys. B 28, 4055 (1995)"]
+notes = "Table 2, column NHF^a: numerical Hartree-Fock (Ref. [64])."
+
+[[datasets]]
+id = "hf_Ne"
+material = "Ne"
+file = "Ne/wang_2021__hf_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 2 (p. 4), column HF: the paper's finite-field Hartree-Fock value (aug-PC-4), without electron correlation (the ECC column, CCSD(T) - HF, is its correction). solprop's neutral polarizability of Ne, cited to Wang et al. 2021, is this value (2.376 au), not the CCSD(T) one (ccsdt_Ne)."
+
+[[datasets]]
+id = "nhf_Ne"
+material = "Ne"
+file = "Ne/wang_2021__nhf_Ne.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["J. Stiehler and J. Hinze, J. Phys. B 28, 4055 (1995)"]
+notes = "Table 2, column NHF^a: numerical Hartree-Fock (Ref. [64])."
+
+[[datasets]]
+id = "hf_Ar"
+material = "Ar"
+file = "Ar/wang_2021__hf_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 2 (p. 4), column HF: the paper's finite-field Hartree-Fock value (aug-PC-4), without electron correlation (the ECC column, CCSD(T) - HF, is its correction). solprop's neutral polarizability of Ar, cited to Wang et al. 2021, is this value (10.762 au), not the CCSD(T) one (ccsdt_Ar)."
+
+[[datasets]]
+id = "nhf_Ar"
+material = "Ar"
+file = "Ar/wang_2021__nhf_Ar.csv"
+table = "tbl_d0fc08f74765"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["J. Stiehler and J. Hinze, J. Phys. B 28, 4055 (1995)"]
+notes = "Table 2, column NHF^a: numerical Hartree-Fock (Ref. [64])."
+
+[[datasets]]
+id = "ip_ccsdt_He"
+material = "He"
+file = "He/wang_2021__ip_ccsdt_He.csv"
+table = "tbl_c22e704aed88"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table 1 (p. 4), 'Calc.': the first ionisation potential at the CCSD(T)/aug-PC-4 level, the paper's test of its basis sets ('The deviations range from 0.02% (Ne) to 0.75% (Ca)', p. 3). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_expt_He"
+material = "He"
+file = "He/wang_2021__ip_expt_He.csv"
+table = "tbl_c22e704aed88"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["C. E. Moore, National Standard Reference Data Series 34 (U.S. Government Printing Office, Washington, D.C., 1970)"]
+notes = "Table 1, 'Exp.^a', note a 'From Ref. [63]' (Moore 1970): the first ionisation energy, to the ion's ground state."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_ccsdt_Ne"
+material = "Ne"
+file = "Ne/wang_2021__ip_ccsdt_Ne.csv"
+table = "tbl_c22e704aed88"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table 1 (p. 4), 'Calc.': the first ionisation potential at the CCSD(T)/aug-PC-4 level, the paper's test of its basis sets ('The deviations range from 0.02% (Ne) to 0.75% (Ca)', p. 3). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_expt_Ne"
+material = "Ne"
+file = "Ne/wang_2021__ip_expt_Ne.csv"
+table = "tbl_c22e704aed88"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["C. E. Moore, National Standard Reference Data Series 34 (U.S. Government Printing Office, Washington, D.C., 1970)"]
+notes = "Table 1, 'Exp.^a', note a 'From Ref. [63]' (Moore 1970): the first ionisation energy, to the ion's ground state."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_ccsdt_Ar"
+material = "Ar"
+file = "Ar/wang_2021__ip_ccsdt_Ar.csv"
+table = "tbl_c22e704aed88"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table 1 (p. 4), 'Calc.': the first ionisation potential at the CCSD(T)/aug-PC-4 level, the paper's test of its basis sets ('The deviations range from 0.02% (Ne) to 0.75% (Ca)', p. 3). For an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_expt_Ar"
+material = "Ar"
+file = "Ar/wang_2021__ip_expt_Ar.csv"
+table = "tbl_c22e704aed88"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["C. E. Moore, National Standard Reference Data Series 34 (U.S. Government Printing Office, Washington, D.C., 1970)"]
+notes = "Table 1, 'Exp.^a', note a 'From Ref. [63]' (Moore 1970): the first ionisation energy, to the ion's ground state."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "hf_He+"
+material = "He+"
+file = "He+/wang_2021__hf_He+.csv"
+table = "tbl_82ace8ce2dca"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 3 (p. 5), row HF: the paper's finite-field Hartree-Fock polarizability of the free ion (aug-PC-4). solprop's ion polarizability of He+ (0.2811 au), cited to Wang et al. 2021, is this value. For the one-electron He+, HF and CCSD(T) coincide (ECC 0.0000)."
+
+[[datasets]]
+id = "ccsdt_He+"
+material = "He+"
+file = "He+/wang_2021__ccsdt_He+.csv"
+table = "tbl_82ace8ce2dca"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 3 (p. 5), row 'Ours.': 'HF and Ours. represent our calculated results by using Hartree-Fock method and coupled-cluster method, respectively' (caption): CCSD(T)/aug-PC-4, all electrons correlated (p. 2)."
+
+[[datasets]]
+id = "hf_Ne+"
+material = "Ne+"
+file = "Ne+/wang_2021__hf_Ne+.csv"
+table = "tbl_eede931cbc2d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 3 (p. 6), row HF: the paper's finite-field Hartree-Fock polarizability of the free ion (aug-PC-4). solprop's ion polarizability of Ne+ (1.2417 au), cited to Wang et al. 2021, is this value."
+
+[[datasets]]
+id = "ccsdt_Ne+"
+material = "Ne+"
+file = "Ne+/wang_2021__ccsdt_Ne+.csv"
+table = "tbl_eede931cbc2d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 3 (p. 6), row 'Ours.': 'HF and Ours. represent our calculated results by using Hartree-Fock method and coupled-cluster method, respectively' (caption): CCSD(T)/aug-PC-4, all electrons correlated (p. 2). ECC (CCSD(T) - HF) = 0.0693."
+
+[[datasets]]
+id = "hf_Ar+"
+material = "Ar+"
+file = "Ar+/wang_2021__hf_Ar+.csv"
+table = "tbl_0bf0dd86ab78"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 3 (p. 7), row HF: the paper's finite-field Hartree-Fock polarizability of the free ion (aug-PC-4). solprop's ion polarizability of Ar+ (6.807 au), cited to Wang et al. 2021, is this value."
+
+[[datasets]]
+id = "ccsdt_Ar+"
+material = "Ar+"
+file = "Ar+/wang_2021__ccsdt_Ar+.csv"
+table = "tbl_0bf0dd86ab78"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "check"
+notes = "Table 3 (p. 7), row 'Ours.': 'HF and Ours. represent our calculated results by using Hartree-Fock method and coupled-cluster method, respectively' (caption): CCSD(T)/aug-PC-4, all electrons correlated (p. 2). ECC = 0.027."
+
+[[datasets]]
+id = "calc_tang_2012_He+"
+material = "He+"
+file = "He+/wang_2021__calc_tang_2012_He+.csv"
+table = "tbl_82ace8ce2dca"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["L.-Y. Tang, Y.-H. Zhang, X.-Z. Zhang, J. Jiang and J. Mitroy, Phys. Rev. A 86, 012505 (2012)"]
+notes = "Table 3 (p. 5), He+, Calc., footnote e (Ref. [68])."
+
+[[datasets]]
+id = "calc_medved_2000_Ne+"
+material = "Ne+"
+file = "Ne+/wang_2021__calc_medved_2000_Ne+.csv"
+table = "tbl_eede931cbc2d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["M. Medved, P. W. Fowler and J. M. Hutson, Mol. Phys. 98, 453 (2000)"]
+notes = "Table 3 (p. 6), Ne+, Calc., footnote dd (Ref. [96])."
+
+[[datasets]]
+id = "calc_thakkar_2001_Ne+"
+material = "Ne+"
+file = "Ne+/wang_2021__calc_thakkar_2001_Ne+.csv"
+table = "tbl_eede931cbc2d"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["A. J. Thakkar and K. D. Abhijit, J. Mol. Struct. (THEOCHEM) 547, 233 (2001)"]
+notes = "Table 3 (p. 6), Ne+, Calc., footnote gg (Ref. [135])."
+
+[[datasets]]
+id = "chf_stewart_1975_Ar+"
+material = "Ar+"
+file = "Ar+/wang_2021__chf_stewart_1975_Ar+.csv"
+table = "tbl_0bf0dd86ab78"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["R. F. Stewart, Mol. Phys. 30, 1283 (1975)"]
+notes = "Table 3 (p. 7), Ar+, CHF (coupled Hartree-Fock), footnote rrr (Ref. [45])."
+
+[[datasets]]
+id = "calc_medved_2000_Ar+"
+material = "Ar+"
+file = "Ar+/wang_2021__calc_medved_2000_Ar+.csv"
+table = "tbl_0bf0dd86ab78"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["M. Medved, P. W. Fowler and J. M. Hutson, Mol. Phys. 98, 453 (2000)"]
+notes = "Table 3 (p. 7), Ar+, Calc., footnote jjj (Ref. [96]; the cells file reads 'ijj', the image 'jjj')."
+
+[[datasets]]
+id = "expt_bristow_1972_Ar+"
+material = "Ar+"
+file = "Ar+/wang_2021__expt_bristow_1972_Ar+.csv"
+table = "tbl_0bf0dd86ab78"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["M. P. F. Bristow and I. I. Glass, Phys. Fluids 15, 2066 (1972)"]
+notes = "Table 3 (p. 7), Ar+, Expt., footnote qqq (Ref. [131]): 7.2(3), 'The uncertainties in the last digits are given in parentheses' (caption), level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+

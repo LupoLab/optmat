@@ -1,0 +1,68 @@
+citation = "E. C. Y. Inn and Y. Tanaka, \"Absorption coefficient of ozone in the ultraviolet and visible regions\", J. Opt. Soc. Am. 43, 870 (1953)"
+doi = "10.1364/josa.43.000870"
+library = "Inn_1953_AbsorptionCoefficientOzone"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Cary recording spectrophotometer (quartz optics), a Nestor-type H2 lamp (UV) or \
+tungsten lamp (visible), 1P28 photomultipliers; a 10 cm quartz cell between the exit \
+slit and the detector (to minimise photochemistry); slit widths 0.01 to several \
+hundredths mm (UV), a few hundredths to a few thousandths (visible), set automatically \
+during the scan. Ozone vaporised from liquid ozone purified by fractional distillation, \
+at least 90-95 % pure by KI titration (average 92 %, corrected for), nitrogen oxides \
+below 1 in 2000 by mass spectrometry; 0.3-650 mm Hg (H2SO4 manometer, expansion method, \
+mercury manometer); a decay curve per run corrected the thermal decomposition (at most \
+about 12 % in 5-10 minutes); cell flushed repeatedly because of wall adsorption. 'All \
+measurements were made at about 27 C' (pp. 870-871)."""
+notes = """Identity checked against the first page (PDF page 1, journal p. 870): Inn and \
+Tanaka, J. Opt. Soc. Am. 43, 870 (1953). Journal pages 870-872 = PDF pages 1-3; PDF \
+page 4 begins another paper (Richardson et al.). O3 only.
+
+The absorption coefficients are given only in figures: Fig. 1 (2000-3000 A, Hartley, \
+with Ny and Choong, Vassy and Tanaka et al.), Fig. 2 (3000-3500 A, Huggins, 'plotted by \
+evaluating the maxima and minima of all bands with a few points chosen between bands') \
+and Fig. 3 (4000-7500 A, Chappuis, the average of two runs at 639.5 and 655.5 mm Hg). \
+'Over 200 different wavelengths' were measured (p. 871) but no table is printed. What \
+the text states is recorded (page images of pp. 871-872 checked).
+
+Quantity (p. 871): I = I0 10^(-alpha x), 'x the layer thickness reduced to NTP and alpha \
+the absorption coefficient in cm^-1': a DECADIC coefficient at NTP (0 C, 1 atm), so \
+sigma = ln(10) alpha / n0. Figures' axes read 'cm^-1, base 10'. Temperature about 27 C \
+(300 K). Wavelengths in A, read 'to the nearest +-1A in the ultraviolet region, while in \
+the visible, to the nearest +-5A' (p. 871); vacuum or air not stated (a Cary \
+spectrophotometer reads air wavelengths, presumably; the difference, 0.6-2 A, is within \
+the reading uncertainty). Resolution not stated ('lower resolution' than Ny and \
+Choong, p. 872).
+
+Accuracy: 'The maximum deviation from the average alpha value amounted to about +-5 \
+percent' (p. 871); in the Chappuis band the two runs 'agreed to 5 percent or better', \
+and the wavelengths of the broad maxima 'may have an uncertainty of somewhat more than \
++-5A' (p. 872). Comparisons (p. 872): lower than Ny and Choong by a few per cent to \
+about 20 % in 2000-3000 A (also at the Huggins maxima and minima), 'somewhat greater \
+than can be explained by experimental error'; agreement with Tanaka et al. (tanaka_1953) \
+in 2000-2200 A; in the Chappuis band about 10 % above Colange at the maximum and about \
+20 % below Vassy and Vigroux. The authors conclude 'the true absorption coefficients lie \
+somewhere between our values and those of Ny and Choong'.
+
+Text value not extracted: the Chappuis maximum alpha_max = 0.055 cm^-1 (decadic, p. \
+872), whose wavelength the text does not state (Fig. 3 shows it near 6000 A: figure \
+only). No pressure effect over a 25-fold pressure change (p. 872)."""
+
+[[datasets]]
+id = "f_hartley"
+material = "O3"
+points = [["Hartley continuum", "1", "0.088"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "p. 872: 'The oscillator strength or f value of this continuum was calculated to be 0.088' (the continuum underlying the Hartley bands, Region 1, 2000-3000 A; how it was integrated is not stated). Index abscissa: an integrated strength over the band, not a line. Compare kumar_2011's interval strength of the 4.35-5.39 eV interval (0.079). A check."
+
+[[datasets]]
+id = "f_chappuis_continuum"
+material = "O3"
+points = [["weak continuum 4000-7500 A", "1", "2e-5"]]
+table = "text"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "p. 872: 'Underlying the broad bands in this region we note a weak continuum starting from about 4000A and extending beyond 7500A. The f value calculated for this absorption continuum was about 2 x 10^-5' (printed '2 x 10^-5', approximate). The continuum under the Chappuis bands, not the Chappuis band total. Index abscissa. A check."

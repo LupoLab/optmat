@@ -1,0 +1,692 @@
+citation = "P. W. Langhoff and M. Karplus, J. Opt. Soc. Am. 59, 863 (1969)"
+doi = "10.1364/josa.59.000863"
+library = "Langhoff_1969_PadeSummationCauchy"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """Four-term Cauchy coefficients (alpha_k = S(-2k-2)) fitted to measured \
+refractivity by a least-squares procedure constrained to a convergent series of \
+Stieltjes (CREEP program, projection method), then summed by upper- and lower-bounding \
+Pade approximants ([n,n]_f, [n,n-1]_f, [n,n]_k, ...) to extrapolate n - 1 into the \
+ultraviolet."""
+notes = """All values at NTP (0 degrees C, 1 atm), n - 1 = 2 pi N_0 alpha(omega) with 2 pi \
+N_0 = 0.2502e-4 (omega in atomic units): N_0 is Loschmidt's number, so the moments and \
+predictions refer to the ideal-gas density (density 'ideal'). The refractivity data \
+fitted are those of the Landolt-Boernstein compilation (Ref. 1) over the intervals of \
+Table I (e.g. Ar 2894-20586 A); for N2 the data span 20 587-4679 A (p. 8). No \
+uncertainties are given for the moments.
+
+Table III's 'present results' are the [2,1]_alpha = [2,2]_f lower bounds 'in every case \
+but the last two in each column', which are means of the [2,2]_f and [1,1]_k bounds \
+(p. 6). Recomputing them (checked 2026-09-24) shows that for Ne only 1300 and 1200 A are \
+means, for Ar every entry from 1800 A down and for Kr from 1800 A down differ from the \
+lower bound by more than rounding (means), and for Xe all entries are lower bounds, as \
+Tang and Poon 1974 found by repeating the calculation. Xe at 1600 A is misprinted \
+(erratum). Table III's 'previous calculation' columns and Table IV's second column are \
+Kingston's (1964) values; Table IV's measured column is Heddle et al.'s and Gill and \
+Heddle's (1963) and Marmo's (via Liggett and Levinger 1968); Table V's measured column \
+is Wilkinson's (1960) nitrogen data, not otherwise in the library. The Pade columns of \
+Tables IV and V are extracted as checks; their +- is the spread over the \
+measurement's wavelength band ('the uncertainties on the wavelength values correspond \
+to the range used in the measurements', Table IV note b), not an uncertainty.
+
+Table VI (H and H2 Cauchy coefficients for N = 2-5 terms, fitted to 15 exact H points \
+or Kirn's 15 H2 measurements, with rms deviations) documents the convergence of the \
+fit; its 'Final' H2 row is Table I's and nothing else is extracted. Atomic hydrogen \
+(Tables I, II, VI) is not a species of the package."""
+
+[[datasets]]
+id = "cauchy_He"
+material = "He"
+file = "He/langhoff_1969__cauchy_He.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "cauchy_Ne"
+material = "Ne"
+file = "Ne/langhoff_1969__cauchy_Ne.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "cauchy_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__cauchy_Ar.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "cauchy_Kr"
+material = "Kr"
+file = "Kr/langhoff_1969__cauchy_Kr.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "cauchy_Xe"
+material = "Xe"
+file = "Xe/langhoff_1969__cauchy_Xe.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check. Tang and Poon 1974 show these Xe moments give ultraviolet refractivities incompatible with Kingston's and with the measurements, and recommend another set (tang_1974/cauchy_recommended_Xe)."
+
+[[datasets]]
+id = "cauchy_H2"
+material = "H2"
+file = "H2/langhoff_1969__cauchy_H2.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "cauchy_N2"
+material = "N2"
+file = "N2/langhoff_1969__cauchy_N2.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "cauchy_O2"
+material = "O2"
+file = "O2/langhoff_1969__cauchy_O2.csv"
+table = "tbl_2b7dd49ddcb9"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table I, Cauchy coefficients alpha_0..alpha_3 = S(-2), S(-4), S(-6), S(-8) (footnote 19), rows by moment order, atomic units. Estimated from the refractivity data by the constrained fit, so not independent of them: a check."
+
+[[datasets]]
+id = "theory_Ne"
+material = "Ne"
+file = "Ne/langhoff_1969__theory_Ne.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, 'Present results': Pade predictions of n - 1 at nominal vacuum wavelengths; lower bounds except where noted in the source notes (means of bounds)."
+
+[[datasets]]
+id = "theory_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__theory_Ar.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, 'Present results': Pade predictions of n - 1 at nominal vacuum wavelengths; lower bounds except where noted in the source notes (means of bounds)."
+
+[[datasets]]
+id = "theory_Kr"
+material = "Kr"
+file = "Kr/langhoff_1969__theory_Kr.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, 'Present results': Pade predictions of n - 1 at nominal vacuum wavelengths; lower bounds except where noted in the source notes (means of bounds)."
+
+[[datasets]]
+id = "theory_Xe"
+material = "Xe"
+file = "Xe/langhoff_1969__theory_Xe.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, 'Present results': Pade predictions of n - 1 at nominal vacuum wavelengths; lower bounds except where noted in the source notes (means of bounds)."
+
+[[datasets]]
+id = "kingston_1964_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__kingston_1964_Ar.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "Table III, 'Previous calculation': Kingston's Table I, identical to kingston_1964."
+
+[[datasets]]
+id = "kingston_1964_Kr"
+material = "Kr"
+file = "Kr/langhoff_1969__kingston_1964_Kr.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "Table III, 'Previous calculation': Kingston's Table I, identical to kingston_1964."
+
+[[datasets]]
+id = "kingston_1964_Xe"
+material = "Xe"
+file = "Xe/langhoff_1969__kingston_1964_Xe.csv"
+table = "tbl_af4050e393d8"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "Table III, 'Previous calculation': Kingston's Table I, identical to kingston_1964."
+
+[[datasets]]
+id = "heddle_1963_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__heddle_1963_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["heddle_1963"]
+notes = "Table IV, 'Measured' at 1850 +- 80, 1805 +- 80 and 1210 +- 30 A: Heddle et al.'s Cerenkov values, identical to heddle_1963."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "gill_1963_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__gill_1963_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["gill_1963"]
+notes = "Table IV, 'Measured' at 1216 A, first value: Gill and Heddle's 5.65, identical to gill_1963."
+
+[[datasets]]
+id = "marmo_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__marmo_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["liggett_1968"]
+notes = "Table IV, 'Measured' at 1216 A, second value marked e: 'F. Marmo, as listed in Liggett and Levinger' (Rayleigh scattering, unpublished); identical to liggett_1968's Table III value."
+
+[[datasets]]
+id = "kingston_1964_table4_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__kingston_1964_table4_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["kingston_1964"]
+notes = "Table IV, 'Previous calculation' (first value at 1216 A): Kingston's Table III calculated column, identical to kingston_1964/theory_table3_Ar; the +- (sigma column, not declared) is the spread over the wavelength band."
+
+[[datasets]]
+id = "liggett_1968_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__liggett_1968_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["liggett_1968"]
+notes = "Table IV, 'Previous calculation' at 1216 A, second value marked f: Liggett and Levinger's Kramers-Kronig value 4.98, identical to liggett_1968."
+
+[[datasets]]
+id = "pade11f_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__pade11f_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table IV, present results, the [1,1]_f Pade approximant at Heddle's and Gill's wavelengths; the sigma column (not declared) is the spread over the wavelength band."
+
+[[datasets]]
+id = "pade21f_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__pade21f_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table IV, present results, the [2,1]_f Pade approximant at Heddle's and Gill's wavelengths; the sigma column (not declared) is the spread over the wavelength band."
+
+[[datasets]]
+id = "pade22f_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__pade22f_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table IV, present results, the [2,2]_f (lower bound) Pade approximant at Heddle's and Gill's wavelengths; the sigma column (not declared) is the spread over the wavelength band."
+
+[[datasets]]
+id = "pade11k_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__pade11k_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table IV, present results, the [1,1]_k (upper bound) Pade approximant at Heddle's and Gill's wavelengths; the sigma column (not declared) is the spread over the wavelength band."
+
+[[datasets]]
+id = "pade10k_Ar"
+material = "Ar"
+file = "Ar/langhoff_1969__pade10k_Ar.csv"
+table = "tbl_c1a45b3fe5fa"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table IV, present results, the [1,0]_k (upper bound) Pade approximant at Heddle's and Gill's wavelengths; the sigma column (not declared) is the spread over the wavelength band."
+
+[[datasets]]
+id = "wilkinson_1960_N2"
+material = "N2"
+file = "N2/langhoff_1969__wilkinson_1960_N2.csv"
+table = "tbl_6e6971f10d5e"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["P. G. Wilkinson, J. Opt. Soc. Am. 50, 1002 (1960)"]
+notes = "Table V, 'Measured': Wilkinson's nitrogen refractivities from line shifts in a high-dispersion vacuum spectrograph, 2042.48-1649.19 A (vacuum wavelengths). The original is not in the library, so this reproduction may be fitted. Langhoff and Karplus: the values at about 1750-1650 A 'are noticeably above the [1,1]_k upper bounds, a discrepancy that may be due to the presence of oxygen contamination, as suggested by Heddle et al.' (p. 7). No uncertainty is given."
+
+[[datasets]]
+id = "pade11f_N2"
+material = "N2"
+file = "N2/langhoff_1969__pade11f_N2.csv"
+table = "tbl_6e6971f10d5e"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table V, present results, the [1,1]_f Pade approximant at Wilkinson's wavelengths."
+
+[[datasets]]
+id = "pade21f_N2"
+material = "N2"
+file = "N2/langhoff_1969__pade21f_N2.csv"
+table = "tbl_6e6971f10d5e"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table V, present results, the [2,1]_f Pade approximant at Wilkinson's wavelengths. The 1874.25 A value is misprinted (erratum)."
+
+[[datasets]]
+id = "pade22f_N2"
+material = "N2"
+file = "N2/langhoff_1969__pade22f_N2.csv"
+table = "tbl_6e6971f10d5e"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table V, present results, the [2,2]_f (lower bound) Pade approximant at Wilkinson's wavelengths."
+
+[[datasets]]
+id = "pade11k_N2"
+material = "N2"
+file = "N2/langhoff_1969__pade11k_N2.csv"
+table = "tbl_6e6971f10d5e"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table V, present results, the [1,1]_k (upper bound) Pade approximant at Wilkinson's wavelengths."
+
+[[datasets]]
+id = "pade10k_N2"
+material = "N2"
+file = "N2/langhoff_1969__pade10k_N2.csv"
+table = "tbl_6e6971f10d5e"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table V, present results, the [1,0]_k (upper bound) Pade approximant at Wilkinson's wavelengths."
+
+[[formulas]]
+id = "cauchy_He"
+material = "He"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 2753-5462 A; convergent only below omega_1 = 0.7797 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "1.3838", alpha_1 = "1.550", alpha_2 = "2.066", alpha_3 = "2.95", omega_1 = "0.7797" }
+check = "At 5462.258 A (vacuum, omega = 0.08342 au) it gives 34.895e-6, Leonard's (1974) recommended value to the digit. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_He. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_He"
+material = "He"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.7797 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.8227", omega_b = "1.485", f_a = "0.6097", f_b = "1.065" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. No tabulated values (Fig. 5 only). Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_Ne"
+material = "Ne"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 2894-5462 A; convergent only below omega_1 = 0.6127 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "2.6680", alpha_1 = "2.863", alpha_2 = "5.682", alpha_3 = "13.4", omega_1 = "0.6127" }
+check = "At 5462.258 A it gives 67.259e-6, 0.03 % above Leonard's (1974) recommended 67.236. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_Ne. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_Ne"
+material = "Ne"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.6127 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.6401", omega_b = "1.672", f_a = "0.3755", f_b = "4.896" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. Its value equals Table III's predicted Ne column to 0.0002e-4 from 2200 to 1400 A; the 1300 and 1200 A entries are means of the [2,2]_f and [1,1]_k bounds (0.7864, 0.8174 against 0.7858, 0.8158). Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_Ar"
+material = "Ar"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 2894-20586 A; convergent only below omega_1 = 0.4272 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "11.091", alpha_1 = "28.16", alpha_2 = "96.78", alpha_3 = "387", omega_1 = "0.4272" }
+check = "At 5462.258 A it gives 282.52e-6, 0.02 % above Leonard's (1974) recommended 282.4655. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_Ar. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_Ar"
+material = "Ar"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.4272 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.4808", omega_b = "0.8899", f_a = "1.069", f_b = "5.123" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. Reproduces Table IV's [2,2]_f column (3.321, 3.357, 4.964, 4.914 at 1850, 1805, 1210, 1216 A against 3.32, 3.36, 4.96, 4.91) and Table III's argon entries from 2200 to 1900 A to about 0.002e-4; from 1800 A down Table III prints means of bounds (3.364 ... 6.021 against 3.362 ... 5.053). Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_Kr"
+material = "Kr"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 2025-6707 A; convergent only below omega_1 = 0.3687 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "16.740", alpha_1 = "55.53", alpha_2 = "238.7", alpha_3 = "1200", omega_1 = "0.3687" }
+check = "At 5462.258 A it gives 428.80e-6, 0.47 % below Leonard's (1974) recommended 430.84 (Leonard rescales Koch's and Kronjager's data, which the fit used, to his absolute value). Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_Kr. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_Kr"
+material = "Kr"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.3687 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.4226", omega_b = "0.7272", f_a = "1.150", f_b = "5.448" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. Reproduces Table III's krypton entries from 2200 to 1900 A to 0.0015e-4; from 1800 A down Table III prints means of bounds. Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_Xe"
+material = "Xe"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 2144-6707 A; convergent only below omega_1 = 0.3100 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "27.340", alpha_1 = "116.2", alpha_2 = "928.3", alpha_3 = "8520", omega_1 = "0.3100" }
+check = "At 5462.258 A it gives 705.47e-6, 0.16 % below Leonard's (1974) recommended 706.60. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_Xe. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_Xe"
+material = "Xe"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.3100 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.3265", omega_b = "0.9318", f_a = "1.098", f_b = "14.80" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. Table III's xenon entries (all lower bounds, as Tang and Poon 1974 note) follow the [2,1]_alpha approximant of Table I's moments (Eq. (12b); Tang and Poon's Eq. (51)) to 0.002e-4 from 2200 to 1500 A (8.7959, 9.1215, 9.5548, 10.1592, 11.0596, 12.5443, 23.9009 against 8.795 ... 23.898); these rounded Table II coefficients give 0.004-0.008e-4 more (0.04 more at 1500 A, near the pole at about 1396 A). At 1600 A the moments give 15.462 and this form 15.474 against the printed 15.640, corrected by an erratum to 15.460 (Tang and Poon's recomputation). Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_H2"
+material = "H2"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 1854-5462 A; convergent only below omega_1 = 0.4110 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "5.4390", alpha_1 = "20.02", alpha_2 = "81.61", alpha_3 = "350", omega_1 = "0.4110" }
+check = "At 5462.258 A it gives 139.67e-6. Table VI's 'Final' H2 row equals these coefficients. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_H2. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_H2"
+material = "H2"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.4110 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.4736", omega_b = "0.7441", f_a = "0.8627", f_b = "0.8822" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. No tabulated values (Fig. 6 only). Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_N2"
+material = "N2"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 4679-20586 A; convergent only below omega_1 = 0.4487 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "11.743", alpha_1 = "30.17", alpha_2 = "99.21", alpha_3 = "374", omega_1 = "0.4487" }
+check = "At 5462.258 A it gives 299.19e-6. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_N2. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_N2"
+material = "N2"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.4487 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.4929", omega_b = "0.8531", f_a = "1.244", f_b = "4.820" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. Reproduces Table V's [2,2]_f column at all 22 wavelengths to within +0.0002 to +0.0012 (x 1e-4), the rounding of the four-digit coefficients. Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+[[formulas]]
+id = "cauchy_O2"
+material = "O2"
+equation = "Eq. (29), p. 4, with Table I"
+printed = "(n - 1) = 2 pi N_0 (alpha_0 + alpha_1 omega^2 + alpha_2 omega^4 + alpha_3 omega^6), 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "fitted to 4388-9224 A; convergent only below omega_1 = 0.2249 au"
+coefficients = { two_pi_N0 = "0.2502e-4", alpha_0 = "10.600", alpha_1 = "36.97", alpha_2 = "132.0", alpha_3 = "480", omega_1 = "0.2249" }
+check = "At 5462.258 A it gives 271.81e-6. Checked 2026-09-24."
+notes = "Four-term Cauchy fit constrained to be a Stieltjes series (Eqs. (5), (28), (A2)-(A7)); alpha_k = S(-2k-2), extracted as dataset cauchy_O2. 2 pi N_0 = 0.2502e-4 is 2 pi N_L a_0^3 with Loschmidt's number (2.5016e-5), hence density 'ideal'."
+
+[[formulas]]
+id = "pade22f_O2"
+material = "O2"
+equation = "Eq. (30), p. 4, with Table II"
+printed = "(n - 1) > 2 pi N_0 [2,2]_f = 2 pi N_0 [f_a/(omega_a^2 - omega^2) + f_b/(omega_b^2 - omega^2)], 2 pi N_0 = 0.2502 x 10^-4"
+variable = "omega: photon energy (angular frequency) in atomic units (hartree)"
+state = "1atm_0C"
+density = "ideal"
+range = "a lower bound to n - 1 below omega_1 = 0.2249 au; built from the Table I moments"
+coefficients = { two_pi_N0 = "0.2502e-4", omega_a = "0.5121", omega_b = "0.6200", f_a = "2.033", f_b = "1.095" }
+check = "Its four moments f_a/omega_a^(2k+2) + f_b/omega_b^(2k+2) reproduce Table I's alpha_0..alpha_3 to 0.1 %. No tabulated values ('no short-wavelength data are available', p. 8). Checked 2026-09-24."
+notes = "The [2,2]_f Pade approximant (identical to [2,1]_alpha), a two-term Sellmeier form with fictitious transition frequencies and strengths; the paper suggests it 'is an accurate representation' for H2 (p. 7)."
+
+
+[[errata]]
+dataset = "theory_Xe"
+row = "1600"
+column = "value"
+printed = "15.640"
+corrected = "15.460"
+reason = "The xenon entries of Table III are the [2,1]_alpha lower bounds; at 1600 A that bound is 15.46, and 15.640 transposes two digits."
+evidence = "The [2,1]_alpha approximant from Table I's xenon moments (Eq. (12b), in Tang and Poon's explicit form, Eq. (51)) gives 15.462 at 1600 A (and reproduces the other xenon entries to 0.002); the [2,2]_f form with Table II's coefficients gives 15.474; Tang and Poon 1974 (Table V, 'Lower bound Pade [2,1]_alpha') print 15.460 from the same moments. Table image tbl_af4050e393d8.jpg shows 15.640. Computed 2026-09-24."
+
+[[errata]]
+dataset = "pade21f_N2"
+row = "1874.25"
+column = "value"
+printed = "4.492"
+corrected = "3.492"
+reason = "The [2,1]_f bound lies between the [1,1]_f and [2,2]_f bounds at every other wavelength (it is a lower bound converging from below); 4.492 is 1.0 above both and above the neighbouring rows, 3.492 fits (3.464 < 3.492 < 3.496; neighbours 3.453 at 1930.04 A and 3.513 at 1845.87 A)."
+evidence = "Table image tbl_6e6971f10d5e.jpg shows 4.492; the leading digit is misprinted. The [2,1]_f bound can be computed from Eq. (16b) with Table I's N2 moments (N = 14; 11.743, 30.17, 99.21; 2 pi N0 = 0.2502e-4): it gives 3.492 at 1874.25 A and reproduces the other 21 rows of the column to +-0.001 (second read 2026-09-25; TC-102)."

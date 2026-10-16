@@ -1,0 +1,72 @@
+citation = "D. P. Shelton, \"Rotational hyperpolarizability of a homonuclear diatomic molecule\", Phys. Rev. A 36, 3461 (1987)"
+doi = "10.1103/physreva.36.3461"
+library = "Shelton_1987_RotationalHyperpolarizabilityHomonuclear"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Perturbation theory (Orr & Ward) for the off-resonance rotational \
+hyperpolarizability gamma^r of a homonuclear diatomic molecule, treated fully quantum \
+mechanically: gamma^r collects the terms with a pure rotational level of the ground \
+electronic manifold as intermediate state; each pair of electronic sums is replaced by \
+the static Raman transition polarizability; M sublevels averaged with the Wigner-Eckart \
+theorem and J with a normalised population rho(J), following shelton_1987 (pp. \
+3461-3462)."""
+notes = """A brief report with no numerical values of gamma: only formulas (recorded below), \
+Table I (the frequency factors 6 D^2(Omega) for the xxxx, xxyy, xyxy and xyyx \
+polarization combinations, in terms of D1, D2, D3 = D(Omega; w1 + w2), D(Omega; w1 + w3), \
+D(Omega; w2 + w3), with D(Omega; w) = 2 Omega/(Omega^2 - w^2), Eq. 6; the same as \
+shelton_1987 Table 1's 6 D^2 column; image checked) and the correction of shelton_1987's \
+Table 4. Pages are the journal's (3461-3463; p. = pdf page + 3460).
+
+gamma^r: only Delta J = +-2 transitions contribute (Delta J = 0 elements are those of \
+JM -> JM, excluded, p. 3462), through alpha_0^(2) = (2/3)^1/2 (alpha_par - alpha_perp). \
+With damping, D(Omega; w) becomes 2 Omega/(Omega^2 - w^2 + Gamma^2) (1 + i y)/(1 + y^2), \
+y = 2 w Gamma/(Omega^2 - w^2 + Gamma^2) (Eq. 7), Gamma the HWHM: significant only for \
+Gamma >~ Omega, e.g. N2 above 300 atm, where the rotational Raman spectrum collapses \
+(p. 3462).
+
+Eq. (10), the classical limit (hbar B/kT << 1, J >> 1, thermal populations, the J \
+dependence of alpha_par - alpha_perp neglected) of the dc Kerr gamma^r: gamma^r_dcKerr = \
+((alpha_par - alpha_perp)^2/5kT){3/4 + (1/4)[1 - (w/Omega_m)^2]^-1}, Omega_m = 4B(kT/hbar \
+B)^1/2 when w >> Omega. 'The zero-frequency limit of Eq. (10) agrees exactly with the \
+classical result [(alpha_par - alpha_perp)^2/5kT]. However, at optical frequencies where \
+w >> Omega, Eq. (10) gives 3/4 times the classical result. Thus, Eqs. (9) and (10) \
+disagree with the classical dc Kerr result and also with the previously calculated \
+quantum result for the dc Kerr effect [Buckingham & Orr 1968]'; 'it appears that \
+Buckingham's ansatz for calculating the dc Kerr birefringence in terms of a perturbed \
+refractive index is only valid in the static limit' (pp. 3462-3463). This bears on every \
+dc Kerr gamma obtained by subtracting a Buckingham-Orr orientation term (tammer_1990, \
+tammer_1992, buckingham_1968b, buckingham_1970, gentle_1989); Shelton & Rugar 1993 \
+(shelton_1993) later measured H2 and used the full expression.
+
+Ref. 10 (p. 3463), the erratum to shelton_1987: 'Table 4 of Ref. 9 contains several \
+numerical errors. Line 2 should read D2, 2988, +0.007*, +0.737, +2.464, -0.031, -0.010. \
+Column 6 should read ESHG, -0.064, -0.031, -0.008, -0.005' (page image checked; applied \
+as errata in shelton_1987 and verified there by recomputation).
+
+Reproductions elsewhere: shelton_1994 Table VIII (gamma^v of H2, D2, N2, O2 with 'the \
+corrections given in ref 133', and gamma^R). The library's validation reports references \
+reordered on p. 3 (info only)."""
+
+[[formulas]]
+id = "eq5_rotational"
+equation = "Eq. (5), p. 3462"
+printed = "<gamma^r(-w_sigma; w1, w2, w3)>_abcd = (1/(30 hbar)) sum_J (alpha_par - alpha_perp)_{J,J+2}^2 [rho(J) - ((2J + 1)/(2J + 5)) rho(J + 2)] ((J + 1)(J + 2)/((2J + 1)(2J + 3))) 6 D^2(Omega_{J,J+2})"
+variable = "rho(J): the normalised rotational population; Omega_{J,J+2}: the J -> J+2 rotational Raman frequency; 6 D^2(Omega): the frequency factor of Table I for the polarization combination abcd, from D(Omega; w) = 2 Omega/(Omega^2 - w^2) (Eq. 6)"
+process = "other"
+convention = "T"
+part = "rotational"
+range = "off resonance, damping negligible (Gamma << Omega; Eq. 7 otherwise)"
+check = "No numerical values in the paper to reproduce."
+notes = "The quantum rotational hyperpolarizability of a homonuclear diatomic molecule for any off-resonance third-order process (the process enters through the frequencies in Table I's D1, D2, D3)."
+
+[[formulas]]
+id = "eq9_dc_kerr"
+equation = "Eq. (9), p. 3462"
+printed = "gamma^r_dcKerr = sum_J ((alpha_par - alpha_perp)_{J,J+2}^2/(5kT)) (kT/(hbar B)) [rho(J) - ((2J + 1)/(2J + 5)) rho(J + 2)] ((J + 1)(J + 2)/((2J + 1)(2J + 3)^2)) (1/2){3 + [1 - (w/Omega_{J,J+2})^2]^-1}"
+variable = "gamma_dcKerr = (3/2)[<gamma(-w; 0, 0, w)>_xxxx - <gamma(-w; 0, 0, w)>_xyyx] (Eq. 8); rigid-rotor levels E(J) = J(J + 1) hbar B, Omega_{J,J+2} = (6 + 4J) B; damping ignored"
+process = "dc_kerr"
+convention = "T"
+part = "rotational"
+range = "off resonance, damping negligible"
+check = "No numerical values in the paper to reproduce."
+notes = "Its classical limit is Eq. (10) (in the record's notes): 3/4 of Buckingham's classical (alpha_par - alpha_perp)^2/5kT at optical frequencies, equal to it in the static limit."

@@ -1,0 +1,547 @@
+citation = "Q. Zhang, P. Lan and P. Lu, \"Empirical formula for over-barrier strong-field ionization\", Phys. Rev. A 90, 043410 (2014)"
+doi = "10.1103/PhysRevA.90.043410"
+library = "Zhang_2014_EmpiricalFormulaOver"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Static-field ionisation rates of Ar and Ar+ (and He, Ne, Kr, Xe in the \
+figures) from the complex eigenvalue of the single-active-electron Hamiltonian Eq. (4) \
+in a dc field, by complex scaling (rotation angle theta = 0.4, the stationary point, \
+p. 2), in three model potentials: Tong and Lin's (Eq. (5), Table I), Green, Sellin and \
+Zachor's (GSZ, Eq. (6), Table II) and Muller's (Eq. (7), Table III); bound-state \
+energies of each potential (Tables IV-VIII). A parabola in E/E_b is fitted to the \
+logarithm of the ratio of these rates to the ADK rate, Eq. (1), giving the modified \
+empirical formula Eq. (8) and its coefficients (Table XI), valid for E/E_b = 0.5-4.5."""
+notes = """Journal pp. 043410-1 to -7 = pdf pages 1-7. Identity checked against pdf p. 1 \
+(Qingbin Zhang, Pengfei Lan and Peixiang Lu). solprop's BSI_ZHANG_COEFFICIENTS (He, Ne, \
+Ar, Kr, Xe) are this paper's Table XI, digit for digit (checked against the image, \
+2026-09-27); solprop drops the leading minus sign of Eq. (8) (TC-439), and that reading \
+is right (below).
+
+EXTRACTED. Table XI (p. 4): a_1, a_2, a_3 for He, Ne, Ar, Kr, Xe and Ar+ (H, the \
+hydrogen atom, not curated: 0.11714, -0.90933, -0.06034). Tables IX and X (p. 3): Gamma/2 \
+of Ar and Ar+ against the field amplitude, one dataset per potential (the rate is Gamma \
+= 2 x the printed value: scale 2). Tables I-III (p. 2): the parameters of the three \
+potentials (H skipped). Structural fixes in the script (the a_2/a_3 rows of Table XI \
+merged character by character; Tables IX and X scrambled in the text layer), each value \
+transcribed from the image and checked against the library's cells; no misprint of a \
+value is corrected. Two cells of Table IX (F = 0.12177 au, Muller and Tong-Lin) are \
+excluded as inconsistent (the datasets say why).
+
+THE FORMULAS (pp. 2-4, atomic units). Eq. (1), ADK: W_ADK(E) = C_l^2/(2^|m| |m|!) \
+(2l + 1)(l + |m|)!/(2 (l - |m|)!) kappa^-(2Z_c/kappa - 1) (2 kappa^3/E)^(2Z_c/kappa - |m| \
+- 1) exp(-2 kappa^3/3/E), 'm = 0 in our calculation', kappa = sqrt(2 I_p), 'C_l is the \
+coefficient that describes the electron wave function in the asymptotic region and its \
+expression can be found in [27]' (ref. 27 is Corkum, PRL 71, 1994 (1993), which gives no \
+C_l; the Ar check below shows that C_l = 2.44 of tong_2002 Table II was used). This is \
+tong_2005's Eq. (3). Eq. (3), Tong and Lin: W_TL = exp[-alpha (Z_c^2/I_p)(E/kappa^3)] \
+W_ADK. E_b = I_p^2/4/Z_c (p. 1), 'the barrier-suppression strength'. Eq. (8): W_M(E) = \
+exp[-(a_1 E^2/E_b^2 + a_2 E/E_b + a_3)] W_ADK(E) as printed (formula eq8). Eq. (9): Error \
+= (W - Gamma)/Gamma. Eq. (10): P = 1 - exp^(int W[E(t)] dt) as printed (the minus sign \
+of the exponent is missing: P = 1 - exp(-int W dt)).
+
+THE SIGN (AND THE BASE) OF EQ. (8). As printed, the factor is exp[-(a_1 x^2 + a_2 x + \
+a_3)], x = E/E_b; with Table XI's a_2 < 0 it exceeds one and grows with x (Ar: e^1.02 at \
+x = 1). The paper's own numbers say the factor is exp[+(a_1 x^2 + a_2 x + a_3)], the \
+reading solprop adopted (TC-439):
+- Table IX against Eq. (8) for Ar (Tong-Lin potential, Table XI's Ar coefficients, I_p = \
+15.7596 eV, C_l = 2.44 of tong_2002, l = 1, m = 0, Gamma = 2 x the printed Gamma/2): \
+W_M/Gamma = 1.04, 0.955, [1.20], 1.02, 1.02, 1.01, 1.01, 1.01, 1.00, 0.999, 0.997, \
+0.993, 0.990, 0.988, 0.989 over the fifteen fields (E/E_b = 0.64-3.76; the bracketed \
+row is the excluded cell). With the printed minus sign the same ratio is 3.2 at the \
+first field and 439 at the last. With 10^(+poly) it is 0.49 to 0.019; with Gamma taken \
+as the printed Gamma/2, exactly 2 throughout (2.07-1.98).
+- A free parabola fitted to ln(2 x Gamma/2 / W_ADK) of Table IX's Tong-Lin column gives \
+a_1 = 0.168, a_2 = -1.511 against Table XI's 0.16178, -1.50441; fitted to log10 it gives \
+0.073, -0.656. So the coefficients fit the natural logarithm with a positive sign, and \
+the constant a_3 absorbs C_l^2 = 2.44^2: the implied C_l is 2.40-2.50 at every field \
+(checked 2026-09-27, a scratch script).
+- Tong and Lin's alpha = 9 for Ar (tong_2005) gives W_TL/Gamma = 0.94, 0.95, [1.20], \
+1.01, 0.98, 0.93, 0.88, 0.83, 0.78, 0.72, 0.68, 0.60, 0.53, 0.47, 0.41: right to about \
+2 E_b and too low beyond, which is the paper's finding (p. 5).
+- Figs. 1 and 2 label their ordinate 'log10(Gamma/W_ADK)', but the values plotted (Ar: \
+-1.0 at E/E_b = 1, -2.0 at 2, -2.75 at 3, -3.15 at 4.5; Ar+: -0.1 at 0.6, -2.8 at 2, \
+-4.6 at 4.5) are a_1 x^2 + a_2 x + a_3 itself, which the Table IX check shows is \
+ln(Gamma/W_ADK): the axis label is a second slip, and it cannot be the basis of a \
+10^(poly) reading, which fails Table IX by factors of 2 to 50.
+The correction is recorded on the formula (eq8's leading_sign). Occupancy: W_M, like \
+Gamma, is the rate of the one active electron (m = 0), with no factor for the other \
+electrons of the shell.
+
+TABLES IV-VIII (p. 2, notes only): bound-state energies (hartree) of He, Ne, Ar, Ne+ and \
+Ar+ in the GSZ, Muller and Tong-Lin potentials, against 'NIST' (ref. 32: 'The atomic \
+spectra includes the multielectron effect ... We show only one or two values for each \
+eigenstate'). The ground states: He 1s -0.91724 (GSZ), -0.90337 (Muller), -0.90382 \
+(Tong-Lin), -0.90395 (NIST); Ne 2p -0.79466, -0.79892, -0.79331, -0.79281; Ar 3p \
+-0.57830, -0.58052, -0.57858, -0.57940; Ne+ 2p -1.53671 (GSZ), -1.50522 (Tong-Lin), \
+-1.50641 (NIST), no Muller; Ar+ 3p -1.02093, -1.01212, -1.01494, -1.01583. Tables V, VI \
+and VIII are scrambled in the library; these were read on the images. Excited states \
+(2s-3d, 4s-4p) are printed too and not taken.
+
+TEXT VALUES (notes only). SAE models: 'When the intensity is lower than 1 x 10^15 \
+W/cm^2, the relative deviation [of the Tong-Lin potential's rates from the other two] \
+is about 10%. It gradually decreases to 5% at 2 x 10^15 W/cm^2 and finally decreases to \
+1% at 3 x 10^15 W/cm^2' (p. 4). Validity: 'The relative errors are less than 0.2 for He, \
+Ne, Ar, Kr, and Xe atoms. For the Ar+ ion, the relative errors are less than 0.15 if 0.7 \
+< E/E_b < 4.5, but slight larger if E/E_b < 0.7'; Tong and Lin's Eq. (3) for He: \
+relative error 0.02 at E/E_b = 1.5, 0.29 at 2.5 and 0.74 at 4.5 (p. 5). Ar in a 2 fs \
+pulse (Fig. 6): saturation (99 % ionisation) at 3.47 E_b (2.98 x 10^15 W/cm^2) with \
+Tong-Lin and 4.06 E_b (4.08 x 10^15 W/cm^2) with Eq. (8) (p. 6). 5 x 10^15 W/cm^2 is \
+4.5 E_b for Ar (p. 1). Figures (not digitised): Figs. 1-2 the log ratio for Ar and Ar+ \
+with the linear and parabolic fits; Figs. 3-4 the rates of Ar and Ar+ from ADK, WFAT, \
+Tong-Lin, Eq. (8) and the Schrodinger equation; Fig. 5 the relative errors of Eqs. (3) \
+and (8) for He, Ne, Ar, Kr, Xe, Ar+; Fig. 6 Ar ionisation probability in a 2 fs pulse."""
+
+[[formulas]]
+id = "eq8"
+material = "Ar"
+equation = "Eq. (8), p. 4"
+printed = "W_M(E) = exp[-(a_1 E^2/E_b^2 + a_2 E/E_b + a_3)] W_ADK(E)"
+variable = "E: static field (au); E_b = I_p^2/(4 Z_c), the barrier-suppression field (au); W_ADK: Eq. (1), with the C_l of tong_2002 Table II and m = 0; a_1, a_2, a_3: Table XI (the datasets tableXI_<target>)"
+range = "E/E_b = 0.5-4.5 ('the upper limit of applicable field strength for this formula is determined to be 4.5 E_b', p. 6)"
+coefficients = { leading_sign = "-1" }
+check = "With the leading sign corrected to +1, Table XI's Ar coefficients, C_l = 2.44 and Gamma = 2 x Table IX's Tong-Lin Gamma/2, W_M/Gamma = 0.955-1.04 at the fourteen consistent fields, E/E_b = 0.64-3.76 (checked 2026-09-27; the record's notes give every ratio). As printed, W_M/Gamma = 3.2-439. The material is nominal: the formula takes each target's own a_1-a_3 (He, Ne, Ar, Kr, Xe, Ar+)."
+notes = "Printed with a leading minus sign inside the exponential; the paper's own Table IX, Figs. 1-2 and Table XI require exp(+(a_1 x^2 + a_2 x + a_3)), a factor below one that falls with E (the correction below). The a_i are fitted to the natural logarithm of Gamma/W_ADK, Gamma the full static rate (twice the tabulated half rate)."
+
+[[formulas.corrections]]
+term = "leading_sign"
+printed = "-1"
+corrected = "+1"
+reason = "The minus sign printed before the parenthesis of Eq. (8) makes the correction factor exceed one (Ar: 2.8 at E = E_b, 21 at 3.8 E_b), where the paper says the ADK rate 'significantly overestimates the ionization rate' (p. 5) and the factor must lie below one; Table XI's coefficients fit ln(Gamma/W_ADK) with a positive sign."
+evidence = "Eq. (8) as printed on p. 4 (page image checked 2026-09-27). With +1: Table IX's Ar rates (Tong-Lin potential, Gamma = 2 x Gamma/2) are reproduced to 0.955-1.04 with C_l = 2.44 (tong_2002 Table II), and a parabola fitted to ln(Gamma/W_ADK) from Table IX returns a_1 = 0.168, a_2 = -1.511 against the printed 0.16178, -1.50441; Figs. 1-2 plot a_1 x^2 + a_2 x + a_3 falling from -1 to -3.2 (Ar). solprop reads it the same way (TC-439)."
+
+[[datasets]]
+id = "tableXI_He"
+material = "He"
+file = "He/zhang_2014__tableXI_He.csv"
+table = "tbl_5fd51895d9aa"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = "Table XI (p. 4): a_1, a_2, a_3 of the modified empirical formula, Eq. (8), fitted to this paper's complex-scaling static rates (Tong-Lin potential for He, Ne, Ar, Xe and Ar+, GSZ for Kr; p. 5) over E/E_b = 0.5-4.5, E_b = I_p^2/(4 Z_c). They are the coefficients of a parabola in E/E_b fitted to ln(Gamma/W_ADK), Gamma the full static rate and W_ADK Eq. (1), so the factor on W_ADK is exp(+(a_1 x^2 + a_2 x + a_3)): the leading minus sign printed in Eq. (8) is a misprint (the formula eq8 and its correction). 'The relative errors are less than 0.2 for He, Ne, Ar, Kr, and Xe atoms' (p. 5, Fig. 5). The a_2, a_3 values are read from the image (the library merges the two rows)."
+[datasets.parameters]
+model = "zhang_2014"
+parameter = "a_1, a_2, a_3 of Eq. (8), the row label"
+
+[[datasets]]
+id = "tableXI_Ne"
+material = "Ne"
+file = "Ne/zhang_2014__tableXI_Ne.csv"
+table = "tbl_5fd51895d9aa"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = "Table XI (p. 4): a_1, a_2, a_3 of the modified empirical formula, Eq. (8), fitted to this paper's complex-scaling static rates (Tong-Lin potential for He, Ne, Ar, Xe and Ar+, GSZ for Kr; p. 5) over E/E_b = 0.5-4.5, E_b = I_p^2/(4 Z_c). They are the coefficients of a parabola in E/E_b fitted to ln(Gamma/W_ADK), Gamma the full static rate and W_ADK Eq. (1), so the factor on W_ADK is exp(+(a_1 x^2 + a_2 x + a_3)): the leading minus sign printed in Eq. (8) is a misprint (the formula eq8 and its correction). 'The relative errors are less than 0.2 for He, Ne, Ar, Kr, and Xe atoms' (p. 5, Fig. 5). The a_2, a_3 values are read from the image (the library merges the two rows)."
+[datasets.parameters]
+model = "zhang_2014"
+parameter = "a_1, a_2, a_3 of Eq. (8), the row label"
+
+[[datasets]]
+id = "tableXI_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableXI_Ar.csv"
+table = "tbl_5fd51895d9aa"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = "Table XI (p. 4): a_1, a_2, a_3 of the modified empirical formula, Eq. (8), fitted to this paper's complex-scaling static rates (Tong-Lin potential for He, Ne, Ar, Xe and Ar+, GSZ for Kr; p. 5) over E/E_b = 0.5-4.5, E_b = I_p^2/(4 Z_c). They are the coefficients of a parabola in E/E_b fitted to ln(Gamma/W_ADK), Gamma the full static rate and W_ADK Eq. (1), so the factor on W_ADK is exp(+(a_1 x^2 + a_2 x + a_3)): the leading minus sign printed in Eq. (8) is a misprint (the formula eq8 and its correction). 'The relative errors are less than 0.2 for He, Ne, Ar, Kr, and Xe atoms' (p. 5, Fig. 5). The a_2, a_3 values are read from the image (the library merges the two rows). Reproduces this paper's own Table IX: with the leading sign of Eq. (8) dropped (the formula's correction), C_l = 2.44 (tong_2002 Table II) and Gamma = 2 x the Tong-Lin column, W_M/Gamma = 0.955-1.04 over the fifteen fields (row F = 0.12177 excluded, see tableIX_tonglin_Ar); a free parabola fitted to ln(Gamma/W_ADK) from Table IX gives a_1 = 0.168, a_2 = -1.511 (checked 2026-09-27)."
+[datasets.parameters]
+model = "zhang_2014"
+parameter = "a_1, a_2, a_3 of Eq. (8), the row label"
+
+[[datasets]]
+id = "tableXI_Kr"
+material = "Kr"
+file = "Kr/zhang_2014__tableXI_Kr.csv"
+table = "tbl_5fd51895d9aa"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = "Table XI (p. 4): a_1, a_2, a_3 of the modified empirical formula, Eq. (8), fitted to this paper's complex-scaling static rates (Tong-Lin potential for He, Ne, Ar, Xe and Ar+, GSZ for Kr; p. 5) over E/E_b = 0.5-4.5, E_b = I_p^2/(4 Z_c). They are the coefficients of a parabola in E/E_b fitted to ln(Gamma/W_ADK), Gamma the full static rate and W_ADK Eq. (1), so the factor on W_ADK is exp(+(a_1 x^2 + a_2 x + a_3)): the leading minus sign printed in Eq. (8) is a misprint (the formula eq8 and its correction). 'The relative errors are less than 0.2 for He, Ne, Ar, Kr, and Xe atoms' (p. 5, Fig. 5). The a_2, a_3 values are read from the image (the library merges the two rows). Fitted to rates computed in the GSZ potential (Table II), not Tong-Lin's (p. 5: 'the GSZ potential is used for Kr')."
+[datasets.parameters]
+model = "zhang_2014"
+parameter = "a_1, a_2, a_3 of Eq. (8), the row label"
+
+[[datasets]]
+id = "tableXI_Xe"
+material = "Xe"
+file = "Xe/zhang_2014__tableXI_Xe.csv"
+table = "tbl_5fd51895d9aa"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = "Table XI (p. 4): a_1, a_2, a_3 of the modified empirical formula, Eq. (8), fitted to this paper's complex-scaling static rates (Tong-Lin potential for He, Ne, Ar, Xe and Ar+, GSZ for Kr; p. 5) over E/E_b = 0.5-4.5, E_b = I_p^2/(4 Z_c). They are the coefficients of a parabola in E/E_b fitted to ln(Gamma/W_ADK), Gamma the full static rate and W_ADK Eq. (1), so the factor on W_ADK is exp(+(a_1 x^2 + a_2 x + a_3)): the leading minus sign printed in Eq. (8) is a misprint (the formula eq8 and its correction). 'The relative errors are less than 0.2 for He, Ne, Ar, Kr, and Xe atoms' (p. 5, Fig. 5). The a_2, a_3 values are read from the image (the library merges the two rows)."
+[datasets.parameters]
+model = "zhang_2014"
+parameter = "a_1, a_2, a_3 of Eq. (8), the row label"
+
+[[datasets]]
+id = "tableXI_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableXI_Ar+.csv"
+table = "tbl_5fd51895d9aa"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = "Table XI (p. 4): a_1, a_2, a_3 of the modified empirical formula, Eq. (8), fitted to this paper's complex-scaling static rates (Tong-Lin potential for He, Ne, Ar, Xe and Ar+, GSZ for Kr; p. 5) over E/E_b = 0.5-4.5, E_b = I_p^2/(4 Z_c). They are the coefficients of a parabola in E/E_b fitted to ln(Gamma/W_ADK), Gamma the full static rate and W_ADK Eq. (1), so the factor on W_ADK is exp(+(a_1 x^2 + a_2 x + a_3)): the leading minus sign printed in Eq. (8) is a misprint (the formula eq8 and its correction). 'The relative errors are less than 0.2 for He, Ne, Ar, Kr, and Xe atoms' (p. 5, Fig. 5). The a_2, a_3 values are read from the image (the library merges the two rows). Table X's rates with the formula reproduce the shape: a parabola fitted to ln(Gamma/W_ADK) from Table X (Tong-Lin) gives a_1 = 0.144, a_2 = -2.07 against the printed 0.30441, -2.70461 (Table X reaches only E/E_b = 3.07, the fit 4.5); with Eq. (8) and a constant C_l = 3.75 (not given by the paper) W_M/Gamma = 0.90-1.05 for E/E_b = 0.95-3.07 and 1.52 at 0.58, consistent with the paper's 'less than 0.15 if 0.7 < E/E_b < 4.5, but slight larger if E/E_b < 0.7' (p. 5)."
+[datasets.parameters]
+model = "zhang_2014"
+parameter = "a_1, a_2, a_3 of Eq. (8), the row label"
+
+[[datasets]]
+id = "tableIX_gsz_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableIX_gsz_Ar.csv"
+table = "tbl_9167dfe0cbd8"
+quantity = "ionization_rate"
+unit = "au"
+scale = 2
+abscissa = "field"
+abscissa_unit = "au"
+columns = { intensity = "W/cm2" }
+use = "primary"
+notes = "Table IX (p. 3), column 'Gamma/2: GSZ': the half static ionisation rate of Ar in the Green-Sellin-Zachor potential, Eq. (6), Table II, computed by complex scaling (theta = 0.4) of the single-active-electron Hamiltonian Eq. (4) in a static field, against the field amplitude (au) over 0.053-0.315 au (1.0e14-3.5e15 W/cm^2); the intensity printed beside each field is the column intensity. 'Half': the complex eigenvalue is E_r - i Gamma/2, 'the imaginary part gives one-half of the ionization rate' (p. 3), so the table prints Gamma/2 and the rate is Gamma; scale = 2 turns the printed Gamma/2 into Gamma (au). That Gamma, not Gamma/2, is the rate Eq. (8) fits is confirmed by the Ar check (tableXI_Ar). What the rate counts: one active electron in the SAE potential; the rate of that one electron (Eq. (1) takes m = 0), with no occupation factor. 'the multielectron effects beyond the SAE approximation on ionization have not been included' (p. 4). No accuracy is stated. The values are transcribed from the table image and checked against the library's scrambled text layer and its OCR reading (the script)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+potential = "GSZ"
+
+[[datasets]]
+id = "tableIX_muller_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableIX_muller_Ar.csv"
+table = "tbl_9167dfe0cbd8"
+quantity = "ionization_rate"
+unit = "au"
+scale = 2
+abscissa = "field"
+abscissa_unit = "au"
+columns = { intensity = "W/cm2" }
+use = "primary"
+excluded_rows = { "0.12177" = "inconsistent with its neighbours and with the text: the Tong-Lin cell 0.01110 repeats the GSZ cell digit for digit, where the Tong-Lin rate is 16-23 % above GSZ at the neighbouring fields and 'about 10%' higher below 1e15 W/cm^2 (p. 4), and the Muller cell 0.013229 is 19 % above GSZ where Muller and GSZ agree to 1.4 % at every other field above 0.09 au; the smooth ratio Gamma/W_ADK changes by about 20 % at this row alone in both columns (checked 2026-09-27). Kept as printed. This cell equals to 0.02 % the Tong-Lin rate at this field computed with tRecX (travers_2026_trecx/static_Ar_m0, TC-813): very likely the Tong-Lin value, displaced; the Muller rate at this field is then not printed" }
+notes = "Table IX (p. 3), column 'Gamma/2: Muller': the half static ionisation rate of Ar in Muller's potential, Eq. (7), Table III, computed by complex scaling (theta = 0.4) of the single-active-electron Hamiltonian Eq. (4) in a static field, against the field amplitude (au) over 0.053-0.315 au (1.0e14-3.5e15 W/cm^2); the intensity printed beside each field is the column intensity. 'Half': the complex eigenvalue is E_r - i Gamma/2, 'the imaginary part gives one-half of the ionization rate' (p. 3), so the table prints Gamma/2 and the rate is Gamma; scale = 2 turns the printed Gamma/2 into Gamma (au). That Gamma, not Gamma/2, is the rate Eq. (8) fits is confirmed by the Ar check (tableXI_Ar). What the rate counts: one active electron in the SAE potential; the rate of that one electron (Eq. (1) takes m = 0), with no occupation factor. 'the multielectron effects beyond the SAE approximation on ionization have not been included' (p. 4). No accuracy is stated. The values are transcribed from the table image and checked against the library's scrambled text layer and its OCR reading (the script). The row at F = 0.12177 au is excluded (excluded_rows)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+potential = "Muller"
+
+[[datasets]]
+id = "tableIX_tonglin_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableIX_tonglin_Ar.csv"
+table = "tbl_9167dfe0cbd8"
+quantity = "ionization_rate"
+unit = "au"
+scale = 2
+abscissa = "field"
+abscissa_unit = "au"
+columns = { intensity = "W/cm2" }
+use = "primary"
+excluded_rows = { "0.12177" = "inconsistent with its neighbours and with the text: the Tong-Lin cell 0.01110 repeats the GSZ cell digit for digit, where the Tong-Lin rate is 16-23 % above GSZ at the neighbouring fields and 'about 10%' higher below 1e15 W/cm^2 (p. 4), and the Muller cell 0.013229 is 19 % above GSZ where Muller and GSZ agree to 1.4 % at every other field above 0.09 au; the smooth ratio Gamma/W_ADK changes by about 20 % at this row alone in both columns (checked 2026-09-27). Kept as printed. tRecX's static rate in the same potential (travers_2026_trecx/static_Ar_m0, TC-813) gives Gamma/2 = 1.3232e-2 at this field, the printed Muller cell to 0.02 %, and agrees with this column to 0.04 to 2.4 % at the other fields: the row's cells are very likely displaced, this column's value printed in the Muller column. Not corrected: the value would come from that calculation, not from the paper" }
+notes = "Table IX (p. 3), column 'Gamma/2: Tong-Lin': the half static ionisation rate of Ar in Tong and Lin's potential, Eq. (5), Table I, computed by complex scaling (theta = 0.4) of the single-active-electron Hamiltonian Eq. (4) in a static field, against the field amplitude (au) over 0.053-0.315 au (1.0e14-3.5e15 W/cm^2); the intensity printed beside each field is the column intensity. 'Half': the complex eigenvalue is E_r - i Gamma/2, 'the imaginary part gives one-half of the ionization rate' (p. 3), so the table prints Gamma/2 and the rate is Gamma; scale = 2 turns the printed Gamma/2 into Gamma (au). That Gamma, not Gamma/2, is the rate Eq. (8) fits is confirmed by the Ar check (tableXI_Ar). What the rate counts: one active electron in the SAE potential; the rate of that one electron (Eq. (1) takes m = 0), with no occupation factor. 'the multielectron effects beyond the SAE approximation on ionization have not been included' (p. 4). No accuracy is stated. The values are transcribed from the table image and checked against the library's scrambled text layer and its OCR reading (the script). The row at F = 0.12177 au is excluded (excluded_rows)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+potential = "Tong-Lin"
+
+[[datasets]]
+id = "tableX_gsz_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableX_gsz_Ar+.csv"
+table = "tbl_b692e7df546d"
+quantity = "ionization_rate"
+unit = "au"
+scale = 2
+abscissa = "field"
+abscissa_unit = "au"
+columns = { intensity = "W/cm2" }
+use = "primary"
+notes = "Table X (p. 3), column 'Gamma/2: GSZ': the half static ionisation rate of Ar+ in the Green-Sellin-Zachor potential, Eq. (6), Table II, computed by complex scaling (theta = 0.4) of the single-active-electron Hamiltonian Eq. (4) in a static field, against the field amplitude (au) over 0.075-0.395 au (2.0e14-5.5e15 W/cm^2); the intensity printed beside each field is the column intensity. 'Half': the complex eigenvalue is E_r - i Gamma/2, 'the imaginary part gives one-half of the ionization rate' (p. 3), so the table prints Gamma/2 and the rate is Gamma; scale = 2 turns the printed Gamma/2 into Gamma (au). That Gamma, not Gamma/2, is the rate Eq. (8) fits is confirmed by the Ar check (tableXI_Ar). What the rate counts: one active electron in the SAE potential; the rate of that one electron (Eq. (1) takes m = 0), with no occupation factor. 'the multielectron effects beyond the SAE approximation on ionization have not been included' (p. 4). No accuracy is stated. The values are transcribed from the table image and checked against the library's scrambled text layer and its OCR reading (the script)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+potential = "GSZ"
+
+[[datasets]]
+id = "tableX_muller_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableX_muller_Ar+.csv"
+table = "tbl_b692e7df546d"
+quantity = "ionization_rate"
+unit = "au"
+scale = 2
+abscissa = "field"
+abscissa_unit = "au"
+columns = { intensity = "W/cm2" }
+use = "primary"
+notes = "Table X (p. 3), column 'Gamma/2: Muller': the half static ionisation rate of Ar+ in Muller's potential, Eq. (7), Table III, computed by complex scaling (theta = 0.4) of the single-active-electron Hamiltonian Eq. (4) in a static field, against the field amplitude (au) over 0.075-0.395 au (2.0e14-5.5e15 W/cm^2); the intensity printed beside each field is the column intensity. 'Half': the complex eigenvalue is E_r - i Gamma/2, 'the imaginary part gives one-half of the ionization rate' (p. 3), so the table prints Gamma/2 and the rate is Gamma; scale = 2 turns the printed Gamma/2 into Gamma (au). That Gamma, not Gamma/2, is the rate Eq. (8) fits is confirmed by the Ar check (tableXI_Ar). What the rate counts: one active electron in the SAE potential; the rate of that one electron (Eq. (1) takes m = 0), with no occupation factor. 'the multielectron effects beyond the SAE approximation on ionization have not been included' (p. 4). No accuracy is stated. The values are transcribed from the table image and checked against the library's scrambled text layer and its OCR reading (the script)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+potential = "Muller"
+
+[[datasets]]
+id = "tableX_tonglin_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableX_tonglin_Ar+.csv"
+table = "tbl_b692e7df546d"
+quantity = "ionization_rate"
+unit = "au"
+scale = 2
+abscissa = "field"
+abscissa_unit = "au"
+columns = { intensity = "W/cm2" }
+use = "primary"
+notes = "Table X (p. 3), column 'Gamma/2: Tong-Lin': the half static ionisation rate of Ar+ in Tong and Lin's potential, Eq. (5), Table I, computed by complex scaling (theta = 0.4) of the single-active-electron Hamiltonian Eq. (4) in a static field, against the field amplitude (au) over 0.075-0.395 au (2.0e14-5.5e15 W/cm^2); the intensity printed beside each field is the column intensity. 'Half': the complex eigenvalue is E_r - i Gamma/2, 'the imaginary part gives one-half of the ionization rate' (p. 3), so the table prints Gamma/2 and the rate is Gamma; scale = 2 turns the printed Gamma/2 into Gamma (au). That Gamma, not Gamma/2, is the rate Eq. (8) fits is confirmed by the Ar check (tableXI_Ar). What the rate counts: one active electron in the SAE potential; the rate of that one electron (Eq. (1) takes m = 0), with no occupation factor. 'the multielectron effects beyond the SAE approximation on ionization have not been included' (p. 4). No accuracy is stated. The values are transcribed from the table image and checked against the library's scrambled text layer and its OCR reading (the script)."
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+potential = "Tong-Lin"
+
+[[datasets]]
+id = "tableI_He"
+material = "He"
+file = "He/zhang_2014__tableI_He.csv"
+table = "tbl_8a51c93568de"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tong_2005"]
+notes = "Table I (p. 2), 'Parameters of the SAE potential model adopted by Tong and Lin': Z_c and a_1 ... a_6 of Eq. (5) (atomic units; a_1, a_5, Z_c charges, a_3 per bohr, a_2, a_4, a_6 inverse bohr). Identical, digit for digit, to tong_2005 Table 1 (checked 2026-09-27), whose values these are."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (5), the row label"
+
+[[datasets]]
+id = "tableI_Ne"
+material = "Ne"
+file = "Ne/zhang_2014__tableI_Ne.csv"
+table = "tbl_8a51c93568de"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tong_2005"]
+notes = "Table I (p. 2), 'Parameters of the SAE potential model adopted by Tong and Lin': Z_c and a_1 ... a_6 of Eq. (5) (atomic units; a_1, a_5, Z_c charges, a_3 per bohr, a_2, a_4, a_6 inverse bohr). Identical, digit for digit, to tong_2005 Table 1 (checked 2026-09-27), whose values these are."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (5), the row label"
+
+[[datasets]]
+id = "tableI_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableI_Ar.csv"
+table = "tbl_8a51c93568de"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tong_2005"]
+notes = "Table I (p. 2), 'Parameters of the SAE potential model adopted by Tong and Lin': Z_c and a_1 ... a_6 of Eq. (5) (atomic units; a_1, a_5, Z_c charges, a_3 per bohr, a_2, a_4, a_6 inverse bohr). Identical, digit for digit, to tong_2005 Table 1 (checked 2026-09-27), whose values these are."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (5), the row label"
+
+[[datasets]]
+id = "tableI_Xe"
+material = "Xe"
+file = "Xe/zhang_2014__tableI_Xe.csv"
+table = "tbl_8a51c93568de"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table I (p. 2): Z_c and a_1 ... a_6 of Eq. (5) for Xe. The caption attributes the table to Tong and Lin [13] (tong_2005), but tong_2005 gives no xenon potential (its Table 1 has H, He, Ne, Ar, Rb, Ne+, Ar+); where this row comes from is not stated. Z_c + a_1 + a_5 = 54, the nuclear charge (checked). Used for the Xe rates behind tableXI_Xe (p. 5)."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (5), the row label"
+
+[[datasets]]
+id = "tableI_Ne+"
+material = "Ne+"
+file = "Ne+/zhang_2014__tableI_Ne+.csv"
+table = "tbl_8a51c93568de"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tong_2005"]
+notes = "Table I (p. 2), 'Parameters of the SAE potential model adopted by Tong and Lin': Z_c and a_1 ... a_6 of Eq. (5) (atomic units; a_1, a_5, Z_c charges, a_3 per bohr, a_2, a_4, a_6 inverse bohr). Identical, digit for digit, to tong_2005 Table 1 (checked 2026-09-27), whose values these are."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (5), the row label"
+
+[[datasets]]
+id = "tableI_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableI_Ar+.csv"
+table = "tbl_8a51c93568de"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["tong_2005"]
+notes = "Table I (p. 2), 'Parameters of the SAE potential model adopted by Tong and Lin': Z_c and a_1 ... a_6 of Eq. (5) (atomic units; a_1, a_5, Z_c charges, a_3 per bohr, a_2, a_4, a_6 inverse bohr). Identical, digit for digit, to tong_2005 Table 1 (checked 2026-09-27), whose values these are."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (5), the row label"
+
+[[datasets]]
+id = "tableII_He"
+material = "He"
+file = "He/zhang_2014__tableII_He.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableII_Ne"
+material = "Ne"
+file = "Ne/zhang_2014__tableII_Ne.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableII_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableII_Ar.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableII_Kr"
+material = "Kr"
+file = "Kr/zhang_2014__tableII_Kr.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableII_Xe"
+material = "Xe"
+file = "Xe/zhang_2014__tableII_Xe.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableII_Ne+"
+material = "Ne+"
+file = "Ne+/zhang_2014__tableII_Ne+.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableII_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableII_Ar+.csv"
+table = "tbl_312150b826a7"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table II (p. 2), 'Parameters of the GSZ potential model': Z (nuclear charge), Z_c, H and d of Eq. (6), V(r) = -[(Z - Z_c)/(H (e^(r/d) - 1) + 1) + Z_c]/r (H dimensionless, d in bohr). The potential is Green, Sellin and Zachor's (Phys. Rev. 184, 1 (1969); Ganas and Green, Phys. Rev. A 4, 182 (1971), ref. 30); whether these parameters are taken from those papers or refitted here is not stated."
+[datasets.parameters]
+model = "gsz_potential"
+parameter = "Z, Z_c, H, d of Eq. (6), the row label"
+
+[[datasets]]
+id = "tableIII_He"
+material = "He"
+file = "He/zhang_2014__tableIII_He.csv"
+table = "tbl_b5fc44745413"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 2), 'Parameters of the Muller potential model': Z, Z_c, A, B and C of Eq. (7), V(r) = -[Z_c + A e^(-B r) + (Z - Z_c - A) e^(-C r)]/r (A a charge, B and C inverse bohr). The potential is Muller's (Phys. Rev. A 60, 1341 (1999), ref. 31); whether the parameters are his or refitted here is not stated."
+[datasets.parameters]
+model = "muller_potential"
+parameter = "Z, Z_c, A, B, C of Eq. (7), the row label"
+
+[[datasets]]
+id = "tableIII_Ne"
+material = "Ne"
+file = "Ne/zhang_2014__tableIII_Ne.csv"
+table = "tbl_b5fc44745413"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 2), 'Parameters of the Muller potential model': Z, Z_c, A, B and C of Eq. (7), V(r) = -[Z_c + A e^(-B r) + (Z - Z_c - A) e^(-C r)]/r (A a charge, B and C inverse bohr). The potential is Muller's (Phys. Rev. A 60, 1341 (1999), ref. 31); whether the parameters are his or refitted here is not stated."
+[datasets.parameters]
+model = "muller_potential"
+parameter = "Z, Z_c, A, B, C of Eq. (7), the row label"
+
+[[datasets]]
+id = "tableIII_Ar"
+material = "Ar"
+file = "Ar/zhang_2014__tableIII_Ar.csv"
+table = "tbl_b5fc44745413"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 2), 'Parameters of the Muller potential model': Z, Z_c, A, B and C of Eq. (7), V(r) = -[Z_c + A e^(-B r) + (Z - Z_c - A) e^(-C r)]/r (A a charge, B and C inverse bohr). The potential is Muller's (Phys. Rev. A 60, 1341 (1999), ref. 31); whether the parameters are his or refitted here is not stated."
+[datasets.parameters]
+model = "muller_potential"
+parameter = "Z, Z_c, A, B, C of Eq. (7), the row label"
+
+[[datasets]]
+id = "tableIII_Ar+"
+material = "Ar+"
+file = "Ar+/zhang_2014__tableIII_Ar+.csv"
+table = "tbl_b5fc44745413"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III (p. 2), 'Parameters of the Muller potential model': Z, Z_c, A, B and C of Eq. (7), V(r) = -[Z_c + A e^(-B r) + (Z - Z_c - A) e^(-C r)]/r (A a charge, B and C inverse bohr). The potential is Muller's (Phys. Rev. A 60, 1341 (1999), ref. 31); whether the parameters are his or refitted here is not stated."
+[datasets.parameters]
+model = "muller_potential"
+parameter = "Z, Z_c, A, B, C of Eq. (7), the row label"

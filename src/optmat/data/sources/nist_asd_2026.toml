@@ -1,0 +1,571 @@
+citation = "A. Kramida, Yu. Ralchenko, J. Reader and NIST ASD Team, NIST Atomic Spectra Database (version 5.12), https://physics.nist.gov/asd, ionization energies (queried 2026-09-26) and levels of Ne II, Ar II, Kr II and Xe II (queried 2026-09-28) and of He I, Ne I, Ar I, Kr I and Xe I (queried 2026-10-07); Y. Ralchenko and A. Kramida, Atoms 8, 56 (2020)"
+doi = "10.18434/T4W30F"
+kind = "database"
+technique = """The evaluated ionisation energies of the NIST Atomic Spectra Database \
+(ionization-energies form, CSV output, eV). Each value comes from the literature \
+references NIST lists by bibliographic key; the database's help page says that values \
+in square brackets are semi-empirical (interpolation or extrapolation) and values in \
+parentheses ab initio or otherwise not from evaluated experimental data, and that the \
+uncertainties of eV output include the cm^-1 to eV conversion (CODATA). The \
+evaluated energy levels of the ions Ne II, Ar II, Kr II and Xe II (levels form, \
+tab-delimited output, cm^-1 above the ion's ground level)."""
+notes = """The file as returned is data/external/nist_asd/ionization_energies.csv \
+(PROVENANCE.md there, with the query); the inline points below are its strings, \
+checked against it by tests/test_nist_asd.py. The confidence level of NIST's \
+uncertainties is not stated on the output or the help page: recorded as 'not stated'. \
+The first ionisation energy of a noble gas is to the ion's 2P3/2 ground level; for an \
+atom the adiabatic and vertical energies coincide (kind = adiabatic). The cations' \
+ionisation energies (the atoms' second) are recorded as the ions' own (materials He+ \
+... Xe+), for double ionisation later; nothing here uses them yet (TC-443).
+
+LEVELS (queried 2026-09-28). The files as returned are \
+data/external/nist_asd/<Ne, Ar, Kr, Xe>_II_levels.tsv (PROVENANCE.md there, with the \
+query and the sha256 of each). The datasets level_<ion>_2P12 hold the second row of \
+each file, the np5 2P*<1/2> level of the ion's ground term above its 2P*<3/2> ground \
+level: the fine-structure splitting of the ion, which added to the atom's first \
+ionisation energy is the atom's second ionisation threshold. The strings are NIST's \
+(value and uncertainty, cm^-1), checked against the files by tests/test_nist_asd.py. \
+NIST gives no uncertainty for the level of Kr II and of Xe II (the cell is empty: no \
+uncertainty is recorded, and none is to be read from the number of digits), and no \
+bibliographic key for that of Kr II. The returned files do not name the database \
+version; it was not checked again on 2026-09-28.
+
+NEUTRAL LINES BEYOND THE RESONANCE LINES (queried 2026-10-09). The files as returned \
+are data/external/nist_asd/<Ne, Ar, Kr, Xe>_I_lines_nir.tsv (PROVENANCE.md there, with \
+the query, the windows and the sha256 of each): the transitions among excited levels, \
+with NIST's transition probabilities and accuracy grades, in vacuum wavelengths at \
+every wavelength (show_av=3). No dataset holds them yet; they are inputs to the sums \
+over intermediate states of two-photon amplitudes (OEP 6, Q9; TC-983). The first \
+query used show_av=1, which gives wavenumbers above 1000 nm, written by NIST as minus \
+the wavenumber times 1e-9 in the nm columns; the files were replaced the same day \
+(TC-985).
+
+NEUTRAL LEVELS (queried 2026-10-07). The files as returned are \
+data/external/nist_asd/<He, Ne, Ar, Kr, Xe>_I_levels.tsv (PROVENANCE.md there, with \
+the query and the sha256 of each). The datasets level_<atom>_* hold, per atom, the \
+levels that bound where the third-order response is off resonance: the lowest \
+odd-parity J = 1 level (one- and three-photon) and the lowest even-parity levels of \
+J = 0, 2 and 1 (two-photon); for helium, whose levels are LS-coupled, the singlets \
+1s.2p 1P*, 1s.3p 1P* and 1s.2s 1S, the triplets below them being spin-forbidden. \
+The strings are NIST's, checked against the files by tests/test_nist_asd.py. NIST \
+brackets every helium level (semi-empirical): those datasets are checks. Where NIST \
+gives no uncertainty or no bibliographic key the cell is empty (TC-862)."""
+
+[[datasets]]
+id = "ie_He_I"
+material = "He"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "He I", "24.587389011", "0.000000025"]]
+notes = """The first ionisation energy: He I (ground level 1S0, ground shells \
+1s2) to 1s 2S<1/2>. NIST bibliographic keys L17714."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "1s 2S<1/2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_He_II"
+material = "He+"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+points = [["1", "He II", "54.4177655282", "0.0000000010"]]
+notes = """The ionisation energy of the cation (the atom's second): He II (ground level 2S<1/2>, ground shells \
+1s) to the bare nucleus. NIST bibliographic keys L19200. NIST prints it in parentheses: 'determined from an ab-initio calculation, or ... otherwise not derived from evaluated experimental data' (help page)."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "the bare nucleus"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Ne_I"
+material = "Ne"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne I", "21.564541", "0.000007"]]
+notes = """The first ionisation energy: Ne I (ground level 1S0, ground shells \
+1s2.2s2.2p6) to 2p5 2P*<3/2>. NIST bibliographic keys L8826,L1407."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "2p5 2P*<3/2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Ne_II"
+material = "Ne+"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne II", "40.96297", "0.00004"]]
+notes = """The ionisation energy of the cation (the atom's second): Ne II (ground level 2P*<3/2>, ground shells \
+1s2.2s2.2p5) to 2p4 3P<2>. NIST bibliographic keys L1406."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "2p4 3P<2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Ar_I"
+material = "Ar"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar I", "15.7596119", "0.0000005"]]
+notes = """The first ionisation energy: Ar I (ground level 1S0, ground shells \
+[Ne].3s2.3p6) to 3p5 2P*<3/2>. NIST bibliographic keys L9217."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "3p5 2P*<3/2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Ar_II"
+material = "Ar+"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar II", "27.62967", "0.00012"]]
+notes = """The ionisation energy of the cation (the atom's second): Ar II (ground level 2P*<3/2>, ground shells \
+[Ne].3s2.3p5) to 3p4 3P<2>. NIST bibliographic keys L8844."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "3p4 3P<2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Kr_I"
+material = "Kr"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr I", "13.9996055", "0.0000020"]]
+notes = """The first ionisation energy: Kr I (ground level 1S0, ground shells \
+[Ar].3d10.4s2.4p6) to 4p5 2P*<3/2>. NIST bibliographic keys L12196."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "4p5 2P*<3/2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Kr_II"
+material = "Kr+"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr II", "24.35984", "0.00012"]]
+notes = """The ionisation energy of the cation (the atom's second): Kr II (ground level 2P*<3/2>, ground shells \
+[Ar].3d10.4s2.4p5) to 4p4 3P<2>. NIST bibliographic keys L7212,L353."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "4p4 3P<2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Xe_I"
+material = "Xe"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "12.1298437", "0.0000015"]]
+notes = """The first ionisation energy: Xe I (ground level 1S0, ground shells \
+[Cd].5p6) to 5s2.5p5 2P*<3/2>. NIST bibliographic keys L12013,L9794,L6426."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "5s2.5p5 2P*<3/2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ie_Xe_II"
+material = "Xe+"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "label"
+use = "check"
+points = [["1", "Xe II", "20.975", "0.004"]]
+notes = """The ionisation energy of the cation (the atom's second): Xe II (ground level 2P*<3/2>, ground shells \
+[Cd].5p5) to 5s2.5p4 3P<2>. NIST bibliographic keys L6925. NIST prints it in square brackets: 'determined by interpolation, extrapolation, or other semi-empirical procedure relying on some known experimental values' (help page)."""
+[datasets.parameters]
+kind = "adiabatic"
+final_state = "5s2.5p4 3P<2>"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ne+_2P12"
+material = "Ne+"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne II", "780.4240", "0.002"]]
+notes = """The 2s2.2p5 2P*<1/2> level of Ne II above the ion's 2s2.2p5 2P*<3/2> ground level (the fine-structure splitting of the ion's ground term), cm^-1, from the levels form (queried 2026-09-28; data/external/nist_asd/Ne_II_levels.tsv, second row). NIST bibliographic key L9088."""
+[datasets.parameters]
+configuration = "2s2.2p5"
+term = "2P*"
+j = "1/2"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ar+_2P12"
+material = "Ar+"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar II", "1431.5831", "0.0008"]]
+notes = """The 3s2.3p5 2P*<1/2> level of Ar II above the ion's 3s2.3p5 2P*<3/2> ground level (the fine-structure splitting of the ion's ground term), cm^-1, from the levels form (queried 2026-09-28; data/external/nist_asd/Ar_II_levels.tsv, second row). NIST bibliographic key L15349."""
+[datasets.parameters]
+configuration = "3s2.3p5"
+term = "2P*"
+j = "1/2"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Kr+_2P12"
+material = "Kr+"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr II", "5370.10", ""]]
+notes = """The 4s2.4p5 2P*<1/2> level of Kr II above the ion's 4s2.4p5 2P*<3/2> ground level (the fine-structure splitting of the ion's ground term), cm^-1, from the levels form (queried 2026-09-28; data/external/nist_asd/Kr_II_levels.tsv, second row). NIST gives no bibliographic key for this level (the ground level's is L12196). NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "4s2.4p5"
+term = "2P*"
+j = "1/2"
+
+[[datasets]]
+id = "level_Xe+_2P12"
+material = "Xe+"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe II", "10537.01", ""]]
+notes = """The 5s2.5p5 2P*<1/2> level of Xe II above the ion's 5s2.5p5 2P*<3/2> ground level (the fine-structure splitting of the ion's ground term), cm^-1, from the levels form (queried 2026-09-28; data/external/nist_asd/Xe_II_levels.tsv, second row). NIST bibliographic key L6925. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "5s2.5p5"
+term = "2P*"
+j = "1/2"
+
+[[datasets]]
+id = "level_He_1s2p_1P1"
+material = "He"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["1", "He I", "171134.894441", "0.000013"]]
+notes = """He I 1s.2p 1P*<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/He_I_levels.tsv): the lowest odd-parity J = 1 level that a spin-allowed line connects to the ground level: the one-photon (and three-photon) limit. The 1s.2p 3P*<1> level below it (169086.84 cm^-1) is reached only by the spin-forbidden intercombination line. NIST prints it in square brackets: 'determined by interpolation, extrapolation, or other semi-empirical procedure relying on some known experimental values' (levels help page). NIST bibliographic keys L22715c200,L20736."""
+[datasets.parameters]
+configuration = "1s.2p"
+term = "1P*"
+j = "1"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_He_1s3p_1P1"
+material = "He"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["1", "He I", "186209.3623329", "0.0000017"]]
+notes = """He I 1s.3p 1P*<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/He_I_levels.tsv): the second odd-parity J = 1 level of the singlet series: a further three-photon resonance. NIST prints it in square brackets: 'determined by interpolation, extrapolation, or other semi-empirical procedure relying on some known experimental values' (levels help page). NIST bibliographic keys L22715c200."""
+[datasets.parameters]
+configuration = "1s.3p"
+term = "1P*"
+j = "1"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_He_1s2s_1S0"
+material = "He"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+points = [["1", "He I", "166277.437635", "0.000063"]]
+notes = """He I 1s.2s 1S<0> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/He_I_levels.tsv): the lowest even-parity level that two photons reach from the ground level with the spin conserved: the two-photon limit. The 1s.2s 3S<1> level below it (159855.97 cm^-1) is spin-forbidden. NIST prints it in square brackets: 'determined by interpolation, extrapolation, or other semi-empirical procedure relying on some known experimental values' (levels help page). NIST bibliographic keys L22715c200,L20736."""
+[datasets.parameters]
+configuration = "1s.2s"
+term = "1S"
+j = "0"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ne_odd_J1"
+material = "Ne"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne I", "134459.2871", "0.0010"]]
+notes = """Ne I 2s2.2p5.(2P*<3/2>).3s 2[3/2]*<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ne_I_levels.tsv): the lowest odd-parity J = 1 level, which the first resonance line connects to the ground level: the one-photon (and three-photon) limit. NIST bibliographic keys L8826c189."""
+[datasets.parameters]
+configuration = "2s2.2p5.(2P*<3/2>).3s"
+term = "2[3/2]*"
+j = "1"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ne_even_J0"
+material = "Ne"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne I", "150917.4307", "0.0010"]]
+notes = """Ne I 2s2.2p5.(2P*<3/2>).3p 2[1/2]<0> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ne_I_levels.tsv): the lowest even-parity J = 0 level: a two-photon resonance for any two photons. NIST bibliographic keys L8826c189."""
+[datasets.parameters]
+configuration = "2s2.2p5.(2P*<3/2>).3p"
+term = "2[1/2]"
+j = "0"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ne_even_J2"
+material = "Ne"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne I", "149824.2215", "0.0010"]]
+notes = """Ne I 2s2.2p5.(2P*<3/2>).3p 2[5/2]<2> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ne_I_levels.tsv): the lowest even-parity J = 2 level: a two-photon resonance for any two photons. NIST bibliographic keys L8826c189."""
+[datasets.parameters]
+configuration = "2s2.2p5.(2P*<3/2>).3p"
+term = "2[5/2]"
+j = "2"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ne_even_J1"
+material = "Ne"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ne I", "148257.7898", "0.0010"]]
+notes = """Ne I 2s2.2p5.(2P*<3/2>).3p 2[1/2]<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ne_I_levels.tsv): the lowest even-parity J = 1 level: two photons reach it from the J = 0 ground level only through the antisymmetric (rank-1) part of the two-photon tensor, which vanishes for two photons of the same frequency or the same linear polarisation, so it is a two-photon resonance only for non-degenerate, non-parallel photons. NIST bibliographic keys L8826c189."""
+[datasets.parameters]
+configuration = "2s2.2p5.(2P*<3/2>).3p"
+term = "2[1/2]"
+j = "1"
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "level_Ar_odd_J1"
+material = "Ar"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar I", "93750.5978", ""]]
+notes = """Ar I 3s2.3p5.(2P*<3/2>).4s 2[3/2]*<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ar_I_levels.tsv): the lowest odd-parity J = 1 level, which the first resonance line connects to the ground level: the one-photon (and three-photon) limit. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4s"
+term = "2[3/2]*"
+j = "1"
+
+[[datasets]]
+id = "level_Ar_even_J0"
+material = "Ar"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar I", "107054.2720", ""]]
+notes = """Ar I 3s2.3p5.(2P*<3/2>).4p 2[1/2]<0> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ar_I_levels.tsv): the lowest even-parity J = 0 level: a two-photon resonance for any two photons. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[1/2]"
+j = "0"
+
+[[datasets]]
+id = "level_Ar_even_J2"
+material = "Ar"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar I", "105617.2700", ""]]
+notes = """Ar I 3s2.3p5.(2P*<3/2>).4p 2[5/2]<2> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ar_I_levels.tsv): the lowest even-parity J = 2 level: a two-photon resonance for any two photons. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[5/2]"
+j = "2"
+
+[[datasets]]
+id = "level_Ar_even_J1"
+material = "Ar"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Ar I", "104102.0990", ""]]
+notes = """Ar I 3s2.3p5.(2P*<3/2>).4p 2[1/2]<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Ar_I_levels.tsv): the lowest even-parity J = 1 level: two photons reach it from the J = 0 ground level only through the antisymmetric (rank-1) part of the two-photon tensor, which vanishes for two photons of the same frequency or the same linear polarisation, so it is a two-photon resonance only for non-degenerate, non-parallel photons. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[1/2]"
+j = "1"
+
+[[datasets]]
+id = "level_Kr_odd_J1"
+material = "Kr"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr I", "80916.7680", ""]]
+notes = """Kr I 4s2.4p5.(2P*<3/2>).5s 2[3/2]*<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Kr_I_levels.tsv): the lowest odd-parity J = 1 level, which the first resonance line connects to the ground level: the one-photon (and three-photon) limit. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "4s2.4p5.(2P*<3/2>).5s"
+term = "2[3/2]*"
+j = "1"
+
+[[datasets]]
+id = "level_Kr_even_J0"
+material = "Kr"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr I", "94092.8626", ""]]
+notes = """Kr I 4s2.4p5.(2P*<3/2>).5p 2[1/2]<0> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Kr_I_levels.tsv): the lowest even-parity J = 0 level: a two-photon resonance for any two photons. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "4s2.4p5.(2P*<3/2>).5p"
+term = "2[1/2]"
+j = "0"
+
+[[datasets]]
+id = "level_Kr_even_J2"
+material = "Kr"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr I", "92307.3786", ""]]
+notes = """Kr I 4s2.4p5.(2P*<3/2>).5p 2[5/2]<2> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Kr_I_levels.tsv): the lowest even-parity J = 2 level: a two-photon resonance for any two photons. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "4s2.4p5.(2P*<3/2>).5p"
+term = "2[5/2]"
+j = "2"
+
+[[datasets]]
+id = "level_Kr_even_J1"
+material = "Kr"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Kr I", "91168.5150", ""]]
+notes = """Kr I 4s2.4p5.(2P*<3/2>).5p 2[1/2]<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Kr_I_levels.tsv): the lowest even-parity J = 1 level: two photons reach it from the J = 0 ground level only through the antisymmetric (rank-1) part of the two-photon tensor, which vanishes for two photons of the same frequency or the same linear polarisation, so it is a two-photon resonance only for non-degenerate, non-parallel photons. NIST gives no bibliographic key for this level. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "4s2.4p5.(2P*<3/2>).5p"
+term = "2[1/2]"
+j = "1"
+
+[[datasets]]
+id = "level_Xe_odd_J1"
+material = "Xe"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "68045.156", ""]]
+notes = """Xe I 5p5.(2P*<3/2>).6s 2[3/2]*<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Xe_I_levels.tsv): the lowest odd-parity J = 1 level, which the first resonance line connects to the ground level: the one-photon (and three-photon) limit. NIST bibliographic keys L763. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).6s"
+term = "2[3/2]*"
+j = "1"
+
+[[datasets]]
+id = "level_Xe_even_J0"
+material = "Xe"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "80118.962", ""]]
+notes = """Xe I 5p5.(2P*<3/2>).6p 2[1/2]<0> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Xe_I_levels.tsv): the lowest even-parity J = 0 level: a two-photon resonance for any two photons. NIST bibliographic keys L763. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).6p"
+term = "2[1/2]"
+j = "0"
+
+[[datasets]]
+id = "level_Xe_even_J2"
+material = "Xe"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "78119.798", ""]]
+notes = """Xe I 5p5.(2P*<3/2>).6p 2[5/2]<2> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Xe_I_levels.tsv): the lowest even-parity J = 2 level: a two-photon resonance for any two photons. NIST bibliographic keys L763. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).6p"
+term = "2[5/2]"
+j = "2"
+
+[[datasets]]
+id = "level_Xe_even_J1"
+material = "Xe"
+quantity = "level_energy"
+unit = "cm-1"
+abscissa = "label"
+use = "primary"
+points = [["1", "Xe I", "77269.145", ""]]
+notes = """Xe I 5p5.(2P*<3/2>).6p 2[1/2]<1> above the ground level, cm^-1, from the levels form (queried 2026-10-07; data/external/nist_asd/Xe_I_levels.tsv): the lowest even-parity J = 1 level: two photons reach it from the J = 0 ground level only through the antisymmetric (rank-1) part of the two-photon tensor, which vanishes for two photons of the same frequency or the same linear polarisation, so it is a two-photon resonance only for non-degenerate, non-parallel photons. NIST bibliographic keys L763. NIST gives no uncertainty for this level: the sigma cell is empty as NIST's is."""
+[datasets.parameters]
+configuration = "5p5.(2P*<3/2>).6p"
+term = "2[1/2]"
+j = "1"

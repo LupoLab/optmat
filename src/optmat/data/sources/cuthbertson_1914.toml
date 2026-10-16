@@ -1,0 +1,240 @@
+citation = "C. Cuthbertson and M. Cuthbertson, Phil. Trans. R. Soc. A 213, 1 (1914)"
+doi = "10.1098/rsta.1914.0001"
+library = "Cuthbertson_1914_InfoGettingLost"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Jamin-type interferometer with a refractometer tube (about 1 m): bands counted \
+as the gas is admitted to atmospheric pressure, green mercury line (5461) for the \
+absolute refractivity; the dispersion at seven other visible lines (6708 Li, 6438 Cd, \
+5790 and 5770 Hg, 5209, 5085 and 4800 Cd) measured relative to it with a compensator \
+(bands read to 1/15). Ozone made by silent discharge in pure dry oxygen (5-7 % by \
+volume, once 10 %), its content found by destroying it with heat and measuring the \
+volume increase (first method) or by KI titration (second method). N2O from \
+fractionated commercial gas and from ammonium nitrite on hydroxylamine sulphate."""
+notes = """The paper's title in the library carries a junk prefix ('info getting lost ...'); \
+the paper is 'I. On the Refraction and Dispersion of the Halogens, Halogen Acids, \
+Ozone, Steam, Oxides of Nitrogen and Ammonia', received 18 October 1912, published \
+separately 4 April 1913 (Phil. Trans. A 213, 1-26, 1914). Only ozone, oxygen and \
+nitrous oxide are curated species; the halogens, halogen acids, steam, ammonia and \
+nitric oxide are skipped.
+
+Standard state ('theoretical density', pp. 5-6): all refractivities are reduced 'to \
+the values which they would have had if the gas or vapour had the density of hydrogen \
+at 0 C and 76 cm (0.000089849 g/cm^3) multiplied by the ratio of the theoretical \
+molecular weight of the substance in question to that of hydrogen', written \
+(mu - 1) D/(d0 76). That is a fixed molar density, the real molar volume of hydrogen \
+at 0 C and 76 cm, which the paper takes as 22428.8 cm^3 (p. 6). It is recorded as \
+the ideal-gas state with that molar volume: 273.15 K and \
+p = R T / V = 8.314462618 x 273.15 / 22428.8e-6 = 101258.0 Pa, density = ideal (the \
+number density is then exactly N_A / 22428.8 cm^3, 0.066 % below the ideal gas at \
+0 C and 1 atm). For chlorine the reduction multiplied by the ratio of molar volumes \
+(pp. 5-6); for N2O the thermal expansion coefficient used was 0.00371 (p. 24).
+
+Wavelengths are air wavelengths in angstroms as used in 1912 (the green line printed \
+5461 or 5460.7), recorded as standard air.
+
+Accuracy (p. 25): refractivities for the green line 'generally agreed to 1 part in \
+500, and the mean is probably within 1 in a 1000 of the truth. In iodine and ozone, \
+however, the errors may amount to 1 or 2 per cent.' Dispersion (relative to the green \
+line): 'the error should not exceed 1/200 of the effect itself' (p. 25).
+
+Ozone. The O3 refractivity at the green line comes from O2-O3 mixtures of 3.5-9.5 % \
+ozone, with the oxygen value 0.0002717 of the authors' 1909 paper, so every error is \
+multiplied by about 100/x: Tables IX (first method, mean 525) and X (second method, \
+mean 516.5); the authors adopt mu = 1.00052, 'unsafe to rely on this number beyond \
+the second significant figure' (p. 19). The O3 dispersion (Table XI, last row) is \
+derived: the ozone fraction of the mean mixture (6.1764 %) is fixed by assuming \
+(mu_5461 - 1) = 0.000520 for ozone, and the O2 row, reproduced from the 1909 paper, is \
+subtracted (p. 20). Only the shape is independent (the 5461 value is 52000 by \
+construction), and the errors of the mixture and of the O2 values are amplified 16 \
+and 15 times; the mixture dispersion (544 x 1e-8 between 6708 and 4800) known to 1/200 \
+gives about 44 x 1e-8 on each O3 value. Recomputing the O3 row from the printed means \
+and O2 row reproduces it within 10 x 1e-8 (the means are rounded; checked \
+2026-09-24). The mixture rows are not extracted (mixtures are not species).
+
+Nitrous oxide. Seven absolute determinations at the green line (three series, mean \
+5096 x 1e-7); 'as traces of air were probably present we think 5100 a more trustworthy \
+value than the exact experimental mean, and probably correct to 1/500 at least' \
+(p. 24). Table XIV (whose caption lacks the gas) gives the dispersion relative to \
+that value (51000 at 5460.7). Mascart's values reproduced on p. 23 (tbl_2cea631c5dc8, \
+'n' itself, gas with 10 % impurity) are not extracted: the vocabulary has no \
+refractive-index quantity and n - 1 would have to be computed from the printed n; they \
+are also unreliable by the paper's account."""
+
+[[datasets]]
+id = "ozone_dispersion"
+material = "O3"
+file = "O3/cuthbertson_1914__ozone_dispersion.csv"
+table = "tbl_4bf7db766c5d"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "primary"
+notes = "Table XI 'Refractivities of O3': derived from mixture means minus the reproduced 1909 O2 values, with the ozone fraction fixed by assuming 520e-6 at 5461. The shape is the information; the scale is the adopted 520 (1-2 %, a bound: systematic_relative 0.0115 as a uniform half-width of 2 %). Per point about 44 x 1e-8 (the 1/200 dispersion error amplified by 100/6.18; a bound)."
+[datasets.uncertainty]
+absolute = 44
+level = "bound"
+systematic_relative = 0.0115
+
+[[datasets]]
+id = "ozone_adopted"
+material = "O3"
+table = "text"
+points = [["5461", "5461", "520"]]
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "p. 19: 'the refractive index of pure ozone for the mercury green line is mu = 1.00052' (the mean 520.7 of the two methods, to two significant figures); errors 'may amount to 1 or 2 per cent' (p. 25). The same number anchors ozone_dispersion at 5461, so it is a check, not a second datum."
+[datasets.uncertainty]
+relative = 0.02
+level = "bound"
+
+[[datasets]]
+id = "ozone_method1"
+material = "O3"
+file = "O3/cuthbertson_1914__ozone_method1.csv"
+table = "tbl_6f597b2ac7a8"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "Table IX (first method, ozone by thermal decomposition), experiments 1-6, 8, 9; mean of all nine 525. The individual values scatter by +-4 %; they are averaged into the adopted 520."
+
+[[datasets]]
+id = "ozone_method1_bracketed"
+material = "O3"
+file = "O3/cuthbertson_1914__ozone_method1_bracketed.csv"
+table = "tbl_6f597b2ac7a8"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "excluded"
+notes = "Table IX experiment 7, printed in brackets: 'Not reliable, percentage of ozone too small' (3.5 %)."
+
+[[datasets]]
+id = "ozone_method2"
+material = "O3"
+file = "O3/cuthbertson_1914__ozone_method2.csv"
+table = "tbl_f49a5176a7d2"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "Table X (second method, ozone by titration, 'more concordant'), experiments 1, 2, 4-6; mean of all six 516.5."
+
+[[datasets]]
+id = "ozone_method2_bracketed"
+material = "O3"
+file = "O3/cuthbertson_1914__ozone_method2_bracketed.csv"
+table = "tbl_f49a5176a7d2"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "excluded"
+notes = "Table X experiment 3, printed in brackets: 'Not very trustworthy'; 'the results ... would be even better if the third experiment were omitted' (p. 19)."
+
+[[datasets]]
+id = "oxygen_1909"
+material = "O2"
+file = "O2/cuthbertson_1914__oxygen_1909.csv"
+table = "tbl_4bf7db766c5d"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. A 83, 151 (1909)"]
+notes = "Table XI 'Refractivities of O2', 'taken from our previous determinations' (p. 20); 27170 at 5461 is the 0.0002717 quoted on p. 17. The 1909 paper's own reduction (possibly plain 0 C and 760 mm) is not stated here."
+
+[[datasets]]
+id = "n2o_green_line"
+material = "N2O"
+file = "N2O/cuthbertson_1914__green_line.csv"
+table = "tbl_6f5db40b38bd"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "The seven absolute determinations (p. 24; cells split as in the image), mean 5096; the authors adopt 5100 (suspected traces of air), which anchors n2o_dispersion."
+
+[[datasets]]
+id = "n2o_dispersion"
+material = "N2O"
+file = "N2O/cuthbertson_1914__dispersion.csv"
+table = "tbl_d05d1c4d670a"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "primary"
+notes = "Table XIV 'Observed' (N2O): relative to the adopted 5100e-7 at the green line ('correct to 1/500 at least', a bound: systematic_relative 0.0012 as a uniform half-width). Per point: 'the error should not exceed 1/200 of the effect' (871 x 1e-8 across the range, so 4.4)."
+[datasets.uncertainty]
+absolute = 4.4
+level = "bound"
+systematic_relative = 0.0012
+
+[[datasets]]
+id = "n2o_dispersion_calculated"
+material = "N2O"
+file = "N2O/cuthbertson_1914__dispersion_calculated.csv"
+table = "tbl_d05d1c4d670a"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+use = "check"
+notes = "Table XIV 'Calculated': the one-term Sellmeier formula (p. 25)."
+
+[[formulas]]
+id = "ozone_two_point"
+material = "O3"
+equation = "p. 20 (text)"
+printed = "mu - 1 = 2.0414 x 10^27 / (4221.3 x 10^27 - n^2)"
+variable = "n: frequency, 3 x 10^10 / lambda(cm), lambda in air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+range = "6708-4800 A (through the two end points only)"
+coefficients = { N = "2.0414e27", n02 = "4221.3e27" }
+check = "Gives 52083 x 1e-8 at 5461 (the paper: 52082, against the derived 52000) and 50765 and 53291 at 6708 and 4800, the two points it was drawn through (checked 2026-09-24)."
+notes = "Fixed from mu_6708 - 1 and mu_4800 - 1 alone; the authors infer that 'a second term is required' because the measured curvature is larger."
+
+[[formulas]]
+id = "n2o"
+material = "N2O"
+equation = "p. 25 (text)"
+printed = "(mu - 1) D/(d0 76) = 5.6685 x 10^27 / (11416 x 10^27 - n^2)"
+variable = "n: frequency, 3 x 10^10 / lambda(cm), lambda in air"
+state = { pressure_pa = 101258.0, temperature_k = 273.15 }
+density = "ideal"
+range = "6708-4800 A"
+coefficients = { N = "5.6685e27", n02 = "11416e27" }
+check = "Reproduces Table XIV's calculated column within 1.6 x 1e-8 at six wavelengths, 2.2 at 5209.1 and 6.7 at 4799.9 (51413.3 against 51420): the printed constants are rounded (checked 2026-09-24)."
+notes = "One-term Sellmeier fitted by the paper's modified least squares (p. 26)."

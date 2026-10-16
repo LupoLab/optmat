@@ -1,0 +1,86 @@
+citation = "M. L. Huber, \"Models for Viscosity, Thermal Conductivity, and Surface Tension of Selected Pure Fluids as Implemented in REFPROP v10.0\", NIST Interagency Report 8209 (2018)"
+doi = "10.6028/nist.ir.8209"
+library = "Huber_2018_ModelsViscosityThermal"
+identity = "VALIDATED"
+kind = "fit"
+technique = """The transport models of REFPROP 10 for fluids without a reference \
+correlation: extended corresponding states with a reference fluid (nitrogen for the four \
+gases here), whose dilute-gas viscosity is Chapman-Enskog theory with a Lennard-Jones \
+collision integral and a correction factor F_c fitted, per fluid, to dilute-gas data. \
+The NIST Chemistry WebBook (SRD 69) evaluates these models."""
+notes = """Identity VALIDATED by the library. Pages are the report's pdf pages.
+
+THE DILUTE-GAS VISCOSITY (pdf p. 9): Eq. (6), eta* = 5 sqrt(m pi k_B T) / \
+(16 pi sigma^2 Omega(2,2)); Eq. (7), Neufeld et al.'s collision integral without its \
+sinusoidal term, Omega(2,2) = 1.16145 T*^-0.14874 + 0.52487 exp(-0.77320 T*) + 2.16178 \
+exp(-2.43787 T*), valid for 0.3 < T* < 100, T* = k_B T/epsilon; the dilute viscosity is \
+eta* times F_c. Table 1 (pdf p. 262): neon M = 20.179 g/mol, epsilon/k_B = 45.58 K, \
+sigma = 0.2707 nm; krypton 83.798, 178.9 K, 0.3655 nm; xenon 131.293, 260.91 K, 0.3929 \
+nm; nitrous oxide 44.0128, 232.4 K, 0.3828 nm. Table 2 (pdf p. 265): F_c = 0.989544 \
+(neon), 1.008291 (krypton), 1.0012 (xenon), 1 (nitrous oxide), each with nitrogen as the \
+reference fluid. All read from the library's tables and text, 2026-09-30.
+
+THE CONSTANT. Table 7's check values of eta* (pdf p. 274: neon 6.006075 uPa s at 40 K, \
+krypton 16.32999 at 188.5 K, xenon 20.11099 at 260.8 K, nitrous oxide 13.86694 at 278.6 \
+K) are reproduced to 2.4e-7 by eta* = 0.026692 sqrt(M T)/(sigma^2 Omega) uPa s (M in \
+g/mol, sigma in nm), REFPROP's constant; Eq. (6) with CODATA's k_B gives 1.38e-4 more \
+(computed 2026-09-30). optmat uses 0.026692, the report's own check values and the \
+WebBook's tables; the difference is far below every stated uncertainty.
+
+F_c. For neon, krypton and xenon F_c was adjusted so that the dilute-gas viscosity at \
+25 C and 0.1 MPa agrees with the reference values of Assael et al. (2018) (sections \
+6.9.1-6.9.3), which are therefore not an independent check. For nitrous oxide F_c = 1.
+
+UNCERTAINTY (expanded, coverage factor two, 'approximately a 95 % confidence interval', \
+pdf p. 14): neon, 2 % in the supercritical region at atmospheric pressure (section \
+6.9.1, pdf p. 185); krypton, 3 % in the gas phase at atmospheric pressure (6.9.2, p. \
+188); xenon, 0.7 % in the vapour phase (6.9.3, p. 191); nitrous oxide, 5 % in the gas \
+phase (6.11.2, p. 201). The WebBook's pages state 3 %, 3 %, 1 % and 10 % for the same \
+models; the report governs. optmat takes each gas's equation-of-state temperatures \
+within Eq. (7)'s 0.3 < T* < 100.
+
+THE WEBBOOK TABLES (data/external/nist_webbook, captured 2026-09-30) give the models' \
+viscosity at 0.1 MPa, 200-400 K: they exceed the dilute values by 0.013 % (neon), 0.13 % \
+(krypton), 0.21 % (xenon) and 0.21 % (nitrous oxide) at 298.15 K, and by 0.028 %, 0.33 %, \
+0.54 % and 0.52 % at 200 K, the density term, falling with temperature \
+(tests/test_transport.py)."""
+
+[[formulas]]
+id = "eq6_eq7_Ne"
+material = "Ne"
+equation = "Eqs. (6)-(7), pdf p. 9; Tables 1-2, pdf pp. 262, 265"
+printed = "eta* = 5 sqrt(m pi k_B T)/(16 pi sigma^2 Omega(2,2)) F_c; Omega(2,2) = 1.16145 T*^-0.14874 + 0.52487 exp(-0.77320 T*) + 2.16178 exp(-2.43787 T*)"
+variable = "T* = k_B T/epsilon, 0.3 < T* < 100; eta* = 0.026692 sqrt(M T)/(sigma^2 Omega) F_c in uPa s, M in g/mol, sigma in nm"
+range = "0.3 < T* < 100"
+coefficients = { prefactor = "0.026692", molar_mass = "20.179", epsilon_k = "45.58", sigma_nm = "0.2707", f_c = "0.989544" }
+check = "Table 7: 6.006075 uPa s at 40 K, reproduced to 6e-8."
+
+[[formulas]]
+id = "eq6_eq7_Kr"
+material = "Kr"
+equation = "Eqs. (6)-(7), pdf p. 9; Tables 1-2, pdf pp. 262, 265"
+printed = "eta* = 5 sqrt(m pi k_B T)/(16 pi sigma^2 Omega(2,2)) F_c; Omega(2,2) = 1.16145 T*^-0.14874 + 0.52487 exp(-0.77320 T*) + 2.16178 exp(-2.43787 T*)"
+variable = "T* = k_B T/epsilon, 0.3 < T* < 100; eta* = 0.026692 sqrt(M T)/(sigma^2 Omega) F_c in uPa s, M in g/mol, sigma in nm"
+range = "0.3 < T* < 100"
+coefficients = { prefactor = "0.026692", molar_mass = "83.798", epsilon_k = "178.9", sigma_nm = "0.3655", f_c = "1.008291" }
+check = "Table 7: 16.32999 uPa s at 188.5 K, reproduced to 1.7e-7."
+
+[[formulas]]
+id = "eq6_eq7_Xe"
+material = "Xe"
+equation = "Eqs. (6)-(7), pdf p. 9; Tables 1-2, pdf pp. 262, 265"
+printed = "eta* = 5 sqrt(m pi k_B T)/(16 pi sigma^2 Omega(2,2)) F_c; Omega(2,2) = 1.16145 T*^-0.14874 + 0.52487 exp(-0.77320 T*) + 2.16178 exp(-2.43787 T*)"
+variable = "T* = k_B T/epsilon, 0.3 < T* < 100; eta* = 0.026692 sqrt(M T)/(sigma^2 Omega) F_c in uPa s, M in g/mol, sigma in nm"
+range = "0.3 < T* < 100"
+coefficients = { prefactor = "0.026692", molar_mass = "131.293", epsilon_k = "260.91", sigma_nm = "0.3929", f_c = "1.0012" }
+check = "Table 7: 20.11099 uPa s at 260.8 K, reproduced to 2.4e-7."
+
+[[formulas]]
+id = "eq6_eq7_N2O"
+material = "N2O"
+equation = "Eqs. (6)-(7), pdf p. 9; Tables 1-2, pdf pp. 262, 265"
+printed = "eta* = 5 sqrt(m pi k_B T)/(16 pi sigma^2 Omega(2,2)) F_c; Omega(2,2) = 1.16145 T*^-0.14874 + 0.52487 exp(-0.77320 T*) + 2.16178 exp(-2.43787 T*)"
+variable = "T* = k_B T/epsilon, 0.3 < T* < 100; eta* = 0.026692 sqrt(M T)/(sigma^2 Omega) F_c in uPa s, M in g/mol, sigma in nm"
+range = "0.3 < T* < 100"
+coefficients = { prefactor = "0.026692", molar_mass = "44.0128", epsilon_k = "232.4", sigma_nm = "0.3828", f_c = "1" }
+check = "Table 7: 13.86694 uPa s at 278.6 K, reproduced to 2e-8."

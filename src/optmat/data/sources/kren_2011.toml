@@ -1,0 +1,50 @@
+citation = "P. Kren, Appl. Opt. 50, 6484 (2011)"
+library = "Kren_2011_CommentPrecisionRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """Comment on Zhang, Lu and Wang (2008): a dispersion formula for molecular oxygen \
+derived, not measured, from Bonsch and Potulski's standard dry-air formula minus the \
+other constituents (mainly Zhang et al.'s formulas), through Lorentz-Lorenz summation."""
+notes = """The library record is unverified; the citation is from the page (Applied Optics \
+Vol. 50, No. 35, 10 December 2011, pp. 6484-6485; P. Kren, Czech Metrology Institute). \
+Standard conditions 20 degrees C and 101 325 Pa, 'in accordance with' Zhang et al.; \
+lambda the vacuum wavelength in micrometers; valid 400-1800 nm (the range of the air \
+formula). Kren argues that Zhang et al.'s O2 formula is distorted by fitting across the \
+oxygen A band, where a 30 m path at 101 325 Pa absorbs almost fully: its dispersion \
+between 633 and 800 nm, 1851 ppb, differs by about 33 ppb (at 20 kPa partial pressure) \
+from the 1683 ppb consistent with the air formula (p. 1). The Birch (1991) oxygen value \
+quoted on p. 2 is recorded as a reproduction; the library flags one unmapped glyph on \
+p. 2 (UNMAPPED_GLYPHS), the +- of that value, read from the page image."""
+
+[[datasets]]
+id = "birch_1991_O2"
+material = "O2"
+points = [["633", "633", "0.000255720", "0.000000050"]]
+table = "text"
+quantity = "refractivity"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+state = "1atm_15C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. P. Birch, J. Opt. Soc. Am. A 8, 647 (1991)"]
+notes = "p. 2: 'the absolute value of the refractive index published in [5] for oxygen equal to 1.000255720 +- 0.000000050 at 15 degrees C' (at 633 nm, standard pressure); stored as n - 1 = 0.000255720 (the printed n minus 1). Level of the +- not stated. Zhang et al. 2008 quote the same measurement converted to 20 degrees C (2513.43 +- 0.5 x 10^-7 at 632.99 nm; zhang_2008/birch_1991_O2). The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[formulas]]
+id = "kren_O2"
+form = "dn_sigma2"
+terms = { scale = "1e-8", A = "11814.94", B = ["970893.1"], C = ["75.4"] }
+range_nm = [400.0, 1800.0]
+material = "O2"
+equation = "Eq. (1), p. 1"
+printed = "(n_O2 - 1)_S x 10^8 = 11,814.94 + 970,893.1/(75.4 - 1/lambda^2)"
+variable = "lambda: vacuum wavelength in micrometers"
+state = "1atm_20C"
+density = "real"
+range = "400-1800 nm"
+coefficients = { A0 = "11814.94", A1 = "970893.1", B1 = "75.4" }
+check = "Gives 1.000251323 at 633 nm, the value printed on p. 2 for standard conditions (Kren's 15 degrees C value, 1.000255700, needs a density ratio the paper does not give). Zhang et al.'s O2 formula gives 1.000251401 at 633 nm, as Kren quotes. Checked 2026-09-24."
+notes = "Derived from the air formula and the other constituents, not measured; a model value, not data. Its 15 degrees C value is 'consistent within the uncertainty' of Birch's measurement (p. 2)."

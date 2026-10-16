@@ -1,0 +1,238 @@
+citation = "M. Reichert, P. Zhao, J. M. Reed, T. R. Ensley, D. J. Hagan and E. W. Van Stryland, \"Beam deflection measurement of bound-electronic and rotational nonlinear refraction in molecular gases\", Opt. Express 23, 22224 (2015)"
+doi = "10.1364/OE.23.022224"
+library = "Reichert_2015_BeamDeflectionMeasurement"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Polarization-resolved beam deflection (excite-probe): 800-nm, 83-fs excitation \
+(w_e = 177 um) and a 650-nm white-light-continuum probe (40 nm \
+FWHM, 265 fs, w_0,p = 60 um) crossing at <= 1 degree in ambient laboratory air; the \
+probe's deflection measured by a quadrant photodiode versus delay (to 2 ns). Probe at \
+0, 90 and 54.7 degrees (the magic angle removes the rotational part). The interaction \
+length (6.5 cm) is not characterized and is fitted: the electronic part is measured \
+relative to the rotational revivals, whose size is fixed by literature Delta alpha \
+values (self-reference). CS2 vapour (1250-nm excitation, 950-nm probe) likewise (pp. \
+22227-22233)."""
+notes = """Journal pages 22224-22237 = PDF pages 1-14. Identity checked against the first \
+page.
+
+NOTHING CURATED IS MEASURED. The only n2 is of ambient AIR: n2,el(air) = (10 +- 2) x \
+10^-24 m2/W (magic angle, 800 nm, 83 fs; p. 22233), with Table 2 comparing Wahlstrand et \
+al. [48] 7.9 +- 1.0, Liu and Chin [49] 9.6 and a Shelton-and-Rice-based 9.1 (1e-24 m2/W), \
+and an air-averaged gamma (1.25 +- 0.20) x 10^-62 C^4 m^4/J^3 (the text says +- 0.10) = \
+(10.1 +- 2.0) x 10^-37 esu against 0.78 gamma(N2) + 0.21 gamma(O2) + 0.01 gamma(Ar) with N \
+= 2.5e19 cm^-3. Air is not curated: not extracted. CS2 (not curated): gamma(gas) = (19 +- \
+4) x 10^-62 C^4 m^4/J^3, B and D of three species (Table 3), not extracted.
+
+DEFINING EQUATIONS (SI; pp. 22227-22228). Eq. (1): Delta n_rot(t) = [N Delta alpha / (2 eps0 n0)] \
+(<cos^2 theta(t)> - 1/3). Eq. (2): Delta n(t) = 2 n2,el I_e(t) + (c N / 4) (Delta alpha)^2 \
+sum_J T_J int I_e(t') sin(omega_(J,J-2)(t - t')) exp(-Gamma_(J,J-2)(t - t')) dt', T_J = \
+(2 / 15 hbar) J(J - 1)/(2J - 1) (rho_JJ - rho_(J-2,J-2)) (Eq. (3)); 'The factor of 2 in the \
+first term arises from interference of the two beams doubling the phase change [32]' \
+(nondegenerate probe; absent from the rotational term): n2,el is the SELF coefficient. \
+Eq. (4): mu = mu(0) + alpha E + beta E^2 + gamma E^3, the field being E0(omega) cos(k.r - \
+omega t) (no 1/2 or 1/6: the perturbation-series convention). Eq. (5): n2,el = [3 N / (4 \
+eps0^2 c n0 n0,e)] f(3) Re<gamma>, f(3) = [(n0^2 + 2)/3]^2 [(n0,e^2 + 2)/3]^2 the \
+Lorentz-Lorenz local-field factor (~1 in dilute gases). Eq. (8): Delta n_el / Delta n_rot \
+proportional to gamma / (Delta alpha)^2. Eqs. (9)-(11): Delta n(0) = Delta n_el + Delta \
+n_rot, Delta n(90) = Delta n_el/3 - Delta n_rot/2, Delta n(54.7) = 5 Delta n_el / 9.
+
+TABLE 1 (p. 22232; image checked; extracted by tools/extract/reichert_2015.py): Delta \
+alpha (1e-40 F m2) N2 0.77, O2 1.21, marked '[35]' = Bridge and Buckingham, Proc. R. Soc. \
+London A 295, 334 (1966) (not in the library): values used, not measured (the fit of the \
+air revivals 'gives a good determination of the ratio Delta alpha(O2)/Delta alpha(N2), \
+that agrees well with the values in [35]', p. 22230). Recorded as reproduced, unit 'SI' \
+(F m2 = C m2/V), no stated wavelength (abscissa 'not stated'). \
+Fitted constants: 14N2 B = 1.9896(2) cm^-1, D = 5.9(6) x 10^-6 cm^-1 (Raman: \
+1.989574(12), 5.76(3)); 16O2 B = 1.4377(2), D = 5.1(5) (1.437682(9), 4.852(12)): now \
+extracted (2026-09-26) as the B_fit_*, D_fit_* datasets (check) and the Raman columns as \
+reproductions. J-dependent dephasing rates in Fig. 4 only. The group velocity in air uses \
+n0,e = 1.000275 (Ciddor).
+
+TABLE 1 B AND D (p. 22232; image and text layer checked). The table's column marks a \
+and b have no footnote in the paper; the text says: 'The values of B and D found from \
+fitting are given in Table 1 for each molecule, which shows a comparison to Raman \
+scattering measurements [41]' (p. 22232), [41] = A. Weber, 'High-resolution rotational \
+Raman spectra of gases', in Raman Spectroscopy of Gases and Liquids (Springer, 1979), \
+curated as weber_1979 (Chap. 3, Table 3.2). So a = this work (the fit of the \
+Fourier-transformed air revivals to 300 ps, Fig. 3, with Eq. (2) and centrifugal distortion), b = Weber's Raman values. \
+The digits in parentheses are the uncertainty in the last digit(s) (level not stated). \
+The fitted constants are effective values of the v = 0 rotational ladder of each \
+molecule in ambient air (~1 atm, room temperature); for O2 the model counts 'only odd J \
+values' (p. 22231) and does not mention the electron-spin (fine-structure) splitting. \
+The 14N2 \
+Raman column is digit-identical to bendtsen_1974's pure rotational B_0 and D (Table \
+VII), so it is recorded as reproduced from bendtsen_1974 (through Weber); the 16O2 \
+column's original is not identified (reproduced from Weber). The fitted values agree \
+with the Raman ones well within their stated uncertainties: B(N2) 1.9896(2) against \
+1.989574 (+0.13 of the stated 0.0002), B(O2) 1.4377(2) against 1.437682 (+0.09), \
+D(N2) 5.9(6) against 5.76, D(O2) 5.1(5) against 4.852 (both within 0.5 of theirs)."""
+
+[[datasets]]
+id = "dalpha_bridge_buckingham_N2"
+material = "N2"
+file = "N2/reichert_2015__dalpha_bridge_buckingham_N2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["N. J. Bridge and A. D. Buckingham, Proc. R. Soc. Lond. A 295, 334 (1966)"]
+notes = "Table 1, Delta alpha '0.77 [35]' in 1e-40 F m2 (SI polarizability, C m2/V). The self-reference of the measurement, not a result. Wavelength not stated."
+
+[[datasets]]
+id = "dalpha_bridge_buckingham_O2"
+material = "O2"
+file = "O2/reichert_2015__dalpha_bridge_buckingham_O2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "polarizability_anisotropy"
+unit = "SI"
+scale = 1e-40
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["N. J. Bridge and A. D. Buckingham, Proc. R. Soc. Lond. A 295, 334 (1966)"]
+notes = "Table 1, Delta alpha '1.21 [35]' in 1e-40 F m2. As dalpha_bridge_buckingham_N2."
+
+[[datasets]]
+id = "B_fit_N2"
+material = "N2"
+file = "N2/reichert_2015__B_fit_N2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 22232), column 'B (cm-1)a': 1.9896(2), fitted to the rotational Raman spectrum (Fourier transform of the beam-deflection signal) of 14N2 in ambient air; the (2) is the uncertainty in the last digit, level not stated. An effective v = 0 constant."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "D_fit_N2"
+material = "N2"
+file = "N2/reichert_2015__D_fit_N2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+scale = 1e-6
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 22232), column 'D (10-6 cm-1)a': 5.9(6) x 1e-6 cm^-1, fitted as B_fit_N2; level not stated."
+[datasets.parameters]
+constant = "D"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "B_fit_O2"
+material = "O2"
+file = "O2/reichert_2015__B_fit_O2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 22232), column 'B (cm-1)a': 1.4377(2) for 16O2, fitted as B_fit_N2 (the O2 spin splitting not modelled); level not stated."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "D_fit_O2"
+material = "O2"
+file = "O2/reichert_2015__D_fit_O2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+scale = 1e-6
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 22232), column 'D (10-6 cm-1)a': 5.1(5) x 1e-6 cm^-1 for 16O2; level not stated."
+[datasets.parameters]
+constant = "D"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "B_raman_N2"
+material = "N2"
+file = "N2/reichert_2015__B_raman_N2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["bendtsen_1974", "weber_1979"]
+notes = "Table 1 (p. 22232), column 'B (cm-1)b', the Raman comparison value [41] (Weber 1979): 1.989574(12), digit-identical with bendtsen_1974 Table VII's pure rotational B_0 (its original)."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "D_raman_N2"
+material = "N2"
+file = "N2/reichert_2015__D_raman_N2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+scale = 1e-6
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["bendtsen_1974", "weber_1979"]
+notes = "Table 1 (p. 22232), column 'D (10-6 cm-1)b' [41]: 5.76(3), bendtsen_1974 Table VII's pure rotational D."
+[datasets.parameters]
+constant = "D"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "B_raman_O2"
+material = "O2"
+file = "O2/reichert_2015__B_raman_O2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. J. Butcher, D. V. Willetts and W. J. Jones, Proc. R. Soc. A324, 231 (1971)", "weber_1979"]
+notes = "Table 1 (p. 22232), column 'B (cm-1)b' [41]: 1.437682(9) for 16O2: Weber's Table 3.2 (weber_1979 table3_2_B0_O2_butcher, p. 88) prints it as [3.17a] R. J. Butcher, D. V. Willetts and W. J. Jones, Proc. R. Soc. A324, 231 (1971), the original (not in the library); digit-identical. hajigeorgiou_2013's B_0 is 1.437674521 (Table III) and 1.43767602 (Table I, from Yu et al.): 6-8e-6 cm^-1 below, within 1 sigma of the (9)."
+[datasets.parameters]
+constant = "B"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "D_raman_O2"
+material = "O2"
+file = "O2/reichert_2015__D_raman_O2.csv"
+table = "tbl_f40cb41739d3"
+quantity = "rotational_constant"
+unit = "cm-1"
+scale = 1e-6
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. J. Butcher, D. V. Willetts and W. J. Jones, Proc. R. Soc. A324, 231 (1971)", "weber_1979"]
+notes = "Table 1 (p. 22232), column 'D (10-6 cm-1)b' [41]: 4.852(12) for 16O2 (weber_1979 table3_2_D0_O2_butcher, from [3.17a] Butcher et al. 1971, digit-identical), against hajigeorgiou_2013's D_0 4.839482 (Table III) and 4.8405146 (Table I): 1.0 sigma of the (12) below."
+[datasets.parameters]
+constant = "D"
+vibrational_state_v = 0
+[datasets.uncertainty]
+column = true
+level = "not stated"

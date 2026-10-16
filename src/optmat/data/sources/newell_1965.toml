@@ -1,0 +1,561 @@
+citation = "A. C. Newell and R. C. Baird, \"Absolute Determination of Refractive Indices of Gases at 47.7 Gigahertz\", J. Appl. Phys. 36, 3751 (1965)"
+doi = "10.1063/1.1713942"
+library = "Newell_1965_AbsoluteDeterminationRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Microwave cavity refractometry at 47.736 GHz: the resonant frequency of an \
+evacuated and a gas-filled resonator, (n - 1) = (f_e - f_g)/f_g (Eqs. 1, 6), located \
+with a hybrid-tee bridge (setting to 5 parts in 1e8, frequency referred to the NBS 100 \
+kHz standard); two resonators, an invar TE017 cylindrical cavity (Q about 30 000) and a \
+Fabry-Perot (spherical and plane brass mirrors on invar rods), each in a bell jar; \
+cavity temperature from calibrated thermistors, the frequency corrected for it (Eqs. \
+2-5); gas pressure from a U-tube manometer (0.05 Torr); a hydrostatic (cavity \
+expansion on evacuation) correction of +0.30e-6 (Eqs. 15-16). At least 15 \
+determinations per gas at a mean 20 degrees C and 600-760 Torr (pp. 3751-3756)."""
+notes = """Reduction to 0 degrees C and 760 Torr (p. 3754): 'it is sufficient to assume that \
+the refractivity of a gas is proportional to its density', with the ideal-gas law for \
+helium and hydrogen (Eq. 7), Barrell and Sears's empirical equation for dry air (Eq. \
+8) for nitrogen, oxygen and argon, and Berthelot's equation (Eqs. 9-14; T_c = 304.20 K, \
+P_c = 55 366 Torr) for carbon dioxide; the gas laws were chosen by their agreement with \
+NBS Circular 564; Eq. (14) agrees with the density tables to 2 parts in 1e8. The \
+datasets' density is 'ideal' for He and H2 and 'real' for the others. The values are \
+referred to 1 atm, 0 degrees C from measurements near 1 atm and 20 degrees C, so the \
+ideal-gas scaling spans only the temperature step.
+
+Accuracy (Table II; p. 3756): per-gas errors in (n - 1) x 1e6 from pressure, \
+impurities, the hydrostatic correction, temperature and the random error 2 sigma_N \
+(sigma_N the standard deviation of the mean of at least 15 determinations), combined \
+in quadrature: 'This rms sum is then a 2 sigma limit of the estimated total error, and \
+it is this value which is quoted in the results.' Cylindrical / Fabry-Perot totals: air \
+0.05/0.13, Ar 0.05/0.13, CO2 0.08/0.23, He 0.05/0.05, H2 0.05/0.07, N2 0.07/0.12, O2 \
+0.05/0.11. Impurities (Table I, ppm by volume): Ar N2 10, O2 10, H2O 6; CO2 N2 40, O2 \
+10, H2O 5; He N2 10, O2 5, H2O 1; H2 N2 25, CO2 5, H2O 1; N2 O2 50, H2O 14; O2 N2 100, \
+H2O 6.
+
+Frequency and wavelength: 47.736 GHz, vacuum wavelength 6.2802 mm (c/f, computed \
+here); the table lists 48 GHz. 'There is no reason to expect any dispersive effects \
+for any of the gases except oxygen' (p. 3757): the values are effectively the static \
+limit, but they include every low-frequency contribution: the infrared (vibrational) \
+polarizability of the molecules (large for CO2) and, for oxygen, the paramagnetic \
+permeability and the 60 GHz magnetic-dipole band, so oxygen is excluded. The other \
+authors' wavelengths are c/f of their nominal frequencies; Maryott and Buckley's means \
+('rf to optical') are stored at infinity.
+
+Helium: 'a rather large difference ... when compared with the values quoted by Mayrott \
+and Buckley and Essen and Froome', attributed to impurities in the others' helium; \
+Jelatis (1948) and Cuthbertson and Cuthbertson (1932) agree with Newell and Baird (p. \
+3757). Dry CO2-free air (288.13 +- 0.05, cylindrical) is not a curated species. The \
+abstract's list repeats the cylindrical-cavity values."""
+
+[[datasets]]
+id = "newell_baird_cylindrical_Ar"
+material = "Ar"
+file = "Ar/newell_1965__newell_baird_cylindrical_Ar.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table III, Newell and Baird's cylindrical TE017 cavity (the result quoted in the abstract): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Barrell and Sears's empirical air equation (Eq. 8); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_fabry_perot_Ar"
+material = "Ar"
+file = "Ar/newell_1965__newell_baird_fabry_perot_Ar.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table III, Newell and Baird's Fabry-Perot resonator (an independent check of the cylindrical cavity; pressure, impurity and hydrostatic errors are common to both): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Barrell and Sears's empirical air equation (Eq. 8); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "maryott_buckley_1953_Ar"
+material = "Ar"
+file = "Ar/newell_1965__maryott_buckley_1953_Ar.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "reproduced"
+reproduced_from = ["A. M. Maryott and F. Buckley, Natl. Bur. Std. (U. S.) Circ. 537 (1953)"]
+notes = "Table III, Maryott and Buckley's mean of measurements 'at frequencies ranging from rf to optical', given as epsilon - 1 at 20 degrees C, 760 Torr and converted by Newell and Baird with n - 1 = (mu epsilon)^(1/2) - 1 and extrapolated to 0 degrees C with the gas law used for their own values (Barrell and Sears's empirical air equation (Eq. 8)); no single frequency: stored at wavelength inf. Their limits are 'the average deviation of the individual values', 'about the same as 2 sigma_N' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "essen_froome_1951_Ar"
+material = "Ar"
+file = "Ar/newell_1965__essen_froome_1951_Ar.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. Essen and K. D. Froome, Proc. Phys. Soc. B64, 862 (1951)"]
+notes = "Table III, Essen and Froome (1951), 24 GHz (nominal; c/f = 12.491 mm). Their errors are 'the rms sum of the estimated maximum systematic errors together with the standard deviation of one observation, and as such are similar to 2 sigma limits' (pp. 3756-3757)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "froome_1955_Ar"
+material = "Ar"
+file = "Ar/newell_1965__froome_1955_Ar.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. D. Froome, Proc. Phys. Soc. (London) B68, 833 (1955)"]
+notes = "Table III, Froome (1955), 72 GHz (nominal; c/f = 4.1637 mm); the level of the +- is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "newell_baird_cylindrical_CO2"
+material = "CO2"
+file = "CO2/newell_1965__newell_baird_cylindrical_CO2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table III, Newell and Baird's cylindrical TE017 cavity (the result quoted in the abstract): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Berthelot's equation (Eqs. 9-14); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756). The static (microwave) value of CO2 includes the infrared (vibrational) polarizability, which optical dispersion formulas do not extrapolate to."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_fabry_perot_CO2"
+material = "CO2"
+file = "CO2/newell_1965__newell_baird_fabry_perot_CO2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table III, Newell and Baird's Fabry-Perot resonator (an independent check of the cylindrical cavity; pressure, impurity and hydrostatic errors are common to both): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Berthelot's equation (Eqs. 9-14); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756). The static (microwave) value of CO2 includes the infrared (vibrational) polarizability, which optical dispersion formulas do not extrapolate to."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "maryott_buckley_1953_CO2"
+material = "CO2"
+file = "CO2/newell_1965__maryott_buckley_1953_CO2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "reproduced"
+reproduced_from = ["A. M. Maryott and F. Buckley, Natl. Bur. Std. (U. S.) Circ. 537 (1953)"]
+notes = "Table III, Maryott and Buckley's mean of measurements 'at frequencies ranging from rf to optical', given as epsilon - 1 at 20 degrees C, 760 Torr and converted by Newell and Baird with n - 1 = (mu epsilon)^(1/2) - 1 and extrapolated to 0 degrees C with the gas law used for their own values (Berthelot's equation (Eqs. 9-14)); no single frequency: stored at wavelength inf. Their limits are 'the average deviation of the individual values', 'about the same as 2 sigma_N' (p. 3756). The static (microwave) value of CO2 includes the infrared (vibrational) polarizability, which optical dispersion formulas do not extrapolate to."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "essen_froome_1951_CO2"
+material = "CO2"
+file = "CO2/newell_1965__essen_froome_1951_CO2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "reproduced"
+reproduced_from = ["L. Essen and K. D. Froome, Proc. Phys. Soc. B64, 862 (1951)"]
+notes = "Table III, Essen and Froome (1951), 24 GHz (nominal; c/f = 12.491 mm). Their errors are 'the rms sum of the estimated maximum systematic errors together with the standard deviation of one observation, and as such are similar to 2 sigma limits' (pp. 3756-3757). Marked 'a': 'This value has been corrected by using Berthelot's gas law rather than the ideal gas law' (Table III note, pdf text). The static (microwave) value of CO2 includes the infrared (vibrational) polarizability, which optical dispersion formulas do not extrapolate to."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_cylindrical_He"
+material = "He"
+file = "He/newell_1965__newell_baird_cylindrical_He.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table III, Newell and Baird's cylindrical TE017 cavity (the result quoted in the abstract): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with the ideal-gas law (Eq. 7); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756). 0.26 % below the ab initio static value (n - 1 = 34.598e-6 from puchalski_2016's A_eps with a real-gas density; computed here), more than the stated 2 sigma; the authors suspect impurities in the others' helium (p. 3757)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_fabry_perot_He"
+material = "He"
+file = "He/newell_1965__newell_baird_fabry_perot_He.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, Newell and Baird's Fabry-Perot resonator (an independent check of the cylindrical cavity; pressure, impurity and hydrostatic errors are common to both): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with the ideal-gas law (Eq. 7); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "maryott_buckley_1953_He"
+material = "He"
+file = "He/newell_1965__maryott_buckley_1953_He.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["A. M. Maryott and F. Buckley, Natl. Bur. Std. (U. S.) Circ. 537 (1953)"]
+notes = "Table III, Maryott and Buckley's mean of measurements 'at frequencies ranging from rf to optical', given as epsilon - 1 at 20 degrees C, 760 Torr and converted by Newell and Baird with n - 1 = (mu epsilon)^(1/2) - 1 and extrapolated to 0 degrees C with the gas law used for their own values (the ideal-gas law (Eq. 7)); no single frequency: stored at wavelength inf. Their limits are 'the average deviation of the individual values', 'about the same as 2 sigma_N' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "essen_1953_He"
+material = "He"
+file = "He/newell_1965__essen_1953_He.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. Essen, Proc. Phys. Soc. (London) B66, 189 (1953)"]
+notes = "Table III, Essen (1953), 9 GHz (nominal; c/f = 33.31 mm); the level of the +- is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "newell_baird_cylindrical_H2"
+material = "H2"
+file = "H2/newell_1965__newell_baird_cylindrical_H2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table III, Newell and Baird's cylindrical TE017 cavity (the result quoted in the abstract): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with the ideal-gas law (Eq. 7); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_fabry_perot_H2"
+material = "H2"
+file = "H2/newell_1965__newell_baird_fabry_perot_H2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table III, Newell and Baird's Fabry-Perot resonator (an independent check of the cylindrical cavity; pressure, impurity and hydrostatic errors are common to both): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with the ideal-gas law (Eq. 7); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "maryott_buckley_1953_H2"
+material = "H2"
+file = "H2/newell_1965__maryott_buckley_1953_H2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["A. M. Maryott and F. Buckley, Natl. Bur. Std. (U. S.) Circ. 537 (1953)"]
+notes = "Table III, Maryott and Buckley's mean of measurements 'at frequencies ranging from rf to optical', given as epsilon - 1 at 20 degrees C, 760 Torr and converted by Newell and Baird with n - 1 = (mu epsilon)^(1/2) - 1 and extrapolated to 0 degrees C with the gas law used for their own values (the ideal-gas law (Eq. 7)); no single frequency: stored at wavelength inf. Their limits are 'the average deviation of the individual values', 'about the same as 2 sigma_N' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "essen_1953_H2"
+material = "H2"
+file = "H2/newell_1965__essen_1953_H2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. Essen, Proc. Phys. Soc. (London) B66, 189 (1953)"]
+notes = "Table III, Essen (1953), 9 GHz (nominal; c/f = 33.31 mm); the level of the +- is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "newell_baird_cylindrical_N2"
+material = "N2"
+file = "N2/newell_1965__newell_baird_cylindrical_N2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table III, Newell and Baird's cylindrical TE017 cavity (the result quoted in the abstract): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Barrell and Sears's empirical air equation (Eq. 8); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_fabry_perot_N2"
+material = "N2"
+file = "N2/newell_1965__newell_baird_fabry_perot_N2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table III, Newell and Baird's Fabry-Perot resonator (an independent check of the cylindrical cavity; pressure, impurity and hydrostatic errors are common to both): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Barrell and Sears's empirical air equation (Eq. 8); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "maryott_buckley_1953_N2"
+material = "N2"
+file = "N2/newell_1965__maryott_buckley_1953_N2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "reproduced"
+reproduced_from = ["A. M. Maryott and F. Buckley, Natl. Bur. Std. (U. S.) Circ. 537 (1953)"]
+notes = "Table III, Maryott and Buckley's mean of measurements 'at frequencies ranging from rf to optical', given as epsilon - 1 at 20 degrees C, 760 Torr and converted by Newell and Baird with n - 1 = (mu epsilon)^(1/2) - 1 and extrapolated to 0 degrees C with the gas law used for their own values (Barrell and Sears's empirical air equation (Eq. 8)); no single frequency: stored at wavelength inf. Their limits are 'the average deviation of the individual values', 'about the same as 2 sigma_N' (p. 3756)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "essen_1953_N2"
+material = "N2"
+file = "N2/newell_1965__essen_1953_N2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. Essen, Proc. Phys. Soc. (London) B66, 189 (1953)"]
+notes = "Table III, Essen (1953), 9 GHz (nominal; c/f = 33.31 mm); the level of the +- is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "essen_froome_1951_N2"
+material = "N2"
+file = "N2/newell_1965__essen_froome_1951_N2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["L. Essen and K. D. Froome, Proc. Phys. Soc. B64, 862 (1951)"]
+notes = "Table III, Essen and Froome (1951), 24 GHz (nominal; c/f = 12.491 mm). Their errors are 'the rms sum of the estimated maximum systematic errors together with the standard deviation of one observation, and as such are similar to 2 sigma limits' (pp. 3756-3757)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "froome_1955_N2"
+material = "N2"
+file = "N2/newell_1965__froome_1955_N2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["K. D. Froome, Proc. Phys. Soc. (London) B68, 833 (1955)"]
+notes = "Table III, Froome (1955), 72 GHz (nominal; c/f = 4.1637 mm); the level of the +- is not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "newell_baird_cylindrical_O2"
+material = "O2"
+file = "O2/newell_1965__newell_baird_cylindrical_O2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = "Table III, Newell and Baird's cylindrical TE017 cavity (the result quoted in the abstract): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Barrell and Sears's empirical air equation (Eq. 8); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756). Excluded from polarizability fits: oxygen's microwave refractivity includes the paramagnetic (mu_r) term and the dispersion of the 60 GHz magnetic-dipole band ('The difference in the values for oxygen was to be expected as a result of the oxygen absorption at 60 GHz', p. 3757); it is not the electronic polarizability."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "newell_baird_fabry_perot_O2"
+material = "O2"
+file = "O2/newell_1965__newell_baird_fabry_perot_O2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = "Table III, Newell and Baird's Fabry-Perot resonator (an independent check of the cylindrical cavity; pressure, impurity and hydrostatic errors are common to both): (n - 1) x 1e6 at 0 degrees C, 760 Torr, measured near 20 degrees C and 600-760 Torr and reduced with Barrell and Sears's empirical air equation (Eq. 8); 47.736 GHz, vacuum wavelength c/f = 6.2802 mm (effectively static). Uncertainty: the rms sum of the Table II errors, 'a 2 sigma limit' (p. 3756). Excluded from polarizability fits: oxygen's microwave refractivity includes the paramagnetic (mu_r) term and the dispersion of the 60 GHz magnetic-dipole band ('The difference in the values for oxygen was to be expected as a result of the oxygen absorption at 60 GHz', p. 3757); it is not the electronic polarizability."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "maryott_buckley_1953_O2"
+material = "O2"
+file = "O2/newell_1965__maryott_buckley_1953_O2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+reproduced_from = ["A. M. Maryott and F. Buckley, Natl. Bur. Std. (U. S.) Circ. 537 (1953)"]
+notes = "Table III, Maryott and Buckley's mean of measurements 'at frequencies ranging from rf to optical', given as epsilon - 1 at 20 degrees C, 760 Torr and converted by Newell and Baird with n - 1 = (mu epsilon)^(1/2) - 1 and extrapolated to 0 degrees C with the gas law used for their own values (Barrell and Sears's empirical air equation (Eq. 8)); no single frequency: stored at wavelength inf. Their limits are 'the average deviation of the individual values', 'about the same as 2 sigma_N' (p. 3756). Excluded from polarizability fits: oxygen's microwave refractivity includes the paramagnetic (mu_r) term and the dispersion of the 60 GHz magnetic-dipole band ('The difference in the values for oxygen was to be expected as a result of the oxygen absorption at 60 GHz', p. 3757); it is not the electronic polarizability."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "essen_1953_O2"
+material = "O2"
+file = "O2/newell_1965__essen_1953_O2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+reproduced_from = ["L. Essen, Proc. Phys. Soc. (London) B66, 189 (1953)"]
+notes = "Table III, Essen (1953), 9 GHz (nominal; c/f = 33.31 mm); the level of the +- is not stated. Excluded from polarizability fits: oxygen's microwave refractivity includes the paramagnetic (mu_r) term and the dispersion of the 60 GHz magnetic-dipole band ('The difference in the values for oxygen was to be expected as a result of the oxygen absorption at 60 GHz', p. 3757); it is not the electronic polarizability."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "essen_froome_1951_O2"
+material = "O2"
+file = "O2/newell_1965__essen_froome_1951_O2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+reproduced_from = ["L. Essen and K. D. Froome, Proc. Phys. Soc. B64, 862 (1951)"]
+notes = "Table III, Essen and Froome (1951), 24 GHz (nominal; c/f = 12.491 mm). Their errors are 'the rms sum of the estimated maximum systematic errors together with the standard deviation of one observation, and as such are similar to 2 sigma limits' (pp. 3756-3757). Excluded from polarizability fits: oxygen's microwave refractivity includes the paramagnetic (mu_r) term and the dispersion of the 60 GHz magnetic-dipole band ('The difference in the values for oxygen was to be expected as a result of the oxygen absorption at 60 GHz', p. 3757); it is not the electronic polarizability."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+
+[[datasets]]
+id = "froome_1955_O2"
+material = "O2"
+file = "O2/newell_1965__froome_1955_O2.csv"
+table = "tbl_601dafe76d7c"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "m"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+reproduced_from = ["K. D. Froome, Proc. Phys. Soc. (London) B68, 833 (1955)"]
+notes = "Table III, Froome (1955), 72 GHz (nominal; c/f = 4.1637 mm); the level of the +- is not stated. Excluded from polarizability fits: oxygen's microwave refractivity includes the paramagnetic (mu_r) term and the dispersion of the 60 GHz magnetic-dipole band ('The difference in the values for oxygen was to be expected as a result of the oxygen absorption at 60 GHz', p. 3757); it is not the electronic polarizability. 72 GHz is above the 60 GHz band: beyond the resonance (263.9, below the others)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+beyond_resonance = true
+

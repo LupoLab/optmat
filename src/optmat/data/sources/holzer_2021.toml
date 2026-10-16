@@ -1,0 +1,352 @@
+citation = "J. I. Hölzer, C. Meißner and T. Seeger, \"Improvement of the coherent model function for S-branch Raman linewidth determination in oxygen\", Appl. Opt. 60, C76 (2021)"
+doi = "10.1364/AO.419648"
+library = "Holzer_2021_ImprovementCoherentModel"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Picosecond time-resolved dual-broadband pure rotational CARS (p. 2): a \
+frequency-doubled Nd:YAG (532 nm, 100 ps) as the delayed narrowband probe and a DCM \
+broadband dye laser (630 nm, 469 cm-1 FWHM) as pump and Stokes, in BOXCARS geometry \
+in an electrically heated furnace (295-1900 K) at about 1 bar; the coherence decay of \
+each S(N'') line fitted with Eq. (2), three spin-rotation (S-S) beats times exp(-t/tau) \
+convolved with the Gaussian probe (about 150 ps), each point weighted by the inverse \
+of its intensity (the 'weighted model')."""
+notes = """Identity checked against the first page (version of record, Appl. Opt. 60(15), \
+C76-C83, 2021). Page numbers are pdf pages 1-8. Material: 16O2 (X 3Sigma_g-), S-branch \
+lines labelled by N'' of the lower level; the spin triplets are resolved in time as \
+beats, the width being common to the triplet. At 1400 K and above the v = 1 hot band \
+(about 5 % of the intensity) overlaps the high-N'' lines and is not separated (p. 4). \
+No isotopologue is measured.
+
+WIDTH CONVENTION. FULL widths: Eq. (1), p. 1, 'Gamma_N'' is the full width at \
+half-maximum S-branch Raman linewidth', Gamma_N'' = (2 pi c tau_coll,N'')^-1, tau the \
+decay constant of the CARS INTENSITY (Eq. (2): I ~ |rho|^2 exp(-t/tau)); table heads \
+'Gamma_N''(FWHM)/10^-3 cm-1 atm-1'. Per atm: the measurements are at about 1 bar (Fig. \
+1 caption, p. 2) and the widths are divided by the pressure (the Fig. 6 and 9 captions \
+quote widths 'without accounting for the actual pressure during the experiment'); the \
+exact pressure of each run is not stated. Uncertainties: 'the standard deviation of \
+the fit' (table notes), a statistical 1 sigma only; the simulations (p. 3) give the \
+weighted model a mean bias of -0.1 % and a 95 % interval of 23 % for single \
+unoptimised fits.
+
+TABLE 2 is O2 in AIR, not O2-N2: 'Experimental S-Branch Raman Linewidths of Oxygen in \
+Air' (caption); the O2-N2 widths by Eq. (3), Gamma = x_O2 Gamma(O2-O2) + x_N2 \
+Gamma(O2-N2), are left for 'a future work' (p. 6). Recorded with perturber = "air" (the \
+paper's air: its composition is not stated).
+
+The weighted model changes the 295 K widths by 'about a factor of two' from the \
+authors' earlier unaltered-model values (Hölzer et al., J. Raman Spectrosc. 50, 1260 \
+(2019), Ref. 19; p. 4); those earlier values, and the literature in Figs. 7 and 10 \
+(Bérard, Courtney, Jammu, Looney, Miller, Millot, Ouazzany), are in figures only. The \
+text quotes single fitted widths (Figs. 6 and 9, not per atm): N'' = 25 at 295 K, 0.030 \
+(unaltered) and 0.049 cm-1 (weighted); N'' = 21 at 1900 K, 0.042 and 0.025; in air, N'' \
+= 21 at 295 K, 0.035 and 0.041; N'' = 47 at 1650 K, 0.031 and 0.014 (not extracted). \
+B0 = 1.438 cm-1, B1 = 1.422 cm-1 are quoted from Ref. 40 (p. 4; not extracted).
+
+Thermometry (p. 5): with these S-branch widths a pure-O2 spectrum at 870 K fits to 874 \
+K; with Millot et al.'s MEG Q-branch widths (millot_1992) to 895 K.
+
+solprop: its O2 rotational width, 2836257257.78 Hz/amagat FWHM, is Table 1's N'' = 7 at \
+295 K, 87.6 +- 3.1 x 1e-3 cm-1/atm FWHM, converted with 1 atm = 0.92593 amagat at 295 K \
+(ideal gas): 87.6e-3 x 29.9792458e9 / 0.92593 = 2.8363e9. solprop applies it to all N; \
+Table 1 runs from 98.5 (N'' = 3) to 46.4 (N'' = 27) at 295 K."""
+
+[[datasets]]
+id = "table1_self_295K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_295K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 295 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation. solprop's O2 rotational width is the S(7) value."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 295
+
+[[datasets]]
+id = "table1_self_500K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_500K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 500 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 500
+
+[[datasets]]
+id = "table1_self_870K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_870K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 870 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 870
+
+[[datasets]]
+id = "table1_self_1000K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_1000K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1000 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1000
+
+[[datasets]]
+id = "table1_self_1200K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_1200K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1200 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1200
+
+[[datasets]]
+id = "table1_self_1400K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_1400K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1400 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1400
+
+[[datasets]]
+id = "table1_self_1650K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_1650K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1650 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1650
+
+[[datasets]]
+id = "table1_self_1750K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_1750K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1750 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1750
+
+[[datasets]]
+id = "table1_self_1900K"
+material = "O2"
+file = "O2/holzer_2021__table1_self_1900K.csv"
+table = "tbl_2ed5b19b32b8"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 5), 1900 K: S-branch self-broadened FWHM of pure O2, 1e-3 cm-1/atm (measured near 1 bar), weighted model; +- the fit's standard deviation."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "self"
+temperature_k = 1900
+
+[[datasets]]
+id = "table2_air_295K"
+material = "O2"
+file = "O2/holzer_2021__table2_air_295K.csv"
+table = "tbl_2e8c929f073a"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 7), 295 K: S-branch FWHM of O2 in air (broadened by the air mixture, predominantly N2), 1e-3 cm-1/atm, weighted model; +- the fit's standard deviation. Not the O2-N2 coefficient."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 295
+
+[[datasets]]
+id = "table2_air_500K"
+material = "O2"
+file = "O2/holzer_2021__table2_air_500K.csv"
+table = "tbl_2e8c929f073a"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 7), 500 K: S-branch FWHM of O2 in air (broadened by the air mixture, predominantly N2), 1e-3 cm-1/atm, weighted model; +- the fit's standard deviation. Not the O2-N2 coefficient."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 500
+
+[[datasets]]
+id = "table2_air_870K"
+material = "O2"
+file = "O2/holzer_2021__table2_air_870K.csv"
+table = "tbl_2e8c929f073a"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 7), 870 K: S-branch FWHM of O2 in air (broadened by the air mixture, predominantly N2), 1e-3 cm-1/atm, weighted model; +- the fit's standard deviation. Not the O2-N2 coefficient."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 870
+
+[[datasets]]
+id = "table2_air_1400K"
+material = "O2"
+file = "O2/holzer_2021__table2_air_1400K.csv"
+table = "tbl_2e8c929f073a"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 7), 1400 K: S-branch FWHM of O2 in air (broadened by the air mixture, predominantly N2), 1e-3 cm-1/atm, weighted model; +- the fit's standard deviation. Not the O2-N2 coefficient."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 1400
+
+[[datasets]]
+id = "table2_air_1650K"
+material = "O2"
+file = "O2/holzer_2021__table2_air_1650K.csv"
+table = "tbl_2e8c929f073a"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 7), 1650 K: S-branch FWHM of O2 in air (broadened by the air mixture, predominantly N2), 1e-3 cm-1/atm, weighted model; +- the fit's standard deviation. Not the O2-N2 coefficient."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 1650
+
+[[datasets]]
+id = "table2_air_1900K"
+material = "O2"
+file = "O2/holzer_2021__table2_air_1900K.csv"
+table = "tbl_2e8c929f073a"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+scale = 1e-3
+abscissa = "label"
+use = "primary"
+notes = "Table 2 (p. 7), 1900 K: S-branch FWHM of O2 in air (broadened by the air mixture, predominantly N2), 1e-3 cm-1/atm, weighted model; +- the fit's standard deviation. Not the O2-N2 coefficient."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+transition = "S(N''), N'' the lower level, per row"
+width = "fwhm"
+perturber = "air"
+temperature_k = 1900
+

@@ -1,0 +1,81 @@
+# Nitrogen: the refractive polarizability from 145 nm (the onset of absorption) to the
+# static limit. N2 is homonuclear: no infrared-active vibration, so no infrared pole.
+gas = "N2"
+description = "Nitrogen: effective oscillators only (the strong absorption starts near 100 nm; the Lyman-Birge-Hopfield bands from 145 nm are forbidden and negligibly weak), fitted to Griesmann & Burnett's vacuum-ultraviolet interferometry (level free: their pressure was calibrated optically), Peck & Khanna's visible and near infrared, the 633 nm metrology (Birch, Stone, Achtermann), Zhang's 800 nm comb value, the 47.7 GHz and dielectric static values and Marchetti's 10.57 um point. chi_0 is Lang et al.'s ab initio -1.75e-4 a.u. (15 ppm of alpha; TC-708)."
+range_nm = [145.0, "inf"]
+
+validators = [
+    "sneep_2005/rayleigh_N2",   # Rayleigh scattering (TC-150)
+    "thalman_2014/crds_N2_405",   # Rayleigh scattering (TC-711)
+    "thalman_2014/crds_N2_532",
+    # A_303, at 303 K, brought to 293.15 K with the paper's own A_theta = 1.18(4)e-6 per K
+    # (egan_2023, p. 17): -11.6 ppm, with 0.4 ppm for the coefficient (TC-707, TC-730).
+    { key = "egan_2023/A_R_N2", temperature = { measured_k = 303.0, coefficient = 1.18e-6, sigma = 0.04e-6 } },
+    # Ab initio (a preprint): 0.16 % below the fit, GVD 0.5 % lower (TC-708).
+    "lang_2026/cauchy_303K",
+    "lang_2026/semi_empirical_303K",   # the NIST data reduced with the theory
+    "willetts_1982/measured_N2",      # 10.59 um, 2.5-6 %
+    "heddle_1963/experiment_N2",
+    "borzsonyi_2008/sgdd_N2",
+    "wilkinson_1960/experiment_N2",        # VUV 164.9-204.2 nm (the original)
+    "essen_1953/microwave_N2",
+    # N2/Ar at 0.02 %: fitted, it pulls N2 onto the argon model, whose near-infrared
+    # dispersion is 0.3 % from Shelton's He/Ar (TC-96); He/N2 is fitted instead.
+    "shelton_1990/density_N2_over_Ar",
+    "burns_1986/A_R_N2",
+    "bideau_mehu_1976/experiment_N2",   # 164.1, 170.2 nm, 0.5 %
+    "simmons_1978/LL_N2",   # 455 nm, 633 nm and 10.6 um
+]
+
+[model]
+# The temperature the polarizability refers to: a molecule's zero-density polarizability
+# changes with temperature (rotational and vibrational averaging), which the model does
+# not carry; datasets measured elsewhere are brought here where the coefficient is
+# measured (TC-730).
+reference_temperature_k = 293.15
+effective = 2
+effective_min_energy_hartree = 0.40
+# Magnetic susceptibility, Lang et al. (arXiv:2607.21261), ab initio at 303 K: -1.75(9)e-4
+# a.u. (TC-708, TC-725). The measured values (1924-1933) lie at -1.34 to -1.66e-4, 3.5 ppm
+# of alpha apart. Refraction fixes alpha + chi_0, so the term moves only the electric
+# (dielectric) static value, by 15 ppm.
+chi0_au = -1.75e-4
+
+[[fitted]]
+key = "griesmann_1999/experiment"
+free_scale = true
+
+[[fitted]]
+key = "peck_1966/experiment"
+
+[[fitted]]
+key = "egan_2019/A_R_N2"     # 633 nm laser refractometry
+
+[[fitted]]
+key = "birch_1991/alpha_N2"
+
+[[fitted]]
+key = "stone_2004/experiment_N2"
+
+[[fitted]]
+key = "achtermann_1991/A_R_this_work_N2"
+
+[[fitted]]
+key = "zhang_2008/measured_N2"
+
+[[fitted]]
+key = "newell_1965/newell_baird_cylindrical_N2"
+
+[[fitted]]
+key = "orcutt_1967/A_this_work_N2"
+electric = true
+
+[[fitted]]
+key = "marchetti_2006/alpha_p_N2"
+
+[[fitted]]
+key = "swift_1988/experiment_N2"
+
+# Near-infrared dispersion relative to a partner gas: He/N2 ratio, helium fixed.
+[[fitted]]
+key = "shelton_1990/density_He_over_N2"

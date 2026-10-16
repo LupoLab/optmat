@@ -1,0 +1,42 @@
+# Ozone's measured absorption spectrum, from the infrared edge of the Chappuis band to
+# 12 eV (103.32 nm): the fixed Kramers-Kronig term of the O3 model. Above 12 eV the
+# model continues with Kumar & Thakkar's (2011) interval oscillator strengths.
+# Decisions (2026-09-25; TC-218): 293 K; Gaussian
+# smoothing of 50 cm^-1 FWHM in wavenumber by default; native data kept.
+gas = "O3"
+temperature_k = 293.0
+fwhm_cm = 50.0
+step_cm = 0.5
+
+[[pieces]]
+source = "mainz_uvvis/O3_Serdyuchenko2014_293K_213-1100nm2013_version.txt.gz"
+from_nm = 213.33
+to_nm = 1100.0
+note = "Serdyuchenko et al. 2014 / Gorshelev et al. 2014, 293 K, 0.01 nm steps: the modern absolute reference (the whole range it covers)."
+
+[[pieces]]
+source = "mainz_uvvis/O3_Yoshino1993_295K_185-254nm0.0135nm.txt.gz"
+from_nm = 185.0
+to_nm = 213.33
+note = "Yoshino et al. 1993, 295 K, 0.0135 nm, on an absolute scale at 12 lines: below Serdyuchenko's range."
+
+[[pieces]]
+source = "mainz_uvvis/O3_Mason1996_298K_110.2-337.4nm.txt.gz"
+from_nm = 110.2
+to_nm = 185.0
+note = "Mason et al. 1996, 298 K: the atlas's digitisation of the paper's Fig. 5 (no table)."
+
+[[pieces]]
+source = "ogawa_1958/absolute"
+from_nm = 103.32
+to_nm = 110.2
+note = "Ogawa & Cook 1958 Table I, curated (their absolute scale, 20 %), up to 12 eV."
+
+[variants.T243]
+temperature_k = 243.0
+
+[[variants.T243.pieces]]
+source = "mainz_uvvis/O3_Serdyuchenko2014_243K_213-1100nm2013_version.txt.gz"
+from_nm = 213.33
+to_nm = 1100.0
+note = "The 243 K spectrum: the temperature sensitivity (decision 2)."

@@ -1,0 +1,254 @@
+citation = "H. Pathak, T. Sato and K. L. Ishikawa, \"Time-dependent optimized coupled-cluster method for multielectron dynamics. III. A second-order many-body perturbation approximation\", J. Chem. Phys. 153, 034110 (2020)"
+doi = "10.1063/5.0008789"
+library = "Pathak_2020_TimeDependentOptimized"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Time-dependent many-electron calculations of Ar in a laser pulse (Sec. III B, \
+PDF p. 6): TDHF, TD-OMP2 (time-dependent orbital-optimised second-order many-body \
+perturbation theory, introduced here), TD-OCCD (time-dependent optimised \
+coupled-cluster doubles) and TD-CASSCF, with the dipole interaction 'in the velocity \
+gauge' (Eq. 28), 'the 1s2s2p core is kept frozen, and the dynamics of remaining 8 \
+electrons are actively taken into account with 4 (TDHF) or 13 (TD-OMP2, TD-OCCD, and \
+TD-CASSCF) active orbitals'. Within one active space TD-CASSCF is the benchmark ('TD-CASSCF \
+produces highly accurate results'). Orbitals on a spherical FEDVR basis: l_max = 72 \
+(converged at the TDHF level), 78 finite elements of 23 DVR functions each, 0 < r < \
+R_max = 300, a cos^(1/4) mask switched on at 240; fourth-order exponential Runge-Kutta, \
+20 000 time steps per optical cycle; 'The simulations are continued after the end of \
+pulse for further 6000 time steps' (0.3 cycle). And a single-active-electron (SAE) \
+calculation (Eqs. 30-32): the effective Hamiltonian h_eff = p^2/2 + V_eff(r) with \
+V_eff(r) = -(1/r){1 + A e^(-r) + (Z - 1 - A) e^(-B r)}, 'with A = 5.4 and B = 3.682 for \
+Ar' (refs. 65, 66: Muller and Kooiman, Phys. Rev. Lett. 81, 1207 (1998); Schiessl et \
+al., Phys. Rev. A 74, 053412 (2006)), which 'correctly supports 1s, 2s, 2p, 3s, and 3p \
+bound orbitals, with the 3p orbital energy of -15.82 eV with the present FEDVR basis'; \
+i d|chi>/dt = Q{h_eff + A(t) p_z}|chi> (Eq. 32) 'starting from the 3p0 orbital', the \
+projector Q = 1 - sum_j |phi_j><phi_j| over the 1s, 2s, 2p, 3s and 3p+-1 orbitals (each \
+multiplied by the gauge factor e^(-iA(t)z)) keeping chi orthogonal to them. The pulse \
+(Eq. 29): E(t) = E0 sin(omega_0 t) sin^2(pi t / 3T) for 0 <= t <= 3T and zero \
+otherwise, 1200 nm, 'the period T = 2 pi / omega_0 ~ 4.00 fs, and the peak intensity \
+I0 = E0^2', 1, 2 and 4 x 10^14 W/cm^2, 'linearly polarized in the z direction'. The \
+single-ionisation probability (Fig. 2) is 'evaluated as the probability of finding an \
+electron outside a sphere of 20 a.u. radius' (p. 7): for the many-electron methods from \
+the reduced density matrices (the defining formula is not printed here); for SAE the \
+paper does not say how (presumably 1 - the norm of chi within 20 a.u.)."""
+notes = """PDF page 1 is AIP's cover page; journal pp. 034110-1 to -9 are PDF pages \
+2-10, so the journal page is 034110-(PDF page - 1). Identity checked on the first page \
+(PDF p. 2: 'J. Chem. Phys. 153, 034110 (2020); doi: 10.1063/5.0008789', Himadri \
+Pathak, Takeshi Sato and Kenichi L. Ishikawa, The University of Tokyo; submitted 25 \
+March 2020, accepted 22 June 2020, published online 16 July 2020) on 2026-10-06.
+
+EXTRACTED (tools/extract/pathak_2020.py). The paper prints no number of the \
+time-dependent calculations and has no supplement: the single-ionisation \
+probabilities are only in Fig. 2 (PDF p. 7, journal 034110-6), a vector drawing (no \
+image on the page), read from the PDF by data rule 8 (TC-699). The library's figure \
+fig_37c2c1bdbe02 lost panel (a) (1e14 W/cm^2); the PDF has it and the script reads \
+all three panels from the PDF. Each method's curve is one filled outline (the stroke \
+converted to a polygon of lines and Beziers), coloured as panel (c)'s legend shows \
+(TDHF blue, TD-OMP2 green, TD-OCCD red, TD-CASSCF thick black, SAE black dotted; the \
+legend's order checked); the line's centre at a time is the mid-point of the outline's \
+two crossings of that vertical, the dotted line's interpolated between its dots' \
+centres. The curves that overlap on the page (SAE on TDHF in (a); TD-CASSCF and TD-OCCD \
+close in (a) and (b)) are separate objects in the drawing, so each is read on its own. \
+Axes calibrated from the drawing's own tick marks (inward, on all four edges, the top \
+and right repeating the bottom and left within 0.01 pt): time 0 to 500 au (29.831 pt \
+per 100 au), probability (a) 0 to 0.00075 (1.24e-5 per pt), (b) 0 to 0.03 (4.70e-4 per \
+pt), (c) 0 to 0.4 (5.28e-3 per pt), all linear; the worst tick residuals are below \
+0.0001 pt (x) and 0.0003, below 0.0001 and 0.0006 pt (y, panels a, b, c).
+
+THE TIMES. The value taken is at the end of the pulse, t = 3T = 496.44 au (T = 2 pi / \
+omega_0 at 1200 nm, 165.48 au; the paper's '~4.00 fs'). Every curve starts at t = 0 \
+(at zero probability, checked at 20 au within 0.05 pt) and ends at 546.08 au = 3.3T \
+(found from the drawing: the solid outlines end half a line width, a projecting cap, \
+beyond the line, at 546.08-546.53 au; the dotted lines' last dots end within one dot \
+period of it), the 6000 steps after the pulse. The value at the curve's end is in each \
+point's printed cell: it differs from that at 3T by +0.02 to +0.36 % (TD-CASSCF at \
+4e14 W/cm^2, whose line oscillates there, by +0.36 %; between 3T and 3.3T the curves \
+move within a band of 0.02 to 0.83 % of the value).
+
+THE VALUES at 3T (at 3.3T): 1e14 W/cm^2: TDHF 4.487e-4 (4.502e-4), TD-OMP2 9.397e-4 \
+(9.411e-4), TD-OCCD 6.864e-4 (6.88e-4), TD-CASSCF 7.255e-4 (7.264e-4), SAE 4.512e-4 \
+(4.52e-4). 2e14: TDHF 0.02077 (0.02078), TD-OMP2 0.03561 (0.03569), TD-OCCD 0.02953 \
+(0.02957), TD-CASSCF 0.03102 (0.03106), SAE 0.02225 (0.02229). 4e14: TDHF 0.2037 \
+(0.2038), TD-OMP2 0.3995 (0.4), TD-OCCD 0.3044 (0.3053), TD-CASSCF 0.3401 (0.3413), SAE \
+0.2918 (0.292).
+
+THE CHECKS (the script fails if one is missed), against what the text says of Fig. 2 \
+(p. 7; it prints no number): 'a systematic overestimation by TD-OMP2 and \
+underestimation by TDHF in comparison to the TD-CASSCF result' (TD-OMP2 > TD-CASSCF > \
+TDHF in every panel, at 3T and at 3.3T; TD-OMP2 is 1.15-1.30 and TDHF 0.60-0.67 times \
+TD-CASSCF); at the highest intensity 'the SAE result is as accurate as the TD-OCCD one' \
+(4e14: SAE 0.858 and TD-OCCD 0.895 times TD-CASSCF; checked within 15 %, TDHF more than \
+30 % below). The extracted values, mapped back through the calibrations and overlaid on \
+the rendered page, sit on every line at 3T and at its end (inspected 2026-10-06).
+
+DIGITISING UNCERTAINTY: the outline's centre is fixed to about 0.03 pt (the outline's \
+vertical width varies by 0.03 pt along the flat tails: 0.80-0.84 pt for the thin lines, \
+1.20-1.24 pt for TD-CASSCF), with tick residuals below 0.001 pt: 0.05 pt is 0.07 to \
+0.14 % of the values (36 to 230 pt above the zero tick). 0.5 % is stated, the source \
+stating none. The value depends more on the time it is read at than on the reading: \
+up to 0.9 % between 3T and 3.3T (above).
+
+THE SAE CURVE: ONE ELECTRON OR TWO. The paper does not say how the SAE probability is \
+normalised (whether one 3p0 electron's probability is doubled, or counted for the six \
+3p electrons). What it says: SAE describes 'tunneling the ionization of the single, \
+most weakly bound electron (one of the 3p0 electrons in the present case)' (p. 6), and \
+one orbital chi is propagated (Eq. 32). The curve is one electron's: the same \
+potential and pulse run with one electron in tRecX (travers_2026_trecx, part M1(b), \
+the probability outside 20 au at 3T, 5.060e-4, 0.02559, 0.3300) gives 1.12-1.15 times \
+these SAE values (0.892, 0.869, 0.884 of it at 1, 2, 4e14 W/cm^2); twice one \
+electron's would be about 1.75 times it. The remaining 11-13 % is not explained here \
+(the projector Q of Eq. 32, which forbids chi from the 1s, 2s, 2p, 3s and 3p+-1 \
+orbitals, the FEDVR against tRecX's discretisation, or the measure; the 3p energies \
+agree, -15.82 eV both). Taken as the paper's: electrons = 'one active electron'.
+
+THE PULSE. Eq. (29) is printed on the field, with a sine carrier and the sin^2 envelope \
+spanning 3T foot to foot (its second 'E(T) = 0 otherwise' is a slip for E(t)); with \
+it A(3T) = 0. pulse_fs is that total, 3T = 12.008 fs. The abscissa is I0 = E0^2, the \
+caption's peak intensity; the field's largest magnitude is 0.9365 E0 (the carrier's \
+maximum is off the envelope's peak).
+
+NOT TAKEN: Fig. 1 (the dipole moments), Figs. 3-5 (the harmonic spectra), Table I \
+(BH ground-state energies), Table II (computation times)."""
+
+[[datasets]]
+id = "fig2_tdhf_Ar"
+material = "Ar"
+file = "Ar/pathak_2020__fig2_tdhf_Ar.csv"
+table = "fig_37c2c1bdbe02"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a)-(c), p. 7, TDHF (blue): the single-ionisation probability of Ar, 'the probability of finding an electron outside a sphere of 20 a.u. radius', at the end of the pulse, t = 3T, at 1, 2 and 4e14 W/cm^2: 4.487e-4, 0.02077, 0.2037, read from the vector drawing (the record's notes); the value at the curve's end, 3.3T, in each printed cell (4.502e-4, 0.02078, 0.2038). 0.62, 0.67, 0.60 times TD-CASSCF. 0.5 %: the digitising (0.07-0.14 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1200
+pulse_fs = 12.008
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 3 cycles"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (Eq. 29)"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TDHF, velocity gauge, 4 active orbitals (3s, 3p), FEDVR l_max = 72, R_max = 300 au"
+electrons = "eight valence electrons (3s2 3p6) active, the 1s2s2p core frozen"
+
+[[datasets]]
+id = "fig2_tdomp2_Ar"
+material = "Ar"
+file = "Ar/pathak_2020__fig2_tdomp2_Ar.csv"
+table = "fig_37c2c1bdbe02"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a)-(c), p. 7, TD-OMP2 (green): the single-ionisation probability of Ar, 'the probability of finding an electron outside a sphere of 20 a.u. radius', at the end of the pulse, t = 3T, at 1, 2 and 4e14 W/cm^2: 9.397e-4, 0.03561, 0.3995, read from the vector drawing (the record's notes); the value at the curve's end, 3.3T, in each printed cell (9.411e-4, 0.03569, 0.4). The paper's new method, which 'systematically' overestimates: 1.30, 1.15, 1.17 times TD-CASSCF. 0.5 %: the digitising (0.07-0.14 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1200
+pulse_fs = 12.008
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 3 cycles"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (Eq. 29)"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TD-OMP2 (time-dependent orbital-optimised second-order perturbation theory), velocity gauge, 13 active orbitals, FEDVR l_max = 72, R_max = 300 au"
+electrons = "all eight valence electrons (3s2 3p6) correlated in 13 orbitals, the 1s2s2p (Ne) core frozen"
+
+[[datasets]]
+id = "fig2_tdoccd_Ar"
+material = "Ar"
+file = "Ar/pathak_2020__fig2_tdoccd_Ar.csv"
+table = "fig_37c2c1bdbe02"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a)-(c), p. 7, TD-OCCD (red): the single-ionisation probability of Ar, 'the probability of finding an electron outside a sphere of 20 a.u. radius', at the end of the pulse, t = 3T, at 1, 2 and 4e14 W/cm^2: 6.864e-4, 0.02953, 0.3044, read from the vector drawing (the record's notes); the value at the curve's end, 3.3T, in each printed cell (6.88e-4, 0.02957, 0.3053). 0.95, 0.95, 0.90 times TD-CASSCF. 0.5 %: the digitising (0.07-0.14 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1200
+pulse_fs = 12.008
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 3 cycles"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (Eq. 29)"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TD-OCCD (time-dependent optimised coupled-cluster doubles), velocity gauge, 13 active orbitals, FEDVR l_max = 72, R_max = 300 au"
+electrons = "all eight valence electrons (3s2 3p6) correlated in 13 orbitals, the 1s2s2p (Ne) core frozen"
+
+[[datasets]]
+id = "fig2_tdcasscf_Ar"
+material = "Ar"
+file = "Ar/pathak_2020__fig2_tdcasscf_Ar.csv"
+table = "fig_37c2c1bdbe02"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a)-(c), p. 7, TD-CASSCF (thick black): the single-ionisation probability of Ar, 'the probability of finding an electron outside a sphere of 20 a.u. radius', at the end of the pulse, t = 3T, at 1, 2 and 4e14 W/cm^2: 7.255e-4, 0.03102, 0.3401, read from the vector drawing (the record's notes); the value at the curve's end, 3.3T, in each printed cell (7.264e-4, 0.03106, 0.3413; at 4e14 the line oscillates by 0.8 % after the pulse). The paper's benchmark within the active space. 0.5 %: the digitising (0.07-0.14 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1200
+pulse_fs = 12.008
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 3 cycles"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (Eq. 29)"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (from the reduced density matrices)"
+method = "TD-CASSCF (time-dependent complete-active-space self-consistent field), velocity gauge, 13 active orbitals, FEDVR l_max = 72, R_max = 300 au"
+electrons = "all eight valence electrons (3s2 3p6) correlated in 13 orbitals, the 1s2s2p (Ne) core frozen"
+
+[[datasets]]
+id = "fig2_sae_Ar"
+material = "Ar"
+file = "Ar/pathak_2020__fig2_sae_Ar.csv"
+table = "fig_37c2c1bdbe02"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2(a)-(c), p. 7, SAE (black dotted): the single-active-electron probability of Ar, 'the probability of finding an electron outside a sphere of 20 a.u. radius', at the end of the pulse, t = 3T, at 1, 2 and 4e14 W/cm^2: 4.512e-4, 0.02225, 0.2918, read from the dots of the vector drawing (the record's notes); the value at the dotted line's end (its last dot, 540.8-546.1 au) in each printed cell (4.52e-4, 0.02229, 0.292). One electron's probability (the record's notes: not stated by the paper; the same potential and pulse with one electron in tRecX, travers_2026_trecx part M1(b), gives 1.12-1.15 times these). 0.62, 0.72, 0.86 times TD-CASSCF. 0.5 %: the digitising (0.07-0.14 %) rounded up; the paper states none (the record's notes)."
+[datasets.uncertainty]
+relative = 0.005
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1200
+pulse_fs = 12.008
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 3 cycles"
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (Eq. 29)"
+measure = "the probability of finding an electron outside a sphere of R0 = 20 a.u., at t = 3T (how it is computed for SAE is not stated)"
+method = "SAE (Eqs. 30-32): i d|chi>/dt = Q{h_eff + A(t) p_z}|chi>, velocity gauge, Q projecting out 1s, 2s, 2p, 3s and 3p+-1 (with the gauge factor), FEDVR l_max = 72, R_max = 300 au"
+electrons = "one active electron (the paper does not state the normalisation; one electron's, by the comparison in the record's notes)"
+orbital = "3p0"
+m = 0
+potential = "Muller and Kooiman 1998, Schiessl et al. 2006 (Eq. 31): V = -(1 + A exp(-r) + (Z - 1 - A) exp(-B r))/r, Z = 18, A = 5.4, B = 3.682"
+model_ionization_energy_au = 0.5814  # the 3p energy, -15.82 eV as printed (p. 6)

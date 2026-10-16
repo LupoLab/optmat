@@ -1,0 +1,153 @@
+citation = "D. M. Wilmouth and D. S. Sayres, J. Quant. Spectrosc. Radiat. Transfer 255, 107224 (2020)"
+doi = "10.1016/j.jqsrt.2020.107224"
+library = "Wilmouth_2020_DeterminationRayleighScattering"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Broadband cavity-enhanced spectroscopy (BBCES), 264-297 nm: laser-driven Xe arc \
+lamp, 35 cm cavity of two plano-concave mirrors (peak reflectivity 0.996655 at \
+289.6 nm), 0.3 m spectrograph calibrated on Hg lines. Cavity filled with the pure gas \
+at 1020-1060 hPa, static. Mirror reflectivity from N2 against He (N2 n-based cross \
+section, +-1 %), then the sample's Rayleigh extinction against He (Eqs. 2-3). Purity \
+99.999 % (He, N2, Ar), 99.99 % (CO2, CH4), 99.8 % (SF6)."""
+notes = """The measured quantity is the Rayleigh scattering cross section (cm^2 per \
+molecule), not the refractive index; it relates to n through Eq. (1), sigma = \
+24 pi^3 nu^4 / N^2 ((n^2 - 1)/(n^2 + 2))^2 F_k, with the King factor F_k. The measured \
+cross sections are shown only in figures (Figs. 1-3: 238 points per gas over \
+264-297 nm, and the authors' 2019 UV-A data), never tabulated, so no dataset is \
+extracted. The text gives the mean ratio of measured to n-based cross sections over \
+264-297 nm (p. 5): Ar 1.008, CO2 0.990, SF6 0.959, CH4 0.775 (the n-based values from \
+Table 1 of Wilmouth & Sayres 2019 and Sneep & Ubachs 2005); mean 1-sigma uncertainty \
+3.1 % (Ar), 2.1 % (CO2), 1.9 % (SF6), 2.1 % (CH4), including 1.5 % from the path \
+length (N2 reference cross section), 0.3 % temperature and 0.1 % pressure (p. 3). \
+There is no vocabulary quantity for a Rayleigh cross section; one would be needed to \
+curate such data (the He et al. 2021 values are tabulated).
+
+The paper's own results are four dispersion formulas for SF6 and CH4 (Eqs. 4-7), \
+derived by inverting Eq. (1) with F_k = 1 and fitting (n - 1) x 10^8 = A + B/(C - nu^2), \
+nu the vacuum wavenumber in cm^-1, 'n is defined at 288.15 K and 101,325 Pa' with \
+N = 2.5469e19 cm^-3 (Table 1 note a): an ideal-gas density. Eqs. 4 and 5 fit only the \
+UV data (264-297 and 333-363 nm); Eqs. 6 and 7 also weight visible refractive-index \
+measurements (Vukovic et al. 1996 for SF6; Watson & Ramaswamy 1936 and Cuthbertson & \
+Cuthbertson 1920 for CH4) and are the recommended ones (Table 1, 250-650 nm). F_k = 1 \
+for SF6 and CH4 (spherical tops) is an assumption, not a measurement.
+
+Table 1 (tbl_02ae1202ecac, image checked) also reproduces the He, N2, Ar and CO2 \
+formulas used for the reference and n-based cross sections; they are recorded as \
+reproduced formulas. The library's CSV of Table 1 mangles the CO2 cell (its \
+4.3244/(67837.7^2 - nu^2) term is rendered as a denominator); the image shows five \
+additive terms inside the bracket, as recorded below, identical to He et al. (2021)'s \
+Table 1."""
+
+[[formulas]]
+id = "SF6_uv"
+material = "SF6"
+equation = "Eq. (4), p. 5"
+printed = "(n - 1) x 10^8 = 25850.9 + 7.8229 x 10^14 / (1.680 x 10^10 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "264-363 nm (the BBCES data of this work and Wilmouth & Sayres 2019)"
+coefficients = { A = "25850.9", B = "7.8229e14", C = "1.680e10" }
+check = "Against Eq. (6) the Rayleigh cross sections differ by 0.23-0.26 % on average and 0.46 % at most over 264-363 nm (the paper: 0.25 % and 0.49 %) (checked 2026-09-24)."
+notes = "From Rayleigh cross sections with F_k = 1 (UV only). The equation image was checked."
+
+[[formulas]]
+id = "CH4_uv"
+material = "CH4"
+equation = "Eq. (5), p. 5"
+printed = "(n - 1) x 10^8 = 16873.2 + 2.2970 x 10^14 / (9.270 x 10^9 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "264-363 nm (the BBCES data of this work and Wilmouth & Sayres 2019)"
+coefficients = { A = "16873.2", B = "2.2970e14", C = "9.270e9" }
+check = "Against Eq. (7) the cross sections differ by 0.40-0.47 % on average and 0.85 % at most over 264-363 nm (the paper: 0.44 % and 0.91 %) (checked 2026-09-24)."
+notes = "From Rayleigh cross sections with F_k = 1. Extrapolated to the visible it lies above every direct refractive-index measurement beyond about 500 nm (3.7 % in cross section at 600 nm, p. 7)."
+
+[[formulas]]
+id = "SF6"
+form = "dn_wavenumber2"
+terms = { scale = "1e-8", A = "18611.4", B = ["8.9566e14"], C = ["1.680e10"] }
+range_nm = [250.0, 650.0]
+material = "SF6"
+equation = "Eq. (6), p. 6; Table 1 (tbl_02ae1202ecac)"
+printed = "(n - 1) x 10^8 = 18611.4 + 8.9566 x 10^14 / (1.680 x 10^10 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "approximately 250-650 nm (Table 1 note c: 40000 > nu > 15385 cm^-1)"
+coefficients = { A = "18611.4", B = "8.9566e14", C = "1.680e10" }
+check = "Reproduces He et al. (2021)'s n-based SF6 cross sections (their Table 2, computed from this formula) to 0.1 % (checked 2026-09-24)."
+notes = "The UV BBCES data plus Vukovic et al.'s (1996) refractive index at 633 nm (+-5e-7 in n), weighted in the fit (p. 6). Recommended over Eq. (4) for 250-650 nm."
+
+[[formulas]]
+id = "CH4"
+form = "dn_wavenumber2"
+terms = { scale = "1e-8", A = "4869.8", B = ["4.1023e14"], C = ["1.133e10"] }
+range_nm = [250.0, 650.0]
+material = "CH4"
+equation = "Eq. (7), p. 8; Table 1 (tbl_02ae1202ecac)"
+printed = "(n - 1) x 10^8 = 4869.8 + 4.1023 x 10^14 / (1.133 x 10^10 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "approximately 250-650 nm (Table 1 note c)"
+coefficients = { A = "4869.8", B = "4.1023e14", C = "1.133e10" }
+check = "Reproduces He et al. (2021)'s n-based CH4 cross sections (their Table 2) to 0.15 % (checked 2026-09-24)."
+notes = "The UV BBCES data plus Watson & Ramaswamy (1936) and Cuthbertson & Cuthbertson (1920) in the visible, equally weighted with each other and less than the UV data (p. 8). Recommended over Eq. (5) for 250-650 nm."
+
+[[formulas]]
+id = "He_table1"
+material = "He"
+equation = "Table 1 (tbl_02ae1202ecac), p. 8"
+printed = "(n - 1) x 10^8 = 2283 + 1.8102 x 10^13 / (1.5342 x 10^10 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "not stated here (He et al. 2021 give 14285-33333 cm^-1)"
+coefficients = { A = "2283", B = "1.8102e13", C = "1.5342e10" }
+reproduced_from = ["R. Thalman, K. J. Zarzana, M. A. Tolbert and R. Volkamer, J. Quant. Spectrosc. Radiat. Transfer 147, 171 (2014)", "R. Abjean, A. Mehu and A. Johannin-Gilles, C. R. Acad. Sci. B 271, 835 (1970)", "leonard_1974", "cuthbertson_1932"]
+check = "Not checked against an original."
+notes = "Reproduced (refs. 2, 21-23): the reference gas of the measurement, F_k = 1."
+
+[[formulas]]
+id = "N2_table1"
+material = "N2"
+equation = "Table 1 (tbl_02ae1202ecac), p. 8"
+printed = "(n - 1) x 10^8 = 5677.465 + 3.1881874 x 10^14 / (1.44 x 10^10 - nu^2); F_k = 1.034 + 3.17 x 10^-12 nu^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "not stated here (He et al. 2021 give 21360-39370 cm^-1, the UV branch of Bates's two-branch formula)"
+coefficients = { A = "5677.465", B = "3.1881874e14", C = "1.44e10" }
+reproduced_from = ["M. Sneep and W. Ubachs, J. Quant. Spectrosc. Radiat. Transfer 92, 293 (2005)", "peck_1966", "R. Abjean, A. Mehu and A. Johannin-Gilles, C. R. Acad. Sci. B 271, 411 (1970)", "D. R. Bates, Planet. Space Sci. 32, 785 (1984)"]
+check = "Not checked against an original."
+notes = "Reproduced (refs. 5, 18-20); used for the mirror-reflectivity calibration."
+
+[[formulas]]
+id = "Ar_table1"
+material = "Ar"
+equation = "Table 1 (tbl_02ae1202ecac), p. 8"
+printed = "(n - 1) x 10^8 = 6432.135 + 2.8606021 x 10^14 / (1.44 x 10^10 - nu^2)"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "validated by this work for 264-363 nm (Table 1 note b)"
+coefficients = { A = "6432.135", B = "2.8606021e14", C = "1.44e10" }
+reproduced_from = ["M. Sneep and W. Ubachs, J. Quant. Spectrosc. Radiat. Transfer 92, 293 (2005)", "peck_1964"]
+check = "Algebraically identical to Peck & Fisher (1964)'s formula, (n - 1)10^7 = 643.2135 + 286060.21/(144 - sigma^2), sigma in um^-1, at 15 C and 760 Torr (their abstract, Peck_1964_DispersionArgon), rewritten in cm^-1 (checked 2026-09-24)."
+notes = "Reproduced; F_k = 1. Measured/n-based cross-section ratio 1.008 over 264-297 nm (p. 5)."
+
+[[formulas]]
+id = "CO2_table1"
+material = "CO2"
+equation = "Table 1 (tbl_02ae1202ecac), p. 8"
+printed = "(n - 1) x 10^8 = 1.1427 x 10^11 (5799.25/(128908.9^2 - nu^2) + 120.05/(89223.8^2 - nu^2) + 5.3334/(75037.5^2 - nu^2) + 4.3244/(67837.7^2 - nu^2) + 1.218145 x 10^-5/(2418.136^2 - nu^2)); F_k = 1.1364 + 2.53 x 10^-11 nu^2"
+variable = "nu: vacuum wavenumber in cm^-1"
+state = "1atm_15C"
+density = "ideal"
+range = "validated by this work for 264-363 nm (Table 1 note b); He et al. (2021) give the original range 39417-55340 cm^-1"
+coefficients = { scale = "1.1427e11", B1 = "5799.25", C1 = "128908.9", B2 = "120.05", C2 = "89223.8", B3 = "5.3334", C3 = "75037.5", B4 = "4.3244", C4 = "67837.7", B5 = "1.218145e-5", C5 = "2418.136" }
+reproduced_from = ["M. Sneep and W. Ubachs, J. Quant. Spectrosc. Radiat. Transfer 92, 293 (2005)", "A. Bideau-Mehu, Y. Guern, R. Abjean and A. Johannin-Gilles, Opt. Commun. 9, 432 (1973)", "G. R. Alms, A. K. Burnham and W. H. Flygare, J. Chem. Phys. 63, 3321 (1975)"]
+check = "Structure read from the table image (the library CSV is mangled); identical to He et al. (2021)'s Table 1, whose n-based CO2 cross sections it reproduces to 0.15 % (checked 2026-09-24)."
+notes = "Reproduced; measured/n-based cross-section ratio 0.990 over 264-297 nm (p. 5)."

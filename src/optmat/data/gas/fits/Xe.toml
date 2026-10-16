@@ -1,0 +1,66 @@
+# Xenon: the refractive polarizability from 148 nm (red of the 146.96 nm line) to the
+# static limit. No ab initio dispersion is in the library: the fit rests on data.
+gas = "Xe"
+description = "Xenon: the 146.96 nm and 129.56 nm resonance lines at their NIST energies and two effective oscillators (the strong 119.2 nm line among them), fitted to Huot & Bose's dielectric static polarizability (via Kumar & Thakkar), Burns et al.'s 458-633 nm molar refractivity, Hohm & Kerl's 633 nm value, Abjean et al.'s and Bideau-Mehu et al.'s ultraviolet and vacuum ultraviolet (including 140.4 nm, between the two lines) and the Cuthbertsons' visible shape and Hohm's 325-633 nm dispersion (its shape at 4e-5, the level free). chi_0 (about -25 ppm of alpha) is not in the library and is neglected."
+range_nm = [148.0, "inf"]
+
+validators = [
+    "leonard_1974/absolute_Xe",
+    "leonard_1974/recommended_Xe",
+    "bideau_mehu_1981/chashchina_shreider_1969_Xe",
+    "tang_1974/chashchina_shreider_1969_Xe",
+    "kumar_2010/moments_Xe",
+    "borzsonyi_2008/sgdd_Xe",
+    "hohm_1994c/alpha_294.26_Xe",   # 325-633 nm at 294 K, the same lab as hohm_1994b (TC-606)
+]
+
+[model]
+effective = 2
+# Above the 129.56 nm line (0.35168 hartree): the strong 119.2 nm (f = 0.38) and
+# 125.0 nm lines are left to the effective oscillators.
+effective_min_energy_hartree = 0.355
+chi0_au = 0.0
+
+[[model.lines]]
+label = "Xe 5p6 1S0 - 5p5(2P3/2)6s [3/2]1"
+wavelength_nm = 146.961233   # NIST ASD Ritz vacuum wavelength
+f_prior = 0.265              # NIST ASD fik, grade A+ (<= 2 %); the bound as sigma
+f_sigma = 0.0053
+
+[[model.lines]]
+label = "Xe 5p6 1S0 - 5p5(2P1/2)6s [1/2]1"
+wavelength_nm = 129.558783
+f_prior = 0.191              # NIST ASD fik, grade A+
+f_sigma = 0.0038
+
+[[fitted]]
+key = "kumar_2010/huot_bose_1991_Xe"   # dielectric static polarizability
+electric = true
+
+[[fitted]]
+key = "bideau_mehu_1981/experiment_Xe"
+
+[[fitted]]
+key = "cuthbertson_1910/experiment_Xe"
+free_scale = true
+
+# Near-infrared dispersion relative to a partner gas: Ar/Xe ratio, argon fixed: the only near-infrared dispersion of xenon.
+[[fitted]]
+key = "shelton_1990/density_Ar_over_Xe"
+
+[[fitted]]
+key = "abjean_1971/experiment_Xe"   # 181-254 nm (the original of bideau_mehu_1981 there)
+
+[[fitted]]
+key = "bideau_mehu_1976/experiment_Xe"   # 170.2 nm
+
+[[fitted]]
+key = "burns_1986/A_R_Xe"   # 458-633 nm molar refractivity, 0.1 %
+
+[[fitted]]
+key = "hohm_1990/this_work_Xe"   # 632.99 nm
+
+[[fitted]]
+key = "hohm_1994b/alpha_Xe"   # 325-633 nm dispersion
+free_scale = true             # level free: Hohm's absolute levels scatter by 0.1-0.5 % (TC-400)
+shape_relative = 4e-5         # the shape's precision, from his argon against theory (TC-400)

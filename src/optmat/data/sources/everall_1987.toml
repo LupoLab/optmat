@@ -1,0 +1,291 @@
+citation = "N. J. Everall, J. P. Partanen, J. R. M. Barr and M. J. Shaw, \"Threshold measurements of stimulated Raman scattering in gases using picosecond KrF laser pulses\", Opt. Commun. 64, 393 (1987)"
+doi = "10.1016/0030-4018(87)90258-6"
+library = "Everall_1987_ThresholdMeasurementsStimulated"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Stimulated Raman scattering thresholds with 20 ps KrF laser pulses at 248 nm (a \
+synchronously pumped dye oscillator at 746 nm, fibre-transported, dye-amplified, \
+frequency-tripled and amplified in a KrF amplifier to up to 200 uJ), focused by a 2.5 m \
+lens into a 3 m Raman cell at up to 5 atm; threshold taken as about 10 % pump-to-Stokes \
+conversion, pulse energies to +-25 % (pp. 394-395). Thresholds compared with the \
+transient plane-wave estimate, Eqs. (2) and (7), using literature cross sections and \
+linewidths (pp. 393-394)."""
+notes = """Journal pages 393-397 = PDF pages 1-5 (page n of the PDF is p. 392 + n). \
+Identity checked on the first page.
+
+THE TABLE (p. 396; the library's unlabelled tbl_4397977c2c69, caption 'Comparison of \
+calculated (eq. (7)) and measured thresholds at 5 atm. An asterisk indicates that \
+threshold was not reached with the available pump energy'). Per gas: dsigma/dOmega \
+(10^-29 cm^2 sr^-1), Delta nu_R (cm^-1), T2 (ps), threshold calculated and measured \
+(uJ). Table note: 'Cross sections for CH4, H2, N2 and O2: ref. [15] (Bischel and \
+Black). Cross sections for SF6 and NH3 were extrapolated from data in ref. [16] \
+(Schrotter and Klockner) assuming nu^4 scaling. Linewidth data: CH4 [17] (Taira et \
+al.), H2 [9] (Owyoung), SF6 [18] (Esherick and Owyoung), NH3 [19], N2, O2 [1] (Murray et \
+al.)'. So:
+- dsigma/dOmega and Delta nu_R are taken from others (use = "reproduced"); nothing in \
+the table but the measured thresholds is this paper's measurement;
+- T2 is calculated from Delta nu_R: 'The dephasing time T2 of a Raman scattering medium \
+is defined as the inverse of the scattering bandwidth (T2 = 1/pi Delta nu_R, fwhm)' \
+(p. 393) (use = "check"); 1/(pi c Delta nu_R) reproduces the printed T2 for CH4 (27.94), \
+SF6 (6.64), O2 (5.90) and N2 (7.08), and for H2 the printed 1008 ps implies 0.0105 cm^-1 \
+where the table rounds to 0.01;
+- the linewidths are FWHM at 5 atm (the table's pressure; not restated per value; \
+temperature not stated). For H2 (0.01 cm^-1 = 300 MHz at 5 atm) the Dicke-narrowed \
+regime applies; the paper gives no law. CH4's 0.38 cm-1 equals Taira et al.'s 0.32 + \
+0.012 p cm-1 (hanna_1986) at 5 atm.
+The transitions are not named (the vibrational Q branches used for SRS: CH4 nu1, SF6 \
+nu1, H2 Q(1) presumably, O2 and N2 v = 0-1).
+
+THRESHOLDS (no quantity; for the record): calculated / measured (uJ) at 5 atm: CH4 15 / \
+30 +- 15; NH3 55 / 95 +- 20; H2 60 / 155 +- 20; SF6 65 / 120 +- 30; O2 100 / not reached; \
+N2 225 / not reached (asterisks). 'The measured thresholds ... seem to be systematically \
+higher by about a factor of 2 than the values based on the presented theory' (p. 395). \
+Fig. 2: the CH4 threshold against pressure, 2-5 atm (a figure only). N2 at 5 atm showed \
+'a large spectral broadening (of the order of 10 nm)' of the pump without Raman \
+generation (pp. 396-397).
+
+THEORY (p. 393-394; notes only): Eq. (2), gamma = (2 lambda_s^3 N/(h c pi Delta nu_R)) \
+(dsigma/dOmega); the threshold condition Eq. (5), gamma I_pm l = 25 + 131.5 T2/t_p \
+(Gaussian pulse, t_p FWHM; 'error < 15%' against the analytical solution), and Eq. (7), \
+E_T = (4.2 t_p + 22.3 T2) lambda_p/gamma, the focused-beam threshold energy. Not \
+recorded as formulas: threshold models, not material properties.
+
+NH3 is not a curated species (dsigma 9.2e-29 cm^2/sr, Delta nu_R ~4.0 cm^-1, T2 2.7 ps, \
+not extracted).
+
+FOR SOLPROP: the SF6 vibrational linewidth constant 4.8229e10 Hz is 1/(pi x 6.6 ps), \
+this table's T2 at 5 atm (itself 1/(pi c x 1.6 cm^-1) from Esherick and Owyoung's \
+linewidth): a calculated value at one pressure, taken by solprop as density-independent. \
+solprop's N2 '6 ps' (5.3052e10 Hz = 1/(pi x 6 ps)) is not this paper's N2 value (7.1 ps \
+at 5 atm, from Murray et al.'s approximate 1.5 cm^-1)."""
+
+[[datasets]]
+id = "dsigma_CH4"
+material = "CH4"
+file = "CH4/everall_1987__dsigma_CH4.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_cross_section"
+unit = "cm2/sr"
+scale = 1e-29
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bischel_1983"]
+notes = "Table (p. 396), dsigma/dOmega at the 248 nm KrF pump, used in Eq. (2); the table note: 'Cross sections for CH4, H2, N2 and O2: ref. [15]'. Polarization and definition not stated. Ref. [15] is bischel_1983 (re-pointed 2026-09-27), which prints no value at 248 nm: its single-resonance fit (Table 1) gives 15.7e-29 (248.0 nm) and 15.5e-29 (248.4 nm), 2-3 % above this 15.3."
+[datasets.parameters]
+transition = "nu1 Q branch (the band is not named in the paper)"
+
+[[datasets]]
+id = "linewidth_CH4"
+material = "CH4"
+file = "CH4/everall_1987__linewidth_CH4.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "reproduced"
+reproduced_from = ["Y. Taira, K. Ide and H. Takuma, Chem. Phys. Lett. 91 (1982) 299"]
+notes = "Table (p. 396), the Raman linewidth Delta nu_R at 5 atm (the caption: thresholds 'at 5 atm'), FWHM: 'T2 = 1/pi Delta nu_R, fwhm' (p. 393). Taken from the table note's linewidth reference; temperature not stated (room)."
+[datasets.parameters]
+transition = "nu1 Q branch (the band is not named in the paper)"
+width = "fwhm"
+perturber = "self"
+
+[[datasets]]
+id = "T2_CH4"
+material = "CH4"
+file = "CH4/everall_1987__T2_CH4.csv"
+table = "tbl_4397977c2c69"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table (p. 396), T2 at 5 atm, calculated from the linewidth by 'T2 = 1/pi Delta nu_R, fwhm' (p. 393): 1/(pi c Delta nu_R) gives 27.94 ps (checked 2026-09-26). Not a measurement."
+[datasets.parameters]
+transition = "nu1 Q branch (the band is not named in the paper)"
+
+[[datasets]]
+id = "dsigma_H2"
+material = "H2"
+file = "H2/everall_1987__dsigma_H2.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_cross_section"
+unit = "cm2/sr"
+scale = 1e-29
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bischel_1983"]
+notes = "Table (p. 396), dsigma/dOmega at the 248 nm KrF pump, used in Eq. (2); the table note: 'Cross sections for CH4, H2, N2 and O2: ref. [15]'. Polarization and definition not stated. Ref. [15] is bischel_1983 (re-pointed 2026-09-27), which prints no value at 248 nm: its single-resonance fit (Table 1) gives 4.83e-29 (248.0 nm) and 4.79e-29 (248.4 nm), as this 4.8."
+[datasets.parameters]
+transition = "vibrational Q branch (the line is not named in the paper)"
+
+[[datasets]]
+id = "linewidth_H2"
+material = "H2"
+file = "H2/everall_1987__linewidth_H2.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "reproduced"
+reproduced_from = ["A. Owyoung, Optics Lett. 2 (1978) 91"]
+notes = "Table (p. 396), the Raman linewidth Delta nu_R at 5 atm (the caption: thresholds 'at 5 atm'), FWHM: 'T2 = 1/pi Delta nu_R, fwhm' (p. 393). Taken from the table note's linewidth reference; temperature not stated (room)."
+[datasets.parameters]
+transition = "vibrational Q branch (the line is not named in the paper)"
+width = "fwhm"
+perturber = "self"
+
+[[datasets]]
+id = "T2_H2"
+material = "H2"
+file = "H2/everall_1987__T2_H2.csv"
+table = "tbl_4397977c2c69"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table (p. 396), T2 at 5 atm, calculated from the linewidth by 'T2 = 1/pi Delta nu_R, fwhm' (p. 393): 1/(pi c Delta nu_R) gives 1062 (the printed 1008 corresponds to 0.0105 cm-1, so the 0.01 is rounded) ps (checked 2026-09-26). Not a measurement."
+[datasets.parameters]
+transition = "vibrational Q branch (the line is not named in the paper)"
+
+[[datasets]]
+id = "dsigma_SF6"
+material = "SF6"
+file = "SF6/everall_1987__dsigma_SF6.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_cross_section"
+unit = "cm2/sr"
+scale = 1e-29
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["schrotter_1979"]
+notes = "Table (p. 396), dsigma/dOmega at the 248 nm KrF pump, used in Eq. (2); the table note: 'extrapolated from data in ref. [16] assuming nu^4 scaling'. Polarization and definition not stated. Ref. [16] is Schrotter and Klockner's Chap. 4 (curated as schrotter_1979). NOT REPRODUCED: with the chapter's own definitions, dsigma/dOmega = Sigma_j x 5.05e-48 cm^6/sr x (nu_0 - 775 cm^-1)^4 at 248 nm (nu_0 = 40323 cm^-1) is 4.1-4.9e-29 cm^2/sr for SF6's Sigma_j of 3.3-3.96 (sigma_SF6_*); the printed 6.0e-29 needs Sigma_j = 4.86, 23 % above the largest (3.96 at 515 nm, Clark and D'Urso). Scaling an absolute 514.5 nm value by (nu_0/nu_0')^4 instead gives 4.5e-29. Kept as printed."
+[datasets.parameters]
+transition = "nu1 (the band is not named in the paper)"
+
+[[datasets]]
+id = "linewidth_SF6"
+material = "SF6"
+file = "SF6/everall_1987__linewidth_SF6.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "reproduced"
+reproduced_from = ["P. Esherick and A. Owyoung, in: Advances in infrared and Raman spectroscopy, Vol. 9, eds. R. J. H. Clark and R. E. Hester (John Wiley and Sons, New York, 1983) ch. 3"]
+notes = "Table (p. 396), the Raman linewidth Delta nu_R at 5 atm (the caption: thresholds 'at 5 atm'), FWHM: 'T2 = 1/pi Delta nu_R, fwhm' (p. 393). Taken from the table note's linewidth reference; temperature not stated (room)."
+[datasets.parameters]
+transition = "nu1 (the band is not named in the paper)"
+width = "fwhm"
+perturber = "self"
+
+[[datasets]]
+id = "T2_SF6"
+material = "SF6"
+file = "SF6/everall_1987__T2_SF6.csv"
+table = "tbl_4397977c2c69"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table (p. 396), T2 at 5 atm, calculated from the linewidth by 'T2 = 1/pi Delta nu_R, fwhm' (p. 393): 1/(pi c Delta nu_R) gives 6.64 ps (checked 2026-09-26). Not a measurement. solprop's SF6 vibrational linewidth (constant 4.8229e10 Hz = 1/(pi x 6.6 ps), a FWHM) is this T2, at 5 atm and held constant in density."
+[datasets.parameters]
+transition = "nu1 (the band is not named in the paper)"
+
+[[datasets]]
+id = "dsigma_O2"
+material = "O2"
+file = "O2/everall_1987__dsigma_O2.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_cross_section"
+unit = "cm2/sr"
+scale = 1e-29
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bischel_1983"]
+notes = "Table (p. 396), dsigma/dOmega at the 248 nm KrF pump, used in Eq. (2); the table note: 'Cross sections for CH4, H2, N2 and O2: ref. [15]'. Polarization and definition not stated. Ref. [15] is bischel_1983 (re-pointed 2026-09-27), which prints no value at 248 nm: its single-resonance fit (Table 1) gives 3.99e-29 (248.0 nm) and 3.94e-29 (248.4 nm), 2-3 % above this 3.88."
+[datasets.parameters]
+transition = "v=0-1 Q branch (not named in the paper)"
+
+[[datasets]]
+id = "linewidth_O2"
+material = "O2"
+file = "O2/everall_1987__linewidth_O2.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "reproduced"
+reproduced_from = ["J. R. Murray, J. Goldhar, D. Eimerl and A. Szöke, IEEE J. Quantum Electron. QE-15 (1979) 324"]
+notes = "Table (p. 396), the Raman linewidth Delta nu_R at 5 atm (the caption: thresholds 'at 5 atm'), FWHM: 'T2 = 1/pi Delta nu_R, fwhm' (p. 393). Taken from the table note's linewidth reference; temperature not stated (room)."
+[datasets.parameters]
+transition = "v=0-1 Q branch (not named in the paper)"
+width = "fwhm"
+perturber = "self"
+
+[[datasets]]
+id = "T2_O2"
+material = "O2"
+file = "O2/everall_1987__T2_O2.csv"
+table = "tbl_4397977c2c69"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table (p. 396), T2 at 5 atm, calculated from the linewidth by 'T2 = 1/pi Delta nu_R, fwhm' (p. 393): 1/(pi c Delta nu_R) gives 5.90 ps (checked 2026-09-26). Not a measurement."
+[datasets.parameters]
+transition = "v=0-1 Q branch (not named in the paper)"
+
+[[datasets]]
+id = "dsigma_N2"
+material = "N2"
+file = "N2/everall_1987__dsigma_N2.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_cross_section"
+unit = "cm2/sr"
+scale = 1e-29
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bischel_1983"]
+notes = "Table (p. 396), dsigma/dOmega at the 248 nm KrF pump, used in Eq. (2); the table note: 'Cross sections for CH4, H2, N2 and O2: ref. [15]'. Polarization and definition not stated. Ref. [15] is bischel_1983 (re-pointed 2026-09-27), which prints no value at 248 nm: its single-resonance fit (Table 1) gives 1.54e-29 (248.0 nm) and 1.53e-29 (248.4 nm), 1 % above this 1.52."
+[datasets.parameters]
+transition = "v=0-1 Q branch (not named in the paper)"
+
+[[datasets]]
+id = "linewidth_N2"
+material = "N2"
+file = "N2/everall_1987__linewidth_N2.csv"
+table = "tbl_4397977c2c69"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "reproduced"
+reproduced_from = ["J. R. Murray, J. Goldhar, D. Eimerl and A. Szöke, IEEE J. Quantum Electron. QE-15 (1979) 324"]
+notes = "Table (p. 396), the Raman linewidth Delta nu_R at 5 atm (the caption: thresholds 'at 5 atm'), FWHM: 'T2 = 1/pi Delta nu_R, fwhm' (p. 393). Taken from the table note's linewidth reference; temperature not stated (room). Printed '≈1.5' (approximate)."
+[datasets.parameters]
+transition = "v=0-1 Q branch (not named in the paper)"
+width = "fwhm"
+perturber = "self"
+
+[[datasets]]
+id = "T2_N2"
+material = "N2"
+file = "N2/everall_1987__T2_N2.csv"
+table = "tbl_4397977c2c69"
+quantity = "dephasing_time"
+unit = "ps"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "check"
+notes = "Table (p. 396), T2 at 5 atm, calculated from the linewidth by 'T2 = 1/pi Delta nu_R, fwhm' (p. 393): 1/(pi c Delta nu_R) gives 7.08 (from the approximate 1.5) ps (checked 2026-09-26). Not a measurement."
+[datasets.parameters]
+transition = "v=0-1 Q branch (not named in the paper)"
+

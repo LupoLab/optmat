@@ -1,0 +1,249 @@
+citation = "K. C. Kulander, \"Time-dependent theory of multiphoton ionization of xenon\", Phys. Rev. A 38, 778-787 (1988)"
+doi = "10.1103/PhysRevA.38.778"
+library = "Kulander_1988_TimeDependentTheory"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """The time-dependent Schrodinger equation of one active valence electron of \
+xenon, solved on a finite-difference grid (cylindrical rho-z, spacing 0.3 a0, \
+Peaceman-Rachford propagator, 200 or 400 steps per optical period, an absorbing \
+imaginary potential over the last 10-20 grid points; pp. 779-780). The other \
+electrons are frozen in their ground-state orbitals: a local Hartree-Slater potential \
+(Slater's exchange with the Herman-Skillman correction, its strength fitted to the \
+ionisation energy 12.13 eV) made into a single p-wave effective core potential; no \
+spin-orbit interaction, so one continuum only (the 2P1/2 limit at 13.4 eV is \
+ignored). Grid orbital energies: 5p_0 12.32 eV, 5p_1 12.23 eV, 5s 22.3 eV (experiment \
+23.4). Linear polarisation along z, the dipole approximation, length form, V_I = -sum \
+e E(t) z_i sin(omega t) (Eq. 2); the field rises linearly over a chosen number of \
+cycles and is then held constant (Eq. 7), and the rate is the exponential decay of \
+the initial orbital (or of the norm) at constant intensity. The 5p_0 and 5p_+-1 \
+orbitals are run separately; 'the total rate for the p shell' is the 5p_0 rate (two \
+electrons) plus the 5p_+-1 rate (four electrons) (Fig. 1's caption and p. 781). A \
+cross section is the rate over the photon flux to the power N at an intensity low \
+enough for the rate's power law ('we check the linearity ... at two intensities', \
+p. 780)."""
+notes = """Phys. Rev. A 38, 778-787 (1988) = PDF pages 1-10 (journal page = PDF page + \
+777). Identity checked on the first page ('PHYSICAL REVIEW A VOLUME 38, NUMBER 2 JULY \
+15, 1988'; K. C. Kulander, Lawrence Livermore National Laboratory; received 25 January \
+1988) on 2026-10-09. The PDF is a scan (one 5060 x 6898 image per page, about 610 dpi) \
+with an OCR text layer. The library's identity is VALIDATED_WITH_WARNINGS; the copy is \
+the version of record. Every value of the text taken was read on the page image.
+
+WHAT IS TAKEN, all use = check. (1) From the text (inline points; pp. 780-781): the \
+total one-photon photoionisation cross section, 46 Mb at 14.4 eV and 29 Mb at 15.63 \
+eV; the two-photon generalised cross section at 193 nm, 4 x 10^-50 cm4 s; the \
+three-photon ones, 1 x 10^-82 cm6 s2 at 293 nm (the I^3 line fitted to Fig. 1's rates) \
+and 2.5 x 10^-82 cm6 s2 at 266 nm. (2) From the figures (p. 781; tools/extract/\
+kulander_1988.py, read from the page image, the method in the script's docstring): \
+the rate of the p shell against the peak intensity at 293 nm (Fig. 1's total, 1e13 to \
+2e14 W/cm2, eight markers), 586 nm (Fig. 2, 1e13 to 7.5e13, seven) and 1064 nm (Fig. \
+2, 2e13 to 8e13, seven). The paper prints no rate in a table.
+
+THE ENERGY AXES. Wavelengths in nm as printed (the medium not stated) and photon \
+energies in eV (one-photon). The model's threshold is the fitted 12.13 eV (single \
+continuum, no 2P1/2 limit): 193 nm (6.424 eV) is two-photon above it and below the \
+real 2P1/2 limit; 266 nm 'produces electrons with energies above the second ionization \
+threshold' (p. 781), which the model does not have. Nothing is shifted.
+
+THE FIGURES. Both log-log. The calculated intensities are round (every marker lies \
+within 2 % of 1, 2, 3, 3.5, 4, 5, 6, 7, 7.5, 8, 10, 15 or 20 x 10^13 W/cm2; the text \
+names 3, 3.5, 5, 10, 15 and 20 x 10^13), which checks the intensity scale; the data \
+files keep the intensity read, and each row is named by the round value. Read \
+(Fig. 1): the total's circles at all eight intensities (two, at 3.5e13 and 5e13, merge \
+with the 5p_0 triangle below and are centred from their top). Fig. 2: 586 nm (solid \
+circles) from 1e13 to 7.5e13 and 1064 nm (solid triangles) from 2e13 to 8e13; from \
+1e14 up the two curves and their markers lie on one another (and at 1.5e14 on the \
+293 nm square), so they are not read. Fig. 2's 293 nm squares are not taken (Fig. 1's \
+total is the same calculation, drawn larger); at 1e13 the 293 nm line starts at Perry \
+et al.'s open square, with no solid marker. CHECKS (the script raises if one fails): \
+Fig. 2's open square reads 3.99e11 s^-1 against the text's '4 x 10^11 s^-1 for a peak \
+intensity of 1 x 10^13 W/cm^2' (Perry et al.); the open circle and the 1064 nm open \
+triangle read 4.18e13 and 2.78e13 W/cm2, where the text puts them (4.2e13, 2.8e13); \
+the right frame lines read 2.00e14 and 2.04e14 W/cm2; Fig. 1's total is 0.96-1.02 of \
+its 5p_0 plus 5p_1 markers at seven intensities; Fig. 2's 293 nm squares are 0.93-1.03 \
+of Fig. 1's total at six; Fig. 1's dashed I^3 line has slope 2.97 and gives sigma_3 = \
+1.05e-82 cm6 s2 (rate / (I / hbar omega)^3, 293 nm), the printed 1 x 10^-82. The \
+overlays of the values on the page image were inspected (2026-10-09): every value on \
+its marker.
+
+ACCURACY. Digitising: 5 % in the rate (a marker's centre within 4 pixels of where its \
+connecting lines cross it: 2.2 % in Fig. 1, 3.4 % in Fig. 2; the scale exact at the \
+ticks), and the intensity read within 2 % of the round value, which at the local \
+slope (3 at 293 nm, up to about 11 at 1064 nm) moves a rate compared at the read \
+intensity by more. The paper: for 293 nm above 1e14 W/cm2 'the decay is not purely \
+exponential ... The theoretical error bars on these rates are the largest of all \
+those rates presented (probably no more than a factor of 2), except perhaps for \
+those in Fig. 2 below 10^10 s^-1 where the accuracy of the calculation suffers from \
+numerical instabilities' (p. 785): Fig. 2's 586 nm at 1e13 (6.4e9) and 1064 nm at \
+2e13 (6.7e9 s^-1). No uncertainty is stated for the cross sections (one or two \
+significant figures).
+
+COMPARISONS (Kulander's quotations against the curated originals, at 193 nm = 6.4241 \
+eV, the photon energy; each figure interpolated on its record's own axis). Two-photon \
+Xe: 'l'Huillier and Wendin ... Hartree-Fock' 1.5e-49 cm4 s: lhuillier_1987 (TC-883) \
+Fig. 6 HF reads 1.49e-49; their 'random-phase approximation with exchange' 2e-50: \
+lhuillier_1987's RPAE reads 2.58e-50 and lhuillier_1987b's (TC-916) 2.61e-50 (the \
+quotation is 0.77 of the drawn curves; neither paper prints a number at 193 nm); \
+McGuire 8e-50: mcguire_1981 (TC-879) reads 8.36e-50; Gangopadhyay et al. 5e-51: \
+gangopadhyay_1986 (TC-914) Fig. 1 at the two-photon total energy reads 5.03e-51; \
+McCown et al. 4e-50 cm4 s: mccown_1982 (TC-884), 4e-32 cm4 W-1, is 4.12e-50 cm4 s as \
+alpha hbar omega. Kulander's 4e-50 is 0.97 of McCown et al.'s and 0.27, 1.55, 0.48 \
+and 7.9 times the HF, RPAE, McGuire and MQDT curves. lagutin_2017 (TC-880) starts at \
+the 2P1/2 threshold (6.72 eV) and has no value at 193 nm; its first CIPFCP vertex is \
+4.49e-50 cm4 s. Three-photon: lhuillier_1989 (TC-882) quotes 'Kulander calculates a \
+cross section equal to 2.5 x 10^-82 cm6 s2' at 266 nm: this paper prints exactly that \
+(p. 781). FINDING: lhuillier_1989 sets 'Perry and Landen have measured sigma_3 = 1.2 \
+x 10^-82 cm6 s2' beside its 266 nm values; here that number is Perry et al.'s 293 nm \
+rate (4e11 s^-1 at 1e13 W/cm2, unpublished) converted, 'This corresponds to a \
+three-photon cross section of 1.2 x 10^-82' (p. 781): a 293 nm value. FINDING: \
+Gangopadhyay et al.'s three-photon values, quoted here as 3 x 10^-76 (293 nm) and 5 x \
+10^-76 cm6 s2 (266 nm), carry 'an error in a conversion factor in their three-photon \
+calculations' found afterwards: 'they now obtain results which are in good agreement \
+with our result' (p. 781, citing P. Lambropoulos, private communication). \
+gangopadhyay_1986's Table II (TC-914) at 4.6667 eV (265.7 nm) holds 2.02e-76 + 3.15e-76 \
+= 5.17e-76 cm6 s2, the quoted 5e-76: those values are about 1e6 too large \
+(lhuillier_1989's MQDT, from the same group, 6e-82 at 266 nm). One-photon: the 46 \
+and 29 Mb are 0.74 and 0.50 of chan_1992's (TC-68) measured df/dE converted (109.76 \
+Mb eV x df/dE: 62.4 Mb at 14.4 eV, 58 Mb at 15.6 eV); the text quotes Marr and West's \
+60.1 and 54.5 Mb and an exact calculation in the same potential, 41 and 27 Mb.
+
+NOT TAKEN. Fig. 1's 5p_0 and 5p_1 curves (the rates of one kind of orbital: no \
+quantity holds a partial rate; read only for the check of the total). Fig. 2's open \
+symbols: other papers' measured saturation intensities turned into rates by this \
+paper's rule, 'three times the inverse of the pulse length' (p. 781; Perry et al., \
+Refs. 24-26; L'Huillier et al., Phys. Rev. A 27, 2503 (1983); Freeman et al., Phys. \
+Rev. Lett. 59, 1092 (1987)). The 5s photoionisation cross section, 4.5e-20 cm2 at 24 \
+eV (exact 5e-20; one subshell, not the total), and the 5s rate at 293 nm and 1e14 \
+W/cm2, 'less than 10^11 s^-1' (a bound). The decay rates of the Stark-shifted \
+resonances (9.7e13 s^-1 out of, and about 1.4e12 s^-1 into, the 4f-like state at 586 \
+nm and 3.5e13 W/cm2; 5e13 and 4e13 s^-1 for the d resonances at 293 nm and 2e14 \
+W/cm2, pp. 783-785): rates of a state, not of the atom. The other papers' cross \
+sections the text quotes (above). Figs. 3-12 (wave functions, norms, level diagram).
+
+MISPRINTS IN THE TEXT (no value affected). Eq. 7 prints f(t) = 1/t_max for t < \
+t_max: the text says the field 'increases linearly', t/t_max (as Kulander 1987's \
+Eq. 10). p. 781: 'The dotted line in Fig. 2 represents a fitted I^3 rate': the dashed \
+line is in Fig. 1 (its caption). Ref. 20 is printed 'Phys. Rev. A 26, 3318 (1987)': \
+mccown_1982, 1982.
+
+FURTHER TWO-PHOTON DATA CITED, not in the library: W. K. Bischel, J. Bokor, D. J. \
+Kligler and C. K. Rhodes, IEEE J. Quantum Electron. QE-15, 380 (1979) and R. V. \
+Hodges, L. C. Lee and J. T. Moseley, Int. J. Mass Spectrom. Ion Phys. 39, 133 (1981) \
+(Xe at 193 nm, measured; mccown_1982 holds the values it quotes from them); P. \
+Lambropoulos, Phys. Rev. Lett. 55, 2141 (1985) (Xe, 1.6e-49 cm4 s at 193 nm, quoted)."""
+
+[[datasets]]
+id = "text_sigma1_Xe"
+material = "Xe"
+table = "text"
+points = [["14.4", "14.4", "46"], ["15.63", "15.63", "29"]]
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "eV"
+use = "check"
+notes = "p. 780: 'a total cross section of 46 Mb at a photon energy of 14.4 eV' and 29 Mb at 15.63 eV, the frozen single-active-electron model (5p_0 and 5p_+-1 together), from the decay rate at an intensity low enough to be linear. The exact values for the same potential are 41 and 27 Mb; measured (Marr and West) 60.1 and 54.5 Mb, quoted; 0.74 and 0.50 of chan_1992 (the record's notes). No uncertainty stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+method = "single active electron, frozen Hartree-Slater core (effective core potential), finite-difference time-dependent Schrodinger equation, the rate over the photon flux"
+
+[[datasets]]
+id = "text_sigma2_Xe"
+material = "Xe"
+table = "text"
+points = [["193", "193", "4"]]
+scale = 1e-50
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 780: 'We find the two-photon generalized cross section at this wavelength [193 nm] to be 4 x 10^-50 cm4 s', one significant figure. Two photons (12.85 eV) above the model's single threshold (12.13 eV), below the real 2P1/2 limit; the model has no spin-orbit interaction. 0.97 of mccown_1982's measured value (the record's notes). No uncertainty stated; the wavelength medium not stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+photons = 2
+wavelength_nm = 193
+polarization = "linear"
+method = "single active electron, frozen Hartree-Slater core (effective core potential fitted to 12.13 eV, no spin-orbit), finite-difference time-dependent Schrodinger equation"
+definition = "the generalised cross section in cm4 s, sigma_2 = W / Phi^2 with W the decay rate and Phi the photon flux in cm^-2 s^-1 (the formula is not printed; the unit implies it)"
+gauge = "length (V_I = -sum e E z_i sin(omega t), Eq. 2)"
+energy_axis = "the wavelength as printed; the model's threshold is 12.13 eV (single continuum), not shifted"
+
+[[datasets]]
+id = "text_sigma3_Xe"
+material = "Xe"
+table = "text"
+points = [["293", "293", "1"], ["266", "266", "2.5"]]
+scale = 1e-82
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 781: at 293 nm 'The generalized cross section corresponding to this line [the I^3 fit to the rates of Fig. 1, which depart from I^3 above 5e13 W/cm2] is 1 x 10^-82 cm6 s2', 'within about 20% with the Green's-function results of McGuire'; at 266 nm 'we obtain a three-photon cross section of 2.5 x 10^-82 cm6 s2', the value lhuillier_1989 quotes. Fig. 1's dashed line read by the script gives 1.05e-82 at 293 nm (the record's notes). No uncertainty stated; the wavelength medium not stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+photons = 3
+polarization = "linear"
+method = "single active electron, frozen Hartree-Slater core (effective core potential fitted to 12.13 eV, no spin-orbit), finite-difference time-dependent Schrodinger equation; at 293 nm an I^3 law fitted to the rates from 1e13 W/cm2"
+definition = "the generalised cross section in cm6 s2, sigma_3 = W / Phi^3 with W the rate and Phi the photon flux in cm^-2 s^-1 (the formula is not printed; Fig. 1's dashed line so converted gives the printed value)"
+gauge = "length (V_I = -sum e E z_i sin(omega t), Eq. 2)"
+
+[[datasets]]
+id = "fig1_rate_293_Xe"
+material = "Xe"
+file = "Xe/kulander_1988__fig1_rate_293_Xe.csv"
+table = "fig_b14628317562"
+digitised = "raster"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 1 (p. 781), circles on the heavy line: the total rate of the 5p shell at 293 nm (5p_0 plus 5p_+-1), 4.1e11 s-1 at 1e13 to 2.3e14 at 2e14 W/cm2, read from the page image (the record's notes). Three-photon; I^3 up to about 5e13 W/cm2, then saturating; above 1e14 a Stark-shifted d resonance makes the decay non-exponential (a factor of 2, p. 785). 5 %: the digitising uncertainty (the record's notes); the paper states none below 1e14 W/cm2."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 293
+polarization = "linear"
+method = "single active electron, frozen Hartree-Slater core (effective core potential fitted to 12.13 eV, no spin-orbit), finite-difference time-dependent Schrodinger equation; the 5p_0 (two electrons) and 5p_+-1 (four electrons) rates summed"
+
+[[datasets]]
+id = "fig2_rate_586_Xe"
+material = "Xe"
+file = "Xe/kulander_1988__fig2_rate_586_Xe.csv"
+table = "fig_bfb3456aaf40"
+digitised = "raster"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2 (p. 781), solid circles: the total rate of the 5p shell at 586 nm, 6.4e9 s-1 at 1e13 to 4.3e13 at 7.5e13 W/cm2, read from the page image (the record's notes); above 7.5e13 the markers lie on the 1064 nm ones and are not read. Six-photon in lowest order; a jump just above 3e13 W/cm2 from a Stark-shifted 4f-like resonance (5p_0 only, pp. 782-783). The 1e13 value is below 1e10 s-1, where 'the accuracy of the calculation suffers from numerical instabilities' (p. 785). 5 %: the digitising uncertainty (the record's notes)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 586
+polarization = "linear"
+method = "single active electron, frozen Hartree-Slater core (effective core potential fitted to 12.13 eV, no spin-orbit), finite-difference time-dependent Schrodinger equation; the 5p_0 and 5p_+-1 rates summed"
+
+[[datasets]]
+id = "fig2_rate_1064_Xe"
+material = "Xe"
+file = "Xe/kulander_1988__fig2_rate_1064_Xe.csv"
+table = "fig_bfb3456aaf40"
+digitised = "raster"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 2 (p. 781), solid triangles: the total rate of the 5p shell at 1064 nm, 6.7e9 s-1 at 2e13 to 2.3e13 at 8e13 W/cm2, read from the page image (the record's notes); from 1e14 the markers lie under the 586 nm circles and are not read. Eleven-photon in lowest order; no resonance effects, the outgoing flux collimated along the field, 'good evidence that the tunneling mechanism is in effect' at 1e14 (p. 785); per electron the 5p_0 rate exceeds the others' by more than 20 times (p. 786). The 2e13 value is below 1e10 s-1, where the accuracy suffers from numerical instabilities (p. 785). 5 %: the digitising uncertainty (the record's notes)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 1064
+polarization = "linear"
+method = "single active electron, frozen Hartree-Slater core (effective core potential fitted to 12.13 eV, no spin-orbit), finite-difference time-dependent Schrodinger equation; the 5p_0 and 5p_+-1 rates summed"

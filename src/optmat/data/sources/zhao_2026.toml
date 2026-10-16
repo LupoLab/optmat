@@ -1,0 +1,367 @@
+citation = "Z.-F. Zhao, Z.-L. Nie, J. Wang, and S.-M. Hu, \"Electric polarizabilities of CH4, CO, and O2 determined by an optical refractometer\", Metrologia 63, 025007 (2026)"
+doi = "10.1088/1681-7575/ae4c90"
+library = "Zhao_2026_ElectricPolarizabilitiesCH"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Fabry-Perot gas refractometer (USTC): 10 cm ULE cavity (mirror \
+reflectivity ~99.9 %, FSR 1.5 GHz, mode linewidth ~0.4 MHz) in a vacuum chamber in a \
+temperature-stabilised jacket at about 297.53 K (NIM-calibrated platinum resistance \
+thermometer, 5 mK); a 1566 nm fibre laser (<10 kHz) Pound-Drever-Hall locked to a \
+cavity mode, the absolute mode frequency counted against an ultra-stable reference \
+laser (drift < 0.1 Hz/s). n - 1 = Delta nu/nu_f + Delta p (1/(3K) + d) (Eq. 1), the \
+bulk modulus K = 3.0822e10 Pa and the mirror-deformation coefficient d = -2.0293e-13 \
+Pa^-1 calibrated by measuring nitrogen's refractive index with A_eps(N2) = 4.38705(16) \
+cm^3/mol (Nie et al. 2025, Ref. 12). Pressure from an Inficon CDGSci 1000 Torr \
+capacitance gauge calibrated against a Fluke PG7601 piston gauge (11 ppm) and the \
+optical pressure gauge, u = sqrt((20e-6 p)^2 + (1.5 Pa)^2) below 100 kPa. Gases CH4 \
+and CO 99.999 %, O2 99.9995 %. Pressure points 2-100 kPa, several repeated runs; the \
+molar polarization at each point from Eq. (2) with the B_T, B_eps and A_mu of Table 1; \
+the weighted mean of the points (pp. 3-6)."""
+notes = """Page numbers are the library pdf pages (pdf page 1 is the publisher's cover, \
+paper page 1 is pdf page 2). CO (curated since 2026-09-25) is treated like CH4 below.
+
+WHAT IS MEASURED AND WHAT IS PRINTED. The refractometer measures n - 1 at 1566 nm \
+(vacuum wavelength: 'omega = 45.563 978 23/lambda, where lambda is the vacuum \
+wavelength', p. 4). Eq. (2) (p. 4), p/RT = 2(n - 1)/(3(A_eps + A_mu)) + (n - 1)^2 [...] \
++ O(n - 1)^3, reduces it to the refractive molar polarization A_eps'(omega) + A_mu; \
+the authors subtract A_mu (Table 1: CH4 -17.4(8)e-6, O2 3449(34)e-6 cm^3/mol, Refs. \
+37-39) and convert the dynamic A_eps'(omega) to the static A_eps with Eq. (3), A_eps' = \
+A_eps + (4 pi/3) N_A a0^3 (1 + m_e/m_w)^3 [S(-4) omega^2 + S(-6) omega^4 + S(-8) \
+omega^6], using the dipole sums of Table 1 (CH4 from Olney et al. 1997, Ref. 29; O2 \
+from Kumar and Thakkar 2011, Ref. 31, identical to kumar_2011's Table I 'This work' \
+values; CO from Kumar and Meath 1994, Ref. 30). Only the static A_eps is printed \
+(Table 3, abstract): the measured 1566 nm \
+values are not. The datasets A_R_1566_* are therefore RECONSTRUCTED by \
+tools/extract/zhao_2026.py, which inverts the authors' conversion exactly (A_R(1566) = \
+A_eps + dispersion sum + A_mu; see the script for the constants, the omitted (1 + \
+m_e/m_w)^3 factor, < 0.5 ppm, and the +-2 ppm from the nominal '1566 nm'). The \
+dispersion sum is 0.019768 cm^3/mol for CH4 (0.31 %), 0.011080 for O2 (0.28 %) and \
+0.015351 for CO (0.31 %).
+
+WHAT THE STATIC VALUES INCLUDE. The conversion subtracts only the electronic \
+dispersion (the S(k) are electronic dipole sums); it makes no vibrational \
+correction. So the printed 'static' A_eps is the electronic static polarizability \
+(vibrationally averaged, at 297.5 K) PLUS the vibrational (infrared) response at \
+1566 nm, which is negative above the fundamentals: for CH4 about -0.029 au \
+(-0.011 cm^3/mol, -0.17 %) from the HITRAN bands (optmat.gas.infrared); none for O2 (no \
+dipole-allowed vibration). It does NOT include the static vibrational polarizability \
+that a dielectric (DP) measurement sees (CH4: 0.240 au = 0.090 cm^3/mol by HITRAN). \
+The authors say 'the RI method essentially measures the electronic part of the \
+molecular polarizability' (p. 6) and correct the CO literature for Bishop and \
+Cheung's vibrational contribution and for CO's orientation term, but compare CH4 with \
+Hohm's DP value directly ('we consider the dynamic contribution from omega to be \
+approximately zero', p. 5) without a vibrational correction. For O2 the DP value \
+(May et al. 2008) is directly comparable (no infrared-active vibration; the DP \
+measures epsilon, without A_mu). Temperature: CH4's A_eps depends on it by 'approximately \
+5-10 ppm per K' (p. 6, citing Hohm).
+
+UNCERTAINTY (Table 2, p. 5; relative, ppm, k = 1): T 16, P 25 (at 1 bar), S(i) 9 (CH4) / \
+28 (O2), B (B_T and B_eps) 28 / 11, A_mu 0.6 / 8, statistical 14 / 17, gas purity 10 \
+/ 5, outgassing 0.1 / 0.2, cavity thermal expansion < 0.1, optical frequency < 0.1; \
+total 45 (CH4), 46 (O2) (CO 49). The table's CH4 total reproduces the root sum of \
+squares (45.2); O2's is 46.5. The reconstructed A_R(1566) keeps all but the S(i) and \
+A_mu lines: 44.3 ppm (CH4), 36.3 ppm (O2), 37.8 ppm (CO; CO's total, 48.9, is the \
+root sum of squares of its column). Resonance check: 'both CO and CH4 have resonant \
+absorption in the near-infrared region'; a 30 GHz laser offset changed CO's result by \
+9e-5 cm^3/mol, 'less than 20 ppm' (p. 5).
+
+CARBON MONOXIDE (section 3.2, pp. 6-7). As for CH4, the printed static 4.88146(24) \
+cm^3/mol (49 ppm) is the 1566 nm value less the electronic dispersion of Kumar and \
+Meath's sums (Table 1, reproduced here) and A_mu (-15.65e-6 cm^3/mol): it contains the \
+electronic polarizability and the (negative) infrared response of CO at 1566 nm, not \
+the static vibrational polarizability. The authors compare with literature values \
+reduced to the electronic part: they subtract Bishop and Cheung's vibrational \
+contribution, 20(1) x 10^-43 C^2 m^2 J^-1 (0.1213 au, 0.0453 cm^3/mol; Ref. 44 = \
+bishop_1982) and, for the dielectric value of Tsankova et al. (2018, Ref. 10), the \
+orientation term of mu_e = 0.107(1) D, interpolating their 255, 273, 293 and 313 K data \
+to 297 K. The text does not say which literature values received the vibrational \
+subtraction (the DP value certainly; the RI value should not need it). The RI \
+(Hohm 2013) and DOSD (Kumar and Meath 1994) values print uncertainties of 0.26 and \
+0.53 cm^3/mol (5 % and 11 %), implausibly large for those methods: possibly the \
+digits 4.8826 and 4.8953 misread as value(uncertainty). Hohm 2013 (now \
+curated, hohm_2013) prints CO 13.04 +- 0.07 au (RI mean) and 13.08 +- 0.15 au (DOSD, \
+his Ref. 97, Jhanwar and Meath 1982), 4.874(26) and 4.889(56) cm^3/mol: both uncertainties here look one \
+decade too large; taken as printed. In au the three are 13.055, 13.077 \
+(DP) and 13.082 (DOSD), against this work's 13.059. Kumar and Meath 1994 is curated \
+since (kumar_1994): its S(-2) = 13.08 gives 4.889 cm^3/mol, so the '4.8953' reading of \
+4.89(53) is not supported; the sums of Table 1 equal its Table 1 (kumar_meath_1994_ \
+moments_CO).
+
+INCONSISTENCIES IN THE PAPER (not errata of extracted values): Table 3's caption \
+and the text of p. 5 say 'CO2' for CO; sections 3.2 (CO) and 3.3 (O2) give the \
+uncertainties as 46 and 49 ppm and cite figures 2(f) and 2(e), both swapped against \
+Table 2, the abstract and the figure caption (CO 49 ppm, (e); O2 46 ppm, (f)); O2's \
+printed 3.95819(20) is 50.5 ppm, not the 46 ppm of Table 2 (it would be (18)); Eq. \
+(2)'s second-order bracket as printed, (A_eps^2 + 4B_eps + 6A_eps + A_mu), looks \
+garbled (not used here).
+
+Not extracted: Table 1's A_mu, B_T (a density virial: no quantity) and B_eps (CH4 \
+7.29(32), O2 -0.305(28) cm^6/mol^2; 'B_eps values are from [34-36]', which reference \
+for which gas and at what temperature is not said; CO 7.97(40), B_T -8.5(2) \
+cm^3/mol); the per-pressure points (figure 2 only)."""
+
+[[datasets]]
+id = "A_R_1566_CH4"
+material = "CH4"
+file = "CH4/zhao_2026__A_R_1566_CH4.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "RECONSTRUCTED (not printed): the refractive molar polarization A_eps'(omega) + A_mu at 1566 nm (vacuum) and 297.53 K that the refractometer measured, = Table 3's static 6.44034 + (4 pi/3) N_A a0^3 [S(-4) w^2 + S(-6) w^4 + S(-8) w^6] (Table 1, Olney's sums; w = 45.56397823/1566) + A_mu (-17.4e-6), computed by tools/extract/zhao_2026.py. Includes everything n contains at 1566 nm: the electronic polarizability and the (negative) infrared response. Uncertainty: Table 2 without the S(i) and A_mu lines, 44.3 ppm, one sigma."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "A_R_1566_O2"
+material = "O2"
+file = "O2/zhao_2026__A_R_1566_O2.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "RECONSTRUCTED (not printed), as A_R_1566_CH4: 3.95819 + 0.011080 (Kumar and Thakkar's sums) + A_mu 3449e-6 = 3.972719 cm^3/mol at 1566 nm, 297.53 K; uncertainty 36.3 ppm (Table 2 without S(i) and A_mu). A check, not primary: A_mu is 870 ppm of the value and whether O2's paramagnetic susceptibility belongs in the optical refractivity is unresolved. egan_2026 says oxygen's optical A_R excludes it; moved to Egan et al.'s 1542.383 nm with the same sums, the reconstruction (with A_mu, as Eq. 2 is printed) gives 3.973063, 1026 ppm above their 3.968990(7) cm^3/mol (303 K), the static value plus dispersion without A_mu 3.969614, 157 ppm above. Neither can be verified from the paper."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "static_CH4"
+material = "CH4"
+file = "CH4/zhao_2026__static_CH4.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 'This work': A_eps = 6.44034(30) cm^3/mol (abstract; 45 ppm, k = 1), derived from the 1566 nm measurement with Olney's electronic dipole sums (Eq. 3). Not independent of A_R_1566_CH4: a check. ELECTRONIC ONLY: it contains no static vibrational polarizability (a dielectric value would add about 0.090 cm^3/mol, HITRAN's 0.240 au), and it still carries the infrared response at 1566 nm (about -0.011 cm^3/mol, HITRAN), which the conversion does not remove: the electronic static polarizability is about 0.17 % above it. At 297.53 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "static_O2"
+material = "O2"
+file = "O2/zhao_2026__static_O2.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 'This work': A_eps = 3.95819(20) cm^3/mol (abstract; Table 2 gives 46 ppm, the printed (20) is 50.5 ppm), derived from the 1566 nm measurement by subtracting A_mu = 3449e-6 cm^3/mol and Kumar and Thakkar's electronic dispersion. A check (not independent of A_R_1566_O2). O2 has no dipole-allowed vibration, so this is the static electric polarizability; the authors find it agrees with May et al.'s dielectric 3.9582(2) interpolated to 297 K 'at the 10^-5 level' (p. 7). At 297.53 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "hohm_2013_ri_CH4"
+material = "CH4"
+file = "CH4/zhao_2026__hohm_2013_ri_CH4.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["hohm_2013"]
+notes = "Table 3 'RI': 6.445(10) cm^3/mol, Hohm's (2013) static value from refractive-index measurements (a summary, 'mostly ... averages from various literature sources', p. 5): an optical extrapolation to zero frequency, so electronic only. Uncertainty level not stated. Temperature not stated. Hohm 2013 (penta-atomic table, RI 'Mean value') prints 17.240 +- 0.026 au, which is 6.4444(97) cm^3/mol: Zhao et al.'s 6.445 is 1 in the last digit higher (0.01 %; checked 2026-09-26)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "hohm_2013_dp_CH4"
+material = "CH4"
+file = "CH4/zhao_2026__hohm_2013_dp_CH4.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["hohm_2013"]
+notes = "Table 3 'DP': 6.454(17) cm^3/mol, Hohm's (2013) static value from dielectric-permittivity measurements (GHz range). A dielectric value of CH4 should include the vibrational polarizability (HITRAN 0.240 au = 0.090 cm^3/mol); whether Hohm's value does, or was corrected, is not said here: its excess over the RI value, 0.009(20) cm^3/mol, is smaller. Hohm 2013 (penta-atomic table, DP 'Mean value') answers it: alpha_el = 17.266 +- 0.045 au from alpha_el + alpha_vib = 17.496 +- 0.025 au less alpha_vib = 0.23 au (his Ref. 16, Bishop and Cheung 1982 = bishop_1982); 17.266 au is 6.4541(168) cm^3/mol, so Zhao et al.'s 6.454(17) is Hohm's ELECTRONIC value, vibration already subtracted (checked 2026-09-26). Uncertainty level not stated. Temperature not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "may_2008_O2"
+material = "O2"
+table = "text"
+points = [["293", "inf", "3.9582", "0.0002"], ["323", "inf", "3.95824", "0.00007"]]
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["may_2008"]
+notes = "p. 7: May et al.'s dielectric (cross-capacitor) static A_eps of O2, 'the results at 293 and 323 K are 3.9582(2) cm^3/mol and 3.95824(7) cm^3/mol' (row = temperature in K as printed; May et al. also measured at 273 K, value not quoted). A dielectric measurement sees epsilon only: no magnetic term; O2 has no infrared-active vibration, so this is the static electric polarizability. Uncertainty level not stated here."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "may_2008_297K_O2"
+material = "O2"
+file = "O2/zhao_2026__may_2008_297K_O2.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["may_2008"]
+notes = "Table 3 'DP': 3.9582(2) cm^3/mol, Zhao et al.'s interpolation of May et al.'s 293 and 323 K values (may_2008_O2) to 297 K, 'taking the uncertainty from the 293 K result as reference' (p. 7). Derived from may_2008_O2: a check."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kumar_2011_dosd_O2"
+material = "O2"
+file = "O2/zhao_2026__kumar_2011_dosd_O2.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kumar_2011"]
+notes = "Table 3 'DOSD': 3.959(11) cm^3/mol (Ref. 31, Kumar and Thakkar 2011): their S(-2) = 10.59 au (kumar_2011/o2) times (4 pi/3) N_A a0^3 = 3.9586 cm^3/mol. Static electronic (a dipole sum of the electronic distribution)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "olney_1997_moments_CH4"
+material = "CH4"
+file = "CH4/zhao_2026__olney_1997_moments_CH4.csv"
+table = "tbl_632ce5af228b"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["olney_1997"]
+notes = "Table 1: CH4 dipole sums S(-4) = 62.22(19), S(-6) = 295.0(57), S(-8) = 1660(54) au, from Olney et al. (caption: 'Dipole sum terms [29-31]'; CH4 is Ref. 29 by the text, p. 5). Electronic sums, used for the 1566 nm to static conversion. Uncertainty level not stated. The three values are digit-identical to olney_1997's Table 3 CH4 'Expt' row (olney_1997/moments_CH4, checked 2026-09-26), whose scale is renormalised to Hohm's (1993) polarizability; Olney et al. print no uncertainties, so the parenthesised ones (0.3, 1.9, 3.3 %) are Zhao et al.'s own. Re-pointed to olney_1997 (was a citation 'not in the library')."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kumar_2011_moments_O2"
+material = "O2"
+file = "O2/zhao_2026__kumar_2011_moments_O2.csv"
+table = "tbl_632ce5af228b"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_2011"]
+notes = "Table 1: O2 dipole sums S(-4) = 34.81(35), S(-6) = 238.6(23), S(-8) = 2224(66) au, Kumar and Thakkar (2011, Ref. 31): identical to kumar_2011/o2 ('This work' of their Table I); the parenthesised values are that paper's 1 % (k >= -6) and 3 % (k = -8) estimates."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "A_R_1566_CO"
+material = "CO"
+file = "CO/zhao_2026__A_R_1566_CO.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "primary"
+notes = "RECONSTRUCTED (not printed), as A_R_1566_CH4: Table 3's static 4.88146 + (4 pi/3) N_A a0^3 [S(-4) w^2 + S(-6) w^4 + S(-8) w^6] (Table 1, Kumar and Meath's sums, 0.015351) + A_mu (-15.65e-6) = 4.896795 cm^3/mol at 1566 nm (vacuum), 297.53 K. Includes everything n contains at 1566 nm, the electronic polarizability and the (negative) infrared response; CO has 'resonant absorption in the near-infrared region'; the authors bound its effect on this value by a 30 GHz laser offset test, < 20 ppm (p. 5). Uncertainty: Table 2 without the S(i) and A_mu lines, 37.8 ppm, one sigma."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "static_CO"
+material = "CO"
+file = "CO/zhao_2026__static_CO.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 'This work': A_eps = 4.88146(24) cm^3/mol (abstract; 49 ppm, k = 1), derived from the 1566 nm measurement with Kumar and Meath's electronic dipole sums (Eq. 3). Not independent of A_R_1566_CO: a check. ELECTRONIC ONLY in the authors' sense: no static vibrational polarizability (Bishop and Cheung's 0.1213 au = 0.0453 cm^3/mol would be added for a dielectric value), but it still carries CO's infrared response at 1566 nm, which the conversion does not remove. No orientation term (an optical measurement). At 297.53 K."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 297.53
+
+[[datasets]]
+id = "hohm_2013_ri_CO"
+material = "CO"
+file = "CO/zhao_2026__hohm_2013_ri_CO.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["hohm_2013"]
+notes = "Table 3 'RI': 4.88(26) cm^3/mol, Hohm's (2013) static value from refractive-index measurements, electronic only. The printed uncertainty, 0.26 cm^3/mol (5 %), is implausible for the method; possibly 4.8826 misprinted as a value with uncertainty (source notes). Hohm 2013 (heteronuclear diatomics table, RI 'Mean value') prints 13.04 +- 0.07 au = 4.874(26) cm^3/mol: the printed uncertainty is ten times Hohm's converted one and the value 0.006 above it (checked 2026-09-26). Whether Zhao et al. applied their vibrational subtraction to it is not said. Level and temperature not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "tsankova_2018_dp_CO"
+material = "CO"
+file = "CO/zhao_2026__tsankova_2018_dp_CO.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["tsankova_2018"]
+notes = "Table 3 'DP': 4.888(45) cm^3/mol, Tsankova et al.'s dielectric measurements (255-313 K) reduced by Zhao et al. to the electronic part: the orientation term of mu_e = 0.107(1) D and Bishop and Cheung's vibrational 20(1)e-43 C^2 m^2 J^-1 (0.0453 cm^3/mol) subtracted, interpolated to 297 K (pp. 6-7). Derived, not Tsankova's value: a check. Level not stated. Re-pointed to tsankova_2018 (curated 2026-10-01; was a citation): the value is (alpha_e - 0.020e-40) N_A/(3 eps0) = 4.8880 cm^3/mol from tsankova_2018/alpha_e_CO (2.176e-40 C m^2/V), whose temperature-independent alpha_e needs no interpolation; the uncertainty 0.045 is not Tsankova's (0.050 cm^3/mol at k = 2, 0.025 at k = 1)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 297.0
+
+[[datasets]]
+id = "kumar_meath_1994_dosd_CO"
+material = "CO"
+file = "CO/zhao_2026__kumar_meath_1994_dosd_CO.csv"
+table = "tbl_5032bd285fb3"
+quantity = "molar_refractivity"
+unit = "cm3/mol"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kumar_1994"]
+notes = "Table 3 'DOSD': 4.89(53) cm^3/mol (Ref. 30), a static electronic dipole sum S(-2) (13.08 au with the package's constants). The printed uncertainty, 0.53 cm^3/mol (11 %), is implausible for a constrained DOSD; possibly 4.8953 misprinted (source notes). kumar_1994 (curated since) prints S(-2) = 13.08 (Tables 1, 3), which gives (4 pi/3) N_A a0^3 x 13.08 = 4.889 cm^3/mol, not 4.8953 (that would need 13.096): the '4.8953' reading is not supported by the original (checked 2026-09-27). Level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "kumar_meath_1994_moments_CO"
+material = "CO"
+file = "CO/zhao_2026__kumar_meath_1994_moments_CO.csv"
+table = "tbl_632ce5af228b"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_1994"]
+notes = "Table 1: CO dipole sums S(-4) = 48.26(48), S(-6) = 292.9(29), S(-8) = 2308(64) au (caption: 'Dipole sum terms [29-31]'; Ref. 30 is Kumar and Meath's CO paper). Electronic sums, used for the 1566 nm to static conversion. Uncertainty level not stated. Equal to kumar_1994's Table 1 isotropic sums (4.826(1), 2.929(2), 2.308(3)) (checked 2026-09-27); the original is curated since (kumar_1994/moments, use check), so this copy is no longer the best available (the fit's input is decided at review). The parenthesised uncertainties are Zhao et al.'s (1 %, 1 %, 2.8 %); Kumar and Meath state <~1 % for -4 <= k < 1, 'increase slowly for k < -4'."
+[datasets.uncertainty]
+column = true
+level = "not stated"

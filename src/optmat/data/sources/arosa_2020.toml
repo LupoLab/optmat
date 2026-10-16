@@ -1,0 +1,51 @@
+citation = "Y. Arosa and R. de la Fuente, \"Refractive index spectroscopy and material dispersion in fused silica glass\", Opt. Lett. 45, 4268 (2020)"
+doi = "10.1364/ol.395510"
+library = "Arosa_2020_RefractiveIndexSpectroscopy"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """White-light spectral interferometry ('refractive index spectroscopy by broadband \
+interferometry', RISBI): the sample in one arm of a Michelson interferometer, three \
+spectrometers (UV-Vis 260-480 nm, Vis 400-1000 nm, NIR 900-1700 nm; bandwidths in \
+Fig. 2), the phase ambiguity resolved with an Abbe refractometer at the sodium D line \
+(589.3 nm), the arm difference L from a further spectral interferogram (pp. 4268-4269). \
+The refractive index (RI) comes from the unwrapped phase, Eq. (5); the group index (GI) \
+independently, from the local period of the fringes, Eq. (6). Sample: a UV-grade fused \
+silica plate made by Newport Corporation, 20 mm diameter, 2.0593 +- 0.0005 mm thick \
+(micrometer)."""
+notes = """Pages 4268-4271 are pdf pages 1-4. Identity checked against the first page.
+
+WHAT IS HERE. The measured RI and GI are shown only as differences from fits (Fig. 3) \
+and from Malitson (Fig. 4); the dispersion parameter D and its difference from \
+Malitson's in Fig. 5 (figures only, not digitised). No tabulated n. Temperature not \
+stated. 'The accuracy achieved using our device is approximately 0.0002 in RI units' \
+(p. 4269, citing their earlier work); 'our experimental resolution (2 x 10^-4)' against \
+Malitson's 1e-6 (p. 4270).
+
+FITS (p. 4269-4270). Three three-term Sellmeier fits: Fit1 to the RI alone (rms 6.6e-6 \
+from the measured RI, but a GI far from the measured one at long wavelengths); Fit2 to \
+the GI alone; Fit3 to RI and GI together (maximum differences 1.4e-4 in RI and 3.7e-4 in \
+GI, rms 2.7e-5 and 9.2e-5). Only Fit3's coefficients are printed (Table 1). Against \
+Malitson's formula over 260-1700 nm the paper states maximum differences 1.1e-4 (RI) and \
+7.4e-4 (GI), rms 7.2e-5 and 3.0e-4; zero-dispersion wavelength 1.277 um for Fit3, \
+'approximately 6 nm greater than the reference value' (p. 4270).
+
+TABLE 1 (image checked). Also prints Malitson's coefficients rounded to four digits \
+(0.6962, 0.4079, 0.8975; 0.068, 0.116, 9.896 um): a reproduction of malitson_1965/sellmeier, \
+not recorded as a formula (the rounded poles change n by up to 4e-4 over 260-1700 nm).
+
+COMPARISON. The refractiveindex.info page SiO2/Arosa (formula 1, 0.26-1.7 um, \
+coefficients 0.9310, 0.079, 0.1735, 0.130, 2.1121, 14.918) is Table 1's Fit3 exactly."""
+
+[[formulas]]
+id = "sellmeier_fit3"
+form = "n2_sellmeier"
+terms = { B = ["0.9310", "0.1735", "2.1121"], C = ["0.006241", "0.016900", "222.546724"] }
+range_nm = [260.0, 1700.0]
+material = "SiO2"
+equation = "Eq. (7) with Table 1 ('Present study'), p. 4270"
+printed = "n^2(lambda) = 1 + c1 lambda^2/(lambda^2 - lambda1^2) + c2 lambda^2/(lambda^2 - lambda2^2) + c3 lambda^2/(lambda^2 - lambda3^2); C1 = 0.9310, C2 = 0.1735, C3 = 2.1121, lambda1 = 0.079, lambda2 = 0.130, lambda3 = 14.918 (um)"
+variable = "lambda: wavelength in um (the medium is not stated)"
+range = "260-1700 nm (the measured range); fitted to the measured RI and GI together (Fit3)"
+coefficients = { C1 = "0.9310", C2 = "0.1735", C3 = "2.1121", lambda1 = "0.079", lambda2 = "0.130", lambda3 = "14.918" }
+check = "With the printed (rounded) coefficients: zero-dispersion wavelength 1.2775 um (printed 1.277 um), 4.7 nm above Malitson's Eq. (1) (printed 'approximately 6 nm'); against Malitson over 260-1700 nm, maximum RI difference 2.6e-4 (at 260 nm; printed 1.1e-4) and rms 5.2e-5 (printed 7.2e-5), GI maximum 1.3e-3 (printed 7.4e-4). Not reproduced at the ultraviolet end: lambda1 and lambda2 are printed to two or three significant digits, which is enough to shift n there by 1e-4. Checked 2026-09-26."
+notes = "The terms C are the squares of the printed lambda_i (0.079^2 = 0.006241, 0.130^2 = 0.016900, 14.918^2 = 222.546724). The authors' preferred fit ('the dispersion equation resulting from Fit3 was the one that best accounted for the material dispersion in FS', p. 4270). Sample: Newport UV-grade fused silica; temperature not stated."

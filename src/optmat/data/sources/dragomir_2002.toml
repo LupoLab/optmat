@@ -1,0 +1,1445 @@
+citation = "A. Dragonmir [Dragomir], J. G. McInerney and D. N. Nikogosyan, Appl. Opt. 41, 4365 (2002)"
+doi = "10.1364/ao.41.004365"
+library = "Dragonmir_2002_FemtosecondMeasurementsTwo"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Transmittance against irradiance at 264 nm (4-30 GW/cm2): the fourth \
+harmonic of a Twinkle Nd:glass laser (Light Conversion), ~200 uJ at 27 Hz, energy \
+stability ~10 %, Gaussian in time and space (manufacturer's information); pulse length \
+220 +- 10 fs from a TPA autocorrelator (four measurements; a thin fused-silica plate), \
+beam w_0 = 2.56 +- 0.03 mm (3.01 +- 0.04 mm FWHM) from aperture transmission; a 454 mm \
+fused-silica lens, the sample moved along the beam always well before the focus (no \
+self-focusing, break-up or filamentation), incident and transmitted energies by Ophir \
+PE10 detectors. beta from the linear approximation (Eq. 12; fused silica, quartz) or \
+from the full expression (Eq. 6; sapphire, BBO), with the focal-shift correction of \
+Eq. 15. Linear absorption alpha_sp by an HP8453 spectrophotometer (BBO: with the laser, \
+in a reference beam of 0.4-0.7 GW/cm2). Room temperature."""
+notes = """The paper prints the first author as 'Dragonmir'; he is Adrian Dragomir \
+(so cited by slattery_2003). Tables 1-7 (solids) are transcribed in full; Tables 8-10 \
+are liquids and are skipped: water, heavy water (D2O), methanol, ethanol, hexane, \
+cyclohexane, 1,2-dichloroethane and chloroform (beta 34-95 x 1e-11 cm/W at 264 nm, and \
+Table 10's literature values). Every table was checked against its image; the spanned \
+cells of Tables 1, 3, 5, 6 and 7 are handled in the script.
+
+Definition (p. 3): I_l = I_inc (1 - R)^2 exp(-alpha l) / {1 + (beta/alpha) I_inc (1 - R) \
+[1 - exp(-alpha l)]} (Eq. 3), from dI/dz = -alpha I - beta I^2, with R = ((n - 1)/(n + \
+1))^2 at normal incidence (Eq. 4): reflection losses are removed, I_0 is the peak on- \
+axis intensity incident on the sample (Eq. 1), and alpha is Napierian (T_0 = (1 - R)^2 \
+exp(-alpha l), Eq. 7). In the linear approximation beta = 2 sqrt(2) (dT/dI_0) / (l (1 - \
+R) T_0) for alpha l << 1 (Eq. 14).
+
+Pulse length: 'tau = 220 +- 10 fs' (p. 5), called the FWHM of the fitted Gaussian of Eq. \
+(18), although A exp[-((t - t_max)/tau)^2] makes tau a 1/e half-width, and Eq. (1) \
+defines tau_p at the 1/e level; slattery_2003 quotes it as '220 +- 10 fs at 1/e level'. \
+Recorded as pulse_fs = 220 (a doubt on its definition).
+
+Uncertainty (p. 5): absolute ~6 % (length 0.5 %, energy calibration 3 %, pulse width \
+4.5 %, beam area 2.3 %), 'total (relative + absolute) ... ~10 %'. Footnote a of Tables \
+3, 5, 7: 'Absolute error (6 %) was added to the averaged beta values.' Checked \
+(2026-09-26): the printed +- of all eleven beta averages is reproduced, to its \
+rounding, by the standard error of the mean of the tabulated curves plus 6 % of the \
+mean, added linearly (e.g. Suprasil: 0.113 + 0.099 = 0.21, printed 0.2; sapphire: 0.59 + \
+0.56 = 1.15, printed 1.2); the +- of the alpha averages is the standard error alone \
+(e.g. KU-1 0.0094, printed 9e-3). The means reproduce the printed averages except BBO \
+x-cut ordinary: the seven curves average 65.47, printed 66 (also in the text); not \
+corrected. The text gives sapphire as '(9.4 +- 0.2)' (p. 7) against 9.4 +- 1.2 in Table \
+5 and the abstract, and refers to 'Table 4' for the sapphire literature (Table 6), \
+'Ref. 32' for the BBO value of Ref. 34, and 'Corning 7040' (Fig. 4 text) for 7940. The \
+fit values printed in the captions of Figs. 4-6 are rows of Tables 3, 5 and 7.
+
+Samples: fused silica KU-1 (former Soviet Union), Corning 7940 (USA), SQ \
+(Quarzschmelze Ilmenau, Germany), and Heraeus's Suprasil, Herasil and Infrasil, 'with \
+OH contents of <= 1000, ~150, and <= 8 parts in 10^6, respectively' (p. 5). Crystalline \
+quartz 'electrochemically grown in the former Soviet Union' (its cut is not stated \
+here; its 1.38 cm length is that of slattery_2003's c-cut quartz, and n = 1.5928 is \
+presumably ordinary: no axis is recorded); sapphire from Laser Components, UK \
+(orientation not stated); BBO grown in Novosibirsk, 6 x 6 x 3 mm, z-cut (light along \
+the optic axis: ordinary) or x-cut (ordinary or extraordinary beam). BBO low-intensity \
+transmittances T_0 = 0.845 (z-cut), 0.839 (x-cut, ordinary), 0.867 (x-cut, \
+extraordinary) (p. 8). Sample lengths and 1 - R are kept in the printed column; 1 - R \
+follows from n by Eq. (4) for every sample (checked).
+
+Refractive indices (Tables 2 and 4) are not measured: fused silica 'taken from Refs. 30 \
+and 31' (malitson_1965 and a Heraeus datasheet; Malitson's formula gives 1.50056 at \
+264 nm, the printed 1.5007 is 1.4e-4 higher; Herasil and Infrasil 1.5022, presumably \
+from the datasheet), quartz and sapphire from the dispersion relations of Refs. 32 \
+(Sosman) and 33 (Malitson 1962), BBO from Ref. 36 (Kato). They are reproduced \
+datasets.
+
+Literature (Tables 1 and 6), one dataset per reference and pulse length. Table 1: \
+'the TPA coefficient values measured at 248 nm by eight groups ... differ by as much as a \
+factor of 18.5', and ns excitation gives higher values (colour centres). Ref. 16 \
+(Schenker et al., 213 nm, pulse '?') is printed as a range, '35-52' x 1e-11 cm/W, \
++-25 % relative: not extracted (slattery_2003 gives it as 43 +- 18). The Ref. 14 value \
+at 193 nm is misprinted by a factor of 10 (erratum below). Other text values (p. 8): \
+BBO alpha = 0.04-0.15 cm-1 at 266 nm (Ref. 3, Nikogosyan's handbook) and alpha < 0.01 \
+cm-1 at 264 nm (Ref. 34, called 'unrealistic'); the Hellma cuvette's Suprasil < 0.001 \
+cm-1 (p. 8). The paper also lists crystals with anisotropic TPA from the literature \
+(GaAs, ZnS, ZnSe, ZnTe, CdGa2S4, AgGaSe2, KTiOPO4) without values.
+
+Reproduced by slattery_2003 (fused silica 1.7 +- 0.2, the Suprasil value; quartz 1.2 +- \
+0.2)."""
+
+[[errata]]
+dataset = "brimacombe_1989_5ns_SiO2"
+row = "193"
+column = "value"
+printed = "20"
+corrected = "200"
+reason = "Table 1 attributes to Ref. 14 (brimacombe_1989) beta = 20 x 1e-11 cm/W at 193 nm; Brimacombe et al. print alpha_1 = 2.0 +- 0.8 x 10^-3 cm/MW, which is 2.0e-9 cm/W = 200 x 1e-11 cm/W. The 248 nm value of the same reference is converted correctly (2.1e-4 cm/MW = 21 x 1e-11), and the +-40 % matches."
+evidence = "brimacombe_1989 Table II (tbl_b42460a7da40, image checked): '2.0 +- 0.8 x 10^-3' at 193 nm; its Fig. 9 plots the 193 nm point near 2e-3 cm/MW, and its text says the values 'differ by four orders of magnitude' from 193 to 308-351 nm (4.6e-7), which holds only for 2e-3."
+
+[[datasets]]
+id = "gurzadyan_1992_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__gurzadyan_1992_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. G. Gurzadyan and R. K. Ispiryan, Int. J. Nonlin. Opt. Phys. 1, 533 (1992)"]
+excluded_rows = { "270" = "printed '<': an upper bound, not a measured value" }
+notes = "Table 1, Ref. 4: 270 nm '<2' (bound) and 216 nm 50, +-20 % relative."
+[datasets.parameters]
+pulse_fs = 15000
+
+[[datasets]]
+id = "liu_1979_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__liu_1979_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["liu_1979"]
+notes = "Table 1, Ref. 5: 266 nm, +-43 % absolute, +-20 % relative, +-63 % total (liu_1979: agrees). The same value is in taylor_1988 and brimacombe_1989."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "liu_1978_1979_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__liu_1978_1979_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1978"]
+notes = "Table 1, Refs. 5, 6: '<4.5' at 266 nm, +-43 % absolute: an upper bound. The number is liu_1978's (Table II, 4.5e-5 cm/MW, printed there without '<'), which liu_1979 calls 'the verge of the earlier detection limit'."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "desalvo_1996_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__desalvo_1996_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["desalvo_1996"]
+notes = "Table 1, Ref. 7: 266 nm, +-20 % total. The paper calls it 'an overestimate' (p. 6)."
+[datasets.parameters]
+pulse_fs = 15000
+
+[[datasets]]
+id = "hata_1990_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__hata_1990_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["K. Hata, M. Watanabe and S. Watanabe, Appl. Phys. B 50, 55 (1990)"]
+notes = "Table 1, Ref. 8: 248 nm, no uncertainty printed."
+[datasets.parameters]
+pulse_fs = 280
+
+[[datasets]]
+id = "tomie_1989_0p4ps_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__tomie_1989_0p4ps_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. Tomie, I. Okuda and M. Yano, Appl. Phys. Lett. 55, 325 (1989)"]
+notes = "Table 1, Ref. 9: 248 nm, 0.4 ps, no uncertainty printed."
+[datasets.parameters]
+pulse_fs = 400
+
+[[datasets]]
+id = "tomie_1989_8ps_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__tomie_1989_8ps_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. Tomie, I. Okuda and M. Yano, Appl. Phys. Lett. 55, 325 (1989)"]
+notes = "Table 1, Ref. 9: 248 nm, 8 ps, +-25 % relative."
+[datasets.parameters]
+pulse_fs = 8000
+
+[[datasets]]
+id = "taylor_1988_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__taylor_1988_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["taylor_1988"]
+notes = "Table 1, Ref. 10: 248 nm, +-50 % absolute, +-15 % relative, +-65 % total; taylor_1988's 4.5e-11 cm/W."
+[datasets.parameters]
+pulse_fs = 700
+
+[[datasets]]
+id = "simon_1989_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__simon_1989_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. Simon, H. Gerhardt and S. Shatmari [Szatmari], Opt. Lett. 14, 1207 (1989)"]
+notes = "Table 1, Ref. 11: 248 nm, +-10 % relative. Author printed 'Shatmari'."
+[datasets.parameters]
+pulse_fs = 450
+
+[[datasets]]
+id = "ross_1990_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__ross_1990_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["I. N. Ross, W. T. Toner, C. J. Hooker, J. R. M. Barr and I. Coffey, J. Mod. Opt. 37, 555 (1990)"]
+notes = "Table 1, Ref. 12: 248 nm, +-35 % total."
+[datasets.parameters]
+pulse_fs = 4000
+
+[[datasets]]
+id = "eva_1996_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__eva_1996_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["eva_1996"]
+notes = "Table 1, Ref. 13: 248 nm, 25 ns ('25,000' ps), +-40 % absolute; eva_1996's Suprasil 2 value (.78 x 1e-10)."
+[datasets.parameters]
+pulse_fs = 25000000
+
+[[datasets]]
+id = "brimacombe_1989_9ns_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__brimacombe_1989_9ns_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["brimacombe_1989"]
+notes = "Table 1, Ref. 14: 248 nm, fibres, +-40 % total; brimacombe_1989's 2.1e-4 cm/MW."
+[datasets.parameters]
+pulse_fs = 9000000
+form = "fibre"
+
+[[datasets]]
+id = "brimacombe_1989_5ns_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__brimacombe_1989_5ns_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["brimacombe_1989"]
+notes = "Table 1, Ref. 14: 193 nm, fibres, +-40 % total. Printed 20, a factor-10 error for brimacombe_1989's 2.0e-3 cm/MW (erratum)."
+[datasets.parameters]
+pulse_fs = 5000000
+form = "fibre"
+
+[[datasets]]
+id = "taylor_1988b_9ns_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__taylor_1988b_9ns_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. S. Taylor, K. E. Leopold, R. K. Brimacombe and S. Mihailov, Appl. Opt. 27, 3124 (1988)"]
+notes = "Table 1, Ref. 15 (fused-silica fibres, by the same group as brimacombe_1989): 248 nm, +-35 % total. Not in the library."
+[datasets.parameters]
+pulse_fs = 9000000
+form = "fibre"
+
+[[datasets]]
+id = "taylor_1988b_10ns_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__taylor_1988b_10ns_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. S. Taylor, K. E. Leopold, R. K. Brimacombe and S. Mihailov, Appl. Opt. 27, 3124 (1988)"]
+notes = "Table 1, Ref. 15: 193 nm, printed '~30' (approximate), 10 ns ('10,000' ps). Not in the library."
+[datasets.parameters]
+pulse_fs = 10000000
+form = "fibre"
+
+[[datasets]]
+id = "repeyev_1992_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__repeyev_1992_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["Yu. A. Repeyev, E. V. Khoroshilova and D. N. Nikogosyan, J. Photochem. Photobiol. B 12, 259 (1992)"]
+notes = "Table 1, Ref. 17: 212.8 nm laser photolysis paper, listed at 213 nm, no uncertainty printed."
+[datasets.parameters]
+pulse_fs = 26000
+
+[[datasets]]
+id = "kittelmann_1994_SiO2"
+material = "SiO2"
+file = "SiO2/dragomir_2002__kittelmann_1994_SiO2.csv"
+table = "tbl_208bbc898a3d"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kittelmann_1994"]
+notes = "Table 1, Ref. 18: 193 nm, +-50 % absolute, +-20 % relative; kittelmann_1994's Gaussian-profile value (3.0e-10)."
+[datasets.parameters]
+pulse_fs = 800
+
+[[datasets]]
+id = "gurzadyan_1992_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__gurzadyan_1992_SiO2_quartz.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. G. Gurzadyan and R. K. Ispiryan, Int. J. Nonlin. Opt. Phys. 1, 533 (1992)"]
+excluded_rows = { "270" = "printed '<': an upper bound, not a measured value" }
+notes = "Table 6, Ref. 4: 270 nm '<1.5' (bound) and 216 nm 40, +-18 % relative."
+[datasets.parameters]
+pulse_fs = 15000
+
+[[datasets]]
+id = "liu_1978_1979_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__liu_1978_1979_SiO2_quartz.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "excluded"
+reproduced_from = ["liu_1978"]
+notes = "Table 6, Refs. 5, 6: '<4.5' at 266 nm, +-43 % absolute: an upper bound. The number is liu_1978's quartz value (Table II, 4.5e-5 cm/MW, c-axis sample, printed there without '<')."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "eva_1996_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__eva_1996_SiO2_quartz.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["eva_1996"]
+notes = "Table 6, Ref. 13: 248 nm, +-40 % absolute; eva_1996's z-cut quartz (1.1 x 1e-10)."
+[datasets.parameters]
+pulse_fs = 25000000
+
+[[datasets]]
+id = "schenker_1995_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__schenker_1995_SiO2_quartz.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. Schenker, L. Eichner, H. Vaidya, S. Vaidya, P. Schermerhorn, D. Fladd and W. G. Oldham, Proc. SPIE 2428, 458 (1995)"]
+notes = "Table 6, Ref. 16: 213 nm, pulse length printed '?', +-20 % relative. Not in the library."
+
+[[datasets]]
+id = "desalvo_1996_Al2O3"
+material = "Al2O3"
+file = "Al2O3/dragomir_2002__desalvo_1996_Al2O3.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["desalvo_1996"]
+notes = "Table 6, Ref. 7: 266 nm, +-22 % absolute. Orientation not given here."
+[datasets.parameters]
+pulse_fs = 15000
+
+[[datasets]]
+id = "liu_1978_Al2O3"
+material = "Al2O3"
+file = "Al2O3/dragomir_2002__liu_1978_Al2O3.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["liu_1978"]
+notes = "Table 6, Ref. 6: 266 nm, +-43 % absolute, +-30 % relative (liu_1978 Table II, c-axis and perpendicular samples both 2.7e-4 cm/MW +- 30 %: agrees); the paper says its own value 'contradicts' this one (p. 7)."
+[datasets.parameters]
+pulse_fs = 30000
+
+[[datasets]]
+id = "desalvo_1996_BBO"
+material = "BBO"
+file = "BBO/dragomir_2002__desalvo_1996_BBO.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["desalvo_1996"]
+notes = "Table 6, Ref. 7: 266 nm, +-20 % absolute, note '||c' (light along the optic axis: ordinary)."
+[datasets.parameters]
+pulse_fs = 15000
+axis = "o"
+
+[[datasets]]
+id = "veitas_1997_BBO"
+material = "BBO"
+file = "BBO/dragomir_2002__veitas_1997_BBO.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. Veitas, A. Dubietis, G. Valiulis, D. Podenas and G. Tamosauskas, Opt. Commun. 138, 333 (1997)"]
+notes = "Table 6, Ref. 22: 264 nm, note 'theta = 48 deg': 'estimated relative to that of KDP', crystal cut at 48 deg to the optic axis with extraordinary polarization, 'no uncertainty was given' (p. 8). Not in the library."
+[datasets.parameters]
+pulse_fs = 200
+
+[[datasets]]
+id = "dubietis_2000_BBO"
+material = "BBO"
+file = "BBO/dragomir_2002__dubietis_2000_BBO.csv"
+table = "tbl_bd4d7e6dd4aa"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. Dubietis, G. Timosauskas [Tamosauskas], A. Varanavicius and G. Valiulis, Appl. Opt. 39, 2437 (2000)"]
+notes = "Table 6, Ref. 34: 264 nm, note 'theta = 30 deg' (cut at 30 deg to the optic axis), +-30 % absolute, +-5 % relative (the text's '(93 +- 33)' and 'Ref. 32' refer to it). Not in the library."
+[datasets.parameters]
+pulse_fs = 800
+
+[[datasets]]
+id = "index_ku1"
+material = "SiO2"
+file = "SiO2/dragomir_2002__index_ku1.csv"
+table = "tbl_7dda4df6e106"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "Quartz Glass for Optics. Data and Properties (datasheet, Heraeus Quarzglas GmbH, Hanau, 1994)"]
+notes = "Table 2: 'taken from Refs. 30 and 31' (p. 5); which reference gives which value is not said (1.5007; Malitson's formula gives 1.50056)."
+[datasets.parameters]
+grade = "KU-1"
+
+[[datasets]]
+id = "index_corning7940"
+material = "SiO2"
+file = "SiO2/dragomir_2002__index_corning7940.csv"
+table = "tbl_7dda4df6e106"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "Quartz Glass for Optics. Data and Properties (datasheet, Heraeus Quarzglas GmbH, Hanau, 1994)"]
+notes = "Table 2: 'taken from Refs. 30 and 31' (p. 5); which reference gives which value is not said (1.5007; Malitson's formula gives 1.50056)."
+[datasets.parameters]
+grade = "Corning 7940"
+
+[[datasets]]
+id = "index_sq"
+material = "SiO2"
+file = "SiO2/dragomir_2002__index_sq.csv"
+table = "tbl_7dda4df6e106"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "Quartz Glass for Optics. Data and Properties (datasheet, Heraeus Quarzglas GmbH, Hanau, 1994)"]
+notes = "Table 2: 'taken from Refs. 30 and 31' (p. 5); which reference gives which value is not said (1.5007; Malitson's formula gives 1.50056)."
+[datasets.parameters]
+grade = "SQ"
+
+[[datasets]]
+id = "index_suprasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__index_suprasil.csv"
+table = "tbl_7dda4df6e106"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "Quartz Glass for Optics. Data and Properties (datasheet, Heraeus Quarzglas GmbH, Hanau, 1994)"]
+notes = "Table 2: 'taken from Refs. 30 and 31' (p. 5); which reference gives which value is not said (1.5007; Malitson's formula gives 1.50056)."
+[datasets.parameters]
+grade = "Suprasil"
+
+[[datasets]]
+id = "index_herasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__index_herasil.csv"
+table = "tbl_7dda4df6e106"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "Quartz Glass for Optics. Data and Properties (datasheet, Heraeus Quarzglas GmbH, Hanau, 1994)"]
+notes = "Table 2: 'taken from Refs. 30 and 31' (p. 5); which reference gives which value is not said (1.5022, presumably the Heraeus datasheet)."
+[datasets.parameters]
+grade = "Herasil"
+
+[[datasets]]
+id = "index_infrasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__index_infrasil.csv"
+table = "tbl_7dda4df6e106"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["malitson_1965", "Quartz Glass for Optics. Data and Properties (datasheet, Heraeus Quarzglas GmbH, Hanau, 1994)"]
+notes = "Table 2: 'taken from Refs. 30 and 31' (p. 5); which reference gives which value is not said (1.5022, presumably the Heraeus datasheet)."
+[datasets.parameters]
+grade = "Infrasil"
+
+[[datasets]]
+id = "alpha_sp_ku1"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_sp_ku1.csv"
+table = "tbl_7dda4df6e106"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table 2 alpha_sp: spectrophotometric transmittance with the calculated Fresnel losses removed (p. 2). Printed '≤0.01': an upper bound, not a measured value."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "KU-1"
+
+[[datasets]]
+id = "alpha_sp_corning7940"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_sp_corning7940.csv"
+table = "tbl_7dda4df6e106"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2 alpha_sp: spectrophotometric transmittance with the calculated Fresnel losses removed (p. 2). Printed to one significant figure."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "Corning 7940"
+
+[[datasets]]
+id = "alpha_sp_sq"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_sp_sq.csv"
+table = "tbl_7dda4df6e106"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2 alpha_sp: spectrophotometric transmittance with the calculated Fresnel losses removed (p. 2). Printed to one significant figure."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "SQ"
+
+[[datasets]]
+id = "alpha_sp_suprasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_sp_suprasil.csv"
+table = "tbl_7dda4df6e106"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table 2 alpha_sp: spectrophotometric transmittance with the calculated Fresnel losses removed (p. 2). Printed '≤0.01': an upper bound, not a measured value."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "Suprasil"
+
+[[datasets]]
+id = "alpha_sp_herasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_sp_herasil.csv"
+table = "tbl_7dda4df6e106"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2 alpha_sp: spectrophotometric transmittance with the calculated Fresnel losses removed (p. 2). Printed to one significant figure."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "Herasil"
+
+[[datasets]]
+id = "alpha_sp_infrasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_sp_infrasil.csv"
+table = "tbl_7dda4df6e106"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 2 alpha_sp: spectrophotometric transmittance with the calculated Fresnel losses removed (p. 2). Printed to one significant figure."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+grade = "Infrasil"
+
+[[datasets]]
+id = "beta_ku1"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_ku1.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 average over the recorded curves (linear fits, Eq. 12); the +- is the standard error of the mean plus 6 % absolute (reconstructed; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "KU-1"
+
+[[datasets]]
+id = "beta_runs_ku1"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_runs_ku1.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: beta of each recorded curve, behind the average (beta_ku1); not fitted beside it."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "KU-1"
+
+[[datasets]]
+id = "alpha_fit_ku1"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_ku1.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 average alpha from T_0 of the linear fits (Eq. 7); the +- is the standard error of the mean (reconstructed). A check on the spectrophotometric alpha_sp, with which it 'agree[s] reasonably well' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "KU-1"
+
+[[datasets]]
+id = "alpha_fit_runs_ku1"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_runs_ku1.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha of each recorded curve (some negative, as printed)."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "KU-1"
+
+[[datasets]]
+id = "beta_corning7940"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_corning7940.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 average over the recorded curves (linear fits, Eq. 12); the +- is the standard error of the mean plus 6 % absolute (reconstructed; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Corning 7940"
+
+[[datasets]]
+id = "beta_runs_corning7940"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_runs_corning7940.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: beta of each recorded curve, behind the average (beta_corning7940); not fitted beside it."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Corning 7940"
+
+[[datasets]]
+id = "alpha_fit_corning7940"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_corning7940.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 average alpha from T_0 of the linear fits (Eq. 7); the +- is the standard error of the mean (reconstructed). A check on the spectrophotometric alpha_sp, with which it 'agree[s] reasonably well' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Corning 7940"
+
+[[datasets]]
+id = "alpha_fit_runs_corning7940"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_runs_corning7940.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha of each recorded curve (some negative, as printed)."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Corning 7940"
+
+[[datasets]]
+id = "beta_sq"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_sq.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 average over the recorded curves (linear fits, Eq. 12); the +- is the standard error of the mean plus 6 % absolute (reconstructed; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "SQ"
+
+[[datasets]]
+id = "beta_runs_sq"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_runs_sq.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: beta of each recorded curve, behind the average (beta_sq); not fitted beside it."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "SQ"
+
+[[datasets]]
+id = "alpha_fit_sq"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_sq.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 average alpha from T_0 of the linear fits (Eq. 7); the +- is the standard error of the mean (reconstructed). A check on the spectrophotometric alpha_sp, with which it 'agree[s] reasonably well' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "SQ"
+
+[[datasets]]
+id = "alpha_fit_runs_sq"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_runs_sq.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha of each recorded curve (some negative, as printed)."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "SQ"
+
+[[datasets]]
+id = "beta_suprasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_suprasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 average over the recorded curves (linear fits, Eq. 12); the +- is the standard error of the mean plus 6 % absolute (reconstructed; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Suprasil"
+
+[[datasets]]
+id = "beta_runs_suprasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_runs_suprasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: beta of each recorded curve, behind the average (beta_suprasil); not fitted beside it."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Suprasil"
+
+[[datasets]]
+id = "alpha_fit_suprasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_suprasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 average alpha from T_0 of the linear fits (Eq. 7); the +- is the standard error of the mean (reconstructed). A check on the spectrophotometric alpha_sp, with which it 'agree[s] reasonably well' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Suprasil"
+
+[[datasets]]
+id = "alpha_fit_runs_suprasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_runs_suprasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha of each recorded curve (some negative, as printed)."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Suprasil"
+
+[[datasets]]
+id = "beta_herasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_herasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 average over the recorded curves (linear fits, Eq. 12); the +- is the standard error of the mean plus 6 % absolute (reconstructed; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Herasil"
+
+[[datasets]]
+id = "beta_runs_herasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_runs_herasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: beta of each recorded curve, behind the average (beta_herasil); not fitted beside it."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Herasil"
+
+[[datasets]]
+id = "alpha_fit_herasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_herasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 average alpha from T_0 of the linear fits (Eq. 7); the +- is the standard error of the mean (reconstructed). A check on the spectrophotometric alpha_sp, with which it 'agree[s] reasonably well' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Herasil"
+
+[[datasets]]
+id = "alpha_fit_runs_herasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_runs_herasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha of each recorded curve (some negative, as printed)."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Herasil"
+
+[[datasets]]
+id = "beta_infrasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_infrasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 average over the recorded curves (linear fits, Eq. 12); the +- is the standard error of the mean plus 6 % absolute (reconstructed; see the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Infrasil"
+
+[[datasets]]
+id = "beta_runs_infrasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__beta_runs_infrasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: beta of each recorded curve, behind the average (beta_infrasil); not fitted beside it."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Infrasil"
+
+[[datasets]]
+id = "alpha_fit_infrasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_infrasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3 average alpha from T_0 of the linear fits (Eq. 7); the +- is the standard error of the mean (reconstructed). A check on the spectrophotometric alpha_sp, with which it 'agree[s] reasonably well' (p. 6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Infrasil"
+
+[[datasets]]
+id = "alpha_fit_runs_infrasil"
+material = "SiO2"
+file = "SiO2/dragomir_2002__alpha_fit_runs_infrasil.csv"
+table = "tbl_2c36f1fa9b1c"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha of each recorded curve (some negative, as printed)."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+grade = "Infrasil"
+
+[[datasets]]
+id = "index_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__index_SiO2_quartz.csv"
+table = "tbl_1acb0895da28"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. B. Sosman, The Properties of Silica (Chemical Catalog Company, New York, 1927)"]
+notes = "Table 4, from published dispersion relations (pp. 7-8). Crystalline quartz; orientation not stated (n = 1.5928, presumably ordinary)."
+
+[[datasets]]
+id = "index_Al2O3"
+material = "Al2O3"
+file = "Al2O3/dragomir_2002__index_Al2O3.csv"
+table = "tbl_1acb0895da28"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["I. H. Malitson, J. Opt. Soc. Am. 52, 1377 (1962)"]
+notes = "Table 4, from published dispersion relations (pp. 7-8). Sapphire (Laser Components); orientation not stated."
+
+[[datasets]]
+id = "index_BBO_o"
+material = "BBO"
+file = "BBO/dragomir_2002__index_BBO_o.csv"
+table = "tbl_1acb0895da28"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["K. Kato, IEEE J. Quantum Electron. QE-22, 1013 (1986)"]
+notes = "Table 4, from published dispersion relations (pp. 7-8). BBO ordinary beam: rows z-cut ('||c', light along the optic axis) and x-cut ('perp c, ordinary beam')."
+[datasets.parameters]
+axis = "o"
+
+[[datasets]]
+id = "index_BBO_e"
+material = "BBO"
+file = "BBO/dragomir_2002__index_BBO_e.csv"
+table = "tbl_1acb0895da28"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["K. Kato, IEEE J. Quantum Electron. QE-22, 1013 (1986)"]
+notes = "Table 4, from published dispersion relations (pp. 7-8). BBO x-cut, extraordinary beam ('perp c')."
+[datasets.parameters]
+axis = "e"
+
+[[datasets]]
+id = "alpha_sp_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__alpha_sp_SiO2_quartz.csv"
+table = "tbl_1acb0895da28"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.01
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 4 alpha_sp (x 1e-2 cm-1) with its +-. Crystalline quartz; orientation not stated (n = 1.5928, presumably ordinary). Spectrophotometer."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+
+[[datasets]]
+id = "alpha_sp_Al2O3"
+material = "Al2O3"
+file = "Al2O3/dragomir_2002__alpha_sp_Al2O3.csv"
+table = "tbl_1acb0895da28"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.01
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 4 alpha_sp (x 1e-2 cm-1) with its +-. Sapphire (Laser Components); orientation not stated. Spectrophotometer."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "spectrophotometry"
+
+[[datasets]]
+id = "alpha_sp_BBO_o"
+material = "BBO"
+file = "BBO/dragomir_2002__alpha_sp_BBO_o.csv"
+table = "tbl_1acb0895da28"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.01
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 4 alpha_sp (x 1e-2 cm-1) with its +-. BBO ordinary beam: rows z-cut ('||c', light along the optic axis) and x-cut ('perp c, ordinary beam'). Measured with the laser in the reference beam (0.4-0.7 GW/cm2), footnote a."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "laser transmittance"
+axis = "o"
+
+[[datasets]]
+id = "alpha_sp_BBO_e"
+material = "BBO"
+file = "BBO/dragomir_2002__alpha_sp_BBO_e.csv"
+table = "tbl_1acb0895da28"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+scale = 0.01
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 4 alpha_sp (x 1e-2 cm-1) with its +-. BBO x-cut, extraordinary beam ('perp c'). Measured with the laser in the reference beam (0.4-0.7 GW/cm2), footnote a."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "laser transmittance"
+axis = "e"
+
+[[datasets]]
+id = "beta_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__beta_SiO2_quartz.csv"
+table = "tbl_83771c0b842b"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 5 average; the +- is the standard error of the mean plus 6 % absolute (reconstructed). Crystalline quartz, linear fits (Eq. 12)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+
+[[datasets]]
+id = "beta_runs_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__beta_runs_SiO2_quartz.csv"
+table = "tbl_83771c0b842b"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5: beta of each recorded curve, behind the average (beta_SiO2_quartz). Crystalline quartz, linear fits (Eq. 12)."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+
+[[datasets]]
+id = "beta_Al2O3"
+material = "Al2O3"
+file = "Al2O3/dragomir_2002__beta_Al2O3.csv"
+table = "tbl_83771c0b842b"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 5 average; the +- is the standard error of the mean plus 6 % absolute (reconstructed). Sapphire, fits of the full expression (Eq. 6). The text prints the average as '(9.4 +- 0.2)' (p. 7)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+
+[[datasets]]
+id = "beta_runs_Al2O3"
+material = "Al2O3"
+file = "Al2O3/dragomir_2002__beta_runs_Al2O3.csv"
+table = "tbl_83771c0b842b"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5: beta of each recorded curve, behind the average (beta_Al2O3). Sapphire, fits of the full expression (Eq. 6). The text prints the average as '(9.4 +- 0.2)' (p. 7)."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+
+[[datasets]]
+id = "beta_BBO_z_o"
+material = "BBO"
+file = "BBO/dragomir_2002__beta_BBO_z_o.csv"
+table = "tbl_b99ed48cd500"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 7 average; the +- is the standard error of the mean plus 6 % absolute (reconstructed). BBO z-cut ('||c'): light along the optic axis, ordinary. Fits of Eq. (6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+axis = "o"
+
+[[datasets]]
+id = "beta_runs_BBO_z_o"
+material = "BBO"
+file = "BBO/dragomir_2002__beta_runs_BBO_z_o.csv"
+table = "tbl_b99ed48cd500"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 7: beta of each recorded curve, behind the average (beta_BBO_z_o). BBO z-cut ('||c'): light along the optic axis, ordinary. Fits of Eq. (6)."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+axis = "o"
+
+[[datasets]]
+id = "beta_BBO_x_o"
+material = "BBO"
+file = "BBO/dragomir_2002__beta_BBO_x_o.csv"
+table = "tbl_b99ed48cd500"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 7 average; the +- is the standard error of the mean plus 6 % absolute (reconstructed). BBO x-cut ('perp c'), ordinary beam. Fits of Eq. (6). The seven curves average 65.47, printed 66 (not corrected)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+axis = "o"
+
+[[datasets]]
+id = "beta_runs_BBO_x_o"
+material = "BBO"
+file = "BBO/dragomir_2002__beta_runs_BBO_x_o.csv"
+table = "tbl_b99ed48cd500"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 7: beta of each recorded curve, behind the average (beta_BBO_x_o). BBO x-cut ('perp c'), ordinary beam. Fits of Eq. (6). The seven curves average 65.47, printed 66 (not corrected)."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+axis = "o"
+
+[[datasets]]
+id = "beta_BBO_x_e"
+material = "BBO"
+file = "BBO/dragomir_2002__beta_BBO_x_e.csv"
+table = "tbl_b99ed48cd500"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 7 average; the +- is the standard error of the mean plus 6 % absolute (reconstructed). BBO x-cut ('perp c'), extraordinary beam. Fits of Eq. (6)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+axis = "e"
+
+[[datasets]]
+id = "beta_runs_BBO_x_e"
+material = "BBO"
+file = "BBO/dragomir_2002__beta_runs_BBO_x_e.csv"
+table = "tbl_b99ed48cd500"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/W"
+scale = 1e-11
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 7: beta of each recorded curve, behind the average (beta_BBO_x_e). BBO x-cut ('perp c'), extraordinary beam. Fits of Eq. (6)."
+[datasets.parameters]
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+axis = "e"
+
+[[datasets]]
+id = "alpha_fit_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__alpha_fit_SiO2_quartz.csv"
+table = "tbl_83771c0b842b"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5 average alpha of quartz from the linear fits; the +- is the standard error of the mean (reconstructed). 'Agrees well' with alpha_sp (p. 7)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220
+
+[[datasets]]
+id = "alpha_fit_runs_SiO2_quartz"
+material = "SiO2_quartz"
+file = "SiO2_quartz/dragomir_2002__alpha_fit_runs_SiO2_quartz.csv"
+table = "tbl_83771c0b842b"
+quantity = "absorption_coefficient"
+unit = "cm-1"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5: alpha of each quartz curve."
+[datasets.parameters]
+base = "e"
+form = "bulk"
+technique = "intensity-dependent transmission"
+pulse_fs = 220

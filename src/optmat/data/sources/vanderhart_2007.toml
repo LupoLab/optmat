@@ -1,0 +1,131 @@
+citation = "H. W. van der Hart, \"Time-dependent multielectron dynamics of Ar in intense short laser pulses\", Phys. Rev. A 76, 043405 (2007)"
+doi = "10.1103/PhysRevA.76.043405"
+library = "VanderHart_2007_TimeDependentMultielectron"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Time-dependent R-matrix theory: the time-dependent Schrodinger equation of \
+the whole atom solved in a box of radius 100 au on R-matrix inner-region basis sets \
+(R-matrix II codes) with B-spline continuum functions (80-90 per angular momentum), \
+length gauge, an absorbing boundary, 2000 time steps per cycle (pp. 1-2). Ar \
+described with the 1s2 2s2 2p6 3s2 3p5 2P target state of Ar+ (and, for Table I, also \
+3s 3p6 2S), with pseudo-orbitals 3d, 4s, 4p and all single, double and triple \
+excitations from 3s2 3p6 into them; Lmax 12 (18 at the highest intensities). Laser: \
+390 nm, a three-cycle sin^2 turn-on, 0 to 14 cycles of constant amplitude, a \
+three-cycle sin^2 turn-off. The cycle-averaged ionisation rate is taken from the decay \
+of the norm, and of the bound population against the number of constant cycles \
+(Figs. 2, 3; p. 2)."""
+notes = """Journal pp. 043405-1 to -5 = PDF pages 1-5. Identity checked on the first \
+page (single author H. W. van der Hart, Queen's University Belfast; received 4 May \
+2007) on 2026-09-29.
+
+EXTRACTED (tools/extract/vanderhart_2007.py):
+- Table I (p. 4, tbl_2c7127524ab5): the rates of Ar at 0.48, 0.75 and 1.50e14 W/cm2 \
+with one and with two Ar+ target states, s-1. The library's cells print 'a x 10^b' \
+with a backspace for the times sign and the exponent run into the 10; read by the \
+script's check of that shape, and checked against the table image.
+- Fig. 4 (p. 3, library figure fig_3c19189b753a), a vector drawing, read from the PDF \
+(data rule 8, TC-699, TC-700): the time-dependent rates at the nine intensities Table \
+I does not print (0.25, 0.65, 0.70, 0.80, 0.85, 1.25, 1.75, 2.50, 3.00e14 W/cm2; solid \
+circles, their centres), and the R-matrix Floquet curve of van der Hart 2006 (the \
+solid line, its 1221 vertices within the frame). The axes are calibrated from the \
+drawing's tick marks: x at 0.25e14 steps, y 1e8 to 1e14 s-1 in two-decade steps, every \
+tick within 0.001 pt of the fitted scale. The ADK curve is not taken.
+
+THE CHECK of the reading: at Table I's three intensities the figure's circles read \
+9.912e10, 4.564e11 and 1.2141e13 s-1 against the table's one-state 9.79e10, 4.32e11 \
+and 1.21e13: 1.3 %, 5.6 % and 0.3 %. The intensities come out at 0.250, 0.480, 0.650 \
+... to 0.001e14. The figure's rates are therefore given an uncertainty of 6 %; the \
+0.75e14 circle, on the 3s2 3p5 3d 1P/1F resonance, is where the figure and the table \
+differ most.
+
+ACCURACY, as the paper states it (p. 3): agreement with the R-matrix Floquet rates \
+'typically well within 10%'; 'an increased uncertainty in the obtained ionization \
+rates of about 10% for I = 2.5 x 10^14 W/cm2 and 5% for I = 3.0 x 10^14 W/cm2'. \
+Adding the second target state lowers the rate 'by less than 2%' (Table I). \
+Resonances: the 3s2 3p5 3d 1P and 1F near 0.75e14 W/cm2 enhance the rate; the 5s 1P \
+is marked near 1.3e14 (Fig. 4).
+
+POLARISATION: not stated in words; the paper multiplies ADK rates 'by 2 due to the \
+presence of 2 m = 0 electrons' (p. 3), the counting of a linearly polarised field \
+along the quantisation axis. Recorded as linear.
+
+ADK, as the paper states it (p. 3): 'At the higher intensities, the ionization rates \
+are in surprisingly close agreement with ionization rates given by the ADK formula \
+..., although the ADK rates tend to increase more rapidly with increasing intensity'; \
+'At lower intensities ... the differences ... increase rapidly'. The ionisation energy \
+of the calculation is not stated here (the target description is that of the paper's \
+ref. 20)."""
+
+[[datasets]]
+id = "table1_one_state_Ar"
+material = "Ar"
+file = "Ar/vanderhart_2007__table1_one_state_Ar.csv"
+table = "tbl_2c7127524ab5"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I, 'One-target': the cycle-averaged ionisation rate of Ar at 390 nm with the 3s2 3p5 2P target state of Ar+, s-1, against the intensity (printed in 1e14 W/cm2). 0.75e14 W/cm2 is on the 3s2 3p5 3d 1P/1F resonance. Agreement with R-matrix Floquet 'typically well within 10%' (p. 3)."
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "time-dependent R-matrix, one Ar+ target state"
+
+[[datasets]]
+id = "table1_two_states_Ar"
+material = "Ar"
+file = "Ar/vanderhart_2007__table1_two_states_Ar.csv"
+table = "tbl_2c7127524ab5"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Table I, 'Two-target': the same with the 3s 3p6 2S target state of Ar+ added, s-1; lower by 'less than 2%' (p. 4)."
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "time-dependent R-matrix, two Ar+ target states"
+
+[[datasets]]
+id = "fig4_td_rmatrix_Ar"
+material = "Ar"
+file = "Ar/vanderhart_2007__fig4_td_rmatrix_Ar.csv"
+table = "fig_3c19189b753a"
+digitised = "vector"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 4, 'Present approach' (solid circles): the time-dependent R-matrix rates of Ar at 390 nm at the nine intensities Table I does not print, read from the vector drawing (the record's notes): s-1 against W/cm2. 6 %: how closely the figure reproduces Table I (1.3, 5.6 and 0.3 %); 10 % at 2.5e14 W/cm2, the paper's stated uncertainty there. The printed column gives each circle's centre in page points."
+[datasets.uncertainty]
+relative = 0.06
+relative_rows = { "2.500" = 0.10 }
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "time-dependent R-matrix, one Ar+ target state"
+
+[[datasets]]
+id = "fig4_floquet_Ar"
+material = "Ar"
+file = "Ar/vanderhart_2007__fig4_floquet_Ar.csv"
+table = "fig_3c19189b753a"
+digitised = "vector"
+quantity = "ionization_rate"
+unit = "s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "reproduced"
+reproduced_from = ["vanderhart_2006"]
+notes = "Fig. 4, 'R-matrix Floquet' (the solid line): van der Hart 2006's rates of Ar at 390 nm (the paper's ref. 14), as this figure draws them, read from the vector drawing: the 1221 vertices within the frame, 0.18 to 1.94e14 W/cm2, s-1. The curve resolves the resonances: its vertices are not equally spaced and some share an intensity. 6 % as the figure's circles (the record's notes)."
+[datasets.uncertainty]
+relative = 0.06
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "R-matrix Floquet, one Ar+ target state"

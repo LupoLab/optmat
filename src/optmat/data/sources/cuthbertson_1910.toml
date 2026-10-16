@@ -1,0 +1,364 @@
+citation = "C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. London A 84, 13 (1910)"
+doi = "10.1098/rspa.1910.0052"
+library = "Cuthbertson_1910_RefractionDispersionArgon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Jamin refractometer (as in Cuthbertson and Metcalfe 1908), Lowry's arc with \
+cadmium-silver poles (and a silver-lithium electrode for Li 6707.85 A in the later \
+experiments); 300-550 bands read at the green mercury line. Argon: the refractivity \
+at 5461 A is the mean of seven absolute experiments (1.00028183 to 1.00028258, mean \
+1.00028230), the dispersion relative to it at seven lines. He, Ne, Kr, Xe: dispersion \
+only, relative to absolute 5461 A values 'not redetermined, but taken from our \
+previous measurements' (printed in large type in Table II) (pp. 13-15)."""
+notes = """All values of the paper's own are doubled refractivities, 2 (mu - 1), 'in order \
+to facilitate comparison with the diatomic gases' (p. 13); the datasets' scales \
+include the factor 1/2, and the formulas are for 2 (mu - 1). The earlier-work table \
+(Rayleigh ... Ahrberg) is not doubled.
+
+State: not stated in this paper. The companion neon paper (cuthbertson_1910b, p. 149) \
+gives its refractivity 'at 0 degrees C. and 760 mm', and the absolute values here are \
+taken from the earlier papers, so 1 atm, 0 degrees C is assumed, with the density \
+convention unknown.
+
+Wavelengths: the printed 6707.85 (Li), 6438.5 (Cd), 5790.5, 5769.5, 5460.7 (Hg), \
+5209.1 (Ag), 5085.8, 4799.9 (Cd) A are the air wavelengths of those lines (5461 A in \
+the text), so the medium is taken as standard air (1910 air, the difference is \
+negligible here).
+
+Formulas: mu - 1 = C/(n0^2 - n^2), n = V/lambda. With V = 3e10 cm/s and the printed \
+(air) wavelengths the Table III constants reproduce the calculated columns to within \
+0.7 printed units (He 0.06), except krypton at 6707.85 A (formula 85052.5, printed \
+85055); with V = 2.99796e10 they do not (argon off by 0.9-1.5). Checked 2026-09-24.
+
+Accuracy (p. 14): argon's 'relative refractivities for different wave-lengths can \
+generally be trusted to one or two points in the fifth significant figure', the \
+discrepancies corresponding to 'less than one-fiftieth of an interference band'; for \
+the other gases 'the discrepancies between the observed and calculated results are of \
+the same order'. The per-point uncertainties below are the rms of the paper's obs - \
+calc differences (Ar 2.2, He 0.36, Ne 1.0, Kr 5.2, Xe 0.79 printed units); the argon \
+scale uncertainty is the spread of its seven absolute values (+-0.13 %).
+
+The helium value printed at 5769.5 A (6963.8) is set aside: it is 19.7 below the \
+formula (6983.5), below the 6438.5 A value (6972.6), which normal dispersion forbids, \
+while every other helium row agrees with the formula to 0.7. It is either a misprint \
+for 6983.8 (one digit) or a miscount by one band (with about 349 bands at 5461 A one \
+band is about 1/349 of the value, 20.0 printed units); both give about 6983.8, but \
+which it is cannot be decided, so the point is excluded, not corrected. The same line \
+is the one the authors rejected for argon."""
+
+[[datasets]]
+id = "experiment_Ar"
+material = "Ar"
+file = "Ar/cuthbertson_1910__experiment_Ar.csv"
+table = "tbl_7e2ecfe6276e"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table I, observed, doubled (x 10^8 per the image; the library header's 10^9 is a misreading). The 5460.7 A value is the absolute one."
+[datasets.uncertainty]
+absolute = 2.2
+level = "rms"
+systematic_relative = 0.0013
+
+[[datasets]]
+id = "experiment_Ar_excluded"
+material = "Ar"
+file = "Ar/cuthbertson_1910__experiment_Ar_excluded.csv"
+table = "tbl_7e2ecfe6276e"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+notes = "5769.5 A, left out of the authors' fit: 'evidently affected by error (a cause for which could be assigned)' (p. 14)."
+
+[[datasets]]
+id = "fit_Ar"
+material = "Ar"
+file = "Ar/cuthbertson_1910__fit_Ar.csv"
+table = "tbl_7e2ecfe6276e"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table I, calculated column (formula ar_1910)."
+
+[[datasets]]
+id = "experiment_He"
+material = "He"
+file = "He/cuthbertson_1910__experiment_He.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table II, observed, doubled. The 5460.7 A value (6990.0) is an earlier absolute value (not said which paper; the 1932 paper calls it 'our 1910 value')."
+[datasets.uncertainty]
+absolute = 0.36
+level = "rms"
+
+[[datasets]]
+id = "experiment_He_excluded"
+material = "He"
+file = "He/cuthbertson_1910__experiment_He_excluded.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "excluded"
+notes = "Printed 6963.8 at 5769.5 A: a misprint or a one-band miscount (see the source notes); both point to about 6983.8."
+
+[[datasets]]
+id = "fit_He"
+material = "He"
+file = "He/cuthbertson_1910__fit_He.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table II, calculated (formula he_1910)."
+
+[[datasets]]
+id = "experiment_Ne"
+material = "Ne"
+file = "Ne/cuthbertson_1910__experiment_Ne.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table II, observed, doubled; the 5460.7 A value (13432) is the absolute value of cuthbertson_1910b (1.00006716)."
+[datasets.uncertainty]
+absolute = 1.0
+level = "rms"
+systematic_relative = 0.002
+
+[[datasets]]
+id = "fit_Ne"
+material = "Ne"
+file = "Ne/cuthbertson_1910__fit_Ne.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table II, calculated (formula ne_1910)."
+
+[[datasets]]
+id = "experiment_Kr"
+material = "Kr"
+file = "Kr/cuthbertson_1910__experiment_Kr.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table II, observed, doubled; the 5460.7 A value is an earlier absolute value."
+[datasets.uncertainty]
+absolute = 5.2
+level = "rms"
+
+[[datasets]]
+id = "fit_Kr"
+material = "Kr"
+file = "Kr/cuthbertson_1910__fit_Kr.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-9
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table II, calculated (formula kr_1910); the 6707.85 A value is 2.5 above what the printed constants give."
+
+[[datasets]]
+id = "experiment_Xe"
+material = "Xe"
+file = "Xe/cuthbertson_1910__experiment_Xe.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table II, observed, doubled. The table is headed x 10^8 but the xenon columns are x 10^7 (14109.8 -> mu - 1 = 7.055e-4; the xenon constants give the calculated column only on that scale); the scale is 1e-7/2. The 5460.7 A value is an earlier absolute value."
+[datasets.uncertainty]
+absolute = 0.79
+level = "rms"
+
+[[datasets]]
+id = "fit_Xe"
+material = "Xe"
+file = "Xe/cuthbertson_1910__fit_Xe.csv"
+table = "tbl_c0066726ecc8"
+quantity = "refractivity"
+scale = 5e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table II, calculated (formula xe_1910), x 10^7 as the observed column."
+
+[[datasets]]
+id = "burton_1908_Ar"
+material = "Ar"
+file = "Ar/cuthbertson_1910__burton_1908_Ar.csv"
+table = "tbl_f8dd6a8e65a1"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["W. Burton, Proc. Roy. Soc. A 80, 390 (1908)"]
+notes = "Earlier-work table (p. 13), not doubled; wavelengths 6563 (H alpha) and 5896 (Na) as printed, medium and state as the original (assumed air, 0 degrees C, 760 mm). Burton's results at these and four other lines fit mu - 1 = 0.0002792 + 1.6e-14/lambda^2 (formula burton_1908_ar)."
+
+[[datasets]]
+id = "ahrberg_1909_Ar"
+material = "Ar"
+file = "Ar/cuthbertson_1910__ahrberg_1909_Ar.csv"
+table = "tbl_f8dd6a8e65a1"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Ahrberg, Inaug. Diss. Halle, 1909"]
+notes = "Earlier-work table (p. 13), not doubled. Ahrberg 'was only able to count 12 bands in the red and 50 bands at the other points', 'insufficient to ensure great accuracy'. His '5790-70' value (2803), for the unresolved yellow mercury pair, is not extracted; '4359' is printed although the mercury blue line is at 4358 A in air."
+
+[[formulas]]
+id = "he_1910"
+material = "He"
+equation = "Table III, p. 15"
+printed = "mu - 1 = C/(n0^2 - n^2); C x 10^-27 = 2.42476, n0^2 x 10^-27 = 34991.7 (maximum number of bands read 349)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-644 nm"
+coefficients = { C = "2.42476e27", n0_squared = "34991.7e27" }
+check = "Gives the doubled refractivity 2 (mu - 1): reproduces Table II's calculated helium column to within 0.06e-8. Checked 2026-09-24."
+notes = "For 2 (mu - 1); cuthbertson_1932 Table I quotes it halved (C = 1.21238e27)."
+
+[[formulas]]
+id = "ne_1910"
+material = "Ne"
+equation = "Table III, p. 15"
+printed = "mu - 1 = C/(n0^2 - n^2); C x 10^-27 = 5.18652, n0^2 x 10^-27 = 38916.2 (440 bands)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-644 nm"
+coefficients = { C = "5.18652e27", n0_squared = "38916.2e27" }
+check = "For 2 (mu - 1): reproduces Table II's calculated neon column to within 0.6e-8. Checked 2026-09-24."
+notes = "Quoted halved (2.59326e27) in cuthbertson_1932."
+
+[[formulas]]
+id = "ar_1910"
+material = "Ar"
+equation = "p. 14 and Table III, p. 15"
+printed = "mu - 1 = C/(n0^2 - n^2); C = 9.43264 x 10^27, n0^2 = 17008.9 x 10^27 (400 bands)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-644 nm (fitted without 5769.5 A)"
+coefficients = { C = "9.43264e27", n0_squared = "17008.9e27" }
+check = "For 2 (mu - 1): reproduces Table I's calculated column to within 0.7e-8. Checked 2026-09-24."
+notes = "Least squares to all argon points except 5769.5 A."
+
+[[formulas]]
+id = "kr_1910"
+material = "Kr"
+equation = "Table III, p. 15"
+printed = "mu - 1 = C/(n0^2 - n^2); C x 10^-27 = 10.6893, n0^2 x 10^-27 = 12767.9 (430 bands)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-671 nm"
+coefficients = { C = "10.6893e27", n0_squared = "12767.9e27" }
+check = "For 2 (mu - 1): reproduces Table II's calculated krypton column to within 0.6e-8, except 6707.85 A (85052.5 against the printed 85055). Checked 2026-09-24."
+
+[[formulas]]
+id = "xe_1910"
+material = "Xe"
+equation = "Table III, p. 15"
+printed = "mu - 1 = C/(n0^2 - n^2); C x 10^-27 = 12.2418, n0^2 x 10^-27 = 8977.87 (550 bands)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-671 nm"
+coefficients = { C = "12.2418e27", n0_squared = "8977.87e27" }
+check = "For 2 (mu - 1): reproduces Table II's calculated xenon column to within 0.44e-7 on the x 10^7 scale. Checked 2026-09-24."
+
+[[formulas]]
+id = "burton_refit_ar"
+material = "Ar"
+equation = "unlabelled table, p. 14"
+printed = "Burton: C x 10^-27 = 9.124, n0^2 x 10^-27 = 16335"
+variable = "n = V/lambda (as above)"
+state = "1atm_0C"
+density = "unknown"
+range = "Burton's lines (not listed here)"
+coefficients = { C = "9.124e27", n0_squared = "16335e27" }
+check = "For 2 (mu - 1): 5.69e-4 at 5461 A, i.e. mu - 1 = 2.845e-4. Not checked against Burton's values beyond that."
+notes = "The Cuthbertsons' refit of Burton's argon data (W. Burton, Proc. Roy. Soc. A 80, 390 (1908)) in their formula; reproduced. Also quoted in cuthbertson_1910b."
+
+[[formulas]]
+id = "ahrberg_refit_ar"
+material = "Ar"
+equation = "unlabelled table, p. 14"
+printed = "Ahrberg: C x 10^-27 = 7.437, n0^2 x 10^-27 = 13516"
+variable = "n = V/lambda (as above)"
+state = "1atm_0C"
+density = "unknown"
+range = "Ahrberg's lines, 436-644 nm"
+coefficients = { C = "7.437e27", n0_squared = "13516e27" }
+check = "For 2 (mu - 1): 5.628e-4 at 5461 A, i.e. mu - 1 = 2.814e-4 against Ahrberg's printed 2816e-7. Checked 2026-09-24."
+notes = "The Cuthbertsons' refit of Ahrberg's argon data (Inaug. Diss. Halle, 1909); reproduced."
+
+[[formulas]]
+id = "burton_1908_ar"
+material = "Ar"
+equation = "remark in the earlier-work table, p. 13"
+printed = "mu - 1 = 0.0002792 + 1.6 x 10^-14 / lambda^2"
+variable = "lambda: wavelength in cm (air)"
+state = "1atm_0C"
+density = "unknown"
+range = "Burton's six lines"
+coefficients = { a = "0.0002792", b = "1.6e-14" }
+check = "Gives 2829e-7 at 6563 A and 2838e-7 at 5896 A against Burton's printed 2829 and 2837. Checked 2026-09-24."
+notes = "Burton's Cauchy formula (not doubled), reproduced."

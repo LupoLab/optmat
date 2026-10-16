@@ -1,0 +1,141 @@
+citation = "D. M. Bishop, B. Kirtman, H. A. Kurtz and J. E. Rice, \"Calculation of vibrational dynamic hyperpolarizabilities for H2O, CO2, and NH3\", J. Chem. Phys. 98, 8024 (1993)"
+doi = "10.1063/1.464556"
+library = "Bishop_1993_CalculationVibrationalDynamic"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Bishop-Kirtman perturbation theory for the pure vibrational beta^v and gamma^v: \
+products of electrical-property derivatives (mu, alpha, beta with respect to normal \
+coordinates, first and second derivatives) with harmonic frequencies and cubic force \
+constants, orders (0,0), (1,0), (2,0), (0,1), (1,1) in electrical and mechanical \
+anharmonicity (Eqs. 3, 4); third derivatives omitted. CO2: SCF and partial MP2 \
+(second derivatives of beta not at MP2) with a Huzinaga-Dunning [9s6p/4s2p] basis plus \
+diffuse and polarization functions; CADPAC; optimized geometry (pp. 8025-8027)."""
+notes = """Identity: pdf page 1 is the publisher's cover; journal pages 8024-8030 = pdf \
+pages 2-8 (page = pdf page + 8022). Only CO2 is curated (H2O and NH3 skipped).
+
+CONVENTION: 'Our definitions of beta and gamma are in accord with those given in Refs. \
+14 and 15 [Bogaard and Orr 1975; Buckingham 1967], that is they are the coefficients in \
+a Taylor series expansion of the induced dipole moment' (p. 8025): T. Atomic units \
+(gamma 6.23538e-65 C^4 m^4 J^-3). Processes (p. 8025): static; dc Kerr (w1 = w, w2 = w3 \
+= 0); dc-SHG = ESHG (w1 = w2 = w, w3 = 0); THG; 'the intensity dependent refractive index \
+(IDRI) where w1 = w2 = w and w3 = -w' (process kerr). 'In all cases the circular \
+optical frequency will be given the value defined by hbar w = 0.07 E_h' (650.9 nm, \
+computed here).
+
+MEANS (p. 8027): gamma-bar^v = (gamma_xxyy + gamma_xyxy + gamma_xyyx)/15 summed (Eq. 8), \
+the isotropic gamma_par; for the Kerr experiment gamma-bar_K^v = (3 gamma_xyxy - \
+gamma_xxyy)/10 summed (Eq. 10), recorded as component 'K' (dataset dc_kerr_k). PART: \
+pure vibrational only, 'over and above vibrational effects emanating from zero-point \
+vibrational averaging' (p. 8024), which is not computed for gamma. Rotational terms are \
+not included.
+
+DATASETS: Table VI (p. 8028, image checked), one dataset per process, rows: \
+'scf_partial' and 'mp2_partial' (footnote a: 'terms including second derivatives of beta \
+are not included, i.e., [mu beta]^(2,0) and part of [mu beta]^(1,1)'), 'scf' (complete). \
+Electron correlation matters: 'the dc-Kerr effect exhibits a change of sign' (p. 8028); \
+for dc Kerr and IDRI much of the SCF-MP2 difference comes from the vibrational \
+frequencies. The anharmonic term 'is often larger than the harmonic term' for the \
+static and dc Kerr components of CO2 (p. 8029), so those are less certain. Table XI: \
+vibrational/electronic in % at the SCF level, CO2: static 48, dc Kerr -2, ESHG -9, THG \
+about 0, IDRI 12 (against Sekino and Bartlett's SCF electronic values, sekino_1993): not \
+recorded as data.
+
+NOT EXTRACTED: Table V (SCF tensor components of gamma^v for CO2; the library's cells \
+print the last row label 'zzzx', the image 'xzzx'), H2O and NH3 tables. The earlier CO2 \
+treatment (Kirtman and Bishop, Chem. Phys. Lett. 175, 601 (1990); Bishop and Kirtman, \
+J. Chem. Phys. 95, 2646 (1991)) is superseded here (p. 8028)."""
+
+[[datasets]]
+id = "static"
+material = "CO2"
+file = "CO2/bishop_1993__static.csv"
+table = "tbl_bcd9303581c8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CO2 pure vibrational static gamma-bar^v(0;0,0,0); rows scf_partial, mp2_partial (without second derivatives of beta) and scf (complete). No uncertainty stated."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "vibrational"
+
+[[datasets]]
+id = "dc_kerr"
+material = "CO2"
+file = "CO2/bishop_1993__dc_kerr.csv"
+table = "tbl_bcd9303581c8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CO2 pure vibrational gamma-bar^v(-w; w, 0, 0), the isotropic mean for the dc Kerr frequencies at hbar w = 0.07 E_h; rows scf_partial, mp2_partial (without second derivatives of beta) and scf (complete). No uncertainty stated."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "eshg"
+material = "CO2"
+file = "CO2/bishop_1993__eshg.csv"
+table = "tbl_bcd9303581c8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CO2 pure vibrational gamma-bar^v(-2w; w, w, 0) at hbar w = 0.07 E_h; rows scf_partial, mp2_partial (without second derivatives of beta) and scf (complete). No uncertainty stated."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "thg"
+material = "CO2"
+file = "CO2/bishop_1993__thg.csv"
+table = "tbl_bcd9303581c8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CO2 pure vibrational gamma-bar^v(-3w; w, w, w) at hbar w = 0.07 E_h; rows scf_partial, mp2_partial (without second derivatives of beta) and scf (complete). No uncertainty stated."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "kerr"
+material = "CO2"
+file = "CO2/bishop_1993__kerr.csv"
+table = "tbl_bcd9303581c8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CO2 pure vibrational gamma-bar^v(-w; w, w, -w), the intensity-dependent refractive index (IDRI) at hbar w = 0.07 E_h; rows scf_partial, mp2_partial (without second derivatives of beta) and scf (complete). No uncertainty stated."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "dc_kerr_k"
+material = "CO2"
+file = "CO2/bishop_1993__dc_kerr_k.csv"
+table = "tbl_bcd9303581c8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI, CO2 pure vibrational gamma-bar_K^v(-w; w, 0, 0) = (3 gamma_xyxy - gamma_xxyy)/10 (Eq. 10), the Kerr-experiment combination at hbar w = 0.07 E_h; rows scf_partial, mp2_partial (without second derivatives of beta) and scf (complete). No uncertainty stated."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "vibrational"
+component = "K"

@@ -1,0 +1,804 @@
+citation = "J. F. Ward and G. H. C. New, Phys. Rev. 185, 57 (1969)"
+doi = "10.1103/physrev.185.57"
+library = "Ward_1969_OpticalThirdHarmonic"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Third-harmonic generation (6943 A -> 2314 A) by a focused, Q-switched ruby \
+laser (30 ns, 1-3 MW) in gases at 0-6 atm, behind a glass (or quartz) entrance window; \
+the ratio S_H/S_0 of the harmonic signal at high and zero gas pressure gives \
+(X/Delta k) of the gas relative to glass, and literature Delta k gives X relative \
+between gases. One absolute calibration (helium, uncertain by a factor of 3) from the \
+glass signal. Gaussian-beam theory of harmonic generation (Sec. III)."""
+notes = """Third-harmonic coefficients chi(-3w; w, w, w) of He, Ne, Ar, Kr, Xe, H2, CO2 \
+and N2 at 6943 A (Table III), with the theories and Kerr and dc hyperpolarizabilities \
+the paper compares. Ethylene (CH2)2 and Cl2 are not curated species; O2 has only \
+(X/Delta k) relative to glass (Table II: S_H/S_0 = 0.34 +- 0.09, 0.41 +- 0.08 (i)), no \
+chi, because no Delta k was available; air (not a curated species) has X = 86 +- 17 \
+(i), 97 +- 5 (ii) in Table II's relative units (He = 4.0).
+
+Defining equations, exactly (Appendix A, pp. 69-70):
+- (A.1) E(r, t) = E^0(r) + sum_i 1/2 [E^wi(r) exp(-i w_i t) + c.c.]; (A.3) P likewise: \
+complex amplitudes with the 1/2 (E/2) convention, so E^w is the real amplitude of a \
+cosine.
+- (A.5) P^ws = K(-ws; w1, w2 ...) X(-ws; w1, w2 ...) E^w1 E^w2 ..., with K = 1 for \
+the dc hyperpolarizability (0; 0, 0, 0), 1/4 for THG (-3w; w, w, w), 3 for the Kerr \
+effect (-w; w, 0, 0) and 1/2 for SHG (A.8), chosen so that every X of one order tends \
+to X(0; 0, 0 ...) as the frequencies go to zero.
+- (A.10)-(A.11) X = N [L(ws) L(w1) ...] chi; all L set to 1 for these gases (below \
+10 atm): X = N chi, chi per atom or molecule (Eq. (IV.3) p. 68: 'Microscopic \
+coefficients chi are obtained by dividing X by the number density').
+- (A.12) 'X(-ws; w1, w2, w3) = 1/6 gamma(-ws; w1, w2, w3)', where gamma is the \
+coefficient of physical chemistry, 'The factor 1/6 arises from expanding the energy of \
+the system as a Taylor series' (page image checked: 1/6; the library text reads 1/8). \
+The printed X is the macroscopic symbol; per molecule it means chi = gamma/6.
+- Hence chi (Ward) = gamma_T / 6 for every process, with Shelton and Rice's K factors \
+(THG: the 3w amplitude is (1/4) chi E^3 = gamma_T E^3 / 24; Kerr: 3 chi E0^2 E = \
+gamma_T E0^2 E / 2). Lehmeier et al. 1985 print these values divided by 4 (their \
+gamma(3) = gamma_T/24). Checked on the Kerr column: Buckingham and Dunmur's gamma \
+(their table, 10^36 gamma = 0.027, 0.051, 0.59, 1.4, 3.9 esu for He-Xe) divided by 6 \
+gives 4.5, 8.5, 98, 233, 650, as printed here.
+- (III.7) P^(q)(r) = 2^(1-q) X^(q) [E1(r)]^q: the same K = 1/4 for q = 3.
+- (IV.4) p. 69: chi^0 ~ chi^K / (1 + 5 w1^2 / (2 wn^2)) ~ chi / (1 + 15 w1^2 / wn^2), \
+with wn an effective excitation frequency (Table III column 6, 10^3 cm^-1: He 170, Ne \
+130, Ar 93, Kr 80, Xe 67). 'chi derived' (Table III column 5) applies it to chi^K and \
+chi^0. It does not reproduce the printed derived values exactly with w1 = 14403 cm^-1 \
+(6943 A): He from 4.5 gives 4.90 (printed 4.9), Ne from 8.5 9.77 (9.8), Ar from 98 \
+125.7 (127), Kr from 233 320 (317), but He from 3.66, 3.58, 3.59 gives 3.98, 3.97, \
+3.98 (printed 3.88, 3.87, 3.88), Ne from 10.4 12.3 (12.0), Ar from 194 264 (250), Xe \
+from 650 987 (962): 1-6 % off (computed 2026-09-26).
+
+Uncertainties: 'Absolute uncertainties are large (x 3^+-1) but ratios are good to about \
+20 %' (p. 69, conclusion). Table III's +- (not defined further) are the ratio \
+uncertainties; Table II's X (arbitrary units, scaled to He = 4.0, same values) prints \
+smaller ones (Ne +-1.0, Ar +-12, Kr +-57, Xe +-150, H2 +-7, CO2 +-13, N2 +-11) and the \
+abstract mixes the two (Xe +-150 and N2 +-11 from Table II, the rest from Table III). \
+The absolute helium value is 7 x 3^+-1 (i) or 24 x 3^+-1 (ii) (Eq. (IV.3), p. 68), from \
+(eta X/Delta k)_glass = 1.1e-18 esu (IV.1) and (X/Delta k)_He = 5e-19 (i) or 17e-19 \
+(ii) esu (IV.2); it was 'refined and reduced by 30 % since publication in Ref. 3' \
+(New and Ward 1967, Table III caption).
+
+The sign ambiguity of Eq. (III.50) gives two sets, (i) and (ii); binary mixtures rule \
+out mixed choices, and 'set (i) represents the correct resolution' (p. 69): set (ii) \
+is recorded as excluded. Ward and Elliott 1984 (ward_1984, p. 1004) later establish \
+rigorously, with helium among their gases, that q = -1 (set (i)) 'for all gases \
+studied in Ref. 1'. Every value other than helium's is 'normalized to chi_He = \
+4.0 x 10^-39 esu/atom', the Sitz and Yaris theory (Table III caption and p. 69): they \
+are measured ratios to helium times 4.0, not absolute measurements. Dawes's theory \
+values are 'similarly normalized'.
+
+Densities: Delta k at STP from the literature (Table II: Cuthbertson 1932 for He and Ne, \
+Quarder 1924 for Ar, Koch 1949 for Kr and Xe, International Critical Tables for H2, \
+CO2, N2, air); the relative X are at STP, so ratios of chi at equal density. The \
+wavelength 6943 A is the ruby line as printed."""
+
+
+[[datasets]]
+id = "chi_i_Ne"
+material = "Ne"
+file = "Ne/ward_1969__chi_i_Ne.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_Ar"
+material = "Ar"
+file = "Ar/ward_1969__chi_i_Ar.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_Kr"
+material = "Kr"
+file = "Kr/ward_1969__chi_i_Kr.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_Xe"
+material = "Xe"
+file = "Xe/ward_1969__chi_i_Xe.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_H2"
+material = "H2"
+file = "H2/ward_1969__chi_i_H2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. A molecule: THG has no rotational part and a small vibrational one, not separated by the paper; recorded as total ('an average over spatial orientations', p. 68)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_CO2"
+material = "CO2"
+file = "CO2/ward_1969__chi_i_CO2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. A molecule: THG has no rotational part and a small vibrational one, not separated by the paper; recorded as total ('an average over spatial orientations', p. 68)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_N2"
+material = "N2"
+file = "N2/ward_1969__chi_i_N2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (i)', the preferred set: the measured THG coefficient relative to helium, normalized to chi_He = 4.0 (Sitz and Yaris's theory), in Ward's convention chi = gamma_T/6. The +- is the column's (ratio) uncertainty, level not stated. A molecule: THG has no rotational part and a small vibrational one, not separated by the paper; recorded as total ('an average over spatial orientations', p. 68)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_Ne"
+material = "Ne"
+file = "Ne/ward_1969__chi_ii_Ne.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_Ar"
+material = "Ar"
+file = "Ar/ward_1969__chi_ii_Ar.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_Kr"
+material = "Kr"
+file = "Kr/ward_1969__chi_ii_Kr.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_Xe"
+material = "Xe"
+file = "Xe/ward_1969__chi_ii_Xe.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. An atom: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_H2"
+material = "H2"
+file = "H2/ward_1969__chi_ii_H2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. A molecule: THG has no rotational part and a small vibrational one, not separated by the paper; recorded as total ('an average over spatial orientations', p. 68)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_CO2"
+material = "CO2"
+file = "CO2/ward_1969__chi_ii_CO2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. A molecule: THG has no rotational part and a small vibrational one, not separated by the paper; recorded as total ('an average over spatial orientations', p. 68)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_ii_N2"
+material = "N2"
+file = "N2/ward_1969__chi_ii_N2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi experimental (ii)': the other root of Eq. (III.50), normalized to chi_He = 4.0. Excluded: the paper rejects set (ii) (p. 69, 'set (i) is in broad agreement with the other data but set (ii) is not'). Ward's convention chi = gamma_T/6. A molecule: THG has no rotational part and a small vibrational one, not separated by the paper; recorded as total ('an average over spatial orientations', p. 68)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.0e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "chi_i_absolute_He"
+material = "He"
+file = "He/ward_1969__chi_i_absolute_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), helium 'absolute', set (i): chi_He = 7.0 x 3^+-1 (Eq. (IV.3), p. 68; the abstract prints (7 x 3^+-1) x 10^-39 esu/atom). The uncertainty is a factor of 3 either way, which the format cannot express: no uncertainty is attached; treat as order of magnitude. Ward's convention chi = gamma_T/6. An atom: electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "chi_ii_absolute_He"
+material = "He"
+file = "He/ward_1969__chi_ii_absolute_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "excluded"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), helium 'absolute', set (ii): 24 x 3^+-1. Excluded: set (ii) is rejected by the paper (p. 69). Ward's convention chi = gamma_T/6."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "sitz_yaris_He"
+material = "He"
+file = "He/ward_1969__sitz_yaris_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. Sitz and R. Yaris, J. Chem. Phys. 49, 3546 (1968)"]
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note a: Sitz and Yaris's time-dependent perturbation-variation value, 'thought to be good to about 1 %' (p. 68), the normalization of every other value in the table. Ward's convention chi = gamma_T/6 (whether Ward rescaled it is not stated; the dc and Kerr values of the same authors, 3.58 and 3.66, are in the same table). Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "appendix_b_He"
+material = "He"
+file = "He/ward_1969__appendix_b_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note b: the paper's own sum-over-states calculation (Appendix B, Eq. (B.3), p. 71: 12 x 10^-39 esu/atom), singly excited discrete states only (no continuum, no doubly excited states; matrix elements from measured f values and Bates-Damgaard). 'No significance is to be attached to the difference (a factor of 3)' from Sitz and Yaris (p. 68). Ward's convention. Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_He"
+material = "He"
+file = "He/ward_1969__dawes_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note c: Dawes's one-term estimate, absolute (Dawes's 0.9, Table I of dawes_1968). Reproduced (and, for Ne-Xe, rescaled). Ward's convention; Dawes uses the same definition (Armstrong et al.'s Eq. (2.22) without its 1/4, 'as per Ref. 1'). Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Ne"
+material = "Ne"
+file = "Ne/ward_1969__dawes_Ne.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note c: Dawes's one-term estimate, normalized to chi_He = 4.0 (Dawes's absolute value times 4.0/0.9: Ne 1.7 -> 7.56, Ar 28 -> 124.4, Kr 71 -> 315.6, Xe 222 -> 986.7; all reproduce the printed values). Reproduced (and, for Ne-Xe, rescaled). Ward's convention; Dawes uses the same definition (Armstrong et al.'s Eq. (2.22) without its 1/4, 'as per Ref. 1'). Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Ar"
+material = "Ar"
+file = "Ar/ward_1969__dawes_Ar.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note c: Dawes's one-term estimate, normalized to chi_He = 4.0 (Dawes's absolute value times 4.0/0.9: Ne 1.7 -> 7.56, Ar 28 -> 124.4, Kr 71 -> 315.6, Xe 222 -> 986.7; all reproduce the printed values). Reproduced (and, for Ne-Xe, rescaled). Ward's convention; Dawes uses the same definition (Armstrong et al.'s Eq. (2.22) without its 1/4, 'as per Ref. 1'). Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Kr"
+material = "Kr"
+file = "Kr/ward_1969__dawes_Kr.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note c: Dawes's one-term estimate, normalized to chi_He = 4.0 (Dawes's absolute value times 4.0/0.9: Ne 1.7 -> 7.56, Ar 28 -> 124.4, Kr 71 -> 315.6, Xe 222 -> 986.7; all reproduce the printed values). Reproduced (and, for Ne-Xe, rescaled). Ward's convention; Dawes uses the same definition (Armstrong et al.'s Eq. (2.22) without its 1/4, 'as per Ref. 1'). Electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "dawes_Xe"
+material = "Xe"
+file = "Xe/ward_1969__dawes_Xe.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dawes_1968"]
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi theoretical', note c: Dawes's one-term estimate, normalized to chi_He = 4.0 (Dawes's absolute value times 4.0/0.9: Ne 1.7 -> 7.56, Ar 28 -> 124.4, Kr 71 -> 315.6, Xe 222 -> 986.7; all reproduce the printed values). Reproduced (and, for Ne-Xe, rescaled). Ward's convention; Dawes uses the same definition (Armstrong et al.'s Eq. (2.22) without its 1/4, 'as per Ref. 1'). Electronic. The Xe cell carries note b (Appendix B, which treats helium only) in the print (image checked); the value is Dawes's, so note c is meant."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "derived_He"
+material = "He"
+file = "He/ward_1969__derived_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi derived': the THG coefficient estimated from a Kerr (chi^K) or dc (chi^0) value by Eq. (IV.4) with the tabulated omega_n; rows from_kerr_sitz_yaris (3.88), from_static_sitz_yaris (3.87), from_static_hurst (3.88), from_kerr_buckingham_dunmur (4.9), each row named for its input (same table row). Not a measurement of THG; Eq. (IV.4) reproduces these only to 1-6 % (see the source notes). Ward's convention. An atom: electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "derived_Ne"
+material = "Ne"
+file = "Ne/ward_1969__derived_Ne.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi derived': the THG coefficient estimated from a Kerr (chi^K) or dc (chi^0) value by Eq. (IV.4) with the tabulated omega_n; rows from_kerr_buckingham_dunmur (9.8), from_static_hurst (12.0), each row named for its input (same table row). Not a measurement of THG; Eq. (IV.4) reproduces these only to 1-6 % (see the source notes). Ward's convention. An atom: electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "derived_Ar"
+material = "Ar"
+file = "Ar/ward_1969__derived_Ar.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi derived': the THG coefficient estimated from a Kerr (chi^K) or dc (chi^0) value by Eq. (IV.4) with the tabulated omega_n; rows from_kerr_buckingham_dunmur (127), from_static_hurst (250), each row named for its input (same table row). Not a measurement of THG; Eq. (IV.4) reproduces these only to 1-6 % (see the source notes). Ward's convention. An atom: electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "derived_Kr"
+material = "Kr"
+file = "Kr/ward_1969__derived_Kr.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi derived': the THG coefficient estimated from a Kerr (chi^K) or dc (chi^0) value by Eq. (IV.4) with the tabulated omega_n; row from_kerr_buckingham_dunmur (317), each row named for its input (same table row). Not a measurement of THG; Eq. (IV.4) reproduces these only to 1-6 % (see the source notes). Ward's convention. An atom: electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "derived_Xe"
+material = "Xe"
+file = "Xe/ward_1969__derived_Xe.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi derived': the THG coefficient estimated from a Kerr (chi^K) or dc (chi^0) value by Eq. (IV.4) with the tabulated omega_n; row from_kerr_buckingham_dunmur (962), each row named for its input (same table row). Not a measurement of THG; Eq. (IV.4) reproduces these only to 1-6 % (see the source notes). Ward's convention. An atom: electronic."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "derived_H2"
+material = "H2"
+file = "H2/ward_1969__derived_H2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "check"
+notes = "Table III (p. 68), in 10^-39 esu/atom (or per molecule), at the ruby fundamental 6943 A (printed; air or vacuum not stated, a 0.03 % difference), 'chi derived': the THG coefficient estimated from a Kerr (chi^K) or dc (chi^0) value by Eq. (IV.4) with the tabulated omega_n; row from_kerr_buckingham_orr (61, note f), each row named for its input (same table row). Not a measurement of THG; Eq. (IV.4) reproduces these only to 1-6 % (see the source notes). Ward's convention. Part as its input: unknown."
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_He"
+material = "He"
+file = "He/ward_1969__kerr_buckingham_dunmur_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table III (p. 68), column chi^K, note e: Buckingham and Dunmur's dc Kerr measurement, chi(-w; w, 0, 0), at their 6328 A He-Ne laser (Buckingham and Dunmur p. 1777; Ward does not state it), in 10^-39 esu. Reproduced and rescaled: Buckingham and Dunmur's gamma (Taylor) divided by 6, Ward's convention (He 27/6 = 4.5, Ne 51/6 = 8.5, Ar 590/6 = 98.3, Kr 1400/6 = 233, Xe 3900/6 = 650; their +- also / 6). Atoms: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_Ne"
+material = "Ne"
+file = "Ne/ward_1969__kerr_buckingham_dunmur_Ne.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table III (p. 68), column chi^K, note e: Buckingham and Dunmur's dc Kerr measurement, chi(-w; w, 0, 0), at their 6328 A He-Ne laser (Buckingham and Dunmur p. 1777; Ward does not state it), in 10^-39 esu. Reproduced and rescaled: Buckingham and Dunmur's gamma (Taylor) divided by 6, Ward's convention (He 27/6 = 4.5, Ne 51/6 = 8.5, Ar 590/6 = 98.3, Kr 1400/6 = 233, Xe 3900/6 = 650; their +- also / 6). Atoms: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_Ar"
+material = "Ar"
+file = "Ar/ward_1969__kerr_buckingham_dunmur_Ar.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table III (p. 68), column chi^K, note e: Buckingham and Dunmur's dc Kerr measurement, chi(-w; w, 0, 0), at their 6328 A He-Ne laser (Buckingham and Dunmur p. 1777; Ward does not state it), in 10^-39 esu. Reproduced and rescaled: Buckingham and Dunmur's gamma (Taylor) divided by 6, Ward's convention (He 27/6 = 4.5, Ne 51/6 = 8.5, Ar 590/6 = 98.3, Kr 1400/6 = 233, Xe 3900/6 = 650; their +- also / 6). Atoms: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_Kr"
+material = "Kr"
+file = "Kr/ward_1969__kerr_buckingham_dunmur_Kr.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table III (p. 68), column chi^K, note e: Buckingham and Dunmur's dc Kerr measurement, chi(-w; w, 0, 0), at their 6328 A He-Ne laser (Buckingham and Dunmur p. 1777; Ward does not state it), in 10^-39 esu. Reproduced and rescaled: Buckingham and Dunmur's gamma (Taylor) divided by 6, Ward's convention (He 27/6 = 4.5, Ne 51/6 = 8.5, Ar 590/6 = 98.3, Kr 1400/6 = 233, Xe 3900/6 = 650; their +- also / 6). Atoms: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_Xe"
+material = "Xe"
+file = "Xe/ward_1969__kerr_buckingham_dunmur_Xe.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table III (p. 68), column chi^K, note e: Buckingham and Dunmur's dc Kerr measurement, chi(-w; w, 0, 0), at their 6328 A He-Ne laser (Buckingham and Dunmur p. 1777; Ward does not state it), in 10^-39 esu. Reproduced and rescaled: Buckingham and Dunmur's gamma (Taylor) divided by 6, Ward's convention (He 27/6 = 4.5, Ne 51/6 = 8.5, Ar 590/6 = 98.3, Kr 1400/6 = 233, Xe 3900/6 = 650; their +- also / 6). Atoms: electronic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "kerr_sitz_yaris_He"
+material = "He"
+file = "He/ward_1969__kerr_sitz_yaris_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. Sitz and R. Yaris, J. Chem. Phys. 49, 3546 (1968)"]
+notes = "Table III (p. 68), column chi^K, note a: Sitz and Yaris's theoretical Kerr coefficient chi(-w; w, 0, 0) of helium, 3.66 x 10^-39 esu, Ward's convention. The optical frequency is not stated; the wavelength column holds the ruby line that Eq. (IV.4) uses to derive 3.88 from it. Electronic."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "kerr_buckingham_orr_H2"
+material = "H2"
+file = "H2/ward_1969__kerr_buckingham_orr_H2.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and B. J. Orr, Proc. Roy. Soc. (London) A305, 259 (1968)"]
+notes = "Table III (p. 68), column chi^K, note f: H2 47 +- 5 x 10^-39 esu from Buckingham and Orr (not in the library), Ward's convention. Whether it is the electronic part or includes H2's orientational (rotational) Kerr contribution, and at what wavelength, Ward does not say (the wavelength column holds the ruby line used by Eq. (IV.4)): part unknown."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "static_sitz_yaris_He"
+material = "He"
+file = "He/ward_1969__static_sitz_yaris_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. Sitz and R. Yaris, J. Chem. Phys. 49, 3546 (1968)"]
+notes = "Table III (p. 68), column 'chi^0 theoretical', note a: Sitz and Yaris, 3.58 x 10^-39 esu: the static (dc) hyperpolarizability chi(0; 0, 0, 0) = gamma_T/6. Electronic."
+[datasets.parameters]
+process = "static"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "static_hurst_He"
+material = "He"
+file = "He/ward_1969__static_hurst_He.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148, 18 (1966)", "M. N. Grasso, K. T. Chung and R. P. Hurst, Phys. Rev. 167, 1 (1968)"]
+notes = "Table III (p. 68), column 'chi^0 theoretical', note d: 3.59 x 10^-39 esu, the variational static hyperpolarizability chi(0; 0, 0, 0) = gamma_T/6 of Hurst and co-workers (Langhoff, Lyons and Hurst 1966; Grasso, Chung and Hurst 1968; which paper gives which gas is not stated). For helium 'thought to be good to about 1 %' (p. 69). Electronic."
+[datasets.parameters]
+process = "static"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "static_hurst_Ne"
+material = "Ne"
+file = "Ne/ward_1969__static_hurst_Ne.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148, 18 (1966)", "M. N. Grasso, K. T. Chung and R. P. Hurst, Phys. Rev. 167, 1 (1968)"]
+notes = "Table III (p. 68), column 'chi^0 theoretical', note d: 10.4 x 10^-39 esu, the variational static hyperpolarizability chi(0; 0, 0, 0) = gamma_T/6 of Hurst and co-workers (Langhoff, Lyons and Hurst 1966; Grasso, Chung and Hurst 1968; which paper gives which gas is not stated). For helium 'thought to be good to about 1 %' (p. 69). Electronic."
+[datasets.parameters]
+process = "static"
+convention = "ward_1969"
+part = "electronic"
+
+[[datasets]]
+id = "static_hurst_Ar"
+material = "Ar"
+file = "Ar/ward_1969__static_hurst_Ar.csv"
+table = "tbl_ffb0f106d17e"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["P. W. Langhoff, J. D. Lyons and R. P. Hurst, Phys. Rev. 148, 18 (1966)", "M. N. Grasso, K. T. Chung and R. P. Hurst, Phys. Rev. 167, 1 (1968)"]
+notes = "Table III (p. 68), column 'chi^0 theoretical', note d: 194 x 10^-39 esu, the variational static hyperpolarizability chi(0; 0, 0, 0) = gamma_T/6 of Hurst and co-workers (Langhoff, Lyons and Hurst 1966; Grasso, Chung and Hurst 1968; which paper gives which gas is not stated). For helium 'thought to be good to about 1 %' (p. 69). Electronic."
+[datasets.parameters]
+process = "static"
+convention = "ward_1969"
+part = "electronic"

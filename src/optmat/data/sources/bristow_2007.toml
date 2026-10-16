@@ -1,0 +1,189 @@
+citation = "A. D. Bristow, N. Rotenberg and H. M. van Driel, \"Two-photon absorption and Kerr coefficients of silicon for 850-2200 nm\", Appl. Phys. Lett. 90, 191104 (2007)"
+doi = "10.1063/1.2737359"
+library = "Bristow_2007_TwoPhotonAbsorption"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single-beam Z-scan (open aperture for beta, closed aperture with S = 0.13 for \
+n2; the text says 'closed and open aperture ... respectively', reversed, p. 191104-1) \
+of bulk Si at 300 K. Source: an optical parametric amplifier, nominally 200 fs pulses at \
+1 kHz for 1100-2200 nm, frequency-doubled in BBO for 850-1100 nm; linearly polarized \
+~100 nJ pulses focused by a 10 cm lens, z0 = 5 mm, focal spot 75 um FWHM (knife edge); \
+Ge or PbS detectors in reference and signal arms, lock-in detection. Sample: '125 um \
+thick wafer of intrinsic, double sided polished crystalline Si, cut with the normal axis \
+along the [001] crystal direction'. 'Fresnel losses were incorporated in determining the \
+peak intensity inside the sample'; peak intensity ~8 GW/cm2 (pp. 191104-1, -2)."""
+notes = """Article pages 191104-1 to -3 = PDF pages 2-4 (PDF page 1 is the publisher's \
+cover page). Identity checked against the first page. No tables: every value here is a \
+text value (inline points, with the page).
+
+WHAT IS HERE. Text values at 1220 nm (p. 191104-2): 'Fits to the data yield beta = 2.1 \
++- 0.4 cm/GW and n2 = (4.7 +- 2.0) x 10^-5 cm2/GW' (Fig. 1, peak intensity 7.8 GW/cm2). \
+Abstract (p. 191104-1): 'With a broad peak near the indirect gap and maximum value of 2 \
++- 0.5 cm/GW, the dispersion of beta compares favorably with theoretical calculations of \
+Garcia and Kalyanaraman ... Within our wavelength range, n2 varies by a factor of 4 with \
+a peak value of 1.2 x 10^-13 cm2/W at lambda = 1800 nm.' The maximum beta has no stated \
+wavelength ('a broad peak or plateau for lambda < 1200 nm', p. 191104-2), so it is not a \
+dataset. The spectra themselves (beta at ~24 wavelengths 850-2200 nm, Fig. 2; n2 at ~20 \
+wavelengths, Fig. 3; squares with error bars) are figures only: not digitised. Fig. 2 \
+also shows others' beta (Refs. 7, 15, 9, 18) and the Garcia-Kalyanaraman fit; Fig. 3 \
+Dinu et al.'s n2 [18], a guide to the eye and a Kramers-Kronig estimate from the fitted \
+beta.
+
+DEFINITIONS. Eq. (1), open aperture: T_open(z) = 1 - (1/(2 sqrt 2)) beta I0 L_eff / (1 + \
+(z/z0)^2); Eq. (2), closed aperture: T_closed(z) = 1 - (8 pi / (lambda sqrt 2)) (z/z0) (1 \
+- S)^0.25 L_eff n2 I0 / ((1 + (z/z0)^2)(9 + (z/z0)^2)) - (1/(2 sqrt 2)) L_eff beta I0 (3 \
+- (z/z0)^2) / ((1 + (z/z0)^2)(9 + (z/z0)^2)); I0 the on-axis peak intensity inside the \
+sample, L_eff = (1 - exp(-alpha L)) / alpha (p. 191104-1). So beta is that of dI/dz = \
+-alpha I - beta I^2 and n2 that of n = n0 + n2 I, with reflection losses removed. 200-fs \
+pulses: the Si Raman response (15.6 THz) is partly included; the paper does not \
+discuss it: part unknown.
+
+ERRORS AND CHECKS (pp. 191104-1, -2): 'The experimental results are consistent within \
+experimental error, which, in our case, is mainly related to obtaining values of peak \
+laser intensity and small differences in beam shape with tuning.' Free-carrier \
+absorption estimated at ~3 % of the 2PA (for sigma = 5e-18 cm2 at 1060 nm), the Drude \
+index change ~-1e-4, band filling and gap shrinkage negligible; I0^2 scaling verified at \
+several wavelengths; three-photon absorption across the direct gap (lambda < 1070 nm) \
+negligible (Wherrett's scaling); for lambda > 1400 nm the variation of beta with the \
+polarization direction was < 5 % 'and within experimental error'. The level of the +- is \
+not stated.
+
+LITERATURE QUOTED (p. 191104-1): Reintjes and McGroddy [15], beta = 1.5 cm/GW at 100 K, \
+1060 nm, picosecond pulses (dataset beta_reintjes_1973, reproduced); 'a similar value \
+was obtained by Boggess et al. at 300 K' [16] (no number); Reitze et al. [17] '5 < beta \
+< 36 cm/GW for 90 fs pulses in the range 620 >= lambda >= 550 nm' (across the direct gap, \
+3.4 eV); at 1300 or 1500 nm 'values [9, 10, 18] of beta ~0.8 cm/GW'; n2 'values (~3 x \
+10^-14 cm2/W) reported for 1300 and 1550 nm' [18] (Dinu et al., dataset n2_dinu_2003, \
+reproduced); Sabbah and Riffe [25] beta ~5 cm/GW, 'only an estimate'. The indirect gap \
+E_gi = 1.12 eV (p. 191104-1) is the input of the fit (dataset eg_indirect). The text's \
+'measurements at 1300 and 1550 um by Dinu' (p. 191104-2) means nm.
+
+KRAMERS-KRONIG ESTIMATE (p. 191104-2, -3): n2(omega) = (c/pi) int beta(omega, omega') / \
+(omega^2 - omega'^2) domega' with 'the approximation [27] beta(omega, omega') = beta([omega \
++ omega'] / 2)' (Ref. 27 = sheik_bahae_1991, its Eq. 4) gives values 'well below the \
+measured results'; direct-gap 2PA 'shifts the estimate upward by only 1 x 10^-14 cm2/W'; \
+the rest attributed to 'the neglect of Raman and quadratic Stark contributions'.
+
+REPRODUCTIONS OF THIS PAPER: jansonas_2022 (lit_eff_Si_bristow_2007: '~10.4 +- 2' x \
+1e-14 cm2/W at 2.2 um, a reading of Fig. 3: not printed here); ensley_2019 notes \
+'Bristow et al.'s ~0.4 cm/GW' at 2 um (Fig. 2); poulvellarie_2018 computes its \
+waveguide nonlinear coefficients 'on the basis of the data from' this paper."""
+
+[[formulas]]
+id = "beta_indirect_gk"
+equation = "p. 191104-2 (text)"
+printed = "beta = sum_{n=0}^{2} beta^(n); beta^(n) = 2 C F2^(n)(hbar omega / E_gi); F2^(n)(x) = [pi (2n + 1)!! / 2^(n+2) (n + 2)!] (2x)^-5 (2x - 1)^(n+2)"
+variable = "x = hbar omega / E_gi, E_gi = 1.12 eV the indirect gap; n = 0, 1, 2 for allowed-allowed, allowed-forbidden and forbidden-forbidden phonon-assisted transitions; beta in cm/GW; zero for x < 1/2"
+coefficients = { C = "43", E_gi = "1.12" }
+check = "With C = 43 cm/GW and E_gi = 1.12 eV (hbar omega = 1239.84 eV nm / lambda) the sum peaks at 1.93 cm/GW near 1000-1050 nm and falls to zero at 2214 nm (E_gi / 2), as the solid curve of Fig. 2 (peak just below 2 cm/GW near 1050 nm, zero near 2200 nm, read from the figure, not digitised); 1.86, 1.33, 0.72, 0.25 cm/GW at 1200, 1550, 1800, 2000 nm. The f-f term (n = 2) peaks at x = 5/2 ('peaks at hbar omega ~ 5 E_gi / 2') and the a-a and a-f terms at x = 5/6 and 5/4 ('near E_gi'), as stated. Computed 2026-09-27."
+notes = "The form of Garcia and Kalyanaraman (J. Phys. B 39, 2737 (2006), not in the library) for parabolic bands with phonon energies << E_gi, 'the factor of 2 accounting for phonon emission and absorption processes in indirect gap optical absorption'; 'we fit our data with the functional form beta = sum_n beta^(n) to obtain C = 43 cm/GW' (p. 191104-2). A one-constant fit to Fig. 2's squares; the uncertainty of C is not given."
+
+[[datasets]]
+id = "beta_1220"
+material = "Si"
+table = "text"
+points = [["1220", "1220", "2.1", "0.4"]]
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+use = "primary"
+notes = "Text, p. 191104-2: 'Fits to the data yield beta = 2.1 +- 0.4 cm/GW' at 1220 nm (Fig. 1(a), open aperture, peak intensity 7.8 GW/cm2 inside the sample). One of the ~24 points of Fig. 2, the only one printed. dI/dz = -alpha I - beta I^2 (Eq. 1), reflection losses removed. Level of the +- not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 300
+technique = "Z-scan (open aperture)"
+pulse_fs = 200
+polarization = "linear"
+form = "bulk"
+grade = "intrinsic, double-side polished (001) wafer, 125 um"
+
+[[datasets]]
+id = "n2_1220"
+material = "Si"
+table = "text"
+points = [["1220", "1220", "4.7", "2.0"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "primary"
+notes = "Text, p. 191104-2: 'n2 = (4.7 +- 2.0) x 10^-5 cm2/GW' at 1220 nm (Fig. 1(b), closed aperture, S = 0.13), i.e. 4.7e-14 cm2/W. n = n0 + n2 I (Eq. 2), intensity inside the sample. One of the points of Fig. 3, the only one printed. 200-fs pulses: part unknown (the Raman response is partly included; not discussed). Level of the +- not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+temperature_k = 300
+technique = "Z-scan (closed aperture)"
+pulse_fs = 200
+polarization = "linear"
+form = "bulk"
+grade = "intrinsic, double-side polished (001) wafer, 125 um"
+
+[[datasets]]
+id = "n2_peak_1800"
+material = "Si"
+table = "text"
+points = [["1800", "1800", "1.2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-13
+abscissa_unit = "nm"
+use = "primary"
+notes = "Abstract, p. 191104-1: 'n2 varies by a factor of 4 with a peak value of 1.2 x 10^-13 cm2/W at lambda = 1800 nm'; 'The value of n2 increases by a factor of 4 with increasing wavelength until 1800 nm, after which it declines slightly in value' (p. 191104-2). The authors' summary of Fig. 3's peak point; no uncertainty is printed for it (Fig. 3 has error bars). Part unknown, as n2_1220."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+temperature_k = 300
+technique = "Z-scan (closed aperture)"
+pulse_fs = 200
+polarization = "linear"
+form = "bulk"
+grade = "intrinsic, double-side polished (001) wafer, 125 um"
+
+[[datasets]]
+id = "eg_indirect"
+material = "Si"
+table = "text"
+points = [["E_gi", "", "1.12"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Text, p. 191104-1: 'no systematic experimental spectroscopic study has been carried out for 2PA across the indirect gap (E_gi = 1.12 eV)'. The indirect gap, the input of the Garcia-Kalyanaraman fit (formula beta_indirect_gk); its source is not given."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "beta_reintjes_1973"
+material = "Si"
+table = "text"
+points = [["1060", "1060", "1.5"]]
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. F. Reintjes and J. C. McGroddy, Phys. Rev. Lett. 30, 901 (1973) [15]"]
+notes = "Text, p. 191104-1: 'Reintjes and McGroddy were the first to isolate a two-photon absorption process in silicon from cascaded optical processes involving interband and intraband (free carrier) absorption; a value of beta = 1.5 cm/GW was obtained at 100 K for picosecond pulses at a fundamental wavelength lambda = 1060 nm'. The uptriangle of Fig. 2."
+[datasets.parameters]
+temperature_k = 100
+
+[[datasets]]
+id = "n2_dinu_2003"
+material = "Si"
+table = "text"
+points = [["1300", "1300", "3"], ["1550", "1550", "3"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-14
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["M. Dinu, F. Quochi, and H. Garcia, Appl. Phys. Lett. 82, 2954 (2003) [18]"]
+notes = "Text, p. 191104-1: 'Information [18] for n2 is even more scarce than for beta with values (~3 x 10^-14 cm2/W) reported for 1300 and 1550 nm': one approximate value for both wavelengths, the diamonds of Fig. 3."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"

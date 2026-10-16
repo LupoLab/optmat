@@ -1,0 +1,394 @@
+citation = "C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. London A 97, 152 (1920)"
+doi = "10.1098/rspa.1920.0020"
+library = "Cuthbertson_1920_RefractionDispersionCarbon"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Jamin refractometer, as in the authors' earlier work (measured in 1914). The \
+absolute refractivity at the green mercury line (5461 A) from 'double experiments' \
+(pressure increasing and diminishing), at room temperature (about 17.5 degrees C for \
+CO2) and 30-50 cm Hg; the dispersion relative to it at eight lines (Li 6708, Cd 6438, \
+Hg 5790, 5770, 5461, Ag 5209, Cd 5085, 4800 A) by counting 500-800 bands (pp. 1-5)."""
+notes = """The refractivities are mu - 1 itself, NOT the doubled 2 (mu - 1) of the \
+Cuthbertsons' 1910 noble-gas tables (cuthbertson_1910): Table I's 45,050 x 10^-8 at \
+5461 A is the text's mean absolute value (mu - 1) 10^7 = 4505 for CO2 (p. 1), and \
+Table III's 44,150 x 10^-8 the methane mean 4415 (p. 5). The formulas are likewise for \
+mu - 1.
+
+Carbon dioxide: 'at 0 degrees C. and 76 cm.', eight absolute values 4500-4509 x 10^-7, \
+mean 4505; reduced for temperature with Chappuis's coefficient (1 + 0.00371 t) and for \
+pressure with Leduc's formula P0 V0 / PV - 1 = 102 x 10^-6 (P - P0) (p. 1): a \
+real-gas reduction (state 1 atm, 0 degrees C, density real). About 0.1 % of unabsorbed \
+gas (assumed air) was allowed for. 'Had we used Walker's temperature coefficient (1 + \
+0.0038 t), our result would have been 4512' (p. 2). Table I's column 5 reduces the \
+observed values to the number density of hydrogen at 0 degrees C and 76 cm \
+((mu - 1) D / d0 76 = 0.0004471 at 5461 A, p. 2); it is column 2 times a constant \
+(0.99246) and is not extracted, nor column 6 (two values of column 3 so reduced).
+
+Methane: five absolute values 4412-4417 x 10^-7, mean 4415 (p. 5). The paper states \
+neither the state nor the reduction for methane; 1 atm, 0 degrees C is assumed (the \
+CO2 and CO values are at 0 degrees C and 76 cm), density unknown. The gas was purified \
+from hydrogen by Campbell and Parker's method.
+
+Wavelengths: the lines rounded to 1 A (6708 for Li 6707.85, 5790 and 5770 for Hg \
+5790.7 and 5769.6, 4800 for Cd 4799.9), air wavelengths: standard air. The rounding \
+moves no value by more than 0.2 printed units.
+
+Uncertainty: not stated. The per-point uncertainties are the rms of the paper's \
+calc - obs differences (CO2 2.2, CH4 0.71, CO 1.2 printed units x 10^-8); the scale \
+uncertainty the half-range of the absolute determinations (CO2 0.10 %, CH4 0.057 %, \
+CO 0.045 %).
+
+Earlier work: the CO2 values of six observers at 5461 A (p. 2; no references given in \
+the paper, except Koch's, cited for methane on p. 5) are extracted as reproduced \
+datasets; 'the discrepancies are, no doubt, largely due to the use of different \
+coefficients of pressure and temperature in the reduction'. The earlier methane \
+values (St. Loria 4468, Kessler 4435, Koch 4407, x 10^-7) state no wavelength and are \
+not extracted; 'these values are not concordant, probably owing to the difficulty of \
+purifying the gas'. The lambda_0 comparisons (pp. 3, 5, 6) are derived numbers, not \
+extracted.
+
+Carbon monoxide (pp. 3-5): made from formic acid and concentrated sulphuric acid, \
+dried, condensed in liquid air and fractionated; 'on testing by explosion with oxygen \
+no impurities were found'. Four double experiments at 5461 A gave (mu - 1) 10^7 = \
+3362, 3365, 3364, 3364, mean 3364, 'reduced by the formula' (mu - 1) 76/P T/273 (p. 4): \
+an ideal-gas reduction to 0 degrees C and 76 cm (density ideal), unlike the CO2 \
+reduction. Dispersion from ten experiments of nearly 600 bands each (Table II, p. 4). \
+The earlier values at 5461 A (Mascart, Perreau, Koch, Grueschke; no references given) \
+are extracted as reproduced datasets; 'our value agrees well with that of the last \
+three'. Their lambda_0 values (p. 5) are derived and not extracted. The 'carbon atom' \
+formula 'from carbon monoxide' (p. 7) is not recorded, as for CO2.
+
+The 'carbon atom' formulas of p. 7 (CO2 minus O2 and so on) are not gas properties \
+and are not recorded; the hydrogen, oxygen and nitrogen formulas quoted on p. 7 from \
+the authors' 1909 paper (Proc. R. Soc. 83, 151, not in the library) are recorded as \
+reproduced formulas."""
+
+[[datasets]]
+id = "experiment_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__experiment_CO2.csv"
+table = "tbl_475eaffb74ab"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "Table I, observed (seven experiments, nearly all counting 800 bands). The 5461 A value is the absolute one."
+[datasets.uncertainty]
+absolute = 2.2
+level = "rms"
+systematic_relative = 0.001
+
+[[datasets]]
+id = "fit_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__fit_CO2.csv"
+table = "tbl_475eaffb74ab"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "Table I, calculated column (formula co2_1920, which reproduces it only to 1.6 printed units)."
+
+[[datasets]]
+id = "experiment_CH4"
+material = "CH4"
+file = "CH4/cuthbertson_1920__experiment_CH4.csv"
+table = "tbl_ae9680fa9a81"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "primary"
+notes = "Table III, observed (eight experiments, three counting 800 bands and five 500). The 5461 A value is the absolute one. State assumed (see the source notes)."
+[datasets.uncertainty]
+absolute = 0.71
+level = "rms"
+systematic_relative = 0.00057
+
+[[datasets]]
+id = "fit_CH4"
+material = "CH4"
+file = "CH4/cuthbertson_1920__fit_CH4.csv"
+table = "tbl_ae9680fa9a81"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "check"
+notes = "Table III, calculated column (formula ch4_1920)."
+
+[[datasets]]
+id = "mascart_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__mascart_CO2.csv"
+table = "tbl_b6b36b76ac3b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Mascart (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "Earlier-work table, p. 2, at 5461 A; state as the Cuthbertsons' (0 degrees C, 76 cm), each observer's own reduction."
+
+[[datasets]]
+id = "perreau_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__perreau_CO2.csv"
+table = "tbl_b6b36b76ac3b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Perreau (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "As mascart_CO2."
+
+[[datasets]]
+id = "walker_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__walker_CO2.csv"
+table = "tbl_b6b36b76ac3b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["G. W. Walker (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "As mascart_CO2; printed 4510 +- 5 (level not stated). Walker used the temperature coefficient 1 + 0.0038 t (p. 2)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "stuckert_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__stuckert_CO2.csv"
+table = "tbl_b6b36b76ac3b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Stuckert (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "As mascart_CO2."
+
+[[datasets]]
+id = "grueschke_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__grueschke_CO2.csv"
+table = "tbl_b6b36b76ac3b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Grueschke (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "As mascart_CO2 (printed 'Grüschke')."
+
+[[datasets]]
+id = "koch_CO2"
+material = "CO2"
+file = "CO2/cuthbertson_1920__koch_CO2.csv"
+table = "tbl_b6b36b76ac3b"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["J. Koch, Arkiv for Mat. Astr. och Fysik 9 (6) (1913) (cited for methane, p. 5; presumably also the CO2 value)"]
+notes = "As mascart_CO2. 'Our value agrees well with that of Koch' (p. 2)."
+
+[[datasets]]
+id = "experiment_CO"
+material = "CO"
+file = "CO/cuthbertson_1920__experiment_CO.csv"
+table = "tbl_5e46be9ef072"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "ideal"
+use = "primary"
+notes = "Table II, observed (ten experiments of nearly 600 bands). The 5461 A value is the absolute one (mean 3364 x 10^-7 of four double experiments, p. 4), reduced to 0 degrees C and 76 cm with the ideal-gas formula."
+[datasets.uncertainty]
+absolute = 1.2
+level = "rms"
+systematic_relative = 0.00045
+
+[[datasets]]
+id = "fit_CO"
+material = "CO"
+file = "CO/cuthbertson_1920__fit_CO.csv"
+table = "tbl_5e46be9ef072"
+quantity = "refractivity"
+scale = 1e-8
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "ideal"
+use = "check"
+notes = "Table II, calculated column (formula co_1920)."
+
+[[datasets]]
+id = "mascart_CO"
+material = "CO"
+file = "CO/cuthbertson_1920__mascart_CO.csv"
+table = "tbl_fe180e2332d2"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Mascart (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "Earlier-work table, p. 4, at 5461 A; state as the Cuthbertsons' (0 degrees C, 76 cm), each observer's own reduction."
+
+[[datasets]]
+id = "perreau_CO"
+material = "CO"
+file = "CO/cuthbertson_1920__perreau_CO.csv"
+table = "tbl_fe180e2332d2"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Perreau (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "As mascart_CO."
+
+[[datasets]]
+id = "koch_CO"
+material = "CO"
+file = "CO/cuthbertson_1920__koch_CO.csv"
+table = "tbl_fe180e2332d2"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Koch (no reference given by C. and M. Cuthbertson 1920; presumably J. Koch, Ark. Mat. Astron. Fys. 10 (1914), whose CO dispersion smith_1976 reproduces from the International Critical Tables)"]
+notes = "As mascart_CO. The same work as smith_1976's koch_1914_CO (237.9-289.4 nm), if the presumption holds."
+
+[[datasets]]
+id = "grueschke_CO"
+material = "CO"
+file = "CO/cuthbertson_1920__grueschke_CO.csv"
+table = "tbl_fe180e2332d2"
+quantity = "refractivity"
+scale = 1e-7
+abscissa_unit = "angstrom"
+wavelength_medium = "standard_air"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["Grueschke (no reference given by C. and M. Cuthbertson 1920)"]
+notes = "As mascart_CO (printed 'Grüschke')."
+
+[[formulas]]
+id = "co2_1920"
+material = "CO2"
+equation = "formula below Table I, p. 3"
+printed = "(mu - 1)_{n.t.p.} = 6.2144 x 10^27 / ((14097) 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "real"
+range = "480-671 nm"
+coefficients = { C = "6.2144e27", n0_squared = "14097e27" }
+check = "With V = 3e10 cm/s and the printed wavelengths it gives Table I's calculated column only to within 1.6 printed units (x 10^-8; 5461 A 45047.5 against 45049, 5209 A 45145.4 against 45147, 4800 A 45339.5 against 45341); V = 2.99796e10 or the exact line wavelengths do worse. No single coefficient correction explains it: the best one-pole fit to the calculated column itself leaves +-1.2 units, so the printed column is not an exact evaluation of any such formula. Checked 2026-09-25."
+notes = "Labelled (mu - 1)_{n.t.p.} but it gives the observed column 2 (0 degrees C, 76 cm), not the hydrogen-density column 5. lambda_0 = 799 A (p. 3)."
+
+[[formulas]]
+id = "ch4_1920"
+material = "CH4"
+equation = "formula below Table III, p. 6"
+printed = "mu - 1 = 5.02763 x 10^27 / (11689.3 x 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "unknown"
+range = "480-671 nm"
+coefficients = { C = "5.02763e27", n0_squared = "11689.3e27" }
+check = "With V = 3e10 cm/s and the printed wavelengths it reproduces Table III's calculated column to within 0.7 printed units (x 10^-8). Checked 2026-09-25."
+notes = "lambda_0 = 877 A (p. 6)."
+
+[[formulas]]
+id = "co_1920"
+material = "CO"
+equation = "formula below Table II, p. 4"
+printed = "mu - 1 = 3.64067 x 10^27 / (11,124 x 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1, lambda the air wavelength in cm, V = 3e10 cm/s (implied)"
+state = "1atm_0C"
+density = "ideal"
+range = "480-671 nm"
+coefficients = { C = "3.64067e27", n0_squared = "11124e27" }
+check = "With V = 3e10 cm/s and the printed wavelengths it exceeds Table II's calculated column by 0.6-1.4 printed units (x 10^-8; 5461 A 33640.7 against 33640, 5790 A 33537.4 against 33536); with V = 2.99796e10 it agrees to within 0.6 units at all eight lines (5461 A 33639.4), the best any single V does (V = 2.998e10, +-0.54). Not an exact evaluation, as for co2_1920. Checked 2026-09-25."
+notes = "lambda_0 = 899 A (p. 5, 'Cuthbertson' row of the lambda_0 comparison)."
+
+[[formulas]]
+id = "h2_1909"
+material = "H2"
+equation = "unlabelled table, p. 7"
+printed = "mu - 1 = 1.692 x 10^27 / (12,409 x 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1 (as above)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible (the 1909 paper's lines; not stated here)"
+coefficients = { C = "1.692e27", n0_squared = "12409e27" }
+reproduced_from = ["C. and M. Cuthbertson, Proc. R. Soc. London 83, 151 (1909)"]
+check = "Gives 1.3975e-4 at 5461 A (V = 3e10). Not checked against the 1909 values (not in the library)."
+notes = "Reproduced from the authors' 1909 paper; not doubled."
+
+[[formulas]]
+id = "o2_1909"
+material = "O2"
+equation = "unlabelled table, p. 7"
+printed = "mu - 1 = 3.397 x 10^27 / (12,804 x 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1 (as above)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible (the 1909 paper's lines; not stated here)"
+coefficients = { C = "3.397e27", n0_squared = "12804e27" }
+reproduced_from = ["C. and M. Cuthbertson, Proc. R. Soc. London 83, 151 (1909)"]
+check = "Gives 2.7171e-4 at 5461 A. Not checked against the 1909 values."
+notes = "Reproduced. The O2 values the authors deduct on p. 7 (26,952 and 27,366 x 10^-8 at 6708 and 4800 A) are on the hydrogen-density scale."
+
+[[formulas]]
+id = "n2_1909"
+material = "N2"
+equation = "unlabelled table, p. 7"
+printed = "mu - 1 = 5.0345 x 10^27 / (17,095 x 10^27 - n^2)"
+variable = "n = V/lambda, frequency in s^-1 (as above)"
+state = "1atm_0C"
+density = "unknown"
+range = "visible (the 1909 paper's lines; not stated here)"
+coefficients = { C = "5.0345e27", n0_squared = "17095e27" }
+reproduced_from = ["C. and M. Cuthbertson, Proc. R. Soc. London 83, 151 (1909)"]
+check = "Gives 2.9979e-4 at 5461 A. Not checked against the 1909 values."
+notes = "Reproduced."

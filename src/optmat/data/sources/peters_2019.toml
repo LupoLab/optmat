@@ -1,0 +1,57 @@
+citation = "C. J. Peters, M. N. Shneider and R. B. Miles, \"Kinetics model of femtosecond laser ionization in nitrogen and comparison to experiment\", J. Appl. Phys. 125, 243301 (2019)"
+doi = "10.1063/1.5098306"
+library = "Peters_2019_KineticsModelFemtosecond"
+identity = "VALIDATED"
+kind = "theory"
+technique = """A zero-dimensional kinetics model of the plasma a focused femtosecond \
+pulse leaves in nitrogen (femtosecond laser electronic excitation tagging, FLEET): 54 \
+reactions (Table I) among ten species, electron-impact rates from BOLSIG+ (version \
+03/2016) with its standard N2 cross sections, fast gas heating, and an electron \
+energy balance; initial N2+ and electron densities from a PPT ionisation rate at a \
+filament-clamped intensity (6.5 x 10^17 W m^-2, n_e = 7.2 x 10^16 cm^-3 at 300 K and \
+101.3 kPa). Seven uncertain coefficients tuned by a random search (240 000 trials) to \
+the time-resolved first- and second-positive emission measured with a photomultiplier \
+in a nitrogen free jet (800 nm, 70 fs, 0.5 mJ, f = 0.3 m; pp. 243301-2 to -9)."""
+notes = """Identity checked on the article's first page (PDF page 2 = p. 243301-1; PDF \
+page 1 is a cover sheet): Peters, Shneider and Miles, J. Appl. Phys. 125, 243301 \
+(2019). PDF page n = p. 243301-(n - 1).
+
+Curated: the one dissociative recombination of a registered ion in Table I, R12, \
+e- + N2+ -> 2N, not tuned and taken from refs. 23 (kossyi_1992) and 40 (Popov 2001): \
+the same value and law as kossyi_1992/dr_N2+_N_N.
+
+TUNED, NOT A PROPERTY (notes only; Table I footnote a, Table IV, Sec. III A, \
+p. 243301-8): the cluster-ion recombinations R7-R9, e- + N4+ -> N2(A, B, C) + N2, \
+'2.5 %, 87 % and 11 % x 2.4 x 10^-6 sqrt(300/T_e)' cm^3 s^-1: a base coefficient drawn \
+from 2.6 x 10^-7 to 5.5 x 10^-6 and split at random among the three product states, \
+chosen to fit the emission; also tuned: R5 (energy pooling), R23-R25 (quenching). Table \
+IV lists the literature ranges, e.g. 2.6 x 10^-7 (ref. 34) to 4.6 +- 0.9 x 10^-6 (ref. \
+37) for N4+. Not registered, notes only: R11, e- + N3+ -> N + N2, 2.0 x 10^-7 \
+sqrt(300/T_e) (refs. 23, 37); R10, 2e- + N4+, 7 x 10^-20 (300/T_e)^4.5 cm^6 s^-1. The \
+model neglects e- + N4+ -> 2N2 in its ground state (p. 243301-2). Other reactions: \
+notes only (plasma kinetics is outside optmat's scope except as data; TC-954).
+
+The initial conditions are model assumptions: only N2, N2+ and electrons at the end of \
+the pulse ('photoionization rather than photodissociation dominates', p. 243301-7), and \
+T_e(t0) = 35 300 K from two photons in excess of the 11-photon threshold, chosen 'to \
+provide better agreement with experimental results'.
+
+Register: TC-977."""
+
+[[datasets]]
+id = "dr_N2+"
+material = "N2+"
+file = "N2+/peters_2019__dr_N2+.csv"
+table = "tbl_7c2f4f3bf473"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "cm3/s"
+scale = 1e-7
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["kossyi_1992", "N. A. Popov, Plasma Phys. Rep. 27, 886 (2001)"]
+notes = "Table I (p. 243301-3), R12^b: 'e- + N2+ -> 2N + epsilon_tr', 2.8 x 10^-7 sqrt(300/T_e) cm^3 s^-1, refs. 23 and 40; footnote b, it contributes to fast gas heating. Not tuned."
+[datasets.parameters]
+products = "N + N (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 0.5

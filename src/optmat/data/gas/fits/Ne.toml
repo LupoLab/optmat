@@ -1,0 +1,63 @@
+# Neon: the refractive polarizability from 76 nm (red of the 73.6/74.4 nm lines) to the
+# static limit.
+gas = "Ne"
+description = "Neon: the 73.6 nm and 74.4 nm resonance lines at their NIST energies and effective oscillators, fitted to Lesiuk, Przybytek & Jeziorski's ab initio Cauchy moments and Gaiser & Fellmuth's dielectric static polarizability (the level), the Cuthbertsons' visible dispersion and Bideau-Mehu's vacuum ultraviolet. The magnetic term chi_0 makes the electric polarizability the refractive one."
+range_nm = [76.0, "inf"]
+
+# Compared with the fit, not fitted. (Top-level keys must precede the tables.)
+validators = [
+    "birch_1991/alpha_Ne",
+    { key = "orcutt_1967/A_this_work_Ne", electric = true },
+    { key = "gaiser_2010/molar_polarizability", electric = true },  # superseded by 2018
+    "kumar_2010/moments_Ne",
+    "leonard_1974/absolute_Ne",
+    "borzsonyi_2008/sgdd_Ne",
+    "cuthbertson_1910/experiment_Ne",
+    "pawlowski_2005/cc3_Ne",   # CC3 moments
+    "burns_1986/A_R_Ne",
+    "hohm_1990/this_work_Ne",
+]
+
+[model]
+effective = 2
+# Above the 73.59 nm line (0.61915 hartree); the next lines are at 62.7-63.0 nm.
+effective_min_energy_hartree = 0.62
+# Magnetic susceptibility with the leading relativistic correction, Lesiuk & Jeziorski
+# (arXiv:2311.11357), Table IX: -8.4786(7)e-5 a.u. (TC-706; before, lesiuk_2020's
+# -8.484(19)e-5; TC-71).
+chi0_au = -8.4786e-5
+
+[[model.lines]]
+label = "Ne 2p6 1S0 - 2p5(2P1/2)3s [1/2]1"
+wavelength_nm = 73.589627    # NIST ASD Ritz vacuum wavelength
+f_prior = 0.1432             # NIST ASD fik, grade A (<= 3 %); the bound as sigma
+f_sigma = 0.0043
+
+[[model.lines]]
+label = "Ne 2p6 1S0 - 2p5(2P3/2)3s [3/2]1"
+wavelength_nm = 74.371955
+f_prior = 0.01095            # NIST ASD fik, grade A
+f_sigma = 0.00033
+
+# --- the level: ab initio moments and the dielectric (DCGT) static polarizability
+[[fitted]]
+key = "lesiuk_2020/cauchy_Ne"
+
+[[fitted]]
+key = "gaiser_2018/molar_polarizability_Ne"   # DCGT 2018: 19 ppm below the 2010 value
+electric = true
+
+# --- the dispersion
+[[fitted]]
+key = "cuthbertson_1932/experiment_Ne"
+free_scale = true   # shape only: its standard state is ambiguous (Leonard); level +0.3 %
+
+[[fitted]]
+key = "bideau_mehu_1981/experiment_Ne"
+
+# Near-infrared dispersion relative to a partner gas: He/Ne phase-matching ratio at 1319 and 1064 nm, helium fixed at fit/He.
+[[fitted]]
+key = "shelton_1990/density_He_over_Ne"
+
+[[fitted]]
+key = "bideau_mehu_1976/experiment_Ne"   # 164.1 and 170.2 nm (the original of bideau_mehu_1981 there)

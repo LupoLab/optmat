@@ -1,0 +1,40 @@
+# The temperatures a gas dispersion model's numbers refer to (OEP 1, section 4.9; TC-730),
+# exposed on each fitted model as metadata; evaluation does not follow them.
+#
+# [infrared]           the temperature of a molecular fit's fixed infrared terms, K:
+#   default_k          HITRAN's line intensities refer to 296 K, with the lower-state
+#                      populations of that temperature
+#   <gas>              an exception: SF6's bands come from a cross-section at 298.1 K
+# [coefficients.<gas>] the measured temperature coefficient of the polarizability,
+#                      where one is curated (the same as the fit's `temperature` option
+#                      of that dataset; tests/test_temperatures.py checks it):
+#   coefficient_per_k  A_theta, per K, in A_R(T) = A_R(T0) [1 + A_theta (T - T0)]
+#   sigma_per_k        its standard uncertainty, as the fit uses it
+#   wavelength_nm      the vacuum wavelength it is measured at
+#   dataset            the curated dataset it comes with
+#   reason             where it is printed
+
+[infrared]
+default_k = 296.0
+SF6 = 298.1
+
+[coefficients.N2]
+coefficient_per_k = 1.18e-6
+sigma_per_k = 0.04e-6
+wavelength_nm = 632.9908
+dataset = "egan_2023/A_R_N2"
+reason = "egan_2023, p. 17: A_theta = 1.18(4)e-6 per K at 632.9908 nm (TC-707, TC-730)."
+
+[coefficients.O2]
+coefficient_per_k = 2.11e-6
+sigma_per_k = 0.20e-6
+wavelength_nm = 632.9908
+dataset = "egan_2026/A_R_O2"
+reason = "egan_2026, pp. 7-8: A_theta = 2.11(4)e-6 per K at 0.6329908 um (2.02(5)e-6 at 1542 nm), combined u 9.4 % (TC-730)."
+
+[coefficients.CO2]
+coefficient_per_k = 4.22e-6
+sigma_per_k = 0.34e-6
+wavelength_nm = 632.9908
+dataset = "egan_2026/A_R_CO2"
+reason = "egan_2026, pp. 4, 6: A_theta = 4.22(9)e-6 per K at 0.6329908 um (4.13(9)e-6 at 1542 nm), combined u 8 % (TC-730)."

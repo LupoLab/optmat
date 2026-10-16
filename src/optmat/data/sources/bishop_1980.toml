@@ -1,0 +1,151 @@
+citation = "D. M. Bishop and L. M. Cheung, J. Chem. Phys. 72, 5125 (1980)"
+doi = "10.1063/1.439745"
+library = "Bishop_1980_DynamicDipolePolarizability"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Sum-over-states (Kramers-Heisenberg) calculation of the dynamic dipole \
+polarizability of H2 (and HeH+) with rovibronic wave functions: explicitly correlated \
+electronic basis (34 terms for the intermediate states of H2) times vibrational basis \
+functions (M = 5), nuclear motion included in the states rather than by averaging \
+alpha(omega; R) (Eq. 14); isotropic alpha = (alpha_par + 2 alpha_perp)/3 (Eq. 21), \
+thermally averaged over J at 293 K with ortho:para 3:1 (Eq. 23)."""
+notes = """Units: polarizability in a0^3; wavelengths in A, converted from omega by \
+lambda(A) = 455.64/omega(au) (p. 5127), hence vacuum wavelengths; the static limit is \
+printed as infinity with footnote c. HeH+ is not a curated species; the anisotropies \
+(Table VI, no vocabulary quantity) and the static parallel/perpendicular components \
+of Table IX are not extracted (Table IX's alpha_000(0) = 6.7693 and 4.7442 give the \
+isotropic 5.4192, Table V's J = 0 static 5.4193).
+
+Accuracy: none stated for the calculation; against Victor & Dalgarno's values 'in \
+nearly all cases an error of only ~0.1 %. In fact, the experimental error is probably \
+of this order' (p. 5131). The 'Experimental' column is Victor & Dalgarno (1969) \
+(ref. 11): 'values of alpha(omega) abstracted from refractive index data' and, in \
+parentheses, 'semiempirical values ... derived from a model dipole spectrum which \
+produced known experimental data' (p. 5131). These are reproductions (and the \
+experimental ones are themselves derived from refractivity measurements, e.g. Koch's \
+and Kirn's older H2 data, which Peck & Huang 1977 found 0.25 % high); the \
+semi-empirical ones are model values, not data.
+
+Check: the thermal averages follow from the J = 0-4 columns with Eq. (23), the spin \
+weights 1 (even J) and 3 (odd J) and the paper's own rotational spacings (Table I: \
+118.4, 354.1, 705.0, 1168.0 cm^-1) at 293 K: 5.43388, 12.79797 and 6.36554 against \
+5.4339, 12.7980 and 6.3655 printed (static, 1215.7 and 2302.9 A; checked 2026-09-24). \
+Eq. (23) is printed with '(2^J + 1)' for the degeneracy; the check uses 2J + 1, which \
+reproduces the table (a misprint in the equation). The '23 wavelengths' expected are 22 \
+in Table V (image checked)."""
+
+[[datasets]]
+id = "alpha_293K"
+material = "H2"
+file = "H2/bishop_1980__alpha_293K.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table V thermal rotational average at 293 K (normal H2, ortho:para 3:1)."
+[datasets.parameters]
+temperature_k = 293
+average = "thermal (rotational Boltzmann with nuclear-spin weights, ortho:para 3:1)"
+
+[[datasets]]
+id = "alpha_J0"
+material = "H2"
+file = "H2/bishop_1980__alpha_J0.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table V: isotropic alpha in the rotational state J = 0, v = 0 (the ingredient of alpha_293K)."
+[datasets.parameters]
+rotational_state_J = 0
+vibrational_state_v = 0
+
+[[datasets]]
+id = "alpha_J1"
+material = "H2"
+file = "H2/bishop_1980__alpha_J1.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table V: isotropic alpha in the rotational state J = 1, v = 0 (the ingredient of alpha_293K)."
+[datasets.parameters]
+rotational_state_J = 1
+vibrational_state_v = 0
+
+[[datasets]]
+id = "alpha_J2"
+material = "H2"
+file = "H2/bishop_1980__alpha_J2.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table V: isotropic alpha in the rotational state J = 2, v = 0 (the ingredient of alpha_293K)."
+[datasets.parameters]
+rotational_state_J = 2
+vibrational_state_v = 0
+
+[[datasets]]
+id = "alpha_J3"
+material = "H2"
+file = "H2/bishop_1980__alpha_J3.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table V: isotropic alpha in the rotational state J = 3, v = 0 (the ingredient of alpha_293K)."
+[datasets.parameters]
+rotational_state_J = 3
+vibrational_state_v = 0
+
+[[datasets]]
+id = "alpha_J4"
+material = "H2"
+file = "H2/bishop_1980__alpha_J4.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table V: isotropic alpha in the rotational state J = 4, v = 0 (the ingredient of alpha_293K)."
+[datasets.parameters]
+rotational_state_J = 4
+vibrational_state_v = 0
+
+[[datasets]]
+id = "victor_dalgarno"
+material = "H2"
+file = "H2/bishop_1980__victor_dalgarno.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["G. A. Victor and A. Dalgarno, J. Chem. Phys. 50, 2535 (1969)"]
+notes = "Table V 'Experimental' values without parentheses: Victor & Dalgarno's polarizabilities 'abstracted from refractive index data' (thermal, room temperature), to three or four figures (12.8 at 1215.7 A). Derived from older refractometry; prefer the original refractivity data where available."
+
+[[datasets]]
+id = "victor_dalgarno_semiempirical"
+material = "H2"
+file = "H2/bishop_1980__victor_dalgarno_semiempirical.csv"
+table = "tbl_7b56aafde20c"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+reproduced_from = ["G. A. Victor and A. Dalgarno, J. Chem. Phys. 50, 2535 (1969)"]
+notes = "Table V 'Experimental' values in parentheses (1300-1700 A): Victor & Dalgarno's semi-empirical values from a model dipole spectrum, not measurements."

@@ -1,0 +1,143 @@
+# Fused silica: Franta et al.'s universal dispersion model of Lithosil Q2, refitted to
+# the absolute refractometry of the transparent window (TC-399). The start is the
+# published model (franta_2016/udm_lithosil_q2); the fit moves the interband and
+# higher-energy strengths, the band edge and Urbach tail, and one factor each on the
+# excitons, the phonon bands and the multiphonon bands. It keeps Franta's measured
+# absorption (the band edge and the infrared) and his vacuum-ultraviolet structure.
+material = "SiO2"
+description = "Fused silica at 20 degrees C from 24.8 nm to 125 um: Franta et al.'s universal dispersion model (Lithosil Q2) refitted to Malitson's three prisms (taken to vacuum) and Leviton & Frey's absolute CHARMS indices of Corning 7980 (taken from 295 K to 293.15 K with their own dn/dT), keeping Franta's measured band-edge and infrared absorption, his infrared n, and his vacuum-ultraviolet n and k (fitted to Palik) as soft constraints."
+range_nm = [24.8, 125000.0]
+
+[model]
+start = "franta_2016/udm_lithosil_q2"
+free = ["Nvc", "Nvx", "Ex", "Eg", "Eu"]
+
+[model.scales]
+excitons = ["Aex1", "Aex2", "Aex3", "Aex4", "Aex5", "Aex6", "Aex7", "Aex8", "Aex9", "Aex10"]
+phonon_low = ["Nph1", "Nph2", "Nph3", "Nph4", "Nph5", "Nph6", "Nph7", "Nph8", "Nph9", "Nph10", "Nph11"]     # 351-881 cm-1
+phonon_main = ["Nph12", "Nph13", "Nph14", "Nph15", "Nph16", "Nph17"]    # 1068-1351 cm-1, the 9 um band
+multiphonon = ["Nph18", "Nph19", "Nph20", "Nph21", "Nph22", "Nph23", "Nph24", "Nph25", "Nph26", "Nph27", "Nph28", "Nph29", "Nph30", "Nph31", "Nph32", "Nph33", "Nph34", "Nph35"]   # 1516-3220 cm-1
+
+[[fitted]]
+key = "malitson_1965/residual_corning_7940"   # absolute, via Edlen's air at 20 C (TC-398)
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5          # Malitson's precision; the residuals state none
+offset_sigma = 1e-5   # the prism's melt and grade (Table II: specimens differ by ~1e-5)
+
+[[fitted]]
+key = "malitson_1965/residual_dynasil"   # absolute, via Edlen's air at 20 C (TC-398)
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5          # Malitson's precision; the residuals state none
+offset_sigma = 1e-5   # the prism's melt and grade (Table II: specimens differ by ~1e-5)
+
+[[fitted]]
+key = "malitson_1965/residual_ge_151"   # absolute, via Edlen's air at 20 C (TC-398)
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5          # Malitson's precision; the residuals state none
+offset_sigma = 1e-5   # the prism's melt and grade (Table II: specimens differ by ~1e-5)
+
+[[fitted]]
+key = "leviton_2008/n_295K"     # absolute (in vacuum), Corning 7980
+thermo_optic = "leviton_2008/dndt_295K"
+temperature_k = 293.15
+offset_sigma = 5e-6             # a common calibration term within the stated 1e-5
+
+# Franta's measured absorption: the band edge (146-225 nm) and the infrared.
+[[fitted]]
+key = "franta_2016/lithosil_q2_k"
+range_nm = [146.0, 225.0]
+sigma = 0.1
+
+[[fitted]]
+key = "franta_2016/lithosil_q2_k"
+range_nm = [2300.0, 125000.0]
+sigma = 0.1
+
+# Franta's infrared n (ellipsometry and reflectance), beyond the refractometry.
+[[fitted]]
+key = "franta_2016/lithosil_q2_n"
+range_nm = [5000.0, 125000.0]
+sigma = 2e-3
+
+# The vacuum ultraviolet: Franta's model there, fitted to Palik's tables, as a soft
+# constraint that keeps the structure the refractometry cannot see.
+[[fitted]]
+key = "franta_2016/lithosil_q2_n_palik"
+range_nm = [24.8, 146.0]
+sigma = 0.01
+
+[[fitted]]
+key = "franta_2016/lithosil_q2_k_palik"
+range_nm = [24.8, 146.0]
+sigma = 0.03
+
+[[validators]]
+key = "franta_2016/lithosil_q2_n"   # Franta's published model in the window
+range_nm = [200.0, 2600.0]
+sigma = 1e-5
+
+[[validators]]
+key = "rodney_1954/computed_table1"   # Heraeus B, 24 C, relative to air
+sigma = 1e-5
+thermo_optic = "rodney_1954/dndt"
+temperature_k = 293.15
+
+[[validators]]
+key = "malitson_1965/specimen_corning_7940_1"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_corning_7940_2"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_corning_7940_3"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_corning_7940_4"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_dynasil_1"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_dynasil_2"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_dynasil_3"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_dynasil_4"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_ge_151_1"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_ge_151_2"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_ge_151_3"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5
+
+[[validators]]
+key = "malitson_1965/specimen_ge_151_4"   # Table II: the grade spread
+reference = "malitson_1965/sellmeier"
+sigma = 1e-5

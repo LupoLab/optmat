@@ -1,0 +1,46 @@
+# The electronic second hyperpolarizability: Shelton's ESHG (1990, rescaled to Bishop &
+# Pipin's He), with ab initio process dependence where available (TC-313).
+gas = "Ar"
+description = "Argon: Shelton's 1990 ESHG (1064, 1319 nm and the rescaled 458-700 nm literature), with Haettig & Jorgensen's CCSD Kerr, ESHG and THG dispersion (one free scale) for the process dependence."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 0.6]
+validators = [
+    "wahlstrand_2012/n2_Ar",
+    "wahlstrand_2012b/n2_Ar",
+    "zahedpour_2015/n2_Ar",
+    "zahedpour_2019/n2_Ar",
+    "wang_2013/n2_Ar_800",
+    "wang_2013/n2_Ar_1800",
+    "nibbering_1997/n2_instant_Ar",
+    "borzsonyi_2010/n2_Ar",
+    "loriot_2009/n2_Ar",
+    "lehmeier_1985/gamma_thg_Ar",
+    "ward_1969/chi_i_Ar",
+    "lundeen_1983/fwm_532_Ar",
+    "buckingham_1968/gamma_Ar",
+]
+
+[[fitted]]
+key = "shelton_1990/table3_Ar_present"
+
+[[fitted]]
+key = "shelton_1990/table3_Ar_literature"
+
+[[fitted]]
+key = "hattig_1998/ccsd_kerr_Ar"
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003
+
+[[fitted]]
+key = "hattig_1998/ccsd_eshg_Ar"
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003
+
+[[fitted]]
+key = "hattig_1998/ccsd_thg_Ar"
+range_nm = [650.0, "inf"]   # THG output above 217 nm: the fourth-order form holds
+free_scale = true
+scale_group = "hattig_ccsd"
+extra_relative = 0.003

@@ -1,0 +1,308 @@
+citation = "J. Lang, G. Garberoglio, M. Przybytek and M. Lesiuk, \"Determination of fundamental properties of nitrogen from first principles. III. Temperature and frequency dependence of the molecular polarizability and magnetic susceptibility\", arXiv:2607.21261v2 [physics.chem-ph] (2026)"
+doi = "10.48550/arxiv.2607.21261"
+library = "Lang_2026_DeterminationFundamentalProperties"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ab initio isotropic static polarizability alpha_0(R), Cauchy coefficients \
+alpha_2(R), alpha_4(R), alpha_6(R) (alpha(omega, R) = alpha_0 + alpha_2 omega^2 + \
+alpha_4 omega^4 + alpha_6 omega^6, Eq. (2)) and isotropic magnetic susceptibility \
+chi_0(R) of 14N2 (X 1Sigma_g+) on a grid of internuclear distances R = 1.75-2.60 bohr. \
+Polarizability: composite coupled-cluster scheme, Eq. (32): frozen-core CCSD (with the \
+Hartree-Fock part; aug-cc-pVXZ to X = 7) + CC3 (X = 6) + full CCSDT (X = 4) + CCSDTQ \
+(aug-cc-pVDZ, 50 % uncertainty) + all-electron CC3 (aug-cc-pCVXZ, X = 4) and CCSDT (X = \
+3) core corrections + one-electron scalar relativistic (DKH2, all-electron CCSD, X = 4); \
+Riemann extrapolation to the basis-set limit with random-walk uncertainty; alpha_6 at \
+CCSD + CC3 only (flat 10 % uncertainty). QED, diagonal Born-Oppenheimer and \
+two-electron relativistic terms neglected (p. 7). The Cauchy coefficients of the \
+post-CC3 terms by fitting a 27-frequency grid (p. 7). Magnetic susceptibility: \
+diamagnetic plus paramagnetic (Van Vleck) terms, Eq. (40), frozen-core CC3 response \
+with aug-cc-pV5Z (gauge origin at the molecular centre; 5 % uncertainty; no \
+relativistic or post-CC3 terms; frequency dependence neglected, pp. 10-11). Thermal \
+averages 50-2000 K by rovibrational averaging over 345 levels of the Paper II \
+potential with the 14N2 nuclear-spin weights, Eqs. (18)-(22), and independently by path \
+integral Monte Carlo (Eqs. (24)-(31)); the two agree within the PIMC statistics \
+(p. 13)."""
+notes = """The library copy is the arXiv preprint 2607.21261v2 (dated 9 September 2026, \
+18 pdf pages); not peer reviewed; no journal reference. Page numbers are the \
+preprint's pdf pages. Atomic units throughout: polarizability and magnetic \
+susceptibility in a0^3 (the magnetic term enters the Lorentz-Lorenz relation as \
+alpha + chi, Eq. (1)), omega in hartree; 1 cm^3/mol = 2.675205 a.u. (p. 2; the \
+package's (4 pi/3) N_A a0^3 = 0.3738031 cm^3/mol gives 2.675205), CODATA 2022.
+
+Papers I (the nitrogen atom's polarizability, the same Cauchy expansion) and II (the \
+N2 ground-state potential, its rovibrational levels, D_0 = 9.76 eV) of the series \
+are referred to only as 'Paper I' and 'Paper II' (pp. 1, 2, 4-5, 7): the reference \
+list does not cite them. Neither is in the library; neither holds a quantity of the \
+package for N2 (Paper II's potential enters here only through the averaging). The \
+supplementary material (Zenodo, doi 10.5281/zenodo.22662189: alpha_n(T) and chi_0(T) \
+on a 1 K grid, the Eq. (52) parameters, the uncertainty fits, the full R grid) is not \
+in the library: the temperature dependence exists here only at 303 K (Eq. (53)) and, \
+semi-empirically, at 273.16 K (p. 15). Figures 2 and 3 (alpha_n(T), chi_0(T), raster) \
+are not digitised: the numbers are published in the supplement (TC-699).
+
+ELECTRIC POLARIZABILITY. The alpha_n here are the electric polarizability alone; the \
+refractive (package) polarizability is alpha + chi_0 (Eq. (54)). Every dataset below \
+says which it holds.
+
+UNCERTAINTIES. alpha_0, alpha_2, alpha_4 at 303 K: expanded, k = 2 ('evaluated at 2 \
+sigma confidence level', p. 14; 'approximately a 95% confidence level', p. 6), \
+including the potential's propagated uncertainty. alpha_6 and chi_0 carry flat 10 % \
+and 5 % estimates (pp. 9, 11, 13), with no stated level ('extremely unlikely to \
+exceed 5%', p. 11, for chi_0).
+
+CHECKS (2026-09-29). Eq. (55) with the Eq. (53) values reproduces the paper's \
+theoretical molar polarizabilities 11.743(13) at 1542.383 nm and 11.875(13) at \
+632.9908 nm (computed 11.743019, 11.874645). The semi-empirical alpha_0 = 11.735962 \
+and alpha_2 = 30.086359 with the theoretical alpha_4, alpha_6, chi_0 reproduce the \
+measured 11.762120 and 11.894428 to 1e-6 (computed 11.762119, 11.894427). Eq. (50) with \
+Table III reproduces Table I's totals at R = 1.750, 2.070, 2.600 bohr (formula \
+alpha_n_of_R); Eq. (51) reproduces Table II's aug-cc-pV5Z diamagnetic + paramagnetic \
+sums (formula chi0_of_R). Eq. (53) and the p. 15 values checked on the pdf text.
+
+COMPARISON WITH fit/N2 (computed 2026-09-29; fit/N2 has chi0_au = 0, so its \
+polarizability is the refractive one). Ab initio alpha + chi_0 at 303 K is 1606 ppm \
+below the fit at the static limit, 1615, 1638 and 1656 ppm below at 1542, 800 and 633 \
+nm (2.9-3.0 sigma of the theory's k = 2 uncertainty halved); its GVD (d^2(omega \
+alpha)/d omega^2) is 0.54, 0.52, 0.51 % below the fit's at 1550, 800, 633 nm \
+(theory sigma 0.13 %: about 4 sigma); S(-4) is 0.55 % below the fit's 30.0938, S(-6) \
+0.20 % above its 100.423, S(-8) 2.8 % above its 372.66 (within the 10 %). The \
+semi-empirical values (below) agree with the fit to +9.9 ppm (static, with chi_0), \
++9.3 (1542 nm), +8.0 (800 nm), +7.0 ppm (633 nm), and in GVD to -0.02 %; fit/N2 \
+rests on data near 293 K, and the theory's temperature coefficient (below) moves the \
+303 K values by -11 to -12 ppm to 293 K, leaving the fit 1.5 (1542 nm) to 4.6 ppm \
+(633 nm) above them.
+
+TEMPERATURE COEFFICIENT (computed from the two semi-empirical static values, p. 15): \
+(11.735962 - 11.735585)/29.84 K = 1.263e-5 a.u./K = 1.077e-6 per K of alpha_0 = \
+47.2e-7 (cm^3/mol)/K, 273.16-303 K; egan_2019 lists Buldakov et al. 48(1)e-7 \
+(optical, theory), Sharipov et al. 51e-7 (static, theory), Schmidt and Moldover \
+62(11)e-7 (static); Egan and Yang (2023, Int. J. Thermophys. 44, 181, p. 17; in the \
+library, not curated) measure A_theta = 1.18(4)e-6 per K at 632.9908 nm over 293-433 \
+K. N2's first refractivity coefficient changes by about 30 ppm between 273 and 303 K, \
+four times its pair term at 1 atm (Achtermann's B_R rho/A_R = 8e-6).
+
+MAGNETIC SUSCEPTIBILITY. chi_0(303 K) = -1.75(9) x 10^-4 a.u. (Eq. (53)), \
+diamagnetic -3.46 x 10^-4 and paramagnetic +1.70 x 10^-4 at R = 2.07 bohr (Table II): \
+the paramagnetic term 'is substantial and cannot be omitted' (p. 15). -14.9 ppm of \
+alpha_0. The four measurements the paper quotes (datasets below) are 5-31 % smaller in \
+magnitude; the authors 'cannot explain the origin of this discrepancy' (p. 15). The \
+same measurer's neon agrees with the ab initio neon to 1.1 % and his argon is 6.3 % \
+low (lesiuk_2023b, Table X): scaled by argon's 6.3 %, Havens' N2 would still be 18 % \
+below this theory. The centre-of-mass coupling (Eq. (49)) and the frequency dependence \
+of chi (below 1 %, p. 11) are negligible. The conclusions (p. 16) speak of 'the single \
+experimental result'; p. 15 quotes four.
+
+Also in the text (p. 15): Egan and Yang's own static value 11.735909 a.u. (the \
+yang_2025 A_eps_N2, 4.38692 cm^3/mol, with older alpha_4, alpha_6, chi_0) and \
+'Egan and collaborators' alpha_2 30.109 a.u. (yang_2025's n2_cauchy, S(-4) = \
+30.1086): not extracted (in yang_2025). The kinetic-energy correction to Eq. (10), \
+about -2 x 10^-4 a.u. for v = J = 0 from the b 1Pi_u state alone (p. 4), is \
+neglected by the paper.
+
+Byproduct (computed, not printed): Eq. (50) gives d alpha_0/dR = 5.98 a0^2 at R = \
+2.07 bohr (1.675 angstrom^2), the derivative of the mean polarizability with the \
+bond length; murphy_1969's reproduced N2 d alpha/dr is 1.75 angstrom^2 (4 % higher).
+
+Not extracted: Table I's components by R (not a quantity: a polarizability at fixed \
+R is not the molecule's), Table II's basis-set sequence (its X = 5 sums are the \
+check of chi0_of_R), Fig. 1 (the partition-function exchange ratio)."""
+
+[[datasets]]
+id = "cauchy_303K"
+material = "N2"
+table = "text"
+points = [
+  ["-2", "-2", "11.717", "0.013"],
+  ["-4", "-4", "29.928", "0.080"],
+  ["-6", "-6", "100.62", "0.82"],
+  ["-8", "-8", "383", "38"],
+]
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Eq. (53), p. 14: alpha_0 = 11.717(13), alpha_2 = 29.928(80), alpha_4 = 100.62(82), alpha_6 = 383(38) a.u. of 14N2 at 303 K, rovibrationally averaged (PIMC uncertainty propagation), stored as S(-2), S(-4), S(-6), S(-8) (alpha_2k = S(-2k-2), Eq. (6)). ELECTRIC polarizability: chi_0 not included. Uncertainties k = 2 for the first three; alpha_6's is the flat 10 % (p. 9), level not stated (stored under the same level). A check, not fitted: a preprint; the uncertainty of S(-2), 0.11 % (k = 2), is 100 times the metrology's; S(-2) is 1600 ppm and S(-4) 0.53 % below the semi-empirical values (2.9 and 4 sigma), which the authors themselves recommend over the ab initio ones (p. 15). S(-6) and S(-8) (100.42 and 372.66 in fit/N2) are the only ab initio N2 moments of their order in the library with uncertainties."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+temperature_k = 303.0
+
+[[datasets]]
+id = "chi0_303K"
+material = "N2"
+table = "text"
+points = [["303 K", "", "-1.75", "0.09"]]
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "primary"
+notes = "Eq. (53), p. 14 (and p. 15): chi_0 = -1.75(9) x 10^-4 a.u., the isotropic magnetic susceptibility (magnetizability) of 14N2 at 303 K, rovibrationally averaged, frozen-core CC3/aug-cc-pV5Z, static (the frequency dependence 'most likely smaller than 1%', p. 11). The uncertainty is the flat 5 % goal (pp. 11, 13), level not stated. -14.9 ppm of alpha_0. The only calculation of N2's susceptibility in the library; 31 % larger in magnitude than havens_1933 (-1.338) and 5-31 % than every measurement (source notes). The temperature dependence is weak (Fig. 3; numbers in the supplement, not in the library). A preprint: primary as the value to adopt for fit/N2's chi0_au, with the unresolved disagreement with experiment stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 303.0
+
+[[datasets]]
+id = "hector_1924"
+material = "N2"
+table = "text"
+points = [["hector", "", "-1.34"]]
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["L. G. Hector, Phys. Rev. 24, 418 (1924)"]
+notes = "p. 15: Hector's measurement as converted by Lang et al., chi_0 = -1.34 x 10^-4 a.u., 'stating the uncertainty at 2%' (level not stated); the value the CRC Handbook cites (-12.0 x 10^-6 cm^3/mol in cgs molar units is -1.345 x 10^-4 a.u., computed). Temperature not stated. The original is not in the library."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+
+[[datasets]]
+id = "vaidyanathan_1928"
+material = "N2"
+table = "text"
+points = [["vaidyanathan", "", "-1.45"]]
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["V. Vaidyanathan, Lond. Edinb. Dubl. Phil. Mag. J. Sci. 5, 380 (1928)"]
+notes = "p. 15: -1.45 x 10^-4 a.u. at 303 K, 'estimating the error at no more than 5%' (a bound). As converted by Lang et al.; the original is not in the library."
+[datasets.uncertainty]
+relative = 0.05
+level = "bound"
+[datasets.parameters]
+temperature_k = 303.0
+
+[[datasets]]
+id = "bitter_1930"
+material = "N2"
+table = "text"
+points = [["bitter", "", "-1.66"]]
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["F. Bitter, Phys. Rev. 36, 1648 (1930)"]
+notes = "p. 15: -1.66 x 10^-4 a.u. at 298 K, 'without explicit uncertainty estimation'; the measurement closest to the theory (5 % smaller in magnitude). As converted by Lang et al.; the original is not in the library."
+[datasets.parameters]
+temperature_k = 298.0
+
+[[datasets]]
+id = "havens_1933"
+material = "N2"
+table = "text"
+points = [["havens", "", "-1.338", "0.002"]]
+quantity = "magnetic_susceptibility"
+unit = "au"
+scale = 1e-4
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["G. G. Havens, Phys. Rev. 43, 992 (1933)"]
+notes = "p. 15: -1.338(2) x 10^-4 a.u. 'at room temperature' (level not stated), as converted by Lang et al. The same work's Ne and Ar values are lesiuk_2023b/havens_1933_Ne (1.1 % from theory) and havens_1933_Ar (6.3 % low). Soné (1920) and Hammar (1926), 'roughly two times smaller' (gas purity), print no number here. The original is not in the library."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "semi_empirical_303K"
+material = "N2"
+table = "text"
+points = [
+  ["-2", "-2", "11.735962"],
+  ["-4", "-4", "30.086359"],
+]
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "p. 15: the static polarizability alpha_0(303 K) = 11.735962 a.u. and the second Cauchy coefficient alpha_2 = 30.086359 a.u., solved from Egan and Yang's two molar polarizabilities (dataset egan_yang_303K) with this paper's alpha_4, alpha_6 and chi_0 at 303 K, Eq. (55). ELECTRIC (chi_0 removed). alpha_0 'no worse than 10ppm' (a bound, row -2); alpha_2 printed without uncertainty (the theory's alpha_4 uncertainty alone moves it by 0.0025, 83 ppm; the two measurements, if uncorrelated, by 0.012, 0.04 %: computed). Not independent of the Egan and Yang measurements (the refractivities of egan_yang_303K; yang_2025's A_eps_N2 is the same data reduced with older theory, 4.5 ppm lower): a check. Against fit/N2: S(-2) + chi_0 = 11.735787 is 9.9 ppm above the fit's static value; S(-4) is 0.025 % below the fit's 30.0938 (0.6 sigma), and yang_2025's 30.1086 0.05 % above it."
+[datasets.uncertainty]
+relative_rows = { "-2" = 1e-5 }
+level = "bound"
+[datasets.parameters]
+temperature_k = 303.0
+
+[[datasets]]
+id = "semi_empirical_273K"
+material = "N2"
+table = "text"
+points = [["static", "inf", "11.735585"]]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 15: alpha_0(273.16 K) = 11.735585 a.u., semi_empirical_303K's alpha_0 moved to the triple point of water with this paper's theoretical alpha_0(303 K) - alpha_0(273.16 K) (the supplement's grid, not in the library): 32.1 ppm lower than at 303 K. ELECTRIC (static). No uncertainty printed. Schmidt and Moldover's capacitance A_eps at 273.16 K (schmidt_2003/A_eps_tau_N2, 4.38748 cm^3/mol = 11.73731 a.u.) is 147 ppm higher (their budget about 60 ppm)."
+[datasets.parameters]
+temperature_k = 273.16
+
+[[datasets]]
+id = "egan_yang_303K"
+material = "N2"
+table = "text"
+points = [
+  ["1542.383", "1542.383", "11.762120", "0.000037"],
+  ["632.9908", "632.9908", "11.894428", "0.000037"],
+]
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["egan_2023", "P. F. Egan and Y. Yang, Int. J. Thermophys. 45, 120 (2024)", "yang_2025"]
+notes = "p. 15: 'the corresponding experimental results', the molar polarizability alpha + chi (the package's refractive polarizability) of N2 at 303 K from the NIST refractometry of Egan and Yang (Refs. 85-87, not assigned per wavelength), standard uncertainties (1 sigma, p. 15). The 632.9908 nm value is Egan and Yang 2023's A_303 = 4.446175(14) cm^3/mol (p. 17 of that paper; in the library as Egan_2023_Optical90Measurement, not curated), 11.894429 a.u. by the paper's factor; the 1542.383 nm value's original (presumably Egan and Yang 2024) is not in the library (yang_2025 prints only the reduced A_eps and A_2; its laser is 194.36862 THz = 1542.3912 nm, 0.008 nm from the wavelength quoted here, 1e-9 of alpha). Against fit/N2: -9.4 ppm (1542 nm) and -7.1 ppm (633 nm); moved to 293 K with the theory's temperature coefficient, +1.5 and +4.6 ppm (source notes). The best copy in the library of these two numbers."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+temperature_k = 303.0
+
+[[formulas]]
+id = "cauchy_theory_303K"
+form = "alpha_series"
+terms = { c = ["11.717", "29.928", "100.62", "383"] }
+range_nm = [455.6, "inf"]
+material = "N2"
+equation = "Eq. (2) with Eq. (53), p. 14"
+printed = "alpha(omega, T) = alpha_0(T) + alpha_2(T) omega^2 + alpha_4(T) omega^4 + alpha_6(T) omega^6; T = 303 K: alpha_0 = 11.717(13), alpha_2 = 29.928(80), alpha_4 = 100.62(82), alpha_6 = 383(38)"
+variable = "omega: angular frequency in atomic units (hartree); alpha in a0^3"
+state = "none (per molecule, 303 K)"
+density = "none"
+range = "'wavelengths longer than 400nm or omega < 0.1 in atomic units' (p. 2): the two limits differ (0.1 a.u. is 455.6 nm); range_nm takes the stricter."
+coefficients = { alpha_0 = "11.717", alpha_2 = "29.928", alpha_4 = "100.62", alpha_6 = "383" }
+check = "With chi_0 = -1.75e-4 added (Eq. (55)) the series gives 11.743019 at 1542.383 nm and 11.874645 at 632.9908 nm (omega = 0.0295409, 0.0719811 a.u.): the paper's 11.743(13) and 11.875(13) (p. 15). Checked 2026-09-29."
+notes = "The paper's ab initio series at 303 K. ELECTRIC polarizability: chi_0 = -1.75(9)e-4 a.u. (15 ppm) is not included; add it for the refractive index (Eq. (54)). 1600 ppm below the measured values; the semi-empirical alpha_0, alpha_2 (dataset semi_empirical_303K) with this series' alpha_4, alpha_6 reproduce the measurements."
+
+[[formulas]]
+id = "alpha_n_of_R"
+material = "N2"
+equation = "Eq. (50), p. 13, with Table III, p. 12"
+printed = "alpha_n(R) = exp(-a_n^(1) R) sum_{i=-1}^{1} c_in^(1) R^i + exp(-a_n^(2) R) sum_{i=0}^{2} c_in^(2) R^i, n = 0, 2, 4, 6"
+variable = "R: internuclear distance in bohr; alpha_n in atomic units (a0^3 hartree^-n)"
+state = "none (per molecule, clamped nuclei)"
+density = "none"
+range = "R in [1.75, 2.60] bohr only (p. 13: not to be extrapolated)"
+coefficients = { c_m1_0 = "3973.239843", c_0_0 = "-2550.566901", c_1_0 = "480.40394", d_0_0 = "-17636.209308", d_1_0 = "6178.632412", d_2_0 = "-7984.197341", a1_0 = "0.72712153", a2_0 = "3.06212416", c_m1_2 = "3121512.910661", c_0_2 = "-1565760.084872", c_1_2 = "213071.693344", d_0_2 = "-12511573.39832", d_1_2 = "4306441.860778", d_2_2 = "-4591578.708124", a1_2 = "1.57852725", a2_2 = "3.56319374", c_m1_4 = "2.9522897", c_0_4 = "-1.06250446", c_1_4 = "0.10234389", d_0_4 = "-8.65155509", d_1_4 = "2.18269184", d_2_4 = "-1.76012369", a1_4 = "-6.04767072", a2_4 = "-4.59332841", c_m1_6 = "19.85061337", c_0_6 = "-7.34704556", c_1_6 = "0.72912448", d_0_6 = "-59.44131003", d_1_6 = "15.28369979", d_2_6 = "-12.65835287", a1_6 = "-5.57635061", a2_6 = "-4.08555911" }
+check = "At R = 1.750, 2.070, 2.600 bohr: alpha_0 = 9.8260, 11.6427, 14.8590 (Table I totals 9.8255(80), 11.642(12), 14.856(40)); alpha_2 = 21.1215, 29.4793, 50.6091 (21.118(21), 29.471(70), 50.58(41)); alpha_4 = 60.414, 97.999, 242.65 (60.43(19), 98.09(57), 242.5(51)); within the printed uncertainties. Table III image checked against the cells. Computed 2026-09-29."
+notes = "Coefficient names: c_i_n = c_in^(1) (c_m1 for i = -1), d_i_n = c_in^(2), a1_n = a_n^(1), a2_n = a_n^(2), n the Cauchy order. The purely electronic, clamped-nucleus alpha_n(R) that the thermal averages are built from; not a molecular polarizability. Its slope, d alpha_0/dR = 5.98 a0^2 at 2.07 bohr (computed), is the bond-length derivative of the mean polarizability (source notes). The uncertainty fits are in the supplement (not in the library)."
+
+[[formulas]]
+id = "chi0_of_R"
+material = "N2"
+equation = "Eq. (51), p. 13, parameters in the text, p. 13"
+printed = "chi_0(R) = exp(-b^(1) R) sum_{i=0}^{1} d_i^(1) R^i + exp(-b^(2) R^2) sum_{i=0}^{1} d_i^(2) R^i; d_0^(1) = -0.0022528, d_1^(1) = 0.0012629, d_0^(2) = 0.0012288, d_1^(2) = -0.0008785, b^(1) = 0.729884, b^(2) = 0.195461 (atomic units)"
+variable = "R: internuclear distance in bohr; chi_0 in a0^3"
+state = "none (per molecule, clamped nuclei)"
+density = "none"
+range = "R in [1.75, 2.60] bohr only"
+coefficients = { d1_0 = "-0.0022528", d1_1 = "0.0012629", d2_0 = "0.0012288", d2_1 = "-0.0008785", b1 = "0.729884", b2 = "0.195461" }
+check = "At R = 1.750, 2.070, 2.600 bohr: -1.815e-4, -1.754e-4, -1.270e-4 a.u.; Table II aug-cc-pV5Z diamagnetic + paramagnetic: -1.82e-4, -1.76e-4, -1.28e-4 (to the printed digits). Checked 2026-09-29 against the pdf text (the superscripts are lost in the text layer; the order is that of the equation)."
+notes = "Note the Gaussian R^2 in the second exponent. The thermal average at 303 K, -1.75e-4 (dataset chi0_303K), is close to the value at R = 2.07 bohr."

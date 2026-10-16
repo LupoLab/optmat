@@ -1,0 +1,135 @@
+"""Two-photon TDSE campaign, run 1 extraction (one-electron and haCC helium) -> run1/results_<model>.csv
+
+    python3 extract_run1.py sae|hacc
+
+Per run (<d>/<name>/<name>/0000/):
+- P_bound(t) = sum of OccDual{H0:k} over the states k with Re E_k < 0 of the run's own discretisation (sae: from
+  run1/sae/eigrun_<variant>; haCC: not available, see NOTES.md); P_ion_proj = 1 - P_bound, at +3T and at the end;
+- norm-loss 1 - <Ovr> at +3T and at the end (+1000 au);
+- the iSurff spectrum spec_total / spec_channels: P_spec = int sigma k^2 dk over all k, and P_peak2 over the
+  two-photon peak, |E - (2 hbar omega - Ip)| < 0.5 eV (E = k^2/2), Ip the run's own (-E of its initial state);
+- sigma2 = P / int Phi^2 dt (cm^4 s), Phi = I(t)/(hbar omega), I(t) = I0 exp(-4 ln2 t^2/T^2), T = 20 fs:
+  int Phi^2 dt = (I0/hbar omega)^2 T sqrt(pi/(8 ln2)); from P_peak2 (and P_ion_proj where above the floor).
+"""
+import csv, glob, math, os, re, sys
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+HA_EV, AU_T, EV_J = 27.211386245988, 2.4188843265857e-17, 1.602176634e-19
+T_FS = 20.
+T3 = 3 * T_FS * 1e-15 / AU_T
+
+
+def expec(f):
+    hdr = [l[2:].strip() for l in open(f) if l.startswith("# ") and not l.startswith("#  ")]
+    a = np.loadtxt(f, comments="#", ndmin=2)
+    names = ["Time", "CPU"] + hdr[: a.shape[1] - 2]
+    return names, a
+
+
+def first_pass(a):
+    return a[: int(np.argmax(a[:, 0])) + 1]
+
+
+def at(a, j, t):
+    return float(np.interp(t, a[:, 0], a[:, j]))
+
+
+def eigs(f):
+    e = np.loadtxt(f, delimiter=",", comments="#", ndmin=2)
+    return e[:, 0] + 1j * e[:, 1]
+
+
+def spectrum(d):
+    for nm in ("spec_total", "spec_channels"):
+        f = f"{d}/{nm}"
+        if os.path.isfile(f):
+            s = np.loadtxt(f, delimiter=",", comments="#", ndmin=2)
+            return s[:, 0], s[:, 1:].sum(axis=1)
+    return None, None
+
+
+def int_phi2(I0, e_ph):
+    hw = e_ph * EV_J
+    return (I0 / hw) ** 2 * T_FS * 1e-15 * math.sqrt(math.pi / (8 * math.log(2)))   # cm^-4 s^-1 ... x s
+
+
+def main(model):
+    d0 = f"{HERE}/run1/{model}"
+    eig = {}
+    if model == "sae":
+        for v in ("base", "eta15", "box80", "box120", "th23"):
+            f = f"{d0}/eigrun_{v}/eigrun_{v}/0000/eig"
+            if os.path.isfile(f):
+                eig[v] = eigs(f)
+    rows = []
+    for inp in sorted(glob.glob(f"{d0}/he_*/he_*.inp")):
+        name = os.path.basename(inp)[:-4]
+        rd = f"{os.path.dirname(inp)}/{name}/0000"
+        r = dict(name=name, model=model, done=os.path.isfile(f"{os.path.dirname(inp)}/{name}.done"))
+        if name.startswith("he_nofield"):     # drift runs: he_nofield (base) and he_nofield_<variant>
+            r["E_ph_eV"], r["I_Wcm2"] = float("nan"), 0.
+            r["variant"] = name[len("he_nofield_"):] if name != "he_nofield" else "base"
+        else:
+            m = re.match(r"he_(\d+(?:p\d+)?)eV_I(\d+e\d+)(?:_(\w+))?", name)
+            r["E_ph_eV"] = float(m.group(1).replace("p", "."))
+            r["I_Wcm2"] = float(m.group(2).replace("e", "e+"))
+            r["variant"] = m.group(3) or "base"
+        if not (r["done"] and os.path.isfile(f"{rd}/expec")):
+            rows.append(r); continue
+        names, a = expec(f"{rd}/expec")
+        a = first_pass(a)
+        col = {n: j for j, n in enumerate(names)}
+        jn = next(j for n, j in col.items() if n.startswith("Ovr") or n == "Overlap")
+        jh = next(j for n, j in col.items() if n.startswith("H0"))
+        r["E_init"] = a[0, jh]
+        r["Ip_eV"] = -a[0, jh] * HA_EV
+        tend = a[-1, 0]
+        for tg, t in (("pe", T3), ("end", tend)):
+            r[f"norm_loss_{tg}"] = 1 - at(a, jn, t)
+        occ = [j for n, j in col.items() if n.startswith("OccDual")]
+        if occ and model == "sae":
+            v = r["variant"] if r["variant"] in eig else "base"
+            e = eig[v][: len(occ)]
+            bound = [j for j, ek in zip(occ, e) if ek.real < 0]
+            r["n_bound"] = len(bound)
+            for tg, t in (("pe", T3), ("end", tend)):
+                pb = sum(at(a, j, t) for j in bound)
+                r[f"P_ion_proj_{tg}"] = 1 - pb
+                r[f"P_ground_{tg}"] = at(a, occ[0], t)
+        k, sg = spectrum(rd)
+        if k is not None and r["I_Wcm2"] > 0:
+            w = sg * k * k
+            tr = getattr(np, "trapezoid", getattr(np, "trapz", None))
+            r["P_spec_total"] = float(tr(w, k))
+            E = k * k / 2 * HA_EV
+            e2 = 2 * r["E_ph_eV"] - r["Ip_eV"]
+            sel = np.abs(E - e2) < 0.5
+            r["E_peak2_eV"] = e2
+            r["P_peak2"] = float(tr(w[sel], k[sel])) if sel.sum() > 2 else float("nan")
+            r["k_max"] = float(k[-1])
+            ip = int_phi2(r["I_Wcm2"], r["E_ph_eV"])
+            r["sigma2_peak2_cm4s"] = r["P_peak2"] / ip
+            if "P_ion_proj_end" in r:
+                r["sigma2_proj_cm4s"] = r["P_ion_proj_end"] / ip
+        st = f"{os.path.dirname(inp)}/{name}.stderr"
+        if os.path.isfile(st):
+            mm = re.search(r"Elapsed \(wall clock\) time.*: (\S+)", open(st).read())
+            if mm:
+                p = [float(x) for x in mm.group(1).split(":")]
+                r["wall_s"] = sum(x * 60 ** i for i, x in enumerate(reversed(p)))
+        w = f"{rd}/WARNINGS"
+        r["warnings"] = " | ".join(sorted({l.strip()[:90] for l in open(w) if l.strip() and not l.startswith("---")})) if os.path.isfile(w) else ""
+        rows.append(r)
+    keys = []
+    for r in rows:
+        keys += [k for k in r if k not in keys]
+    with open(f"{HERE}/run1/results_{model}.csv", "w", newline="") as f:
+        wr = csv.DictWriter(f, fieldnames=keys)
+        wr.writeheader()
+        wr.writerows(rows)
+    print(f"wrote run1/results_{model}.csv ({len(rows)} rows)")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])

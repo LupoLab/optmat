@@ -1,0 +1,59 @@
+citation = "A. Bourgeade and G. Duchateau, \"Time-dependent ionization models designed for intense and short laser pulse propagation in dielectric materials\", Phys. Rev. E 85, 056403 (2012)"
+doi = "10.1103/physreve.85.056403"
+library = "Bourgeade_2012_TimeDependentIonization"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Two multiphoton-ionization models driven by the instantaneous electric field, \
+for coupling to a Maxwell-equation propagation code: BVkP (Bloch-Volkov final states, \
+matrix elements from k.P theory at the zone centre, Eqs. 1-16) and an optical-Bloch \
+density-matrix model with two valence and N_C conduction levels (Eqs. 17-22), each with \
+an added non-radiating 'free' state reached by relaxation (Sec. II C). Applied to 100-fs \
+pulses at 413 nm (three photons across a 9-eV gap), a pulse with 4 % of its second \
+harmonic, and chirped pulses (300-600 nm). No measurements; impact ionization excluded."""
+notes = """Journal pages 056403-1 to -11 = PDF pages 1-11. Identity validated.
+
+NO MATERIAL, NO DATASET. The models describe a generic direct-gap dielectric: the \
+introduction names silica, LBO, BBO, KDP, KTP and sapphire, and frequency-converting \
+crystals such as KDP motivate the work, but no calculation is assigned to a material. \
+The parameters (atomic units in Sec. II unless stated): band gap 'set to 9 eV' \
+(p. 056403-5); the valence-electron density N_0 = 2.2 x 10^22 cm^-3 (p. 056403-3); the \
+BVkP localization parameter alpha = 1.55 a.u., chosen so that the model reproduces \
+Keldysh's formula for the conditions of interest; the optical-Bloch dipole elements \
+mu_vv = 1.68 x 10^-29 C m and mu_vc = 1.34 x 10^-29 C m, chosen to mimic the BVkP rate \
+early in the pulse (p. 056403-5); the relaxation time into the free state, 3 ps, 'according \
+to these relaxation time measurements': conduction electrons in KDP relax 'on a \
+timescale ranging from roughly 300 fs to tens of ps [39]' (Duchateau et al., Phys. Rev. B \
+83, 075114 (2011)), 'the same order of magnitude for other wide-band-gap dielectric \
+materials, such as NaCl, MgO, or Al2O3' [40-42] (p. 056403-5): ranges for other \
+materials, not extracted (the vocabulary would need a material for each; the ranges are \
+not values). With no material, no dataset can be written; the numbers are in the \
+formulas' coefficients.
+
+RESULTS (figures only): the density of conduction and free electrons against time, \
+photon energy and intensity (Figs. 1-6); the fitted multiphoton slopes 2.88-3.07 at 413 nm \
+(2.52 for the two-level optical-Bloch model) against the expected 3 (p. 056403-7); a \
+4 %-intensity second harmonic raising the free-electron density by an order of magnitude \
+at a 3-eV fundamental (Fig. 8); chirped pulses changing the multiphoton order from 3 to 4 \
+near 400 fs (Fig. 9). Final free-electron density ~2e18 cm^-3 (three-photon case) and \
+~1e20 cm^-3 (two-photon), compared with measurements on various dielectrics [39-42] and \
+first-principles results for alpha-quartz [43,44]. Impact ionization is estimated below \
+5 % for 100 fs and < 5e13 W/cm2 from Rethfeld's Fig. 6 (Phys. Rev. B 73, 035101 (2006), not \
+in the library; p. 056403-5)."""
+
+[[formulas]]
+id = "bvkp_rate"
+equation = "Eqs. (9), (15), (16), pp. 056403-3"
+printed = "P = <phi_c|P_Z|phi_v> = sqrt(m_0^2 E_g/(2 m*_vc)), 1/m*_vc = 1/m*_v + 1/m*_c (9); T_cv(t) = -(P/(m_0 (E_c - E_v))) int_0^t dt exp{i (E_c - E_v) t} E(t)/(1 - i A(t)/alpha)^2 (15); W_MPI(t) = N_0 d|T_cv(t)|^2/dt = 2 N_0 Re{T_cv*(t) dT_cv(t)/dt} (16)"
+variable = "E(t): the laser field; A(t) = -int_0^t E dt' the vector potential; alpha the localization parameter of the (hydrogen-like) valence state; atomic units"
+coefficients = { alpha = "1.55 a.u.", N_0 = "2.2e22 cm^-3", E_g = "9 eV" }
+check = "The model is checked against Keldysh's formula by the choice of alpha (p. 056403-5); no rate value is printed to reproduce."
+notes = "Valid while |A(t)/alpha| < 1 (perturbative), Eq. (14). Several final conduction states c_i are summed numerically. The relaxation to a free state (Sec. II C) makes the ionization irreversible; tau_r = 3 ps."
+
+[[formulas]]
+id = "optical_bloch"
+equation = "Eqs. (19)-(22), p. 056403-4"
+printed = "i d rho/dt = [H, rho] (19); i d rho_jk/dt = (E_j - E_k) + E(t) . sum_l rho_jl mu_lk - E(t) . sum_l rho_lk mu_jl (20); rho(t + dt) = [Id + (i/2) H(t + dt/2)][Id - (i/2) H(t + dt/2)]^-1 rho(t) [Id - (i/2) H(t + dt/2)][Id + (i/2) H(t + dt/2)]^-1 (22)"
+variable = "rho: density matrix of two valence and N_C conduction levels; mu_jl = <psi_j|r|psi_l>"
+coefficients = { mu_vv = "1.68e-29 C m", mu_vc = "1.34e-29 C m", tau_r = "3 ps" }
+check = "Nothing numeric to reproduce."
+notes = "Eq. (20) is printed with (E_j - E_k) not multiplied by rho_jk (as printed). The conduction-valence elements are equal and scaled as 1/sqrt(N_C); two valence levels are needed for even photon orders (Appendix B)."

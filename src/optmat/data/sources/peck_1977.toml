@@ -1,0 +1,249 @@
+citation = "E. R. Peck and S. Huang, J. Opt. Soc. Am. 67, 1550 (1977)"
+doi = "10.1364/josa.67.001550"
+library = "Peck_1977_RefractivityDispersionHydrogen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Corner-reflector interferometer, two 24 cm cells (96 cm total path), one \
+filled and one evacuated; two wavelengths at once (a Hg or Cd visible reference line \
+on a photomultiplier and a red/infrared line on PbS detectors, infrared monochromator \
+pass band up to 3-4 nm), giving refractivity ratios to about 10 ppm; whole fringes \
+counted, fractions read to 0.001 fringe. Pressure by quartz manometer, temperature by \
+calibrated thermocouples; 441 absolute determinations averaged. Matheson \
+ultra-high-purity H2 (99.999 mol% He-free; 50 ppm He), a uniform impurity correction \
+of +0.0040 in 10^6 (n - 1) applied."""
+notes = """Refractivities are reduced to 0 C and 760 Torr with the real-gas density ratio \
+rho0/rhom = (Zm/Z0) p0 Tm / (pm T0) (Eq. 1), Z from Goodwin et al.'s second virial \
+coefficient (Eq. 2: Z - 1 = (0.255/T - 23.9/T^2) p, p in atm), plus 'a very small \
+correction from the Lorenz-Lorentz formula' (p. 1550): density = real. Wavelengths are \
+vacuum (Table I heading). Natural (normal) hydrogen at room temperature.
+
+Accuracy: the absolute value at 0.5462252 um is (139.304 +- 0.017) x 10^-6, the \
+standard deviation of the mean of 441 determinations (Eq. 3, p. 1551); systematic \
+pressure and temperature errors 'may be estimated at 1 part in 5000' each, together \
+about +-0.04e-6 (p. 1551). The other values of Table I are that absolute value times \
+the measured refractivity ratios (precision about 10 ppm). Table I's caption: \
+'Absolute accuracy is not claimed to this precision'. The rms deviation of the 15 \
+fitted points from Eq. (4) is 0.0018 (p. 1551). Hence per point absolute = 0.0018 (rms) \
+and systematic_relative = 3.1e-4 (0.017 and 0.04 in quadrature over 139.3, taken as \
+one sigma). The value is 0.25 % below Koch (1912) and Kirn (1921) and the ICT value, \
+20 times its standard deviation; the authors attribute the difference to the samples \
+(p. 1551) and show that, bridged by Koch and Kirn, their data agree with Smith, Huber & \
+Parkinson's UV data to 0.01 %.
+
+The abstract and p. 1551 speak of 'eighteen' wavelengths; Table I has 17 rows (image \
+checked: no row is lost), 15 fitted and two, in parentheses, excluded for probable \
+spectral impurity (0.7247163 and 1.3626384 um).
+
+Table II reproduces older refractivities at 0.5462 um after Cuthbertson & Cuthbertson \
+(1933); Table IV gives polarizabilities (a0^3): this work's by Eq. (13), \
+alpha/a0^3 = 4.00003e4 (n - 1), from Eq. (4) (a derived check), Kirn's from his \
+formula (reproduced, derived), and the theoretical values of Kolos & Wolniewicz (1966, \
+converted from 0.8045 A^3) and Ford & Browne (1973), which 'take account of the \
+dynamic behavior of the molecule at room temperature' (p. 1552). Table III \
+(percentage differences of Koch and Kirn from Eqs. 4 and 6) is derived and not \
+extracted. The Verdet-constant ratio gamma = 0.9519 +- 0.0019 and Rayleigh-scattering \
+comparisons (p. 1553) are not refractive-index data."""
+
+[[datasets]]
+id = "experiment"
+material = "H2"
+file = "H2/peck_1977__experiment.csv"
+table = "tbl_7beee2e55930"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "primary"
+notes = "The 15 points used in the paper's fits."
+[datasets.uncertainty]
+absolute = 0.0018
+level = "rms"
+systematic_relative = 0.00031
+
+[[datasets]]
+id = "experiment_excluded"
+material = "H2"
+file = "H2/peck_1977__experiment_excluded.csv"
+table = "tbl_7beee2e55930"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "excluded"
+notes = "The two points printed in parentheses (0.7247163 and 1.3626384 um): deviations 0.0087 and 0.0079 from Eq. (4), not used in the curve fitting because 'spectral impurity was responsible for the deviations' (p. 1551)."
+
+[[datasets]]
+id = "eq4"
+material = "H2"
+file = "H2/peck_1977__eq4.csv"
+table = "tbl_7beee2e55930"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "real"
+use = "check"
+notes = "The paper's Eq. (4) evaluated at the wavelengths of Table I, as tabulated (one erratum)."
+
+[[datasets]]
+id = "literature_546"
+material = "H2"
+file = "H2/peck_1977__literature_546.csv"
+table = "tbl_f3f6edf512d1"
+quantity = "refractivity"
+scale = 1e-6
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = "1atm_0C"
+density = "unknown"
+use = "reproduced"
+reproduced_from = ["C. Cuthbertson and M. Cuthbertson, Proc. R. Soc. A 139, 517 (1933)"]
+notes = "Table II: Perreau 1896, Scheel 1907, Cuthbertson & Cuthbertson 1909, Koch 1912, Kirn 1921, Schacherl 1927, 'according to Cuthbertson and Cuthbertson (1933)', at 0.5462252 um 'under standard conditions'. The original papers are not in the library (only Koch's and Kirn's are cited in full, refs. 3 and 4)."
+
+[[datasets]]
+id = "alpha_this_work"
+material = "H2"
+file = "H2/peck_1977__alpha_this_work.csv"
+table = "tbl_c46a760f2d3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table IV 'This work': Eq. (4) at infinite wavelength and 0.5462252 um converted by Eq. (13) (N0 = 2.68515e19 cm^-3 from Z0 = 1.000614): derived from the refractivity data, not independent of them."
+
+[[datasets]]
+id = "alpha_kirn"
+material = "H2"
+file = "H2/peck_1977__alpha_kirn.csv"
+table = "tbl_c46a760f2d3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["M. Kirn, Ann. Phys. (Paris) 64, 566 (1921)"]
+notes = "Table IV 'Kirn': computed by Peck & Huang from Kirn's Cauchy formula (quoted on p. 1552) with their Eq. (13)."
+
+[[datasets]]
+id = "alpha_kolos_wolniewicz"
+material = "H2"
+file = "H2/peck_1977__alpha_kolos_wolniewicz.csv"
+table = "tbl_c46a760f2d3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["W. Kolos and L. Wolniewicz, J. Chem. Phys. 46, 1426 (1966)"]
+notes = "Static theoretical value, room-temperature average, 'converted for comparison from their figure of 0.8045 A^3' (p. 1552)."
+
+[[datasets]]
+id = "alpha_ford_browne"
+material = "H2"
+file = "H2/peck_1977__alpha_ford_browne.csv"
+table = "tbl_c46a760f2d3f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["A. L. Ford and J. C. Browne, Phys. Rev. A 7, 418 (1973)"]
+notes = "Theoretical dynamic polarizability, room-temperature average (p. 1552)."
+
+[[errata]]
+dataset = "eq4"
+row = "1.3507884"
+column = "value"
+printed = "135.305"
+corrected = "136.305"
+reason = "The Eq. (4) value at 1.3507884 um is printed 1.000 too low: the row's own difference column, Data - Eq. (4) = -0.0009 with Data = 136.304, requires 136.305, and the column is otherwise monotonic between 136.295 and 136.749."
+evidence = "Eq. (4), 21.113 + 12723.2/(111 - sigma^2), evaluated at 1.3507884 um gives 136.3052 (checked 2026-09-24); table image tbl_7beee2e55930.jpg prints 135.305."
+
+[[formulas]]
+id = "eq4"
+form = "dn_sigma2"
+terms = { scale = "1e-6", A = "21.113", B = ["12723.2"], C = ["111"] }
+range_nm = [404.7, 1694.5]
+material = "H2"
+equation = "Eq. (4), p. 1551"
+printed = "10^6 (n - 1) = 21.113 + 12723.2/(111 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "0.4047-1.6945 um (the data) 'and beyond it to longer wavelengths' (p. 1551)"
+coefficients = { A = "21.113", B = "12723.2", C = "111" }
+check = "Reproduces Table I's Eq. (4) column to the printed 0.001 at all 17 wavelengths (with the erratum at 1.3507884 um); rms 0.0016 against the 15 fitted three-decimal points (paper: 0.0018 on four-decimal data); 135.736 at infinite wavelength as stated (p. 1552) (checked 2026-09-24)."
+notes = "The authors' best estimate inside their range and to longer wavelengths."
+
+[[formulas]]
+id = "eq5"
+material = "H2"
+equation = "Eq. (5), p. 1551"
+printed = "10^6 (n - 1) = 17692.45/(130.3516 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "0.4047-1.6945 um"
+coefficients = { B = "17692.45", C = "130.3516" }
+check = "rms 0.0045 against the 15 points (paper: 0.0043), low at the ends and high in the middle as stated (checked 2026-09-24)."
+notes = "Single-term Sellmeier, shown for its effective oscillator: 1.47 electrons at 875.9 A (p. 1551)."
+
+[[formulas]]
+id = "eq6_shp"
+material = "H2"
+equation = "Eq. (6), p. 1552"
+printed = "10^6 (n - 1) = 23.79 + 12307.2/(109.832 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "unknown"
+range = "0.16797-0.28824 um (the data of Smith, Huber & Parkinson)"
+coefficients = { A = "23.79", B = "12307.2", C = "109.832" }
+reproduced_from = ["P. L. Smith, M. C. E. Huber and W. H. Parkinson, Phys. Rev. A 13, 1422 (1976)"]
+check = "Not checked (the SHP data are not in the library); the paper states rms 0.077 (p. 1552)."
+notes = "Peck & Huang's fit to another group's data (SHP gave values to 0.1 only)."
+
+[[formulas]]
+id = "eq7"
+form = "dn_sigma2"
+terms = { scale = "1e-6", B = ["14895.6", "4903.7"], C = ["180.7", "92"] }
+range_nm = [168.0, 1694.5]
+material = "H2"
+equation = "Eq. (7), p. 1552"
+printed = "10^6 (n - 1) = 14895.6/(180.7 - sigma^2) + 4903.7/(92 - sigma^2)"
+variable = "sigma: vacuum wavenumber in um^-1"
+state = "1atm_0C"
+density = "real"
+range = "0.1680-1.6945 um (this work plus Smith, Huber & Parkinson); preferred to Eq. (4) below 0.4047 um"
+coefficients = { B1 = "14895.6", C1 = "180.7", B2 = "4903.7", C2 = "92" }
+check = "Against the 15 fitted points: rms 0.0022 (paper 0.0022), max 0.0036 (paper 0.0039, on four-decimal data); 135.734 at infinite wavelength as stated (checked 2026-09-24)."
+notes = "The recommended wide-range formula; no scale factor between the two data sets."
+
+[[formulas]]
+id = "koch_1913"
+material = "H2"
+equation = "p. 1552 (text)"
+printed = "(n^2 - 1) x 10^6 = 28 897.52 (116.7539 - sigma^2)^-1 + 11 177.54 (452.5617 + sigma^2)^-1"
+variable = "sigma: wavenumber in um^-1 (as quoted)"
+range = "not stated"
+coefficients = { B1 = "28897.52", C1 = "116.7539", B2 = "11177.54", C2 = "452.5617" }
+reproduced_from = ["J. Koch, Ark. Mat. Astron. Phys. 8, 20 (1913)"]
+check = "Not checked. The '+ sigma^2' in the second denominator is as printed."
+notes = "Reproduced; Koch's values are 0.245 % above this work in the visible (Table III)."
+
+[[formulas]]
+id = "kirn_1921"
+material = "H2"
+equation = "p. 1552 (text)"
+printed = "(n - 1) x 10^6 = 136.101 866 + 1.024 637 3 sigma^2 + 0.009 906 069 sigma^4 + 0.000 070 512 617 sigma^6"
+variable = "sigma: wavenumber in um^-1 (as quoted)"
+range = "not stated"
+coefficients = { A0 = "136.101866", A2 = "1.0246373", A4 = "0.009906069", A6 = "0.000070512617" }
+reproduced_from = ["M. Kirn, Ann. Phys. (Paris) 64, 566 (1921)"]
+check = "Not checked."
+notes = "Reproduced Cauchy formula, 0.240 % above this work in the visible (Table III)."

@@ -1,0 +1,130 @@
+citation = "C. H. Lin, J. P. Heritage, T. K. Gustafson, R. Y. Chiao and J. P. McTague, \"Birefringence arising from the reorientation of the polarizability anisotropy of molecules in collisionless gases\", Phys. Rev. A 13, 813 (1976)"
+doi = "10.1103/PhysRevA.13.813"
+library = "Lin_1976_BirefringenceArisingReorientation"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Theory of the orientational (rotational) nonlinear refractive index of \
+collisionless linear and symmetric-top molecular gases: stationary response from the \
+quadratic and quartic Stark shifts of the rotational levels (perturbation series in K = \
+Delta alpha <E.E> / 2hBc, sum rules over M), and the transient response (refractive-index \
+bursts, revivals) from a first-order density-matrix calculation; numerical tables for \
+several gases using literature Delta alpha and B (secs. III-VII)."""
+notes = """Journal pages 813-829 = PDF pages 1-17 (the library pdf has no usable text \
+layer: values read from the table image, which matches the cells file). Identity \
+checked against the first page. Second copy: Unverified_5a357c1fd082 is the NASA \
+technical memorandum NASA-TM-X-70344 (63 pp., 1974; same authors, same title \
+'Birefringing arising ...' in the NASA header): its Table I cells are identical to the \
+PRA's (compared cell by cell 2026-09-26), Tables II-IV too; its reference numbering \
+differs (the CS2 observation is note 24 there, 18 here). The PRA is used.
+
+WHAT IS TAKEN: Table I's Delta alpha of the curated linear molecules, all quoted from \
+other works: CO2 20.3, N2O 27.9, N2 9.3, O2 11.4 (footnote b = Ref. 16, 'J. O. \
+Hershfelder, C. F. Curties, and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, \
+1954)', i.e. Hirschfelder, Curtiss and Bird) and H2 3.02, D2 2.92 (footnote c, K. B. \
+MacAdam and N. F. Ramsey, Phys. Rev. A 6, 898 (1972)), in '10^-25 esu' (= 1e-25 cm3, a \
+polarizability volume). No wavelength is stated for any of them: the abscissa is 'not \
+stated'. These are the Delta alpha that \
+wahlstrand_2012, nibbering_1997 and chen_2007 quote as 'Lin et al.'.
+
+DEFINITIONS (Gaussian; p. 815): n = n0 + n2 <E.E> + n4 <E.E>^2 + n6 <E.E>^3, <E.E> the \
+time-averaged squared field (per mean square field, as hellwarth_1990's n2); \
+susceptibility -8 pi N dDeltaW/d<E.E>, Eq. (5). Thermal-equilibrium (collision-dominated, \
+long-pulse) value (p. 815, the 'usual classical expression'): n2 = (4 pi N/45)(Delta \
+alpha)^2 / (kT n0). Collisionless (Eq. (9a), p. 816): n2 = -(2 pi N / kT n0) N2(eta) \
+Delta alpha^2 / Z eta, eta = hBc/kT; high-temperature limit (Eq. (16), p. 818): n2 = (2 pi \
+N/30) Delta alpha^2 / (kT n0), 'a factor of 3/4 smaller than the usual thermal \
+equilibrium value'; low-temperature limit (Eqs. (15a)-(15c)): n2 = (4 pi N/135) (Delta \
+alpha)^2 / (hBc n0), n4 = (6 pi N/8505) (Delta alpha)^3 / ((hBc)^2 n0), n6 = -(26 pi \
+N/1913625) (Delta alpha)^4 / ((hBc)^3 n0). HIGHER ORDERS (notes only): these n4, n6 are \
+the rotational (orientational) saturation of a collisionless gas at low temperature \
+(saturated value ~4.9 against 4.2 for full alignment, Fig. 4), not electronic \
+higher-order Kerr terms; for the high-temperature limit n4 and n6 are not evaluated.
+
+TABLE I (p. 819) n2 (rotational, collisionless, 10^-12 esu/mole; not extracted: the unit \
+is n2 per unit molar density, mol cm^-3, and the values are model results from the \
+reproduced Delta alpha): CO2 12.6, N2O 23.7, N2 2.56, O2 3.94 (300 K), H2 0.434 (35 K), D2 \
+0.803 (39 K). Check (2026-09-26): Eq. (16) with N = N_A gives 2.63 for N2 at 300 K (2.56 \
+printed, which includes nuclear statistics, p. 819). Table IV (p. 826): N2O at 296 K, 1 \
+atm: n2(T, P) = 1.07 x 10^-15 'esu/cm3', optimum pulse 0.41 ps; 23.7e-12 x the molar \
+density (4.12e-5 mol cm^-3) is 0.98e-15 (9 % lower; not resolved). Table III (p. 824): revival \
+spacing tau_d = 1/4Bc and optimum pulse width at 296 K: CO2 21.37, 0.42 ps; N2O 20.26, \
+0.41 ps. Rotational constants B (Table I, Herzberg): CO2 0.3902, N2O 0.4116, N2 2.001, O2 \
+1.438, H2 59.30, D2 29.90 cm^-1."""
+
+[[datasets]]
+id = "dalpha_hirschfelder_CO2"
+material = "CO2"
+file = "CO2/lin_1976__dalpha_hirschfelder_CO2.csv"
+table = "tbl_7ac00c24db21"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, New York, 1954)"]
+notes = "Table I, Delta alpha (1e-25 esu = cm3), footnote b (Hirschfelder, Curtiss and Bird). Wavelength not stated. The table's temperature column (300 K) is that of the n2 calculation, not of the anisotropy."
+
+[[datasets]]
+id = "dalpha_hirschfelder_N2O"
+material = "N2O"
+file = "N2O/lin_1976__dalpha_hirschfelder_N2O.csv"
+table = "tbl_7ac00c24db21"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, New York, 1954)"]
+notes = "Table I, Delta alpha (1e-25 esu = cm3), footnote b (Hirschfelder, Curtiss and Bird). Wavelength not stated. The table's temperature column (300 K) is that of the n2 calculation, not of the anisotropy."
+
+[[datasets]]
+id = "dalpha_hirschfelder_N2"
+material = "N2"
+file = "N2/lin_1976__dalpha_hirschfelder_N2.csv"
+table = "tbl_7ac00c24db21"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, New York, 1954)"]
+notes = "Table I, Delta alpha (1e-25 esu = cm3), footnote b (Hirschfelder, Curtiss and Bird). Wavelength not stated. The table's temperature column (300 K) is that of the n2 calculation, not of the anisotropy."
+
+[[datasets]]
+id = "dalpha_hirschfelder_O2"
+material = "O2"
+file = "O2/lin_1976__dalpha_hirschfelder_O2.csv"
+table = "tbl_7ac00c24db21"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, New York, 1954)"]
+notes = "Table I, Delta alpha (1e-25 esu = cm3), footnote b (Hirschfelder, Curtiss and Bird). Wavelength not stated. The table's temperature column (300 K) is that of the n2 calculation, not of the anisotropy."
+
+[[datasets]]
+id = "dalpha_macadam_ramsey_H2"
+material = "H2"
+file = "H2/lin_1976__dalpha_macadam_ramsey_H2.csv"
+table = "tbl_7ac00c24db21"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["K. B. MacAdam and N. F. Ramsey, Phys. Rev. A 6, 898 (1972)"]
+notes = "Table I, Delta alpha (1e-25 esu = cm3), footnote c (MacAdam and Ramsey). Wavelength not stated. The table's temperature column (35 K) is that of the n2 calculation, not of the anisotropy."
+
+[[datasets]]
+id = "dalpha_macadam_ramsey_D2"
+material = "D2"
+file = "D2/lin_1976__dalpha_macadam_ramsey_D2.csv"
+table = "tbl_7ac00c24db21"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["K. B. MacAdam and N. F. Ramsey, Phys. Rev. A 6, 898 (1972)"]
+notes = "Table I, Delta alpha (1e-25 esu = cm3), footnote c (MacAdam and Ramsey). Wavelength not stated. The table's temperature column (39 K) is that of the n2 calculation, not of the anisotropy."

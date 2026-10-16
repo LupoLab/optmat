@@ -1,0 +1,80 @@
+citation = "A. Talebpour, S. Larochelle and S. L. Chin, \"Suppressed tunnelling ionization of the D2 molecule in an intense Ti:sapphire laser pulse\", J. Phys. B: At. Mol. Opt. Phys. 31, L49 (1998)"
+doi = "10.1088/0953-4075/31/2/003"
+library = "Talebpour_1998_SuppressedTunnellingIonization"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Ion yields against peak intensity of Ar+, D2+ and D+ in 200 fs, 800 nm, \
+linearly polarised Ti:sapphire pulses (the technique of Talebpour, Chien & Chin, J. \
+Phys. B 29, 5725 (1996), not described here), compared with the PPT rate (Eq. (2)) \
+integrated over the pulse and the focal volume. For D2, a one-dimensional \
+quasi-classical barrier along the field through one proton, in the single-active-electron \
+potential built from Coulson's (1938) one-electron wavefunction (Eqs. (6)-(8)), defines \
+an angle-dependent effective charge Z_eff(theta) with the same barrier integral as an \
+atom (Eqs. (9)-(10)); the PPT rate with Z_eff(theta) is averaged over the hemisphere \
+(Eq. (11)) and weighted by Franck-Condon factors (Dunn 1966) (pp. L50-L56)."""
+notes = """PDF pages 1-11: page 1 is the IOPscience download cover, PDF p. 2 = journal \
+p. L49 (pages cited are journal pages). Identity checked on the first page. The \
+library's title field has lost 'D2' ('Suppressed tunnelling ionization of the \
+molecule'); the paper is about D2, not O2 (the guess in the list of requested papers): \
+O2 does not appear in it.
+
+EXTRACTED: zeff_D2, the orientation-averaged effective charge 0.72 (p. L56), an \
+ionization_model_parameter of the PPT rate (Eq. (2)), use = check as talebpour_1999's \
+charges are. It is computed, not fitted: Z_eff(theta) from Eq. (9) at 1.5e14 W/cm^2 \
+(its intensity dependence over 3e13-4e14 W/cm^2 is 'weak (less than 5% deviation from \
+the mean value)', p. L55), W_PPT(theta) from Eq. (2), and the hemispherical average of \
+Eq. (11); 'the TI rate of the D2 molecule is the same as that of an atom with a similar \
+ionization potential, and with Z_eff = 0.72' (p. L56). With the Franck-Condon average \
+the PPT yield agrees with the measured S(D2+) + 0.5 S(D+) ('The agreement with \
+experiment is excellent', p. L56; Fig. 2). No uncertainty is stated. solprop has no \
+effective charge for H2 or D2 (it uses MO-ADK for them); talebpour_1999's N2 (0.9) and \
+O2 (0.53) charges come from the same group and the same PPT form.
+
+THE PPT FORM (Eq. (2), p. L50, checked on the page image): W_PPT = |C_n*l*|^2 f_lm E_i \
+sqrt(6/pi) (2(2E_i)^(3/2)/F)^(2n* - |m| - 3/2) (1 + gamma^2)^(|m|/2 + 3/4) A_m(omega, \
+gamma) exp(-(2(2E_i)^(3/2)/(3F)) g(gamma)), n* = Z_eff/sqrt(2E_i); g(gamma) Eq. (3) as \
+ilkov_1992; f_lm Eq. (4); |C_n*l*|^2 = 2^(2n*)/(n* Gamma(n* + l* + 1) Gamma(n* - l*)) \
+(Eq. (5)); A_m 'can be found in Perelomov et al (1966) and Ilkov et al (1992)'; 'This \
+rate should be averaged over the different values of m' (p. L51). The same form as \
+larochelle_1998's Eq. (10). Against ilkov_1992 Eq. (8) (corrected prefactor), it lacks \
+the factor (1 + gamma^2)^(-n*) (ilkov_1992 has (2F0/(F sqrt(1 + gamma^2)))^(2n - |m| - \
+3/2) = (2F0/F)^(2n - |m| - 3/2) (1 + gamma^2)^(-n + |m|/2 + 3/4)): at gamma = 1 a factor \
+2^(-n*) (about 0.5 for n* ~ 0.94) between the two. l* and the l, m used for D2 are not \
+stated.
+
+OTHER VALUES (text, not taken): the ionisation potentials used, D2 15.46 eV and Ar \
+15.76 eV (p. L50, uncited); Ti:sapphire frequency 0.057 au; the rotation frequency \
+omega_0 = (alpha F^2/(mu R^2))^(1/2) of D2 at 1e14 W/cm^2, 7.9e-4 au, a period 453 laser \
+periods against ~70 in the pulse, so the molecules are randomly oriented (Eq. (1), \
+Sukharev & Krainov, p. L50); the potential in Fig. 3 at F = 0.06 au and 20 degrees, the \
+electron's ionisation energy 0.57 au (p. L53); Coulson's wavefunction, Eq. (7), Psi(xi, \
+eta) = 0.877 58 e^(-0.75 xi) (1 + 0.277 87 eta^2 - 0.128 63 xi + 0.012 503 xi^2 - \
+0.039 589 xi eta^2), xi = (r1 + r2)/R, eta = (r1 - r2)/R (p. L53; R not stated). 'The \
+ion signal [of D2] is 40 times lower than the ion signal of Ar' (p. L52). NO+ (not \
+curated): Z_eff = 2.2 with the -RF term 'is capable of fitting the experimental results' \
+of Talebpour et al. 1997c (p. L57), and the earlier ~7 eV reduction of NO+'s ionisation \
+potential is withdrawn (p. L57).
+
+FIGURES (not digitised): Fig. 1, Ar+, D2+ and D+ yields against intensity with the PPT \
+Ar+ curve (the upper scale gamma of Ar); Fig. 2, S(D2+) + 0.5 S(D+) with PPT curves for \
+Z = 1, 0.72, and 0.72 with Franck-Condon factors; Figs. 3-5, the potential; Fig. 6, \
+Z_eff(theta) and W_PPT(theta) at 1.5e14 W/cm^2."""
+
+[[datasets]]
+id = "zeff_D2"
+material = "D2"
+table = "text"
+points = [["Z_eff", "", "0.72"]]
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = """p. L56: the orientation-averaged effective charge of the PPT rate (Eq. (2)) for D2 \
+(E_i = 15.46 eV), from Z_eff(theta) computed with Eqs. (8)-(10) at 1.5e14 W/cm^2, 800 \
+nm, and the hemispherical average of W_PPT(theta) (Eq. (11)). Computed, not fitted \
+(record notes); the l and m used are not stated. No uncertainty is stated."""
+[datasets.parameters]
+model = "ppt"
+parameter = "Z_eff"
+wavelength_nm = 800
+intensity_w_per_cm2 = 1.5e14

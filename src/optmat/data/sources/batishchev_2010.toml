@@ -1,0 +1,119 @@
+citation = "P. A. Batishchev, O. I. Tolstikhin and T. Morishita, \"Atomic Siegert states in an electric field: Transverse momentum distribution of the ionized electrons\", Phys. Rev. A 82, 023416 (2010)"
+doi = "10.1103/PhysRevA.82.023416"
+library = "Batishchev_2010_AtomicSiegertStates"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Siegert states (regular, outgoing-wave solutions of the stationary \
+Schrodinger equation) of one electron in an atomic potential and a static uniform field, \
+in parabolic coordinates: slow-variable discretisation in eta with an adiabatic basis \
+in xi and R-matrix propagation to the asymptotic region, where the outgoing-wave \
+condition is imposed in the separable asymptotic form (Secs. II-III, Appendix). The \
+complex eigenvalue is E = script-E - i Gamma/2 (Eq. (7)): Gamma is the ionisation \
+width (rate) of the state. Single-active-electron (SAE) potentials: pure Coulomb (H), \
+the Green-Sellin-Zachor form (Eqs. (46)-(47)) with Garvey, Jackman & Green's (1975) \
+parameters for Ne, Ar, Kr, Xe, and a finite-range model for H- (Eq. (48))."""
+notes = """Journal pp. 023416-1 to -12 = PDF pages 1-12 (pages cited as -n). Identity \
+checked on the first page.
+
+EXTRACTED: Table I (p. -8, tbl_c150ef90d0bb, JSON cells, image checked), the \
+convergence of the Siegert eigenvalue of Ar(3p, m = 0) with the number of adiabatic \
+channels N_ch, at F = 0, 0.05, 0.1, 0.2, 0.5 and 1.0 au. 'All digits in the last line \
+for each value of F are converged' (caption): the last line's Gamma at each F > 0 is \
+the dataset table1_Ar (5 fields). Gamma is the width of one electron's Siegert state \
+(the 3p, m = 0 orbital, SAE): the rate per electron in that orbital, not per atom, with \
+no sum over m or over the six 3p electrons. The converged values (au): F = 0.05, \
+-script-E 0.607144, Gamma 0.236633e-5 (N_ch = 20); 0.1, 0.614961, 0.537961e-2 (20); 0.2, \
+0.616812, 0.931215e-1 (20); 0.5, 0.523588, 0.241714 (15); 1.0, 0.464172, 0.585482 (15). \
+The Stark-shifted energy -script-E has no quantity (it is the Siegert state's real \
+energy, not an ionisation energy): notes only. F = 0: -script-E = 0.605685 (N_ch = 30), \
+Gamma = 0, the model's bound-state energy. The rows with fewer channels are the \
+convergence study (e.g. at F = 0.05: Gamma 0.270883e-5 with 5 channels, 0.237055e-5 \
+with 10, 0.236645e-5 with 15).
+
+ACCURACY: Fig. 3's results (Ne, Ar, Kr, Xe) 'are converged to about six significant \
+digits' (p. -8); the H results of Fig. 1 'to at least ten significant digits' and \
+coincide with the literature (p. -6). The model potential, not the numerics, limits the \
+physics: its binding energies |E0| are 0.811 (Ne), 0.606 (Ar), 0.459 (Kr) and 0.486 (Xe) \
+au 'while the exact ionization potentials are 0.793, 0.579, 0.515, and 0.446' (p. -7, \
+uncited): 'The error varies from 2% for Ne to 11% for Kr', 'a price for simplicity of \
+this model potential'. So these are SAE-model rates of a model atom whose binding energy \
+is 4.6 % (Ar) too large: validators of an SAE rate at the model's own |E0|, not of \
+argon's rate.
+
+THE POTENTIAL (Eqs. (46)-(47), p. -7): V(r) = -Z_eff(r)/r, Z_eff(r) = Z - (Z - 1){1 - \
+[(b/a)(e^(a r) - 1) + 1]^(-1)} (Green, Sellin & Zachor 1969 [57]), with 'the recommended \
+values of the parameters a and b for the different atoms' of Garvey, Jackman & Green, \
+Phys. Rev. A 12, 1144 (1975) [58]; the paper prints them only for Kr: a = 1.351, b = \
+4.418 from [58], and modified values a = 1.320, b = 4.355 that give |E0| ~ 0.514 'much \
+closer to the exact value 0.515' (p. -8; recorded as datasets, ionization_model_parameter \
+of the model 'gsz_sae_potential'). Ne's, Ar's and Xe's a, b are not printed: Garvey et \
+al. 1975 is not in the library (missing).
+
+FIGURES (not digitised): Fig. 1, script-E and Gamma of the four lowest Siegert states of \
+H against F (exact, second-order perturbation theory, semiclassical asymptotics); Figs. \
+2, 4, 7, the transverse momentum distributions of H, the noble gases and H-; Fig. 3, \
+script-E and Gamma of Ne(2p), Ar(3p), Kr(4p), Kr'(4p) (modified parameters) and Xe(5p) \
+against F (Xe's energy has a maximum near F ~ 0.37, Kr's near 0.94, pp. -7 and -8); Fig. 5, the \
+asymptotic coefficients f_nu of Ar(3p); Fig. 6, H-.
+
+WEAK-FIELD LIMIT (Eqs. (40)-(42), p. -5): Gamma ~ F^(1 + |m| - 2 Z_as/kappa) \
+exp(-2 kappa^3/(3F)), kappa = (2|E0|)^(1/2), the leading asymptotic channel nu = 0; the \
+coefficients are 'not given explicitly' (the weak-field asymptotic theory is trinh_2013's \
+subject). H- model (Eq. (48), p. -9): V0 = 0.383 1087, r0 = 2.5026, |E0| = 0.027 7510 \
+(not curated)."""
+
+[[datasets]]
+id = "table1_Ar"
+material = "Ar"
+file = "Ar/batishchev_2010__table1_Ar.csv"
+table = "tbl_c150ef90d0bb"
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "field"
+abscissa_unit = "au"
+use = "check"
+notes = """Table I, p. -8: the converged width Gamma (the last line of each block, 'All \
+digits ... are converged') of the Ar(3p, m = 0) Siegert state in the SAE model potential \
+of Eqs. (46)-(47) with Garvey et al.'s parameters, whose binding energy is 0.605685 au \
+(0.606 in the text) against argon's 0.579: a model atom. Per electron in the m = 0 \
+orbital. use = check: a validator of an SAE rate at the model's |E0| (record notes)."""
+[datasets.parameters]
+wavelength_nm = inf
+polarization = "static"
+method = "SAE Siegert state (slow-variable discretisation, R-matrix propagation), Green-Sellin-Zachor potential with Garvey et al. 1975 parameters"
+orbital = "3p, m = 0"
+
+[[datasets]]
+id = "potential_garvey_Kr"
+material = "Kr"
+table = "text"
+points = [["a", "a", "1.351"], ["b", "b", "4.418"]]
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. H. Garvey, C. H. Jackman and A. E. S. Green, Phys. Rev. A 12, 1144 (1975)"]
+notes = """p. -8: 'By slightly modifying the parameters in Eq. (47) for Kr (1.320 and 4.355 \
+instead of 1.351 and 4.418 for a and b, respectively)': the recommended values of [58] \
+(Garvey et al. 1975), which give Kr's |E0| = 0.459 au (exact 0.515), below Xe's 0.486. a \
+in inverse bohr (e^(a r), r in au); b likewise (the ratio b/a is dimensionless)."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "a, b of Eq. (47)"
+
+[[datasets]]
+id = "potential_modified_Kr"
+material = "Kr"
+table = "text"
+points = [["a", "a", "1.320"], ["b", "b", "4.355"]]
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """p. -8: this paper's modification of Eq. (47)'s parameters for Kr, which gives \
+|E0| ~ 0.514 au, 'much closer to the exact value 0.515 and restores the correct order of \
+the binding energies' (the Kr'(4p) curves of Fig. 3). A model input chosen by the \
+authors; units as potential_garvey_Kr."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "a, b of Eq. (47)"

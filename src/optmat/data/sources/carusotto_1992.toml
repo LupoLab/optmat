@@ -1,0 +1,316 @@
+citation = "S. Carusotto, F. Perrone and E. Polacco, J. Chem. Phys. 97, 7979 (1992)"
+doi = "10.1063/1.463420"
+library = "Carusotto_1992_MeasurementKerrConstant"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute dc Kerr effect of N2, H2 and D2 at 295 K (+-0.5 K) and ~1 atm \
+(piezometric gauge, 0.1 %), 632.8 nm frequency-stabilised He-Ne laser (0.5 mW): a Kerr \
+cell (electrodes 498.8 mm long, 5.37 mm apart, field at 45 deg to the polarisation, \
+sinusoidal at 512.100 Hz, ~12 kV) followed by a Pockels cell whose dc ellipticity acts \
+as a carrier and whose small ac ellipticity is the reference; heterodyne lock-in \
+detection (sensitivity 5e-8 rad Hz^-1/2); K from Eq. (11); 86 runs (H2) and 50 runs (D2) \
+of 1000 s (pp. 7979-7981)."""
+notes = """DEFINITIONS (pp. 7979, 7980, 7983): 'The electrically induced optical \
+birefringence, or Kerr effect, is described by the Kerr constant K, defined as Delta n = \
+n_par - n_perp = K rho E^2' (Eq. 1), rho the gas density in amagat, E the field in \
+statV/cm; K in cm^2/statV^2 amagat (called esu). Ellipticity eps_k ~ Phi/2 = (pi K \
+rho/lambda) integral |E x z|^2 dz (Eq. 2). Theory (Buckingham & Orr's form for diatomic \
+nondipolar molecules): K = (2 pi N_Av / 15 V_mol)(5 gamma + eta Delta alpha Delta \
+alpha_0 / k_B T) (Eq. 12), eta = 1 - sigma_0 + (8/15) sigma_0^2 + ..., sigma_0 = h c B_0 \
+/ k_B T, the quantum correction for rotation and nuclear-spin statistics (Table II: eta \
+= 0.75 for H2, 0.87 for D2, with B_0 = 60.85 and 30.44 cm^-1 from Huber & Herzberg; these \
+are the equilibrium B_e of H2 and D2, the ground-state B_0 being about 59.3 and 29.9 \
+cm^-1: a slip, not affecting the stored values). The measured K includes the \
+orientational (rotational) term: the stored Kerr constants are total; the gamma of \
+Table II is only an input to Eq. (12).
+
+RESULTS (pp. 7981-7982): K(N2) = (15.64 +- 0.10 +- 0.15), K(H2) = (4.150 +- 0.042 +- \
+0.041), K(D2) = (4.297 +- 0.031 +- 0.043) x 10^-17 cm^2/statV^2 amagat (statistical, \
+systematic); compactly K(H2) = (4.150 +- 0.059), K(D2) = (4.297 +- 0.053) x 10^-17 esu; \
+Delta K = K(D2) - K(H2) = (0.147 +- 0.052 +- 0.001) x 10^-17. Table I's column heading \
+prints '10^17' where the text has x 10^-17 (the values are the same): read as 10^-17. \
+Table I also swaps H2's two uncertainties (0.041, 0.042): corrected by an erratum to the \
+text's statistical 0.042 (0.39/sqrt(86) = 0.042).
+
+EARLIER VALUES in Table I, not stored as datasets (high pressure or temperature \
+ranges, reproduced): Ref. 5 (Buckingham, Bogaard, Dunmur, Hobbs & Orr 1970): N2 at 100 \
+atm, 248 K, 18.7; at 334 K, 15.3. Ref. 2 (Buckingham & Orr 1968): H2 at 25-85 atm, 245 K, \
+3.81 +- 0.19; at 332 K, 3.31 +- 0.17; D2 at 12 atm, 243-305 K, 3.56 +- 0.18 (all 1e-17 \
+cm^2/statV^2 amagat). The table image's spacing places the H2 245 K row with the Ref. 5 \
+block, but the text attributes the H2 and D2 values to Ref. 2 ('Buckingham and co-workers \
+studied the birefringence of H2 and D2 in the density region of 22-90 amagat'). The \
+authors see 'satisfactory' agreement of the recent measurements. Pages are the \
+journal's (the PDF page plus 7977; the first PDF page is the publisher's cover). The \
+library notes two unmatched captions (the cover page); the tables agree with their \
+images."""
+
+[[datasets]]
+id = "kerr_N2"
+material = "N2"
+file = "N2/carusotto_1992__kerr_N2.csv"
+table = "tbl_bd417c3b63d6"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 295.0 }
+use = "primary"
+notes = "Table I (p. 7983) and text (pp. 7981-7982): the dc Kerr constant K of N2, Delta n = n_par - n_perp = K rho E^2 (Eq. 1), rho in amagat, E in statV/cm, measured at 295 K and ~1 atm (the state) with the 632.8 nm He-Ne line; K is per amagat, so the state only records the conditions. Printed as (15.64 +- 0.10 +- 0.15) x 10^-17 cm^2/statV^2 amagat in the text, 'the former uncertainty gives the statistical error, whilst the latter one takes into account systematical effects' ('Systematic errors can be reasonably estimated to be <1% of the measured effect'): sigma = the statistical error, the systematic one as systematic_relative (1 %, a bound). N2 was measured first as a check of the apparatus (voltage and pressure linearity, Figs. 2-3); total dc Kerr constant, dominated by the orientational term."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+systematic_relative = 0.01
+[datasets.parameters]
+temperature_k = 295.0
+
+[[datasets]]
+id = "kerr_H2"
+material = "H2"
+file = "H2/carusotto_1992__kerr_H2.csv"
+table = "tbl_bd417c3b63d6"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 295.0 }
+use = "primary"
+notes = "Table I (p. 7983) and text (pp. 7981-7982): the dc Kerr constant K of H2, Delta n = n_par - n_perp = K rho E^2 (Eq. 1), rho in amagat, E in statV/cm, measured at 295 K and ~1 atm (the state) with the 632.8 nm He-Ne line; K is per amagat, so the state only records the conditions. Printed as (4.150 +- 0.042 +- 0.041) x 10^-17 cm^2/statV^2 amagat in the text, 'the former uncertainty gives the statistical error, whilst the latter one takes into account systematical effects' ('Systematic errors can be reasonably estimated to be <1% of the measured effect'): sigma = the statistical error, the systematic one as systematic_relative (1 %, a bound). 86 runs of 1000 s; Gaussian fit mean 4.15e-17 esu, standard deviation 0.39e-17 (p. 7981). The table prints the uncertainties in the order +-0.041 +-0.042 while the text gives +-0.042 (statistical) +-0.041 (systematic); 0.39/sqrt(86) = 0.042: erratum on the sigma. Theory (Eq. 12, Table II) 4.145e-17 esu (text_kerr_theory)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+systematic_relative = 0.01
+[datasets.parameters]
+temperature_k = 295.0
+
+[[datasets]]
+id = "kerr_D2"
+material = "D2"
+file = "D2/carusotto_1992__kerr_D2.csv"
+table = "tbl_bd417c3b63d6"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 295.0 }
+use = "primary"
+notes = "Table I (p. 7983) and text (pp. 7981-7982): the dc Kerr constant K of D2, Delta n = n_par - n_perp = K rho E^2 (Eq. 1), rho in amagat, E in statV/cm, measured at 295 K and ~1 atm (the state) with the 632.8 nm He-Ne line; K is per amagat, so the state only records the conditions. Printed as (4.297 +- 0.031 +- 0.043) x 10^-17 cm^2/statV^2 amagat in the text, 'the former uncertainty gives the statistical error, whilst the latter one takes into account systematical effects' ('Systematic errors can be reasonably estimated to be <1% of the measured effect'): sigma = the statistical error, the systematic one as systematic_relative (1 %, a bound). 50 runs; mean 4.30e-17, standard deviation 0.22e-17 (p. 7981); 0.22/sqrt(50) = 0.031. Sample: <0.2 % H2, 20 ppmV N2. Theory 4.263e-17 esu. The difference K(D2) - K(H2) = (0.147 +- 0.052 +- 0.001) x 10^-17 (p. 7982)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+systematic_relative = 0.01
+[datasets.parameters]
+temperature_k = 295.0
+
+[[datasets]]
+id = "kerr_N2_ref3"
+material = "N2"
+file = "N2/carusotto_1992__kerr_N2_ref3.csv"
+table = "tbl_bd417c3b63d6"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["carusotto_1985"]
+notes = "Table I (p. 7983), Ref. 3 (Carusotto et al. 1985): K(N2) = 17.3 (1e-17 cm^2/statV^2 amagat) at 1 atm and 293 K, measured at 514.5 nm ('All data refer to lambda = 632.8 nm except for data quoted in Ref. 3 which refer to lambda = 514.5 nm'); 'the dispersion effect being thus negligible' in the authors' view. The earlier measurement 'showed errors due to the uncertainty in the density of gases, in the electric field integral and in the Faraday modulation' (p. 7979). Re-pointed to carusotto_1985 (now in the library): digit-identical with its Table II 'present work' value 17.3 +- 0.4 x 10^-17 (p. 337), whose error includes a 2.5 % systematic part ('We have estimated the systematic errors to be 2.5% of the signal', p. 336)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "kerr_H2_ref3"
+material = "H2"
+file = "H2/carusotto_1992__kerr_H2_ref3.csv"
+table = "tbl_bd417c3b63d6"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["carusotto_1985"]
+notes = "Table I (p. 7983), Ref. 3 (Carusotto et al. 1985): K(H2) = 4.32 (1e-17 cm^2/statV^2 amagat) at 1 atm and 293 K, measured at 514.5 nm ('All data refer to lambda = 632.8 nm except for data quoted in Ref. 3 which refer to lambda = 514.5 nm'); 'the dispersion effect being thus negligible' in the authors' view. The earlier measurement 'showed errors due to the uncertainty in the density of gases, in the electric field integral and in the Faraday modulation' (p. 7979). Re-pointed to carusotto_1985 (now in the library): digit-identical with its Table II 'present work' value 4.32 +- 0.14 x 10^-17 (p. 337), whose error includes a 2.5 % systematic part ('We have estimated the systematic errors to be 2.5% of the signal', p. 336)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "kerr_D2_ref3"
+material = "D2"
+file = "D2/carusotto_1992__kerr_D2_ref3.csv"
+table = "tbl_bd417c3b63d6"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["carusotto_1985"]
+notes = "Table I (p. 7983), Ref. 3 (Carusotto et al. 1985): K(D2) = 4.42 (1e-17 cm^2/statV^2 amagat) at 1 atm and 293 K, measured at 514.5 nm ('All data refer to lambda = 632.8 nm except for data quoted in Ref. 3 which refer to lambda = 514.5 nm'); 'the dispersion effect being thus negligible' in the authors' view. The earlier measurement 'showed errors due to the uncertainty in the density of gases, in the electric field integral and in the Faraday modulation' (p. 7979). Re-pointed to carusotto_1985 (now in the library): digit-identical with its Table II 'present work' value 4.42 +- 0.13 x 10^-17 (p. 337), whose error includes a 2.5 % systematic part ('We have estimated the systematic errors to be 2.5% of the signal', p. 336)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "text_kerr_theory_H2"
+material = "H2"
+points = [
+    ["Eq. (12)", "632.8", "4.145"],
+]
+table = "text"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 295.0 }
+use = "check"
+notes = "p. 7983: 'The Kerr constants at 295 K and for lambda = 632.8 nm are expected from Eq. (12) to be, respectively, K^th(H2) = 4.145 x 10^-17 esu and K^th(D2) = 4.263 x 10^-17 esu', from Buckingham & Orr's K = (2 pi N_Av / 15 V_mol)(5 gamma + eta Delta alpha Delta alpha_0/k_B T) (Eq. 12) with Table II's values (the authors' calculation from literature values)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+temperature_k = 295.0
+
+[[datasets]]
+id = "text_kerr_theory_D2"
+material = "D2"
+points = [
+    ["Eq. (12)", "632.8", "4.263"],
+]
+table = "text"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 295.0 }
+use = "check"
+notes = "p. 7983: K^th(D2) = 4.263 x 10^-17 esu (Eq. 12, Table II)."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+temperature_k = 295.0
+
+[[datasets]]
+id = "gamma_H2"
+material = "H2"
+file = "H2/carusotto_1992__gamma_H2.csv"
+table = "tbl_6fc9aecd71e0"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-37
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and J. Pipin, Phys. Rev. A 36, 2171 (1987)", "mizrahi_1985_h2d2"]
+notes = "Table II (p. 7983): gamma = 3.926 x 10^-37 esu for H2 ('the dynamical hyperpolarizability anisotropy' in the text, the gamma of Eq. 12, i.e. the dc Kerr gamma_K at 632.8 nm), from Refs. 11 (Bishop & Pipin 1987) and 12 (Mizrahi & Shelton 1985). In au (5.0367e-40 esu): 779.5 (computed here). Header printed 'gamma x 10^-37 (esu)': the values are gamma in units of 10^-37 esu."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+
+[[datasets]]
+id = "gamma_D2"
+material = "D2"
+file = "D2/carusotto_1992__gamma_D2.csv"
+table = "tbl_6fc9aecd71e0"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-37
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and J. Pipin, Phys. Rev. A 36, 2171 (1987)", "mizrahi_1985_h2d2"]
+notes = "Table II (p. 7983): gamma = 3.821 x 10^-37 esu for D2 ('the dynamical hyperpolarizability anisotropy' in the text, the gamma of Eq. 12, i.e. the dc Kerr gamma_K at 632.8 nm), from Refs. 11 (Bishop & Pipin 1987) and 12 (Mizrahi & Shelton 1985). In au (5.0367e-40 esu): 758.6 (computed here). Header printed 'gamma x 10^-37 (esu)': the values are gamma in units of 10^-37 esu."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+
+[[datasets]]
+id = "anisotropy_optical_H2"
+material = "H2"
+file = "H2/carusotto_1992__anisotropy_optical_H2.csv"
+table = "tbl_6fc9aecd71e0"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. Rychlewski, J. Chem. Phys. 78, 7252 (1983)", "D. M. Bishop and L. M. Cheung, J. Chem. Phys. 72, 5125 (1980)", "lundeen_1983"]
+notes = "Table II (p. 7983): Delta alpha x 10^-25 cm^3 = 3.109 for H2, 'the expectation values of the optic and the static polarizability anisotropies of the molecule in the ground vibronic state' (p. 7983), from Refs. 8-10 (Rychlewski 1983, printed 'Richelwski'; Bishop & Cheung 1980; Lundeen et al. 1983). A polarizability volume (cm^3)."
+[datasets.uncertainty]
+level = "not stated"
+
+[[datasets]]
+id = "anisotropy_static_H2"
+material = "H2"
+file = "H2/carusotto_1992__anisotropy_static_H2.csv"
+table = "tbl_6fc9aecd71e0"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Rychlewski, J. Chem. Phys. 78, 7252 (1983)", "D. M. Bishop and L. M. Cheung, J. Chem. Phys. 72, 5125 (1980)", "lundeen_1983"]
+notes = "Table II (p. 7983): Delta alpha_0 x 10^-25 cm^3 = 3.018 for H2, 'the expectation values of the optic and the static polarizability anisotropies of the molecule in the ground vibronic state' (p. 7983), from Refs. 8-10 (Rychlewski 1983, printed 'Richelwski'; Bishop & Cheung 1980; Lundeen et al. 1983). A polarizability volume (cm^3)."
+[datasets.uncertainty]
+level = "not stated"
+
+[[datasets]]
+id = "anisotropy_optical_D2"
+material = "D2"
+file = "D2/carusotto_1992__anisotropy_optical_D2.csv"
+table = "tbl_6fc9aecd71e0"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["J. Rychlewski, J. Chem. Phys. 78, 7252 (1983)", "D. M. Bishop and L. M. Cheung, J. Chem. Phys. 72, 5125 (1980)", "lundeen_1983"]
+notes = "Table II (p. 7983): Delta alpha x 10^-25 cm^3 = 2.975 for D2, 'the expectation values of the optic and the static polarizability anisotropies of the molecule in the ground vibronic state' (p. 7983), from Refs. 8-10 (Rychlewski 1983, printed 'Richelwski'; Bishop & Cheung 1980; Lundeen et al. 1983). A polarizability volume (cm^3)."
+[datasets.uncertainty]
+level = "not stated"
+
+[[datasets]]
+id = "anisotropy_static_D2"
+material = "D2"
+file = "D2/carusotto_1992__anisotropy_static_D2.csv"
+table = "tbl_6fc9aecd71e0"
+quantity = "polarizability_anisotropy"
+unit = "cm3"
+scale = 1e-25
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Rychlewski, J. Chem. Phys. 78, 7252 (1983)", "D. M. Bishop and L. M. Cheung, J. Chem. Phys. 72, 5125 (1980)", "lundeen_1983"]
+notes = "Table II (p. 7983): Delta alpha_0 x 10^-25 cm^3 = 2.930 for D2, 'the expectation values of the optic and the static polarizability anisotropies of the molecule in the ground vibronic state' (p. 7983), from Refs. 8-10 (Rychlewski 1983, printed 'Richelwski'; Bishop & Cheung 1980; Lundeen et al. 1983). A polarizability volume (cm^3)."
+[datasets.uncertainty]
+level = "not stated"
+
+[[errata]]
+dataset = "kerr_H2"
+row = "1 atm, 295 K"
+column = "sigma"
+printed = "0.041"
+corrected = "0.042"
+reason = "Table I prints H2's uncertainties as +-0.041 +-0.042 (statistical, systematic), the text as (4.150 +- 0.042 +- 0.041); the statistical error is 'the standard deviations divided by the square root of the number of data' = 0.39 / sqrt(86) = 0.042."
+evidence = "Table image checked (0.041 +- 0.042 printed); text p. 7981-7982: mean 4.15e-17, standard deviation 0.39e-17, 86 runs; result (4.150 +- 0.042 +- 0.041) x 10^-17. D2 is consistent in both places (0.22/sqrt(50) = 0.031). Checked 2026-09-26."

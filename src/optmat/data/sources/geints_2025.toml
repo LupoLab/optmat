@@ -1,0 +1,198 @@
+citation = "Yu. E. Geints, V. O. Kompanets and S. V. Chekalin, Opt. Commun. 596, 132584 (2025)"
+doi = "10.1016/j.optcom.2025.132584"
+library = "Geints_2025_MeasurementsOpticalKerr"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Self-focusing distance of collimated (4 mm) 800 nm Ti:sapphire pulses (45 fs, \
+48 fs after the entrance window, taken as 50 fs; chirped to 100-500 fs with the \
+compressor; up to 3 mJ, about 60 GW; 20 Hz) in a 315 cm polycarbonate cell of Ar, N2 or \
+CO2 (99.995 %) at 1-11 bar; the filament start z_SF located with a movable screen from \
+the plasma spot and the onset of supercontinuum; n2 from Marburger's law z_SF ~ \
+(P0/P_c)^-k with k = 0.5 and P_c = 3.79 lambda^2 / (8 pi n0 n2), relative to a \
+reference."""
+notes = """Defining equations (p. 2-3). n(E) = n0 + n2 |E|^2 (p. 2; the values are in \
+m^2/W, so |E|^2 is the intensity: coefficient = self, the single-beam index of \
+self-focusing). P_c = 3.79 lambda^2 / (8 pi n0 n2) (Eq. 2); z_SF ~ L_R* / eta^k, eta = \
+P0/P_c (Eq. 1); linear pressure scaling n2(mu) = mu n2^0, mu = p/p0 (Eq. 3); n2^0(t) = \
+n_K^0 [1 + f_R h_R(t)] with a damped-oscillator Raman response (Eqs. 6-7; for air \
+Omega_R = 16 THz, tau1 = 70 fs); n2^0(tau_p) = n2^sh [1 + Delta n_R(tau_p)] (Eq. 8), with \
+Delta n_R from the ratio of z_SF of chirped (long) and short pulses at equal eta0 \
+(Eq. 10), and the pressure dependence of n2^sh from n2^sh(p)/n2^sh(p0) = (1/mu) \
+[z_SF^sh(p0)/z_SF^sh(p)]^(1/k) (Eq. 11), fitted with z_SF = L_R* [eta mu a (1 + b mu)]^-0.5 \
+(Eq. 12, L_R* = 2.68 m).
+
+Calibration: absolute values rest on Wahlstrand et al. (Phys. Rev. A 85, 043820 (2012), \
+ref. 25): 'The experimental data from Ref. [25] were used as a benchmark for the \
+purely Kerr response of nitrogen and argon' (p. 7), n2^sh = 7.4 (N2) and 9.7 x 10^-24 \
+m^2/W (Ar) (p. 6). For CO2 at 1 bar: 'in the case of the SP limit, the nonlinear \
+response of CO2 is most similar in magnitude to that of argon. Consequently, we can \
+estimate that the value of n2^sh(CO2) = 10^-23 m^2/W best suits the experimental data' \
+(p. 6); Table 1 prints 10.0 +- 1.1 (this work). So the CO2 value is in effect a ratio to \
+Wahlstrand's Ar, from z_SF comparisons. Check of the LP column: LP = SP x (1 + Delta \
+n_R) with the paper's Delta n_R(1 bar) at the longest pulse, 0.92 (N2) and 4.4 (CO2) \
+(p. 7): 7.4 x 1.92 = 14.2 and 10.0 x 5.4 = 54.0, against 14.1 and 54.1 printed.
+
+Table 1 ('Optical Kerr nonlinearity (n2 x 10^24 m^2/W) of compressed gases at lambda \
+= 800 nm'; SP tau_p = 50 fs, LP tau_p = 250...500 fs; tbl_2c05f4da79d1, JSON cells equal \
+to the image): Ar SP 9.7 +- 1.5 (a, ref. 25), 18.9 +- 1.8, 26.2 +- 2.5; N2 SP 7.4 +- 0.9 (a), \
+14.4 +- 1.6, 20.1 +- 2.2 and LP 14.1 +- 1.5, 36.0 +- 3.9, 74.7 +- 8.5; CO2 SP 10.0 +- 1.1, 19.6 \
++- 2.0, 27.3 +- 2.6 and LP 54.1 +- 3.8, 121.5 +- 9.3, 333.1 +- 10.4 (1, 5, 11 bar). Geints \
+quote Wahlstrand's Ar value as 9.7 +- 1.5; Wahlstrand et al. 2012 (Table I, image) print \
+9.7 +- 1.2 (and N2 7.4 +- 0.9); Geints label them '1 bar', Wahlstrand's are at 1 atm.
+
+The 5 and 11 bar values are excluded rows: they are not n2 at 5 or 11 bar (linear \
+scaling would give 48.5 and 107 for Ar) but the pressure-normalised effective \
+coefficient of Eq. (11) (the 1/mu factor), and its rise with pressure is attributed by \
+the authors to beam aberration and modulation instability during self-focusing, not \
+to the gas (p. 6, Conclusion). The interpretation of these columns as per-1-bar values \
+is this record's reading of Eq. (11); the paper does not state it.
+
+Parts. Ar: electronic. N2 and CO2: the SP (50 fs) value still contains part of the \
+rotational response (the paper's Delta n_R is measured relative to it, p. 6-7) and the \
+LP values contain much more: both part = instantaneous (pulse-dependent mixtures). \
+Uncertainty: the +- of Table 1 (regression standard errors below 10 % for SP, p. 5; level \
+not stated). State: '1 bar' with no temperature: 100000 Pa and 293.15 K assumed. \
+Wavelength 800 nm (central)."""
+
+[[datasets]]
+id = "sp_CO2"
+material = "CO2"
+file = "CO2/geints_2025__sp_CO2.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+excluded_rows = { "sp_5bar" = "Measured at 5 bar; the pressure-normalised effective value of Eq. (11), whose rise with pressure the authors attribute to beam aberration (p. 6).", "sp_11bar" = "Measured at 11 bar; pressure-normalised effective value, aberration-affected (p. 6)." }
+notes = "Table 1, SP (50 fs) column, 1 bar: 10.0 +- 1.1 x 10^-24 m^2/W, 'for the first time' for CO2 at 800 nm (abstract); in effect scaled to Wahlstrand's Ar value (see the record's notes). Contains part of the rotational response. 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 50
+
+[[datasets]]
+id = "lp_CO2"
+material = "CO2"
+file = "CO2/geints_2025__lp_CO2.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+excluded_rows = { "lp_5bar" = "Measured at 5 bar; pressure-normalised effective value (Eqs. 10-11), aberration-affected.", "lp_11bar" = "Measured at 11 bar; pressure-normalised effective value, aberration-affected." }
+notes = "Table 1, LP column, 1 bar: SP x (1 + Delta n_R) with Delta n_R = 4.4 for the longest (500 fs) chirped pulse (p. 7); the rotational response of CO2 was still growing at 500 fs (Fig. 6a). 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 500
+
+[[datasets]]
+id = "lp_N2"
+material = "N2"
+file = "N2/geints_2025__lp_N2.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "primary"
+excluded_rows = { "lp_5bar" = "Measured at 5 bar; pressure-normalised effective value (Eqs. 10-11), aberration-affected.", "lp_11bar" = "Measured at 11 bar; pressure-normalised effective value, aberration-affected." }
+notes = "Table 1, LP column, 1 bar: SP (Wahlstrand's 7.4) x (1 + Delta n_R) with Delta n_R = 0.92 at the longest N2 pulse (data end at 300 fs, the response saturating at 250 fs, p. 7). The authors note their n2^sh/n2^lng = 0.52 against Wahlstrand's 0.23 (p. 7). 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 300
+
+[[datasets]]
+id = "sp_N2"
+material = "N2"
+file = "N2/geints_2025__sp_N2.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "excluded"
+notes = "Table 1, SP column at 5 and 11 bar (the 1 bar value is Wahlstrand's, dataset wahlstrand_2012_N2): pressure-normalised effective values (Eq. 11) relative to Wahlstrand's 1 bar value; their rise with pressure is attributed by the authors to beam aberration (p. 6). Excluded; state is the 1 bar normalisation, not the measurement pressure."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 50
+
+[[datasets]]
+id = "sp_Ar"
+material = "Ar"
+file = "Ar/geints_2025__sp_Ar.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "excluded"
+notes = "Table 1, SP column at 5 and 11 bar (the 1 bar value is Wahlstrand's, dataset wahlstrand_2012_Ar): pressure-normalised effective values (Eq. 11), aberration-affected (p. 6). Excluded; state is the 1 bar normalisation, not the measurement pressure."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 50
+
+[[datasets]]
+id = "wahlstrand_2012_Ar"
+material = "Ar"
+file = "Ar/geints_2025__wahlstrand_2012_Ar.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table 1, Ar SP 1 bar, footnote a (ref. 25): Wahlstrand et al. 2012's 9.7, quoted with +- 1.5 (Wahlstrand print +- 1.2) and labelled 1 bar (Wahlstrand: 1 atm). Use the wahlstrand_2012 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "wahlstrand_2012_N2"
+material = "N2"
+file = "N2/geints_2025__wahlstrand_2012_N2.csv"
+table = "tbl_2c05f4da79d1"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-24
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 293.15 }
+use = "reproduced"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Table 1, N2 SP 1 bar, footnote a (ref. 25): Wahlstrand et al. 2012's electronic n2 7.4 +- 0.9, labelled 1 bar (Wahlstrand: 1 atm). Use the wahlstrand_2012 record."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"

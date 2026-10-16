@@ -1,0 +1,520 @@
+citation = "D. Franta, D. Nečas, I. Ohlídal and A. Giglia, \"Dispersion model for optical thin films applicable in wide spectral range\", Proc. SPIE 9628, 96281U (2015)"
+doi = "10.1117/12.2190104"
+library = "Franta_2015_DispersionModelOptical"
+identity = "VALIDATED"
+kind = "fit"
+technique = """The universal dispersion model (UDM) fitted to multi-instrument ellipsometry \
+(Woollam IR-VASE 0.037-0.8 eV; Jobin Yvon UVISEL 0.6-6.5 eV and UVISEL2 VUV 0.6-8.7 \
+eV) and spectrophotometry (Bruker Vertex 80v FIR 80-680 and MIR 370-7500 cm-1; Perkin \
+Elmer Lambda 1050 NIR and UV-VIS; McPherson VUVAS 2000 3.3-10.8 eV; Elettra BEAR 9-50 \
+eV for MgF2 and SiO2) of six evaporated films on silicon (Leybold SYRUSpro DUV, Meopta \
+samples): MgF2 X2935, SiO2 X2551, Al2O3 X2890, HfO2 X2194, Ta2O5 X2656, TiO2 X2801 \
+(Tables 1-3, pp. 2-3)."""
+notes = """Proceedings pages 96281U-1 to -12 = PDF pages 1-12, cited below as p. N. Identity \
+checked against the first page. This is the only paper of the set that prints the \
+complete analytic UDM of 2015 (every term's imaginary part, real part and \
+normalisation); franta_2015 (Appl. Opt., the hafnia paper) points to other papers for \
+several of these. The films' parameters are not printed ('will be presented \
+elsewhere', p. 8), and n, k are figures only (Figs. 6-12); for three films the authors' \
+newAD2 site publishes the parameter file and the computed n, k table under this \
+citation, recorded here as datasets and formulas.
+
+UDM EQUATION MAP (p. = PDF page). Eq. (1), p. 2: eps = 1 + N_vc eps0_vc + N_vx eps0_vx + \
+N_ut eps0_ut + sum_p N_loc,p eps0_loc,p + sum_p N_ph,p eps0_ph,p. Eq. (2), p. 3: F_j = N_j \
+eps0_i,j E, J_j = N_j eps0_i,j E^2. Eq. (3): normalisation int_0^inf eps0_i,j E dE = 1 (so \
+every N_j is a transition strength in eV^2).
+- IBT, symmetric term vc0 (p. 3-4): Eq. (4) J_vc0 = (N_vc0/C_N)(E - E_g)^2 (E_h - E)^2 \
+Pi_{Eg,Eh}(E); Eq. (5) C_N = (E_h^2 - E_g^2)[(E_h^2 + E_g^2)/12 - 2 E_g E_h/3] + E_g^2 E_h^2 \
+ln(E_h/E_g); Eq. (6) Pi the unit box; Eq. (7) eps0_i = (E - E_g)^2 (E_h - E)^2 Pi/(C_N E^2); \
+Eqs. (8)-(12) eps0_r = [a ln|(E_h - E)/(E_g - E)| + b ln|(E_h + E)/(E_g + E)| + c]/(pi C_N E^2), a = \
+y - x, b = y + x, x = 2E[E_h(E_g^2 + E^2) + E_g(E_h^2 + E^2)], y = E^2(E_h^2 + E_g^2 + 4 E_g E_h + E^2) + \
+E_g^2 E_h^2, c = -2 E_g^2 E_h^2 ln(E_h/E_g) - 3(E_h^2 - E_g^2) E^2.
+- EXCITONS (Lorentz-modified IBT), p. 4-5: Eq. (13) J_ex = N_ex (E - E_g)^2 (E_h - E)^2/(C_N \
+[(E - E_c)^2 + B_c^2]) Pi; Eq. (14) eps0_i; Eq. (15) eps0_r (same form as Eq. (8), labelled \
+'eps0_r,vc' in print); Eqs. (16)-(25) the modified C_N, a, b, c, d, e, delta, eta and \
+alpha = E_c^2 + B_c^2, beta = E_g + E_h, gamma = E_g^2 + E_h^2, A (two arctangents), L (a \
+log ratio). Combination Eq. (26), p. 5: eps0_vc = (1/C_N)[A_0 eps0_vc0 + sum_p A_p \
+eps0_ex,p] with C_N = sum_p A_p (Eq. (27)); one A fixed.
+- HET (vx), p. 5-6: Eq. (28) J_vx = N_vx 3 E_xi (E - E_xi)^2/E^3 Pi_{E_xi,inf}(|E|), E_xi = E_x + \
+E_g/2; Eq. (29) eps0_i = 3 E_xi (E - E_xi)^2 Pi/E^5; Eqs. (30)-(31) eps0_r = (3 E_xi/(pi E^2))[a \
+ln|1 - E/E_xi| + b ln|1 + E/E_xi| - 2/(3 E_xi) - 2 E_xi/E^2], a = -(E_xi - E)^2/E^3, b = (E_xi \
++ E)^2/E^3.
+- URBACH TAIL (ut), p. 6-7: Eq. (32) the four-piece JDOS (exp((|E| - E_g)/E_u) on (E_g/2, \
+E_g); 1 + (E_m - E_g)/(4 E_u) - (2|E| - E_m - E_g)^2/(4 E_u (E_m - E_g)) on (E_g, E_m); \
+exp((E_m - |E|)/E_u) on (E_m, E_m + E_g/2); minus exp(-E_g/(2 E_u)) on (E_g/2, E_m + E_g/2)), \
+E_m = E_g/2 + E_h/2 (Eq. (33)); Eq. (34) eps0_i = {...}/(C_N E^2); Eq. (35) eps0_r with the \
+scaled exponential integral; Eq. (36) C_N; Eqs. (37)-(39) a, b, x, y, c; Eq. (40) Ei(x) = \
+int_-inf^x e^t/t dt and Ei~(x) = e^-x Ei(x).
+- LOCALISED STATES (loc), p. 7-8: Eq. (41) eps0_i,p = [exp(-(E - E_p)^2/(2 B_p^2)) - exp(-(E \
++ E_p)^2/(2 B_p^2))]/(sqrt(2 pi) B_p E_p); Eq. (42) eps0_r,p = -(sqrt(2)/(pi B_p E_p))[D((E - \
+E_p)/(sqrt(2) B_p)) - D((E + E_p)/(sqrt(2) B_p))]; Eq. (43) D the Dawson integral; Eq. (44) \
+the JDOS; Eq. (45) the sum over n_loc peaks, parameters N_loc,p, E_loc,p, B_loc,p (B the \
+rms, eV). This is the eps-broadened delta line of franta_2014 Eq. (40).
+- PHONONS (ph), p. 8: the same Gaussian with E_p = h c nu_p and B_p = h c beta_p/(2 sqrt(2 ln \
+2)) (Eq. (46): nu_p the position and beta_p the FWHM, both in cm^-1); Eq. (47) the sum \
+over n_ph peaks. (The text's last parameter name 'beta_loc,p' after Eq. (47) means \
+beta_ph,p.)
+
+CHECK (scratch, 2026-09-26, 30-50 digit arithmetic): for every term the printed \
+normalisation constant equals the numerical integral of the JDOS/E (vc0, ex, ut: to 25 \
+digits), each unit-strength term integrates to 1, and each printed real part equals the \
+numerical Kramers-Kronig transform of its imaginary part (to 1e-22 or better, at 0.05, \
+3, 7.5 and 25 eV). The 2015 formulas are therefore self-consistent. They do NOT \
+reproduce the newAD2 tables recorded below from the matching parameter files: with the \
+.par parameters and Eqs. (1)-(47) (vc as in Eq. (26)), the phonon-region k agrees to \
+0.1-1 %, but n in the transparent region is 0.003 (MgF2), 0.006 (Al2O3) and 0.013 (SiO2) \
+too high, and k in the Urbach region is 2.5-2.6 times the table's (Al2O3 at 6.31 eV: \
+0.0156 against 0.00619; MgF2 at 6.31 eV: 3.1e-4 against 1.2e-4). The alternative \
+exciton convention of franta_2015 Eq. (16) is worse (n off by 0.02-0.06). The newAD2 \
+program behind the published tables evidently implements a later form of the \
+interband and Urbach terms (Franta, Vohanka and Cermak, 'Universal dispersion model \
+for characterization of thin films over wide spectral range', Springer Series in \
+Surface Sciences 64, 31 (2018); Franta et al., Thin Solid Films 631, 12 (2017); neither \
+in the library) (TC-387).
+
+NOT EXTRACTED: HfO2 X2194, Ta2O5 X2656 and TiO2 X2801 (figures only; no newAD2 files \
+fetched for them); Table 1 deposition conditions (nominal thickness, substrate \
+temperature, rate): MgF2 120 nm, 300 C, 1 nm/s; SiO2 800 nm, 300 C, 1 nm/s; Al2O3 120 \
+nm, 150 C, 0.5 nm/s; HfO2 120 nm, 150 C, 0.5 nm/s; Ta2O5 200 nm, 25 C, 0.25 nm/s; TiO2 100 \
+nm, 150 C, 0.3 nm/s (p. 2). The SiO2 X2551 film is also modelled in franta_2016 (Proc. \
+SPIE 9890, 2016) with a later parameter set: the two are different fits of the same \
+sample."""
+
+[[formulas]]
+id = "udm_SiO2_X2551"
+material = "SiO2"
+equation = "Eqs. (1)-(47), pp. 2-8"
+printed = "UDM, 'he:ex=7:ut:loc=2:ph=32' (newAD2 parameter file)"
+variable = "E: photon energy (eV); phonon nu and beta in cm^-1"
+check = "Evaluated with the printed Eqs. (1)-(47): does not reproduce the file's .Enk table (n high by ~0.013 in the transparent range; source notes, TC-387)."
+notes = "Amorphous SiO2 film X2551 (800 nm nominal), fitted range 80 cm-1 to 50 eV (site). Parameters are in the file, not in the paper: 7 excitonic terms, Urbach tail (E_u = 0.0059 eV), 2 localised Gaussians, 32 phonon Gaussians."
+
+# The newAD2 parameter file's values, as it prints them (its first line is `attributes`).
+[formulas.terms]
+attributes = "he:ex=7:ut:loc=2:ph=32"
+Nvc = "387.0972686773562"
+Eg = "7.882322656262375"
+Eh = "44.40960619300007"
+A0 = "1"
+Aex1 = "0.4160875002485731"
+Eex1 = "9.892037557477799"
+Bex1 = "0.3726946256396377"
+Aex2 = "0.5604581634636584"
+Eex2 = "10.26835617944472"
+Bex2 = "0.2312840781087904"
+Aex3 = "2.57018885041731"
+Eex3 = "11.44035934062694"
+Bex3 = "1.093501820342207"
+Aex4 = "1.621129614148703"
+Eex4 = "13.620930699198"
+Bex4 = "1.107705915145352"
+Aex5 = "3.136933886120323"
+Eex5 = "16.38290924047353"
+Bex5 = "2.035460564516793"
+Aex6 = "2.603114901093324"
+Eex6 = "19.55193558596487"
+Bex6 = "3.757046026587071"
+Aex7 = "1.300603695958311"
+Eex7 = "28.6710936345947"
+Bex7 = "8.751166865315776"
+Nvx = "796.2358201899157"
+Ex = "21.94427907865534"
+Nut = "29.35954663507628"
+Eu = "0.005887065571900201"
+Nloc1 = "0.01671128178193964"
+Eloc1 = "5.81347690029251"
+Bloc1 = "0.9568593983154097"
+Nloc2 = "0.2418864945881958"
+Eloc2 = "7.63119831760786"
+Bloc2 = "0.378053686017156"
+Nph1 = "0.001023690363758248"
+nuph1 = "397.0496011734074"
+betaph1 = "169.7250936754401"
+Nph2 = "0.001675026617641783"
+nuph2 = "439.9554355714358"
+betaph2 = "85.66217430991833"
+Nph3 = "0.0006583452711119842"
+nuph3 = "446.6677790717706"
+betaph3 = "40.53083129401929"
+Nph4 = "0.0002160427972961515"
+nuph4 = "461.6443402264973"
+betaph4 = "29.97159833763476"
+Nph5 = "0.0003572015531351938"
+nuph5 = "570.6801836956646"
+betaph5 = "124.8727016875374"
+Nph6 = "0.001230334140473587"
+nuph6 = "719.9967404650928"
+betaph6 = "273.5290882738483"
+Nph7 = "0.0004982628923336558"
+nuph7 = "803.4138834223226"
+betaph7 = "50.19566494100737"
+Nph8 = "0.0004022681556277986"
+nuph8 = "839.3489690313933"
+betaph8 = "51.34217277898914"
+Nph9 = "0.000298733217723795"
+nuph9 = "971.8023909787976"
+betaph9 = "77.62518221781481"
+Nph10 = "0.0100369994593413"
+nuph10 = "1039.69597849699"
+betaph10 = "74.6945005328604"
+Nph11 = "0.001886905232144875"
+nuph11 = "1076.597165367401"
+betaph11 = "42.81916601373077"
+Nph12 = "0.0009494596782664023"
+nuph12 = "1123.491475761599"
+betaph12 = "70.31317358917136"
+Nph13 = "0.001942287482487412"
+nuph13 = "1177.339307853315"
+betaph13 = "117.8981878697167"
+Nph14 = "6.983227060611237e-06"
+nuph14 = "1302.274639084334"
+betaph14 = "28.44251430494614"
+Nph15 = "2.090598513131821e-05"
+nuph15 = "1328.523164475826"
+betaph15 = "49.348913611888"
+Nph16 = "4.710312762026848e-05"
+nuph16 = "1374.412061904747"
+betaph16 = "81.28522585208384"
+Nph17 = "3.518581301197593e-05"
+nuph17 = "1440.274247074176"
+betaph17 = "128.0534731873945"
+Nph18 = "3.450795432163338e-06"
+nuph18 = "1631.997815517803"
+betaph18 = "59.63381406293305"
+Nph19 = "0.0001494104727060083"
+nuph19 = "1634.099508730862"
+betaph19 = "311.1452172120654"
+Nph20 = "5.500214703296675e-05"
+nuph20 = "1854.467924273633"
+betaph20 = "125.1324464619285"
+Nph21 = "4.00758807317865e-05"
+nuph21 = "1980.448419318967"
+betaph21 = "135.8270777082061"
+Nph22 = "2.330861055581444e-06"
+nuph22 = "2210.526698197104"
+betaph22 = "194.9335348603728"
+Nph23 = "2.404178017599008e-06"
+nuph23 = "2267.655065650962"
+betaph23 = "57.21418009990703"
+Nph24 = "3.89222519693534e-07"
+nuph24 = "2852.346229760636"
+betaph24 = "15.21523166589576"
+Nph25 = "3.110725768058313e-06"
+nuph25 = "2899.72870955264"
+betaph25 = "153.2888665709329"
+Nph26 = "1.487538382870773e-06"
+nuph26 = "2921.714858283034"
+betaph26 = "28.55086396093666"
+Nph27 = "9.028139299580186e-07"
+nuph27 = "2962.712240786213"
+betaph27 = "21.31713543889981"
+Nph28 = "5.236506108984562e-05"
+nuph28 = "3391.996162862696"
+betaph28 = "687.3363797008792"
+Nph29 = "7.54951508899818e-07"
+nuph29 = "3406.909349557732"
+betaph29 = "138.9930420817032"
+Nph30 = "9.00144280222464e-06"
+nuph30 = "3558.317632445434"
+betaph30 = "124.002764275552"
+Nph31 = "9.897693053163817e-06"
+nuph31 = "3625.245608213572"
+betaph31 = "89.68619393667701"
+Nph32 = "7.945571500340437e-06"
+nuph32 = "3676.156089805581"
+betaph32 = "63.96085892960325"
+
+[[formulas]]
+id = "udm_MgF2_X2935"
+material = "MgF2"
+equation = "Eqs. (1)-(47), pp. 2-8"
+printed = "UDM, 'he:ex=16:ut:ph=15' (newAD2 parameter file)"
+variable = "E: photon energy (eV); phonon nu and beta in cm^-1"
+check = "Evaluated with the printed Eqs. (1)-(47): does not reproduce the file's .Enk table (n high by ~0.003; Urbach-region k 2.6 times the table's; source notes, TC-387)."
+notes = "Polycrystalline MgF2 film X2935 (120 nm nominal), treated as isotropic; fitted range 80 cm-1 to 50 eV (site). 16 excitonic terms, Urbach tail, 15 phonon Gaussians."
+
+# The newAD2 parameter file's values, as it prints them (its first line is `attributes`).
+[formulas.terms]
+attributes = "he:ex=16:ut:ph=15"
+Nvc = "421.7774832573862"
+Eg = "6.336141970986455"
+Eh = "43.538060822207"
+A0 = "1"
+Aex1 = "0.3181916151525701"
+Eex1 = "8.084769582420174"
+Bex1 = "36.81817636248764"
+Aex2 = "1"
+Eex2 = "11.56779836723872"
+Bex2 = "0.21670965"
+Aex3 = "0.4252216291994202"
+Eex3 = "11.93417400073886"
+Bex3 = "0.2504796060723044"
+Aex4 = "0.2204180578373925"
+Eex4 = "12.66399507613335"
+Bex4 = "0.3571384850837556"
+Aex5 = "0.7543114224593626"
+Eex5 = "13.42941470210862"
+Bex5 = "0.6240599151914381"
+Aex6 = "1.152184850830646"
+Eex6 = "14.81022029309759"
+Bex6 = "0.9506518575011962"
+Aex7 = "2.890601770658535"
+Eex7 = "16.82768520385516"
+Bex7 = "1.290190436773725"
+Aex8 = "6.326928373566556"
+Eex8 = "19.05224782320615"
+Bex8 = "1.422391993822333"
+Aex9 = "6.711694840312258"
+Eex9 = "20.72928163542588"
+Bex9 = "1.412333275254739"
+Aex10 = "4.046228744924113"
+Eex10 = "22.42962467641491"
+Bex10 = "1.144500850986274"
+Aex11 = "0.5978302737172375"
+Eex11 = "24.5633762506953"
+Bex11 = "0.8769182266588071"
+Aex12 = "1.385563975589108"
+Eex12 = "27.30592701328687"
+Bex12 = "1.624537024557585"
+Aex13 = "0.5739214997223352"
+Eex13 = "28.96639677280508"
+Bex13 = "0.9351530636226799"
+Aex14 = "0.733648352893766"
+Eex14 = "30.4652314094884"
+Bex14 = "1.111162773204926"
+Aex15 = "0.5585972575581108"
+Eex15 = "34.85860804454663"
+Bex15 = "1.162437328233622"
+Aex16 = "5.384616350511947"
+Eex16 = "38.37376522330973"
+Bex16 = "3.83326942574449"
+Nvx = "862.0408052215957"
+Ex = "15"
+Nut = "4.975598339428807"
+Eu = "0.05"
+Nph1 = "0.0004935914046566674"
+nuph1 = "247.8067526220517"
+betaph1 = "12.96121438491692"
+Nph2 = "0.000592801589599346"
+nuph2 = "255.5002837121918"
+betaph2 = "26.28468096052899"
+Nph3 = "0.0007806799774756681"
+nuph3 = "257.9589191551741"
+betaph3 = "72.02068312508607"
+Nph4 = "0.0001426951018861891"
+nuph4 = "278.4786707944083"
+betaph4 = "25.28442324585934"
+Nph5 = "1.372370172107797e-05"
+nuph5 = "372.2183579505141"
+betaph5 = "3958.211363165906"
+Nph6 = "0.0001587986355343355"
+nuph6 = "387.1813966657387"
+betaph6 = "13.45970309728183"
+Nph7 = "0.001020677442494165"
+nuph7 = "397.7593542499901"
+betaph7 = "18.26029926457918"
+Nph8 = "0.002217369599333606"
+nuph8 = "407.728545097646"
+betaph8 = "180.3404226488878"
+Nph9 = "0.003198505516790093"
+nuph9 = "417.045076370351"
+betaph9 = "63.25460358068452"
+Nph10 = "8.082230642092172e-05"
+nuph10 = "425.3110305917111"
+betaph10 = "12.79961728202788"
+Nph11 = "0.0006852602611280262"
+nuph11 = "442.4930145014584"
+betaph11 = "21.64874218945028"
+Nph12 = "0.0004794229024614269"
+nuph12 = "619.6884963268037"
+betaph12 = "365.5330375526644"
+Nph13 = "7.00674747650641e-06"
+nuph13 = "1083.959430240926"
+betaph13 = "15.20844679815252"
+Nph14 = "8.58738476109062e-05"
+nuph14 = "1313.675350389433"
+betaph14 = "195.6481231065089"
+Nph15 = "7.78485812759561e-05"
+nuph15 = "1558.599983717488"
+betaph15 = "125.2316226179656"
+
+[[formulas]]
+id = "udm_Al2O3_X2890"
+material = "Al2O3_amorphous"
+equation = "Eqs. (1)-(47), pp. 2-8"
+printed = "UDM, 'he:ex=2:ut:ph=3' (newAD2 parameter file)"
+variable = "E: photon energy (eV); phonon nu and beta in cm^-1"
+check = "Evaluated with the printed Eqs. (1)-(47): does not reproduce the file's .Enk table (n high by ~0.006; Urbach-region k 2.5 times the table's); the phonon k agrees to 0.1-1 % (source notes, TC-387)."
+notes = "Amorphous Al2O3 film X2890 (120 nm nominal); fitted range 80 cm-1 to 10.8 eV (site). 2 excitonic terms, Urbach tail, 3 phonon Gaussians."
+
+# The newAD2 parameter file's values, as it prints them (its first line is `attributes`).
+[formulas.terms]
+attributes = "he:ex=2:ut:ph=3"
+Nvc = "200.7079737329657"
+Eg = "6.440670810842696"
+Eh = "20"
+A0 = "1"
+Aex1 = "3.908212547870893"
+Eex1 = "8.820638082418037"
+Bex1 = "5.968735673876678"
+Aex2 = "0.3887979490420408"
+Eex2 = "14.93448601633383"
+Bex2 = "19.01688133815503"
+Nvx = "1820.261872970633"
+Ex = "10"
+Nut = "7.633551762266896"
+Eu = "0.4821215284042467"
+Nph1 = "0.002459830764692447"
+nuph1 = "365.6818469537247"
+betaph1 = "171.4025282129957"
+Nph2 = "0.02153289749159287"
+nuph2 = "623.3579589787735"
+betaph2 = "357.6267427271984"
+Nph3 = "0.0001220043007896278"
+nuph3 = "1076.222882049581"
+betaph3 = "106.7150743574498"
+
+[[datasets]]
+id = "X2551_n_fit"
+material = "SiO2"
+file = "SiO2/franta_2015b__X2551_n_fit.csv"
+table = "data/SiO2-X2551-SPIE9628.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "primary"
+notes = "amorphous SiO2 film, 800 nm nominal (Table 1: 300 C, 1 nm/s), sample X2551. newAD2 table SiO2-X2551-SPIE9628.Enk (attached to the paper in the library), the UDM of SiO2-X2551-SPIE9628.par evaluated from 0.01 eV to 50 eV, the fitted range (80 cm-1 to 50 eV): 3699 rows. Model values, not measurements; uncertainty inside the measured range 'of the order of 1e-3-1e-4' (p. 8). Does not follow from the paper's printed formulas (TC-387)."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2551_n_extrapolated"
+material = "SiO2"
+file = "SiO2/franta_2015b__X2551_n_extrapolated.csv"
+table = "data/SiO2-X2551-SPIE9628.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "excluded"
+notes = "amorphous SiO2 film, 800 nm nominal (Table 1: 300 C, 1 nm/s), sample X2551. Rows of SiO2-X2551-SPIE9628.Enk above 50 eV, beyond the fitted range: the model's extrapolation (302 rows), kept for the record, not for use."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2551_k_fit"
+material = "SiO2"
+file = "SiO2/franta_2015b__X2551_k_fit.csv"
+table = "data/SiO2-X2551-SPIE9628.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "primary"
+notes = "amorphous SiO2 film, 800 nm nominal (Table 1: 300 C, 1 nm/s), sample X2551. newAD2 table SiO2-X2551-SPIE9628.Enk (attached to the paper in the library), the UDM of SiO2-X2551-SPIE9628.par evaluated from 0.01 eV to 50 eV, the fitted range (80 cm-1 to 50 eV): 3699 rows. Model values, not measurements; uncertainty inside the measured range 'of the order of 1e-3-1e-4' (p. 8). Does not follow from the paper's printed formulas (TC-387)."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2551_k_extrapolated"
+material = "SiO2"
+file = "SiO2/franta_2015b__X2551_k_extrapolated.csv"
+table = "data/SiO2-X2551-SPIE9628.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "excluded"
+notes = "amorphous SiO2 film, 800 nm nominal (Table 1: 300 C, 1 nm/s), sample X2551. Rows of SiO2-X2551-SPIE9628.Enk above 50 eV, beyond the fitted range: the model's extrapolation (302 rows), kept for the record, not for use."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2935_n_fit"
+material = "MgF2"
+file = "MgF2/franta_2015b__X2935_n_fit.csv"
+table = "data/MgF2-X2935-SPIE9628.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "primary"
+notes = "polycrystalline MgF2 film, 120 nm nominal (Table 1: 300 C, 1 nm/s), sample X2935; treated as isotropic (no axis). newAD2 table MgF2-X2935-SPIE9628.Enk (attached to the paper in the library), the UDM of MgF2-X2935-SPIE9628.par evaluated from 0.01 eV to 50 eV, the fitted range (80 cm-1 to 50 eV): 3699 rows. Model values, not measurements; uncertainty inside the measured range 'of the order of 1e-3-1e-4' (p. 8). Does not follow from the paper's printed formulas (TC-387)."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2935_n_extrapolated"
+material = "MgF2"
+file = "MgF2/franta_2015b__X2935_n_extrapolated.csv"
+table = "data/MgF2-X2935-SPIE9628.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "excluded"
+notes = "polycrystalline MgF2 film, 120 nm nominal (Table 1: 300 C, 1 nm/s), sample X2935; treated as isotropic (no axis). Rows of MgF2-X2935-SPIE9628.Enk above 50 eV, beyond the fitted range: the model's extrapolation (302 rows), kept for the record, not for use."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2935_k_fit"
+material = "MgF2"
+file = "MgF2/franta_2015b__X2935_k_fit.csv"
+table = "data/MgF2-X2935-SPIE9628.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "primary"
+notes = "polycrystalline MgF2 film, 120 nm nominal (Table 1: 300 C, 1 nm/s), sample X2935; treated as isotropic (no axis). newAD2 table MgF2-X2935-SPIE9628.Enk (attached to the paper in the library), the UDM of MgF2-X2935-SPIE9628.par evaluated from 0.01 eV to 50 eV, the fitted range (80 cm-1 to 50 eV): 3699 rows. Model values, not measurements; uncertainty inside the measured range 'of the order of 1e-3-1e-4' (p. 8). Does not follow from the paper's printed formulas (TC-387)."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2935_k_extrapolated"
+material = "MgF2"
+file = "MgF2/franta_2015b__X2935_k_extrapolated.csv"
+table = "data/MgF2-X2935-SPIE9628.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "excluded"
+notes = "polycrystalline MgF2 film, 120 nm nominal (Table 1: 300 C, 1 nm/s), sample X2935; treated as isotropic (no axis). Rows of MgF2-X2935-SPIE9628.Enk above 50 eV, beyond the fitted range: the model's extrapolation (302 rows), kept for the record, not for use."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2890_n_fit"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/franta_2015b__X2890_n_fit.csv"
+table = "data/Al2O3-X2890-SPIE9628.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "primary"
+notes = "amorphous Al2O3 film, 120 nm nominal (Table 1: 150 C, 0.5 nm/s), sample X2890. newAD2 table Al2O3-X2890-SPIE9628.Enk (attached to the paper in the library), the UDM of Al2O3-X2890-SPIE9628.par evaluated from 0.01 eV to 10.8 eV, the fitted range (80 cm-1 to 10.8 eV): 3034 rows. Model values, not measurements; uncertainty inside the measured range 'of the order of 1e-3-1e-4' (p. 8). Does not follow from the paper's printed formulas (TC-387)."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2890_n_extrapolated"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/franta_2015b__X2890_n_extrapolated.csv"
+table = "data/Al2O3-X2890-SPIE9628.Enk"
+quantity = "refractive_index"
+abscissa_unit = "eV"
+use = "excluded"
+notes = "amorphous Al2O3 film, 120 nm nominal (Table 1: 150 C, 0.5 nm/s), sample X2890. Rows of Al2O3-X2890-SPIE9628.Enk above 10.8 eV, beyond the fitted range: the model's extrapolation (967 rows), kept for the record, not for use."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2890_k_fit"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/franta_2015b__X2890_k_fit.csv"
+table = "data/Al2O3-X2890-SPIE9628.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "primary"
+notes = "amorphous Al2O3 film, 120 nm nominal (Table 1: 150 C, 0.5 nm/s), sample X2890. newAD2 table Al2O3-X2890-SPIE9628.Enk (attached to the paper in the library), the UDM of Al2O3-X2890-SPIE9628.par evaluated from 0.01 eV to 10.8 eV, the fitted range (80 cm-1 to 10.8 eV): 3034 rows. Model values, not measurements; uncertainty inside the measured range 'of the order of 1e-3-1e-4' (p. 8). Does not follow from the paper's printed formulas (TC-387)."
+[datasets.parameters]
+form = "film"
+
+[[datasets]]
+id = "X2890_k_extrapolated"
+material = "Al2O3_amorphous"
+file = "Al2O3_amorphous/franta_2015b__X2890_k_extrapolated.csv"
+table = "data/Al2O3-X2890-SPIE9628.Enk"
+quantity = "extinction_coefficient"
+abscissa_unit = "eV"
+use = "excluded"
+notes = "amorphous Al2O3 film, 120 nm nominal (Table 1: 150 C, 0.5 nm/s), sample X2890. Rows of Al2O3-X2890-SPIE9628.Enk above 10.8 eV, beyond the fitted range: the model's extrapolation (967 rows), kept for the record, not for use."
+[datasets.parameters]
+form = "film"
+

@@ -1,0 +1,57 @@
+# The Raman response models of fused silica (optmat.solid.raman_response, TC-691, TC-692).
+#
+# [models.<name>]
+#   form            hollenbeck (Hollenbeck & Cantrell's intermediate broadening, Eq. (9),
+#                   modes from a raman_mode dataset), lin_agrawal (Lin & Agrawal's
+#                   isotropic and anisotropic shapes, Eqs. (2)-(4), from a formula), or
+#                   single_oscillator (Blow & Wood's damped oscillator, Eq. (5))
+#   modes           the raman_mode dataset (hollenbeck)
+#   formula         the formula record whose coefficients give the shape (lin_agrawal,
+#                   single_oscillator)
+#   raman_fraction  where f_R, the Raman share of the long-pulse n2, comes from:
+#                   "kerr/<name>" (the stored Kerr fit's, paired with its electronic
+#                   part), or a formula record (the source's own value)
+#   paired          true where f_R is the one the Kerr fit found with this shape, so
+#                   that the electronic n2 and the Raman response add up to the fitted
+#                   n2; false for a literature form
+#   description, reasons
+
+default = "hollenbeck_2002"
+# The tensor default of the silica bundles (optmat.solid.bundle): Lin and Agrawal's
+# shape with its own f_R and the Kerr fit's total n2 (OEP 1, section 7.10; TC-734).
+tensor = "lin_2006"
+
+[models.hollenbeck_2002]
+form = "hollenbeck"
+modes = "hollenbeck_2002/modes"
+formula = "hollenbeck_2002/response_eq9"
+raman_fraction = "kerr/SiO2"
+paired = true
+description = "Hollenbeck & Cantrell's 13-mode intermediate-broadening response, normalised to unit integral, with the Raman fraction of optmat's silica Kerr fit."
+
+[models.hollenbeck_2002.reasons]
+shape = "The only curated shape fitted to both the measured gain spectrum and the measured response function of silica fibre (Stolen et al. 1989's data; Hollenbeck & Cantrell Figs. 7 and 8), within the paper's stated fit by hand. Table 1 as printed, converted by its footnote (TC-382, TC-691)."
+raman_fraction = "The Kerr fit (TC-393, TC-594, TC-696) uses this shape for the share eta(tau) a pulse sees and for Stolen & Ippen's measured gain, which sets f_R (0.219 +- 0.026): the electronic part and this response add up to the fitted long-pulse n2, and the response reproduces the absolute gain."
+tensor = "Hollenbeck & Cantrell fit the copolarised gain only: the model has no isotropic and anisotropic parts."
+
+[models.lin_2006]
+form = "lin_agrawal"
+formula = "lin_2006/response"
+raman_fraction = "lin_2006/response"
+paired = false
+description = "Lin & Agrawal's response: a damped oscillator for the isotropic part and the Boson peak's h_b in the anisotropic part, with their f_R = 0.245."
+
+[models.lin_2006.reasons]
+shape = "The one curated model with an isotropic and an anisotropic part (their Eq. (1)), fitted to the copolarised and orthogonal gain of Stolen et al. 1989 over 0-15 THz; it overestimates the gain beyond 15 THz (their p. 3087)."
+raman_fraction = "Lin & Agrawal's 0.245, chosen with n2 = 2.6e-20 m^2/W to give a peak copolarised gain of 1.2e-11 cm/W at 795.5 nm: not optmat's n2 split, so the electronic part of the Kerr fit and this response do not add up to the fitted n2 (they overshoot by 3 %)."
+
+[models.blow_1989]
+form = "single_oscillator"
+formula = "blow_1989/response"
+raman_fraction = "blow_1989/response"
+paired = false
+description = "Blow & Wood's single damped oscillator, tau_1 = 12.2 fs, tau_2 = 32 fs, with their Raman share."
+
+[models.blow_1989.reasons]
+shape = "The single-oscillator form of most fibre codes, whose three numbers were chosen to give the position and height of the main gain peak; it underestimates the gain below 10 THz and overestimates it beyond 15 THz (Lin & Agrawal 2006, p. 3086)."
+raman_fraction = "Blow & Wood's alpha = 0.7 acts on the field squared (their Eq. (2)); for the envelope the Raman term carries 2/3 of (1 - alpha) (their Eq. (8)), so its share of the long-pulse n2 is (2/3)(0.3)/(0.7 + (2/3)(0.3)) = 0.222 (TC-594, TC-692)."

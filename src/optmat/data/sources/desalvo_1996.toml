@@ -1,0 +1,983 @@
+citation = "R. DeSalvo, A. A. Said, D. J. Hagan, E. W. Van Stryland and M. Sheik-Bahae, \"Infrared to ultraviolet measurements of two-photon absorption and n2 in wide bandgap solids\", IEEE J. Quantum Electron. 32, 1324-1333 (1996)"
+doi = "10.1109/3.511545"
+library = "DeSalvo_1996_InfraredUltravioletMeasurements"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Single-beam Z-scan (open and closed aperture; closed/open division at 266 \
+nm) at the four harmonics of a Q-switched, mode-locked Nd:YAG laser, TEM00, single \
+pulses switched out; harmonics by KD*P crystals. Beam waists w0 (HW1/e^2M) and pulse \
+widths tau_p (FWHM): 35 um and 30 ps at 1064 nm, 24 um and 22 ps at 532 nm, 19 um and \
+17 ps at 355 nm, 16 um and 15 ps at 266 nm (p. 1326), pulse width by second-order \
+autocorrelation; f ~ 150 mm best-form lenses; energies calibrated against a Laser \
+Precision RJ-7620 / RJP-735 pyroelectric meter; pulse-width and energy windows \
+(+-10 %); thin-sample approximation. 'All irradiances are quoted within the sample, \
+i.e., I0 = (1 - R) I' (p. 1326)."""
+notes = """Journal pages 1324-1333 = PDF pages 1-10 (p. 1326 = PDF p. 3). Identity \
+checked against the first page.
+
+WHAT IS HERE. Table I (tbl_9572f7715e3f, p. 1326; JSON only): E_g, E'_g, n2 (x 1e-14 \
+esu) at 1064/532/355/266 nm and beta (cm/GW) at 532/355/266 nm for 11 materials. \
+Table II (tbl_87c9f8dcbfd0, p. 1326): the linear index used. Both checked cell by cell \
+against the table images (agree, including the quoted "6.8" and "8.0"). Extracted: \
+E_g (kind optical, assumed input) and E'_g (kind assumed) as band_gap, beta as \
+two_photon_absorption_coefficient, Table II as refractive_index (use check, assumed), \
+Table I's n2 as nonlinear_index_field, and the two n2 values the text prints in cm2/W (BaF2, p. 1327) as nonlinear_index (check).
+
+DEFINITIONS (p. 1327): 'In this paper we define the nonlinear index by n = n0 + \
+n2<E^2>, where <> denotes a time average and n0 is the linear index. The relation \
+between n2 in esu and in m^2/W is given by, n2(esu) = (c n0/40 pi) n2(MKS). The values \
+of the linear indexes used are given in Table II.' beta: 2PA coefficient; the paper \
+does not write the propagation equation, but beta is the coefficient of the Z-scan \
+analysis of its Ref. [13] (dI/dz = -alpha I - beta I^2), in cm/GW, with irradiances \
+inside the sample. Measured n2 is 'the bound electronic nonlinear refractive index' \
+(abstract); with 15-30 ps pulses the Raman (nuclear) response is fully included \
+(the curators' rule), and the paper does not separate it: part = 'total' for every n2.
+
+N2 IN ESU (Table I). n2 of n = n0 + n2<E^2> in units of 1e-14 esu, recorded as \
+nonlinear_index_field (one dataset per material; KTP per sample axis), converted to \
+nothing. Layout: row 0 header 'n_2 \\times 10^{-14} esu' spanning columns 3-6, row 1 the \
+wavelengths 1064/532/355/266 nm, rows 2-12 the materials; cells 'v±s'; 'NM' = not \
+measured (KBr 355/266; LiNbO3, KTP, Te glass 355/266). The cells agree with the image \
+(checked again 2026-09-26). Fused silica: 7.4±1.5, 7.8±1.6, 8.5±1.7, 28±6 (x 1e-14 \
+esu) at 1064, 532, 355, 266 nm. With Table II's n0 and c = 2.99792458e8 m/s, 40 pi \
+n2/(c n0) gives for SiO2 2.10, 2.21, 2.41, 7.82 (x 1e-16 cm2/W; sigma 0.42, 0.45, 0.48, \
+1.68). Milam 1998 (milam_1998, Table 1, ref. 4) reproduces these as 2.14, 2.24, 2.41 and \
+7.8 (+-0.43, 0.46, 0.48, and '0.17', corrected there to 1.7): Milam used an n0 other \
+than Table II's 1.48 at 1064 and 532 nm (2.14 implies n0 = 1.4495, 2.24 implies 1.4596). \
+Other cm2/W copies of this table: ensley_2019 (letter b, LiF with n0 ~ 1.39), \
+van_der_linden_2025 (KBr at 1064 nm, 7.87, implying n0 ~ 1.545). The BaF2 text values \
+(2.1e-16 at 532, 3.1e-16 cm2/W at 266 nm) are the authors' own conversions of Table \
+I's 7.5 and 11 (dataset n2_BaF2_text, check).
+
+UNCERTAINTY (p. 1326): 'The overall experimental uncertainty is approximately +-20 %. \
+The primary uncertainties originate from the determination of the irradiance \
+distribution'. Table I prints a +- per value (about 20 %); level not stated. \
+Anisotropy: 'The orientation dependence (i.e., anisotropy) of the nonlinear \
+coefficients is generally small, being less than +-25 %' (p. 1327).
+
+'~0' CELLS: beta printed as '≅0' (no nonlinear absorption observed; e.g. BaF2 'No \
+nonlinear absorption was observed at these wavelengths using open aperture Z-scans', \
+p. 1326) are left out of the files: they are not numbers. LiF and MgF2 have no beta \
+dataset (all '~0'); KBr '~0' at 532 nm, NM elsewhere.
+
+THE MODEL (Section III): Eqs. (1)-(4), recorded as formulas. K ~ 3100 (beta in cm/GW, \
+E_p and E_g in eV), fitted to semiconductor data of Ref. [19]; E_p = 21 eV assumed \
+('It has not been measured for the materials we study here, and we assume it has this \
+same value of 21 eV', p. 1327); K' = 7.33e-9 (n2 in esu), 'In [6], a value two times \
+larger, K' = 1.5 x 10^-8, was given. There, the factor of two difference between \
+degenerate and nondegenerate index changes was not properly accounted for' (p. 1328). \
+G2 of the two-parabolic-band model is not printed here (given in Refs. [6], [9]).
+
+FIGURES (not digitised): Figs. 1-2 Z-scans of BaF2 (1064/532/355 nm; 266 nm open, \
+closed and divided); Fig. 3 scaled n2 vs hbar omega/E_g with G2; Fig. 4 earlier n2 data \
+from Ref. [21] (Chase and Van Stryland, CRC Handbook 1994) scaled the same way; Fig. 5 \
+log-log scaled n2 vs E_g; Fig. 6 scaled beta vs hbar omega/E_g; Figs. 7-8 the same with \
+E'_g.
+
+Samples: BaF2, MgF2, LiF supplied by LLNL (R. Adair); BBO and LiNbO3 by Crystal \
+Technology; KTP by DuPont; tellurite glass by E. Vogel (Bellcore) and S. Aitchison \
+(University of Glasgow); KBr from Infrared Optical Products of New York (footnotes 1, \
+2 and acknowledgment). The footnote prints 'LiF_2' for LiF.
+
+REFRACTIVEINDEX.INFO. The n2 pages 'DeSalvo' (Al2O3 'e', BaF2, LiF, MgF2 'o', SiO2) are \
+Table I's esu values converted to m2/W with n0 values other than Table II's: they \
+reproduce 40 pi n2/(c n0) with implied n0 of 1.4495-1.5009 (SiO2), 1.388-1.421 (LiF, \
+where Table II prints 1.3, so the page is 7-9 % below a conversion with Table II), \
+1.373-1.397 (MgF2), 1.466-1.512 (BaF2), 1.747-1.826 (Al2O3). The page's Al2O3 'e' axis \
+is not in the paper (only 'E parallel to a crystallographic axis'); MgF2 'o' agrees \
+with footnote 1. Pulse durations on the pages (15/17/22/30 ps) agree."""
+
+[[datasets]]
+id = "n2_BaF2_text"
+material = "BaF2"
+table = "text"
+points = [["532", "532", "2.1", "0.4", "22000"], ["266", "266", "3.1", "0.6", "15000"]]
+columns = { pulse_fs = "fs" }
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "check"
+notes = "Text, p. 1327: at 532 nm, I0 ~ 103 GW/cm2, 'a fit to the data gives n2 ~ (2.1 +- 0.4) x 10^-16 cm/W or (7.5 +- 1.5) x 10^-14 esu' (the unit printed 'cm/W' is cm2/W: the esu value is Table I's); at 266 nm, 'The fit gives a value of n2 ~ (3.1 +- 0.6) x 10^-16 cm2/W or (1.1 +- 0.2) x 10^-13 esu' from the closed-aperture Z-scan with beta ~ 0.06 cm/GW (I0 ~ 72 GW/cm2), without subtraction of a linear background dip. The authors' own conversions of Table I's esu values (n2_BaF2, primary), hence use = check: never to be fitted beside Table I. BaF2 k || [100], E || [010]. n = n0 + n2 I implied by the unit (the paper's own definition is n = n0 + n2<E^2>, p. 1327). pulse_fs: FWHM at that harmonic."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+form = "bulk"
+
+[[datasets]]
+id = "n2_LiF"
+material = "LiF"
+file = "LiF/desalvo_1996__n2_LiF.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. LiF: orientation unknown (footnote 1; printed 'LiF_2'). pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_MgF2"
+material = "MgF2"
+file = "MgF2/desalvo_1996__n2_MgF2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. MgF2: k || [001], E || [100] (footnote 1): E perpendicular to the optic axis, the ordinary wave. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "n2_BaF2"
+material = "BaF2"
+file = "BaF2/desalvo_1996__n2_BaF2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. BaF2: k || [100], E || [010] (footnote 1); cubic. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_SiO2"
+material = "SiO2"
+file = "SiO2/desalvo_1996__n2_SiO2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. Fused silica; grade not stated. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_Al2O3"
+material = "Al2O3"
+file = "Al2O3/desalvo_1996__n2_Al2O3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. Al2O3: 'E parallel to a crystallographic axis' (footnote 1); which axis is not said, so no axis is recorded. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_BBO"
+material = "BBO"
+file = "BBO/desalvo_1996__n2_BBO.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. BBO: k || c axis (footnote 2): the ordinary wave. Its 266-nm value (1 +- 0.3) is 'a very small but positive n2' where the model predicts a negative one (pp. 1328-1330). pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "n2_KBr"
+material = "KBr"
+file = "KBr/desalvo_1996__n2_KBr.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. KBr from Infrared Optical Products of New York; orientation not stated. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_CaCO3"
+material = "CaCO3"
+file = "CaCO3/desalvo_1996__n2_CaCO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. CaCO3: 'E parallel to a crystallographic axis' (footnote 1); which axis is not said, so no axis is recorded. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "n2_LiNbO3"
+material = "LiNbO3"
+file = "LiNbO3/desalvo_1996__n2_LiNbO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. LiNbO3: x cut with E parallel to the optic axis (footnote 2): the extraordinary wave. pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+axis = "e"
+
+[[datasets]]
+id = "n2_KTP_y"
+material = "KTP"
+file = "KTP/desalvo_1996__n2_KTP_y.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. KTP, the z-cut sample with E || y, used at 1064 nm (footnote 2). pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+axis = "y"
+
+[[datasets]]
+id = "n2_KTP_z"
+material = "KTP"
+file = "KTP/desalvo_1996__n2_KTP_z.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. KTP, the x-cut sample with E || z, used at 532 nm (footnote 2). pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+axis = "z"
+
+[[datasets]]
+id = "n2_tellurite_75TeO2-20ZnO-5Na2O"
+material = "tellurite_75TeO2-20ZnO-5Na2O"
+file = "tellurite_75TeO2-20ZnO-5Na2O/desalvo_1996__n2_tellurite_75TeO2-20ZnO-5Na2O.csv"
+table = "tbl_9572f7715e3f"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, 'n2 x 10^-14 esu' at the four Nd:YAG harmonics, with its printed +- (p. 1326); n = n0 + n2<E^2>, <> a time average (p. 1327); closed-aperture Z-scan (divided by the open-aperture scan where 2PA is present). 'NM' cells are not in the file. Tellurite glass 75 % TeO2 + 20 % ZnO + 5 % Na2O, from E. Vogel (Bellcore) and S. Aitchison (Glasgow). pulse_fs: the FWHM at that harmonic (p. 1326). With 15-30 ps pulses the Raman response is included; the paper calls n2 'bound electronic' but does not separate it: part total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "n = n0 + n2 <E^2>, <> a time average (p. 1327)"
+part = "total"
+coefficient = "self"
+technique = "Z-scan (closed aperture)"
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "eg_LiF"
+material = "LiF"
+file = "LiF/desalvo_1996__eg_LiF.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_MgF2"
+material = "MgF2"
+file = "MgF2/desalvo_1996__eg_MgF2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_BaF2"
+material = "BaF2"
+file = "BaF2/desalvo_1996__eg_BaF2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_SiO2"
+material = "SiO2"
+file = "SiO2/desalvo_1996__eg_SiO2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_Al2O3"
+material = "Al2O3"
+file = "Al2O3/desalvo_1996__eg_Al2O3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_BBO"
+material = "BBO"
+file = "BBO/desalvo_1996__eg_BBO.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_KBr"
+material = "KBr"
+file = "KBr/desalvo_1996__eg_KBr.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_CaCO3"
+material = "CaCO3"
+file = "CaCO3/desalvo_1996__eg_CaCO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_LiNbO3"
+material = "LiNbO3"
+file = "LiNbO3/desalvo_1996__eg_LiNbO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_KTP"
+material = "KTP"
+file = "KTP/desalvo_1996__eg_KTP.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_tellurite_75TeO2-20ZnO-5Na2O"
+material = "tellurite_75TeO2-20ZnO-5Na2O"
+file = "tellurite_75TeO2-20ZnO-5Na2O/desalvo_1996__eg_tellurite_75TeO2-20ZnO-5Na2O.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E_g (p. 1326): 'the bandgaps used for comparison are the linear transmission cutoff energies' (p. 1325); e.g. BaF2 'cuts off at ~135 nm. This corresponds to an optical gap of E_g ~ 9.2 eV' (p. 1326). A model input of Eqs. (1) and (3); whether each cutoff was measured here or taken from elsewhere is not stated."
+[datasets.parameters]
+kind = "optical"
+assumed = true
+
+[[datasets]]
+id = "eg_prime_BaF2"
+material = "BaF2"
+file = "BaF2/desalvo_1996__eg_prime_BaF2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_SiO2"
+material = "SiO2"
+file = "SiO2/desalvo_1996__eg_prime_SiO2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_Al2O3"
+material = "Al2O3"
+file = "Al2O3/desalvo_1996__eg_prime_Al2O3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_BBO"
+material = "BBO"
+file = "BBO/desalvo_1996__eg_prime_BBO.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest. Printed in quotation marks: the further-adjusted gap of the text, not the beta fit. BBO: 'If the bandgap for BBO is further increased from 6.45 eV to 6.8 eV ... the n2 datum at 266 nm can be made to agree' (p. 1329); calcite: 'In order for calcite data to match the predicted dispersion, a value of E'_g ~ 8 eV is needed' (p. 1330). The beta-fitted values were 6.45 eV (BBO) and ~6.8 eV (calcite)."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_CaCO3"
+material = "CaCO3"
+file = "CaCO3/desalvo_1996__eg_prime_CaCO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest. Printed in quotation marks: the further-adjusted gap of the text, not the beta fit. BBO: 'If the bandgap for BBO is further increased from 6.45 eV to 6.8 eV ... the n2 datum at 266 nm can be made to agree' (p. 1329); calcite: 'In order for calcite data to match the predicted dispersion, a value of E'_g ~ 8 eV is needed' (p. 1330). The beta-fitted values were 6.45 eV (BBO) and ~6.8 eV (calcite)."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_LiNbO3"
+material = "LiNbO3"
+file = "LiNbO3/desalvo_1996__eg_prime_LiNbO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_KTP"
+material = "KTP"
+file = "KTP/desalvo_1996__eg_prime_KTP.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "eg_prime_tellurite_75TeO2-20ZnO-5Na2O"
+material = "tellurite_75TeO2-20ZnO-5Na2O"
+file = "tellurite_75TeO2-20ZnO-5Na2O/desalvo_1996__eg_prime_tellurite_75TeO2-20ZnO-5Na2O.csv"
+table = "tbl_9572f7715e3f"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "label"
+use = "check"
+notes = "Table I, E'_g (p. 1326): an effective direct gap, E'_g = zeta E_g, chosen so that the measured beta fits the two-parabolic-band scaling Eq. (1) (p. 1329: 'If we allow the direct gap energy E_g to vary, so as to make beta fit (1), we obtain a new effective bandgap energy'; 'For materials where two values of beta were obtained, an average zeta was determined'), then used as the model input to recompute n2 (Figs. 7, 8). The kind vocabulary has no entry for a gap fitted to 2PA data: recorded as kind = 'assumed' (a model input), the nearest."
+[datasets.parameters]
+kind = "assumed"
+
+[[datasets]]
+id = "beta_BaF2"
+material = "BaF2"
+file = "BaF2/desalvo_1996__beta_BaF2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. BaF2: k || [100], E || [010] (footnote 1). pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+
+[[datasets]]
+id = "beta_SiO2"
+material = "SiO2"
+file = "SiO2/desalvo_1996__beta_SiO2.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. Fused silica: grade not stated. pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+
+[[datasets]]
+id = "beta_Al2O3"
+material = "Al2O3"
+file = "Al2O3/desalvo_1996__beta_Al2O3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. Al2O3: 'E parallel to a crystallographic axis' (footnote 1); which axis is not said, so no axis is recorded. pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+
+[[datasets]]
+id = "beta_BBO"
+material = "BBO"
+file = "BBO/desalvo_1996__beta_BBO.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. BBO: k || c axis (footnote 2), so E is perpendicular to the optic axis: the ordinary wave. pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "beta_CaCO3"
+material = "CaCO3"
+file = "CaCO3/desalvo_1996__beta_CaCO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. CaCO3: 'E parallel to a crystallographic axis' (footnote 1); which axis is not said, so no axis is recorded. pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+
+[[datasets]]
+id = "beta_LiNbO3"
+material = "LiNbO3"
+file = "LiNbO3/desalvo_1996__beta_LiNbO3.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. LiNbO3: x cut, E || optic axis (footnote 2): the extraordinary wave. pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+axis = "e"
+
+[[datasets]]
+id = "beta_KTP"
+material = "KTP"
+file = "KTP/desalvo_1996__beta_KTP.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. KTP: two samples (footnote 2), x cut with E || z used at 532 nm and z cut with E || y used at 1064 nm. pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+axis = "z"
+
+[[datasets]]
+id = "beta_tellurite_75TeO2-20ZnO-5Na2O"
+material = "tellurite_75TeO2-20ZnO-5Na2O"
+file = "tellurite_75TeO2-20ZnO-5Na2O/desalvo_1996__beta_tellurite_75TeO2-20ZnO-5Na2O.csv"
+table = "tbl_9572f7715e3f"
+quantity = "two_photon_absorption_coefficient"
+unit = "cm/GW"
+abscissa_unit = "nm"
+columns = { pulse_fs = "fs" }
+use = "primary"
+notes = "Table I, beta (cm/GW) with its printed +- (p. 1326); open-aperture Z-scan; irradiances inside the sample, I0 = (1 - R) I (reflection removed). Cells printed '~0' (no measurable 2PA) and 'NM' are not in the file. Tellurite glass 75 % TeO2 + 20 % ZnO + 5 % Na2O (samples from E. Vogel, Bellcore, and S. Aitchison, University of Glasgow; acknowledgment). pulse_fs: the FWHM at that harmonic (p. 1326)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+technique = "Z-scan (open aperture)"
+form = "bulk"
+
+[[datasets]]
+id = "n_LiF"
+material = "LiF"
+file = "LiF/desalvo_1996__n_LiF.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. LiF: 'unknown orientation' (footnote 1)."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+[[datasets]]
+id = "n_MgF2"
+material = "MgF2"
+file = "MgF2/desalvo_1996__n_MgF2.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. MgF2: k || [001], E || [100] (footnote 1): the ordinary index."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "n_BaF2"
+material = "BaF2"
+file = "BaF2/desalvo_1996__n_BaF2.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. BaF2: k || [100], E || [010] (footnote 1)."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+[[datasets]]
+id = "n_SiO2"
+material = "SiO2"
+file = "SiO2/desalvo_1996__n_SiO2.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. Fused silica: grade not stated."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+[[datasets]]
+id = "n_Al2O3"
+material = "Al2O3"
+file = "Al2O3/desalvo_1996__n_Al2O3.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. Al2O3: 'E parallel to a crystallographic axis' (footnote 1); which axis is not said, so no axis is recorded."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+[[datasets]]
+id = "n_BBO"
+material = "BBO"
+file = "BBO/desalvo_1996__n_BBO.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. BBO: k || c axis (footnote 2), so E is perpendicular to the optic axis: the ordinary wave."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "n_KBr"
+material = "KBr"
+file = "KBr/desalvo_1996__n_KBr.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. KBr: from Infrared Optical Products of New York (footnote 1); orientation not stated."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+[[datasets]]
+id = "n_CaCO3"
+material = "CaCO3"
+file = "CaCO3/desalvo_1996__n_CaCO3.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. CaCO3: 'E parallel to a crystallographic axis' (footnote 1); which axis is not said, so no axis is recorded."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+[[datasets]]
+id = "n_LiNbO3"
+material = "LiNbO3"
+file = "LiNbO3/desalvo_1996__n_LiNbO3.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. LiNbO3: x cut, E || optic axis (footnote 2): the extraordinary wave."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+axis = "e"
+
+[[datasets]]
+id = "n_KTP_y"
+material = "KTP"
+file = "KTP/desalvo_1996__n_KTP_y.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' at 1064 nm (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings; its source is not stated. KTP: two samples (footnote 2), x cut with E || z used at 532 nm and z cut with E || y used at 1064 nm."
+[datasets.parameters]
+assumed = true
+axis = "y"
+form = "bulk"
+
+[[datasets]]
+id = "n_KTP_z"
+material = "KTP"
+file = "KTP/desalvo_1996__n_KTP_z.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' at 532 nm (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings; its source is not stated. KTP: two samples (footnote 2), x cut with E || z used at 532 nm and z cut with E || y used at 1064 nm."
+[datasets.parameters]
+assumed = true
+axis = "z"
+form = "bulk"
+
+[[datasets]]
+id = "n_tellurite_75TeO2-20ZnO-5Na2O"
+material = "tellurite_75TeO2-20ZnO-5Na2O"
+file = "tellurite_75TeO2-20ZnO-5Na2O/desalvo_1996__n_tellurite_75TeO2-20ZnO-5Na2O.csv"
+table = "tbl_87c9f8dcbfd0"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table II, 'linear index of refraction used' (p. 1326): the index used to relate n2(esu) to n2(MKS) and in the scalings, printed to 2-3 digits; its source is not stated. Tellurite glass 75 % TeO2 + 20 % ZnO + 5 % Na2O (samples from E. Vogel, Bellcore, and S. Aitchison, University of Glasgow; acknowledgment)."
+[datasets.parameters]
+assumed = true
+form = "bulk"
+
+
+[[formulas]]
+id = "beta_scaling"
+equation = "Eqs. (1) and (2), p. 1327"
+printed = "beta(omega) = K sqrt(E_p) / (n0^2 E_g^3) F2(hbar omega / E_g); F2(x) = (2x - 1)^(3/2) / (2x)^5"
+variable = "x = hbar omega / E_g; beta in cm/GW, E_p and E_g in eV; n0 the linear index (Table II)"
+coefficients = { K = "3100", E_p = "21" }
+check = "With Table II's n0 and E'_g of Table I, Eqs. (1)-(2) give beta(266 nm) = 0.049 (BaF2, measured 0.06), 0.049 (SiO2, 0.05), 0.088 (Al2O3, 0.09); beta(532 nm) = 0.36 (LiNbO3, 0.38), 0.066 (KTP, 0.10), 0.73 (Te glass, 0.62). They reproduce the text's numbers exactly: BBO with E_g = 6.8 eV gives 0.765 at 266 nm and 0.066 at 355 nm ('beta = 0.77 cm/GW rather than ... 0.9' and '0.066 cm/GW rather than ... 0.01', p. 1329); with 6.45 eV, 0.905 at 266 nm (the beta fit); calcite with 8 eV gives 0.331 at 266 nm ('predicted to be 0.33 cm/GW', p. 1330) and with 6.8 eV 0.803 at 266 nm ('excellent agreement'). hbar omega = 1239.84 eV nm / lambda. Computed 2026-09-26."
+notes = "The two-parabolic-band 2PA scaling (second-order perturbation theory, Refs. [18], [19]). K ~ 3100 from 'Fitting the semiconductor data of [19]' (p. 1327-1328); E_p, the Kane momentum parameter, 'has not been measured for the materials we study here, and we assume it has this same value of 21 eV' (p. 1327). beta vanishes for hbar omega < E_g/2."
+
+[[formulas]]
+id = "n2_scaling"
+equation = "Eq. (3), p. 1328"
+printed = "n2(esu) = K' sqrt(E_p) / (n0 E_g^4) G2(hbar omega / E_g)"
+variable = "hbar omega / E_g; E_p and E_g in eV; n2 in esu (n = n0 + n2<E^2>)"
+coefficients = { K_prime = "7.33e-9", E_p = "21" }
+check = "Not reproduced: G2 for the two-parabolic-band model is not printed here (Refs. [6], [9])."
+notes = "'With E_p and E_g in eV, a value of K = 3100 gives a value of K' = 7.33 x 10^-9 which is the value used throughout this paper. In [6], a value two times larger, K' = 1.5 x 10^-8, was given. There, the factor of two difference between degenerate and nondegenerate index changes was not properly accounted for (see [9] for corrections)' (p. 1328). Note: ensley_2019 (p. 37942) uses K' = 1.5e-8 with E_p = 21.4 eV."
+
+[[formulas]]
+id = "g2_kramers_kronig"
+equation = "Eq. (4), p. 1328"
+printed = "G2(x2) = (2/pi) int_0^inf F2(x1; x2) / (x1^2 - x2^2) dx1"
+variable = "x_i = hbar omega_i / E_g; F2(x1; x2) the nondegenerate nonlinear absorption spectrum (2PA, electronic Raman, AC Stark), given in Refs. [6], [9]"
+check = "Not reproducible from this paper alone (F2(x1; x2) not printed)."
+notes = "The Kramers-Kronig relation giving the degenerate n2 dispersion from the nondegenerate absorption change."

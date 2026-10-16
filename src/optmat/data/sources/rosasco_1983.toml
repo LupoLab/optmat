@@ -1,0 +1,121 @@
+citation = "G. J. Rosasco, W. Lempert, W. S. Hurst and A. Fein, \"Line interference effects in the vibrational Q-branch spectra of N2 and CO\", Chem. Phys. Lett. 97, 435 (1983)"
+doi = "10.1016/0009-2614(83)80524-7"
+library = "Rosasco_1983_LineInterferenceEffects"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """High-resolution cw stimulated Raman (Raman loss) spectroscopy (p. 435): a \
+single-mode Kr-ion pump (< 20 MHz) and a tunable ring-dye probe (about 1 MHz), \
+copropagating, parallel linear polarisations, pump modulated at 5.4 MHz, multipass cell \
+(about 50-fold); frequency precision about 30 MHz (0.001 cm-1) over a Q branch. Pure N2 \
+and pure CO, v = 0 -> 1 Q branches, self-broadened, about 20-200 kPa (0.2-2.0 atm), 298 \
+K. Line overlap described by a relaxation-matrix model; the first-order (in density) \
+solution, Eq. (6), fitted to spectra at 0.2 and 0.6 atm (N2) and 0.2 and 0.5 atm (CO) \
+gives gamma_j and Y_j (p. 437)."""
+notes = """Identity checked against the first page. Page numbers are journal pages \
+(pdf pages 1-6 = pp. 435-440). Materials: 14N2 and 12C16O (natural gases); no other \
+isotopologue.
+
+WIDTH CONVENTION. HALF widths. The paper never writes 'HWHM' against Table 1; the \
+convention follows from Eq. (6) (p. 436): chi3''(omega) = (n/24 hbar) sum_j alpha_j^2 \
+Delta rho_0j p [gamma_j - (omega - omega_j) Y_j] / [(omega - omega_j)^2 + (p \
+gamma_j)^2], 'with ... p the pressure, gamma_j = W_jj the line-broadening coefficient'. \
+A Lorentzian gamma/(x^2 + (p gamma)^2) has its half width at half maximum at x = p \
+gamma: p gamma_j is the HWHM, and gamma_j the HWHM per atm. Independent confirmation: \
+Rahn and Palmer (rahn_1986, Table 1, 'FWHM', note a 'From Ref. 6' = this paper) print \
+exactly twice these values and errors for N2 (all 19 rows), and Farrow and Rahn \
+(farrow_1985) label their comparable Ar coefficients 'HWHM'. Per atm of pressure at 298 \
+K ('Line-broadening and mixing-coefficients at 298 K', Table 1 caption, p. 438), not per \
+amagat. The isolated-line study behind the method (Ref. 6, Spectral Line Shapes Vol. 2, \
+not in the library): Voigt at 0.05 atm, Dicke narrowing with rising pressure, Lorentzian \
+above 0.2 atm; 'The collision component Gamma(p) is extracted using the known Doppler \
+(about 80 MHz) and diffusion (about 6 MHz at 1.0 atm) contributions', and Gamma(p) = p \
+gamma holds to 2.0 atm (p. 437).
+
+UNCERTAINTIES. gamma_j: the parenthesised digits (last decimal) are not described (level \
+not stated). Y_j: the table's notes, poorly printed, read 'a) +-20 %, J = 0-3' and 'b) \
++-50 %, J = 4-18' (the 'a' note's '+-20 %' is inferred from the partly legible scan, \
+'-20 .,', and the legible 'b) +-50 %'), marked on J = 0 and J = 4 of each column.
+
+THE LINE-MIXING COEFFICIENTS Y_j (atm-1) have no quantity in the vocabulary. They are \
+recorded as the coefficients of Eq. (6) in the formulas eq6_N2 and eq6_CO. Definition, \
+Eq. (7) (p. 436): Y_j = 2 sum_{j' != j} (alpha_j'/alpha_j) W_j'j / (omega_j' - \
+omega_j), W the relaxation matrix (Eq. (5)); 'first order in density'; all alpha_j equal \
+in the paper's normalisation. Eq. (6) with Table 1 'yields good agreement with the data \
+up to 2.0 atm' (p. 437).
+
+TEXT VALUES (notes only). N2 line shifts 'less than 0.001 cm-1 atm-1' (Ref. 6); CO Q(14) \
+shift about 0.0045(9) cm-1 atm-1 (sign not printed); CO B1 - B0 from -0.017511(6) cm-1 \
+(0.2 atm) to -0.017495(8) cm-1 (1.0 atm) (p. 438). Fitting the pure Lorentzian model \
+with free T gives temperatures 'about 40 K too low' at 1 atm (p. 437). Eq. (8) (p. 438), \
+the state-to-state rate law used to model gamma_j and Y_j (power law about 0.5 with N_x \
+= N_c at low j, exponential gap with N_0 at high j; results in Fig. 3 for CO only): no \
+fitted constants are printed.
+
+What this bears on: the N2 Q-branch self-broadening at room temperature (the N2 Q \
+widths in use, TC-492) and line mixing, which is not yet modelled (docs/raman.md, \
+'Line mixing'). This is the source of Rahn and Palmer's 295 K column and of Farrow and \
+Rahn's self-broadening correction (farrow_1985)."""
+
+[[datasets]]
+id = "table1_N2"
+material = "N2"
+file = "N2/rosasco_1983__table1_N2.csv"
+table = "tbl_ee3e296d7c2c"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 438), N2 column gamma_j: HWHM self-broadening coefficient of the Q(J) lines (v = 0 -> 1), cm-1 per atm, 298 K, J = 0-18 (HWHM from Eq. (6): see the source notes). Fitted with Eq. (6) (line mixing included) to 0.2 and 0.6 atm spectra. Error in the last digits, level not stated. rahn_1986 prints these doubled as its 295 K FWHM column."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "Q(J), v = 0 -> 1, per row"
+width = "hwhm"
+perturber = "self"
+temperature_k = 298
+
+[[datasets]]
+id = "table1_CO"
+material = "CO"
+file = "CO/rosasco_1983__table1_CO.csv"
+table = "tbl_ee3e296d7c2c"
+quantity = "raman_linewidth"
+unit = "cm-1/atm"
+abscissa = "label"
+use = "primary"
+notes = "Table 1 (p. 438), CO column gamma_j: HWHM self-broadening coefficient of the Q(J) lines (v = 0 -> 1), cm-1 per atm, 298 K, J = 0-18 (HWHM from Eq. (6): see the source notes). Fitted with Eq. (6) to 0.2 and 0.5 atm spectra. Error in the last digits, level not stated. 'in excellent agreement with the recently reported [32] widths of P- and R-branch lines in the infrared vibrational overtone spectrum' (p. 438)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "Q(J), v = 0 -> 1, per row"
+width = "hwhm"
+perturber = "self"
+temperature_k = 298
+
+[[formulas]]
+id = "eq6_N2"
+material = "N2"
+equation = "Eqs. (6)-(7), p. 436; Table 1 (tbl_ee3e296d7c2c), p. 438"
+printed = "chi3''(omega) = (n/24 hbar) sum_j alpha_j^2 Delta rho_0j p [gamma_j - (omega - omega_j) Y_j] / [(omega - omega_j)^2 + (p gamma_j)^2]; Y_j = 2 sum_{j' != j} (alpha_j'/alpha_j) W_j'j / (omega_j' - omega_j)"
+variable = "omega = omega_a - omega_b the Raman frequency, omega_j the Q(j) line position (in cm-1, as gamma_j); p: pressure in atm; gamma_j = W_jj the HWHM broadening coefficient in cm-1 atm-1 (dataset table1_N2); Y_j the first-order line-mixing coefficient in atm-1; n the number density; alpha_j = <v1|alpha_0|v0> (all equal); Delta rho_0j the thermal population difference of the 0 and 1 levels at J"
+state = "pure N2, 298 K"
+density = "unknown"
+range = "fitted to 0.2 and 0.6 atm; 'good agreement with the data up to 2.0 atm' (p. 437); first order in density"
+coefficients = { Y_Q0 = "0.46", Y_Q1 = "0.6", Y_Q2 = "0.21", Y_Q3 = "0.05", Y_Q4 = "0.04", Y_Q5 = "0.04", Y_Q6 = "0.03", Y_Q7 = "0.03", Y_Q8 = "-0.03", Y_Q9 = "0.03", Y_Q10 = "-0.03", Y_Q11 = "0.03", Y_Q12 = "0.03", Y_Q13 = "-0.03", Y_Q14 = "0.03", Y_Q15 = "0.03", Y_Q16 = "0.03", Y_Q17 = "0.03", Y_Q18 = "0.03", Y_error_J0_3 = "20 %", Y_error_J4_18 = "50 %" }
+check = "No printed spectrum value to reproduce (Figs. 1-2 are figures). Sum rule (scratch, 2026-09-27): detailed balance, rho_j W_j'j = rho_j' W_jj', makes Eq. (7) satisfy sum_j rho_j Y_j = 0 (all alpha_j equal), separately for even and odd J in N2, whose collisions conserve the nuclear-spin symmetry. With 298 K Boltzmann populations (B = 1.99 cm-1, even:odd weights 2:1) the printed Y_j give sum_j rho_j Y_j = +0.046 atm-1 against sum_j rho_j |Y_j| = 0.060 (even J +0.025, odd J +0.021): the printed N2 values do NOT satisfy the sum rule. The CO values do, nearly: -0.010 against 0.084 (B = 1.92). The N2 column is badly printed (the signs of J = 8, 10, 13 are faint dashes; image checked at 400 dpi); lost minus signs at high J are a possible cause, not established."
+notes = "The line-mixing coefficients Y_j of Table 1's N2 column, as printed (the marks a) and b) on J = 0 and J = 4 dropped: they are the error notes, +-20 % for J = 0-3 and +-50 % for J = 4-18). 'No values of Q branch line-mixing coefficients have been reported in the literature' (p. 438). Line mixing is not modelled yet (TC-492)."
+
+[[formulas]]
+id = "eq6_CO"
+material = "CO"
+equation = "Eqs. (6)-(7), p. 436; Table 1 (tbl_ee3e296d7c2c), p. 438"
+printed = "chi3''(omega) = (n/24 hbar) sum_j alpha_j^2 Delta rho_0j p [gamma_j - (omega - omega_j) Y_j] / [(omega - omega_j)^2 + (p gamma_j)^2]; Y_j = 2 sum_{j' != j} (alpha_j'/alpha_j) W_j'j / (omega_j' - omega_j)"
+variable = "as eq6_N2, with gamma_j the dataset table1_CO"
+state = "pure CO, 298 K"
+density = "unknown"
+range = "fitted to 0.2 and 0.5 atm; good to 2.0 atm (p. 437); first order in density"
+coefficients = { Y_Q0 = "1.24", Y_Q1 = "0.63", Y_Q2 = "0.16", Y_Q3 = "0.006", Y_Q4 = "-0.04", Y_Q5 = "-0.06", Y_Q6 = "-0.06", Y_Q7 = "-0.06", Y_Q8 = "-0.06", Y_Q9 = "-0.06", Y_Q10 = "-0.06", Y_Q11 = "-0.06", Y_Q12 = "-0.06", Y_Q13 = "-0.05", Y_Q14 = "-0.05", Y_Q15 = "-0.04", Y_Q16 = "-0.04", Y_Q17 = "-0.03", Y_Q18 = "-0.03", Y_error_J0_3 = "20 %", Y_error_J4_18 = "50 %" }
+check = "Sum rule as for eq6_N2 (scratch, 2026-09-27; all J mix, one sum): sum_j rho_j Y_j = -0.0097 atm-1 against sum_j rho_j |Y_j| = 0.084 at 298 K with B = 1.92 cm-1: zero to 12 % of the scale, within the stated +-20-50 %. Fig. 3b compares the Y_j with the rate-law predictions (figure only)."
+notes = "The line-mixing coefficients Y_j of Table 1's CO column, as printed (marks a) and b) dropped)."

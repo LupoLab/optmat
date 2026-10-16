@@ -1,0 +1,217 @@
+citation = "J. F. Ward and D. S. Elliott, J. Chem. Phys. 80, 1003 (1984)"
+doi = "10.1063/1.446825"
+library = "Ward_1984_OpticalThirdHarmonic"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Third-harmonic generation of a ruby laser (694 nm, 1 MW, 40 ns) focused \
+(b = 6.1 mm) near a glass/gas interface; the harmonic generated in the gas interferes \
+with that of the absorbing glass. S(Omega) measured at ten normalized densities Omega \
+= rho Delta k_0 b/2 (0-1.5, rho in amagat), alternating with helium; S(0) and \
+S(infinity) fitted with the Gaussian-beam integral Q (Eqs. (4)-(7)); binary mixtures fix \
+the sign ambiguity."""
+notes = """THG coefficients of CH4 and SF6 (and of CH3F, CH2F2, CHF3 and CF4, which are \
+not curated species and are skipped), compared with dcSHG and Kerr coefficients.
+
+Definitions (pp. 1003-1004): chi is 'the third-harmonic coefficient' of Ward and New \
+(Ref. 1 = ward_1969), i.e. chi = gamma_T/6 (Ward's K = 1/4 for THG, per molecule). \
+Eq. (9): chi_He = 4.00 x 10^-39 esu/atom (Sitz and Yaris), and Eq. (10): chi_X = chi_He \
+(Delta k_0)_X/(Delta k_0)_He [1 - (S_X(inf)/S_X(0))^1/2]/[1 - (S_He(inf)/S_He(0))^1/2]: \
+every chi is a measured ratio to helium times 4.00. Delta k_0 = 3w [n^w(rho) - \
+n^3w(rho)]/(c rho) per amagat (Eq. (3)) 'are known' (Ref. 15, Elliott and Ward, to be \
+published). The comparison columns are dcSHG chi(-2w; 0, w, w) and Kerr chi(-w; w, 0, 0) \
+in the same (Ward) convention: checked for column b, Shelton and Buckingham's gamma \
+(shelton_1982 Table II, 10^-63 C^4 m^4 J^-3, Taylor) x 8.0888e24 / 6 = CH4 334.6 \
+(printed 333), SF6 144.3 (144), CF4 103.7 (103), CHF3 146.9 (146), CH3F 217 (216).
+
+Uncertainties: the parentheses are in units of the last digit; the text (p. 1005) \
+says the fits' dependence on z_I = 10 +- 2 mm changes chi by 'never more than 5 %'. \
+Error flags are standard deviations of the mean; the level of Table I's parentheses is \
+not stated.
+
+The sign ambiguity of Ward and New 1969 is resolved (p. 1004): q = -1 for He and SF6 by \
+fit quality and, through mixtures, for all gases here and 'for all gases studied in \
+Ref. 1' (Ward and New's set (i)).
+
+Part: THG is nearly electronic; the paper (p. 1005) finds chi > chi(dcSHG) > chi(Kerr) \
+for CH4, as electronic dispersion predicts, but not for CF4 and SF6, which 'indicates the \
+existence of significant vibrational contributions' (Ref. 13, Elliott and Ward, Mol. \
+Phys., to be published). THG values recorded total. The 694 nm is printed as such (ruby)."""
+
+
+[[datasets]]
+id = "thg_CH4"
+material = "CH4"
+file = "CH4/ward_1984__thg_CH4.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column a: this work's THG chi(-3w; w, w, w) at 694 nm, relative to helium normalized to 4.00 x 10^-39 esu (Eq. (9)); Ward's convention (gamma_T/6). Total (THG has no rotational part; the vibrational one is not separated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.00e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "thg_SF6"
+material = "SF6"
+file = "SF6/ward_1984__thg_SF6.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column a: this work's THG chi(-3w; w, w, w) at 694 nm, relative to helium normalized to 4.00 x 10^-39 esu (Eq. (9)); Ward's convention (gamma_T/6). Total (THG has no rotational part; the vibrational one is not separated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "ward_1969"
+part = "total"
+normalized_to = "He = 4.00e-39 esu (Sitz and Yaris theory)"
+
+[[datasets]]
+id = "dcshg_miller_ward_CH4"
+material = "CH4"
+file = "CH4/ward_1984__dcshg_miller_ward_CH4.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["C. K. Miller and J. F. Ward, Phys. Rev. A 16, 1179 (1977)"]
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column chi(dcSHG), note c (Ref. 5, Miller and Ward 1977, 694 nm). Ward's convention (gamma_T/6). Part as the original (ESHG: electronic plus a small vibrational part): total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "dcshg_ward_miller_SF6"
+material = "SF6"
+file = "SF6/ward_1984__dcshg_ward_miller_SF6.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ward_1979"]
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column chi(dcSHG), note f (Ref. 6, Ward and Miller 1979, 694 nm): the same 130(2) as ward_1979 chi3_SF6. Ward's convention (gamma_T/6). Part as the original (ESHG: electronic plus a small vibrational part): total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "dcshg_shelton_buckingham_CH4"
+material = "CH4"
+file = "CH4/ward_1984__dcshg_shelton_buckingham_CH4.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["shelton_1982"]
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column chi(dcSHG) b (Ref. 7, Shelton and Buckingham 1982, printed '541 nm', corrected to 514.5 nm by an erratum): Shelton and Buckingham's gamma divided by 6 (see the source notes). Ward's convention (gamma_T/6). Part as the original (ESHG: electronic plus a small vibrational part): total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "dcshg_shelton_buckingham_SF6"
+material = "SF6"
+file = "SF6/ward_1984__dcshg_shelton_buckingham_SF6.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["shelton_1982"]
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column chi(dcSHG) b (Ref. 7, Shelton and Buckingham 1982, printed '541 nm', corrected to 514.5 nm by an erratum): Shelton and Buckingham's gamma divided by 6 (see the source notes). Ward's convention (gamma_T/6). Part as the original (ESHG: electronic plus a small vibrational part): total."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "ward_1969"
+part = "total"
+
+[[datasets]]
+id = "kerr_buckingham_orr_CH4"
+material = "CH4"
+file = "CH4/ward_1984__kerr_buckingham_orr_CH4.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. D. Buckingham and B. J. Orr, Trans. Faraday Soc. 65, 673 (1969)"]
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column chi(Kerr), note d (Ref. 3, Buckingham and Orr 1969, 633 nm). Ward's convention (gamma_T/6). Part as measured (Kerr of a tetrahedral/octahedral molecule: no orientational term, but the vibrational part is included; not stated): unknown."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[datasets]]
+id = "kerr_buckingham_dunmur_SF6"
+material = "SF6"
+file = "SF6/ward_1984__kerr_buckingham_dunmur_SF6.csv"
+table = "tbl_67cee6b847af"
+quantity = "hyperpolarizability"
+unit = "esu"
+scale = 1e-39
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table I (p. 1004), chi x 10^39 (esu/molecule), column chi(Kerr), note g (Ref. 2, Buckingham and Dunmur 1968, 633 nm): their gamma 1.2 +- 0.1 x 10^-36 esu / 6 = 200 +- 17 (printed 200(16)). Ward's convention (gamma_T/6). Part as measured (Kerr of a tetrahedral/octahedral molecule: no orientational term, but the vibrational part is included; not stated): unknown."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "ward_1969"
+part = "unknown"
+
+[[errata]]
+dataset = "dcshg_shelton_buckingham_CH4"
+row = "chi"
+column = "x"
+printed = "541"
+corrected = "514.5"
+reason = "Table I footnote b prints 'Reference 7, 541 nm' (page image checked); Reference 7 (Shelton and Buckingham, Phys. Rev. A 26, 2787 (1982)) measured its hyperpolarizabilities at 514.5 nm (its Table II caption), and its gamma values divided by 6 reproduce this column (CH4 248.2e-63 -> 334.6, SF6 107e-63 -> 144.3, x 10^-39 esu with 8.0888e24 esu per SI unit): 541 is a transposition of 514."
+evidence = "shelton_1982, Table II (tbl_09cd9a18fa27): 'Hyperpolarizabilities and phase-matching densities of several molecules, measured at 514.5 nm'; the conversion checked 2026-09-26."
+
+[[errata]]
+dataset = "dcshg_shelton_buckingham_SF6"
+row = "chi"
+column = "x"
+printed = "541"
+corrected = "514.5"
+reason = "Table I footnote b prints 'Reference 7, 541 nm' (page image checked); Reference 7 (Shelton and Buckingham, Phys. Rev. A 26, 2787 (1982)) measured its hyperpolarizabilities at 514.5 nm (its Table II caption), and its gamma values divided by 6 reproduce this column (CH4 248.2e-63 -> 334.6, SF6 107e-63 -> 144.3, x 10^-39 esu with 8.0888e24 esu per SI unit): 541 is a transposition of 514."
+evidence = "shelton_1982, Table II (tbl_09cd9a18fa27): 'Hyperpolarizabilities and phase-matching densities of several molecules, measured at 514.5 nm'; the conversion checked 2026-09-26."

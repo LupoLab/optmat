@@ -1,0 +1,138 @@
+citation = "M. A. Spackman, \"Time-dependent Hartree-Fock second-order molecular properties with a moderately sized basis set. I. The frequency dependence of the dipole polarizability\", J. Chem. Phys. 94, 1288 (1991)"
+doi = "10.1063/1.460038"
+library = "Spackman_1991_TimeDependentHartree"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Time-dependent coupled Hartree-Fock (RPA) calculations with CADPAC of the \
+frequency-dependent mean polarizability and its anisotropy for 25 molecules, with the \
+6-31G(+sd+sp) basis and, for ten small molecules, Liu and Dykstra's larger 'electrical \
+properties' (ELP) basis; Cauchy moments from the RPA solution or, for butane, pentane \
+and SF6, from a quartic fit of alpha(omega) in omega^2 (pp. 1288-1289). Compared with \
+the DOSD moments of Meath and co-workers (Table I) and with Bogaard et al.'s and Alms \
+et al.'s anisotropy dispersion (Table III)."""
+notes = """Page numbers are the journal's (1288-1294); pdf page 1 is the publisher's \
+cover, so p. = pdf page + 1286.
+
+The TDHF moments are not used: they are theory that underestimates the dispersion \
+systematically, 'S(-2) and S(-4) ... are systematically underestimated by 20% and 40%' \
+(abstract, p. 1288); the rms deviation from the DOSD values is 27.6 % for S(-4) and \
+50.3 % for S(-6) with the small basis, and HF limit calculations 'will typically \
+underestimate the true values by more than 20%' (pp. 1290-1291). For the curated species \
+(6-31G(+sd+sp), ELP in parentheses; au): H2 alpha(0) 5.116 (5.091), S(-4) 16.84 (18.03), \
+S(-6) 58.79 (68.55); CH4 15.771 (15.895), 50.07 (50.68), 199.11 (204.05); N2 10.773 \
+(11.435), 24.73 (27.53), 69.48 (83.56); CO 11.357 (12.226), 36.78 (41.85), 213.23 \
+(234.18); N2O 17.624, 50.80, 200.80; CO2 15.043 (15.731), 34.23 (37.49), 100.95 \
+(118.85); SF6 26.041, 42.82, 110.39 (S(-4) 52 % and S(-6) 89 % below the DOSD, pp. 1290-1291). \
+hohm_1993's 'Spackman [13]' CH4 row mixes the two bases (ELP alpha(0), 6-31G S(-4), \
+S(-6)).
+
+Table I's 'Experiment' columns (p. 1290, note b: 'Experimental DOSD alpha(0), S(-4), \
+and S(-6) from Meath et al. (Refs. 47-60)') are reproductions and are extracted for the \
+curated species (datasets meath_<gas>). The paper does not say which of Refs. 47-60 \
+gives which molecule; the attributions are: H2, N2 and N2O equal zeiss_1977's moments \
+(5.428, 19.96, 82.94; 11.74, 30.11, 101.8; 19.70, 72.11, 410.7: checked); CH4 equals \
+Thomas and Meath's (Ref. 48; thomas_1977, curated since); CO and CO2 equal Jhanwar and \
+Meath 1982's (jhanwar_1982; CO 13.08, 48.27, 296.5 match it and not Kumar and Meath \
+1994's 48.26, 292.9); SF6 equals Kumar, Fairley and Meath 1985's electronic sums \
+(kumar_1985b) (checked 2026-09-27). O2 is not treated (open shell, p. 1289).
+
+Table II (p. 1291): other theory for H2, HF, H2O and N2 (CI, RPA, SOPPA, MCTDHF), with \
+the DOSD S(-4), S(-6) repeated: not extracted. Table III (p. 1292): the dispersion \
+delta[alpha] and delta[Delta alpha] between 632.8 and 488.0 nm and 100 rho_0 at 488.0 \
+nm, experiment from Bogaard et al. (Ref. 63; not in the library) and, for N2, Alms et \
+al. (alms_1975): N2 1.07, 0.10, 0.16; CO 0.52, 0.19, 0.21; CO2 4.12, 0.19, 0.29; N2O \
+6.12, 0.29, 0.58 (au); differences of polarizabilities between two wavelengths, which \
+no quantity holds: not extracted. The paper argues that the measured anisotropy \
+dispersion is overestimated for molecules with rho_0 < 1e-2, from a frequency-dependent \
+vibrational Raman contribution (p. 1293)."""
+
+[[datasets]]
+id = "meath_H2"
+material = "H2"
+file = "H2/spackman_1991__meath_H2.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["zeiss_1977"]
+notes = "Table I (p. 1290), 'Experiment': S(-2) = alpha(0), S(-4), S(-6) of Meath's DOSD; equal to zeiss_1977/moments_H2."
+
+[[datasets]]
+id = "meath_CH4"
+material = "CH4"
+file = "CH4/spackman_1991__meath_CH4.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["thomas_1977"]
+notes = "Table I, 'Experiment': Thomas and Meath's moments (Ref. 48; the same values as hohm_1993/moments_thomas_1977_CH4): equal to thomas_1977's S(-2) = 17.27, S(-4) = 62.41 (Table 2) and S(-6) = 298.3 (p. 121) (checked 2026-09-27)."
+
+[[datasets]]
+id = "meath_N2"
+material = "N2"
+file = "N2/spackman_1991__meath_N2.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["zeiss_1977"]
+notes = "Table I, 'Experiment': equal to zeiss_1977/moments_N2."
+
+[[datasets]]
+id = "meath_CO"
+material = "CO"
+file = "CO/spackman_1991__meath_CO.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["jhanwar_1982"]
+notes = "Table I, 'Experiment': 13.08, 48.27, 296.5 au. Spackman does not name the paper among Refs. 47-60; the values equal jhanwar_1982's CO sums (13.08, 48.27, 29.65(1)) and not Kumar and Meath 1994's later 48.26 and 292.9 (kumar_1994), which Spackman (1991) predates (checked 2026-09-27)."
+
+[[datasets]]
+id = "meath_N2O"
+material = "N2O"
+file = "N2O/spackman_1991__meath_N2O.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["zeiss_1977"]
+notes = "Table I, 'Experiment': equal to zeiss_1977/moments_N2O."
+
+[[datasets]]
+id = "meath_CO2"
+material = "CO2"
+file = "CO2/spackman_1991__meath_CO2.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["jhanwar_1982"]
+notes = "Table I, 'Experiment': 17.51, 50.99, 211.4 au, equal to jhanwar_1982's electronic (UV) CO2 sums S(-2), S(-4), S(-6) = 17.51, 50.99, 21.14(1) (checked 2026-09-27); Spackman does not name the paper (Ref. 52 by the attribution through hohm_1994b's row j)."
+
+[[datasets]]
+id = "meath_SF6"
+material = "SF6"
+file = "SF6/spackman_1991__meath_SF6.csv"
+table = "tbl_6f890f395ef6"
+quantity = "cauchy_moment"
+unit = "au"
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["kumar_1985b"]
+notes = "Table I, 'Experiment': 30.04, 88.59, 982.1 au (the electronic DOSD; SF6's large vibrational polarizability is not in it). Spackman does not name the paper; the values equal kumar_1985b's electronic S(-2) = 3.004(1), S(-4) = 8.859(1) (Table II) and S(-6) = 982.1 (p. 73) (checked 2026-09-27)."

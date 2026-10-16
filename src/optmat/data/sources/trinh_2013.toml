@@ -1,0 +1,372 @@
+citation = "V. H. Trinh, O. I. Tolstikhin, L. B. Madsen and T. Morishita, \"First-order correction terms in the weak-field asymptotic theory of tunneling ionization\", Phys. Rev. A 87, 043426 (2013)"
+doi = "10.1103/PhysRevA.87.043426"
+library = "Trinh_2013_FirstOrderCorrection"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The weak-field asymptotic theory (WFAT) of tunnelling ionisation in a static \
+field, carried to first order in F, for one electron in a potential with a Coulomb tail \
+(single-active-electron and frozen-nuclei approximations), in parabolic coordinates \
+(Secs. II-III). Illustrated for H and for Ne(2p), Ar(3p), Kr(4p), Xe(5p) (m = 0) in the \
+Green-Sellin-Zachor model potential: E0 and psi_0 from a Laguerre discrete-variable \
+representation, alpha and psi_1 by spectral perturbation sums, g00, g10, a00 by fitting \
+Eqs. (37)-(38) at large eta; the 'exact' rates for comparison by the Siegert-state method \
+of batishchev_2010 (Sec. IV)."""
+notes = """Journal pp. 043426-1 to -14 = PDF pages 1-14 (pages cited as -n). Identity \
+checked on the first page.
+
+WHAT IS TABULATED AND WHICH QUANTITY (the question asked when the paper was \
+requested). Table I (p. -9, tbl_44397cd5a3f8, image checked), 'Characteristics of \
+noble-gas atoms ... All values are given in atomic units': N, u, v, E0, alpha, g00, \
+g10, a00, A00, B00 per atom. \
+- g00 and g10 ARE structure factors: the asymptotic coefficients g_nu of the parabolic \
+channels nu = (0, 0) and (1, 0) (Eq. (37)), with G_nu = e^(-kappa mu_z) g_nu the WFAT \
+structure factor (Eq. (50)) and mu_z = 0 for these atoms, so G00 = g00 (p. -10): recorded \
+as tunnelling_structure_coefficient, model = wfat (wfat_<atom>). The row label is the \
+parabolic channel (n_xi, m), not a partial wave l as for MO-ADK: the vocabulary's \
+'one per partial wave l' does not fit WFAT exactly (for review). \
+- a00, A00 and B00 are NOT structure factors: a00 is the first-order distortion \
+coefficient of the asymptotic solution (Eqs. (34), (38)), A00 and B00 the first-order \
+correction coefficients of the rate, Gamma = |G00|^2 W00(F) [1 + A00 F ln(F/(4 kappa^2)) \
++ B00 F] (Eqs. (49), (53)): recorded as ionization_model_parameter, model = wfat \
+(correction_<atom>). \
+- N, u, v define the model potential (potential_<atom>); E0 and alpha are the model \
+state's energy and polarizability (state_<atom>): ionization_model_parameter. \
+All use = check: properties of one-electron model states, which the paper uses to \
+illustrate the theory.
+
+CHECKS (computed 2026-09-27): (1) A00 from Eq. (40a) with beta^(0) = 1 - kappa/2 (Eq. \
+(30a)), beta^(1) = -1/(2 kappa^2) (Eq. (31a)), gamma_0 = 1/4 (Eq. (16), D = 0), mu_z = \
+0: Ne 0.2456, Ar 0.1582, Kr 0.0415, Xe -0.2217, against 0.246, 0.158, 0.042, -0.222 \
+printed (all agree to the printed digits; A00 = 0 at kappa = 1, E0 = -0.5, as p. -10 \
+says). (2) B00 from Eq. (40b) with the printed E0, alpha and a00: Ne -2.62, Ar -7.58, Kr \
+-10.42, Xe -16.48, against -2.6, -7.7, -10.5, -16.4: within the +-0.1 that a00's one \
+printed decimal allows (2 Re a00 enters B00), Ar by 0.12. (3) The model potential's \
+bound states, by finite differences on a 60 a0 radial grid: the lowest, second, third \
+and fourth l = 1 levels with Trinh's N, u, v are -0.7934 (Ne), -0.5791 (Ar), -0.5152 \
+(Kr), -0.4460 (Xe), reproducing E0 to the printed three decimals. The same code gives \
+Kr's 4p at -0.4589 with Garvey et al.'s a = 1.351, b = 4.418 and -0.5139 with \
+batishchev_2010's modified a = 1.320, b = 4.355, reproducing that paper's 0.459 and \
+0.514: Trinh's Kr parameters (u = 1.340, v = 4.311) are a third set, and all four of \
+Trinh's sets are tuned so that E0 is minus the atom's ionisation energy (batishchev_2010 \
+quotes 0.793, 0.579, 0.515, 0.446 as 'exact').
+
+ACCURACY: no uncertainty is stated for Table I; g00, g10, a00 are printed to one \
+decimal. The WFAT(1) rates agree with the exact Siegert-state rates up to about F_c, the \
+field where the WFAT(1) rate turns zero: F_c ~ 0.3, 0.12, 0.095, 0.065 for Ne, Ar, Kr, \
+Xe (Eq. (62) gives 0.4, 0.18, 0.13, 0.09); second-order perturbation theory for the \
+energy holds up to F ~ 0.1, 0.05, 0.05, 0.03 (pp. -10, -11). For H(1s) the paper \
+compares with the exact rates and with higher-order expansions (Figs. 1-3, pp. -7 and -8).
+
+FIGURES (not digitised): Fig. 1, H(1s) Gamma/W00 against F; Fig. 2, excited H states; \
+Figs. 3, 8-11, transverse momentum distributions; Figs. 4-7, the energy, the rate and its \
+ratio to the field factor for Ne(2p), Ar(3p), Kr(4p), Xe(5p) (exact, WFAT(0), WFAT(1)): \
+the exact SAE static rates of these model atoms are in figures only.
+
+FOR REVIEW: solprop uses ADK/PPT and MO-ADK, not WFAT; these are the atoms' \
+weak-field asymptotic coefficients the roadmap asks for (Trinh et al.), in the WFAT's own \
+normalisation (the parameters' normalisation field), with the first-order corrections."""
+
+[[datasets]]
+id = "wfat_Ne"
+material = "Ne"
+file = "Ne/trinh_2013__wfat_Ne.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "tunnelling_structure_coefficient"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: g00 and g10, the asymptotic coefficients of the parabolic \
+channels nu = (n_xi, m) = (0, 0) and (1, 0) of the 2p (m = 0) orbital in the model \
+potential of Eqs. (63)-(64) (potential_Ne); the rows are the channel, not a partial \
+wave l. G_00 = g00 is the WFAT structure factor of the dominant channel (mu_z = 0); g10 \
+enters the transverse momentum distribution. Printed to two digits. Values of the SAE \
+model state, not of the many-electron atom: use = check (record notes)."""
+[datasets.parameters]
+model = "wfat"
+orbital = "2p"
+m = 0
+normalisation = "Trinh et al. 2013 Eq. (37): g_nu = eta^(1/2 - beta_nu^(0)/kappa) e^(kappa eta/2) <Phi_nu^(0)|psi_0(r)> as eta -> inf, psi_0 the real normalised bound state, Phi_nu^(0) the parabolic channel functions of Eq. (30b), beta_nu^(0) = Z - kappa(n_xi + (|m| + 1)/2), kappa = (2|E0|)^(1/2); G_nu = e^(-kappa mu_z) g_nu (Eq. (50)); the rate Gamma = (2 - delta_m0)|G_0m|^2 W_0m(F)(1 + A_0m F ln(F/(4 kappa^2)) + B_0m F) (Eq. (53)) with W_nu(F) = (kappa/2)(4 kappa^2/F)^(2Z/kappa - 2 n_xi - |m| - 1) exp(-2 kappa^3/(3F)) (Eq. (51)), Z = 1"
+
+[[datasets]]
+id = "correction_Ne"
+material = "Ne"
+file = "Ne/trinh_2013__correction_Ne.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: a00 (Eq. (38), the coefficient of the first-order \
+distortion of the orbital in the asymptotic expansion, Eq. (34)) and the first-order \
+correction coefficients A00 and B00 (Eqs. (40)) of the dominant channel (0, 0), for the \
+2p (m = 0) SAE state. Units: atomic units of inverse field (they multiply F). A00 \
+reproduced from E0 (record notes)."""
+[datasets.parameters]
+model = "wfat"
+parameter = "a00, A00, B00 of Eqs. (38), (40), the row label"
+
+[[datasets]]
+id = "potential_Ne"
+material = "Ne"
+file = "Ne/trinh_2013__potential_Ne.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: N (the nuclear charge, Z_eff(0)), u and v of the effective \
+charge Z_eff(r) = N - (N - 1){1 - [(v/u)(e^(u r) - 1) + 1]^(-1)} (Eq. (64)) of the SAE \
+potential V = -Z_eff(r)/r (Eq. (63)), 'the recommended values' (p. -9, citing Green et \
+al. 1969 and Garvey et al. 1975); u and v in inverse bohr. They reproduce E0 (checked, \
+record notes)."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "N, u, v of Eqs. (63)-(64), the row label"
+
+[[datasets]]
+id = "state_Ne"
+material = "Ne"
+file = "Ne/trinh_2013__state_Ne.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: E0, the unperturbed energy of the 2p (m = 0) state in the \
+model potential, and alpha, 'its polarizability' (alpha_zz of the active electron in the \
+model, which enters B00 through Eq. (40b)). Properties of the SAE model state, not of the \
+atom: E0 equals minus the atom's first ionisation energy to the printed digits (by the \
+choice of u, v), but alpha is the one-electron model's, not the atom's dipole \
+polarizability, and must not be read as one."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "E0, alpha of the model's active electron, the row label"
+
+[[datasets]]
+id = "wfat_Ar"
+material = "Ar"
+file = "Ar/trinh_2013__wfat_Ar.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "tunnelling_structure_coefficient"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: g00 and g10, the asymptotic coefficients of the parabolic \
+channels nu = (n_xi, m) = (0, 0) and (1, 0) of the 3p (m = 0) orbital in the model \
+potential of Eqs. (63)-(64) (potential_Ar); the rows are the channel, not a partial \
+wave l. G_00 = g00 is the WFAT structure factor of the dominant channel (mu_z = 0); g10 \
+enters the transverse momentum distribution. Printed to two digits. Values of the SAE \
+model state, not of the many-electron atom: use = check (record notes)."""
+[datasets.parameters]
+model = "wfat"
+orbital = "3p"
+m = 0
+normalisation = "Trinh et al. 2013 Eq. (37): g_nu = eta^(1/2 - beta_nu^(0)/kappa) e^(kappa eta/2) <Phi_nu^(0)|psi_0(r)> as eta -> inf, psi_0 the real normalised bound state, Phi_nu^(0) the parabolic channel functions of Eq. (30b), beta_nu^(0) = Z - kappa(n_xi + (|m| + 1)/2), kappa = (2|E0|)^(1/2); G_nu = e^(-kappa mu_z) g_nu (Eq. (50)); the rate Gamma = (2 - delta_m0)|G_0m|^2 W_0m(F)(1 + A_0m F ln(F/(4 kappa^2)) + B_0m F) (Eq. (53)) with W_nu(F) = (kappa/2)(4 kappa^2/F)^(2Z/kappa - 2 n_xi - |m| - 1) exp(-2 kappa^3/(3F)) (Eq. (51)), Z = 1"
+
+[[datasets]]
+id = "correction_Ar"
+material = "Ar"
+file = "Ar/trinh_2013__correction_Ar.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: a00 (Eq. (38), the coefficient of the first-order \
+distortion of the orbital in the asymptotic expansion, Eq. (34)) and the first-order \
+correction coefficients A00 and B00 (Eqs. (40)) of the dominant channel (0, 0), for the \
+3p (m = 0) SAE state. Units: atomic units of inverse field (they multiply F). A00 \
+reproduced from E0 (record notes)."""
+[datasets.parameters]
+model = "wfat"
+parameter = "a00, A00, B00 of Eqs. (38), (40), the row label"
+
+[[datasets]]
+id = "potential_Ar"
+material = "Ar"
+file = "Ar/trinh_2013__potential_Ar.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: N (the nuclear charge, Z_eff(0)), u and v of the effective \
+charge Z_eff(r) = N - (N - 1){1 - [(v/u)(e^(u r) - 1) + 1]^(-1)} (Eq. (64)) of the SAE \
+potential V = -Z_eff(r)/r (Eq. (63)), 'the recommended values' (p. -9, citing Green et \
+al. 1969 and Garvey et al. 1975); u and v in inverse bohr. They reproduce E0 (checked, \
+record notes)."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "N, u, v of Eqs. (63)-(64), the row label"
+
+[[datasets]]
+id = "state_Ar"
+material = "Ar"
+file = "Ar/trinh_2013__state_Ar.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: E0, the unperturbed energy of the 3p (m = 0) state in the \
+model potential, and alpha, 'its polarizability' (alpha_zz of the active electron in the \
+model, which enters B00 through Eq. (40b)). Properties of the SAE model state, not of the \
+atom: E0 equals minus the atom's first ionisation energy to the printed digits (by the \
+choice of u, v), but alpha is the one-electron model's, not the atom's dipole \
+polarizability, and must not be read as one."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "E0, alpha of the model's active electron, the row label"
+
+[[datasets]]
+id = "wfat_Kr"
+material = "Kr"
+file = "Kr/trinh_2013__wfat_Kr.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "tunnelling_structure_coefficient"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: g00 and g10, the asymptotic coefficients of the parabolic \
+channels nu = (n_xi, m) = (0, 0) and (1, 0) of the 4p (m = 0) orbital in the model \
+potential of Eqs. (63)-(64) (potential_Kr); the rows are the channel, not a partial \
+wave l. G_00 = g00 is the WFAT structure factor of the dominant channel (mu_z = 0); g10 \
+enters the transverse momentum distribution. Printed to two digits. Values of the SAE \
+model state, not of the many-electron atom: use = check (record notes)."""
+[datasets.parameters]
+model = "wfat"
+orbital = "4p"
+m = 0
+normalisation = "Trinh et al. 2013 Eq. (37): g_nu = eta^(1/2 - beta_nu^(0)/kappa) e^(kappa eta/2) <Phi_nu^(0)|psi_0(r)> as eta -> inf, psi_0 the real normalised bound state, Phi_nu^(0) the parabolic channel functions of Eq. (30b), beta_nu^(0) = Z - kappa(n_xi + (|m| + 1)/2), kappa = (2|E0|)^(1/2); G_nu = e^(-kappa mu_z) g_nu (Eq. (50)); the rate Gamma = (2 - delta_m0)|G_0m|^2 W_0m(F)(1 + A_0m F ln(F/(4 kappa^2)) + B_0m F) (Eq. (53)) with W_nu(F) = (kappa/2)(4 kappa^2/F)^(2Z/kappa - 2 n_xi - |m| - 1) exp(-2 kappa^3/(3F)) (Eq. (51)), Z = 1"
+
+[[datasets]]
+id = "correction_Kr"
+material = "Kr"
+file = "Kr/trinh_2013__correction_Kr.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: a00 (Eq. (38), the coefficient of the first-order \
+distortion of the orbital in the asymptotic expansion, Eq. (34)) and the first-order \
+correction coefficients A00 and B00 (Eqs. (40)) of the dominant channel (0, 0), for the \
+4p (m = 0) SAE state. Units: atomic units of inverse field (they multiply F). A00 \
+reproduced from E0 (record notes)."""
+[datasets.parameters]
+model = "wfat"
+parameter = "a00, A00, B00 of Eqs. (38), (40), the row label"
+
+[[datasets]]
+id = "potential_Kr"
+material = "Kr"
+file = "Kr/trinh_2013__potential_Kr.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: N (the nuclear charge, Z_eff(0)), u and v of the effective \
+charge Z_eff(r) = N - (N - 1){1 - [(v/u)(e^(u r) - 1) + 1]^(-1)} (Eq. (64)) of the SAE \
+potential V = -Z_eff(r)/r (Eq. (63)), 'the recommended values' (p. -9, citing Green et \
+al. 1969 and Garvey et al. 1975); u and v in inverse bohr. They reproduce E0 (checked, \
+record notes)."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "N, u, v of Eqs. (63)-(64), the row label"
+
+[[datasets]]
+id = "state_Kr"
+material = "Kr"
+file = "Kr/trinh_2013__state_Kr.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: E0, the unperturbed energy of the 4p (m = 0) state in the \
+model potential, and alpha, 'its polarizability' (alpha_zz of the active electron in the \
+model, which enters B00 through Eq. (40b)). Properties of the SAE model state, not of the \
+atom: E0 equals minus the atom's first ionisation energy to the printed digits (by the \
+choice of u, v), but alpha is the one-electron model's, not the atom's dipole \
+polarizability, and must not be read as one."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "E0, alpha of the model's active electron, the row label"
+
+[[datasets]]
+id = "wfat_Xe"
+material = "Xe"
+file = "Xe/trinh_2013__wfat_Xe.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "tunnelling_structure_coefficient"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: g00 and g10, the asymptotic coefficients of the parabolic \
+channels nu = (n_xi, m) = (0, 0) and (1, 0) of the 5p (m = 0) orbital in the model \
+potential of Eqs. (63)-(64) (potential_Xe); the rows are the channel, not a partial \
+wave l. G_00 = g00 is the WFAT structure factor of the dominant channel (mu_z = 0); g10 \
+enters the transverse momentum distribution. Printed to two digits. Values of the SAE \
+model state, not of the many-electron atom: use = check (record notes)."""
+[datasets.parameters]
+model = "wfat"
+orbital = "5p"
+m = 0
+normalisation = "Trinh et al. 2013 Eq. (37): g_nu = eta^(1/2 - beta_nu^(0)/kappa) e^(kappa eta/2) <Phi_nu^(0)|psi_0(r)> as eta -> inf, psi_0 the real normalised bound state, Phi_nu^(0) the parabolic channel functions of Eq. (30b), beta_nu^(0) = Z - kappa(n_xi + (|m| + 1)/2), kappa = (2|E0|)^(1/2); G_nu = e^(-kappa mu_z) g_nu (Eq. (50)); the rate Gamma = (2 - delta_m0)|G_0m|^2 W_0m(F)(1 + A_0m F ln(F/(4 kappa^2)) + B_0m F) (Eq. (53)) with W_nu(F) = (kappa/2)(4 kappa^2/F)^(2Z/kappa - 2 n_xi - |m| - 1) exp(-2 kappa^3/(3F)) (Eq. (51)), Z = 1"
+
+[[datasets]]
+id = "correction_Xe"
+material = "Xe"
+file = "Xe/trinh_2013__correction_Xe.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: a00 (Eq. (38), the coefficient of the first-order \
+distortion of the orbital in the asymptotic expansion, Eq. (34)) and the first-order \
+correction coefficients A00 and B00 (Eqs. (40)) of the dominant channel (0, 0), for the \
+5p (m = 0) SAE state. Units: atomic units of inverse field (they multiply F). A00 \
+reproduced from E0 (record notes)."""
+[datasets.parameters]
+model = "wfat"
+parameter = "a00, A00, B00 of Eqs. (38), (40), the row label"
+
+[[datasets]]
+id = "potential_Xe"
+material = "Xe"
+file = "Xe/trinh_2013__potential_Xe.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: N (the nuclear charge, Z_eff(0)), u and v of the effective \
+charge Z_eff(r) = N - (N - 1){1 - [(v/u)(e^(u r) - 1) + 1]^(-1)} (Eq. (64)) of the SAE \
+potential V = -Z_eff(r)/r (Eq. (63)), 'the recommended values' (p. -9, citing Green et \
+al. 1969 and Garvey et al. 1975); u and v in inverse bohr. They reproduce E0 (checked, \
+record notes)."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "N, u, v of Eqs. (63)-(64), the row label"
+
+[[datasets]]
+id = "state_Xe"
+material = "Xe"
+file = "Xe/trinh_2013__state_Xe.csv"
+table = "tbl_44397cd5a3f8"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = """Table I, p. 043426-9: E0, the unperturbed energy of the 5p (m = 0) state in the \
+model potential, and alpha, 'its polarizability' (alpha_zz of the active electron in the \
+model, which enters B00 through Eq. (40b)). Properties of the SAE model state, not of the \
+atom: E0 equals minus the atom's first ionisation energy to the printed digits (by the \
+choice of u, v), but alpha is the one-electron model's, not the atom's dipole \
+polarizability, and must not be read as one."""
+[datasets.parameters]
+model = "gsz_sae_potential"
+parameter = "E0, alpha of the model's active electron, the row label"
+

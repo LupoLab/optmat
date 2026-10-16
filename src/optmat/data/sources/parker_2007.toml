@@ -1,0 +1,122 @@
+citation = "J. S. Parker, K. J. Meharg, G. A. McKenna and K. T. Taylor, \"Single-ionization of helium at Ti:Sapphire wavelengths: rates and scaling laws\", J. Phys. B: At. Mol. Opt. Phys. 40, 1729 (2007)"
+doi = "10.1088/0953-4075/40/10/008"
+library = "Parker_2007_SingleIonizationHelium"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Full-dimensional time-dependent numerical integration (TDNI) of the \
+two-electron helium-laser Schrodinger equation (the HELIUM code, smyth_1998: finite \
+differences in the radial variables, coupled spherical harmonics), infinite nuclear \
+mass, linear polarization; field ramped on over eight periods and held for up to 200 \
+periods; the rate is the steady exponential decay of the population within 20 au of the \
+nucleus (pp. 4-5). 390 nm at 60 intensities, 0.25-34.0e14 W/cm^2 (grid 0.2 au); 780 nm \
+at 24 intensities, 0.33-14.0e14 W/cm^2 (grids 0.2 and 0.29 au). A single-active-electron \
+model tuned to the two-electron results refines and interpolates them (p. 5)."""
+notes = """Pages are pdf pages: pdf page 1 is the IOPscience download cover, so the \
+journal page is 1727 + n (pdf p. 13 is p. 1740). Identity checked against pdf p. 2. \
+UNMAPPED_GLYPHS on pdf pp. 6, 7, 8, 12, 13 and 15 (symbols such as Gamma lost in the \
+text); the formulas below were checked against the page images of pp. 12-13.
+
+WHY ALMOST NOTHING IS TAKEN. The rates are in figures only (Figs. 1-8: He single \
+ionisation at 390 and 780 nm against intensity, and as 1/log^2(rate)); there is no \
+table. The two text values that are rates at a stated intensity are recorded as inline \
+points (use = check, 'typical' values amid resonances); the fits are recorded as \
+formulas. The rates count the ionisation of the atom (single ionisation from the 1s1s \
+ground state, both electrons in the calculation).
+
+ACCURACY (p. 5): 'we believe uncertainty in the 390 nm results to be under 2%, and those \
+of the 780 nm results to be under 4%'; the SAE extrapolation changes the two-electron \
+results by 1-3 % and rarely the 390 nm results by more than 1 %; for smoothed data 'we \
+believe the uncertainty in this case to be lower than the estimates given above'. Grid: \
+at delta r = 0.1 au the 390 nm rates are within 0.25 % of those at 0.2 au (p. 4); 780 \
+nm corrections from the 0.2/0.29 au comparison are typically below 1 %, rarely above 3 \
+% (p. 4).
+
+VALUES IN THE TEXT (not taken): Ip = 0.903724 au, 'the helium ionization potential for \
+single-electron ionization' (p. 6), the value for the infinite nuclear mass the \
+calculation assumes (p. 3) (smyth_1998 quotes the He ground state as -2.9037 au): \
+24.5916 eV with 27.2114 eV/au, against solprop's 3.939465e-18 J = 24.5882 eV = 0.9036 \
+au; a model input, no kind stated, so no ionization_energy dataset; omega_390 = 0.11683 au, omega_780 = 0.058415 au; U_p = \
+0.05336^2 I/(4 omega^2) (I in 1e14 W/cm^2, p. 6); 4.1341e16 converts au to s^-1 (p. \
+6); the Keldysh parameter is 1 at 2.16e14 W/cm^2 (780 nm) and 8.66e14 W/cm^2 (390 nm) \
+(p. 14); AC-ADK is too small against the 780 nm rates by four orders of magnitude at \
+0.5e14, two at 0.9e14 and a factor 10 at 1.5e14 W/cm^2 (p. 15).
+
+FORMULAS. Eq. (3) (and (1)), Eq. (4), Eq. (5) and the AC-ADK rate are recorded below. \
+Eq. (2): N(I, omega) = [(K + Ip + U_p(Ibar, omega_390))/omega_390] omega_390/omega = \
+N0(Ibar) R, K = 0 (p. 8)."""
+
+[[datasets]]
+id = "text_390nm"
+material = "He"
+table = "text"
+points = [["30e14", "30e14", "0.013"]]
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "p. 6: 'total ionization rates Gamma_390 are calculated to a maximum intensity of I = 34.2 x 10^14 W cm^-2. Despite the extreme intensity, in the I = 30 x 10^14 W cm^-2 limit the decay of the initial (ground) state is to good approximation exponential. At this extreme, a typical value of Gamma_390 is 0.013 au, which implies roughly 50% ionization of the helium atom per field period'. A 'typical' value near 30e14 W/cm^2, where the rates fluctuate with resonances; Eq. (5) gives 0.0107 au there (computed 2026-09-26). Intensity as the paper's I (the laser's peak intensity is not distinguished from the mean)."
+[datasets.parameters]
+wavelength_nm = 390
+polarization = "linear"
+method = "full-dimensional TDSE (HELIUM)"
+
+[[datasets]]
+id = "text_780nm"
+material = "He"
+table = "text"
+points = [["14.5e14", "14.5e14", "0.0013"]]
+quantity = "ionization_rate"
+unit = "au"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "p. 6: 'At 780 nm ... the total ionization rates Gamma_780 are calculated to a maximum intensity of I = 14.5 x 10^14 W cm^-2. At this intensity, a typical value of Gamma_780 is 0.0013 au, which implies 13% ionization of the atom per field period'. (p. 4 gives the 780 nm range as 0.33-14.0e14 W/cm^2.) Eq. (5) gives 0.00142 au there (computed 2026-09-26)."
+[datasets.parameters]
+wavelength_nm = 780
+polarization = "linear"
+method = "full-dimensional TDSE (HELIUM)"
+
+[[formulas]]
+id = "eq5_intense_field"
+material = "He"
+equation = "Eq. (5), p. 13"
+printed = "Gamma(Ibar, R) = exp(-R/sqrt(a0 + a1 Ibar + a2 Ibar^2 + a3 Ibar^3)); 390 nm (R = 1): a0 = 0.001 10, a1 = 0.001 630, a2 = 4.43 x 10^-6, a3 = -2.033 x 10^-7; 780 nm (R = 2): a0 = 0.001 14, a1 = 0.001 424, a2 = 4.49 x 10^-6, a3 = -2.960 x 10^-8"
+variable = "R = omega_390/omega (wavelength in units of 390 nm); Ibar = I R^2, I in 1e14 W/cm^2; Gamma in au"
+range = "Least-squares fits to the smoothed 390 nm (to Ibar = 34.2) and 780 nm (I to 14.5e14 W/cm^2) rates; the fits hold down to Ibar = 0.3e14 W/cm^2 (p. 12)"
+coefficients = { a0_390 = "0.00110", a1_390 = "0.001630", a2_390 = "4.43e-6", a3_390 = "-2.033e-7", a0_780 = "0.00114", a1_780 = "0.001424", a2_780 = "4.49e-6", a3_780 = "-2.960e-8" }
+check = "Checked against the page image (p. 13). The data are in figures only; consistent with the two text values: 0.0107 au at 30e14 W/cm^2, 390 nm ('typical' 0.013) and 0.00142 au at 14.5e14 W/cm^2, 780 nm ('typical' 0.0013) (computed 2026-09-26)."
+notes = "'the fits were designed to pass through the centre of the fluctuating data sets (in a least-squares sense)' (p. 13), unlike Eqs. (3)-(4), which lie at the base of the non-resonant data; 'This latter type of fit is expected to be of greater use to experimentalists' (p. 9). The data are smoothed over 0.4e14 (390 nm) and 0.04e14 W/cm^2 (780 nm) before fitting."
+
+[[formulas]]
+id = "eq3_perturbative"
+material = "He"
+equation = "Eqs. (1)-(3), pp. 6-8"
+printed = "Gamma(Ibar, R) = [(A/R)(d0^2 Ibar)^(N0(Ibar))]^R, A = 548 000.0, d0(R = 1) = 0.136 57, d0(R = 2) = 0.137 84; N0(Ibar) = (Ip + U_p(Ibar, omega_390))/omega_390, Ip = 0.903 724 au, omega_390 = 0.116 83 au"
+variable = "R = omega_390/omega; Ibar = I R^2, I in 1e14 W/cm^2; U_p = 0.05336^2 Ibar/(4 omega_390^2) au; Gamma in au"
+range = "Non-resonant rates up to about 8e14 W/cm^2 (390 nm) and 9e14 W/cm^2 (780 nm) (pp. 7, 11)"
+coefficients = { A = "548000.0", d0_390 = "0.13657", d0_780 = "0.13784", Ip = "0.903724", omega_390 = "0.11683" }
+check = "Not checkable: the data are in figures only. N0(0) = 7.735 at 390 nm (p. 7) is reproduced (0.903724/0.11683 = 7.7354)."
+notes = "'the parameters A and d0 are best regarded as curve-fit parameters' (p. 8). Eq. (1) is the R = 1 case."
+
+[[formulas]]
+id = "eq4_perturbative_quadratic"
+material = "He"
+equation = "Eq. (4), p. 9"
+printed = "Gamma(Ibar, R) = [(A/R)(d0^2 (1 - b1 Ibar + b2 Ibar^2) Ibar)^(N0(Ibar))]^R, A = 10 300.0; 390 nm (R = 1): d0 = 0.1751, b1 = 0.019 25, b2 = 0.000 1625; 780 nm (R = 2): d0 = 0.1767, b1 = 0.019 25, b2 = 0.000 1655"
+variable = "as for eq3_perturbative"
+range = "390 nm up to Ibar = 34.2e14 W/cm^2; fails at 780 nm above I = 9e14 W/cm^2 (Ibar = 36e14) (p. 10)"
+coefficients = { A = "10300.0", d0_390 = "0.1751", b1_390 = "0.01925", b2_390 = "0.0001625", d0_780 = "0.1767", b1_780 = "0.01925", b2_780 = "0.0001655" }
+check = "Not checkable: the data are in figures only."
+notes = "A curve fit to the base of the non-resonant data (p. 9)."
+
+[[formulas]]
+id = "ac_adk"
+material = "He"
+equation = "text, p. 12"
+printed = "Gamma(I) = 5.053 (0.053 36^2 I)^0.006 18 exp(-1/sqrt(0.001 085 I))"
+variable = "I in 1e14 W/cm^2; Gamma in au"
+range = "not stated"
+coefficients = { prefactor = "5.053", field_au_per_sqrtI = "0.05336", exponent = "0.00618", c = "0.001085" }
+check = "Reproduced (computed 2026-09-26): the cycle-averaged static ADK rate C^2 Ip (2 kappa^3/E)^(2n*-1) exp(-2 kappa^3/(3E)) sqrt(3E/(pi kappa^3)) with Ip = 0.903724 au (kappa = 1.34445, n* = 0.74382), l = m = 0 and the Stirling form C^2 = (2e/n*)^(2n*)/(2 pi n*) = 4.1253 gives the prefactor 5.0525; the field power E^(3/2 - 2n*) = (E^2)^0.00618 with E = 0.05336 sqrt(I) au; and 2 kappa^3/(3 x 0.05336) = 30.359 = 1/sqrt(0.001085). With the Gamma-function C^2 = 3.3300 the prefactor would be 4.078."
+notes = "'The cycle-averaged ADK ionization rate (AC-ADK) for a ground state one-electron atom with ionization potential 0.903724 au ... The cycle-averaged ADK ionization rate of a two-electron atom is twice that of the one-electron atom' (p. 12): the formula is per electron; the paper's He comparison (Fig. 6) doubles it. parker_2009 uses 'the ADK formula ... discussed in [1]' (this paper) for its static ADK column."

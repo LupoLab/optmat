@@ -1,0 +1,305 @@
+citation = "G. Maroulis, J. Chem. Phys. 101, 4949 (1994)"
+doi = "10.1063/1.468425"
+library = "Maroulis_1994_AccurateElectricDipole"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Finite-field SCF, many-body perturbation (MP2-DQ-MP4) and coupled-cluster \
+CCD+ST(CCD) calculations of the dipole and quadrupole moments, dipole polarizability \
+and hyperpolarizabilities of O3 at the experimental geometry (1.2717 A, 116.783 \
+degrees), basis sets [6s4p3d1f] (120 CGTF) and [7s5p4d2f] (168 CGTF)."""
+notes = """Only the mean static polarizability is extracted (Table IV, tbl_590eb102ed40, \
+JSON only, image checked; the library's rendering of the table's header is poor but \
+the cells are right). The values are electronic, at the fixed experimental geometry \
+(no vibrational averaging). The author proposes alpha_bar = 18.95 +- 0.38 au: 'We \
+expect our dipole polarizability values to be within 2 % the static limit' (p. 4954). \
+Table IV also lists the CASPT value of Andersson et al. (1992, [5s3p2d]), 18.83, and \
+an 'Experiment' value 18.90 'Referenced by Mack and Muenter' (footnote c; its origin is \
+not given, p. 4954), both reproductions. The Cartesian components, the MBER anisotropy \
+data (Meerts et al. 1977; Mack & Muenter 1977), the moments and the \
+hyperpolarizabilities are not extracted (no vocabulary quantities). The CCD+ST(CCD) \
+value is superseded by Maroulis (1999)'s CCSD(T) 19.27.
+
+THIRD-ORDER DATA (2026-09-26; the sentence above on the hyperpolarizabilities \
+refers to the linear phase). Definition (Eq. 1, p. 4950): E = E0 - mu F - ... - (1/2) \
+alpha F F - ... - (1/6) beta F F F - ... - (1/24) gamma F F F F: static, Taylor (T) \
+convention, finite field (Eqs. 4-14 give the components from field-perturbed energies); \
+gamma-bar = (gamma_xxxx + gamma_yyyy + gamma_zzzz + 2 (gamma_xxyy + gamma_yyzz + \
+gamma_zzxx))/5 (Eq. 17), the isotropic gamma_par. Electronic, clamped nuclei at the \
+experimental geometry. Datasets (images checked): gamma_scf_* (Table I, SCF in four \
+basis sets, 99-168 CGTF: gamma-bar 363, 475, 486, 450) and gamma_corr_* (Tables II and \
+III, basis [6s4p3d1f]: SCF 475, MP2 3540, MP3 1240, DQ-MP4 -2360, CCD -2100, \
+CCD+S(CCD) 1160, CCD+ST(CCD) 3250); cells printed with a power of ten in parentheses \
+('-285(1)' = -2850, footnote a) are written as full numbers by the script. The \
+increment columns (D2, D3, DQR4; Delta-CCD, S(CCD), T(CCD)) are not taken. The \
+component gamma_xxxx swings from -2850 (SCF) through -16100 (CCD) to +8730 (CCD+ST(CCD)): \
+'Electron correlation brings about a drastic change of the self-consistent field \
+molecular orbital picture' (abstract); Table IV's final gamma-bar '325 x 10^1' (= \
+gamma_corr_mean row CCD+ST(CCD)) is superseded by maroulis_1999's CCSD(T) 2642 in a \
+larger basis. The means reproduce from the components (CCD+ST(CCD): (8730 + 1040 + 1830 + \
+2 (1060 + 454 + 812))/5 = 3250.4; CCD -2105.8; checked 2026-09-26). No uncertainty is \
+stated for gamma."""
+
+[[datasets]]
+id = "ccd_st"
+material = "O3"
+file = "O3/maroulis_1994__ccd_st.csv"
+table = "tbl_590eb102ed40"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "CCD+ST(CCD)/[6s4p3d1f] mean static electronic polarizability, 18.95 +- 0.38 (2 %, the author's estimate, p. 4954). Electronic only."
+[datasets.uncertainty]
+relative = 0.02
+level = "bound"
+[datasets.parameters]
+electronic_only = true
+
+[[datasets]]
+id = "caspt_andersson"
+material = "O3"
+file = "O3/maroulis_1994__caspt_andersson.csv"
+table = "tbl_590eb102ed40"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. Andersson, P. Borowski, P. W. Fowler, P.-A. Malmqvist, B. O. Roos and A. J. Sadlej, Chem. Phys. Lett. 190, 367 (1992)"]
+notes = "Table IV 'CASPT' (basis [5s3p2d]); the same value appears in kumar_2011 (static_f). Electronic only."
+
+[[datasets]]
+id = "mack_muenter"
+material = "O3"
+file = "O3/maroulis_1994__mack_muenter.csv"
+table = "tbl_590eb102ed40"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "angstrom"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["K. M. Mack and J. S. Muenter, J. Chem. Phys. 66, 5278 (1977)"]
+notes = "Table IV 'Experiment', footnote c: 'Referenced by Mack and Muenter' - a mean polarizability they used to deduce the components from their anisotropy measurements; its own origin is not stated. Not a measurement by this paper or by Mack & Muenter."
+
+[[datasets]]
+id = "gamma_scf_xxxx"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_xxxx.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the component gamma_xxxx (z the C2 axis, xz the molecular plane); rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "gamma_scf_yyyy"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_yyyy.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the component gamma_yyyy (z the C2 axis, xz the molecular plane); rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyyy"
+
+[[datasets]]
+id = "gamma_scf_zzzz"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_zzzz.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the component gamma_zzzz (z the C2 axis, xz the molecular plane); rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "gamma_scf_xxyy"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_xxyy.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the component gamma_xxyy (z the C2 axis, xz the molecular plane); rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxyy"
+
+[[datasets]]
+id = "gamma_scf_yyzz"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_yyzz.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the component gamma_yyzz (z the C2 axis, xz the molecular plane); rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyzz"
+
+[[datasets]]
+id = "gamma_scf_zzxx"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_zzxx.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the component gamma_zzxx (z the C2 axis, xz the molecular plane); rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzxx"
+
+[[datasets]]
+id = "gamma_scf_mean"
+material = "O3"
+file = "O3/maroulis_1994__gamma_scf_mean.csv"
+table = "tbl_1c2bf21aff33"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table I, SCF: static the mean gamma-bar = (gamma_xxxx + gamma_yyyy + gamma_zzzz + 2 gamma_xxyy + 2 gamma_yyzz + 2 gamma_zzxx)/5; rows the basis sets [6s4p3d] (99 CGTF, from Ref. 10), [6s4p3d1f] (120), [7s5p4d1f] (147, Ref. 10), [7s5p4d2f] (168)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "gamma_corr_xxxx"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_xxxx.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the component gamma_xxxx (z the C2 axis, xz the molecular plane); rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxxx"
+
+[[datasets]]
+id = "gamma_corr_yyyy"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_yyyy.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the component gamma_yyyy (z the C2 axis, xz the molecular plane); rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyyy"
+
+[[datasets]]
+id = "gamma_corr_zzzz"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_zzzz.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the component gamma_zzzz (z the C2 axis, xz the molecular plane); rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzzz"
+
+[[datasets]]
+id = "gamma_corr_xxyy"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_xxyy.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the component gamma_xxyy (z the C2 axis, xz the molecular plane); rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "xxyy"
+
+[[datasets]]
+id = "gamma_corr_yyzz"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_yyzz.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the component gamma_yyzz (z the C2 axis, xz the molecular plane); rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "yyzz"
+
+[[datasets]]
+id = "gamma_corr_zzxx"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_zzxx.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the component gamma_zzxx (z the C2 axis, xz the molecular plane); rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+component = "zzxx"
+
+[[datasets]]
+id = "gamma_corr_mean"
+material = "O3"
+file = "O3/maroulis_1994__gamma_corr_mean.csv"
+table = "tbl_357dbeb4985d"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Tables II (SCF, MP2, MP3, DQ-MP4) and III (tbl_9fd97a4e3ee8; CCD, CCD+S(CCD), CCD+ST(CCD)), basis [6s4p3d1f]: superseded by maroulis_1999 (CCSD(T), larger basis); static the mean gamma-bar = (gamma_xxxx + gamma_yyyy + gamma_zzzz + 2 gamma_xxyy + 2 gamma_yyzz + 2 gamma_zzxx)/5; rows the methods."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"

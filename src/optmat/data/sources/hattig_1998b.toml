@@ -1,0 +1,641 @@
+citation = "C. Hättig, O. Christiansen and P. Jørgensen, \"Coupled cluster response calculations of two-photon transition probability rate constants for helium, neon and argon\", J. Chem. Phys. 108, 8355-8359 (1998)"
+doi = "10.1063/1.476262"
+library = "Hattig_1998_CoupledClusterResponse"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Coupled cluster response theory (the preceding paper, J. Chem. Phys. 108, 8331 \
+(1998)): the left and right two-photon transition moments M^ab_{0<-f} and M^ab_{f<-0} \
+as second derivatives of variational transition-moment Lagrangians (Eqs. 7-14), and \
+the transition strength as their symmetrised product, S^0f_{ab,cd} = (1/2){M^ab_{0<-f} \
+(-w) M^cd_{f<-0}(w) + c.c.} (Eq. 5), at the CCS, CC2 and CCSD levels. Basis (p. 8357): \
+t-aug-cc-pV5Z (Woon and Dunning 1995), He (11s7p6d5f4g)/[8s7p6d5f4g], Ne \
+(17s11p7d6f5g4h)/[9s8p7d6f5g4h], Ar (23s15p7d6f5g4h)/[10s9p7d6f5g4h]; 'In the \
+calculations for neon and argon only the eight valence electrons were correlated.' \
+Non-relativistic, LS coupling: 'For argon, the neglect of the spin-orbit interaction \
+leads to additional errors' (p. 8357). Frequencies: omega_1 = omega_2 = omega_f0/2, and \
+omega_2 = 10.49 eV = 0.3855 a.u. with omega_1 = omega_f - omega_2 (p. 8358), omega_f0 \
+the method's own excitation energy (Table I; established by the checks)."""
+notes = """Journal pp. 8355-8359 = PDF pages 2-6 (PDF page 1 is the AIP download cover); \
+journal page = PDF page + 8353. Identity checked on the first page (PDF p. 2: 'JOURNAL \
+OF CHEMICAL PHYSICS VOLUME 108, NUMBER 20 22 MAY 1998', '0021-9606/98/108(20)/8355/5', \
+Christof Hättig, Ove Christiansen and Poul Jørgensen, Aarhus; received 12 November \
+1997, accepted 19 February 1998) on 2026-10-08. The id hattig_1998b: hattig_1998 is \
+another paper by Hättig of 1998.
+
+THE QUANTITY (p. 8356). 'The two-photon transition probability rate constant is given \
+by: K_{0-f} = a0^4 t0 (2 pi)^2 alpha^2 omega_1 omega_2 delta^TP' (Eq. 15), 'delta^TP is \
+a rotationally averaged two-photon transition strength (in a.u.) defined as: delta^TP = \
+F delta_F + G delta_G + H delta_H' (Eq. 16), with delta_F = (1/30) sum_ab S^0f_aabb, \
+delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 17-19): 'For \
+parallel linearly polarized laser beams the appropriate values are F = G = H = 2' \
+(after Moccia and Rizzo 1985). Tables III-V print, for each level and method, a column \
+headed S^0f/a.u. and one headed K_{0-f}/cm4 s. Every K of the tables (36 cells, 1Se \
+and 1De, both pairs of frequencies, the CC rows and the reproduced SCF/MCSCF rows) is \
+reproduced from its S^0f within its printing (worst 0.26 %, Ar 1De CCS at 10.49 eV, \
+printed to 0.4 %) by 2 pi times Eq. (15), with omega_f0 the method's own Table I \
+excitation energy, and with delta^TP = S^0f for the 1Se levels and (4/15) S^0f for the \
+1De levels (tools/extract/hattig_1998b.py). So:
+(a) Eq. (15) as printed gives every tabulated K 2 pi too small; the tables follow (2 \
+pi)^3 (equivalently t0 taken as h/E_h, 1.52e-16 s). The K are not data here (no \
+quantity holds a rate constant in cm4 s), and the values taken are the strengths.
+(b) For a 1Se level S^0f is delta^TP (with F = G = H = 2 the rotational average of an \
+isotropic tensor S_ab = s delta_ab is s^2 = S_zz^2): taken.
+(c) For a 1De level S^0f is not delta^TP: it is the square of the one tensor element \
+S_xy of the level's xy component (the SCF and MCSCF entries of argon, 90.23 and 108.66, \
+are the squares of the S_xy = 9.499 and 10.424 a.u. of Sundholm et al. 1994, and neon's \
+SCF entry 8.799 the square of Hettema et al.'s 2.9663 a.u., as henriksson_2005 quotes \
+them, to 4-5 figures). The rotational average of that component (F = G = H = 2) is \
+(4/15) S^0f, which reproduces the 1De K; summed over the level's five components it is \
+(4/3) S^0f, henriksson_2005's convention (its TDHF 11.060 and 113.40 a.u. for Ne and Ar \
+1D2 are (4/3) of the squares of its quoted S_xy). The 1De K of Tables IV-V are thus \
+those of one of the level's five components. NOT TAKEN: the 1De rows (CCS, CC2, CCSD, \
+and the SCF/MCSCF of Refs. 6 and 12), which no quantity holds as printed; their S^0f \
+times 4/3 would be the level's delta^TP in the convention of henriksson_2005.
+
+EXTRACTED (tools/extract/hattig_1998b.py), from the library's cells (the tables have \
+merged two-row headers), every cell checked against the table images (2026-10-08):
+- Tables III (He, p. 8358), IV (Ne, p. 8358), V (Ar, p. 8359): the CCS, CC2 and CCSD \
+S^0f of the 1Se level, one dataset per gas, method and pair of frequencies (18), the \
+row named by the method and x by the level as printed (He: Table III prints no level; \
+its caption's 'the 1Se state in He' is the 1s1 2s1 level of Table I). Table V prints \
+argon's levels as '2p5 3p1' (neon's shells), corrected by errata to 3p5 4p1.
+- Table II (p. 8357): the CCS, CC2 and CCSD oscillator strengths of the ground state \
+to the lowest 1P level, the paper's own calculations, one dataset per gas and method \
+(9). Its heading prints the level as 1Pe; corrected by errata to 1Po (the text: 'the \
+ground state to 1Po transitions'). For Ne and Ar the authors compare them with the sum \
+of the experimental P1/2 and P3/2 (J = 1) strengths: 'For all three atoms we obtain at \
+the CCSD level oscillator strengths ... within the experimental uncertainities' \
+(checked: He 0.2766 vs 0.280 +- 0.007, Ne 0.1650 vs 0.171 +- 0.008, Ar 0.3219 vs 0.331 \
++- 0.016).
+All use = check (computed values; no model of this quantity is fitted). The paper \
+states no numerical uncertainty: 'The CCSD results are close to the best available \
+MCSCF results'; correlation changes the Ne and the argon 10.49 eV strengths by about \
+50 % from CCS to CCSD, and 'CC2 overshoot the CCSD value considerably by 10%-25%' \
+there (p. 8358); for He the remaining errors of the excitation energies are 'due to basis set defects' (p. 8357).
+
+THE TEXT'S COMPARISONS (p. 8358). 'For argon we can compare with the experimental \
+transition probability rate constant for the transition to the 1De state, derived as \
+the sum of the transition probability rates to the spin-orbit mixed states 3p5 \
+4p[3/2]_{J=2} (1De), 3p5 4p[5/2]_{J=2} (3De) and 3p5 4p[3/2]_{J=2} (3Pe). The resulting \
+experimental value of 2.05 x 10^-51 cm4 s agrees well with the CCSD result of 1.83 x \
+10^-51 cm4 s' (Table V, omega_2 = 10.49 eV, footnote b: Refs. 12, 21-23: Sundholm, \
+Rizzo and Jørgensen, J. Chem. Phys. 101, 4931 (1994); M. G. Payne, C. H. Chen, G. S. \
+Hurst and G. W. Foltz, Adv. At. Mol. Phys. 17, 229-274 (1981); M. P. McCann, C. H. Chen \
+and M. G. Payne, J. Chem. Phys. 89, 5429 (1989); M. G. Payne, C. H. Chen, G. S. Hurst, \
+S. D. Kramer, W. R. Garrett and M. Pindzola, Chem. Phys. Lett. 79, 142 (1981)). NOT \
+TAKEN: it is a rate constant in cm4 s (and, by (c), the computed K it is compared with \
+is one component's), not this quantity, and its primary sources are not in the \
+library.
+
+MISPRINTS. Table V's K of the SCF row at 10.49 eV is printed '1.19 x 20^-51' (the PDF's \
+text and the rendered table agree: a misprint, not an extraction artefact); it is \
+1.19 x 10^-51 (reproduced 1.1875e-51 from S^0f = 418.90 and Table I's SCF energy \
+13.485 eV). Not an erratum entry: the K are not held. The argon level labels and the \
+Table II heading are corrected by the errata below.
+
+NOT TAKEN. Table I, the excitation energies (SCF, CCS, CC2, CCSD, MCSCF, and Moore's \
+experimental ones): computed energies of a non-relativistic model, not the levels of \
+the atom that level_energy holds (they are used by the checks). Table II's experimental \
+rows (Chan et al. 1991, 1992: chan_1991, chan_1992_neon, chan_1992) and argon's SCF and \
+CAS rows (Sundholm et al. 1994). The K columns and the experimental K (above). The 1De \
+rows (above). Table IV's SCF and MCSCF 1De rows are Hettema et al.'s (Ref. 6: H. \
+Hettema, H. J. Aa. Jensen, P. Jørgensen and J. Olsen, J. Chem. Phys. 97, 1174 (1992)), \
+whose K the authors computed 'assuming omega_1 = omega_2 = 0.3425 a.u.' (footnote b); \
+the MCSCF entry 11.289 is not the square of the SD RAS S_xy = 3.3450 (11.189) that \
+henriksson_2005 quotes from the same paper (at 19.170 eV, where Table I's MCSCF of Ref. \
+6 is at 18.874 eV): a different calculation of Ref. 6, not resolvable here.
+
+COMPARISON. henriksson_2005's TDHF strength of He 1s2s 1S0 (10.426 a.u., qaug-cc-pVTZ, \
+21.125 eV) against CCS here (10.824 a.u., 21.137 eV): different methods (TDHF is the \
+random phase approximation, CCS is not) and bases, same convention for a 1S level."""
+
+[[datasets]]
+id = "S_He_CCS_degenerate"
+material = "He"
+file = "He/hattig_1998b__S_He_CCS_degenerate.csv"
+table = "tbl_1bfdadd98b52"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "S_He_CCS_w2_10p49eV"
+material = "He"
+file = "He/hattig_1998b__S_He_CCS_w2_10p49eV.csv"
+table = "tbl_1bfdadd98b52"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "S_He_CC2_degenerate"
+material = "He"
+file = "He/hattig_1998b__S_He_CC2_degenerate.csv"
+table = "tbl_1bfdadd98b52"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "S_He_CC2_w2_10p49eV"
+material = "He"
+file = "He/hattig_1998b__S_He_CC2_w2_10p49eV.csv"
+table = "tbl_1bfdadd98b52"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "S_He_CCSD_degenerate"
+material = "He"
+file = "He/hattig_1998b__S_He_CCSD_degenerate.csv"
+table = "tbl_1bfdadd98b52"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "S_He_CCSD_w2_10p49eV"
+material = "He"
+file = "He/hattig_1998b__S_He_CCSD_w2_10p49eV.csv"
+table = "tbl_1bfdadd98b52"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table III, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "S_Ne_CCS_degenerate"
+material = "Ne"
+file = "Ne/hattig_1998b__S_Ne_CCS_degenerate.csv"
+table = "tbl_821a4b276e0b"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ne_CCS_w2_10p49eV"
+material = "Ne"
+file = "Ne/hattig_1998b__S_Ne_CCS_w2_10p49eV.csv"
+table = "tbl_821a4b276e0b"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ne_CC2_degenerate"
+material = "Ne"
+file = "Ne/hattig_1998b__S_Ne_CC2_degenerate.csv"
+table = "tbl_821a4b276e0b"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ne_CC2_w2_10p49eV"
+material = "Ne"
+file = "Ne/hattig_1998b__S_Ne_CC2_w2_10p49eV.csv"
+table = "tbl_821a4b276e0b"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ne_CCSD_degenerate"
+material = "Ne"
+file = "Ne/hattig_1998b__S_Ne_CCSD_degenerate.csv"
+table = "tbl_821a4b276e0b"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ne_CCSD_w2_10p49eV"
+material = "Ne"
+file = "Ne/hattig_1998b__S_Ne_CCSD_w2_10p49eV.csv"
+table = "tbl_821a4b276e0b"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table IV, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ar_CCS_degenerate"
+material = "Ar"
+file = "Ar/hattig_1998b__S_Ar_CCS_degenerate.csv"
+table = "tbl_75eb5ba0dfd3"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table V, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ar_CCS_w2_10p49eV"
+material = "Ar"
+file = "Ar/hattig_1998b__S_Ar_CCS_w2_10p49eV.csv"
+table = "tbl_75eb5ba0dfd3"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table V, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ar_CC2_degenerate"
+material = "Ar"
+file = "Ar/hattig_1998b__S_Ar_CC2_degenerate.csv"
+table = "tbl_75eb5ba0dfd3"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table V, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ar_CC2_w2_10p49eV"
+material = "Ar"
+file = "Ar/hattig_1998b__S_Ar_CC2_w2_10p49eV.csv"
+table = "tbl_75eb5ba0dfd3"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table V, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ar_CCSD_degenerate"
+material = "Ar"
+file = "Ar/hattig_1998b__S_Ar_CCSD_degenerate.csv"
+table = "tbl_75eb5ba0dfd3"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table V, column S^0f/a.u., omega_1 = omega_2 = omega_f0/2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "degenerate"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "S_Ar_CCSD_w2_10p49eV"
+material = "Ar"
+file = "Ar/hattig_1998b__S_Ar_CCSD_w2_10p49eV.csv"
+table = "tbl_75eb5ba0dfd3"
+quantity = "two_photon_transition_strength"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table V, column S^0f/a.u., omega_2 = 10.49 eV = 0.3855 au (the experimental laser of argon, Refs. 21-23), omega_1 = omega_f0 - omega_2, omega_f0 the method's own excitation energy (Table I). Row: the method; x: the 1Se level."
+[datasets.parameters]
+polarization = "linear_parallel"
+frequencies = "10.49 eV"
+rotational_average = "delta^TP = F delta_F + G delta_G + H delta_H, delta_F = (1/30) sum_ab S^0f_aabb, delta_G = (1/30) sum_ab S^0f_abab, delta_H = (1/30) sum_ab S^0f_abba (Eqs. 16-19), F = G = H = 2 for parallel linearly polarised beams; for this 1Se level delta^TP = S^0f"
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "f_He_CCS"
+material = "He"
+file = "He/hattig_1998b__f_He_CCS.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "f_He_CC2"
+material = "He"
+file = "He/hattig_1998b__f_He_CC2.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "f_He_CCSD"
+material = "He"
+file = "He/hattig_1998b__f_He_CCSD.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (11s7p6d5f4g)/[8s7p6d5f4g]"
+
+[[datasets]]
+id = "f_Ne_CCS"
+material = "Ne"
+file = "Ne/hattig_1998b__f_Ne_CCS.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "f_Ne_CC2"
+material = "Ne"
+file = "Ne/hattig_1998b__f_Ne_CC2.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "f_Ne_CCSD"
+material = "Ne"
+file = "Ne/hattig_1998b__f_Ne_CCSD.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (17s11p7d6f5g4h)/[9s8p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "f_Ar_CCS"
+material = "Ar"
+file = "Ar/hattig_1998b__f_Ar_CCS.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CCS (coupled cluster singles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "f_Ar_CC2"
+material = "Ar"
+file = "Ar/hattig_1998b__f_Ar_CC2.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CC2 (approximate coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[datasets]]
+id = "f_Ar_CCSD"
+material = "Ar"
+file = "Ar/hattig_1998b__f_Ar_CCSD.csv"
+table = "tbl_ee7b52d10a52"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table II, the dipole oscillator strength of the ground state to the lowest 1Po level (LS coupling, no spin-orbit), computed. Row: the method; x: the column heading as printed (corrected by an erratum)."
+[datasets.parameters]
+method = "CCSD (coupled cluster singles and doubles) response, t-aug-cc-pV5Z, (23s15p7d6f5g4h)/[10s9p7d6f5g4h], the eight valence electrons correlated"
+
+[[errata]]
+dataset = "S_Ar_CCS_degenerate"
+row = "CCS"
+column = "x"
+printed = "2p5 3p1 (1Se)"
+corrected = "3p5 4p1 (1Se)"
+reason = "Table V (argon) labels its levels with neon's shells, 2p5 3p1, as Table IV does."
+evidence = "Table V's caption: 'states in Ar'; Table I's argon levels 3p5 4p1 (1De, 1Pe, 1Se) at 13.218-13.487 eV (CCSD), whose CCS, CC2 and CCSD energies reproduce Table V's K (checks); argon's ground configuration is 3p6."
+
+[[errata]]
+dataset = "S_Ar_CCS_w2_10p49eV"
+row = "CCS"
+column = "x"
+printed = "2p5 3p1 (1Se)"
+corrected = "3p5 4p1 (1Se)"
+reason = "Table V (argon) labels its levels with neon's shells, 2p5 3p1, as Table IV does."
+evidence = "Table V's caption: 'states in Ar'; Table I's argon levels 3p5 4p1 (1De, 1Pe, 1Se) at 13.218-13.487 eV (CCSD), whose CCS, CC2 and CCSD energies reproduce Table V's K (checks); argon's ground configuration is 3p6."
+
+[[errata]]
+dataset = "S_Ar_CC2_degenerate"
+row = "CC2"
+column = "x"
+printed = "2p5 3p1 (1Se)"
+corrected = "3p5 4p1 (1Se)"
+reason = "Table V (argon) labels its levels with neon's shells, 2p5 3p1, as Table IV does."
+evidence = "Table V's caption: 'states in Ar'; Table I's argon levels 3p5 4p1 (1De, 1Pe, 1Se) at 13.218-13.487 eV (CCSD), whose CCS, CC2 and CCSD energies reproduce Table V's K (checks); argon's ground configuration is 3p6."
+
+[[errata]]
+dataset = "S_Ar_CC2_w2_10p49eV"
+row = "CC2"
+column = "x"
+printed = "2p5 3p1 (1Se)"
+corrected = "3p5 4p1 (1Se)"
+reason = "Table V (argon) labels its levels with neon's shells, 2p5 3p1, as Table IV does."
+evidence = "Table V's caption: 'states in Ar'; Table I's argon levels 3p5 4p1 (1De, 1Pe, 1Se) at 13.218-13.487 eV (CCSD), whose CCS, CC2 and CCSD energies reproduce Table V's K (checks); argon's ground configuration is 3p6."
+
+[[errata]]
+dataset = "S_Ar_CCSD_degenerate"
+row = "CCSD"
+column = "x"
+printed = "2p5 3p1 (1Se)"
+corrected = "3p5 4p1 (1Se)"
+reason = "Table V (argon) labels its levels with neon's shells, 2p5 3p1, as Table IV does."
+evidence = "Table V's caption: 'states in Ar'; Table I's argon levels 3p5 4p1 (1De, 1Pe, 1Se) at 13.218-13.487 eV (CCSD), whose CCS, CC2 and CCSD energies reproduce Table V's K (checks); argon's ground configuration is 3p6."
+
+[[errata]]
+dataset = "S_Ar_CCSD_w2_10p49eV"
+row = "CCSD"
+column = "x"
+printed = "2p5 3p1 (1Se)"
+corrected = "3p5 4p1 (1Se)"
+reason = "Table V (argon) labels its levels with neon's shells, 2p5 3p1, as Table IV does."
+evidence = "Table V's caption: 'states in Ar'; Table I's argon levels 3p5 4p1 (1De, 1Pe, 1Se) at 13.218-13.487 eV (CCSD), whose CCS, CC2 and CCSD energies reproduce Table V's K (checks); argon's ground configuration is 3p6."
+
+[[errata]]
+dataset = "f_He_CCS"
+row = "CCS"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_He_CC2"
+row = "CC2"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_He_CCSD"
+row = "CCSD"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_Ne_CCS"
+row = "CCS"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_Ne_CC2"
+row = "CC2"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_Ne_CCSD"
+row = "CCSD"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_Ar_CCS"
+row = "CCS"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_Ar_CC2"
+row = "CC2"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."
+
+[[errata]]
+dataset = "f_Ar_CCSD"
+row = "CCSD"
+column = "x"
+printed = "X 1Se - 1Pe"
+corrected = "X 1Se - 1Po"
+reason = "A dipole transition from the even ground state reaches an odd level: the lowest 1Po, not a 1Pe level (Table I lists both; the 1Pe level of Ne and Ar is 2p5 3p / 3p5 4p, the 1Po level 2p5 3s / 3p5 4s)."
+evidence = "p. 8358: 'we computed the dipole transition strengths for the ground state to 1Po transitions in He, Ne, and Ar' and 'the dominating contributions originate from the lowest 1Po states'; Table I's lowest 1Po levels. The caption and one sentence of the text also print 1Pe."

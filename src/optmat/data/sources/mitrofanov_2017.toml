@@ -1,0 +1,86 @@
+citation = "A. V. Mitrofanov, A. A. Voronin, D. A. Sidorov-Biryukov, M. V. Rozhko, E. A. Stepanov, A. B. Fedotov, V. Shumakova, S. Ališauskas, A. Pugžlys, A. Baltuška and A. M. Zheltikov, \"Mapping anomalous dispersion of air with ultrashort mid-infrared pulses\", Sci. Rep. 7, 2103 (2017)"
+doi = "10.1038/s41598-017-01598-3"
+library = "Mitrofanov_2017_MappingAnomalousDispersion"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Spectrally resolved group delay of 60 m of room air: 80 fs mid-infrared \
+pulses from a KTA OPCPA (idler centred at 3.9 um, spectrum 3.6-4.2 um, below 4 mJ to \
+avoid nonlinear phase), sent through a delay line of two silver mirrors ('six 10-m round \
+trips ... a path of L ~ 60 m'), characterised before and after by SHG FROG in 0.5 mm \
+AgGaS2 (the second harmonic on a NIRQuest spectrometer calibrated to 2130 nm). The \
+spectral phase phi_t retrieved from the FROG trace gives tau_g = d phi_t / d omega; the \
+input pulse's tau_0 = d phi_0 / d omega is subtracted, Delta tau_g = tau_g - tau_0, with a \
+transform-limited and a negatively chirped (-0.007 ps^2) probe (pp. 4-5; Fig. 3). The CO2 \
+of the room was logged during the run ('a standard 7798 CO2 datalogger'): N_CO2 ~ 1.32e16 \
+cm^-3 (p. 6)."""
+notes = """Identity VALIDATED; the pdf is the version of record (7 pages, article 2103; the \
+pages cited are its pdf pages, which carry the article's page numbers 1-7). CC BY 4.0. \
+tools/extract/mitrofanov_2017.py asserts every statement quoted here against the pdf's \
+text layer and reads Figure 1d; it writes no data file.
+
+WHAT WAS MEASURED (pp. 4-6). Only Delta tau_g(lambda) over 3.70-4.15 um, 'induced by \
+60m of atmospheric air' (Fig. 1d caption, p. 3): two measured curves (transform-limited \
+probe, blue; chirped probe, green) and the authors' line-by-line calculation (the caption's \
+'red line', drawn magenta), 'three almost indistinguishable' curves (p. 4). It is a \
+relative delay: FROG fixes no absolute time, and Delta tau_g is defined as tau_g - tau_0, \
+so its zero is arbitrary; the curves lie near -0.3 ps at 3.70 um and cross zero near 4.0 \
+um, and no reference wavelength is stated. The one number in the text: 'anomalous group \
+delays as long as Delta tau_g ~ 1.8 ps are achieved within the wavelength range from 3.70 \
+to 4.15 um' (p. 6; the abstract's 1.8 ps, p. 1), the span of the plotted curve from 3.70 \
+um to the frame's corner (4.150 um, 1.5 ps; the arrow of Fig. 1d). No GVD, group index or \
+refractive index is measured; Fig. 1a-c and 1e and Fig. 4 are calculations.
+
+THE AIR (pp. 2, 4, 6). Room ('atmospheric') air; its temperature, pressure and humidity \
+during the measurement are not stated. N_CO2 ~ 1.32e16 cm^-3 from the monitor (p. 6): 527 \
+ppm at 101325 Pa and 20 degrees C with CoolProp's air density (a conversion here, not \
+printed). The calculations take 'normal conditions at T = 20 degrees C' (Fig. 1 caption, \
+p. 3) and N_H2O ~ 5.4e16, N_O3 ~ 2.5e12, N_CH4 ~ 4.0e13 cm^-3 (p. 2). Path L ~ 60 m (p. 4). \
+The wavelength medium is not stated (at 4 um the difference is 1.1 nm).
+
+UNCERTAINTY: none stated, for Delta tau_g, the path or the CO2 density. 'The absolute \
+values of Delta tau_g ... were found to be sensitive to the concentration of CO2 in the \
+room' (p. 6).
+
+THE AUTHORS' MODEL (pp. 2-3). Eq. (1), a sum of Lorentz lines over the HITRAN 2012 \
+manifold of air, plus n_vis(lambda) = B1 (C1 - lambda^-2)^-1 + B2 (C2 - lambda^-2)^-1 with \
+B1 = 0.05792105, B2 = 0.00167917, C1 = 238.0185, C2 = 57.362 um^-2 (p. 2): Ciddor's \
+standard dry air (ciddor_1996/standard_dry_air, 15 degrees C, 450 ppm CO2) in other units. \
+The caption's n0 = 1.000270232 at 3.9 um (p. 3), a calculated value, lies between \
+optmat's CIPM-2007 air at 1 atm and 15 degrees C (n - 1 = 2.7268e-4) and 20 degrees C \
+(2.6801e-4); Ciddor's formula alone gives 2.7272e-4. Not curated (a model value).
+
+WHY NO DATASET. (i) The vocabulary has no quantity for it: group_delay is the absolute \
+group delay per unit length, and a delay with an arbitrary zero and no stated reference \
+wavelength is not that quantity (data rule 7). (ii) Air is not a registered material \
+(data/materials.toml), so no dataset can name it. (iii) The values are in a raster figure \
+only (Figure 1 is one embedded image, 1650 x 1478 pixels, page 3), so a dataset would be \
+digitised = "raster" and use = "check" (TC-699). The figure is traced by the extraction \
+script for the comparison below; the trace is not data.
+
+FIGURE 1d AS TRACED (tools/extract/mitrofanov_2017.py: the axes from the tick marks, 137.5 \
+px per 0.1 um and 136 px per ps, i.e. 0.73 nm and 0.0074 ps per pixel; the curves about \
+6 px wide, +-0.02 ps). The transform-limited probe relative to 3.70 um: +0.066 ps at 3.80 \
+um, +0.130 at 3.90, +0.280 at 4.00, +0.449 at 4.05, +0.859 at 4.10, +1.198 at 4.12, +1.409 \
+at 4.13, +1.611 at 4.14 and +1.781 at 4.15 (the text's 1.8 ps). The chirped probe departs \
+from it by up to 0.2 ps at 4.12-4.13 um.
+
+COMPARISON (computed 2026-10-01; a check, outside every qualified interval). optmat's \
+N2 + O2 + Ar (fit/N2, fit/O2, fit/Ar, at CIPM-2007's ratios, CoolProp's density at \
+101325 Pa and 20 degrees C, an assumed state) plus fit/CO2 at N_CO2 = 1.32e16 cm^-3, n_g - \
+1 = N (alpha + omega d alpha/d omega) / (2 eps0), warn=False: tau_g(4.15 um) - tau_g(3.70 \
+um) = 2.18 ps over 60 m (fit/CO2 2.19, N2 + O2 + Ar -0.014), against the text's 1.8 ps; \
+the model reaches 1.8 ps at 4.142 um. With the free zero fitted over 3.70-4.13 um, the \
+transform-limited curve departs from the model by 0.023 ps rms (95 % of the 588 traced \
+columns within 0.033 ps, 15 isolated columns at 4.00-4.12 um up to 0.15 ps; of a 1.4 ps \
+rise), the chirped curve by 0.045 ps rms and the authors' calculation by 0.017 ps \
+rms; beyond, the measured curve falls below the model by 0.13 ps at 4.14 um and 0.35 ps at \
+4.15 um, where the delay rises by 0.045 ps per nm, against 0.04 ps for the authors' \
+calculation at 4.14 um. Fitted as a scale of the CO2 term over 3.70-4.13 um, the curve \
+asks for 0.995 of the monitored density (0.978 to 4.10 um, 0.931 to 4.15 um). fit/CO2 \
+agrees with HITRAN's CO2 lines summed directly (smoothed by 1 cm^-1, tools/hitran/windows.py, \
+296 K strengths) to 0.2 % in this delay at 4.15 um. The measurement tests N_CO2 times the \
+strength and shape of CO2's 4.3 um band wing, at the few-per-cent level set by the unstated \
+CO2 and path uncertainties; it is nearly independent of the air's state, since the CO2 \
+density is given and the other gases contribute 0.014 ps. 3.6-4.2 um (2381-2778 cm^-1) \
+lies in fit/CO2's gap 3592.6-5549.4 nm (gap reason 'representation') and beyond every \
+interval of the CIPM-2007 air model (which ends at 1312.7 nm)."""

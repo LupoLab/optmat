@@ -1,0 +1,388 @@
+citation = "J. Berkowitz, \"Sum rules and the oscillator strength distribution in helium\", J. Phys. B: At. Mol. Opt. Phys. 30, 881 (1997)"
+library = "Berkowitz_1997_SumRulesOscillator"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """Evaluation of the oscillator-strength sums S(p), p = -2..+2, of helium from \
+calculated discrete oscillator strengths (Kono and Hattori 1984, Drake 1996), the \
+measured photoabsorption cross sections of Samson et al. (1994) and Bizeau and \
+Wuilleumier (1995), and the calculated cross sections of Hino and collaborators, each \
+region fitted by a power series in y = IP/E (IP = 24.5874 eV) and integrated \
+(pp. 881-888)."""
+notes = """Identity unverified by the library; the downloaded pdf's header gives 'J. Phys. B: \
+At. Mol. Opt. Phys. 30 881' (1997), received 15 May 1996. No DOI recorded. Pages \
+are counted from 881.
+
+S(p) is 'defined with the excitation energy measured in Rydberg units' (p. 882): the \
+datasets convert with scale 2^-p to atomic units. E/R in Table 1 uses R = 13.6057 eV \
+(Table 2's weighted columns check with it). Pekeris's exact values (p. 881-882): \
+S(-1) = 0.752 497, S(0) = 2, S(+1) = 8.167 45, S(+2) = 121.336. The 'exact' S(-2) = \
+0.345 778 is derived from Miller's polarizability with a0 = 0.529 177 249e-8 cm \
+(p. 889). The author's recommended totals (bold in Table 3) reach 99.78 % (S(-2)), \
+99.40 % (S(-1)), 99.07 % (S(0)), 98.6 % (S(+1)) and 97.4 % (S(+2)) of the exact \
+values; the older Migneron and Levinger sums (Table 3 column d) are in migneron_1965 \
+and are not extracted again.
+
+Table 3's partial sums are not extracted. Their merged cells were read on the image; \
+the IP-120 eV S(-1) of Chan et al. is printed 0.4476 in the table but 0.4776 in the text \
+(p. 888), and the table is probably wrong (0.4747 for Samson's data, 'the differences \
+are < 1%').
+
+Table 4's power-series fits are recorded as formulas; their integrals reproduce the \
+Table 3 partial sums for the df/d(E/R) fits (checked 2026-09-24), but not for the \
+3000-12000 eV (E/R)^2 df/d(E/R) fit.
+
+Also in the text: Miller's 'exact' polarizability, printed '0.020 4956 x 10^-24 cm^3' \
+(p. 889), a factor 10 too small (erratum below)."""
+
+[[datasets]]
+id = "f_kono_hattori_1984"
+material = "He"
+file = "He/berkowitz_1997__f_kono_hattori_1984.csv"
+table = "tbl_989659e9200e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. Kono and S. Hattori, Phys. Rev. A 29, 2981 (1984)"]
+notes = "Table 1 column c, 1 1S -> n 1P, n = 2-9 (the index column is n). The excitation energies E/R (R = 13.6057 eV) are in the printed cells: the format has no Rydberg energy unit."
+
+[[datasets]]
+id = "f_extrapolated"
+material = "He"
+file = "He/berkowitz_1997__f_extrapolated.csv"
+table = "tbl_989659e9200e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table 1 column c in parentheses, n = 10-20: the author's fit f_n = a/n*^3 + b/n*^5 to Kono and Hattori's n = 4-9, extrapolated (p. 886); energies from a quantum-defect fit, also in parentheses."
+
+[[datasets]]
+id = "f_drake_1996"
+material = "He"
+file = "He/berkowitz_1997__f_drake_1996.csv"
+table = "tbl_989659e9200e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["G. W. F. Drake (ed.), Atomic, Molecular and Optical Physics Handbook (AIP, New York, 1996), ch. 11"]
+notes = "Table 1 column d, n = 2-7; the values the author adopts for n = 2-7."
+
+[[datasets]]
+id = "f_schiff_1971"
+material = "He"
+file = "He/berkowitz_1997__f_schiff_1971.csv"
+table = "tbl_989659e9200e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["B. Schiff, C. L. Pekeris and Y. Accad, Phys. Rev. A 4, 885 (1971)"]
+notes = "Table 1 column b, n = 2-5."
+
+[[datasets]]
+id = "f_fernley_1987"
+material = "He"
+file = "He/berkowitz_1997__f_fernley_1987.csv"
+table = "tbl_989659e9200e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. A. Fernley, K. T. Taylor and M. J. Seaton, J. Phys. B 20, 6547 (1987)"]
+notes = "Table 1 column e, n = 2-7 (R-matrix; about 1 % above the others, p. 886)."
+
+[[datasets]]
+id = "f_chan_1991"
+material = "He"
+file = "He/berkowitz_1997__f_chan_1991.csv"
+table = "tbl_989659e9200e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["N. F. Chan, G. Cooper and C. E. Brion, Phys. Rev. A 44, 186 (1991)"]
+notes = "Table 1 column f, measured by electron energy loss, n = 2-7, with the printed +- errors (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_excess"
+material = "He"
+file = "He/berkowitz_1997__f_excess.csv"
+table = "tbl_2a3db8fd2b0e"
+quantity = "oscillator_strength"
+scale = 1e-4
+abscissa_unit = "eV"
+use = "check"
+notes = "Table 2: excess oscillator strength over the continuum of the 2snp (n = 2-10) autoionising series, from Morgan and Ederer's (1984) profile parameters (q about -2.5, rho^2 = 1.0) and the author's continuum estimates (p. 887); sum 0.0058."
+
+[[datasets]]
+id = "sum_rule_m2"
+material = "He"
+file = "He/berkowitz_1997__sum_rule_m2.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 4
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 'Total sum' (recommended), S(-2) in Ry^-2; scale 2^(2) gives atomic units."
+
+[[datasets]]
+id = "miller_sum_rule_m2"
+material = "He"
+file = "He/berkowitz_1997__miller_sum_rule_m2.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 4
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["T. M. Miller, CRC Handbook of Chemistry and Physics, 76th ed. (CRC, Boca Raton, 1995), pp. 10-192"]
+notes = "Table 3 'Exact sum' S(-2) = 0.345778 (footnote h), derived by the author from Miller's polarizability (p. 889); the same information as the miller_alpha text point."
+
+[[datasets]]
+id = "sum_rule_m1"
+material = "He"
+file = "He/berkowitz_1997__sum_rule_m1.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 2
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 'Total sum' (recommended), S(-1) in Ry^-1; scale 2^(1) gives atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_m1"
+material = "He"
+file = "He/berkowitz_1997__pekeris_sum_rule_m1.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 2
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table 3 'Exact sum' S(-1) (footnote i), from Pekeris's 1078-term wave function; also migneron_1965's pekeris_sum_rule_m1 (fewer digits)."
+
+[[datasets]]
+id = "sum_rule_0"
+material = "He"
+file = "He/berkowitz_1997__sum_rule_0.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 1
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 'Total sum' (recommended), S(0) in Ry^0; scale 2^(0) gives atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_0"
+material = "He"
+file = "He/berkowitz_1997__pekeris_sum_rule_0.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 1
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table 3 'Exact sum' S(0) (footnote i), from Pekeris's 1078-term wave function; also migneron_1965's pekeris_sum_rule_0 (fewer digits)."
+
+[[datasets]]
+id = "sum_rule_1"
+material = "He"
+file = "He/berkowitz_1997__sum_rule_1.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.5
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 'Total sum' (recommended), S(1) in Ry^1; scale 2^(-1) gives atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_1"
+material = "He"
+file = "He/berkowitz_1997__pekeris_sum_rule_1.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.5
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table 3 'Exact sum' S(1) (footnote i), from Pekeris's 1078-term wave function; also migneron_1965's pekeris_sum_rule_1 (fewer digits)."
+
+[[datasets]]
+id = "sum_rule_2"
+material = "He"
+file = "He/berkowitz_1997__sum_rule_2.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.25
+abscissa = "order"
+abscissa_unit = "1"
+use = "check"
+notes = "Table 3 'Total sum' (recommended), S(2) in Ry^2; scale 2^(-2) gives atomic units."
+
+[[datasets]]
+id = "pekeris_sum_rule_2"
+material = "He"
+file = "He/berkowitz_1997__pekeris_sum_rule_2.csv"
+table = "tbl_6523ca2ec08b"
+quantity = "cauchy_moment"
+unit = "au"
+scale = 0.25
+abscissa = "order"
+abscissa_unit = "1"
+use = "reproduced"
+reproduced_from = ["C. L. Pekeris, Phys. Rev. 115, 1216 (1959)"]
+notes = "Table 3 'Exact sum' S(2) (footnote i), from Pekeris's 1078-term wave function; also migneron_1965's pekeris_sum_rule_2 (fewer digits)."
+
+[[datasets]]
+id = "miller_alpha"
+material = "He"
+table = "text"
+points = [["1", "inf", "0.0204956"]]
+quantity = "polarizability"
+unit = "cm3"
+scale = 1e-24
+abscissa_unit = "angstrom"
+use = "reproduced"
+reproduced_from = ["T. M. Miller, CRC Handbook of Chemistry and Physics, 76th ed. (CRC, Boca Raton, 1995), pp. 10-192"]
+notes = "'The polarizability of He tabulated by Miller (1985) and labelled exact is alpha = 0.020 4956 x 10^-24 cm^3' (p. 889); corrected by the erratum. The table note says 'Miller (1985)', the reference list 'Miller T M 1995'."
+
+[[errata]]
+dataset = "miller_alpha"
+row = "1"
+column = "value"
+printed = "0.0204956"
+corrected = "0.204956"
+reason = "The printed polarizability is a factor 10 too small: helium's static polarizability volume is 0.205e-24 cm^3 (1.383 a.u.)."
+evidence = "The paper's own derivation from it, S(-2) = alpha/(4 a0^3) with a0 = 0.529177249e-8 cm, gives its printed 'exact' S(-2) = 0.345778 only for 0.204956e-24 cm^3 (0.204956e-24/(4 x 1.48185e-25) = 0.34578; checked 2026-09-24)."
+
+[[formulas]]
+id = "ip_120"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "df/d(E/R) = 0.307867 y^2 + 3.025638 y^3 + -3.86086 y^4 + 1.447231 y^5"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "IP-120 eV"
+coefficients = { c2 = "0.307867", c3 = "3.025638", c4 = "-3.86086", c5 = "1.447231" }
+check = "Integrated over IP-120 eV: S(0) = 1.4085 (the text's 'integrated oscillator strength for the underlying continuum', p. 887); at threshold df/d(E/R) = 0.9199, i.e. 7.42 Mb with the paper's 8.0672845 Mb factor (text: 7.40 Mb from the discrete series). Checked 2026-09-24."
+notes = "Power-series fit to J. A. R. Samson, Z. X. He, L. Yin and G. N. Haddad, J. Phys. B 27, 887 (1994) (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "b_120_280"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "df/d(E/R) = 0.467252 y^2 + -8.05829 y^3 + 95.45096 y^4 + -242.751 y^5"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "120-280 eV"
+coefficients = { c2 = "0.467252", c3 = "-8.05829", c4 = "95.45096", c5 = "-242.751" }
+check = "Integrated over 120-280 eV: S(-2..2) = 0.00090, 0.01008, 0.1182, 1.459, 19.06 in Ry units, Table 3 column f (0.0009, 0.0100, 0.1182, 1.459, 19.05). Checked 2026-09-24."
+notes = "Power-series fit to J. Bizeau and F. J. Wuilleumier, J. Electron Spectrosc. Relat. Phenom. 71, 205 (1995) (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "s_120_280"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "df/d(E/R) = 0.063766 y^2 + 1.389979 y^3 + 22.45416 y^4 + -66.4569 y^5"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "120-280 eV"
+coefficients = { c2 = "0.063766", c3 = "1.389979", c4 = "22.45416", c5 = "-66.4569" }
+check = "Integrated over 120-280 eV: 0.00085, 0.00959, 0.1126, 1.391, 18.19, Table 3's Samson partial sums (0.0008_5, 0.0096, 0.1126, 1.391, 18.19). Checked 2026-09-24."
+notes = "Power-series fit to J. A. R. Samson, Z. X. He, L. Yin and G. N. Haddad, J. Phys. B 27, 887 (1994) (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "h_280_1000"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "df/d(E/R) = -0.014835 y^2 + 3.780229 y^3 + 2.485896 y^4 + -36.52446 y^5"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "280-1000 eV"
+coefficients = { c2 = "-0.014835", c3 = "3.780229", c4 = "2.485896", c5 = "-36.52446" }
+check = "With the 1000-12000 eV fit, S(0) from 280 eV to 12 keV = 0.0243 against Table 3's 0.0242 (280 eV to infinity, Hino). Checked 2026-09-24."
+notes = "Power-series fit to Ishihara et al. (1991), Hino (1993), Hino et al. (1993): calculated He+ + He2+ cross sections (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "h_1000_12000"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "df/d(E/R) = 0.001699 y^2 + 1.977647 y^3 + 88.76041 y^4 + -1458.595 y^5"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "1000-12000 eV"
+coefficients = { c2 = "0.001699", c3 = "1.977647", c4 = "88.76041", c5 = "-1458.595" }
+check = "See h_280_1000. Evaluated at 12 keV it gives 2.6e-8, about twice Salpeter and Zaidi's asymptotic formula (1.15e-8), so the fit should not be used near its upper end without care. Checked 2026-09-24."
+notes = "Power-series fit to Ishihara et al. (1991), Hino (1993), Hino et al. (1993): calculated He+ + He2+ cross sections (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "h2_280_3000"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "(E/R)^2 df/d(E/R) = 6.159374 y + 241.6193 y^2 + -3370.06 y^3 + 14110.29 y^4"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "280-3000 eV"
+coefficients = { c1 = "6.159374", c2 = "241.6193", c3 = "-3370.06", c4 = "14110.29" }
+check = "Integrated over 280-3000 eV: S(+2) = 43.64; not separately checkable (the text gives 59.22 for 0.28-12 keV). Checked 2026-09-24."
+notes = "Power-series fit to Ishihara et al. (1991), Hino (1993), Hino et al. (1993): calculated He+ + He2+ cross sections (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "h2_3000_12000"
+material = "He"
+equation = "Table 4, p. 889"
+printed = "(E/R)^2 df/d(E/R) = 2856.42 y + 1099.927 y^2 + -81877.5 y^3 + 2670860 y^4"
+variable = "y = IP/E, IP = 24.5874 eV, E the photon energy; E/R with R = 13.6057 eV; df/d(E/R) per Rydberg"
+state = "none (per atom)"
+density = "none"
+range = "3000-12000 eV"
+coefficients = { c1 = "2856.42", c2 = "1099.927", c3 = "-81877.5", c4 = "2670860" }
+check = "DOES NOT REPRODUCE: as printed (y..y^4) it gives df/d(E/R) = 4.8e-4 at 3 keV, 300 times the neighbouring fits (1.3e-6 to 1.5e-6), and S(+2) = 7164 over 3-12 keV against the text's 59.22 - 43.64 = 15.6. Read as y^2..y^5 it gives 31.8, still twice too large. No single correction found. Checked 2026-09-24."
+notes = "Power-series fit to Ishihara et al. (1991), Hino (1993), Hino et al. (1993): calculated He+ + He2+ cross sections (Table 4 source column); the printed coefficients use thin-space digit groups."
+
+[[formulas]]
+id = "salpeter_zaidi"
+material = "He"
+equation = "unnumbered, p. 884"
+printed = "df/d(E/R) = 287.6 (E/R)^-3.5 - 1807.0 (E/R)^-4.0 + 6836.25 (E/R)^-4.5"
+variable = "E/R: photon energy in Rydberg units"
+state = "none (per atom)"
+density = "none"
+range = "asymptotic, above about 13.6 keV ('purports to be satisfactory beyond 13.6 keV')"
+coefficients = { a35 = "287.6", a40 = "-1807.0", a45 = "6836.25" }
+check = "Not checkable against printed values here."
+notes = "Reproduced: Salpeter and Zaidi's asymptotic photoionisation formula (E. E. Salpeter and M. H. Zaidi, Phys. Rev. 125, 248 (1962)), in the author's units."
+
+[[formulas]]
+id = "samson_asymptotic"
+material = "He"
+equation = "unnumbered, p. 884"
+printed = "df/d(E/R) = 173.0 (E/R)^-3.5"
+variable = "E/R: photon energy in Rydberg units"
+state = "none (per atom)"
+density = "none"
+range = "3-8 keV (fit to photoelectric data)"
+coefficients = { a35 = "173.0" }
+check = "Not checkable here; 60 % of Salpeter and Zaidi's leading term, as the text says."
+notes = "Reproduced: Samson et al. (1994)'s analytical fit, in the author's units."

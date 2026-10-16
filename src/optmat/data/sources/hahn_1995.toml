@@ -1,0 +1,1018 @@
+citation = "J. W. Hahn and E. S. Lee, J. Opt. Soc. Am. B 12, 1021 (1995)"
+doi = "10.1364/josab.12.001021"
+library = "Hahn_1995_MeasurementNonresonantThird"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Nonlinear interferometry of CARS: two gas cells in series (argon reference, \
+sample), with a phase-shifting unit of sliding BK-7 wedges between them; the \
+fringe amplitude of the summed CARS signal against the sample pressure (up to 2 bar, \
+transducer calibrated to 0.1 %) gives the sample's nonresonant susceptibility \
+relative to argon's. BOXCARS phase matching, injection-seeded single-mode Nd:YAG pump \
+at 532 nm (< 100 MHz, 7-8 ns) and a single-mode pulsed dye Stokes (about 500 MHz), \
+Raman shift 2157 cm^-1 (2334 cm^-1 for CO, CF4, H2), parallel polarizations; \
+shot-by-shot normalization to propane's nonresonant CARS."""
+notes = """Nonresonant CARS susceptibilities relative to argon, for C2H2, CO2, CH4, N2, O2, \
+C3H8, CO, CF4 ('Freon') and H2; acetylene, propane and CF4 are not curated species \
+(skipped).
+
+Definitions: the CARS susceptibility of the CARS literature, Eq. (14), p. 1025 (after \
+Druet and Taran): chi_CARS(3) = (N/hbar) sum (rho_aa - rho_bb) c^4/(w1 w2^3) (d sigma/d \
+Omega) / (w_ba - w1 + w2 + i gamma_ba), N the number density; the off-resonant Raman \
+part, Eq. (15), neglects i gamma. Values per amagat, 10^-18 cm^3/(erg amagat). The \
+absolute scale is argon's 9.46 x 10^-18 cm^3/(erg amagat) 'reported by Rosasco and \
+Hurst' (Table 1 note b): rosasco_1985's 3 sigma/24 = 0.788 x 10^-18 esu times 12 \
+(their chi^CARS = 12 chi_1111), the same convention as farrow_1985: chi^CARS = N0 \
+gamma_T/2 at 1 amagat, gamma_T = 2 chi^CARS/N0 (1e-18 per amagat = 147.8 au). Eqs. \
+(1)-(13) (pp. 1022-1023) model the interference: I ~ 1 + eta^2 + 2 eta cos(...), eta = \
+chi_s P_s phi / (chi_r P_r); the fringe amplitude is linear in the sample pressure.
+
+Results: Table 1 (p. 1025) ratio of fringe slopes to argon's (uncertainty 'usually about \
+2-3 % and ... no larger than 5 %', p. 1025) and effective chi_NR (ratio x 9.46); Table 2 \
+(p. 1025) the off-resonant Raman terms computed from Eq. (15) with Schrotter and \
+Klockner's (curated as schrotter_1979) and Martin's cross sections; Table 3 (p. 1026) the electronic chi_NR = \
+effective minus off-resonant (checked: CO2 10.8 + 0.35 + 0.62 = 11.77, CH4 26.9 - 4.17 = \
+22.73, N2 10.2 - 2.30 = 7.90, O2 7.31 + 0.67 = 7.98, CO 10.3 + 2.03 = 12.33, H2 6.66 - \
+0.77 = 5.89 against 5.90 printed). 'The uncertainties of the absolute values of the \
+electronic susceptibility ... are estimated to be 10 %' (Table 3 note a); 'overall \
+uncertainty ... is less than 5 %' (abstract, conclusion; the relative measurement). \
+Check measurement (p. 1026): O2 at 2334 cm^-1, effective 7.28 +- 0.18, off-resonant \
+-0.53, electronic 7.81 x 10^-18, 2.1 % from the 2157 cm^-1 value.
+
+Part: the effective values contain the off-resonant vibrational Raman tails at the \
+measurement's Raman shift (recorded total); the electronic values subtract the \
+computed tails (the subtraction of computed gamma^v; no orientational term \
+enters CARS at these detunings). The library text of this paper has glyph errors \
+(10^-18 as '10218', cm^-1 as 'cm21', minus signs as '2'); every value was read against \
+the table images."""
+
+
+[[datasets]]
+id = "electronic_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__electronic_CO2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 1026), 'This Experiment': the electronic chi_NR(3), Table 1's effective value minus Table 2's computed off-resonant Raman term, per amagat, at the 532 nm pump and Raman shift 2157 cm^-1; argon's 9.46 (Rosasco and Hurst) is the scale. Uncertainty 10 % absolute (note a). CARS chi^CARS convention (gamma_T = 2 chi/N0)."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "electronic_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__electronic_CH4.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 1026), 'This Experiment': the electronic chi_NR(3), Table 1's effective value minus Table 2's computed off-resonant Raman term, per amagat, at the 532 nm pump and Raman shift 2157 cm^-1; argon's 9.46 (Rosasco and Hurst) is the scale. Uncertainty 10 % absolute (note a). CARS chi^CARS convention (gamma_T = 2 chi/N0)."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "electronic_N2"
+material = "N2"
+file = "N2/hahn_1995__electronic_N2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 1026), 'This Experiment': the electronic chi_NR(3), Table 1's effective value minus Table 2's computed off-resonant Raman term, per amagat, at the 532 nm pump and Raman shift 2157 cm^-1; argon's 9.46 (Rosasco and Hurst) is the scale. Uncertainty 10 % absolute (note a). CARS chi^CARS convention (gamma_T = 2 chi/N0)."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "electronic_O2"
+material = "O2"
+file = "O2/hahn_1995__electronic_O2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 1026), 'This Experiment': the electronic chi_NR(3), Table 1's effective value minus Table 2's computed off-resonant Raman term, per amagat, at the 532 nm pump and Raman shift 2157 cm^-1; argon's 9.46 (Rosasco and Hurst) is the scale. Uncertainty 10 % absolute (note a). CARS chi^CARS convention (gamma_T = 2 chi/N0)."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "electronic_CO"
+material = "CO"
+file = "CO/hahn_1995__electronic_CO.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 1026), 'This Experiment': the electronic chi_NR(3), Table 1's effective value minus Table 2's computed off-resonant Raman term, per amagat, at the 532 nm pump and Raman shift 2334 cm^-1; argon's 9.46 (Rosasco and Hurst) is the scale. Uncertainty 10 % absolute (note a). CARS chi^CARS convention (gamma_T = 2 chi/N0)."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "electronic_H2"
+material = "H2"
+file = "H2/hahn_1995__electronic_H2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 3 (p. 1026), 'This Experiment': the electronic chi_NR(3), Table 1's effective value minus Table 2's computed off-resonant Raman term, per amagat, at the 532 nm pump and Raman shift 2334 cm^-1; argon's 9.46 (Rosasco and Hurst) is the scale. Uncertainty 10 % absolute (note a). CARS chi^CARS convention (gamma_T = 2 chi/N0)."
+[datasets.uncertainty]
+relative = 0.1
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "effective_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__effective_CO2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), effective chi_NR(3) (the row is the Raman shift in cm^-1), the fringe-slope ratio times argon's 9.46 (note b); parenthesized uncertainty. Includes the off-resonant Raman tail at this shift: total. Not independent of ratio_ and electronic_."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "effective_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__effective_CH4.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), effective chi_NR(3) (the row is the Raman shift in cm^-1), the fringe-slope ratio times argon's 9.46 (note b); parenthesized uncertainty. Includes the off-resonant Raman tail at this shift: total. Not independent of ratio_ and electronic_."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "effective_N2"
+material = "N2"
+file = "N2/hahn_1995__effective_N2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), effective chi_NR(3) (the row is the Raman shift in cm^-1), the fringe-slope ratio times argon's 9.46 (note b); parenthesized uncertainty. Includes the off-resonant Raman tail at this shift: total. Not independent of ratio_ and electronic_."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "effective_O2"
+material = "O2"
+file = "O2/hahn_1995__effective_O2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), effective chi_NR(3) (the row is the Raman shift in cm^-1), the fringe-slope ratio times argon's 9.46 (note b); parenthesized uncertainty. Includes the off-resonant Raman tail at this shift: total. Not independent of ratio_ and electronic_."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "effective_CO"
+material = "CO"
+file = "CO/hahn_1995__effective_CO.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), effective chi_NR(3) (the row is the Raman shift in cm^-1), the fringe-slope ratio times argon's 9.46 (note b); parenthesized uncertainty. Includes the off-resonant Raman tail at this shift: total. Not independent of ratio_ and electronic_."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "total"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "effective_H2"
+material = "H2"
+file = "H2/hahn_1995__effective_H2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), effective chi_NR(3) (the row is the Raman shift in cm^-1), the fringe-slope ratio times argon's 9.46 (note b); parenthesized uncertainty. Includes the off-resonant Raman tail at this shift: total. Not independent of ratio_ and electronic_."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "total"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "ratio_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__ratio_CO2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), 'Ratio of the slope of the interference fringe of the sample gas to that of argon' (note a; row = Raman shift in cm^-1): the measured ratio of the effective CARS susceptibilities at equal density (the ratio of the effective gammas), the paper's primary measurement; uncertainty in parentheses. Effective: includes the off-resonant Raman tail (total)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "cars"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "ratio_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__ratio_CH4.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), 'Ratio of the slope of the interference fringe of the sample gas to that of argon' (note a; row = Raman shift in cm^-1): the measured ratio of the effective CARS susceptibilities at equal density (the ratio of the effective gammas), the paper's primary measurement; uncertainty in parentheses. Effective: includes the off-resonant Raman tail (total)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "cars"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "ratio_N2"
+material = "N2"
+file = "N2/hahn_1995__ratio_N2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), 'Ratio of the slope of the interference fringe of the sample gas to that of argon' (note a; row = Raman shift in cm^-1): the measured ratio of the effective CARS susceptibilities at equal density (the ratio of the effective gammas), the paper's primary measurement; uncertainty in parentheses. Effective: includes the off-resonant Raman tail (total)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "cars"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "ratio_O2"
+material = "O2"
+file = "O2/hahn_1995__ratio_O2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), 'Ratio of the slope of the interference fringe of the sample gas to that of argon' (note a; row = Raman shift in cm^-1): the measured ratio of the effective CARS susceptibilities at equal density (the ratio of the effective gammas), the paper's primary measurement; uncertainty in parentheses. Effective: includes the off-resonant Raman tail (total)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "cars"
+part = "total"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "ratio_CO"
+material = "CO"
+file = "CO/hahn_1995__ratio_CO.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), 'Ratio of the slope of the interference fringe of the sample gas to that of argon' (note a; row = Raman shift in cm^-1): the measured ratio of the effective CARS susceptibilities at equal density (the ratio of the effective gammas), the paper's primary measurement; uncertainty in parentheses. Effective: includes the off-resonant Raman tail (total)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "cars"
+part = "total"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "ratio_H2"
+material = "H2"
+file = "H2/hahn_1995__ratio_H2.csv"
+table = "tbl_50a8b1a2127a"
+quantity = "hyperpolarizability_ratio"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 1 (p. 1025), 'Ratio of the slope of the interference fringe of the sample gas to that of argon' (note a; row = Raman shift in cm^-1): the measured ratio of the effective CARS susceptibilities at equal density (the ratio of the effective gammas), the paper's primary measurement; uncertainty in parentheses. Effective: includes the off-resonant Raman tail (total)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "Ar"
+process = "cars"
+part = "total"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "off_resonant_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__off_resonant_CO2.csv"
+table = "tbl_4564b15b3033"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 1025), the calculated off-resonant Raman term (Eq. (15)) at the measurement's Raman shift; rows are the Raman bands in cm^-1: rows 1285 and 1388 (the two Fermi-dyad bands), -0.35 and -0.62. The library lost the minus signs (restored in the extraction script from the image). Computed, vibrational (Q-branch) Raman tails; specific to the Raman shift."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "vibrational"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "off_resonant_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__off_resonant_CH4.csv"
+table = "tbl_4564b15b3033"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 1025), the calculated off-resonant Raman term (Eq. (15)) at the measurement's Raman shift; rows are the Raman bands in cm^-1: row 2917, +4.17. The library lost the minus signs (restored in the extraction script from the image). Computed, vibrational (Q-branch) Raman tails; specific to the Raman shift."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "vibrational"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "off_resonant_N2"
+material = "N2"
+file = "N2/hahn_1995__off_resonant_N2.csv"
+table = "tbl_4564b15b3033"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 1025), the calculated off-resonant Raman term (Eq. (15)) at the measurement's Raman shift; rows are the Raman bands in cm^-1: row 2331, +2.30. The library lost the minus signs (restored in the extraction script from the image). Computed, vibrational (Q-branch) Raman tails; specific to the Raman shift."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "vibrational"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "off_resonant_O2"
+material = "O2"
+file = "O2/hahn_1995__off_resonant_O2.csv"
+table = "tbl_4564b15b3033"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 1025), the calculated off-resonant Raman term (Eq. (15)) at the measurement's Raman shift; rows are the Raman bands in cm^-1: row 1555, -0.67. The library lost the minus signs (restored in the extraction script from the image). Computed, vibrational (Q-branch) Raman tails; specific to the Raman shift."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "vibrational"
+raman_shift_cm1 = 2157
+
+[[datasets]]
+id = "off_resonant_CO"
+material = "CO"
+file = "CO/hahn_1995__off_resonant_CO.csv"
+table = "tbl_4564b15b3033"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 1025), the calculated off-resonant Raman term (Eq. (15)) at the measurement's Raman shift; rows are the Raman bands in cm^-1: row 2143, -2.03 (at 2334 cm^-1). The library lost the minus signs (restored in the extraction script from the image). Computed, vibrational (Q-branch) Raman tails; specific to the Raman shift."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "vibrational"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "off_resonant_H2"
+material = "H2"
+file = "H2/hahn_1995__off_resonant_H2.csv"
+table = "tbl_4564b15b3033"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2 (p. 1025), the calculated off-resonant Raman term (Eq. (15)) at the measurement's Raman shift; rows are the Raman bands in cm^-1: row 4156, +0.77 (at 2334 cm^-1). The library lost the minus signs (restored in the extraction script from the image). Computed, vibrational (Q-branch) Raman tails; specific to the Raman shift."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "vibrational"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "electronic_2334_O2"
+material = "O2"
+table = "text"
+points = [["2334", "532", "7.81"]]
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 1026: O2 remeasured at the 2334 cm^-1 Raman shift: effective 7.28 x 10^-18 +- 0.18, off-resonant -0.53 x 10^-18, electronic 7.81 x 10^-18 cm^3/(erg amagat), 'which differs by only 2.1 % from the value listed in Table 3' (7.98 at 2157 cm^-1). A consistency check."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+raman_shift_cm1 = 2334
+
+[[datasets]]
+id = "irs_rosasco_hurst_Ar"
+material = "Ar"
+file = "Ar/hahn_1995__irs_rosasco_hurst_Ar.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["rosasco_1985"]
+notes = "Table 3 (p. 1026), column IRS (676 + 584 nm, note b: Refs. 23 and 28, Rosasco and Hurst 1985, 1986); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 12 x 0.788 = 9.46. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "kerr"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "irs_rosasco_hurst_H2"
+material = "H2"
+file = "H2/hahn_1995__irs_rosasco_hurst_H2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+use = "reproduced"
+reproduced_from = ["rosasco_1986"]
+notes = "Table 3 (p. 1026), column IRS (676 + 584 nm, note b: Refs. 23 and 28, Rosasco and Hurst 1985, 1986); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 12 x 1.5 x 0.2966 = 5.34. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "kerr"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_farrow_Ar"
+material = "Ar"
+file = "Ar/hahn_1995__cars_farrow_Ar.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["farrow_1985"]
+notes = "Table 3 (p. 1026), column CARS (532 + 607 nm, note c: Refs. 15 and 25, Farrow and Rahn 1985, Farrow et al. 1987); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_farrow_N2"
+material = "N2"
+file = "N2/hahn_1995__cars_farrow_N2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["farrow_1985"]
+notes = "Table 3 (p. 1026), column CARS (532 + 607 nm, note c: Refs. 15 and 25, Farrow and Rahn 1985, Farrow et al. 1987); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "eshg_shelton_rice_Ar"
+material = "Ar"
+file = "Ar/hahn_1995__eshg_shelton_rice_Ar.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "eshg_shelton_rice_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__eshg_shelton_rice_CO2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "total"
+
+[[datasets]]
+id = "eshg_shelton_rice_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__eshg_shelton_rice_CH4.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "total"
+
+[[datasets]]
+id = "eshg_shelton_rice_N2"
+material = "N2"
+file = "N2/hahn_1995__eshg_shelton_rice_N2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "total"
+
+[[datasets]]
+id = "eshg_shelton_rice_O2"
+material = "O2"
+file = "O2/hahn_1995__eshg_shelton_rice_O2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "total"
+
+[[datasets]]
+id = "eshg_shelton_rice_CO"
+material = "CO"
+file = "CO/hahn_1995__eshg_shelton_rice_CO.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "total"
+
+[[datasets]]
+id = "eshg_shelton_rice_H2"
+material = "H2"
+file = "H2/hahn_1995__eshg_shelton_rice_H2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["shelton_1994"]
+notes = "Table 3 (p. 1026), column EHSG [sic] (694 nm, note d: 'static electric-field-induced second-harmonic generation, Ref. 42', Shelton and Rice 1994); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "eshg"
+convention = "chi_cars_per_amagat"
+part = "total"
+
+[[datasets]]
+id = "cars_used_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__cars_used_CO2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["unattributed in the paper (Table 3 note e); possibly B. Lange and J. Wolfrum, Appl. Phys. B 51, 53 (1990)"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note e: 'Effective chi_NR obtained by comparing the absolute intensities of the nonresonant CARS signals of two gases in a USED CARS configuration'; no reference is given (the paper's otherwise uncited Ref. 43, Lange and Wolfrum, is on USED CARS)); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_used_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__cars_used_CH4.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["unattributed in the paper (Table 3 note e); possibly B. Lange and J. Wolfrum, Appl. Phys. B 51, 53 (1990)"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note e: 'Effective chi_NR obtained by comparing the absolute intensities of the nonresonant CARS signals of two gases in a USED CARS configuration'; no reference is given (the paper's otherwise uncited Ref. 43, Lange and Wolfrum, is on USED CARS)); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_used_N2"
+material = "N2"
+file = "N2/hahn_1995__cars_used_N2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["unattributed in the paper (Table 3 note e); possibly B. Lange and J. Wolfrum, Appl. Phys. B 51, 53 (1990)"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note e: 'Effective chi_NR obtained by comparing the absolute intensities of the nonresonant CARS signals of two gases in a USED CARS configuration'; no reference is given (the paper's otherwise uncited Ref. 43, Lange and Wolfrum, is on USED CARS)); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_used_O2"
+material = "O2"
+file = "O2/hahn_1995__cars_used_O2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["unattributed in the paper (Table 3 note e); possibly B. Lange and J. Wolfrum, Appl. Phys. B 51, 53 (1990)"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note e: 'Effective chi_NR obtained by comparing the absolute intensities of the nonresonant CARS signals of two gases in a USED CARS configuration'; no reference is given (the paper's otherwise uncited Ref. 43, Lange and Wolfrum, is on USED CARS)); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_used_H2"
+material = "H2"
+file = "H2/hahn_1995__cars_used_H2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["unattributed in the paper (Table 3 note e); possibly B. Lange and J. Wolfrum, Appl. Phys. B 51, 53 (1990)"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note e: 'Effective chi_NR obtained by comparing the absolute intensities of the nonresonant CARS signals of two gases in a USED CARS configuration'; no reference is given (the paper's otherwise uncited Ref. 43, Lange and Wolfrum, is on USED CARS)); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_lundeen_Ar"
+material = "Ar"
+file = "Ar/hahn_1995__cars_lundeen_Ar.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note f: Ref. 22, Lundeen et al.): 3 x Lundeen's per-molecule chi x 2.687e19; per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 131 -> 10.56. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_lundeen_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__cars_lundeen_CO2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note f: Ref. 22, Lundeen et al.): 3 x Lundeen's per-molecule chi x 2.687e19; per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 153 -> 12.33. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_lundeen_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__cars_lundeen_CH4.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note f: Ref. 22, Lundeen et al.): 3 x Lundeen's per-molecule chi x 2.687e19; per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 330 -> 26.6. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_lundeen_N2"
+material = "N2"
+file = "N2/hahn_1995__cars_lundeen_N2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note f: Ref. 22, Lundeen et al.): 3 x Lundeen's per-molecule chi x 2.687e19; per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 105 -> 8.46. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_lundeen_O2"
+material = "O2"
+file = "O2/hahn_1995__cars_lundeen_O2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note f: Ref. 22, Lundeen et al.): 3 x Lundeen's per-molecule chi x 2.687e19; per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 141 -> 11.37. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_lundeen_CO"
+material = "CO"
+file = "CO/hahn_1995__cars_lundeen_CO.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["lundeen_1983"]
+notes = "Table 3 (p. 1026), column CARS (532 + 683 nm, note f: Ref. 22, Lundeen et al.): 3 x Lundeen's per-molecule chi x 2.687e19; per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 155 -> 12.49. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_rado_Ar"
+material = "Ar"
+file = "Ar/hahn_1995__cars_rado_Ar.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 3 (p. 1026), column CARS (694 + 976 nm, note g: 'Ref. 21 [Rado], reevaluated data; see text', with Rosasco and Hurst's H2 Q(1) value); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 12 x 0.776 = 9.31 (rosasco_1985). Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_rado_CO2"
+material = "CO2"
+file = "CO2/hahn_1995__cars_rado_CO2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 3 (p. 1026), column CARS (694 + 976 nm, note g: 'Ref. 21 [Rado], reevaluated data; see text', with Rosasco and Hurst's H2 Q(1) value); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_rado_CH4"
+material = "CH4"
+file = "CH4/hahn_1995__cars_rado_CH4.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 3 (p. 1026), column CARS (694 + 976 nm, note g: 'Ref. 21 [Rado], reevaluated data; see text', with Rosasco and Hurst's H2 Q(1) value); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 12 x 1.48 = 17.76, printed 17.72. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_rado_N2"
+material = "N2"
+file = "N2/hahn_1995__cars_rado_N2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 3 (p. 1026), column CARS (694 + 976 nm, note g: 'Ref. 21 [Rado], reevaluated data; see text', with Rosasco and Hurst's H2 Q(1) value); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 12 x 0.676 = 8.11. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_rado_O2"
+material = "O2"
+file = "O2/hahn_1995__cars_rado_O2.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 3 (p. 1026), column CARS (694 + 976 nm, note g: 'Ref. 21 [Rado], reevaluated data; see text', with Rosasco and Hurst's H2 Q(1) value); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Checked: 12 x 0.651 = 7.81. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"
+
+[[datasets]]
+id = "cars_rado_CO"
+material = "CO"
+file = "CO/hahn_1995__cars_rado_CO.csv"
+table = "tbl_c1933c977eba"
+quantity = "nonlinear_susceptibility"
+unit = "cm3/(erg amagat)"
+scale = 1e-18
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rosasco_1985", "W. G. Rado, Appl. Phys. Lett. 11, 123 (1967)"]
+notes = "Table 3 (p. 1026), column CARS (694 + 976 nm, note g: 'Ref. 21 [Rado], reevaluated data; see text', with Rosasco and Hurst's H2 Q(1) value); per amagat, in the paper's chi^CARS units (10^-18 cm^3/(erg amagat)), wavelength as the column header. Reproduced and rescaled; about 10 % (note a)."
+[datasets.parameters]
+process = "cars"
+convention = "chi_cars_per_amagat"
+part = "electronic"

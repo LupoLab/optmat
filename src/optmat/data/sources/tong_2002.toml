@@ -1,0 +1,486 @@
+citation = "X. M. Tong, Z. X. Zhao and C. D. Lin, \"Theory of molecular tunneling ionization\", Phys. Rev. A 66, 033402 (2002)"
+doi = "10.1103/PhysRevA.66.033402"
+library = "Tong_2002_TheoryMolecularTunneling"
+identity = "VALIDATED"
+kind = "theory"
+technique = """The molecular ADK (MO-ADK) tunnelling theory: the asymptotic valence \
+orbital of a diatomic molecule is expanded about the molecular centre in spherical \
+harmonics with coefficients C_l (Eqs. 1-2), and the static-field rate follows from \
+Smirnov and Chibisov's procedure (Eq. 7). The molecular C_l are fitted to valence \
+orbitals from a self-consistent multiple-scattering (muffin-tin) calculation at fixed \
+internuclear distance (refs. 20-22); the atomic C_l are from self-interaction-free \
+density-functional theory (Tong and Chu, Phys. Rev. A 55, 3406 (1997), ref. 23). \
+Single-active-electron, no many-electron effects (p. 2)."""
+notes = """Journal pages 033402-1 to -11 = PDF pages 1-11. The founding paper of MO-ADK; \
+solprop's moadk_tong2002 parameters (N2, H2/D2, O2) are its Table I.
+
+EXTRACTED. Table I (p. 3; cells file only, image checked): I_p, R and C_l of the \
+valence orbital of H2+ (sigma_g), the hydrogen molecule printed 'D_2 (sigma_g)', N2 \
+(sigma_g), O2 (pi_g) and CO (sigma); F2, S2 (pi_g), NO and SO (pi) are not curated \
+species and are not taken (F2 15.70 eV, 1.412 A, C_2 1.17, C_4 0.13; S2 9.36 eV; NO \
+9.26 eV; SO 10.29 eV, whose C_2 is printed negative, -0.31). Table II (p. 3): I_p, \
+C_l and C_l(ADK) of He (1s), Ne (2p), Ar (3p), Kr (4p) and Xe (5p).
+
+THE HYDROGEN ROW. Table I labels it D_2 (I_p 15.47 eV, R 0.742 A); the paper applies \
+it to D2 throughout (the D2:Ar comparison, Figs. 4-6) and uses the same C_l for H2 in \
+Fig. 2 ('the MO-ADK rate for H2 obtained from the present model', p. 5). A \
+fixed-nuclei orbital at a given R does not depend on the nuclear masses, so the \
+coefficients serve both isotopes at that R; the I_p printed is for the row as \
+labelled. Recorded as material D2, as \
+printed; solprop uses the row for H2 and D2 alike (TC-439). zhao_2010 relabels the \
+row 'D_2/H_2'.
+
+THE IONISATION ENERGIES ARE NOT VERTICAL. Table I's caption says only 'the \
+ionization energy'. The text says, for D2:Ar (p. 6), 'Note that the ionization \
+potential we used here is the vertical transition energy, which is about 0.88 eV \
+larger than the value listed in Table I', and for O2:Xe (p. 7) 'the vertical \
+transition energy that is about 0.33 eV larger than the value listed in Table I for \
+O2'; p. 5: 'the ionization energy is taken to be the vertical ionization energy, which \
+is a function of internuclear separation', computed as Hartree-Fock total-energy \
+differences (ref. 28, p. 8). So Table I's values are not the vertical energies the \
+rates used for D2 and O2, and the paper does not say what they are or where they come \
+from: kind = 'not stated'. H2+'s 29.99 eV at R = \
+1.058 A (2.0 a0) is the fixed-nuclei binding energy of its one electron (zhao_2010 \
+Table VI prints 1.1026 hartree as 'exact'). The atomic I_p of Table II are to the \
+ion's ground state (adiabatic and vertical coincide for an atom); their source is not \
+stated. All I_p are 'check'. Table II prints He's I_p as 23.59 eV, a misprint for \
+24.59 (erratum below).
+
+THE COEFFICIENTS. Eq. (1), p. 2: Psi^m(r) = sum_l C_l F_l(r) Y_lm(r^), 'with m being \
+the magnetic quantum number along the molecular axis'; Eq. (2): 'We normalize the \
+coefficient C_l in such a way that the wave function in the asymptotic region can be \
+expressed as F_l(r -> inf) ~ r^(Z_c/kappa - 1) e^(-kappa r)', Z_c the effective \
+Coulomb charge, kappa = sqrt(2 I_p), I_p 'the ionization potential for the given \
+valence orbital'; atomic units. Eqs. (3)-(4), p. 2-3: along the field, Y_lm ~ Q(l,m) \
+sin^|m| theta e^(i m phi) / (2^|m| |m|! sqrt(2 pi)), Q(l,m) = (-1)^m \
+sqrt((2l+1)(l+|m|)!/(2(l-|m|)!)). The m of each orbital (p. 4): 'For sigma orbitals, \
+m = 0; for pi orbital, m = 1' (m taken positive), and for atoms 'We have set m = 0 \
+for the ionization of atoms since higher values of m contribute little'. Stated \
+accuracy (p. 8): 'the major error in the MO-ADK model comes from the calculation of \
+the coefficients C_l's in Table I, which are estimated to have an error at the 20% \
+level' (recorded as the uncertainty of the molecular C_l, level not stated). The \
+atomic C_l (p. 3): 'we did not use the coefficient C_l from the ADK model. We use the \
+actual value calculated based on the self-interaction free density-functional theory \
+for atoms ... Note that our definition of the ADK coefficients is somewhat different.' \
+The paper gives no formula for its C_l(ADK) row, and it does not follow from Ammosov \
+et al.'s Eq. (19) or its Hartree form (without the 1/n*) converted to Eq. (2)'s \
+normalisation, C_l = C_n*l* kappa^(n* + 1/2): those give He 2.92 or 2.54, Ne 2.78 or \
+2.47, Ar 2.25 or 2.17, Kr 2.05 or 2.04, Xe 1.80 or 1.85 against the printed 2.67, \
+2.52, 2.19, 2.04, 1.86 (computed 2026-09-26 with Table II's I_p). Not reproduced.
+
+THE RATE (p. 3-4). Static field, molecule along the field, Eq. (7): w_stat(F, 0) = \
+B^2(m)/(2^|m| |m|!) kappa^-(2Z_c/kappa - 1) (2 kappa^3/F)^(2Z_c/kappa - |m| - 1) \
+exp(-2 kappa^3/3F), with Eq. (6) B(m) = sum_l C_l Q(l, m); 'Note that in Eq. (7) we \
+have corrected the error in the coefficients in Ref. 16' (Smirnov and Chibisov). At \
+Euler angles R between the molecular axis and the field, Eq. (8) B(m') = sum_l C_l \
+D^l_m',m(R) Q(l, m') and Eq. (9) w_stat(F, R) = sum_m' [Eq. (7) with m']. Low-frequency \
+ac field, Eq. (10): w(F, R) = (3F/(pi kappa^3))^(1/2) w_stat(F, R), F the peak field. \
+Randomly oriented molecules: the signal of Eq. (16) (Gaussian beam, P = 1 - \
+exp(-int w dt), Eq. (15)) integrated over R, Eq. (17). The rates are per orbital \
+(one active electron); the paper applies no occupation factor, and says the MO-ADK \
+theory 'does not account for the many-electron effect' (p. 2). Vibrational folding \
+Eq. (18) (harmonic ground state) changes little.
+
+TABLE III (p. 4, notes only): ratios of single-ionisation rates molecule:companion \
+atom, A_1 (Eq. 12, the structure factor), A_2 (Eq. 13), A_3 (Eq. 14) and R (Eq. 11), \
+at 1e14 W/cm^2: D2:Ar 0.31, 0.88, 0.42, 0.14; O2:Xe 0.38, 0.03, 0.74, 0.01; N2:Ar \
+0.84, 1.04, 1.31, 1.15; CO:Kr 0.33, 1.00, 0.98, 0.32; F2:Ar, S2:Xe, SO:Xe, NO:Xe \
+(and the last three at 2e13 W/cm^2) not curated. Model outputs, not a quantity. The \
+text (p. 8) quotes N2:Ar 0.98 at 1e14 W/cm^2 where the table's R is 1.15.
+
+FIGURES (not digitised): Fig. 1 H2+ static rate against F (complex rotation vs \
+MO-ADK; they part at F = 0.2 au); Fig. 2 H2 rate against intensity with Saenz's ab \
+initio values (ref. 25); Fig. 3 aligned:random rate ratios for N2 and O2; Figs. 4, 6-10 \
+ratios of ionisation signals D2:Ar, O2:Xe, N2:Ar, F2:Ar, CO:Kr against peak intensity \
+(25 fs Gaussian pulses in the calculations) with the measurements of Wells et al., \
+DeWitt et al., Talebpour et al. and Guo et al.; Fig. 5 Hartree-Fock potential curves \
+of D2 and D2+."""
+
+[[datasets]]
+id = "ip_H2+"
+material = "H2+"
+file = "H2+/tong_2002__ip_H2+.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, H2+ (sigma_g) at R = 1.058 A: the fixed-nuclei binding energy of the 1s sigma_g electron (the energy to H2++ at the same R); kind not stated (see the record's notes)."
+[datasets.parameters]
+kind = "not stated"
+orbital = "sigma_g"
+
+[[datasets]]
+id = "ip_D2"
+material = "D2"
+file = "D2/tong_2002__ip_D2.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, row printed 'D_2 (sigma_g)'. Not the vertical energy: the text (p. 6) says the vertical transition energy used for the D2:Ar ratios is about 0.88 eV larger. Kind and source not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "sigma_g"
+
+[[datasets]]
+id = "ip_N2"
+material = "N2"
+file = "N2/tong_2002__ip_N2.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, N2 (sigma_g). Kind and source not stated (see the record's notes). solprop's moadk reference_potential for N2 is this 15.58 eV."
+[datasets.parameters]
+kind = "not stated"
+orbital = "sigma_g"
+
+[[datasets]]
+id = "ip_O2"
+material = "O2"
+file = "O2/tong_2002__ip_O2.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, O2 (pi_g). Not the vertical energy: the text (p. 7) says the vertical transition energy used for O2:Xe is about 0.33 eV larger. Kind and source not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "pi_g"
+
+[[datasets]]
+id = "ip_CO"
+material = "CO"
+file = "CO/tong_2002__ip_CO.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table I, CO (sigma). Kind and source not stated."
+[datasets.parameters]
+kind = "not stated"
+orbital = "sigma"
+
+[[datasets]]
+id = "cl_H2+"
+material = "H2+"
+file = "H2+/tong_2002__cl_H2+.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table I, H2+ (sigma_g), the ground state at R = 1.058 A = 2.0 a0: C_0, C_2, C_4 (rows = l). Used for the static-rate test of Fig. 1."
+[datasets.parameters]
+model = "moadk"
+orbital = "1s sigma_g (printed 'sigma_g')"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units, one-centre expansion about the molecular centre (Z_c = 2 for H2+)"
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "cl_D2"
+material = "D2"
+file = "D2/tong_2002__cl_D2.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table I, the hydrogen row printed 'D_2 (sigma_g)' (zhao_2010: 'D_2/H_2'): C_0, C_2, C_4. The paper uses it for D2 and for H2 (see the record's notes); solprop's moadk_tong2002 for H2 and D2 is this row. The 20 % is the paper's estimate for the Table I coefficients (p. 8)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 sigma_g (printed 'sigma_g')"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units, one-centre expansion about the molecular centre"
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "cl_N2"
+material = "N2"
+file = "N2/tong_2002__cl_N2.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table I, N2 (sigma_g, the HOMO 3 sigma_g): C_0, C_2, C_4 = solprop's moadk_tong2002 for N2. 'a strong mixture of s wave and d wave' (p. 8)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 3 sigma_g (printed 'sigma_g')"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units, one-centre expansion about the molecular centre"
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "cl_O2"
+material = "O2"
+file = "O2/tong_2002__cl_O2.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table I, O2 (pi_g, the HOMO 1 pi_g): C_2 and C_4 (the l = 0 cell is blank: a pi orbital has no s wave) = solprop's moadk_tong2002 for O2. 'the dominant m = 1 and l = 2 character' (p. 7)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 1 pi_g (printed 'pi_g')"
+m = 1
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units, one-centre expansion about the molecular centre"
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "cl_CO"
+material = "CO"
+file = "CO/tong_2002__cl_CO.csv"
+table = "tbl_3048e91bd1cc"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+columns = { internuclear_distance = "angstrom" }
+use = "check"
+notes = "Table I, second block, CO (sigma, the HOMO 5 sigma): C_0 ... C_3 (odd waves present: a heteronuclear molecule). The expansion centre is not stated beyond 'the center of the molecule' (p. 8), which matters for the odd waves; the Table III ratio is averaged over the two orientations along the field (p. 4)."
+[datasets.parameters]
+model = "moadk"
+orbital = "HOMO 5 sigma (printed 'sigma')"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2): Psi^m = sum_l C_l F_l(r) Y_lm, F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units, one-centre expansion about the molecular centre"
+[datasets.uncertainty]
+relative = 0.2
+level = "not stated"
+
+[[datasets]]
+id = "ip_He"
+material = "He"
+file = "He/tong_2002__ip_He.csv"
+table = "tbl_58844fa6da0d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, He (1s). Source not stated; for an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_Ne"
+material = "Ne"
+file = "Ne/tong_2002__ip_Ne.csv"
+table = "tbl_58844fa6da0d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, Ne (2p). Source not stated; for an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_Ar"
+material = "Ar"
+file = "Ar/tong_2002__ip_Ar.csv"
+table = "tbl_58844fa6da0d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, Ar (3p). Source not stated; for an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_Kr"
+material = "Kr"
+file = "Kr/tong_2002__ip_Kr.csv"
+table = "tbl_58844fa6da0d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, Kr (4p). Source not stated; for an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "ip_Xe"
+material = "Xe"
+file = "Xe/tong_2002__ip_Xe.csv"
+table = "tbl_58844fa6da0d"
+quantity = "ionization_energy"
+unit = "eV"
+abscissa = "none"
+use = "check"
+notes = "Table II, Xe (5p). Source not stated; for an atom the adiabatic and vertical energies coincide."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "cl_He"
+material = "He"
+file = "He/tong_2002__cl_He.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l: from self-interaction-free density-functional theory (ref. 23); one partial wave, the 1s orbital's l = 0."
+[datasets.parameters]
+model = "moadk"
+orbital = "1s"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2) with one partial wave (the atomic limit of Eq. (7)): F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "cl_Ne"
+material = "Ne"
+file = "Ne/tong_2002__cl_Ne.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l: from self-interaction-free density-functional theory (ref. 23); one partial wave, the 2p orbital's l = 1, m = 0 (p. 4)."
+[datasets.parameters]
+model = "moadk"
+orbital = "2p"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2) with one partial wave (the atomic limit of Eq. (7)): F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "cl_Ar"
+material = "Ar"
+file = "Ar/tong_2002__cl_Ar.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l: from self-interaction-free density-functional theory (ref. 23); one partial wave, the 3p orbital's l = 1, m = 0 (p. 4)."
+[datasets.parameters]
+model = "moadk"
+orbital = "3p"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2) with one partial wave (the atomic limit of Eq. (7)): F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "cl_Kr"
+material = "Kr"
+file = "Kr/tong_2002__cl_Kr.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l: from self-interaction-free density-functional theory (ref. 23); one partial wave, the 4p orbital's l = 1, m = 0 (p. 4)."
+[datasets.parameters]
+model = "moadk"
+orbital = "4p"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2) with one partial wave (the atomic limit of Eq. (7)): F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "cl_Xe"
+material = "Xe"
+file = "Xe/tong_2002__cl_Xe.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l: from self-interaction-free density-functional theory (ref. 23); one partial wave, the 5p orbital's l = 1, m = 0 (p. 4)."
+[datasets.parameters]
+model = "moadk"
+orbital = "5p"
+m = 0
+normalisation = "Tong et al. 2002 Eqs. (1)-(2) with one partial wave (the atomic limit of Eq. (7)): F_l(r -> inf) ~ r^(Z_c/kappa - 1) exp(-kappa r), kappa = sqrt(2 I_p), atomic units"
+
+[[datasets]]
+id = "cl_adk_He"
+material = "He"
+file = "He/tong_2002__cl_adk_He.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l(ADK): 'the coefficients predicted by the ADK model' in this paper's normalisation, 'our definition of the ADK coefficients is somewhat different' (p. 3); the formula is not given and was not reproduced (record's notes)."
+[datasets.parameters]
+model = "adk"
+orbital = "1s"
+m = 0
+normalisation = "ADK's coefficient re-expressed in Tong et al. 2002's Eq. (2) normalisation (F_l ~ r^(Z_c/kappa - 1) exp(-kappa r)); the conversion is not given (p. 3)"
+
+[[datasets]]
+id = "cl_adk_Ne"
+material = "Ne"
+file = "Ne/tong_2002__cl_adk_Ne.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l(ADK); see cl_adk_He."
+[datasets.parameters]
+model = "adk"
+orbital = "2p"
+m = 0
+normalisation = "ADK's coefficient re-expressed in Tong et al. 2002's Eq. (2) normalisation (F_l ~ r^(Z_c/kappa - 1) exp(-kappa r)); the conversion is not given (p. 3)"
+
+[[datasets]]
+id = "cl_adk_Ar"
+material = "Ar"
+file = "Ar/tong_2002__cl_adk_Ar.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l(ADK); see cl_adk_He."
+[datasets.parameters]
+model = "adk"
+orbital = "3p"
+m = 0
+normalisation = "ADK's coefficient re-expressed in Tong et al. 2002's Eq. (2) normalisation (F_l ~ r^(Z_c/kappa - 1) exp(-kappa r)); the conversion is not given (p. 3)"
+
+[[datasets]]
+id = "cl_adk_Kr"
+material = "Kr"
+file = "Kr/tong_2002__cl_adk_Kr.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l(ADK); see cl_adk_He."
+[datasets.parameters]
+model = "adk"
+orbital = "4p"
+m = 0
+normalisation = "ADK's coefficient re-expressed in Tong et al. 2002's Eq. (2) normalisation (F_l ~ r^(Z_c/kappa - 1) exp(-kappa r)); the conversion is not given (p. 3)"
+
+[[datasets]]
+id = "cl_adk_Xe"
+material = "Xe"
+file = "Xe/tong_2002__cl_adk_Xe.csv"
+table = "tbl_58844fa6da0d"
+quantity = "tunnelling_structure_coefficient"
+abscissa = "label"
+use = "check"
+notes = "Table II, row C_l(ADK); see cl_adk_He."
+[datasets.parameters]
+model = "adk"
+orbital = "5p"
+m = 0
+normalisation = "ADK's coefficient re-expressed in Tong et al. 2002's Eq. (2) normalisation (F_l ~ r^(Z_c/kappa - 1) exp(-kappa r)); the conversion is not given (p. 3)"
+
+[[errata]]
+dataset = "ip_He"
+row = "I_p"
+column = "value"
+printed = "23.59"
+corrected = "24.59"
+reason = "A misprinted leading digit: helium's first ionisation energy is 24.59 eV to the printed digits, and the same group gives it as 0.904 hartree (24.60 eV) in tong_2005 Table 2 and zhao_2010 Table I; Table II's other four atoms agree to the printed digits with the compiled values in the library (Ne 21.56, Ar 15.76, Kr 14.00, Xe 12.13 against hohm_2012's CRC values 21.56454, 15.759610, 13.99961, 12.12984). Which I_p entered the fit of He's C_l = 3.13 is not stated."
+evidence = "Table II image (p. 3) prints 23.59 (checked 2026-09-26); hohm_2012 ip1_He 24.587387 eV (CRC Handbook), wang_2021 ip_expt_He 24.587 eV (Moore 1970), tong_2005 ip_He and zhao_2010 table1_expt_He 0.904 hartree."

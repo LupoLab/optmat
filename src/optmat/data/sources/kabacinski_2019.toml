@@ -1,0 +1,423 @@
+citation = "P. Kabaciński, T. M. Kardaś, Y. Stepanenko and C. Radzewicz, \"Nonlinear refractive index measurement by SPM-induced phase regression\", Opt. Express 27, 11018 (2019)"
+doi = "10.1364/oe.27.011018"
+library = "Kabacinski_2019_NonlinearRefractiveIndex"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """SPM-induced phase regression: SHG FROG retrieval (PCGPA, 128x128 grid, 30 runs and \
+100 bootstrap runs per trace) of the pulse with and without the sample; the SPM phase \
+Delta phi(t) = phi_s(t) - phi_i(t) is fitted to n2 (2 pi d / lambda) I(t) + a t + b \
+(Eq. 3, Levenberg-Marquardt, effective-variance weights) over the part of the pulse above \
+15 % of peak intensity. Light Conversion PHAROS Yb laser, 1 kHz, 210 fs pulses centred at \
+1030 nm; weakly focused (waist 254 +- 3 um, Rayleigh range about 20 cm) into thin \
+uncoated samples (Fresnel loss included); pulse energies 10-180 uJ, highest intensity 420 \
+GW/cm^2 (pp. 11020-11021). The final n2 is the weighted average over pulse energies."""
+notes = """Journal pages 11018-11028 = PDF pages 1-11. Identity checked against the first page.
+
+DEFINING RELATION (p. 11019, Eq. 1): Delta phi(t) = n2 (2 pi d / lambda) I(t), d the \
+sample thickness, lambda the central wavelength; i.e. n = n0 + n2 I, self-phase modulation \
+of one beam: coefficient 'self'. Linear polarization (the laser after a thin-film \
+polarizer); for the birefringent samples the field is along the stated axis.
+
+PART. 'the Raman response of the medium can be included into the Kerr effect' (p. \
+11019): the fitted n2 contains whatever part of the nuclear response follows a 210 fs \
+pulse; the paper does not separate it. part = 'unknown'.
+
+UNCERTAINTY. From the bootstrap FROG errors propagated through the fit (Appendix A); the \
+final value is the weighted mean over energies with n2_err = sqrt(max(sigma_int^2, \
+sigma_ext^2)) (p. 11027): a one-standard-deviation error of the mean, recorded as '1 \
+sigma'. Relative errors 1.1 % (YAG) to 5.4 % (YVO4, few measurements) (p. 11026). For \
+CaF2 'a slight growth of the n2 value with pulse energy' (p. 11026).
+
+SAMPLES (p. 11020): fused silica 3 mm (Eksma Optics; grade not stated), YAG 2 mm and CaF2 \
+2.63 mm (HG Optronics), calcite 2 mm and YVO4 2 mm, both polarizations (Crylight \
+Photonics), BiBO 2 mm 'with electric field along X axis' (Foctek). BiBO's X is taken as \
+the dielectric (optical-indicatrix) x axis, the usual BiBO convention; the paper does not \
+define it. 'Calcite no/ne' and 'YVO4 no/ne' are the fields along the o and e axes.
+
+LITERATURE (Table 1; units 10^-16 cm^2/W, footnote read from the image, the extraction \
+garbles it). All 'measured with Z-scan' according to the text (p. 11024), although [17] \
+(Adair et al. 1989) is three-wave mixing, [33] (Milam 1998) a review's recommended value \
+and [35] (Bliss et al. 1974) interferometry. [17] = Adair, Chase & Payne, Phys. Rev. B \
+39, 3337 (1989) (adair_1989; the reference list prints the year 1988): Adair tabulates n2 \
+in 10^-13 esu; the cm^2/W values here are a conversion (not by Kabacinski's statement; \
+40 pi n2(esu)/(c n0) with Adair's n(1.06 um) gives SiO2 2.458, CaF2 1.262, YAG 6.212, \
+calcite o 2.833, calcite e 2.352: all agree to the printed digits except YAG, printed \
+6.25; computed 2026-09-26). [21] = Flom et al. 2015 (flom_2015). [33] = Milam 1998 \
+(milam_1998, its recommended 1053 nm value). [34] printed as 'D. Milam, M. J. Weber, and \
+A. J. Glass, Nonlinear refractive index of fluoride crystals, Appl. Phys. Lett. 31, \
+822-825 (1978)' (Adair's reference list gives this paper as 1977). [35] Bliss, Speck & \
+Simmons, Appl. Phys. Lett. 25, 728 (1974). [36] Miller et al., Optical Materials 30, 1469 \
+(2008), 'Polarization-dependent nonlinear refractive index of BiB3O6': two values, '7.39, \
+8.00 at 1064 nm', printed without saying which is which; both kept.
+
+NOT EXTRACTED: the two YVO4 literature values '19 at 1080 nm in Yb:YVO4 [37]' (o) and \
+'15 at 1080 nm in Yb:YVO4 [37]' (e): a doped crystal, not YVO4. Moreover, Ref. [37] as \
+printed is A. G. Selivanov, I. A. Denisov, N. V. Kuleshov and K. V. Yumashev, 'Nonlinear \
+refractive properties of Yb3+-doped KY(WO4)2', Appl. Phys. B 83, 61-65 (2006): a paper on \
+Yb:KYW, not Yb:YVO4; the citation does not match the material (finding).
+
+refractiveindex.info (Kabacinski n2 pages, checked 2026-09-26): CaF2 1.71e-20, SiO2 \
+2.19e-20 and YAG 6.13e-20 m^2/W at 1.03 um, 210 fs: the same values. There are no pages \
+for BiBO (7.65), calcite (3.22 o, 2.12 e) or YVO4 (15.6 o, 14.9 e)."""
+
+[[datasets]]
+id = "this_work_SiO2"
+material = "SiO2"
+file = "SiO2/kabacinski_2019__this_work_SiO2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. Fused silica, 3 mm, Eksma Optics."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "this_work_CaF2"
+material = "CaF2"
+file = "CaF2/kabacinski_2019__this_work_CaF2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. CaF2, 2.63 mm, HG Optronics; n2 grew slightly with pulse energy (p. 11026)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "this_work_YAG"
+material = "YAG"
+file = "YAG/kabacinski_2019__this_work_YAG.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. YAG, 2 mm, HG Optronics."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "this_work_BiBO_x"
+material = "BiBO"
+file = "BiBO/kabacinski_2019__this_work_BiBO_x.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. BiBO, 2 mm, Foctek, 'electric field along X axis' (source notes)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+axis = "x"
+
+[[datasets]]
+id = "this_work_CaCO3_o"
+material = "CaCO3"
+file = "CaCO3/kabacinski_2019__this_work_CaCO3_o.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. Calcite, 2 mm, Crylight Photonics, printed 'Calcite n_o'."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "this_work_CaCO3_e"
+material = "CaCO3"
+file = "CaCO3/kabacinski_2019__this_work_CaCO3_e.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. Calcite, 2 mm, Crylight Photonics, printed 'Calcite n_e'."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+axis = "e"
+
+[[datasets]]
+id = "this_work_YVO4_o"
+material = "YVO4"
+file = "YVO4/kabacinski_2019__this_work_YVO4_o.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. YVO4, 2 mm, Crylight Photonics, printed 'YVO4 n_o'; few measurements (error 5.4 %)."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+axis = "o"
+
+[[datasets]]
+id = "this_work_YVO4_e"
+material = "YVO4"
+file = "YVO4/kabacinski_2019__this_work_YVO4_e.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work at 1030 nm. YVO4, 2 mm, Crylight Photonics, printed 'YVO4 n_e'; few measurements."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "SPM-induced phase regression (FROG)"
+pulse_fs = 210
+polarization = "linear"
+form = "bulk"
+axis = "e"
+
+[[datasets]]
+id = "flom_2015_SiO2"
+material = "SiO2"
+file = "SiO2/kabacinski_2019__flom_2015_SiO2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["flom_2015"]
+notes = "Table 1, literature: Ref. [21], Flom et al. 2015, Z-scan at 1030 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "z-scan"
+
+[[datasets]]
+id = "milam_1998_SiO2"
+material = "SiO2"
+file = "SiO2/kabacinski_2019__milam_1998_SiO2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["milam_1998"]
+notes = "Table 1, literature: Ref. [33], Milam 1998: the review's recommended value at 1053 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "adair_1989_SiO2"
+material = "SiO2"
+file = "SiO2/kabacinski_2019__adair_1989_SiO2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["adair_1989"]
+notes = "Table 1, literature: Adair et al. 1989 (Ref. [17]), three-wave mixing, 1064 nm, nanosecond pulses, electronic and vibrational (Raman) parts only by Adair's statement; the cm^2/W value is a conversion of Adair's 10^-13 esu (source notes)."
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "three-wave mixing"
+
+[[datasets]]
+id = "milam_1978_CaF2"
+material = "CaF2"
+file = "CaF2/kabacinski_2019__milam_1978_CaF2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["D. Milam, M. J. Weber, and A. J. Glass, \"Nonlinear refractive index of fluoride crystals,\" Appl. Phys. Lett. 31, 822-825 (1978)"]
+notes = "Table 1, literature: Ref. [34] (year as printed; source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "adair_1989_CaF2"
+material = "CaF2"
+file = "CaF2/kabacinski_2019__adair_1989_CaF2.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["adair_1989"]
+notes = "Table 1, literature: Adair et al. 1989 (Ref. [17]), three-wave mixing, 1064 nm, nanosecond pulses, electronic and vibrational (Raman) parts only by Adair's statement; the cm^2/W value is a conversion of Adair's 10^-13 esu (source notes). Adair's CaF2 is polarized along [100]."
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "three-wave mixing"
+
+[[datasets]]
+id = "adair_1989_YAG"
+material = "YAG"
+file = "YAG/kabacinski_2019__adair_1989_YAG.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["adair_1989"]
+notes = "Table 1, literature: Adair et al. 1989 (Ref. [17]), three-wave mixing, 1064 nm, nanosecond pulses, electronic and vibrational (Raman) parts only by Adair's statement; the cm^2/W value is a conversion of Adair's 10^-13 esu (source notes). Printed 6.25; Adair's 2.7 x 10^-13 esu with n = 1.822 converts to 6.21."
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "three-wave mixing"
+
+[[datasets]]
+id = "bliss_1974_YAG"
+material = "YAG"
+file = "YAG/kabacinski_2019__bliss_1974_YAG.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["E. S. Bliss, D. R. Speck, and W. W. Simmons, \"Direct interferometric measurements of the nonlinear refractive index coefficient n2 in laser materials,\" Appl. Phys. Lett. 25, 728-730 (1974)"]
+notes = "Table 1, literature: Ref. [35]."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "miller_2008_BiBO_x"
+material = "BiBO"
+file = "BiBO/kabacinski_2019__miller_2008_BiBO_x.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["S. Miller, F. Rotermund, G. Xu, F. Noack, V. Panyutin, and V. Petrov, \"Polarization-dependent nonlinear refractive index of BiB3O6,\" Opt. Mater. 30, 1469-1472 (2008)"]  # codespell:ignore mater
+notes = "Table 1, literature: Ref. [36]: two values printed '7.39, 8.00 at 1064 nm' on the E||X row, without saying which is which (rows 4.1, 4.2)."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+axis = "x"
+
+[[datasets]]
+id = "adair_1989_CaCO3_o"
+material = "CaCO3"
+file = "CaCO3/kabacinski_2019__adair_1989_CaCO3_o.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["adair_1989"]
+notes = "Table 1, literature: Adair et al. 1989 (Ref. [17]), three-wave mixing, 1064 nm, nanosecond pulses, electronic and vibrational (Raman) parts only by Adair's statement; the cm^2/W value is a conversion of Adair's 10^-13 esu (source notes). Ordinary polarization."
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "three-wave mixing"
+axis = "o"
+
+[[datasets]]
+id = "adair_1989_CaCO3_e"
+material = "CaCO3"
+file = "CaCO3/kabacinski_2019__adair_1989_CaCO3_e.csv"
+table = "tbl_46ff24325236"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["adair_1989"]
+notes = "Table 1, literature: Adair et al. 1989 (Ref. [17]), three-wave mixing, 1064 nm, nanosecond pulses, electronic and vibrational (Raman) parts only by Adair's statement; the cm^2/W value is a conversion of Adair's 10^-13 esu (source notes). Extraordinary polarization."
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+technique = "three-wave mixing"
+axis = "e"

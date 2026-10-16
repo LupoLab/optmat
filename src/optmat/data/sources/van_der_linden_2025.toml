@@ -1,0 +1,231 @@
+citation = "R. van der Linden, N. Kuzkova and P. M. Kraus, \"Nonlinear refractive index measurements of solids and the impact of B-integral on the phase of generated high-order harmonics\", Opt. Express 33, 53268 (2025)"
+doi = "10.1364/oe.579736"
+library = "VanderLinden_2025_NonlinearRefractiveIndex"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Birefringent common-path interferometry (TWINS: two pairs of alpha-BBO wedges) with \
+a Ti:sapphire amplifier (Coherent Astrella) centred at 804 nm, 1 kHz; the pulse duration \
+before focus measured by SHG FROG as a Gaussian FWHM of 47 +- 1 fs (p. 53271). Two \
+phase-locked, spatially separated (247 um) pulse copies of adjustable intensity ratio are \
+focused (f = 50 cm spherical mirror, 1/e^2 areas 6.45e3 and 6.73e3 um^2) into 5-mm-thick \
+uncoated Thorlabs windows at the focus; the relative phase of the central interference \
+fringe against the normalized intensity difference Delta I/I0 gives n2 from its slope a, \
+n2 = a lambda / (2 pi L) (Eq. 3, p. 53272). Six peak intensities, 24 to 55 GW/cm^2, per \
+sample; a sample-free background phase is subtracted at each intensity (p. 53272)."""
+notes = """Journal pages 53268-53278 = PDF pages 1-11. Identity checked against the first page.
+
+DEFINING RELATION (p. 53269): P(3) = 3 eps0 sum chi(3)_ijkl(omega; omega, omega, -omega) \
+E_j E_k E_l*, n~(r, t) = n0 + n2 I(r, t) (Eq. 1) with n2 = 3 chi(3) / (4 n0^2 eps0 c) for \
+isotropic media and parallel linear polarizations; B = (2 pi / lambda) int n2 I(z) dz \
+(Eq. 2). SI units; the tabulated n2 is in 10^-16 cm^2/W (Table 1 header, checked on the \
+image). Each pulse copy acquires its own B-integral in the sample (the two foci are 247 um \
+apart), so n2 is the self coefficient. Both copies are s-polarized (linear) after the \
+polarizer that makes them interfere (p. 53270).
+
+CORRECTIONS APPLIED BY THE AUTHORS (p. 53273): Fourier-optics simulations showed that the \
+phase measured at the camera is systematically lower than that applied in focus, \
+n2_in/n2_out = 1.9, and that the camera's time averaging over the Gaussian pulse lowers \
+it further, n2_out,FT/n2_out,G = 1.4; 'Both factors are taken into account for the final \
+n2, as presented in Fig. 4 and outlined in Table 1.' The tabulated values are averages \
+over the six intensities, from the central fringe only (p. 53272). No trend with \
+intensity (no self-focusing), and constant transmission (no nonlinear absorption).
+
+WAVELENGTH. The laser is centred at 804 nm (p. 53270, abstract); Table 1 prints 800 nm \
+for this work, recorded as printed (0.5 % from 804 nm).
+
+PART. 47 fs pulses; the paper does not discuss the Raman (nuclear) response: part = \
+'unknown'.
+
+UNCERTAINTY. 'Uncertainties of the reported values from this work are defined as +-2 \
+sigma. As for the references, no explicit definition was given' (Table 1 note). From \
+error propagation of every measured parameter, the intensity calibration dominating; \
+'no correlation between uncertainty in I1 and I2 was assumed, which ... makes the given \
+uncertainty an upper bound' (p. 53273).
+
+LITERATURE (Table 1). Z-scan values of Ref. [27] (Ensley & Bambha 2019, ensley_2019) for \
+CaF2, SiO2 and NBK-7 at 800 nm, and of Ref. [41] (DeSalvo et al. 1996, desalvo_1996) for \
+KBr at 1064 nm. Ensley's own table (ensley_2019) prints these 800 nm values without an \
+uncertainty; the +-15 % here (1.8 +- 0.27, 2.7 +- 0.41, 3.3 +- 0.50) is van der Linden's \
+reading. DeSalvo prints KBr at 1064 nm as (29 +- 6) x 10^-14 esu with n0 = 1.53 (its \
+Tables I-II); 7.87 +- 1.62 x 10^-16 cm^2/W is van der Linden's conversion (40 pi n2(esu) / \
+(c n0) gives 7.95 +- 1.64 with n0 = 1.53; computed here 2026-09-26; the paper does not \
+state the n0 it used, 7.87 corresponds to n0 about 1.545).
+
+SAMPLES (p. 53271): 5-mm-thick uncoated Thorlabs 'isotropic windows'; grades and glass \
+maker not stated. 'NBK-7' is recorded as N-BK7 (the lead- and arsenic-free BK7).
+
+refractiveindex.info (VanderLinden n2 pages, checked 2026-09-26): BK7 (from NBK-7) \
+3.33e-20, CaF2 1.47e-20 and SiO2 2.54e-20 m^2/W at 0.804 um, 47 fs: the same values; the \
+page uses the 804 nm laser wavelength where the table prints 800 nm, files N-BK7 under \
+BK7, and has no page for KBr (8.98e-20).
+
+Section 3.2 (HHG in gas, the B-integral of the fundamental) holds no material values."""
+
+[[datasets]]
+id = "twins_CaF2"
+material = "CaF2"
+file = "CaF2/van_der_linden_2025__twins_CaF2.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work (TWINS), average over 24-55 GW/cm^2; 5 mm Thorlabs window. Laser centred at 804 nm (printed 800)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "common-path (TWINS) interferometry"
+pulse_fs = 47
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "twins_SiO2"
+material = "SiO2"
+file = "SiO2/van_der_linden_2025__twins_SiO2.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work (TWINS), average over 24-55 GW/cm^2; 5 mm Thorlabs window, grade not stated. Laser centred at 804 nm (printed 800)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "common-path (TWINS) interferometry"
+pulse_fs = 47
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "twins_N-BK7"
+material = "N-BK7"
+file = "N-BK7/van_der_linden_2025__twins_N-BK7.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work (TWINS), printed 'NBK-7'; average over 24-55 GW/cm^2; 5 mm Thorlabs window. Laser centred at 804 nm (printed 800)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "common-path (TWINS) interferometry"
+pulse_fs = 47
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "twins_KBr"
+material = "KBr"
+file = "KBr/van_der_linden_2025__twins_KBr.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "primary"
+notes = "Table 1, this work (TWINS), average over 24-55 GW/cm^2; 5 mm Thorlabs window. Laser centred at 804 nm (printed 800)."
+[datasets.uncertainty]
+column = true
+level = "2 sigma"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "common-path (TWINS) interferometry"
+pulse_fs = 47
+polarization = "linear"
+form = "bulk"
+
+[[datasets]]
+id = "ensley_2019_CaF2"
+material = "CaF2"
+file = "CaF2/van_der_linden_2025__ensley_2019_CaF2.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ensley_2019"]
+notes = "Table 1, Z-scan value of Ref. [27] (Ensley & Bambha 2019) at 800 nm; the +- is van der Linden's (Ensley prints none at 800 nm; source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "z-scan"
+
+[[datasets]]
+id = "ensley_2019_SiO2"
+material = "SiO2"
+file = "SiO2/van_der_linden_2025__ensley_2019_SiO2.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ensley_2019"]
+notes = "Table 1, Z-scan value of Ref. [27] (Ensley & Bambha 2019) at 800 nm; the +- is van der Linden's (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "z-scan"
+
+[[datasets]]
+id = "ensley_2019_BK7"
+material = "BK7"
+file = "BK7/van_der_linden_2025__ensley_2019_BK7.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["ensley_2019"]
+notes = "Table 1, Z-scan value of Ref. [27] (Ensley & Bambha 2019) at 800 nm, printed on the NBK-7 row; recorded under BK7, the material of the original (Ensley and Bambha print 'BK7', from Thorlabs, and do not say N-BK7; ensley_2019). The +- is van der Linden's (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "z-scan"
+
+[[datasets]]
+id = "desalvo_1996_KBr"
+material = "KBr"
+file = "KBr/van_der_linden_2025__desalvo_1996_KBr.csv"
+table = "tbl_a71e46ef0edc"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["desalvo_1996"]
+notes = "Table 1, Z-scan value of Ref. [41] (DeSalvo et al. 1996) at 1064 nm: van der Linden's conversion of DeSalvo's (29 +- 6) x 10^-14 esu (source notes). DeSalvo's pulses: 30 ps at 1064 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+technique = "z-scan"
+pulse_fs = 30000

@@ -1,0 +1,394 @@
+citation = "W. F. Chan, G. Cooper and C. E. Brion, \"Absolute optical oscillator strengths (11-20 eV) and transition moments for the photoabsorption of molecular hydrogen in the Lyman and Werner bands\", Chem. Phys. 168, 375 (1992)"
+doi = "10.1016/0301-0104(92)87171-5"
+library = "Chan_1992_AbsoluteOpticalOscillator_095875"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """High-resolution dipole (e,e) spectroscopy: electron energy-loss spectra at 3 keV \
+impact energy and zero mean scattering angle, 0.048 eV FWHM, 11-20 eV energy loss, \
+multiplied by the spectrometer's Bethe-Born factor to give a relative optical \
+oscillator-strength spectrum, normalised at 18 eV (smooth ionisation continuum) to the \
+low-resolution dipole (e,e) absolute df/dE of Backx et al. (J. Phys. B \
+9, 315 (1976)), whose scale rests on the TRK sum rule S(0) = 2: 'completely \
+independent of any direct optical measurement' and of photon flux or density (p. 4). \
+Band oscillator strengths from fits of asymmetric (rotationally broadened) peak \
+profiles convolved with the resolution (Fig. 2). Energy scale calibrated on helium's \
+1 1S -> 2 1P line (21.218 eV) admitted with the sample. Linde H2, 99.95 %; 2e-5 Torr \
+(p. 4)."""
+notes = """Values per molecule; no density or state involved. Room-temperature normal H2 \
+(not stated); the band strengths are from v'' = 0 and sum the rotational structure.
+
+Tables 1 and 2 (pp. 7-8): oscillator strengths f(v'' = 0 -> v') of the Lyman (B \
+1Sigma_u+, v' = 0-22) and Werner (C 1Pi_u, v' = 0-6) bands. No transition energies are \
+tabulated (the positions of Figs. 1-2 are Dieke's (1958) and Namioka's (1964)): the \
+rows and label abscissa are v'. Uncertainty (p. 6): '+-5% for fully resolved peaks, \
+and +-7-15% for the partially resolved peaks because of the additional errors in the \
+deconvolution procedures'; which peaks are partially resolved is not said. The Lyman \
+v' = 14 and 20 values are interpolated (note a; overlapping bands), and the Werner v' \
+= 3 value has the underlying Lyman v' = 14 component (itself interpolated) subtracted \
+(note a; p. 6). Each table's literature columns are reproduced datasets.
+
+Sums (checked 2026-09-27): the present Lyman column sums to 0.30117 (text and Table 3: \
+0.301); the present Werner column to 0.3218 (text: 0.322), plus Allison and \
+Dalgarno's calculated v' = 7-13, 0.019, gives the Table 3 total 0.341 (p. 9): the \
+Werner total is therefore not wholly measured. Allison and Dalgarno's Table 1 column \
+sums to 0.3016 (their Table 3 total over all v' is 0.311), and their Table 2 column to \
+0.3287 (+0.019 = 0.348; their total 0.356).
+
+Text values (p. 8-9), inline datasets: the B' 1Sigma_u+ v' = 0 band at 13.702 eV, f = \
+0.00384 (present), against Glass-Maujean's calculated transition probability 0.238e8 \
+s^-1, 'corresponds to an absolute oscillator strength of 0.00292' (Chan et al.'s \
+conversion); and the total oscillator strength below the first ionisation potential \
+(15.43 eV), 0.836 (p. 9). Arrighini et al.'s TDA and RPA state sums below the IP, \
+0.926 and 0.862, were added up by Chan et al. (p. 9) and are not extracted.
+
+Transition moments (Section 3.2): |R_e(r_v'0)| derived from the present f with \
+Allison and Dalgarno's Franck-Condon factors, Dieke and Namioka's energies and r \
+centroids digitised from Allison's curves (p. 11): figures only (Figs. 5-6), and two \
+straight-line fits, Eqs. (6) and (7) (formulas). Table 4, the dipole strengths \
+D_e(r_0) = G |R_e(r_0)|^2 (au) at r_0 = 0.741 A (present 0.94 Lyman, 1.08 Werner; \
+Wolniewicz 0.96, 1.10; Rothenberg and Davidson length 0.91, 1.06, velocity 0.92, 1.18; \
+Miller and Krauss 1.00, 1.08; Peek and Lassettre 0.97, 0.81; Browne length 0.78, \
+velocity 1.04; Ehrenson and Phillipson 0.85; Shull (printed 'Skull') 0.60, 1.33; \
+Mulliken and Rieke (printed 'Milliken') 0.77, 1.21; Fabian and Lewis 0.96, 0.92; \
+Geiger and Schmoranzer 0.98, 0.89; Geiger and Topschowsky 0.95, 0.92; Geiger 0.84, \
+1.03), has no quantity in the vocabulary: not extracted. No continuum df/dE is \
+tabulated (Fig. 1 only, 11-20 eV) and no S(k) is given.
+
+The library's identity check flags PDF date hints (2001, 2002) against 1992: the \
+download stamp, not the paper (the first page and citation are 1992)."""
+
+[[datasets]]
+id = "lyman_present"
+material = "H2"
+file = "H2/chan_1992_h2__lyman_present.csv"
+table = "tbl_aae134e5c906"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "primary"
+excluded_rows = { "14" = "interpolated, not measured (note a; overlapping bands, p. 6)", "20" = "interpolated, not measured (note a; overlapping bands, p. 6)" }
+notes = "Table 1 'present work': absolute oscillator strengths of the Lyman band, B 1Sigma_u+ (v') <- X 1Sigma_g+ (v'' = 0), v' = 0-22 (rows and label v'); high-resolution dipole (e,e), normalised at 18 eV to Backx et al.'s TRK-normalised df/dE. Uncertainty +-5 % for fully resolved peaks, +-7-15 % for partially resolved ones (not identified; p. 6): the 5 % is stored. The column sums to 0.30117 (the Table 3 total 0.301)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "werner_present"
+material = "H2"
+file = "H2/chan_1992_h2__werner_present.csv"
+table = "tbl_254f5e9a82b9"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "primary"
+notes = "Table 2 'present work': absolute oscillator strengths of the Werner band, C 1Pi_u (v') <- X 1Sigma_g+ (v'' = 0), v' = 0-6 (rows and label v'); high-resolution dipole (e,e). v' = 3 has the underlying Lyman v' = 14 component (interpolated) subtracted (note a). Uncertainty +-5 % for fully resolved peaks, +-7-15 % for partially resolved ones (not identified; p. 6): the 5 % is stored. The column sums to 0.3218 (text 0.322)."
+[datasets.uncertainty]
+relative = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "total_present"
+material = "H2"
+file = "H2/chan_1992_h2__total_present.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "Table 3 'present work (dipole (e, e))': total integrated oscillator strengths of the Lyman band (0.301, the sum of Table 1's present column) and the Werner band (0.341 = the measured v' = 0-6, 0.322, plus Allison and Dalgarno's calculated v' = 7-13, 0.019; p. 9). Sums of the line datasets: a check, not fitted beside them."
+
+[[datasets]]
+id = "b_prime_present"
+material = "H2"
+table = "text"
+points = [["13.702", "13.702", "0.00384"]]
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "primary"
+notes = "p. 8: the absolute oscillator strength of the v' = 0 component of the B' 1Sigma_u+ band at 13.702 eV, 'estimated to be 0.00384 in the present work' (a fitted peak of Fig. 2). No uncertainty stated for it (the tables' +-5-15 % applies to fitted peaks)."
+
+[[datasets]]
+id = "b_prime_glass_maujean_1984"
+material = "H2"
+table = "text"
+points = [["13.702", "13.702", "0.00292"]]
+quantity = "oscillator_strength"
+abscissa_unit = "eV"
+use = "reproduced"
+reproduced_from = ["M. Glass-Maujean, At. Data Nucl. Data Tables 30, 301 (1984)"]
+notes = "pp. 8-9: Glass-Maujean's calculated transition probability for the B' v' = 0 band, 0.238e8 s^-1, 'corresponds to an absolute oscillator strength of 0.00292' (Chan et al.'s conversion), about 25 % below the present 0.00384."
+
+[[datasets]]
+id = "total_below_ip_present"
+material = "H2"
+table = "text"
+points = [["below_ip", "below the first IP (15.43 eV)", "0.836"]]
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+notes = "p. 9: 'the total integrated oscillator strength sum for all transitions below the first ionization potential (15.43 eV [36]) of hydrogen is estimated to be 0.836' (present work; how the bands above the Werner v' = 6 were added is not said). A sum, not a line: a check. Arrighini et al.'s TDA and RPA sums, 0.926 and 0.862 (added up by Chan et al.), are not extracted."
+
+[[datasets]]
+id = "lyman_geiger_1969"
+material = "H2"
+file = "H2/chan_1992_h2__lyman_geiger_1969.csv"
+table = "tbl_aae134e5c906"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. Geiger and H. Schmoranzer, J. Mol. Spectrosc. 32, 39 (1969)"]
+notes = "Table 1: absolute oscillator strengths of the Lyman band, B 1Sigma_u+ (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; electron impact (high resolution; absolute scale from Geiger's (1964) Lyman + Werner total, itself normalised to calculated elastic cross sections)."
+
+[[datasets]]
+id = "lyman_fabian_1974"
+material = "H2"
+file = "H2/chan_1992_h2__lyman_fabian_1974.csv"
+table = "tbl_aae134e5c906"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. Fabian and B. R. Lewis, J. Quant. Spectrosc. Radiat. Transfer 14, 523 (1974)"]
+notes = "Table 1: absolute oscillator strengths of the Lyman band, B 1Sigma_u+ (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; optical absorption, curve of growth."
+
+[[datasets]]
+id = "lyman_hesser_1968"
+material = "H2"
+file = "H2/chan_1992_h2__lyman_hesser_1968.csv"
+table = "tbl_aae134e5c906"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. E. Hesser, N. H. Brooks and G. M. Lawrence, J. Chem. Phys. 49, 5388 (1968)"]
+notes = "Table 1: absolute oscillator strengths of the Lyman band, B 1Sigma_u+ (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; optical absorption, curve of growth."
+
+[[datasets]]
+id = "lyman_haddad_1968"
+material = "H2"
+file = "H2/chan_1992_h2__lyman_haddad_1968.csv"
+table = "tbl_aae134e5c906"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["G. N. Haddad, K. H. Lokan, A. J. D. Farmer and J. H. Carver, J. Quant. Spectrosc. Radiat. Transfer 8, 1193 (1968)"]
+notes = "Table 1: absolute oscillator strengths of the Lyman band, B 1Sigma_u+ (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; optical absorption, curve of growth; 'apparently high values ... above v' = 0 may be due to errors in the pressure measurements' (p. 7, citing Fabian and Lewis)."
+
+[[datasets]]
+id = "lyman_allison_1970"
+material = "H2"
+file = "H2/chan_1992_h2__lyman_allison_1970.csv"
+table = "tbl_aae134e5c906"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. C. Allison and A. Dalgarno, At. Data 1, 289 (1970)", "A. C. Allison and A. Dalgarno, Mol. Phys. 19, 567 (1970)"]
+notes = "Table 1: absolute oscillator strengths of the Lyman band, B 1Sigma_u+ (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; theory, with the r-dependent transition moments of Wolniewicz (1969) and Rothenberg and Davidson (1967); also A. C. Allison and A. Dalgarno, Mol. Phys. 19, 567 (1970)."
+
+[[datasets]]
+id = "werner_geiger_1969"
+material = "H2"
+file = "H2/chan_1992_h2__werner_geiger_1969.csv"
+table = "tbl_254f5e9a82b9"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. Geiger and H. Schmoranzer, J. Mol. Spectrosc. 32, 39 (1969)"]
+notes = "Table 2: absolute oscillator strengths of the Werner band, C 1Pi_u (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; electron impact (high resolution; absolute scale from Geiger's (1964) Lyman + Werner total, itself normalised to calculated elastic cross sections)."
+
+[[datasets]]
+id = "werner_fabian_1974"
+material = "H2"
+file = "H2/chan_1992_h2__werner_fabian_1974.csv"
+table = "tbl_254f5e9a82b9"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. Fabian and B. R. Lewis, J. Quant. Spectrosc. Radiat. Transfer 14, 523 (1974)"]
+notes = "Table 2: absolute oscillator strengths of the Werner band, C 1Pi_u (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; optical absorption, curve of growth."
+
+[[datasets]]
+id = "werner_allison_1970"
+material = "H2"
+file = "H2/chan_1992_h2__werner_allison_1970.csv"
+table = "tbl_254f5e9a82b9"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. C. Allison and A. Dalgarno, At. Data 1, 289 (1970)", "A. C. Allison and A. Dalgarno, Mol. Phys. 19, 567 (1970)"]
+notes = "Table 2: absolute oscillator strengths of the Werner band, C 1Pi_u (v') <- X 1Sigma_g+ (v'' = 0), rows and label v'; theory, with the r-dependent transition moments of Wolniewicz (1969) and Rothenberg and Davidson (1967); also A. C. Allison and A. Dalgarno, Mol. Phys. 19, 567 (1970)."
+
+[[datasets]]
+id = "total_arrighini_1980_tda"
+material = "H2"
+file = "H2/chan_1992_h2__total_arrighini_1980_tda.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["G. P. Arrighini, F. Biondi, C. Guidotti, A. Biagi and F. Marinelli, Chem. Phys. 52, 133 (1980)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory, Tamm-Dancoff approximation."
+
+[[datasets]]
+id = "total_arrighini_1980_rpa"
+material = "H2"
+file = "H2/chan_1992_h2__total_arrighini_1980_rpa.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["G. P. Arrighini, F. Biondi, C. Guidotti, A. Biagi and F. Marinelli, Chem. Phys. 52, 133 (1980)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory, random-phase approximation."
+
+[[datasets]]
+id = "total_allison_1970"
+material = "H2"
+file = "H2/chan_1992_h2__total_allison_1970.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. C. Allison and A. Dalgarno, At. Data 1, 289 (1970)", "A. C. Allison and A. Dalgarno, Mol. Phys. 19, 567 (1970)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory (all v', not only those of Tables 1 and 2)."
+
+[[datasets]]
+id = "total_browne_1969"
+material = "H2"
+file = "H2/chan_1992_h2__total_browne_1969.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. C. Browne, Astrophys. J. 156, 397 (1969)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory."
+
+[[datasets]]
+id = "total_rothenberg_1967_length"
+material = "H2"
+file = "H2/chan_1992_h2__total_rothenberg_1967_length.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Rothenberg and E. R. Davidson, J. Mol. Spectrosc. 22, 1 (1967)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory, dipole length."
+
+[[datasets]]
+id = "total_rothenberg_1967_velocity"
+material = "H2"
+file = "H2/chan_1992_h2__total_rothenberg_1967_velocity.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Rothenberg and E. R. Davidson, J. Mol. Spectrosc. 22, 1 (1967)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory, dipole velocity."
+
+[[datasets]]
+id = "total_miller_1967"
+material = "H2"
+file = "H2/chan_1992_h2__total_miller_1967.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["K. J. Miller and M. Krauss, J. Chem. Phys. 47, 3754 (1967)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory."
+
+[[datasets]]
+id = "total_peek_1963"
+material = "H2"
+file = "H2/chan_1992_h2__total_peek_1963.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. M. Peek and E. N. Lassettre, J. Chem. Phys. 38, 2392 (1963)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory."
+
+[[datasets]]
+id = "total_ehrenson_1961"
+material = "H2"
+file = "H2/chan_1992_h2__total_ehrenson_1961.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Ehrenson and P. E. Phillipson, J. Chem. Phys. 34, 1224 (1961)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory."
+
+[[datasets]]
+id = "total_shull_1952"
+material = "H2"
+file = "H2/chan_1992_h2__total_shull_1952.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["H. Shull, J. Chem. Phys. 20, 18 (1952)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory."
+
+[[datasets]]
+id = "total_mulliken_1941"
+material = "H2"
+file = "H2/chan_1992_h2__total_mulliken_1941.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. S. Mulliken and C. A. Rieke, Rep. Prog. Phys. 8, 231 (1941)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); theory."
+
+[[datasets]]
+id = "total_geiger_1969"
+material = "H2"
+file = "H2/chan_1992_h2__total_geiger_1969.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. Geiger and H. Schmoranzer, J. Mol. Spectrosc. 32, 39 (1969)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); electron impact."
+
+[[datasets]]
+id = "total_hesser_1968"
+material = "H2"
+file = "H2/chan_1992_h2__total_hesser_1968.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. E. Hesser, N. H. Brooks and G. M. Lawrence, J. Chem. Phys. 49, 5388 (1968)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); optical absorption, curve of growth."
+
+[[datasets]]
+id = "total_hesser_1968b"
+material = "H2"
+file = "H2/chan_1992_h2__total_hesser_1968b.csv"
+table = "tbl_5acc9741b87e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. E. Hesser, J. Chem. Phys. 48, 2518 (1968)"]
+notes = "Table 3: total integrated absolute oscillator strength of the Lyman and Werner bands (rows lyman, werner; label abscissa); radiative lifetimes (phase shift); 'much higher than all the other ... values ... likely caused by the variation of electronic transition moment with internuclear distance r, since the emission observed occurs at large r' (p. 9)."
+
+[[formulas]]
+id = "transition_moment_lyman"
+material = "H2"
+equation = "Eq. (6), p. 11"
+printed = "|R_e(r_v'0)| = 0.142 + 1.117 r_v'0"
+variable = "r_v'0: the r centroid of the v'' = 0 -> v' transition in angstrom; |R_e| in atomic units (Fig. 5's axes)"
+state = "none (per molecule)"
+density = "none"
+range = "0.63-0.96 A (the fitted Lyman data, v' = 0-22)"
+coefficients = { a = "0.142", b = "1.117" }
+check = "With r_0 = 0.741 A and Eq. (8), D_e(r_0) = G |R_e(r_0)|^2 with G = 1 gives 0.9403, the Table 4 present value 0.94 (checked 2026-09-27; two digits)."
+notes = "A least-squares straight line through the present |R_e(r_v'0)| of the Lyman band (Fig. 5), derived from Table 1 with Allison and Dalgarno's Franck-Condon factors and r centroids digitised from Allison's curves (p. 11). Not a dispersion formula: recorded for the dipole strength."
+
+[[formulas]]
+id = "transition_moment_werner"
+material = "H2"
+equation = "Eq. (7), p. 13"
+printed = "|R_e(r_v'0)| = 0.456 + 0.378 r_v'0"
+variable = "r_v'0: the r centroid of the v'' = 0 -> v' transition in angstrom; |R_e| in atomic units (Fig. 6's axes)"
+state = "none (per molecule)"
+density = "none"
+range = "0.66-0.89 A (the fitted Werner data, v' = 0-6)"
+coefficients = { a = "0.456", b = "0.378" }
+check = "With r_0 = 0.741 A and Eq. (8), D_e(r_0) = G |R_e(r_0)|^2 with G = 2 gives 1.0837, the Table 4 present value 1.08 (checked 2026-09-27; three digits)."
+notes = "A least-squares straight line through the present |R_e(r_v'0)| of the Werner band (Fig. 6), as for Eq. (6). Not a dispersion formula: recorded for the dipole strength."

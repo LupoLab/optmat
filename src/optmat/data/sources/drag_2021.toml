@@ -1,0 +1,211 @@
+citation = "C. Drag, F. Marmuse and C. Blondel, \"Measurement of the two-photon excitation cross-section of the 6p'[3/2]2 and 6p'[1/2]0 levels of Xe I at the wavelengths 224.3 and 222.6 nm\", Plasma Sources Sci. Technol. 30, 075026 (2021)"
+doi = "10.1088/1361-6595/abfbeb"
+library = "Drag_2021_MeasurementTwoPhoton"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Two-photon absorption, not fluorescence: the energy of each pulse before and \
+after a 0.51 m cell of xenon (100 to 10^4 Pa, mostly 1000-10^4 Pa; 296.15 K assumed, \
++-2 C), with Brewster-angle windows, shot by shot, while an injection-seeded \
+single-mode Ti:sapphire laser (under 30 MHz at 890.3 and 897.2 nm, Lottigier et al. \
+2019), frequency-quadrupled in two BBO crystals to 222.6 and 224.3 nm, is scanned \
+across the line; pulses of about 0.5 mJ (up to 1 mJ), an asymmetric Gaussian time \
+profile (rise and fall 4.27 and 8.59 ns, tau about 6.4 ns, Fig. 7), waists about 300 \
+to 440 um, the beam profile and its low-intensity periphery (up to 20 % of the energy, \
+subtracted) measured daily. Each transmission K(omega) is inverted with the paper's \
+closed form for a spatially and temporally Gaussian beam in the quasi-static, \
+low-excitation regime, K = Li_3/2(-a) / (-a), a = 2 n sigma^(2)(omega) Phi_0 z (Eqs. \
+29, 30), into sigma^(2)(omega), which is integrated over the two-photon angular \
+frequency 2 omega (Eq. 8) to the integrated cross section sigma-bar^(2). A single-mode \
+laser, G2(0) = 1, 'to measure the two-photon cross-section in an unambiguous way' (p. \
+21). The analysis of Sec. 2 (optical Bloch equations, rate equation, quasi-static and \
+low-excitation models, Figs. 2, 3) supports integrating over the line rather than \
+using the resonant absorption."""
+notes = """The library holds the accepted manuscript (HAL hal-03449890, deposited 25 \
+November 2021): IOP's 'Accepted Manuscript' cover (PDF p. 2) and the manuscript \
+'AUTHOR SUBMITTED MANUSCRIPT - PSST-104268.R2', pages 1-33 = PDF pages 3-35 (page = \
+PDF page - 2), with the published citation Plasma Sources Sci. Technol. 30(7), 075026 \
+(2021). Identity checked against the HAL cover and the manuscript's first page (title, \
+authors). The version of record is not in the library; its numbers are not checked. \
+The extracted text carries the manuscript's line numbers and a garbled abstract: every \
+number taken was read on the rendered pages (pp. 1, 5, 25, 26).
+
+WHAT IS TAKEN. The integrated two-photon excitation cross sections, 'the generalized \
+cross-section sigma-bar^(2) appears to be 1.36 (+0.46 -0.34) and 1.88 (+0.75 -0.54) x \
+10^-43 m4 for the 6p'[3/2]2 and 6p'[1/2]0 levels, respectively' (p. 25, and the \
+abstract, p. 1): inline points, the asymmetric errors as the parameters error_plus and \
+error_minus (the schema holds no asymmetric uncertainty; as uiterwaal_1998). The \
+wavelengths 224.3 and 222.6 nm are vacuum wavelengths: half the levels' energies the \
+text gives, 8 916 235.6 and 8 986 001.5 m-1 (Kramida et al. 2020, pp. 3 and 5), are \
+224.310 and 222.568 nm (the script). Table 1's absolute values of other authors \
+(tools/extract/drag_2021.py), as reproduced datasets.
+
+DEFINITION (frequency_variable). sigma-bar^(2) = integral of sigma^(2)(omega) 2 d omega \
+(Eq. 8), with T = sigma^(2)(omega) Phi^2 (Eq. 6) and sigma^(2)(omega) = sigma-bar^(2) \
+g(omega), g normalised on the 2 omega scale (Eq. 10): the profile is normalised in the \
+two-photon angular frequency, 'the commonly ... admitted convention' (footnote, p. 8, \
+citing Bamford et al. 1986 and kroll_1990). Table 2's numbers follow it (the script): \
+the Doppler peak D(0) = c / (2 omega_0) sqrt(M / (2 pi k T)) of Eq. (32) at 300 K is \
+5.13e-11 s (printed 5.1e-11), sigma-bar D(0) = 9.18e-54 m4 s (9.2e-54), sigma-bar / \
+(pi beta) = 3.82e-51 m4 s (3.9e-51), sqrt(2 sigma-bar / pi) Phi_0 = 5.75e7 rad/s \
+(5.9e7). Polarisation: not stated; linear is implied (BBO harmonics through \
+Brewster-angle windows; the comparison of the two levels 'makes sense for linear \
+polarization only', p. 27).
+
+UNCERTAINTY. Table 3 (p. 26): statistical dispersion +-7 % (6p'[3/2]2) and +-12 % \
+(6p'[1/2]0), pulse energy +-13 % (the energy meter, with a 1.15 correction between two \
+meters that disagreed by 1.27), waists +-6 %, duration, cell length, temperature and \
+pressure +-1 % each; 'calculated as the product of all uncertainty factors', '1.00 \
+(+34 -26) or 1.00 (+40 -29)'. Checked: the products of (1 + u) are 1.334 and 1.396; \
++0.46 and +0.75 are 34 % and 40 % of the values, -0.34 and -0.54 are 25.0 % and 28.7 %, \
+that is (1 - 1/product) to 0.4 % (the printed relative -26 % is 1 point more than the \
+-0.34 it goes with). The interval has no stated confidence level. The ratio \
+sigma-bar(6p'[1/2]0) / sigma-bar(6p'[3/2]2) = 1.38 (+0.21 -0.18) (p. 26), with a \
+smaller uncertainty because the pulse-energy error is common (1.88/1.36 = 1.382, \
+checked); no quantity holds a ratio of two levels' cross sections: kept here.
+
+TABLE 1 (p. 5), 'Most recent data available for integrated 2-photon excitation \
+cross-sections', reproduced: Kr 6p[3/2]2 at 193.5 nm, 5.4 x 10^-45 m4 +- 50 %, \
+Khambatta et al. (N. M. Khambatta, J. A. Oertel, R. Silk, L. J. Radziemski and J. M. \
+Mack, J. Appl. Phys. 64, 4809 (1988); not in the library); Kr 5p[3/2]2 at 214.8 nm, \
+5.2 x 10^-43 m4 +- 40 %, dakka_2018 (5.2 +- 2.1 x 10^-35 cm4: the conversion and the \
+40 % are right); Xe 6p[1/2]0, 6p[3/2]2, 6p[5/2]2 at 249.6, 252.5, 256.0 nm, 5.0, 1.7, \
+2.9 x 10^-43 m4 +- 30, 30, 50 %, kroll_1990's sigma_tot (10^-35 cm4 = 10^-43 m4: right; \
+these are Kroll and Bischel's values corrected with an assumed G2(0) = 1.4, which Table \
+1 does not say; their uncertainty is the measurement's). Checked by the script against \
+the curated records. The table's wavelengths agree with the vacuum two-photon \
+wavelengths of the levels to the printed 0.1 nm. Not taken: the ratios to H, N and O \
+(Kr/H = 0.62 and Kr/N = 0.67 +- 50 %, Niemi et al. 2001; Xe/O = 0.36 and 0.51 +- 50 %, \
+Goehlich et al. 1998; Xe/O = 1.9 +- 20 %, Niemi et al. 2005; Xe/H = 0.024 +- 54 %, \
+Elliott et al. 2016): no quantity holds a ratio to another species' two-photon cross \
+section. The value deduced from Niemi et al. (2005) and Bamford et al.'s oxygen cross \
+section, 1.9(2) x 1.87(60) x 10^-43 = 3.6 (+1.7 -1.4) x 10^-43 m4 for 6p'[3/2]2 (p. \
+26): derived from other papers, not taken; the measured value is 'more than a factor \
+of 2' smaller.
+
+NOT TAKEN, OTHER. Table 4's two-photon amplitudes per intermediate state (atomic \
+units, from the dipole matrix elements of Aymar and Coulombe 1978 and Salah and \
+Hassouneh 2019): partial amplitudes without signs, not a transition strength. The \
+pressure shift of the 6p'[1/2]0 line, -2.8(2) x 10^-4 m-1/Pa or -2.2(2) x 10^-15 m3 \
+s-1, and its broadening, 6.7(1.3) x 10^-15 m3 s-1 (half width; p. 29): no quantity for \
+an atomic two-photon line's shift or width. The quenching coefficients k_Q (Bruce et \
+al. 1990; Whitehead et al. 1995) and the photoionisation estimate 'about 1.5 x 10^-24 \
+m2' from Chang and Kim (1982) (p. 20): other papers' values. Figs. 5 and 8 (profiles \
+and the individual measurements; the latter's error bars are 'only the numerical \
+uncertainty' of the integration). Fig. 5's caption prints the peak cross section in \
+'m4 s-1' and the integrated one in 'm2' (for m4 s and m4): slips in a caption, no \
+value taken.
+
+TWO-PHOTON DATA CITED, NOT IN THE LIBRARY: Khambatta et al. (1988), above; K. Niemi, V. \
+Schulz-von der Gathen and H. F. Dobele, J. Phys. D 34, 2330 (2001) and Plasma Sources \
+Sci. Technol. 14, 375 (2005); A. Goehlich, T. Kawetzki and H. F. Dobele, J. Chem. Phys. \
+108, 9362 (1998); D. Elliott, E. Scime and Z. Short, Rev. Sci. Instrum. 87, 11E504 \
+(2016); V. Alekseev and D. W. Setser, J. Phys. Chem. 100, 5766 (1996) (Xe cross-section \
+ratios); D. J. Bamford, M. J. Dyer and W. K. Bischel, Phys. Rev. A 36, 3497 (1987) \
+(oxygen, 226 nm); R. P. Saxon and J. Eichler, Phys. Rev. A 34, 199 (1986) (oxygen, \
+theory)."""
+
+[[datasets]]
+id = "sigma_6p1_32_2"
+material = "Xe"
+table = "text"
+points = [["6p'[3/2]2", "224.3", "1.36"]]
+scale = 1e-43
+quantity = "two_photon_excitation_cross_section"
+unit = "m4"
+abscissa_unit = "nm"
+use = "primary"
+notes = "p. 25 (Sec. 4.1) and the abstract (p. 1): sigma-bar^(2) of the 5p6 1S0 -> 5p5 6p'[3/2]2 transition, 1.36 (+0.46 -0.34) x 10^-43 m4, two photons at the vacuum wavelength 224.3 nm. The errors are Table 3's budget multiplied as factors (record notes), no stated confidence level."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear (not stated; implied by the Brewster-angle windows)"
+photon_statistics = "corrected: a single-mode laser, G2(0) = 1 (p. 21)"
+method = "two-photon absorption in a 0.51 m cell, transmission inverted with Eq. (30) and integrated over the line"
+definition = "sigma-bar^(2) = integral of sigma^(2)(omega) 2 d omega (Eq. 8), T = sigma^(2)(omega) Phi^2 (Eq. 6), Phi the photon flux"
+error_plus = 0.46
+error_minus = 0.34
+error_definition = "as printed, +0.46 -0.34 in the printed scale: the value times (product - 1) and (1 - 1/product), the product of Table 3's factors (1 + u); no stated confidence level"
+
+[[datasets]]
+id = "sigma_6p1_12_0"
+material = "Xe"
+table = "text"
+points = [["6p'[1/2]0", "222.6", "1.88"]]
+scale = 1e-43
+quantity = "two_photon_excitation_cross_section"
+unit = "m4"
+abscissa_unit = "nm"
+use = "primary"
+notes = "p. 25 (Sec. 4.1) and the abstract (p. 1): sigma-bar^(2) of the 5p6 1S0 -> 5p5 6p'[1/2]0 transition (J = 0, no hyperfine structure), 1.88 (+0.75 -0.54) x 10^-43 m4, two photons at the vacuum wavelength 222.6 nm. The errors are Table 3's budget multiplied as factors (record notes), no stated confidence level."
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear (not stated; implied by the Brewster-angle windows)"
+photon_statistics = "corrected: a single-mode laser, G2(0) = 1 (p. 21)"
+method = "two-photon absorption in a 0.51 m cell, transmission inverted with Eq. (30) and integrated over the line"
+definition = "sigma-bar^(2) = integral of sigma^(2)(omega) 2 d omega (Eq. 8), T = sigma^(2)(omega) Phi^2 (Eq. 6), Phi the photon flux"
+error_plus = 0.75
+error_minus = 0.54
+error_definition = "as printed, +0.75 -0.54 in the printed scale: the value times (product - 1) and (1 - 1/product), the product of Table 3's factors (1 + u); no stated confidence level"
+
+[[datasets]]
+id = "khambatta_1988_Kr"
+material = "Kr"
+file = "Kr/drag_2021__khambatta_1988_Kr.csv"
+table = "tbl_e87cefb4180f"
+quantity = "two_photon_excitation_cross_section"
+unit = "m4"
+scale = 1e-45
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["N. M. Khambatta, J. A. Oertel, R. Silk, L. J. Radziemski and J. M. Mack, J. Appl. Phys. 64, 4809 (1988)"]
+notes = "Table 1 (p. 5): Kr 6p[3/2]2 at 193.5 nm, 5.4 x 10^-45 m4 +- 50 %, 'calibr.' (calibrated fluorescence). The original is not in the library: its definition, polarisation and photon statistics are not checked; Drag et al. present it as an integrated cross section in their convention (their Eq. 9 'is formula (1) of Khambatta et al. (1988)'). It is about a hundred times smaller than shekhtman_2020's calculated 6p[3/2]2 value (5.08e-35 cm4 = 5.1e-43 m4, basis set 3 with oscillator strengths)."
+[datasets.uncertainty]
+relative = 0.5
+level = "not stated"
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "not stated"
+photon_statistics = "not stated"
+method = "calibrated fluorescence (Table 1: 'calibr.')"
+
+[[datasets]]
+id = "dakka_2018_Kr"
+material = "Kr"
+file = "Kr/drag_2021__dakka_2018_Kr.csv"
+table = "tbl_e87cefb4180f"
+quantity = "two_photon_excitation_cross_section"
+unit = "m4"
+scale = 1e-43
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["dakka_2018"]
+notes = "Table 1 (p. 5): Kr 5p[3/2]2 at 214.8 nm, 5.2 x 10^-43 m4 +- 40 %: dakka_2018's 5.2 +- 2.1 x 10^-35 cm4, correctly converted (checked by the script)."
+[datasets.uncertainty]
+relative = 0.4
+level = "not stated"
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "not stated"
+photon_statistics = "as dakka_2018: not measured"
+method = "as dakka_2018 (Table 1: 'calibr.')"
+
+[[datasets]]
+id = "kroll_1990_Xe"
+material = "Xe"
+file = "Xe/drag_2021__kroll_1990_Xe.csv"
+table = "tbl_e87cefb4180f"
+quantity = "two_photon_excitation_cross_section"
+unit = "m4"
+scale = 1e-43
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kroll_1990"]
+notes = "Table 1 (p. 5): Xe 6p[1/2]0 (2p5), 6p[3/2]2 (2p6), 6p[5/2]2 (2p9) at 249.6, 252.5, 256.0 nm: kroll_1990's G2-corrected sigma_tot (5.0, 1.7, 2.9 x 10^-35 cm4), correctly converted, with the measurement's 30, 30, 50 % (checked by the script). Table 1 does not say that these values assume G2(0) = 1.4."
+[datasets.uncertainty]
+relative = 0.3
+relative_rows = { "6p[5/2]2" = 0.5 }
+level = "not stated"
+[datasets.parameters]
+frequency_variable = "angular"
+polarization = "linear"
+photon_statistics = "as kroll_1990's sigma_tot: corrected, G2(0) = 1.4 assumed"
+method = "as kroll_1990 (Table 1: 'calibr.')"

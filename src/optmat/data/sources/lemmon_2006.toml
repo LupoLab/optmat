@@ -1,0 +1,30 @@
+citation = "E. W. Lemmon and R. Span, \"Short Fundamental Equations of State for 20 Industrial Fluids\", J. Chem. Eng. Data 51, 785 (2006)"
+doi = "10.1021/je050186n"
+library = "Lemmon_2006_ShortFundamentalEquations"
+identity = "VALIDATED"
+kind = "fit"
+technique = """Short (twelve-term) Helmholtz-energy equations of state of one functional form for \
+twenty fluids, among them krypton, xenon, nitrous oxide and carbon monoxide, fitted to \
+thermodynamic data."""
+notes = """Identity VALIDATED by the library. Printed pp. 785-850; pages cited are pdf pages.
+
+IDEAL GAS AND CONSTANTS: R = 8.314472 J/(mol K) (p. 5). The ideal-gas heat capacity \
+(Eq. 10, p. 5) is c_p0/R = c0 + sum_k v_k (u_k/T)^2 exp(u_k/T)/(exp(u_k/T) - 1)^2. \
+Krypton: M = 83.798 g/mol, c0 = 5/2 and no Einstein terms, 115.77-750 K, 200 MPa. \
+Xenon: M = 131.293, c0 = 5/2, 161.4-750 K, 700 MPa. Nitrous oxide: M = 44.0128, c0 = \
+3.5, (v, u/K) = (2.1769, 879.0), (1.6145, 2372.0), (0.48393, 5447.0), 182.33-525 K, 50 \
+MPa. Carbon monoxide: M = 28.0101. No uncertainty of c_p0 is stated.
+
+AGAINST COOLPROP 8.0.0 (reference key Lemmon-JCED-2006): the same M, R and ideal parts; \
+for nitrous oxide Eq. (10) with these constants equals CoolProp's c_p0 to 2e-16 at 200, \
+294 and 500 K (computed 2026-09-30)."""
+
+[[formulas]]
+id = "eq10_N2O"
+material = "N2O"
+equation = "Eq. (10), p. 5 (pdf); the coefficient table"
+printed = "c_p0/R = c0 + sum_k v_k (u_k/T)^2 exp(u_k/T)/(exp(u_k/T) - 1)^2"
+variable = "T in K"
+range = "182.33-525 K"
+coefficients = { c0 = "3.5", v1 = "2.1769", u1 = "879.0", v2 = "1.6145", u2 = "2372.0", v3 = "0.48393", u3 = "5447.0" }
+check = "CoolProp 8.0.0 equals it to 2e-16 (tests/test_transport.py)."

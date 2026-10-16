@@ -1,0 +1,46 @@
+Title:
+Argon SAE (Tong-Lin) 800nm 6fs Gaussian iSurff (cos8) scan point 05 of 10  I=1.483e+14 Wcm2 z-pol  [m=1]
+
+# Ar 3p ionised by an ANALYTIC GAUSSIAN 800 nm, 6 fs FWHM pulse, velocity gauge, z-pol.
+# Physics: E0=0.0650 au, Up=0.326 au=8.9 eV, quiver alpha=20.0 au,
+#   Keldysh gamma=0.943, barrier u=E0/E_b=0.78 (E_b=Ip^2/4=0.0839 au).
+# Intensity = (Ip_Ar/Ip_He)^4 * He-scan point -> same u as the He scan (same curve shape).
+# BOX=80 > quiver alpha; ECS theta=0.3. Deep SAE core -> fixStep=0.0150 (RK |E|dt<2.83).
+
+#define BOX 80.
+
+# Tong-Lin (2005) SAE argon: r->0 -> -18/r (Z=18), r->inf -> -1/r. a3=-25.543 explicit minus.
+#define TongLinV (1.0+16.039*exp(-2.007*Q)-25.543*Q*exp(-4.525*Q)+0.961*exp(-0.443*Q))/Q
+
+# total yield + time trace only (no Spectrum here; iSurff handled by ar_isurff_NN).
+# Radial split [0,2],[2,20],[20,BOX] keeps r=20 (the chi[0,20] sphere) on an element boundary.
+# total ionisation = integral sigma(k) k^2 dk of the iSurff photoelectron spectrum
+Spectrum: radialPoints=150, plot=total, iSurff=true
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1,0.,6.28318530718,expIm[1]
+ Eta,30,-1,1,assocLegendre{Phi}
+ Rn,14,0.,2.,polynomial,3
+ Rn,12,2.,20.,RpowL*polynomial,4
+ Rn,12,20.,BOX,RpowL*polynomial,14
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.3,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-TongLinV>
+Operator: interaction='iLaserAz[t]<<D/DZ>>'
+Operator: expectationValue='<1><1><chi[0,20]>'
+
+# Ar 3p valence HOMO: eig-index 4 + ECS off-by-one -> state=5. Confirm "Initial <H0>: -0.5797".
+# m=1 manifold (2p,3p,3d,...): 3p(m=1) is eig-index 1 -> state=2 (<H0>=-0.5797).
+Initial: state=2
+
+# analytic Gaussian envelope, FWHM(intensity) = 6.0 fs = 2.24844 OptCyc, propagated +-3 FWHM.
+Laser: shape, I(W/cm2), FWHM, lambda(nm)
+cos8, 1.4835e+14, 2.24844 OptCyc, 800.
+
+# begin/end explicit: a Gaussian has infinite support. store>=fixStep so the expec trace writes fully.
+# cos8 finite support: no begin/end, propagation runs to pulse end (iSurff extends after).
+TimePropagation: print,store,cutEnergy,operatorThreshold,fixStep
+ 0.25 OptCyc,0.05,60,1e-9,0.0150

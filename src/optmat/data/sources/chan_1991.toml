@@ -1,0 +1,350 @@
+citation = "W. F. Chan, G. Cooper and C. E. Brion, \"Absolute optical oscillator strengths for the electronic excitation of atoms at high resolution: Experimental methods and measurements for helium\", Phys. Rev. A 44, 186 (1991)"
+doi = "10.1103/PhysRevA.44.186"
+library = "Chan_1991_AbsoluteOpticalOscillator"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Dipole (e,e) electron-energy-loss spectroscopy at negligible momentum transfer: \
+a low-resolution spectrometer (8000 eV impact energy, 0 degrees, 1 eV FWHM, known \
+Bethe-Born factor) gives the absolute df/dE of helium from 20 to 180 eV by Bethe-Born \
+conversion and Thomas-Reiche-Kuhn normalization to S(0) = 2 (4.65 % above 180 eV \
+estimated from a fit A E^-B, B = 2.5583, to 72-180 eV); a high-resolution double \
+hemispherical spectrometer (3000 eV, 0.048-0.270 eV FWHM), with its relative Bethe-Born \
+factor fitted to the ratio with the low-resolution data at 28-60 eV (Eq. 19) and \
+extrapolated below 25 eV, normalized at 30 eV (and at 75 eV for the resonance region), \
+gives the discrete oscillator strengths 1 1S -> n 1P, n = 2-7, by peak integration \
+(pp. 195-201)."""
+notes = """Energies are energy losses (photon energies) in eV; the 1 1S -> 2 1P line at \
+21.218 eV calibrates the scale (p. 196). No photon flux or target density is measured: \
+the absolute scale rests on the TRK sum rule. The low-resolution table is cited in the \
+text as 'Table I' (p. 196), a misprint for Table II. The low-resolution df/dE at 1 eV \
+FWHM near threshold (24.6-25.5 eV) may contain unresolved high-n discrete lines; the \
+2snp resonances near 60 eV are smeared (60.0 eV: 1.61e-2 /eV). No uncertainty is stated \
+for Table II. Samson et al. (1994, samson_1994): Chan's data 'tend to lie within 2 to 5 % \
+of the present data from threshold to 75 eV', within +-2 % at 67-110 eV, 'Towards \
+higher energy their results tend to be too high'. Conversion: 1 Mb = 1.0975e-2 /eV of \
+df/dE (p. 187).
+
+Discrete oscillator strengths (Table III, p. 200): 'The uncertainties quoted represent \
+the scatter in the measurements made at different resolutions. The absolute \
+uncertainty is estimated to be ~5 %.' The total to the ionization threshold, 0.431, is \
+printed with '(0.0006)' (probably a misprint: its n = 2 term alone carries 0.007; \
+Samson et al. quote 0.431 +- 0.02); it and the totals of Dalgarno and Parkinson (0.424) \
+and Backx et al. (0.421) are not extracted (not lines). The table gives no transition \
+energies; the rows use the principal quantum number n as the index (as berkowitz_1997, \
+which reproduces the present column and prints the energies). Autoionizing resonance \
+maxima (sp,2n+) 1P, n = 2-5: 60.150, 63.655 (printed '63,655'), 64.465, 64.820 eV (p. \
+202; figures only otherwise). No sum rules S(k) other than the TRK normalization S(0) = \
+2 are given.
+
+Errata (Table III, theory rows): Green, Johnson and Kolchin's 7 1P value and Schiff and \
+Pekeris's 2 1P and 3 1P values are misprinted (see the errata)."""
+
+[[datasets]]
+id = "df_dE"
+material = "He"
+file = "He/chan_1991__df_dE.csv"
+table = "tbl_bd7d4d0ec5c7"
+quantity = "differential_oscillator_strength"
+unit = "1/eV"
+scale = 1e-2
+abscissa_unit = "eV"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table II, low-resolution (1 eV FWHM) dipole (e,e) absolute df/dE, 24.6-180 eV (153 rows), in 1e-2 /eV; TRK-normalized, independent of optical measurements. Uncertainty not stated (see the source notes for Samson et al.'s comparison)."
+
+[[datasets]]
+id = "f_present"
+material = "He"
+file = "He/chan_1991__f_present.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "primary"
+notes = "Table III (experiment), 'Present work [HR dipole (e,e)]': 1 1S -> n 1P, n = 2-7 (rows and index n); parenthesized uncertainties are the scatter over energy resolutions, plus an absolute (scale) uncertainty of about 5 % (p. 200), stored as systematic_relative (level not stated). Reproduced by berkowitz_1997 (f_chan_1991)."
+[datasets.uncertainty]
+column = true
+systematic_relative = 0.05
+level = "not stated"
+
+[[datasets]]
+id = "f_fernley_1987"
+material = "He"
+file = "He/chan_1991__f_fernley_1987.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. A. Fernley, K. T. Taylor and M. J. Seaton, J. Phys. B 20, 6457 (1987)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Fernley, Taylor and Seaton (Ref. 9), R-matrix (Opacity Project)."
+
+[[datasets]]
+id = "f_schiff_1971"
+material = "He"
+file = "He/chan_1991__f_schiff_1971.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["B. Schiff, C. L. Pekeris and Y. Accad, Phys. Rev. A 4, 885 (1971)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Schiff, Pekeris and Accad (Ref. 8)."
+
+[[datasets]]
+id = "f_weiss_1967"
+material = "He"
+file = "He/chan_1991__f_weiss_1967.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. W. Weiss, J. Res. Natl. Bur. Stand. 71A, 163 (1967)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Weiss (Ref. 7)."
+
+[[datasets]]
+id = "f_green_1967"
+material = "He"
+file = "He/chan_1991__f_green_1967.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["L. C. Green, N. C. Johnson and E. K. Kolchin, Astrophys. J. 144, 369 (1967)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Green, Johnson and Kolchin (Ref. 5)."
+
+[[datasets]]
+id = "f_dalgarno_parkinson_1967"
+material = "He"
+file = "He/chan_1991__f_dalgarno_parkinson_1967.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. Dalgarno and E. M. Parkinson, Proc. R. Soc. London Ser. A 301, 253 (1967)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Dalgarno and Parkinson (Ref. 6); their total to the ionization threshold, 0.424, is not extracted."
+
+[[datasets]]
+id = "f_wiese_1966"
+material = "He"
+file = "He/chan_1991__f_wiese_1966.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. L. Wiese, M. W. Smith and B. M. Glennon, Atomic Transition Probabilities: Hydrogen through Neon, Natl. Stand. Ref. Data Ser., Natl. Bur. Stand. (U.S.) Circ. No. 4"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Wiese, Smith and Glennon (Ref. 10), the NBS compilation."
+
+[[datasets]]
+id = "f_schiff_pekeris_1964"
+material = "He"
+file = "He/chan_1991__f_schiff_pekeris_1964.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["B. Schiff and C. L. Pekeris, Phys. Rev. A 134, 638 (1964)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Schiff and Pekeris (Ref. 4)."
+
+[[datasets]]
+id = "f_dalgarno_stewart_1960"
+material = "He"
+file = "He/chan_1991__f_dalgarno_stewart_1960.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["A. Dalgarno and A. L. Stewart, Proc. Phys. Soc. London 76, 49 (1960)"]
+notes = "Table III (theory), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Dalgarno and Stewart (Ref. 3)."
+
+[[datasets]]
+id = "f_tsurubuchi_1989"
+material = "He"
+file = "He/chan_1991__f_tsurubuchi_1989.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["S. Tsurubuchi, K. Watanabe and T. Arikawa, J. Phys. B 22, 2969 (1989)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Tsurubuchi, Watanabe and Arikawa (Ref. 20), self absorption. Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_westerveld_1977"
+material = "He"
+file = "He/chan_1991__f_westerveld_1977.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["W. B. Westerveld and J. Van Eck, J. Quant. Spectrosc. Radiat. Transfer 17, 131 (1977)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Westerveld and Van Eck (Ref. 19), self absorption. Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_backx_1975"
+material = "He"
+file = "He/chan_1991__f_backx_1975.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["C. Backx, R. R. Tol, G. R. Wight and M. J. Van der Wiel, J. Phys. B 8, 2050 (1975)"]  # codespell:ignore wight
+excluded_rows = { "2" = "the normalization point: Schiff and Pekeris's theoretical n = 2 value (note a), not a measurement" }
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Backx et al. (Ref. 47), electron impact, 'relative measurements normalized to the theoretical value for n=2 reported by Schiff and Pekeris' (note a); their total 0.421 is not extracted."
+
+[[datasets]]
+id = "f_burger_lurio_1971"
+material = "He"
+file = "He/chan_1991__f_burger_lurio_1971.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. M. Burger and A. Lurio, Phys. Rev. A 3, 64 (1971)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Burger and Lurio (Ref. 13), level-crossing lifetimes. Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_de_jongh_1971"
+material = "He"
+file = "He/chan_1991__f_de_jongh_1971.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. P. De Jongh and J. Van Eck, Physica 51, 104 (1971)"]
+excluded_rows = { "2" = "the normalization point: Weiss's theoretical n = 2 value (note b), not a measurement" }
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: De Jongh and Van Eck (Ref. 18), self absorption, 'relative measurements normalized to the theoretical value for n=2 reported by Weiss' (note b)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_lassettre_1970"
+material = "He"
+file = "He/chan_1991__f_lassettre_1970.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. N. Lassettre, A. Skerbele and M. A. Dillon, J. Chem. Phys. 52, 2797 (1970)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Lassettre, Skerbele and Dillon, electron impact; the table cites 'Ref. 30' (Huffman et al., a different paper) but the text cites them as Ref. 39 (p. 201): the table's reference number is a misprint. Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_martinson_1969"
+material = "He"
+file = "He/chan_1991__f_martinson_1969.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["I. Martinson and W. S. Bickel, Phys. Lett. 30A, 524 (1969)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Martinson and Bickel (Ref. 14), beam-foil lifetime. Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_fry_williams_1969"
+material = "He"
+file = "He/chan_1991__f_fry_williams_1969.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["E. S. Fry and W. L. Williams, Phys. Rev. 183, 81 (1969)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Fry and Williams (Ref. 12), Hanle effect. Parenthesized uncertainties (level not stated)."  # codespell:ignore hanle
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_lincke_griem_1966"
+material = "He"
+file = "He/chan_1991__f_lincke_griem_1966.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["R. Lincke and H. R. Griem, Phys. Rev. 143, 66 (1966)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Lincke and Griem (Ref. 15), plasma emission profile. Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_korolyov_1965"
+material = "He"
+file = "He/chan_1991__f_korolyov_1965.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["F. A. Korolyov and V. I. Odintsov, Opt. Spectrosc. 18, 547 (1965)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Korolyov and Odintsov (Ref. 16), beam emission profile: two n = 2 values on consecutive rows, 0.28(0.02) (row 2-1) and 0.26(0.012) (row 2-2, unlabelled in the table). Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_kuhn_1964"
+material = "He"
+file = "He/chan_1991__f_kuhn_1964.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["H. G. Kuhn and J. M. Vaughan, Proc. R. Soc. London Ser. A 277, 297 (1964)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Kuhn and Vaughan (Ref. 17), resonance-broadening emission profile (0.37, far from all others). Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "f_geiger_1963"
+material = "He"
+file = "He/chan_1991__f_geiger_1963.csv"
+table = "tbl_ae85cd966ffd"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "reproduced"
+reproduced_from = ["J. Geiger, Z. Phys. 175, 530 (1963)"]
+notes = "Table III (experiment), 1 1S -> n 1P oscillator strengths, rows and index n = 2-7: Geiger (Ref. 63), electron impact normalized to elastic scattering; 'large departures from the present data and also from the calculations' (p. 201). Parenthesized uncertainties (level not stated)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+
+[[errata]]
+dataset = "f_green_1967"
+row = "7"
+column = "value"
+printed = "0.0525"
+corrected = "0.00525"
+reason = "A dropped zero: the printed 7 1P oscillator strength is larger than the 6 1P value (0.008461) and ten times every other author's 7 1P value in the table (0.005469, 0.0054, 0.00593, 0.00587)."
+evidence = "Table III image checked (it prints '0.05 25'); the n^-3 scaling of the series from Green et al.'s own n = 5, 6 values (0.01484, 0.008461) gives 0.0053 for n = 7."
+
+[[errata]]
+dataset = "f_schiff_pekeris_1964"
+row = "2"
+column = "value"
+printed = "0.02762"
+corrected = "0.2762"
+reason = "Misplaced decimal point: ten times smaller than every other 2 1P value (0.2762 by Schiff, Pekeris and Accad and by Wiese et al.); the text says the present 0.280 is 'in excellent agreement' with Schiff and Pekeris (abstract, p. 186; Discussion, p. 201), and Backx et al. normalized to Schiff and Pekeris's n = 2 value, printed 0.276."
+evidence = "Table III image checked (it prints '0.027 62')."
+
+[[errata]]
+dataset = "f_schiff_pekeris_1964"
+row = "3"
+column = "value"
+printed = "0.00734"
+corrected = "0.0734"
+reason = "Misplaced decimal point, as for 2 1P: the other 3 1P values are 0.0729-0.0746."
+evidence = "Table III image checked (it prints '0.007 34')."

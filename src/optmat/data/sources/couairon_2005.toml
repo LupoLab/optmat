@@ -1,0 +1,456 @@
+citation = "A. Couairon, L. Sudrie, M. Franco, B. Prade and A. Mysyrowicz, \"Filamentation and damage in fused silica induced by tightly focused femtosecond laser pulses\", Phys. Rev. B 71, 125435 (2005)"
+doi = "10.1103/physrevb.71.125435"
+library = "Couairon_2005_FilamentationDamageFused"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """800-nm Ti:sapphire pulses (160 fs, 200 kHz regenerative amplifier; 50 fs, 1 kHz \
+CPA chain) focused into bulk fused silica by microscope objectives (Table I; mostly 20x, \
+NA 0.5, waist 1.1 um measured in air). Measured: the position of the damage track \
+against pulse energy (the shift of the nonlinear focus, giving P_cr and n2, Sec. IV A), \
+the transmitted energy against input energy (Sec. IV B), damage-track morphology by \
+optical and electron microscopy (Sec. V), and pump-probe absorption (Sec. VI). \
+Simulated with a nonlinear envelope equation (Sellmeier dispersion, Kerr with delayed \
+Raman, self-steepening, Drude plasma, Keldysh photoionization, avalanche and \
+recombination), Eqs. (2)-(8)."""
+notes = """Journal pages 125435-1 to -11 = PDF pages 1-11. Identity validated.
+
+MEASURED (datasets primary): P_cr = 1.98 MW and n2 = 3.54e-16 cm2/W from the shift of the \
+nonlinear focus with power (160-fs pulses, 20x NA 0.5), p. 125435-5: 'This function \
+vanishes when sqrt(P_in) = 1.4 MW^(1/2), which corresponds to sqrt(P_cr*). Thus, the \
+critical power for self-focusing is P_cr = 1.98 MW, corresponding to the nonlinear \
+refraction index n2 = lambda0^2/2 pi n0 P_cr = 3.54 x 10^-16 cm2/W.' Checked: \
+lambda0^2/(2 pi 1.45 x 1.98 MW) = 3.548e-16 cm2/W; 1.4^2 x 1.002 = 1.964 MW, so 1.98 rests \
+on an unrounded intercept (2026-09-26). The collision time tau_c = 1e-14 s from the \
+transmission (p. 125435-5: 'we obtained the best agreement for the value tau_c = \
+10^-14 s'; the calculated transmission of a 1-uJ pulse goes from ~30 % at 1e-15 s to \
+>70 % at 1e-14 s). The electron-hole plasma lifetime 'around 150 fs' (pump-probe, \
+p. 125435-10), which the simulations also use (from Audebert et al., ref. 37).
+
+The pulse powers: 'various energies from 0.25 uJ (1.56 MW) to 1.25 uJ (7.8 MW)' \
+(p. 125435-4) are E/tau_FWHM (0.25 uJ / 160 fs = 1.56 MW), not the model's \
+P_in = E_in/(t_p sqrt(pi/2)) (1.47 MW for t_p = 136 fs) of p. 125435-2 (checked \
+2026-09-26): the P_cr of Fig. 4 is on the E/tau_FWHM scale if the axis uses those \
+powers; the paper does not say which the fit used (doubt).
+
+MODEL INPUTS (assumed, datasets check; p. 125435-2 to -3): n0 = 1.45; the Sellmeier \
+formula Eq. (3) (Malitson's coefficients rounded to four decimals, uncited, see the \
+formula); k'' = 361 fs2/cm computed from it (checked: 361.38 fs2/cm at 800 nm); f_R = 0.18, \
+tau_d = 32 fs, tau_s = 12 fs for R(t) 'From Refs. 23 and 25 ... (see Ref. 23)' (Junnarkar \
+2001; Stolen et al. 1989 = stolen_1989); U_i = 9 eV ('A gap of 9 eV is found in Refs. 23, \
+31, 35, 36, 40, and 43. A lower gap of 7.8 eV is found in Refs. 44-46. Recently, a gap of \
+7.1 eV has been also determined (47) ... the results computed with a gap of 7.6 eV could \
+not be satisfactorily compared with experiments', p. 125435-4: note 7.8 in one sentence, \
+7.6 in the next); m = 0.64 m_e the reduced mass (ref. 40, Fischetti et al. 1985); \
+rho_at = 2.1e22 cm^-3 'the background atom density'; tau_r = 150 fs (ref. 37). The \
+multiphoton coefficient sigma_6 = 9.6e-70 s^-1 cm12/W6 is the weak-field limit of their \
+Keldysh rate, not an input. Checks (2026-09-26): gamma = 1 at 3.5e13 W/cm2 with \
+m = 0.64 m_e, U_i = 9 eV and I = n0 c eps0 |E|^2/2 (0.999); W_MPI = sigma_6 I^6 rho_at = \
+3.706e34 cm^-3 s^-1 (printed 3.7e34); rho_c = omega0^2 eps0 m_e/e^2 = 1.742e21 cm^-3 \
+(printed 1.74e21, with the free-electron mass although the symbol is m*); omega0^-1 = \
+0.425 fs (printed 4.2e-16 s); t_p = 135.9 fs for 160 fs FWHM (printed 136) and 42.5 fs for \
+50 fs (printed 42).
+
+LITERATURE (datasets reproduced): n2 = 3.75e-16 cm2/W and P_cr = 1.72 MW 'from Ref. 29' \
+(Boyd, Nonlinear Optics, 1992; wavelength not stated). Checked: with n0 = 1.45 and \
+lambda0 = 800 nm, lambda^2/(2 pi n0 n2) gives 1.87 MW and 3.77 lambda^2/(8 pi n0 n2) \
+1.77 MW; neither is 1.72 (2026-09-26). sigma_6 = 1.5e-71 s^-1 cm12/W6 (ref. 36, Li et al. \
+1999) and 3 x 10^(-67 +- 0.9) s^-1 cm12/W6 (ref. 43, Lenzner et al. 1998), both 'per atom' \
+in this paper's convention W_MPI = sigma_6 I^6 rho_at. FINDING: schaffer_2001 and \
+jing_2012 quote Lenzner's rate per volume as 6.0e-52 cm^-3 s^-1 (cm2/W)^6, i.e. \
+2.9e-74 per atom with rho_at = 2.1e22 cm^-3, and jing_2012 quotes Li's as 3.0e-56 per \
+volume (1.4e-78 per atom): Couairon's per-atom values are ~1e7 larger than both, for \
+both references. Lenzner et al. is now curated (lenzner_1998), which confirms the per-volume \
+reading (6 x 10^(8 +- 0.9) cm^-3 ps^-1 (cm2/TW)^6); Li et al. is not in the library.
+
+DAMAGE (reproduced): Fig. 5's 'two vertical lines correspond to the onset of damage in \
+bulk silica measured by Sudrie et al. (51)': type I (a permanent index change, annealed \
+at 900 C for about 1 hour) and 'The second damage threshold at 0.31 uJ (type II) is \
+accompanied by an induced birefringence ... cannot be cured by heating' (p. 125435-5); \
+the type I value is given as 0.1 uJ in the abstract, on p. 125435-5 and p. 125435-9 \
+('the type I damage threshold is about 0.1 uJ'), type II as 0.3 uJ in the abstract. \
+Focusing 20x, NA 0.5; the pulse duration of these thresholds is not stated (Fig. 5's \
+transmission is 50 fs, 1 kHz; the damage tracks 160 fs). The simulation infers that \
+type II damage forms above an electron density of ~2e20 cm^-3 (p. 125435-6); the \
+maximum density is clamped at 2-4e20 cm^-3, and the maximum intensity is 5 +- 0.5 x \
+10^13 W/cm2 up to 2 uJ (model results, no quantity).
+
+TABLE I (p. 125435-2, tbl_39c4ea3b4fb9, image checked): objective magnification, NA and \
+the 1/e2 waist in air: 2.5x 0.07 4.8 um; 4x 0.12 3.5 um; 10x 0.25 1.8 um; 20x 0.5 1.1 um; \
+40x 0.65 0.7 um (the library renders 'um' as 'smmd' and 'x' as '3'). Focusing \
+characteristics, not material data: not extracted.
+
+FIGURES ONLY: Fig. 2 (the Keldysh, multiphoton and tunnel rates for silica against \
+intensity), Fig. 4 (the focus shift against power and its linearization), Fig. 5 \
+(transmission against energy, measured and simulated), Figs. 6-13 (simulated fluence, \
+intensity, electron density, losses), Fig. 15 (pump-probe absorption against delay)."""
+
+[[datasets]]
+id = "n2"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "3.54e-16"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+abscissa_unit = "nm"
+use = "primary"
+notes = "p. 125435-5: n2 = lambda0^2/(2 pi n0 P_cr) with n0 = 1.45 and the measured P_cr = 1.98 MW (source notes); used in the simulations. PART: the model's Kerr term is n2 [(1 - f_R)|E|^2 + f_R int R |E|^2] with f_R = 0.18, and for the 160-fs pulses 'max P~_in(t) = 1.002 P_in ... due to the rather long pulse durations compared to the characteristic response time for the delayed component': the value includes the Raman (delayed) part, recorded as total. No uncertainty stated. Grade of the fused silica not stated."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+pulse_fs = 160
+technique = "shift of the nonlinear focus (damage-track position) against peak power, fitted with the extended Marburger formula, Eqs. (9)-(12)"
+polarization = "linear"
+
+[[datasets]]
+id = "critical_power"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "1.98"]]
+quantity = "critical_power"
+unit = "MW"
+abscissa_unit = "nm"
+use = "primary"
+notes = "p. 125435-5; 160-fs pulses, 20x NA 0.5 objective. The effective critical power of the pulse is P_cr* = P_cr/1.002."
+[datasets.parameters]
+definition = "measured: intercept of Eq. (12), linear in sqrt(P_in), at P_in = P_cr* = P_cr/1.002"
+pulse_fs = 160
+
+[[datasets]]
+id = "n2_boyd"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "3.75e-16"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. W. Boyd, Nonlinear Optics (Academic, London, 1992)"]
+notes = "p. 125435-2 and -5: 'It is in agreement with Ref. 29 n2 = 3.75 x 10^-16 cm2/W (P_cr = 1.72 MW)'. Wavelength and conditions not stated."
+[datasets.parameters]
+part = "unknown"
+coefficient = "self"
+
+[[datasets]]
+id = "critical_power_boyd"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "1.72"]]
+quantity = "critical_power"
+unit = "MW"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. W. Boyd, Nonlinear Optics (Academic, London, 1992)"]
+notes = "p. 125435-2 and -5, with n2_boyd. Not reproduced from n2 = 3.75e-16 at 800 nm with n0 = 1.45 by either common definition (1.87 or 1.77 MW; source notes)."
+[datasets.parameters]
+definition = "not stated (Ref. 29)"
+
+[[datasets]]
+id = "collision_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "1e-14"]]
+quantity = "electron_collision_time"
+unit = "s"
+abscissa = "none"
+use = "primary"
+notes = "p. 125435-5: inferred by comparing the simulated transmission with the measured one (50 fs, 1 kHz, 20x NA 0.5): 'In the literature, the value of the momentum transfer collision time varies from 10^-15 to 10^-13 s ... we obtained the best agreement for the value tau_c = 10^-14 s, which we used in all our numerical simulations'. Model-dependent (Drude cross section Eq. 5, with the other assumed inputs); only 1e-15 and 1e-14 s are reported as tried."
+
+[[datasets]]
+id = "trapping_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "150"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "primary"
+notes = "Pump-probe, p. 125435-10: 'When the energy of the pump is equal to or slightly larger than the damage threshold, a fast signal is observed, characteristic of the generation of an electron-hole plasma. The lifetime of this plasma is around 150 fs ... The value of tau_r = 150 fs used in our numerical simulations corresponds to our experimentally determined value as well as that of Audebert et al. and Tien et al.' 50-fs pump and probe, 20x NA 0.5. No uncertainty stated."
+
+[[datasets]]
+id = "model_trapping_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "150"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["P. Audebert, Ph. Daguzan, A. Dos Santos, J. C. Gauthier, J. P. Geindre, S. Guizard, G. Hamoniaux, K. Krastev, P. Martin, G. Petite and A. Antonetti, Phys. Rev. Lett. 73, 1990 (1994)"]
+notes = "The simulation input, p. 125435-3: 'electron recombination with a characteristic mean time tau_r = 150 fs in fused silica (37)'; the same number as this paper's measurement (dataset trapping_time)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+table = "text"
+points = [["1", "", "9"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["M. R. Junnarkar, Opt. Commun. 195, 273 (2001)", "stuart_1996", "B. C. Stuart et al., Phys. Rev. Lett. 74, 2248 (1995)", "M. Li et al., Phys. Rev. Lett. 82, 2394 (1999)", "M. V. Fischetti et al., Phys. Rev. B 31, 8124 (1985)", "lenzner_1998"]
+notes = "U_i = 9 eV, 'the gap potential U_i = 9 eV in silica' (p. 125435-3), 'found in Refs. 23, 31, 35, 36, 40, and 43' (p. 125435-4)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "band_gap_78"
+material = "SiO2"
+table = "text"
+points = [["1", "", "7.8"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["liu_1978", "liu_1979", "V. Nathan, A. H. Guenther and S. S. Mitra, J. Opt. Soc. Am. B 2, 294 (1985)"]
+notes = "p. 125435-4: 'A lower gap of 7.8 eV is found in Refs. 44-46.' The next sentence speaks of results 'computed with a gap of 7.6 eV'. Kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "band_gap_71"
+material = "SiO2"
+table = "text"
+points = [["1", "", "7.1"]]
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["A. P. Joglekar, H. Liu, G. J. Spooner, E. Meyhofer, G. Mourou and A. J. Hunt, Appl. Phys. B 77, 25 (2003)"]
+notes = "p. 125435-4: 'Recently, a gap of 7.1 eV has been also determined (47).' Kind not stated."
+[datasets.parameters]
+kind = "not stated"
+
+[[datasets]]
+id = "model_reduced_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.64"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+reproduced_from = ["M. V. Fischetti, D. J. Di Maria, S. D. Brorson et al., Phys. Rev. B 31, 8124 (1985)"]
+notes = "p. 125435-3: 'where m = 0.64 m_e (see Ref. 40) denotes the reduced mass of the electron and the hole', in the Keldysh parameter and rate. The Drude cross section Eq. (5) uses m, apparently the same symbol."
+[datasets.parameters]
+carrier = "reduced"
+assumed = true
+
+[[datasets]]
+id = "model_atom_density"
+material = "SiO2"
+table = "text"
+points = [["1", "", "2.1e22"]]
+quantity = "atom_density"
+unit = "cm-3"
+abscissa = "none"
+use = "check"
+notes = "p. 125435-3: 'rho_at = 2.1 x 10^22 cm^-3, the background atom density' (also Fig. 2's caption); no source cited."
+[datasets.parameters]
+counts = "atoms"
+assumed = true
+
+[[datasets]]
+id = "model_refractive_index"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "1.45"]]
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 125435-2: 'n0 = 1.45 for fused silica', the carrier wave number and the n2 derivation. The printed Sellmeier gives 1.45331 at 800 nm."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_gvd"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "361"]]
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+scale = 100
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 125435-2: 'The second-order group velocity dispersion coefficient computed from this dispersion relation at 800 nm is k'' = 361 fs2/cm' (printed in fs2/cm; scale 100 to fs2/m). Checked: the printed Sellmeier gives 361.38 fs2/cm (2026-09-26)."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_raman_fraction"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.18"]]
+quantity = "raman_fraction"
+abscissa = "none"
+use = "check"
+reproduced_from = ["M. R. Junnarkar, Opt. Commun. 195, 273 (2001)", "stolen_1989"]
+notes = "p. 125435-3: 'From Refs. 23 and 25, the response function that accounts for the delayed Raman contribution in the Kerr effect may be written as R(t) = Omega^2 tau_s exp(-t/tau_d) sin(t/tau_s), with the characteristic times tau_d = 32 fs and tau_s = 12 fs (see Ref. 23), Omega^2 = tau_s^-2 + tau_d^-2, and fraction f_R = 0.18.'"
+[datasets.parameters]
+definition = "f_R in N(E) = k0 n2 T^2 [(1 - f_R)|E(t)|^2 + f_R int R(tau - t)|E(tau)|^2 dtau] E(t), Eq. (4)"
+assumed = true
+
+[[datasets]]
+id = "model_raman_tau_d"
+material = "SiO2"
+table = "text"
+points = [["1", "", "32"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["M. R. Junnarkar, Opt. Commun. 195, 273 (2001)"]
+notes = "p. 125435-3, the decay time of R(t) (see model_raman_fraction)."
+[datasets.parameters]
+constant = "tau_d (decay)"
+model = "R(t) = Omega^2 tau_s exp(-t/tau_d) sin(t/tau_s), Omega^2 = tau_s^-2 + tau_d^-2"
+assumed = true
+
+[[datasets]]
+id = "model_raman_tau_s"
+material = "SiO2"
+table = "text"
+points = [["1", "", "12"]]
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["M. R. Junnarkar, Opt. Commun. 195, 273 (2001)"]
+notes = "p. 125435-3, the oscillation time of R(t) (see model_raman_fraction)."
+[datasets.parameters]
+constant = "tau_s (oscillation)"
+model = "R(t) = Omega^2 tau_s exp(-t/tau_d) sin(t/tau_s), Omega^2 = tau_s^-2 + tau_d^-2"
+assumed = true
+
+[[datasets]]
+id = "sigma6_keldysh_limit"
+material = "SiO2"
+table = "text"
+points = [["800", "800", "9.6e-70"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm12/W6"
+abscissa_unit = "nm"
+use = "check"
+notes = "p. 125435-3: 'For weak fields, Keldysh's theory coincides with the multiphoton ionization rate W_MPI = sigma_6 I^6 rho_at ... where sigma_6 = 9.6 x 10^-70 s^-1 cm12/W6 denotes the coefficient for silica and rho_at = 2.1 x 10^22 cm^-3': the weak-field limit of their Keldysh rate (U_i = 9 eV, m = 0.64 m_e), per atom. Checked: sigma_6 I^6 rho_at at 3.5e13 W/cm2 = 3.706e34 cm^-3 s^-1, printed 3.7e34."
+[datasets.parameters]
+photons = 6
+
+[[datasets]]
+id = "sigma6_li"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "1.5e-71"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm12/W6"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["M. Li, S. Menon, J. P. Nibarger and G. N. Gibson, Phys. Rev. Lett. 82, 2394 (1999)"]
+notes = "p. 125435-3: 'This is the reason why sigma_6 is taken to be smaller in the literature (sigma_6 = 1.5 x 10^-71 s^-1 cm12/W6; see Ref. 36)', per atom in this paper's convention. jing_2012 quotes Li et al.'s value per volume as 3.0e-56 cm^-3 s^-1 (cm2/W)^6, which is not 1.5e-71 x 2.1e22 (source notes)."
+[datasets.parameters]
+photons = 6
+
+[[datasets]]
+id = "sigma6_lenzner"
+material = "SiO2"
+table = "text"
+points = [["1", "not stated", "3e-67"]]
+quantity = "multiphoton_ionization_cross_section"
+unit = "s-1 cm12/W6"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["lenzner_1998"]
+notes = "p. 125435-3: 'but larger values are also used (sigma_6 = 3 x 10^(-67 +- 0.9) s^-1 cm12/W6; Ref. 43)': the uncertainty is in the exponent (a factor 10^0.9 = 7.9), which the format cannot express as a sigma. schaffer_2001 and jing_2012 quote Lenzner's rate as 6.0e-52 cm^-3 s^-1 (cm2/W)^6 per volume (source notes: ~1e7 inconsistent with this per-atom value). The original (lenzner_1998, p. 4078) prints sigma_6 = 6 x 10^(8 +- 0.9) cm^-3 ps^-1 (cm2/TW)^6, a rate per unit volume (its Eq. 1 has no atom density), i.e. 6.0e-52 cm^-3 s^-1 (cm2/W)^6 and 2.9e-74 s^-1 cm12/W6 per atom with rho_at = 2.1e22 cm^-3: this dataset's 3e-67 is 1.0e7 times that (the exponent's +-0.9 is Lenzner's)."
+[datasets.parameters]
+photons = 6
+
+[[datasets]]
+id = "keldysh_rate"
+material = "SiO2"
+table = "text"
+points = [["gamma1", "3.5e13", "1.6e32"]]
+quantity = "ionization_rate"
+unit = "cm-3 s-1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "p. 125435-3: 'At I = 3.5 x 10^13 W/cm2 (gamma = 1), W_MPI = 3.7 x 10^34 cm^-3 s^-1 clearly overestimates the PI rate W_PI = 1.6 x 10^32 cm^-3 s^-1 by two orders of magnitude': their Keldysh rate, Eqs. (7)-(8), with U_i = 9 eV, m = 0.64 m_e, rho_at = 2.1e22 cm^-3 (whether rho_at multiplies the rate is not written in Eq. 7). A check value for an implementation of Keldysh's rate. jing_2012 prints the same W_PI."
+[datasets.parameters]
+wavelength_nm = 800
+polarization = "linear"
+
+[[datasets]]
+id = "damage_type_I"
+material = "SiO2"
+table = "text"
+points = [["1", "800", "0.1"]]
+quantity = "damage_threshold_energy"
+unit = "uJ"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["L. Sudrie, M. Franco, B. Prade and A. Mysyrowicz, Opt. Commun. 171, 279 (1999)"]
+notes = "Fig. 5 and p. 125435-5: the 'onset of damage in bulk silica measured by Sudrie et al. (51)'; also 'the type I damage threshold is about 0.1 uJ' (p. 125435-9) and the abstract ('beyond 0.1 uJ'). Pulse duration of the threshold not stated (source notes)."
+[datasets.parameters]
+site = "bulk"
+criterion = "type I: permanent refractive-index change without structural modification, annealed by 1 h above 900 C"
+numerical_aperture = 0.5
+
+[[datasets]]
+id = "damage_type_II"
+material = "SiO2"
+table = "text"
+points = [["1", "800", "0.31"]]
+quantity = "damage_threshold_energy"
+unit = "uJ"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["L. Sudrie, M. Franco, B. Prade and A. Mysyrowicz, Opt. Commun. 171, 279 (1999)"]
+notes = "p. 125435-5: 'The second damage threshold at 0.31 uJ (type II) is accompanied by an induced birefringence in the material around the head of the damage. Under electron microscopy, it reveals a strong material disorder and cannot be cured by heating'; '0.3 uJ' in the abstract. Pulse duration not stated."
+[datasets.parameters]
+site = "bulk"
+criterion = "type II: structural damage with induced birefringence, not annealable"
+numerical_aperture = 0.5
+
+[[formulas]]
+id = "sellmeier"
+material = "SiO2"
+equation = "Eq. (3), p. 125435-2"
+printed = "n^2(lambda) - 1 = sum_{m=1}^{3} B_m lambda^2/(lambda^2 - lambda_m^2), B1 = 0.6962, B2 = 0.4079, B3 = 0.8975, lambda1 = 0.0684 um, lambda2 = 0.1162 um, lambda3 = 9.8962 um"
+variable = "lambda: wavelength in um"
+coefficients = { B1 = "0.6962", B2 = "0.4079", B3 = "0.8975", lambda1 = "0.0684", lambda2 = "0.1162", lambda3 = "9.8962" }
+reproduced_from = ["malitson_1965"]
+check = "Gives k'' = 361.38 fs2/cm at 800 nm (printed 361) and n = 1.45331. The coefficients are the refractiveindex.info SiO2/Malitson page's (0.6961663, 0.0684043, 0.4079426, 0.1162414, 0.8974794, 9.896161) rounded to four decimals; n differs from the unrounded formula by -2.7e-5 at 0.3 um, -5.8e-6 at 0.8 um, -3.8e-6 at 3 um (checked 2026-09-26)."
+notes = "Uncited in the paper; recorded without a form because it prints the resonance wavelengths lambda_m, not C = lambda_m^2, and is a rounded copy of Malitson's formula (malitson_1965, curated in another extraction), which is the original to build."
+
+[[formulas]]
+id = "propagation_model"
+material = "SiO2"
+equation = "Eqs. (1)-(6), pp. 125435-2 to -3"
+printed = "U dE/dz = i[nabla_perp^2/(2k) + (U + L/(2k)) L] E + i N(E) (2); N(E) = k0 n2 T^2 [(1 - f_R)|E(t)|^2 + f_R int_-inf^t dtau R(tau - t)|E(tau)|^2] E(t) - (sigma/2)(1 + i omega0 tau_c) rho E - (T/2) W_PI(|E|^2) U_i E / |E|^2 (4); sigma = k e^2/(n0^2 omega0^2 eps0 m) x omega0 tau_c/(1 + omega0^2 tau_c^2) (5); d rho/dt = W_PI(|E|) + (sigma/U_i) rho |E|^2 - rho/tau_r (6)"
+variable = "E: envelope (|E|^2 an intensity); T = 1 + (i/omega0) d/dt; U(omega) = 1 + omega/(k v_g); L(omega) = n(omega) omega/c - k - omega/v_g"
+coefficients = { n0 = "1.45", n2 = "3.54e-16 cm^2/W", f_R = "0.18", tau_d = "32 fs", tau_s = "12 fs", tau_c = "1e-14 s", U_i = "9 eV", tau_r = "150 fs", m = "0.64 m_e", rho_at = "2.1e22 cm^-3" }
+check = "The Drude sigma of Eq. (5) peaks at omega0 tau_c = 1 (tau_c = 0.425 fs at 800 nm); at tau_c = 1e-14 s it is 1.32e-18 cm2 with m = m_e and n0 = 1.45 (not printed; computed 2026-09-26)."
+notes = "The input pulse E(r, t, 0) = E0 exp(-r^2/w0^2 - t^2/t_p^2 - i k r^2/(2f)), P_in = E_in/(t_p sqrt(pi/2)), E0^2 = 2 P_in/(pi w0^2) (Eq. 1). The recombination term is a single exponential 'valid only for the description of an electron-hole plasma' (p. 125435-6)."
+
+[[formulas]]
+id = "keldysh_rate"
+material = "SiO2"
+equation = "Eqs. (7)-(8), p. 125435-3"
+printed = "W_PI(|E|) = (2 omega0/(9 pi)) (omega0 m/(hbar sqrt(Gamma)))^(3/2) Q(gamma, x) exp(-alpha <x + 1>); Gamma = gamma^2/(1 + gamma^2), Xi = 1/(1 + gamma^2); Q(gamma, x) = sqrt(pi/(2 K(Xi))) sum_{n=0}^inf exp(-n alpha) Phi(sqrt(beta (n + 2 nu))); alpha = pi (K(Gamma) - E(Gamma))/E(Xi), beta = pi^2/(4 K(Xi) E(Xi)); x = (2/pi)(U_i/(hbar omega0)) E(Xi)/sqrt(Gamma), nu = <x + 1> - x"
+variable = "gamma = omega0 sqrt(m U_i)/(e E) the adiabaticity parameter; K, E the complete elliptic integrals of the first and second kind with parameter X (Abramowitz and Stegun), <.> the integer part, Phi Dawson's function"
+coefficients = { U_i = "9 eV", m = "0.64 m_e" }
+reproduced_from = ["L. V. Keldysh, Sov. Phys. JETP 20, 1307 (1965)"]
+check = "gamma = 1 at I = 3.5e13 W/cm2 reproduced (0.999) with m = 0.64 m_e, U_i = 9 eV and I = n0 c eps0 |E|^2/2, n0 = 1.45 (checked 2026-09-26). The printed W_PI = 1.6e32 cm^-3 s^-1 at that intensity (dataset keldysh_rate) is the value to reproduce; not yet done here."
+notes = "The authors note (p. 125435-3) that Keldysh's Eq. (39) contains K(X^1/2) and E(X^1/2) where Eqs. (7)-(8) contain K(X) and E(X) (the Abramowitz-Stegun parameter convention), and that their beta is divided by 4 where Keldysh's is divided by 2, 'in agreement with these definitions and with Ref. 42'."
+
+[[formulas]]
+id = "nonlinear_focus"
+material = "SiO2"
+equation = "Eqs. (9)-(12), pp. 125435-4 to -5"
+printed = "z_nf = 0.367 z_R / sqrt([(max_t P~_in(t)/P_cr)^(1/2) - 0.852]^2 - 0.0219) (9); P~_in(t) = P_in [(1 - f_R) exp(-2(t/t_p)^2) + f_R int R(tau - t) exp(-2(tau/t_p)^2) dtau] (10); delta = f^2/(f + z_nf) (11); sqrt(P_in/P_cr*) - 1 = -0.148 + sqrt(0.148^2 + 0.367^2 d delta^2/(f (f - delta)^2)) (12)"
+variable = "z_R: Rayleigh length; f the lens focal length; delta the shift of the nonlinear focus; P_cr* = P_cr/1.002 for 160-fs pulses"
+coefficients = { a = "0.367", b = "0.852", c = "0.0219" }
+reproduced_from = ["J. H. Marburger, Prog. Quantum Electron. 4, 35 (1975)", "A. Couairon, Eur. Phys. J. D 27, 159 (2003)"]
+check = "max P~_in = 1.002 P_in for 160 fs (printed); not recomputed. The intercept sqrt(P_in) = 1.4 MW^(1/2) gives 1.964 MW, P_cr printed 1.98 MW (2026-09-26)."
+notes = "Marburger's formula extended to a Kerr medium with a delayed (Raman) component (ref. 50)."

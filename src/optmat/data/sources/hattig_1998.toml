@@ -1,0 +1,1209 @@
+citation = "C. Hattig and P. Jorgensen, \"Coupled cluster calculations of the frequency-dependent second hyperpolarizabilities of Ne, Ar, N2, and CH4\", J. Chem. Phys. 109, 2762 (1998)"
+doi = "10.1063/1.476833"
+library = "Hattig_1998_CoupledClusterCalculations"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Coupled-cluster cubic response functions (orbital-unrelaxed CCS, CC2, CCSD; \
+DALTON) and SCF (RPA) cubic response for the dc Kerr effect, DFWM, ESHG and THG; \
+orbital-relaxed finite-field CCSD and CCSD(T) for the static limit. Correlation-consistent \
+x-aug-cc-pVXZ basis sets (frequency-dependent: t-aug-cc-pV5Z for Ne, Ar; t-aug-cc-pVTZ for \
+N2, CH4), frozen cores (Ne 1s, Ar 1s-2p, CH4 1a1; N2 none) unless stated; equilibrium \
+geometries r_NN = 2.074, r_CH = 2.052 a.u.; N2 vibrationally averaged over a CCSD(T) \
+potential (Table XII); CH4 zero-point and pure vibrational corrections taken from Bishop \
+and Sauer (1997) and Bishop and Pipin (1995) (pp. 2764-2765, 2772-2774)."""
+notes = """Identity: pdf page 1 is the publisher's cover; journal pages 2762-2778 = pdf \
+pages 2-18 (page = pdf page + 2760). The library's text rendering garbles many numbers \
+in the running text (plus-minus read as '6', '=' as '5'); every number quoted here from \
+the text was read on the rendered pdf pages 6, 12 and 14 (2766, 2772, 2774).
+
+PROCESSES AND COMPONENTS (p. 2764): gamma^dcKerr(w) = gamma(-w; 0, 0, w), gamma^DFWM(w) = \
+gamma(-w; w, w, -w) (the intensity-dependent index: process kerr), gamma^ESHG(w) = \
+gamma(-2w; w, w, 0), gamma^THG(w) = gamma(-3w; w, w, w). Tabulated are the isotropic \
+gamma_par = (1/15) sum (gamma_xxyy + gamma_xyyx + gamma_xyxy) (Eq. 26) for DFWM, ESHG, \
+THG, and for the dc Kerr effect gamma_K = (3/2)(gamma_par - gamma_perp) (Eq. 28), \
+gamma_perp = (1/15) sum (2 gamma_xyyx - gamma_xxyy); 'in the static limit gamma_par = 3 \
+gamma_perp = gamma_K = gamma_0'. Components recorded: 'K' (dc Kerr), 'parallel' (others). \
+CONVENTION: the response functions are derivatives of the quasienergy Lagrangian (Eq. \
+18), equivalent in the static limit to finite-field energy derivatives, with the same \
+static limit for all processes, and are compared directly with Shelton's ESHG data: the \
+Taylor-series (T) convention. Atomic units. Frequencies: omega in a.u. with lambda/nm \
+as vacuum wavelengths (45.5634/1319.0 = 0.034544); the wavelength column of every file \
+is omega (hartree), the row id lambda as printed.
+
+PARTS. Ne, Ar: electronic. N2: Table XIII is vibrationally averaged (v = 0) electronic \
+gamma (zero-point correction included, pure vibrational and rotational parts not); \
+Tables VI and XII at fixed geometry. CH4: Table XV electronic at the equilibrium \
+geometry; Table XVI adds the zero-point correction and (dc Kerr, ESHG) the pure \
+vibrational contribution of Bishop and Pipin (electronic_vibrational); its THG column \
+is 'Only electronic contribution' (with the zero-point correction, 2974 - 2635.2 = 339 \
+at 1319 nm).
+
+DATASETS. (1) Tables VIII (Ne), IX (Ar), XIII (N2), XV (CH4): CCSD gamma for the four \
+processes (ccsd_<process>_<gas>). Table XV prints lambda '590.0' for omega 0.077357 \
+(589.0 nm in Tables VII and XVI): the row id keeps the print. (2) Tables IV-VII: THG by \
+SCF, CCS, CC2 (and N2's CCSD at the equilibrium geometry); the CCSD columns of Ne, Ar \
+and CH4 equal the THG columns of (1) and are not repeated. Tables IV and V are captioned \
+'q-aug-cc-pV5Z', Tables VIII, IX 't-aug-cc-pV5Z', with identical CCSD THG values (the \
+static CCSD values of the two bases are equal, 110.2 (Ne); Ar 1178.5/1179.0, Table II): \
+one of the captions is probably inaccurate (TC-247). (3) Table III, static gamma_0 by \
+method (static_<gas>): unrelaxed CCS, CC2, CCSD (footnote a t-aug-cc-pV5Z, b \
+t-aug-cc-pVTZ, c d-aug-cc-pVTZ), SCF, relaxed CCSD and CCSD(T), and the all-electron \
+'core corr.' rows; the 'effect' rows (differences) are not taken; rows citing other \
+work are static_others_<gas> (reproduced). (4) Table XII: the vibrationally averaged \
+static <0|gamma_0|0> of N2, 915.0 (CCSD/t-aug-cc-pVTZ; at r_e 903.0; the averaged \
+values at 694.3 and 457.9 nm are within 0.2 of Table XIII's, not taken again). (5) \
+Tables X, XI, XIV, XVI: the paper's final estimates (best_<process>_<gas>): Ne and Ar \
+CCSD response times gamma^CCSD(T)(0)/gamma^CCSD(0) (all electrons, Table III: 107.1/110.2 \
+Ne, 1159/1178 Ar); N2 Table XIII times the best-estimate/t-aug-cc-pVTZ static ratio \
+(894/915.0 = 0.977: 972.1 x 0.977 = 949.8, checked); CH4 as described above. Values \
+marked 'a' in Tables XI and XVI are interpolated. (6) The experimental columns of the \
+same tables (expt_<process>_<gas>, reproduced; see each dataset).
+
+STATIC BEST ESTIMATES (text). Ne: CCSD(T), all electrons, t-aug-cc-pCV5Z: 107.1 \
+(Table III), 'in good agreement with the refined experimental estimate' 106.4 +- 2 \
+(Hattig and Jorgensen, Chem. Phys. Lett. 283, 109 (1998), from the CCSD dispersion \
+shifted to Shelton's visible points) and Shelton and Donley's fit 108.1 +- 2.2; the \
+intrinsic uncertainty of the ab initio results 'about +-3 a.u.' (p. 2770). Ar: CCSD(T) \
+all electrons 1159 (Table III); uncertainty 'about 1 %-3 %' (p. 2771). N2 (p. 2772): \
+unrelaxed CCSD basis-set limit 867 +- 7 (873.2 in d-aug-cc-pV5Z plus core -6.7, p. \
+2766), plus triples and relaxation (+15.4, Table III) and zero-point correction (+12): \
+'gamma_0^e,N2 = 894 a.u.', against Shelton's 917 +- 9. CH4 (p. 2774): CCSD basis limit \
+2318 +- 35 plus the zero-point correction of Bishop and Sauer and -70 (relaxation and \
+triples): 'gamma_par^e,CH4(0) = 2533 a.u.', 'about +-70 a.u. or +-3 %'; CCSD/t-aug-cc-pVTZ \
+plus the zero-point correction gives 2650, against Shelton's 2590 and Bishop and \
+Pipin's 2607. Hartree-Fock limits 715 +- 2 (N2), 1865 +- 5 (CH4) (p. 2766). The \
+Table I and II basis-set studies (SCF, CCSD static gamma_0 in 16 basis sets) are not \
+extracted.
+
+OTHER STATEMENTS: N2 THG ratio to He at 694.3 nm (Ward and New) 26.75 +- 4.25 -> 1295 +- \
+206 a.u.; Lehmeier et al. 21.1 +- 2.1 at 1055 nm -> 954 +- 95; Shelton's rovibrational \
+contribution to N2 THG at 694.3 nm -0.64 a.u.; to N2 gamma_K(632.8 nm) vibrational 0.5 \
+a.u. and rotational 4670 a.u., which 'hinders a meaningful comparison' with the dc Kerr \
+1443 +- 160 (p. 2774). CH4 THG: Ward and Elliot's ratio 82.5 +- 2.5 at 694.3 nm -> 3997 +- \
+120; the equilibrium-geometry CCSD value interpolated to 694.3 nm is 3600, with the \
+zero-point correction 4162 (p. 2775). Lehmeier et al.'s THG values are 'about 30 % too \
+small' for Ne and in 'significant disagreement' for Ar (pp. 2771-2772). The CH4 dc Kerr \
+dispersion of the calculation is 'distinctly too small' against Shelton and \
+Palubinskas, attributed to the approximate vibrational part (p. 2775)."""
+
+[[datasets]]
+id = "ccsd_dc_kerr_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__ccsd_dc_kerr_Ne.csv"
+table = "tbl_26296ab9e171"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VIII: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s frozen; dc Kerr gamma_K(-w; 0, 0, w). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "ccsd_kerr_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__ccsd_kerr_Ne.csv"
+table = "tbl_26296ab9e171"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VIII: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s frozen; DFWM gamma_par(-w; w, w, -w) (intensity-dependent index). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_eshg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__ccsd_eshg_Ne.csv"
+table = "tbl_26296ab9e171"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VIII: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s frozen; ESHG gamma_par(-2w; w, w, 0). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_thg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__ccsd_thg_Ne.csv"
+table = "tbl_26296ab9e171"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VIII: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s frozen; THG gamma_par(-3w; w, w, w). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_dc_kerr_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__ccsd_dc_kerr_Ar.csv"
+table = "tbl_c806d363f4a8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s-2p frozen; dc Kerr gamma_K(-w; 0, 0, w). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "ccsd_kerr_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__ccsd_kerr_Ar.csv"
+table = "tbl_c806d363f4a8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s-2p frozen; DFWM gamma_par(-w; w, w, -w) (intensity-dependent index). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_eshg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__ccsd_eshg_Ar.csv"
+table = "tbl_c806d363f4a8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s-2p frozen; ESHG gamma_par(-2w; w, w, 0). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_thg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__ccsd_thg_Ar.csv"
+table = "tbl_c806d363f4a8"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IX: unrelaxed CCSD response, t-aug-cc-pV5Z, 1s-2p frozen; THG gamma_par(-3w; w, w, w). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_dc_kerr_N2"
+material = "N2"
+file = "N2/hattig_1998__ccsd_dc_kerr_N2.csv"
+table = "tbl_633f4bbb50b3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIII: unrelaxed CCSD response, t-aug-cc-pVTZ, vibrationally averaged (v = 0); dc Kerr gamma_K(-w; 0, 0, w). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "ccsd_kerr_N2"
+material = "N2"
+file = "N2/hattig_1998__ccsd_kerr_N2.csv"
+table = "tbl_633f4bbb50b3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIII: unrelaxed CCSD response, t-aug-cc-pVTZ, vibrationally averaged (v = 0); DFWM gamma_par(-w; w, w, -w) (intensity-dependent index). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_eshg_N2"
+material = "N2"
+file = "N2/hattig_1998__ccsd_eshg_N2.csv"
+table = "tbl_633f4bbb50b3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIII: unrelaxed CCSD response, t-aug-cc-pVTZ, vibrationally averaged (v = 0); ESHG gamma_par(-2w; w, w, 0). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__ccsd_thg_N2.csv"
+table = "tbl_633f4bbb50b3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIII: unrelaxed CCSD response, t-aug-cc-pVTZ, vibrationally averaged (v = 0); THG gamma_par(-3w; w, w, w). Not scaled to the static best estimate (see best_* datasets)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_dc_kerr_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__ccsd_dc_kerr_CH4.csv"
+table = "tbl_5798b1c436d3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XV: unrelaxed CCSD response, t-aug-cc-pVTZ, equilibrium geometry, 1a1 frozen; dc Kerr gamma_K(-w; 0, 0, w). Not scaled to the static best estimate (see best_* datasets). Row '590.0' is 589.0 nm (omega 0.077357; see the source notes)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "ccsd_kerr_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__ccsd_kerr_CH4.csv"
+table = "tbl_5798b1c436d3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XV: unrelaxed CCSD response, t-aug-cc-pVTZ, equilibrium geometry, 1a1 frozen; DFWM gamma_par(-w; w, w, -w) (intensity-dependent index). Not scaled to the static best estimate (see best_* datasets). Row '590.0' is 589.0 nm (omega 0.077357; see the source notes)."
+[datasets.parameters]
+process = "kerr"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_eshg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__ccsd_eshg_CH4.csv"
+table = "tbl_5798b1c436d3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XV: unrelaxed CCSD response, t-aug-cc-pVTZ, equilibrium geometry, 1a1 frozen; ESHG gamma_par(-2w; w, w, 0). Not scaled to the static best estimate (see best_* datasets). Row '590.0' is 589.0 nm (omega 0.077357; see the source notes)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_thg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__ccsd_thg_CH4.csv"
+table = "tbl_5798b1c436d3"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XV: unrelaxed CCSD response, t-aug-cc-pVTZ, equilibrium geometry, 1a1 frozen; THG gamma_par(-3w; w, w, w). Not scaled to the static best estimate (see best_* datasets). Row '590.0' is 589.0 nm (omega 0.077357; see the source notes)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "scf_thg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__scf_thg_Ne.csv"
+table = "tbl_05c0048e936a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV: THG gamma_par(-3w; w, w, w) by SCF (RPA) response, q-aug-cc-pV5Z (as captioned). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_thg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__ccs_thg_Ne.csv"
+table = "tbl_05c0048e936a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV: THG gamma_par(-3w; w, w, w) by CCS response, q-aug-cc-pV5Z (as captioned). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_thg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__cc2_thg_Ne.csv"
+table = "tbl_05c0048e936a"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table IV: THG gamma_par(-3w; w, w, w) by CC2 response, q-aug-cc-pV5Z (as captioned). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "scf_thg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__scf_thg_Ar.csv"
+table = "tbl_1d1b437d62c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table V: THG gamma_par(-3w; w, w, w) by SCF (RPA) response, q-aug-cc-pV5Z (as captioned). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_thg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__ccs_thg_Ar.csv"
+table = "tbl_1d1b437d62c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table V: THG gamma_par(-3w; w, w, w) by CCS response, q-aug-cc-pV5Z (as captioned). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_thg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__cc2_thg_Ar.csv"
+table = "tbl_1d1b437d62c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table V: THG gamma_par(-3w; w, w, w) by CC2 response, q-aug-cc-pV5Z (as captioned). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "scf_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__scf_thg_N2.csv"
+table = "tbl_1b5718881686"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI: THG gamma_par(-3w; w, w, w) by SCF (RPA) response, t-aug-cc-pVTZ, equilibrium bond length 2.074 bohr (not vibrationally averaged). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__ccs_thg_N2.csv"
+table = "tbl_1b5718881686"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI: THG gamma_par(-3w; w, w, w) by CCS response, t-aug-cc-pVTZ, equilibrium bond length 2.074 bohr (not vibrationally averaged). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__cc2_thg_N2.csv"
+table = "tbl_1b5718881686"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI: THG gamma_par(-3w; w, w, w) by CC2 response, t-aug-cc-pVTZ, equilibrium bond length 2.074 bohr (not vibrationally averaged). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccsd_re_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__ccsd_re_thg_N2.csv"
+table = "tbl_1b5718881686"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI: THG gamma_par(-3w; w, w, w) by CCSD response, t-aug-cc-pVTZ, equilibrium bond length 2.074 bohr (not vibrationally averaged). For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "scf_thg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__scf_thg_CH4.csv"
+table = "tbl_faa012f2f892"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII: THG gamma_par(-3w; w, w, w) by SCF (RPA) response, t-aug-cc-pVTZ, equilibrium geometry. For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "ccs_thg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__ccs_thg_CH4.csv"
+table = "tbl_faa012f2f892"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII: THG gamma_par(-3w; w, w, w) by CCS response, t-aug-cc-pVTZ, equilibrium geometry. For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "cc2_thg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__cc2_thg_CH4.csv"
+table = "tbl_faa012f2f892"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VII: THG gamma_par(-3w; w, w, w) by CC2 response, t-aug-cc-pVTZ, equilibrium geometry. For comparing the dispersion of the correlation levels: SCF and CCS 'strongly' underestimate it, CC2 overshoots the magnitude (p. 2768)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "static_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__static_Ne.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_0 by method (row id as printed): unrelaxed CCS, CC2, CCSD response (basis: Ne, Ar t-aug-cc-pV5Z; N2, CH4 t-aug-cc-pVTZ, and the second CCSD row d-aug-cc-pVTZ); SCF; orbital-relaxed CCSD and CCSD(T) (Ne, Ar t-aug-cc-pV5Z; N2, CH4 d-aug-cc-pVTZ); 'CCSD resp. core corr.' and 'CCSD(T) core corr.' with all electrons correlated (footnotes f, g). For N2 and CH4 equilibrium geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__static_Ar.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_0 by method (row id as printed): unrelaxed CCS, CC2, CCSD response (basis: Ne, Ar t-aug-cc-pV5Z; N2, CH4 t-aug-cc-pVTZ, and the second CCSD row d-aug-cc-pVTZ); SCF; orbital-relaxed CCSD and CCSD(T) (Ne, Ar t-aug-cc-pV5Z; N2, CH4 d-aug-cc-pVTZ); 'CCSD resp. core corr.' and 'CCSD(T) core corr.' with all electrons correlated (footnotes f, g). For N2 and CH4 equilibrium geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_N2"
+material = "N2"
+file = "N2/hattig_1998__static_N2.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_0 by method (row id as printed): unrelaxed CCS, CC2, CCSD response (basis: Ne, Ar t-aug-cc-pV5Z; N2, CH4 t-aug-cc-pVTZ, and the second CCSD row d-aug-cc-pVTZ); SCF; orbital-relaxed CCSD and CCSD(T) (Ne, Ar t-aug-cc-pV5Z; N2, CH4 d-aug-cc-pVTZ); 'CCSD resp. core corr.' and 'CCSD(T) core corr.' with all electrons correlated (footnotes f, g). For N2 and CH4 equilibrium geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__static_CH4.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table III, static gamma_0 by method (row id as printed): unrelaxed CCS, CC2, CCSD response (basis: Ne, Ar t-aug-cc-pV5Z; N2, CH4 t-aug-cc-pVTZ, and the second CCSD row d-aug-cc-pVTZ); SCF; orbital-relaxed CCSD and CCSD(T) (Ne, Ar t-aug-cc-pV5Z; N2, CH4 d-aug-cc-pVTZ); 'CCSD resp. core corr.' and 'CCSD(T) core corr.' with all electrons correlated (footnotes f, g). For N2 and CH4 equilibrium geometry, no vibrational correction."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_others_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__static_others_Ne.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["O. Christiansen and P. Jorgensen, Chem. Phys. Lett. 207, 367 (1993) (MCSCF, Ref. 11)", "rice_1992_neon", "H. Muller, J. Noga and W. Kutzelnigg (unpublished) (CCSD(T)-R12, Ref. 68)"]
+notes = "Table III, earlier calculations quoted: MCSCF 106. (Ref. 11), CCSD(T) 110.3 (Ref. 10 = rice_1992_neon, its uncontracted 8-electron value), CCSD(T)-R12 104.7 (Ref. 68)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_others_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__static_others_Ar.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["M. Jaszunski, P. Jorgensen and A. Rizzo, Theor. Chim. Acta 90, 291 (1995) (MCSCF, Ref. 64)", "rice_1991"]
+notes = "Table III, earlier calculations quoted: MCSCF 1123. (Ref. 64), CCSD(T) 1231. (Ref. 9 = rice_1991, basis B)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_others_N2"
+material = "N2"
+file = "N2/hattig_1998__static_others_N2.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["Y. Luo, O. Vahtras, H. Agren and P. Jorgensen, Chem. Phys. Lett. 205, 555 (1993) (MCSCF, Ref. 65)", "sekino_1993", "E. F. Archibong and A. J. Thakkar, J. Chem. Phys. 100, 7471 (1994) (QCISD(T), Ref. 69)"]
+notes = "Table III, earlier calculations quoted: MCSCF 885. (Ref. 65), CCSD(T) 1010. (Ref. 66, Sekino and Bartlett, J. Chem. Phys. 98, 3022 (1993) = sekino_1993), QCISD(T) 946. (Ref. 69)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "static_others_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__static_others_CH4.csv"
+table = "tbl_ae487f4bcb5f"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["D. M. Bishop and S. P. A. Sauer, J. Chem. Phys. 108, 8502 (1997) (MCSCF, Ref. 59)", "G. Maroulis, Chem. Phys. Lett. 226, 420 (1994) (CCSD(T), Ref. 67)"]
+notes = "Table III, earlier calculations quoted: MCSCF 2152. (Ref. 59), CCSD(T) 2370. (Ref. 67)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "vib_avg_static_N2"
+material = "N2"
+file = "N2/hattig_1998__vib_avg_static_N2.csv"
+table = "tbl_bee0d90000c1"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XII, row <0|gamma|0>: the static CCSD/t-aug-cc-pVTZ gamma_0 of N2 averaged over the v = 0 vibrational wave function of a CCSD(T) potential (915.0; 903.0 at r_e = 2.074 bohr, a zero-point correction of +12)."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "best_dc_kerr_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__best_dc_kerr_Ne.csv"
+table = "tbl_1b31198501c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X 'CCSD': CCSD/t-aug-cc-pV5Z response times the static ratio CCSD(T) (all electrons, t-aug-cc-pCV5Z) / CCSD response (107.1/110.2), 'to account approximately for core correlation and connected triples'. Uncertainty 'about +-3 a.u.' (p. 2770)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "best_eshg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__best_eshg_Ne.csv"
+table = "tbl_1b31198501c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X 'CCSD': CCSD/t-aug-cc-pV5Z response times the static ratio CCSD(T) (all electrons, t-aug-cc-pCV5Z) / CCSD response (107.1/110.2), 'to account approximately for core correlation and connected triples'. Uncertainty 'about +-3 a.u.' (p. 2770)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_thg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__best_thg_Ne.csv"
+table = "tbl_1b31198501c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table X 'CCSD': CCSD/t-aug-cc-pV5Z response times the static ratio CCSD(T) (all electrons, t-aug-cc-pCV5Z) / CCSD response (107.1/110.2), 'to account approximately for core correlation and connected triples'. Uncertainty 'about +-3 a.u.' (p. 2770)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_dc_kerr_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__best_dc_kerr_Ar.csv"
+table = "tbl_0741c20d0afb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI 'CCSD': CCSD/t-aug-cc-pV5Z response times the static ratio CCSD(T)/CCSD (1159/1178); values marked 'a' (457.9 nm) interpolated from a fit. Uncertainty 'about 1 %-3 %' (p. 2771)."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "best_eshg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__best_eshg_Ar.csv"
+table = "tbl_0741c20d0afb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI 'CCSD': CCSD/t-aug-cc-pV5Z response times the static ratio CCSD(T)/CCSD (1159/1178); values marked 'a' (457.9 nm) interpolated from a fit. Uncertainty 'about 1 %-3 %' (p. 2771)."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_thg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__best_thg_Ar.csv"
+table = "tbl_0741c20d0afb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XI 'CCSD': CCSD/t-aug-cc-pV5Z response times the static ratio CCSD(T)/CCSD (1159/1178); values marked 'a' (457.9 nm) interpolated from a fit. Uncertainty 'about 1 %-3 %' (p. 2771)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_dc_kerr_N2"
+material = "N2"
+file = "N2/hattig_1998__best_dc_kerr_N2.csv"
+table = "tbl_592e2af72196"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIV 'CCSD': Table XIII (vibrationally averaged CCSD/t-aug-cc-pVTZ) times the ratio of the static best estimate (894) to the t-aug-cc-pVTZ averaged value (915.0): 'to account approximately for connected triples and remaining basis set effects'."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "best_eshg_N2"
+material = "N2"
+file = "N2/hattig_1998__best_eshg_N2.csv"
+table = "tbl_592e2af72196"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIV 'CCSD': Table XIII (vibrationally averaged CCSD/t-aug-cc-pVTZ) times the ratio of the static best estimate (894) to the t-aug-cc-pVTZ averaged value (915.0): 'to account approximately for connected triples and remaining basis set effects'."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__best_thg_N2.csv"
+table = "tbl_592e2af72196"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XIV 'CCSD': Table XIII (vibrationally averaged CCSD/t-aug-cc-pVTZ) times the ratio of the static best estimate (894) to the t-aug-cc-pVTZ averaged value (915.0): 'to account approximately for connected triples and remaining basis set effects'."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "best_dc_kerr_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__best_dc_kerr_CH4.csv"
+table = "tbl_c2b8213c9cf9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XVI 'CCSD': CCSD/t-aug-cc-pVTZ gamma_K plus the zero-point vibrational correction (fitted to Bishop and Sauer's MCRPA results) and the pure vibrational contribution of Bishop and Pipin (1995): electronic plus vibrational, no rotational part (none for a spherical top). Rows marked 'a' interpolated."
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic_vibrational"
+component = "K"
+
+[[datasets]]
+id = "best_eshg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__best_eshg_CH4.csv"
+table = "tbl_c2b8213c9cf9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XVI 'CCSD': CCSD/t-aug-cc-pVTZ gamma_par plus the zero-point vibrational correction (fitted to Bishop and Sauer's MCRPA results) and the pure vibrational contribution of Bishop and Pipin (1995): electronic plus vibrational, no rotational part (none for a spherical top). Rows marked 'a' interpolated."
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic_vibrational"
+component = "parallel"
+
+[[datasets]]
+id = "best_thg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__best_thg_CH4.csv"
+table = "tbl_c2b8213c9cf9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table XVI 'CCSD f': the CCSD/t-aug-cc-pVTZ THG plus the zero-point correction extrapolated from Bishop and Sauer's MCRPA ESHG values ('Only electronic contribution', footnote f); 694.3 nm interpolated (footnote a)."
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__expt_dc_kerr_Ne.csv"
+table = "tbl_1b31198501c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table X, dc Kerr 'Expt', footnote a (Ref. 54, Buckingham and Dunmur, Trans. Faraday Soc. 64, 1776 (1968)): 101 +- 8 at 632.8 nm. Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__expt_eshg_Ne.csv"
+table = "tbl_1b31198501c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "shelton_1989", "shelton_1992", "R. S. Finn and J. F. Ward, Phys. Rev. Lett. 26, 285 (1971)"]
+notes = "Table X, ESHG 'Expt': footnote b rows (Refs. 3, 70, 4: shelton_1990, shelton_1989, Shelton and Donley 1992 = shelton_1992) and the 694.3 nm row, footnote c (Ref. 71, Finn and Ward 1971). Row ids carry the footnote letter. Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_Ne"
+material = "Ne"
+file = "Ne/hattig_1998__expt_thg_Ne.csv"
+table = "tbl_1b31198501c7"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["X. F. Li, A. L'Huillier, M. Ferray, L. A. Lompre and G. Mainfray, Phys. Rev. A 39, 5731 (1989)", "lehmeier_1985", "ward_1969"]
+notes = "Table X, THG 'Expt': 90 +- 45 at 1064 nm (d, Ref. 53, Li et al. 1989), 79.7 +- 8 at 1055 nm (e, Ref. 52, Lehmeier et al. 1985), 108 +- 18 at 694.3 nm (f, Ref. 51, Ward and New 1969). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__expt_dc_kerr_Ar.csv"
+table = "tbl_0741c20d0afb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["D. P. Shelton and J. J. Palubinskas, J. Chem. Phys. 104, 2482 (1996)", "carusotto_1985", "dunmur_1979b"]
+notes = "Table XI, dc Kerr 'Expt': 1248 +- 10 at 632.8 nm (b, Ref. 6, Shelton and Palubinskas 1996; footnote b adds the earlier 1171 +- 80 of Buckingham and Dunmur, Ref. 54, which rice_1992 quotes as 1070 +- 80), 1211 +- 35 at 514.5 nm (c, Ref. 72), 1187 +- 96 at 457.9 nm (d, Ref. 73). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "electronic"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__expt_eshg_Ar.csv"
+table = "tbl_0741c20d0afb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "mizrahi_1985_arn2o2"]
+notes = "Table XI, ESHG 'Expt e' (Refs. 3, 1: shelton_1990, Mizrahi and Shelton 1985): 'only listed for some representative frequencies'. Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_Ar"
+material = "Ar"
+file = "Ar/hattig_1998__expt_thg_Ar.csv"
+table = "tbl_0741c20d0afb"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["X. F. Li, A. L'Huillier, M. Ferray, L. A. Lompre and G. Mainfray, Phys. Rev. A 39, 5731 (1989)", "lehmeier_1985", "ward_1969"]
+notes = "Table XI, THG 'Expt': 1840 +- 920 at 1064 nm (f, Ref. 53), 1055 +- 105 at 1055 nm (g, Ref. 52, Lehmeier et al.), 1525 +- 242 at 694.3 nm (h, Ref. 51, Ward and New). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "electronic"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_N2"
+material = "N2"
+file = "N2/hattig_1998__expt_dc_kerr_N2.csv"
+table = "tbl_592e2af72196"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["buckingham_1970"]
+notes = "Table XIV, dc Kerr 'Exp.', footnote b (Ref. 58): 1443 +- 160 at 632.8 nm. The authors: the rotational contribution (estimated 4670 a.u.) 'hinders a meaningful comparison' (p. 2774); what the value contains is not stated here. Uncertainty level not stated. Checked against the original now in the library (buckingham_1970, Table 2): its gamma(N2) = (0.9 +- 0.1) x 10^-61 C^4 m^4 J^-3 = 1443 +- 160 au, digit-identical; there it is the 1/T = 0 intercept of A_K(T), so the orientation (rotational) term is removed by the fit and the value is electronic plus vibrational (the part here is left as recorded). The intercept rests on a long extrapolation over 248-334 K: the scatter of the original's Table 1 gives about +-33 % rather than the printed +-12 % (buckingham_1970 notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "unknown"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_N2"
+material = "N2"
+file = "N2/hattig_1998__expt_eshg_N2.csv"
+table = "tbl_592e2af72196"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["mizrahi_1985_arn2o2", "V. Mizrahi and D. P. Shelton, Phys. Rev. A 31, 3145 (1985)"]
+notes = "Table XIV, ESHG 'Expt a' (Refs. 1, 2, Mizrahi and Shelton 1985): measured values, including the small pure vibrational and rotational parts (Shelton's fit corrected for them is shown only in Fig. 5). The 457.9 nm sigma is printed '14..3' (read 14.3). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_N2"
+material = "N2"
+file = "N2/hattig_1998__expt_thg_N2.csv"
+table = "tbl_592e2af72196"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["lehmeier_1985", "ward_1969"]
+notes = "Table XIV, THG 'Expt': 954 +- 95 at 1055 nm (c, Lehmeier et al.: ratio 21.1 +- 2.1 to He), 1295 +- 206 at 694.3 nm (d, Ward and New: ratio 26.75 +- 4.25), both converted with Bishop and Pipin's He (p. 2774). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_dc_kerr_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__expt_dc_kerr_CH4.csv"
+table = "tbl_c2b8213c9cf9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["D. P. Shelton and J. J. Palubinskas, J. Chem. Phys. 104, 2482 (1996)"]
+notes = "Table XVI, dc Kerr 'Expt. b' (Ref. 6, Shelton and Palubinskas 1996), seven wavelengths. Footnotes: at 632.8 nm (c) an earlier 2887 +- 144 (Ref. 74, Buckingham and Orr 1969) and at 457.9 nm (d) 3063 +- 160 (Ref. 73, Dunmur et al. 1979). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "dc_kerr"
+convention = "T"
+part = "total"
+component = "K"
+
+[[datasets]]
+id = "expt_eshg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__expt_eshg_CH4.csv"
+table = "tbl_c2b8213c9cf9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "shelton_1986_ch4"]
+notes = "Table XVI, ESHG 'Expt. e' (Refs. 3, 75: shelton_1990, Shelton, Phys. Rev. A 34, 304 (1986) = shelton_1986_ch4). Garbled cells in the library, read from the image. Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "eshg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "expt_thg_CH4"
+material = "CH4"
+file = "CH4/hattig_1998__expt_thg_CH4.csv"
+table = "tbl_c2b8213c9cf9"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["ward_1984"]
+notes = "Table XVI, THG 'Expt. g' (Ref. 62, Ward and Elliot, J. Chem. Phys. 80, 1003 (1984)): 3997 +- 120 at 694.3 nm (ratio to He 82.5 +- 2.5, p. 2775). Uncertainty level not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "thg"
+convention = "T"
+part = "total"
+component = "parallel"
+
+[[datasets]]
+id = "best_static_N2"
+material = "N2"
+points = [["best", "0", "894"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "p. 2772 (read on the page image): 'we arrive at a result of gamma_0^e,N2 = 894 a.u. for the static hyperpolarizability of N2': the unrelaxed CCSD basis-set limit 867 +- 7, plus relaxation and triples (+15.4, Table III), plus the zero-point vibrational correction (+12, Table XII). Electronic, vibrationally averaged; no pure vibrational or rotational part. No overall uncertainty stated."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "best_static_CH4"
+material = "CH4"
+points = [["best", "0", "2533", "70"], ["ccsd_tz_zpva", "0", "2650"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "p. 2774 (read on the page image): row 'best', 'a best estimate for the static electronic second hyperpolarizability of gamma_par^e,CH4(0) = 2533 a.u.' (CCSD basis limit 2318 +- 35, plus the zero-point correction of Bishop and Sauer, minus 70 for relaxation and triples), a total uncertainty (their spelling 'uncertain-ity') 'of ... about +-70 a.u. or +-3 %'; row 'ccsd_tz_zpva', CCSD/t-aug-cc-pVTZ plus the zero-point correction, 2650. Electronic, vibrationally averaged (zero-point), no pure vibrational part."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "expt_static_Ne"
+material = "Ne"
+points = [["shelton_donley_fit", "0", "108.1", "2.2"], ["hattig_jorgensen_1998", "0", "106.4", "2"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1992", "C. Hattig and P. Jorgensen, Chem. Phys. Lett. 283, 109 (1998)"]
+notes = "pp. 2768-2770: Shelton and Donley's fit of their four ESHG points with B constrained to 5.50 a.u., 'gamma_0^Ne = 108.1 +- 2.2 a.u.', and the authors' earlier 'refined estimate gamma_0^Ne = 106.4 +- 2 a.u.' (the CCSD dispersion curve shifted onto the two visible points; the 1319 nm point is then 'too large by 2.4 a.u.'). Static electronic values derived from ESHG data."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "expt_static_N2"
+material = "N2"
+points = [["shelton", "0", "917", "9"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990"]
+notes = "p. 2773: 'the estimate obtained by Shelton from the experimental ESHG data by extrapolation: gamma_par^e,N2(0) = 917 +- 9 a.u.' (electronic, after subtracting the vibrational and rotational parts)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "electronic"
+
+[[datasets]]
+id = "expt_static_CH4"
+material = "CH4"
+points = [["shelton", "0", "2590"], ["bishop_pipin_1995", "0", "2607"]]
+table = "text"
+quantity = "hyperpolarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "reproduced"
+reproduced_from = ["shelton_1990", "D. M. Bishop and J. Pipin, J. Chem. Phys. 103, 4980 (1995)"]
+notes = "p. 2774: static electronic estimates 'derived from the experimental results by Shelton without further modifications of the measured data, 2590 a.u., and by Bishop and Pipin after correction for the pure vibrational contribution, 2607 a.u.'. Shelton's 2590 is an ESHG static extrapolation that includes the vibrational part Shelton's value includes the vibrational contribution, Bishop and Pipin's is electronic: part 'unknown' for the pair."
+[datasets.parameters]
+process = "static"
+convention = "T"
+part = "unknown"

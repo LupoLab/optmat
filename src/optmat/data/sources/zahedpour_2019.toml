@@ -1,0 +1,270 @@
+citation = "S. Zahedpour, S. W. Hancock and H. M. Milchberg, \"Ultrashort infrared 2.5-11 um pulses: spatiotemporal profiles and absolute nonlinear response of air constituents\", Opt. Lett. 44, 843 (2019)"
+doi = "10.1364/OL.44.000843"
+library = "Zahedpour_2019_UltrashortInfrared25"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Single-shot supercontinuum spectral interferometry (SSSI), as zahedpour_2015, \
+with a mid- to long-wave infrared pump: non-collinear difference-frequency generation \
+(AgGaS2) of the signal (1.1-1.6 um) and idler (1.6-2.6 um) of an OPA pumped by 36 fs, 8 mJ, \
+~806 nm pulses (1 kHz Ti:sapphire), tuned over 3.0-10.5 um (Table 1), focused by a BaF2 \
+lens. Supercontinuum probe and reference (400-750 nm, filamentation of ~200 uJ, 806 nm \
+in 2.5 atm Xe; Michelson pair ~2.5 ps apart), copropagating with the pump into a gas cell \
+(BaF2 entrance, fused-silica exit window); window response measured with the cell \
+evacuated; 2 x 10^4 shots per phase image; ~5 fs, ~3 um resolution. Cell at 1 atm for \
+pumps of 3.0-6.5 um and 42 atm for 7.0-11.0 um (the DFG output falls below 10 uJ at 11 \
+um). Probe parallel and perpendicular to the pump separate the electronic and \
+rotational phases. Absolute n2 without density, length or intensity measurements: the \
+electronic phase of N2 and O2 is referenced to their own rotational phase, whose size \
+is fixed by Delta alpha; Ar is referenced to N2 with the same pump pulses (pp. 843-845)."""
+notes = """Journal pages 843-846 = PDF pages 1-4. Identity checked against the first page. \
+No supplement in the library directory (the paper cites none). Air is not curated; the \
+title's 'air constituents' are N2, O2 and Ar, all recorded. The abstract and conclusion \
+say 2.5-11 um; Table 1 covers pump wavelengths 3.0-10.5 um.
+
+DEFINING EQUATIONS (Gaussian units; quoted, checked on the page images). Separation \
+(p. 844, citing Sutherland): Delta phi_par = Delta phi_elec + Delta phi_rot, Delta \
+phi_perp = Delta phi_elec/3 - Delta phi_rot/2, so Delta phi_elec = 3(Delta phi_par + 2 \
+Delta phi_perp)/5 and Delta phi_rot = 2(Delta phi_par - 3 Delta phi_perp)/5. For Ar (p. \
+844): 'Delta phi_par(x, t) = 2 n2 I(x, t) k_p L', 'n2 is the nonlinear refractive index \
+(electronic)'. Eq. (1), p. 845: Delta phi_elec(x, t) = 2 n2 I0 k_p L (N/N0) f(x, t); Delta \
+phi_rot(x, t) = 2 pi N n0^-1 I0 k_p L Delta alpha(lambda_p) Delta alpha(lambda_pu) g(t) * \
+f(x, t), 'where n2 and n0 are the nonlinear (electronic) and linear refractive indices \
+at 1 atm', N the molecular density, N0 'the molecular density at 1 atm', I0 the peak \
+intensity, f the normalised envelope; g(tau) = (-16 pi/(15 hbar c)) sum_j [j(j - 1)/(2j - \
+1)] (rho_j/(2j + 1) - rho_(j-2)/(2j - 3)) exp(-gamma_(j,j-2) tau) sin(omega_(j,j-2) tau), \
+omega_(j,j-2) = 4 pi c B (2j - 1) (note [19]: the g of zahedpour_2015 was misprinted, its \
+computations used this one). Probe index (p. 845): 'Delta n_p(x, t) = 2 n2 I(x, t) + \
+int R(t - t') I(x, t') dt'', R(tau) = 2 pi N n0^-1 Delta alpha(lambda_p) Delta \
+alpha(lambda_pu) g(tau): n2 is the SELF coefficient (the probe sees 2 n2, as \
+wahlstrand_2013). Calibration (p. 845): the 2D fit g(t) * Delta phi_elec = mu1 Delta \
+phi_rot gives 'n2 = mu1 pi n0^-1 N0 Delta alpha(lambda_p) Delta alpha(lambda_pu) = mu1 \
+pi n0^-1 N0 (Delta alpha)^2' (the library's Markdown prints n2^-1: a transcription \
+error, the page has n2); Ar: Delta phi_elec^Ar = mu2 Delta phi_elec^N2 'gives n2^Ar = \
+n2^N2 mu2 N_Ar/N_N2 from Eq. (1)'. From Eq. (1) the density ratio should be N_N2/N_Ar; \
+the two are equal at equal pressure for an ideal gas (see REFERENCE STATE). No relation \
+between n2 and chi(3) or gamma is given (zahedpour_2015 gives n2 = (12 pi^2/n0^2 c) N \
+gamma).
+
+CALIBRATION ROUTE. N2: 'Delta alpha_N2(lambda_pu) ~ Delta alpha_N2(0) = 6.6 x 10^-25 cm3 \
+[11]' (zahedpour_2015's Alms et al. fit; p. 845) and 'Delta alpha is taken as spectrally \
+flat', so (Delta alpha)^2 = (6.6e-25)^2 for the pump and the visible probe alike. O2: \
+'we assume Delta alpha(lambda_p) = Delta alpha(lambda_pu) for all analyses, and we use \
+the values of Delta alpha_O2 = 10.2 x 10^-25 cm3 measured in Ref. [15]' \
+(wahlstrand_2012, 800 nm). Ar: the ratio of its electronic phase to N2's with the same \
+pump pulses. So the absolute scale is Delta alpha squared: Alms's light-scattering \
+Delta alpha(0) for N2 (and Ar), wahlstrand_2012's Delta alpha(800 nm) for O2. This is \
+not quite zahedpour_2015's N2 scale (Delta alpha rescaled to wahlstrand_2012's 6.7 at \
+800 nm, dispersed to the 600-nm probe): with that paper's C = 3.8e-57 cm3 s2, its \
+product Delta alpha(600) Delta alpha(2400) is 6.87 x 6.52 = 44.8 (1e-50 cm6) against \
+43.6 here, so this paper's N2 and Ar values are ~2.7 % below the 2015 scale for the same \
+phases (computed 2026-09-26; within the errors; not corrected).
+
+PART. The electronic part is separated by the polarisation analysis, not by the pulse \
+duration (pulses 77-92 fs at 3.0-6.5 um, up to ~300 fs at the longest wavelengths, \
+Figs. 2 and 4). The paper (p. 843): 'For the 50-300 fs MIR-LWIR pulses of this \
+experiment, the electronic and rotational responses dominate; the non-resonant Raman \
+vibrational response of O2 and N2 is negligible, owing to insufficient optical \
+bandwidth'. The adiabatic bond-stretch part follows these pulses and is not separated, \
+so N2 and O2 are 'electronic_vibrational' (as zahedpour_2015), Ar 'electronic'. N2 was \
+scanned continuously over 7.5-8.5 um: 'no signature of two-photon resonant absorption' \
+(p. 846). Nondegenerate against degenerate (p. 843): 'the extracted nondegenerate \
+nonlinearity coefficients are within ~5 % of their degenerate MIR counterparts, with \
+even better agreement in the LWIR' (the pump-probe n2 is n2(omega_pu, omega_p) with a \
+visible probe).
+
+REFERENCE STATE. Table 1: 'at Atmospheric Pressure'; Eq. (1): n2 'at 1 atm'. No \
+temperature: 101325 Pa and 293.15 K assumed. For N2 and O2 the measured density \
+cancels (both phases scale with N), so the 42-atm points need no density: the \
+reference density N0 enters only through n2 = mu1 pi n0^-1 N0 (Delta alpha)^2, whose \
+value (temperature, ideal or real) is not stated. For Ar at 42 atm the density ratio \
+matters: optmat's equations of state give Z = 0.9941 (N2) and 0.9738 (Ar) at 42 atm, \
+293.15 K (1 atm: 0.9998, 0.9993), so the real-gas N_N2/N_Ar = 0.980. If the authors used \
+equal (ideal-gas) densities, the Ar values at 7.0-10.5 um are 2.0 % high; if they used \
+the printed N_Ar/N_N2 with real densities, 2 % low the other way round. Not stated, not \
+corrected (TC-312). At 42 atm the O2 rotational dephasing was measured (Fig. 3, below); \
+the paper does not say what dephasing it used for N2.
+
+WAVELENGTHS. Rows are the pump (DFG) wavelengths, 'determined by measuring the \
+wavelengths of the OPA signal and idler output using a MIR spectrometer ... spanning \
+1.0-2.5 um' (Table 1 note a); vacuum assumed (air against vacuum is 3e-4 relative, \
+negligible). The probe is the 400-750 nm supercontinuum (no central wavelength stated; \
+zahedpour_2015's was 600 nm): probe_nm is not recorded. The 10.5 um column carries note \
+c; Fig. 4 labels its longest traces 10.6 um (whether they are the 10.5 um column is not \
+said).
+
+UNCERTAINTY. The Table 1 errors (+-0.4 to +-0.6, 5-8 %) are not explained in this paper \
+and their level is not stated. They are smaller than the propagated uncertainty of \
+Delta alpha^2 alone (wahlstrand_2012: 6.7 +- 0.3, 10.2 +- 0.4, i.e. 9 % and 8 % on \
+Delta alpha^2), so they are probably the statistical part only; the absolute scale \
+error is larger (TC-312). 'The values of n2 show no dispersion to within our \
+measurement precision' (p. 846). The 16 values per gas have mean (standard deviation) \
+N2 7.54 (0.34), O2 8.18 (0.69), Ar 8.54 (0.73) x 1e-20 cm2/W (computed 2026-09-26); the \
+O2 and Ar scatter exceeds the printed errors.
+
+TABLE 1 (tbl_6c9829dbaca8, p. 846; image checked cell by cell 2026-09-26, the CSV \
+matches; the unmapped glyph of validation.json is the caption's closing parenthesis). \
+Title: 'Measured Values of n2 (x10^-20 cm2/W) (Electronic) for Major Air Constituents at \
+Atmospheric Pressure'. Last columns: n2,rot (first block; N2 23.0, O2 53.3, Ar 0) and \
+n2,eff(tau_peak) (second block; N2 32.5 (400 fs), O2 64.5 (480 fs), Ar '8.5 (average)'). \
+Note b: 'n2,eff = (k I0 L)^-1 int Delta phi(0, t) f(0, t) dt (int f^2(0, t) dt)^-1, where \
+Delta phi = Delta phi_par(0, t) = Delta phi_elec(0, t) + Delta phi_rot(0, t) using Eq. (1), \
+with I(t) = I0 f(0, t) and f(0, t) = exp(-4 ln 2 (t/t_FWHM)^2). For long pulses (t_FWHM \
+>~ 420 fs for N2 and ~500 fs for O2), n2,eff = n2 + n2,rot. The values shown for n2,eff are \
+maximum at the pulsewidths indicated.' Ar's 8.5 is the mean of its 16 measured values \
+(8.54, computed): not written (a derived average; Ar has no rotation). Ar's n2,rot = 0 \
+is not written.
+
+CHECK OF n2,rot AND n2,eff (2026-09-26, scratch computation, not stored). With the \
+printed g(tau) and R(tau), Delta alpha 6.6 and 10.2 x 10^-25 cm3, B = 2.0 and 1.44 cm^-1 \
+(the values wahlstrand_2012 and wahlstrand_2013 print), nuclear-spin weights (N2 6:3 \
+even:odd; 16O2 odd j only, spin-rotation splitting ignored) and the ideal-gas N at 1 \
+atm: the integral of R (wahlstrand_2012's long-pulse expression) is 46.4 (N2) and 110.5 \
+(O2) at 293.15 K, 44.3 and 105.5 at 300 K. The printed n2,rot, 23.0 and 53.3, are HALF \
+of it (23.2 and 55.2 at 293.15 K; 22.1 and 52.8 at 300 K). Note b's n2,eff maximised \
+over Gaussian widths reproduces the printed widths exactly (400 fs N2, 480 fs O2) and \
+the printed values with the same half, n2 + (1/2)<R> (N2 32.7 at 293 K, 31.6 at 300 K, \
+against 32.5; O2 68.3 and 65.6 against 64.5; n2 = 7.6 and 8.2). Taken literally, note \
+b's Delta phi_par would give 2 n2 + <R> instead. So the printed rotational numbers are \
+self coefficients if the printed g (or R) is twice the self rotational response; \
+wahlstrand_2013 finds the probe's rotational index equal to the pump's own (the factor 2 \
+only for the bound electrons), so either g as printed carries an extra factor 2 or the \
+tabulated n2,rot is half the rotational self index. zahedpour_2015's n2,rot (23, 24, 54) \
+follow the same scale. Unresolved (TC-312); n2,rot and n2,eff are 'check'.
+
+COMPARISONS (not used in the datasets). zahedpour_2015 at 2400 nm: N2 7.6 +- 1.3, O2 \
+10.0 +- 1.2, Ar 9.9 +- 1.7; its [32] (Shelton ESHG) values at 2400 nm: N2 8.1, O2 8.6, Ar \
+10.3. Here the means are N2 7.54, O2 8.18, Ar 8.54: N2 agrees with 2015 and is 7 % below Shelton; O2 is 18 % below \
+2015's 2.4 um point (1.5 sigma) and 5 % below Shelton; Ar is 14 % below 2015 (0.8 sigma) \
+and 17 % below Shelton's dispersion (the Ar-to-N2 ratio is 1.13 here against 1.27 for \
+Shelton's gamma0). Pigeon et al. at 10.6 um (200 ps, total; note c): N2 45 and O2 84 x \
+1e-20 cm2/W, against n2 + n2,rot = 30.5 (N2) and 61.5 (O2) here (mean n2): 1.5 and 1.4 \
+times higher. Ar at 10.5 um, 7.7 +- 0.5, is consistent with pigeon_2018's '<1' x 1e-19.
+
+TEXT (not extracted; no quantity). O2 rotational dephasing from the decay of the \
+revivals at 1-41 atm (Fig. 3, p. 845): 'gamma = 7.4 x 10^9 (s atm)^-1 P(atm)'; at 42 atm \
+gamma^-1 = 3.2 ps; O2 revival period T = (2cB)^-1 = 11.6 ps. Pulse front tilt 7.5 deg at \
+3.0 um and 2.3 deg at 6.5 um (Fig. 2; computed 7.5 and 2.2 deg, p. 846). No higher-order \
+Kerr terms are measured."""
+
+[[datasets]]
+id = "n2_N2"
+material = "N2"
+file = "N2/zahedpour_2019__n2_N2.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 1 (p. 846), both blocks: rows are pump wavelengths 3.0-6.5 um (measured at 1 atm) and 7.0-10.5 um (measured at 42 atm; the density cancels in the rotational referencing). Electronic self coefficient (with the unseparated adiabatic bond-stretch part), referenced to N2's rotational phase with Delta alpha = 6.6e-25 cm3 (flat). 'At atmospheric pressure'; 293.15 K assumed. Pulses 77-300 fs."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_O2"
+material = "O2"
+file = "O2/zahedpour_2019__n2_O2.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 1 (p. 846), both blocks (3.0-6.5 um at 1 atm, 7.0-10.5 um at 42 atm). Electronic self coefficient (adiabatic bond stretch unseparated), referenced to O2's rotational phase with wahlstrand_2012's Delta alpha = 10.2e-25 cm3 at pump and probe. 'At atmospheric pressure'; 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic_vibrational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+file = "Ar/zahedpour_2019__n2_Ar.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "primary"
+notes = "Table 1 (p. 846), both blocks (3.0-6.5 um at 1 atm, 7.0-10.5 um at 42 atm). Electronic self coefficient, referenced to N2 with the same pump pulses (so on n2_N2's Delta alpha scale). At 42 atm the Ar/N2 density ratio enters and its treatment is not stated: up to +-2 % on the 7.0-10.5 um rows (source notes). 293.15 K assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_rot_N2"
+material = "N2"
+file = "N2/zahedpour_2019__n2_rot_N2.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+notes = "Table 1 (p. 846), first block, last column n2,rot: the calculated long-pulse (adiabatic) rotational coefficient, n2,eff = n2 + n2,rot for long pulses (note b), from Delta alpha = 6.6e-25 cm3 taken as flat, so one value for every pump wavelength. It is half the integral of the printed R(tau) (source notes: factor 2 unresolved). Derived: 'check'."
+[datasets.parameters]
+part = "rotational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_rot_O2"
+material = "O2"
+file = "O2/zahedpour_2019__n2_rot_O2.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+notes = "Table 1 (p. 846), first block, last column n2,rot, from Delta alpha = 10.2e-25 cm3 (wahlstrand_2012); as n2_rot_N2 (abscissa 'not stated'). Derived: 'check'."
+[datasets.parameters]
+part = "rotational"
+coefficient = "self"
+
+[[datasets]]
+id = "n2_eff_N2"
+material = "N2"
+file = "N2/zahedpour_2019__n2_eff_N2.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+notes = "Table 1 (p. 846), second block, last column n2,eff(tau_peak) '32.5 (400 fs)': the effective index of note b (electronic plus transient rotational) for a Gaussian pulse, maximal at t_FWHM = 400 fs; calculated from the measured n2 and Delta alpha, one value for all pump wavelengths (abscissa 'not stated'). Reproduced in a scratch check (source notes). Derived: 'check'."
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 400
+
+[[datasets]]
+id = "n2_eff_O2"
+material = "O2"
+file = "O2/zahedpour_2019__n2_eff_O2.csv"
+table = "tbl_6c9829dbaca8"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "um"
+state = { pressure_pa = 101325.0, temperature_k = 293.15 }
+use = "check"
+notes = "Table 1 (p. 846), second block, last column n2,eff(tau_peak) '64.5(480 fs)': as n2_eff_N2, maximal at t_FWHM = 480 fs (abscissa 'not stated'). Derived: 'check'."
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 480

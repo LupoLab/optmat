@@ -1,0 +1,314 @@
+citation = "D. G. Hummer and P. J. Storey, \"Recombination of helium-like ions - I. Photoionization cross-sections and total recombination and cooling coefficients for atomic helium\", Mon. Not. R. Astron. Soc. 297, 1073 (1998)"
+doi = "10.1046/j.1365-8711.1998.2970041073.x"
+library = "Hummer_1998_RecombinationHeliumLike"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Calculated one-photon photoionisation cross sections of all bound levels of \
+helium with n = 1-25, l = 0-5, singlet and triplet, from threshold to a free-electron \
+energy of 2.5 Ryd: the R-matrix close-coupling method (Berrington et al.; the Opacity \
+Project's STGBF, modified for the outer-region dipole integral), extending Fernley, \
+Taylor and Seaton (1987, the OP) with a seven-orbital He+ target (Eq. 5: 1s, 2s, 2p \
+and the pseudo-orbitals 1p-bar', 1d-bar, 2s-bar', 2p-bar' of Calvert and Davison, \
+alpha = 2.13, beta = 3.1, Eqs. 3-4), LS coupling, no fine structure. The energy mesh \
+has at least 40 points within 1/n^2 Ryd of each threshold (p. 1075). The threshold \
+cross sections are compared with values extrapolated from Drake's (1996) bound-bound \
+oscillator strengths by Eq. 1 (ln(nu^3 f) = a + b x + c x^2, x = ln(eps_t/eps); the \
+threshold cross section is 4.033643 e^a Mb), which the paper takes as benchmarks."""
+notes = """Mon. Not. R. Astron. Soc. 297, 1073-1078 (1998) = PDF pages 1-6 (journal page = \
+PDF page + 1072); the publisher's PDF, text and tables as text, Figs. 1 and 2 \
+embedded images. Identity checked against the first page (journal, volume, pages, \
+year, title, authors). Tables 1 and 2 checked against the table images.
+
+ACCURACY. 'In all cases, the difference is less than 1 per cent and, excepting the 1S \
+states, less than 0.5 per cent' (This Work against Extrapolated, p. 1075); the \
+abstract: 'in error by no more than 1 per cent'. Table 2: This Work's 1S quantum \
+defects lie 0.0013-0.0016 below Martin's experimental ones, closer than the OP's.
+
+WHAT IS TAKEN (tools/extract/hummer_1998.py). (1) Table 1 (p. 1074), 'Threshold \
+photoionization cross-sections (Mb)', the rows of the levels two photons reach from \
+the ground state and the ground state itself: 1 1S (photoionization_cross_section), \
+2 1S, 3 1S, 4 1S, 3 1D, 4 1D (excited_state_photoionization_cross_section), each in \
+two columns, This Work and Extrapolated (from Drake's data, with the fitting error as \
+printed, +-0.000 to +-0.053). One point each, at the level's threshold as the \
+calculation places it (THE THRESHOLDS OF TABLE 1, below). (2) Fig. \
+1 (p. 1076, an embedded image), log10 sigma (Mb) of the 1S levels against the \
+electron energy (0-2.5 Ryd): n = 1 (the ground state) and n = 2 (1s2s 1S), read from \
+the image at native resolution (3383 x 2200 pixels; the method in the script's \
+docstring), from 0.08 Ryd (below it the two curves lie within two line widths; they \
+cross at 0.05 Ryd) to 2.45 Ryd, one point every 0.05 Ryd. 
+
+THE PHOTON ENERGY OF FIG. 1 (a conversion this record makes): electron energy (as \
+drawn) plus the calculation's binding energy of the level, 1/(n - delta)^2 Ryd with \
+This Work's delta (Table 2: 0.2549, 0.1478), 1.801237 and 0.291490 Ryd, in R_infinity \
+hc ('rydberg'; the R-matrix energies are in Ryd; whether the quantum defects refer \
+to R_infinity or the reduced-mass Rydberg, 1.4e-4 apart, is not said). Nothing is \
+shifted to the experimental thresholds (24.5874 and 3.9716 eV, NIST). The electron \
+energy read is in each point's 'printed'.
+
+THE THRESHOLDS OF TABLE 1 (corrected 2026-10-09; TC-934 placed them at NIST's). The \
+paper prints no level energies. The 1S rows' points, in both columns, are placed at the calculation's \
+threshold, 1/(n - delta)^2 Ryd with Table 2's This Work quantum defect (0.2549, \
+0.1478, 0.1419, 0.1401 for n = 1-4: 1.801237, 0.291490, 0.122418, 0.067119 Ryd), as \
+Fig. 1's photon energies are, so that the record uses the source's own energies \
+throughout; each point's 'printed' adds the quantum defect used. These thresholds \
+lie 0.33 % (1 1S), 0.14 % (2 1S), 0.09 % (3 1S) and 0.07 % (4 1S) below NIST's \
+ionisation energies of the levels (nist_asd_2026, data/external/nist_asd/\
+He_I_levels.tsv: the He II limit, 198310.66637 cm-1, less the level; checked by the \
+script). The Extrapolated values, from Drake's oscillator strengths, refer to the \
+true threshold; they share the calculation's point with This Work. Table 2 prints \
+no D quantum defects ('the results for the other symmetries are essentially \
+unchanged', p. 1075), so the 1D rows' threshold is 'not stated'; NIST puts 3 1D at \
+12205.70227 and 4 1D at 6864.21323 cm-1 below the limit. Until the correction the \
+Table 1 points stood at NIST's thresholds, in cm-1 (TC-934, TC-942).
+
+DIGITISING. Each side of the frame has its own linear scale from its labelled ticks \
+(residuals within 2 pixels); every minor tick lies on a dark run within 3 pixels of \
+its predicted place. 208.5 pixels per unit of log10 sigma (one pixel 1.1 %), 1133 \
+pixels per Ryd; the lines are 3-6 pixels wide. Relative uncertainty 4 %: the half \
+line width (2-3 pixels, 2.5-3.5 %) and the scale (1 pixel). The overlay (the points \
+and the calibrated grid drawn on the image) was inspected.
+
+CHECKED (the script). The n = 1 curve carried to threshold by a straight line in \
+log10 sigma fitted from 0.08 to 0.3 Ryd gives 0.996 of Table 1's This Work, 7.394 \
+Mb. The n = 2 curve near threshold is not read (the crossing), so its 9.253 Mb is \
+not checked on the figure.
+
+COMPARISONS (Fig. 1's 1s2s 1S curve at the photon energies of the citing records, \
+with the calculation's threshold). At 10.309 eV (120.27 nm, 0.466 Ryd above \
+threshold) it reads 1.733 Mb: kumar_2026 (TC-898)'s implied 1.691 Mb is 0.976 of it \
+and kapralova_zdanska_2025 (TC-899)'s 1.727 Mb (at 120.3 nm) 0.997. At 19.06 eV \
+(65.05 nm) it reads 0.461 Mb, kumar_2026's implied 0.459 (0.996). The three \
+calculations agree within the reading (4 %).
+
+NOT TAKEN. Table 1's other rows (2-4 1P, the triplets 2-4 3S, 3P, 3D): levels two \
+photons from the ground state do not reach (P odd; triplets spin-forbidden), and \
+their thresholds would need a term average of NIST's J levels; for 2 1P, for \
+example, Extrapolated 13.504 +-0.001, This Work 13.48 Mb. The 'Coulomb' column (the \
+Burgess-Seaton/Peach method with Martin's energies, 3.254 Mb for 1 1S, 9.012 for 2 \
+1S) and the 'OP' column (Fernley et al. 1987, from TOPBASE: 7.45 and 9.42 Mb), \
+older calculations the paper replaces. Fig. 1's n = 5-25 curves and Fig. 2 (the n \
+1P series): levels outside the two-photon set; the 2s2p 1P resonance above 2.5 Ryd \
+and the 2s^2 1S resonance are not read. Table 2's quantum defects (no quantity holds \
+them; used for the thresholds). Tables 3-6 (recombination and cooling \
+coefficients). The full cross sections of all levels were to be 'deposited in \
+TOPBASE at the CDS in Strasbourg in due course' (p. 1076); no fit coefficients are \
+printed (Eq. 1's a, b, c are not given)."""
+
+[[datasets]]
+id = "table1_extrapolated_1s2_1S"
+material = "He"
+file = "He/hummer_1998__table1_extrapolated_1s2_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'Extrapolated' for 1 1S: 7.394 +-0.000 Mb at threshold, from Drake's bound-bound oscillator strengths extrapolated to the threshold by Eq. 1 ('benchmark values', p. 1074); the +- is the error of the fit. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+method = "Drake's (1996) Hylleraas-type oscillator strengths of the series, fitted by Eq. 1 and extrapolated to threshold"
+
+[[datasets]]
+id = "table1_1s2_1S"
+material = "He"
+file = "He/hummer_1998__table1_1s2_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'This Work' for 1 1S: 7.394 Mb at threshold, the R-matrix calculation (within 1 % of the Extrapolated column, 0.5 % outside the 1S series, p. 1075). No uncertainty is stated. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.parameters]
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "table1_extrapolated_1s2s_1S"
+material = "He"
+file = "He/hummer_1998__table1_extrapolated_1s2s_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'Extrapolated' for 2 1S: 9.219 +-0.001 Mb at threshold, from Drake's bound-bound oscillator strengths extrapolated to the threshold by Eq. 1 ('benchmark values', p. 1074); the +- is the error of the fit. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "He 1s2s 1S0 (Table 1's 2 1S)"
+method = "Drake's (1996) Hylleraas-type oscillator strengths of the series, fitted by Eq. 1 and extrapolated to threshold"
+
+[[datasets]]
+id = "table1_1s2s_1S"
+material = "He"
+file = "He/hummer_1998__table1_1s2s_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'This Work' for 2 1S: 9.253 Mb at threshold, the R-matrix calculation (within 1 % of the Extrapolated column, 0.5 % outside the 1S series, p. 1075). No uncertainty is stated. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s2s 1S0 (Table 1's 2 1S)"
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "table1_extrapolated_1s3s_1S"
+material = "He"
+file = "He/hummer_1998__table1_extrapolated_1s3s_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'Extrapolated' for 3 1S: 14.417 +-0.010 Mb at threshold, from Drake's bound-bound oscillator strengths extrapolated to the threshold by Eq. 1 ('benchmark values', p. 1074); the +- is the error of the fit. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "He 1s3s 1S0 (Table 1's 3 1S)"
+method = "Drake's (1996) Hylleraas-type oscillator strengths of the series, fitted by Eq. 1 and extrapolated to threshold"
+
+[[datasets]]
+id = "table1_1s3s_1S"
+material = "He"
+file = "He/hummer_1998__table1_1s3s_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'This Work' for 3 1S: 14.49 Mb at threshold, the R-matrix calculation (within 1 % of the Extrapolated column, 0.5 % outside the 1S series, p. 1075). No uncertainty is stated. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s3s 1S0 (Table 1's 3 1S)"
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "table1_extrapolated_1s4s_1S"
+material = "He"
+file = "He/hummer_1998__table1_extrapolated_1s4s_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'Extrapolated' for 4 1S: 20.235 +-0.053 Mb at threshold, from Drake's bound-bound oscillator strengths extrapolated to the threshold by Eq. 1 ('benchmark values', p. 1074); the +- is the error of the fit. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "He 1s4s 1S0 (Table 1's 4 1S)"
+method = "Drake's (1996) Hylleraas-type oscillator strengths of the series, fitted by Eq. 1 and extrapolated to threshold"
+
+[[datasets]]
+id = "table1_1s4s_1S"
+material = "He"
+file = "He/hummer_1998__table1_1s4s_1S.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'This Work' for 4 1S: 20.38 Mb at threshold, the R-matrix calculation (within 1 % of the Extrapolated column, 0.5 % outside the 1S series, p. 1075). No uncertainty is stated. Placed at the calculation's threshold, from Table 2's This Work quantum defect (the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s4s 1S0 (Table 1's 4 1S)"
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "table1_extrapolated_1s3d_1D"
+material = "He"
+file = "He/hummer_1998__table1_extrapolated_1s3d_1D.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'Extrapolated' for 3 1D: 18.132 +-0.002 Mb at threshold, from Drake's bound-bound oscillator strengths extrapolated to the threshold by Eq. 1 ('benchmark values', p. 1074); the +- is the error of the fit. The threshold is not stated: Table 2 prints no D quantum defects (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "He 1s3d 1D2 (Table 1's 3 1D)"
+method = "Drake's (1996) Hylleraas-type oscillator strengths of the series, fitted by Eq. 1 and extrapolated to threshold"
+
+[[datasets]]
+id = "table1_1s3d_1D"
+material = "He"
+file = "He/hummer_1998__table1_1s3d_1D.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'This Work' for 3 1D: 18.13 Mb at threshold, the R-matrix calculation (within 1 % of the Extrapolated column, 0.5 % outside the 1S series, p. 1075). No uncertainty is stated. The threshold is not stated: Table 2 prints no D quantum defects (the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s3d 1D2 (Table 1's 3 1D)"
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "table1_extrapolated_1s4d_1D"
+material = "He"
+file = "He/hummer_1998__table1_extrapolated_1s4d_1D.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'Extrapolated' for 4 1D: 35.766 +-0.026 Mb at threshold, from Drake's bound-bound oscillator strengths extrapolated to the threshold by Eq. 1 ('benchmark values', p. 1074); the +- is the error of the fit. The threshold is not stated: Table 2 prints no D quantum defects (the record's notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+initial_level = "He 1s4d 1D2 (Table 1's 4 1D)"
+method = "Drake's (1996) Hylleraas-type oscillator strengths of the series, fitted by Eq. 1 and extrapolated to threshold"
+
+[[datasets]]
+id = "table1_1s4d_1D"
+material = "He"
+file = "He/hummer_1998__table1_1s4d_1D.csv"
+table = "tbl_af91b1b8d77f"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Table 1 (p. 1074), 'This Work' for 4 1D: 35.75 Mb at threshold, the R-matrix calculation (within 1 % of the Extrapolated column, 0.5 % outside the 1S series, p. 1075). No uncertainty is stated. The threshold is not stated: Table 2 prints no D quantum defects (the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s4d 1D2 (Table 1's 4 1D)"
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "fig1_1s2_1S"
+material = "He"
+file = "He/hummer_1998__fig1_1s2_1S.csv"
+table = "fig_30336517aae5"
+digitised = "raster"
+quantity = "photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Fig. 1 (p. 1076), the n = 1 1S curve (the ground state), read from the image from 0.08 to 2.45 Ryd above threshold. Photon energy = electron energy + 1.801237 Ryd (Table 2's This Work quantum defect; the record's notes). Carried to threshold it gives 0.996 of Table 1's 7.394 Mb. 4 %: the reading."
+[datasets.uncertainty]
+relative = 0.04
+level = "not stated"
+[datasets.parameters]
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"
+
+[[datasets]]
+id = "fig1_1s2s_1S"
+material = "He"
+file = "He/hummer_1998__fig1_1s2s_1S.csv"
+table = "fig_30336517aae5"
+digitised = "raster"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "rydberg"
+use = "check"
+notes = "Fig. 1 (p. 1076), the n = 2 1S curve (1s2s 1S), read from the image from 0.08 to 2.45 Ryd above threshold; it turns down into the 2s2p 1P resonance just above 2.5 Ryd (p. 1075), which is not read. Photon energy = electron energy + 0.291490 Ryd (Table 2's This Work quantum defect; the record's notes). 4 %: the reading."
+[datasets.uncertainty]
+relative = 0.04
+level = "not stated"
+[datasets.parameters]
+initial_level = "He 1s2s 1S0 (Fig. 1's n = 2)"
+method = "R-matrix close coupling, seven-orbital He+ target (Eq. 5), STGBF"

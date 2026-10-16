@@ -1,0 +1,284 @@
+citation = "C. McKenna and H. W. van der Hart, \"Multiphoton ionization cross sections of neon and argon\", J. Phys. B: At. Mol. Opt. Phys. 37, 457-470 (2004)"
+doi = "10.1088/0953-4075/37/2/013"
+library = "McKenna_2003_MultiphotonIonizationCross"
+identity = "VALIDATED"
+kind = "theory"
+technique = """R-matrix Floquet theory (Burke et al. 1991, Dorr et al. 1992), non-perturbative \
+and time-independent: an inner region of radius a holding all N+1 electrons, \
+described by an antisymmetrised configuration-interaction expansion with full \
+exchange and correlation, and an outer region with one electron outside, by a \
+close-coupling expansion; the Floquet-Fourier expansion of the wavefunction in \
+harmonics of the 'monochromatic, linearly polarized laser field' (Eqs. 1-2), the \
+inner region in the length gauge, the R-matrix transformed to the velocity gauge and \
+propagated outwards, then matched to an asymptotic expansion, which gives the \
+quasi-energy and the total ionisation rate Gamma of the ground state (p. 458). Basis \
+(p. 459): that of Burke and Taylor (1975), 'a two-state model' of the ion: Ne+ \
+1s2 2s2 2p5 2Po and 1s2 2s 2p6 2Se (1s closed; single excitations from 2s and 2p to \
+3s, 3p and 3d-bar pseudo-orbitals, double to 3d-bar); Ar+ 3s2 3p5 2Po and 3s 3p6 2Se \
+(1s, 2s, 2p closed; single excitations from 3s and 3p to 4s-bar, 4p-bar and 3d \
+pseudo-orbitals, double to 3d-bar); continuum electrons up to l = 7; the ground state \
+energy adjusted to the experimental binding energies, 21.6 eV (Ne) and 15.8 eV (Ar). \
+Checked against Burke and Taylor's single-photon cross sections: 'The agreement is \
+excellent.' Floquet blocks (p. 459): two-photon, 'five terms in the Floquet expansion: \
+three for absorption and one for emission' (and the field-free block), L up to 5, \
+intensity 10^12 W/cm2; three-photon, 'two additional absorption blocks' and L up to \
+6, intensity 10^13 W/cm2, 'required to ensure that we achieve ionization rates of a \
+reasonable magnitude from which we can hope to generate accurate cross sections'. \
+Non-relativistic, LS coupling, no spin-orbit interaction, 'This ... could result in a \
+shift from experiment of the energy position of resonances in the spectra' (p. 459). \
+No convergence test with respect to the basis or the Floquet blocks is reported."""
+notes = """Journal pp. 457-470 = PDF pages 2-15 (PDF page 1 is the IOPscience download \
+banner, its only image); journal page = PDF page + 455. Identity checked on the first \
+page (PDF p. 2: 'J. Phys. B: At. Mol. Opt. Phys. 37 (2004) 457-470', Claire McKenna \
+and Hugo W van der Hart, Queen's University Belfast; received 15 September 2003, \
+published 17 December 2003) on 2026-10-06. The library folder's year 2003 is the \
+online publication; the volume is 2004's, and the record is named by it.
+
+THE CROSS SECTION (p. 458, Eq. 3): 'From the total ionization rate Gamma in atomic \
+units (au), we obtain the generalized cross section sigma^(N) in units of cm^2N \
+s^(N-1) for N-photon ionization from the relation sigma^(N) = (8 pi alpha)^N (3.5 x \
+10^16 / I)^N omega^N Gamma a0^2N t0^(N-1)', I the intensity in W/cm2, omega the photon \
+energy in au. With 3.5 x 10^16 W/cm2 the intensity of a field of 1 au, (I/3.5e16)/(8 \
+pi alpha) is the cycle-averaged intensity in atomic units and that over omega the \
+photon flux Phi: Eq. 3 is Gamma = sigma^(N) Phi^N, Phi in photons cm^-2 s^-1, the \
+definition of Uiterwaal et al. (uiterwaal_1998). The rounded 3.5e16 (for 3.509e16) \
+makes sigma^(N) 0.5 % (N = 2) and 0.8 % (N = 3) smaller than with the exact constant; \
+to recover the computed rate, use Eq. 3 as printed. The rates are those of the ground \
+state at one intensity, 10^12 W/cm2 for N = 2 and 10^13 W/cm2 for N = 3: 'Since the \
+ionization rates are affected by non-linear effects, the cross sections obtained at \
+high intensity may not necessarily coincide with cross sections from perturbation \
+theory' (pp. 458-459). Off resonance the authors find lowest-order behaviour (Fig. \
+4: the ground-state rate scales as I^3 between 10^12 and 10^13 W/cm2 near 10.53 eV, \
+p. 464); at resonances the positions shift with the intensity (16.6 meV in the \
+three-photon energy between the two, 11.6 meV ponderomotive, p. 464) and \
+higher-order (four-photon) resonances appear.
+
+EXTRACTED (tools/extract/mckenna_2004.py). The paper prints no table and no \
+supplement exists: the cross sections are only in figures, all vector drawings, read \
+from the PDF by data rule 8 (TC-699): Fig. 1 (Ne, N = 2, p. 461), its enlargement \
+Fig. 2 (p. 462), Fig. 3 (Ne, N = 3, p. 463), Fig. 5 (Ar, N = 2, p. 465), Fig. 7 (Ar, N \
+= 2, 14.25-14.65 eV, p. 467) and Fig. 8 with its inset (Ar, N = 3, p. 468). Each \
+curve is one line, the paper's only calculation; every vertex of the drawn polyline \
+is taken, in drawing order. Axes calibrated from the drawing's own tick marks (short \
+and long, every one checked on the fitted scale, linear in photon energy, logarithmic \
+in decades in sigma, the inset linear): the worst tick residuals are 0.06/0.07 pt \
+(Fig. 1, x/y), 0.06/0.07 (Fig. 2), 0.001/0.07 (Fig. 3), 0.06/0.07 (Fig. 5), 0.12/0.07 \
+(Fig. 7), 0.06/0.07 (Fig. 8), 0.04/0.05 (inset), against a drawing quantised in steps \
+of about 0.13 pt. The curve of each figure is drawn as many polyline pieces in no \
+order; the script joins them end to end and checks that the result never steps back \
+in photon energy. Vertices where the bottom of the frame cuts the threshold's rise \
+(one each in Figs. 1 and 5) are dropped. Not taken: Figs. 4 and 6, ionisation rates \
+of the ground and resonant states against photon energy at one intensity (the \
+anatomy of the 5f and 4d/6s resonances; Fig. 6(c) is the authors' interpretation of \
+the Ar ground-state rate between 14.08 and 14.33 eV, the gap between Figs. 5 and 7), \
+which no quantity of the vocabulary holds.
+
+THE CHECKS (the script fails if one is missed), against every number the text prints \
+for these curves: Ar N = 3 'rise up to 1.0 x 10^-82 cm6 s2 from a minimum value of \
+6.75 x 10^-84' between 5.5 and 6.5 eV (p. 468): the drawn minimum 6.735e-84 (at 5.53 \
+eV; -0.2 %), and the curve reaches 1.0e-82 at 6.490 eV; Ar N = 2 'rises to 3.6 x \
+10^-48 cm4 s' at 13.9 eV (p. 466): drawn peak 3.72e-48 (+3.4 %); Ar N = 2 'within 8% \
+of 1.2 x 10^-50' below 11.5 eV (p. 465): 1.119e-50 to 1.268e-50 from 8.0 to 11.4 eV \
+(-6.7 to +5.7 %; the 4s 1Se peak 'at approximately 12.77 eV', p. 465, drawn at \
+12.773 eV), the wing of the 4s 1Po resonance reaching 1.08 times 1.2e-50 at \
+11.43 eV and 1.40e-50 at 11.5 eV; Ne N = 2 'within 10% of 1.65 x 10^-51' between 11 \
+and 16 eV (p. 460): 1.505e-51 to 1.821e-51 (-8.8 to +10.4 %); the interference minima \
+of Fig. 2 'at 20.74 eV', '20.08 eV' and '21.07 eV' (p. 462): drawn at 20.743, 20.087 \
+(a flat bottom 0.007 eV wide) and 21.069 eV. The same calculation drawn twice agrees: \
+Fig. 1 over Fig. 2 off resonance (19.55 to 20.9 eV) within 0.7 %, Fig. 8 over its inset \
+(7.122 to 7.138 eV) within 0.7 %. The inset's 4d 1De peak is 1.16 times the dip after \
+it; the text: the cross section 'is enhanced by nearly 20%' by the 4d 1De and 'by 2%' \
+by the 6s 1Se four-photon resonances (p. 469). The extracted values, mapped back \
+through the calibrations and overlaid on the rendered pages, follow every drawn line, \
+its resonances and the inset (inspected 2026-10-06).
+
+DIGITISING UNCERTAINTY: half the drawing's quantum (0.07 of 0.13 pt) and the tick \
+residuals (up to 0.07 pt in y) are each 0.3 to 0.6 % of a value on the log axes (39 to \
+48 pt per decade; Fig. 3 27 pt), so 2 % is taken for the value at a drawn vertex. In \
+photon energy the quantum is 0.007 eV in Fig. 1 (19 pt/eV), 0.004 eV in Fig. 5, 0.002 \
+eV in Figs. 3 and 8, 0.0009 eV in Fig. 2, 0.0002 eV in Fig. 7 and 0.00004 eV in the \
+inset: on a resonance's flank \
+the value at a given energy is uncertain by the slope times that (in Fig. 1 the \
+resonances above 19.5 eV are better read from Fig. 2). The peak heights are those \
+drawn, through the calculation's energy grid, which the paper does not give; in the \
+narrowest resonances several vertices share one energy (the line runs up and down in \
+one 0.13 pt column). The paper states no uncertainty of the calculation.
+
+RESONANCES AND LABELS. The two-photon spectra are dominated by one-photon resonances \
+with 1Po Rydberg states (Ne ns; Ar 4s, 3d, 5s) and, in Ar, by two-photon doubly \
+excited 3s 3p6 ns 1Se and nd 1De states below the 3s 3p6 2S threshold (29.2 eV); the \
+three-photon spectra by two-photon np 1Se, 1De resonances, with nf 1De and \
+four-photon 1Ge series above 10.4 eV (Ne) and 7.5 eV (Ar). At the ns 1Po resonances \
+the ground state and the Rydberg state exchange character (laser-induced degenerate \
+states); 'at the resonance position, we have not shown the adiabatic change from one \
+state to another, but it is to be understood that this change takes place at the \
+maximum peak of each ns resonance' (pp. 460-462), and the assignment of the ground \
+state 'is thus not always unambiguous' where the nd and nf states interfere (pp. \
+462, 464, 468). Without spin-orbit coupling the resonance positions may differ from \
+experiment (p. 459). The captions of Figs. 1 and 2 and the text (p. 460) name the Ne \
+Rydberg series '3s2 3p5 ns 1Po' and Fig. 3's resonances '3p 1De', '3p 1Se': for Ne the \
+core is 2s2 2p5 (the ns series of Ne+ 2p5); a slip in the labels, no effect on the \
+values.
+
+NOT TAKEN, other papers' values the text compares with (no other values are drawn in \
+the figures): Moccia, Rahman and Rizzo, J. Phys. B 16, 2737 (1983) (Ne, Ar two-photon, \
+perturbative; Ne 'up to a factor of 4' below the present, 'strongly gauge dependent', \
+p. 460); Pan, Gao and Starace, Phys. Rev. A 41, 6271 (1990) (Ar two-photon 'within 20% \
+of 0.85 x 10^-50 cm4 s', about 30 % below the present, p. 465); McGuire, Phys. Rev. A \
+24, 835 (1981) (circular polarisation); Pindzola and Kelly, Phys. Rev. A 11, 1543 \
+(1975); Starace and Jiang, Phys. Rev. A 36, 1705 (1987); Saenz and Lambropoulos, J. \
+Phys. B 32, 5629 (1999) (He).
+
+COVERAGE for the rate's multiphoton limit: Ar three-photon at 193 nm (6.424 eV), on \
+the rising wing of the 4p 1De two-photon resonance (6.667 eV in this LS-coupled \
+calculation): 6.43e-83 cm6 s2 (log-interpolated between drawn vertices; the curve \
+rises 3.3 decades per eV there). Nothing at 248.6 nm (4.99 eV): Ar three-photon \
+starts at its threshold, 5.3 eV; the paper has no four-photon, Kr or He \
+calculation."""
+
+[[datasets]]
+id = "fig1_sigma2_Ne"
+material = "Ne"
+file = "Ne/mckenna_2004__fig1_sigma2_Ne.csv"
+table = "fig_f6941eec6a0c"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 1 (p. 461): the generalised two-photon ionisation cross section of the Ne ground state (Eq. 3; Gamma = sigma Phi^2, Phi in cm^-2 s^-1), cm4 s, against the photon energy, 10.80 to 21.45 eV: every vertex of the drawn line (the record's notes). Resonances of the 2p5 ns 1Po series (drawn peaks: 3s at 17.12 eV, 1.78e-49; 4s at 19.80 eV ...) with nd 1Po, 1Fo between; off resonance 1.5 to 1.8e-51 between 11 and 16 eV. At 19 pt/eV the drawing resolves 0.007 eV: above 19.5 eV Fig. 2 is the better reading. 2 %: the digitising uncertainty of a drawn vertex (the record's notes); the paper states none."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 2
+intensity_w_cm2 = 1e12
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ne+ target states (2s2 2p5 2Po, 2s 2p6 2Se; Burke and Taylor 1975 basis), L <= 5, Floquet blocks: one emission, three absorption"
+definition = "sigma^(2) = Gamma / Phi^2 (Eq. 3), Gamma the ground state's total ionisation rate at 1e12 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"
+
+[[datasets]]
+id = "fig2_sigma2_Ne"
+material = "Ne"
+file = "Ne/mckenna_2004__fig2_sigma2_Ne.csv"
+table = "fig_4da3adbbfca0"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 2 (p. 462): the same calculation as Fig. 1, enlarged, 19.50 to 21.10 eV: the 4s, 5s, 6s 1Po resonances and the nd 1Po, 1Fo interferences, with minima at 20.08, 20.74 and 21.07 eV (the text; read at 20.087, 20.743, 21.069). cm4 s against photon energy, every vertex of the drawn line. Agrees with Fig. 1 off resonance within 0.7 %. 2 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 2
+intensity_w_cm2 = 1e12
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ne+ target states (2s2 2p5 2Po, 2s 2p6 2Se; Burke and Taylor 1975 basis), L <= 5, Floquet blocks: one emission, three absorption"
+definition = "sigma^(2) = Gamma / Phi^2 (Eq. 3), Gamma the ground state's total ionisation rate at 1e12 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"
+
+[[datasets]]
+id = "fig3_sigma3_Ne"
+material = "Ne"
+file = "Ne/mckenna_2004__fig3_sigma3_Ne.csv"
+table = "fig_0af720bedf15"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 3 (p. 463): the generalised three-photon ionisation cross section of the Ne ground state (Eq. 3; Gamma = sigma Phi^3), cm6 s2, against the photon energy, 7.21 to 10.67 eV: every vertex of the drawn line. No resonance below 9 eV (0.6 to 1.05e-84 there); two-photon 2p5 np 1Se, 1De resonances above, nf 1De and four-photon 1Ge from 10.4 eV. The text prints no value of this curve. 2 % (the record's notes; 25 pt per decade, the coarsest y axis)."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 3
+intensity_w_cm2 = 1e13
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ne+ target states (2s2 2p5 2Po, 2s 2p6 2Se; Burke and Taylor 1975 basis), L <= 6, Floquet blocks: one emission, five absorption"
+definition = "sigma^(3) = Gamma / Phi^3 (Eq. 3), Gamma the ground state's total ionisation rate at 1e13 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"
+
+[[datasets]]
+id = "fig5_sigma2_Ar"
+material = "Ar"
+file = "Ar/mckenna_2004__fig5_sigma2_Ar.csv"
+table = "fig_bdcfada5769c"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 5 (p. 465): the generalised two-photon ionisation cross section of the Ar ground state (Eq. 3; Gamma = sigma Phi^2), cm4 s, against the photon energy, 7.92 to 14.10 eV: every vertex of the drawn line. Flat to 11.4 eV within 8 % of 1.2e-50 (the text; read -6.7 to +5.7 %); the 4s 1Po one-photon resonance (drawn peak 11.97 eV), the doubly excited two-photon 4s 1Se 'at approximately 12.77 eV' (read 12.773) and 3d 1De / 5s 1Se at 13.9 eV (read 13.88), whose peak the text gives as 3.6e-48 (read 3.72e-48). 2 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 2
+intensity_w_cm2 = 1e12
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ar+ target states (3s2 3p5 2Po, 3s 3p6 2Se; Burke and Taylor 1975 basis), L <= 5, Floquet blocks: one emission, three absorption"
+definition = "sigma^(2) = Gamma / Phi^2 (Eq. 3), Gamma the ground state's total ionisation rate at 1e12 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"
+
+[[datasets]]
+id = "fig7_sigma2_Ar"
+material = "Ar"
+file = "Ar/mckenna_2004__fig7_sigma2_Ar.csv"
+table = "fig_c9dbe2d04620"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm4 s"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 7 (p. 467): the same as Fig. 5 from 14.26 to 14.64 eV, where the 3s 3p6 nd 1De (5d, 6d, 7d ...) and ns 1Se (7s, 8s ...) doubly excited Rydberg series dominate; cm4 s against photon energy, every vertex of the drawn line. Rydberg series of the 3s2 3p4 (3P) 4s/3d 2P thresholds, not in the calculation, 'may already influence the spectrum' (p. 468). The text prints no value of this curve. 2 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 2
+intensity_w_cm2 = 1e12
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ar+ target states (3s2 3p5 2Po, 3s 3p6 2Se; Burke and Taylor 1975 basis), L <= 5, Floquet blocks: one emission, three absorption"
+definition = "sigma^(2) = Gamma / Phi^2 (Eq. 3), Gamma the ground state's total ionisation rate at 1e12 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"
+
+[[datasets]]
+id = "fig8_sigma3_Ar"
+material = "Ar"
+file = "Ar/mckenna_2004__fig8_sigma3_Ar.csv"
+table = "fig_714c65223ddb"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 8 (p. 468), main plot: the generalised three-photon ionisation cross section of the Ar ground state (Eq. 3; Gamma = sigma Phi^3), cm6 s2, against the photon energy, 5.30 to 7.79 eV: every vertex of the drawn line. A minimum of 6.75e-84 (the text; read 6.735e-84 at 5.53 eV), rising to 1.0e-82 by 6.5 eV (read at 6.490 eV) on the wing of the two-photon 4p 1De (drawn peak 6.667 eV) and 4p 1Se (6.785 eV) resonances; 5p 1De, 1Se above 7.3 eV, nf 1De and four-photon 1Ge from 7.5 eV. 193 nm (6.424 eV): 6.43e-83. 2 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 3
+intensity_w_cm2 = 1e13
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ar+ target states (3s2 3p5 2Po, 3s 3p6 2Se; Burke and Taylor 1975 basis), L <= 6, Floquet blocks: one emission, five absorption"
+definition = "sigma^(3) = Gamma / Phi^3 (Eq. 3), Gamma the ground state's total ionisation rate at 1e13 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"
+
+[[datasets]]
+id = "fig8_inset_sigma3_Ar"
+material = "Ar"
+file = "Ar/mckenna_2004__fig8_inset_sigma3_Ar.csv"
+table = "fig_714c65223ddb"
+digitised = "vector"
+quantity = "multiphoton_ionization_cross_section"
+unit = "cm6 s2"
+abscissa_unit = "eV"
+use = "check"
+notes = "Fig. 8 (p. 468), inset: the same calculation from 7.121 to 7.140 eV on a linear axis printed in units of 1e-84 cm6 s2 (converted: cm6 s2 here), against the photon energy: every vertex of the drawn line. The four-photon 4d 1De (drawn peak 7.1283 eV) and 6s 1Se features, which 'in principle, do not contribute to the three-photon cross sections' and enhance it by nearly 20 % and 2 % at 1e13 W/cm2 (p. 469). Agrees with the main plot within 0.7 %. 2 % (the record's notes)."
+[datasets.uncertainty]
+relative = 0.02
+level = "not stated"
+[datasets.parameters]
+photons = 3
+intensity_w_cm2 = 1e13
+polarization = "linear"
+method = "R-matrix Floquet, length/velocity gauge, two Ar+ target states (3s2 3p5 2Po, 3s 3p6 2Se; Burke and Taylor 1975 basis), L <= 6, Floquet blocks: one emission, five absorption"
+definition = "sigma^(3) = Gamma / Phi^3 (Eq. 3), Gamma the ground state's total ionisation rate at 1e13 W/cm2, Phi the photon flux in cm^-2 s^-1, with 3.5e16 W/cm2 for the atomic unit of field"

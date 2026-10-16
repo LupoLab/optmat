@@ -1,0 +1,58 @@
+citation = "M. Masili and A. F. Starace, \"Static and dynamic dipole polarizability of the helium atom using wave functions involving logarithmic terms\", Phys. Rev. A 68, 012508 (2003)"
+doi = "10.1103/PhysRevA.68.012508"
+library = "Masili_2003_StaticDynamicDipole"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Variationally stable calculation of the static and dynamic dipole \
+polarizability of ground-state helium, nonrelativistic: the ground and intermediate \
+1P^o functions in a coupled-channel hyperspherical representation (adiabatic \
+potential curves, Figs. 1-2), with Slater-type basis functions with and without \
+logarithmic terms in the hyperradius (R^n ln R; the triple-collision behaviour), the \
+variational parameters optimised; up to N_c = N_c' = 6 coupled channels for the \
+ground and intermediate states (Tables I-IV)."""
+notes = """Journal pp. 012508-1 to -11 = PDF pages 1-11. Identity checked against the \
+first page.
+
+WHAT IS TAKEN. Table VI (p. 9, tbl_4cd6e269513a; image checked), the column 'This \
+work' (the best result, N_c = N_c' = 6): alpha(omega) in atomic units at 32 photon \
+energies from 0.050 to 0.845 a.u., below and through the 1s2p resonance (omega about \
+0.78) and up to the 1s3p one. Not taken: the other columns (Refs. [16]-[19] and the \
+experiment of Ref. [18], other papers' values) and Table V's static values (1.383193 \
+to 1.38317394, 1.4e-5 below Pachucki and Sapirstein's 1.383192174, the accuracy to \
+expect of Table VI below resonance).
+
+THE SIGNS. The library read every minus glyph of the table as a '2'; the extraction \
+script restores the ten negative values from 0.782 to 0.820 a.u. against the image \
+(tools/extract/masili_2003.py).
+
+THE RESONANCE. Near omega = 0.78 a.u. alpha diverges (1765.87 at 0.780, -90.33 at \
+0.782), and its values there depend on the computed 1s2p energy (Table VII compares the \
+resonance positions extrapolated from Fig. 4(b) with the literature): they test a \
+model of the resonance, not optmat's below-resonance dispersion. Below 0.75 a.u. the \
+values agree with liu_1997's Table I (which stops at 0.75) within 5e-5 up to 0.55 \
+a.u.; nearer the resonance they are lower, by 0.04 % at 0.65, 0.2 % at 0.70 and 2.5 % at \
+0.75 a.u., as their resonance positions differ (TC-855)."""
+
+[[datasets]]
+id = "alpha"
+material = "He"
+file = "He/masili_2003__alpha.csv"
+table = "tbl_4cd6e269513a"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI (p. 9), column 'This work' (N_c = N_c' = 6): the dynamic dipole polarizability of ground-state helium at omega = 0.050 to 0.770 a.u., below the 1s2p resonance, nonrelativistic. No uncertainty is stated."
+
+[[datasets]]
+id = "alpha_resonance"
+material = "He"
+file = "He/masili_2003__alpha_resonance.csv"
+table = "tbl_4cd6e269513a"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "hartree"
+use = "check"
+notes = "Table VI (p. 9), column 'This work': alpha(omega) of helium from 0.780 to 0.845 a.u., through the 1s2p resonance (1765.87 at 0.780) and negative from 0.782 to 0.820 (the ten values restored by the script, see the source notes), towards 1s3p. No uncertainty is stated."
+[datasets.parameters]
+beyond_resonance = true

@@ -1,0 +1,35 @@
+citation = "R. B. Stewart, R. T Jacobsen and W. Wagner, \"Thermodynamic Properties of Oxygen from the Triple Point to 300 K with Pressures to 80 MPa\", J. Phys. Chem. Ref. Data 20, 917 (1991)"
+doi = "10.1063/1.555897"
+library = "Stewart_1991_ThermodynamicPropertiesOxygen"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """Tables of the thermodynamic properties of oxygen from Schmidt and Wagner's \
+fundamental equation, with its ideal-gas part, ancillary equations and comparisons \
+with the data, from the freezing line to 300 K at pressures to 80 MPa."""
+notes = """Identity VALIDATED_WITH_WARNINGS by the library. Pages cited are pdf pages.
+
+IDEAL GAS (section 4, pdf p. 11): R = 8.31434 J/(mol K), M = 31.9988 g/mol (pdf p. 4). \
+Eq. (11), Wagner, Ewers and Schmidt's equation, is the one Schmidt and Wagner (1985) \
+use: c_p0/R = N1 T^-1.5 + N2 + N3 T^2 + N4 u^2 e^u/(e^u - 1)^2 + N5 (2/3) eta^2 \
+e^-eta/[1 + (2/3) e^-eta]^2, u = N6/T, eta = N7/T, with N1..N7 = 1.06778, 3.50042, \
+0.166961e-7, 1.01258, 0.944365, 2242.45, 11580.4. It was fitted to Baehr et al.'s \
+values (30-1100 K) and Gurvich et al.'s (100-3000 K), which it meets within 0.003 \
+J/(mol K). Eq. (12), Stewart and Jacobsen's earlier equation, is given as an \
+alternative for 70-1100 K (0.002 J/(mol K)).
+
+AGAINST COOLPROP 8.0.0 (reference key Schmidt-FPE-1985, Stewart-JPCRD-1991, computed \
+2026-09-30): CoolProp's ideal part is a refit of Eq. (11). The two agree to 3.3e-6 \
+from 60 K to 1500 K, then part: -1.6e-5 at 1600 K, -4.9e-5 (-0.0018 J/(mol K)) at \
+1700 K, -1.1e-4 at 1800 K and -3.5e-4 (-0.013 J/(mol K)) at 2000 K, beyond Eq. (11)'s \
+0.003 J/(mol K) from 1800 K. optmat's O2 heat capacity therefore stops at 1700 K \
+(TC-765). Against Eq. (12) CoolProp differs by up to 1.5e-4 at 60-1000 K."""
+
+[[formulas]]
+id = "eq11"
+material = "O2"
+equation = "Eq. (11), pdf p. 11"
+printed = "c_p0/R = N1 T^-1.5 + N2 + N3 T^2 + N4 u^2 e^u/(e^u - 1)^2 + N5 (2/3) eta^2 e^-eta/[1 + (2/3) e^-eta]^2"
+variable = "u = N6/T, eta = N7/T, T in K"
+range = "30-3000 K (its fit)"
+coefficients = { N1 = "1.06778", N2 = "3.50042", N3 = "0.166961e-7", N4 = "1.01258", N5 = "0.944365", N6 = "2242.45", N7 = "11580.4" }
+check = "CoolProp 8.0.0's refit agrees to 3.3e-6 from 60 K to 1500 K (tests/test_transport.py)."

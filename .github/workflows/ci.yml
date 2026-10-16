@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2026 John C. Travers and contributors
+#
+# SPDX-License-Identifier: MIT
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gate:
+    name: gate (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # hatch-vcs derives the version from tags
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv python install 3.14
+      - run: uv lock --check
+      - run: uv sync --locked
+      # Exactly the definition-of-done gate from AGENTS.md.
+      - run: uv run poe check
+      - uses: codecov/codecov-action@v5
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          files: build/coverage/coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  oldest:
+    # The floors in pyproject.toml are claims: test them. The package at its oldest
+    # supported Python and the lowest versions of its direct dependencies; the test
+    # tools at their latest.
+    name: tests (Python 3.12, lowest dependencies)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - run: uv venv --python 3.12
+      - run: uv pip install --resolution lowest-direct -e ".[gas]"
+      - run: uv pip install pytest pytest-xdist pytest-randomly hypothesis beartype matplotlib sphinx
+      - run: uv pip list
+      - run: .venv/bin/python -m pytest -n auto --dist loadfile

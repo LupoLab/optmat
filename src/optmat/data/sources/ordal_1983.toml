@@ -1,0 +1,979 @@
+citation = "M. A. Ordal, L. L. Long, R. J. Bell, S. E. Bell, R. R. Bell, R. W. Alexander, Jr., and C. A. Ward, \"Optical properties of the metals Al, Co, Cu, Au, Fe, Pb, Ni, Pd, Pt, Ag, Ti, and W in the infrared and far infrared\", Appl. Opt. 22, 1099-1119 (1983)"
+doi = "10.1364/AO.22.001099"
+library = "Ordal_1983_OpticalPropertiesMetals"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A compilation, not a measurement: 'Infrared optical constants collected from \
+the literature are tabulated' (abstract, p. 1099). Tables 1-12 (pp. 1103-1118) give, for \
+each of twelve metals, blocks of omega (cm-1), lambda (um), -epsilon_1, epsilon_2, n and k \
+to three significant figures, one block per original source, each under its reference \
+line. 'All data in the form of n and k were changed to epsilon_1 and epsilon_2' (Sec. III, \
+p. 1116). The authors then fitted the Drude model, Eq. (2), by eye to the compiled \
+epsilon of Au, Ag, Cu, Al, Pb and W (Table 13, p. 1118): omega_tau from Eq. (12), \
+omega_tau = omega epsilon_2 / (1 - epsilon_1), and omega_p from Eq. (13), omega_p^2 = \
+(1 - epsilon_1)(omega^2 + omega_tau^2), at several omega, keeping 'the curve with the best \
+eyeball fit to the data'; for Au and Pb, omega_tau instead from Brandli and Sievers's \
+far-infrared surface resistance, Eq. (14), with omega_p from the near-infrared fit \
+(p. 1118)."""
+notes = """Journal pages 1099-1119 = PDF pages 1-21 (0003-6935/83/071099-21). PDF page 22 \
+is not part of this paper: three photographs of a lens-polishing set-up ('6 Close-up of \
+polishing setup', '7 Interferogram ...', '8 Grinding the cone ...') from another article \
+of the issue. Identity checked against the first page (the library flags warnings on the \
+bibliographic record only).
+
+WHAT IS TABULATED. Tables 1 Al, 2 Cu, 3 Au, 4 Pb, 5 Ag, 6 Co, 7 Fe, 8 Ni, 9 Pd, 10 Pt, \
+11 Ti and 12 W, each a run of blocks from different authors, printed one after another \
+with a caption per block ('TABLE 2. Cu, COPPER (Continued)') and the block's reference \
+line. The data of Al, Cu, Au and Ag are datasets here, one per metal, quantity and block \
+(18 blocks, 245 rows, 72 datasets): n and k use = reproduced (every value is another \
+author's), epsilon_1 and epsilon_2 use = check (Ordal et al.'s conversion of the same n \
+and k), all with reproduced_from naming the block's source (the curated id where there is \
+one, otherwise the reference line as printed). lambda (= 1e4 / omega) has no dataset and \
+stays in printed. The fourth column is headed -epsilon_1 (checked on the images): stored \
+as printed with scale = -1. No uncertainty is given for any block, and nothing is said \
+about the samples (film or bulk, preparation) or the methods of the originals: for those \
+see the originals. The figures' captions (Figs. 1-12, pp. 1100-1102) name the sources the \
+same way.
+
+WHICH BLOCK IS WHICH. The library splits the tables into 39 blocks (155 files) and its \
+captions are not reliable (tools/extract/ordal_1983.py lists the cases): the assignment \
+here was read from the page images, where each caption and reference line sits directly \
+above its block. The library's 'TABLE 3. Au, GOLD' (tbl_6418218be243) is copper after \
+Dold and Mecke; gold starts with the next block (Bennett and Bennett, tbl_d345d262b8b8).
+
+CHECKS (2026-09-28). Every row of the 18 blocks, and of the other 21, satisfies \
+epsilon_1 = n^2 - k^2 and epsilon_2 = 2nk, and lambda = 1e4 / omega, to within the \
+printed rounding of the cells (the bound from half a unit in the last digit of each). \
+The worst row per table: Table 1 (Al), Shiles block at 6.45E+03 cm-1, -epsilon_1 \
+printed 252 against k^2 - n^2 = 253.9 (0.91 of the bound); Table 2 (Cu), Lenham and \
+Treherne at 5.00E+02, 13500 against 13401 (0.57); Table 3 (Au), Weaver et al. at \
+1.21E+03, 3070 against 3077.6 (0.72); Table 5 (Ag), Bennett and Bennett at 8.33E+02, \
+epsilon_2 1280 against 1283 (0.47). Unlike Ordal et al. (1988; ordal_1988, 51 errata), \
+no |epsilon| is printed ten times too small, and no erratum is needed. The cells were \
+compared with the images block by block.
+
+THE SOURCES (as the blocks and Refs. 7-11 give them):
+- Al (Table 1, Fig. 1, Ref. 7): Shiles, Sasaki, Inokuti and Smith 1980 (323-16100 cm-1; \
+the values of Weaver et al.'s tabulation, Physics Data 18-2, p. 79); Bennett and Bennett \
+1966 (313-1250 cm-1; a Drude curve, below); Schulz 1954 (10500-25000 cm-1, 0.95-0.40 um).
+- Cu (Table 2, Fig. 2, Ref. 8): Schulz 1954 (10500-22200); Lenham and Treherne 1966 \
+(500-2500); Robusto and Braunstein 1981 (15600-25000); Hagemann, Gudat and Kunz 1975 \
+(807-16100; the DESY report's rows, hagemann_1974); Dold and Mecke 1965 (1000-8000).
+- Au (Table 3, Fig. 3, Ref. 9): Bennett and Bennett 1966 (313-3330; a Drude curve); \
+Schulz 1954 (10500-22200); Motulevich and Shubin 1965 (833-10000); Padalka and \
+Shklyarevskii 1961 (909-10000); Bolotin et al. 1962 (1050-4000); Brandli and Sievers 1972 \
+(31.4-150, the far infrared); Weaver et al. 1981 (807-16100).
+- Ag (Table 5, Fig. 5, Ref. 11): Bennett and Bennett 1966 (313-5000; a Drude curve); \
+Schulz 1954 (10500-25000); Hagemann et al. 1975 (807-16100).
+The blocks overlap and disagree: at 1000 cm-1 (10 um) gold's n + ik is 7.62 + 71.5i \
+(Bennett), 11.5 + 67.5i (Motulevich), 7.41 + 53.4i (Padalka) and, at 1050 cm-1, 10.9 + \
+50.6i (Bolotin); the authors do not choose between them.
+
+BENNETT AND BENNETT'S BLOCKS ARE A DRUDE CURVE. The introduction says Bennett and \
+Bennett showed that the Drude model fits the reflectance of Au, Ag and Al at 3-30 um 'with \
+one adjustable parameter; i.e., the Drude model parameters were obtained from the dc \
+resistivity and fitted with one free electron per atom for gold and silver and 2.6 free \
+electrons per atom for aluminum' (p. 1099; Ref. 5: omega_tau estimated at 145, 216 and \
+663 cm-1 for Ag, Au and Al). Every row of the three Bennett blocks gives, by Eqs. (12) and \
+(13), the same omega_tau and omega_p to the printed rounding (Al 657-669 and \
+118,200-119,100 cm-1; Au 214-217 and 72,500-73,000; Ag 144.8-146.1 and 72,360-72,710): \
+the blocks are that model, not measured points.
+
+HAGEMANN'S AND WEAVER'S BLOCKS. The Hagemann blocks cite the JOSA paper (hagemann_1975, \
+figures only) but are the DESY report's printed rows (hagemann_1974) at 0.1-2.0 eV, n and \
+k rounded (n to two decimals) and epsilon recomputed from them. The Weaver block of gold \
+is Weaver et al.'s gold table (weaver_1981), agreeing with the Babar-Weaver file's copy \
+(sheet JHW-Au-ZAED) at every common energy; epsilon is again recomputed from the rounded \
+n and k. See the datasets' notes for the numbers.
+
+TABLE 13 (p. 1118): Drude parameters fitted to the compiled epsilon, the formulas below \
+for Al, Cu, Au and Ag. Columns: omega_f, 'the frequency at which the fit is forced'; \
+omega_tau and omega_p of the IR fit; -epsilon_1(0) = (omega_p / omega_tau)^2; omega_tau \
+'from dc resistivities and omega_p' (Ref. 19, the AIP Handbook); omega_tau at the \
+crossover -epsilon_1 = epsilon_2. Pb: 5.00x10^1, 1.45x10^3, 6.20x10^4, 1.33x10^3, \
+1.35x10^3, 1.55x10^3; W: 8.06x10^2, 4.33x10^2, 4.84x10^4, 1.25x10^4, 2.16x10^2, 4.30x10^2 \
+(same order, cm-1). The Al, Au and Ag fits reproduce Bennett and Bennett's Drude curves \
+(to 0.1-5 %), not Shiles's Al (30-40 % away at 1000-5000 cm-1) nor Weaver's Au. The \
+authors 'disclaim any physical significance for the Drude model' (p. 1118). Ordal et al. \
+1985 (ordal_1985) revise these: Cu (omega_tau 73.2, omega_p 59,600), Pb ('a numerical \
+error in our earlier tabulation') and slightly Al, Au, Ag and W; it also corrects this \
+paper's Eq. (5) (epsilon_inf misplaced in omega_p) and Eq. (10) (the surface impedance's \
+sign convention; Eq. (11), and so the numbers, unchanged).
+
+THE OTHER METALS (not registered; not transcribed). Every row consistent as above. Pb \
+(Table 4, pp. 1107-1108): Brandli and Sievers 1972 (6.25-121 cm-1, 14 rows); Golovashkin \
+and Motulevich 1968 (833-22200, 32). Co (Table 6, pp. 1109-1110): Kirillova and Charikov \
+1964 (500-4000, 19); Johnson and Christy 1974 (5160-53200, 49); Weaver, Colavita, Lynch \
+and Rosei 1979 (807-16100, 18). Fe (Table 7, p. 1111): Weaver, Colavita, Lynch and Rosei \
+1979 (807-16100, 31); Bolotin, Kirillova and Mayevskiy 1969 (526-10000, 21). Ni (Table 8, \
+p. 1112): Lynch, Rosei and Weaver 1971 (807-12900, 50); Johnson and Christy 1974 \
+(5160-20200, 16). Pd (Table 9, p. 1113, printed sideways): Weaver and Benbow 1975 \
+(807-16100, 15); Bolotin, Kirilova, Nomerovannaya and Noskov 1967 (556-3330, 13; not \
+among the library's tables); Johnson and Christy 1974 (5160-48200, 44; the library merges \
+it with Weaver and Benbow's into one 12-column table without a CSV). Pt (Table 10, p. \
+1114): Weaver 1975 (807-16100, 14); Weaver, Lynch and Olson 1974 (806-16100, 29). Ti \
+(Table 11, pp. 1115-1116): Kirillova and Charikov 1964 (500-4000, 24); Lynch, Olson and \
+Weaver 1975 (807-1690, 6); Johnson and Christy 1974 (5160-12200, 8); Kirillova and \
+Charikov 1963 (2500-8330, 19); Bolotin et al. 1962 (1000-5000, 17), whose rows from 1180 \
+to 4000 cm-1 repeat the Kirillova and Charikov 1964 block's (identical but for a unit in \
+the last digit at 2220 cm-1; a probable compilation error). W (Table 12, pp. 1117-1118): Nomerovannaya, Kirillova and Noskov 1964 \
+(500-10000, 48 + 19 rows over two blocks, the second without a reference line); Weaver, Lynch and Olson 1975 (484-16100, 19; \
+epsilon_1 positive at 1.21E+04 and 1.61E+04, printed -epsilon_1 = -4.33 and -4.61).
+
+FIGURES 1-12 (pp. 1100-1102): -epsilon_1 and epsilon_2 against omega (log-log) for each \
+metal, the blocks' data as symbols and, for Al, Cu, Au, Pb, Ag and W, the Drude curve of \
+Table 13 as a line; not digitised."""
+
+[[formulas]]
+id = "drude_Al"
+material = "Al"
+equation = "Eq. (2), p. 1099, with Table 13, p. 1118"
+printed = "epsilon_c = epsilon_inf - omega_p^2 / (omega^2 + i omega omega_tau); Table 13, Al: omega_f (cm-1) for fit of data in IR 1.11x10^3; omega_tau (cm-1) IR fit 6.47x10^2; omega_p (cm-1) IR fit 1.19x10^5; -epsilon_1(0) = -(omega_p/omega_tau)^2 3.37x10^4; omega_tau (cm-1) from dc resistivities and omega_p 6.45x10^2; omega_tau (cm-1) crossover on -epsilon_1, epsilon_2 plot 7.00x10^2"
+variable = "omega: wavenumber in cm-1; epsilon_inf = 1 (Eqs. 12-13, p. 1116, use 1 - epsilon_1)"
+range = "The infrared of Fig. 1 (the fit is forced at omega_f = 1.11x10^3 cm-1); 'The high frequency termination occurs where the Drude model becomes invalid' (p. 1118)"
+coefficients = { omega_tau = "6.47x10^2", omega_p = "1.19x10^5" }
+check = "(omega_p/omega_tau)^2 = 33,829 against the printed -epsilon_1(0) = 3.37x10^4 (0.4 %, the parameters' rounding). At 1110 cm-1 the formula gives -epsilon_1 = 8,578, epsilon_2 = 5,000 against Bennett and Bennett's block 8.41E+03, 5.02E+03 (+2.0 %, -0.4 %); at 313 cm-1, +5 % and +2 %. Against Shiles et al.'s block it is 15-40 % off (1050 cm-1: 9,309 + 5,737i against 6.93E+03 + 4.07E+03i). Checked 2026-09-28."
+notes = "A fit by eye to the compiled data (Sec. III); in effect it follows Bennett and Bennett's Drude curve (record notes). Superseded by ordal_1985/drude_Al (omega_tau 660, omega_p 119,000 cm-1)."
+
+[[formulas]]
+id = "drude_Cu"
+material = "Cu"
+equation = "Eq. (2), p. 1099, with Table 13, p. 1118"
+printed = "epsilon_c = epsilon_inf - omega_p^2 / (omega^2 + i omega omega_tau); Table 13, Cu: omega_f 2.00x10^3; omega_tau (IR fit) 2.78x10^2; omega_p (IR fit) 6.38x10^4; -epsilon_1(0) 5.27x10^4; omega_tau from dc resistivities and omega_p 1.15x10^2; omega_tau crossover 2.55x10^2 (cm-1)"
+variable = "omega: wavenumber in cm-1; epsilon_inf = 1 (Eqs. 12-13, p. 1116)"
+range = "The infrared of Fig. 2 (the fit is forced at omega_f = 2.00x10^3 cm-1)"
+coefficients = { omega_tau = "2.78x10^2", omega_p = "6.38x10^4" }
+check = "(omega_p/omega_tau)^2 = 52,669 against the printed 5.27x10^4. At the forced frequency, 2000 cm-1, the formula gives -epsilon_1 = 997, epsilon_2 = 138.8 against Lenham and Treherne's block 1.00E+03, 1.40E+02 (-0.3 %, -0.9 %); at 500 cm-1 it is 8-9 % low and at 1000 cm-1 epsilon_2 is 25 % low; Dold and Mecke's block lies 30-40 % below it in -epsilon_1 (1000-5000 cm-1). Checked 2026-09-28."
+notes = "Revised in ordal_1985 (omega_tau 73.2, omega_p 59,600 cm-1) after the authors' own Cu measurements ('Cu caused a revision in the Drude model parameters presented in our previous tabulation', ordal_1985 p. 4498)."
+
+[[formulas]]
+id = "drude_Au"
+material = "Au"
+equation = "Eq. (2), p. 1099, with Table 13, p. 1118"
+printed = "epsilon_c = epsilon_inf - omega_p^2 / (omega^2 + i omega omega_tau); Table 13, Au: omega_f 8.06x10^2; omega_tau (IR fit) 2.16x10^2; omega_p (IR fit) 7.25x10^4; -epsilon_1(0) 1.13x10^5; omega_tau from dc resistivities and omega_p 1.93x10^2; omega_tau crossover 2.16x10^2 (cm-1)"
+variable = "omega: wavenumber in cm-1; epsilon_inf = 1 (Eqs. 12-13, p. 1116)"
+range = "The infrared of Fig. 3; omega_tau from Brandli and Sievers's far-infrared surface resistance with omega_p from the near-infrared fit (p. 1118)"
+coefficients = { omega_tau = "2.16x10^2", omega_p = "7.25x10^4" }
+check = "(omega_p/omega_tau)^2 = 112,660 against the printed 1.13x10^5. At 833 cm-1 the formula gives -epsilon_1 = 7,097, epsilon_2 = 1,840 against Bennett and Bennett's block 7.14E+03, 1.84E+03 (-0.6 %, 0.0 %), within 1.5 % over that block (313-3330 cm-1); against Weaver et al.'s block it is 11 % high in -epsilon_1 and 49 % in epsilon_2 at 807 cm-1, and against Brandli and Sievers's +28 % / +22 % at 31.4 cm-1 and -12 % / +4 % at 100 cm-1. Checked 2026-09-28."
+notes = "For gold (and lead) omega_tau is the value from Eq. (14) and Brandli and Sievers's R(omega)/Z_0, not the near-infrared fit's (p. 1118). Superseded by ordal_1985/drude_Au (215, 72,800)."
+
+[[formulas]]
+id = "drude_Ag"
+material = "Ag"
+equation = "Eq. (2), p. 1099, with Table 13, p. 1118"
+printed = "epsilon_c = epsilon_inf - omega_p^2 / (omega^2 + i omega omega_tau); Table 13, Ag: omega_f 1.00x10^3; omega_tau (IR fit) 1.45x10^2; omega_p (IR fit) 7.25x10^4; -epsilon_1(0) 2.50x10^5; omega_tau from dc resistivities and omega_p 1.41x10^2; omega_tau crossover 1.52x10^2 (cm-1)"
+variable = "omega: wavenumber in cm-1; epsilon_inf = 1 (Eqs. 12-13, p. 1116)"
+range = "The infrared of Fig. 5 (the fit is forced at omega_f = 1.00x10^3 cm-1)"
+coefficients = { omega_tau = "1.45x10^2", omega_p = "7.25x10^4" }
+check = "(omega_p/omega_tau)^2 = 250,000, the printed 2.50x10^5. At the forced frequency, 1000 cm-1, the formula gives -epsilon_1 = 5,147, epsilon_2 = 746.5 against Bennett and Bennett's block 5.14E+03, 7.49E+02 (+0.1 %, -0.3 %), within 1 % over that block (313-5000 cm-1); Hagemann et al.'s block has epsilon_2 21 % (807 cm-1) to 53 % (4030 cm-1) above it. Checked 2026-09-28."
+notes = "Superseded by ordal_1985/drude_Ag (145, 72,700)."
+
+[[datasets]]
+id = "n_Al_shiles"
+material = "Al"
+file = "Al/ordal_1983__n_Al_shiles.csv"
+table = "tbl_fd6106702469"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shiles_1980", "weaver_1981"]
+notes = "Table 1, p. 1103 (first block of Table 1, 'TABLE 1. Al, ALUMINUM'): n of aluminium, 323-16100 cm-1 (31-0.62 um), 26 rows, from 'E. Shiles, T. Sasaki, M. Inokuti, and D. Y. Smith, Phys. Rev. B 22, 1612 (1980)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). The values are Weaver et al.'s tabulation of Shiles et al.'s analysis (Physics Data 18-2, p. 79; shiles_1980 says its tabulation is given elsewhere), rounded to three figures at omega = E (eV) x 8065.5: at 0.040 eV the scan prints n = 98.595, k = 203.701, epsilon_1 = -31773, epsilon_2 = 40168, here 98.6, 204, 3.18E+04, 4.02E+04 (checked at 0.040-0.062 eV against the scan of that page on J. H. Weaver's website, 2026-09-28)."
+
+[[datasets]]
+id = "k_Al_shiles"
+material = "Al"
+file = "Al/ordal_1983__k_Al_shiles.csv"
+table = "tbl_fd6106702469"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["shiles_1980", "weaver_1981"]
+notes = "Table 1, p. 1103 (first block of Table 1, 'TABLE 1. Al, ALUMINUM'): k of aluminium, 323-16100 cm-1 (31-0.62 um), 26 rows, from 'E. Shiles, T. Sasaki, M. Inokuti, and D. Y. Smith, Phys. Rev. B 22, 1612 (1980)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Al_shiles"
+material = "Al"
+file = "Al/ordal_1983__eps1_Al_shiles.csv"
+table = "tbl_fd6106702469"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["shiles_1980", "weaver_1981"]
+notes = "Table 1, p. 1103 (first block of Table 1, 'TABLE 1. Al, ALUMINUM'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 26 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Al_shiles"
+material = "Al"
+file = "Al/ordal_1983__eps2_Al_shiles.csv"
+table = "tbl_fd6106702469"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["shiles_1980", "weaver_1981"]
+notes = "Table 1, p. 1103 (first block of Table 1, 'TABLE 1. Al, ALUMINUM'): epsilon_2, 26 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Al_bennett"
+material = "Al"
+file = "Al/ordal_1983__n_Al_bennett.csv"
+table = "tbl_c2e00320bb13"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronics Structure of Metals and Alloys, ed. F. Abeles (North-Holland, 1966), p. 175"]
+notes = "Table 1, p. 1103 (second block, 'TABLE 1. Al, ALUMINUM (Continued)'): n of aluminium, 313-1250 cm-1 (32-8 um), 25 rows, from 'H. E. Bennett and J. M. Bennett, Optical Properties and Electronics Structure of Metals and Alloys, ed. F. Abeles (North-Holland, 1966), p. 175' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). A DRUDE CURVE, NOT MEASURED POINTS: every row gives, by Ordal's Eqs. (12)-(13), omega_tau = 657-669 cm-1 and omega_p = 118,200-119,100 cm-1, constant to the printed rounding, i.e. Bennett and Bennett's Drude model (Ordal's Ref. 5: omega_tau estimated at 663 cm-1 for Al; the model 'fitted with ... 2.6 free electrons per atom for aluminum', p. 1099)."
+
+[[datasets]]
+id = "k_Al_bennett"
+material = "Al"
+file = "Al/ordal_1983__k_Al_bennett.csv"
+table = "tbl_c2e00320bb13"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronics Structure of Metals and Alloys, ed. F. Abeles (North-Holland, 1966), p. 175"]
+notes = "Table 1, p. 1103 (second block, 'TABLE 1. Al, ALUMINUM (Continued)'): k of aluminium, 313-1250 cm-1 (32-8 um), 25 rows, from 'H. E. Bennett and J. M. Bennett, Optical Properties and Electronics Structure of Metals and Alloys, ed. F. Abeles (North-Holland, 1966), p. 175' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Al_bennett"
+material = "Al"
+file = "Al/ordal_1983__eps1_Al_bennett.csv"
+table = "tbl_c2e00320bb13"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronics Structure of Metals and Alloys, ed. F. Abeles (North-Holland, 1966), p. 175"]
+notes = "Table 1, p. 1103 (second block, 'TABLE 1. Al, ALUMINUM (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 25 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Al_bennett"
+material = "Al"
+file = "Al/ordal_1983__eps2_Al_bennett.csv"
+table = "tbl_c2e00320bb13"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronics Structure of Metals and Alloys, ed. F. Abeles (North-Holland, 1966), p. 175"]
+notes = "Table 1, p. 1103 (second block, 'TABLE 1. Al, ALUMINUM (Continued)'): epsilon_2, 25 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Al_schulz"
+material = "Al"
+file = "Al/ordal_1983__n_Al_schulz.csv"
+table = "tbl_7ec42378518f"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 (1954) and 362 (1954)"]
+notes = "Table 1, p. 1104 (first block, 'TABLE 1. Al, ALUMINUM (Continued)'): n of aluminium, 10500-25000 cm-1 (0.95-0.40 um), 12 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, 357 (1954) and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Al_schulz"
+material = "Al"
+file = "Al/ordal_1983__k_Al_schulz.csv"
+table = "tbl_7ec42378518f"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 (1954) and 362 (1954)"]
+notes = "Table 1, p. 1104 (first block, 'TABLE 1. Al, ALUMINUM (Continued)'): k of aluminium, 10500-25000 cm-1 (0.95-0.40 um), 12 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, 357 (1954) and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Al_schulz"
+material = "Al"
+file = "Al/ordal_1983__eps1_Al_schulz.csv"
+table = "tbl_7ec42378518f"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 (1954) and 362 (1954)"]
+notes = "Table 1, p. 1104 (first block, 'TABLE 1. Al, ALUMINUM (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 12 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Al_schulz"
+material = "Al"
+file = "Al/ordal_1983__eps2_Al_schulz.csv"
+table = "tbl_7ec42378518f"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 (1954) and 362 (1954)"]
+notes = "Table 1, p. 1104 (first block, 'TABLE 1. Al, ALUMINUM (Continued)'): epsilon_2, 12 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Cu_schulz"
+material = "Cu"
+file = "Cu/ordal_1983__n_Cu_schulz.csv"
+table = "tbl_18533a8f9142"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 2, p. 1104 (second block, 'TABLE 2. Cu, COPPER'): n of copper, 10500-22200 cm-1 (0.95-0.45 um), 11 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Cu_schulz"
+material = "Cu"
+file = "Cu/ordal_1983__k_Cu_schulz.csv"
+table = "tbl_18533a8f9142"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 2, p. 1104 (second block, 'TABLE 2. Cu, COPPER'): k of copper, 10500-22200 cm-1 (0.95-0.45 um), 11 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Cu_schulz"
+material = "Cu"
+file = "Cu/ordal_1983__eps1_Cu_schulz.csv"
+table = "tbl_18533a8f9142"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 2, p. 1104 (second block, 'TABLE 2. Cu, COPPER'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Cu_schulz"
+material = "Cu"
+file = "Cu/ordal_1983__eps2_Cu_schulz.csv"
+table = "tbl_18533a8f9142"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 2, p. 1104 (second block, 'TABLE 2. Cu, COPPER'): epsilon_2, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Cu_lenham"
+material = "Cu"
+file = "Cu/ordal_1983__n_Cu_lenham.csv"
+table = "tbl_97a509391e26"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["A. P. Lenham and D. M. Treherne, J. Opt. Soc. Am. 56, 683 (1966)"]
+notes = "Table 2, p. 1104 (third block, 'TABLE 2. Cu, COPPER (Continued)'): n of copper, 500-2500 cm-1 (20-4 um), 10 rows, from 'A. P. Lenham and D. M. Treherne, J. Opt. Soc. Am. 56, 683 (1966)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Cu_lenham"
+material = "Cu"
+file = "Cu/ordal_1983__k_Cu_lenham.csv"
+table = "tbl_97a509391e26"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["A. P. Lenham and D. M. Treherne, J. Opt. Soc. Am. 56, 683 (1966)"]
+notes = "Table 2, p. 1104 (third block, 'TABLE 2. Cu, COPPER (Continued)'): k of copper, 500-2500 cm-1 (20-4 um), 10 rows, from 'A. P. Lenham and D. M. Treherne, J. Opt. Soc. Am. 56, 683 (1966)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Cu_lenham"
+material = "Cu"
+file = "Cu/ordal_1983__eps1_Cu_lenham.csv"
+table = "tbl_97a509391e26"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["A. P. Lenham and D. M. Treherne, J. Opt. Soc. Am. 56, 683 (1966)"]
+notes = "Table 2, p. 1104 (third block, 'TABLE 2. Cu, COPPER (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 10 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Cu_lenham"
+material = "Cu"
+file = "Cu/ordal_1983__eps2_Cu_lenham.csv"
+table = "tbl_97a509391e26"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["A. P. Lenham and D. M. Treherne, J. Opt. Soc. Am. 56, 683 (1966)"]
+notes = "Table 2, p. 1104 (third block, 'TABLE 2. Cu, COPPER (Continued)'): epsilon_2, 10 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Cu_robusto"
+material = "Cu"
+file = "Cu/ordal_1983__n_Cu_robusto.csv"
+table = "tbl_594ca77df023"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["P. F. Robusto and Braunstein, Phys. Stat. Sol. (b) 107, 443 (1981)"]
+notes = "Table 2, p. 1104 (fourth block, 'TABLE 2. Cu, Copper (Continued)'): n of copper, 15600-25000 cm-1 (0.64-0.40 um), 7 rows, from 'P. F. Robusto and Braunstein, Phys. Stat. Sol. (b) 107, 443 (1981)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Cu_robusto"
+material = "Cu"
+file = "Cu/ordal_1983__k_Cu_robusto.csv"
+table = "tbl_594ca77df023"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["P. F. Robusto and Braunstein, Phys. Stat. Sol. (b) 107, 443 (1981)"]
+notes = "Table 2, p. 1104 (fourth block, 'TABLE 2. Cu, Copper (Continued)'): k of copper, 15600-25000 cm-1 (0.64-0.40 um), 7 rows, from 'P. F. Robusto and Braunstein, Phys. Stat. Sol. (b) 107, 443 (1981)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Cu_robusto"
+material = "Cu"
+file = "Cu/ordal_1983__eps1_Cu_robusto.csv"
+table = "tbl_594ca77df023"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["P. F. Robusto and Braunstein, Phys. Stat. Sol. (b) 107, 443 (1981)"]
+notes = "Table 2, p. 1104 (fourth block, 'TABLE 2. Cu, Copper (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 7 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Cu_robusto"
+material = "Cu"
+file = "Cu/ordal_1983__eps2_Cu_robusto.csv"
+table = "tbl_594ca77df023"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["P. F. Robusto and Braunstein, Phys. Stat. Sol. (b) 107, 443 (1981)"]
+notes = "Table 2, p. 1104 (fourth block, 'TABLE 2. Cu, Copper (Continued)'): epsilon_2, 7 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Cu_hagemann"
+material = "Cu"
+file = "Cu/ordal_1983__n_Cu_hagemann.csv"
+table = "tbl_8b93c46d68a7"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 2, p. 1105 (first block, 'TABLE 2. Cu, COPPER (Continued)'): n of copper, 807-16100 cm-1 (12.4-0.62 um), 10 rows, from 'H. J. Hagemann, W. Gudat, and C. Kunz, J. Opt. Soc. Am. 65, 742 (1975)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). The JOSA paper has figures only; the rows are those of the DESY report SR-74/7 (hagemann_1974, Table 3) at 0.1, 0.5, 1.0, 1.5, 1.7, 1.75, 1.8, 1.85, 1.9 and 2.0 eV, n and k rounded (n to two decimals) and epsilon recomputed from them. Against the library's reading of the report: agreement to the rounding at 1.5-2.0 eV; at 0.1 eV n, k = 29.7, 71.6 here against 29.1, 71.1 printed in the report (whose own epsilon, -4.24E3 and 4.25E3, equal this row's and agree with 29.7, 71.6, not with 29.1, 71.1); at 0.5 eV n = 1.71 against 1.692; at 1.0 eV 0.44, 8.48 against 0.433, 8.46 (the report's cells as the library reads them, checked 2026-09-28; see hagemann_1974)."
+
+[[datasets]]
+id = "k_Cu_hagemann"
+material = "Cu"
+file = "Cu/ordal_1983__k_Cu_hagemann.csv"
+table = "tbl_8b93c46d68a7"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 2, p. 1105 (first block, 'TABLE 2. Cu, COPPER (Continued)'): k of copper, 807-16100 cm-1 (12.4-0.62 um), 10 rows, from 'H. J. Hagemann, W. Gudat, and C. Kunz, J. Opt. Soc. Am. 65, 742 (1975)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Cu_hagemann"
+material = "Cu"
+file = "Cu/ordal_1983__eps1_Cu_hagemann.csv"
+table = "tbl_8b93c46d68a7"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 2, p. 1105 (first block, 'TABLE 2. Cu, COPPER (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 10 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Cu_hagemann"
+material = "Cu"
+file = "Cu/ordal_1983__eps2_Cu_hagemann.csv"
+table = "tbl_8b93c46d68a7"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 2, p. 1105 (first block, 'TABLE 2. Cu, COPPER (Continued)'): epsilon_2, 10 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Cu_dold"
+material = "Cu"
+file = "Cu/ordal_1983__n_Cu_dold.csv"
+table = "tbl_6418218be243"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["B. Dold and R. Mecke, Optik 22, 435 (1965)"]
+notes = "Table 2, p. 1105 (second block, 'TABLE 2. Cu, COPPER (Continued)'); the library labels this table 'TABLE 3. Au, GOLD': n of copper, 1000-8000 cm-1 (10-1.25 um), 11 rows, from 'B. Dold and R. Mecke, Optik 22, 435 (1965)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Cu_dold"
+material = "Cu"
+file = "Cu/ordal_1983__k_Cu_dold.csv"
+table = "tbl_6418218be243"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["B. Dold and R. Mecke, Optik 22, 435 (1965)"]
+notes = "Table 2, p. 1105 (second block, 'TABLE 2. Cu, COPPER (Continued)'); the library labels this table 'TABLE 3. Au, GOLD': k of copper, 1000-8000 cm-1 (10-1.25 um), 11 rows, from 'B. Dold and R. Mecke, Optik 22, 435 (1965)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Cu_dold"
+material = "Cu"
+file = "Cu/ordal_1983__eps1_Cu_dold.csv"
+table = "tbl_6418218be243"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["B. Dold and R. Mecke, Optik 22, 435 (1965)"]
+notes = "Table 2, p. 1105 (second block, 'TABLE 2. Cu, COPPER (Continued)'); the library labels this table 'TABLE 3. Au, GOLD': the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Cu_dold"
+material = "Cu"
+file = "Cu/ordal_1983__eps2_Cu_dold.csv"
+table = "tbl_6418218be243"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["B. Dold and R. Mecke, Optik 22, 435 (1965)"]
+notes = "Table 2, p. 1105 (second block, 'TABLE 2. Cu, COPPER (Continued)'); the library labels this table 'TABLE 3. Au, GOLD': epsilon_2, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_bennett"
+material = "Au"
+file = "Au/ordal_1983__n_Au_bennett.csv"
+table = "tbl_d345d262b8b8"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronic Structure of Metals and Alloys edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 3, p. 1105 (third block, 'TABLE 3. Au, GOLD'; unlabelled in the library): n of gold, 313-3330 cm-1 (32-3 um), 18 rows, from 'H. E. Bennett and J. M. Bennett, Optical Properties and Electronic Structure of Metals and Alloys edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). A DRUDE CURVE, NOT MEASURED POINTS: every row gives, by Ordal's Eqs. (12)-(13), omega_tau = 214-217 cm-1 and omega_p = 72,500-73,000 cm-1, constant to the printed rounding (Ordal's Ref. 5: omega_tau estimated at 216 cm-1 for Au, one free electron per atom)."
+
+[[datasets]]
+id = "k_Au_bennett"
+material = "Au"
+file = "Au/ordal_1983__k_Au_bennett.csv"
+table = "tbl_d345d262b8b8"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronic Structure of Metals and Alloys edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 3, p. 1105 (third block, 'TABLE 3. Au, GOLD'; unlabelled in the library): k of gold, 313-3330 cm-1 (32-3 um), 18 rows, from 'H. E. Bennett and J. M. Bennett, Optical Properties and Electronic Structure of Metals and Alloys edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Au_bennett"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_bennett.csv"
+table = "tbl_d345d262b8b8"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronic Structure of Metals and Alloys edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 3, p. 1105 (third block, 'TABLE 3. Au, GOLD'; unlabelled in the library): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 18 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_bennett"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_bennett.csv"
+table = "tbl_d345d262b8b8"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["H. E. Bennett and J. M. Bennett, Optical Properties and Electronic Structure of Metals and Alloys edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 3, p. 1105 (third block, 'TABLE 3. Au, GOLD'; unlabelled in the library): epsilon_2, 18 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_schulz"
+material = "Au"
+file = "Au/ordal_1983__n_Au_schulz.csv"
+table = "tbl_17b239fd0da5"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 3, p. 1106 (first block, 'TABLE 3. Au, Gold (Continued)'): n of gold, 10500-22200 cm-1 (0.95-0.45 um), 7 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Au_schulz"
+material = "Au"
+file = "Au/ordal_1983__k_Au_schulz.csv"
+table = "tbl_17b239fd0da5"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 3, p. 1106 (first block, 'TABLE 3. Au, Gold (Continued)'): k of gold, 10500-22200 cm-1 (0.95-0.45 um), 7 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Au_schulz"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_schulz.csv"
+table = "tbl_17b239fd0da5"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 3, p. 1106 (first block, 'TABLE 3. Au, Gold (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 7 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_schulz"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_schulz.csv"
+table = "tbl_17b239fd0da5"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, 357 and 362 (1954)"]
+notes = "Table 3, p. 1106 (first block, 'TABLE 3. Au, Gold (Continued)'): epsilon_2, 7 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_motulevich"
+material = "Au"
+file = "Au/ordal_1983__n_Au_motulevich.csv"
+table = "tbl_7fb8ff587269"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["G. P. Motulevich and A. A. Shubin, Soviet Phys. JETP 20, 560 (1965)"]
+notes = "Table 3, p. 1106 (second block, 'TABLE 3. Au, GOLD (Continued)'): n of gold, 833-10000 cm-1 (12-1 um), 11 rows, from 'G. P. Motulevich and A. A. Shubin, Soviet Phys. JETP 20, 560 (1965)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Au_motulevich"
+material = "Au"
+file = "Au/ordal_1983__k_Au_motulevich.csv"
+table = "tbl_7fb8ff587269"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["G. P. Motulevich and A. A. Shubin, Soviet Phys. JETP 20, 560 (1965)"]
+notes = "Table 3, p. 1106 (second block, 'TABLE 3. Au, GOLD (Continued)'): k of gold, 833-10000 cm-1 (12-1 um), 11 rows, from 'G. P. Motulevich and A. A. Shubin, Soviet Phys. JETP 20, 560 (1965)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Au_motulevich"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_motulevich.csv"
+table = "tbl_7fb8ff587269"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["G. P. Motulevich and A. A. Shubin, Soviet Phys. JETP 20, 560 (1965)"]
+notes = "Table 3, p. 1106 (second block, 'TABLE 3. Au, GOLD (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_motulevich"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_motulevich.csv"
+table = "tbl_7fb8ff587269"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["G. P. Motulevich and A. A. Shubin, Soviet Phys. JETP 20, 560 (1965)"]
+notes = "Table 3, p. 1106 (second block, 'TABLE 3. Au, GOLD (Continued)'): epsilon_2, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_padalka"
+material = "Au"
+file = "Au/ordal_1983__n_Au_padalka.csv"
+table = "tbl_9c35180248e0"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["V. G. Padalka and I. N. Shklyarevskii, Opt. Spectr. U.S.S.R. 11, 285 (1961)"]
+notes = "Table 3, p. 1106 (third block, 'TABLE 3. Au, GOLD (Continued)'; the library attaches the reference to the block above): n of gold, 909-10000 cm-1 (11-1 um), 11 rows, from 'V. G. Padalka and I. N. Shklyarevskii, Opt. Spectr. U.S.S.R. 11, 285 (1961)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Au_padalka"
+material = "Au"
+file = "Au/ordal_1983__k_Au_padalka.csv"
+table = "tbl_9c35180248e0"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["V. G. Padalka and I. N. Shklyarevskii, Opt. Spectr. U.S.S.R. 11, 285 (1961)"]
+notes = "Table 3, p. 1106 (third block, 'TABLE 3. Au, GOLD (Continued)'; the library attaches the reference to the block above): k of gold, 909-10000 cm-1 (11-1 um), 11 rows, from 'V. G. Padalka and I. N. Shklyarevskii, Opt. Spectr. U.S.S.R. 11, 285 (1961)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Au_padalka"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_padalka.csv"
+table = "tbl_9c35180248e0"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["V. G. Padalka and I. N. Shklyarevskii, Opt. Spectr. U.S.S.R. 11, 285 (1961)"]
+notes = "Table 3, p. 1106 (third block, 'TABLE 3. Au, GOLD (Continued)'; the library attaches the reference to the block above): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_padalka"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_padalka.csv"
+table = "tbl_9c35180248e0"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["V. G. Padalka and I. N. Shklyarevskii, Opt. Spectr. U.S.S.R. 11, 285 (1961)"]
+notes = "Table 3, p. 1106 (third block, 'TABLE 3. Au, GOLD (Continued)'; the library attaches the reference to the block above): epsilon_2, 11 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_bolotin"
+material = "Au"
+file = "Au/ordal_1983__n_Au_bolotin.csv"
+table = "tbl_7bbc87402022"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["G. A. Bolotin, A. N. Voloshinskii, M. M. Neskov, A. V. Sokolov, and B. A. Charikov, Phys. Met. and Met. 13, 823 (1962)"]
+notes = "Table 3, p. 1106 (fourth block, 'TABLE 3. Au, GOLD (Continued)'): n of gold, 1050-4000 cm-1 (9.5-2.5 um), 12 rows, from 'G. A. Bolotin, A. N. Voloshinskii, M. M. Neskov, A. V. Sokolov, and B. A. Charikov, Phys. Met. and Met. 13, 823 (1962)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "k_Au_bolotin"
+material = "Au"
+file = "Au/ordal_1983__k_Au_bolotin.csv"
+table = "tbl_7bbc87402022"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["G. A. Bolotin, A. N. Voloshinskii, M. M. Neskov, A. V. Sokolov, and B. A. Charikov, Phys. Met. and Met. 13, 823 (1962)"]
+notes = "Table 3, p. 1106 (fourth block, 'TABLE 3. Au, GOLD (Continued)'): k of gold, 1050-4000 cm-1 (9.5-2.5 um), 12 rows, from 'G. A. Bolotin, A. N. Voloshinskii, M. M. Neskov, A. V. Sokolov, and B. A. Charikov, Phys. Met. and Met. 13, 823 (1962)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Au_bolotin"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_bolotin.csv"
+table = "tbl_7bbc87402022"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["G. A. Bolotin, A. N. Voloshinskii, M. M. Neskov, A. V. Sokolov, and B. A. Charikov, Phys. Met. and Met. 13, 823 (1962)"]
+notes = "Table 3, p. 1106 (fourth block, 'TABLE 3. Au, GOLD (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 12 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_bolotin"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_bolotin.csv"
+table = "tbl_7bbc87402022"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["G. A. Bolotin, A. N. Voloshinskii, M. M. Neskov, A. V. Sokolov, and B. A. Charikov, Phys. Met. and Met. 13, 823 (1962)"]
+notes = "Table 3, p. 1106 (fourth block, 'TABLE 3. Au, GOLD (Continued)'): epsilon_2, 12 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_brandli"
+material = "Au"
+file = "Au/ordal_1983__n_Au_brandli.csv"
+table = "tbl_d3ef91129a37"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["G. Brandli and A. J. Sievers, Phy. Rev. B 5, 3550 (1972)"]
+notes = "Table 3, p. 1107 (first block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): n of gold, 31.4-150 cm-1 (318-66.7 um), 14 rows, from 'G. Brandli and A. J. Sievers, Phy. Rev. B 5, 3550 (1972)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). Brandli and Sievers 'reported values of R(omega)/Z_0' (the far-infrared surface resistance, p. 1118); Ordal et al. do not say how n and k were obtained from it. The rows scatter (-epsilon_1 8.62E+04, 8.74E+04, 9.47E+04, 9.18E+04 ...), as measured data would."
+
+[[datasets]]
+id = "k_Au_brandli"
+material = "Au"
+file = "Au/ordal_1983__k_Au_brandli.csv"
+table = "tbl_d3ef91129a37"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["G. Brandli and A. J. Sievers, Phy. Rev. B 5, 3550 (1972)"]
+notes = "Table 3, p. 1107 (first block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): k of gold, 31.4-150 cm-1 (318-66.7 um), 14 rows, from 'G. Brandli and A. J. Sievers, Phy. Rev. B 5, 3550 (1972)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Au_brandli"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_brandli.csv"
+table = "tbl_d3ef91129a37"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["G. Brandli and A. J. Sievers, Phy. Rev. B 5, 3550 (1972)"]
+notes = "Table 3, p. 1107 (first block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 14 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_brandli"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_brandli.csv"
+table = "tbl_d3ef91129a37"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["G. Brandli and A. J. Sievers, Phy. Rev. B 5, 3550 (1972)"]
+notes = "Table 3, p. 1107 (first block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): epsilon_2, 14 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Au_weaver"
+material = "Au"
+file = "Au/ordal_1983__n_Au_weaver.csv"
+table = "tbl_21d434b5eb92"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["weaver_1981"]
+notes = "Table 3, p. 1107 (second block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): n of gold, 807-16100 cm-1 (12.4-0.62 um), 21 rows, from 'J. H. Weaver, C. Krafka, D. W. Lynch, and E. E. Koch (with C. G. Olson), Physics Data, Optical Properties of Metals, (Fach-Information Zentrum, Kalsrube, FOR, 1981)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). Weaver et al.'s gold table (Physics Data 18-2, p. 64: 'Unpublished reflectance data for electropolished Au(110) by J.H. Weaver (0.2 <= hv <= 4 eV) and C.G. Olson and D.W. Lynch (~4 <= hv <= 30 eV). Optical constants determined by Kramers-Kronig analysis'), 0.1-2.0 eV in 0.05 eV steps to 1.0 eV, then 1.5 and 2.0 eV: n and k equal that page's at all 21 energies (n to the page's two decimals, k rounded to three figures; checked on the scan from J. H. Weaver's website, 2026-09-28). At every energy the Babar-Weaver file's sheet JHW-Au-ZAED also holds (0.1-eV steps; optical-constantsCuAgAu.xlsx, attached to babar_2015 in the library), n and k agree to the rounding (e.g. 0.1 eV: 8.1696, 82.833 there, 8.17, 82.8 here; 1.0 eV: 0.1264, 8.0303 there, 0.13, 8.03 here); epsilon here is recomputed from the rounded n, k (1.0 eV: epsilon_2 = 2.09 = 2 x 0.13 x 8.03, where the sheet has 2.03)."
+
+[[datasets]]
+id = "k_Au_weaver"
+material = "Au"
+file = "Au/ordal_1983__k_Au_weaver.csv"
+table = "tbl_21d434b5eb92"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["weaver_1981"]
+notes = "Table 3, p. 1107 (second block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): k of gold, 807-16100 cm-1 (12.4-0.62 um), 21 rows, from 'J. H. Weaver, C. Krafka, D. W. Lynch, and E. E. Koch (with C. G. Olson), Physics Data, Optical Properties of Metals, (Fach-Information Zentrum, Kalsrube, FOR, 1981)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Au_weaver"
+material = "Au"
+file = "Au/ordal_1983__eps1_Au_weaver.csv"
+table = "tbl_21d434b5eb92"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["weaver_1981"]
+notes = "Table 3, p. 1107 (second block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 21 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Au_weaver"
+material = "Au"
+file = "Au/ordal_1983__eps2_Au_weaver.csv"
+table = "tbl_21d434b5eb92"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["weaver_1981"]
+notes = "Table 3, p. 1107 (second block, 'TABLE 3. Au, Gold (Continued)'; unlabelled in the library): epsilon_2, 21 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Ag_bennett"
+material = "Ag"
+file = "Ag/ordal_1983__n_Ag_bennett.csv"
+table = "tbl_ea7ae411dc7b"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["H. E. Bennett and J. M. Bennett in Optical Properties and Electronic Structure of Metals and Alloys, edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 5, p. 1108 (second block, 'TABLE 5. Ag, SILVER'; unlabelled in the library): n of silver, 313-5000 cm-1 (32-2 um), 19 rows, from 'H. E. Bennett and J. M. Bennett in Optical Properties and Electronic Structure of Metals and Alloys, edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). A DRUDE CURVE, NOT MEASURED POINTS: every row gives, by Ordal's Eqs. (12)-(13), omega_tau = 144.8-146.1 cm-1 and omega_p = 72,360-72,710 cm-1, constant to the printed rounding (Ordal's Ref. 5: omega_tau estimated at 145 cm-1 for Ag, one free electron per atom)."
+
+[[datasets]]
+id = "k_Ag_bennett"
+material = "Ag"
+file = "Ag/ordal_1983__k_Ag_bennett.csv"
+table = "tbl_ea7ae411dc7b"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["H. E. Bennett and J. M. Bennett in Optical Properties and Electronic Structure of Metals and Alloys, edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 5, p. 1108 (second block, 'TABLE 5. Ag, SILVER'; unlabelled in the library): k of silver, 313-5000 cm-1 (32-2 um), 19 rows, from 'H. E. Bennett and J. M. Bennett in Optical Properties and Electronic Structure of Metals and Alloys, edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Ag_bennett"
+material = "Ag"
+file = "Ag/ordal_1983__eps1_Ag_bennett.csv"
+table = "tbl_ea7ae411dc7b"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["H. E. Bennett and J. M. Bennett in Optical Properties and Electronic Structure of Metals and Alloys, edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 5, p. 1108 (second block, 'TABLE 5. Ag, SILVER'; unlabelled in the library): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 19 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Ag_bennett"
+material = "Ag"
+file = "Ag/ordal_1983__eps2_Ag_bennett.csv"
+table = "tbl_ea7ae411dc7b"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["H. E. Bennett and J. M. Bennett in Optical Properties and Electronic Structure of Metals and Alloys, edited by F. Abeles (North-Holland, Amsterdam, 1966), p. 175"]
+notes = "Table 5, p. 1108 (second block, 'TABLE 5. Ag, SILVER'; unlabelled in the library): epsilon_2, 19 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Ag_schulz"
+material = "Ag"
+file = "Ag/ordal_1983__n_Ag_schulz.csv"
+table = "tbl_3358809f5c2b"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, p. 357 and 362 (1954)"]
+notes = "Table 5, p. 1109 (first block, 'TABLE 5. Ag, SILVER (Continued)'; unlabelled in the library): n of silver, 10500-25000 cm-1 (0.95-0.40 um), 12 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, p. 357 and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). DOUBT: at 2.22E+04 cm-1 (450 nm) n is printed 5.50E-01 (checked on the image), ten times its neighbours (5.00E-02 at 2.00E+04, 7.50E-02 at 2.50E+04) and ten times what silver's other tables give there (Babar and Weaver about 0.05); the row's epsilon_2, 2.66 against 0.287 and 0.290 on either side, is 2nk with it, and -epsilon_1, 5.55, is k^2 - n^2 with it (n = 0.055 would give 0.266 and 5.85), so a slip, if it is one, came before Ordal et al.'s conversion. Schulz's paper is not in the library: kept as printed."
+
+[[datasets]]
+id = "k_Ag_schulz"
+material = "Ag"
+file = "Ag/ordal_1983__k_Ag_schulz.csv"
+table = "tbl_3358809f5c2b"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, p. 357 and 362 (1954)"]
+notes = "Table 5, p. 1109 (first block, 'TABLE 5. Ag, SILVER (Continued)'; unlabelled in the library): k of silver, 10500-25000 cm-1 (0.95-0.40 um), 12 rows, from 'L. G. Schulz, J. Opt. Soc. Am. 44, p. 357 and 362 (1954)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure)."
+
+[[datasets]]
+id = "eps1_Ag_schulz"
+material = "Ag"
+file = "Ag/ordal_1983__eps1_Ag_schulz.csv"
+table = "tbl_3358809f5c2b"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, p. 357 and 362 (1954)"]
+notes = "Table 5, p. 1109 (first block, 'TABLE 5. Ag, SILVER (Continued)'; unlabelled in the library): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 12 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Ag_schulz"
+material = "Ag"
+file = "Ag/ordal_1983__eps2_Ag_schulz.csv"
+table = "tbl_3358809f5c2b"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["L. G. Schulz, J. Opt. Soc. Am. 44, p. 357 and 362 (1954)"]
+notes = "Table 5, p. 1109 (first block, 'TABLE 5. Ag, SILVER (Continued)'; unlabelled in the library): epsilon_2, 12 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "n_Ag_hagemann"
+material = "Ag"
+file = "Ag/ordal_1983__n_Ag_hagemann.csv"
+table = "tbl_b0d84ee51ea1"
+quantity = "refractive_index"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 5, p. 1109 (second block, 'TABLE 5. Ag, Silver (Continued)'): n of silver, 807-16100 cm-1 (12.4-0.62 um), 8 rows, from 'H. J. Hageman, W. Gudat, and C. Kunz, J. Opt. Soc. Am. 65, 742 (1975)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). The JOSA paper has figures only; the rows are those of the DESY report SR-74/7 (hagemann_1974, Table 4) at 0.1, 0.2, 0.3, 0.4, 0.5, 1.0, 1.5 and 2.0 eV, n and k rounded (n to two decimals) and epsilon recomputed from them. Against the library's reading of the report they agree to the rounding except n at 0.1 eV (9.91 here, 9.936 there) and the report's epsilon_2 there (1.75E3; 2nk = 1.79E3) (the report's cells as the library reads them, checked 2026-09-28; see hagemann_1974)."
+
+[[datasets]]
+id = "k_Ag_hagemann"
+material = "Ag"
+file = "Ag/ordal_1983__k_Ag_hagemann.csv"
+table = "tbl_b0d84ee51ea1"
+quantity = "extinction_coefficient"
+abscissa_unit = "cm-1"
+use = "reproduced"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 5, p. 1109 (second block, 'TABLE 5. Ag, Silver (Continued)'): k of silver, 807-16100 cm-1 (12.4-0.62 um), 8 rows, from 'H. J. Hageman, W. Gudat, and C. Kunz, J. Opt. Soc. Am. 65, 742 (1975)' (the block's reference line, as printed). A copy of another author's values (Ordal et al. compiled, they did not measure). See the n dataset's notes."
+
+[[datasets]]
+id = "eps1_Ag_hagemann"
+material = "Ag"
+file = "Ag/ordal_1983__eps1_Ag_hagemann.csv"
+table = "tbl_b0d84ee51ea1"
+quantity = "permittivity_real"
+abscissa_unit = "cm-1"
+scale = -1
+use = "check"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 5, p. 1109 (second block, 'TABLE 5. Ag, Silver (Continued)'): the column headed '-epsilon_1', stored as printed with scale = -1, so the values are epsilon_1, 8 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."
+
+[[datasets]]
+id = "eps2_Ag_hagemann"
+material = "Ag"
+file = "Ag/ordal_1983__eps2_Ag_hagemann.csv"
+table = "tbl_b0d84ee51ea1"
+quantity = "permittivity_imaginary"
+abscissa_unit = "cm-1"
+use = "check"
+reproduced_from = ["hagemann_1975", "hagemann_1974"]
+notes = "Table 5, p. 1109 (second block, 'TABLE 5. Ag, Silver (Continued)'): epsilon_2, 8 rows. Ordal et al.'s conversion of the block's n and k ('All data in the form of n and k were changed to epsilon_1 and epsilon_2', p. 1116), agreeing with them to the printed rounding in every row: a check on the n and k datasets, not an independent value."

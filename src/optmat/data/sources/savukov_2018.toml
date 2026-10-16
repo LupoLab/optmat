@@ -1,0 +1,126 @@
+citation = "I. M. Savukov, \"CI+MBPT calculations of Ar I energies, g factors, and transition line strengths\", J. Phys. B: At. Mol. Opt. Phys. 51, 065006 (2018)"
+doi = "10.1088/1361-6455/aaac0d"
+library = "Savukov_2018_CIMBPTCalculations"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Ab initio configuration interaction with many-body perturbation theory \
+(CI+MBPT, Dzuba's code) with eight valence electrons (3s, 3p) on a frozen \
+Dirac-Hartree-Fock V^N potential of the 1s2 2s2 2p6 core, B-spline basis in a cavity; \
+single (3p5 nl) and a limited set of double (3p4 n1l1 n2l2) excitations, 307-396 \
+non-relativistic configurations per J and parity; core-valence corrections Sigma_1 and \
+screening Sigma_2 in second order. Electric-dipole line strengths and oscillator \
+strengths between the computed states."""
+notes = """Identity: Journal of Physics B: Atomic, Molecular and Optical Physics 51 (2018) \
+065006 (7pp), I M Savukov (Los Alamos National Laboratory), "CI+MBPT calculations of Ar \
+I energies, g factors, and transition line strengths", received 11 December 2017, \
+published 1 March 2018 (PDF page 2; page 1 is the publisher's cover; page n of the article is PDF page n + 1). Not to be \
+confused with Savukov's 2003 argon paper (J. Phys. B 36, 2001), which asghar_2020 \
+cites.
+
+Taken: Table 5's CI-MBPT oscillator strengths from the ground state \
+(oscillator_strength, check) and the text's calculated lifetime of 4d[1/2]1 \
+(radiative_lifetime, check). use = check: an ab initio calculation whose author \
+estimates its accuracy at '10% for strong transitions ... to a factor of two for \
+suppressed transitions and transitions involving states with strong mixing' (p. 6). \
+tools/extract/savukov_2018.py.
+
+NOT TAKEN (no quantity): the line strengths S of Tables 6, 7 and 8 (pp. 5-6; J = 0, 1, \
+2 even to J = 1 odd levels, units not printed, a.u. by their agreement with NIST's): \
+transition_dipole_moment holds a dipole moment between two states, and S = |<J||D||J'>|^2 \
+is the squared reduced matrix element summed over sublevels, not the same quantity; \
+an A or f converted from S would be derived. The paper says the A of these \
+transitions are 'provided in electronic format' (p. 5): the supplement is not in the \
+library. The g factors of Tables 1, 3 and 4 (no quantity). NOT TAKEN (the definition \
+does not fit): the CI-MBPT energies of Tables 1-4, which are aligned to an experimental \
+level and so are not energies above the calculated ground level: Table 2 (J = 0 even) \
+'aligned for the second level' (4p[1/2]0, 107054), which puts the ground state at 3109 \
+cm-1; Tables 3 and 4 'aligned to the first level' (4p[1/2]1, 104102; 4p[5/2]2, \
+105617); Table 1 (J = 1 odd) equal to experiment at its first level (93751) without a \
+statement. Only the intervals within a table are calculated: the 4p J = 0 interval \
+1637 cm-1 against NIST's 1668.35 (-32, as the text says); the 4p J = 1 levels \
+106377, 107502, 107868 against 106087.26, 107131.71, 107496.42 (+290 to +372 above \
+4p[1/2]1's alignment); J = 2 106265, 107395 against 106237.55, 107289.70 (+27, \
++105). Comparison columns (experimental and NIST energies and g factors, Salah's g, \
+f_expt from Chan et al., f_Th from Lee and Lu, NIST f and S with their grades): other \
+works' values.
+
+Levels: the printed configurations 3s2 3p5(2P°_j)nl are NIST's configurations; the \
+Racah labels (term 2[K]) are NIST's levels at the printed NIST energies, which the \
+script identifies one by one (Table 5; Tables 2-4 and 6-8 likewise). Tables 6-8's \
+4p levels: 107054.27 = 4p[1/2]0 (2p5), 108722.62 = 4p'[1/2]0 (2p1), 104102.10 = \
+4p[1/2]1 (2p10), 106087.26 = 4p[3/2]1 (2p7), 107131.71 = 4p'[3/2]1 (2p4), 107496.42 = \
+4p'[1/2]1 (2p2), 105617.3 = 4p[5/2]2 (2p8), 106237.6 = 4p[3/2]2 (2p6), 107289.7 = \
+4p'[3/2]2 (2p3); 93750.60 = 4s[3/2]1 (1s4), 95399.83 = 4s'[1/2]1 (1s2). Table 5's \
+rows 9 and 10 print (2P3/2)6s at 119847.77 cm-1 and (2P3/2)4d at 119760.1725 cm-1; \
+NIST, the paper's own Table 1 (4d 119848, 6s 119760) and chan_1992 (6s 14.848 eV, 4d \
+14.859 eV, with the same f_expt 0.0144 and 0.0484 Savukov prints beside these \
+configurations) have them the other way round, and the text says the theory 'would \
+agree better with experiments if we switched the order of levels' (p. 5). Which \
+level each CI f (0.068, 0.010) belongs to is therefore ambiguous: both rows are \
+excluded.
+
+Checks of Table 5's comparison columns: f_expt [30] is chan_1992's 'present' Ar \
+values (TC-1012's set of records; Chan et al., Phys. Rev. A 46, 149 (1992)) in all 12 \
+rows, value and uncertainty. f_Th [31] (Lee and Lu, Phys. Rev. A 8, 1241 (1973)) is \
+not chan_1992's Lee and Lu column (0.059, 0.3, 0.0016, 0.045, 0.045, 0.039, 0.128, \
+0.0026, 0.023, 0.036 against 0.080, 0.210, 0.0011, 0.034, 0.053, 0.025, 0.11, 0.0031, \
+0.014, 0.039), and the text (p. 5) quotes [31] as 8e-2, 2.1e-1, 1.6e-3, 4.5e-2, \
+4.5e-2: the column's source is in doubt (not taken).
+
+Radiative widths of the 4p levels (OEP 8): the paper gives S only for 4p to the two J \
+= 1 4s levels (4s[3/2]1, 4s'[1/2]1), not to the metastable 4s[3/2]2 and 4s'[1/2]0 (J = \
+2 and 0 odd states were not computed), and nothing for 4p[5/2]3; no 4p lifetime or \
+width follows. As a check only (derived, not taken), A = 2.0261e18 S / (g_k \
+lambda^3) with NIST's vacuum wavelengths (angstrom) against wiese_1989's Table IV, \
+14 lines: 4p[1/2]0-4s[3/2]1 0.985, 4p'[1/2]0-4s'[1/2]1 1.023, 4p[1/2]1-4s[3/2]1 \
+1.039, 4p[1/2]1-4s'[1/2]1 1.094, 4p[3/2]1-4s[3/2]1 0.967, 4p[3/2]1-4s'[1/2]1 1.353, \
+4p'[3/2]1-4s[3/2]1 0 (S printed 0.000; Wiese 0.022e6 s-1), 4p'[3/2]1-4s'[1/2]1 \
+0.974, 4p'[1/2]1-4s'[1/2]1 1.026, 4p[5/2]2-4s[3/2]1 0.983, 4p[5/2]2-4s'[1/2]1 1.350, \
+4p[3/2]2-4s[3/2]1 0.739, 4p'[3/2]2-4s[3/2]1 1.072, 4p'[3/2]2-4s'[1/2]1 0.981: the \
+strong lines within 4 % but 4p[3/2]2-4s[3/2]1 (800.6 nm), the weak ones to 35 %. \
+Tables 7 and 8 list no row for 4p'[1/2]1-4s[3/2]1 (727.3 nm) or 4p[3/2]2-4s'[1/2]1 \
+(922.5 nm). Independent of Wiese et al. and of NIST (ab initio; NIST's 4p-4s values, \
+the paper's comparison, are wiese_1989's).
+
+Other data the paper cites, not in the library: S. Das and S. Karmakar's measured \
+4d[1/2]1 lifetime (Ref. 33); W. Salah and O. Hassouneh, Eur. Phys. J. Plus 132, 160 \
+(2017) (MCDF f values; 'table 4 in [25] has misprints, an extra zero in all data', p. \
+6); C. M. Lee and K. T. Lu, Phys. Rev. A 8, 1241 (1973). Cells of Table 5 checked \
+against the table image (2026-10-12)."""
+
+[[datasets]]
+id = "f_ground"
+material = "Ar"
+file = "Ar/savukov_2018__f_ground.csv"
+table = "tbl_09c26df39d6e"
+quantity = "oscillator_strength"
+abscissa = "label"
+use = "check"
+excluded_rows = { "119847.77" = "configuration printed (2P3/2)6s against NIST's 4d[3/2]1 at this energy, swapped with the next row; the level of the CI f is ambiguous (record notes)", "119760.1725" = "configuration printed (2P3/2)4d against NIST's 6s[3/2]1 at this energy, swapped with the previous row; the level of the CI f is ambiguous (record notes)" }
+notes = """Table 5 (p. 4), column f_CI-MBPT: absorption oscillator strengths from the \
+ground state 3s2 3p6 1S0 to the twelve J = 1 odd levels 4s[3/2]1 to 6s'[1/2]1 \
+(93750-121161 cm-1), printed to three decimals (0.001 and 0.002 for the two weak \
+3d[1/2]1 and 4d[1/2]1 lines). Rows are the printed NIST energies (cm-1); x is the \
+upper level. No uncertainty per row; the author's estimate is 10 % (strong) to a \
+factor of two (suppressed, strongly mixed), p. 6; for the 4s'[1/2]1 resonance line \
+the text infers 13 % from NIST (p. 5). Against chan_1992's measured f (the column \
+f_expt): 4s[3/2]1 0.072 against 0.0662 +- 0.0033, 4s'[1/2]1 0.320 against 0.265 +- \
+0.013; 5s[3/2]1 0.047 against 0.0264."""
+
+[[datasets]]
+id = "lifetime_4d12_1"
+material = "Ar"
+table = "text"
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "check"
+points = [["4d[1/2]1", "4d[1/2]1", "80.9", ""]]
+notes = """Text p. 6: 'We also made comparison for a lifetime of a level 4d[1/2]_1 \
+measured recently by Das and Karmakar [33]. Our value 80.9 ns is in good agreement \
+with the experimental value 81.3 +- 4.9 ns.' The level is NIST's \
+3s2.3p5.(2P*<3/2>).4d 2[1/2]* J = 1 (118651.395 cm-1). Das and Karmakar's value is \
+another paper's (not taken). No uncertainty stated."""
+
+[datasets.parameters]
+method = "calculated: ab initio CI+MBPT electric-dipole rates (eight valence electrons)"

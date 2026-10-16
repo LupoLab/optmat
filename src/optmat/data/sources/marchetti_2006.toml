@@ -1,0 +1,290 @@
+citation = "S. Marchetti and R. Simili, Infrared Phys. Technol. 47, 263 (2006)"
+doi = "10.1016/j.infrared.2004.12.005"
+library = "Marchetti_2006_AccurateMeasurementRefractive"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Differential Fabry-Perot interferometry at 10.57 um: a pulsed, single-mode, \
+tunable RF-excited CO2 laser (linewidth < 13 MHz) probes two equal 222.4 cm resonators, \
+one containing a 208.9 cm gas cell with ZnSe Brewster windows; the fringe shift is \
+counted while the pressure changes and then measured differentially between two \
+extreme pressures at the same temperature. Table temperature to 0.1 degrees C; air \
+drift of the reference resonator corrected (0.35 FD per degree C) (pp. 263-265)."""
+notes = """Values are pressure coefficients alpha_P with n = 1 + alpha_P P, 'measured at \
+23 degrees C' (Table 1, captioned '@ 296 °C', i.e. 296 K), in 1e-4 per atm; the \
+uncertainty in the last digits is printed under each value. The abstract claims 'alpha_P \
+has been measured with 5e-3 accuracy' (true for CO2, N2, O2; helium's 0.326(12) is \
+3.7 %). The level of the uncertainties is not stated. Here each alpha_P is the \
+refractivity at 1 atm and 296 K, with the ideal-gas density (the paper converts with \
+the perfect-gas relation, Eq. 3, and uses no virial correction).
+
+Table 2's alpha_rho = (n - 1)/rho in cm^3/mol (not the Lorentz-Lorenz molar \
+refractivity, which is about 2/3 of it) is Table 1 times R T for this work, and \
+compares Simmons (1978; 10.59 and 0.633 um), Achtermann et al. (1991; 0.633 um) and \
+theory: Edlen (1966) and Old, Gentili and Peck (1971) for CO2, 'as reported in' \
+Ciddor (2002), and Ciddor (1996) for air. The datasets store it as a refractivity per \
+density with scale 1/N_A = 1.6605390671738466e-24 (cm^3 per molecule), at the state \
+1 atm, 296 K (ideal gas): the conversion is linear, so the state matters only \
+through Lorentz-Lorenz. The authors think Simmons's values 'instrumentally \
+overestimated' (p. 266). Air is not a curated species and is skipped; the paper's \
+'synthetic air' 0.19 O2 + 0.81 N2 agrees with its air value.
+
+Wavelengths: 10.57 um (the laser line; the medium is immaterial at this precision), \
+10.59 and 0.633 um as printed."""
+
+[[datasets]]
+id = "alpha_p_CO2"
+material = "CO2"
+file = "CO2/marchetti_2006__alpha_p_CO2.csv"
+table = "tbl_fcf07d146f15"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "primary"
+notes = "Table 1, alpha_P of CO2 at 10.57 um, 23 degrees C, as the refractivity at 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_p_N2"
+material = "N2"
+file = "N2/marchetti_2006__alpha_p_N2.csv"
+table = "tbl_fcf07d146f15"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "primary"
+notes = "Table 1, alpha_P of N2 at 10.57 um, 23 degrees C, as the refractivity at 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_p_O2"
+material = "O2"
+file = "O2/marchetti_2006__alpha_p_O2.csv"
+table = "tbl_fcf07d146f15"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "primary"
+notes = "Table 1, alpha_P of O2 at 10.57 um, 23 degrees C, as the refractivity at 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_p_He"
+material = "He"
+file = "He/marchetti_2006__alpha_p_He.csv"
+table = "tbl_fcf07d146f15"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "primary"
+notes = "Table 1, alpha_P of He at 10.57 um, 23 degrees C, as the refractivity at 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_rho_CO2"
+material = "CO2"
+file = "CO2/marchetti_2006__alpha_rho_CO2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "check"
+notes = "Table 2, this work: Table 1 converted with R T (Eq. 3), not independent."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_rho_N2"
+material = "N2"
+file = "N2/marchetti_2006__alpha_rho_N2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "check"
+notes = "Table 2, this work: Table 1 converted with R T (Eq. 3), not independent."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_rho_O2"
+material = "O2"
+file = "O2/marchetti_2006__alpha_rho_O2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "check"
+notes = "Table 2, this work: Table 1 converted with R T (Eq. 3), not independent."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "alpha_rho_He"
+material = "He"
+file = "He/marchetti_2006__alpha_rho_He.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "check"
+notes = "Table 2, this work: Table 1 converted with R T (Eq. 3), not independent."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "simmons_1978_CO2"
+material = "CO2"
+file = "CO2/marchetti_2006__simmons_1978_CO2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["A. C. Simmons, Opt. Commun. 25, 211 (1978)"]
+notes = "Table 2, note b: Simmons at 10.59 and 0.633 um. The 0.633 um N2 cell is printed 7.219 with (73) wrapped to the next line."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "simmons_1978_N2"
+material = "N2"
+file = "N2/marchetti_2006__simmons_1978_N2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["A. C. Simmons, Opt. Commun. 25, 211 (1978)"]
+notes = "Table 2, note b: Simmons at 10.59 and 0.633 um. The 0.633 um N2 cell is printed 7.219 with (73) wrapped to the next line."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "achtermann_1991_CO2"
+material = "CO2"
+file = "CO2/marchetti_2006__achtermann_1991_CO2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, G. Magnus and T. K. Bose, J. Chem. Phys. 94, 5669 (1991)"]
+notes = "Table 2, note c: Achtermann et al. at 0.633 um, as alpha_rho (no uncertainty printed)."
+
+[[datasets]]
+id = "achtermann_1991_N2"
+material = "N2"
+file = "N2/marchetti_2006__achtermann_1991_N2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, G. Magnus and T. K. Bose, J. Chem. Phys. 94, 5669 (1991)"]
+notes = "Table 2, note c: Achtermann et al. at 0.633 um, as alpha_rho (no uncertainty printed)."
+
+[[datasets]]
+id = "achtermann_1991_He"
+material = "He"
+file = "He/marchetti_2006__achtermann_1991_He.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["H. J. Achtermann, G. Magnus and T. K. Bose, J. Chem. Phys. 94, 5669 (1991)"]
+notes = "Table 2, note c: Achtermann et al. at 0.633 um, as alpha_rho (no uncertainty printed)."
+
+[[datasets]]
+id = "edlen_theory_CO2"
+material = "CO2"
+file = "CO2/marchetti_2006__edlen_theory_CO2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["B. Edlen, Metrologia 2, 71 (1966), as reported in P. E. Ciddor, Appl. Optics 41, 2292 (2002)"]
+notes = "Table 2, note e: Edlen's CO2 value 'as reported in' Ciddor (2002), from ultraviolet resonances only."
+
+[[datasets]]
+id = "old_theory_CO2"
+material = "CO2"
+file = "CO2/marchetti_2006__old_theory_CO2.csv"
+table = "tbl_a64b03e950d7"
+quantity = "refractivity_per_density"
+unit = "cm3"
+scale = 1.6605390671738466e-24
+abscissa_unit = "um"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_k = 296 }
+density = "ideal"
+use = "reproduced"
+reproduced_from = ["J. G. Old, K. L. Gentili and E. R. Peck, J. Opt. Soc. Am. 61, 89 (1971), as reported in P. E. Ciddor, Appl. Optics 41, 2292 (2002)"]
+notes = "Table 2, note f: Old et al.'s CO2 value, including the infrared resonance, 'as reported in' Ciddor (2002)."

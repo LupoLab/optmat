@@ -1,0 +1,95 @@
+citation = "E. Mareev, V. Aleshkevich, F. Potemkin, V. Bagratashvili, N. Minaev and V. Gordienko, Opt. Express 26, 13229 (2018)"
+doi = "10.1364/oe.26.013229"
+library = "Mareev_2018_AnomalousBehaviorNonlinear"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Spectral broadening by self-phase modulation of 1240 nm Cr:forsterite pulses \
+(200 fs in the set-up description, '150-fs laser pulse' in the Fig. 5 caption; up to 2 \
+mJ, 10 Hz, energy kept below filamentation) through an 11.6 cm stainless-steel \
+supercritical-fluid cell with two 5 mm sapphire windows, at pressures up to 200 bar \
+along isotherms (CO2 33.5 and 50 C; Xe 24 and 34 C); RMS spectral widths averaged over \
+20 pulses; n2 from the RMS broadening formula (Eq. 14) and the nonlinear phase (Eq. 9); \
+the accuracy was 'verified' on a 5 mm fused-silica window with n2 = 2.8 +- 0.3 x 10^-20 \
+m^2/W (their ref. 32)."""
+notes = """Defining equations. Theory (p. 4-5): n = 1 + N beta/3 + (4 pi N beta^2 / (45 k T)) \
+E^2 = n0 + n2 E^2 (Eq. 1), n2 = 4 pi N beta^2/(45 k_B T) ~ N beta^2 (Eq. 2): a Langevin \
+orientational model with the mean polarizability beta, used to motivate the \
+cluster-driven rise of n2 near the Widom line; it is not a model of the electronic \
+n2 (an isotropic atom has no orientational Kerr effect). Measurement (p. 6-7): phi_max \
+= -L (w0/c) (n2/n0) I0 (Eq. 9; plus a fluctuating part) and Delta w_out/Delta w_in = (1 + \
+(4/(3 sqrt 3)) phi_max^2)^2 (Eq. 14, as printed, for a transform-limited Gaussian \
+pulse, from their ref. 31). The values are in m^2/W, so n2 multiplies the intensity \
+(coefficient = self, SPM of one beam). No beam size or intensity is reported.
+
+Values (Fig. 5 caption, p. 9, checked in the PDF text layer): 'First bar corresponds to \
+the n2 = 3.4 +- 0.6*10^-22 m2/W in CO2 and n2 = 6.2 +- 1.6*10^-22 m2/W in Xe at \
+atmospheric pressure' (the library's markdown reads 'm/W' for CO2; the PDF has m2/W); \
+'First bar' is the 1 bar point of the pressure scans. The temperature is that of the \
+isotherm, not stated for the 1 bar points: the lower isotherm is assumed (CO2 306.65 K, \
+Xe 297.15 K). Maxima near the ridge (Widom line), supercritical states, not gas-phase \
+values (abstract): 4.8 x 10^-20 m^2/W (CO2), 3.5 x 10^-20 m^2/W (Xe). Density slopes \
+(p. 9): n2 ~ (0.9 +- 0.2) rho (CO2, 1-60 bar), (0.8 +- 0.2) rho (90-150 bar), (0.7 +- 0.2) \
+rho (Xe, 0-45 bar), (0.4 +- 0.1) rho (70-90 bar), in 'm5/(W*kg)' with rho in kg/m^3: a \
+factor of about 1e-22 is evidently missing (the 1 bar values over the densities, about \
+1.7 and 5.3 kg/m^3 with molar masses 44.01 and 131.29 g/mol and optmat's densities, \
+give 2.0e-22 and 1.2e-22 m^5/(W kg)). Not extracted.
+
+Both 1 bar values are excluded: they are about ten times the established values. Xe: \
+6.2e-22 m^2/W against 5.8e-23 m^2/W at 800 nm (Wahlstrand et al. 2012b, quoted by \
+pigeon_2018; the dispersion to 1240 nm lowers it by a few per cent), a factor 11; CO2: \
+3.4e-22 against Geints et al.'s 1.0e-23 (50 fs) and 5.4e-23 m^2/W (500 fs) at 800 nm \
+(geints_2025), a factor 6 to 34 (rotation explains at most the long-pulse part). Why \
+(an assessment; the paper gives no error budget beyond the silica check): (1) the two \
+5 mm sapphire windows. With the paper's own fused-silica value as a stand-in for \
+sapphire, the windows' n2 L (2.8e-22 m) is about 40 times that of 11.6 cm of Xe at 1 bar \
+(6.6e-24 m for n2 = 5.7e-23 m^2/W); the paper does not say how the window SPM was \
+separated from the gas SPM, and an incomplete subtraction at 1 bar, where the gas adds \
+about 2 % to the phase, inflates the gas value by a large factor. (2) The intensity I0 \
+of Eq. (9) is not reported; an error in it scales n2 directly. (3) Eq. (14) as printed \
+(an outer square) gives broadening 1 + (8/(3 sqrt 3)) phi^2 for small phi; any \
+misprint in that exponent changes n2 by a factor of about 2, not 10. An earlier reading's \
+'about 10 times too high' is confirmed for Xe; the cause cannot be settled from the \
+paper.
+
+Wavelength 1240 nm (medium not stated). Parts: Xe electronic; CO2 at 200 fs includes \
+part of the rotational response (instantaneous)."""
+
+[[datasets]]
+id = "spm_1bar_CO2"
+material = "CO2"
+points = [["1bar", "1240", "3.4", "0.6"]]
+table = "text"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-22
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 306.65 }
+use = "excluded"
+notes = "Fig. 5 caption (p. 9): n2 = 3.4 +- 0.6 x 10^-22 m^2/W 'at atmospheric pressure' (1 bar point of the 33.5 C isotherm assumed). Excluded: 6 to 34 times Geints et al.'s 800 nm values; see the record's notes for the likely causes."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "instantaneous"
+coefficient = "self"
+pulse_fs = 200
+
+[[datasets]]
+id = "spm_1bar_Xe"
+material = "Xe"
+points = [["1bar", "1240", "6.2", "1.6"]]
+table = "text"
+quantity = "nonlinear_index"
+unit = "m2/W"
+scale = 1e-22
+abscissa_unit = "nm"
+state = { pressure_pa = 100000.0, temperature_k = 297.15 }
+use = "excluded"
+notes = "Fig. 5 caption (p. 9): n2 = 6.2 +- 1.6 x 10^-22 m^2/W 'at atmospheric pressure' (1 bar point of the 24 C isotherm assumed). Excluded: about 11 times the established Xe value; see the record's notes."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 200

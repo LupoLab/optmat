@@ -1,0 +1,674 @@
+citation = "S. Werbowy, \"The static Stark effect in the near-infrared lines of argon between 3s2 3p5 (4s, 4p) configurations and the atomic polarizabilities of the excited states\", J. Quant. Spectrosc. Radiat. Transfer 362, 110041 (2026)"
+doi = "10.1016/j.jqsrt.2026.110041"
+library = "Werbowy_2026_StaticStarkEffect"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Static (dc) Stark effect on 21 Ar I 4s-4p emission lines (696-966 nm, air \
+wavelengths) in fields up to 500 kV/cm between convex electrodes 260-400 um apart \
+(separation from the Stark splitting of H-alpha, 2.2 %), argon at about 10 Pa excited \
+by 20 keV helium canal rays; a 2 m plane-grating spectrograph (Zeiss PGS-2, 1800 \
+mm^-1, double pass; 0.12-0.08 nm/mm) with a cooled CCD (Sec. 2). The line shift is \
+Delta W = -(1/2)[Delta alpha_0 + tensor terms] F^2 (Eq. 1); only the scalar \
+difference Delta alpha_0 = alpha_0(upper) - alpha_0(lower) is measured. Level \
+polarisabilities alpha_0 and alpha_2 are calculated by sums over oscillator strengths \
+(Eqs. 2-3) with NIST, CI-MBPT (Suvakov 2018) or measured line strengths, and alpha_0 \
+of each level is fitted so that the differences reproduce the measured Delta alpha_0 \
+(Sec. 4.2)."""
+notes = """J. Quant. Spectrosc. Radiat. Transfer 362, 110041 (2026), 6 pages (PDF pages \
+1-6; the article number, no journal page numbers; 'p.' below is the PDF page). \
+Identity checked against the first page (journal, volume, article number, author, \
+title, received 4 May 2026, available online 19 June 2026). Units: every \
+polarisability in the paper is in kHz/(kV/cm)^2, alpha/h with the shift -(1/2) alpha \
+F^2 (Eq. 1); 'The conversion of the polarizabilities into atomic units [a.u.] is \
+achieved by dividing by a 0.2488319 factor' (Table 3 note, p. 5; Mitroy, Safronova \
+and Clark 2010). The paper prints no transition probability or f value (Table 2 \
+gives only percentage contributions), so there is nothing to compare with NIST's \
+near-infrared lines (TC-983).
+
+LEVEL LABELS. The paper labels the levels by energy, the configuration 3s2.3p5 4s or \
+4p, the term 2[K] (with a superscript 0 for the odd 4s levels) and J, without the core \
+(Tables 1 and 3). NIST's (data/external/nist_asd/Ar_I_levels.tsv) by the energy, which \
+the paper takes 'After NIST ASD Team' (Table 1 note a) and which agree with NIST's to \
+the paper's three decimals for all 14 levels: 93 143.760 = (2P*<3/2>).4s 2[3/2]* J = \
+2; 93 750.598 = (2P*<3/2>).4s 2[3/2]* 1; 94 553.665 = (2P*<1/2>).4s 2[1/2]* 0; 95 \
+399.828 = (2P*<1/2>).4s 2[1/2]* 1; 104 102.099 = (2P*<3/2>).4p 2[1/2] 1; 105 462.760 \
+= (2P*<3/2>).4p 2[5/2] 3; 105 617.270 = (2P*<3/2>).4p 2[5/2] 2; 106 087.260 = \
+(2P*<3/2>).4p 2[3/2] 1; 106 237.552 = (2P*<3/2>).4p 2[3/2] 2; 107 054.272 = \
+(2P*<3/2>).4p 2[1/2] 0; 107 131.709 = (2P*<1/2>).4p 2[3/2] 1; 107 289.700 = \
+(2P*<1/2>).4p 2[3/2] 2; 107 496.417 = (2P*<1/2>).4p 2[1/2] 1; 108 722.619 = \
+(2P*<1/2>).4p 2[1/2] 0 (all with 3s2.3p5). In Paschen notation the 4p levels are 2p10 \
+(104 102) to 2p1 (108 723).
+
+WHAT IS TAKEN (tools/extract/werbowy_2026.py; level_polarizability, TC-1011). One \
+dataset per level, static (x = inf), kHz/(kV/cm)^2 as printed, the row the level's \
+energy: (1) alpha0_<level>, Table 3 (p. 5), the column 'Fitted to the experiment', \
+alpha_0 with its uncertainty in parentheses, 14 levels (4s: 75 (4), 77 (10), 56 (9), \
+96 (5); 4p: 95 (3), 175 (9), 171 (9), 191 (9), 210 (14), 247 (12), 178 (9), 200 (9), \
+216 (14), 327 (20), in the order of the labels above; 225-1314 au on the paper's \
+factor); component scalar, complex_part real; uncertainty level not stated. use = check, not \
+primary: the paper measures only differences (the dc Stark shift of a line is set by \
+alpha_0(upper) - alpha_0(lower)), and 'the alpha_0 values for each electronic level \
+were adjusted so that their corresponding differences ... gave result consistent with \
+the experiment' (p. 3); a constant added to all 14 leaves every difference unchanged, \
+and the paper does not say how that zero was fixed (the fitted values lie above the \
+NIST-data calculation for all ten 4p levels, by 7 to 150). The set's differences are \
+measured; its absolute values are not. (2) alpha2_<level>, the tensor bound 'The \
+experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2' (Table 3 note \
+a; abstract; pp. 3 and 5), from the absence of any splitting of the Delta M components \
+at up to 500 kV/cm: for the 11 levels with J >= 1 (alpha_2 vanishes for J = 0), held \
+as 0 with 10 as a bound (uncertainty level bound), component tensor with the paper's \
+Eq. 1 as the definition; use = check (a bound). Every level appears in at least one \
+measured line. The paper notes the bound is 'inconsistent with theoretical \
+calculations in several cases' (p. 3): e.g. the calculated alpha_2 of 106 237.552 is \
+55 (NIST data) and 39 (measured line strengths).
+
+NOT TAKEN: Table 3's calculated alpha_0 and alpha_2 (from NIST [18], CI-MBPT [19] and \
+measured line strengths [20,21]; three pairs of columns, '-' for alpha_2 of the four \
+J = 0 levels): the paper's sums over others' oscillator strengths, not requested in \
+this pass. NOT TAKEN (no quantity; declined, TC-1011): Table 1 (p. 4), the \
+differences Delta alpha_0 of 30 lines, kHz/(kV/cm)^2: 'Present experiment Delta \
+alpha_0 (SE)' for 21 lines (20 (5) to 230 (20); the standard errors include a 4 % \
+relative part from the field and the dispersion, p. 3); 'Fitted to the experiment' \
+(30 lines, the differences of Table 3's fitted alpha_0); the calculated columns from \
+NIST [18] and CI-MBPT [19] data; and, reproduced, the values from the ion-broadening \
+parameter A of Milosavljevic et al. [23] and Schinkoth et al. [2] (single values or \
+ranges printed as '170÷310'; '10% uncertainties', note b). These are the quadratic \
+Stark shift coefficients of the lines (Delta alpha_0 = 2 C_4, p. 3); the measured \
+ones are what the fitted alpha_0 rest on.
+
+NOT TAKEN (no quantity proposed): Table 2 (p. 4), the percentage contributions of \
+individual transitions to each level's alpha_0 (the transitions by air wavelength); \
+Figs. 2-3 (Stark patterns and shifts against the field; the fitted coefficients are \
+printed in Table 1); the line widths (FWHM 0.007-0.012 nm, instrument 0.002 nm, p. \
+2), instrumental. The level energies and air wavelengths of Table 1 are NIST's \
+(note a), reproduced; not taken.
+
+CHECKED (the script; the other columns by a scratch script, 2026-10-09). Every \
+'Fitted to the experiment' Delta alpha_0 of Table 1 (30 lines) is the difference of \
+Table 3's fitted alpha_0 of its upper and lower level, exactly; every level energy is \
+NIST's to the printed decimals; the abstract's alpha_0 ranges are Table 3's. The NIST and CI-MBPT columns of Table \
+1 are the differences of Table 3's calculated alpha_0 within 1 unit (rounding). Every \
+air wavelength of Table 1 is NIST's level difference converted to standard air \
+(Edlen's formula) within 0.001 nm. The abstract's ranges (Delta alpha_0 20-230; alpha_0 56-96 \
+for 4s and 95-327 for 4p) are the tables'. All table cells were checked against the \
+table images. Misprints outside any value taken: the text (p. 2) names the Fig. 3 line \
+'772.367 nm' for Table 1's 772.376; Table 2 lists '1047.803' for the 104 102.099 \
+level where Table 1's line is 1047.005 (the 4p[1/2]1 - 4s'[1/2]0 line, NIST's levels \
+give 1047.005); Table 2 prints several wavelengths one unit off Table 1's last digit \
+(801.479, 842.464, 965.778, 794.817, 772.420, 750.386, 978.451).
+
+FOR OEP 8. These are static (dc) polarisabilities of Ar 4s and 4p levels, dominated by \
+the 4p-3d and 4p-5s transitions at 1.2-2.4 um (Table 2). They are not the light \
+shifts Re alpha_f at the two-photon wavelengths of the 4p levels (184-192 nm), where \
+the photon energy (6.5-6.7 eV) exceeds the 4p binding energy (2.3-2.9 eV): the static values cannot \
+stand in for the dynamic ones.
+
+FURTHER TWO-PHOTON DATA CITED: none. Stark data cited and not in the library: \
+Windholz, Phys. Scr. 21, 67 (1980) (Ar Stark effect up to 700 kV/cm); Brevet, \
+Pellarin and Vialle, Phys. Rev. A 42, 1460 (1990) (Ar Rydberg states); Schinkoth, Kock \
+and Schulz-Gulde, J. Quant. Spectrosc. Radiat. Transfer 64, 635 (2000) and \
+Milosavljevic, Ellingboe and Djenize, Spectrochim. Acta B 61, 81 (2006) (Ar and Kr \
+ion-broadening parameters); Suvakov, J. Phys. B 51, 065006 (2018) (CI+MBPT line \
+strengths); Asghar et al., Appl. Opt. 59, 4240 (2020) (measured 4p-4s transition \
+probabilities)."""
+
+[[datasets]]
+id = "alpha0_93143"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_93143.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4s level at 93143.760 cm^-1, the paper's term ^2[3/2]^0 J = 2: alpha_0 'Fitted to the experiment', '75 (4)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4s"
+term = "2[3/2]*"
+j = "2"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_93143"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_93143.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4s level at 93143.760 cm^-1 (^2[3/2]^0 J = 2): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4s"
+term = "2[3/2]*"
+j = "2"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_93750"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_93750.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4s level at 93750.598 cm^-1, the paper's term ^2[3/2]^0 J = 1: alpha_0 'Fitted to the experiment', '77 (10)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4s"
+term = "2[3/2]*"
+j = "1"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_93750"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_93750.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4s level at 93750.598 cm^-1 (^2[3/2]^0 J = 1): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4s"
+term = "2[3/2]*"
+j = "1"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_94553"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_94553.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4s level at 94553.665 cm^-1, the paper's term ^2[1/2]^0 J = 0: alpha_0 'Fitted to the experiment', '56 (9)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4s"
+term = "2[1/2]*"
+j = "0"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha0_95399"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_95399.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4s level at 95399.828 cm^-1, the paper's term ^2[1/2]^0 J = 1: alpha_0 'Fitted to the experiment', '96 (5)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4s"
+term = "2[1/2]*"
+j = "1"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_95399"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_95399.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4s level at 95399.828 cm^-1 (^2[1/2]^0 J = 1): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4s"
+term = "2[1/2]*"
+j = "1"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_104102"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_104102.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 104102.099 cm^-1, the paper's term ^2[1/2] J = 1: alpha_0 'Fitted to the experiment', '95 (3)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[1/2]"
+j = "1"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_104102"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_104102.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 104102.099 cm^-1 (^2[1/2] J = 1): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[1/2]"
+j = "1"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_105462"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_105462.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 105462.760 cm^-1, the paper's term ^2[5/2] J = 3: alpha_0 'Fitted to the experiment', '175 (9)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[5/2]"
+j = "3"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_105462"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_105462.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 105462.760 cm^-1 (^2[5/2] J = 3): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[5/2]"
+j = "3"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_105617"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_105617.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 105617.270 cm^-1, the paper's term ^2[5/2] J = 2: alpha_0 'Fitted to the experiment', '171 (9)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[5/2]"
+j = "2"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_105617"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_105617.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 105617.270 cm^-1 (^2[5/2] J = 2): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[5/2]"
+j = "2"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_106087"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_106087.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 106087.260 cm^-1, the paper's term ^2[3/2] J = 1: alpha_0 'Fitted to the experiment', '191 (9)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[3/2]"
+j = "1"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_106087"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_106087.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 106087.260 cm^-1 (^2[3/2] J = 1): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[3/2]"
+j = "1"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_106237"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_106237.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 106237.552 cm^-1, the paper's term ^2[3/2] J = 2: alpha_0 'Fitted to the experiment', '210 (14)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[3/2]"
+j = "2"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_106237"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_106237.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 106237.552 cm^-1 (^2[3/2] J = 2): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[3/2]"
+j = "2"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_107054"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_107054.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 107054.272 cm^-1, the paper's term ^2[1/2] J = 0: alpha_0 'Fitted to the experiment', '247 (12)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<3/2>).4p"
+term = "2[1/2]"
+j = "0"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha0_107131"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_107131.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 107131.709 cm^-1, the paper's term ^2[3/2] J = 1: alpha_0 'Fitted to the experiment', '178 (9)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[3/2]"
+j = "1"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_107131"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_107131.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 107131.709 cm^-1 (^2[3/2] J = 1): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[3/2]"
+j = "1"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_107289"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_107289.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 107289.700 cm^-1, the paper's term ^2[3/2] J = 2: alpha_0 'Fitted to the experiment', '200 (9)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[3/2]"
+j = "2"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_107289"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_107289.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 107289.700 cm^-1 (^2[3/2] J = 2): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[3/2]"
+j = "2"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_107496"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_107496.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 107496.417 cm^-1, the paper's term ^2[1/2] J = 1: alpha_0 'Fitted to the experiment', '216 (14)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[1/2]"
+j = "1"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"
+
+[[datasets]]
+id = "alpha2_107496"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha2_107496.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 note a (p. 5; also p. 3, p. 5 text and the abstract), the 4p level at 107496.417 cm^-1 (^2[1/2] J = 1): 'The experimental values alpha_2 were found to be less than 10 kHz/(kV/cm)2'. Held as 0 with 10 as a bound (|alpha_2| < 10), static; the value 0 is the bound's centre, not printed. Check: a bound, not a value."
+[datasets.uncertainty]
+column = true
+level = "bound"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[1/2]"
+j = "1"
+component = "tensor"
+complex_part = "real"
+method = "measured bound: no splitting of the Delta M components of any line was seen at fields up to 500 kV/cm"
+definition = "Eq. 1: Delta W = -(1/2)[alpha_0 + alpha_2 (3 M^2 - J(J + 1)) / (J(2J - 1))] F^2"
+
+[[datasets]]
+id = "alpha0_108722"
+material = "Ar"
+file = "Ar/werbowy_2026__alpha0_108722.csv"
+table = "tbl_da793b53e5e2"
+quantity = "level_polarizability"
+unit = "kHz/(kV/cm)2"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "check"
+notes = "Table 3 (p. 5), 3s2 3p5 4p level at 108722.619 cm^-1, the paper's term ^2[1/2] J = 0: alpha_0 'Fitted to the experiment', '327 (20)', static (x = inf). Check, not primary: the fitted set reproduces the measured differences, but its common zero is not measured and the paper does not say how it was fixed (record notes). Divide by 0.2488319 for au."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+configuration = "3s2.3p5.(2P*<1/2>).4p"
+term = "2[1/2]"
+j = "0"
+component = "scalar"
+complex_part = "real"
+method = "fitted: the level's alpha_0 adjusted so that the differences of Table 1's lines match the measured scalar differences Delta alpha_0 (dc Stark shifts, Table 1); only the differences are measured, the common zero of the set is not"

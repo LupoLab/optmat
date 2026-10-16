@@ -1,0 +1,221 @@
+citation = "D. P. Shelton and V. Mizrahi, Phys. Rev. A 33, 72 (1986)"
+doi = "10.1103/physreva.33.72"
+library = "Shelton_1986_RefractiveIndexDispersion"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Periodic phase matching of electric-field-induced second-harmonic generation \
+(ESHG): a cw dye or Ar+ laser (458-700 nm, about 1 W) is focused through a cell with \
+an array of 150 wire-electrode pairs (N = 75, mean spacing 2.6924 mm) giving a \
+spatially periodic static field; the gas density is varied until |Delta k| = \
+|2 k_w - k_2w| equals |Delta k|_opt = 1161.5 m^-1 (+-0.05 %), found from the peak \
+second-harmonic signal (parabola fit, 1e-4 precision in pressure). Temperature by a \
+thermistor in the gas (+-0.2 C); pressure by Baratron (+-0.15 %) or Heise gauge \
+(He, +-0.1 % of 160 bar); density from the virial equation of state (Dymond & \
+Smith). Pressures up to 130 bar (He) and 10 bar (others); virial corrections to the \
+refractivity below 0.05 % (p. 73). Dye-laser wavelengths by a 0.75 m grating \
+spectrometer."""
+notes = """Observable (Eq. 3): Delta k = 2 k_w - k_2w = (4 pi / lambda_w)(n_w - n_2w) \
+= -(2 pi / (lambda_w eps0)) (alpha_2w - alpha_w) rho, lambda_w the fundamental's \
+vacuum wavelength; periodic phase match occurs at |Delta k| = |Delta k|_opt. So the \
+measured density rho (real gas, virial EOS) at phase match gives the dispersion \
+n(2 omega) - n(omega) per unit density. The Ar+ lines are listed at their vacuum \
+wavelengths (514.7, 496.6, 488.1, 476.6 nm), which confirms Table III is in vacuum \
+wavelengths.
+
+Uncertainty: 'The estimated overall uncertainty of the measurements varies between \
++-0.2 % and +-0.4 % for He, but has a nearly uniform value of +-0.2 % for all the \
+other gases' (p. 74); the D2/H2 ratio is 'about +-0.05 %' because both gases were \
+measured with the same gauge (p. 74). He differs by 0.5 % from the earlier \
+Shelton & Buckingham (1982) measurement and by 0.3 % from Glover & Weinhold's theory \
+('consistent with a pressure scale error', p. 74).
+
+The individual phase-match densities of all six gases are shown only in Fig. 2 \
+(lambda^3/rho against nu^2) and are not tabulated; the paper's results are the fits \
+of Table I (lambda^3/rho, Eq. 6) and their transformation to (n_w - n_0) at the \
+ideal-gas density of 0 degrees C, 1 atm (Table II, Eq. 8), recorded as formulas. \
+Only Table III, the D2/H2 density ratio, is data. The 'calc' column of Table III is \
+Shelton's evaluation of Rychlewski's (1983) ab initio polarizabilities, kept as a \
+reproduction. The D2 was 99.5 at.% (chief impurity HD), which would shift the ratio \
+up 'by at most 0.02 %' (p. 75)."""
+
+[[datasets]]
+id = "ratio_D2_H2"
+material = "D2"
+file = "D2/shelton_1986__ratio_D2_H2.csv"
+table = "tbl_0a217d3795df"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+density = "real"
+use = "primary"
+notes = "rho_D2 / rho_H2 at equal ESHG wave-vector mismatch, measured together under the same conditions (Table III). Per-point errors are the printed parenthesised last-digit errors; the overall accuracy is 'about +-0.05 %' (p. 74). The zero-frequency limit of the fitted line (Fig. 3) is 1.0290."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+reference_material = "H2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "rho_gas / rho_ref at which both gases give the same wave-vector mismatch |Delta k| = (4 pi / lambda_w) |n(2w) - n(w)| (the apparatus's |Delta k|_opt); to first order in density, rho_gas / rho_ref = [alpha_ref(2w) - alpha_ref(w)] / [alpha_gas(2w) - alpha_gas(w)]; wavelength = fundamental (vacuum)"
+densities = "real gas, virial equation of state"
+
+[[datasets]]
+id = "rychlewski_ratio_D2_H2"
+material = "D2"
+file = "D2/shelton_1986__rychlewski_ratio_D2_H2.csv"
+table = "tbl_0a217d3795df"
+quantity = "phase_match_density_ratio"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "reproduced"
+reproduced_from = ["rychlewski_1983"]
+notes = "Table III 'calc': the ratio evaluated by Shelton & Mizrahi from Rychlewski's (ref. 23) ab initio polarizabilities; 'the calculation is seen to overestimate the dispersion difference between H2 and D2 at high frequencies' (p. 75)."
+[datasets.parameters]
+reference_material = "H2"
+harmonic = 2
+process = "ESHG (electric-field-induced second-harmonic generation), periodic phase matching"
+definition = "as ratio_D2_H2"
+
+[[formulas]]
+id = "phase_match_He"
+material = "He"
+equation = "Eq. (6), p. 73, with Table I (tbl_f88beb50f6dd)"
+printed = "lambda^3/rho = A' + B' lambda^-2 + C' lambda^-4; A' (10^-21 m^6/mol) = 0.05791, B' (10^-35 m^8/mol) = 0.0875, C' not given"
+variable = "lambda: fundamental vacuum wavelength in m; rho: real-gas density (mol/m^3) at optimum ESHG phase match in this apparatus, |Delta k|_opt = 1161.5 m^-1"
+range = "458-700 nm (the lasers used); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A1 = "0.05791e-21", B1 = "0.0875e-35" }
+check = "Transformed by Eq. (8) (rho_STP,i = 44.6150 mol/m^3, |Delta k|_opt = 1161.5 m^-1) it gives Table II: A, B to the last digit (checked 2026-09-24)."
+notes = "The fit to the measured phase-match densities of Fig. 2 (the points are not tabulated). With Eq. (7), (n_2w - n_w)_STP,i = rho_STP,i |Delta k|_opt lambda / (4 pi rho): the dispersion n(2 omega) - n(omega) of the ideal-gas-density gas at 0 degrees C, 1 atm. Accuracy +-0.2 % (He: +-0.2 to +-0.4 %, and 0.3 % from the Glover-Weinhold theory, possibly a pressure-scale error, p. 74)."
+
+[[formulas]]
+id = "phase_match_Ar"
+material = "Ar"
+equation = "Eq. (6), p. 73, with Table I (tbl_f88beb50f6dd)"
+printed = "lambda^3/rho = A' + B' lambda^-2 + C' lambda^-4; A' (10^-21 m^6/mol) = 1.0639, B' (10^-35 m^8/mol) = 3.386, C' (10^-48 m^10/mol) = 1.96"
+variable = "lambda: fundamental vacuum wavelength in m; rho: real-gas density (mol/m^3) at optimum ESHG phase match in this apparatus, |Delta k|_opt = 1161.5 m^-1"
+range = "458-700 nm (the lasers used); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A1 = "1.0639e-21", B1 = "3.386e-35", C1 = "1.96e-48" }
+check = "Transformed by Eq. (8) (rho_STP,i = 44.6150 mol/m^3, |Delta k|_opt = 1161.5 m^-1) it gives Table II: A to 1e-5, B 0.93086 (0.9308), C 1.2829 (1.285) (checked 2026-09-24)."
+notes = "The fit to the measured phase-match densities of Fig. 2 (the points are not tabulated). With Eq. (7), (n_2w - n_w)_STP,i = rho_STP,i |Delta k|_opt lambda / (4 pi rho): the dispersion n(2 omega) - n(omega) of the ideal-gas-density gas at 0 degrees C, 1 atm. Accuracy +-0.2 % (Table I caption)."
+
+[[formulas]]
+id = "phase_match_H2"
+material = "H2"
+equation = "Eq. (6), p. 73, with Table I (tbl_f88beb50f6dd)"
+printed = "lambda^3/rho = A' + B' lambda^-2 + C' lambda^-4; A' (10^-21 m^6/mol) = 0.7662, B' (10^-35 m^8/mol) = 2.477, C' (10^-48 m^10/mol) = 2.48"
+variable = "lambda: fundamental vacuum wavelength in m; rho: real-gas density (mol/m^3) at optimum ESHG phase match in this apparatus, |Delta k|_opt = 1161.5 m^-1"
+range = "458-700 nm (the lasers used); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A1 = "0.7662e-21", B1 = "2.477e-35", C1 = "2.48e-48" }
+check = "Transformed by Eq. (8) (rho_STP,i = 44.6150 mol/m^3, |Delta k|_opt = 1161.5 m^-1) it gives Table II: A exact, B 0.68097 (0.6808), C 1.6233 (1.626) (checked 2026-09-24)."
+notes = "The fit to the measured phase-match densities of Fig. 2 (the points are not tabulated). With Eq. (7), (n_2w - n_w)_STP,i = rho_STP,i |Delta k|_opt lambda / (4 pi rho): the dispersion n(2 omega) - n(omega) of the ideal-gas-density gas at 0 degrees C, 1 atm. Accuracy +-0.2 % (Table I caption)."
+
+[[formulas]]
+id = "phase_match_D2"
+material = "D2"
+equation = "Eq. (6), p. 73, with Table I (tbl_f88beb50f6dd)"
+printed = "lambda^3/rho = A' + B' lambda^-2 + C' lambda^-4; A' (10^-21 m^6/mol) = 0.7419, B' (10^-35 m^8/mol) = 2.513, C' (10^-48 m^10/mol) = 2.20"
+variable = "lambda: fundamental vacuum wavelength in m; rho: real-gas density (mol/m^3) at optimum ESHG phase match in this apparatus, |Delta k|_opt = 1161.5 m^-1"
+range = "458-700 nm (the lasers used); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A1 = "0.7419e-21", B1 = "2.513e-35", C1 = "2.20e-48" }
+check = "Transformed by Eq. (8) (rho_STP,i = 44.6150 mol/m^3, |Delta k|_opt = 1161.5 m^-1) it gives Table II: A 1.01980 (1.0197), B 0.69086 (0.6908), C 1.4400 (1.442) (checked 2026-09-24)."
+notes = "The fit to the measured phase-match densities of Fig. 2 (the points are not tabulated). With Eq. (7), (n_2w - n_w)_STP,i = rho_STP,i |Delta k|_opt lambda / (4 pi rho): the dispersion n(2 omega) - n(omega) of the ideal-gas-density gas at 0 degrees C, 1 atm. Accuracy +-0.2 % (Table I caption)."
+
+[[formulas]]
+id = "phase_match_N2"
+material = "N2"
+equation = "Eq. (6), p. 73, with Table I (tbl_f88beb50f6dd)"
+printed = "lambda^3/rho = A' + B' lambda^-2 + C' lambda^-4; A' (10^-21 m^6/mol) = 1.1469, B' (10^-35 m^8/mol) = 3.528, C' (10^-48 m^10/mol) = 2.02"
+variable = "lambda: fundamental vacuum wavelength in m; rho: real-gas density (mol/m^3) at optimum ESHG phase match in this apparatus, |Delta k|_opt = 1161.5 m^-1"
+range = "458-700 nm (the lasers used); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A1 = "1.1469e-21", B1 = "3.528e-35", C1 = "2.02e-48" }
+check = "Transformed by Eq. (8) (rho_STP,i = 44.6150 mol/m^3, |Delta k|_opt = 1161.5 m^-1) it gives Table II: A, B exact, C 1.3222 (1.320) (checked 2026-09-24)."
+notes = "The fit to the measured phase-match densities of Fig. 2 (the points are not tabulated). With Eq. (7), (n_2w - n_w)_STP,i = rho_STP,i |Delta k|_opt lambda / (4 pi rho): the dispersion n(2 omega) - n(omega) of the ideal-gas-density gas at 0 degrees C, 1 atm. Accuracy +-0.2 % (Table I caption)."
+
+[[formulas]]
+id = "phase_match_O2"
+material = "O2"
+equation = "Eq. (6), p. 73, with Table I (tbl_f88beb50f6dd)"
+printed = "lambda^3/rho = A' + B' lambda^-2 + C' lambda^-4; A' (10^-21 m^6/mol) = 1.3588, B' (10^-35 m^8/mol) = 5.469, C' (10^-48 m^10/mol) = 19.49"
+variable = "lambda: fundamental vacuum wavelength in m; rho: real-gas density (mol/m^3) at optimum ESHG phase match in this apparatus, |Delta k|_opt = 1161.5 m^-1"
+range = "458-700 nm (the lasers used); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A1 = "1.3588e-21", B1 = "5.469e-35", C1 = "19.49e-48" }
+check = "Transformed by Eq. (8) (rho_STP,i = 44.6150 mol/m^3, |Delta k|_opt = 1161.5 m^-1) it gives Table II: A 1.86778 (1.8677), B 1.50351 (1.5036), C 12.7574 (12.758) (checked 2026-09-24)."
+notes = "The fit to the measured phase-match densities of Fig. 2 (the points are not tabulated). With Eq. (7), (n_2w - n_w)_STP,i = rho_STP,i |Delta k|_opt lambda / (4 pi rho): the dispersion n(2 omega) - n(omega) of the ideal-gas-density gas at 0 degrees C, 1 atm. Accuracy +-0.2 % (Table I caption)."
+
+[[formulas]]
+id = "dispersion_He"
+material = "He"
+equation = "Eq. (8), p. 74, with Table II (tbl_8b8e879c14ac)"
+printed = "(n_w - n_0)_STP,i = A lambda^-2 + B lambda^-4 + C lambda^-6; A (10^-6 um^2) = 0.079 60, B (10^-8 um^4) = 0.024 06, C not given"
+variable = "lambda: vacuum wavelength in um; n_0 is the zero-frequency limit of n (not given: the formula fixes only the dispersion)"
+state = "1atm_0C"
+density = "ideal"
+range = "229-700 nm (the harmonics and fundamentals of 458-700 nm); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A = "0.07960e-6", B = "0.02406e-8" }
+check = "Recomputed from Table I by Eq. (8): A, B to the last digit (checked 2026-09-24); the differences in C follow from C' having three digits."
+notes = "Derived from the Table I fit, not separately fitted: use one or the other. 'The absolute values of n_w may be obtained from Eq. (8) if the refractive index is known at a single frequency' (p. 74). STP,i: the density of an ideal gas at 273.15 K and 1 atm (p. 74). Accuracy +-0.2 % (He +-0.2 to +-0.4 %)."
+
+[[formulas]]
+id = "dispersion_Ar"
+material = "Ar"
+equation = "Eq. (8), p. 74, with Table II (tbl_8b8e879c14ac)"
+printed = "(n_w - n_0)_STP,i = A lambda^-2 + B lambda^-4 + C lambda^-6; A (10^-6 um^2) = 1.462 4, B (10^-8 um^4) = 0.930 8, C (10^-10 um^6) = 1.285"
+variable = "lambda: vacuum wavelength in um; n_0 is the zero-frequency limit of n (not given: the formula fixes only the dispersion)"
+state = "1atm_0C"
+density = "ideal"
+range = "229-700 nm (the harmonics and fundamentals of 458-700 nm); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A = "1.4624e-6", B = "0.9308e-8", C = "1.285e-10" }
+check = "Recomputed from Table I by Eq. (8): A to 1e-5, B 0.93086 (0.9308), C 1.2829 (1.285) (checked 2026-09-24); the differences in C follow from C' having three digits."
+notes = "Derived from the Table I fit, not separately fitted: use one or the other. 'The absolute values of n_w may be obtained from Eq. (8) if the refractive index is known at a single frequency' (p. 74). STP,i: the density of an ideal gas at 273.15 K and 1 atm (p. 74). Accuracy +-0.2 %."
+
+[[formulas]]
+id = "dispersion_H2"
+material = "H2"
+equation = "Eq. (8), p. 74, with Table II (tbl_8b8e879c14ac)"
+printed = "(n_w - n_0)_STP,i = A lambda^-2 + B lambda^-4 + C lambda^-6; A (10^-6 um^2) = 1.053 2, B (10^-8 um^4) = 0.680 8, C (10^-10 um^6) = 1.626"
+variable = "lambda: vacuum wavelength in um; n_0 is the zero-frequency limit of n (not given: the formula fixes only the dispersion)"
+state = "1atm_0C"
+density = "ideal"
+range = "229-700 nm (the harmonics and fundamentals of 458-700 nm); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A = "1.0532e-6", B = "0.6808e-8", C = "1.626e-10" }
+check = "Recomputed from Table I by Eq. (8): A exact, B 0.68097 (0.6808), C 1.6233 (1.626) (checked 2026-09-24); the differences in C follow from C' having three digits."
+notes = "Derived from the Table I fit, not separately fitted: use one or the other. 'The absolute values of n_w may be obtained from Eq. (8) if the refractive index is known at a single frequency' (p. 74). STP,i: the density of an ideal gas at 273.15 K and 1 atm (p. 74). Accuracy +-0.2 %."
+
+[[formulas]]
+id = "dispersion_D2"
+material = "D2"
+equation = "Eq. (8), p. 74, with Table II (tbl_8b8e879c14ac)"
+printed = "(n_w - n_0)_STP,i = A lambda^-2 + B lambda^-4 + C lambda^-6; A (10^-6 um^2) = 1.019 7, B (10^-8 um^4) = 0.690 8, C (10^-10 um^6) = 1.442"
+variable = "lambda: vacuum wavelength in um; n_0 is the zero-frequency limit of n (not given: the formula fixes only the dispersion)"
+state = "1atm_0C"
+density = "ideal"
+range = "229-700 nm (the harmonics and fundamentals of 458-700 nm); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A = "1.0197e-6", B = "0.6908e-8", C = "1.442e-10" }
+check = "Recomputed from Table I by Eq. (8): A 1.01980 (1.0197), B 0.69086 (0.6908), C 1.4400 (1.442) (checked 2026-09-24); the differences in C follow from C' having three digits."
+notes = "Derived from the Table I fit, not separately fitted: use one or the other. 'The absolute values of n_w may be obtained from Eq. (8) if the refractive index is known at a single frequency' (p. 74). STP,i: the density of an ideal gas at 273.15 K and 1 atm (p. 74). Accuracy +-0.2 %."
+
+[[formulas]]
+id = "dispersion_N2"
+material = "N2"
+equation = "Eq. (8), p. 74, with Table II (tbl_8b8e879c14ac)"
+printed = "(n_w - n_0)_STP,i = A lambda^-2 + B lambda^-4 + C lambda^-6; A (10^-6 um^2) = 1.576 5, B (10^-8 um^4) = 0.969 9, C (10^-10 um^6) = 1.320"
+variable = "lambda: vacuum wavelength in um; n_0 is the zero-frequency limit of n (not given: the formula fixes only the dispersion)"
+state = "1atm_0C"
+density = "ideal"
+range = "229-700 nm (the harmonics and fundamentals of 458-700 nm); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A = "1.5765e-6", B = "0.9699e-8", C = "1.320e-10" }
+check = "Recomputed from Table I by Eq. (8): A, B exact, C 1.3222 (1.320) (checked 2026-09-24); the differences in C follow from C' having three digits."
+notes = "Derived from the Table I fit, not separately fitted: use one or the other. 'The absolute values of n_w may be obtained from Eq. (8) if the refractive index is known at a single frequency' (p. 74). STP,i: the density of an ideal gas at 273.15 K and 1 atm (p. 74). Accuracy +-0.2 %."
+
+[[formulas]]
+id = "dispersion_O2"
+material = "O2"
+equation = "Eq. (8), p. 74, with Table II (tbl_8b8e879c14ac)"
+printed = "(n_w - n_0)_STP,i = A lambda^-2 + B lambda^-4 + C lambda^-6; A (10^-6 um^2) = 1.867 7, B (10^-8 um^4) = 1.503 6, C (10^-10 um^6) = 12.758"
+variable = "lambda: vacuum wavelength in um; n_0 is the zero-frequency limit of n (not given: the formula fixes only the dispersion)"
+state = "1atm_0C"
+density = "ideal"
+range = "229-700 nm (the harmonics and fundamentals of 458-700 nm); 'Extrapolation outside this interval will be less accurate'"
+coefficients = { A = "1.8677e-6", B = "1.5036e-8", C = "12.758e-10" }
+check = "Recomputed from Table I by Eq. (8): A 1.86778 (1.8677), B 1.50351 (1.5036), C 12.7574 (12.758) (checked 2026-09-24); the differences in C follow from C' having three digits."
+notes = "Derived from the Table I fit, not separately fitted: use one or the other. 'The absolute values of n_w may be obtained from Eq. (8) if the refractive index is known at a single frequency' (p. 74). STP,i: the density of an ideal gas at 273.15 K and 1 atm (p. 74). Accuracy +-0.2 %."

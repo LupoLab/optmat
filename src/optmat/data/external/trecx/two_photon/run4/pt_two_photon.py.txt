@@ -1,0 +1,85 @@
+"""Run 4 sign check: lowest-order two-photon amplitudes 3p_m -> 4p_m of Tong-Lin argon (one electron), z polarisation,
+degenerate photons hbar omega = (E_4p - E_3p)/2, by the Dalgarno-Lewis method on a radial finite-difference grid.
+
+    python3 run4/pt_two_photon.py
+
+Length gauge, second order: M_m = <4p m| z (E_3p + omega - H)^-1 z |3p m> (atomic units), with
+z = r cos(theta) and <l' m|cos|l m> = sqrt(((l+1)^2 - m^2)/((2l+1)(2l+3))) for l' = l+1, so
+M_0 = R_s/3 + 4 R_d/15 and M_1 = R_d/5, R_l = int u_4p(r) r f_l(r) dr with (E_3p + omega - H_l) f_l = r u_3p.
+Radial functions u = r R(r), real, normalised, **positive near the origin** (the phase convention); the angular
+functions are spherical harmonics with the Condon-Shortley phase (only squares of the cos matrix elements enter, so
+M_0 and M_1 share that convention). Grid: uniform, dr = 0.002 bohr to r = 150 bohr, u = 0 at both ends; second-order
+differences (a check: dr = 0.004 gives the change).
+"""
+import math
+import numpy as np
+
+
+def V(r):
+    return -(1.0 + 16.039 * np.exp(-2.007 * r) - 25.543 * r * np.exp(-4.525 * r) + 0.961 * np.exp(-0.443 * r)) / r
+
+
+def ham_diag(r, l, dr):
+    return 1.0 / dr ** 2 + l * (l + 1) / (2 * r ** 2) + V(r), -0.5 / dr ** 2
+
+
+def thomas(a, b, c, d):
+    """solve tridiagonal: a sub, b diag, c super (constant arrays), d rhs"""
+    n = len(b)
+    cp = np.empty(n); dp = np.empty(n)
+    cp[0] = c[0] / b[0]; dp[0] = d[0] / b[0]
+    for i in range(1, n):
+        m = b[i] - a[i] * cp[i - 1]
+        cp[i] = c[i] / m if i < n - 1 else 0.
+        dp[i] = (d[i] - a[i] * dp[i - 1]) / m
+    x = np.empty(n); x[-1] = dp[-1]
+    for i in range(n - 2, -1, -1):
+        x[i] = dp[i] - cp[i] * x[i + 1]
+    return x
+
+
+def solve(r, l, dr, E, rhs):
+    """(E - H_l) f = rhs"""
+    hd, off = ham_diag(r, l, dr)
+    n = len(r)
+    return thomas(np.full(n, -off), E - hd, np.full(n, -off), rhs)
+
+
+def eigen(r, l, dr, E0, it=40):
+    """inverse iteration near E0: (H - E0)^-1 repeatedly; returns E, u (normalised, positive near 0)"""
+    u = r ** (l + 1) * np.exp(-r)
+    E = E0
+    for _ in range(it):
+        w = -solve(r, l, dr, E, u)          # (H - E) w = u
+        u = w / math.sqrt(np.sum(w * w) * dr)
+        hd, off = ham_diag(r, l, dr)
+        Hu = hd * u + off * (np.r_[u[1:], 0.] + np.r_[0., u[:-1]])
+        E_new = np.sum(u * Hu) * dr
+        if abs(E_new - E) < 1e-13:
+            E = E_new; break
+        E = E_new if _ > 3 else E
+    i0 = np.argmax(np.abs(u) > 1e-6 * np.abs(u).max())
+    return E, (u if u[i0] > 0 else -u)
+
+
+def run(dr, rmax=150.):
+    r = np.arange(dr, rmax, dr)
+    E3, u3 = eigen(r, 1, dr, -0.5797)
+    E4, u4 = eigen(r, 1, dr, -0.1047)
+    w = (E4 - E3) / 2
+    R = {}
+    for l in (0, 2):
+        f = solve(r, l, dr, E3 + w, r * u3)
+        R[l] = np.sum(u4 * r * f) * dr
+    M0 = R[0] / 3 + 4 * R[2] / 15
+    M1 = R[2] / 5
+    return dict(E3p=E3, E4p=E4, omega=w, R_s=R[0], R_d=R[2], M0=M0, M1=M1)
+
+
+if __name__ == "__main__":
+    HA = 27.211386245988
+    for dr in (0.004, 0.002):
+        o = run(dr)
+        print(f"dr {dr}: E3p {o['E3p']:.9f} E4p {o['E4p']:.9f} (4p - 3p {(o['E4p'] - o['E3p']) * HA:.5f} eV, hbar omega "
+              f"{o['omega'] * HA:.5f} eV); R_s {o['R_s']:+.6e} R_d {o['R_d']:+.6e} au; M_0 {o['M0']:+.6e} M_1 {o['M1']:+.6e} au; "
+              f"M_1/M_0 {o['M1'] / o['M0']:+.5f}")

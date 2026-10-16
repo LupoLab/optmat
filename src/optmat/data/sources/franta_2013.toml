@@ -1,0 +1,178 @@
+citation = "D. Franta, D. Nečas and L. Zajíčková, \"Application of Thomas–Reiche–Kuhn sum rule to construction of advanced dispersion models\", Thin Solid Films 534, 432 (2013)"
+doi = "10.1016/j.tsf.2013.01.081"
+library = "Franta_2013_ApplicationThomasReiche"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Theory: the Thomas-Reiche-Kuhn sum rule generalised to electrons and nuclei, \
+the transition strength function F(E) as the condensed-matter oscillator strength, and \
+the parametrised contributions (indirect and direct interband transitions with \
+excitons, intraband, high-energy, core and phonon terms) from which Franta's \
+'advanced dispersion models' (ADM) and later the 'universal dispersion model' (UDM) \
+are built. No measurement; Table 1 derives densities from handbook mass densities."""
+notes = """Journal pages 432-441 = PDF pages 1-10. Identity checked against the first page. \
+This is the foundation paper of the UDM family (franta_2014, franta_2014b, franta_2015, \
+franta_2015b, franta_2016, franta_2017, franta_2025); the model is implemented from \
+these notes and the papers.
+
+EQUATION MAP (equation, journal page; E photon energy in eV; all functions of E are \
+extended to E < 0 by the symmetries Eqs. (29)-(31): eps_r and F even, eps_i and J odd).
+- Sum rule and its constants. Eq. (25), p. 435: int_0^inf F(E) dE = N_e U (script N: \
+densities per m^3), U from Eq. (22): U = 1 + (m_e/u) sum_n (Z_n^2 f_n/M_n)/sum_n Z_n f_n, \
+M_n = A_n - Z_n m_e/u (Eq. (23)), m_e/u = 5.4858e-4, 'U ~ 1 + 0.5 m_e/u ~ 1.000274' (p. \
+435). Eq. (27): int_0^inf eps_i(E) E dE ~ ((e h)^2/(8 pi eps0 m_e)) N_e U. Rescaled form \
+used by every later paper: Eq. (42) eps_i(E) = F(E)/E (F in eV^2 after dividing by M), \
+Eq. (43) M = 8 pi eps0 m_e/(e h)^2 = 4.61706e26 eV^-2 m^-3, Eq. (44) int_0^inf F dE = N \
+(eV^2), Eq. (45) N = N_e + sum_n N_n = N_e U, Eq. (46) script-N_e = M N_e, Eq. (47) N = \
+N_a U sum_n Z_n f_n (N_a the 'density parameter', eV^2), Eq. (48) atomic density = M \
+N_a, Eq. (49) electron density = M N_a sum_n Z_n f_n, Eq. (50) rho = N_a R sum_n A_n f_n, \
+Eq. (51) R = u M = 0.766681 eV^-2 kg m^-3 (p. 436).
+- Assembly (normalisation). Eq. (52), p. 437: eps_i,t = F_t/E, eps_r,t(E) = (2/pi) int_0^inf \
+F_t(X)/(X^2 - E^2) dX (KK); Eq. (53): eps = 1 + sum_t eps_t; Eqs. (54)-(55): F_t = N_t F_t^0 \
+with int_0^inf F_t^0 dE = 1 and sum_t N_t = N. Every later UDM term is 'N_t times a \
+unit-strength normalised dielectric function'.
+- Interband, indirect/amorphous (IBT, the UDM 'vc' term): Eq. (56), p. 437: F^0 = \
+(|E| - E_g)^2 (E_h - |E|)^2/(C_N |E|) Pi_{E_g,E_h}(|E|), Pi the unit box (Eq. (57)), C_N Eq. \
+(58) (identical to franta_2015 Eq. (7) and franta_2015b Eq. (5)). Eq. (59): the \
+Lorentz-modified form (|E| - E_g)^2 (E_h - |E|)^2/(C_N |E|^kappa [(|E| - E_c)^2 + B_c^2]^nu), \
+kappa = 0, 1, 2, nu = 0, 1 (kappa = nu = 1 for a-Si and DLC). Eqs. (60)-(61): crystalline \
+indirect gap with phonon creation/annihilation, F_idt^0 = [(n_p + 1) F^0(E + E_p) + n_p \
+F^0(E - E_p)]/(2 n_p + 1), n_p Bose-Einstein. Eq. (62): the JDOS from DOS convolution.
+- Direct interband with critical-point singularities (crystals): Eqs. (63)-(69), p. 438 \
+(regions I-III between M0..M3; square-root and linear pieces). Excitons (Wannier, \
+including discrete bound states): Eqs. (70)-(77), pp. 438-439, R_0..R_3 effective \
+Rydbergs; Eq. (74) the R -> 0 limit. Frenkel excitons in ionic/amorphous solids 'can be \
+modeled using Gaussian peaks' (p. 439): this is the origin of the Gaussian 'loc' and \
+exciton peaks used later.
+- Intraband (free carriers): Eqs. (78)-(79), p. 439.
+- High-energy transitions (HET, the UDM 'vx' term): Eq. (80), p. 439: F^0 = (|E| - \
+E_xi)^2/(C_N E^2) F_class(E) Pi_{E_xi,inf}; F_class DHO (Eq. (81), gives Tauc-Lorentz), \
+Lorentz (Eq. (82)), Drude (Eq. (83)) or 1/E^2; the chosen two-parameter form Eq. (84): \
+F_het^0 = (|E| - E_xi)^2/(C_N E^4) Pi_{E_xi,inf}(|E|) (C_N = 1/(3 E_xi), computed \
+2026-09-26, consistent with franta_2015 Eq. (17)).
+- Core electrons: Eq. (85), p. 439: F_cl^0 = 1/(C_N E^2) Pi_{E_cl,inf}.
+- Phonons: Eqs. (86)-(89), p. 440: N_ph < (U - 1) N_e; one-phonon delta lines (Eqs. \
+(87)-(88)); for amorphous solids Gaussian peaks, Eq. (89): F_1ph(E) = sum_m N_m \
+[beta_m(E_m - E) + beta_m(E_m + E)], beta_m a normalised Gaussian of width B_m. Two-phonon \
+bands Eqs. (90)-(92) (Bose-Einstein factors n_p1 + n_p2 + 1 and n_p2 - n_p1).
+- Urbach tail: not in this paper ('will be presented in works dealing with specific \
+materials', p. 436); first given in Franta et al., Thin Solid Films 539, 233 (2013) \
+(not in the library) and in franta_2015 Eq. (18) / franta_2015b Eqs. (32)-(40).
+- Broadening: Eq. (19), p. 434: convolution with a normalised broadening function; see \
+franta_2014 for which quantity to broaden.
+
+VALUES. Phonon strengths quoted (p. 440): N_ph ~ 8.6e-9 N_e for c-Si and ~1.7e-5 N_e for \
+fused silica; N_ph = 3.14e-5 N_Si for c-Si at room temperature (p. 437); N_K ~ 1.61 N_a \
+for metallic Al (Shiles et al., p. 437). Not extracted (no quantity).
+
+TABLE 1 (p. 436, checked against the image 2026-09-26): U, N_a (eV^2), atomic density \
+and electron density (1/m^3), mass density (kg/m^3; 'The mass densities of the \
+crystalline materials and fused silica (a-SiO2) were taken from the given references \
+[32: Martienssen and Warlimont, Springer Handbook of Condensed Matter and Materials \
+Data, 2005; 33: Greenwood and Earnshaw, Chemistry of the Elements, 1984] and the \
+remaining parameters were calculated from the mass density and material composition. \
+In the case of amorphous hydrogenated silicon and diamond-like carbon (DLC), N_a was \
+determined from optical data and the remaining parameters, including mass density, \
+were calculated from N_a and material composition. The hydrogen atomic fractions in \
+a-Si:H and DLC were 0.11 and 0.34'). Rows: c-Si U 1.0002735, N_a 108.2, 4.994e28, \
+6.991e29, 2329; diamond 1.0002741, 381.7, 1.762e29, 1.057e30, 3515; graphite 1.0002741, \
+246.1, 1.136e29, 6.818e29, 2266; a-SiO2 1.0002740, 143.3, 6.616e28, 6.616e29, 2200; a-Si:H \
+1.0002759, 122.9, 5.674e28, 7.133e29, 2366; a-C:H (DLC) 1.0002955, 321.4, 1.484e29, \
+6.381e29, 2038. Only the atomic density is a quantity in the vocabulary (datasets \
+below); the electron densities count all electrons, not valence electrons, and are \
+not extracted.
+CHECK (2026-09-26, standard atomic weights and CODATA constants): M = 8 pi eps0 m_e/(e \
+h)^2 = 4.617060e26 eV^-2 m^-3 and R = u M = 0.766681, as printed; the atomic densities, \
+N_a and electron densities of c-Si, diamond, graphite and a-SiO2 follow from the mass \
+densities to the printed digits (graphite's electron density 6.817e29 against 6.818e29 \
+and a-SiO2's 6.615e28/6.615e29 against 6.616e28/6.616e29, rounding of the atomic \
+weights)."""
+
+[[datasets]]
+id = "atom_density_Si"
+material = "Si"
+file = "Si/franta_2013__atom_density_Si.csv"
+table = "tbl_7c9db7f2834e"
+quantity = "atom_density"
+unit = "m-3"
+abscissa = "none"
+use = "check"
+notes = "Table 1, c-Si: computed from the handbook mass density 2329 kg/m3 [32] and the composition (not measured here)."
+[datasets.parameters]
+counts = "atoms"
+
+[[datasets]]
+id = "atom_density_C_diamond"
+material = "C_diamond"
+file = "C_diamond/franta_2013__atom_density_C_diamond.csv"
+table = "tbl_7c9db7f2834e"
+quantity = "atom_density"
+unit = "m-3"
+abscissa = "none"
+use = "check"
+notes = "Table 1, c-C (diamond): computed from the handbook mass density 3515 kg/m3 [32]."
+[datasets.parameters]
+counts = "atoms"
+
+[[datasets]]
+id = "atom_density_C_graphite"
+material = "C_graphite"
+file = "C_graphite/franta_2013__atom_density_C_graphite.csv"
+table = "tbl_7c9db7f2834e"
+quantity = "atom_density"
+unit = "m-3"
+abscissa = "none"
+use = "check"
+notes = "Table 1, c-C (graphite): computed from the mass density 2266 kg/m3 [33]."
+[datasets.parameters]
+counts = "atoms"
+
+[[datasets]]
+id = "atom_density_SiO2"
+material = "SiO2"
+file = "SiO2/franta_2013__atom_density_SiO2.csv"
+table = "tbl_7c9db7f2834e"
+quantity = "atom_density"
+unit = "m-3"
+abscissa = "none"
+use = "check"
+notes = "Table 1, a-SiO2 (fused silica): computed from the handbook mass density 2200 kg/m3 [32]; atoms, i.e. 3 per SiO2 unit."
+[datasets.parameters]
+counts = "atoms"
+
+[[datasets]]
+id = "atom_density_a-Si_H"
+material = "a-Si_H"
+file = "a-Si_H/franta_2013__atom_density_a-Si_H.csv"
+table = "tbl_7c9db7f2834e"
+quantity = "atom_density"
+unit = "m-3"
+abscissa = "none"
+use = "primary"
+notes = "Table 1, a-Si:H: from N_a 'determined from optical data' (which film and which work are not stated; hydrogen atomic fraction 0.11)."
+[datasets.parameters]
+counts = "atoms"
+form = "film"
+
+[[datasets]]
+id = "atom_density_a-C_H"
+material = "a-C_H"
+file = "a-C_H/franta_2013__atom_density_a-C_H.csv"
+table = "tbl_7c9db7f2834e"
+quantity = "atom_density"
+unit = "m-3"
+abscissa = "none"
+use = "primary"
+notes = "Table 1, a-C:H (DLC): from N_a 'determined from optical data' (film not stated; hydrogen atomic fraction 0.34)."
+[datasets.parameters]
+counts = "atoms"
+form = "film"
+
+[[formulas]]
+id = "sum_rule_constants"
+material = "SiO2"
+equation = "Eqs. (43), (47)-(51), p. 436"
+printed = "M = 8 \\pi \\epsilon_0 m_e/(e h)^2 = 4.61706 \\times 10^{26} eV^{-2} m^{-3}; N = N_a U \\sum_n Z_n f_n; \\rho = N_a R \\sum_n A_n f_n, R = u M = 0.766681 eV^{-2} kg m^{-3}"
+variable = "N_a: density parameter (eV^2); f_n, Z_n, A_n: atomic fractions, proton numbers, atomic weights"
+coefficients = { M = "4.61706e26", R = "0.766681", me_over_u = "5.4858e-4" }
+check = "M and R recomputed from CODATA constants: 4.617060e26 and 0.766681 (2026-09-26). Table 1's densities follow (source notes)."
+notes = "Material-independent constants of the UDM/ADM sum rule; the material key is nominal. Used by franta_2015 (N_a = 180 eV^2 for HfO2) and franta_2017 (N = Z N_a U)."

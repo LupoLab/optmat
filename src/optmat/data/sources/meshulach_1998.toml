@@ -1,0 +1,63 @@
+citation = "D. Meshulach and Y. Silberberg, \"Coherent quantum control of two-photon transitions by a femtosecond laser pulse\", Nature 396, 239 (1998)"
+doi = "10.1038/24329"
+library = "Meshulach_1998_CoherentQuantumControl"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Two-photon fluorescence (about 460 nm, through 7P) of the caesium \
+6S1/2-8S1/2 two-photon transition (411 nm; omega_0/2 at 822 nm) excited by 31 fs FWHM \
+transform-limited sech^2 pulses (23 nm FWHM spectrum) centred at 822 nm from a \
+Ti:sapphire laser, shaped by a 4-f pulse shaper (1200 lines/mm gratings, 100 mm \
+achromats) with a 128-element liquid-crystal phase modulator; photomultiplier and \
+lock-in (pp. 240-241, Figs. 1-2). Phase-only filters Theta(Omega) = alpha \
+cos(beta Omega + phi), beta about 220 fs, leave the power spectrum and energy unchanged."""
+notes = """Context only, no datasets: caesium is not an optmat material, and the paper \
+gives normalised fluorescence only (Fig. 3, raster). Identity checked on the PDF: \
+Nature 396, 239-242 (19 November 1998), Meshulach and Silberberg (Weizmann \
+Institute); the letter starts at the foot of p. 239 after another letter, and p. 242 \
+carries the start of a third (Riseman et al.), which is why the library's observed \
+title differs.
+
+Atom and transition: Cs 6S1/2 -> 8S1/2, omega_0 at 411 nm (3.0166 eV), each photon \
+near 822 nm (1.5083 eV); the hyperfine doublets are treated as one two-level system \
+(Fig. 1 caption). Intermediate states: the paper calls the transition \
+'non-resonant (that is, a transition with no intermediate states)' (p. 240) and \
+prints no intermediate level or detuning; Fig. 1 shows only 6S1/2, 7P (the cascade) \
+and 8S1/2. The spectrum's FWHM, 23 nm, is 42.2 meV of photon energy (computed here); \
+31 fs sech^2 at the sech^2 time-bandwidth product gives 42.0 meV, consistent.
+
+What it derives (p. 240, Eq. (1)): the transition probability is proportional to \
+S_2 = |integral E(omega_0/2 + Omega) E(omega_0/2 - Omega) dOmega|^2, with E(omega) = \
+A(omega) exp[i Phi(omega)] the Fourier transform of the field e(t); every pair \
+omega_1 + omega_2 = omega_0 contributes. Against OEP 8: this is the squared modulus of \
+OEP 8's pair spectrum S_2(Omega_f) = integral exp(i Omega t) E+(t)^2 dt (section 4.1, \
+Check 2; section 4.2) written in the frequency domain at Omega_f = omega_0, the same \
+within conventions: Meshulach's S_2 is OEP 8's |S_2|^2, and the 2 pi and the factor 2 \
+of the change of variable are dropped because only proportionality is claimed. The \
+kernel M of OEP 8 Eqs. (1)-(2) is taken as a constant (no derivation here; see \
+meshulach_1999, Eqs. (2)-(4)). Consequences stated: the transform-limited pulse \
+maximises S_2 for a given power spectrum; any phase antisymmetric about omega_0/2, \
+Phi(omega_0/2 + Omega) = -Phi(omega_0/2 - Omega), leaves it unchanged; 'dark pulses' \
+cancel it.
+
+Measurements testing the pair-spectrum dependence (Fig. 3, p. 241; calculated curves \
+from Eq. (1) with a sech spectrum, 'without adjustable parameters'):
+- Fig. 3a, symmetric phase alpha cos(beta Omega): the fluorescence vanishes first near \
+alpha = 1.2 (dark pulse, Fig. 3b: a pulse train), then oscillates; related to J0(2 \
+alpha_0) = 0, and for a square spectrum of width Delta omega, S_2 = 0 exactly at beta \
+= 2 pi / Delta omega and alpha_0 = 1.2024.
+- Fig. 3a, antisymmetric phase alpha sin(beta Omega): theory is constant; the measured \
+signal falls slowly with alpha (to about 0.4 at alpha = 6, read by eye from the \
+raster figure), attributed by the authors to 'inherent loss and imperfect \
+antisymmetry' of the discrete modulator; at alpha = 1.2 it drops only 'by a few per \
+cent'. Note for OEP 8: a split-dependent kernel M(nu) (OEP 8 Eqs. (3)-(5)) also breaks \
+the antisymmetric-phase invariance; the paper does not consider it and gives no \
+intermediate detunings to estimate it.
+- Fig. 3c, the modulation phase phi at alpha = 1.2 (symmetric to antisymmetric): \
+contrast 'better than 1 in 200'.
+No intermediate-resonance test is made here; dudovich_2001 is the resonant case.
+
+Text slip (p. 241, not a value): 'where Theta is the frequency deviation from \
+omega_0/2' should name Omega. Reference 17 (Salour and Cohen-Tannoudji, Phys. Rev. \
+Lett. 38, 757) is printed with the year 1997.
+
+Register: TC-986."""

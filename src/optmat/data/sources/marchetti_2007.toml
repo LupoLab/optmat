@@ -1,0 +1,50 @@
+citation = "S. Marchetti and R. Simili, Infrared Phys. Technol. 50, 78 (2007)"
+doi = "10.1016/j.infrared.2006.07.003"
+library = "Marchetti_2007_AccurateMeasurementCO2"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """The differential two-Fabry-Perot technique of marchetti_2006 with a tunable \
+single-mode RF-excited CO2 laser (400 mbar mixture, 700 uJ, 3 us pulses at 1 kHz) on \
+27 lines of the 9 and 10 um bands; 209 cm gas cell; residual thermal drift (0.35 \
+fringes per degree C) removed; 'our measurement limit is the accuracy of our pressure \
+measurement (0.4%)' (p. 79)."""
+notes = """Values are the pressure coefficient dn with n = 1 + dn P (Eq. 1), in 1e-4 per \
+atm, at 'T = 21°' (21 degrees C); the paper converts other data to 21 degrees C 'following \
+the gas perfect relation' (Eq. 3), so each value is taken as the refractivity at 1 atm, \
+294.15 K with the ideal-gas density. The per-line errors (last digits, 0.3-0.7 %) are \
+of unstated level and presumably include the 0.4 % pressure accuracy, which is common \
+to all lines (not separated). Frequencies are vacuum wavenumbers in cm^-1.
+
+Consistency: marchetti_2006's CO2 value at 10.57 um (946 cm^-1), 4.087 at 23 degrees C, \
+scaled to 21 degrees C by T (296.15/294.15) is 4.115, against 4.114 (12) here at 1P18 \
+(946 cm^-1). The conclusion (p. 80) calls Simmons's 10.59 um value '5% overestimated'."""
+
+[[datasets]]
+id = "experiment_CO2"
+material = "CO2"
+file = "CO2/marchetti_2007__experiment_CO2.csv"
+table = "tbl_33adeac1f5b0"
+quantity = "refractivity"
+scale = 1e-4
+abscissa_unit = "cm-1"
+wavelength_medium = "vacuum"
+state = { pressure_atm = 1, temperature_c = 21 }
+density = "ideal"
+use = "primary"
+notes = "The table's 27 lines; row ids are the line labels as printed (1R.., 1P.. are the 10-um-band lines, usually written 10R.., 10P..)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[formulas]]
+id = "eq4"
+material = "CO2"
+equation = "Eq. (4), p. 80"
+printed = "dn(v) = -0.2404 + 7.8801E-3 v - 3.454E-6 v^2"
+variable = "v: vacuum wavenumber in cm^-1; dn in 1e-4 per atm at 21 degrees C"
+state = "{ pressure_atm = 1, temperature_c = 21 } (dn times 1 atm)"
+density = "ideal"
+range = "931-1083.5 cm^-1 ('valid only in the 10 um region')"
+coefficients = { a0 = "-0.2404", a1 = "7.8801e-3", a2 = "-3.454e-6" }
+check = "Reproduces the 27 tabulated values with residuals within their stated errors (largest 0.021 at 1P16 against an error of 0.020). Checked 2026-09-24."
+notes = "A parabola fitted to the table, not a physical dispersion model."

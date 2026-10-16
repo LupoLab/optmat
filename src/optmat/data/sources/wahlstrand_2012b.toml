@@ -1,0 +1,153 @@
+citation = "J. K. Wahlstrand, Y.-H. Cheng and H. M. Milchberg, \"High Field Optical Nonlinearity and the Kramers-Kronig Relations\", Phys. Rev. Lett. 109, 113904 (2012)"
+doi = "10.1103/PhysRevLett.109.113904"
+library = "Wahlstrand_2012_HighFieldOptical"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Single-shot supercontinuum spectral interferometry (as wahlstrand_2012): 40-fs, \
+3.5-mJ, 800-nm Ti:sapphire pump; supercontinuum probe (120 nm bandwidth, generated in \
+SF6) and reference 2 ps apart; thin gas flow (L_eff ~ 200-400 um depending on gas) in a \
+vacuum chamber; 1000 interferograms averaged (phase shifts down to 5e-3 rad). 'An \
+auxiliary spatial interferometry beam [7] allowed extraction of the absolute linear \
+phase shift of the Ar stationary gas flow; all other gases were referenced to Ar'; the \
+absolute index shift is 'calibrated by a measurement in a backfilled vacuum chamber at \
+low pressure, as in [7]' (p. 1). Delta n measured against peak intensity up to the \
+ionization threshold of each gas, and compared with a Kramers-Kronig calculation from \
+the PPT-type ionization rate of Popruzhenko et al. (pp. 2-4)."""
+notes = """Journal pages 113904-1 to -5 = PDF pages 1-5. Identity checked against the first \
+page. He, Ne, Ar, Kr, Xe.
+
+DEFINING EQUATIONS (p. 1, quoted): 'The nonlinear refractive index shift is Delta n(x, t) = \
+(k0 L_eff)^-1 Delta Phi(x, t)' ... 'Below the ionization threshold, we write Delta n(x, t) \
+= 2 n2 I(x, t), where I(x, t) is determined directly from the pump pulse energy and from \
+I(x, t) proportional to Delta Phi(x, t) at low intensity in Ar. The factor of 2 recognizes \
+that Delta n describes cross-phase modulation and n2 is the nonlinear self-refractive \
+index.' p. 4: 'The experimentally measured values of n2 = Delta n / 2I are in good \
+agreement with previous estimates using harmonic generation [25 = Shelton and Rice]'. \
+So the tabulated n2 is the SELF coefficient. Kramers-Kronig, Eq. (1): Delta n(omega, E) \
+= (c/pi) P int Delta alpha(Omega, E) / (Omega^2 - omega^2) dOmega (Delta alpha here an \
+absorption coefficient); average-frequency approximation, Eq. (2). No chi(3) or gamma is \
+defined. Gaussian conventions.
+
+VALUES. The n2 values exist only as labels printed in the panels of Fig. 3 (p. 4; the \
+figure is a raster image, its text is not in the pdf text layer), read from the figure \
+image: He (3.1 +- 0.4) x 1e-21, Ne (8.7 +- 1.1) x 1e-21, Ar (9.7 +- 1.2) x 1e-20, Kr (2.2 +- \
+0.4) x 1e-19, Xe (5.8 +- 1.1) x 1e-19 cm2/W. Each is the slope of a linear fit of Delta n \
+to 2 n2 I over the measured points below the ionization threshold (Fig. 3 caption). \
+Horizontal error bars are the intensity calibration, vertical the phase extraction; the \
+meaning of the +- on n2 is not stated. The Ar value equals wahlstrand_2012's Ar value \
+(same calibration).
+
+REFERENCE STATE. Not stated in this Letter; the calibration is 'as in [7]' \
+(wahlstrand_2012, 1 atm). Recorded as 101325 Pa, 290.9 K: the density of that N2 flow \
+calibration (wahlstrand_2012 notes; TC-316). Pump \
+800 nm (1.55 eV, p. 2), vacuum assumed; probe wavelength not stated here (the \
+supercontinuum of wahlstrand_2012, ~550-635 nm).
+
+PART. Noble gases: electronic. The response is linear in intensity up to the measured \
+ionization threshold of each gas (Fig. 3, dotted lines; not tabulated; note [24]: the Ar \
+threshold here is ~20 % lower than in Wahlstrand et al. PRL 107, 103901 (2011), because \
+that experiment overestimated the peak intensity). This contradicts the saturating and \
+inverting higher-order Kerr series of Bree et al. (and Loriot et al.): Fig. 3 overlays \
+Bree et al.'s self index and the probe index obtained by multiplying their n_2k by k + 1 \
+(Supplemental Material [18], not in the library)."""
+
+[[datasets]]
+id = "n2_He"
+material = "He"
+table = "text"
+points = [["800", "800", "3.1", "0.4"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Fig. 3, top panel label 'n2 = (3.1 +- 0.4) x 10^-21 cm2/W' (read from the figure image, p. 4). Fit up to ~360 TW/cm2 (ionization threshold ~390 TW/cm2 from the figure). State assumed (source notes)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "n2_Ne"
+material = "Ne"
+table = "text"
+points = [["800", "800", "8.7", "1.1"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-21
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Fig. 3, second panel label 'n2 = (8.7 +- 1.1) x 10^-21 cm2/W' (figure image, p. 4). State assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "n2_Ar"
+material = "Ar"
+table = "text"
+points = [["800", "800", "9.7", "1.2"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-20
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "check"
+reproduced_from = ["wahlstrand_2012"]
+notes = "Fig. 3, third panel label 'n2 = (9.7 +- 1.2) x 10^-20 cm2/W' (figure image, p. 4). Identical to wahlstrand_2012/n2_Ar, which this Letter's calibration rests on (Ar is the absolute reference here); whether it is a new fit to the Fig. 3 points or the earlier value is not stated. Kept as 'check' so the Ar value is not counted twice; wahlstrand_2018 uses it as its intensity calibration."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "n2_Kr"
+material = "Kr"
+table = "text"
+points = [["800", "800", "2.2", "0.4"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Fig. 3, fourth panel label 'n2 = (2.2 +- 0.4) x 10^-19 cm2/W' (figure image, p. 4). State assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40
+
+[[datasets]]
+id = "n2_Xe"
+material = "Xe"
+table = "text"
+points = [["800", "800", "5.8", "1.1"]]
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-19
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 290.9 }
+use = "primary"
+notes = "Fig. 3, bottom panel label 'n2 = (5.8 +- 1.1) x 10^-19 cm2/W' (figure image, p. 4). State assumed."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+part = "electronic"
+coefficient = "self"
+pulse_fs = 40

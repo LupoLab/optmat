@@ -1,0 +1,174 @@
+citation = "A. Johansson, M. K. Raarup, Z. S. Li, V. Lokhnygin, D. Descamps, C. Lyngå, E. Mevel, J. Larsson, C.-G. Wahlström, S. Aloise, M. Gisselbrecht, M. Meyer and A. L'Huillier, \"Two-color pump-probe experiments in helium using high-order harmonics\", Eur. Phys. J. D 22, 3-11 (2003)"
+doi = "10.1140/epjd/e2002-00213-1"
+library = "Johansson_2003_TwoColorPump"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Two-colour (1+1') pump-probe ionisation of helium in an effusive jet (500 um \
+orifice, 10^-6 to 1 x 10^-4 mbar chamber pressure), He+ detected by time of flight. Pump: \
+the 13th harmonic (21.22 eV, 1s2p 1P) of a distributed-feedback dye laser near 759 nm, or \
+the 14th (23.09 eV, 1s3p 1P) of the 753 nm dye laser mixed with its second harmonic, \
+generated in a krypton jet (about 5 x 10^14 W/cm2), about 30 ps, about 5 x 10^6 photons \
+per pulse in the chamber, 3.5 pm (1.3 meV) FWHM, about 500 um across. Probe: 70 ps, \
+linearly polarised, 355, 266 or 532 nm from the picosecond Nd:YAG pump laser (or the dye \
+fundamental), about 100 um across, at 45 degrees to the harmonic beam, delay line and \
+half-wave plate. Lifetimes from the decay of the ion yield with delay; absolute cross \
+sections from the saturation of the ion yield with probe energy at 230 ps delay, fitted \
+with the three-dimensional overlap integral of Eq. (4) (pp. 4-8)."""
+notes = """Identity checked on the first page (PDF p. 1): Johansson et al., Eur. Phys. J. D \
+22, 3-11 (2003), DOI 10.1140/epjd/e2002-00213-1; received 3 June 2002, published online \
+22 October 2002. Nine PDF pages, journal page = PDF page + 2. This is the paper meyer_2008 \
+(TC-1033) cites as 'Eur. Phys. J. D 22, 3 (2003)': volume and first page agree. Every \
+number below was read on the PDF's text layer and, for Table 1, on the table image.
+
+WHAT IS MEASURED. One-photon (XUV) excitation of He 1s2p 1P1 or 1s3p 1P1 from the ground \
+state, then one-photon ionisation of the excited level by a delayed probe: a (1+1') \
+resonant two-colour scheme, not a bound two-photon resonance. Levels (NIST ASD, held in \
+src/optmat/data/external/nist_asd/He_I_levels.tsv): 1s.2p 1P*1 at 171134.894 cm^-1, \
+1s.3p 1P*1 at 186209.362 cm^-1; the paper's 21.22 and 23.09 eV.
+
+DATASETS.
+- tau (radiative_lifetime, ns, label, primary): p. 7, 'lifetimes of 0.57 +- 0.03 ns for \
+the 1s2p state and 1.76 +- 0.1 ns for the 1s3p state', from the slope of the logarithmic \
+decay over more than 4 lifetimes (Fig. 6), at 7 x 10^-6 mbar (1s2p) and 2 x 10^-5 mbar \
+(1s3p); the abstract states 'a precision of about 15%' for both, wider than the printed \
++- (5-6 %). The level of the +- is not stated. Not extrapolated to zero pressure; the \
+slopes do not change between 6 x 10^-5 and 1 x 10^-4 mbar (Fig. 7, p. 8), and radiation \
+trapping and pressure broadening are judged insignificant (p. 9). The 1s2p value repeats \
+Larsson et al.'s 0.57 ns (+-5 %, J. Phys. B 28, L53 (1995), the same group, not in the \
+library), perhaps the same measurement. Check against NIST (the held He_I_lines.tsv, \
+40-60 nm only): 1/A(1s2p 1P1 -> 1s2 1S0) = 1/1.7989e9 s^-1 = 0.5559 ns and 1/A(1s3p 1P1 \
+-> 1s2) = 1/5.6634e8 s^-1 = 1.7657 ns; the other branches (to 1s2s, 1s3s), not held, only \
+shorten these, so they are upper bounds. Both measured values agree within their +-.
+- sigma_1s2p, sigma_1s3p (excited_state_photoionization_cross_section, Mb, against the \
+probe wavelength, primary): Table 1 (p. 8, tbl_c7aba2f99989), 'sigma_par (Mb)', the \
+absolute cross sections with the pump and probe polarisations PARALLEL (the table's \
+caption); 'total uncertainty ... about 25%' (p. 8), its level not stated. 1s2p: 16.6 Mb \
+at 355 nm, 6.6 at 266; 1s3p: 24.4 at 752, 10.5 at 532, 4.2 at 355. The probe wavelengths \
+are printed to 1 nm and their medium is not stated (the Nd:YAG harmonics' nominal names, \
+and the 752 nm dye fundamental, 14 x 53.703 = 751.8 nm); the record keeps the default \
+(vacuum), the difference (0.1-0.2 nm) lying below the printed digits. The excess \
+energies E_exc of the table are recomputed in the script from the vacuum wavelengths and \
+NIST's levels and He ionisation energy (24.587389 eV): 0.123, 1.292, 0.148, 0.830, 1.992 \
+eV against 0.12, 1.29, 0.15, 0.83, 1.99 (each within 0.003 eV). The paper presents \
+these as the results of the measurements of Gisselbrecht et al. [16] (Phys. Rev. Lett. \
+82, 4607 (1999), the same group, not in the library), described here in detail (p. 8): \
+DOUBT, they may be that paper's numbers, in which case the two must never be fitted \
+side by side. The initial level is ALIGNED (M = 0 along the pump's linear polarisation), \
+so sigma_par is not the isotropic cross section: by Eq. (7) sigma(theta) = sigma_s + \
+sigma_d + 2 (sigma_s + sigma_d / 10) P2(cos theta), sigma_par = 3 sigma_s + 1.2 sigma_d \
+and sigma_perp = 0.9 sigma_d; with the theoretical d/s = 13 (p. 9) sigma_iso = sigma_s + \
+sigma_d = 0.753 sigma_par (derived here, not taken). For OEP 8's Gamma^PI_f of a level \
+excited from a J = 0 ground state by linearly polarised light and ionised by the same \
+polarisation, sigma_par is the relevant one.
+
+CHECKED (tools/extract/johansson_2003.py, checks()):
+- Eq. (7) from Eqs. (5)-(6): with A20 = -sqrt(2), the 6j symbols {1 1 2; 1 1 0} = 1/3 \
+and {1 1 2; 1 1 2} = 1/30 give sigma_iso [1 + 6 sum_L 6j(L) sigma_L / sigma_iso P2] = \
+the printed form; d/s = 13 gives sigma_par / sigma_perp = 18.6 / 11.7 = 1.590 (printed \
+'1.6'); d/s = 20 gives 1.500;
+- p. 7: 16.6 Mb at 355 nm (3.493 eV) and 5 x 10^8 W/cm2 is sigma I / (h nu) = 14.8 \
+ns^-1, against the printed Gamma_r^UV(0) = 13 ns^-1 (12 % lower; DOUBT, the intensity \
+definition is not given); 13 ns^-1 x 70 ps = 0.91 (printed 0.9);
+- the widths at the 1s2p line (58.433 nm, NIST): 3.5 pm = 1.27 meV (printed 1.3), 5.7 pm \
+= 2.07 meV (2.0), 0.3 pm = 0.109 meV (0.11);
+- the lifetimes against NIST's 1/A above.
+
+DOUBTS. The dye wavelengths are rounded or approximate: the 13th harmonic of 759 nm is \
+21.236 eV, 18 meV above the 1s2p line (21.218 eV), and the 14th of 753 nm is 23.052 eV, 35 \
+meV below 1s3p (23.087 eV), both far outside the 1.3 meV harmonic width; the lines need \
+759.6 and 751.8 nm. The abstract's probe range 'between 1.6 and 4.5 eV' ends below 266 nm's \
+4.66 eV. Fig. 11 (p. 9): the caption calls the solid curve 'the theoretically predicted \
+variation', the text (p. 8) 'the fit to the experimental data points, indicated by the \
+solid curve', yielding d/s = 20/1. Read by eye from the image, the curve runs from about 48 \
+(0 degrees) to about 30.5 (90 degrees), a contrast of about 1.57: that of d/s = 13 (1.59), \
+not 20 (1.50), so the curve is the theory's. The figure does not say which level or probe \
+wavelength it is.
+
+NOT TAKEN:
+- the partial-wave ratio sigma_d / sigma_s = 20/1 measured (p. 8, 'statistical error of \
+about 25%'), 13/1 theoretical (Chang and Fang [17]), and sigma_par / sigma_perp = 1.6: \
+partial-wave ratios of a two-colour process (no quantity; declined, TC-1011). meyer_2008 \
+(TC-1033) quotes this paper's d-wave as 'more than 10 times higher' than the s-wave: \
+consistent with both 20/1 and 13/1;
+- the light shift of the 1s2p line under the 355 nm probe (Fig. 9, p. 9): broadened to \
+5.7 pm (2.0 meV) FWHM (the 'ionization width', calculated, 5.6 pm) and shifted 0.3 pm \
+(0.11 meV) to the blue at an estimated 5 x 10^8 W/cm2, against Eikema et al.'s 0.015 pm \
+for the same intensity at 292 nm. Not light_shift_coefficient: that quantity is the shift \
+of a multiphoton transition per unit intensity of the EXCITING light, and here the shifting \
+field is a second colour; the shift is a fifth of the harmonic's width and twenty times \
+Eikema et al.'s, so it is not a measurement of a polarisability either;
+- the 'direct two-photon ionisation' spike at zero delay (Figs. 7-8): ion yields in \
+arbitrary units, explained by a rate-equation model (Eqs. 1-3) with AC-Stark broadening \
+and XUV absorption in the gas; no cross section is printed;
+- Figs. 3-11: arbitrary units, or delays and spectra.
+
+FOR OEP 8. Not a test of the two-photon coupling: no bound two-photon resonance is \
+driven. It supplies the excited-level photoionisation of He 1s2p and 1s3p near threshold \
+(OEP 8's Gamma^PI_f = sigma^PI_f Phi, for levels it does not model, since OEP 8's helium \
+level is 1s2s) and the 1snp lifetimes, and shows the size of the AC-Stark broadening of a \
+resonance by an ionising probe: Gamma^PI(0) about 13-15 ns^-1 at 5 x 10^8 W/cm2, a 2 meV \
+width, the Im alpha_f part of OEP 8's Eq. (6).
+
+References the paper cites that the library does not hold: Gisselbrecht et al., Phys. \
+Rev. Lett. 82, 4607 (1999) (the absolute cross sections); Larsson et al., J. Phys. B 28, \
+L53 (1995) (1s2p lifetime); T. N. Chang and T. K. Fang, Phys. Rev. A 52, 2052 (1995) (the \
+theory, d/s = 13); R. C. G. Ligtenberg et al., Phys. Rev. A 49, 2363 (1994) (lifetimes); \
+K. S. E. Eikema et al., Phys. Rev. A 55, 1866 (1997) (the light shift at 292 nm); S. \
+Baier et al., J. Phys. B 27, 3363 (1994) (Eq. 5)."""
+
+[[datasets]]
+id = "tau"
+material = "He"
+table = "text"
+points = [["1s2p 1P1", "1s2p 1P1", "0.57", "0.03"], ["1s3p 1P1", "1s3p 1P1", "1.76", "0.1"]]
+quantity = "radiative_lifetime"
+unit = "ns"
+abscissa = "label"
+use = "primary"
+notes = "p. 7 (Sect. 3): 0.57 +- 0.03 ns (1s2p 1P) and 1.76 +- 0.1 ns (1s3p 1P), the slope of the logarithmic decay of the He+ yield with pump-probe delay (Fig. 6) at 7e-6 and 2e-5 mbar; level of the +- not stated (the abstract: 'about 15%'). NIST 1/A to the ground state: 0.5559 and 1.7657 ns, upper bounds (the record's notes)."
+[datasets.parameters]
+method = "measured: harmonic (XUV) excitation, delayed 355 nm (1s2p) or 532 nm (1s3p) photoionisation, He+ yield against delay; low pressure, not extrapolated (slopes pressure independent, Fig. 7)"
+
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "sigma_1s2p"
+material = "He"
+file = "He/johansson_2003__sigma_1s2p.csv"
+table = "tbl_c7aba2f99989"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 8), 'sigma_par (Mb)': 16.6 Mb at 355 nm (E_exc 0.12 eV) and 6.6 Mb at 266 nm (1.29 eV), pump and probe polarisations parallel. 'Total uncertainty ... about 25%' (p. 8). Possibly the numbers of Gisselbrecht et al. 1999 (not in the library; the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s2p 1P1 (171134.894 cm-1), aligned: M = 0 along the pump's linear polarisation"
+polarization = "linear, probe parallel to the pump (sigma_par)"
+method = "measured: saturation of the (1+1') ion yield with probe energy at 230 ps delay, fitted with the three-dimensional overlap integral (Eq. 4)"
+
+[datasets.uncertainty]
+relative = 0.25
+level = "not stated"
+
+[[datasets]]
+id = "sigma_1s3p"
+material = "He"
+file = "He/johansson_2003__sigma_1s3p.csv"
+table = "tbl_c7aba2f99989"
+quantity = "excited_state_photoionization_cross_section"
+unit = "Mb"
+abscissa_unit = "nm"
+wavelength_medium = "vacuum"
+use = "primary"
+notes = "Table 1 (p. 8), 'sigma_par (Mb)': 24.4 Mb at 752 nm (E_exc 0.15 eV), 10.5 at 532 nm (0.83 eV), 4.2 at 355 nm (1.99 eV), pump and probe polarisations parallel. 'Total uncertainty ... about 25%' (p. 8). Possibly the numbers of Gisselbrecht et al. 1999 (not in the library; the record's notes)."
+[datasets.parameters]
+initial_level = "He 1s3p 1P1 (186209.362 cm-1), aligned: M = 0 along the pump's linear polarisation"
+polarization = "linear, probe parallel to the pump (sigma_par)"
+method = "measured: saturation of the (1+1') ion yield with probe energy at 230 ps delay, fitted with the three-dimensional overlap integral (Eq. 4)"
+
+[datasets.uncertainty]
+relative = 0.25
+level = "not stated"

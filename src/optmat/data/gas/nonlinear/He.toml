@@ -1,0 +1,42 @@
+# Helium: the second hyperpolarizability on theory (Bishop & Pipin 1989, Table III, every
+# process to 0.1 hartree), B' fitted from the process dependence.
+# factor: Bishop & Pipin's atomic unit uses the reduced electron mass of 4He, 6.24136e-65
+# against the standard 6.235377e-65 C^4 m^4 J^-3 (their p. 3549; source notes); their
+# frequencies are in standard hartree. Shelton's ESHG scale includes the same correction.
+gas = "He"
+description = "Helium: Bishop & Pipin's 1989 ab initio gamma(omega) for the dc Kerr, Kerr (DFWM), ESHG and THG processes up to 0.1 hartree (455.6 nm), with 1e-3 allowed for the truncation of the fourth-order form; the measurements are validators."
+range_nm = [400.0, 20000.0]
+b_prime_prior = [0.0, 100.0]
+validators = [
+    "tammer_1992/table3_gamma_He",   # absolute dc Kerr (TC-401)
+    "shelton_1982/text_He_absolute",
+    "shelton_1994/table6_He_dc_kerr_expt",
+    "buckingham_1968/gamma_He",
+    "lehmeier_1985/gamma_thg_He",
+    "lundeen_1983/fwm_532_He",
+    "wahlstrand_2012b/n2_He",
+]
+
+[[fitted]]
+key = "bishop_1989/omega_dc_kerr_zzzz"
+range_nm = [455.0, "inf"]
+extra_relative = 1e-3
+factor = 1.00096
+
+[[fitted]]
+key = "bishop_1989/omega_kerr_zzzz"
+range_nm = [455.0, "inf"]
+extra_relative = 1e-3
+factor = 1.00096
+
+[[fitted]]
+key = "bishop_1989/omega_eshg_zzzz"
+range_nm = [455.0, "inf"]
+extra_relative = 1e-3
+factor = 1.00096
+
+[[fitted]]
+key = "bishop_1989/omega_thg_zzzz"
+range_nm = [455.0, "inf"]
+extra_relative = 1e-3
+factor = 1.00096

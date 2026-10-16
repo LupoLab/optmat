@@ -1,0 +1,223 @@
+citation = "G. V. Mikhailov, \"The influence of temperature and pressure on the Raman spectrum of nitrogen\", Sov. Phys. JETP 9, 974 (1959) [Zh. Eksp. Teor. Fiz. 36, 1368 (1959)]"
+library = "Mikhailov_1959_InfluenceTemperaturePressure"
+identity = "ASSERTED"
+kind = "measurement"
+technique = """Spontaneous Raman spectra of N2 gas at 27 C and 7-114 atm (and at 200 C, and \
+of the liquid at -190 C), excited by the Hg 4047 and 4358 A lines in a high-pressure \
+illuminator with a multiple-reflection mirror system, photographed with a HUET V-III \
+spectrograph (22.7 cm-1/mm at 4047 A, 36.2 cm-1/mm at 4358 A) on Agfa plates, 3-40 h \
+exposures; microphotometer traces, three or four plates per pressure. 'the total width \
+of the excitation line, of the slit, and of the apparatus function ... (~1.5 cm-1 for \
+the gas ...) was excluded from the results' (p. 2)."""
+notes = """IDENTITY. The library copy is the English translation, Sov. Phys. JETP 9, \
+974-978 (1959), whose first page reads 'J. Exptl. Theoret. Phys. (U.S.S.R.) 36, \
+1368-1373 (May, 1959)', 'Submitted to JETP editor December 7, 1958'; the library \
+identity is ASSERTED (no DOI). jammu_1966 and herring_1986 (Ref. 4, 'G. V. Milahailov, \
+Zh. Eksp. Teor. Fiz. 36, 1368 (1959) [Sov. Phys.-JETP 9, 974 (1959)]') cite this paper. \
+Page numbers are pdf pages 1-5.
+
+solprop's unverified 'Sov. Phys. JETP 36, 9 (1959)' for N2's 6 ps is this paper: 36 is \
+the Russian volume and 9 the translation's volume of the same 1959 paper, the one the \
+library's papers (jammu_1966, herring_1986) cite as Mikhailov 1959. What it supports: \
+6 ps is 1/(pi Delta nu) for Delta nu = 1.77 cm-1 (solprop's 53.05e9 Hz), and this \
+paper's width of the unresolved N2 Q branch at 27 C is 1.7-2.4 cm-1 at 15-114 atm \
+(Table I) and 1.75 cm-1 calculated (1.8 +- 0.2 measured) at 50 atm (Table II), which \
+give 6.1 ps and 5.9 ps. But that width is NOT a collisional dephasing width: 'the \
+rotational splitting introduces a basic length into the observed width of the Q \
+branch' (p. 4): delta nu_rot = 1.54 cm-1 of the 1.75 comes from the unresolved \
+rotational structure (Q(J) spread by alpha J(J+1)), the collisional part being 0.2 \
+cm-1 at 50 atm (Table II), about 0.005 cm-1/atm (formula collision_width with rho_nu = \
+0.43 A). The pressure-independent part extrapolated to zero pressure is 1.6 cm-1 (p. \
+4). So the 6 ps is the dephasing of the whole Q-branch envelope at room temperature, \
+independent of pressure, and it is not a collision time.
+
+WIDTH CONVENTION: not stated. The paper speaks only of 'line width' (delta omega, delta \
+nu) measured on microphotometer traces after removing the apparatus width; whether it \
+is the full width at half maximum or the half width is never said. Recorded as width = \
+"not stated". jammu_1966 (Table II) \
+lists this author's N2 coefficients as HWHM per atm, 47.5 and 26.5 x 10^-3 cm-1/atm \
+below and above 25 atm, values that this paper's Table I does not give directly (the \
+slopes of Table I's delta omega are about 0.16 cm-1/atm between 7 and 25 atm and 0.044 \
+cm-1/atm between 25 and 80 atm): perhaps from the 1960 paper.
+
+TABLE I (p. 2): 'the average width for the transitions with J = 0 - 15 is given for the \
+rotational lines'; 'The average error in the measurements of the line widths comprised \
+about 10 %' (p. 2). The rotational lines overlap from 20 atm and blend above 80 atm; the \
+slope changes at 25 atm (Fig. 3). The 3 atm width is '~0.5' 'Measured by V. A. Iozenas, \
+Moscow State University' (excluded: approximate, another observer). 'The frequency shift \
+of the Raman scattering lines lies within the limits of the errors of measurement (~1 \
+cm-1)' (p. 3).
+
+TEXT (p. 3): at 200 C (the gas at 'p = 90 atmos, reduced to 27 C', i.e. the density of \
+90 atm at 27 C), delta omega = 8.5 +- 2 cm-1 and delta nu = 5.4 +- 1.5 cm-1 (inline \
+datasets). Table II prints the 200 C row at '50 atmos' at 27 C: the text and the table \
+disagree on the density of the 200 C measurement (unresolved). Liquid N2 (-190 C): delta \
+nu = 0.4 +- 0.2 cm-1, calculated 0.5 (0.45 + 0.05) at 0.5 g/cm3 (not extracted: not \
+the gas).
+
+CONSTANTS AND ERRORS. The Q-branch structure calculation (p. 4) uses 'B = 1.998 cm-1, \
+alpha = 0.171 cm-1 and T = 300 K'. alpha is printed ten times too large: bendtsen_1974 \
+(Table VIII) gives alpha = 0.017292 cm-1 for 14N2, and the paper's own delta nu_rot = \
+1.54 cm-1 needs the intensity scale kT alpha/B of about 1.8 cm-1, i.e. alpha about \
+0.017 (with 0.171 it would be 18 cm-1). Not recorded as data (an input of the \
+calculation, uncited). The effective collision radius for the rotational lines is 3.9 A \
+in the abstract but 3.3 A in the text (p. 3); neither reproduces Table I through the \
+formula (see collision_width)."""
+
+[[datasets]]
+id = "table1_rotational"
+material = "N2"
+file = "N2/mikhailov_1959__table1_rotational.csv"
+table = "tbl_e9551d96728b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "primary"
+excluded_rows = { "3atm" = "printed '~0.5*': approximate, 'Measured by V. A. Iozenas, Moscow State University' (table note)" }
+notes = "Table I (p. 2), delta omega: the width of the N2 pure rotational Raman lines, 'the average width for the transitions with J = 0 - 15', at 27 C, apparatus width removed; pure N2. Width convention not stated (see the source notes). Lines overlap from 20 atm; the slope changes at 25 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "rotational S and O lines, average over J = 0-15"
+width = "not stated"
+perturber = "self"
+temperature_k = 300.15
+
+[[datasets]]
+id = "table1_vibrational"
+material = "N2"
+file = "N2/mikhailov_1959__table1_vibrational.csv"
+table = "tbl_e9551d96728b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "pressure"
+abscissa_unit = "atm"
+use = "primary"
+notes = "Table I (p. 2), delta nu: the width of the unresolved N2 vibrational Q branch (v = 0 -> 1) at 27 C, apparatus width removed. Mostly the rotational structure of the branch (1.54 cm-1 calculated, 1.6 cm-1 extrapolated to zero pressure, p. 4), not a collisional width. Width convention not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "Q branch, unresolved (v = 0 -> 1)"
+width = "not stated"
+perturber = "self"
+temperature_k = 300.15
+
+[[datasets]]
+id = "text_rotational_200C"
+material = "N2"
+table = "text"
+points = [["200C", "", "8.5", "2"]]
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "none"
+use = "primary"
+notes = "p. 3: 'the nitrogen lines are wider at 200 C than at room temperature: delta omega = 8.5 +- 2 cm-1', at 'p = 90 atmos, reduced to 27 C' (the density of 90 atm at 27 C; Table II says 50 atm for its 200 C row). Rotational lines, J-averaged as in Table I. Width convention not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "rotational S and O lines, average over J"
+width = "not stated"
+perturber = "self"
+temperature_k = 473.15
+
+[[datasets]]
+id = "text_vibrational_200C"
+material = "N2"
+table = "text"
+points = [["200C", "", "5.4", "1.5"]]
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "none"
+use = "primary"
+notes = "p. 3: 'delta nu = 5.4 +- 1.5 cm-1' for the unresolved Q branch at 200 C, 'p = 90 atmos, reduced to 27 C'; repeated in Table II (experimental, 200 C, where the density is given as 50 atm at 27 C). Width convention not stated."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "Q branch, unresolved (v = 0 -> 1)"
+width = "not stated"
+perturber = "self"
+temperature_k = 473.15
+
+[[datasets]]
+id = "table2_rotational_structure"
+material = "N2"
+file = "N2/mikhailov_1959__table2_rotational_structure.csv"
+table = "tbl_57a9c368f39b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "label"
+columns = { temperature = "C" }
+use = "check"
+notes = "Table II (p. 4), 'Calculated for the gas', delta nu_rot: the width of the unresolved rotational structure of the N2 Q branch (the averaged intensity distribution of p. 4 with B = 1.998 cm-1 and alpha printed 0.171 cm-1; see the source notes), at the density of 50 atm at 27 C. Not a collisional width."
+[datasets.parameters]
+transition = "Q branch, unresolved (v = 0 -> 1)"
+width = "not stated"
+
+[[datasets]]
+id = "table2_collisional"
+material = "N2"
+file = "N2/mikhailov_1959__table2_collisional.csv"
+table = "tbl_57a9c368f39b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "label"
+columns = { temperature = "C" }
+use = "check"
+notes = "Table II (p. 4), 'Calculated for the gas', delta nu_col: the collisional width of the Q branch from delta = 2 pi N v rho^2 with rho_nu = 0.43 A, at the density of 50 atm at 27 C (formula collision_width: 0.027 x 0.43^2 x 50 = 0.25 cm-1 at 27 C, printed 0.2)."
+[datasets.parameters]
+transition = "Q branch (v = 0 -> 1)"
+width = "not stated"
+perturber = "self"
+
+[[datasets]]
+id = "table2_total"
+material = "N2"
+file = "N2/mikhailov_1959__table2_total.csv"
+table = "tbl_57a9c368f39b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "label"
+columns = { temperature = "C" }
+use = "check"
+notes = "Table II (p. 4), 'Calculated for the gas', delta nu = delta nu_rot + delta nu_col, at the density of 50 atm at 27 C. The 27 C value, 1.75 cm-1, is 1/(pi c x 6.06 ps): the width solprop's 6 ps N2 dephasing time corresponds to."
+[datasets.parameters]
+transition = "Q branch, unresolved (v = 0 -> 1)"
+width = "not stated"
+perturber = "self"
+
+[[datasets]]
+id = "table2_experimental"
+material = "N2"
+file = "N2/mikhailov_1959__table2_experimental.csv"
+table = "tbl_57a9c368f39b"
+quantity = "raman_linewidth"
+unit = "cm-1"
+abscissa = "label"
+columns = { temperature = "C" }
+use = "check"
+notes = "Table II (p. 4), 'Experimental' delta nu of the Q branch: the 200 C value repeats the text's 5.4 +- 1.5 (text_vibrational_200C, whose density the text gives as 90 atm at 27 C, the table as 50 atm); the 27 C value, 1.8 +- 0.2, lies between Table I's 40 and 60 atm values."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+transition = "Q branch, unresolved (v = 0 -> 1)"
+width = "not stated"
+perturber = "self"
+
+[[formulas]]
+id = "collision_width"
+material = "N2"
+equation = "text, p. 3"
+printed = "delta = 0.027 rho^2 p (from delta = 2 pi N v rho^2)"
+variable = "rho: the effective optical collision radius in A; p: pressure in atm; delta: the line width in cm-1; N2 at 27 C"
+state = "pure N2 at 27 C"
+density = "ideal"
+range = "0-25 atm (the collision-broadening region for the rotational lines, p. 3)"
+coefficients = { k = "0.027", rho_rotational_text = "3.3", rho_rotational_abstract = "3.9", rho_vibrational = "0.43" }
+check = "Scratch, 2026-09-26: with rho_nu = 0.43 A, 0.0050 cm-1/atm, 0.25 cm-1 at 50 atm (Table II delta nu_col 0.2 at 27 C). With rho_omega = 3.3 A (text) 0.294 cm-1/atm and with 3.9 A (abstract) 0.41 cm-1/atm, whereas Table I's rotational widths rise by 0.164 cm-1/atm between 7 and 25 atm (4.7 cm-1 at 25 atm against 7.4 from the formula with 3.3 A): the rotational radius does not reproduce Table I. The 0.027 prefactor equals 2 pi N v rho^2 / c at 1 atm and 300.15 K (N = 2.445e19 cm-3) with v = 527 m/s, about the rms speed of N2 (517 m/s)."
+notes = "Collision (impact) theory, p. 3, citing Sobel'man (Ref. 7); the width convention is not stated."

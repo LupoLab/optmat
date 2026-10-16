@@ -1,0 +1,301 @@
+citation = "X. M. Tong and C. D. Lin, \"Empirical formula for static field ionization rates of atoms and molecules by lasers in the barrier-suppression regime\", J. Phys. B 38, 2593 (2005)"
+doi = "10.1088/0953-4075/38/15/001"
+library = "Tong_2005_EmpiricalFormulaStatic"
+identity = "VALIDATED"
+kind = "theory"
+technique = """An empirical correction of the tunnelling (ADK, MO-ADK) static-field rate \
+into the barrier-suppression regime, Eq. (2), with one constant alpha fitted per \
+target to static rates computed by complex scaling in single-active-electron model \
+potentials (Eq. (4), Table 1) for H, He, Ne, Ar, Rb, Ne+ and Ar+, and checked on H2+ \
+and on correlated He rates (Scrinzi et al. 1999, scrinzi_1999)."""
+notes = """Journal pages 2593-2600 = PDF pages 2-9 (PDF page 1 is the publisher's cover \
+sheet). solprop's BSI_TONG_LIN_ALPHA (He 7.0; Ne, Ar, Kr, Xe 9.0) is this paper's alpha.
+
+EXTRACTED. Table 2 (p. 2596): alpha and I_p (au) of He, Ne, Ar and the ions Ne+ and Ar+ \
+(Rb is not curated: alpha 6.0, I_p 0.154, F_b 0.006; H's alpha and I_p are, since \
+atomic hydrogen became a material, TC-833). Table 1 (p. 2596): the model-potential parameters of the same five targets (H: \
+Z_c = 1, all a_i = 0; Rb: 1.0, 24.023, 11.107, 115.200, 6.629, 11.977, 1.245). Text \
+(pp. 2596-2597): alpha = 6 for H2+ (inline).
+
+THE FORMULAS (p. 2595). Eq. (1): the critical field F_b = kappa^4/(16 Z_c), 'the \
+unperturbed atomic energy level lies on the top of the potential barrier'; kappa = \
+sqrt(2 I_p). Eq. (2): W_TBI(F) = W_TI(F) exp(-alpha (Z_c^2/I_p)(F/kappa^3)). Eq. (3): \
+W_TI(F) = C_l^2/(2^|m| |m|!) (2l + 1)(l + |m|)!/(2 (l - |m|)!) kappa^-(2Z_c/kappa - 1) \
+(2 kappa^3/F)^(2Z_c/kappa - |m| - 1) exp(-2 kappa^3/3F), 'the usual ADK rates for \
+atoms', with C_l 'derived from the ground-state wavefunction calculated from the model \
+potential, see table II of (Tong et al 2002)' (tong_2002); for molecules W_TI is the \
+MO-ADK rate. Eq. (4): V(r) = -(Z_c + a_1 exp(-a_2 r) + a_3 r exp(-a_4 r) + a_5 exp(-a_6 \
+r))/r. Eq. (5): Error = (W_m - W_exact)/W_exact. Eq. (6): P = 1 - exp(-int W_m(|F(t)|) \
+dt). All in atomic units; static rates. Rates are for the single active electron: 'Static \
+ionization rates per electron' for He (Fig. 4 caption), and no occupation factor \
+appears in Eqs. (2)-(3).
+
+F_b CHECK: Eq. (1) with Table 2's I_p and Z_c (1 for atoms, 2 for the ions, Table 1) \
+gives Rb 0.00593, H 0.0625, He 0.2043, Ar+ 0.1290, Ar 0.0838, Ne 0.1572 (printed \
+0.006, 0.063, 0.204, 0.129, 0.084, 0.157) and Ne+ 0.2835 against the printed 0.2845: \
+the Ne+ entry is 0.001 high (a misprint, or F_b from a more precise I_p; not a \
+dataset, so no erratum). Table 1's Z_c + a_1 + a_5 is the nuclear charge for every \
+target (He 2, Ne 10, Ar 18, Rb 37, Ne+ 10, Ar+ 18: checked 2026-09-26).
+
+THE RECOMMENDATION (p. 2596): 'we further note that the fitted parameter alpha ranges \
+from 6.0 to 9.0, covering binding energies from 0.15 to 1.5 au. Based on table 2, we \
+suggest that one chooses alpha = 6.0 for electrons ionized from the s-wave and alpha = \
+9.0 for ionization from the higher partial waves. With such choices the TBI rates \
+agree with the numerically calculated ionization rates within 50%.' This is the \
+origin of solprop's 9.0 for Kr and Xe, which the paper did not fit; for He (an s \
+electron) the recommendation would give 6.0 where Table 2's fit is 7.0, and solprop \
+uses the fitted 7.0. For atomic hydrogen alone alpha = 6 fits over a large range of \
+F/F_b (p. 2595, Fig. 1).
+
+FIGURES (not digitised): Fig. 1 H static rates against F/F_b (ADK, TBI, complex \
+scaling); Fig. 2 the TI and TBI errors against F/F_b for Rb, He, Ne, Ar, Ne+, Ar+; Fig. \
+3 H2+ static rates; Fig. 4 He rates per electron against Scrinzi et al.'s correlated \
+results; Fig. 5 H ionisation probability in 25 fs pulses at 800 and 1064 nm (TDSE \
+against TI and TBI; saturation 2.75 and 4.40 x 10^14 W/cm^2 for TI and TBI at 98 %)."""
+
+[[datasets]]
+id = "alpha_H"
+material = "H"
+file = "H/tong_2005__alpha_H.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 2596): alpha of Eq. (2) for atomic hydrogen, fitted to its exact static rates (the bare Coulomb potential, Table 1's row H: Z_c = 1, every a_i = 0). Curated for the comparisons of optmat's rate with the one-electron calculations of hydrogen (TC-827, TC-833)."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+
+[[datasets]]
+id = "ip_H"
+material = "H"
+file = "H/tong_2005__ip_H.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table 2, 'I_p' (au): hydrogen's 1s energy in atomic units with infinite nuclear mass, 0.5."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "alpha_He"
+material = "He"
+file = "He/tong_2005__alpha_He.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 2596): alpha of Eq. (2), fitted to single-active-electron complex-scaling static rates computed in the Eq. (4) potential (potential_He); 'the TBI rates agree with the numerically calculated ionization rates within 50%' (p. 2596, for the recommended choice).  solprop's BSI_TONG_LIN_ALPHA for this gas: 7.0."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+
+[[datasets]]
+id = "ip_He"
+material = "He"
+file = "He/tong_2005__ip_He.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table 2, 'I_p' (au): the ionisation energy the model potential was tuned to ('We further fine tune a_3 to make the ionization potential calculated from the model potential in good agreement with the measured one', p. 2596); the measurement is not cited. Adiabatic and vertical coincide for an atom or atomic ion."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "potential_He"
+material = "He"
+file = "He/tong_2005__potential_He.csv"
+table = "tbl_3240f8c18932"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 2596): Z_c and a_1 ... a_6 of the single-active-electron potential Eq. (4) of the 1s electron, 'obtained by fitting the numerical potential calculated from the self-interaction free density functional theory (Tong and Chu 1997a)' with a_3 fine-tuned to the measured I_p; a_1, a_3, a_5 and Z_c are charges (a_3 per bohr), a_2, a_4, a_6 inverse lengths, in atomic units. Z_c + a_1 + a_5 is the nuclear charge (checked)."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (4), the row label"
+
+[[datasets]]
+id = "alpha_Ne"
+material = "Ne"
+file = "Ne/tong_2005__alpha_Ne.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 2596): alpha of Eq. (2), fitted to single-active-electron complex-scaling static rates computed in the Eq. (4) potential (potential_Ne); 'the TBI rates agree with the numerically calculated ionization rates within 50%' (p. 2596, for the recommended choice).  solprop's BSI_TONG_LIN_ALPHA for this gas: 9.0."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+
+[[datasets]]
+id = "ip_Ne"
+material = "Ne"
+file = "Ne/tong_2005__ip_Ne.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table 2, 'I_p' (au): the ionisation energy the model potential was tuned to ('We further fine tune a_3 to make the ionization potential calculated from the model potential in good agreement with the measured one', p. 2596); the measurement is not cited. Adiabatic and vertical coincide for an atom or atomic ion."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "potential_Ne"
+material = "Ne"
+file = "Ne/tong_2005__potential_Ne.csv"
+table = "tbl_3240f8c18932"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 2596): Z_c and a_1 ... a_6 of the single-active-electron potential Eq. (4) of the 2p electron, 'obtained by fitting the numerical potential calculated from the self-interaction free density functional theory (Tong and Chu 1997a)' with a_3 fine-tuned to the measured I_p; a_1, a_3, a_5 and Z_c are charges (a_3 per bohr), a_2, a_4, a_6 inverse lengths, in atomic units. Z_c + a_1 + a_5 is the nuclear charge (checked)."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (4), the row label"
+
+[[datasets]]
+id = "alpha_Ar"
+material = "Ar"
+file = "Ar/tong_2005__alpha_Ar.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 2596): alpha of Eq. (2), fitted to single-active-electron complex-scaling static rates computed in the Eq. (4) potential (potential_Ar); 'the TBI rates agree with the numerically calculated ionization rates within 50%' (p. 2596, for the recommended choice).  solprop's BSI_TONG_LIN_ALPHA for this gas: 9.0."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+
+[[datasets]]
+id = "ip_Ar"
+material = "Ar"
+file = "Ar/tong_2005__ip_Ar.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table 2, 'I_p' (au): the ionisation energy the model potential was tuned to ('We further fine tune a_3 to make the ionization potential calculated from the model potential in good agreement with the measured one', p. 2596); the measurement is not cited. Adiabatic and vertical coincide for an atom or atomic ion."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "potential_Ar"
+material = "Ar"
+file = "Ar/tong_2005__potential_Ar.csv"
+table = "tbl_3240f8c18932"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 2596): Z_c and a_1 ... a_6 of the single-active-electron potential Eq. (4) of the 3p electron, 'obtained by fitting the numerical potential calculated from the self-interaction free density functional theory (Tong and Chu 1997a)' with a_3 fine-tuned to the measured I_p; a_1, a_3, a_5 and Z_c are charges (a_3 per bohr), a_2, a_4, a_6 inverse lengths, in atomic units. Z_c + a_1 + a_5 is the nuclear charge (checked)."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (4), the row label"
+
+[[datasets]]
+id = "alpha_Ne+"
+material = "Ne+"
+file = "Ne+/tong_2005__alpha_Ne+.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 2596): alpha of Eq. (2), fitted to single-active-electron complex-scaling static rates computed in the Eq. (4) potential (potential_Ne+); 'the TBI rates agree with the numerically calculated ionization rates within 50%' (p. 2596, for the recommended choice). A cation: the rate of Ne+ -> Ne2+ (Z_c = 2)."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+
+[[datasets]]
+id = "ip_Ne+"
+material = "Ne+"
+file = "Ne+/tong_2005__ip_Ne+.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table 2, 'I_p' (au): the ionisation energy the model potential was tuned to ('We further fine tune a_3 to make the ionization potential calculated from the model potential in good agreement with the measured one', p. 2596); the measurement is not cited. The ion's own ionisation energy (the atom's second ionisation energy); the final state is not stated. Adiabatic and vertical coincide for an atom or atomic ion."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "potential_Ne+"
+material = "Ne+"
+file = "Ne+/tong_2005__potential_Ne+.csv"
+table = "tbl_3240f8c18932"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 2596): Z_c and a_1 ... a_6 of the single-active-electron potential Eq. (4) of the 2p electron, 'obtained by fitting the numerical potential calculated from the self-interaction free density functional theory (Tong and Chu 1997a)' with a_3 fine-tuned to the measured I_p; a_1, a_3, a_5 and Z_c are charges (a_3 per bohr), a_2, a_4, a_6 inverse lengths, in atomic units. Z_c + a_1 + a_5 is the nuclear charge (checked)."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (4), the row label"
+
+[[datasets]]
+id = "alpha_Ar+"
+material = "Ar+"
+file = "Ar+/tong_2005__alpha_Ar+.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Table 2 (p. 2596): alpha of Eq. (2), fitted to single-active-electron complex-scaling static rates computed in the Eq. (4) potential (potential_Ar+); 'the TBI rates agree with the numerically calculated ionization rates within 50%' (p. 2596, for the recommended choice). A cation: the rate of Ar+ -> Ar2+ (Z_c = 2)."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+
+[[datasets]]
+id = "ip_Ar+"
+material = "Ar+"
+file = "Ar+/tong_2005__ip_Ar+.csv"
+table = "tbl_87ba350a98ce"
+quantity = "ionization_energy"
+unit = "hartree"
+abscissa = "none"
+use = "check"
+notes = "Table 2, 'I_p' (au): the ionisation energy the model potential was tuned to ('We further fine tune a_3 to make the ionization potential calculated from the model potential in good agreement with the measured one', p. 2596); the measurement is not cited. The ion's own ionisation energy (the atom's second ionisation energy); the final state is not stated. Adiabatic and vertical coincide for an atom or atomic ion."
+[datasets.parameters]
+kind = "adiabatic"
+
+[[datasets]]
+id = "potential_Ar+"
+material = "Ar+"
+file = "Ar+/tong_2005__potential_Ar+.csv"
+table = "tbl_3240f8c18932"
+quantity = "ionization_model_parameter"
+unit = "au"
+abscissa = "label"
+use = "check"
+notes = "Table 1 (p. 2596): Z_c and a_1 ... a_6 of the single-active-electron potential Eq. (4) of the 3p electron, 'obtained by fitting the numerical potential calculated from the self-interaction free density functional theory (Tong and Chu 1997a)' with a_3 fine-tuned to the measured I_p; a_1, a_3, a_5 and Z_c are charges (a_3 per bohr), a_2, a_4, a_6 inverse lengths, in atomic units. Z_c + a_1 + a_5 is the nuclear charge (checked)."
+[datasets.parameters]
+model = "tong_lin_2005_potential"
+parameter = "Z_c, a_1 ... a_6 of Eq. (4), the row label"
+
+[[datasets]]
+id = "alpha_H2+"
+material = "H2+"
+table = "text"
+points = [["alpha", "", "6"]]
+quantity = "ionization_model_parameter"
+unit = "1"
+abscissa = "none"
+use = "check"
+notes = "Text, pp. 2596-2597, Fig. 3: the static rate of the H2+ ground state at the equilibrium distance, field parallel to the axis, computed exactly, 'shown to be well reproduced by the TBI model in the high field region with alpha = 6', the TI rate being MO-ADK (tong_2002)."
+[datasets.parameters]
+model = "tong_lin_2005"
+parameter = "alpha"
+

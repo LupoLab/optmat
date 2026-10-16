@@ -1,0 +1,91 @@
+citation = "M. Hartmann, L. Hutcheson, G. D. Borisova, P. Birk, S. Hu, A. C. Brown, H. W. van der Hart, C. Ott and T. Pfeifer, \"Core-resonance line-shape analysis of atoms undergoing strong-field ionization\", J. Phys. B 55, 245601 (2022)"
+doi = "10.1088/1361-6455/ac9872"
+library = "Hartmann_2022_CoreResonanceLine"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Attosecond transient absorption of xenon ionised by few-cycle 760 nm pulses \
+(experiment, Sec. 2), and R-matrix with time dependence (RMT) calculations (Sec. 2, p. \
+2): 'a non-relativistic description of the Xe atom [33], comprising Hartree-Fock \
+orbitals up to the 5p, and all 4d^-1 epsilon l, 5s^-1 epsilon l and 5p^-1 epsilon l \
+continuum channels up to a maximum total angular momentum of 40. The NIR pulse has a \
+central wavelength of 760 nm with a Gaussian envelope (FWHM 4.5 fs). The attosecond \
+pulse has a Gaussian envelope (FWHM 250 as) and a central photon energy of 61 eV.' The \
+RMT code 'does not have capability for double ionisation, and so the simulated results \
+become less reliable at higher NIR intensities' (p. 4). The authors' archive \
+(Zenodo 10.5281/zenodo.6683951, cited as their ref. [36]) holds the RMT input \
+(archer_files/input.conf: the ground state's energy set to -0.444 au, Adjust_GS_Energy; \
+the field read from a file; Final_T 3000 au; ml_max 0; 512 inner and 1920 outer \
+processes; DeltaR 0.08; absorb_desired), the fields RMT wrote, the dipoles, and the \
+ground-state population at the end of each run."""
+notes = """Journal pp. 245601-1 to -9 = PDF pages 3 to 11 (the PDF has two cover pages: \
+journal page n is PDF page n + 2). Identity checked on PDF p. 3 (received 27 June 2022, \
+revised 22 September 2022, accepted 7 October 2022, published 18 November 2022); open \
+access, CC BY 4.0. Curated 2026-10-12 (TC-1059).
+
+TAKEN (tools/extract/hartmann_2022.py, from the authors' archive attached to the paper \
+in the library, ATAS_xenon-v1.1.zip, sha256 baac753d...): RMT's population of xenon's \
+ground state at the end of the run, data/rmt/gs_pop.csv, at seven NIR intensities, 1.1 \
+to 2.5e14 W/cm2. The paper draws it in Fig. 5(a) ('Xe_sim ... the neutral ground-state \
+population extracted from the simulations', p. 6) and prints no number. The archive's \
+archer_files/get_pop_GS.sh takes the last line of pop_GS in the run with the XUV 5.75 fs \
+from the NIR; its README: 'a single time delay is chosen because the population agrees \
+to ~6s.f. across the time delays'.
+
+THE PULSE, from the fields RMT wrote (data/rmt/field<I>.csv, every column, every \
+intensity; the script fits them and fails otherwise): E(t) = E0 exp(-((t - t0)/w)^2) \
+cos(omega (t - t0)), omega = 0.06 au (759.4 nm; the paper's '760 nm'), w = 186 au, a \
+cosine carrier (CEP 0), t0 = 900 au plus the delay, E0 = 0.05336 sqrt(I / 1e14 W/cm2) \
+au (the convention of archer_files/gaussian.f90), all to 1e-6; away from the XUV the \
+fit leaves at most 2e-10 au. The paper's 'FWHM 4.5 fs' is w = 186 au = 4.499 fs, the \
+1/e half-width of the field; the intensity's full width at half maximum is w sqrt(2 ln \
+2) = 219.0 au = 5.297 fs (2.09 cycles). The archived gaussian.f90 is not the generator \
+of these fields: it sets omega = 0.06798 au (670 nm) and w = 155 au. The experiment's \
+4.5 fs is a measured FWHM (d-scan, p. 2), a different pulse. With E0 = sqrt(I / \
+3.50945e16 W/cm2) au the labels would be 0.076 % lower in intensity (0.05336 against \
+0.053380 au at 1e14). The XUV (2.05 au, w = 7 au, 0.2e14 W/cm2) is in every run; the \
+README's agreement across delays shows it does not move the ground-state population.
+
+THE MEASURE: the population of the field-free ground state of the neutral atom at t = \
+2999.81 au, the run's last line; the NIR peaks at 900 au plus or minus the delay of \
+5.75 fs (237.7 au), so 1862 or 2338 au (45 or 57 fs) earlier: which side is not settled \
+by the archive (builddirs.sh and the field files' column labels disagree on the sign), \
+and is immaterial by the README's statement. Its complement is depletion: ionisation \
+and excitation together. The paper's Fig. 5(a) compares it with the measured abundance \
+of neutral xenon.
+
+NOT TAKEN: the experimental abundances of Xe, Xe+ and Xe2+ (Fig. 5(a); \
+data/experimental/gs_pop.csv), estimated from line strengths and cross sections, the \
+intensities 'inferred from average beam power with an uncertainty of up to 11%' (p. 4), \
+and the measured 4.5 fs pulse; the line-shape parameters and dipoles (no quantity).
+
+USE: a many-electron calculation of xenon's depletion in a stated pulse, for a \
+one-electron calculation in the same field and with the same measure (part N of the \
+tRecX runs): optmat's xenon N_eff otherwise rests on one measurement (Wallace et al.)."""
+
+[[datasets]]
+id = "rmt_ground_survival_Xe"
+material = "Xe"
+file = "Xe/hartmann_2022__rmt_ground_survival_Xe.csv"
+table = "data/ATAS_xenon-v1.1.zip:data/rmt/gs_pop.csv"
+quantity = "ground_state_survival"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "RMT (all 4d^-1, 5s^-1 and 5p^-1 channels, L_max 40, no double ionisation): the population of xenon's ground state at the end of the run, t = 2999.81 au, against the NIR's peak intensity, 1.1 to 2.5e14 W/cm2; 0.812 to 0.208. Depletion counts excitation as well as ionisation. The authors state no uncertainty or convergence of it; the XUV of the pump-probe runs leaves it unchanged to about six figures (the archive's README). Pulse and measure in the record's notes."
+[datasets.parameters]
+wavelength_nm = 759.4
+pulse_fs = 5.297
+pulse_fs_definition = "the full width at half maximum of the intensity, w sqrt(2 ln 2) with the field's 1/e half-width w = 186 au (the paper's 'FWHM 4.5 fs' is w), from the fields RMT wrote"
+pulse_cycles = 2.09
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "electric field"
+cep = 0
+cep_definition = "E(t) = E0 exp(-((t - t0)/w)^2) cos(omega (t - t0)), omega = 0.06 au, w = 186 au: a cosine carrier, the field's maximum at the envelope's peak"
+intensity_definition = "I = (E0 / 0.05336 au)^2 x 1e14 W/cm2, the archive's convention; 0.076 % above E0 = sqrt(I / 3.50945e16 W/cm2)"
+read_at = "t = 2999.81 au, the end of the run: 1862 or 2338 au (45 or 57 fs) after the NIR's peak"
+measure = "the population of the neutral atom's field-free ground state at the end of the run"
+method = "RMT, non-relativistic, Hartree-Fock orbitals to 5p, 4d^-1, 5s^-1 and 5p^-1 continuum channels to total L = 40, M = 0; the ground state's energy set to -0.444 au relative to the ion (12.08 eV); no double ionisation; an attosecond XUV pulse (61 eV, 0.2e14 W/cm2) also present"
+electrons = "all: the ion's 4d, 5s and 5p hole states (Hartree-Fock orbitals) with one continuum electron, antisymmetrised (R-matrix)"
+model_ionization_energy_au = 0.444

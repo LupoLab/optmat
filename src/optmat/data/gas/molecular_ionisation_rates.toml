@@ -1,0 +1,232 @@
+# The strong-field ionisation rates of the molecules (optmat.gas.molecular_ionisation_rates):
+# optmat's rate, `default` (TC-677 to TC-680, TC-683), and the forms of the literature
+# (TC-673).
+#
+# The forms are the rates that propagation codes compute for molecules today, each as
+# its source gives it, for ONE electron, so that results computed with them can be
+# reproduced and the forms compared. None of them is validated as the rate of a
+# molecule.
+#
+# Keys of a model:
+#   description   what the model is
+#   form          moadk: the molecular tunnelling rate of Tong, Zhao & Lin 2002,
+#                   averaged over the orientations of the molecule
+#                 ppt: the rate of Perelomov, Popov & Terent'ev for an s electron with
+#                   an effective charge fitted to measured yields
+#                 adk: the tunnelling rate of a hydrogen-like s electron, built on the
+#                   ionisation energy alone
+#   structure     (moadk) the tabulation of the structure coefficients, a name of
+#                 ionisation.toml's structure table
+#   coulomb       (ppt) the Coulomb factor: static | ilkov | popruzhenko
+#   gases         the molecules the model is given for
+#   reasons       why, per choice
+#   status        (optional, a model or a molecule of `default`) validated,
+#                 provisional, untested or comparison, with status_reason; `default`
+#                 is validated and the other models comparison unless it says
+#                 otherwise
+
+[models.moadk_zhao_2010]
+description = "The molecular tunnelling rate of Tong, Zhao & Lin (2002, eqs. 8-9), averaged over the orientations of the molecule, with the structure coefficients of Zhao, Jin, Le, Jiang & Lin (2010, Table III). Static: no dependence on the frequency, no correction at finite field."
+form = "moadk"
+structure = "zhao_2010"
+gases = ["H2", "D2", "N2", "O2", "CO2", "CO"]
+[models.moadk_zhao_2010.reasons]
+structure = "Zhao et al.'s coefficients are those ionisation.toml recommends, and solprop's default (TC-444, TC-673)."
+orientation = "The average of the rate over the orientations of the molecule: by the orthogonality of the rotation matrices the cross terms between partial waves vanish, <B^2(m')> = sum_l C_l^2 Q(l, m')^2 / (2l + 1), whatever the orbital's own m (TC-673)."
+ionization_energy = "The adiabatic ionisation energy of ionisation.toml, as solprop uses; the tabulations of the coefficients were made with vertical energies (Zhao et al. 2010, Table II), which differ by 0.2 eV for O2 (TC-673)."
+
+[models.moadk_tong_2002]
+description = "The same with the structure coefficients of Tong, Zhao & Lin (2002, Table I)."
+form = "moadk"
+structure = "tong_2002"
+gases = ["H2", "D2", "N2", "O2", "CO"]
+[models.moadk_tong_2002.reasons]
+structure = "The original tabulation, from multiple-scattering wave functions, kept to reproduce rates computed with it (TC-673)."
+
+[models.moadk_zhao_2017]
+description = "The same with the structure coefficients of Zhao, Li, Wang, Li & Zhou (2017, Table 2), from the same group's later potential (LB-alpha); the only tabulation with N2O."
+form = "moadk"
+structure = "zhao_2017"
+gases = ["H2", "D2", "N2", "O2", "CO2", "N2O", "CO"]
+[models.moadk_zhao_2017.reasons]
+structure = "A second determination beside Zhao et al.'s of 2010, not a replacement: it changes the rate of N2 by +60 % and of O2 by +52 % without a new comparison with a calculation or a measurement (TC-675)."
+
+[models.ppt_talebpour]
+description = "The rate of Perelomov, Popov & Terent'ev with Perelomov & Popov's static Coulomb factor, for an electron with l = m = 0 and the effective charge of Talebpour et al. (1998 for D2; 1999 for N2 and O2): the rate within which the charges were determined (Talebpour, Yang & Chin 1999, Appendix A; Talebpour, Larochelle & Chin 1998, eq. 2)."
+form = "ppt"
+coulomb = "static"
+gases = ["D2", "N2", "O2"]
+[models.ppt_talebpour.reasons]
+coulomb = "Talebpour et al. print the rate of Larochelle et al. (1998, eq. 10), with (2F_0/F)^(2n* - |m| - 3/2) (1 + gamma^2)^(|m|/2 + 3/4): the static Coulomb factor (talebpour_1999, talebpour_1998; TC-673)."
+charge = "N2 0.9 and O2 0.53 were fitted to measured ion yields, whose intensities were calibrated on the same rate for an atom; D2's 0.72 was computed from a model of the barrier. Constants of this rate, not properties of the molecules. O2's was fitted with an ionisation energy of 12.55 eV, not the 12.07 eV used here (TC-542)."
+
+[models.ppt_talebpour_ilkov]
+description = "The same charges in the rate with Ilkov et al.'s Coulomb factor, (1 + gamma^2)^(-n*) times the static one: what solprop's PPT computes for N2 and O2. Not the rate within which the charges were fitted."
+form = "ppt"
+coulomb = "ilkov"
+gases = ["N2", "O2"]
+[models.ppt_talebpour_ilkov.reasons]
+coulomb = "solprop's PPT is Ilkov et al.'s form (1992, eq. 8, its prefactor corrected; TC-656), which is lower than the rate the charges were fitted within by (1 + gamma^2)^(n*): 1.8 at a Keldysh parameter of 1 for N2. Kept to reproduce solprop (TC-673)."
+
+[models.adk_hydrogenic]
+description = "The tunnelling rate of Ammosov, Delone & Krainov for a hydrogen-like s electron, built on the ionisation energy alone: Z = 1, l* = 0, no angular factor. What solprop's ADK computes for a molecule without tabulated quantum numbers."
+form = "adk"
+gases = ["H2", "D2", "N2", "O2", "CO2", "CH4", "SF6", "N2O", "CO"]
+[models.adk_hydrogenic.reasons]
+form = "The one rate that can be written for a molecule of which nothing but the ionisation energy is known: it knows nothing of the orbital (TC-673)."
+
+# optmat's rate of molecules (TC-677 to TC-680). The form `molecular`: the rate of the
+# noble gases (ionisation_rates.toml) with the orientation-averaged structure factors
+# of the molecular orbital in place of an atom's coefficient.
+#
+# Keys of a molecule in the model:
+#   electrons             N_eff: the number of electrons in the ionising shell
+#   tong_lin_alpha        the constant of the correction at finite field
+#   correction_range      the largest field, in barrier-suppression fields, at which
+#                         it is used; above it the rate is held at its value there
+#   ionization_energy     the energy of the rate (a dataset, source/dataset#row)
+#   vibrational_constant  c of V = exp(c / F^2), atomic units; omitted for fixed nuclei
+#   structure             the tabulation of coefficients, where not the model's
+#   uncertainty_factor    the factor within which the rate is expected to be right
+#   reasons               why, per choice
+
+[models.default]
+description = "optmat's rate of molecules: the rate of Perelomov, Popov & Terent'ev with the static Coulomb factor and the orientation-averaged structure factors of Tong, Zhao & Lin, Tong & Lin's form of the correction at finite field fitted to all-electron static rates, the number of electrons in the ionising shell, the vertical ionisation energy, and the vibrational average where a reference gives it."
+form = "molecular"
+structure = "zhao_2010"
+coulomb = "static"
+static_correction = "tong-lin"
+averaging = "consistent"
+channel_sum = "integral"
+[models.default.reasons]
+orientation = "The rate averaged over the orientations of the molecule. For N2 the ionised fraction of a pulse it gives is within 2 % of the average of the ionised fractions over orientations at any depletion (800 nm, 10 and 40 fs, the all-electron rates of majety_2015); the alignment the pulse itself induces changes the rate by less than 7 % for 5 to 50 fs (TC-676, TC-677)."
+coulomb = "Perelomov & Popov's static factor, as for the noble gases, whose one-electron and helium calculations it reproduces from gamma = 0.2 to 2.8 (TC-653, TC-670). No calculation of a molecule tests the dependence on the frequency (TC-680)."
+structure = "Zhao et al. 2010, Table III: with them the electron count that the all-electron static rates of H2 and N2 ask for is 2.1 and 1.8 when it is left free, the count of the weak-field limit; with Zhao et al.'s coefficients of 2017 it is 2.3 and 1.1, with Tong et al.'s 1.1 and 3.2 (TC-678)."
+electrons = "The weak-field limit of the many-electron theory: the number of electrons in the ionising shell, 2 per doubly occupied orbital and each orbital of a degenerate shell counted (Tolstikhin, Madsen & Morishita 2014, section II G; TC-658, TC-678)."
+static_correction = "Tong & Lin's form, exp(-alpha F / (I_p kappa^3)), which tends to 1 at low field; alpha fitted, with the electron count fixed, to the average over orientations of the all-electron static rates of majety_2015 at fixed nuclei (TC-678)."
+ionization_energy = "The vertical energy, the energy at the neutral's geometry that a tunnelling rate at fixed nuclei sees; the adiabatic energy is kept as adiabatic_ionization_energy for the energy an ionisation costs (TC-676, TC-679)."
+
+[models.default.gases.H2]
+electrons = 2.0
+tong_lin_alpha = 6.0
+correction_range = 1.61
+ionization_energy = "awasthi_2008/ip_ci"
+vibrational_constant = 0.00165
+uncertainty_factor = 1.5
+[models.default.gases.H2.reasons]
+correction_range = "The largest field of the all-electron rates alpha was fitted to or checked against: jagau_2018's full CI at 0.14 au, 1.61 times the barrier-suppression field (0.087 au), within 4 % (majety_2015's fit runs to 0.12 au). Within it the rate rises; it would turn over at 3.2 times. Above it the rate is held (TC-828)."
+tong_lin_alpha = "The least-squares alpha with 2 electrons against the average of majety_2015's haCC(5) rates along and across the axis (Tables 2, 3; fixed nuclei at 1.4 bohr), 0.06 to 0.12 au: 6.02, residuals within 3.3 %. Tong & Lin's own value for H2+ is 6 (TC-678)."
+ionization_energy = "16.06 eV, the vertical energy at 1.4 bohr of Awasthi et al.'s configuration-interaction calculation (awasthi_2008 Table I): the geometry of the references (TC-679)."
+vibrational_constant = "The average of the rate over the vibrational ground state over the rate at 1.4 bohr, saenz_2002 Table I row (a), v = 0, over Saenz's fixed-nuclei rates as majety_2015 reprints them, 0.06 to 0.12 au: 1.56, 1.32, 1.16, 1.16; ln V = c/F^2, the leading term of the average over a Gaussian ground state, with c = 0.00165 fits them within 2.2 % rms. Below 0.06 au it is an extrapolation (TC-679)."
+uncertainty_factor = "Static: within 3 % of the all-electron rates at fixed nuclei and 3 % of the vibrational factor from 0.06 to 0.12 au. The dependence on the frequency rests on the atoms' (TC-680)."
+
+[models.default.gases.D2]
+electrons = 2.0
+tong_lin_alpha = 6.0
+correction_range = 1.61
+ionization_energy = "awasthi_2008/ip_ci"
+vibrational_constant = 0.00165
+uncertainty_factor = 2.0
+[models.default.gases.D2.reasons]
+correction_range = "H2's, with its alpha (TC-828)."
+ionization_energy = "H2's vertical energy at 1.4 bohr: at fixed nuclei the electronic energies do not depend on the isotope (TC-679)."
+tong_lin_alpha = "H2's: the electronic problem at fixed nuclei is the same (TC-678)."
+vibrational_constant = "H2's, an assumption: no vibrationally averaged rate of D2 is published. In the harmonic estimate c scales as the square of the ground state's width, 1/sqrt(2) of H2's for D2, which would lower the rate by 8 % at 0.10 au and 25 % at 0.06 au (TC-679)."
+
+[models.default.gases.N2]
+electrons = 2.0
+tong_lin_alpha = 14.0
+correction_range = 1.71
+ionization_energy = "majety_2015/table4_svensson_1991_N2#X2Sigma_g+"
+uncertainty_factor = 1.5
+[models.default.gases.N2.reasons]
+correction_range = "The largest field of the all-electron rates alpha was fitted to: majety_2015's 0.14 au, 1.71 times the barrier-suppression field (0.082 au), where the rate is 0.81 of them. Within it the rate rises; it would turn over at 2.2 times. Above it the rate is held (TC-828)."
+tong_lin_alpha = "The least-squares alpha with 2 electrons against the average over the seven angles of majety_2015's haCC(5) rates (Table A1; fixed nuclei), 0.03 to 0.14 au (to 1.7 times the barrier-suppression field): 14.02, residuals -12 % to +21 %, rms 10 % (TC-678)."
+ionization_energy = "15.58 eV, Svensson et al.'s vertical energy as majety_2015 reprints it; within 0.01 eV of the adiabatic energy (TC-679)."
+uncertainty_factor = "Static: within 12 % of the all-electron rates to 0.12 au and 21 % at 0.14 au. The vibrational factor is taken as 1, the ion's bond length being within 2 % of the neutral's. The dependence on the frequency rests on the atoms' (TC-680)."
+
+[models.default.gases.O2]
+electrons = 2.0
+tong_lin_alpha = 6.1
+correction_range = 1.96
+ionization_energy = "mahla_2025/expt_baltzer_O2#X 2Pi_g"
+uncertainty_factor = 2.0
+[models.default.gases.O2.reasons]
+correction_range = "The largest field of the all-electron rates alpha was fitted to: jagau_2018's 0.10 au, 1.96 times the barrier-suppression field of the vertical energy (0.051 au), within 10 %. Within it the rate rises; it would turn over at 3.4 times. Above it the rate is held (TC-828)."
+electrons = "The pi_g shell holds 2 electrons (the ground state is a triplet)."
+tong_lin_alpha = "The least-squares alpha with 2 electrons against the average over the nine angles of jagau_2018's CCSD rates (Tables S9, S10; fixed nuclei) at F = 0.06 and 0.10 au (1.2 and 2.0 times the barrier-suppression field): 6.10, both within 10 %. N2's 14 put the rate 3 to 8 times below them. Beyond 0.10 au the reference keeps rising as a tunnelling rate would, the model does not: its barrier suppression is at about 0.12 au, not the atomic 0.05 (Jagau, p. 7; TC-698)."
+ionization_energy = "12.307 eV, the maximum of Baltzer et al.'s X 2Pi_g band as mahla_2025 reprints it; the choice among vertical energies (12.31 to 12.55 eV) is a factor of 1.3 to 2 on the rate at 1e14 W/cm2 (TC-679)."
+uncertainty_factor = "Static: within 10 % of jagau_2018's CCSD average at 0.06 and 0.10 au, a reference of one method (CCSD without triples, which raise CO's rate by 20 %; Jagau p. 6); the vertical energy is uncertain by 0.25 eV (TC-679); the dependence on the frequency rests on the atoms'. Two measurements put O2 higher against xenon than the model did with alpha 14 (TC-683, TC-698)."
+
+[models.default.gases.CO2]
+electrons = 4.0
+tong_lin_alpha = 14.0
+correction_range = 1.71
+ionization_energy = "potts_1974/hei_CO2#1pi_g"
+uncertainty_factor = 3.0
+[models.default.gases.CO2.reasons]
+correction_range = "N2's, with its alpha: the range that alpha was fitted over (TC-828)."
+electrons = "The doubly degenerate 1pi_g shell holds 4 electrons."
+tong_lin_alpha = "N2's, an assumption: no all-electron static rate of CO2 is published (TC-678)."
+ionization_energy = "13.79 eV, the band maximum (Turner et al. 1970 as potts_1974 reprints it); 0.01 eV above the adiabatic energy."
+uncertainty_factor = "No calculated reference; alpha by analogy; Zhao et al.'s coefficients of 2010 and 2017 differ by 22 % in the rate (TC-675, TC-680)."
+
+[models.default.gases.N2O]
+electrons = 4.0
+tong_lin_alpha = 14.0
+correction_range = 1.71
+ionization_energy = "potts_1974/hei_N2O#2pi"
+structure = "zhao_2017"
+uncertainty_factor = 3.0
+[models.default.gases.N2O.reasons]
+correction_range = "N2's, with its alpha: the range that alpha was fitted over (TC-828)."
+electrons = "The doubly degenerate 2pi shell holds 4 electrons."
+tong_lin_alpha = "N2's, an assumption: no all-electron static rate of N2O is published (TC-678)."
+structure = "Zhao et al. 2017, the one tabulation; with it the count of N2 would be 1.1, not 2, so the rate of N2O may be high by up to 1.6 (TC-675, TC-678)."
+ionization_energy = "12.89 eV, the band maximum (Turner et al. 1970 as potts_1974 reprints it); 0.004 eV above the adiabatic energy."
+uncertainty_factor = "No calculated reference; alpha by analogy; one tabulation of coefficients, from the potential that puts N2's 1.6 above the all-electron rates (TC-675, TC-680)."
+
+[models.default.gases.CH4]
+electrons = 6.0
+tong_lin_alpha = 18.0
+correction_range = 1.72
+ionization_energy = "heilbronner_1977/vertical_CH4#1t2_2"
+structure = "zhao_2011"
+uncertainty_factor = 2.0
+[models.default.gases.CH4.reasons]
+correction_range = "The largest field of the all-electron rates alpha was fitted to: jagau_2018's 0.12 au, 1.72 times the barrier-suppression field of the vertical energy (0.070 au), 0.74 of them there. Within it the rate rises; it would turn over at 2.0 times. Above it the rate is held (TC-828)."
+electrons = "The triply degenerate 1t2 shell holds 6 electrons; the three orbitals are rotations of one another and have the same average over orientations."
+tong_lin_alpha = "The least-squares alpha with 6 electrons against jagau_2018's CCSD rates in orientations A, B and C (Table S8; fixed nuclei), averaged with Lebedev's weights 0.3, 0.3, 0.4, at F = 0.06 to 0.12 au: 17.99, within 27 % (1.27, 1.26, 1.04, 0.74). F = 0.04 au is the method's low-field limit and excluded (the record) (TC-698)."
+structure = "Zhao et al. 2011, the one tabulation; the sign convention of its paired coefficients is not stated and does not enter the average over orientations (TC-681)."
+ionization_energy = "14.4 eV, the middle maximum of the Jahn-Teller-split 1t2 band (heilbronner_1977: 13.6, 14.4, 15.0 eV), 1.8 eV above the adiabatic threshold: the vertical energy of the degenerate state at the neutral's geometry, which Jagau's EOM-IP-CCSD puts at 14.43 eV (p. 9). With the first maximum, 13.6 eV, no alpha reproduces the dependence of jagau_2018's rates on the field (2.4 falling to 0.5; TC-698)."
+uncertainty_factor = "Static: within 27 % of jagau_2018's CCSD average from 0.06 to 0.12 au, a reference of one method; one tabulation of coefficients, fitted with an energy (12.60 eV) 1.8 eV below the rate's (TC-681); the dependence on the frequency rests on the atoms' (TC-698)."
+
+[models.default.gases.SF6]
+status = "untested"
+status_reason = "No calculated or measured rate of SF6 to test it against (TC-678, TC-684)."
+electrons = 6.0
+tong_lin_alpha = 14.0
+correction_range = 1.71
+ionization_energy = "potts_1970/vertical_SF6#3t1u"
+structure = "zhao_2011"
+uncertainty_factor = 10.0
+[models.default.gases.SF6.reasons]
+correction_range = "N2's, with its alpha: the range that alpha was fitted over (TC-828)."
+electrons = "The triply degenerate 1t1g shell holds 6 electrons; the three orbitals are rotations of one another and have the same average over orientations."
+tong_lin_alpha = "N2's, an assumption: no all-electron static rate of SF6 is published (TC-678)."
+structure = "Zhao et al. 2011, the one tabulation, read on the page (TC-684); the sign convention of its paired coefficients does not enter the average over orientations."
+ionization_energy = "15.69 eV, the first band maximum (potts_1970, who assign it to 3t1u; Zhao et al. label the HOMO 1t1g and print the same 15.69 eV)."
+uncertainty_factor = "No calculated or measured reference; alpha by analogy; one tabulation of coefficients, from Hartree-Fock orbitals whose asymptotic tails the authors call 'not accurate' (p. 6). The l = 4 wave of the fluorine lone pairs, 3 bohr from the centre, gives a structure factor of 75 per orbital at m' = 0 (N2: 4.2; CH4: 5.7), and with 6 electrons the rate is 80 times N2's at 2e14 W/cm2 for nearly the same ionisation energy, 100 to 2300 times the hydrogen-like form that solprop uses: a prediction of the coefficients that nothing tests (TC-684)."
+
+[models.default.gases.CO]
+electrons = 2.0
+tong_lin_alpha = 14.0
+correction_range = 1.71
+ionization_energy = "potts_1974/hei_CO#3sigma"
+uncertainty_factor = 1.5
+[models.default.gases.CO.reasons]
+correction_range = "N2's, with its alpha: the range that alpha was fitted over (TC-828). majety_2015's rates of CO, which test that alpha, run to 0.09 au, 1.36 times."
+electrons = "The 5 sigma HOMO holds 2 electrons."
+tong_lin_alpha = "N2's, not fitted: CO is isoelectronic with N2, and its all-electron static rates (majety_2015 Table A2, 13 angles) test the transfer of N2's alpha to another molecule (TC-683)."
+ionization_energy = "14.01 eV, the 3sigma band maximum (Turner et al. 1970 as potts_1974 reprints it), Svensson et al.'s value too."
+uncertainty_factor = "Static: 1.26 to 1.32 times the average over orientations of the all-electron rates from 0.03 to 0.09 au, with N2's alpha unfitted; 2.25 at 0.025 au, where the reference's anisotropy jumps (TC-683). The vibrational factor is taken as 1, as for N2. The dependence on the frequency rests on the atoms' (TC-680)."

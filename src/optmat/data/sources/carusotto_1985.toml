@@ -1,0 +1,449 @@
+citation = "S. Carusotto, E. Iacopini, E. Polacco, F. Scuri, G. Stefanini and E. Zavattini, \"Measurement of the Kerr constant of He, A, O2, N2, H2 and D2\", Nuovo Cimento D 5, 328 (1985)"
+doi = "10.1007/bf02451253"
+library = "Carusotto_1985_MeasurementKerrConstant"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "measurement"
+technique = """Absolute dc Kerr effect at 514.5 nm (200 mW argon-ion laser) and room \
+temperature, mostly at about 1 atm: a Kerr cell with stainless-steel electrodes 498.8 \
+mm long, 10.33 mm apart, field sinusoidally modulated at 39.0675 Hz; a quarter-wave \
+plate converts the ellipticity to a rotation, a glass Faraday cell modulated at 418.663 \
+Hz acts as carrier, an air Faraday cell calibrates the conversion; heterodyne detection \
+with two phase-sensitive detectors and a Fourier analysis of 500 s records (the \
+ellipsometer of Carusotto et al., J. Opt. Soc. Am. B 1, 635 (1984)). K from Eq. (12) with \
+G1 G2 = 1537 +- 2 and Phi_M = (349.0 +- 3.5) x 10^-6 rad; pressure from a Bourdon gauge \
+(1 %), temperature by a thermocouple (0.2 %) (pp. 329-335)."""
+notes = """Pages are the journal's (328-338; p. = pdf page + 327). The library copy has no \
+validation warnings; Tables I and II agree with their images.
+
+DEFINITION (p. 328): 'In a gas, the Kerr constant K is defined as Delta n = n_par - n_perp \
+= K rho E^2 (Eq. 1), where rho is the gas density', in amagat ('the density is given in \
+amagat, i.e. in moles per molar volume', p. 329), E in statV/cm; unit of K 'StatV^-2 cm^2 \
+amagat^-1' (Table I note). The measured K is the total dc Kerr response (for the \
+molecules the orientation term included). Stored as kerr_constant with the unit \
+cm2/statV2 amagat, as carusotto_1992.
+
+UNCERTAINTY. Table I: 'The error quoted for K is the statistical error obtained by \
+performing several independent measurements of 500 s each'; Table II: 'The errors quoted \
+in this table include the systematic contributions due to the uncertainty in the \
+density, in the electric-field integral and in the value of Phi_M. We have estimated \
+the systematic errors to be 2.5% of the signal' (p. 336). Levels not stated. \
+carusotto_1992 later says of this measurement that it 'showed errors due to the \
+uncertainty in the density of gases, in the electric field integral and in the Faraday \
+modulation'.
+
+UNIT MISPRINT: Table II's header prints 'K x 10^17 (StatV^-1 cm^2 amagat^-1)' (image \
+checked), Table I's note 'StatV^-2 cm^2 amagat^-1', which Eq. (1) requires. The unit is a \
+record field, not a data column, so no erratum can hold it: every dataset is recorded in \
+cm^2 statV^-2 amagat^-1 (FORMAT GAP: no erratum for a unit).
+
+STATES DISAGREE: Table II gives He at 8 atm and the others at 1 atm (Ar 1-2 atm), all at \
+293 K, but Table I's densities are 7.84 and 7.75 amagat for He (8.3-8.4 atm at 293 K; 8 \
+atm would be 7.46 amagat) and 1.05-1.07 amagat for O2 and N2, 1.30 for H2 and D2 (1 atm \
+at 293 K is 0.932 amagat). The per-amagat K does not depend on which is right, and \
+Table I's densities are what K was reduced with. The datasets' states are Table II's.
+
+DISCUSSION (p. 337): 'since all the measurements have been performed at frequencies \
+much smaller than the one of the first gas absorption line, the dispersion effect \
+should be negligible'; agreement with Buckingham's group 'quite good for helium, argon \
+and nitrogen'; hydrogen higher than Buckingham & Orr's, ascribed to 'a wrong value of \
+B_k' in their fit (Eq. 16, K = A_k + B_k rho).
+
+Reproductions elsewhere (re-pointed to this record): carusotto_1992/kerr_*_ref3 (N2 \
+17.3, H2 4.32, D2 4.42); hellwarth_1990 (the kerr_carusotto_* values and ratios); \
+bishop_1989 and shelton_1994 (the He row 'ref 19', 47.3 +- 3 au, a conversion to gamma); \
+bishop_1991/expt_dc_kerr_H2 (820 +- 49 au at 5145 A, a conversion); tammer_1990 Table 2 \
+(transferred to 632.8 nm); hattig_1998 (N2)."""
+
+[[datasets]]
+id = "table1_He"
+material = "He"
+file = "He/carusotto_1985__table1_He.csv"
+table = "tbl_77609c382209"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+columns = { density = "amagat", field = "statV/cm" }
+state = { pressure_atm = 8.0, temperature_k = 293.0 }
+use = "check"
+notes = "Table I (p. 336): the individual measurements of K (Delta n = K rho E^2, rho in amagat) of helium at 514.5 nm and room temperature, 2 runs (7.84 and 7.75 amagat; the density and the applied field E_0 are the extra columns), K x 10^17 in cm^2 statV^-2 amagat^-1 (the table note's unit). 'The error quoted for K is the statistical error obtained by performing several independent measurements of 500 s each' (p. 336). Combined in Table II (table2_He); the state is Table II's (pressure 8 atm, 293 K; the values are per amagat, so it only records the conditions)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table1_Ar"
+material = "Ar"
+file = "Ar/carusotto_1985__table1_Ar.csv"
+table = "tbl_77609c382209"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+columns = { density = "amagat", field = "statV/cm" }
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "check"
+notes = "Table I (p. 336): the individual measurements of K (Delta n = K rho E^2, rho in amagat) of argon at 514.5 nm and room temperature, 3 runs (2.11, 1.07 and 2.11 amagat; the density and the applied field E_0 are the extra columns), K x 10^17 in cm^2 statV^-2 amagat^-1 (the table note's unit). 'The error quoted for K is the statistical error obtained by performing several independent measurements of 500 s each' (p. 336). Combined in Table II (table2_Ar); the state is Table II's (pressure 1 atm, 293 K; the values are per amagat, so it only records the conditions)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table1_O2"
+material = "O2"
+file = "O2/carusotto_1985__table1_O2.csv"
+table = "tbl_77609c382209"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+columns = { density = "amagat", field = "statV/cm" }
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "check"
+notes = "Table I (p. 336): the individual measurements of K (Delta n = K rho E^2, rho in amagat) of oxygen at 514.5 nm and room temperature, 3 runs (1.06 amagat; the density and the applied field E_0 are the extra columns), K x 10^17 in cm^2 statV^-2 amagat^-1 (the table note's unit). 'The error quoted for K is the statistical error obtained by performing several independent measurements of 500 s each' (p. 336). Combined in Table II (table2_O2); the state is Table II's (pressure 1 atm, 293 K; the values are per amagat, so it only records the conditions)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table1_N2"
+material = "N2"
+file = "N2/carusotto_1985__table1_N2.csv"
+table = "tbl_77609c382209"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+columns = { density = "amagat", field = "statV/cm" }
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "check"
+notes = "Table I (p. 336): the individual measurements of K (Delta n = K rho E^2, rho in amagat) of nitrogen at 514.5 nm and room temperature, 3 runs (1.05-1.07 amagat; the density and the applied field E_0 are the extra columns), K x 10^17 in cm^2 statV^-2 amagat^-1 (the table note's unit). 'The error quoted for K is the statistical error obtained by performing several independent measurements of 500 s each' (p. 336). Combined in Table II (table2_N2); the state is Table II's (pressure 1 atm, 293 K; the values are per amagat, so it only records the conditions)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table1_H2"
+material = "H2"
+file = "H2/carusotto_1985__table1_H2.csv"
+table = "tbl_77609c382209"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+columns = { density = "amagat", field = "statV/cm" }
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "check"
+notes = "Table I (p. 336): the individual measurements of K (Delta n = K rho E^2, rho in amagat) of hydrogen at 514.5 nm and room temperature, 2 runs (1.30 amagat; the density and the applied field E_0 are the extra columns), K x 10^17 in cm^2 statV^-2 amagat^-1 (the table note's unit). 'The error quoted for K is the statistical error obtained by performing several independent measurements of 500 s each' (p. 336). Combined in Table II (table2_H2); the state is Table II's (pressure 1 atm, 293 K; the values are per amagat, so it only records the conditions)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table1_D2"
+material = "D2"
+file = "D2/carusotto_1985__table1_D2.csv"
+table = "tbl_77609c382209"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+columns = { density = "amagat", field = "statV/cm" }
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "check"
+notes = "Table I (p. 336): the individual measurements of K (Delta n = K rho E^2, rho in amagat) of deuterium at 514.5 nm and room temperature, 2 runs (1.30 amagat; the density and the applied field E_0 are the extra columns), K x 10^17 in cm^2 statV^-2 amagat^-1 (the table note's unit). 'The error quoted for K is the statistical error obtained by performing several independent measurements of 500 s each' (p. 336). Combined in Table II (table2_D2); the state is Table II's (pressure 1 atm, 293 K; the values are per amagat, so it only records the conditions)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_He"
+material = "He"
+file = "He/carusotto_1985__table2_He.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 8.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table II (p. 337), present work: the averaged dc Kerr constant K of helium, 0.134 +- 0.009 x 10^-17 cm^2 statV^-2 amagat^-1, at 514.5 nm and 293 K (Delta n = K rho E^2, rho in amagat). 'The errors quoted in this table include the systematic contributions due to the uncertainty in the density, in the electric-field integral and in the value of Phi_M. We have estimated the systematic errors to be 2.5% of the signal' (p. 336); level not stated. The total Kerr constant (for a molecule the orientation term included). The header prints 'StatV^-1 cm^2 amagat^-1', a misprint for StatV^-2 (Table I's note). Table II prints 8 atm at 293 K, i.e. about 7.5 amagat, where Table I gives 7.84 and 7.75 amagat (8.3-8.4 atm at 293 K): the two tables disagree on the state (per-amagat K is not affected)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_Ar"
+material = "Ar"
+file = "Ar/carusotto_1985__table2_Ar.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table II (p. 337), present work: the averaged dc Kerr constant K of argon, 3.42 +- 0.10 x 10^-17 cm^2 statV^-2 amagat^-1, at 514.5 nm and 293 K (Delta n = K rho E^2, rho in amagat). 'The errors quoted in this table include the systematic contributions due to the uncertainty in the density, in the electric-field integral and in the value of Phi_M. We have estimated the systematic errors to be 2.5% of the signal' (p. 336); level not stated. The total Kerr constant (for a molecule the orientation term included). The header prints 'StatV^-1 cm^2 amagat^-1', a misprint for StatV^-2 (Table I's note). Table II prints the pressure as '1 ÷ 2' atm (Table I: 1.07-2.11 amagat); the state records 1 atm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_O2"
+material = "O2"
+file = "O2/carusotto_1985__table2_O2.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table II (p. 337), present work: the averaged dc Kerr constant K of oxygen, 37.7 +- 0.9 x 10^-17 cm^2 statV^-2 amagat^-1, at 514.5 nm and 293 K (Delta n = K rho E^2, rho in amagat). 'The errors quoted in this table include the systematic contributions due to the uncertainty in the density, in the electric-field integral and in the value of Phi_M. We have estimated the systematic errors to be 2.5% of the signal' (p. 336); level not stated. The total Kerr constant (for a molecule the orientation term included). The header prints 'StatV^-1 cm^2 amagat^-1', a misprint for StatV^-2 (Table I's note). Table II's '1 atm' at 293 K is 0.93 amagat; Table I gives 1.05-1.07 (O2, N2) and 1.30 amagat (H2, D2), i.e. 1.13-1.40 atm at 293 K: the tables disagree on the state (per-amagat K is not affected)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_N2"
+material = "N2"
+file = "N2/carusotto_1985__table2_N2.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table II (p. 337), present work: the averaged dc Kerr constant K of nitrogen, 17.3 +- 0.4 x 10^-17 cm^2 statV^-2 amagat^-1, at 514.5 nm and 293 K (Delta n = K rho E^2, rho in amagat). 'The errors quoted in this table include the systematic contributions due to the uncertainty in the density, in the electric-field integral and in the value of Phi_M. We have estimated the systematic errors to be 2.5% of the signal' (p. 336); level not stated. The total Kerr constant (for a molecule the orientation term included). The header prints 'StatV^-1 cm^2 amagat^-1', a misprint for StatV^-2 (Table I's note). Table II's '1 atm' at 293 K is 0.93 amagat; Table I gives 1.05-1.07 (O2, N2) and 1.30 amagat (H2, D2), i.e. 1.13-1.40 atm at 293 K: the tables disagree on the state (per-amagat K is not affected)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_H2"
+material = "H2"
+file = "H2/carusotto_1985__table2_H2.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table II (p. 337), present work: the averaged dc Kerr constant K of hydrogen, 4.32 +- 0.14 x 10^-17 cm^2 statV^-2 amagat^-1, at 514.5 nm and 293 K (Delta n = K rho E^2, rho in amagat). 'The errors quoted in this table include the systematic contributions due to the uncertainty in the density, in the electric-field integral and in the value of Phi_M. We have estimated the systematic errors to be 2.5% of the signal' (p. 336); level not stated. The total Kerr constant (for a molecule the orientation term included). The header prints 'StatV^-1 cm^2 amagat^-1', a misprint for StatV^-2 (Table I's note). Table II's '1 atm' at 293 K is 0.93 amagat; Table I gives 1.05-1.07 (O2, N2) and 1.30 amagat (H2, D2), i.e. 1.13-1.40 atm at 293 K: the tables disagree on the state (per-amagat K is not affected)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_D2"
+material = "D2"
+file = "D2/carusotto_1985__table2_D2.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 1.0, temperature_k = 293.0 }
+use = "primary"
+notes = "Table II (p. 337), present work: the averaged dc Kerr constant K of deuterium, 4.42 +- 0.13 x 10^-17 cm^2 statV^-2 amagat^-1, at 514.5 nm and 293 K (Delta n = K rho E^2, rho in amagat). 'The errors quoted in this table include the systematic contributions due to the uncertainty in the density, in the electric-field integral and in the value of Phi_M. We have estimated the systematic errors to be 2.5% of the signal' (p. 336); level not stated. The total Kerr constant (for a molecule the orientation term included). The header prints 'StatV^-1 cm^2 amagat^-1', a misprint for StatV^-2 (Table I's note). Table II's '1 atm' at 293 K is 0.93 amagat; Table I gives 1.05-1.07 (O2, N2) and 1.30 amagat (H2, D2), i.e. 1.13-1.40 atm at 293 K: the tables disagree on the state (per-amagat K is not affected)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_ref1_He"
+material = "He"
+file = "He/carusotto_1985__table2_ref1_He.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 30.0, temperature_k = 296.0 }
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 0.15 +- 0.012 at 30 ÷ 80 atm, 296 K, 'ref 1' (Buckingham & Dunmur 1968 = buckingham_1968): its 10^14 A_K = 0.25 +- 0.02 e.s.u. times 13.5/22414 (computed here: 0.1506). 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the lower end of the printed pressure or temperature range) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 296.0
+
+[[datasets]]
+id = "table2_ref1_Ar"
+material = "Ar"
+file = "Ar/carusotto_1985__table2_ref1_Ar.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 8.0, temperature_k = 296.0 }
+use = "reproduced"
+reproduced_from = ["buckingham_1968"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 3.31 +- 0.24 at 8 ÷ 80 atm, 296 K, 'ref 1' (buckingham_1968): its 10^14 A_K = 5.5 +- 0.4 e.s.u. times 13.5/22414 (3.31). 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the lower end of the printed pressure or temperature range) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 296.0
+
+[[datasets]]
+id = "table2_ref13_O2"
+material = "O2"
+file = "O2/carusotto_1985__table2_ref13_O2.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 60.0, temperature_k = 293.0 }
+use = "reproduced"
+reproduced_from = ["W. M. Breazeale, Phys. Rev. 48, 237 (1935)"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 45 +- 2 at 60 atm, 293 K, 'ref 13' (Breazeale 1935), 'measured at lambda = 650 nm ... using a mixture of O2 and N2 at 100 atm of total pressure' (p. 337). 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the printed pressure and temperature) only records the conditions. Wavelength 650 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 293.0
+
+[[datasets]]
+id = "table2_ref6_N2_248"
+material = "N2"
+file = "N2/carusotto_1985__table2_ref6_N2_248.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 100.0, temperature_k = 248.0 }
+use = "reproduced"
+reproduced_from = ["buckingham_1970"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 18.7 at 100 atm, 248 K, 'ref 6' (Buckingham, Bogaard, Dunmur, Hobbs & Orr 1970 = buckingham_1970), no error printed. 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the printed pressure and temperature) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 248.0
+
+[[datasets]]
+id = "table2_ref6_N2_334"
+material = "N2"
+file = "N2/carusotto_1985__table2_ref6_N2_334.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 100.0, temperature_k = 334.0 }
+use = "reproduced"
+reproduced_from = ["buckingham_1970"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 15.3 at 100 atm, 334 K, 'ref 6' (buckingham_1970), no error printed. 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the printed pressure and temperature) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 334.0
+
+[[datasets]]
+id = "table2_ref2_H2_245"
+material = "H2"
+file = "H2/carusotto_1985__table2_ref2_H2_245.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 25.0, temperature_k = 245.4 }
+use = "reproduced"
+reproduced_from = ["buckingham_1968b"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 3.81 at 25 ÷ 85 atm, 245.4 K, 'ref 2' (Buckingham & Orr 1968 = buckingham_1968b): its first 245.4 K set, 10^14 A_K = 6.32 e.s.u., times 13.5/22414 (3.807). 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the lower end of the printed pressure or temperature range) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 245.4
+
+[[datasets]]
+id = "table2_ref2_H2_332"
+material = "H2"
+file = "H2/carusotto_1985__table2_ref2_H2_332.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 25.0, temperature_k = 332.4 }
+use = "reproduced"
+reproduced_from = ["buckingham_1968b"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 3.31 at 25 ÷ 85 atm, 332.4 K, 'ref 2' (buckingham_1968b): the mean of its two 332.4 K sets, 5.54 and 5.47, times 13.5/22414 (3.316). 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the lower end of the printed pressure or temperature range) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 332.4
+
+[[datasets]]
+id = "table2_ref2_D2"
+material = "D2"
+file = "D2/carusotto_1985__table2_ref2_D2.csv"
+table = "tbl_569a1459caec"
+quantity = "kerr_constant"
+unit = "cm2/statV2 amagat"
+scale = 1e-17
+abscissa_unit = "nm"
+wavelength_medium = "standard_air"
+state = { pressure_atm = 12.0, temperature_k = 243.0 }
+use = "reproduced"
+reproduced_from = ["buckingham_1968b"]
+notes = "Table II (p. 337), the earlier values, K x 10^17 cm^2 statV^-2 amagat^-1: 3.56 +- 0.35 at 12 atm, 243 ÷ 305 K, 'ref 2' (buckingham_1968b): its D2 average A_K (5.9 +- 0.6) x 10^-14 e.s.u. times 13.5/22414 (3.55 +- 0.36). 'The values reported here from ref. (1,3,6,19) are obtained by multiplying the values of A_k (see eq. (16)) by the suitable conversion factor due to the different units used' (note *): zero-density values, so the state (the lower end of the printed pressure or temperature range) only records the conditions. Wavelength 632.8 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+temperature_k = 243.0

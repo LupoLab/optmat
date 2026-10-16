@@ -1,0 +1,89 @@
+# The second refractivity virial coefficient B_R used for each gas, as a pointer to the
+# curated datasets (never a number typed here): B_R and the molar refractivity A_R it is
+# divided by, both from the same source. (n^2 - 1)/(n^2 + 2) = A_R rho + B_R rho^2 + ...
+# The temperature dependence of B_R is neglected (a few per cent of a 1e-5 correction
+# between 273 and 373 K). Gases without an entry get no pair term.
+#
+# contribution says what a static (dielectric) value holds: "induced", or "total" where
+# it includes orientation. A static value is taken as an optical term only where its
+# induced part is stated (OEP 4, section 7.3); an optical value is induced.
+#
+# C_R points at a measured third refractivity virial coefficient (cm^9/mol^3), or
+# C_R_bound gives a measured bound on |C_R|: the optical domain of a mixture (OEP 4,
+# section 4.3). They do not enter the index.
+#
+# [pairs]: the unlike pairs of a mixture (OEP 4, section 7.2). No unlike-pair term is
+# curated; each takes the rule, with the declared uncertainties below.
+
+[He]
+B_R = "achtermann_1991/B_R_this_work_323_He"   # -0.068(10) cm^6/mol^2 at 633 nm, 323 K
+A_R = "achtermann_1991/A_R_this_work_He"
+C_R_bound = 1.0  # cm^9/mol^3: achtermann_1991, -1.0 < C_R < 0.4 at 323 K (p. 5680)
+notes = "Kirouac & Bose (-0.059, static, 303 K), Orcutt & Cole (-0.06, static) and Dacre's theory (-0.062) agree; Rizzo's dielectric virial (via Puchalski) is -0.0506."
+
+[Ne]
+B_R = "achtermann_1993/B_R_this_work_303_Ne"   # -0.11(2) cm^6/mol^2 at 632.99 nm, 303 K (3 sigma)
+A_R = "achtermann_1993/A_R_this_work_Ne"
+notes = "Achtermann et al. 1993's optical B_R (TC-792). It agrees with Huot and Bose's static B_eps, -0.12(6) at 323 K (huot_1991), Garberoglio and Harvey's ab initio -0.101 at 633 nm (garberoglio_2020) and Burns et al.'s -0.14(14) (burns_1986). Orcutt and Cole's static -0.30(10) (orcutt_1967/B_this_work_Ne), the former choice, is about two of its standard uncertainties from them (TC-744)."
+
+[Ar]
+B_R = "achtermann_1991/B_R_this_work_323_Ar"   # 1.76(5) cm^6/mol^2
+A_R = "achtermann_1991/A_R_this_work_Ar"
+C_R = "achtermann_1991/C_R_this_work_323_Ar"
+
+[Kr]
+B_R = "achtermann_1993/B_R_this_work_303_Kr"   # 5.96(6) cm^6/mol^2 at 632.99 nm, 303 K (3 sigma)
+A_R = "achtermann_1993/A_R_this_work_Kr"
+C_R = "achtermann_1993/C_R_this_work_303_Kr"
+notes = "Achtermann et al. 1993's optical B_R (TC-793), with its A_R and C_R from the same fit. Orcutt and Cole's static B_eps, 5.6(3) at 322 K (orcutt_1967/B_this_work_Kr), the former choice, agrees with it and is five times less precise; Burns et al.'s optical 6.23(155) (burns_1986/B_R_Kr) agrees too."
+
+[Xe]
+B_R = "burns_1986/B_R_Xe"                     # 25.5(29) cm^6/mol^2 at 632.8 nm, 298 K
+A_R = "burns_1986/A_R_Xe"
+C_R = "achtermann_1993/C_R_this_work_348_Xe"
+notes = "The only B_R of xenon in the library. The first row (632.8 nm) is used, as for every gas; Burns et al.'s three other lines give 14.9-18.6 with similar uncertainties, so the pair term is known to about 30 % (about 3e-5 of n - 1 at 1 atm)."
+
+[O2]
+# No measured B_R of O2 is known (TC-775). Egan et al. 2026's recommended b_R
+# (egan_2026, p. 8): Hohm's heuristic static b_eps with this work's sigma^2 and
+# temperature dependence, with 50 % uncertainty assumed; evaluated at the 632.99 nm and
+# 303 K of the other gases' optical values (TC-794).
+b_formula = "egan_2026/o2_b_R"   # 0.2100 cm^3/mol at 632.99 nm, 303 K
+wavelength_nm = 632.99
+temperature_k = 303.0
+relative_uncertainty = 0.5
+status = "provisional"
+notes = "A published estimate, not a measurement: Egan et al. (2026) 'information on b_R is scarce, and does not appear to be more advanced than the heuristic estimate of Hohm'. Their two-colour data give its dispersion and temperature slope."
+
+[H2]
+B_R = "achtermann_1991/B_R_this_work_323_H2"
+A_R = "achtermann_1991/A_R_this_work_H2"
+C_R = "achtermann_1991/C_R_this_work_323_H2"
+
+[N2]
+B_R = "achtermann_1991/B_R_this_work_323_N2"
+A_R = "achtermann_1991/A_R_this_work_N2"
+C_R = "achtermann_1991/C_R_this_work_323_N2"
+
+[CH4]
+B_R = "achtermann_1991/B_R_this_work_323_CH4"
+A_R = "achtermann_1991/A_R_this_work_CH4"
+C_R = "achtermann_1991/C_R_this_work_323_CH4"
+
+[CO2]
+B_R = "achtermann_1991/B_R_this_work_323_CO2"
+A_R = "achtermann_1991/A_R_this_work_CO2"
+C_R = "achtermann_1991/C_R_this_work_323_CO2"
+
+[SF6]
+B_R = "achtermann_1991/B_R_this_work_373_SF6"  # the only B_R of this work (373 K)
+A_R = "achtermann_1991/A_R_this_work_SF6"
+C_R = "achtermann_1991/C_R_this_work_373_SF6"
+
+[pairs]
+rule = "mean"
+reason = "No unlike-pair refractivity coefficient is curated. An unlike pair takes the mean of its like terms, B_st = (B_ss + B_tt)/2, each dispersing with its own A (OEP 4, sections 4.1 and 7.2; decided 2026-09-30). Egan et al. (egan_2026, section 5) make the same assumption for N2-O2, 'nothing appears known about the refractivity cross virial'."
+uncertainty = "The standard uncertainty of an estimate is max(|B_ss|, |B_tt|): a sensitivity assumption, not a statistical one."
+unknown_b = 2.5  # cm^3/mol: the declared scale of an uncurated like term, |b| <= 2.5, the largest curated |b| (Xe's 2.46), times A (TC-795)
+third_ratio = 600.0  # |C_R| <= 600 B_R^2/A_R where C_R is not measured: N2's measured 560, the largest among gases whose B_R is resolved (H2's 1679 is excluded: its B_R, 0.13(8), is not; TC-795)
+density_fraction = 1e-3  # the optical domain: the third term, or an estimate's uncertainty, at 1e-3 of y

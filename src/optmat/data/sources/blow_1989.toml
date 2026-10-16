@@ -1,0 +1,115 @@
+citation = "K. J. Blow and D. Wood, \"Theoretical description of transient stimulated Raman scattering in optical fibers\", IEEE J. Quantum Electron. 25, 2665-2673 (1989)"
+doi = "10.1109/3.40655"
+library = "Blow_1989_TheoreticalDescriptionTransient"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "theory"
+technique = """Theory: a single generalized nonlinear Schrodinger equation for a weakly guiding \
+silica fibre (Eq. 12), with a third-order response made of an instantaneous electronic \
+part and a single damped-oscillator (Lorentzian) Raman part (Eq. 5), valid for \
+bandwidths below ~1/3 of the carrier frequency and conserving the photon number; the \
+small-signal sideband gain (Eq. 15: Raman, four-wave mixing and modulational \
+instability together); a fourth-order split-step Fourier integration (Sec. IV) of a CW \
+pump at 1.32 um with noise sidebands. The response parameters are chosen, not fitted \
+to a stated data set: 'These values give a Raman gain consistent with the experimental \
+data on silica fibers [13], [14], [9]' (p. 2666)."""
+notes = """Journal pages 2665-2673 = pdf pages 1-9 (journal page = 2664 + pdf page). Identity \
+checked against the first page.
+
+THE RESPONSE (p. 2666, verbatim). Eq. (2): P(t) = eps0 chi^3 E(t) int g(t - t') E^2(t') \
+dt', 'the causal response function is normalized so that int g(t) dt = 1'. Eq. (5): \
+g(t) = alpha delta(t) + (1 - alpha) g_R(t), 'where we use here g_R = [(tau_1^2 + \
+tau_2^2)/(tau_1 tau_2^2)] exp[-t/tau_2] sin[t/tau_1]. alpha parameterizes the relative \
+strengths of the Kerr and Raman interactions. The inverse time scale 1/tau_1 gives the \
+phonon frequency and 1/tau_2 determines the bandwidth of the Lorentzian line ... We \
+chose here the values alpha = 0.7, tau_1 = 0.0122 ps, and tau_2 = 0.032 ps. These \
+values give a Raman gain consistent with the experimental data on silica fibers [13], \
+[14], [9]. The resulting range of variation with frequency for the refractive index \
+part of the nonlinearity is about 20 percent of the mean value, which is also \
+consistent within the error bounds with the lack of measured variation.' The data \
+cited: [13] R. H. Stolen and C. Lin, 'Self phase modulation in silica optical fibers', \
+Phys. Rev. A 17, 1448 (1978); [14] D. Spirit and D. L. Williams, 'Measurement of the \
+optical gain spectrum of a Raman fiber amplifier', submitted to Appl. Phys. Lett. \
+(1988); [9] J. P. Gordon, 'Theory of the soliton self frequency shift', Opt. Lett. 11, \
+662 (1986). No derivation of the three numbers is given: they are chosen, so this \
+paper is the origin of tau_1 = 12.2 fs and tau_2 = 32 fs, not a fit to a named \
+spectrum. The response is 'chosen to correspond to the frequency responses for \
+transient Raman scattering derived in [3], [12]' (Shen and Bloembergen 1965; Akhmanov \
+et al. 1971).
+
+THE ENVELOPE EQUATION (Eqs. 8 and 12, pp. 2666-2667). For the forward envelope U the \
+effective response is f(t) = [alpha delta(t) + (2/3)(1 - alpha) g_R(t)] (Eq. 8): 'The 2/3 \
+factor ... arises from neglecting a cross term of the form U*(t) int g_R U^2(t') dt', \
+which is a rapidly varying term convolved with a slow time response.' Hence the \
+Raman fraction differs between the field-squared response (1 - alpha = 0.3, Eq. 5) and \
+the envelope equation, where the delayed share of f is (2/3)(0.3)/(0.7 + 0.2) = 0.222 \
+(computed). The fraction usually quoted from this paper is neither printed number: \
+lin_2006 cites it for 'the experimental value of about 0.2'. GNLS Eq. (12): i dU/dz = \
+{beta(omega_0 - i d/dt) - beta_0}U + sigma [1 - i tau_shock d/dt]{U int f(t - t') \
+|U(t')|^2 dt'}, sigma = 3 N chi^3 omega_0/(n_eff c), tau_shock = 1/omega_0 + d log(N/n_eff) \
+/d omega (the second part < 1 %). Raman gain: G = -sigma A^2 (1 - delta) Im f^(-Delta \
+omega) (p. 2668).
+
+DATASETS: the Raman fraction 1 - alpha = 0.3 (the printed number is the Kerr fraction \
+alpha = 0.7; the complement is the only arithmetic) and tau_1, tau_2 as printed (ps). \
+CHECKS (computed 2026-09-27): g_R as printed integrates to 1.000 (normalised); the \
+gain Im[(1 - alpha) g^_R] peaks at 13.08 THz (436 cm^-1), with 1/(2 pi tau_1) = 13.05 \
+THz, where the paper's simulation shows 'the first Stokes Raman band ... around 13 \
+THz frequency offset' (p. 2671); the Lorentzian FWHM 1/(pi tau_2) = 9.95 THz. The real \
+part of alpha + (1 - alpha) g^_R varies from 0.79 to 1.03 (24 % of its mean) between 0 \
+and 13 THz, and that of Eq. (8)'s f by 18 %: the paper's 'about 20 percent' is \
+reproduced for the band up to the Raman peak (beyond it the real part falls to 0.55 \
+before rising to alpha).
+
+FIBRE OF THE EXAMPLES (not a material property): zero dispersion at 1.27 um, pump 1.32 \
+um; Fig. 1's dispersion operator 2.337 d^2/dt^2 + 1.234e-2 i d^3/dt^3 + 2.24e-4 d^4/dt^4 \
+(ps, km); CW pump 50 W; periodic window +-26 ps, 4096 modes (pp. 2669-2670). The solitons \
+formed reach ~150 fs FWHM, downshifted by ~24 THz (~180 nm) (p. 2672). Figures 1-5 \
+(growth rate against offset; perspective plots of gain and spectra; the final spectrum; \
+the filtered pulses) are not digitised.
+
+REPRODUCTIONS OF THIS PAPER: hollenbeck_2002 and lin_2006 (tau_1 = 12.2 fs, tau_2 = 32 \
+fs, identical; h_R of the same form, lin_2006 writing tau_1(tau_1^-2 + tau_2^-2), equal \
+to (tau_1^2 + tau_2^2)/(tau_1 tau_2^2)); couairon_2005 (tau_s = 12 fs, tau_d = 32 fs, via \
+Junnarkar 2001 and stolen_1989, with f_R = 0.18); lin_2006's 'experimental value of \
+about 0.2' cites this paper (Ref. 10) with Stolen et al. (Ref. 9), although Blow and \
+Wood print alpha = 0.7 (a Raman share of 0.3, or 0.22 in their envelope equation)."""
+
+[[datasets]]
+id = "raman_fraction"
+material = "SiO2"
+table = "text"
+points = [["1-alpha", "1-alpha", "0.3"]]
+quantity = "raman_fraction"
+abscissa = "label"
+use = "primary"
+notes = "p. 2666: 'We chose here the values alpha = 0.7', alpha the weight of the instantaneous (Kerr) term of Eq. (5); the Raman weight 1 - alpha = 0.3 is recorded (the complement of the printed number). Chosen so that the Raman gain is 'consistent with the experimental data on silica fibers' (Refs. 13, 14, 9), not fitted. In the envelope equation (Eq. 8) the Raman term carries a further 2/3, a delayed share of 0.222 of f (source notes)."
+[datasets.parameters]
+definition = "1 - alpha in g(t) = alpha delta(t) + (1 - alpha) g_R(t), int g dt = 1, the response acting on E^2(t') in P(t) = eps0 chi3 E(t) int g(t - t') E^2(t') dt' (Eqs. 2, 5); the envelope equation uses alpha delta + (2/3)(1 - alpha) g_R (Eq. 8)"
+form = "fibre"
+
+[[datasets]]
+id = "response_times"
+material = "SiO2"
+table = "text"
+points = [["tau1", "tau1", "0.0122"], ["tau2", "tau2", "0.032"]]
+quantity = "raman_response_time"
+unit = "ps"
+abscissa = "label"
+use = "primary"
+notes = "p. 2666: 'tau_1 = 0.0122 ps, and tau_2 = 0.032 ps' (12.2 fs and 32 fs): 1/tau_1 the phonon (angular) frequency, 1/(2 pi tau_1) = 13.05 THz; 1/tau_2 the damping, Lorentzian FWHM 1/(pi tau_2) = 9.95 THz. Chosen, not fitted (source notes). The origin of the 12.2 fs / 32 fs model."
+[datasets.parameters]
+constant = "tau1, tau2 (per row)"
+model = "g_R(t) = [(tau1^2 + tau2^2)/(tau1 tau2^2)] exp(-t/tau2) sin(t/tau1) (Eq. 5, a single damped oscillator)"
+form = "fibre"
+
+[[formulas]]
+id = "response"
+material = "SiO2"
+equation = "Eqs. (5) and (8), pp. 2666-2667"
+printed = "g(t) = \\alpha \\delta(t) + (1 - \\alpha) g_R(t), \\quad g_R = \\frac{\\tau_1^2 + \\tau_2^2}{\\tau_1 \\tau_2^2} \\exp[-t/\\tau_2] \\sin[t/\\tau_1]; \\quad f(t) = \\alpha \\delta(t) + \\frac{2}{3}(1 - \\alpha) g_R(t)"
+variable = "t: time after the impulse; g acts on the field squared E^2 (Eq. 2), f on the envelope intensity |U|^2 (Eqs. 8, 12)"
+range = "silica fibre, 1.0-1.5 um; bandwidths below ~omega_0/3"
+coefficients = { alpha = "0.7", tau_1 = "0.0122 ps", tau_2 = "0.032 ps", envelope_factor = "2/3" }
+check = "Computed 2026-09-27: int g_R dt = 1.000; the gain Im f^ peaks at 13.08 THz (436 cm^-1), the paper's first Stokes band 'around 13 THz'; Re[alpha + (1 - alpha) g^_R] varies by 24 % of its mean over 0-13 THz (Eq. 8's f by 18 %), the paper's 'about 20 percent'."
+notes = "The normalisations: int g_R dt = 1 and int g dt = 1. In later notation (stolen_1989, lin_2006) R(t) = (1 - f_R) delta(t) + f_R h_R(t) acts on the envelope intensity; Blow and Wood's f corresponds to f_R = (2/3)(1 - alpha)/(alpha + (2/3)(1 - alpha)) = 0.222 after renormalising f to unit area (source notes)."
+

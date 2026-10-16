@@ -1,0 +1,144 @@
+citation = "R. H. Lehmberg, C. J. Pawley, A. V. Deniz, M. Klapisch and Y. Leng, \"Two-photon resonantly-enhanced negative nonlinear refractive index in xenon at 248 nm\", Opt. Commun. 121, 78 (1995)"
+doi = "10.1016/0030-4018(95)00433-9"
+library = "Lehmberg_1995_TwoPhotonResonantly"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """Measurement: a KrF-amplified 248.4 nm pulse of about 10 ps (Fig. 4: '10 ps \
+KrF beam'; a dye oscillator, distributed-feedback dye laser, BBO doubling, a KrF \
+discharge amplifier, a spatial filter; p. 81), linearly polarised, about 2 GW/cm2, \
+through a 4.6 m cell of Xe, CO2 or both between CaF2 windows; the output fluence \
+profiles fitted by a paraxial propagation code (the incident beam's measured profile \
+and phase curvature, the windows and air paths included) with n2 free, at each \
+pressure, and the pressure dependence's linear fit scaled to 760 Torr and 300 K \
+(Figs. 10b, 12b). Xe directly from self-defocusing up to 266 Torr; Xe also as \
+n2(CO2) from CO2 self-focusing times the ratio n2(Xe)/n2(CO2) from a cancellation \
+experiment (129 Torr of Xe added to 1260 Torr of CO2). Calculation (Xe): the sum over \
+states of Eq. (1) (and its two-photon-resonant term alone, Eq. 3), dipole matrix \
+elements from a parametric-potential relativistic atomic-structure calculation fitted \
+to 36 measured levels (rms 700 cm^-1), all J = 1 odd states to 9s, 9d and two-photon \
+states to 9p, 5f, no continuum (p. 80)."""
+notes = """Journal pp. 78-88 = PDF pages 1-11. Identity checked against the first page.
+
+WHAT IS TAKEN. Table 1 (p. 87, tbl_30b21d3fcab2; cells checked against the image), at \
+760 Torr and 300 K and 248.4 nm, in 10^-14 esu: Xe calculated -1.54 +- 0.30, Xe by \
+self-defocusing -2.06 +- 0.14, Xe by CO2 compensation -1.82 +- 0.08, CO2 by \
+self-focusing +0.160 +- 0.007. Not taken: air (Ref. [2]) and fused silica (Ref. [1]), \
+other papers' values. The text's combined Xe value, -(1.97 +- 0.23) x 10^-14 esu (p. \
+87), is the two measurements combined and is not a separate dataset.
+
+THE DEFINITION. 'Applying the usual definition delta n = (1/2) n2 |E|^2, where ... E is \
+the slowly-varying complex laser field amplitude' (p. 79): (1/2)|E|^2 is the mean \
+square of the real field, so n2 is per <E^2> (nonlinear_index_field, definition \
+'<E^2>'). In intensity units n2(cm2/W) = 4 pi 10^7 n2(esu) / (c n0) = 4.19e-3 n2(esu) \
+(computed, n0 = 1, c in cm/s): the combined -1.97e-14 esu is -8.25e-21 m2/W. \
+nibbering_1997 (Table 1, Ref. 8) reproduces Xe as -963 +- 112 e-23 m2/W, 1.17 times \
+that and 1.12 times the self-defocusing value; its conversion is not stated (TC-854).
+
+DOUBTS. Above 266 Torr the self-defocusing fits fail (Fig. 11), perhaps from Xe2 \
+dimers (about 0.6 % at 1 atm); the 760 Torr values are extrapolated linearly from \
+lower pressures. The temperature was about 20 C (p. 85), the values scaled to 300 K. \
+Fig. 12's caption prints 'n2(Xe) = (2.35 +- 0.12) x 10^-15 esu' for a CO2 shot: it means \
+n2(CO2) (the panel and the text).
+
+TWO-PHOTON DATA. The 6p[1/2]_0 resonance at 249.6 nm 'has been studied by several \
+authors [4-7]' (p. 78); its two-photon excitation cross section is in kroll_1990 (S. \
+Kröll and W. Bischel, Phys. Rev. A 41, 1340 (1990), Ref. [5]), from which the \
+Appendix estimates the resonantly enhanced three-photon ionisation of atomic Xe as \
+negligible here (no number printed; p. 88). Not taken: the \
+Appendix's upper limit on the two-photon excitation rate of the Xe2 dimer at 248.4 \
+nm, W < 3.7e5 I^2 s^-1 (I in GW/cm^2), estimated from Gornik et al.'s spectra (Ref. \
+[4]), and the photoionisation cross section of the excited dimer levels, 4e-18 \
+(printed 'cm^-1', for cm^2), quoted from Ref. [22] (p. 88): a bound and a quoted \
+value, neither of the atom."""
+
+[[datasets]]
+id = "calculated_Xe"
+material = "Xe"
+file = "Xe/lehmberg_1995__calculated_Xe.csv"
+table = "tbl_30b21d3fcab2"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 300.0 }
+use = "check"
+notes = "Table 1 (p. 87), row 'Xe (Eqs. (1) or (3))': the ab initio n2 of xenon at 248.4 nm, 760 Torr, 300 K, 10^-14 esu; Eqs. (1) and (3) give -1.536 and -1.539 (p. 80), the error from +-7 % in the dipole matrix elements. Negative: 248.4 nm lies just above the two-photon resonance with 6p[1/2]_0 at 249.6 nm (80119 cm^-1)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "<E^2>: delta n = (1/2) n2 |E|^2, E the complex amplitude (p. 79)"
+part = "total"
+coefficient = "self"
+polarization = "linear"
+pulse_fs = 10000
+method = "sum over states, Eq. (1); parametric-potential relativistic matrix elements, no continuum"
+
+[[datasets]]
+id = "defocusing_Xe"
+material = "Xe"
+file = "Xe/lehmberg_1995__defocusing_Xe.csv"
+table = "tbl_30b21d3fcab2"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 300.0 }
+use = "check"
+notes = "Table 1 (p. 87), row 'Xe (self-defocusing exp.)': the linear fit of n2 against pressure up to 266 Torr (Fig. 10b) scaled to 760 Torr and 300 K, 10^-14 esu. Near the two-photon resonance at 249.6 nm."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "<E^2>: delta n = (1/2) n2 |E|^2, E the complex amplitude (p. 79)"
+part = "total"
+coefficient = "self"
+polarization = "linear"
+pulse_fs = 10000
+technique = "self-defocusing: output fluence profiles fitted by a propagation code, up to 266 Torr"
+
+[[datasets]]
+id = "compensation_Xe"
+material = "Xe"
+file = "Xe/lehmberg_1995__compensation_Xe.csv"
+table = "tbl_30b21d3fcab2"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 300.0 }
+use = "check"
+notes = "Table 1 (p. 87), row 'Xe (CO_2 compensation exp.)': n2(CO2) from CO2 self-focusing times n2(Xe)/n2(CO2) from the cancellation of CO2's self-focusing by added Xe, 760 Torr and 300 K, 10^-14 esu; 'unaffected by either profile broadening or high Xe pressure effects' (p. 86)."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "<E^2>: delta n = (1/2) n2 |E|^2, E the complex amplitude (p. 79)"
+part = "total"
+coefficient = "self"
+polarization = "linear"
+pulse_fs = 10000
+technique = "compensation of CO2 self-focusing by Xe, scaled by n2(CO2)"
+
+[[datasets]]
+id = "focusing_CO2"
+material = "CO2"
+file = "CO2/lehmberg_1995__focusing_CO2.csv"
+table = "tbl_30b21d3fcab2"
+quantity = "nonlinear_index_field"
+unit = "esu"
+scale = 1e-14
+abscissa_unit = "nm"
+state = { pressure_pa = 101325.0, temperature_k = 300.0 }
+use = "check"
+notes = "Table 1 (p. 87), row 'CO_2 (self-focusing exp.)': +0.160 +- 0.007 x 10^-14 esu at 248.4 nm, 760 Torr, 300 K, from whole-beam self-focusing fits (Fig. 12; its caption's 'n2(Xe)' means CO2). Includes the molecule's rotational part at 10 ps."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+definition = "<E^2>: delta n = (1/2) n2 |E|^2, E the complex amplitude (p. 79)"
+part = "total"
+coefficient = "self"
+polarization = "linear"
+pulse_fs = 10000
+technique = "whole-beam self-focusing: output fluence profiles fitted by a propagation code"

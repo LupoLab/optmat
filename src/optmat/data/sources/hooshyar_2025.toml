@@ -1,0 +1,89 @@
+citation = "M. Hooshyar and C. Dumitrache, \"Modeling of femtosecond filament lifetime extension via CW laser coupling\", J. Phys. D: Appl. Phys. 58, 325204 (2025)"
+doi = "10.1088/1361-6463/adf5cd"
+library = "Hooshyar_2025_ModelingFemtosecondFilament"
+identity = "VALIDATED"
+kind = "theory"
+technique = """A zero-dimensional collisionless model of the femtosecond filament in air \
+(100 fs pulse, peak intensity 5 x 10^13 W/cm^2; photoionisation W = 0.8 W_N2 + 0.2 \
+W_O2, multiphoton or tunnelling by the Keldysh parameter; Popov's analytical EEDF for \
+the post-pulse electron temperature), followed by a 1-D axisymmetric model of the \
+post-discharge (Navier-Stokes, electron and vibrational energy, 48 air-plasma \
+reactions from Shneider et al. 2011) with a 975 nm CW laser added through Joule \
+heating, at 1 and 30 bar (pp. 3-8)."""
+notes = """Identity checked on the first article page (PDF page 2; PDF page 1 is a cover \
+sheet): Hooshyar and Dumitrache, J. Phys. D: Appl. Phys. 58, 325204 (2025), received \
+4 March 2025, published 8 August 2025. The page numbers are the PDF's.
+
+Curated: the dissociative recombination coefficients of N2+, O2+ and NO+ in Table 2 \
+(p. 8), 'Reprinted from [28]', i.e. from M. N. Shneider, A. M. Zheltikov and R. B. \
+Miles, Phys. Plasmas 18, 063509 (2011) (not in the library). They are kossyi_1992's \
+k38, k40 and k41 in SI units (2.8, 2 and 4 x 10^-7 cm^3 s^-1, exponents 1/2, 1 and \
+1.5): a copy of a copy, recorded for traceability. Table 2's R12 gives N + N without \
+the N(2D) channel that kossyi_1992 adds (k39), and R14 N + O without k42.
+
+Notes only: the cluster ions, R10 e + N4+ -> N2 + N2, 2 x 10^-12 (300/T_e)^1/2, and R11 \
+e + O4+ -> O2 + O2, 1.4 x 10^-12 (300/T_e)^1/2 m^3 s^-1 (kossyi_1992's k29 and k30); \
+the rest of Table 2 (ionisation, attachment, ion conversion, neutral chemistry; plasma \
+kinetics outside optmat's scope, TC-954). Table 1 (p. 6), the model's state at the end \
+of the pulse at 1 bar: T_e 1.2 eV, n(N2+) 8.7 x 10^21, n(O2+) 4.9 x 10^22, n_e 5.7 x \
+10^22 m^-3, model outputs with no measured counterpart in the paper, and no curated \
+quantity holds ion number densities. The fs-pulse wavelength is not stated. The \
+abstract's results (gas heating to about 450 K; n_e falling by more than four orders \
+of magnitude in 100 ns at 30 bar; the CW laser holding T_e near 0.7 eV) are model \
+results: not taken.
+
+Register: TC-979."""
+
+[[datasets]]
+id = "dr_N2+"
+material = "N2+"
+file = "N2+/hooshyar_2025__dr_N2+.csv"
+table = "tbl_a903ef2bd6e1"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "m3/s"
+scale = 1e-13
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["M. N. Shneider, A. M. Zheltikov and R. B. Miles, Phys. Plasmas 18, 063509 (2011)"]
+notes = "Table 2 (p. 8), R12: 'e + N2+ -> N + N, 2.8 x 10^-13 (300/T_e)^1/2 [m^3 s^-1]'; the value of kossyi_1992/dr_N2+_N_N."
+[datasets.parameters]
+products = "N + N (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 0.5
+
+[[datasets]]
+id = "dr_O2+"
+material = "O2+"
+file = "O2+/hooshyar_2025__dr_O2+.csv"
+table = "tbl_a903ef2bd6e1"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "m3/s"
+scale = 1e-13
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["M. N. Shneider, A. M. Zheltikov and R. B. Miles, Phys. Plasmas 18, 063509 (2011)"]
+notes = "Table 2 (p. 8), R13: 'e + O2+ -> O + O, 2 x 10^-13 (300/T_e) [m^3 s^-1]'; the value of kossyi_1992/dr_O2+."
+[datasets.parameters]
+products = "O + O (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 1.0
+
+[[datasets]]
+id = "dr_NO+"
+material = "NO+"
+file = "NO+/hooshyar_2025__dr_NO+.csv"
+table = "tbl_a903ef2bd6e1"
+quantity = "dissociative_recombination_rate_coefficient"
+unit = "m3/s"
+scale = 1e-13
+abscissa = "none"
+use = "reproduced"
+reproduced_from = ["M. N. Shneider, A. M. Zheltikov and R. B. Miles, Phys. Plasmas 18, 063509 (2011)"]
+notes = "Table 2 (p. 8), R14: 'e + NO+ -> N + O, 4 x 10^-13 (300/T_e)^1.5 [m^3 s^-1]'; the value of kossyi_1992/dr_NO+_N_O."
+[datasets.parameters]
+products = "N + O (states not given)"
+law = "power_law"
+reference_temperature_k = 300.0
+exponent = 1.5

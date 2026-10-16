@@ -1,0 +1,279 @@
+citation = "J. R. Gulley, S. W. Winkler, W. M. Dennis, C. M. Liebig and R. Stoian, \"Interaction of ultrashort-laser pulses with induced undercritical plasmas in fused silica\", Phys. Rev. A 85, 013808 (2012)"
+doi = "10.1103/physreva.85.013808"
+library = "Gulley_2012_InteractionUltrashortLaser"
+identity = "VALIDATED"
+kind = "measurement"
+technique = """800-nm Ti:sapphire amplifiers (120-150 fs, 1 kHz; the text's pulse is 140 fs FWHM) \
+focused by a 25-cm lens onto the front surface of a 200-um fused-silica plate in air; \
+beam profiles before and after the sample, multi-SHG-FROG of the transmitted pulse; \
+the sample was not translated (~1e7 pulses per site). Simulated with a 3+1D nonlinear \
+Schrodinger equation (Eq. 1) with Drude dispersion corrections, coupled to Rethfeld's \
+multiple rate equation with Keldysh photoionization, from the measured beam profile and \
+FROG field."""
+notes = """Journal pages 013808-1 to -10 = PDF pages 1-10. Identity validated.
+
+MEASURED DAMAGE (text, p. 013808-3): 'These damage thresholds are summarized as follows: \
+60 uJ (5.1 J/cm2) for Secs. IV A and IV B, 45 uJ (3.8 J/cm2) for Sec. IV C 2, and 55 uJ \
+(4.7 J/cm2) for Sec. IV C 3.' 'The multishot damage threshold was determined in the \
+experiment, by visual inspection, to be 60 uJ (5.1 J/cm2). Since the sample was not \
+translated in the experiment the surface was exposed to multiple (~10^7) pulses of the \
+same energy ... lowering the damage threshold by approximately 25%. [35] The single-shot \
+optical damage threshold is therefore expected to be around 80 uJ (6.8 J/cm2).' The \
+fluences are 'peak single-shot fluence on the front sample surface' (p. 013808-3); all \
+five pairs share the ratio E/F = 1.18e-5 cm2 (checked 2026-09-26), one spot size. The \
+Sec. IV C 2 and IV C 3 values are 'destruction thresholds' in the FROG series, the second \
+with the laser of the Laboratoire Hubert Curien (p. 013808-9); 'some of the subsections \
+have different damage threshold measurements, as some were measured under different \
+experimental conditions' (p. 013808-3), which are not detailed further. Site: the front \
+surface (the beam focused onto it; the simulations put the single-shot damage there too). \
+No uncertainty stated. Grade not stated.
+
+SIMULATION INPUTS: 'All other numerical parameters for the computer simulation \
+(summarized in Table I) were taken from Ref. [19]' (Winkler et al., Appl. Phys. A 84, 413 \
+(2006); p. 013808-3), so Table I's values are reproduced from ref. 19 and assumed. Table I \
+(p. 013808-3, tbl_763380c3ceb4, image checked): lambda 800 nm; R(tau) = [(tau_1^2 + \
+tau_2^2)/(tau_1 tau_2^2)] exp(-tau/tau_2) sin(tau/tau_1) with tau_1 = 32 fs, tau_2 = 12.2 fs; \
+f_r = 0.18; n0 = 1.45; k_2 = '361 fs^2 W^-1'; n2 = 2.48 x 10^-16 cm2 W^-1; U = 9 eV; m_e = \
+9.1 x 10^-31 kg; tau_c 'Multiple values used'. Text (p. 013808-2): the Keldysh rate 'with \
+a reduced electron-hole mass of half the electron rest mass'; 'a recombination time of \
+150 fs [19,34]' (Winkler 2006; Wu, Chowdhury and Xu, Phys. Rev. B 72, 085128 (2005)); the \
+damage criterion of the simulation, a free-electron density above 1e21 cm^-3 anywhere \
+(p. 013808-3).
+
+FINDINGS. (1) k_2's unit is printed 'fs^2 W^-1' in the image: impossible for a GVD \
+coefficient (fs^2 per length); the same number, 361, is couairon_2005's k'' at 800 nm in \
+fs2/cm, and it is recorded as fs2/cm (an interpretation). (2) R(tau): as printed, tau_2 = \
+12.2 fs is the decay time and tau_1 = 32 fs the oscillation period parameter, the reverse \
+of couairon_2005 (sin(t/12 fs) exp(-t/32 fs)) and berge_2010 (tau_R 32 fs decay at \
+1550 nm); either the definition or the values are swapped relative to the others: not \
+resolvable from this paper, recorded as printed. (3) The critical power is written \
+P_cr = lambda^2/(8 pi n0 n2) (p. 013808-4), a quarter of the usual lambda^2/(2 pi n0 n2) \
+(0.71 against 2.83 MW with Table I's values; computed 2026-09-26); no value is printed. \
+(4) The absorption cross section sigma = e^2 tau_c/[m_e n0 eps0 c (1 + omega0^2 \
+tau_c^2)] peaks at tau_c = 1/omega0 = 0.425 fs (printed 'approximately tau_c = 0.42 fs', \
+p. 013808-4; checked).
+
+THE COLLISION TIME: Fig. 2 gives the simulated single-shot threshold against tau_c; \
+'Since the single-shot threshold is estimated from experiment to be 80 uJ (6.8 J/cm2) Fig. \
+2 suggests an approximate collision time of the order of 10 fs ... Therefore a 10-fs \
+collision time is assumed hereafter' (p. 013808-4); these simulations then predict a \
+single-shot threshold of 80-85 uJ (6.8-7.2 J/cm2) (p. 013808-6). With G = 1 the simulated \
+threshold 'never exceeds 30 uJ (2.5 J/cm2)'.
+
+TABLE II (p. 013808-9, tbl_f6dc38765622) is scrambled in the library; transcribed from \
+the image in the script (checked against the scrambled characters). FROG retrieval \
+diagnostics, not material data: pulse energy (uJ), trace dimensions, G_error, OC: 1, 256 x \
+128, 0.00319, 0.0115; 10, 0.00417, 0.0135; 17, 0.0036, 0.0105; 25, 0.0041, 0.008; 35, \
+0.00623, 0.01; 46, 0.0051, 0.011; 50, 0.00536, 0.0095; 55, 0.0062, 0.01 (all 256 x 128).
+
+FIGURES ONLY: Fig. 2 (simulated thresholds against tau_c, three curves), Figs. 3-11 \
+(plasma densities, beam profiles, FROG traces and fields)."""
+
+[[datasets]]
+id = "damage_fluence"
+material = "SiO2"
+table = "text"
+points = [["IV_A", "140", "5.1"], ["IV_C_2", "140", "3.8"], ["IV_C_3", "140", "4.7"]]
+quantity = "damage_threshold_fluence"
+unit = "J/cm2"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "primary"
+notes = "p. 013808-3, the three measured thresholds as peak fluence on the front surface (rows: the sections they belong to). IV A: multishot (~1e7 pulses, sample not translated), 'by visual inspection'. IV C 2 and IV C 3: 'destruction threshold' of the FROG series (IV C 3 with the Saint-Etienne laser); conditions otherwise not detailed. The duration is the text's 140 fs FWHM (the lasers give 120-150 fs)."
+[datasets.parameters]
+site = "surface"
+criterion = "visible damage (visual inspection) of the front surface"
+shots = "~1e7 (sample not translated, 1 kHz)"
+wavelength_nm = 800
+
+[[datasets]]
+id = "damage_energy"
+material = "SiO2"
+table = "text"
+points = [["IV_A", "140", "60"], ["IV_C_2", "140", "45"], ["IV_C_3", "140", "55"]]
+quantity = "damage_threshold_energy"
+unit = "uJ"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "primary"
+notes = "p. 013808-3, the same thresholds as pulse energies (see damage_fluence); focusing by a 25-cm lens onto the front surface, NA not stated."
+[datasets.parameters]
+site = "surface"
+criterion = "visible damage (visual inspection) of the front surface"
+shots = "~1e7 (sample not translated, 1 kHz)"
+wavelength_nm = 800
+
+[[datasets]]
+id = "single_shot_estimate"
+material = "SiO2"
+table = "text"
+points = [["1", "140", "6.8"]]
+quantity = "damage_threshold_fluence"
+unit = "J/cm2"
+abscissa = "duration"
+abscissa_unit = "fs"
+use = "check"
+notes = "p. 013808-3: 'The single-shot optical damage threshold is therefore expected to be around 80 uJ (6.8 J/cm2)', the multishot 60 uJ raised by the ~25 % incubation lowering of Schaffer et al. (ref. 35, Proc. SPIE 3451, 2 (1998)): an estimate, not a measurement."
+[datasets.parameters]
+site = "surface"
+criterion = "estimated single-shot threshold"
+shots = 1
+wavelength_nm = 800
+
+[[datasets]]
+id = "model_band_gap"
+material = "SiO2"
+file = "SiO2/gulley_2012__band_gap.csv"
+table = "tbl_763380c3ceb4"
+quantity = "band_gap"
+unit = "eV"
+abscissa = "none"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I, U 'Band gap energy' 9 eV; taken from ref. 19 (source notes)."
+[datasets.parameters]
+kind = "assumed"
+assumed = true
+
+[[datasets]]
+id = "model_refractive_index"
+material = "SiO2"
+file = "SiO2/gulley_2012__refractive_index.csv"
+table = "tbl_763380c3ceb4"
+quantity = "refractive_index"
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I n0 = 1.45 at the 800-nm peak wavelength."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_gvd"
+material = "SiO2"
+file = "SiO2/gulley_2012__gvd.csv"
+table = "tbl_763380c3ceb4"
+quantity = "group_delay_dispersion"
+unit = "fs2/m"
+scale = 100
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I k_2 = 361, unit printed 'fs^2 W^-1' (image confirmed), impossible for a GVD: read as fs2/cm (scale 100 to fs2/m), the unit of the same value in couairon_2005 at 800 nm. An interpretation of a misprinted unit."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_n2"
+material = "SiO2"
+file = "SiO2/gulley_2012__n2.csv"
+table = "tbl_763380c3ceb4"
+quantity = "nonlinear_index"
+unit = "cm2/W"
+scale = 1e-16
+abscissa_unit = "nm"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I n2 = 2.48 x 10^-16 cm2 W^-1, the total Kerr coefficient of Eq. (1), split into (1 - f_r) instantaneous and f_r Raman parts."
+[datasets.parameters]
+part = "total"
+coefficient = "self"
+assumed = true
+
+[[datasets]]
+id = "model_raman_fraction"
+material = "SiO2"
+file = "SiO2/gulley_2012__raman_fraction.csv"
+table = "tbl_763380c3ceb4"
+quantity = "raman_fraction"
+abscissa = "none"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I f_r, 'Raman fraction of nonlinear polarization'."
+[datasets.parameters]
+definition = "f_r in Eq. (1): i(k0 n2/n0)(1 - f_r) T I A + i(k0 n2/n0) f_r T [int R(tau - tau') I(tau') dtau'] A"
+assumed = true
+
+[[datasets]]
+id = "model_raman_tau_1"
+material = "SiO2"
+file = "SiO2/gulley_2012__raman_tau_1.csv"
+table = "tbl_763380c3ceb4"
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I tau_1 = 32 fs; in the printed R(tau) it is the oscillation parameter, sin(tau/tau_1), the reverse of couairon_2005's assignment (source notes, finding 2)."
+[datasets.parameters]
+constant = "tau_1 (in sin(tau/tau_1), as printed)"
+model = "R(tau) = [(tau_1^2 + tau_2^2)/(tau_1 tau_2^2)] exp(-tau/tau_2) sin(tau/tau_1)"
+assumed = true
+
+[[datasets]]
+id = "model_raman_tau_2"
+material = "SiO2"
+file = "SiO2/gulley_2012__raman_tau_2.csv"
+table = "tbl_763380c3ceb4"
+quantity = "raman_response_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)"]
+notes = "Table I tau_2 = 12.2 fs; in the printed R(tau) it is the decay time, exp(-tau/tau_2) (source notes, finding 2)."
+[datasets.parameters]
+constant = "tau_2 (in exp(-tau/tau_2), as printed)"
+model = "R(tau) = [(tau_1^2 + tau_2^2)/(tau_1 tau_2^2)] exp(-tau/tau_2) sin(tau/tau_1)"
+assumed = true
+
+[[datasets]]
+id = "model_reduced_mass"
+material = "SiO2"
+table = "text"
+points = [["1", "", "0.5"]]
+quantity = "effective_mass"
+unit = "m_e"
+abscissa = "none"
+use = "check"
+notes = "p. 013808-2: the Keldysh rate 'with a reduced electron-hole mass of half the electron rest mass'. The Drude cross section of Table I uses the free-electron mass m_e."
+[datasets.parameters]
+carrier = "reduced"
+assumed = true
+
+[[datasets]]
+id = "model_recombination_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "150"]]
+quantity = "electron_trapping_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+reproduced_from = ["S. W. Winkler, I. M. Burakov, R. Stoian, N. M. Bulgakova, A. Husakou, A. Mermillod-Blondin, A. Rosenfeld, D. Ashkenasi and I. V. Hertel, Appl. Phys. A 84, 413 (2006)", "A. Q. Wu, I. H. Chowdhury and X. Xu, Phys. Rev. B 72, 085128 (2005)"]
+notes = "p. 013808-2: 'we also assume an exponential loss of free carriers from the conduction band with a recombination time of 150 fs [19,34]'."
+[datasets.parameters]
+assumed = true
+
+[[datasets]]
+id = "model_collision_time"
+material = "SiO2"
+table = "text"
+points = [["1", "", "10"]]
+quantity = "electron_collision_time"
+unit = "fs"
+abscissa = "none"
+use = "check"
+notes = "p. 013808-4: chosen by matching the simulated single-shot threshold (Fig. 2) to the estimated 80 uJ: 'Fig. 2 suggests an approximate collision time of the order of 10 fs ... Therefore a 10-fs collision time is assumed hereafter'. An order-of-magnitude, model-dependent choice."
+[datasets.parameters]
+assumed = true
+
+[[formulas]]
+id = "propagation_model"
+material = "SiO2"
+equation = "Eq. (1), p. 013808-2, and Table I"
+printed = "dA/dz = (i/(2k0)) T^-1 nabla_perp^2 A + i D_b A + i (k0 n2/n0)(1 - f_r) T I A + i (k0 n2/n0) f_r T [int_-inf^tau dtau' R(tau - tau') I(tau')] A - (W_PI U/(2I)) A - (sigma/2)(1 + i omega0 tau_c) G^-1 [rho A]; I = (1/2) n0 c eps0 |A|^2; D_b = sum_{m>=2} (k_m/m!)(i d_tau)^m; T = 1 + (i/omega0) d_tau; G = 1 + (i/omega0) g d_tau; g = (-i omega0 tau_c)/(1 - i omega0 tau_c); sigma = e^2 tau_c/(m_e n0 eps0 c (1 + omega0^2 tau_c^2)); R(tau) = [(tau_1^2 + tau_2^2)/(tau_1 tau_2^2)] exp(-tau/tau_2) sin(tau/tau_1)"
+variable = "A: complex field envelope, E = (1/2) A exp[i(k0 z - omega0 t)] + c.c.; tau = t - z k_1; rho the free-carrier density from Rethfeld's multiple rate equation (rethfeld_2004)"
+coefficients = { tau_1 = "32 fs", tau_2 = "12.2 fs", f_r = "0.18", n0 = "1.45", k_2 = "361 (unit printed fs^2 W^-1)", n2 = "2.48e-16 cm^2/W", U = "9 eV", tau_c = "10 fs (chosen)", tau_rec = "150 fs" }
+reproduced_from = ["J. R. Gulley and W. M. Dennis, Phys. Rev. A 81, 033818 (2010)"]
+check = "sigma peaks at tau_c = 1/omega0 = 0.425 fs at 800 nm (printed 'approximately tau_c = 0.42 fs'); at tau_c = 10 fs, sigma = 1.32e-18 cm2 (computed, not printed) (2026-09-26)."
+notes = "The Drude dispersion operator G is the paper's subject (ref. 30); only the GVD term of D_b is kept. P_cr is written lambda^2/(8 pi n0 n2) in the self-focusing length z_sf = pi w_xy^2/(lambda sqrt(P/P_cr - 1)) (p. 013808-4; source notes, finding 3)."

@@ -1,0 +1,119 @@
+citation = "K. Kerl, U. Hohm and H. Varchmin, \"Polarizability alpha(omega, T, rho) of small molecules in the gas phase\", Ber. Bunsenges. Phys. Chem. 96, 728 (1992)"
+doi = "10.1002/bbpc.19920960517"
+library = "Kerl_1992_PolarizabilitySmallMolecules"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "fit"
+technique = """A review of the Braunschweig group's interferometric refractive-index \
+measurements (Michelson twin interferometer, 300-1100 K, visible He-Ne and Hg lines; \
+the apparatus and methods of their refs. [27, 28]) with one new product: the \
+polarizability of the free molecule fitted to Eq. (10), a one-term Kramers-Heisenberg \
+dispersion times a quadratic in temperature (Table 1)."""
+notes = """Page numbers are the journal's (728-733; pdf page 1 = p. 728). The last \
+pdf page is the start of an unrelated communication (Behrisch, on DD fusion).
+
+Reduction (Eqs. 1-3, pp. 728-729): (n^2 - 1)/(n^2 + 2)/rho_0 = sum_j A_j rho_0^(j-1), \
+rho_0 = p/RT; A_1 = (4/3) pi N_A alpha(omega, T), alpha the volume polarizability of \
+the free molecule, 'with a precision of about 0.03%' (p. 729).
+
+Eq. (10) (p. 730): alpha(omega, T) = alpha(0, 0)/(1 - omega^2/omega_0^2) (1 + b T + c \
+T^2), from Eq. (5) (one effective oscillator, 'may be used also for careful \
+extrapolations to other frequency ranges within the accuracy of our measurements') and \
+Eq. (8) (Bell and Buckingham's rotation-vibration averaging, zero-point vibration \
+included in alpha(omega, 0)). 'This equation is sufficient to represent our experimental \
+results for simple atoms and small molecules with a mean uncertainty of about 0.1%' \
+(p. 730). 'As usual standard deviations are given in parenthesis'; 'additional figures \
+are given to some numbers, which otherwise are not significant' (p. 730). Table 1 note \
+a: 'The uncertainty of omega_0 is usually less than 0.5%'. alpha(0, 0) is an \
+extrapolation to omega = 0 and T = 0 of electronic (optical) data: it excludes the \
+vibrational (atomic) polarizability (p. 731, of Fig. 3), so it is not a static polarizability.
+
+Sources of the fitted data (Table 1 notes): b [35] Hohm and Kerl, Mol. Phys. 69, 819 \
+(1990) (Ar, H2, O2; hohm_1990b, in the library since 2026-09-27); c N2, the temperature dependence from [23] \
+(hohm_1990) and the dispersion from [19] (K. Kerl, Z. Phys. Chem. NF 129, 129 (1982)), \
+e 'Dispersion only determined at 298 K'; d CH4 [26] (U. Hohm and K. Kerl, Ber. \
+Bunsenges. Phys. Chem. 95, 36 (1991) = hohm_1991), f 'Dispersion only determined between 128 K and \
+296 K'; CO2 no reference; g 'Given high statistical weight for fit in T to keep the \
+occurring [misspelt in print] and physically wrong negative slope at lower T small' (H2, O2, CH4, air; \
+footnotes f and g are garbled in the library's text, read from the image, p. 731). A \
+negative b gives a spurious weak minimum of alpha(T), suppressed in Fig. 2 (p. 731).
+
+Checks (2026-09-26), Eq. (10) in angstrom^3 against Hohm's measurements (hohm_1994b, \
+hohm_1993; 1 au = 0.1481847 angstrom^3) at their temperatures: Ar -0.026 % (633 nm) and \
+-0.011 % (543.5 nm); CH4 -0.016 %, -0.015 %; O2 -0.275 %, -0.246 %; CO2 +0.208 %, \
++0.211 %; H2 +0.02 % against hohm_1994/input_H2 (whose temperature is not stated, \
+taken as 293-296 K). Against hohm_1990's alpha(T) formulas at 632.99 nm (the same \
+group): Ar +0.018 % (1.66306 against 1.66276), N2 +0.002 % at 300 K, CH4 -0.014 %, O2 \
+-0.035 %, H2 -0.10 % at 300 K. The fits' rise from 0 to 1000 K: H2 1.34 %, CH4 1.14 %, \
+O2 0.63 %, N2 0.18 %, Ar 0 (hohm_1990: 1.4, 1.2, 0.7, 0.2 %). The O2 and CO2 offsets \
+from hohm_1994b exceed the stated 0.1 %.
+
+Not transcribed: air (not a curated species; alpha(0,0) = 1.6970(13) angstrom^3, \
+omega_0 = 2.47044e16 s^-1, b = -1.765(3.0)e-6 K^-1, c = 7.909(3.7)e-9 K^-2, 296-985 K, \
+dispersion at 298 K only); the neopentane, CH3OH and CF2Cl2 discussion (b_R of CH3OH \
+3160(25) cm^3/mol, dimerisation; not curated species); Figs. 1-4."""
+
+[[formulas]]
+id = "eq10_Ar"
+material = "Ar"
+equation = "Eq. (10) with Table 1, pp. 730-731"
+printed = "alpha(omega, T) = alpha(0,0)/(1 - omega^2/omega_0^2) (1 + b T + c T^2); Ar: 10^30 alpha(0,0)/m^3 = 1.6404(10), 10^-16 omega_0/s^-1 = 2.54932, 10^6 b/K = 0.0, 10^9 c/K^2 = 0.0"
+variable = "omega: angular frequency in s^-1 (2 pi c over the vacuum wavelength); T: temperature in K; alpha: polarizability volume in 1e-30 m^3"
+range = "295-1007 K, 543.51-632.99 nm"
+coefficients = { alpha00 = "1.6404", alpha00_sigma = "0.0010", omega0 = "2.54932e16", b = "0.0", c = "0.0", unit = "1e-30 m^3" }
+check = "At 632.99 nm gives 1.66306 angstrom^3 (hohm_1990's mean 1.66276(59): +0.018 %); against hohm_1994b/alpha_Ar at 296.82 K -0.026 % (633 nm), -0.011 % (543.5 nm). Checked 2026-09-26."
+notes = "Data of Hohm and Kerl, Mol. Phys. 69, 819 (1990) (note b) = hohm_1990b (re-pointed 2026-09-27): a fit to its Ar data, so not independent of hohm_1990b's formulas and alpha0_T_Ar (fit one or the other). alpha(0,0) = 1.6404(10) is hohm_1990b's mean static value, printed there 1.6404(11). No temperature dependence (b = c = 0)."
+
+[[formulas]]
+id = "eq10_H2"
+material = "H2"
+equation = "Eq. (10) with Table 1, pp. 730-731"
+printed = "as eq10_Ar; H2: 10^30 alpha(0,0)/m^3 = 0.80320(57) (note g), 10^-16 omega_0/s^-1 = 2.13987, 10^6 b/K = 5.87(1.6), 10^9 c/K^2 = 7.544(2.0)"
+variable = "as eq10_Ar"
+range = "296-1007 K, 543.51-632.99 nm"
+coefficients = { alpha00 = "0.80320", alpha00_sigma = "0.00057", omega0 = "2.13987e16", b = "5.87e-6", b_sigma = "1.6e-6", c = "7.544e-9", c_sigma = "2.0e-9", unit = "1e-30 m^3" }
+check = "Against hohm_1994/input_H2 (5.53900 au at 632.99 nm, temperature not stated) +0.02 % at 293-296 K; against hohm_1990's Eq. (18) -0.10 % at 300 K, and the 0-1000 K rise is 1.34 % (hohm_1990: 1.4 %). Checked 2026-09-26."
+notes = "Data of Hohm and Kerl, Mol. Phys. 69, 819 (1990) (note b) = hohm_1990b (re-pointed 2026-09-27; not independent of it). alpha(0,0) = 0.80320(57) is hohm_1990b's Table 4 extrapolation to 0 K (alpha_0K_H2, static row), digit for digit. Normal H2 (the paper does not say otherwise). Note g: alpha(0,0) given high statistical weight to keep the spurious low-T slope small. The measured alpha(T) agrees with Bishop and Pipin's ab initio values (Fig. 2, p. 731)."
+
+[[formulas]]
+id = "eq10_N2"
+material = "N2"
+equation = "Eq. (10) with Table 1, pp. 730-731"
+printed = "as eq10_Ar; N2: 10^30 alpha(0,0)/m^3 = 1.7406(14), 10^-16 omega_0/s^-1 = 2.60490, 10^6 b/K = 1.8(1.1), 10^9 c/K^2 = -"
+variable = "as eq10_Ar"
+range = "295-1089 K; 400-700 nm, the dispersion at 298 K only (note e)"
+coefficients = { alpha00 = "1.7406", alpha00_sigma = "0.0014", omega0 = "2.60490e16", b = "1.8e-6", b_sigma = "1.1e-6", unit = "1e-30 m^3" }
+check = "At 632.99 nm and 300 K gives 1.76457 angstrom^3, hohm_1990's Eq. (19) 1.76453 (+0.002 %); +0.18 % from 0 to 1000 K (hohm_1990: 0.2 %). Checked 2026-09-26."
+notes = "The temperature dependence from hohm_1990 ([23]), the dispersion from Kerl 1982 ([19], Z. Phys. Chem. NF 129, 129; not in the library), note c. c is printed '-' (no quadratic term)."
+
+[[formulas]]
+id = "eq10_O2"
+material = "O2"
+equation = "Eq. (10) with Table 1, pp. 730-731"
+printed = "as eq10_Ar; O2: 10^30 alpha(0,0)/m^3 = 1.5658(14) (note g), 10^-16 omega_0/s^-1 = 2.18010, 10^6 b/K = -2.369(1.2), 10^9 c/K^2 = 8.687(1.6)"
+variable = "as eq10_Ar"
+range = "297-1006 K, 543.51-632.99 nm"
+coefficients = { alpha00 = "1.5658", alpha00_sigma = "0.0014", omega0 = "2.18010e16", b = "-2.369e-6", b_sigma = "1.2e-6", c = "8.687e-9", c_sigma = "1.6e-9", unit = "1e-30 m^3" }
+check = "Against hohm_1994b/alpha_O2 at 292.06 K: -0.275 % (633 nm), -0.246 % (543.5 nm), beyond the stated 0.1 %; against hohm_1990's Eq. (20) -0.035 % at 300 K, and +0.63 % from 0 to 1000 K (hohm_1990: 0.7 %). Checked 2026-09-26."
+notes = "Data of Hohm and Kerl, Mol. Phys. 69, 819 (1990) (note b) = hohm_1990b (re-pointed 2026-09-27; not independent of it). alpha(0,0) = 1.5658(14) is hohm_1990b's Table 5 extrapolation to 0 K (alpha_0K_O2, static row), digit for digit. Note g as for H2. Fig. 3 extrapolates the O2 polarizability surface far outside the measured (hatched) region; the authors warn that it neglects the atomic polarizability at low frequencies (p. 731)."
+
+[[formulas]]
+id = "eq10_CH4"
+material = "CH4"
+equation = "Eq. (10) with Table 1, pp. 730-731"
+printed = "as eq10_Ar; CH4: 10^30 alpha(0,0)/m^3 = 2.5548(18) (note g), 10^-16 omega_0/s^-1 = 2.14600, 10^6 b/K = -1.637(1.6), 10^9 c/K^2 = 13.048(2.1)"
+variable = "as eq10_Ar"
+range = "128-890 K; 543.51-632.99 nm, the dispersion between 128 and 296 K only (note f)"
+coefficients = { alpha00 = "2.5548", alpha00_sigma = "0.0018", omega0 = "2.14600e16", b = "-1.637e-6", b_sigma = "1.6e-6", c = "13.048e-9", c_sigma = "2.1e-9", unit = "1e-30 m^3" }
+check = "Against hohm_1993/alpha_CH4 at 294.47 K: -0.016 % (633 nm), -0.015 % (543.5 nm); against hohm_1990's Eq. (20) -0.014 % at 300 K, and +1.14 % from 0 to 1000 K (hohm_1990: 1.2 %). Checked 2026-09-26."
+notes = "Data of Hohm and Kerl, Ber. Bunsenges. Phys. Chem. 95, 36 (1991) (note d) = hohm_1991 (re-pointed 2026-09-27; with hohm_1990's 300-1100 K data, not independent of either). Note g as for H2."
+
+[[formulas]]
+id = "eq10_CO2"
+material = "CO2"
+equation = "Eq. (10) with Table 1, pp. 730-731"
+printed = "as eq10_Ar; CO2: 10^30 alpha(0,0)/m^3 = 2.5891(35), 10^-16 omega_0/s^-1 = 2.33357, 10^6 b/K = 10.6(5.0), 10^9 c/K^2 = -"
+variable = "as eq10_Ar"
+range = "220-360 K, 543.51-632.99 nm"
+coefficients = { alpha00 = "2.5891", alpha00_sigma = "0.0035", omega0 = "2.33357e16", b = "10.6e-6", b_sigma = "5.0e-6", unit = "1e-30 m^3" }
+check = "Against hohm_1994b/alpha_CO2 at 293.80 K: +0.208 % (633 nm), +0.211 % (543.5 nm), beyond the stated 0.1 %. Checked 2026-09-26."
+notes = "No reference is given for the CO2 data (the only row without a note). c is printed '-'."

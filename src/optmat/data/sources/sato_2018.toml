@@ -1,0 +1,340 @@
+citation = "T. Sato, H. Pathak, Y. Orimo and K. L. Ishikawa, \"Communication: Time-dependent optimized coupled-cluster method for multielectron dynamics\", J. Chem. Phys. 148, 051101 (2018)"
+doi = "10.1063/1.5020633"
+library = "Sato_2018_CommunicationTimeDependent"
+identity = "VALIDATED"
+kind = "theory"
+technique = """Time-dependent optimised coupled-cluster (TD-OCC) method, with double \
+(TD-OCCD) and double and triple (TD-OCCDT) excitations within optimised, \
+time-dependent active orbitals, derived from a real action functional with \
+orthonormal orbitals (pp. 051101-2 to -4), compared with TDHF and with TD-CASSCF (Sato \
+and Ishikawa, Phys. Rev. A 88, 023402 (2013); the TD-CASSCF implementation for atoms \
+is Sato et al., Phys. Rev. A 94, 023405 (2016), sato_2016, its ref. 25). Ar \
+(p. 051101-4): spherical FEDVR basis, 'finite elements of length 4 (with several \
+finer elements near the nuclei), each supporting 23 local DVR functions', R_max = 240 \
+'with the mask absorbing boundary' (ref. 25), l_max = 63, 'calibrated to achieve \
+convergence'; the ground states by imaginary-time relaxation; 'the Ne core was kept \
+frozen at HF orbitals and eight valence electrons were correlated among 13 optimized \
+active orbitals, with their initial characters being 3s3p3d4p4s' (TD-OCC and \
+TD-CASSCF), 'The Ne core was frozen in all the methods and 13 active orbitals were \
+propagated in TD-OCC and TD-CASSCF methods'; dipole approximation, velocity gauge, \
+the equations of motion propagated by the fourth-order exponential Runge-Kutta method \
+(Hochbruck and Ostermann 2010). Nonrelativistic. No convergence figures are given."""
+notes = """Journal pp. 051101-1 to -5 = PDF pages 2 to 6 (PDF page 1 is the AIP \
+download banner, its only image); journal page 051101-n = PDF page n + 1. Identity \
+checked on the first page (PDF p. 2: 'THE JOURNAL OF CHEMICAL PHYSICS 148, 051101 \
+(2018)', Takeshi Sato, Himadri Pathak, Yuki Orimo and Kenichi L. Ishikawa; received 25 \
+December 2017, accepted 18 January 2018, published online 1 February 2018) on \
+2026-10-06.
+
+THE PULSE (p. 051101-4): 'a linearly polarized (in the z direction) laser pulse with a \
+wavelength of 800 nm, a peak intensity of 6 x 10^14 W/cm2, and a foot-to-foot pulse \
+duration of three optical cycles with a sin2-shaped envelope, within the dipole \
+approximation in the velocity gauge'. The paper prints no envelope formula, carrier \
+phase or definition of the peak intensity, and does not say whether the sin^2 shapes \
+the field or the vector potential. ASSUMED here (not stated): the group's form, Eq. 27 \
+of sato_2016 (the TD-CASSCF code this paper cites as ref. 25 for the absorber and the \
+velocity-gauge frozen core), E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau = \
+3T, with I0 = E0^2 in atomic units: the sin^2 on the field, a sine carrier from the \
+pulse's start (the field zero at the envelope's peak, t = 1.5T), the largest |E(t)| \
+0.937 E0 (computed). Pathak, Sato and Ishikawa, J. Chem. Phys. 153, 034110 (2020) (in \
+the library, not curated), Eq. 29, prints the same form, with I0 = E0^2, for the \
+group's three-cycle Ar runs at 1200 nm. tau = 3T = \
+8.006 fs at 800 nm; the intensity envelope (sin^4) is 0.364 tau = 2.91 fs wide at half \
+maximum (computed).
+
+THE MEASURE (Fig. 3 caption, p. 051101-4): 'The probabilities, as a function of time, \
+of finding one (a) and two (b) electrons outside a sphere of radius R0 = 20 a.u.'; the \
+text: they 'measure the single and double ionization probabilities, respectively'. The \
+panels are labelled '(a) Ar+' and '(b) Ar2+'. How they are computed (the \
+defining formula) is not printed in this paper. Electrons ionised but still inside 20 au at the end of the pulse are not counted; \
+bound population beyond 20 au is. The values here are at t = 3T, the end of the pulse \
+and of the figure's time axis (1.0 to 3.0 optical cycles); no post-pulse time is \
+shown.
+
+EXTRACTED (tools/extract/sato_2018.py). The paper prints no number of these \
+probabilities (no table, no supplement): Fig. 3 (p. 051101-4), a vector drawing, read \
+from the PDF by data rule 8 (TC-699): each curve's last vertex, at the 3.0-cycle tick. \
+Axes calibrated from the drawing's own ticks (labels drawn as glyphs, their values \
+read on the rendered page and their presence at every tick checked): x 1.0 to 3.0 \
+cycles (worst tick residual 0.023 pt), y 0 to 0.5 in (a) (206.9 pt per unit) and 0 to \
+0.04 in (b) (2550 pt per unit), worst 0.022 and 0.023 pt; the drawing's coordinates step \
+by 0.058 pt. Curves identified by colour and width with the legend's samples, whose \
+order (top to bottom TDHF red, TD-OCCD blue, TD-OCCDT thin green, TD-CASSCF thick \
+black) is checked against the label glyphs beside them. Every curve starts at t = 1.0 \
+cycle at 0 within one quantum (0.0003 in (a), 0 in (b)): the zero of each y axis. The \
+drawn lines step back in time at a few kinks (0.12 to 0.88 pt, at most 0.022 cycle), \
+none at the end. The overlay of the read ends on the rendered page matches the curves \
+(inspected 2026-10-06).
+
+READ at t = 3T, 6e14 W/cm2: single (a) TDHF 0.2954, TD-OCCD 0.4666, TD-OCCDT 0.5064, \
+TD-CASSCF 0.5078; double (b) TDHF 0.04078, TD-OCCD 0.02140, TD-OCCDT 0.01551, \
+TD-CASSCF 0.01587. The double-ionisation curves oscillate near the end: over the last \
+0.2 cycle TD-CASSCF runs 0.0152 to 0.0170, TD-OCCDT 0.0147 to 0.0160, TD-OCCD 0.0201 \
+to 0.0214, TDHF 0.0400 to 0.0408 (rising); the value at 3T is the drawn one. The text: \
+'The rapid convergence of TD-OCC results to the TD-CASSCF ones' (TD-OCCDT within 0.3 % \
+of TD-CASSCF in (a)); TDHF's single ionisation is 0.58 times TD-CASSCF's and its double \
+2.6 times.
+
+DIGITISING UNCERTAINTY: 0.06 pt on the y axis (one quantum, which bounds half a \
+quantum plus the worst tick residual): 2.9e-4 in (a) (0.06 to 0.10 % of the values) \
+and 2.4e-5 in (b) (0.06 to 0.16 %), absolute. The paper states no uncertainty of the \
+calculations.
+
+NOT TAKEN: Table I (ground-state energies of BH in a DZP basis) and Fig. 2 (HHG \
+spectra of Ar), not ionisation; the paper has no single-active-electron calculation."""
+
+[[datasets]]
+id = "fig3a_tdhf_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3a_tdhf_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a) (p. 051101-4, panel '(a) Ar+'), TDHF (red line): the probability of finding one electron outside R0 = 20 au, the single ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.2954, the curve's last vertex in the vector drawing (the record's notes). 0.0003: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 0.0003
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding one electron outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar+"
+charge = 1
+method = "TDHF: one Slater determinant; the Ne core (1s, 2s, 2p) frozen at HF orbitals, the 3s and 3p orbitals propagated; velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6) in one determinant; ten (the Ne core) frozen"
+
+[[datasets]]
+id = "fig3a_occd_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3a_occd_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a) (p. 051101-4, panel '(a) Ar+'), TD-OCCD (blue line): the probability of finding one electron outside R0 = 20 au, the single ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.4666, the curve's last vertex in the vector drawing (the record's notes). 0.0003: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 0.0003
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding one electron outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar+"
+charge = 1
+method = "TD-OCCD: time-dependent optimised coupled cluster with double excitations; the Ne core (1s, 2s, 2p) frozen at HF orbitals, eight valence electrons correlated among 13 optimised active orbitals (initially 3s, 3p, 3d, 4p, 4s); velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6), correlated; ten (the Ne core) frozen at HF orbitals"
+
+[[datasets]]
+id = "fig3a_occdt_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3a_occdt_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a) (p. 051101-4, panel '(a) Ar+'), TD-OCCDT (thin green line): the probability of finding one electron outside R0 = 20 au, the single ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.5064, the curve's last vertex in the vector drawing (the record's notes). 0.0003: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 0.0003
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding one electron outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar+"
+charge = 1
+method = "TD-OCCDT: time-dependent optimised coupled cluster with double and triple excitations; the Ne core (1s, 2s, 2p) frozen at HF orbitals, eight valence electrons correlated among 13 optimised active orbitals (initially 3s, 3p, 3d, 4p, 4s); velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6), correlated; ten (the Ne core) frozen at HF orbitals"
+
+[[datasets]]
+id = "fig3a_casscf_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3a_casscf_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(a) (p. 051101-4, panel '(a) Ar+'), TD-CASSCF (thick black line): the probability of finding one electron outside R0 = 20 au, the single ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.5078, the curve's last vertex in the vector drawing (the record's notes). 0.0003: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 0.0003
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding one electron outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar+"
+charge = 1
+method = "TD-CASSCF: full configuration interaction in the active space; the Ne core (1s, 2s, 2p) frozen at HF orbitals, eight valence electrons correlated among 13 optimised active orbitals (initially 3s, 3p, 3d, 4p, 4s); velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6), correlated; ten (the Ne core) frozen at HF orbitals"
+
+[[datasets]]
+id = "fig3b_tdhf_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3b_tdhf_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (p. 051101-4, panel '(b) Ar2+'), TDHF (red line): the probability of finding two electrons outside R0 = 20 au, the double ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.04078, the curve's last vertex in the vector drawing (the record's notes). The curve oscillates near the end: 0.0400 to 0.0408, rising over the last 0.2 cycle (the record's notes). 2.4e-5: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 2.4e-5
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding two electrons outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar2+"
+charge = 2
+method = "TDHF: one Slater determinant; the Ne core (1s, 2s, 2p) frozen at HF orbitals, the 3s and 3p orbitals propagated; velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6) in one determinant; ten (the Ne core) frozen"
+
+[[datasets]]
+id = "fig3b_occd_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3b_occd_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (p. 051101-4, panel '(b) Ar2+'), TD-OCCD (blue line): the probability of finding two electrons outside R0 = 20 au, the double ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.0214, the curve's last vertex in the vector drawing (the record's notes). The curve oscillates near the end: 0.0201 to 0.0214 over the last 0.2 cycle (the record's notes). 2.4e-5: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 2.4e-5
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding two electrons outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar2+"
+charge = 2
+method = "TD-OCCD: time-dependent optimised coupled cluster with double excitations; the Ne core (1s, 2s, 2p) frozen at HF orbitals, eight valence electrons correlated among 13 optimised active orbitals (initially 3s, 3p, 3d, 4p, 4s); velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6), correlated; ten (the Ne core) frozen at HF orbitals"
+
+[[datasets]]
+id = "fig3b_occdt_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3b_occdt_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (p. 051101-4, panel '(b) Ar2+'), TD-OCCDT (thin green line): the probability of finding two electrons outside R0 = 20 au, the double ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.01551, the curve's last vertex in the vector drawing (the record's notes). The curve oscillates near the end: 0.0147 to 0.0160 over the last 0.2 cycle (the record's notes). 2.4e-5: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 2.4e-5
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding two electrons outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar2+"
+charge = 2
+method = "TD-OCCDT: time-dependent optimised coupled cluster with double and triple excitations; the Ne core (1s, 2s, 2p) frozen at HF orbitals, eight valence electrons correlated among 13 optimised active orbitals (initially 3s, 3p, 3d, 4p, 4s); velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6), correlated; ten (the Ne core) frozen at HF orbitals"
+
+[[datasets]]
+id = "fig3b_casscf_Ar_800nm"
+material = "Ar"
+file = "Ar/sato_2018__fig3b_casscf_Ar_800nm.csv"
+table = "fig_5d38508bb252"
+digitised = "vector"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Fig. 3(b) (p. 051101-4, panel '(b) Ar2+'), TD-CASSCF (thick black line): the probability of finding two electrons outside R0 = 20 au, the double ionisation probability (the text), at t = 3T, the end of the three-cycle pulse, Ar at 800 nm and 6e14 W/cm2: 0.01587, the curve's last vertex in the vector drawing (the record's notes). The curve oscillates near the end: 0.0152 to 0.0170 over the last 0.2 cycle (the record's notes). 2.4e-5: the digitising uncertainty, absolute (0.06 pt on the y axis); the calculation's own is not stated. The pulse's envelope placement, carrier phase and intensity definition are not printed: assumed from sato_2016 Eq. 27."
+[datasets.uncertainty]
+absolute = 2.4e-5
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 8.006
+pulse_fs_definition = "total (foot-to-foot) duration, three optical cycles (p. 051101-4), tau = 3T, T = 2.6685 fs; with the assumed sin^2 field envelope the intensity envelope (sin^4) is 2.91 fs wide at half maximum (computed)"
+pulse_cycles = 3
+polarization = "linear"
+pulse_envelope = "sin^2-shaped (as printed, p. 051101-4); its placement assumed from the group's Eq. 27 of sato_2016: E(t) = E0 sin(omega0 t) sin^2(pi t/tau), 0 <= t <= tau, on the field (not stated here)"
+cep = "not stated (assumed sine)"
+cep_definition = "assumed from sato_2016 Eq. 27: a sine carrier from the pulse's start, the field zero at the envelope's peak (t = tau/2 = 1.5T); not stated in this paper"
+intensity_definition = "peak intensity, not defined in this paper; assumed I0 = E0^2 in atomic units as in sato_2016 (the envelope's amplitude; the largest |E(t)| 0.937 E0 for three cycles, computed)"
+gauge = "velocity"
+measure = "the probability of finding two electrons outside a sphere of radius R0 = 20 a.u., at t = 3T, the end of the pulse"
+ion = "Ar2+"
+charge = 2
+method = "TD-CASSCF: full configuration interaction in the active space; the Ne core (1s, 2s, 2p) frozen at HF orbitals, eight valence electrons correlated among 13 optimised active orbitals (initially 3s, 3p, 3d, 4p, 4s); velocity gauge, FEDVR (elements of 4 au, 23 DVR functions), R_max = 240 with a mask absorber, l_max = 63"
+electrons = "eight active (3s2 3p6), correlated; ten (the Ne core) frozen at HF orbitals"

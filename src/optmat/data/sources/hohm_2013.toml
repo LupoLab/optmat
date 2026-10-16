@@ -1,0 +1,660 @@
+citation = "U. Hohm, \"Experimental static dipole-dipole polarizabilities of molecules\", J. Mol. Struct. 1054-1055, 282 (2013)"
+doi = "10.1016/j.molstruc.2013.10.003"
+library = "Hohm_2013_ExperimentalStaticDipole"
+identity = "VALIDATED_WITH_WARNINGS"
+kind = "compilation"
+technique = """A compilation of the static (zero-frequency) mean electronic polarizability \
+alpha_el(0) of 174 molecules from gas-phase (low-density or single-molecule) \
+measurements only: dielectric permittivity (DP; the Clausius-Mossotti value, from which \
+the orientation term mu^2/3kT is removed by extrapolation to 1/T -> 0 and the \
+vibrational part alpha_vib, usually from infrared intensities (Bishop and Cheung 1982), \
+is subtracted), refractive index (RI; Lorentz-Lorenz, extrapolated to zero frequency \
+with Kramers-Heisenberg or Cauchy-type equations), molecular-beam deflection, \
+electron-molecule scattering, matter-wave interferometry, and semi-experimental dipole \
+oscillator strength distributions (DOSD, from photoabsorption and refractivity data). \
+Hohm re-evaluates the originals with the CODATA 2010 constants and, where needed, the \
+virial coefficients of Dymond et al. (2002) (pp. 1-3)."""
+notes = """Identity checked against the first page (version of record, 11 pdf pages = \
+journal pp. 282-292). Page numbers are pdf pages. All values in atomic units of \
+polarizability (4 pi eps0 a0^3).
+
+WHAT IS TABULATED. Eq. (2), p. 1: alpha(omega) = alpha_el + alpha_vib + alpha_or. The \
+tables give alpha_el(0) ('the static electronic part', p. 1); for DP rows also the \
+measured alpha_el + alpha_vib and the alpha_vib subtracted (with its reference), \
+alpha_el being Hohm's difference. 'Generally all of the available experimental data \
+are displayed. One exception is the case of H2, N2, and O2 ... where experimental \
+reference values are available. Other exceptions are those favourable cases where all \
+of the experimental data do not deviate by more than 0.5 %. Then only a statistical \
+mean of at least three values is given. If there is more than one experimental \
+investigation available I recommend to use the data point marked with [dagger]. This \
+choice in some cases reflects my personal opinion on the experimental results. It is \
+unbiased by recent theoretical findings' (pp. 3-4). 'Most of the measurements were \
+performed at room temperature' (p. 3); no temperatures are given per value.
+
+HOW THE VALUES ARE RECORDED. Each value Hohm takes from a cited reference is use = \
+reproduced with that reference (a curated id where there is one); note that Hohm \
+re-evaluates it (zero-frequency extrapolation of RI data, alpha_vib subtraction, \
+modern constants), so the number is often not printed in the original. The values \
+Hohm forms himself, the 'Mean value' rows and the alpha_el of DP rows (his \
+differences), are this source's, use = check: they average or combine data optmat \
+already holds (smith_1976, cuthbertson_1920, watson_1936, burns_1986, hohm_1993, \
+hohm_1994b, bideau_mehu_1973, stoll_1922, schmidt_2003, bose_1972, st_arnaud_1979, \
+kirouac_1973), so fitting them beside those would double count. alpha_vib is recorded \
+as polarizability_correction (part pure_vibrational), reproduced from its reference. \
+Row ids are the references as printed; a derived alpha_el is named '[ref of the \
+total]-[ref of alpha_vib]'. The dagger (recommended) is stated in each dataset's notes.
+
+UNCERTAINTY. The +- of every value is printed without any statement of its level or \
+meaning anywhere in the paper: level 'not stated' throughout. The abstract: 'For some \
+molecules like H2, N2, and O2 very precise experimental data exist with an uncertainty \
+of better than 0.1 %. In general however, the experimental error is much higher.'
+
+TEMPERATURE (p. 2): 'The measured polarizability depends on the temperature due to \
+vibrational and rotational excitation of the molecule [40, 41]. Fortunately this \
+effect is small and lies in the range of 0.5-1 % per 1000 K [42, 43].' Also (p. 3): \
+the remarks CT and HT mark cryogenic (T < ~100 K) or high-temperature (T > ~500 K) \
+experiments (none in the curated rows).
+
+TABLES AND EXTRACTION. Tables 1 (homonuclear diatomics), 2 (heteronuclear), 3 \
+(triatomics), 5 (penta-atomics) and 7 (hepta-atomics: SF6) are used; the library \
+detaches the captions (Table 1's caption sits in the text of p. 2; the unlabelled \
+tables are identified by their molecules and the text's table numbers; Tables 6 and 7 \
+carry the next table's caption as a footnote). Table 3's body was re-read by OCR \
+('all 229 numbers agree with the text layer'); every in-scope row was checked against \
+the images. Reference [43] is missing from the extracted reference list (and [116]; \
+[187] is out of order); the pdf text shows '[43] E.F. May, M.R. Moldover, J.W. Schmidt, \
+Mol. Phys. 107 (2009) 1577-1585' (= may_2009, in the library since 2026-09-27).
+
+NOT EXTRACTED. O3 (Table 3): '18.68 - 19.67 [85]', DOSD, Kumar and Thakkar 2011: a \
+range, not a value with an uncertainty (kumar_2011 holds the distributions). Every \
+molecule not curated (HF, NO, HCl, H2O, NH3, CF4, the alkali dimers, the other \
+polyatomics; 174 molecules in all). The conclusion (p. 8): for polar molecules RI \
+results are preferable 'due to their higher accuracy'; for non-polar ones DP 'may \
+have the same or even a better accuracy as it is demonstrated for the homonuclear \
+diatoms H2, N2, and O2'.
+
+FINDINGS (computed 2026-09-26, 1 au = 0.373802 cm^3/mol as a molar polarizability): \
+N2 11.7379 au is the mean of schmidt_2003's two N2 fits (4.38765 cm^3/mol), not a \
+printed value; O2 10.587 au is may_2008's recommended 3.9576 cm^3/mol; CO2 19.652 au \
+is schmidt_2003's 7.34590; N2O 20.45 au is kirouac_1973's 3.03e-24 cm^3; CH4's DP mean \
+17.496 lies between bose_1972 (6.541 = 17.499 au) and schmidt_2003 (17.508-17.517). \
+Hohm's alpha_vib for CO, CO2, N2O, CH4 [16] are bishop_1982's to rounding (0.1213, \
+1.759, 1.092, 0.2305 au); for CO2 he prefers Thomas et al.'s 2.18 (HITRAN 2.121), and \
+for SF6 Pack's 13.83 or Bulanin's 13.73 (HITRAN 13.94; Bishop and Cheung 15.16). CH4: \
+the DP electronic value 17.266 +- 0.045 exceeds the RI mean 17.240 +- 0.026 by 0.15 %.
+
+Reproductions: zhao_2026's hohm_2013_* datasets cite this paper (re-pointed there)."""
+
+[[datasets]]
+id = "dp_H2"
+material = "H2"
+file = "H2/hohm_2013__dp_H2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["may_2009"]
+notes = "Table 1: alpha_el = 5.4324 +- 0.0005 au, recommended (dagger), DP (dielectric permittivity), 'More data available'; ref. [43], missing from the extracted reference list: the pdf prints [43] E. F. May, M. R. Moldover, J. W. Schmidt, Mol. Phys. 107 (2009) 1577-1585 = may_2009 (re-pointed 2026-09-27). It is may_2009's recommended alpha_e = (8.9568 +- 0.0008) x 10^-41 F m^2 at 273.16 K in atomic units (8.9568/1.648778 = 5.43239, 0.0008 -> 0.00049; checked): normal H2, the static electronic polarizability averaged over the rotational populations at 273.16 K (alpha_vib = 0). The original's uncertainty is one standard uncertainty: level corrected from 'not stated' to '1 sigma'."
+[datasets.uncertainty]
+column = true
+level = "1 sigma"
+
+[[datasets]]
+id = "ri_D2"
+material = "D2"
+file = "D2/hohm_2013__ri_D2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["T. Larsén, Z. Phys. 100, 543 (1936)", "O. E. Frivold, O. Hassel and E. Hetland, Physica 6, 972 (1939)"]
+notes = "Table 1: alpha_el of D2 from refractive-index (RI) data, extrapolated to zero frequency by Hohm (Sect. 2.2(ii)): row [77] Larsen 1936, 5.367 +- 0.020 au, recommended (dagger); row [78] Frivold, Hassel and Hetland 1939, 5.361 +- 0.020 au. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_essen_D2"
+material = "D2"
+file = "D2/hohm_2013__dp_essen_D2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["essen_1953"]
+notes = "Table 1: alpha_el of D2 = 5.389 +- 0.020 au from Essen's (1953) microwave dielectric data (DP), as evaluated by Hohm (constants of CODATA 2010, Dymond's virial coefficients where needed, Sect. 2.1). Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_N2"
+material = "N2"
+file = "N2/hohm_2013__dp_N2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["schmidt_2003"]
+notes = "Table 1: alpha_el = 11.7379 +- 0.0010 au, recommended, DP, ref. [44] Schmidt and Moldover (2003). Converted with 4 pi eps0 a0^3 N_A/3 = 0.373802 cm^3/mol per au, it is 4.38765 cm^3/mol: the MEAN of schmidt_2003's two N2 fits (4.38782 two-parameter, 4.38748 with A_tau at 273.16 K), not either printed value (computed 2026-09-26); yang_2025's 4.3877(2) is the same number. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dosd_N2"
+material = "N2"
+file = "N2/hohm_2013__dosd_N2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. D. Zeiss and W. J. Meath, Mol. Phys. 33, 1155 (1977)"]
+notes = "Table 1: alpha_el = 11.74 +- 0.03 au from Zeiss and Meath's (1977) dipole oscillator strength distribution (DOSD; constructed from photoabsorption and refractivity data, so not independent of the refractive data optmat fits). Not the curated zeiss_1977 (Can. J. Phys. 55, 2080), a different paper. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_O2"
+material = "O2"
+file = "O2/hohm_2013__dp_O2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["may_2008", "schmidt_2003"]
+notes = "Table 1: alpha_el = 10.587 +- 0.002 au, recommended, DP, refs. [44, 45] (Schmidt and Moldover 2003; May, Moldover and Schmidt 2008). Numerically may_2008's recommended A_eps,273K = 3.9576 +- 0.0008 cm^3/mol (= 10.5874 +- 0.0021 au, computed 2026-09-26), which itself refits schmidt_2003's O2 data. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dosd_O2"
+material = "O2"
+file = "O2/hohm_2013__dosd_O2.csv"
+table = "tbl_3b3edcf5d4b1"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kumar_2011"]
+notes = "Table 1: alpha_el = 10.59 +- 0.03 au from Kumar and Thakkar's (2011) DOSD [85] (constrained by refractivity data). Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dosd_CO"
+material = "CO"
+file = "CO/hohm_2013__dosd_CO.csv"
+table = "tbl_56b3b73b65bf"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["jhanwar_1982"]
+notes = "Table 2 (heteronuclear diatomics): alpha_el = 13.08 +- 0.15 au, DOSD of Jhanwar and Meath (1982) [97]. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_mean_CO"
+material = "CO"
+file = "CO/hohm_2013__ri_mean_CO.csv"
+table = "tbl_56b3b73b65bf"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2: alpha_el = 13.04 +- 0.07 au, recommended, 'Mean value' of the RI data of refs. [98-102]: Koch 1914 (Ark. Mat. Astron. Fys. 10, 1), Smith, Huber and Parkinson 1976 (smith_1976), C. and M. Cuthbertson 1920 (cuthbertson_1920), Gruschke 1911 (Ann. Phys. 34, 801), Rentschler 1908 (Astrophys. J. 28, 345), each extrapolated to zero frequency by Hohm. Hohm's own mean of data optmat already holds (smith_1976, cuthbertson_1920): a check only, never fitted beside them. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_total_CO"
+material = "CO"
+file = "CO/hohm_2013__dp_total_CO.csv"
+table = "tbl_56b3b73b65bf"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["A. van Itterbeek and J. Spaepen, Physica 10, 173 (1943)", "A. van Itterbeek and K. de Clippeleir, Physica 14, 349 (1948)", "H. E. Watson, G. Gundo Rao and K. L. Ramaswamy, Proc. R. Soc. London A 143, 558 (1934)", "C. T. Zahn and J. B. Miles Jr, Phys. Rev. 32, 497 (1928)", "J. E. Boggs, C. M. Crain and J. E. Whiteford, J. Phys. Chem. 61, 482 (1957)"]
+notes = "Table 2, column alpha_el + alpha_vib: the static polarizability from dielectric (DP) data, as evaluated by Hohm, one row per reference: [103] van Itterbeek and Spaepen 1943, 12.76 +- 0.40; [104] van Itterbeek and de Clippeleir 1948, 12.44 +- 0.40; [105] Watson, Gundo Rao and Ramaswamy 1934, 13.32 +- 0.30; [46] Zahn and Miles 1928, 13.39 +- 0.30; [106] Boggs, Crain and Whiteford 1957, 13.48 +- 0.30 au. CO is polar: Hohm removes the orientation term by the Debye extrapolation to 1/T -> 0 (Sect. 2.2(i)); these are electronic plus vibrational. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (alpha_el + alpha_vib)"
+
+[[datasets]]
+id = "dp_electronic_CO"
+material = "CO"
+file = "CO/hohm_2013__dp_electronic_CO.csv"
+table = "tbl_56b3b73b65bf"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 2, column alpha_el of the DP rows: Hohm's difference alpha_el = (alpha_el + alpha_vib) - alpha_vib with alpha_vib = 0.12 au (Bishop and Cheung, bishop_1982); rows named '[ref of the total]-[16]': 12.64 +- 0.42, 12.32 +- 0.42, 13.20 +- 0.32, 13.26 +- 0.32, 13.36 +- 0.32 au. Derived from dp_total_CO and alpha_vib_CO: a check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic static polarizability, Hohm's alpha_el = (alpha_el + alpha_vib) - alpha_vib"
+
+[[datasets]]
+id = "alpha_vib_CO"
+material = "CO"
+file = "CO/hohm_2013__alpha_vib_CO.csv"
+table = "tbl_56b3b73b65bf"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bishop_1982"]
+notes = "Table 2, column alpha_vib: 0.12 au [16] (Bishop and Cheung 1982), printed on each of the five DP rows and taken once. bishop_1982 prints 0.020e-40 C^2 m^2 J^-1 = 0.1213 au (formula co). Pure vibrational static polarizability; no uncertainty printed."
+[datasets.parameters]
+part = "pure_vibrational"
+
+[[datasets]]
+id = "dosd_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__dosd_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["jhanwar_1982"]
+notes = "Table 3 (triatomics): alpha_el = 17.51 +- 0.18 au, DOSD of Jhanwar and Meath (1982) [97]. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_mean_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__ri_mean_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha_el = 17.50 +- 0.02 au, recommended, 'Mean value' of the RI data of refs. [115, 123-126] 'Ref. cont.' [100-102, 113, 127, 128] (the list continues on the next row, appended to the printed cells): Watson and Ramaswamy 1936 (watson_1936), Koch 1913 (Ark. Mat. Astron. Fys. 9, 1), Tausz and Hornung 1927 (Z. techn. Phys. 8, 338), Hohm 1994 (Mol. Phys. 81, 157; hohm_1994b), Stoll 1922 (stoll_1922), C. and M. Cuthbertson 1920 (cuthbertson_1920), Gruschke 1911, Rentschler 1908, Newbound 1949 (J. Opt. Soc. Am. 39, 835), Bideau-Mehu et al. 1973 (bideau_mehu_1973), Stuckert 1910 (Z. f. Elektrochem. 16, 37). Hohm's own mean of data optmat already holds: a check only. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_total_schmidt_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__dp_total_schmidt_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["schmidt_2003"]
+notes = "Table 3, column alpha_el + alpha_vib: 19.652 +- 0.002 au, DP, ref. [44] Schmidt and Moldover (2003): their four-parameter A_eps,273 = 7.34590 (63) cm^3/mol (= 19.6518 au, computed 2026-09-26); the +- 0.002 au is their (63) in the last digits. Static: electronic plus vibrational (CO2 has no dipole). Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (alpha_el + alpha_vib)"
+
+[[datasets]]
+id = "dp_total_mean_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__dp_total_mean_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3, column alpha_el + alpha_vib: 19.67 +- 0.10 au, 'Mean value' of the DP data of refs. [130-132]: Bose and Cole 1970 (J. Chem. Phys. 52, 140; bose_1970: A_eps 7.358 +- 0.002 at 29.4 and 7.350 +- 0.006 cm^3/mol at 49.7 degrees C, i.e. 19.68 and 19.66 au), Dunn 1964 (Can. J. Phys. 42, 1489), Obriot, Ge, Bose and St-Arnaud 1993 (Fluid Phase Equilib. 86, 315). Printed on two rows (with two alpha_vib); taken once. Hohm's mean: a check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (alpha_el + alpha_vib)"
+
+[[datasets]]
+id = "dp_electronic_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__dp_electronic_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3, column alpha_el of the DP rows, Hohm's differences: 17.47 +- 0.10 au (19.652 [44] - 2.18 [129]), 17.49 +- 0.20 (19.67 [130-132] - 2.18 [129]), 17.91 +- 0.30 (19.67 - 1.76 [16], Bishop and Cheung). The 0.42 au spread between the two alpha_vib is the whole uncertainty of the electronic static value from dielectric data. A check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic static polarizability, Hohm's alpha_el = (alpha_el + alpha_vib) - alpha_vib"
+
+[[datasets]]
+id = "alpha_vib_thomas_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__alpha_vib_thomas_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. R. Thomas, B. J. DeLeeuw, G. Vacek, T. D. Crawford, Y. Yamaguchi and H. F. Schaefer III, J. Chem. Phys. 99, 403 (1993)"]
+notes = "Table 3, column alpha_vib: 2.18 au [129], Thomas, DeLeeuw, Vacek, Crawford, Yamaguchi and Schaefer (1993), a calculation (not in the library). Pure vibrational static polarizability; no uncertainty printed. Printed on two rows; taken once. HITRAN's bands give 2.121 au (bishop_1982 notes)."
+[datasets.parameters]
+part = "pure_vibrational"
+
+[[datasets]]
+id = "alpha_vib_bishop_CO2"
+material = "CO2"
+file = "CO2/hohm_2013__alpha_vib_bishop_CO2.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bishop_1982"]
+notes = "Table 3, column alpha_vib: 1.76 au [16] (Bishop and Cheung 1982; bishop_1982 prints 0.29e-40 C^2 m^2 J^-1 = 1.759 au). Pure vibrational; no uncertainty printed."
+[datasets.parameters]
+part = "pure_vibrational"
+
+[[datasets]]
+id = "dosd_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__dosd_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["G. D. Zeiss and W. J. Meath, Mol. Phys. 33, 1155 (1977)"]
+notes = "Table 3: alpha_el = 19.70 +- 0.20 au, recommended (dagger), DOSD of Zeiss and Meath (1977) [84] (not the curated zeiss_1977). Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_hohm_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__ri_hohm_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["hohm_1994b"]
+notes = "Table 3: alpha_el = 19.72 +- 0.09 au, RI, ref. [125] U. Hohm, Mol. Phys. 81, 157 (1994) (hohm_1994b): the static limit of that paper's dispersion. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_cuthbertson_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__ri_cuthbertson_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["cuthbertson_1914"]
+notes = "Table 3: alpha_el = 19.86 +- 0.20 au, RI, ref. [50] C. and M. Cuthbertson 1914 (cuthbertson_1914), extrapolated to zero frequency by Hohm. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_koch_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__ri_koch_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["J. Koch, Ark. Mat. Astron. Fys. 18, 1 (1923)"]
+notes = "Table 3: alpha_el = 19.70 +- 0.20 au, RI, ref. [107] Koch 1923 (not in the library), extrapolated by Hohm. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_total_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__dp_total_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kirouac_1973"]
+notes = "Table 3, column alpha_el + alpha_vib: 20.45 +- 0.40 au, DP, ref. [133] Kirouac and Bose (1973): their alpha_0 = 3.03e-24 cm^3 (= 20.447 au) from the Debye analysis of A_eps(T), the orientation term removed. Electronic plus vibrational. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (alpha_el + alpha_vib)"
+
+[[datasets]]
+id = "dp_electronic_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__dp_electronic_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 3: alpha_el = 19.36 +- 0.50 au, Hohm's difference 20.45 [133] - 1.09 [16]. A check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic static polarizability, Hohm's alpha_el = (alpha_el + alpha_vib) - alpha_vib"
+
+[[datasets]]
+id = "alpha_vib_N2O"
+material = "N2O"
+file = "N2O/hohm_2013__alpha_vib_N2O.csv"
+table = "tbl_0e38258e2324"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bishop_1982"]
+notes = "Table 3, column alpha_vib: 1.09 au [16] (Bishop and Cheung 1982; bishop_1982 prints 0.18e-40 C^2 m^2 J^-1 = 1.092 au; HITRAN 1.186). Pure vibrational; no uncertainty printed."
+[datasets.parameters]
+part = "pure_vibrational"
+
+[[datasets]]
+id = "dosd_CH4"
+material = "CH4"
+file = "CH4/hohm_2013__dosd_CH4.csv"
+table = "tbl_38210b618411"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["thomas_1977"]
+notes = "Table 5 (penta-atomics): alpha_el = 17.27 +- 0.17 au, DOSD of Thomas and Meath (1977) [169]. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_mean_CH4"
+material = "CH4"
+file = "CH4/hohm_2013__ri_mean_CH4.csv"
+table = "tbl_38210b618411"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5: alpha_el = 17.240 +- 0.026 au, recommended, 'Mean value' of the RI data of refs. [100, 115, 124, 146, 170-172]: C. and M. Cuthbertson 1920 (cuthbertson_1920), Watson and Ramaswamy 1936 (watson_1936), Tausz and Hornung 1927, Friberg 1927 (Z. Phys. 41, 378), Hohm 1993 (Mol. Phys. 78, 929; hohm_1993), Frivold, Hassel and Hetland 1939 (Phys. Z. 40, 29), Burns, Graham and Weller 1986 (burns_1986). Hohm's own mean of data optmat already fits (cuthbertson_1920, watson_1936, burns_1986): a check only. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_total_mean_CH4"
+material = "CH4"
+file = "CH4/hohm_2013__dp_total_mean_CH4.csv"
+table = "tbl_38210b618411"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5, column alpha_el + alpha_vib: 17.496 +- 0.025 au, 'Mean value' of the DP data of refs. [44, 173, 14, 132, 105]: Schmidt and Moldover 2003 (schmidt_2003; 6.54467-6.54787 cm^3/mol = 17.508-17.517 au), Bose, Sochanski and Cole 1972 (bose_1972; 6.541 = 17.499 au), Johnston, Oudemans and Cole 1960, Obriot et al. 1993, Watson, Gundo Rao and Ramaswamy 1934. Hohm's mean: a check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (alpha_el + alpha_vib)"
+
+[[datasets]]
+id = "dp_electronic_CH4"
+material = "CH4"
+file = "CH4/hohm_2013__dp_electronic_CH4.csv"
+table = "tbl_38210b618411"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 5: alpha_el = 17.266 +- 0.045 au, Hohm's difference 17.496 - 0.23 [16]. 0.15 % above the RI mean 17.240 +- 0.026. A check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic static polarizability, Hohm's alpha_el = (alpha_el + alpha_vib) - alpha_vib"
+
+[[datasets]]
+id = "alpha_vib_CH4"
+material = "CH4"
+file = "CH4/hohm_2013__alpha_vib_CH4.csv"
+table = "tbl_38210b618411"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["bishop_1982"]
+notes = "Table 5, column alpha_vib: 0.23 au [16] (Bishop and Cheung 1982; bishop_1982 prints 0.038e-40 C^2 m^2 J^-1 = 0.2305 au; HITRAN 0.2401). Pure vibrational; no uncertainty printed."
+[datasets.parameters]
+part = "pure_vibrational"
+
+[[datasets]]
+id = "dosd_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__dosd_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["kumar_1985b"]
+notes = "Table 7 (hepta-atomics): alpha_el = 30.04 +- 0.30 au, recommended (dagger), DOSD of Kumar, Fairley and Meath (1985) [227] (not the curated kumar_1985, Can. J. Chem. 63, 1616). Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_watson_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__ri_watson_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["watson_1936"]
+notes = "Table 7: alpha_el = 30.25 +- 0.30 au, RI, ref. [115] Watson and Ramaswamy 1936 (watson_1936), extrapolated to zero frequency by Hohm. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "ri_burns_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__ri_burns_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["burns_1986"]
+notes = "Table 7: alpha_el = 29.95 +- 0.30 au, RI, ref. [172] Burns, Graham and Weller 1986 (burns_1986), extrapolated by Hohm. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+
+[[datasets]]
+id = "dp_total_mean_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__dp_total_mean_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 7, column alpha_el + alpha_vib: 44.21 +- 0.50 au, 'Mean value' of the DP data of refs. [228, 105, 192, 132, 229]: Hosticka and Bose 1974 (J. Chem. Phys. 60, 1318; hosticka_1974: A_eps 16.523-16.577 cm^3/mol at 323-374 K, mean alpha 6.560e-24 cm^3 = 44.27 au), Watson, Gundo Rao and Ramaswamy 1934, Tipton, Deam and Boggs 1964 (J. Chem. Phys. 40, 1144), Obriot et al. 1993, St-Arnaud and Bose 1979 (st_arnaud_1979). Printed on two rows; taken once. Hohm's mean: a check. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic + vibrational static polarizability (alpha_el + alpha_vib)"
+
+[[datasets]]
+id = "dp_electronic_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__dp_electronic_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability"
+unit = "au"
+abscissa_unit = "nm"
+use = "check"
+notes = "Table 7, alpha_el of the DP rows, Hohm's differences: 30.38 +- 0.70 au (44.21 - 13.83 [230], Pack 1982) and 30.48 +- 0.70 (44.21 - 13.73 [155], Bulanin et al. 2001). A check. Bishop and Cheung's 15.16 au (bishop_1982) is not used here. Uncertainty level never stated in the paper."
+[datasets.uncertainty]
+column = true
+level = "not stated"
+[datasets.parameters]
+includes = "electronic static polarizability, Hohm's alpha_el = (alpha_el + alpha_vib) - alpha_vib"
+
+[[datasets]]
+id = "alpha_vib_pack_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__alpha_vib_pack_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["R. T. Pack, J. Phys. Chem. 86, 2794 (1982)"]
+notes = "Table 7, column alpha_vib: 13.83 au [230], Pack (1982) (not in the library). Pure vibrational; no uncertainty printed. HITRAN's cross sections give 13.94 au, Bishop and Cheung 15.16 au (bishop_1982 notes)."
+[datasets.parameters]
+part = "pure_vibrational"
+
+[[datasets]]
+id = "alpha_vib_bulanin_SF6"
+material = "SF6"
+file = "SF6/hohm_2013__alpha_vib_bulanin_SF6.csv"
+table = "tbl_a47f36ad8e7f"
+quantity = "polarizability_correction"
+unit = "au"
+abscissa_unit = "nm"
+use = "reproduced"
+reproduced_from = ["M. O. Bulanin, A. P. Burtsev, Y. M. Ladvishchenko and Y. M. Sveshnikov, Opt. Spectrosc. 91, 38 (2001)"]
+notes = "Table 7, column alpha_vib: 13.73 au [155], Bulanin, Burtsev, Ladvishchenko and Sveshnikov (2001) (not in the library). Pure vibrational; no uncertainty printed. sharipov_2017 quotes it as Hohm's 2.035 A^3."
+[datasets.parameters]
+part = "pure_vibrational"
