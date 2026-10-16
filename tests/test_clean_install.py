@@ -102,6 +102,13 @@ def test_the_wheel_ships_every_data_file(artifacts):
     assert {n.removeprefix("src/") for n in tracked} <= names
 
 
+def test_the_wheel_marks_the_package_typed(artifacts):
+    # PEP 561: without the marker a downstream type checker ignores optmat's
+    # annotations and treats every call as untyped.
+    with zipfile.ZipFile(artifacts["wheel"]) as wheel:
+        assert "optmat/py.typed" in wheel.namelist()
+
+
 @pytest.mark.parametrize("kind", ["wheel", "sdist"])
 def test_a_clean_install_runs_the_quickstart_and_the_surface(artifacts, kind, tmp_path):
     assert UV is not None
