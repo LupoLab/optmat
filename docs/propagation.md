@@ -101,6 +101,10 @@ results as such.
 - **Intervals.** A dispersion model holds on its qualified `intervals` of vacuum
   wavelength. Outside every one it warns (`ModelRangeWarning`), and between two of
   them the warning names the gap's reason.
+- **Unphysical wavelengths.** Every evaluation refuses a wavelength at or below zero
+  (`ArgumentError`), and a solid also refuses `inf`; a gas and air take `inf` as the
+  static limit. A code whose frequency grid reaches $\omega \le 0$ masks those points
+  before it asks for an index. NaN passes through as a missing value (TC-1091).
 - **Absorption.** An absorbing gas warns (`ModelAbsorptionWarning`) where its real part
   leaves the absorption out; the complex methods keep it.
 - **Phase.** The equations of state refuse a condensed state (`StateError`).
@@ -118,7 +122,7 @@ results as such.
 
 ```python
 import warnings
-from optmat.exceptions import ModelRangeWarning, StateError
+from optmat.exceptions import ArgumentError, ModelRangeWarning, StateError
 
 with warnings.catch_warnings(record=True) as caught:
     warnings.simplefilter("always")
@@ -130,6 +134,12 @@ except StateError:
     pass  # SF6 is a liquid at 30 bar and 294 K
 else:
     raise AssertionError("a condensed state must be refused")
+try:
+    argon.polarizability(-800e-9)
+except ArgumentError:
+    pass  # a negative wavelength is not a frequency a model holds at
+else:
+    raise AssertionError("an unphysical wavelength must be refused")
 
 support = kerr.support  # facts in m^-1 (W2 in m^-2), with their sources
 assert support.model_digest == kerr.identity.digest != support.digest

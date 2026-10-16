@@ -11,6 +11,7 @@ here is the catalogue's own. Once the catalogue is loaded they take its records.
 """
 
 import functools
+import re
 from collections.abc import Iterator, Mapping
 
 from optmat.datasets import (
@@ -242,3 +243,35 @@ def formula_sources() -> tuple[Source, ...]:
         if "[[formulas]]" in path.read_text(encoding="utf-8")
     )
     return tuple(record for record in candidates if record.formulas)
+
+
+@functools.cache
+def quantity_datasets(quantity: str) -> tuple[Dataset, ...]:
+    """Return the curated datasets of one quantity, reading only the records with it.
+
+    ``quantity_datasets(q)`` is ``datasets(quantity=q)`` without loading every record:
+    only the records whose text sets ``quantity = "<q>"`` are read.
+
+    Parameters
+    ----------
+    quantity : str
+        The quantity (e.g. ``"mole_fraction"``).
+
+    Returns
+    -------
+    tuple of Dataset
+        The datasets, in source order.
+
+    Examples
+    --------
+    >>> {d.quantity for d in quantity_datasets("mole_fraction")}
+    {'mole_fraction'}
+    """
+    pattern = re.compile(rf'quantity\s*=\s*"{re.escape(quantity)}"')
+    return tuple(
+        found
+        for path in sorted(_SOURCES.glob("*.toml"))
+        if pattern.search(path.read_text(encoding="utf-8"))
+        for found in source(path.stem).datasets
+        if found.quantity == quantity
+    )

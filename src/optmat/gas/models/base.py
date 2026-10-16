@@ -292,12 +292,17 @@ class Model(Identified):
             Polarizability, C m^2/V (complex, ``Im alpha > 0`` is absorption; zero
             imaginary part for a transparent model), the shape of ``wavelength``.
 
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+
         Warns
         -----
         ModelRangeWarning
             If ``warn`` and any wavelength lies outside the model's range.
         """
-        wavelength = np.asarray(wavelength, dtype=float)
+        wavelength = _validity.checked_wavelength(wavelength, self.name, static=True)
         if warn:
             self._check_range(wavelength)
         return np.asarray(self._complex_polarizability(wavelength))
@@ -327,6 +332,11 @@ class Model(Identified):
             ``d alpha / d omega``, C m^2 V^-1 s (complex), the shape of
             ``wavelength``.
 
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+
         Warns
         -----
         ModelRangeWarning
@@ -338,7 +348,7 @@ class Model(Identified):
         >>> float(model("fit/Ar").dpolarizability_domega(float("inf")).real)
         0.0
         """
-        wavelength = np.asarray(wavelength, dtype=float)
+        wavelength = _validity.checked_wavelength(wavelength, self.name, static=True)
         if warn:
             self._check_range(wavelength)
         return np.asarray(self._dcomplex_polarizability_domega(wavelength))
@@ -363,6 +373,11 @@ class Model(Identified):
         numpy.ndarray
             Polarizability, C m^2/V (the real part), the shape of ``wavelength``.
 
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+
         Warns
         -----
         ModelRangeWarning
@@ -371,7 +386,7 @@ class Model(Identified):
             If ``warn``, the model absorbs and ``|Im alpha / Re alpha|`` exceeds
             :attr:`absorption_warning_threshold` at any wavelength.
         """
-        wavelength = np.asarray(wavelength, dtype=float)
+        wavelength = _validity.checked_wavelength(wavelength, self.name, static=True)
         if warn:
             self._check_range(wavelength)
         if not self.absorbing:
@@ -415,6 +430,11 @@ class Model(Identified):
         -------
         numpy.ndarray
             ``n - 1``, the shape of ``wavelength``.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         alpha = self.polarizability(wavelength, warn=warn)
         density = self._density(state, ideal=ideal)
@@ -447,6 +467,11 @@ class Model(Identified):
         numpy.ndarray
             ``n`` (complex; ``Im n > 0`` is absorption, zero for a transparent model),
             the shape of ``wavelength``.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         alpha = self.complex_polarizability(wavelength, warn=warn)
         density = self._density(state, ideal=ideal)

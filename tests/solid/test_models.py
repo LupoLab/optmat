@@ -10,9 +10,15 @@ import pytest
 
 from optmat.conditions import State, air_refractivity
 from optmat.constants import C
-from optmat.exceptions import DataError, ModelRangeWarning
+from optmat.exceptions import DataError, ModelRangeWarning, OptmatError
 from optmat.solid.models.base import complex_index
-from optmat.solid.models.formulas import FormulaModel, UdmModel, published_models
+from optmat.solid.models.formulas import (
+    FormulaModel,
+    UdmModel,
+    published_model,
+    published_models,
+)
+from optmat.solid.models.registry import model
 
 # A three-pole Sellmeier with Malitson's (1965) printed coefficients, as a test fixture
 # of the form (the curated record is malitson_1965).
@@ -182,3 +188,28 @@ def test_a_temperature_sellmeier_follows_its_polynomials():
         IN_TEMPERATURE.at_temperature(350.0)
     with pytest.raises(DataError, match="no temperature"):
         SELLMEIER.at_temperature(300.0)
+
+
+def test_a_formula_looked_up_alone_is_the_listed_one():
+    # published_model reads one record; it must give every model the listing holds,
+    # status included (the digest covers it).
+    for name, listed in published_models().items():
+        alone = published_model(name)
+        assert alone.identity.digest == listed.identity.digest
+        assert alone.status == listed.status
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        "no_such_source/sellmeier",
+        "malitson_1965/no_such_formula",
+        # A gas formula in a record that has solid ones is not a solid model.
+        "bideau_mehu_1981/sellmeier_Ar",
+    ],
+)
+def test_an_unknown_formula_is_refused(name):
+    with pytest.raises(KeyError, match=name):
+        published_model(name)
+    with pytest.raises(OptmatError, match="no solid model named"):
+        model(name)

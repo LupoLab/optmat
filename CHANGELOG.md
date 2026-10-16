@@ -11,6 +11,21 @@ All notable changes are recorded here, in the style of
 
 - optmat's DOI, 10.5281/zenodo.23422879 (Zenodo; every version), in `CITATION.cff`
   and the README.
+- A `py.typed` marker (PEP 561), so that type checkers of downstream code read optmat's
+  annotations.
+- `optmat.solid.models.formulas.published_model(name)`: one published formula, reading
+  only its source's record.
+
+### Changed
+
+- A model refuses a wavelength at or below zero, and a solid model refuses inf, with
+  `ArgumentError`; before, a negative wavelength returned a finite, meaningless value
+  (TC-1091). A gas and air keep inf as the static limit; NaN still gives NaN.
+- Faster lookups for a propagation code. `solid.models.registry.model` (and so
+  `default_model`) builds a published formula from its own record, not from every
+  record with formulas (N-BK7, BaF2, MgF2: 0.3 s from about 2 s in a fresh process),
+  and `gas.air.air_model` reads only the records with mole fractions, not the whole
+  catalogue (about 1.4 s from 4-5 s). No value changes.
 
 ## 0.8.0 (2026-10-16)
 

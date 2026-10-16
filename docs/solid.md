@@ -65,7 +65,9 @@ The models of a material, and the recommended one with the reason, come from
 {mod}`optmat.solid.models.registry` (`models`, `model`, `default_model`,
 `default_reason`; `data/solid/defaults.toml`). An anisotropic crystal's recommendation
 is per axis, `default_model("MgF2", "o")`, and asking without the axis is an error
-(TC-546).
+(TC-546). A lookup by name reads only what the model needs: a published formula reads
+its own source record (`published_model` in {mod}`optmat.solid.models.formulas`), not
+every record with formulas, so a propagation code pays a fraction of a second.
 
 ## Published formulas
 

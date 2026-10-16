@@ -13,6 +13,9 @@ import itertools
 
 import numpy as np
 from jaxtyping import Bool, Float
+from numpy.typing import ArrayLike
+
+from optmat.exceptions import ArgumentError
 
 type Intervals = tuple[tuple[float, float], ...]
 
@@ -53,6 +56,53 @@ def qualified_intervals(
         msg = f"{name}: the intervals {checked} do not span its range {envelope}"
         raise ValueError(msg)
     return checked
+
+
+def checked_wavelength(
+    wavelength: ArrayLike | float, name: str, *, static: bool
+) -> Float[np.ndarray, "*shape"]:
+    """Return vacuum wavelengths as a float array, refusing the unphysical ones.
+
+    A wavelength at or below zero has no frequency a model can be evaluated at, and
+    the formulas would otherwise return finite nonsense for it (a Sellmeier term is
+    even in lambda) rather than fail. A NaN passes through, as a missing value, and
+    gives NaN.
+
+    Parameters
+    ----------
+    wavelength : array_like or float
+        Vacuum wavelength, m.
+    name : str
+        The model's name, for the error.
+    static : bool
+        Whether ``inf`` (the static limit, omega = 0) is allowed.
+
+    Returns
+    -------
+    numpy.ndarray
+        The wavelengths.
+
+    Raises
+    ------
+    ArgumentError
+        If a wavelength is zero or negative, or infinite where ``static`` is False.
+
+    Examples
+    --------
+    >>> checked_wavelength([800e-9, np.inf], "fit/Ar", static=True)
+    array([8.e-07,    inf])
+    >>> checked_wavelength(-800e-9, "fit/Si", static=False)
+    Traceback (most recent call last):
+    ...
+    optmat.exceptions.ArgumentError: fit/Si: wavelengths must be positive and finite, m
+    """
+    wavelength = np.asarray(wavelength, dtype=float)
+    refused = (wavelength <= 0) | (np.isposinf(wavelength) & (not static))
+    if np.any(refused):
+        allowed = "positive or inf (static)" if static else "positive and finite"
+        msg = f"{name}: wavelengths must be {allowed}, m"
+        raise ArgumentError(msg)
+    return wavelength
 
 
 def outside(

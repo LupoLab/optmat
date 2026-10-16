@@ -395,7 +395,9 @@ class AirModel(Identified):
         numpy.ndarray
             The sum, complex.
         """
-        wavelength = np.asarray(wavelength, dtype=float)
+        wavelength = _validity.checked_wavelength(
+            wavelength, f"air/{self.name}", static=True
+        )
         if warn:
             self._check_range(wavelength)
         return np.asarray(
@@ -424,6 +426,11 @@ class AirModel(Identified):
         numpy.ndarray
             ``sum_s x_s alpha_s``, C m^2/V (complex).
 
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+
         Examples
         --------
         >>> from optmat.constants import AU_POLARIZABILITY
@@ -449,6 +456,11 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             C m^2/V.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         return np.asarray(np.real(self.complex_polarizability(wavelength, warn=warn)))
 
@@ -468,6 +480,11 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             ``sum_s x_s d alpha_s / d omega``, C m^2 V^-1 s (complex).
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         return self._sum("dpolarizability_domega", wavelength, warn)
 
@@ -515,6 +532,11 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             The refractivity ``n - 1``, without pair terms (OEP 4's).
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         alpha = self.polarizability(wavelength, warn=warn)
         return refractivity(alpha, self._density(state, ideal))
@@ -544,6 +566,11 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             ``n``, complex.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         alpha = self.complex_polarizability(wavelength, warn=warn)
         return refractive_index(alpha, self._density(state, ideal))
