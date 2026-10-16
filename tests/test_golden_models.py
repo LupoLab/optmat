@@ -30,9 +30,11 @@ RAMAN_IDENTITIES = json.loads(
 )
 # Arithmetic tolerance, not experimental uncertainty. Different libm/BLAS arithmetic
 # changes the derived Raman widths: the investigated decay-rate difference was below
-# 3e-14 relative. Keep the existing output tolerance, also for floating identity fields.
-# No absolute floor: a formerly zero coefficient must stay zero, however small its unit.
-RTOL = 1e-12
+# 3e-14 relative. On an AVX-512 Xeon (Linux) the O3 fit's dispersion derivative, taken
+# through the FFT of its absorption, differs from the macOS record by 1.2e-12 relative
+# (2026-10-16): 1e-11, also for floating identity fields. No absolute floor: a
+# formerly zero coefficient must stay zero, however small its unit.
+RTOL = 1e-11
 # The canonical serializer represents these integer-valued arrays as floats.
 EXACT_FIELDS = {"versions", "j", "damping_group"}
 # A model's identity digest hashes its numbers, some of them computed (an FFT, a
@@ -202,7 +204,9 @@ def test_raman_inconsistent_digest_is_rejected(raman_pair):
         _assert_golden(before, now)
 
 
-def test_other_models_still_require_exact_digests():
+def test_other_models_still_require_exact_digests(monkeypatch):
+    # Where the records were made; elsewhere the digest is not compared at all.
+    monkeypatch.setattr(sys.modules[__name__], "_digests_hold_here", lambda: True)
     before = next(
         r for r in RECORDED if r["id"] not in RAMAN_IDENTITIES and "digest" in r
     )
