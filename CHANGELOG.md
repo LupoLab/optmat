@@ -5,18 +5,6 @@ All notable changes are recorded here, in the style of
 (`REGISTER.md`) records the changes to data and models in detail. Versions before
 0.8.0 were internal and were not published.
 
-## Unreleased
-
-### Fixed
-
-- Citation metadata: Fernley, Taylor and Seaton's page (6457, as reproduced in
-  Berkowitz 1997), the co-authors of van der Hart et al. 2007, the pages of van Duijnen
-  and Swart 1998 and the first page of Manakov et al. 1986. A source note no longer
-  quotes a reference that does not exist.
-- The manual: Blow and Wood's α is their Kerr weight; Ammosov, Delone and Krainov define
-  n* in their eq. 2; and the static rate is their eq. (1) without its cycle-averaging
-  factor.
-
 ## 0.8.0 (2026-10-16)
 
 The first public release, at github.com/LupoLab/optmat. No value, model or stored fit
@@ -59,6 +47,16 @@ changed.
   runs the tests on Windows. A git checkout keeps LF line endings on every platform
   (`.gitattributes`), so the stored configurations' hashes match there too; the
   archives under `data/external/` are checked out byte for byte.
+
+### Fixed
+
+- Citation metadata: Fernley, Taylor and Seaton's page (6457, as reproduced in
+  Berkowitz 1997), the co-authors of van der Hart et al. 2007, the pages of van Duijnen
+  and Swart 1998 and the first page of Manakov et al. 1986. A source note no longer
+  quotes a reference that does not exist.
+- The manual: Blow and Wood's α is their Kerr weight; Ammosov, Delone and Krainov define
+  n* in their eq. 2; and the static rate is their eq. (1) without its cycle-averaging
+  factor.
 
 ## 0.7.0 (2026-10-15)
 
