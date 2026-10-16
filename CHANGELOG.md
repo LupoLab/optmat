@@ -48,6 +48,16 @@ changed.
   (`.gitattributes`), so the stored configurations' hashes match there too; the
   archives under `data/external/` are checked out byte for byte.
 
+### Fixed
+
+- Citation metadata: Fernley, Taylor and Seaton's page (6457, as reproduced in
+  Berkowitz 1997), the co-authors of van der Hart et al. 2007, the pages of van Duijnen
+  and Swart 1998 and the first page of Manakov et al. 1986. A source note no longer
+  quotes a reference that does not exist.
+- The manual: Blow and Wood's α is their Kerr weight; Ammosov, Delone and Krainov define
+  n* in their eq. 2; and the static rate is their eq. (1) without its cycle-averaging
+  factor.
+
 ## 0.7.0 (2026-10-15)
 
 Crystalline silicon's complex refractive index from 31 nm to 143 µm at 20 °C: `fit/Si`,

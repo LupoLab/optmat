@@ -152,8 +152,9 @@ $$
 
 because a kernel slower than the optical cycle follows only the slowly varying half of
 $E^2$, while the instantaneous term also has its $3\omega$ part. The Raman term of the
-field therefore carries 2/3 of the envelope's share: Blow & Wood's $\alpha = 0.7$ on
-$E^2$ is a Raman share of 0.222 of $n_2$ (their Eqs. (2) and (8); TC-692). The gain is
+field therefore carries 2/3 of the envelope's share: Blow & Wood's $\alpha = 0.7$ is their
+Kerr weight, and their field-level Raman share $1 - \alpha = 0.3$ on $E^2$ is an envelope
+Raman share of 0.222 of $n_2$ (their Eqs. (2) and (8); TC-692). The gain is
 $g(\Omega) = 2\omega_s n_2 f_R \operatorname{Im}H_R(\Omega)/c$.
 
 <!-- silica-models:start -->

@@ -41,7 +41,7 @@ w_\text{stat} = I_p\, |C_{\kappa l}|^2 f(l, m)
 $$
 
 which is also Tong, Zhao & Lin's eq. (7) and Ammosov, Delone & Krainov's eq. (1) for
-$m = 0$. Tong et al.'s coefficient is $C_l = C_{\kappa l}\,\kappa^{n^* + 1/2}$.
+$m = 0$ without its cycle-averaging factor $(3F/\pi F_0)^{1/2}$. Tong et al.'s coefficient is $C_l = C_{\kappa l}\,\kappa^{n^* + 1/2}$.
 
 **The sum over channels** in $A_m$ has a step wherever the number of photons needed,
 $\nu = (I_p + U_p)/\omega$, passes an integer. By default the sum is replaced by its
