@@ -112,7 +112,10 @@ def _assert_golden(record, now):
         assert sha256_digest(expected) == record["digest"], "recorded digest"
         assert sha256_digest(now["identity_record"]) == now["digest"], "runtime digest"
         _assert_identity(now["identity_record"], expected)
-    elif _digests_hold_here():
+    else:
+        # Everywhere: a model recorded with an identity still has one.
+        assert ("digest" in now) == ("digest" in record), f"{record['id']}: identity"
+    if record["id"] not in RAMAN_IDENTITIES and _digests_hold_here():
         assert record.get("digest") == now.get("digest"), (
             f"{record['id']}: identity changed; review and re-record with "
             "tools/golden_models.py, with a changelog line"

@@ -65,6 +65,7 @@ def _assert_same_record(fresh, stored, path="model"):
     # 1 ulp, CI 2026-10-16): numbers to 1e-12 relative, everything else exactly, and a
     # stored zero stays zero.
     if isinstance(stored, float) or isinstance(fresh, float):
+        assert isinstance(fresh, int | float) and isinstance(stored, int | float), path
         assert math.isclose(fresh, stored, rel_tol=1e-12, abs_tol=0.0), path
     elif isinstance(stored, dict):
         assert isinstance(fresh, dict) and fresh.keys() == stored.keys(), path
