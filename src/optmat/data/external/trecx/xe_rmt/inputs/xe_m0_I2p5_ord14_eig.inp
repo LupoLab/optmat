@@ -1,0 +1,21 @@
+Title:
+xe_m0_I2p5_ord14_eig - field-free spectrum of the discretisation of xe_m0_I2p5_ord14
+
+#define BOX 80
+#define ScaledXeV (1.0+0.999736228000*(51.356*exp(-2.112*Q)-99.927*Q*exp(-3.737*Q)+1.644*exp(-0.431*Q)))/Q
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1
+ Eta,30,-1,1,assocLegendre{Phi}
+ Rn,16,0.,2.,polynomial,6
+ Rn,16,2.,20.,RpowL*polynomial,8
+ Rn,14,20.,40.,RpowL*polynomial,5
+ Rn,14,40.,BOX,RpowL*polynomial,9
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.3,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-ScaledXeV>
+
+Eigen: select=SmallReal[80]

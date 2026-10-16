@@ -24,6 +24,12 @@ constant or a reference changes (and its text is updated where a finding changes
 - ``ionisation-rate-helium``: helium at 780 and 390 nm against Parker et al.'s rates;
 - ``ionisation-rate-helium-two-electron``: helium at 390 nm with two electrons, haCC
   and one electron, and Parker et al.'s rate over the same pulse;
+- ``ionisation-rate-helium-matched``: helium's two-electron, haCC and one-electron
+  calculations against each other on box-converged measures, and against Sato et al.;
+- ``ionisation-rate-xenon-rmt``: RMT's xenon against one electron in its field, and
+  the default against it;
+- ``ionisation-rate-xenon-measured``: the default against Hartmann et al.'s measured
+  neutral abundance;
 - ``ionisation-rate-rmatrix``: He, Ne and Ar at 390 nm against van der Hart's
   all-electron R-matrix rates;
 - ``ionisation-rate-tdse``: the one-electron yields, with each Coulomb factor;
@@ -842,6 +848,137 @@ def helium_two_electron_table() -> str:
     )
 
 
+def helium_matched_table() -> str:
+    """Return helium's calculations against each other on box-converged measures.
+
+    Returns
+    -------
+    str
+        A Markdown table: per pair of :data:`~optmat.gas.ionisation_validation.
+        HELIUM_MATCHED` and intensity, the two yields, their ratio and its rate form;
+        and Parker et al.'s rate integrated over the 390 nm pulse against the two
+        electrons.
+    """
+    rows = []
+    ratios = validation.helium_matched_ratios()
+    for ratio in ratios:
+        for i, intensity in enumerate(ratio.intensity):
+            rows.append(
+                [
+                    f"`{ratio.reference.split('/')[1]}`",
+                    f"`{ratio.against}`",
+                    _wcm2(float(intensity)),
+                    f"{ratio.value[i]:.4g}",
+                    f"{ratio.against_value[i]:.4g}",
+                    f"{ratio.ratio[i]:.3f}",
+                    f"{ratio.rate_ratio[i]:.3f}",
+                ]
+            )
+    two = next(r for r in ratios if "twoelectron_above4" in r.reference)
+    for i, intensity in enumerate(two.intensity):
+        parker = validation.parker_pulse_yield(float(intensity), 6e-15, 390)
+        rows.append(
+            [
+                "Parker et al.'s rate over the pulse",
+                f"`{two.reference}`",
+                _wcm2(float(intensity)),
+                f"{parker:.4g}",
+                f"{two.value[i]:.4g}",
+                f"{parker / two.value[i]:.3f}",
+                f"{math.log1p(-parker) / math.log1p(-two.value[i]):.3f}",
+            ]
+        )
+    return _table(
+        [
+            "Calculation",
+            "Against",
+            "I (W/cm2)",
+            "Yield",
+            "Against's",
+            "Ratio",
+            "ln(1 - Y) ratio",
+        ],
+        rows,
+    )
+
+
+def xenon_rmt_table() -> str:
+    """Return RMT's xenon against one electron in its field, and the default against it.
+
+    Returns
+    -------
+    str
+        A Markdown table: per intensity label, RMT's ground-state survival, one
+        electron's with m = 0 and m = 1, the atom's depletion in m = 0 electrons and
+        over the shell's six independent electrons, and the default's over RMT's.
+    """
+    rmt = validation.xenon_survival()[0]
+    default = {float(i): ratio for i, ratio in zip(rmt.x, rmt.ratio, strict=True)}
+    rows = []
+    for ratio in validation.xenon_rmt_ratios():
+        unscaled = ratio.reference.endswith("@unscaled")
+        for i, intensity in enumerate(ratio.intensity):
+            rows.append(
+                [
+                    f"{float(intensity) / 1e18:g}",
+                    "-0.4448" if unscaled else "-0.444",
+                    f"{ratio.atom[i]:.4f}",
+                    f"{ratio.m0[i]:.4f}",
+                    f"{ratio.m1[i]:.4f}",
+                    f"{ratio.per_m0[i]:.2f}",
+                    f"{ratio.per_shell[i]:.3f}",
+                    "" if unscaled else f"{default[float(intensity)]:.2f}",
+                ]
+            )
+    return _table(
+        [
+            "Label (1e14 W/cm2)",
+            "5p energy (au)",
+            "RMT, P",
+            "One electron, m = 0",
+            "m = 1",
+            "ln P / ln P_0",
+            "ln P / (2 ln P_0 + 4 ln P_1)",
+            "Default / RMT (-ln P)",
+        ],
+        rows,
+    )
+
+
+def xenon_measured_table() -> str:
+    """Return the default against Hartmann et al.'s measured neutral abundance.
+
+    Returns
+    -------
+    str
+        A Markdown table: per peak intensity, the measured abundance, its logarithm and
+        the default's at the peak intensity in the measured 4.5 fs pulse.
+    """
+    comparison = validation.xenon_survival()[1]
+    rows = [
+        [
+            _wcm2(float(intensity)),
+            f"{math.exp(-expected):.3f}",
+            f"{expected:.3f}",
+            f"{predicted:.3f}",
+            f"{predicted / expected:.2f}",
+        ]
+        for intensity, expected, predicted in zip(
+            comparison.x, comparison.expected, comparison.predicted, strict=True
+        )
+    ]
+    return _table(
+        [
+            "I (W/cm2)",
+            "Measured, neutral",
+            "-ln P",
+            "Default, -ln P",
+            "Default / measured",
+        ],
+        rows,
+    )
+
+
 def published_atoms_table() -> str:
     """Return published many-electron calculations over one electron in their pulses.
 
@@ -973,6 +1110,9 @@ TABLES = {
     "ionisation-rate-static": static_table,
     "ionisation-rate-helium": helium_table,
     "ionisation-rate-helium-two-electron": helium_two_electron_table,
+    "ionisation-rate-helium-matched": helium_matched_table,
+    "ionisation-rate-xenon-rmt": xenon_rmt_table,
+    "ionisation-rate-xenon-measured": xenon_measured_table,
     "ionisation-rate-rmatrix": rmatrix_table,
     "ionisation-rate-tdse": tdse_table,
     "ionisation-rate-hydrogen": hydrogen_table,

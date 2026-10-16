@@ -1,0 +1,312 @@
+citation = "J. C. Travers, TDSE calculations of helium's strong-field ionisation with pyroraptor: both electrons active, haCC and one active electron, unpublished (2026)"
+kind = "theory"
+technique = """Numerical solution of the time-dependent Schrodinger equation of helium with \
+J. C. Travers's code pyroraptor, three ways. (1) Both electrons active: coupled \
+angular channels (l1, l2, L) with total M = 0 and L <= 17, admitted when one electron \
+has l <= 2 ('inner = 2', 'square = 2'), the other capped at l <= 15; multipole order 4 \
+(the space of travers_2026_trecx's |m| <= 1, Lshape[3;5] basis lies between inner = 1 \
+and inner = 2); finite elements of 4.75 bohr beyond 2 bohr (order 12) to R0 = 40, 59, \
+78 or 97 bohr, an exterior element of order 20, exterior complex scaling (angle 0.15) \
+from R0, the one-electron spectrum cut at 100 au, RK4 with the step 0.0088 au; the \
+initial state's energy -2.902737 au. (2) haCC, the hybrid \
+anti-symmetrised coupled channels method (Majety, Zielinski and Scrinzi, New J. Phys. \
+17, 063002 (2015)): the neutral's closed-box configuration-interaction states \
+('neutral squares', up to 6) and frozen He+ ion states (1s, 'haCC(1)', or the five \
+n <= 2 states, 'haCC(5)') times one free electron in finite elements to R0 = 40 bohr \
+(390 nm) or 80 to 140 bohr (800 nm), lMax 40 to 70, mixed gauge (length gauge inside \
+the gauge radius 20 bohr, velocity gauge outside), exterior complex scaling; ground energy -2.9036457 au. (3) One \
+active electron in Tong and Lin's helium potential (tong_2005 Table 1), m = 0, \
+ionisation energy 0.9038011 au. Populations are read by projecting on the field-free \
+bound states with the ECS transpose (dual) pairing, the principal quantum number of a \
+state n = round(1/sqrt(-2E)) with E its energy above the He+(1s) threshold."""
+notes = """UNPUBLISHED CALCULATIONS OF J. C. TRAVERS, TIER 3: validators only (use = \
+'check'), below published calculations and measurements. Curated 2026-10-16 (TC-1092). \
+The run records and the tables made from them are archived in \
+data/external/pyroraptor (PROVENANCE.md there: pyroraptor's repository at \
+f9b35142, the records' sha256, the converter); the data files are written from the \
+tables by tools/extract/travers_2026_pyroraptor.py.
+
+AT 390 NM, in the pulse of travers_2026_trecx's two-electron helium (A2's 6 fs \
+Gaussian on the vector potential at 390 nm, 3.684031e14 and 5.68981e14 W/cm2, then 1000 \
+au without field): the population above the bound shells n <= 4 (above4: ionisation plus \
+excitation to n >= 5) and n <= 5 (above5) of each calculation, 1000 au after the pulse. \
+Unlike the norm-loss (travers_2026_trecx's twoelectron_normloss_*), these are converged \
+in the box: the two-electron above4 changes by 0.03 % (3.684e14) and 0.01 % from R0 = 78 \
+to 97 bohr, while its plain 1 - P(bound) falls by 3.6 % as each larger box binds another \
+Rydberg shell; haCC's above4 and above5 agree to 0.01 % at R0 = 40, 60 and 80 bohr. At \
+3.684e14 W/cm2 a resonance fills 1s4f (2.9e-4 at R0 = 78 bohr, about a third of \
+above4), which above4 does not count. The two-electron values are at inner = 2: an \
+inner-arm ladder of the absorbed norm-loss at 3.684e14 W/cm2 (inner 2 -> 3 -> 4: -0.97 \
+% and -0.67 %, extrapolated geometrically) puts the angular limit 3.1 % below them, \
+which is their uncertainty (an excess, not a spread); the ladder was not run at \
+5.69e14, nor on above4. above5 of the two electrons at R0 = 97 still moves by 0.3 % \
+(3.684e14) from R0 = 78.
+
+AT 800 NM, in Sato et al.'s six-cycle sin^2 pulse (sato_2016, Eq. 27; 4, 8 and 14e14 \
+W/cm2): haCC's 1 - P(both electrons inside 20 bohr) at the end of the pulse, Sato et \
+al.'s measure, against which sato_2016's fig6_casscf_He_800nm (MCTDHF) is compared.
+
+The runs' reports call haCC's above5 'ionisation plus n >= 5' and compare it with the \
+two-electron and one-electron above4; here each measure is compared with its own \
+(TC-1092)."""
+
+[[datasets]]
+id = "twoelectron_above4_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__twoelectron_above4_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_two_electron_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Helium with both electrons active (inner = 2, R0 = 97 bohr): N0 - P(ground) - P(bound, n <= 4) 1000 au after the pulse (t = 1744.14 au; records k2b-3p68e14-box97 and k2b-5p69e14-box97): ionisation plus excitation to n >= 5, 8.464e-4 and 7.244e-3. Uncertainty: the angular excess 3.1 % (the values lie above the angular limit by about that) plus the change from R0 = 78 bohr. Set-up in the record's notes."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.0317, "5p69e14" = 0.0315 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 4) 1000 au after the pulse: ionisation plus excitation to n >= 5"
+electrons = "two active electrons (the whole atom)"
+basis = "total M = 0, |m| <= 2, inner = 2, l <= 15, multipole 4, R0 = 97 bohr"
+method = "TDSE of two electrons, pyroraptor, ECS"
+model_ionization_energy_au = 0.902737
+
+[[datasets]]
+id = "twoelectron_above5_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__twoelectron_above5_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_two_electron_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "As twoelectron_above4_gauss6_390nm_He, cut above n <= 5: ionisation plus excitation to n >= 6, 7.396e-4 and 6.742e-3. Uncertainty: the angular excess 3.1 % plus the change from R0 = 78 bohr (0.3 % at 3.684e14)."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.0345, "5p69e14" = 0.0320 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 5) 1000 au after the pulse: ionisation plus excitation to n >= 6"
+electrons = "two active electrons (the whole atom)"
+basis = "total M = 0, |m| <= 2, inner = 2, l <= 15, multipole 4, R0 = 97 bohr"
+method = "TDSE of two electrons, pyroraptor, ECS"
+model_ionization_energy_au = 0.902737
+
+[[datasets]]
+id = "hacc1_above4_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__hacc1_above4_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_hacc_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "haCC with the He+ 1s channel, neutral square 6, R0 = 40 bohr, lMax 40, order 10, cut 200 au, gauge radius 20 bohr, step 0.0088 au (records l_sq6, l_hi_sq6): N0 - P(ground) - P(bound, n <= 4) 1000 au after the pulse, 8.092e-4 and 6.985e-3. Uncertainty: the largest change among the one-channel variations at 3.684e14 W/cm2 (step, order, cut, ECS angle, lMax, rMax 60 and 80, gauge radius) and the last step of the square ladder (5 -> 6)."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.00285, "5p69e14" = 0.00285 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 4) 1000 au after the pulse: ionisation plus excitation to n >= 5"
+electrons = "all, with the ion frozen in its 1s state (one ion channel)"
+method = "haCC(1), pyroraptor, mixed gauge, ECS"
+model_ionization_energy_au = 0.9036457
+
+[[datasets]]
+id = "hacc5_above4_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__hacc5_above4_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_hacc_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "As hacc1_above4_gauss6_390nm_He with the five He+ n <= 2 channels (records h5_sq6, h5_sq6_hi): 8.277e-4 and 7.150e-3. Uncertainty: haCC(1)'s."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.00285, "5p69e14" = 0.00285 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 4) 1000 au after the pulse: ionisation plus excitation to n >= 5"
+electrons = "all, with the ion frozen in its five n <= 2 states (five ion channels)"
+method = "haCC(5), pyroraptor, mixed gauge, ECS"
+model_ionization_energy_au = 0.9036457
+
+[[datasets]]
+id = "hacc1_above5_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__hacc1_above5_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_hacc_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "As hacc1_above4_gauss6_390nm_He, cut above n <= 5: ionisation plus excitation to n >= 6, 7.113e-4 and 6.513e-3 (the values the runs' reports call 'ionisation plus n >= 5')."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.00531, "5p69e14" = 0.00531 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 5) 1000 au after the pulse: ionisation plus excitation to n >= 6"
+electrons = "all, with the ion frozen in its 1s state (one ion channel)"
+method = "haCC(1), pyroraptor, mixed gauge, ECS"
+model_ionization_energy_au = 0.9036457
+
+[[datasets]]
+id = "hacc5_above5_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__hacc5_above5_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_hacc_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "As hacc5_above4_gauss6_390nm_He, cut above n <= 5: 7.242e-4 and 6.672e-3. Uncertainty: haCC(1)'s."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.00531, "5p69e14" = 0.00531 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 5) 1000 au after the pulse: ionisation plus excitation to n >= 6"
+electrons = "all, with the ion frozen in its five n <= 2 states (five ion channels)"
+method = "haCC(5), pyroraptor, mixed gauge, ECS"
+model_ionization_energy_au = 0.9036457
+
+[[datasets]]
+id = "sae_above4_gauss6_390nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__sae_above4_gauss6_390nm_He.csv"
+table = "data/external/pyroraptor/he_sae_390nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "One electron (m = 0) in Tong and Lin's helium potential, R0 = 75.7 bohr (13 outer elements), lMax 49, order 12, cut 400 au, step 1/192 au (record o13): N0 - P(1s) - P(bound, n <= 4) 1000 au after the pulse, 5.119e-4 and 4.504e-3. Uncertainty: the largest change among the four discretisations (9 and 18 outer elements, lMax 69)."
+[datasets.uncertainty]
+relative_rows = { "3p68e14" = 0.00011, "5p69e14" = 0.00006 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 390
+pulse_fs = 6
+pulse_fs_definition = "full width at half maximum of the intensity envelope (the square of the envelope of the vector potential)"
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "vector potential"
+cep = 0
+cep_definition = "A(t) = A0 exp(-2 ln 2 t^2/T^2) sin(omega t): A2's pulse at 390 nm (omega 0.1168291 au, 4.61 cycles in the full width at half maximum), then 1000 au without field; max |A| 0.8734300 and 1.0854638 au"
+measure = "N0 - P(ground) - P(bound states with n <= 4) 1000 au after the pulse: ionisation plus excitation to n >= 5"
+orbital = "1s"
+m = 0
+electrons = "one active electron"
+potential = "Tong and Lin 2005, Table 1, He"
+method = "TDSE of one electron, pyroraptor, ECS"
+model_ionization_energy_au = 0.9038011
+
+[[datasets]]
+id = "hacc1_outside20_sin2_800nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__hacc1_outside20_sin2_800nm_He.csv"
+table = "data/external/pyroraptor/he_hacc_800nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "haCC with the He+ 1s channel, neutral square 6 (records h1/<I>-sq6), in Sato et al.'s pulse: 1 - P(both electrons inside 20 bohr) at the end of the pulse, 2.961e-4, 1.5445e-2 and 0.1536. Uncertainty: per intensity, the largest change among the variations of the square-3 base (step, order, R0, lMax, cut, gauge radius) and the square step 3 -> 6."
+[datasets.uncertainty]
+relative_rows = { "I4e14" = 0.0112, "I8e14" = 0.0102, "I14e14" = 0.0112 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 16.011
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 6 cycles"
+pulse_cycles = 6
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (sato_2016 Eq. 27)"
+intensity_definition = "I = E0^2 in atomic units (3.50945e16 W/cm2 per au^2), as sato_2016"
+measure = "1 - P(both electrons inside r = 20 bohr) at the end of the pulse"
+electrons = "all, with the ion frozen in its 1s state (one ion channel)"
+method = "haCC(1), pyroraptor, mixed gauge, ECS"
+model_ionization_energy_au = 0.9036457
+
+[[datasets]]
+id = "hacc5_outside20_sin2_800nm_He"
+material = "He"
+file = "He/travers_2026_pyroraptor__hacc5_outside20_sin2_800nm_He.csv"
+table = "data/external/pyroraptor/he_hacc_800nm.csv"
+quantity = "ionization_yield"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "As hacc1_outside20_sin2_800nm_He with the five He+ n <= 2 channels, at haCC(1)'s numerics (records h5/<I>-best): 3.023e-4, 1.5825e-2 and 0.1578. Uncertainty: haCC(1)'s plus haCC(5)'s own lMax step at 8e14 (+0.52 %)."
+[datasets.uncertainty]
+relative_rows = { "I4e14" = 0.0164, "I8e14" = 0.0155, "I14e14" = 0.0164 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 800
+pulse_fs = 16.011
+pulse_fs_definition = "the total, foot-to-foot duration tau of the sin^2 envelope on the field: 6 cycles"
+pulse_cycles = 6
+polarization = "linear"
+pulse_envelope = "sin^2"
+envelope_of = "field"
+cep = "sine carrier"
+cep_definition = "E(t) = E0 sin(omega t) sin^2(pi t / tau), 0 <= t <= tau (sato_2016 Eq. 27)"
+intensity_definition = "I = E0^2 in atomic units (3.50945e16 W/cm2 per au^2), as sato_2016"
+measure = "1 - P(both electrons inside r = 20 bohr) at the end of the pulse"
+electrons = "all, with the ion frozen in its five n <= 2 states (five ion channels)"
+method = "haCC(5), pyroraptor, mixed gauge, ECS"
+model_ionization_energy_au = 0.9036457

@@ -1,0 +1,40 @@
+Title:
+xe_m1_I1p1 - xenon 5p m1 Tong-Lin SAE of Zhang 2014 beta 0.9997362280 in the RMT pulse of Hartmann 2022 E0 0.055964 au
+
+# Round 2 part N (BRIEF-tdse-runs-round2-addendum5.md). base (5p scaled to -0.444 au)
+# E0 = 0.055964440 au = 0.05336 sqrt(1.1) (label 1.1e14 W/cm2, their convention); peakA = 9.292545893556e-01 au;
+# quiver E0/omega^2 = 15.55 bohr; fixStep = min(0.00136, 2/Emax) x 1.
+# Pulse: E(t) = E0 exp(-((t-900)/186)^2) cos(0.06 (t-900)), A = -int_0^t E, from a file on [0, 3000] au.
+# Propagation [0, 4000] au, printed every 10 au.
+
+#define BOX 80
+#define ScaledXeV (1.0+0.999736228000*(51.356*exp(-2.112*Q)-99.927*Q*exp(-3.737*Q)+1.644*exp(-0.431*Q)))/Q
+
+Spectrum: radialPoints=600, plot=total, iSurff=true
+
+Axis: name,order,lowerEnd,upperEnd,functions,nElem
+ Phi,1,0.,6.28318530718,expIm[1]
+ Eta,30,-1,1,assocLegendre{Phi}
+ Rn,16,0.,2.,polynomial,6
+ Rn,16,2.,20.,RpowL*polynomial,8
+ Rn,12,20.,40.,RpowL*polynomial,5
+ Rn,12,40.,BOX,RpowL*polynomial,9
+ Rn,30,BOX,Infty,polExp[0.5]
+
+Absorption: kind, axis, theta, radius
+ECS,Rn,0.3,BOX
+
+Operator: hamiltonian=1/2<<Laplacian>>+<1><1><-ScaledXeV>
+Operator: interaction='iLaserAz[t]<<D/DZ>>'
+Operator: expectationValue='<1><1><chi[0,20]>,<1><1><chi[0,40]>,<1><1><chi[0,80]>'
+
+# populations of the field-free (complex-scaled) eigenstates of H0, SmallReal order, 0-based
+Occupation: states=0:70, operator=hamiltonian
+
+Initial: state=6
+
+Laser: shape, file, scale, scaleMode, timeUnits, lambda(nm)
+file, /mnt/scratch/users/jt52/tdse_round2/xe_rmt/pulse/rmt_A.dat, 9.292545893556e-01, peakA, au, 759.3892
+
+TimePropagation: begin,end,print,store,cutEnergy,operatorThreshold,fixStep
+ 0.,4000.0,10,0.05,100,1e-09,0.00136

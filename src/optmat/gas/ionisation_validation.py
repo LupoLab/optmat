@@ -40,7 +40,15 @@ import numpy as np
 from jaxtyping import Float
 from numpy.typing import ArrayLike
 
-from optmat.constants import AU_ANGULAR_FREQUENCY, AU_ENERGY, E_CHARGE, EPS0, M_E, C
+from optmat.constants import (
+    AU_ANGULAR_FREQUENCY,
+    AU_ENERGY,
+    AU_FIELD,
+    E_CHARGE,
+    EPS0,
+    M_E,
+    C,
+)
 from optmat.datasets import Dataset, datasets, sources
 from optmat.exceptions import DataError, ModelRangeWarning
 from optmat.gas.gases import Gas, as_gas
@@ -53,6 +61,7 @@ from optmat.gas.molecular_ionisation_rates import (
 __all__ = [
     "HACC_REFERENCES",
     "HACC_YIELDS",
+    "HELIUM_MATCHED",
     "HELIUM_TWO_ELECTRON",
     "HYDROGEN_ALPHA",
     "HYDROGEN_SPECTRA",
@@ -66,13 +75,17 @@ __all__ = [
     "TDSE_YIELDS",
     "WALLACE_TDSE",
     "WEAK_FIELD_ATOMS",
+    "XENON_RMT",
+    "XENON_SURVIVAL",
     "AtomRatio",
     "PhaseShiftTest",
     "PointsTest",
     "RateComparison",
     "SaturationTest",
     "ScaleTest",
+    "SurvivalRatio",
     "WeakFieldFactor",
+    "YieldRatio",
     "amplitude",
     "circular_yield",
     "cycle_pulse",
@@ -80,6 +93,7 @@ __all__ = [
     "gaussian_pulse",
     "hacc_ratios",
     "helium_laser_rates",
+    "helium_matched_ratios",
     "helium_two_electron_ratios",
     "hydrogen_model",
     "hydrogen_spectra",
@@ -102,6 +116,8 @@ __all__ = [
     "tdse_yields",
     "wallace_yield",
     "weak_field_factors",
+    "xenon_rmt_ratios",
+    "xenon_survival",
 ]
 
 _SAMPLES_PER_CYCLE = 96
@@ -208,8 +224,9 @@ class RateComparison:
         The name of the rate model.
     quantity : str
         ``static rate`` (atomic units, against the field in V/m), ``rate``
-        (atomic units, cycle averaged, against the intensity in W/m^2) or ``yield``
-        (against the peak intensity in W/m^2).
+        (atomic units, cycle averaged, against the intensity in W/m^2), ``yield``
+        (against the peak intensity in W/m^2) or ``depletion`` (-ln P, P
+        the ground-state survival, against the peak intensity in W/m^2).
     wavelength : float
         Wavelength of the field, m; ``math.inf`` for a static field.
     x : numpy.ndarray
@@ -1553,6 +1570,270 @@ def helium_two_electron_ratios() -> list[AtomRatio]:
             )
         )
     return ratios
+
+
+@dataclass(frozen=True)
+class YieldRatio:
+    """One calculation's yield over another's, in one pulse and with one measure.
+
+    Attributes
+    ----------
+    reference : str
+        The dataset compared.
+    against : str
+        The dataset it is divided by.
+    intensity : numpy.ndarray
+        The peak intensities, W/m^2.
+    value : numpy.ndarray
+        ``reference``'s yields.
+    against_value : numpy.ndarray
+        ``against``'s at the same intensities.
+    """
+
+    reference: str
+    against: str
+    intensity: Float[np.ndarray, " n"]
+    value: Float[np.ndarray, " n"]
+    against_value: Float[np.ndarray, " n"]
+
+    @property
+    def ratio(self) -> Float[np.ndarray, " n"]:
+        """The yield over the other's.
+
+        Returns
+        -------
+        numpy.ndarray
+            ``value / against_value``.
+        """
+        return self.value / self.against_value
+
+    @property
+    def rate_ratio(self) -> Float[np.ndarray, " n"]:
+        r"""The ratio of the two in rate form.
+
+        Returns
+        -------
+        numpy.ndarray
+            :math:`\ln(1 - Y) / \ln(1 - Y')`: the ratio of the rates integrated over
+            the pulse, if the yield is :math:`1 - \exp(-\int W dt)`; for one
+            calculation over one electron's, an effective number of electrons.
+        """
+        return np.log1p(-self.value) / np.log1p(-self.against_value)
+
+
+HELIUM_MATCHED: Mapping[str, str] = {
+    "travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He": (
+        "travers_2026_pyroraptor/sae_above4_gauss6_390nm_He"
+    ),
+    "travers_2026_pyroraptor/hacc1_above4_gauss6_390nm_He": (
+        "travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He"
+    ),
+    "travers_2026_pyroraptor/hacc5_above4_gauss6_390nm_He": (
+        "travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He"
+    ),
+    "travers_2026_pyroraptor/hacc1_above5_gauss6_390nm_He": (
+        "travers_2026_pyroraptor/twoelectron_above5_gauss6_390nm_He"
+    ),
+    "travers_2026_pyroraptor/hacc5_above5_gauss6_390nm_He": (
+        "travers_2026_pyroraptor/twoelectron_above5_gauss6_390nm_He"
+    ),
+    "travers_2026_pyroraptor/hacc1_outside20_sin2_800nm_He": (
+        "sato_2016/fig6_casscf_He_800nm"
+    ),
+    "travers_2026_pyroraptor/hacc5_outside20_sin2_800nm_He": (
+        "sato_2016/fig6_casscf_He_800nm"
+    ),
+}
+"""Helium's calculations against each other on measures converged in the box (TC-1092).
+
+At 390 nm, in A2's 6 fs pulse, the population above the shells n <= 4 or n <= 5 1000
+au after the pulse: two electrons over one, and haCC over two electrons; at 800 nm, in
+Sato et al.'s sin^2 pulse, haCC's probability outside 20 au over their MCTDHF."""
+
+
+def helium_matched_ratios() -> list[YieldRatio]:
+    """Compare helium's calculations on matched, box-converged measures.
+
+    For each pair of :data:`HELIUM_MATCHED`, at the first dataset's intensities
+    (TC-1092).
+
+    Returns
+    -------
+    list of YieldRatio
+        One per pair.
+    """
+    by_key = _by_key()
+    ratios = []
+    for key, against in HELIUM_MATCHED.items():
+        intensity, value = _numbers(by_key[key])
+        own_intensity, own = _numbers(by_key[against])
+        other = {float(i): float(v) for i, v in zip(own_intensity, own, strict=True)}
+        ratios.append(
+            YieldRatio(
+                key,
+                against,
+                intensity,
+                value,
+                np.array([other[float(i)] for i in intensity]),
+            )
+        )
+    return ratios
+
+
+@dataclass(frozen=True)
+class SurvivalRatio:
+    """An atom's ground-state depletion against one electron's in the same pulse.
+
+    Attributes
+    ----------
+    reference : str
+        The atom's ground-state survival.
+    intensity : numpy.ndarray
+        The peak intensities, W/m^2, as the reference labels them.
+    atom : numpy.ndarray
+        The atom's survival.
+    m0 : numpy.ndarray
+        One electron's survival in the orbital with m = 0, at the same ionisation
+        energy, pulse and measure.
+    m1 : numpy.ndarray
+        The same with m = 1.
+    """
+
+    reference: str
+    intensity: Float[np.ndarray, " n"]
+    atom: Float[np.ndarray, " n"]
+    m0: Float[np.ndarray, " n"]
+    m1: Float[np.ndarray, " n"]
+
+    @property
+    def per_m0(self) -> Float[np.ndarray, " n"]:
+        r"""The atom's depletion in electrons with m = 0.
+
+        Returns
+        -------
+        numpy.ndarray
+            :math:`\ln P_{atom} / \ln P_0`.
+        """
+        return np.log(self.atom) / np.log(self.m0)
+
+    @property
+    def per_shell(self) -> Float[np.ndarray, " n"]:
+        r"""The atom's depletion over that of the shell's six independent electrons.
+
+        Returns
+        -------
+        numpy.ndarray
+            :math:`\ln P_{atom} / (2 \ln P_0 + 4 \ln P_1)`: two electrons with
+            m = 0 and four with m = +1 or -1.
+        """
+        return np.log(self.atom) / (2 * np.log(self.m0) + 4 * np.log(self.m1))
+
+
+XENON_RMT: Mapping[str, tuple[str, str]] = {
+    "hartmann_2022/rmt_ground_survival_Xe": (
+        "travers_2026_trecx/ground_survival_rmtpulse_m0_Xe",
+        "travers_2026_trecx/ground_survival_rmtpulse_m1_Xe",
+    ),
+    "hartmann_2022/rmt_ground_survival_Xe@unscaled": (
+        "travers_2026_trecx/ground_survival_rmtpulse_m0_unscaled_Xe",
+        "travers_2026_trecx/ground_survival_rmtpulse_m1_unscaled_Xe",
+    ),
+}
+"""Xenon's all-electron RMT calculation against one 5p electron in its field (TC-1093).
+
+The ground-state survival at the end of RMT's run, against one electron with m = 0
+and m = 1 read at the same time, at RMT's ionisation energy and (``@unscaled``) at the
+potential's own, 0.18 % deeper."""
+
+
+def xenon_rmt_ratios() -> list[SurvivalRatio]:
+    """Compare RMT's xenon with one electron in its field and with its measure.
+
+    For each entry of :data:`XENON_RMT`, at the one-electron runs' intensities
+    (TC-1093).
+
+    Returns
+    -------
+    list of SurvivalRatio
+        One per entry.
+    """
+    by_key = _by_key()
+    ratios = []
+    for key, (m0, m1) in XENON_RMT.items():
+        atom_intensity, atom = _numbers(by_key[key.split("@")[0]])
+        values = {float(i): float(v) for i, v in zip(atom_intensity, atom, strict=True)}
+        intensity, zero = _numbers(by_key[m0])
+        _, one = _numbers(by_key[m1])
+        ratios.append(
+            SurvivalRatio(
+                key,
+                intensity,
+                np.array([values[float(i)] for i in intensity]),
+                zero,
+                one,
+            )
+        )
+    return ratios
+
+
+_RMT_FIELD_PER_ROOT_INTENSITY = 0.05336
+"""Hartmann et al.'s peak field per sqrt(1e14 W/cm^2), atomic units: their intensities
+are labels of E0 = 0.05336 sqrt(I/1e14 W/cm^2) au (hartmann_2022; TC-1059)."""
+
+XENON_SURVIVAL: Mapping[str, tuple[float, float, bool]] = {
+    "hartmann_2022/rmt_ground_survival_Xe": (759.4e-9, 5.297e-15, True),
+    "hartmann_2022/measured_neutral_abundance_Xe": (760e-9, 4.5e-15, False),
+}
+"""Xenon's ground-state survival after a few-cycle pulse: the dataset, its pulse's
+wavelength (m) and full width at half maximum of the intensity (s), and whether its
+intensities are RMT's labels of the field (TC-1093, TC-1094)."""
+
+
+def xenon_survival(model: str = "default") -> list[RateComparison]:
+    r"""Predict xenon's ground-state depletion after Hartmann et al.'s pulses.
+
+    The rate's yield (:func:`pulse_yield`, the cycle-averaged rate on a Gaussian
+    envelope) at each dataset's peak intensity; RMT's intensities are converted from
+    its field labels (E0 = 0.05336 sqrt(I/1e14 W/cm^2) au) to the intensity whose
+    field has that amplitude. The model ionises; it does not excite (TC-1093, TC-1094).
+
+    Parameters
+    ----------
+    model : str, optional
+        The rate model.
+
+    Returns
+    -------
+    list of RateComparison
+        One per entry of :data:`XENON_SURVIVAL`, quantity ``depletion``:
+        :math:`-\ln P`, the survival's logarithm, of the dataset and of the model.
+    """
+    by_key = _by_key()
+    comparisons = []
+    for key, (wavelength, fwhm, labelled) in XENON_SURVIVAL.items():
+        intensity, survival = _numbers(by_key[key])
+        peak = intensity
+        if labelled:
+            field = _RMT_FIELD_PER_ROOT_INTENSITY * AU_FIELD * np.sqrt(intensity / 1e18)
+            peak = field**2 * EPS0 * C / 2
+        rate = ionisation_rate_model(Gas.Xe, wavelength, model)
+        predicted = np.array(
+            [-math.log1p(-pulse_yield(rate, float(i), fwhm)) for i in peak]
+        )
+        comparisons.append(
+            RateComparison(
+                Gas.Xe,
+                key,
+                "Hartmann et al. 2022",
+                model,
+                "depletion",
+                wavelength,
+                intensity,
+                -np.log(survival),
+                predicted,
+            )
+        )
+    return comparisons
 
 
 LONG_PULSE_YIELD = "travers_2026_trecx/ionised_gauss42_Ar_m0"

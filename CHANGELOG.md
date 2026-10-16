@@ -7,6 +7,27 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+No recommended value or model changed.
+
+### Added
+
+- Helium on matched measures (TC-1092): a new source of tier-3 calculations,
+  `travers_2026_pyroraptor` (both electrons active, haCC with one and five ion
+  channels, and one electron, at 390 nm; haCC in Sato et al.'s 800 nm pulse), and
+  `gas.ionisation_validation.helium_matched_ratios`.
+- Xenon in Hartmann et al.'s RMT field (TC-1093, TC-1094): one 5p electron in the same
+  field and with the same measure (`travers_2026_trecx`, part N), the paper's measured
+  neutral abundance (`hartmann_2022`), and `xenon_rmt_ratios` and `xenon_survival`.
+- The curated data are now 762 source records: 8481 datasets and 197,804 values, 259
+  errata and 780 published formulas.
+
+### Fixed
+
+- The manual's helium findings at 390 nm (TC-1092 corrects TC-1050): haCC's helium is
+  0.96 to 0.99 of the exact atom, not 0.76 to 0.81, and the atom 1.6 times one
+  electron, not 1.7 to 1.8. The earlier ratios compared a norm-loss that counts Rydberg
+  excitation with one that does not. Parker et al.'s rate is confirmed as before.
+
 ## 0.8.1 (2026-10-16)
 
 Fixes for a downstream propagation code. No value at a positive wavelength, model or

@@ -1111,6 +1111,59 @@ f7bab4e823f649d6d762711256e1e69206abc31d1db3b3fff10d088ed4d93240  PARAMETERS_two
 67f7251ac7065c3db3f05b6bf3c9ae5d9476ec3f1b7532c309cc9e1800eb57f1  REPORT.md
 ```
 
+# Part N: one electron of xenon in Hartmann et al.'s RMT pulse (October 2026)
+
+Xenon 5p (m = 0 and m = 1) in part G's potential (Tong and Lin's form with Zhang, Lan and
+Lu's parameters; part G's refined inner grid, Eta 30, BOX 80, irECS angle 0.3 from BOX,
+cutEnergy 100, fixStep 0.00136 au), its short-range terms scaled by beta =
+0.9997362280 so that the 5p energy is RMT's -0.444000 au (Hartmann et al. 2022's
+`GS_Energy_desired`; |dE| 4.5e-13), and unscaled (-0.4448129 au) at three intensities.
+The pulse is the one RMT wrote (`hartmann_2022`): E(t) = E0 exp(-((t - 900)/186)^2)
+cos(0.06 (t - 900)), t in au, with E0 = 0.05336 sqrt(I / 1e14 W/cm2) au, as A(t) =
+-int_0^t E dt' on [0, 3000] au from a file (velocity gauge), then 1000 au without field.
+tRecX a987d7c (OccDual build), one core per run; 41 runs and their 41 field-free
+spectra, made on 12 to 15 October 2026. `results.csv` and `tables.md` are the runs'
+own tables (the runs' `extract.py`, kept with the runs), `manifest.csv` the run list,
+`inputs/` every input as run (each run and its `_eig` spectrum). The datasets
+`ground_survival_rmtpulse_*_Xe` are written from `results.csv` by
+`tools/extract/travers_2026_trecx.py` (TC-1093). Tier 3.
+
+## Checked (against the tables and the runs' report, 2026-10-16)
+
+- Every run exit 0; initial energy -0.44400000013 au (scaled) and -0.4448128882 au
+  (unscaled), the 5p state at index 11 (m = 0) and 6 (m = 1); OccDual 1 in the 5p at
+  t = 0.
+- The pulse file: -dA/dt peaks at 0.99999994 E0 at t = 900.00 au and reproduces the
+  formula to 6.1e-8 E0; A(3000) = -1.2e-10 E0; the intensity's full width at half
+  maximum 219.00 au (the runs' `pulse_check.txt`, kept with the runs).
+- The ground-state population at 1500 au equals that at 3000 au to 1e-5 relative in
+  every run. Convergence at 1.5 and 2.5e14 W/cm2, m = 0 (Eta 40 and 50, 20/14 radial
+  elements, order 14, BOX 120, the step x 2/3, irECS angle 0.2, operatorThreshold 1e-11,
+  A2's inner grid, cutEnergy 150): the depletion 1 - P changes by at most 0.43 %
+  (cutEnergy 150 at 1.5e14). Without field over [0, 4000] au, P = 1 to every printed
+  digit and the norm-loss <= 2e-12. The one warning ('Large number of 600 radial
+  spectral points') concerns the iSurff spectrum's memory.
+- The values agree with the report's tables to the last printed digit.
+
+## Files
+
+```
+84d3a368bb69da48e20f952e34cdcd071d634382f01cf50ec9d7bcb70dc093dc  xe_rmt/results.csv
+b5310e3da7981c55ff65f497f77e2fbd048c1491a1fafc4fde266f5f7b4e71a2  xe_rmt/manifest.csv
+1de17b10adbf602b2ddc9551ad4bef474fbe034a7d9018eb374c67c136fb04e4  xe_rmt/tables.md
+3cff4fa4daa7c5d1c143fd4d0dd644799edcd80616d79401c9f512f62ae44942  extract.py
+a5f3de325efe57d53cc7569bd697a39ea3fb9a73d8fb0025512ce6dca8ae0982  make_inputs.py
+f3245c35017435ffb6c6efe426fea8d7536613220a94033fa4dfe74a53231690  beta_search_xe.py
+6c1582b15b91ace5a48390ae99ddb96990c41fc7b1b7e2ceb27c8d5dec814fc2  pulse_check.txt
+05b9ebeb6f705bf0f26b4bdde83f47a1cd232c6c8ad78cf5dbc32ebde6c8a57e  REPORT.md
+```
+
+`results.csv`, `tables.md` and `inputs/` are as the runs left them. In `manifest.csv`
+the runs' directory is replaced by the placeholder `$RUN_ROOT`; as run, its sha256 was
+`a71cc3db8a0c60294c351d8a9158544a731fe5e9edf8a02a87bcdeb26b2e5e8d`. The last five files
+(the runs' scripts, pulse check and report) are kept with the runs, outside this
+repository. The inputs name the pulse file by its path on the cluster.
+
 ## Terms
 
 These are our own calculations, run with the tRecX code (not included), and are

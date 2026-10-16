@@ -32,9 +32,15 @@ script reads it there and checks its sha256 (:data:`ARCHIVE_SHA256`). From it:
   (FWHM 4.5 fs)' is w = 186 au = 4.50 fs, the 1/e half-width of the field; the
   intensity's full width at half maximum is w sqrt(2 ln 2) = 219 au = 5.30 fs.
 
-One data file, ``Xe/hartmann_2022__rmt_ground_survival_Xe.csv``: the row id is the
-intensity label as printed, ``x`` the intensity in W/cm2, the value the population as
-printed; ``printed`` keeps the file's line.
+* ``data/experimental/gs_pop.csv``: the experiment's relative abundance of neutral
+  xenon (``pop_xe0``, with ``pop_xe1`` and ``pop_xe2`` the ions'), estimated from the
+  optical density and cross sections (Fig. 5(a)), at ten peak intensities inferred from
+  the average beam power. The three abundances sum to 1 in every row (checked).
+
+Two data files, ``Xe/hartmann_2022__rmt_ground_survival_Xe.csv`` and
+``Xe/hartmann_2022__measured_neutral_abundance_Xe.csv``: the row id is the intensity as
+printed (1e14 W/cm2), ``x`` the intensity in W/cm2, the value as printed; ``printed``
+keeps the file's line.
 """
 
 import csv
@@ -54,6 +60,9 @@ ARCHIVE = "ATAS_xenon-v1.1.zip"
 ARCHIVE_SHA256 = "baac753dcf137b589ac624694e2b544aa4a7210a024aae3b8e2bfa322c7c5ebb"
 ROOT = "lhutcheson-ATAS_xenon-90b11b2"
 FILE = "Xe/hartmann_2022__rmt_ground_survival_Xe.csv"
+MEASURED_FILE = "Xe/hartmann_2022__measured_neutral_abundance_Xe.csv"
+MEASURED_HEADER = "Intensity,pop_xe0,pop_xe1,pop_xe2"
+MEASURED_SUM = 1e-12  # the abundances are normalised to one: rounding only
 INTENSITIES = ("1.1", "1.3", "1.5", "1.7", "1.9", "2.2", "2.5")
 # input.conf: the settings this record relies on, as printed.
 SETTINGS = {
@@ -187,14 +196,33 @@ def survival(archive: zipfile.ZipFile) -> list[tuple[str, str, str]]:
     return rows
 
 
+def measured(archive: zipfile.ZipFile) -> list[tuple[str, str, str]]:
+    """Return (intensity, neutral abundance, line) for each row of the experiment's."""
+    lines = _member(archive, "data/experimental/gs_pop.csv").splitlines()
+    if lines[0].strip() != MEASURED_HEADER:
+        msg = f"experimental gs_pop.csv: header {lines[0]!r}"
+        raise ValueError(msg)
+    rows = []
+    for line in lines[1:]:
+        cells = line.strip().split(",")
+        values = [float(cell) for cell in cells]
+        if abs(sum(values[1:]) - 1) > MEASURED_SUM or not 0 < values[1] < 1:
+            msg = f"experimental gs_pop.csv: abundances {cells[1:]} do not sum to 1"
+            raise ValueError(msg)
+        rows.append((cells[0], cells[1], line.strip()))
+    return rows
+
+
 def extract() -> dict[str, list[Point]]:
-    """Return the ground-state survival against intensity, after the checks."""
+    """Return the ground-state survival and the measured abundance, after the checks."""
     with _archive() as archive:
         check_input(archive)
         check_fields(archive)
         rows = survival(archive)
+        experiment = measured(archive)
     points = [Point(row, f"{row}e14", value, "", line) for row, value, line in rows]
-    return {FILE: points}
+    abundance = [Point(i, f"{i}e14", value, "", line) for i, value, line in experiment]
+    return {FILE: points, MEASURED_FILE: abundance}
 
 
 def main() -> None:
