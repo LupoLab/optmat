@@ -29492,9 +29492,12 @@ tabulate (the table model clamps outside its range, so only in-range points coun
     0.01 % from R0 = 78 to 97 bohr, while 1 - P(bound) falls by 3.6 % as each box binds
     another shell; haCC's above4 and above5 agree to 0.01 % at R0 = 40, 60 and 80.
   - The three analyses cut at n by the same rule, n = round(1/sqrt(-2E)) (the runs'
-    scripts). pyroraptor's reports compare haCC's above5 (7.113e-4; their "ionisation
+    scripts). pyroraptor's reports compared haCC's above5 (7.113e-4; their "ionisation
     plus n >= 5") with the two-electron and one-electron above4: one shell apart. Their
-    haCC deficit at 390 nm (8 to 13 %), and its contrast with 800 nm, come from that.
+    haCC deficit at 390 nm (8 to 13 %), and its contrast with 800 nm, came from that.
+    pyroraptor confirmed and corrected it on 17 October 2026 (merged at `295a255b`):
+    the deficit, its frozen-core interpretation and the "not seen at 800 nm" statement
+    are withdrawn; its corrected haCC(1) and haCC(5) above4 values are those here.
   - The 390 nm pulse is the same in all three: the haCC records' max |A| matches the
     intensity to 1e-4, and the one-electron driver uses the same max |A|.
   - haCC at 800 nm reproduces the report's values (2.961e-4, 1.5445e-2, 0.1536 and

@@ -47,10 +47,13 @@ at 4, 8 and 14e14 W/cm2 (I = E0^2 in atomic units).
 - `norm_loss_end`, `ionisation`: as named. Neither is box-converged for two electrons:
   each larger box keeps another Rydberg shell bound.
 
-**The reports compare different cuts.** pyroraptor's reports call haCC's `above_n5` (for
-example 7.113e-4 at 3.684e14 W/cm2) "ionisation plus n >= 5" and compare it with the
-two-electron and one-electron `above_n4`. By the rule above, `above_n5` is ionisation
-plus n >= 6. optmat compares like with like (TC-1092).
+**The reports compared different cuts.** pyroraptor's reports of 10 and 14 October
+called haCC's `above_n5` (for example 7.113e-4 at 3.684e14 W/cm2) "ionisation plus n >=
+5" and compared it with the two-electron and one-electron `above_n4`. By the rule
+above, `above_n5` is ionisation plus n >= 6. pyroraptor corrected this on 17 October
+2026 (its correction record, merged at `295a255b`): the haCC deficit at 390 nm it had
+reported (-8 to -13 %), and its interpretation, are withdrawn, and both analyses now
+share one shell rule. optmat compares like with like (TC-1092).
 
 ## Checked (2026-10-16)
 
