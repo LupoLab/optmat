@@ -60,12 +60,32 @@ def _quiet(model: TwoPhotonIonisationModel, omega):
         return model.cross_section(omega)
 
 
+def _assert_same_record(fresh, stored, path="model"):
+    # Platforms differ in the last bits of the derived numbers (Linux and macOS by
+    # 1 ulp, CI 2026-10-16): numbers to 1e-12 relative, everything else exactly, and a
+    # stored zero stays zero.
+    if isinstance(stored, float) or isinstance(fresh, float):
+        assert isinstance(fresh, int | float) and isinstance(stored, int | float), path
+        assert math.isclose(fresh, stored, rel_tol=1e-12, abs_tol=0.0), path
+    elif isinstance(stored, dict):
+        assert isinstance(fresh, dict) and fresh.keys() == stored.keys(), path
+        for key in stored:
+            _assert_same_record(fresh[key], stored[key], f"{path}.{key}")
+    elif isinstance(stored, list):
+        assert isinstance(fresh, list) and len(fresh) == len(stored), path
+        for i, (now, before) in enumerate(zip(fresh, stored, strict=True)):
+            _assert_same_record(now, before, f"{path}[{i}]")
+    else:
+        assert fresh == stored, path
+
+
 @pytest.mark.parametrize(("gas", "polarization"), MODELS)
 def test_the_stored_models_are_fresh(gas, polarization):
     stored = (two_photon._DIRECTORY / f"{gas}_{polarization}.json").read_text(
         encoding="utf-8"
     )
-    assert two_photon._dumps(derivation.derive(gas, polarization)) == stored
+    fresh = two_photon._dumps(derivation.derive(gas, polarization))
+    _assert_same_record(json.loads(fresh), json.loads(stored))
 
 
 def test_the_models_are_the_approved_references():

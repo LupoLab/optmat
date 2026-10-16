@@ -84,9 +84,11 @@ def test_stored_compact_model_is_fresh(gas):
         int(cast("int", stored.record["check_points"])),
     )
     for key, value in stored.residuals_sigma.items():
-        # Equal to rounding; a kept model's residuals are rounding alone, near 1e-13.
+        # Equal to rounding; a kept model's residuals are rounding alone, near 1e-13. A
+        # reduced model's residual is a difference of nearly equal terms: across
+        # platforms CO2's (2.2e-3 sigma) moved by 7e-7 of itself (CI, 2026-10-16).
         assert float(np.max(np.abs(found[key]))) == pytest.approx(
-            value, rel=1e-9, abs=1e-9
+            value, rel=1e-6, abs=1e-9
         )
 
 

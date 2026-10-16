@@ -14,6 +14,7 @@ The samples are regression checks, not a proof of equivalence at every argument.
 import copy
 import importlib.util
 import json
+import platform
 import sys
 from pathlib import Path
 
@@ -33,11 +34,33 @@ RAMAN_IDENTITIES = json.loads(
 )
 # Arithmetic tolerance, not experimental uncertainty. Different libm/BLAS arithmetic
 # changes the derived Raman widths: the investigated decay-rate difference was below
-# 3e-14 relative. Keep the existing output tolerance, also for floating identity fields.
-# No absolute floor: a formerly zero coefficient must stay zero, however small its unit.
-RTOL = 1e-12
+# 3e-14 relative. On an AVX-512 Xeon (Linux) the O3 fit's dispersion derivative, taken
+# through the FFT of its absorption, differs from the macOS record by 1.2e-12 relative
+# (2026-10-16): 1e-11, also for floating identity fields. No absolute floor: a
+# formerly zero coefficient must stay zero, however small its unit.
+RTOL = 1e-11
+# Wider tolerances, each with its reason. O3's real refractivity is the Kramers-Kronig
+# transform of its measured absorption, taken by FFT on a fine wavenumber grid, and its
+# derivative amplifies that transform's rounding: Linux differs from the macOS record by
+# up to 9.9e-9 relative (CI's runners; 7.4e-9 on an AVX-512 Xeon; 2026-10-16), far below
+# the measurements' uncertainty. 1e-7 leaves a factor of ten.
+LOOSER = {("gas/fit/O3", "dpolarizability_domega"): 1e-7}
 # The canonical serializer represents these integer-valued arrays as floats.
 EXACT_FIELDS = {"versions", "j", "damping_group"}
+# A model's identity digest hashes its numbers, some of them computed (an FFT, a
+# least-squares fit, a derived grid), so it is exact only where it was recorded: on
+# Linux (OpenBLAS, glibc's libm) the O3 absorption's and the molecular rates' digests
+# differ in the last bits of those numbers (CI, 2026-10-16). Elsewhere the values and
+# the arguments are still held to RTOL, and the digest to its own record's.
+RECORDED_ON = ("Darwin", "arm64")
+
+
+def _digests_hold_here():
+    return (platform.system(), platform.machine()) == RECORDED_ON
+
+
+def _plain(value):
+    return json.loads(json.dumps(value))
 
 
 def _tool():
@@ -86,13 +109,17 @@ def _assert_identity(actual, expected, path="identity"):
 
 def _assert_golden(record, now):
     assert now["class"] == record["class"]
-    assert now["arguments"] == record["arguments"]
+    # Arguments derived on a grid (a geometric spacing) differ in the last bit too.
+    _assert_identity(_plain(now["arguments"]), _plain(record["arguments"]), "arguments")
     if record["id"] in RAMAN_IDENTITIES:
         expected = RAMAN_IDENTITIES[record["id"]]
         assert sha256_digest(expected) == record["digest"], "recorded digest"
         assert sha256_digest(now["identity_record"]) == now["digest"], "runtime digest"
         _assert_identity(now["identity_record"], expected)
     else:
+        # Everywhere: a model recorded with an identity still has one.
+        assert ("digest" in now) == ("digest" in record), f"{record['id']}: identity"
+    if record["id"] not in RAMAN_IDENTITIES and _digests_hold_here():
         assert record.get("digest") == now.get("digest"), (
             f"{record['id']}: identity changed; review and re-record with "
             "tools/golden_models.py, with a changelog line"
@@ -100,7 +127,7 @@ def _assert_golden(record, now):
     np.testing.assert_allclose(
         _decode(now["values"]),
         _decode(record["values"]),
-        rtol=RTOL,
+        rtol=LOOSER.get((record["id"], record["quantity"]), RTOL),
         atol=0,
         err_msg=(
             f"{record['id']}: output changed beyond arithmetic tolerance; review the "
@@ -190,7 +217,9 @@ def test_raman_inconsistent_digest_is_rejected(raman_pair):
         _assert_golden(before, now)
 
 
-def test_other_models_still_require_exact_digests():
+def test_other_models_still_require_exact_digests(monkeypatch):
+    # Where the records were made; elsewhere the digest is not compared at all.
+    monkeypatch.setattr(sys.modules[__name__], "_digests_hold_here", lambda: True)
     before = next(
         r for r in RECORDED if r["id"] not in RAMAN_IDENTITIES and "digest" in r
     )
