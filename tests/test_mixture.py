@@ -85,7 +85,9 @@ def test_an_absorbing_constituent_keeps_its_imaginary_part():
     with pytest.warns(ModelAbsorptionWarning):
         # The same refractivity by two routes: equal to the last bit on macOS, one
         # ulp apart on an AVX-512 Xeon (2026-10-16).
-        assert real == pytest.approx(model.refractivity(255e-9, state), rel=1e-14)
+        assert real == pytest.approx(
+            model.refractivity(255e-9, state), rel=1e-14, abs=0.0
+        )
     # The conventions differ at second order in the imaginary part. With y = y' + i y'',
     # Re chi = chi(y') - 3 y''^2 and Re sqrt(1 + chi) - 1 = Re chi / 2 - Re(chi^2) / 8,
     # so the complex law falls below the real one by 3 y''^2 / 8 = (Im chi)^2 / 24, to a
