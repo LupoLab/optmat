@@ -13,7 +13,7 @@ TOCTREE = re.compile(r"^```\{toctree\}\n(.*?)^```", re.MULTILINE | re.DOTALL)
 
 def _entries(page):
     entries = []
-    for block in TOCTREE.findall(page.read_text()):
+    for block in TOCTREE.findall(page.read_text(encoding="utf-8")):
         for raw in block.splitlines():
             line = raw.strip()
             if not line or line.startswith(":"):

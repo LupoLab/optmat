@@ -34,7 +34,7 @@ concerns physics or the reading of a paper rather than style, ask rather than gu
 | Enhancement proposals | `docs/oeps/`: OEPs for major changes; the process is OEP 0 (`oep-0000-process.md`), the form `template.md` |
 | Python | 3.12 or later (`requires-python`); development, the lock and the gate on 3.14 |
 | Licences | Code, source records and fits MIT; prose and figures CC-BY-4.0; published data (`data/values/`, `data/external/`) remain the publishers', shipped under the third-party data notice (`REUSE.toml`, `LICENSES/LicenseRef-optmat-third-party.txt`) |
-| CI | [`.github/workflows/ci.yml`](.github/workflows/ci.yml): the gate below, and the tests on Python 3.12 with the lowest supported dependencies |
+| CI | [`.github/workflows/ci.yml`](.github/workflows/ci.yml): the gate below on Linux and macOS, the tests on Windows, and the tests on Python 3.12 with the lowest supported dependencies |
 | Type checker | `basedpyright`, pinned exactly in the dev group |
 
 ## Commands
@@ -383,6 +383,9 @@ The manual's conventions pages are the long form.
   Ask before adding one. The floors in `pyproject.toml` are the oldest versions the code
   needs, not the newest available: do not raise one without a reason (an API, a fixed
   bug, a value the tests reproduce), recorded in `CHANGELOG.md`. CI tests the floors.
+- **Text files are UTF-8, said explicitly:** every text-mode `open`, `Path.open`,
+  `gzip.open`, `read_text` and `write_text` passes `encoding="utf-8"` ⚙
+  (`tests/test_encoding.py`); Windows otherwise decodes with its code page.
 - **Copyright and licence:** every code file (`.py`, `.jl`) starts with the SPDX header
   ⚙ (`reuse lint`), below any shebang and above the module docstring, as written by
   `uv run reuse annotate --copyright "John C. Travers and contributors" --year 2026

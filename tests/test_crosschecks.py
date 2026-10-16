@@ -29,7 +29,7 @@ def test_ratio_prediction_is_the_inverse_ratio_of_the_dispersions():
     argon = default_model("Ar").polarizability(points, warn=False)
     expected = (argon[1] - argon[0]) / (helium[1] - helium[0])
     # The same arithmetic on the same models: round-off only.
-    assert comparison.predicted == pytest.approx(expected, rel=1e-12)
+    assert comparison.predicted == pytest.approx(expected, rel=1e-12, abs=0.0)
 
 
 def test_fitted_ratios_agree_within_their_uncertainties():
@@ -64,4 +64,4 @@ def test_group_delay_dispersion_is_the_second_difference_at_the_dataset_state():
     expected = lam**3 / (2 * np.pi * C**2) * second * 1e30
     # Two step sizes of a centred difference (1e-3 and 1e-4 of lambda) differ at the
     # 1e-6 level; the prediction must also be at the dataset's state (1 bar, 19.5 C).
-    assert comparison.predicted == pytest.approx(expected, rel=1e-4)
+    assert comparison.predicted == pytest.approx(expected, rel=1e-4, abs=0.0)

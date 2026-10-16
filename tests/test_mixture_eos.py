@@ -46,13 +46,13 @@ def test_one_species_is_the_pure_equation(gas):
     state = State(pressure=2e6, temperature=320.0)
     # The same CoolProp equation, one fluid: the same Z to the flash's rounding.
     assert eos.number_density(state) == pytest.approx(
-        pure.number_density(state), rel=1e-13
+        pure.number_density(state), rel=1e-13, abs=0.0
     )
     for method in ("partial-density",):
         fallback = mixture_equation_of_state({gas: 1.0}, method=method)
         # The fallback at x = 1 is the pure equation's direct (rho, T) evaluation.
         assert fallback.number_density(state) == pytest.approx(
-            pure.number_density(state), rel=1e-10
+            pure.number_density(state), rel=1e-10, abs=0.0
         )
 
 
@@ -72,7 +72,7 @@ def test_the_round_trip(method):
         density = eos.number_density(State(pressure=pressure, temperature=300.0))
         back = float(eos.pressure(density, 300.0))
         # brentq to 4 eps on the forward law: the round trip to a few ulps.
-        assert back == pytest.approx(pressure, rel=1e-12)
+        assert back == pytest.approx(pressure, rel=1e-12, abs=0.0)
     out = eos.pressure(np.array([1e25, 2e25]), np.array([[280.0], [300.0]]))
     assert out.shape == (2, 2)
 
@@ -98,7 +98,7 @@ def test_the_fallback_is_section_4_2s():
     # Each pure equation at its partial density (its direct (rho, T) evaluation
     # against the inverse's solve, 1e-10), and the cross term of section 4.2.
     assert float(eos.pressure(density, temperature)) == pytest.approx(
-        expected, rel=1e-10
+        expected, rel=1e-10, abs=0.0
     )
 
 
@@ -128,7 +128,7 @@ def test_the_second_virial_is_the_low_density_limit():
     rho = eos.number_density(state) / N_A
     # Z - 1 = B rho + C rho^2: at 100 Pa C rho is about 2e-5 of B; the rounding of
     # Z - 1 (1e-7) about 1e-9.
-    assert (z - 1) / rho == pytest.approx(eos.second_virial(294.0), rel=5e-5)
+    assert (z - 1) / rho == pytest.approx(eos.second_virial(294.0), rel=5e-5, abs=0.0)
 
 
 def test_dry_air_against_cipm_2007():
@@ -171,7 +171,7 @@ class TestTheMolarMass:
         m = {g: equation_of_state(g).molar_mass for g in ("He", "Ar")}
         # Two products and a sum: rounding only.
         assert _quiet({"He": 0.3, "Ar": 0.7}).molar_mass == pytest.approx(
-            0.3 * m["He"] + 0.7 * m["Ar"], rel=1e-15
+            0.3 * m["He"] + 0.7 * m["Ar"], rel=1e-15, abs=0.0
         )
 
     def test_dry_air_is_its_compositions_not_the_pseudo_pure_fluids(self):
@@ -263,7 +263,10 @@ def test_the_truncation_bound_warns():
 
 def test_the_pair_file_is_checked(monkeypatch, tmp_path):
     path = tmp_path / "pairs.toml"
-    path.write_text('[pairs.He-Ar]\nmodel = "x"\nsource = "x"\nqualified = false\n')
+    path.write_text(
+        '[pairs.He-Ar]\nmodel = "x"\nsource = "x"\nqualified = false\n',
+        encoding="utf-8",
+    )
     monkeypatch.setattr(mixture_eos, "PAIRS_FILE", path)
     mixture_eos._pair_records.cache_clear()
     try:
@@ -271,14 +274,16 @@ def test_the_pair_file_is_checked(monkeypatch, tmp_path):
             mixture_eos._pair_records()
         path.write_text(
             '[pairs.Ar-He]\nmodel = "x"\nsource = "x"\nqualified = false\n'
-            'reason = "r"\ncross_virial = "achtermann_1991/A_R_this_work_Ar"\n'
+            'reason = "r"\ncross_virial = "achtermann_1991/A_R_this_work_Ar"\n',
+            encoding="utf-8",
         )
         mixture_eos._pair_records.cache_clear()
         with pytest.raises(DataError, match="not a cross virial of it"):
             mixture_eos._pair_records()
         path.write_text(
             '[pairs.Ar-He]\nmodel = "x"\nsource = "x"\nqualified = false\n'
-            'reason = "r"\n'
+            'reason = "r"\n',
+            encoding="utf-8",
         )
         mixture_eos._pair_records.cache_clear()
         with pytest.raises(DataError, match="but CoolProp's is 'Tkaczuk-JPCRD-2020'"):
@@ -292,7 +297,7 @@ def test_the_ideal_limit():
     state = State(pressure=10.0, temperature=294.0)
     ideal = state.pressure / (K_B * state.temperature)
     # At 10 Pa, B rho is about 1e-8.
-    assert eos.number_density(state) == pytest.approx(ideal, rel=1e-7)
+    assert eos.number_density(state) == pytest.approx(ideal, rel=1e-7, abs=0.0)
 
 
 @pytest.mark.parametrize(
@@ -310,7 +315,7 @@ def test_coolprop_reproduces_tkaczuks_check_values(composition, printed, toleran
     eos = _quiet(composition, method="multi-fluid")
     backend = eos._backend()
     backend.update(mixture_eos._coolprop().DmolarT_INPUTS, 10000.0, 200.0)
-    assert float(backend.p()) == pytest.approx(printed, rel=tolerance)
+    assert float(backend.p()) == pytest.approx(printed, rel=tolerance, abs=0.0)
 
 
 def test_the_fallback_brackets_far_from_the_ideal_gas():
@@ -325,7 +330,7 @@ def test_the_fallback_brackets_far_from_the_ideal_gas():
             warnings.simplefilter("ignore", ModelRangeWarning)
             density = eos.number_density(state)
             back = float(eos.pressure(density, state.temperature))
-        assert back == pytest.approx(state.pressure, rel=1e-10)
+        assert back == pytest.approx(state.pressure, rel=1e-10, abs=0.0)
         z = state.pressure / (density * K_B * state.temperature)
         assert not 0.5 < z < 2
 
@@ -351,4 +356,6 @@ def test_a_measured_cross_coefficient_as_the_fallbacks(monkeypatch):
     monkeypatch.setattr(mixture_eos, "_pair_records", lambda: records)
     eos = _quiet({"Ar": 0.5, "O2": 0.5}, method="virial")
     assert eos.temperature_range == (296.15, 463.15)
-    assert eos._cross_sum(296.15) == pytest.approx(2 * 0.25 * -16.4e-6, rel=1e-12)
+    assert eos._cross_sum(296.15) == pytest.approx(
+        2 * 0.25 * -16.4e-6, rel=1e-12, abs=0.0
+    )

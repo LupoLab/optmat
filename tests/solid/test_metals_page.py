@@ -12,7 +12,7 @@ import pytest
 
 from optmat.solid.models.registry import default_model
 
-PAGE = (Path(__file__).parents[2] / "docs" / "metals.md").read_text()
+PAGE = (Path(__file__).parents[2] / "docs" / "metals.md").read_text(encoding="utf-8")
 _BLOCK = PAGE.split("<!-- metals:start -->")[1].split("<!-- metals:end -->")[0]
 _ROWS = [
     [c.strip() for c in line.strip("|").split("|")]
@@ -52,7 +52,7 @@ def test_solprop_agrees_where_the_source_is_the_same(material, ranges):
     # interpolants between the points, 0.2 % in k their difference where k is large.
     entry = next(
         e
-        for e in json.loads(SNAPSHOT.read_text())["models"]
+        for e in json.loads(SNAPSHOT.read_text(encoding="utf-8"))["models"]
         if e["material"] == material
     )
     model = default_model(material)

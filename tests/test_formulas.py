@@ -85,4 +85,4 @@ def test_published_formula_reproduces_a_printed_value(
 ):
     formula = published_models()[model]
     dn = float(formula.refractivity(wavelength, State(*state), ideal=formula.ideal))
-    assert dn == pytest.approx(expected, rel=rtol)
+    assert dn == pytest.approx(expected, rel=rtol, abs=0.0)

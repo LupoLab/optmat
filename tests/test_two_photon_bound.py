@@ -48,14 +48,16 @@ def test_the_stored_records_are_fresh(gas):
 
 def test_the_convention_constant():
     # 2 pi^3 alpha^2 a0^4 (TC-952): 2.58949e-44 m^4 per delta at omega = 1 au; from
-    # scipy's CODATA values independently, to rounding (1e-12).
+    # scipy's tabulated CODATA alpha and a0 independently, to their rounding raised to
+    # the sixth power (9e-12 relative apart; 1e-10).
     alpha = constants.fine_structure
     a0 = constants.physical_constants["Bohr radius"][0]
     assert (
-        pytest.approx(2 * math.pi**3 * alpha**2 * a0**4, rel=1e-12) == SIGMA0_PER_DELTA
+        pytest.approx(2 * math.pi**3 * alpha**2 * a0**4, rel=1e-10, abs=0.0)
+        == SIGMA0_PER_DELTA
     )
     assert sigma0_from_delta(1.0, AU_ANGULAR_FREQUENCY) == pytest.approx(
-        2.58949e-44, rel=1e-5
+        2.58949e-44, rel=1e-5, abs=0.0
     )
 
 
@@ -133,7 +135,7 @@ def test_kryptons_measurements_disagree():
     ratio = _sigma0(kr, "shekhtman_2020/qdos_basis3", level) / _sigma0(
         kr, "khambatta_1988/sigma0_6p32_2", level
     )
-    assert ratio == pytest.approx(94, rel=0.01)
+    assert ratio == pytest.approx(94, rel=0.01, abs=0.0)
     assert kr.assessment == "unresolved"
     kinds = {s.kind for s in kr.strengths_of(level)}
     assert kinds == {"calculated", "measured"}
@@ -197,18 +199,20 @@ def test_stored_record_errors(stored):
         two_photon_bound_levels("Ar")
     two_photon_bound._stored.cache_clear()
     (stored / "Ar.json").write_text(
-        two_photon_bound._dumps(derivation.derive_bound("Ne"))
+        two_photon_bound._dumps(derivation.derive_bound("Ne")), encoding="utf-8"
     )
     with pytest.raises(DataError, match="holds the record of Ne"):
         two_photon_bound_levels("Ar")
     two_photon_bound._stored.cache_clear()
     raw = json.loads(two_photon_bound._dumps(derivation.derive_bound("Ar")))
-    (stored / "Ar.json").write_text(json.dumps(raw | {"derivation_version": 0}))
+    (stored / "Ar.json").write_text(
+        json.dumps(raw | {"derivation_version": 0}), encoding="utf-8"
+    )
     with pytest.raises(DataError, match="re-derive"):
         two_photon_bound_levels("Ar")
     two_photon_bound._stored.cache_clear()
     del raw["levels"]
-    (stored / "Ar.json").write_text(json.dumps(raw))
+    (stored / "Ar.json").write_text(json.dumps(raw), encoding="utf-8")
     with pytest.raises(DataError, match="needs exactly the fields"):
         two_photon_bound_levels("Ar")
 

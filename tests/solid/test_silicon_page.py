@@ -11,7 +11,7 @@ from optmat.datasets import datasets
 from optmat.solid.models.formulas import FormulaModel
 from optmat.solid.models.registry import default_model, models
 
-PAGE = (Path(__file__).parents[2] / "docs" / "silicon.md").read_text()
+PAGE = (Path(__file__).parents[2] / "docs" / "silicon.md").read_text(encoding="utf-8")
 KEYED = {d.key: d for d in datasets()}
 EV_NM = 1239.84198  # hc in eV nm
 
@@ -45,7 +45,7 @@ def test_the_overview_is_the_recommended_model(row):
     index = default_model("Si").refractive_index(float(row[0]) * 1e-9)
     # Printed to 4 decimals in n and 3 significant digits in k.
     assert float(np.real(index)) == pytest.approx(float(row[1]), abs=5e-5)
-    assert float(np.imag(index)) == pytest.approx(float(row[2]), rel=5e-3)
+    assert float(np.imag(index)) == pytest.approx(float(row[2]), rel=5e-3, abs=0.0)
 
 
 def test_the_window_table_is_the_data_and_models():

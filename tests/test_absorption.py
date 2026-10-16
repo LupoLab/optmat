@@ -38,12 +38,12 @@ def test_the_transform_agrees_with_a_direct_principal_value_sum(ozone):
         )
         omega = nu * 2 * np.pi * C / AU_ANGULAR_FREQUENCY
         real = ozone.complex_polarizability_au(np.array([omega]))[0][0]
-        assert real == pytest.approx(direct, rel=2e-4)
+        assert real == pytest.approx(direct, rel=2e-4, abs=0.0)
 
 
 def test_the_static_limit_is_the_inverse_square_moment(ozone):
     static = ozone.complex_polarizability_au(np.array([0.0]))[0][0]
-    assert static == pytest.approx(ozone.sum_rule(-2), rel=1e-3)
+    assert static == pytest.approx(ozone.sum_rule(-2), rel=1e-3, abs=0.0)
 
 
 def test_the_imaginary_part_follows_the_cross_section(ozone):
@@ -51,7 +51,7 @@ def test_the_imaginary_part_follows_the_cross_section(ozone):
     imaginary = ozone.complex_polarizability_au(omega)[1][0]
     sigma = np.interp(1e7 / 255.5, ozone.wavenumber_cm, ozone.sigma_m2)
     expected = EPS0 * C * sigma / (omega[0] * AU_ANGULAR_FREQUENCY) / AU_POLARIZABILITY
-    assert imaginary == pytest.approx(expected, rel=1e-12)
+    assert imaginary == pytest.approx(expected, rel=1e-12, abs=0.0)
 
 
 def test_above_the_measured_range_the_term_is_real_and_regular(ozone):
@@ -63,7 +63,7 @@ def test_above_the_measured_range_the_term_is_real_and_regular(ozone):
 def test_the_hartley_band_strength_matches_kumar_and_thakkar(ozone):
     # Their 4.352-5.391 eV interval holds 0.0787 (distribution C, Table S of the
     # supplement, as the ozone project extracted it): within the cross sections' few %.
-    assert ozone.strength(4.352, 5.391) == pytest.approx(0.0787, rel=0.04)
+    assert ozone.strength(4.352, 5.391) == pytest.approx(0.0787, rel=0.04, abs=0.0)
 
 
 def test_the_first_derivative_matches_a_difference_of_the_real_part(ozone):
@@ -79,7 +79,7 @@ def test_the_first_derivative_matches_a_difference_of_the_real_part(ozone):
 def test_smoothing_leaves_the_static_value_nearly_unchanged():
     wide = measured_absorption("O3", fwhm_cm=200.0)
     narrow = measured_absorption("O3", fwhm_cm=10.0)
-    assert wide.sum_rule(-2) == pytest.approx(narrow.sum_rule(-2), rel=1e-3)
+    assert wide.sum_rule(-2) == pytest.approx(narrow.sum_rule(-2), rel=1e-3, abs=0.0)
 
 
 def test_overlapping_pieces_are_refused():

@@ -41,7 +41,7 @@ def test_below_threshold_the_real_part_is_the_static_sum_series():
     omega = np.array([0.0, 0.1])
     real, imaginary = toy.complex_polarizability_au(omega)
     # At omega = 0 the real part is S(-2) exactly (the same quadrature).
-    assert real[0] == pytest.approx(toy.sum_rule(-2), rel=1e-12)
+    assert real[0] == pytest.approx(toy.sum_rule(-2), rel=1e-12, abs=0.0)
     assert np.all(imaginary == 0)
 
 
@@ -63,7 +63,9 @@ def test_principal_value_is_continuous_across_a_tabulated_energy():
 def test_constraint_meets_its_target_and_scales_only_below_the_split():
     toy = _single_line()
     scaled, factor = constrained(toy, 3.5, (-2, toy.sum_rule(-2) * 1.01))
-    assert scaled.sum_rule(-2) == pytest.approx(toy.sum_rule(-2) * 1.01, rel=1e-10)
+    assert scaled.sum_rule(-2) == pytest.approx(
+        toy.sum_rule(-2) * 1.01, rel=1e-10, abs=0.0
+    )
     assert scaled.continuum_density[-1] == toy.continuum_density[-1]
     assert factor > 1
 
@@ -81,12 +83,12 @@ def test_strong_continuum_constraint_matches_an_independent_integral():
     target = _analytic_static_target(0.2)
     scaled, factor = constrained(toy, 3.5, (-2, target))
     # The 20,000-point log grid has spacing ~5e-4: its trapezoidal error is O(h^2).
-    assert factor == pytest.approx(0.2, rel=1e-6)
+    assert factor == pytest.approx(0.2, rel=1e-6, abs=0.0)
     np.testing.assert_allclose(
         scaled.continuum_density, [0.06, 0.06, 0.3], rtol=1e-6, atol=0
     )
     # Independently integrate the returned curve, without sum_rule's quadrature.
-    assert _analytic_static_target(factor) == pytest.approx(target, rel=1e-6)
+    assert _analytic_static_target(factor) == pytest.approx(target, rel=1e-6, abs=0.0)
     np.testing.assert_array_equal(scaled.line_strengths, toy.line_strengths)
 
 
@@ -107,7 +109,7 @@ def test_helium_distribution_meets_the_sum_rules():
     model = euv_model("He")
     # Scaled within Samson's 1-2 %; TRK within 2 % (the high-energy data).
     assert 1.0 < model.factor < 1.02
-    assert model.distribution.sum_rule(0) == pytest.approx(2.0, rel=0.02)
+    assert model.distribution.sum_rule(0) == pytest.approx(2.0, rel=0.02, abs=0.0)
 
 
 def test_helium_below_threshold_agrees_with_the_ab_initio_fit():
@@ -139,7 +141,7 @@ def test_heavier_noble_gases_meet_their_sums_with_small_scales(gas, electrons, s
     model = euv_model(gas)
     assert abs(model.factor - 1) < scale
     # TRK within 7 %: the high-energy (Henke) and autoionising-region approximations.
-    assert model.distribution.sum_rule(0) == pytest.approx(electrons, rel=0.07)
+    assert model.distribution.sum_rule(0) == pytest.approx(electrons, rel=0.07, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", ["Ne", "Ar", "Kr", "Xe"])

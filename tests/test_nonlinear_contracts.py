@@ -33,7 +33,8 @@ def sample(tmp_path):
         'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="gamma"\n'
         'material="He"\nquantity="hyperpolarizability"\nunit="au"\nabscissa_unit="nm"\n'
         f"points={json.dumps(points)}\nuncertainty={{relative=0.001}}\n"
-        'parameters={process="kerr",convention="T",part="electronic"}\n'
+        'parameters={process="kerr",convention="T",part="electronic"}\n',
+        encoding="utf-8",
     )
     return load_source(path).datasets[0]
 
@@ -102,7 +103,7 @@ def test_row_selection_and_standard_air_probe_conversion(sample):
         )
     air = dataclasses.replace(sample, wavelength_medium="standard_air")
     assert nonlinear._wavenumber(air, 500) == pytest.approx(
-        1e7 / (500 * 1.000277), rel=2e-15
+        1e7 / (500 * 1.000277), rel=2e-15, abs=0.0
     )
     with pytest.raises(DataError, match="no formula"):
         nonlinear._formula("missing/formula")
@@ -131,7 +132,7 @@ def test_synthetic_fit_recovers_dispersion_with_a_systematic_scale_prior(
         'fitted=[{key="synthetic/gamma",systematic=0.02}]\n'
         'validators=[{key="synthetic/gamma",rows=["missing"]}]\n'
     )
-    path.write_text(text)
+    path.write_text(text, encoding="utf-8")
     config = nonlinear.load_nonlinear_config(path)
     result = nonlinear.fit_hyperpolarizability(config)
     # Exact synthetic observations; solver and finite-difference conditioning set 1e-6.
@@ -143,13 +144,13 @@ def test_synthetic_fit_recovers_dispersion_with_a_systematic_scale_prior(
     assert "unknown rows" in record["validation"][sample.key]["note"]
     assert np.shape(record["covariance"]) == (4, 4)
     assert record["max_w2_fitted_cm-2"] == pytest.approx(
-        4 * (1e7 / 400) ** 2, rel=2e-15
+        4 * (1e7 / 400) ** 2, rel=2e-15, abs=0.0
     )
     unstated = dataclasses.replace(sample, uncertainty=Uncertainty())
     monkeypatch.setattr(nonlinear, "datasets", lambda: (unstated,))
     with pytest.raises(DataError, match="fitted value needs an uncertainty"):
         nonlinear.fit_hyperpolarizability(config)
-    path.write_text("typo=1\n" + text)
+    path.write_text("typo=1\n" + text, encoding="utf-8")
     with pytest.raises(DataError, match="unknown keys"):
         nonlinear.load_nonlinear_config(path)
 

@@ -48,7 +48,8 @@ def sample(tmp_path):
         'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="alpha"\n'
         'material="He"\nquantity="polarizability"\nunit="au"\n'
         'abscissa_unit="nm"\npoints=[["a","500","2.2","0.1"],'
-        '["b","1000","2.3","0.2"]]\nuncertainty={column=true}\n'
+        '["b","1000","2.3","0.2"]]\nuncertainty={column=true}\n',
+        encoding="utf-8",
     )
     return load_source(path).datasets[0]
 
@@ -65,8 +66,8 @@ def test_weighted_fit_and_covariance_equal_the_linear_normal_equations(config):
     information = np.sum((x / sigma) ** 2) + 1 / 0.5**2
     expected = (np.sum(x * y / sigma**2) + 2 / 0.5**2) / information
     # Solver convergence and its finite-difference Jacobian: relative error < 1e-7.
-    assert result.model.strengths == pytest.approx((expected,), rel=1e-7)
-    assert result.covariance[0, 0] == pytest.approx(1 / information, rel=1e-7)
+    assert result.model.strengths == pytest.approx((expected,), rel=1e-7, abs=0.0)
+    assert result.covariance[0, 0] == pytest.approx(1 / information, rel=1e-7, abs=0.0)
     expected_sigma = x / np.sqrt(information)
     np.testing.assert_allclose(
         result.polarizability_sigma_au(omega, birge=False),
@@ -122,8 +123,10 @@ def test_observation_window_shape_uncertainty_and_missing_reference(
         extra_relative=0.02,
     )
     (obs,) = fitting.observations(dataclasses.replace(config, fitted=(options,)))
-    assert obs.alpha == pytest.approx([2.3], rel=2e-15)
-    assert obs.sigma == pytest.approx([2.3 * math.hypot(0.01, 0.02)], rel=2e-15)
+    assert obs.alpha == pytest.approx([2.3], rel=2e-15, abs=0.0)
+    assert obs.sigma == pytest.approx(
+        [2.3 * math.hypot(0.01, 0.02)], rel=2e-15, abs=0.0
+    )
     with pytest.raises(DataError, match="shape_relative needs free_scale"):
         fitting._observation(sample, dataclasses.replace(options, free_scale=False))
     with pytest.raises(DataError, match="reference_temperature_k"):
@@ -171,7 +174,7 @@ def test_validator_report_retains_unsupported_quantities_and_filters_moments(
     monkeypatch.setattr(fitting, "datasets", lambda: (sample, moment, unsupported))
     report = fitting.validation(result)
     assert report[moment.key]["n"] == 1
-    assert report[moment.key]["chi2"] == pytest.approx(4.0, rel=3e-15)
+    assert report[moment.key]["chi2"] == pytest.approx(4.0, rel=3e-15, abs=0.0)
     assert report[moment.key]["mean_relative_deviation"] == pytest.approx(
         0.1, abs=2e-15
     )
@@ -214,7 +217,7 @@ def test_invalid_fit_configuration_is_rejected_before_optimisation(
 ):
     monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
     path = tmp_path / "fit.toml"
-    path.write_text(text)
+    path.write_text(text, encoding="utf-8")
     with pytest.raises(DataError, match=message):
         fitting.load_config(path)
 
@@ -224,7 +227,7 @@ def test_serialised_fit_preserves_provenance_prediction_and_uncertainty(
 ):
     monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
     path = tmp_path / "synthetic.toml"
-    path.write_text(CONFIG + '[[fitted]]\nkey="synthetic/alpha"\n')
+    path.write_text(CONFIG + '[[fitted]]\nkey="synthetic/alpha"\n', encoding="utf-8")
     config = fitting.load_config(path)
     result = fit(config, starts=1)
     record = json.loads(fitting.dumps(result))
@@ -235,7 +238,7 @@ def test_serialised_fit_preserves_provenance_prediction_and_uncertainty(
     assert record["dataset_chi2"][sample.key][0] == 2
     root = tmp_path / "models" / "fitted"
     root.mkdir(parents=True)
-    (root / "synthetic.json").write_text(fitting.dumps(result))
+    (root / "synthetic.json").write_text(fitting.dumps(result), encoding="utf-8")
     monkeypatch.setattr(stored, "GAS_DATA_DIRECTORY", tmp_path)
     stored.fitted_models.cache_clear()
     try:
@@ -311,7 +314,7 @@ def test_ratio_validators_keep_orientation_and_require_uncertainty(
         expected = np.array([2.2, 2.3]) / predicted - 1
         # Pole subtraction and the one-parameter fit introduce rounding only.
         assert report["mean_relative_deviation"] == pytest.approx(
-            np.mean(expected), rel=1e-12
+            np.mean(expected), rel=1e-12, abs=0.0
         )
 
 
@@ -379,7 +382,7 @@ def test_measured_and_fixed_electronic_terms_enter_moments_and_serialisation(con
         orders=np.array([0.0]),
     )
     result = fit(config, [obs], starts=1)
-    assert result.model.strengths == pytest.approx((2, 1), rel=1e-7)
+    assert result.model.strengths == pytest.approx((2, 1), rel=1e-7, abs=0.0)
     assert result.chi2 < 1e-12  # exact moment and prior, up to optimiser rounding
     record = fitting.result_record(result)
     assert record["absorption"] == {

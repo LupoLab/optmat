@@ -57,7 +57,9 @@ for ax, gas in zip(axes.flat, GASES, strict=False):
     ax.plot(grid * 1e9, gvd, color="#2a78d6", label="fit: GVD 1 sigma")
     ax.plot(grid * 1e9, tod, color="#2a78d6", linestyle="--", label="fit: TOD 1 sigma")
     record = json.loads(
-        (GAS_DATA_DIRECTORY / "models" / "robustness" / f"{gas}.json").read_text()
+        (GAS_DATA_DIRECTORY / "models" / "robustness" / f"{gas}.json").read_text(
+            encoding="utf-8"
+        )
     )
     largest = np.max(
         [np.abs(entry["gvd_shift_relative"]) for entry in record["dropped"].values()],

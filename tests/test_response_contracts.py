@@ -40,7 +40,8 @@ def test_formula_metadata_can_include_non_numeric_descriptions(tmp_path, monkeyp
     path = tmp_path / "synthetic.toml"
     path.write_text(
         'citation="synthetic"\nkind="theory"\n[[formulas]]\nid="shift"\n'
-        'coefficients={C0="2",C1="3",C2="4",T0="300",range="descriptive"}\n'
+        'coefficients={C0="2",C1="3",C2="4",T0="300",range="descriptive"}\n',
+        encoding="utf-8",
     )
     source = load_source(path)
     for module in (gas, solid):
@@ -113,7 +114,9 @@ def test_udm_file_loading_and_missing_parameters_are_explicit(tmp_path):
 
     path = tmp_path / "synthetic.par"
     # A zero-strength interband term gives vacuum, regardless of the band edges.
-    path.write_text("ex=0\nEg=8\nEh=20\nNvc=0\nsynthetic description\n")
+    path.write_text(
+        "ex=0\nEg=8\nEh=20\nNvc=0\nsynthetic description\n", encoding="utf-8"
+    )
     model = udm.from_file(path)
     np.testing.assert_array_equal(
         model.permittivity(np.array([1.0, 2.0])), [1 + 0j, 1 + 0j]
@@ -127,7 +130,7 @@ def test_validation_reports_require_the_named_source_formula(tmp_path, monkeypat
     from optmat.solid import raman_response_validation  # noqa: PLC0415
 
     path = tmp_path / "synthetic.toml"
-    path.write_text('citation="synthetic"\nkind="theory"\n')
+    path.write_text('citation="synthetic"\nkind="theory"\n', encoding="utf-8")
     source = load_source(path)
     monkeypatch.setattr(ionisation_validation, "sources", lambda: {"synthetic": source})
     with pytest.raises(DataError, match="has no formula"):

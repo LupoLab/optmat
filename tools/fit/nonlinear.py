@@ -45,7 +45,7 @@ def main(gas: str) -> None:
                 f"{entry['mean_ratio']:.4f} chi2 = {entry['chi2']:.2f}"
             )
     out = GAS_DATA_DIRECTORY / "models" / "nonlinear" / f"{gas}.json"
-    out.write_text(text)
+    out.write_text(text, encoding="utf-8")
     print(f"wrote {out.relative_to(DATA_DIRECTORY)}")
 
 

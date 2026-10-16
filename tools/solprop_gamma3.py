@@ -42,7 +42,8 @@ def main() -> None:
             entries[gas.name] = {"source": source, "gamma3": gamma3(gas, source=source)}
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(
-        json.dumps({"solprop_commit": commit, "gamma3": entries}, indent=1) + "\n"
+        json.dumps({"solprop_commit": commit, "gamma3": entries}, indent=1) + "\n",
+        encoding="utf-8",
     )
 
 

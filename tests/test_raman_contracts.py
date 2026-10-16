@@ -28,7 +28,8 @@ def source(tmp_path, monkeypatch):
         '[[formulas]]\nid="law"\n[formulas.coefficients]\n'
         'constant_MHz="2"\nB_MHz_per_amagat="3"\n'
         'alpha="0.02"\nbeta="1.5"\ndelta="1.2"\na="1.0"\n'
-        'n_experiment="1.3"\nT0_experiment="300"\nrange="descriptive text"\n'
+        'n_experiment="1.3"\nT0_experiment="300"\nrange="descriptive text"\n',
+        encoding="utf-8",
     )
     source = load_source(path)
     monkeypatch.setattr(raman, "sources_of", lambda: {source.id: source})
@@ -134,8 +135,8 @@ def test_ground_state_rotational_constants_are_recovered_from_both_row_orientati
     )
     recovered = raman._constants({table.key: table}, {"fit_lines": table.key})
     # Small well-conditioned linear least-squares problem: rounding only.
-    assert recovered.b == pytest.approx(b, rel=1e-12)
-    assert recovered.d == pytest.approx(d, rel=1e-12)
+    assert recovered.b == pytest.approx(b, rel=1e-12, abs=0.0)
+    assert recovered.d == pytest.approx(d, rel=1e-12, abs=0.0)
     assert recovered.h == 0
 
 
@@ -285,7 +286,7 @@ def test_disjoint_temperature_tables_do_not_invent_a_temperature_exponent(source
     assert law.exponent == (0, 0, 0, 0)
     assert law.j == (0, 2, 4, 6)
     # exp(log(width)) introduces floating-point rounding.
-    assert law.coefficient == pytest.approx((4e6, 6e6, 4e6, 6e6), rel=2e-15)
+    assert law.coefficient == pytest.approx((4e6, 6e6, 4e6, 6e6), rel=2e-15, abs=0.0)
     assert used == [first.key, second.key]
 
 

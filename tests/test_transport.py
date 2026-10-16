@@ -115,13 +115,13 @@ def test_huber_form_reproduces_his_check_values(gas, temperature, check):
     parameters = transport_model(gas).viscosity_parameters
     value = transport._chapman_enskog(parameters, np.array(temperature))
     # Table 7 prints seven digits: 3e-7 covers its rounding.
-    assert float(value) == pytest.approx(check * 1e-6, rel=3e-7)
+    assert float(value) == pytest.approx(check * 1e-6, rel=3e-7, abs=0.0)
 
 
 def _webbook(gas):
     rows = []
     for name in (f"{gas}_0.1MPa_200-400K.tsv", f"{gas}_0.1MPa_293.15-298.15K.tsv"):
-        with (WEBBOOK / name).open(newline="") as handle:
+        with (WEBBOOK / name).open(newline="", encoding="utf-8") as handle:
             rows += list(csv.DictReader(handle, delimiter="\t"))
     t = np.array([float(r["Temperature (K)"]) for r in rows])
     eta = np.array([float(r["Viscosity (uPa*s)"]) for r in rows]) * 1e-6
@@ -266,7 +266,7 @@ def test_nitrous_oxides_heat_capacity_is_lemmon_and_spans():
 
 def test_the_molar_mass_is_the_equation_of_states():
     assert molar_mass("Ar") == 0.039948
-    assert molar_mass("N2O") == pytest.approx(44.0128e-3, rel=1e-15)
+    assert molar_mass("N2O") == pytest.approx(44.0128e-3, rel=1e-15, abs=0.0)
     parameters = transport_model("Kr").viscosity_parameters
     assert parameters["molar_mass"] * 1e-3 == pytest.approx(molar_mass("Kr"))
 
@@ -301,14 +301,16 @@ class TestWilke:
 
         # His identity phi_21 = phi_12 (eta_2/eta_1)(M_1/M_2) (wilke_1950's notes).
         assert phi("Ar", "He") == pytest.approx(
-            phi("He", "Ar") * eta["Ar"] / eta["He"] * m["He"] / m["Ar"], rel=1e-14
+            phi("He", "Ar") * eta["Ar"] / eta["He"] * m["He"] / m["Ar"],
+            rel=1e-14,
+            abs=0.0,
         )
         x = 0.4
         expected = x * eta["He"] / (x + (1 - x) * phi("He", "Ar")) + (1 - x) * eta[
             "Ar"
         ] / (x * phi("Ar", "He") + 1 - x)
         assert float(mixture_viscosity({"He": x, "Ar": 1 - x}, 293.15)) == (
-            pytest.approx(expected, rel=1e-14)
+            pytest.approx(expected, rel=1e-14, abs=0.0)
         )
 
     def test_the_named_compositions(self):
@@ -321,7 +323,7 @@ class TestWilke:
         state = _abstract_state("Air")
         state.update(_coolprop().DmolarT_INPUTS, 1e-6, 294.0)
         assert float(mixture_viscosity("dry air", 294.0)) == pytest.approx(
-            state.viscosity(), rel=2e-3
+            state.viscosity(), rel=2e-3, abs=0.0
         )
         with pytest.raises(OptmatError, match="no transport model for CO"):
             mixture_viscosity("dry air (CIPM-2007)", 294.0)

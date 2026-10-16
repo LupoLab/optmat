@@ -210,7 +210,9 @@ def solprop_table() -> str:
         A Markdown table.
     """
     data = json.loads(
-        (ROOT / "tests" / "data" / "solprop_raman_response.json").read_text()
+        (ROOT / "tests" / "data" / "solprop_raman_response.json").read_text(
+            encoding="utf-8"
+        )
     )
     t = np.array(data["delays_s"])
     early = t <= 100e-15

@@ -71,7 +71,7 @@ def test_complex_index_keeps_a_tiny_extinction_coefficient():
     index = complex_index(eps)
     np.testing.assert_allclose(index**2, eps, rtol=1e-14)
     assert np.imag(index[0]) == pytest.approx(
-        2.7e-195 / (2 * math.sqrt(2.1)), rel=1e-14
+        2.7e-195 / (2 * math.sqrt(2.1)), rel=1e-14, abs=0.0
     )
     assert np.all(np.real(index) >= 0)
     assert np.all(np.imag(index) >= 0)
@@ -83,7 +83,7 @@ def test_sellmeier_reproduces_the_printed_formula():
     b, lam = SELLMEIER.terms["B"], SELLMEIER.terms["L"]
     n2 = 1 + sum(bi * lam2 / (lam2 - li**2) for bi, li in zip(b, lam, strict=True))
     assert np.real(SELLMEIER.refractive_index(0.5e-6)) == pytest.approx(
-        math.sqrt(n2), rel=1e-15
+        math.sqrt(n2), rel=1e-15, abs=0.0
     )
 
 
@@ -131,8 +131,10 @@ def test_group_index_and_gvd_follow_from_n(model):
     n = np.real(model.refractive_index(lam + h * np.array([-2.0, -1.0, 0.0, 1.0, 2.0])))
     d1 = (n[0] - 8 * n[1] + 8 * n[3] - n[4]) / (12 * h)
     d2 = (-n[0] + 16 * n[1] - 30 * n[2] + 16 * n[3] - n[4]) / (12 * h * h)
-    assert model.group_index(lam) == pytest.approx(n[2] - lam * d1, rel=1e-9)
-    assert model.gvd(lam) == pytest.approx(lam**3 / (2 * math.pi * C**2) * d2, rel=1e-5)
+    assert model.group_index(lam) == pytest.approx(n[2] - lam * d1, rel=1e-9, abs=0.0)
+    assert model.gvd(lam) == pytest.approx(
+        lam**3 / (2 * math.pi * C**2) * d2, rel=1e-5, abs=0.0
+    )
 
 
 def test_malitson_gvd_at_800_nm_is_stable():
@@ -159,7 +161,7 @@ def test_an_index_relative_to_air_is_multiplied_by_the_air_index():
     relative = np.real(SELLMEIER.refractive_index(wavelength))
     # Exact up to rounding: the model's epsilon is the relative one times n_air^2.
     assert np.real(IN_AIR.refractive_index(wavelength)) == pytest.approx(
-        relative * air, rel=1e-15
+        relative * air, rel=1e-15, abs=0.0
     )
 
 
@@ -168,7 +170,7 @@ def test_a_temperature_sellmeier_follows_its_polynomials():
     wavelength = np.array([500e-9, 1000e-9])
     # At T = 0 the polynomials are Malitson's constants (rounding only).
     assert at_zero.permittivity(wavelength) == pytest.approx(
-        SELLMEIER.permittivity(wavelength), rel=1e-15
+        SELLMEIER.permittivity(wavelength), rel=1e-15, abs=0.0
     )
     warmer = IN_TEMPERATURE.at_temperature(300.0)
     # S1 grows by 1e-5 per K: n rises with temperature.

@@ -60,7 +60,7 @@ def test_the_s_branch_is_solprops_form():
         for jj in j[:-2]
     }
     for jj, amplitude in zip(lines.j, lines.amplitude, strict=True):
-        assert amplitude == pytest.approx(expected[int(jj)], rel=1e-13)
+        assert amplitude == pytest.approx(expected[int(jj)], rel=1e-13, abs=0.0)
 
 
 def test_the_rotational_response_has_its_classical_limit():
@@ -92,8 +92,8 @@ def test_the_vibrational_amplitude_is_solprops_for_a_harmonic_mode():
     transition = math.sqrt(derivative**2 * HBAR / (2 * mu * omega))
     band = omega / (2 * math.pi * C * 100)
     lines = vibrational_lines(band, transition)
-    assert lines.amplitude[0] == pytest.approx(1.803981e-37, rel=1e-6)
-    assert lines.frequency[0] == pytest.approx(omega, rel=1e-14)
+    assert lines.amplitude[0] == pytest.approx(1.803981e-37, rel=1e-6, abs=0.0)
+    assert lines.frequency[0] == pytest.approx(omega, rel=1e-14, abs=0.0)
 
 
 def test_the_q_branch_shares_the_band_strength_by_population():
@@ -103,7 +103,7 @@ def test_the_q_branch_shares_the_band_strength_by_population():
     )
     # The populations sum to one, to the floor that drops the highest levels.
     assert np.sum(lines.amplitude) == pytest.approx(
-        (2e-41) ** 2 / (HBAR * EPS0), rel=1e-10
+        (2e-41) ** 2 / (HBAR * EPS0), rel=1e-10, abs=0.0
     )
     # Normal hydrogen at 296 K: J = 1 (ortho) holds about 66 % of the molecules.
     share = lines.amplitude / np.sum(lines.amplitude)
@@ -160,8 +160,8 @@ def test_the_transition_polarizability_from_a_normal_coordinate_derivative():
     omega = 2 * math.pi * C * 100 * 2329.9168
     expected = 4 * math.pi * EPS0 * 0.66e-20 / math.sqrt(ATOMIC_MASS)
     expected *= math.sqrt(HBAR / (2 * omega))
-    assert band.transition_polarizability == pytest.approx(expected, rel=1e-12)
-    assert band.band_origin == pytest.approx(2329.9168, rel=1e-12)
+    assert band.transition_polarizability == pytest.approx(expected, rel=1e-12, abs=0.0)
+    assert band.band_origin == pytest.approx(2329.9168, rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", ["H2", "D2"])
@@ -212,7 +212,7 @@ def test_the_element_from_normalised_cross_sections():
     band = raman_parameters("CH4").vibrational[0]
     expected = math.sqrt(8.554 * 5.05e-48 / (16 * math.pi**4)) * 1e-6  # m3
     expected *= 4 * math.pi * EPS0  # C m2/V
-    assert band.transition_polarizability == pytest.approx(expected, rel=2e-3)
+    assert band.transition_polarizability == pytest.approx(expected, rel=2e-3, abs=0.0)
 
 
 def test_the_single_resonance_dispersion():
@@ -279,10 +279,10 @@ def test_the_dispersed_element_follows_rychlewskis(wavelength_nm, element):
     # Q(0), 0.73923, is 0.11 % below Rychlewski's.
     band = raman_parameters("H2").vibrational[0]
     assert band.dispersion_factor(wavelength_nm * 1e-9) == pytest.approx(
-        element / 0.74006, rel=0.009
+        element / 0.74006, rel=0.009, abs=0.0
     )
     static = band.transition_polarizability
     assert isinstance(static, AnisotropyTable)
     assert static(np.array([0]))[0] / AU_POLARIZABILITY == pytest.approx(
-        0.74006, rel=0.0012
+        0.74006, rel=0.0012, abs=0.0
     )

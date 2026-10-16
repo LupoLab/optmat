@@ -24,21 +24,21 @@ from optmat.gas.eos import air_equation_of_state, equation_of_state
 from optmat.gas.transport import transport_model
 
 DATA = Path(__file__).parent / "data"
-TRANSPORT = json.loads((DATA / "solprop_transport.json").read_text())
-EOS = json.loads((DATA / "solprop_eos.json").read_text())
+TRANSPORT = json.loads((DATA / "solprop_transport.json").read_text(encoding="utf-8"))
+EOS = json.loads((DATA / "solprop_eos.json").read_text(encoding="utf-8"))
 R_CODATA = K_B * N_A
 
 
 def test_every_fixture_records_one_solprop_commit():
     commits = {
-        json.loads(path.read_text())["solprop_commit"]
+        json.loads(path.read_text(encoding="utf-8"))["solprop_commit"]
         for path in DATA.glob("solprop_*.json")
     }
     assert commits == {"d57741490dbcb05ceffca91a0cdddd069963ec69"}
 
 
 def _page_rows():
-    page = (DATA / "historical_documentation_tables.md").read_text()
+    page = (DATA / "historical_documentation_tables.md").read_text(encoding="utf-8")
     section = page.split("<!-- transport-solprop:start -->")[1].split(
         "<!-- transport-solprop:end -->"
     )[0]
@@ -66,10 +66,10 @@ def test_the_transport_against_solprop(gas):
     printed, at = match.groups()
     # The page's figures, to their two digits.
     assert viscosity[worst] == pytest.approx(
-        float(printed.replace("\N{MINUS SIGN}", "-")), rel=0.05
+        float(printed.replace("\N{MINUS SIGN}", "-")), rel=0.05, abs=0.0
     )
     assert temperatures[worst] == float(at)
-    assert np.max(np.abs(ratio)) == pytest.approx(float(cells[3]), rel=0.05)
+    assert np.max(np.abs(ratio)) == pytest.approx(float(cells[3]), rel=0.05, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", sorted(EOS["gases"]))
@@ -95,4 +95,6 @@ def test_the_densities_differ_by_the_gas_constant_alone(gas):
         # Beyond the gas constant, the two flashes' iteration tolerances: up to 3e-10,
         # for N2O at 30 bar and 273 K, near its vapour pressure (31 bar).
         assert ratio == pytest.approx(expected, abs=1e-9)
-        assert row["round_trip_bar"] == pytest.approx(row["pressure_bar"], rel=1e-14)
+        assert row["round_trip_bar"] == pytest.approx(
+            row["pressure_bar"], rel=1e-14, abs=0.0
+        )

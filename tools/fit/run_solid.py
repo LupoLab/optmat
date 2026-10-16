@@ -43,7 +43,7 @@ def main(name: str) -> None:
             f"mean deviation = {entry['mean_deviation']:+.2e}"
         )
     out = SOLID_DATA_DIRECTORY / "models" / "fitted" / f"{config.name}.json"
-    out.write_text(dumps(result))
+    out.write_text(dumps(result), encoding="utf-8")
     print(f"wrote {out.relative_to(DATA_DIRECTORY)}")
 
 

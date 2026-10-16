@@ -15,7 +15,9 @@ from optmat.constants import AU_POLARIZABILITY
 from optmat.gas.fitting import HARTREE_NM
 from optmat.gas.models.fitted import fitted_models
 
-PAGE = (Path(__file__).parents[1] / "docs" / "gas_models.md").read_text()
+PAGE = (Path(__file__).parents[1] / "docs" / "gas_models.md").read_text(
+    encoding="utf-8"
+)
 TABLE = PAGE.split("<!-- gas-models:start -->")[1].split("<!-- gas-models:end -->")[0]
 ROWS = {
     cells[0]: cells
@@ -50,7 +52,7 @@ def test_the_row_is_current(gas):
     number = float(re.sub(r"[^0-9.e+-]", "", cells[3]))
     printed = number * (1e-6 if "ppm" in cells[3] else 1e-2)
     # Printed to two significant figures.
-    assert printed == pytest.approx(float(f"{sigma:.2g}"), rel=1e-9)
+    assert printed == pytest.approx(float(f"{sigma:.2g}"), rel=1e-9, abs=0.0)
     assert float(cells[4]) == pytest.approx(model.reduced_chi2, abs=0.0051)
 
 

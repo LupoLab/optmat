@@ -23,7 +23,9 @@ def test_the_saddle_point_in_the_adiabatic_limit():
     # Appendix F: zeta_0 = gamma^2/3 (1 - 28 gamma^2/45) for gamma << 1.
     gamma = 0.05
     expansion = gamma**2 / 3 * (1 - 28 * gamma**2 / 45)
-    assert float(circular_saddle_point(gamma)) == pytest.approx(expansion, rel=1e-5)
+    assert float(circular_saddle_point(gamma)) == pytest.approx(
+        expansion, rel=1e-5, abs=0.0
+    )
 
 
 def test_the_saddle_point_solves_its_equation_at_any_keldysh_parameter():
@@ -32,7 +34,7 @@ def test_the_saddle_point_solves_its_equation_at_any_keldysh_parameter():
     u = np.sqrt((zeta**2 + gamma**2) / (1 + gamma**2))
     # Eq. (94) in a form that stays finite where u rounds to 1.
     artanh = np.log1p(u) - 0.5 * (np.log1p(-(zeta**2)) - np.log1p(gamma**2))
-    assert artanh == pytest.approx(u / (1 - zeta), rel=1e-9)
+    assert artanh == pytest.approx(u / (1 - zeta), rel=1e-9, abs=0.0)
     assert np.all((zeta > 0) & (zeta < 1))
 
 
@@ -44,7 +46,7 @@ def test_the_enhancement_in_the_adiabatic_limit():
     ratio = (2 * energy) ** 1.5 / field
     expected = math.exp(2 * ratio / 3 * gamma**2 / 15) * (1 + 2 * gamma**2 / 9)
     assert float(circular_enhancement(field, omega, energy, 1)) == pytest.approx(
-        expected, rel=2e-3
+        expected, rel=2e-3, abs=0.0
     )
     # And it tends to 1.
     assert float(circular_enhancement(field, 1e-6, energy, 1)) == pytest.approx(
@@ -98,7 +100,9 @@ def test_the_simple_rates_match_the_approximate_ones():
             / (2 * 1.0)
             * math.exp(float(_log_circular_terms(np.array(field), 0.057, 0.5, 1)))
         )
-        assert simple == pytest.approx(_approximate(field, 0.057, 0.5), rel=0.08)
+        assert simple == pytest.approx(
+            _approximate(field, 0.057, 0.5), rel=0.08, abs=0.0
+        )
 
 
 def test_the_circular_rate_of_the_model():
@@ -106,12 +110,12 @@ def test_the_circular_rate_of_the_model():
     field = (2e18 / (8.8541878128e-12 * 299792458.0)) ** 0.5
     # A static field: the rate at the magnitude.
     assert float(static.circular_rate(field)) == pytest.approx(
-        float(static.instantaneous_rate(field)), rel=1e-12
+        float(static.instantaneous_rate(field)), rel=1e-12, abs=0.0
     )
     # A long wavelength tends to it.
     far = ionisation_rate_model("Ar", 1e-3)
     assert float(far.circular_rate(field)) == pytest.approx(
-        float(static.instantaneous_rate(field)), rel=0.01
+        float(static.instantaneous_rate(field)), rel=0.01, abs=0.0
     )
     # At 800 nm and 1e14 W/cm^2, circular ionises less than linear at the same
     # intensity, whose peak field is larger by the square root of 2.

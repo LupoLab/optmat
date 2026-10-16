@@ -90,7 +90,7 @@ def test_the_field_and_the_envelope_forms_add_up_to_n2():
         3 * response.electronic_susceptibility(wavelength) / (4 * n0**2 * EPS0 * C)
     )
     raman = response.raman_coefficient(wavelength) / (2 * n0**2 * EPS0 * C)
-    assert electronic + raman == pytest.approx(float(n2), rel=1e-14)
+    assert electronic + raman == pytest.approx(float(n2), rel=1e-14, abs=0.0)
     assert raman / (electronic + raman) == pytest.approx(response.raman_fraction)
 
 
@@ -114,7 +114,7 @@ def test_lin_and_agrawal_reproduce_their_peak_gain():
             / (2 * math.pi * C / pump - shift[peak])
         )
         # Printed to two and three figures: within their rounding.
-        assert at_pump == pytest.approx(printed, rel=0.01)
+        assert at_pump == pytest.approx(printed, rel=0.01, abs=0.0)
 
 
 def test_every_model_builds():

@@ -42,7 +42,7 @@ def main(name: str) -> None:
     for key, ratios in result.validation.items():
         print(f"    {key:45s} {' '.join(f'{r:.3f}' for r in ratios)}")
     out = KERR_DIRECTORY / f"{config.name}.json"
-    out.write_text(dumps(result))
+    out.write_text(dumps(result), encoding="utf-8")
     print(f"wrote {out}")
 
 

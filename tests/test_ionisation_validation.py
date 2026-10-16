@@ -22,13 +22,13 @@ from optmat.gas.ionisation_rates import ionisation_rate_model
 def test_the_amplitude_of_an_intensity():
     # 1e14 W/cm^2 is 0.05338 au of field (3.509e16 W/cm^2 per squared atomic unit).
     field = validation.amplitude(1e18) / 5.14220674763e11
-    assert field == pytest.approx(math.sqrt(1e14 / 3.50944e16), rel=1e-5)
+    assert field == pytest.approx(math.sqrt(1e14 / 3.50944e16), rel=1e-5, abs=0.0)
 
 
 def test_the_gaussian_pulse():
     times, envelope, field = validation.gaussian_pulse(1e18, 6e-15, 800e-9)
     peak = float(validation.amplitude(1e18))
-    assert np.max(envelope) == pytest.approx(peak, rel=1e-12)
+    assert np.max(envelope) == pytest.approx(peak, rel=1e-12, abs=0.0)
     # The full width at half maximum of the intensity is the one asked for, to the
     # grid's spacing of a hundredth of a cycle.
     above = times[envelope**2 >= 0.5 * peak**2]
@@ -43,7 +43,7 @@ def test_the_ionised_fraction():
     times = np.linspace(0, 1e-14, 101)
     assert validation.ionised_fraction(np.zeros(101), times) == 0.0
     fraction = validation.ionised_fraction(np.full(101, 1e14), times)
-    assert fraction == pytest.approx(1 - math.exp(-1), rel=1e-12)
+    assert fraction == pytest.approx(1 - math.exp(-1), rel=1e-12, abs=0.0)
 
 
 def test_the_focal_average_of_a_power_law():
@@ -52,7 +52,7 @@ def test_the_focal_average_of_a_power_law():
     intensity = np.geomspace(1e-3, 1.0, 400)
     for power in (2, 6):
         average = validation.focal_average(intensity, intensity**power)
-        assert average[-1] == pytest.approx(1 / power, rel=2e-3)
+        assert average[-1] == pytest.approx(1 / power, rel=2e-3, abs=0.0)
 
 
 @pytest.mark.parametrize(("gas", "wavelength"), [("Ar", 800e-9), ("He", 800e-9)])
@@ -69,7 +69,7 @@ def test_the_two_rates_give_the_same_yield(gas, wavelength):
     )
     on_envelope = validation.pulse_yield(model, peak, 42e-15)
     on_carrier = validation.pulse_yield(model, peak, 42e-15, carrier=True)
-    assert on_carrier == pytest.approx(on_envelope, rel=0.03)
+    assert on_carrier == pytest.approx(on_envelope, rel=0.03, abs=0.0)
 
 
 # The references. The bounds are those the manual page states.
@@ -144,7 +144,7 @@ def test_the_tdse_static_rates_reproduce_zhang_et_al():
     (row,) = [
         v for f, v in calculated.items() if np.isclose(f, 0.12177 * 5.14220674763e11)
     ]
-    assert row / 2 == pytest.approx(0.013229, rel=5e-4)
+    assert row / 2 == pytest.approx(0.013229, rel=5e-4, abs=0.0)
 
 
 def test_parkers_fit_reproduces_the_papers_values():
@@ -331,7 +331,7 @@ def test_the_phase_of_a_fully_ionised_column():
     grid = np.geomspace(1e16, 1e20, 400)
     power_law = np.minimum(5.5e-3 * (grid / 5e18) ** 7, 1.0)
     phase = float(validation.plasma_phase_shift(power_law, grid, 5e18, beams))
-    assert phase == pytest.approx(0.27, rel=0.15)
+    assert phase == pytest.approx(0.27, rel=0.15, abs=0.0)
 
 
 def test_the_envelope_yields_are_the_pulse_yields():
@@ -339,7 +339,7 @@ def test_the_envelope_yields_are_the_pulse_yields():
     peaks = np.array([1e18, 2e18, 4e18])
     envelope = validation._envelope_yields(model, peaks, 55e-15)
     direct = [validation.pulse_yield(model, peak, 55e-15) for peak in peaks]
-    assert envelope == pytest.approx(direct, rel=1e-6)
+    assert envelope == pytest.approx(direct, rel=1e-6, abs=0.0)
     static = ionisation_rate_model("Ar", math.inf)
     # The turning field's magnitude is the amplitude over the square root of 2.
     times = np.linspace(-3, 3, 20001) * 55e-15
@@ -352,7 +352,7 @@ def test_the_envelope_yields_are_the_pulse_yields():
         -float(np.trapezoid(static.instantaneous_rate(magnitude), times))
     )
     assert validation.circular_yield(static, 4e18, 55e-15) == pytest.approx(
-        expected, rel=1e-5
+        expected, rel=1e-5, abs=0.0
     )
 
 
@@ -539,7 +539,7 @@ def test_the_frequency_candidate():
     static = ionisation_rate_model("Ar", math.inf, "default_static")
     default = ionisation_rate_model("Ar", math.inf)
     assert static.instantaneous_rate(5e10) == pytest.approx(
-        default.instantaneous_rate(5e10), rel=1e-12
+        default.instantaneous_rate(5e10), rel=1e-12, abs=0.0
     )
 
 
@@ -827,6 +827,7 @@ def test_uiterwaals_saturation_intensities():
             ("Kr", "default_static"): 13.0,
         },
         rel=0.02,
+        abs=0.0,
     )
     argon = validation.saturation_test("Ar")
     assert argon.keldysh == pytest.approx(3.70, abs=0.01)
@@ -846,7 +847,7 @@ def test_argon_three_photon_cross_section_at_193_nm():
     energy, sigma = dataset.abscissa_values(), dataset.scaled_values()
     order = np.argsort(energy)
     reference = float(np.exp(np.interp(6.4241, energy[order], np.log(sigma[order]))))
-    assert reference == pytest.approx(6.43e-83, rel=0.01)
+    assert reference == pytest.approx(6.43e-83, rel=0.01, abs=0.0)
     photon = 6.4241 * 1.602176634e-19  # J
     ratios = {}
     with pytest.warns(ModelRangeWarning, match="below the shortest wavelength"):
@@ -868,6 +869,7 @@ def test_argon_three_photon_cross_section_at_193_nm():
             ("sum", 1e13): 0.742,
         },
         rel=0.02,
+        abs=0.0,
     )
 
 
@@ -906,5 +908,5 @@ def test_helium_with_two_electrons_at_390_nm():
     assert hacc.ratio == pytest.approx([1.305, 1.410], abs=0.005)
     assert hacc.atom / two.atom == pytest.approx([0.763, 0.786], abs=0.005)
     parker = [validation.parker_pulse_yield(i, 6e-15, 390) for i in two.intensity]
-    assert parker == pytest.approx([7.000e-3, 8.491e-4], rel=0.002)
+    assert parker == pytest.approx([7.000e-3, 8.491e-4], rel=0.002, abs=0.0)
     assert two.atom / np.array(parker) == pytest.approx([1.047, 1.016], abs=0.005)

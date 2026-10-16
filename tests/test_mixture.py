@@ -85,13 +85,17 @@ def test_an_absorbing_constituent_keeps_its_imaginary_part():
     with pytest.warns(ModelAbsorptionWarning):
         # The same refractivity by two routes: equal to the last bit on macOS, one
         # ulp apart on an AVX-512 Xeon (2026-10-16).
-        assert real == pytest.approx(model.refractivity(255e-9, state), rel=1e-14)
+        assert real == pytest.approx(
+            model.refractivity(255e-9, state), rel=1e-14, abs=0.0
+        )
     # The conventions differ at second order in the imaginary part. With y = y' + i y'',
     # Re chi = chi(y') - 3 y''^2 and Re sqrt(1 + chi) - 1 = Re chi / 2 - Re(chi^2) / 8,
     # so the complex law falls below the real one by 3 y''^2 / 8 = (Im chi)^2 / 24, to a
     # relative 1e-5 (the next order, chi).
     difference = float(np.real(np.sqrt(1 + chi))) - 1 - real
-    assert difference == pytest.approx(-(float(np.imag(chi)) ** 2) / 24, rel=1e-4)
+    assert difference == pytest.approx(
+        -(float(np.imag(chi)) ** 2) / 24, rel=1e-4, abs=0.0
+    )
 
 
 def test_the_review_figures_for_ozone():
@@ -182,7 +186,7 @@ def test_the_uncertainty_is_the_larger_like_term():
         return math.sqrt((1 + 2 * value) / (1 - value)) - 1
 
     slope = (index(y + step) - index(y - step)) / (2 * step)
-    assert got == pytest.approx(slope * 2 * sigma * rho**2, rel=1e-6)
+    assert got == pytest.approx(slope * 2 * sigma * rho**2, rel=1e-6, abs=0.0)
     # A curated like term alone carries no sensitivity: the pure gas has none.
     assert mixture_optics(["Ar"]).refractivity_uncertainty(wl, {"Ar": n}) == 0.0
 
@@ -306,7 +310,9 @@ def test_the_third_term_bound():
     argon = mixture_optics(["Ar"])
     assert third_term("Ar").status == "measured"
     expected = math.sqrt(fraction / third_term("Ar").ratio) * N_A
-    assert argon.density_bound({"Ar": 1.0}) == pytest.approx(expected, rel=1e-15)
+    assert argon.density_bound({"Ar": 1.0}) == pytest.approx(
+        expected, rel=1e-15, abs=0.0
+    )
     # OEP 4 section 4.3: about 7000 and 6700 mol/m^3.
     assert argon.density_bound({"Ar": 1.0}) / N_A == pytest.approx(6961, abs=1)
     assert mixture_optics(["N2"]).density_bound({"N2": 1.0}) / N_A == pytest.approx(
@@ -326,7 +332,7 @@ def test_the_pair_bound():
     deuterium = mixture_optics(["D2"])
     scale = float(pair_rules()["unknown_b"]) * 1e-6
     assert deuterium.density_bound({"D2": 1.0}) / N_A == pytest.approx(
-        fraction / scale, rel=1e-12
+        fraction / scale, rel=1e-12, abs=0.0
     )
     # 50/50 He/Ar: OEP 4 section 7.2 puts it near 2700 mol/m^3 at one wavelength;
     # the smallest over the qualified interval is lower.
@@ -386,7 +392,9 @@ def test_the_pages_sensitivity_table():
     from optmat.constants import K_B  # noqa: PLC0415
     from optmat.gas.composition import composition  # noqa: PLC0415
 
-    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text(
+        encoding="utf-8"
+    )
     mixtures = {
         "He/Ar": {"He": 0.5, "Ar": 0.5},
         "Ne/Ar": {"Ne": 0.5, "Ar": 0.5},
@@ -418,10 +426,10 @@ def test_the_pages_sensitivity_table():
             )
         # Each to the figures printed.
         assert got == pytest.approx(float(dn), abs=5e-4 * float(dn))
-        assert u == pytest.approx(float(spread), rel=0.05)
-        assert u / got == pytest.approx(float(relative), rel=0.05)
+        assert u == pytest.approx(float(spread), rel=0.05, abs=0.0)
+        assert u / got == pytest.approx(float(relative), rel=0.05, abs=0.0)
         assert b2 == pytest.approx(float(gvd), abs=0.05)
-        assert ub2 == pytest.approx(float(gvd_spread), rel=0.05)
+        assert ub2 == pytest.approx(float(gvd_spread), rel=0.05, abs=0.0)
 
 
 def _variant(kind, wavelength, densities, optics):
@@ -456,7 +464,9 @@ def test_the_pages_he_ar_sensitivity_table():
     from optmat.gas.eos import equation_of_state  # noqa: PLC0415
     from optmat.gas.mixture_eos import mixture_equation_of_state  # noqa: PLC0415
 
-    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "mixtures.md").read_text(
+        encoding="utf-8"
+    )
     rows = [
         [c.strip() for c in line.split("|")[1:-1]]
         for line in page.splitlines()
@@ -488,7 +498,7 @@ def test_the_pages_he_ar_sensitivity_table():
                 / full
                 - 1,
             }
-            assert full == pytest.approx(float(dn), rel=5e-4)
+            assert full == pytest.approx(float(dn), rel=5e-4, abs=0.0)
             full_gvd = _variant_gvd("full", full_d, optics)
             gvd = {
                 "dilute": _variant_gvd("dilute", full_d, optics) / full_gvd - 1,
@@ -508,7 +518,15 @@ def test_the_pages_he_ar_sensitivity_table():
                 n_cell, gvd_cell = (
                     float(c.replace("\N{MINUS SIGN}", "-")) for c in cell.split("/")
                 )
-                assert got[key] == pytest.approx(n_cell, rel=0.05), (pressure, key)
-                assert gvd[key] == pytest.approx(gvd_cell, rel=0.05), (pressure, key)
+                assert got[key] == pytest.approx(n_cell, rel=0.05, abs=0.0), (
+                    pressure,
+                    key,
+                )
+                assert gvd[key] == pytest.approx(gvd_cell, rel=0.05, abs=0.0), (
+                    pressure,
+                    key,
+                )
             spread = float(optics.refractivity_uncertainty(800e-9, full_d)) / full
-            assert spread == pytest.approx(float(estimate.strip("±")), rel=0.05)
+            assert spread == pytest.approx(
+                float(estimate.strip("±")), rel=0.05, abs=0.0
+            )

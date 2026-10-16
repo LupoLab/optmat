@@ -47,7 +47,7 @@ def main(name: str) -> None:
                 f"{float(entry['mean_relative_deviation']) * 1e6:9.1f} ppm"
             )
     out = GAS_DATA_DIRECTORY / "models" / "fitted" / f"{config.name}.json"
-    out.write_text(dumps(result))
+    out.write_text(dumps(result), encoding="utf-8")
     print(f"wrote {out.relative_to(DATA_DIRECTORY)}")
 
 

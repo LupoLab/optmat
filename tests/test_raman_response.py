@@ -37,7 +37,7 @@ def test_the_widths_are_raman_lines_widths_at_any_density(gas):
         lines = raman_lines(gas, 295.0, density, wavelength=800e-9)
         # The three coefficients are solved from the same law at other densities:
         # the difference is the solve's rounding, 20 eps (the design's condition).
-        assert response.fwhm(density) == pytest.approx(lines.fwhm, rel=1e-12)
+        assert response.fwhm(density) == pytest.approx(lines.fwhm, rel=1e-12, abs=0.0)
         rotation = np.array(response.band) == "rotation"
         assert np.all(response.anisotropic[rotation] == lines.amplitude[rotation])
         assert np.all(response.isotropic[rotation] == 0)
@@ -77,11 +77,13 @@ def test_the_tensor_components():
     response = raman_response("N2", 295.0)
     a = response.component_amplitudes("a")
     b = response.component_amplitudes("b")
-    assert a + b == pytest.approx(response.amplitude, rel=1e-15)
+    assert a + b == pytest.approx(response.amplitude, rel=1e-15, abs=0.0)
     rotation = np.array(response.band) == "rotation"
     # A weak probe across the pump sees -1/2 of the rotational response (the
     # traceless drive), all of the isotropic vibrational one.
-    assert a[rotation] / response.amplitude[rotation] == pytest.approx(-0.5, rel=1e-15)
+    assert a[rotation] / response.amplitude[rotation] == pytest.approx(
+        -0.5, rel=1e-15, abs=0.0
+    )
     q = ~rotation
     ratio = a[q] / response.amplitude[q]
     # 1 for Q(0), which has no anisotropic share; N2's anisotropic share is 3 %.
@@ -124,7 +126,7 @@ def test_the_anisotropic_q_share_matches_the_depolarization_ratio():
     assert rho is not None
     q = np.array(response.branch) == "Q"
     ratio = np.sum(response.anisotropic[q]) / np.sum(response.isotropic[q])
-    assert ratio == pytest.approx(4 * rho / (3 - 4 * rho), rel=1e-12)
+    assert ratio == pytest.approx(4 * rho / (3 - 4 * rho), rel=1e-12, abs=0.0)
 
 
 def test_the_anisotropic_q_share_of_hydrogen_is_hunts():
@@ -138,7 +140,7 @@ def test_the_anisotropic_q_share_of_hydrogen_is_hunts():
     expected = (
         response.isotropic[q] * 4 / 45 * placzek_teller_q(j) * (gamma / element) ** 2
     )
-    assert response.anisotropic[q] == pytest.approx(expected, rel=1e-13)
+    assert response.anisotropic[q] == pytest.approx(expected, rel=1e-13, abs=0.0)
     # Q(0) has none; Q(1) about 2 %.
     assert response.anisotropic[q][j == 0] == 0.0
     share = response.anisotropic[q][j == 1] / response.isotropic[q][j == 1]
@@ -168,7 +170,7 @@ def test_hydrogens_q_lines_shift_with_density():
     shift = (response.frequencies(10 * AMAGAT) - response.frequency) / (2 * math.pi)
     # Bischel & Dyer's Eq. (4) at 298 K: -96.1 MHz/amagat. The difference of two
     # frequencies of 1.2e14 Hz keeps 1e-16 x 1.2e14 / 1e9 = 1e-11 of the shift.
-    assert shift[q] == pytest.approx(-961e6, rel=1e-9)
+    assert shift[q] == pytest.approx(-961e6, rel=1e-9, abs=0.0)
     assert np.all(shift[~q] == 0)
 
 
@@ -203,7 +205,7 @@ def test_the_dicke_term_is_capped_at_the_doppler_width():
         + response.doppler_width
         + response.width_broadening * 0.01
     )
-    assert width[q] == pytest.approx(expected[q], rel=1e-12)
+    assert width[q] == pytest.approx(expected[q], rel=1e-12, abs=0.0)
     # Herring et al.'s Eq. (4) for Q(1) at 295 K: 7.15e-7 x 4155 cm-1 x (295/2)^1/2.
     assert response.doppler_width[q][0] == pytest.approx(
         7.15e-7
@@ -211,18 +213,19 @@ def test_the_dicke_term_is_capped_at_the_doppler_width():
         / (2 * math.pi)
         * math.sqrt(295 / 2),
         rel=1e-12,
+        abs=0.0,
     )
 
 
 def test_the_mixture_carries_the_mole_fractions():
     air = raman_response("dry air", 295.0)
     fractions = dict(air.composition)
-    assert sum(fractions.values()) == pytest.approx(1.0, rel=1e-12)
+    assert sum(fractions.values()) == pytest.approx(1.0, rel=1e-12, abs=0.0)
     assert set(fractions) == {"N2", "O2", "Ar"}
     nitrogen = raman_response("N2", 295.0)
     in_air = np.array(air.species) == "N2"
     assert air.isotropic[in_air] + air.anisotropic[in_air] == pytest.approx(
-        fractions["N2"] * nitrogen.amplitude, rel=1e-14
+        fractions["N2"] * nitrogen.amplitude, rel=1e-14, abs=0.0
     )
     # O2 and Ar broaden nitrogen's lines differently from nitrogen.
     assert not np.allclose(air.fwhm(AMAGAT)[in_air], nitrogen.fwhm(AMAGAT))
@@ -244,7 +247,7 @@ def test_the_gain_and_the_index_are_the_line_formulas():
     density = 10 * AMAGAT
     lines = response.lines(density)
     assert response.stokes_gain(532e-9, density) == pytest.approx(
-        stokes_gain(lines, 532e-9, density), rel=1e-15
+        stokes_gain(lines, 532e-9, density), rel=1e-15, abs=0.0
     )
     nitrogen = raman_response("N2", 295.0)
     reference = raman_lines("N2", 295.0, AMAGAT)
@@ -253,7 +256,7 @@ def test_the_gain_and_the_index_are_the_line_formulas():
     omega, rate = reference.frequency[s], math.pi * reference.fwhm[s]
     expected = AMAGAT * np.sum(reference.amplitude[s] * omega / (omega**2 + rate**2))
     assert nitrogen.rotational_nonlinear_index(AMAGAT) == pytest.approx(
-        expected / (2 * EPS0 * C), rel=1e-12
+        expected / (2 * EPS0 * C), rel=1e-12, abs=0.0
     )
 
 
@@ -279,8 +282,8 @@ def _solprop():
 
     data = Path(__file__).parent / "data"
     return (
-        json.loads((data / "solprop_raman_response.json").read_text()),
-        json.loads((data / "solprop_raman.json").read_text())["raman"],
+        json.loads((data / "solprop_raman_response.json").read_text(encoding="utf-8")),
+        json.loads((data / "solprop_raman.json").read_text(encoding="utf-8"))["raman"],
     )
 
 
@@ -319,7 +322,7 @@ def test_the_convention_is_solprops(gas):
             # Within 100 fs the Q lines' spread (H2: 6 cm-1 between Q(0) and Q(1))
             # dephases them by at most 0.11 rad, cos 0.11 = 0.994: 1 %.
             assert scale == pytest.approx(
-                np.sum(response.amplitude[select]) / k, rel=0.01
+                np.sum(response.amplitude[select]) / k, rel=0.01, abs=0.0
             )
         elif gas in ("N2", "O2"):
             # The same anisotropy and constants to their roundings.

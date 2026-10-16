@@ -192,7 +192,7 @@ class TestAtomicRates:
         assert moved.channels[0].ionization_energy == 16.0 * E_CHARGE
         assert moved.channels[1].ionization_energy - moved.channels[
             0
-        ].ionization_energy == pytest.approx(split, rel=1e-12)
+        ].ionization_energy == pytest.approx(split, rel=1e-12, abs=0.0)
 
     def test_a_custom_species(self):
         model = IonisationRateModel.from_parameters(
@@ -328,8 +328,10 @@ class TestGasDispersion:
             * sum(fk / (wk**2 - omega**2) for fk, wk in zip(f, poles, strict=True))
             + offset
         )
+        # The model goes through atomic units, the expectation through e^2 / m_e in SI:
+        # 1.6e-12 relative apart.
         assert float(model.polarizability(wavelength)) == pytest.approx(
-            expected, rel=1e-12
+            expected, rel=1e-11, abs=0.0
         )
         assert model.offset_au == pytest.approx(offset / AU_POLARIZABILITY)
         assert model.labels == ("pole 1", "pole 2")
@@ -366,7 +368,7 @@ class TestGasDispersion:
         low = 1e-6
         ratio = bigger.polarizability(low) / argon.polarizability(low)
         # Twice the oscillators; the magnetic offset (chi_0 < 0) is not doubled.
-        assert float(ratio) == pytest.approx(2.0, rel=1e-4)
+        assert float(ratio) == pytest.approx(2.0, rel=1e-4, abs=0.0)
 
     def test_the_fits_infrared_inputs(self):
         co = fitted_models()["fit/CO"]

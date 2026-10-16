@@ -167,7 +167,7 @@ def infrared_bands(gas: Gas | str) -> tuple[InfraredBand, ...]:
     if not path.exists():
         msg = f"no infrared bands are curated for {species.value}"
         raise DataError(msg)
-    with path.open(newline="") as handle:
+    with path.open(newline="", encoding="utf-8") as handle:
         return tuple(
             InfraredBand(
                 label=_label(row),
@@ -456,7 +456,7 @@ def _derived(gas: Gas | str, table: str) -> tuple[list[str], list[dict[str, str]
     if not path.exists():
         msg = f"no derived {table} table for {species.value}"
         raise DataError(msg)
-    text = path.read_text().splitlines()
+    text = path.read_text(encoding="utf-8").splitlines()
     header = [line for line in text if line.startswith("#")]
     rows = list(csv.DictReader(line for line in text if not line.startswith("#")))
     return header, rows

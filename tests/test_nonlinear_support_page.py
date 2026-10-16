@@ -80,7 +80,7 @@ def test_a_pair_and_its_complement_have_the_same_sum():
         abs(legs[a, 0] + legs[b, 0]) for a in range(4) for b in range(a + 1, 4)
     )
     np.testing.assert_allclose(sums[0::2], sums[1::2], rtol=1e-12)
-    assert T.pair_sums(legs)[0] == pytest.approx(sums[-1], rel=1e-12)
+    assert T.pair_sums(legs)[0] == pytest.approx(sums[-1], rel=1e-12, abs=0.0)
 
 
 def test_no_quartet_within_a_w2_has_a_leg_beyond_the_third_harmonics():
@@ -92,7 +92,7 @@ def test_no_quartet_within_a_w2_has_a_leg_beyond_the_third_harmonics():
         np.max(legs**2, axis=0) <= 0.75 * np.sum(legs**2, axis=0) * (1 + 1e-12)
     )
     thg = T.signed_legs("thg", np.array([1.0]))
-    assert np.max(thg**2) == pytest.approx(0.75 * np.sum(thg**2), rel=1e-12)
+    assert np.max(thg**2) == pytest.approx(0.75 * np.sum(thg**2), rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", T.GASES)
@@ -104,7 +104,7 @@ def test_every_fit_increases_with_each_squared_leg(gas):
     assert b >= 0
     assert b + b_prime > 0
     w2_max = float(model.record["max_w2_fitted_cm-2"])  # pyright: ignore[reportArgumentType]
-    assert T.slope_minimum(model, 4 * w2_max) == pytest.approx(a, rel=1e-12)
+    assert T.slope_minimum(model, 4 * w2_max) == pytest.approx(a, rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", T.GASES)
@@ -127,7 +127,7 @@ def test_argons_largest_fitted_leg_is_the_harmonic_of_shelton_s_visible_eshg():
     thg = [v for v in argon["fitted_values"] if v["key"] == "hattig_1998/ccsd_thg_Ar"]
     assert min(v["wavelength_nm"] for v in thg) == pytest.approx(694.3, abs=0.05)
     assert max(max(abs(x) for x in v["legs"]) for v in thg) == pytest.approx(
-        3e7 / 694.3, rel=1e-4
+        3e7 / 694.3, rel=1e-4, abs=0.0
     )
 
 
@@ -183,7 +183,9 @@ def test_the_derived_band_edge_is_the_first_resonance_of_an_spm_quartet():
             assert edge is None
             continue
         # A leg at E1 or an SPM pair 2 nu at E2, whichever comes first.
-        assert edge == pytest.approx(min(limits["E1"], limits["E2"] / 2), rel=1e-12)
+        assert edge == pytest.approx(
+            min(limits["E1"], limits["E2"] / 2), rel=1e-12, abs=0.0
+        )
         assert edge <= limits["E1"]
         assert 2 * edge <= limits["E2"] * (1 + 1e-12)
 

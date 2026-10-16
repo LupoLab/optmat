@@ -54,7 +54,9 @@ def _coulomb():
     )
 
     # kappa=1 and n*=1: the static factor is (2/F)^2 = 1600.
-    assert coulomb_factor(np.array(0.05), 0.05, 0.5) == pytest.approx(1600, rel=2e-15)
+    assert coulomb_factor(np.array(0.05), 0.05, 0.5) == pytest.approx(
+        1600, rel=2e-15, abs=0.0
+    )
     with pytest.raises(ValueError, match="unknown Coulomb factor 'missing'"):
         coulomb_factor(np.array(0.05), 0.05, 0.5, cast(CoulombFactor, "missing"))
 

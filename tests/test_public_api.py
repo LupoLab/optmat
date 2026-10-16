@@ -27,7 +27,7 @@ if sys.version_info < (3, 14):
     )
 
 ROOT = Path(__file__).parents[1]
-RECORDED = (ROOT / "tests" / "data" / "public_api.json").read_text()
+RECORDED = (ROOT / "tests" / "data" / "public_api.json").read_text(encoding="utf-8")
 
 
 def _tool():

@@ -24,7 +24,9 @@ from optmat.gas.models.registry import model
 from optmat.gas.molecular_ionisation_rates import molecular_rate_model
 
 ROOT = Path(__file__).parents[1]
-LUNA = json.loads((ROOT / "tests" / "data" / "luna_master.json").read_text())
+LUNA = json.loads(
+    (ROOT / "tests" / "data" / "luna_master.json").read_text(encoding="utf-8")
+)
 STATE = State(LUNA["pressure_bar"] * 1e5, LUNA["temperature_k"])
 # Luna's dispersion formulas whose reference state optmat's copy shares (Börzsönyi's
 # are referred to the ideal-gas density here and to the real-gas one in Luna).
@@ -49,7 +51,7 @@ def test_the_named_formula_gives_lunas_refractivity(gas):
 @pytest.mark.parametrize("gas", sorted(LUNA["gases"]))
 def test_lunas_density_is_the_real_gas_density(gas):
     ours = number_density(gas, STATE)
-    assert LUNA["gases"][gas]["density"] == pytest.approx(ours, rel=1e-5)
+    assert LUNA["gases"][gas]["density"] == pytest.approx(ours, rel=1e-5, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", ["He", "Ne", "Ar", "Kr", "Xe"])
@@ -80,16 +82,20 @@ def test_lunas_adk_rate_is_adk_hydrogenic(gas):
 
 
 def test_lunas_third_order_coefficients_are_solprops():
-    solprop = json.loads((ROOT / "tests" / "data" / "solprop_gamma3.json").read_text())
+    solprop = json.loads(
+        (ROOT / "tests" / "data" / "solprop_gamma3.json").read_text(encoding="utf-8")
+    )
     for gas, entry in LUNA["gases"].items():
         theirs = solprop["gamma3"][gas]["gamma3"]
-        assert entry["gamma3"] == pytest.approx(theirs, rel=1e-7), gas
+        assert entry["gamma3"] == pytest.approx(theirs, rel=1e-7, abs=0.0), gas
 
 
 @pytest.mark.parametrize("gas", ["H2", "D2"])
 def test_lunas_raman_parameters_are_solprops(gas):
     luna = LUNA["gases"][gas]["raman"]
-    solprop = json.loads((ROOT / "tests" / "data" / "solprop_raman.json").read_text())
+    solprop = json.loads(
+        (ROOT / "tests" / "data" / "solprop_raman.json").read_text(encoding="utf-8")
+    )
     rotational = solprop["raman"][gas]["rotational"]
     vibrational = solprop["raman"][gas]["vibrational"]
     pairs = [
@@ -106,7 +112,9 @@ def test_lunas_raman_parameters_are_solprops(gas):
         (luna["Arhov"], vibrational["linewidth"]["inverse_density"]),
     ]
     for theirs, ours in pairs:
-        assert theirs == pytest.approx(ours, rel=1e-6)
+        assert theirs == pytest.approx(ours, rel=1e-6, abs=0.0)
     # The reference records differ in D2's rotational width per amagat.
     ratio = luna["Brhor"] / rotational["linewidth"]["density"]
-    assert ratio == pytest.approx(1.0 if gas == "H2" else 1.20e8 / 1.32e8, rel=5e-3)
+    assert ratio == pytest.approx(
+        1.0 if gas == "H2" else 1.20e8 / 1.32e8, rel=5e-3, abs=0.0
+    )

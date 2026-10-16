@@ -37,8 +37,10 @@ def test_oscillator_strength_is_the_integrated_cross_section_over_pi_r_e():
         / (4 * constants.epsilon_0 * constants.m_e * constants.c**2)
         * 100
     )
-    assert band.oscillator_strength == pytest.approx(1e-17 / pi_r_e, rel=1e-12)
-    assert band.wavenumber == pytest.approx(1000.0, rel=1e-12)
+    # CODATA tabulates r_e to 11 digits; derived from e, epsilon_0, m_e and c it differs
+    # by 1.4e-11 relative.
+    assert band.oscillator_strength == pytest.approx(1e-17 / pi_r_e, rel=1e-10, abs=0.0)
+    assert band.wavenumber == pytest.approx(1000.0, rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", ["CH4", "N2O", "SF6"])
@@ -50,7 +52,9 @@ def test_static_value_is_the_sum_of_strengths_over_squared_wavenumbers(gas):
     )
     expected = total / pi_r_e * HARTREE_WAVENUMBER**2
     # The poles keep each band's sum S / nu^2 by construction: round-off only.
-    assert static_infrared_polarizability_au(gas) == pytest.approx(expected, rel=1e-12)
+    assert static_infrared_polarizability_au(gas) == pytest.approx(
+        expected, rel=1e-12, abs=0.0
+    )
 
 
 @pytest.mark.parametrize("gas", ["CH4", "N2O", "SF6"])
@@ -178,7 +182,7 @@ def test_a_band_split_at_a_window_sums_to_the_whole():
     for k in range(2):
         whole = _moments(f, e, 2)[k]
         split = sum(_moments(s, x, 2)[k] for s, x in parts)
-        assert split == pytest.approx(whole, rel=1e-12)
+        assert split == pytest.approx(whole, rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize(
@@ -196,8 +200,10 @@ def test_a_fold_keeps_the_bands_two_moments():
     below, above = 1500 / HARTREE_WAVENUMBER, 3000 / HARTREE_WAVENUMBER
     low, high = fold_poles(m0, m_minus2, below, above)
     assert low > 0 and high > 0
-    assert low + high == pytest.approx(m0, rel=1e-12)
-    assert low / below**2 + high / above**2 == pytest.approx(m_minus2, rel=1e-12)
+    assert low + high == pytest.approx(m0, rel=1e-12, abs=0.0)
+    assert low / below**2 + high / above**2 == pytest.approx(
+        m_minus2, rel=1e-12, abs=0.0
+    )
 
 
 @pytest.mark.parametrize(("below", "above"), [(2.5, 3.0), (1.0, 1.5), (2.0, 1.0)])

@@ -80,7 +80,7 @@ def main(name: str) -> None:
         "gvd_sigma_relative": full.dispersion_sigma_relative(omega, 2).tolist(),
         "dropped": dropped,
     }
-    (OUT / f"{name}.json").write_text(json.dumps(record, indent=1))
+    (OUT / f"{name}.json").write_text(json.dumps(record, indent=1), encoding="utf-8")
     print(f"wrote models/robustness/{name}.json")
 
 

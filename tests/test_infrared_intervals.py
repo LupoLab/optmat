@@ -41,7 +41,7 @@ HARTREE_NM = 45.56335252767
 
 def _with_keys(tmp_path, gas, lines):
     """Load a gas's configuration with its OEP 3 keys replaced by ``lines``."""
-    text = (FIT_DIRECTORY / f"{gas}.toml").read_text()
+    text = (FIT_DIRECTORY / f"{gas}.toml").read_text(encoding="utf-8")
     text = re.sub(
         r"^(infrared_max_wavenumber|band_nodes|windows) = .*\n",
         "",
@@ -49,7 +49,7 @@ def _with_keys(tmp_path, gas, lines):
         flags=re.MULTILINE,
     )
     path = tmp_path / f"{gas}.toml"
-    path.write_text(text.replace("[model]\n", "[model]\n" + lines, 1))
+    path.write_text(text.replace("[model]\n", "[model]\n" + lines, 1), encoding="utf-8")
     return load_config(path)
 
 

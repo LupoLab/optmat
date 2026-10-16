@@ -48,7 +48,7 @@ def test_the_exponent_function_is_continuous_across_its_series():
     # series' first omitted term is of relative order gamma^6 = 1e-12; the closed
     # form loses eps / gamma^2 = 2e-12), so they agree to 1e-10 on either side of it.
     below, above = ppt_exponent_function(np.array([0.00999999, 0.01000001]))
-    assert below == pytest.approx(above, rel=1e-10)
+    assert below == pytest.approx(above, rel=1e-10, abs=0.0)
 
 
 def test_the_exponent_function_against_its_integral():
@@ -59,7 +59,7 @@ def test_the_exponent_function_against_its_integral():
     gamma = np.array([0.1, 0.5, 1.0, 3.0, 10.0])
     bracket = np.arcsinh(gamma) - gamma * np.sqrt(1 + gamma**2) / (1 + 2 * gamma**2)
     expected = 3 * (1 + 2 * gamma**2) * bracket / (4 * gamma**3)
-    assert ppt_exponent_function(gamma) == pytest.approx(expected, rel=1e-12)
+    assert ppt_exponent_function(gamma) == pytest.approx(expected, rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize("m", [0, 1, 2])
@@ -69,13 +69,17 @@ def test_the_channel_function_is_its_integral(m):
         value, _ = integrate.quad(
             lambda y, x=x: np.exp(y**2 - x**2) * (x**2 - y**2) ** m, 0, x
         )
-        assert channel_function(m, np.array(x)) == pytest.approx(value, rel=1e-7)
+        assert channel_function(m, np.array(x)) == pytest.approx(
+            value, rel=1e-7, abs=0.0
+        )
 
 
 def test_the_channel_function_does_not_overflow():
     # e^{y^2} overflows a float at y = 27; the Kummer form does not contain it. The
     # asymptote is |m|! / (2x), reached to 1 / x^2.
-    assert channel_function(1, np.array(100.0)) == pytest.approx(1 / 200, rel=1e-3)
+    assert channel_function(1, np.array(100.0)) == pytest.approx(
+        1 / 200, rel=1e-3, abs=0.0
+    )
 
 
 @pytest.mark.parametrize("m", [0, 1])
@@ -101,7 +105,9 @@ def test_the_integral_over_channels_is_its_closed_form(m, gamma):
         * value
     )
     # quad's tolerance on a slowly decaying integrand.
-    assert channel_factor(m, np.array(gamma)) == pytest.approx(expected, rel=1e-6)
+    assert channel_factor(m, np.array(gamma)) == pytest.approx(
+        expected, rel=1e-6, abs=0.0
+    )
 
 
 def test_the_channel_factor_tends_to_one():
@@ -117,7 +123,7 @@ def test_the_sum_over_channels_tends_to_its_integral():
     gamma = np.array([0.1])
     for threshold in (20.0, 20.3, 20.9):
         summed = channel_factor(0, gamma, np.array([threshold]))
-        assert summed == pytest.approx(channel_factor(0, gamma), rel=0.05)
+        assert summed == pytest.approx(channel_factor(0, gamma), rel=0.05, abs=0.0)
 
 
 def test_the_sum_over_channels_steps_at_a_channel_closing():
@@ -137,7 +143,9 @@ def test_hydrogen_static_rate():
     # The exact leading order of hydrogen's ground state, (4 / F) exp(-2 / 3F).
     field = np.array([0.03, 0.05, 0.08])
     expected = 4 / field * np.exp(-2 / (3 * field))
-    assert tunnelling_rate_au(field, 0.5, 4.0, 0) == pytest.approx(expected, rel=1e-14)
+    assert tunnelling_rate_au(field, 0.5, 4.0, 0) == pytest.approx(
+        expected, rel=1e-14, abs=0.0
+    )
 
 
 def test_the_tunnelling_rate_is_tong_zhao_and_lins():
@@ -155,7 +163,7 @@ def test_the_tunnelling_rate_is_tong_zhao_and_lins():
     )
     squared = c_l**2 / kappa ** (2 * n_star + 1)
     rate = tunnelling_rate_au(np.array(field), energy, squared, 1)
-    assert rate == pytest.approx(expected, rel=1e-13)
+    assert rate == pytest.approx(expected, rel=1e-13, abs=0.0)
 
 
 def test_the_short_range_rate_in_the_tunnelling_limit():
@@ -167,7 +175,7 @@ def test_the_short_range_rate_in_the_tunnelling_limit():
     static = tunnelling_rate_au(field, energy, 4.0, 0) / (2 / 0.05) ** 2
     expected = static * cycle_average_factor(field, energy)
     rate = short_range_rate_au(field, omega, energy, 4.0, 0)
-    assert rate == pytest.approx(expected, rel=1e-5)
+    assert rate == pytest.approx(expected, rel=1e-5, abs=0.0)
 
 
 def test_the_multiphoton_limit_of_the_short_range_rate():
@@ -202,7 +210,7 @@ def test_the_static_corrections_agree_for_argon():
     assert p.barrier_suppression_zhang is not None
     tong = tong_lin_factor(field, p.ionization_energy_au, p.barrier_suppression_alpha)
     zhang = zhang_factor(field, p.ionization_energy_au, p.barrier_suppression_zhang)
-    assert zhang == pytest.approx(tong, rel=0.10)
+    assert zhang == pytest.approx(tong, rel=0.10, abs=0.0)
 
 
 def test_zhangs_factor_is_held_at_one():
@@ -250,7 +258,9 @@ def test_a_long_wavelength_gives_the_static_rate(name, gas):
     field = np.array([0.5, 1.0]) * static.barrier_suppression_field
     for method in ("cycle_averaged_rate", "instantaneous_rate"):
         expected = getattr(static, method)(field)
-        assert getattr(slow, method)(field) == pytest.approx(expected, rel=2e-3)
+        assert getattr(slow, method)(field) == pytest.approx(
+            expected, rel=2e-3, abs=0.0
+        )
 
 
 def test_the_literature_forms_are_the_tunnelling_rate_of_adk():
@@ -263,7 +273,7 @@ def test_the_literature_forms_are_the_tunnelling_rate_of_adk():
     for name in ("ppt_ilkov", "ppt_larochelle"):
         model = ionisation_rate_model("Ar", math.inf, name)
         rate = model.instantaneous_rate(field * AU_FIELD) / AU_ANGULAR_FREQUENCY
-        assert rate == pytest.approx(expected, rel=1e-12)
+        assert rate == pytest.approx(expected, rel=1e-12, abs=0.0)
 
 
 def _cycle_average(model, amplitude):
@@ -285,7 +295,9 @@ def test_the_instantaneous_rate_averages_to_the_cycle_averaged_rate(gas, wavelen
     for fraction in (0.32, 0.5, 0.7, 1.0):
         amplitude = fraction * model.barrier_suppression_field
         expected = float(model.cycle_averaged_rate(amplitude))
-        assert _cycle_average(model, amplitude) == pytest.approx(expected, rel=0.03)
+        assert _cycle_average(model, amplitude) == pytest.approx(
+            expected, rel=0.03, abs=0.0
+        )
 
 
 def test_the_tunnelling_average_is_the_literatures():
@@ -297,7 +309,9 @@ def test_the_tunnelling_average_is_the_literatures():
     (channel,) = model.channels
     factor = cycle_average_factor(field / AU_FIELD, channel.ionization_energy_au)
     expected = model.cycle_averaged_rate(field) / factor
-    assert model.instantaneous_rate(field) == pytest.approx(expected, rel=1e-12)
+    assert model.instantaneous_rate(field) == pytest.approx(
+        expected, rel=1e-12, abs=0.0
+    )
     ratio = _cycle_average(model, 2.744e10) / float(model.cycle_averaged_rate(2.744e10))
     assert ratio == pytest.approx(1.11, abs=0.01)
 
@@ -332,7 +346,7 @@ def test_ppt_ilkov_is_berge_b14():
     )
     model = ionisation_rate_model("Ar", 800e-9, "ppt_ilkov")
     rate = model.cycle_averaged_rate(field * AU_FIELD) / AU_ANGULAR_FREQUENCY
-    assert rate == pytest.approx(expected, rel=1e-10)
+    assert rate == pytest.approx(expected, rel=1e-10, abs=0.0)
 
 
 def test_the_cycle_average_of_the_static_rate():
@@ -341,7 +355,9 @@ def test_the_cycle_average_of_the_static_rate():
     model = ionisation_rate_model("He", math.inf, "one_electron_static")
     amplitude = 0.1 * AU_FIELD
     expected = float(model.cycle_averaged_rate(amplitude))
-    assert _cycle_average(model, amplitude) == pytest.approx(expected, rel=0.02)
+    assert _cycle_average(model, amplitude) == pytest.approx(
+        expected, rel=0.02, abs=0.0
+    )
 
 
 def test_shape_sign_and_zero():
@@ -389,7 +405,7 @@ def test_the_keldysh_parameter():
     model = ionisation_rate_model("Ar", 800e-9)
     energy = model.channels[0].ionization_energy_au
     expected = keldysh_parameter(np.array(2e10 / AU_FIELD), OMEGA_800, energy)
-    assert model.keldysh(2e10) == pytest.approx(expected, rel=1e-6)
+    assert model.keldysh(2e10) == pytest.approx(expected, rel=1e-6, abs=0.0)
     assert model.keldysh(0.0) == math.inf
     assert ionisation_rate_model("Ar", math.inf).keldysh(2e10) == 0.0
 
@@ -438,7 +454,9 @@ def test_argon_one_electron_static_rate_against_zhangs_exact_rates():
         field = dataset.abscissa_values()
         keep = field <= 0.145 * AU_FIELD
         rate = model.instantaneous_rate(field[keep]) / AU_ANGULAR_FREQUENCY
-        assert rate == pytest.approx(dataset.scaled_values()[keep], rel=tolerance)
+        assert rate == pytest.approx(
+            dataset.scaled_values()[keep], rel=tolerance, abs=0.0
+        )
 
 
 def test_helium_static_rate_against_the_two_electron_calculations():
@@ -571,7 +589,7 @@ def test_the_rates_rise_and_are_held_above_the_range(gas):
         above = field > model.maximum_field
         assert np.all(rate[above] == rate[above][0])
     at = model.instantaneous_rate(model.maximum_field)
-    assert instantaneous[above][0] == pytest.approx(at, rel=1e-12)
+    assert instantaneous[above][0] == pytest.approx(at, rel=1e-12, abs=0.0)
     # A model without a correction keeps its formula above its range.
     literature = ionisation_rate_model(gas, 800e-9, "ppt_ilkov")
     with pytest.warns(ModelRangeWarning, match="static correction"):

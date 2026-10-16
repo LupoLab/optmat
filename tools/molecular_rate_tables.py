@@ -263,7 +263,9 @@ def solprop_table() -> str:
         A Markdown table.
     """
     fixture = json.loads(
-        (ROOT / "tests" / "data" / "solprop_molecular_rates.json").read_text()
+        (ROOT / "tests" / "data" / "solprop_molecular_rates.json").read_text(
+            encoding="utf-8"
+        )
     )
     rows = []
     for gas, entry in fixture["molecules"].items():

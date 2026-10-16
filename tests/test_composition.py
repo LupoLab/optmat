@@ -37,7 +37,9 @@ def test_the_trace_constituents_are_marked_as_reprints():
 
 
 def test_the_page_prints_the_fractions():
-    page = (Path(__file__).parents[1] / "docs" / "models.md").read_text()
+    page = (Path(__file__).parents[1] / "docs" / "models.md").read_text(
+        encoding="utf-8"
+    )
     for printed in ("0.780848", "0.209390", "0.009332 (u = 3e-6)", "0.00040"):
         assert printed in page
 

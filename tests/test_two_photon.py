@@ -128,10 +128,10 @@ def test_argon_threshold_from_the_printed_nist_values():
     # 15.7596119 eV and the Ar+ 2P1/2 level 1431.5831 cm^-1 (nist_asd_2026), halved.
     t = two_photon_ionisation_model("Ar").thresholds
     ev = t[0].energy / E_CHARGE
-    assert ev == pytest.approx(15.7596119, rel=RTOL)
+    assert ev == pytest.approx(15.7596119, rel=RTOL, abs=0.0)
     upper = 15.7596119 + 1431.5831 * 2 * math.pi * HBAR * C * 100 / E_CHARGE
-    assert t[1].energy / E_CHARGE == pytest.approx(upper, rel=RTOL)
-    assert t[1].omega == pytest.approx(t[1].energy / (2 * HBAR), rel=RTOL)
+    assert t[1].energy / E_CHARGE == pytest.approx(upper, rel=RTOL, abs=0.0)
+    assert t[1].omega == pytest.approx(t[1].energy / (2 * HBAR), rel=RTOL, abs=0.0)
 
 
 def test_krypton_has_no_model():
@@ -173,7 +173,7 @@ def test_staircase_vertices_become_their_geometric_mean():
     omega, sigma = derivation.vertices(dataset)
     assert np.all(np.diff(omega) > 0)
     assert sigma[omega == repeated][0] == pytest.approx(
-        math.exp(np.mean(np.log(values))), rel=RTOL
+        math.exp(np.mean(np.log(values))), rel=RTOL, abs=0.0
     )
 
 
@@ -273,10 +273,10 @@ def test_the_loss_law_against_an_integration():
         k3 = -beta * (i + h * k2 / 2) ** 2
         k4 = -beta * (i + h * k3) ** 2
         i += h * (k1 + 2 * k2 + 2 * k3 + k4) / 6
-    assert i == pytest.approx(i0 / (1 + beta * i0 * length), rel=1e-9)
+    assert i == pytest.approx(i0 / (1 + beta * i0 * length), rel=1e-9, abs=0.0)
     # About 5e-15 m/W at 1 bar near 155 nm (OEP 6, section 2): with McKenna's
     # 1.27e-50 cm^4 s at 8.0 eV, 2 N sigma / hbar omega = 4.9e-15; 1 %: the rounding.
-    assert beta == pytest.approx(4.9e-15, rel=0.01)
+    assert beta == pytest.approx(4.9e-15, rel=0.01, abs=0.0)
 
 
 def test_the_uncertainty_keeps_its_kinds_apart():
@@ -340,7 +340,7 @@ def test_a_missing_stored_model_is_an_error(stored):
 
 def test_a_stored_model_of_another_gas_is_an_error(stored):
     text = two_photon._dumps(derivation.derive("Ne", "linear"))
-    (stored / "Ar_linear.json").write_text(text)
+    (stored / "Ar_linear.json").write_text(text, encoding="utf-8")
     with pytest.raises(DataError, match="holds the model of Ne"):
         two_photon_ionisation_model("Ar")
 
@@ -348,13 +348,13 @@ def test_a_stored_model_of_another_gas_is_an_error(stored):
 def test_an_old_or_malformed_stored_model_is_an_error(stored):
     record = json.loads(two_photon._dumps(derivation.derive("Ar", "linear")))
     (stored / "Ar_linear.json").write_text(
-        json.dumps(record | {"derivation_version": 0})
+        json.dumps(record | {"derivation_version": 0}), encoding="utf-8"
     )
     with pytest.raises(DataError, match="re-derive"):
         two_photon_ionisation_model("Ar")
     two_photon._stored.cache_clear()
     del record["e1"]
-    (stored / "Ar_linear.json").write_text(json.dumps(record))
+    (stored / "Ar_linear.json").write_text(json.dumps(record), encoding="utf-8")
     with pytest.raises(DataError, match="needs exactly the fields"):
         two_photon_ionisation_model("Ar")
 

@@ -53,7 +53,7 @@ sigma = 0.1
 @pytest.fixture(scope="module")
 def result(tmp_path_factory):
     path = tmp_path_factory.mktemp("fits") / "recover.toml"
-    path.write_text(CONFIG)
+    path.write_text(CONFIG, encoding="utf-8")
     return fit(load_config(path))
 
 
@@ -63,10 +63,12 @@ def test_a_fit_recovers_the_parameters_that_made_its_data(result):
     sigma = np.sqrt(np.diag(result.covariance))
     assert result.values["Nvx"] == pytest.approx(735.4107760577147, abs=3 * sigma[0])
     assert result.values["Ex"] == pytest.approx(16.98219466591156, abs=3 * sigma[1])
-    assert result.values["Nvx"] == pytest.approx(735.4107760577147, rel=1e-3)
+    assert result.values["Nvx"] == pytest.approx(735.4107760577147, rel=1e-3, abs=0.0)
     assert result.offsets["franta_2016/lithosil_q2_n"] == pytest.approx(0, abs=1e-6)
     # The OH scale is untouched by these data: it stays at 1 within 1e-3.
-    assert result.values["Nph38"] == pytest.approx(4.529073137525764e-06, rel=1e-3)
+    assert result.values["Nph38"] == pytest.approx(
+        4.529073137525764e-06, rel=1e-3, abs=0.0
+    )
 
 
 def test_the_stored_record_rebuilds_the_model_with_its_uncertainty(result):
@@ -217,7 +219,7 @@ FITTED = ("SiO2", "Si")
 
 def _stored(name):
     path = SOLID_DATA_DIRECTORY / "models" / "fitted" / f"{name}.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _unknowns(config, record):

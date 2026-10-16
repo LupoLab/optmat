@@ -67,7 +67,7 @@ for colour, (label, name) in zip(
     ],
     strict=True,
 ):
-    with gzip.open(external / name, "rt") as handle:
+    with gzip.open(external / name, "rt", encoding="utf-8") as handle:
         table = np.loadtxt(handle)
     top.semilogy(
         table[:, 0], table[:, 1], color=colour, linewidth=0.5, alpha=0.7, label=label

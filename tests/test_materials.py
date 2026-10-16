@@ -46,7 +46,8 @@ def _record(tmp_path, material_line, extra=""):
         f"{material_line}\n"
         'quantity = "polarizability"\nunit = "au"\nabscissa_unit = "nm"\n'
         'points = [["1", "500", "11.2"]]\n'
-        f"{extra}"
+        f"{extra}",
+        encoding="utf-8",
     )
     return record
 

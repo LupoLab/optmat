@@ -135,7 +135,7 @@ class TestOzone:
         above = absorption.complex_derivative_au(omega + 0.1 / per_hartree)[1]
         at = absorption.complex_derivative_au(omega)[1]
         # The slope part of the derivative is the mean; the 1/omega^2 part is smooth.
-        assert at == pytest.approx(0.5 * (below + above), rel=1e-3)
+        assert at == pytest.approx(0.5 * (below + above), rel=1e-3, abs=0.0)
 
     def test_above_the_grid(self, ozone):
         top = ozone.absorption.max_wavenumber_cm
@@ -171,7 +171,7 @@ def test_heliums_retardation_term_enters_the_derivative():
     expected = (
         2 * helium.retardation_au * omega * AU_POLARIZABILITY / AU_ANGULAR_FREQUENCY
     )
-    assert difference.real == pytest.approx(expected, rel=1e-9)
+    assert difference.real == pytest.approx(expected, rel=1e-9, abs=0.0)
 
 
 def test_the_jacobian_of_inverse_lorentz_lorenz():
@@ -182,7 +182,7 @@ def test_the_jacobian_of_inverse_lorentz_lorenz():
         - polarizability_from_susceptibility(chi - h, density, virial)
     ) / (2 * h)
     assert dpolarizability_dsusceptibility(chi, density, virial) == pytest.approx(
-        numeric, rel=1e-7
+        numeric, rel=1e-7, abs=0.0
     )
 
 

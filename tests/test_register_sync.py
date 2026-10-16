@@ -53,18 +53,23 @@ def branches(tmp_path):
     git(tmp_path, "init", "-b", "main")
     register = tmp_path / "REGISTER.md"
     common = "# Synthetic register\n" + entry(1, "Established evidence")
-    register.write_text(common)
+    register.write_text(common, encoding="utf-8")
     commit(tmp_path)
     git(tmp_path, "switch", "-c", "topic")
-    register.write_text(common + entry(2, "Branch first") + entry(3, "Branch second"))
-    (tmp_path / "branch notes.md").write_text(
-        "TC-1 stays; TC-2 and TC-3 move once; TC-20 stays. Link: #tc-2-branch-first\n"
+    register.write_text(
+        common + entry(2, "Branch first") + entry(3, "Branch second"), encoding="utf-8"
     )
-    (tmp_path / "source.toml").write_text('evidence = "TC-2, TC-3"\n')
+    (tmp_path / "branch notes.md").write_text(
+        "TC-1 stays; TC-2 and TC-3 move once; TC-20 stays. Link: #tc-2-branch-first\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "source.toml").write_text('evidence = "TC-2, TC-3"\n', encoding="utf-8")
     commit(tmp_path)
     git(tmp_path, "switch", "main")
-    register.write_text(common + entry(2, "Incoming evidence"))
-    (tmp_path / "incoming.md").write_text("Incoming evidence is TC-2.\n")
+    register.write_text(common + entry(2, "Incoming evidence"), encoding="utf-8")
+    (tmp_path / "incoming.md").write_text(
+        "Incoming evidence is TC-2.\n", encoding="utf-8"
+    )
     commit(tmp_path)
     git(tmp_path, "switch", "topic")
     return tmp_path
@@ -80,10 +85,12 @@ def test_preview_renumber_and_merge_preserve_both_branches(branches, style, caps
     assert (root / "REGISTER.md").read_bytes() == before
     assert git(root, "status", "--porcelain").stdout == ""
     SYNC.prepare(root, write=True)
-    assert (root / "branch notes.md").read_text() == (
+    assert (root / "branch notes.md").read_text(encoding="utf-8") == (
         "TC-1 stays; TC-3 and TC-4 move once; TC-20 stays. Link: #tc-3-branch-first\n"
     )
-    assert (root / "source.toml").read_text() == 'evidence = "TC-3, TC-4"\n'
+    assert (root / "source.toml").read_text(
+        encoding="utf-8"
+    ) == 'evidence = "TC-3, TC-4"\n'
     assert not (root / "incoming.md").exists()
     commit(root)
     # Repeating preparation against the same main must not move entries again.
@@ -96,15 +103,17 @@ def test_preview_renumber_and_merge_preserve_both_branches(branches, style, caps
     SYNC.resolve(root)
     assert (root / "REGISTER.md").read_bytes() == conflicted
     SYNC.resolve(root, write=True)
-    resolved = (root / "REGISTER.md").read_text()
+    resolved = (root / "REGISTER.md").read_text(encoding="utf-8")
     incoming = git(root, "show", "main:REGISTER.md").stdout
     assert resolved.startswith(incoming.rstrip() + "\n\n")
     assert re.findall(r"^## TC-(\d+)", resolved, re.MULTILINE) == ["1", "2", "3", "4"]
     assert "TC-3 Branch first" in resolved
     assert "TC-4 Branch second" in resolved
-    assert (root / "incoming.md").read_text() == "Incoming evidence is TC-2.\n"
+    assert (root / "incoming.md").read_text(
+        encoding="utf-8"
+    ) == "Incoming evidence is TC-2.\n"
     SYNC.resolve(root, write=True)
-    assert (root / "REGISTER.md").read_text() == resolved
+    assert (root / "REGISTER.md").read_text(encoding="utf-8") == resolved
     # The tool deliberately leaves review, staging and the merge commit to its caller.
     assert git(root, "ls-files", "-u").stdout
     commit(root)
@@ -115,7 +124,9 @@ def test_preview_renumber_and_merge_preserve_both_branches(branches, style, caps
 def test_prepare_refuses_uncommitted_files_and_edits_to_established_entries(branches):
     root = branches
     notes = root / "branch notes.md"
-    notes.write_text(notes.read_text() + "Work in progress.\n")
+    notes.write_text(
+        notes.read_text(encoding="utf-8") + "Work in progress.\n", encoding="utf-8"
+    )
     register = root / "REGISTER.md"
     before = register.read_bytes()
     with pytest.raises(ValueError, match="clean worktree"):
@@ -123,7 +134,10 @@ def test_prepare_refuses_uncommitted_files_and_edits_to_established_entries(bran
     assert register.read_bytes() == before
     commit(root)
     register.write_text(
-        register.read_text().replace("Established evidence", "Edited evidence")
+        register.read_text(encoding="utf-8").replace(
+            "Established evidence", "Edited evidence"
+        ),
+        encoding="utf-8",
     )
     commit(root)
     before = register.read_bytes()
@@ -142,7 +156,10 @@ def test_resolve_refuses_collisions_including_main_advancing_after_preparation(
         commit(root)
         git(root, "switch", "main")
         register = root / "REGISTER.md"
-        register.write_text(register.read_text() + entry(3, "Main advanced"))
+        register.write_text(
+            register.read_text(encoding="utf-8") + entry(3, "Main advanced"),
+            encoding="utf-8",
+        )
         commit(root)
         git(root, "switch", "topic")
     assert git(root, "merge", "--no-edit", "main", check=False).returncode == 1
@@ -158,7 +175,10 @@ def test_resolve_preserves_manual_conflict_edits(branches):
     commit(root)
     assert git(root, "merge", "--no-edit", "main", check=False).returncode == 1
     register = root / "REGISTER.md"
-    register.write_text(register.read_text() + "Manual evidence added during review.\n")
+    register.write_text(
+        register.read_text(encoding="utf-8") + "Manual evidence added during review.\n",
+        encoding="utf-8",
+    )
     before = register.read_bytes()
     with pytest.raises(ValueError, match="conflict was edited"):
         SYNC.resolve(root, write=True)
@@ -171,7 +191,10 @@ def test_no_new_entries_need_no_renumbering_even_when_the_preamble_changes(branc
     git(root, "switch", "-c", "wording")
     register = root / "REGISTER.md"
     register.write_text(
-        register.read_text().replace("# Synthetic register", "# Wording")
+        register.read_text(encoding="utf-8").replace(
+            "# Synthetic register", "# Wording"
+        ),
+        encoding="utf-8",
     )
     commit(root)
     before = register.read_bytes()

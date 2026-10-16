@@ -22,7 +22,7 @@ from optmat.gas.fitting import HARTREE_NM
 from optmat.gas.models.fitted import fitted_models
 
 ROOT = Path(__file__).parents[1]
-PAGE = (ROOT / "docs" / "accuracy.md").read_text()
+PAGE = (ROOT / "docs" / "accuracy.md").read_text(encoding="utf-8")
 TABLE = PAGE.split("<!-- accuracy-table:start -->")[1].split(
     "<!-- accuracy-table:end -->"
 )[0]
@@ -39,7 +39,7 @@ def _percent(cell):
 
 def _record(gas):
     path = GAS_DATA_DIRECTORY / "models" / "robustness" / f"{gas}.json"
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_the_table_covers_every_fit():
@@ -51,7 +51,7 @@ def test_statistical_uncertainty_is_current(gas):
     fit = fitted_models()[f"fit/{gas}"]
     sigma = fit.dispersion_sigma_relative(np.array([HARTREE_NM / 800.0]), 2)[0]
     # Printed to two significant figures.
-    assert _percent(ROWS[gas][1]) == pytest.approx(sigma, rel=0.05)
+    assert _percent(ROWS[gas][1]) == pytest.approx(sigma, rel=0.05, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", sorted(ROWS))
@@ -65,12 +65,14 @@ def test_leave_one_out_shift_is_current(gas):
     largest = max(shifts, key=shifts.__getitem__)
     assert ROWS[gas][3] == largest
     # Printed to two significant figures.
-    assert _percent(ROWS[gas][2]) == pytest.approx(shifts[largest], rel=0.05)
+    assert _percent(ROWS[gas][2]) == pytest.approx(shifts[largest], rel=0.05, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", sorted(ROWS))
 def test_solprop_formula_deviation_is_current(gas):
-    historical = (ROOT / "tests/data/historical_documentation_tables.md").read_text()
+    historical = (ROOT / "tests/data/historical_documentation_tables.md").read_text(
+        encoding="utf-8"
+    )
     block = historical.split("<!-- accuracy-table:start -->")[1].split(
         "<!-- accuracy-table:end -->"
     )[0]
@@ -132,5 +134,5 @@ def test_band_uncertainties_are_current(gas, wavelength, column):
         abs(entry["gvd_shift_relative"][index]) for entry in record["dropped"].values()
     )
     # Printed to two significant figures.
-    assert _percent(cells[column]) == pytest.approx(sigma, rel=0.05)
-    assert _percent(cells[column + 1]) == pytest.approx(largest, rel=0.05)
+    assert _percent(cells[column]) == pytest.approx(sigma, rel=0.05, abs=0.0)
+    assert _percent(cells[column + 1]) == pytest.approx(largest, rel=0.05, abs=0.0)

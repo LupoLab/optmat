@@ -66,7 +66,8 @@ def main() -> None:
                 )
         gases[gas.name] = rows
     OUT.write_text(
-        json.dumps({"solprop_commit": commit, "gases": gases}, indent=1) + "\n"
+        json.dumps({"solprop_commit": commit, "gases": gases}, indent=1) + "\n",
+        encoding="utf-8",
     )
 
 

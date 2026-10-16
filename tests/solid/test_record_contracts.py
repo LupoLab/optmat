@@ -26,7 +26,8 @@ def pair(tmp_path, monkeypatch):
         '["c","600","1.7"]]\n'
         '[[datasets]]\nid="k"\nmaterial="SiO2"\nquantity="extinction_coefficient"\nunit="1"\n'
         'abscissa_unit="nm"\npoints=[["c","600","0.03"],["a","400","0.01"],'
-        '["b","500","0.02"]]\n'
+        '["b","500","0.02"]]\n',
+        encoding="utf-8",
     )
     source = load_source(path)
     _serve(monkeypatch, *source.datasets)
@@ -44,7 +45,8 @@ def _table(tmp_path, extra=""):
     path = tmp_path / "table.toml"
     path.write_text(
         'material="SiO2"\n[[segments]]\nreal="synthetic/n"\n'
-        'imaginary="synthetic/k"\nrange_nm=[300,700]\nreason="synthetic"\n' + extra
+        'imaginary="synthetic/k"\nrange_nm=[300,700]\nreason="synthetic"\n' + extra,
+        encoding="utf-8",
     )
     return path
 
@@ -94,7 +96,7 @@ def test_unusable_tabulated_segments_fail_explicitly(
 )
 def test_table_configuration_requires_segments_and_provenance(tmp_path, body, message):
     path = tmp_path / "table.toml"
-    path.write_text('material="SiO2"\n' + body)
+    path.write_text('material="SiO2"\n' + body, encoding="utf-8")
     with pytest.raises(DataError, match=message):
         tables.load_table(path)
 
@@ -194,7 +196,7 @@ def test_unfittable_or_unweighted_points_require_an_explicit_decision(
 def test_solid_fit_configuration_rejects_unknown_keys(tmp_path, transform, message):
     text = 'material="SiO2"\nrange_nm=[200,1000]\n[model]\nstart="test"\nfree=[]\n'
     path = tmp_path / "config.toml"
-    path.write_text(transform(text))
+    path.write_text(transform(text), encoding="utf-8")
     with pytest.raises(DataError, match=message):
         fitting.load_config(path)
 
@@ -272,7 +274,7 @@ def test_henke_segment_checks_density_and_usable_range(pair, tmp_path, monkeypat
     _serve(monkeypatch, density)
     monkeypatch.setattr(tables, "HENKE_DIRECTORY", tmp_path)
     path = tmp_path / "synthetic.nff"
-    path.write_text("energy f1 f2\n1000 1 0.1\n2000 1 0.1\n")
+    path.write_text("energy f1 f2\n1000 1 0.1\n2000 1 0.1\n", encoding="utf-8")
     wavelength, index = tables._henke_points(segment, "SiO2", "synthetic")
     assert np.all(np.diff(wavelength) > 0)
     assert np.all(np.real(index) < 1)
@@ -281,7 +283,7 @@ def test_henke_segment_checks_density_and_usable_range(pair, tmp_path, monkeypat
         tables._henke_points(
             dataclasses.replace(segment, range_nm=(10, 20)), "SiO2", "synthetic"
         )
-    path.write_text("energy f1 f2\n1000 1 -1\n2000 1 -1\n")
+    path.write_text("energy f1 f2\n1000 1 -1\n2000 1 -1\n", encoding="utf-8")
     with pytest.raises(DataError, match="n or k <= 0"):
         tables._henke_points(segment, "SiO2", "synthetic")
 
@@ -313,7 +315,7 @@ def test_fitting_absorption_and_index_with_parameter_priors_uses_both_components
     )
     result = fitting.fit(config)
     # The source's rounding error is much smaller than the assigned uncertainty.
-    assert result.values["Nvx"] == pytest.approx(735.4107760577147, rel=1e-6)
+    assert result.values["Nvx"] == pytest.approx(735.4107760577147, rel=1e-6, abs=0.0)
     assert result.chi2 < 1
     assert set(result.dataset_chi2) == {o.key for o in config.fitted}
     report = fitting.validation(result)
@@ -331,7 +333,8 @@ def test_solid_fit_inflates_covariance_when_scatter_exceeds_stated_errors(
         '[[formulas]]\nid="start"\nterms={attributes="ex=0",Eg="8",Eh="20",Nvc="100"}\n'
         '[[datasets]]\nid="repeat"\nmaterial="SiO2"\nquantity="refractive_index"\n'
         'unit="1"\nabscissa_unit="nm"\npoints=[["a","500","1.499"],["b","500","1.501"]]\n'
-        "uncertainty={absolute=0.0001}\n"
+        "uncertainty={absolute=0.0001}\n",
+        encoding="utf-8",
     )
     source = load_source(path)
     dataset = source.datasets[0]
@@ -351,7 +354,9 @@ def test_solid_fit_inflates_covariance_when_scatter_exceeds_stated_errors(
     wider = fitting.fit(config)
     # Equal weights at one wavelength put the fitted index at their arithmetic mean.
     # Double symmetric scatter: same optimum, four times the Birge variance.
-    assert wider.values["Nvc"] == pytest.approx(first.values["Nvc"], rel=1e-7)
-    assert first.chi2 == pytest.approx(200, rel=1e-7)
-    assert wider.chi2 == pytest.approx(800, rel=1e-7)
-    assert wider.covariance[0, 0] / first.covariance[0, 0] == pytest.approx(4, rel=1e-6)
+    assert wider.values["Nvc"] == pytest.approx(first.values["Nvc"], rel=1e-7, abs=0.0)
+    assert first.chi2 == pytest.approx(200, rel=1e-7, abs=0.0)
+    assert wider.chi2 == pytest.approx(800, rel=1e-7, abs=0.0)
+    assert wider.covariance[0, 0] / first.covariance[0, 0] == pytest.approx(
+        4, rel=1e-6, abs=0.0
+    )

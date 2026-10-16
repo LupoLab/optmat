@@ -89,7 +89,7 @@ def test_solprop_uses_the_coefficients_as_absolute_indices():
     # the reference gas's refractivity times n (3.7-6.5e-4; TC-545, TC-546).
     # Sapphire is a different formula (Dodge's handbook formula at 20 C), so its
     # difference also holds that of the formulas (TC-546).
-    snapshot = json.loads(SNAPSHOT.read_text())["models"]
+    snapshot = json.loads(SNAPSHOT.read_text(encoding="utf-8"))["models"]
     pairs = {
         ("CaF2", "daimon"): (None, 3.8e-4, 6.6e-4),
         ("MgF2", "dodge-o"): ("o", 3.6e-4, 4.6e-4),

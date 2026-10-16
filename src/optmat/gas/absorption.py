@@ -655,7 +655,7 @@ def measured_absorption(
     if not path.is_file():
         msg = f"no measured absorption spectrum for {gas.value}"
         raise DataError(msg)
-    config = tomllib.loads(path.read_text())
+    config = tomllib.loads(path.read_text(encoding="utf-8"))
     pieces = _pieces(config, path)
     temperature = float(config["temperature_k"])
     if variant is not None:

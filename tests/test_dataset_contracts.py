@@ -29,7 +29,7 @@ ENTRY = (
 
 def _source(tmp_path, text=HEADER + ENTRY):
     path = tmp_path / "synthetic.toml"
-    path.write_text(text)
+    path.write_text(text, encoding="utf-8")
     return path
 
 
@@ -138,7 +138,7 @@ def test_confidence_intervals_convert_using_normal_quantiles(confidence):
     spec = Uncertainty(absolute=1.0, level=f"{confidence} % confidence")
     # Independent inverse-normal calculation; the stored decimal factors are rounded.
     expected = 1 / ndtri((1 + confidence / 100) / 2)
-    assert spec.to_standard == pytest.approx(expected, rel=2e-15)
+    assert spec.to_standard == pytest.approx(expected, rel=2e-15, abs=0.0)
 
 
 def test_uncertainties_combine_in_quadrature_with_scale_and_row_overrides(sample):
@@ -283,7 +283,7 @@ def test_file_errata_preserve_the_original_and_apply_before_exclusion(
     printed = (
         "row,x,value,sigma,printed\na,500,10.00,0.3,original\nb,inf,20.0,,original\n"
     )
-    csv.write_text(printed)
+    csv.write_text(printed, encoding="utf-8")
     entry = ENTRY[: ENTRY.index("points =")] + 'file = "synthetic.csv"\n'
     text = (
         HEADER + entry + 'excluded_rows = { b = "synthetic exclusion" }\n' + _erratum()
@@ -293,12 +293,12 @@ def test_file_errata_preserve_the_original_and_apply_before_exclusion(
     assert source.datasets[0].values == ("12.0",)
     assert source.datasets[0].rows == ("a",)
     assert source.errata[0].printed == "10.00"
-    assert csv.read_text() == printed
-    assert path.read_text() == text
+    assert csv.read_text(encoding="utf-8") == printed
+    assert path.read_text(encoding="utf-8") == text
     # The missing optional sigma column means no stated per-row uncertainty.
-    csv.write_text("row,x,value\na,500,10.00\nb,inf,20.0\n")
+    csv.write_text("row,x,value\na,500,10.00\nb,inf,20.0\n", encoding="utf-8")
     assert load_source(path).datasets[0].sigmas == ("",)
-    csv.write_text("row,value\na,10.00\n")
+    csv.write_text("row,value\na,10.00\n", encoding="utf-8")
     with pytest.raises(DataError, match="lacks columns"):
         load_source(path)
     csv.unlink()

@@ -49,14 +49,14 @@ def test_eta_goes_from_zero_for_short_pulses_to_one_for_long():
 
 def test_the_stored_fit_is_current_and_reproduces():
     config = kerr.load_config("SiO2")
-    record = json.loads(STORED.read_text())
+    record = json.loads(STORED.read_text(encoding="utf-8"))
     assert record["config_sha256"] == config.digest
     result = kerr.fit(config)
     fitted = result.model.parameters
     stored = record["parameters"]
     # The fit is deterministic; 1e-6 relative allows for the optimiser's tolerance.
-    assert fitted[0] == pytest.approx(stored["N_m2_per_W"], rel=1e-6)
-    assert fitted[3] == pytest.approx(stored["raman_fraction"], rel=1e-6)
+    assert fitted[0] == pytest.approx(stored["N_m2_per_W"], rel=1e-6, abs=0.0)
+    assert fitted[3] == pytest.approx(stored["raman_fraction"], rel=1e-6, abs=0.0)
 
 
 def test_the_silica_model_is_physical():
@@ -84,16 +84,16 @@ def test_the_fitted_gain_is_the_silica_responses():
     predicted = gain.factor() * model.raman_fraction * float(model.n2(gain.wavelength))
     response = silica_raman_response()
     assert float(response.gain(gain.wavelength, gain.shift)) == pytest.approx(
-        predicted, rel=1e-12
+        predicted, rel=1e-12, abs=0.0
     )
     # One standard uncertainty (10 %) below the measurement, where the n2 data pull.
     assert predicted / gain.value == pytest.approx(0.9, abs=0.03)
 
 
 def test_a_config_needs_a_prior_or_a_gain(tmp_path):
-    text = (kerr.KERR_DIRECTORY / "SiO2.toml").read_text()
+    text = (kerr.KERR_DIRECTORY / "SiO2.toml").read_text(encoding="utf-8")
     head = text.split("[[raman_gains]]")[0]
     path = tmp_path / "bare.toml"
-    path.write_text(head)
+    path.write_text(head, encoding="utf-8")
     with pytest.raises(DataError, match="needs a prior"):
         kerr.load_config(path)

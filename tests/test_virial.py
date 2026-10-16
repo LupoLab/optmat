@@ -21,7 +21,7 @@ def test_every_choice_points_at_primary_data_of_its_gas():
 
 def test_ratio_is_b_over_a_in_si():
     # Argon: B_R = 1.76 cm^6/mol^2, A_R = 4.196 cm^3/mol (Achtermann et al. 1991).
-    assert virial_ratio("Ar") == pytest.approx(1.76e-12 / 4.196e-6, rel=1e-12)
+    assert virial_ratio("Ar") == pytest.approx(1.76e-12 / 4.196e-6, rel=1e-12, abs=0.0)
 
 
 def test_gases_without_a_curated_value_have_no_pair_term():
@@ -44,7 +44,7 @@ def test_the_like_terms_keep_their_uncertainty():
 
     argon = like_term("Ar")
     # Achtermann et al. 1991: B_R = 1.76 +- 0.05 (3 sigma), A_R = 4.196 cm^3/mol.
-    assert argon.sigma == pytest.approx(0.05 / 3 * 1e-12 / 4.196e-6, rel=1e-3)
+    assert argon.sigma == pytest.approx(0.05 / 3 * 1e-12 / 4.196e-6, rel=1e-3, abs=0.0)
     assert (argon.status, argon.frequency, argon.temperature) == (
         "curated",
         "632.99",
@@ -62,8 +62,10 @@ def test_the_like_terms_keep_their_uncertainty():
     # cm^3/mol, with 50 % (TC-794).
     oxygen = like_term("O2")
     assert oxygen.status == "provisional"
-    assert oxygen.b == pytest.approx((0.194 + 0.00641 / 0.63299**2) * 1e-6, rel=1e-12)
-    assert oxygen.sigma == pytest.approx(0.5 * oxygen.b, rel=1e-12)
+    assert oxygen.b == pytest.approx(
+        (0.194 + 0.00641 / 0.63299**2) * 1e-6, rel=1e-12, abs=0.0
+    )
+    assert oxygen.sigma == pytest.approx(0.5 * oxygen.b, rel=1e-12, abs=0.0)
 
 
 def test_a_static_value_must_state_its_induced_part(monkeypatch):
@@ -95,15 +97,15 @@ def test_the_third_terms():
 
     # Achtermann et al. 1991, Table II: argon's C_R = -86.6(20) cm^9/mol^3 at 323 K.
     argon = third_term("Ar")
-    assert argon.ratio == pytest.approx(86.6e-18 / 4.196e-6, rel=1e-3)
+    assert argon.ratio == pytest.approx(86.6e-18 / 4.196e-6, rel=1e-3, abs=0.0)
     # Helium: the measured bound |C_R| <= 1 cm^9/mol^3.
-    assert third_term("He").ratio == pytest.approx(1e-18 / 0.5213e-6, rel=1e-3)
+    assert third_term("He").ratio == pytest.approx(1e-18 / 0.5213e-6, rel=1e-3, abs=0.0)
     # Neon, without a measured C_R: the declared scale on its B_R.
     neon = third_term("Ne")
     # Achtermann et al. 1993: B_R = -0.11(2), A_R = 1.0012 at 303 K.
     b_r, a_r = -0.11e-12, 1.0012e-6
     scale = float(pair_rules()["third_ratio"])
-    assert neon.ratio == pytest.approx(scale * b_r**2 / a_r**2, rel=1e-2)
+    assert neon.ratio == pytest.approx(scale * b_r**2 / a_r**2, rel=1e-2, abs=0.0)
     assert third_term("CO").status == "none"
 
 

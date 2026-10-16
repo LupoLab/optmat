@@ -62,7 +62,7 @@ def test_the_smoothed_kernel_is_continuous_where_it_turns_asymptotic():
     for order in range(4):
         below = W._resonant_kernel(np.array([15 * (1 - 1e-13) / c]), sigma, order)[0]
         above = W._resonant_kernel(np.array([15 * (1 + 1e-13) / c]), sigma, order)[0]
-        assert below == pytest.approx(above, rel=1e-9)
+        assert below == pytest.approx(above, rel=1e-9, abs=0.0)
 
 
 def test_the_voigt_kernel_tends_to_the_gaussian_one():

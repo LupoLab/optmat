@@ -170,7 +170,7 @@ def solprop_table() -> str:
         A Markdown table.
     """
     path = ROOT / "tests" / "data" / "solprop_ionisation.json"
-    fixture = json.loads(path.read_text())
+    fixture = json.loads(path.read_text(encoding="utf-8"))
     rows = []
     for gas in GASES:
         if gas not in fixture["gases"]:

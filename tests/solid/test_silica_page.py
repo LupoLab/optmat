@@ -12,7 +12,7 @@ from optmat.solid.kerr import kerr_models
 from optmat.solid.models.formulas import FormulaModel
 from optmat.solid.models.registry import default_model, models
 
-PAGE = (Path(__file__).parents[2] / "docs" / "silica.md").read_text()
+PAGE = (Path(__file__).parents[2] / "docs" / "silica.md").read_text(encoding="utf-8")
 
 
 def _table(name):
@@ -27,7 +27,7 @@ def test_the_vuv_table_is_the_recommended_models(row):
     index = default_model("SiO2").refractive_index(wavelength)
     # Printed to 4 decimals in n and 3 significant digits in k.
     assert float(np.real(index)) == pytest.approx(float(row[1]), abs=5e-5)
-    assert float(np.imag(index)) == pytest.approx(float(row[2]), rel=5e-3)
+    assert float(np.imag(index)) == pytest.approx(float(row[2]), rel=5e-3, abs=0.0)
 
 
 def test_the_window_table_is_the_five_models():
