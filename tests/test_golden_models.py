@@ -35,6 +35,12 @@ RAMAN_IDENTITIES = json.loads(
 # (2026-10-16): 1e-11, also for floating identity fields. No absolute floor: a
 # formerly zero coefficient must stay zero, however small its unit.
 RTOL = 1e-11
+# Wider tolerances, each with its reason. O3's real refractivity is the Kramers-Kronig
+# transform of its measured absorption, taken by FFT on a fine wavenumber grid, and its
+# derivative amplifies that transform's rounding: Linux differs from the macOS record by
+# up to 9.9e-9 relative (CI's runners; 7.4e-9 on an AVX-512 Xeon; 2026-10-16), far below
+# the measurements' uncertainty. 1e-7 leaves a factor of ten.
+LOOSER = {("gas/fit/O3", "dpolarizability_domega"): 1e-7}
 # The canonical serializer represents these integer-valued arrays as floats.
 EXACT_FIELDS = {"versions", "j", "damping_group"}
 # A model's identity digest hashes its numbers, some of them computed (an FFT, a
@@ -114,7 +120,7 @@ def _assert_golden(record, now):
     np.testing.assert_allclose(
         _decode(now["values"]),
         _decode(record["values"]),
-        rtol=RTOL,
+        rtol=LOOSER.get((record["id"], record["quantity"]), RTOL),
         atol=0,
         err_msg=(
             f"{record['id']}: output changed beyond arithmetic tolerance; review the "
