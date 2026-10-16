@@ -5,6 +5,13 @@ All notable changes are recorded here, in the style of
 (`REGISTER.md`) records the changes to data and models in detail. Versions before
 0.8.0 were internal and were not published.
 
+## Unreleased
+
+### Added
+
+- optmat's DOI, 10.5281/zenodo.23422879 (Zenodo; every version), in `CITATION.cff`
+  and the README.
+
 ## 0.8.0 (2026-10-16)
 
 The first public release, at github.com/LupoLab/optmat. No value, model or stored fit

@@ -9,6 +9,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/optmat)](https://pypi.org/project/optmat/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![REUSE](https://img.shields.io/badge/REUSE-compliant-green)](https://reuse.software)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23422879.svg)](https://doi.org/10.5281/zenodo.23422879)
 
 **Curated, validated optical properties of materials, with the provenance of every
 number.**
@@ -270,5 +271,7 @@ unchanged into `src/optmat/data/external/`. Those data belong to their authors a
 publishers, are cited in every case, and are included for scientific research under
 the [third-party data notice](LICENSES/LicenseRef-optmat-third-party.txt), which also
 says how a rights holder can ask for their terms to be applied. Please cite the
-original sources, as well as optmat, when you use the values.
+original sources, as well as optmat
+([doi:10.5281/zenodo.23422879](https://doi.org/10.5281/zenodo.23422879); `CITATION.cff`),
+when you use the values.
 [`REUSE.toml`](REUSE.toml) gives the copyright and licence of every file.
