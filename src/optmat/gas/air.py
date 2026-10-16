@@ -327,8 +327,10 @@ class AirModel(Identified):
         The constituents and their mole fractions, summing to one.
     models : tuple of Model
         Each constituent's recommended dispersion model, in the same order.
-    equation_of_state : EquationOfState
-        The pseudo-pure dry air's (Lemmon et al. 2000).
+    equation_of_state : EquationOfState or None
+        The pseudo-pure dry air's (Lemmon et al. 2000); None where CoolProp (the
+        ``gas`` extra) is not installed, when only the ideal-gas density is
+        available (TC-1092).
     wavelength_range : tuple of float
         The envelope of :attr:`intervals`, m.
     intervals : tuple of tuple of float
@@ -345,7 +347,7 @@ class AirModel(Identified):
     name: str
     constituents: tuple[Constituent, ...]
     models: tuple[Model, ...]
-    equation_of_state: EquationOfState
+    equation_of_state: EquationOfState | None
     wavelength_range: tuple[float, float]
     intervals: tuple[tuple[float, float], ...]
 
@@ -395,7 +397,9 @@ class AirModel(Identified):
         numpy.ndarray
             The sum, complex.
         """
-        wavelength = np.asarray(wavelength, dtype=float)
+        wavelength = _validity.checked_wavelength(
+            wavelength, f"air/{self.name}", static=True
+        )
         if warn:
             self._check_range(wavelength)
         return np.asarray(
@@ -424,6 +428,11 @@ class AirModel(Identified):
         numpy.ndarray
             ``sum_s x_s alpha_s``, C m^2/V (complex).
 
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+
         Examples
         --------
         >>> from optmat.constants import AU_POLARIZABILITY
@@ -449,6 +458,11 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             C m^2/V.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         return np.asarray(np.real(self.complex_polarizability(wavelength, warn=warn)))
 
@@ -468,6 +482,11 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             ``sum_s x_s d alpha_s / d omega``, C m^2 V^-1 s (complex).
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
         """
         return self._sum("dpolarizability_domega", wavelength, warn)
 
@@ -485,9 +504,17 @@ class AirModel(Identified):
         -------
         float
             The number density, m^-3.
+
+        Raises
+        ------
+        ImportError
+            For the real-gas density where CoolProp is not installed.
         """
         if ideal:
             return ideal_number_density(state)
+        if self.equation_of_state is None:
+            msg = "real-gas densities need CoolProp: install optmat[gas]"
+            raise ImportError(msg)
         return self.equation_of_state.number_density(state)
 
     def refractivity(
@@ -515,6 +542,13 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             The refractivity ``n - 1``, without pair terms (OEP 4's).
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+        ImportError
+            If ``ideal`` is False and CoolProp is not installed.
         """
         alpha = self.polarizability(wavelength, warn=warn)
         return refractivity(alpha, self._density(state, ideal))
@@ -544,6 +578,13 @@ class AirModel(Identified):
         -------
         numpy.ndarray
             ``n``, complex.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is zero or negative.
+        ImportError
+            If ``ideal`` is False and CoolProp is not installed.
         """
         alpha = self.complex_polarizability(wavelength, warn=warn)
         return refractive_index(alpha, self._density(state, ideal))
@@ -600,6 +641,24 @@ def air_model(name: str = DEFAULT_AIR) -> AirModel:
     return _air_model(name)
 
 
+def _equation_of_state() -> EquationOfState | None:
+    """Return the pseudo-pure dry air's equation of state, or None without CoolProp.
+
+    The equation is needed only for the real-gas density; without the ``gas`` extra
+    the air model still gives the polarizability and the ideal-gas index (TC-1092).
+
+    Returns
+    -------
+    EquationOfState or None
+        :func:`~optmat.gas.eos.air_equation_of_state`, or None where CoolProp is
+        not installed.
+    """
+    try:
+        return air_equation_of_state()
+    except ImportError:
+        return None
+
+
 @functools.cache
 def _air_model(name: str) -> AirModel:
     """Build the air model of a named composition, once per name.
@@ -648,7 +707,7 @@ def _air_model(name: str) -> AirModel:
         name=name,
         constituents=constituents,
         models=models,
-        equation_of_state=air_equation_of_state(),
+        equation_of_state=_equation_of_state(),
         wavelength_range=(intervals[0][0], intervals[-1][1]),
         intervals=intervals,
         status="validated",

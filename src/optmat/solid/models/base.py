@@ -214,8 +214,13 @@ class Model(Identified):
         -------
         numpy.ndarray
             Angular frequency, rad/s.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
-        wavelength = np.asarray(wavelength, dtype=float)
+        wavelength = _validity.checked_wavelength(wavelength, self.name, static=False)
         if warn and np.any(_validity.outside(wavelength, self.intervals)):
             msg = (
                 f"{self.name} ({self.material}) evaluated outside "
@@ -241,6 +246,11 @@ class Model(Identified):
         -------
         numpy.ndarray
             The permittivity epsilon = (n + ik)^2, with Im epsilon >= 0 for absorption.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
         return np.asarray(self._permittivity(self._omega(wavelength, warn=warn)))
 
@@ -260,6 +270,11 @@ class Model(Identified):
         -------
         numpy.ndarray
             The derivative with respect to angular frequency, s/rad.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
         return np.asarray(
             self._dpermittivity_domega(self._omega(wavelength, warn=warn))
@@ -282,6 +297,11 @@ class Model(Identified):
         numpy.ndarray
             The index n + ik, with k >= 0 for absorption (the intensity falls as
             exp(-4 pi k z / lambda)).
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
         return complex_index(self.permittivity(wavelength, warn=warn))
 
@@ -301,6 +321,11 @@ class Model(Identified):
         -------
         numpy.ndarray
             The derivative, s/rad.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
         omega = self._omega(wavelength, warn=warn)
         index = complex_index(self._permittivity(omega))
@@ -322,6 +347,11 @@ class Model(Identified):
         -------
         numpy.ndarray
             The group index.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
         omega = self._omega(wavelength, warn=warn)
         index = complex_index(self._permittivity(omega))
@@ -348,6 +378,11 @@ class Model(Identified):
         -------
         numpy.ndarray
             Re beta_2, s^2/m.
+
+        Raises
+        ------
+        ArgumentError
+            If a wavelength is not positive and finite.
         """
         omega = self._omega(wavelength, warn=warn)
 

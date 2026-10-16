@@ -267,3 +267,29 @@ def test_the_widening_needs_each_unqualified_constituents_table(monkeypatch):
     # The merge drops a new piece narrower than the minimum width.
     assert air._merge([(2e-6, 2.001e-6)], ((1e-6, 1.5e-6),)) == ((1e-6, 1.5e-6),)
     assert air._merge([(1.5e-6, 1.6e-6)], ((1e-6, 1.5e-6),)) == ((1e-6, 1.6e-6),)
+
+
+def test_without_coolprop_air_keeps_its_ideal_gas_index(monkeypatch):
+    # The equation of state is needed only for the real-gas density (TC-1092): a
+    # base install, without the gas extra, still has air's polarizability and its
+    # ideal-gas index, and asking for the real gas says what to install.
+    with_coolprop = air.air_model()
+
+    def missing():
+        raise ImportError("real-gas densities need CoolProp: install optmat[gas]")
+
+    monkeypatch.setattr(air, "air_equation_of_state", missing)
+    air._air_model.cache_clear()
+    try:
+        bare = air.air_model()
+        assert bare.equation_of_state is None
+        wavelength = np.array([400e-9, 800e-9])
+        state = State(1e5, 293.15)
+        np.testing.assert_array_equal(
+            bare.refractive_index(wavelength, state, ideal=True),
+            with_coolprop.refractive_index(wavelength, state, ideal=True),
+        )
+        with pytest.raises(ImportError, match=r"install optmat\[gas\]"):
+            bare.refractivity(wavelength, state)
+    finally:
+        air._air_model.cache_clear()

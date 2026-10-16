@@ -23,7 +23,10 @@ literature, 15 °C and 1 atm in atmospheric science, 0 °C and 1 bar in Börzsö
 real-gas density. To compare the two kinds, every value is turned into a polarizability
 with the number density its author meant (`optmat.gas.eos.number_density`, `ideal=True`
 or not). Real-gas densities are $p/(Z k_B T)$ with the compressibility factor $Z$ of the
-CoolProp equation of state for that gas.
+CoolProp equation of state for that gas. CoolProp comes with the `gas` extra
+(`pip install "optmat[gas]"`); without it, every model, air's included, still gives
+its polarizability and its index at the ideal-gas density (`ideal=True`), and asking
+for the real gas raises an `ImportError` that names the extra (TC-1092).
 
 **The equation of state as an object.** `optmat.gas.eos.equation_of_state(gas)` returns
 it with its identity (CoolProp's version, the fluid and the equation's reference key;
