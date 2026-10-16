@@ -29,10 +29,13 @@ GASES = sorted(p.stem for p in NONLINEAR_DIRECTORY.glob("*.toml"))
 # parameter resolution scales as sqrt(objective resolution), in units of sigma.
 # Finite-difference, three-point and analytic-Jacobian convergence experiments gave
 # <7e-6 sigma parameter displacement and <1.4e-8 relative prediction differences
-# at fitted points. Use 1e-4 sigma and 1e-7 predictions, also over the declared range.
-# These are numerical regression bounds, not estimates of scientific uncertainty.
+# at fitted points. Across platforms (Linux's OpenBLAS and libm against the macOS
+# Accelerate the fits were stored on) a fresh Xe fit's predictions differ by up to
+# 3.3e-7 relative (CI, 2026-10-16). Use 1e-4 sigma and 1e-6 predictions, also over the
+# declared range. These are numerical regression bounds, not estimates of scientific
+# uncertainty.
 PARAMETER_SIGMA_TOL = 1e-4
-PREDICTION_RTOL = 1e-7
+PREDICTION_RTOL = 1e-6
 OBJECTIVE_TOL = 1e-8
 
 

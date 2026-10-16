@@ -14,6 +14,7 @@ The samples are regression checks, not a proof of equivalence at every argument.
 import copy
 import importlib.util
 import json
+import platform
 import sys
 from pathlib import Path
 
@@ -34,6 +35,20 @@ RAMAN_IDENTITIES = json.loads(
 RTOL = 1e-12
 # The canonical serializer represents these integer-valued arrays as floats.
 EXACT_FIELDS = {"versions", "j", "damping_group"}
+# A model's identity digest hashes its numbers, some of them computed (an FFT, a
+# least-squares fit, a derived grid), so it is exact only where it was recorded: on
+# Linux (OpenBLAS, glibc's libm) the O3 absorption's and the molecular rates' digests
+# differ in the last bits of those numbers (CI, 2026-10-16). Elsewhere the values and
+# the arguments are still held to RTOL, and the digest to its own record's.
+RECORDED_ON = ("Darwin", "arm64")
+
+
+def _digests_hold_here():
+    return (platform.system(), platform.machine()) == RECORDED_ON
+
+
+def _plain(value):
+    return json.loads(json.dumps(value))
 
 
 def _tool():
@@ -82,13 +97,14 @@ def _assert_identity(actual, expected, path="identity"):
 
 def _assert_golden(record, now):
     assert now["class"] == record["class"]
-    assert now["arguments"] == record["arguments"]
+    # Arguments derived on a grid (a geometric spacing) differ in the last bit too.
+    _assert_identity(_plain(now["arguments"]), _plain(record["arguments"]), "arguments")
     if record["id"] in RAMAN_IDENTITIES:
         expected = RAMAN_IDENTITIES[record["id"]]
         assert sha256_digest(expected) == record["digest"], "recorded digest"
         assert sha256_digest(now["identity_record"]) == now["digest"], "runtime digest"
         _assert_identity(now["identity_record"], expected)
-    else:
+    elif _digests_hold_here():
         assert record.get("digest") == now.get("digest"), (
             f"{record['id']}: identity changed; review and re-record with "
             "tools/golden_models.py, with a changelog line"
