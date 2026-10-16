@@ -44,7 +44,9 @@ changed.
 - Windows: every text file is read and written as UTF-8, whatever the platform's
   default (Windows decoded the curated records with its code page, which failed on
   their author names and unit signs); `tests/test_encoding.py` keeps it so, and CI
-  runs the tests on Windows.
+  runs the tests on Windows. A git checkout keeps LF line endings on every platform
+  (`.gitattributes`), so the stored configurations' hashes match there too; the
+  archives under `data/external/` are checked out byte for byte.
 
 ## 0.7.0 (2026-10-15)
 

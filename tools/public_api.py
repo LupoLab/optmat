@@ -22,7 +22,7 @@ import functools
 import importlib
 import inspect
 import json
-from pathlib import Path
+from pathlib import Path, PurePath
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -145,7 +145,9 @@ def _describe(value: Any) -> dict[str, Any]:
         return _class(value)
     if callable(value):
         return {"kind": "function", "signature": _signature(value)}
-    return {"kind": "constant", "type": type(value).__name__}
+    # A path is a PosixPath or a WindowsPath by platform; the surface is the same.
+    kind = "Path" if isinstance(value, PurePath) else type(value).__name__
+    return {"kind": "constant", "type": kind}
 
 
 def snapshot() -> dict[str, dict[str, Any]]:
