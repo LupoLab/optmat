@@ -115,7 +115,9 @@ def test_henke_segment_follows_the_x_ray_limit(tmp_path):
     at = np.argmin(np.abs(rakic_k.abscissa_values() - 1000.0))
     wavelength = rakic_k.vacuum_wavelength()[at]
     henke = model.refractive_index(np.array([wavelength]))[0]
-    assert np.imag(henke) == pytest.approx(rakic_k.scaled_values()[at], rel=0.05)
+    assert np.imag(henke) == pytest.approx(
+        rakic_k.scaled_values()[at], rel=0.05, abs=0.0
+    )
     with pytest.raises(DataError, match="atom_density"):
         path.write_text(
             'material = "Al"\n[[segments]]\nhenke = "al"\nrange_nm = [0.5, 3]\n'

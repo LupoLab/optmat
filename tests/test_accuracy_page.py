@@ -51,7 +51,7 @@ def test_statistical_uncertainty_is_current(gas):
     fit = fitted_models()[f"fit/{gas}"]
     sigma = fit.dispersion_sigma_relative(np.array([HARTREE_NM / 800.0]), 2)[0]
     # Printed to two significant figures.
-    assert _percent(ROWS[gas][1]) == pytest.approx(sigma, rel=0.05)
+    assert _percent(ROWS[gas][1]) == pytest.approx(sigma, rel=0.05, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", sorted(ROWS))
@@ -65,7 +65,7 @@ def test_leave_one_out_shift_is_current(gas):
     largest = max(shifts, key=shifts.__getitem__)
     assert ROWS[gas][3] == largest
     # Printed to two significant figures.
-    assert _percent(ROWS[gas][2]) == pytest.approx(shifts[largest], rel=0.05)
+    assert _percent(ROWS[gas][2]) == pytest.approx(shifts[largest], rel=0.05, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", sorted(ROWS))
@@ -134,5 +134,5 @@ def test_band_uncertainties_are_current(gas, wavelength, column):
         abs(entry["gvd_shift_relative"][index]) for entry in record["dropped"].values()
     )
     # Printed to two significant figures.
-    assert _percent(cells[column]) == pytest.approx(sigma, rel=0.05)
-    assert _percent(cells[column + 1]) == pytest.approx(largest, rel=0.05)
+    assert _percent(cells[column]) == pytest.approx(sigma, rel=0.05, abs=0.0)
+    assert _percent(cells[column + 1]) == pytest.approx(largest, rel=0.05, abs=0.0)

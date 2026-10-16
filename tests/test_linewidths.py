@@ -52,7 +52,7 @@ def test_bischel_and_dyers_polynomial_law():
         },
     )
     width = law.fwhm(np.array([1]), 474.0, AMAGAT)[0]
-    assert width == pytest.approx((473.6 + 93.6) * 1e6, rel=2e-3)
+    assert width == pytest.approx((473.6 + 93.6) * 1e6, rel=2e-3, abs=0.0)
 
 
 def test_a_line_table_interpolates_and_holds_its_ends():

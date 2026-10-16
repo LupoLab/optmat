@@ -46,9 +46,9 @@ def test_the_thresholds_are_nists_halved():
     # Argon: 15.7596119 eV and the Ar+ 2P1/2 level 1431.5831 cm-1 (nist_asd_2026),
     # halved; 1e-9 relative is the arithmetic, not a physical uncertainty.
     t = T.thresholds("Ar")
-    assert t["lower"] == pytest.approx(15.7596119 / 2, rel=1e-12)
+    assert t["lower"] == pytest.approx(15.7596119 / 2, rel=1e-12, abs=0.0)
     assert t["upper"] == pytest.approx(
-        (15.7596119 + 1431.5831 * T.HC_EV_CM) / 2, rel=1e-9
+        (15.7596119 + 1431.5831 * T.HC_EV_CM) / 2, rel=1e-9, abs=0.0
     )
     assert t["upper"] == pytest.approx(7.9686, abs=5e-5)
     assert T.thresholds("He")["upper"] == T.thresholds("He")["lower"]
@@ -59,7 +59,9 @@ def test_mccowns_coefficient_converts_by_the_photon_energy():
     # hbar omega: 4e-32 cm4 W-1 at 193 nm is 4.1e-50 cm4 s (the value Lagutin et al.
     # draw for it; mccown_1982). 1e-3: the printed 193 nm against the line centre.
     (value,) = T.cm4_s(T.dataset("mccown_1982/alpha_Xe"))
-    assert value == pytest.approx(4e-32 * 1239.841984 / 193 * 1.602176634e-19, rel=1e-3)
+    assert value == pytest.approx(
+        4e-32 * 1239.841984 / 193 * 1.602176634e-19, rel=1e-3, abs=0.0
+    )
 
 
 def test_argon_calculations_agree_within_the_stated_margin():

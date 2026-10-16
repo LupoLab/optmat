@@ -111,7 +111,7 @@ def test_the_trecx_two_photon_files_and_uncertainties_match_the_archive():
         stated = by_id[dataset].uncertainty
         for row, value in rows.items():
             expected = stated.relative_rows.get(row, stated.relative)
-            assert expected == pytest.approx(value, rel=0.01), (dataset, row)
+            assert expected == pytest.approx(value, rel=0.01, abs=0.0), (dataset, row)
 
 
 def test_the_trecx_files_and_uncertainties_match_the_archived_tables():

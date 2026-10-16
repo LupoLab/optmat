@@ -66,7 +66,7 @@ def test_the_mean_energy_is_defined_where_the_rates_underflow():
     assert np.all(np.isfinite(energies))
     # The higher channel's share is suppressed by its tunnelling exponent: at 1e7 V/m
     # the mean is the lowest channel's to far below 1e-12.
-    assert energies[0] == pytest.approx(lowest, rel=1e-12)
+    assert energies[0] == pytest.approx(lowest, rel=1e-12, abs=0.0)
 
 
 def test_a_single_channel_model_is_constant():

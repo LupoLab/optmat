@@ -210,7 +210,7 @@ def test_solid_temperature_metadata_and_reference_medium():
         "test", "synthetic", entry | {"index_medium": "vacuum"}
     )
     assert absolute.permittivity(500e-9) == pytest.approx(
-        1 + 1.3 * 0.25 / 0.24, rel=2e-15
+        1 + 1.3 * 0.25 / 0.24, rel=2e-15, abs=0.0
     )
 
 

@@ -135,8 +135,8 @@ def test_ground_state_rotational_constants_are_recovered_from_both_row_orientati
     )
     recovered = raman._constants({table.key: table}, {"fit_lines": table.key})
     # Small well-conditioned linear least-squares problem: rounding only.
-    assert recovered.b == pytest.approx(b, rel=1e-12)
-    assert recovered.d == pytest.approx(d, rel=1e-12)
+    assert recovered.b == pytest.approx(b, rel=1e-12, abs=0.0)
+    assert recovered.d == pytest.approx(d, rel=1e-12, abs=0.0)
     assert recovered.h == 0
 
 
@@ -286,7 +286,7 @@ def test_disjoint_temperature_tables_do_not_invent_a_temperature_exponent(source
     assert law.exponent == (0, 0, 0, 0)
     assert law.j == (0, 2, 4, 6)
     # exp(log(width)) introduces floating-point rounding.
-    assert law.coefficient == pytest.approx((4e6, 6e6, 4e6, 6e6), rel=2e-15)
+    assert law.coefficient == pytest.approx((4e6, 6e6, 4e6, 6e6), rel=2e-15, abs=0.0)
     assert used == [first.key, second.key]
 
 

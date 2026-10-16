@@ -292,7 +292,9 @@ def test_a_field_abscissa_converts_to_volts_per_metre(tmp_path):
     )
     (dataset,) = load_source(record).datasets
     # One atomic unit of field is E_h / (e a0) = 5.142206747e11 V/m (CODATA 2018).
-    assert dataset.abscissa_values()[0] == pytest.approx(5.142206747e10, rel=1e-9)
+    assert dataset.abscissa_values()[0] == pytest.approx(
+        5.142206747e10, rel=1e-9, abs=0.0
+    )
 
 
 def test_an_ion_is_its_own_material_and_not_its_gas(tmp_path):

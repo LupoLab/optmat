@@ -315,7 +315,7 @@ def test_fitting_absorption_and_index_with_parameter_priors_uses_both_components
     )
     result = fitting.fit(config)
     # The source's rounding error is much smaller than the assigned uncertainty.
-    assert result.values["Nvx"] == pytest.approx(735.4107760577147, rel=1e-6)
+    assert result.values["Nvx"] == pytest.approx(735.4107760577147, rel=1e-6, abs=0.0)
     assert result.chi2 < 1
     assert set(result.dataset_chi2) == {o.key for o in config.fitted}
     report = fitting.validation(result)
@@ -354,7 +354,9 @@ def test_solid_fit_inflates_covariance_when_scatter_exceeds_stated_errors(
     wider = fitting.fit(config)
     # Equal weights at one wavelength put the fitted index at their arithmetic mean.
     # Double symmetric scatter: same optimum, four times the Birge variance.
-    assert wider.values["Nvc"] == pytest.approx(first.values["Nvc"], rel=1e-7)
-    assert first.chi2 == pytest.approx(200, rel=1e-7)
-    assert wider.chi2 == pytest.approx(800, rel=1e-7)
-    assert wider.covariance[0, 0] / first.covariance[0, 0] == pytest.approx(4, rel=1e-6)
+    assert wider.values["Nvc"] == pytest.approx(first.values["Nvc"], rel=1e-7, abs=0.0)
+    assert first.chi2 == pytest.approx(200, rel=1e-7, abs=0.0)
+    assert wider.chi2 == pytest.approx(800, rel=1e-7, abs=0.0)
+    assert wider.covariance[0, 0] / first.covariance[0, 0] == pytest.approx(
+        4, rel=1e-6, abs=0.0
+    )

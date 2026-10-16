@@ -34,8 +34,11 @@ def _gamma(key):
 
 def test_one_atomic_unit_of_gamma_is_shelton_and_rices_esu_value():
     # Shelton & Rice, Table II: 1 au = 6.235377e-65 C^4 m^4 J^-3 = 5.0367e-40 esu.
-    assert pytest.approx(6.235377e-65, rel=1e-6) == AU_HYPERPOLARIZABILITY
-    assert pytest.approx(5.0367e-40, rel=1e-4) == AU_HYPERPOLARIZABILITY * ESU_PER_SI
+    assert pytest.approx(6.235377e-65, rel=1e-6, abs=0.0) == AU_HYPERPOLARIZABILITY
+    assert (
+        pytest.approx(5.0367e-40, rel=1e-4, abs=0.0)
+        == AU_HYPERPOLARIZABILITY * ESU_PER_SI
+    )
 
 
 def test_lehmeiers_helium_is_43_5_au_in_the_taylor_convention():
@@ -51,13 +54,13 @@ def test_cars_chi_per_amagat_is_148_au_per_unit():
     stokes_free = NonlinearOptions("farrow_1985/this_work_Ar")
     with pytest.raises(DataError, match="stokes_nm"):
         gamma_observation(ar, stokes_free)
-    assert value * factor == pytest.approx(9.6 * 147.8, rel=1e-3)
+    assert value * factor == pytest.approx(9.6 * 147.8, rel=1e-3, abs=0.0)
 
 
 def test_one_atomic_unit_is_8_91e_23_cm2_per_w_of_n2_at_1_atm_and_0_c():
     density = 101325.0 / (1.380649e-23 * 273.15)
     n2 = density * AU_HYPERPOLARIZABILITY / (8 * EPS0**2 * C) * 1e4
-    assert n2 == pytest.approx(8.91e-23, rel=1e-3)
+    assert n2 == pytest.approx(8.91e-23, rel=1e-3, abs=0.0)
 
 
 @pytest.mark.parametrize(
@@ -124,7 +127,7 @@ def test_the_documentation_table_is_current():
     for gas, model in hyperpolarizability_models().items():
         kerr = float(model.gamma_au("kerr", 800e-9))
         printed = float(rows[gas.value][2].split("±")[0])
-        assert printed == pytest.approx(kerr, rel=2e-3)
+        assert printed == pytest.approx(kerr, rel=2e-3, abs=0.0)
 
 
 def test_the_time_domain_form_gives_every_channels_gamma():
@@ -161,9 +164,11 @@ def test_the_time_domain_form_gives_every_channels_gamma():
         cross = float(model.gamma_au("pump_probe", two, one))
         thg = float(model.gamma_au("thg", one))
         cars = float(model.gamma_au("cars", one, two))
-    assert amplitude[25] == pytest.approx((0.75 * kerr + 1.5 * cross) / 6, rel=1e-10)
-    assert amplitude[75] == pytest.approx(thg / 24, rel=1e-10)
-    assert amplitude[39] == pytest.approx(0.75 * cars / 6, rel=1e-10)
+    assert amplitude[25] == pytest.approx(
+        (0.75 * kerr + 1.5 * cross) / 6, rel=1e-10, abs=0.0
+    )
+    assert amplitude[75] == pytest.approx(thg / 24, rel=1e-10, abs=0.0)
+    assert amplitude[39] == pytest.approx(0.75 * cars / 6, rel=1e-10, abs=0.0)
 
 
 def test_n2_of_a_gas_without_an_equation_of_state_uses_the_ideal_gas():

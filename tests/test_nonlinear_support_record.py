@@ -121,7 +121,7 @@ def test_no_fitted_point_has_a_leg_beyond_the_derived_bound(gas):
     assert len(points) == record.fitted_points
     for point, w2 in points:
         assert sum(math.fsum([x]) for x in point.legs) == pytest.approx(0.0, abs=1e-6)
-        assert w2 == pytest.approx(sum(x**2 for x in point.legs), rel=RTOL)
+        assert w2 == pytest.approx(sum(x**2 for x in point.legs), rel=RTOL, abs=0.0)
         assert max(abs(x) for x in point.legs) <= record.leg_max_in_w2 * (1 + RTOL)
     assert record.leg_max.wavenumber <= record.leg_max_in_w2 * (1 + RTOL)
 
@@ -129,7 +129,7 @@ def test_no_fitted_point_has_a_leg_beyond_the_derived_bound(gas):
 def test_the_third_harmonic_attains_the_derived_bound():
     # Cauchy-Schwarz: nu_k^2 <= 3 W2 / 4, with equality for the third harmonic's output.
     legs = derivation.signed_legs("thg", np.array([1.0]))[:, 0]
-    assert max(legs**2) == pytest.approx(0.75 * np.sum(legs**2), rel=RTOL)
+    assert max(legs**2) == pytest.approx(0.75 * np.sum(legs**2), rel=RTOL, abs=0.0)
     rng = np.random.default_rng(5)
     inputs = rng.normal(size=(3, 4000))
     quartets = np.vstack([-inputs.sum(axis=0), inputs])
@@ -142,9 +142,13 @@ def test_the_extents_agree_with_the_analysis_of_the_manual(gas):
     support = _tool().support(gas)
     record = _record(gas)
     assert len(support.fitted) == record.fitted_points
-    assert record.leg_max.wavenumber == pytest.approx(100 * support.leg_max, rel=RTOL)
-    assert record.pair_max.wavenumber == pytest.approx(100 * support.pair_max, rel=RTOL)
-    assert record.max_w2 == pytest.approx(1e4 * support.max_w2, rel=RTOL)
+    assert record.leg_max.wavenumber == pytest.approx(
+        100 * support.leg_max, rel=RTOL, abs=0.0
+    )
+    assert record.pair_max.wavenumber == pytest.approx(
+        100 * support.pair_max, rel=RTOL, abs=0.0
+    )
+    assert record.max_w2 == pytest.approx(1e4 * support.max_w2, rel=RTOL, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", GASES)
@@ -154,14 +158,16 @@ def test_the_witnesses_attain_their_extents(gas):
     # W2 in SI: m^-2 is 1e4 cm^-2, exactly the stored fit's largest W2.
     assert record.max_w2 == 1e4 * model.record["max_w2_fitted_cm-2"]  # pyright: ignore[reportOperatorIssue]
     for point in record.max_w2_witnesses:
-        assert sum(x**2 for x in point.legs) == pytest.approx(record.max_w2, rel=RTOL)
+        assert sum(x**2 for x in point.legs) == pytest.approx(
+            record.max_w2, rel=RTOL, abs=0.0
+        )
     for point in record.leg_max.witnesses:
         assert max(map(abs, point.legs)) == pytest.approx(
-            record.leg_max.wavenumber, rel=RTOL
+            record.leg_max.wavenumber, rel=RTOL, abs=0.0
         )
     for point in record.pair_max.witnesses:
         assert derivation._pair_max(point.legs) == pytest.approx(
-            record.pair_max.wavenumber, rel=RTOL
+            record.pair_max.wavenumber, rel=RTOL, abs=0.0
         )
     assert record.leg_max.datasets == tuple(
         dict.fromkeys(p.dataset for p in record.leg_max.witnesses)
@@ -178,6 +184,7 @@ def test_argons_largest_leg_is_the_harmonic_of_shelton_s_visible_eshg():
     assert witness.legs == pytest.approx(
         (-2 / witness.wavelength, 1 / witness.wavelength, 1 / witness.wavelength, 0.0),
         rel=RTOL,
+        abs=0.0,
     )
 
 
@@ -197,8 +204,8 @@ def test_a_pump_probe_point_keeps_both_its_wavelengths():
     assert point.second_wavelength is not None
     nu, other = 1 / point.wavelength, 1 / point.second_wavelength
     legs = derivation.signed_legs("pump_probe", np.array([nu]), np.array([other]))
-    assert point.legs == pytest.approx(tuple(legs[:, 0]), rel=RTOL)
-    assert point.second_wavelength == pytest.approx(580e-9, rel=RTOL)
+    assert point.legs == pytest.approx(tuple(legs[:, 0]), rel=RTOL, abs=0.0)
+    assert point.second_wavelength == pytest.approx(580e-9, rel=RTOL, abs=0.0)
 
 
 @pytest.mark.parametrize(
@@ -299,7 +306,7 @@ def test_a_band_origin_is_the_sum_of_its_chain_of_0_0_bands(gas, name, chain):
     assert limit.datasets == keys
     datasets = {d.key: d for d in derivation.datasets()}
     total = sum(float(datasets[k].parameters["nu00_cm1"]) for k in keys)  # pyright: ignore[reportArgumentType]
-    assert limit.wavenumber == pytest.approx(100 * total, rel=RTOL)
+    assert limit.wavenumber == pytest.approx(100 * total, rel=RTOL, abs=0.0)
     assert not limit.uncertainty.stated
     assert any("hot-band" in q for q in limit.qualifications)
 
@@ -311,7 +318,7 @@ def test_the_ionisation_energy_is_the_ionisation_modules(gas):
     assert record.ionisation.datasets == (parameters.ionization_energy_source,)
     hc = 2 * math.pi * HBAR * C
     assert record.ionisation.wavenumber == pytest.approx(
-        parameters.ionization_energy / hc, rel=RTOL
+        parameters.ionization_energy / hc, rel=RTOL, abs=0.0
     )
 
 
@@ -358,7 +365,7 @@ def test_uncertainties_are_stated_or_said_to_be_absent():
     uncertainty = neon.e1.uncertainty
     assert isinstance(uncertainty, SupportUncertainty)
     assert uncertainty.stated
-    assert uncertainty.value == pytest.approx(0.1, rel=RTOL)
+    assert uncertainty.value == pytest.approx(0.1, rel=RTOL, abs=0.0)
     assert uncertainty.level == "not stated"
     unstated = argon.e1.uncertainty
     assert isinstance(unstated, SupportUncertainty)

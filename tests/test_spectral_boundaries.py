@@ -165,7 +165,7 @@ def test_nist_lines_skip_excited_lower_states_and_use_observed_wavelength(
     lines = euv.nist_resonance_lines(Gas.Ar)
     assert len(lines) == 1
     energy, strength, label = lines[0]
-    assert energy == pytest.approx(45.56335252767 / 200, rel=2e-15)
+    assert energy == pytest.approx(45.56335252767 / 200, rel=2e-15, abs=0.0)
     assert strength == 0.3
     assert label == "ground"
 

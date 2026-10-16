@@ -55,8 +55,8 @@ def test_the_stored_fit_is_current_and_reproduces():
     fitted = result.model.parameters
     stored = record["parameters"]
     # The fit is deterministic; 1e-6 relative allows for the optimiser's tolerance.
-    assert fitted[0] == pytest.approx(stored["N_m2_per_W"], rel=1e-6)
-    assert fitted[3] == pytest.approx(stored["raman_fraction"], rel=1e-6)
+    assert fitted[0] == pytest.approx(stored["N_m2_per_W"], rel=1e-6, abs=0.0)
+    assert fitted[3] == pytest.approx(stored["raman_fraction"], rel=1e-6, abs=0.0)
 
 
 def test_the_silica_model_is_physical():
@@ -84,7 +84,7 @@ def test_the_fitted_gain_is_the_silica_responses():
     predicted = gain.factor() * model.raman_fraction * float(model.n2(gain.wavelength))
     response = silica_raman_response()
     assert float(response.gain(gain.wavelength, gain.shift)) == pytest.approx(
-        predicted, rel=1e-12
+        predicted, rel=1e-12, abs=0.0
     )
     # One standard uncertainty (10 %) below the measurement, where the n2 data pull.
     assert predicted / gain.value == pytest.approx(0.9, abs=0.03)

@@ -40,7 +40,9 @@ def test_state_rejects_unphysical_values(pressure, temperature):
 
 def test_ideal_density_is_p_over_kt():
     state = State(5e4, 300.0)
-    assert ideal_number_density(state) == pytest.approx(5e4 / (K_B * 300.0), rel=1e-15)
+    assert ideal_number_density(state) == pytest.approx(
+        5e4 / (K_B * 300.0), rel=1e-15, abs=0.0
+    )
     assert number_density("Ar", state, ideal=True) == ideal_number_density(state)
 
 
@@ -115,7 +117,7 @@ def test_air_refractivity_scales_with_density():
     # The ideal-gas ratio 303.15/278.15 = 1.0899; Edlen's non-ideal term,
     # p (0.817 - 0.0133 t) 1e-6, adds 760 torr x 0.0133 x 25 K x 1e-6 = 2.5e-4.
     expected = 303.15 / 278.15 * (1 + 760 * 0.0133 * 25 * 1e-6)
-    assert float(cold / warm) == pytest.approx(expected, rel=1e-5)
+    assert float(cold / warm) == pytest.approx(expected, rel=1e-5, abs=0.0)
     half = air_refractivity(wavenumber, State(50662.5, 293.15))
     full = air_refractivity(wavenumber, State(101325.0, 293.15))
-    assert float(full / half) == pytest.approx(2.0, rel=1e-3)
+    assert float(full / half) == pytest.approx(2.0, rel=1e-3, abs=0.0)

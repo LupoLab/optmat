@@ -138,7 +138,7 @@ def test_confidence_intervals_convert_using_normal_quantiles(confidence):
     spec = Uncertainty(absolute=1.0, level=f"{confidence} % confidence")
     # Independent inverse-normal calculation; the stored decimal factors are rounded.
     expected = 1 / ndtri((1 + confidence / 100) / 2)
-    assert spec.to_standard == pytest.approx(expected, rel=2e-15)
+    assert spec.to_standard == pytest.approx(expected, rel=2e-15, abs=0.0)
 
 
 def test_uncertainties_combine_in_quadrature_with_scale_and_row_overrides(sample):

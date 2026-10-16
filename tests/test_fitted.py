@@ -51,7 +51,7 @@ def test_dispersion_uncertainty_matches_a_numerical_propagation(order):
     analytic = model.dispersion_sigma_relative(np.array([omega]), order)
     # The numerical route (stencil derivatives, central parameter differences) is good
     # to a few 1e-4 of itself; the analytic one is exact.
-    assert analytic[0] == pytest.approx(expected, rel=2e-3)
+    assert analytic[0] == pytest.approx(expected, rel=2e-3, abs=0.0)
 
 
 def test_dispersion_uncertainty_needs_order_two_or_more():

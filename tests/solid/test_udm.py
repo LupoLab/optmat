@@ -180,7 +180,7 @@ def test_the_real_part_is_the_kramers_kronig_transform_of_the_imaginary(energy):
     )
     expected += 2 / math.pi * tail
     actual = np.real(electronic.permittivity(np.array([energy])))[0] - 1
-    assert actual == pytest.approx(expected, rel=1e-8)
+    assert actual == pytest.approx(expected, rel=1e-8, abs=0.0)
 
 
 @pytest.mark.parametrize("name", SILICA)
@@ -204,7 +204,7 @@ def test_every_term_has_unit_transition_strength(name):
             # The tail beyond `high`, exactly: int 3 E_xi (x - E_xi)^2 / x^4 dx.
             exi = term.shape[0]
             total += 3 * exi * (1 / high - exi / high**2 + exi**2 / (3 * high**3))
-        assert total == pytest.approx(1.0, rel=1e-9), term
+        assert total == pytest.approx(1.0, rel=1e-9, abs=0.0), term
 
 
 @pytest.mark.parametrize("energy", [0.03, 0.137, 1.0, 5.0, 9.0, 11.3, 30.0])
@@ -237,7 +237,10 @@ def test_the_low_energy_series_joins_the_closed_form():
             series = sum(
                 m * energy[0] ** (2 * k) for k, m in enumerate(udm._moments(term))
             )
-            assert series == pytest.approx(closed, rel=1e-10), (name, term.kind)
+            assert series == pytest.approx(closed, rel=1e-10, abs=0.0), (
+                name,
+                term.kind,
+            )
 
 
 @pytest.mark.library
@@ -301,5 +304,5 @@ def test_the_moments_quadrature_agrees_with_adaptive_quadrature(name):
                     )
                 )
             assert udm._moments(term)[k] == pytest.approx(
-                2 / math.pi * value, rel=1e-12
+                2 / math.pi * value, rel=1e-12, abs=0.0
             )

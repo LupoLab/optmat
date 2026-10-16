@@ -60,7 +60,7 @@ def test_the_reduced_compositions_are_cipm_2007_renormalised():
         total = sum(full[s] for s in kept)
         assert set(reduced) == set(kept)
         for s in kept:
-            assert reduced[s] == pytest.approx(full[s] / total, rel=1e-15)
+            assert reduced[s] == pytest.approx(full[s] / total, rel=1e-15, abs=0.0)
 
 
 def test_the_reduced_compositions_against_solprops_recipes():
@@ -119,7 +119,7 @@ def test_the_air_equation_holds_the_unlike_pairs(pressure, expected):
         number_density(c.material, State(pressure * c.mole_fraction, 294.0))
         for c in composition(DEFAULT_AIR)
     )
-    assert 1 - partial / pure == pytest.approx(expected, rel=0.05)
+    assert 1 - partial / pure == pytest.approx(expected, rel=0.05, abs=0.0)
 
 
 def test_the_intervals_are_the_constituents_intersection_widened():
@@ -178,7 +178,7 @@ def test_the_index_at_a_state():
         real = model.refractivity(800e-9, state)
         ideal = model.refractivity(800e-9, state, ideal=True)
         n = model.refractive_index(800e-9, state)
-    assert float(np.real(n)) - 1 == pytest.approx(float(real), rel=1e-12)
+    assert float(np.real(n)) - 1 == pytest.approx(float(real), rel=1e-12, abs=0.0)
     # Air is attractive at 294 K: the real gas is denser than the ideal, by about 4e-4.
     assert 0 < float(real / ideal) - 1 < 1e-3
 

@@ -41,7 +41,7 @@ def test_solprop_is_luna_with_tong_and_lins_factor(legacy, gas):
     luna = _rates(legacy["luna"], gas)
     kept = np.isfinite(luna)
     without = _rates(legacy["solprop"], gas, "rate_bsi_none")
-    assert without[kept] == pytest.approx(luna[kept], rel=5e-7)
+    assert without[kept] == pytest.approx(luna[kept], rel=5e-7, abs=0.0)
     # The factor only lowers the rate.
     assert np.all(_rates(legacy["solprop"], gas)[kept] < luna[kept])
 
@@ -55,7 +55,7 @@ def test_the_recorded_optmat_rates_are_the_current_default(legacy, gas):
         warnings.simplefilter("ignore", ModelRangeWarning)
         current = model.instantaneous_rate(field)
     recorded = np.array(legacy["optmat"]["gases"][gas]["default"]["rate"], dtype=float)
-    assert recorded == pytest.approx(current, rel=1e-9)
+    assert recorded == pytest.approx(current, rel=1e-9, abs=0.0)
 
 
 def test_luna_refuses_strong_fields_and_solprop_does_not(legacy):

@@ -71,8 +71,8 @@ def test_the_isotropic_average_does_not_depend_on_the_orbitals_m():
     assert factors[1] == factors[-1]
     # <B^2(m')> = sum_l C_l^2 (l + |m'|)! / (2 (l - |m'|)!): 1/2 for m' = 0, and for
     # m' = 2, 4!/2 = 12 (l = 2) and 6!/(2 2!) = 180 (l = 4).
-    assert factors[0] == pytest.approx((0.52**2 + 0.03**2) / 2, rel=1e-12)
-    assert factors[2] == pytest.approx(0.52**2 * 12 + 0.03**2 * 180, rel=1e-12)
+    assert factors[0] == pytest.approx((0.52**2 + 0.03**2) / 2, rel=1e-12, abs=0.0)
+    assert factors[2] == pytest.approx(0.52**2 * 12 + 0.03**2 * 180, rel=1e-12, abs=0.0)
 
 
 def test_the_molecular_rate_is_the_private_validators():
@@ -80,7 +80,7 @@ def test_the_molecular_rate_is_the_private_validators():
     for field in (0.03, 0.08):
         expected = _tunnelling.static_rate_au(field, 0.5726, factors)
         assert float(moadk_rate_au(np.array(field), 0.5726, factors)) == pytest.approx(
-            expected, rel=1e-12
+            expected, rel=1e-12, abs=0.0
         )
 
 
@@ -100,7 +100,7 @@ def test_an_atoms_single_partial_wave_gives_the_atomic_tunnelling_rate():
     ratio = averaged / aligned
     # w_1 / w_0 = F / (2 kappa^3) for a p orbital (f(1, 1) = f(1, 0) = 3).
     expected = (1 + 2 * field / (2 * kappa**3)) / 3
-    assert ratio == pytest.approx(expected, rel=1e-12)
+    assert ratio == pytest.approx(expected, rel=1e-12, abs=0.0)
 
 
 def test_the_cycle_average_of_the_static_forms_is_the_tunnelling_factor():
@@ -110,7 +110,7 @@ def test_the_cycle_average_of_the_static_forms_is_the_tunnelling_factor():
         f0 = (2 * model.ionization_energy_au) ** 1.5
         factor = np.sqrt(3 * field / AU_FIELD / (math.pi * f0))
         assert model.cycle_averaged_rate(field) == pytest.approx(
-            factor * model.instantaneous_rate(field), rel=1e-12
+            factor * model.instantaneous_rate(field), rel=1e-12, abs=0.0
         )
 
 
@@ -130,7 +130,7 @@ def test_the_effective_charge_form_tends_to_its_tunnelling_limit():
     )
     assert float(model.keldysh(field)[0]) < 0.04
     assert model.instantaneous_rate(field) / AU_ANGULAR_FREQUENCY == pytest.approx(
-        static, rel=3e-3
+        static, rel=3e-3, abs=0.0
     )
 
 
@@ -159,7 +159,7 @@ def test_parity_of_the_molecular_tunnelling_rate(gas, tabulation):
     keep = _nonzero(expected)
     # The same formula evaluated twice: rounding only.
     assert _rates(model.instantaneous_rate, FIELDS)[keep] == pytest.approx(
-        expected[keep], rel=1e-10
+        expected[keep], rel=1e-10, abs=0.0
     )
 
 
@@ -177,7 +177,9 @@ def test_parity_of_the_hydrogenic_rate(gas):
     ):
         expected = np.array(entry[name])
         keep = _nonzero(expected)
-        assert _rates(method, FIELDS)[keep] == pytest.approx(expected[keep], rel=1e-10)
+        assert _rates(method, FIELDS)[keep] == pytest.approx(
+            expected[keep], rel=1e-10, abs=0.0
+        )
 
 
 @pytest.mark.parametrize("gas", ["N2", "O2"])
@@ -204,7 +206,9 @@ def test_parity_of_the_effective_charge_rate(gas, wavelength):
         keep = _nonzero(expected)
         # The functions of the Keldysh parameter are evaluated by different
         # expressions in the two codes: 1e-9 of rounding in an exponent of 30.
-        assert _rates(method, FIELDS)[keep] == pytest.approx(expected[keep], rel=1e-8)
+        assert _rates(method, FIELDS)[keep] == pytest.approx(
+            expected[keep], rel=1e-8, abs=0.0
+        )
 
 
 @pytest.mark.parametrize(
@@ -283,7 +287,7 @@ def test_the_charges_were_fitted_within_the_static_coulomb_factor():
     ratio = source.cycle_averaged_rate(amplitude) / solprop.cycle_averaged_rate(
         amplitude
     )
-    assert ratio == pytest.approx((1 + gamma**2) ** n_star, rel=1e-12)
+    assert ratio == pytest.approx((1 + gamma**2) ** n_star, rel=1e-12, abs=0.0)
     assert n_star == pytest.approx(0.841, abs=1e-3)
 
 
@@ -318,18 +322,20 @@ def test_the_orientation_average():
     # 1 + cos^2 averages to 4/3 over the sphere; the interpolation of seven angles is
     # good to 1e-3.
     assert float(orientation_average(angles, 1 + cosine**2)) == pytest.approx(
-        4 / 3, rel=1e-3
+        4 / 3, rel=1e-3, abs=0.0
     )
     # Two angles: (parallel + 2 perpendicular) / 3.
     two = orientation_average(np.array([0.0, 90.0]), np.array([[3.0], [1.5]]))
-    assert two == pytest.approx([2.0], rel=1e-12)
+    assert two == pytest.approx([2.0], rel=1e-12, abs=0.0)
     # A polar molecule, 0 to 180 degrees: 2 + cos averages to 2, and 1 + cos^2 to
     # 4/3, both through the interpolation of thirteen angles in cos.
     polar = np.arange(0.0, 181.0, 15.0)
     cosine = np.cos(np.radians(polar))
-    assert float(orientation_average(polar, 2 + cosine)) == pytest.approx(2, rel=1e-4)
+    assert float(orientation_average(polar, 2 + cosine)) == pytest.approx(
+        2, rel=1e-4, abs=0.0
+    )
     assert float(orientation_average(polar, 1 + cosine**2)) == pytest.approx(
-        4 / 3, rel=1e-3
+        4 / 3, rel=1e-3, abs=0.0
     )
     with pytest.raises(ValueError, match="span 0 to 90 or 0 to 180"):
         orientation_average(np.array([0.0, 45.0]), np.array([1.0, 2.0]))
@@ -426,11 +432,11 @@ def test_one_partial_wave_is_the_atoms_rate():
         molecule = like.at_wavelength(wavelength)
         # The same formula evaluated through two paths: rounding only.
         assert _rates(molecule.instantaneous_rate, field) == pytest.approx(
-            _rates(atom.instantaneous_rate, field), rel=1e-9
+            _rates(atom.instantaneous_rate, field), rel=1e-9, abs=0.0
         )
         if not math.isinf(wavelength):
             assert _rates(molecule.cycle_averaged_rate, field) == pytest.approx(
-                _rates(atom.cycle_averaged_rate, field), rel=1e-9
+                _rates(atom.cycle_averaged_rate, field), rel=1e-9, abs=0.0
             )
 
 
@@ -446,7 +452,7 @@ def test_the_default_in_a_static_field():
     )
     expected = model.electrons * correction * bare * AU_ANGULAR_FREQUENCY
     assert model.instantaneous_rate(field * AU_FIELD) == pytest.approx(
-        expected, rel=1e-12
+        expected, rel=1e-12, abs=0.0
     )
 
 
@@ -464,7 +470,7 @@ def test_the_two_rates_of_the_default_give_the_same_yield(gas):
     )
     on_envelope = pulse_yield(model, peak, 42e-15)
     on_carrier = pulse_yield(model, peak, 42e-15, carrier=True)
-    assert on_carrier == pytest.approx(on_envelope, rel=0.03)
+    assert on_carrier == pytest.approx(on_envelope, rel=0.03, abs=0.0)
 
 
 def test_the_default_tends_to_its_static_rate():
@@ -479,7 +485,7 @@ def test_the_default_tends_to_its_static_rate():
         static.instantaneous_rate(amplitude * np.cos(phase)), phase
     ) / (math.pi / 2)
     assert float(slow.cycle_averaged_rate(amplitude)) == pytest.approx(
-        average, rel=0.005
+        average, rel=0.005, abs=0.0
     )
 
 
@@ -490,8 +496,8 @@ def test_the_fitted_constants_are_the_curated_ones():
     assert fitted.alpha["H2"] == pytest.approx(6.0, abs=0.05)
     # With the count free the references ask for 1.76 (N2) and 2.12 (H2) electrons:
     # the weak-field limit of 2, within 12 %.
-    assert fitted.free_electrons["N2"] == pytest.approx(2.0, rel=0.13)
-    assert fitted.free_electrons["H2"] == pytest.approx(2.0, rel=0.07)
+    assert fitted.free_electrons["N2"] == pytest.approx(2.0, rel=0.13, abs=0.0)
+    assert fitted.free_electrons["H2"] == pytest.approx(2.0, rel=0.07, abs=0.0)
     assert fitted.vibrational_constant == pytest.approx(0.00165, abs=5e-6)
     # CO, which takes N2's 14 unfitted, would ask for more: the offset of 1.3 is
     # read as a slope when the count is held at 2 (TC-683).
@@ -607,8 +613,8 @@ def test_methanes_three_orbitals_are_combined():
     )
     squares = structure.partial_wave_squares
     # Per orbital: 9.9458, 9.9458 and 9.9856 at l = 1 (the table's rounding).
-    assert squares[1] == pytest.approx((2 * 9.9458 + 9.9856) / 3, rel=1e-9)
-    assert squares[2] == pytest.approx(1.28, rel=1e-9)
+    assert squares[1] == pytest.approx((2 * 9.9458 + 9.9856) / 3, rel=1e-9, abs=0.0)
+    assert squares[2] == pytest.approx(1.28, rel=1e-9, abs=0.0)
     model = molecular_rate_model("CH4", 800e-9)
     assert model.electrons == 6.0
     assert sum(model.structure_factors.values()) > 0
@@ -645,10 +651,10 @@ def test_sulphur_hexafluorides_three_orbitals_are_combined():
     nitrogen = molecular_rate_model("N2", 800e-9)
     hydrogenic = molecular_rate_model("SF6", 800e-9, "adk_hydrogenic")
     assert rate / float(nitrogen.cycle_averaged_rate(field)) == pytest.approx(
-        83, rel=0.05
+        83, rel=0.05, abs=0.0
     )
     assert rate / float(hydrogenic.cycle_averaged_rate(field)) == pytest.approx(
-        104, rel=0.05
+        104, rel=0.05, abs=0.0
     )
 
 
@@ -675,7 +681,7 @@ def test_the_vibrational_factor_is_continuous():
     fixed = replace(model, vibrational_constant=0.0)
     field = np.array([switch * (1 - 1e-6), switch * (1 + 1e-6)]) * AU_FIELD
     ratio = model.instantaneous_rate(field) / fixed.instantaneous_rate(field)
-    assert ratio == pytest.approx(math.exp(2.0), rel=1e-4)
+    assert ratio == pytest.approx(math.exp(2.0), rel=1e-4, abs=0.0)
 
 
 @pytest.mark.parametrize(

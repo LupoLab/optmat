@@ -103,7 +103,7 @@ def test_row_selection_and_standard_air_probe_conversion(sample):
         )
     air = dataclasses.replace(sample, wavelength_medium="standard_air")
     assert nonlinear._wavenumber(air, 500) == pytest.approx(
-        1e7 / (500 * 1.000277), rel=2e-15
+        1e7 / (500 * 1.000277), rel=2e-15, abs=0.0
     )
     with pytest.raises(DataError, match="no formula"):
         nonlinear._formula("missing/formula")
@@ -144,7 +144,7 @@ def test_synthetic_fit_recovers_dispersion_with_a_systematic_scale_prior(
     assert "unknown rows" in record["validation"][sample.key]["note"]
     assert np.shape(record["covariance"]) == (4, 4)
     assert record["max_w2_fitted_cm-2"] == pytest.approx(
-        4 * (1e7 / 400) ** 2, rel=2e-15
+        4 * (1e7 / 400) ** 2, rel=2e-15, abs=0.0
     )
     unstated = dataclasses.replace(sample, uncertainty=Uncertainty())
     monkeypatch.setattr(nonlinear, "datasets", lambda: (unstated,))

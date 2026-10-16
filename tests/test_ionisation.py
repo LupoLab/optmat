@@ -108,7 +108,7 @@ def test_the_electronic_static_polarizability_is_the_fitted_static_limit():
     # it to its 1e-7 backbone, and the magnetic term is left out (it is not electric).
     alpha, sigma, source = electronic_static_polarizability("He")
     assert source == "fit/He"
-    assert alpha / AU_POLARIZABILITY == pytest.approx(1.38376077, rel=2e-7)
+    assert alpha / AU_POLARIZABILITY == pytest.approx(1.38376077, rel=2e-7, abs=0.0)
     assert sigma < 1e-6 * alpha
     # A molecule's static limit leaves out its infrared bands: CO2's full static
     # polarizability, with its vibrational part (about 2 au of 19.6, the dielectric
@@ -120,7 +120,9 @@ def test_the_electronic_static_polarizability_is_the_fitted_static_limit():
 
 def test_the_hartree_coefficient_and_its_stirling_form():
     # Hydrogen: C_0 = 2 exactly (psi = exp(-r) / sqrt(pi) = 2 exp(-r) Y_00).
-    assert hartree_coefficient_squared(1.0, 0.0) == pytest.approx(4.0, rel=1e-15)
+    assert hartree_coefficient_squared(1.0, 0.0) == pytest.approx(
+        4.0, rel=1e-15, abs=0.0
+    )
     # The corrected eq. (20) is Stirling's formula for the two Gamma functions of
     # eq. (19), whose error is about 1/(12 (n* + l*)) + 1/(12 (n* - l*)): 17.6 % at
     # n* = 1, l* = 0; 1.7 % and 2.0 % at n* = 10 with l* = 0 and 4; 8.9 % at l* = 9,
@@ -159,8 +161,8 @@ def test_the_orientation_average_matches_a_quadrature():
     }
     factors = tunnelling.isotropic_structure_factors({1: c})
     # The trapezoid rule on 20001 points is exact to about 1e-8 here.
-    assert factors[0] == pytest.approx(averages[0], rel=1e-7)
-    assert factors[1] == pytest.approx(averages[1], rel=1e-7)
+    assert factors[0] == pytest.approx(averages[0], rel=1e-7, abs=0.0)
+    assert factors[1] == pytest.approx(averages[1], rel=1e-7, abs=0.0)
     assert factors[-1] == pytest.approx(factors[1])
     with pytest.raises(ValueError, match="exceeds"):
         tunnelling.q_factor(1, 2)
@@ -170,7 +172,9 @@ def test_the_noble_gases_have_nists_ionisation_energies():
     from optmat.gas.ionisation import ionisation_parameters  # noqa: PLC0415
 
     argon = ionisation_parameters("Ar")
-    assert argon.ionization_energy / E_CHARGE == pytest.approx(15.7596119, rel=1e-12)
+    assert argon.ionization_energy / E_CHARGE == pytest.approx(
+        15.7596119, rel=1e-12, abs=0.0
+    )
     assert argon.ionization_energy_source == "nist_asd_2026/ie_Ar_I"
     assert argon.orbital_l == 1
     # kappa = sqrt(2 I_p) = 1.0762 and n* = 1 / kappa = 0.9292 for argon.

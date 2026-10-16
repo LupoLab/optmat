@@ -194,13 +194,13 @@ def test_a_density_abscissa_and_a_mass_density(monkeypatch):
         columns={},
     )
     points = mixture_validation._density_points(restated, "virial")
-    assert [p.abscissa for p in points] == pytest.approx(densities, rel=1e-11)
+    assert [p.abscissa for p in points] == pytest.approx(densities, rel=1e-11, abs=0.0)
     # 1000 mol/m^3 of helium is 4.002602 kg/m^3, 4.002602e-3 g/cm^3.
     molar = 1000.0 * 6.02214076e23
     mass = mixture_validation._in_unit(molar, "kg/m3", {"He": 1.0})
-    assert mass == pytest.approx(4.002602, rel=1e-12)
+    assert mass == pytest.approx(4.002602, rel=1e-12, abs=0.0)
     assert mixture_validation._in_unit(molar, "g/cm3", {"He": 1.0}) == pytest.approx(
-        4.002602e-3, rel=1e-12
+        4.002602e-3, rel=1e-12, abs=0.0
     )
 
 

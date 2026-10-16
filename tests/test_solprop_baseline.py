@@ -66,10 +66,10 @@ def test_the_transport_against_solprop(gas):
     printed, at = match.groups()
     # The page's figures, to their two digits.
     assert viscosity[worst] == pytest.approx(
-        float(printed.replace("\N{MINUS SIGN}", "-")), rel=0.05
+        float(printed.replace("\N{MINUS SIGN}", "-")), rel=0.05, abs=0.0
     )
     assert temperatures[worst] == float(at)
-    assert np.max(np.abs(ratio)) == pytest.approx(float(cells[3]), rel=0.05)
+    assert np.max(np.abs(ratio)) == pytest.approx(float(cells[3]), rel=0.05, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", sorted(EOS["gases"]))
@@ -95,4 +95,6 @@ def test_the_densities_differ_by_the_gas_constant_alone(gas):
         # Beyond the gas constant, the two flashes' iteration tolerances: up to 3e-10,
         # for N2O at 30 bar and 273 K, near its vapour pressure (31 bar).
         assert ratio == pytest.approx(expected, abs=1e-9)
-        assert row["round_trip_bar"] == pytest.approx(row["pressure_bar"], rel=1e-14)
+        assert row["round_trip_bar"] == pytest.approx(
+            row["pressure_bar"], rel=1e-14, abs=0.0
+        )

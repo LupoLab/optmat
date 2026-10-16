@@ -50,7 +50,7 @@ def test_the_inverse_round_trips_on_the_phase_domain(gas):
             # The solve's stated bound; the pressure to the same accuracy over the
             # compressibility's slope, which is at most a few near saturation.
             assert abs(again / n - 1) <= ROUND_TRIP_TOLERANCE
-            assert back == pytest.approx(float(p), rel=1e-9)
+            assert back == pytest.approx(float(p), rel=1e-9, abs=0.0)
 
 
 EQUATIONS = [equation_of_state(g) for g in GASES] + [eos.air_equation_of_state()]
@@ -133,20 +133,22 @@ class TestTheMeltingLine:
         assert abs(e.number_density(State(back, temperature)) / n - 1) <= (
             ROUND_TRIP_TOLERANCE
         )
-        assert back == pytest.approx(1e5, rel=1e-9)
+        assert back == pytest.approx(1e5, rel=1e-9, abs=0.0)
 
     def test_the_melting_pressure_bounds_the_supercritical_fluid(self):
         nitrogen = equation_of_state("N2")
         melting = nitrogen._melting_pressure(280.0)
         assert melting is not None
         top = nitrogen.phase_domain(280.0)[1]
-        assert top == pytest.approx(melting * (1 - 1e-5), rel=1e-15)
+        assert top == pytest.approx(melting * (1 - 1e-5), rel=1e-15, abs=0.0)
         assert top < nitrogen.maximum_pressure
         solid = State((melting + nitrogen.maximum_pressure) / 2, 280.0)
         with pytest.raises(StateError, match="solid"):
             nitrogen.number_density(solid)
         dense = nitrogen.number_density(State(top, 280.0))
-        assert float(nitrogen.pressure(dense, 280.0)) == pytest.approx(top, rel=1e-9)
+        assert float(nitrogen.pressure(dense, 280.0)) == pytest.approx(
+            top, rel=1e-9, abs=0.0
+        )
         with pytest.raises(StateError, match="its melting pressure"):
             nitrogen.pressure(dense * 1.001, 280.0)
 
@@ -189,8 +191,10 @@ def test_the_inverse_keeps_the_codata_convention():
     )
     # The equation's own gas constant (Tegeler et al.: 8.31451 J/(mol K)) puts its molar
     # density 5.7e-6 from the CODATA one; the inverse follows N = p / (Z k_B T).
-    assert abs(argon.gas_constant / (N_A * K_B) - 1) == pytest.approx(5.7e-6, rel=0.05)
-    assert float(argon.pressure(n, 294.0)) == pytest.approx(1e5, rel=1e-12)
+    assert abs(argon.gas_constant / (N_A * K_B) - 1) == pytest.approx(
+        5.7e-6, rel=0.05, abs=0.0
+    )
+    assert float(argon.pressure(n, 294.0)) == pytest.approx(1e5, rel=1e-12, abs=0.0)
 
 
 class TestTheDomain:
@@ -239,7 +243,7 @@ class TestTheDomain:
 
     def test_the_domain_below_and_above_the_critical_point(self):
         co2 = equation_of_state("CO2")
-        assert co2.phase_domain(280.0)[1] == pytest.approx(41.6e5, rel=2e-3)
+        assert co2.phase_domain(280.0)[1] == pytest.approx(41.6e5, rel=2e-3, abs=0.0)
         # Above 327.7 K CO2's melting line is above its equation's 800 MPa; between
         # T_c and there, the line binds (TC-811).
         assert co2.phase_domain(340.0) == (0.0, co2.maximum_pressure)
@@ -264,7 +268,7 @@ def test_the_solve_widens_a_poor_start(monkeypatch):
     monkeypatch.setattr(
         type(argon), "_start", lambda self, d, t: 3 * original(d, t), raising=True
     )
-    assert float(argon.pressure(n, 294.0)) == pytest.approx(5e5, rel=1e-12)
+    assert float(argon.pressure(n, 294.0)) == pytest.approx(5e5, rel=1e-12, abs=0.0)
 
 
 def test_a_solve_that_misses_the_round_trip_raises(monkeypatch):
@@ -279,7 +283,7 @@ def test_the_speed_of_sound_tends_to_the_ideal_gas():
     ideal = math.sqrt(5 / 3 * N_A * K_B * temperature / argon.molar_mass)
     # At 1 kPa the real gas's second virial moves it by below 1e-5.
     assert argon.speed_of_sound(State(1e3, temperature)) == pytest.approx(
-        ideal, rel=1e-4
+        ideal, rel=1e-4, abs=0.0
     )
 
 
@@ -297,7 +301,7 @@ class TestTheMolarMass:
         # 28.9586 g/mol (fixed points, p. 334), their composition's mean (TC-832).
         air = air_equation_of_state().molar_mass
         assert air == 0.02896546
-        assert air / 0.0289586 - 1 == pytest.approx(2.37e-4, rel=1e-2)
+        assert air / 0.0289586 - 1 == pytest.approx(2.37e-4, rel=1e-2, abs=0.0)
 
     def test_the_speed_of_sound_uses_it(self):
         # w^2 = (c_p / c_v) (dp/drho)_T with rho the mass density, rho_molar * M: the
@@ -309,7 +313,7 @@ class TestTheMolarMass:
         slope = backend.first_partial_deriv(coolprop.iP, coolprop.iDmolar, coolprop.iT)
         ratio = backend.cpmolar() / backend.cvmolar()
         assert air.speed_of_sound(State(101325.0, 294.0)) == pytest.approx(
-            math.sqrt(ratio * slope / air.molar_mass), rel=1e-14
+            math.sqrt(ratio * slope / air.molar_mass), rel=1e-14, abs=0.0
         )
 
     def test_it_is_not_in_the_identity(self):

@@ -51,7 +51,7 @@ def test_the_named_formula_gives_lunas_refractivity(gas):
 @pytest.mark.parametrize("gas", sorted(LUNA["gases"]))
 def test_lunas_density_is_the_real_gas_density(gas):
     ours = number_density(gas, STATE)
-    assert LUNA["gases"][gas]["density"] == pytest.approx(ours, rel=1e-5)
+    assert LUNA["gases"][gas]["density"] == pytest.approx(ours, rel=1e-5, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", ["He", "Ne", "Ar", "Kr", "Xe"])
@@ -87,7 +87,7 @@ def test_lunas_third_order_coefficients_are_solprops():
     )
     for gas, entry in LUNA["gases"].items():
         theirs = solprop["gamma3"][gas]["gamma3"]
-        assert entry["gamma3"] == pytest.approx(theirs, rel=1e-7), gas
+        assert entry["gamma3"] == pytest.approx(theirs, rel=1e-7, abs=0.0), gas
 
 
 @pytest.mark.parametrize("gas", ["H2", "D2"])
@@ -112,7 +112,9 @@ def test_lunas_raman_parameters_are_solprops(gas):
         (luna["Arhov"], vibrational["linewidth"]["inverse_density"]),
     ]
     for theirs, ours in pairs:
-        assert theirs == pytest.approx(ours, rel=1e-6)
+        assert theirs == pytest.approx(ours, rel=1e-6, abs=0.0)
     # The reference records differ in D2's rotational width per amagat.
     ratio = luna["Brhor"] / rotational["linewidth"]["density"]
-    assert ratio == pytest.approx(1.0 if gas == "H2" else 1.20e8 / 1.32e8, rel=5e-3)
+    assert ratio == pytest.approx(
+        1.0 if gas == "H2" else 1.20e8 / 1.32e8, rel=5e-3, abs=0.0
+    )

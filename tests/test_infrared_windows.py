@@ -67,8 +67,8 @@ def test_each_rule_keeps_its_lines_two_moments(gas):
         f, e = np.array(system.strengths), np.array(system.energies_au)
         # M_0 and M_-2 of the poles are those of the lines, for a rule and a fold; the
         # table's decimal digits allow 1e-12.
-        assert f.sum() == pytest.approx(system.m0, rel=1e-12)
-        assert np.sum(f / e**2) == pytest.approx(system.m_minus2_au, rel=1e-12)
+        assert f.sum() == pytest.approx(system.m0, rel=1e-12, abs=0.0)
+        assert np.sum(f / e**2) == pytest.approx(system.m_minus2_au, rel=1e-12, abs=0.0)
 
 
 @pytest.mark.parametrize("gas", GASES)
@@ -77,8 +77,10 @@ def test_the_rules_sum_to_the_band_tables_totals(gas):
     # separately from the same lines; their totals agree to the tables' six digits.
     m0, m_minus2 = _band_totals(gas)
     systems = band_systems(gas)
-    assert sum(s.m0 for s in systems) == pytest.approx(m0, rel=1e-5)
-    assert sum(s.m_minus2_au for s in systems) == pytest.approx(m_minus2, rel=1e-5)
+    assert sum(s.m0 for s in systems) == pytest.approx(m0, rel=1e-5, abs=0.0)
+    assert sum(s.m_minus2_au for s in systems) == pytest.approx(
+        m_minus2, rel=1e-5, abs=0.0
+    )
 
 
 @pytest.mark.parametrize("gas", GASES)

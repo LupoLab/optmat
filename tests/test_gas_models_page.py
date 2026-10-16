@@ -52,7 +52,7 @@ def test_the_row_is_current(gas):
     number = float(re.sub(r"[^0-9.e+-]", "", cells[3]))
     printed = number * (1e-6 if "ppm" in cells[3] else 1e-2)
     # Printed to two significant figures.
-    assert printed == pytest.approx(float(f"{sigma:.2g}"), rel=1e-9)
+    assert printed == pytest.approx(float(f"{sigma:.2g}"), rel=1e-9, abs=0.0)
     assert float(cells[4]) == pytest.approx(model.reduced_chi2, abs=0.0051)
 
 

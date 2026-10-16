@@ -108,8 +108,8 @@ def test_compact_model_keeps_the_moments_and_the_electronic_terms(gas):
     g, h = (np.array(stored.record[k]) for k in ("strengths", "energies_hartree"))
     assert np.all(g > 0)
     # Exact to the inner solve's 1e-10 (OEP 2, section 8).
-    assert g.sum() == pytest.approx(f.sum(), rel=1e-10)
-    assert np.sum(g / h**2) == pytest.approx(np.sum(f / e**2), rel=1e-10)
+    assert g.sum() == pytest.approx(f.sum(), rel=1e-10, abs=0.0)
+    assert np.sum(g / h**2) == pytest.approx(np.sum(f / e**2), rel=1e-10, abs=0.0)
     n = len(parent.strengths) - parent.n_fixed + parent.n_rotational
     assert stored.strengths[:n] == parent.strengths[:n]
     assert stored.energies[:n] == parent.energies[:n]
@@ -486,7 +486,9 @@ def test_the_printed_sellmeier_form_round_trips(gas):
     table = coefficients(
         gas, "sellmeier", pressure=state.pressure, temperature=state.temperature
     )
-    assert table.number_density == pytest.approx(number_density(gas, state), rel=1e-12)
+    assert table.number_density == pytest.approx(
+        number_density(gas, state), rel=1e-12, abs=0.0
+    )
     rows = _parse(format_coefficients(table))
     b = np.array([r[2] for r in rows])
     c = np.array([r[3] for r in rows]) * 1e-12

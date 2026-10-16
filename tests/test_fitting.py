@@ -192,7 +192,7 @@ def test_warm_start_returns_to_the_same_minimum():
     again = fit(_config(), data, starts=0, start=first)
     # Started at the solution, the solver stops at once: the same chi-squared to its
     # convergence tolerance.
-    assert again.chi2 == pytest.approx(first.chi2, rel=1e-8)
+    assert again.chi2 == pytest.approx(first.chi2, rel=1e-8, abs=0.0)
 
 
 def test_fit_without_a_starting_point_or_with_another_layout_raises():
@@ -252,10 +252,12 @@ def test_rayleigh_cross_section_converts_to_the_polarizability():
     expected = (
         math.sqrt(cross_section / (8 * math.pi / 3 * k**4 * king)) / BOHR_RADIUS**3
     )
-    assert obs.alpha[0] == pytest.approx(expected, rel=1e-12)
+    assert obs.alpha[0] == pytest.approx(expected, rel=1e-12, abs=0.0)
     # Half the cross section's relative uncertainty; electric (no magnetic term).
     relative = dataset.standard_uncertainty()[0] * 1e-4 / cross_section
-    assert obs.sigma[0] / obs.alpha[0] == pytest.approx(relative / 2, rel=1e-12)
+    assert obs.sigma[0] / obs.alpha[0] == pytest.approx(
+        relative / 2, rel=1e-12, abs=0.0
+    )
     assert obs.options.electric
 
 
@@ -287,7 +289,7 @@ def test_argon_model_reproduces_sneeps_index_based_cross_section():
     )
     k = 2 * math.pi / wavelength[0]
     cross_section = 8 * math.pi / 3 * k**4 * (alpha[0] * BOHR_RADIUS**3) ** 2 * 1e4
-    assert dataset.scaled_values()[0] == pytest.approx(cross_section, rel=5e-3)
+    assert dataset.scaled_values()[0] == pytest.approx(cross_section, rel=5e-3, abs=0.0)
 
 
 def test_the_retardation_term_enters_refractive_data_but_not_electric_ones():
