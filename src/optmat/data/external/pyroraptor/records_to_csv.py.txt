@@ -1,0 +1,127 @@
+"""Write pyroraptor's helium run records as the result tables optmat archives.
+
+Run as ``python records_to_csv.py <output> two_electron=<dir> hacc_390=<dir>
+sae_390=<dir> hacc_800=<dir>, each directory holding that family's run records
+(``hacc_800``'s in its subdirectories ``h1`` and ``h5``). Every value is the record's float written
+with ``repr`` (full precision); nothing is computed except the 390 nm intensity of the
+haCC records, which name their pulse by case (checked against the record's peak |A|).
+The records' host names and build strings are not copied. ``records.sha256`` lists the
+sha256 of every record read.
+"""
+
+import csv
+import hashlib
+import json
+import math
+import sys
+from pathlib import Path
+
+# A2's 6 fs Gaussian on A at 390 nm (the k2 pulses): intensity per case, W/cm2.
+CASES = {"390": "3.684031e14", "390hi": "5.68981e14"}
+OMEGA_390 = 45.5634 / 390  # au
+FWHM_AU = 6e-15 / 2.4188843265857e-17
+AU_INTENSITY = 3.50944758e16  # W/cm2 per au^2 of field
+
+
+def peak_a(intensity: float) -> float:
+    """Return max |A| of A0 exp(-2 ln 2 t^2/T^2) sin(omega t), A0 = E0/omega."""
+    a0 = math.sqrt(intensity / AU_INTENSITY) / OMEGA_390
+    times = [i * 0.001 for i in range(-60000, 60001)]  # au, over a cycle
+    return max(
+        a0 * math.exp(-2 * math.log(2) * t**2 / FWHM_AU**2) * abs(math.sin(OMEGA_390 * t))
+        for t in times
+    )
+
+
+def main() -> None:
+    output = Path(sys.argv[1])
+    family = dict(argument.split("=", 1) for argument in sys.argv[2:])
+    directories = {name: Path(path) for name, path in family.items()}
+    output.mkdir(parents=True, exist_ok=True)
+    digests = []
+
+    def load(path: Path, family: str) -> dict:
+        data = path.read_bytes()
+        digests.append(f"{hashlib.sha256(data).hexdigest()}  {family}/{path.name}")
+        return json.loads(data)
+
+    def write(name: str, header: list[str], rows: list[list[object]]) -> None:
+        with (output / name).open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.writer(handle, lineterminator="\n")
+            writer.writerow(header)
+            writer.writerows([[repr(c) if isinstance(c, float) else c for c in r] for r in rows])
+
+    # Two electrons at 390 nm: the bound-state analysis of the final exports.
+    rows = []
+    for path in sorted(directories["two_electron"].glob("k2b-*.json")):
+        record = load(path, "two_electron")
+        case = record["case"]
+        box = int(path.stem.rsplit("box", 1)[1])
+        for export in record["exports"]:
+            above = export["above"]
+            rows.append([path.stem, repr(case["intensity_w_cm2"]), box, case["inner"],
+                         case["total"], case["single"], case["multipole"], case["step"],
+                         export["time_au"], export["ground_population"],
+                         above["4"], above["5"], above["6"], export["ionisation"]])
+    write("he_two_electron_390nm.csv",
+          ["record", "intensity_wcm2", "box_r0", "inner", "total", "single",
+           "multipole", "step", "time_au", "ground_population", "above_n4", "above_n5",
+           "above_n6", "ionisation"], rows)
+
+    # haCC at 390 nm: the final state's populations (1000 au after the pulse).
+    rows = []
+    for path in sorted(directories["hacc_390"].glob("*.json")):
+        record = load(path, "hacc_390")
+        if "above" not in record or path.stem == "l_vg":  # l_vg: the velocity-gauge control
+            continue
+        intensity = CASES[record["case"]]
+        expected = peak_a(float(intensity))
+        if abs(record["peakA"] / expected - 1) > 1e-4:
+            raise SystemExit(f"{path}: peakA {record['peakA']} against {expected}")
+        above = record["above"]
+        rows.append([path.stem, intensity, record["principal"], record["square"],
+                     record["box"], record["lmax"], record["order"], record["dt"],
+                     record["cut"], record["rg"], record["angle"],
+                     record["ground_population"], above["4"], above["5"], above["6"],
+                     record["norm_loss_end"]])
+    write("he_hacc_390nm.csv",
+          ["record", "intensity_wcm2", "ion_principal", "square", "box", "lmax", "order",
+           "dt", "cut", "rg", "angle", "ground_population", "above_n4", "above_n5",
+           "above_n6", "norm_loss_end"], rows)
+
+    # One electron at 390 nm, the same measure.
+    rows = []
+    for path in sorted(directories["sae_390"].glob("*.json")):
+        record = load(path, "sae_390")
+        p = record["parameters"]
+        for row in record["rows"]:
+            rows.append([path.stem, row["intensity"], p["r0"], p["lmax"], p["order"],
+                         p["cut"], p["h"], row["ground_population"],
+                         row["ionisation_plus_n5"], row["ionisation"], row["beyond_r0"]])
+    write("he_sae_390nm.csv",
+          ["record", "intensity_label", "r0", "lmax", "order", "cut", "h",
+           "ground_population", "above_n4", "ionisation", "beyond_r0"], rows)
+
+    # haCC in Sato et al.'s 800 nm pulse.
+    rows = []
+    for family in ("h1", "h5"):
+        for path in sorted((directories["hacc_800"] / family).glob("*.json")):
+            record = load(path, f"hacc_800/{family}")
+            p = record["parameters"]
+            for row in record["rows"]:
+                rows.append([f"{family}/{path.stem}", record["model"],
+                             repr(row["intensity_wcm2"]), p["ions"], p["square"], p["r0"],
+                             p["lmax"], p["order"], p["dt"], p["cut"], p["rg"],
+                             p["after_au"], row["beyond_rc"], row["ionisation"],
+                             row["ionisation_plus_n5"], row["ground_population"],
+                             row["initial_norm"], record["revision"]])
+    write("he_hacc_800nm.csv",
+          ["record", "model", "intensity_wcm2", "ions", "square", "r0", "lmax", "order",
+           "dt", "cut", "rg", "after_au", "beyond_rc", "ionisation", "above_n4",
+           "ground_population", "initial_norm", "revision"], rows)
+
+    (output / "records.sha256").write_text("\n".join(digests) + "\n", encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()

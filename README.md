@@ -105,7 +105,7 @@ simulations.
 
 ## What is there now
 
-- **761 source records:** 8467 datasets and 197,754 values, 259 errata and 780
+- **762 source records:** 8481 datasets and 197,804 values, 259 errata and 780
   published formulas.
 - **15 gases:** He, Ne, Ar, Kr, Xe, H2, D2, N2, O2, CO, CO2, CH4, SF6, N2O and O3.
   - **A fitted model of the refractive index for every gas:**

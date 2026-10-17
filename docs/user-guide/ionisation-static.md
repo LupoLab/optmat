@@ -78,8 +78,9 @@ exact static rate is 0.74 of the leading order at 0.08 au and 0.43 at 0.20 au.
   0.14 au. A constant of 1 is then low by that much. The references are least certain
   there: their rates are below 1e-4 au, neon's are not smooth in the field below
   0.14 au, and argon's at 0.05 au is 3.7 times Majety & Scrinzi's.
-- **Argon in a laser pulse** (haCC's helium is 0.76 to 0.81 of the exact two-electron
-  yield at 390 nm, TC-1050: the haCC numbers below may be low by as much): haCC's
+- **Argon in a laser pulse** (haCC's helium with one ion channel is 0.96 of the exact
+  two-electron atom at 390 nm and 0.95 to 0.98 of MCTDHF at 800 nm, on measures
+  converged in the box; TC-1092): haCC's
   all-electron calculation of argon (A2's 6 fs pulse
   at 800 nm; the Scrinzi group's `Ar_qz` data, four or three ion channels), against
   one $m = 0$ electron at the same ionisation energy and with the same measure, the
@@ -140,8 +141,63 @@ exact static rate is 0.74 of the leading order at 0.08 au and 0.43 at 0.20 au.
   same intensity scale (1.02 to 1.03). For xenon one many-electron calculation in a
   stated pulse is curated: Hartmann et al.'s (2022) R-matrix (RMT) ground-state
   survival in a 5.3 fs pulse at 759 nm, 1.1 to 2.5e14 W/cm² (`hartmann_2022`, TC-1059).
-  It counts excitation as well as ionisation; a one-electron calculation in the same
-  field, read the same way, is to be compared with it.
+  It counts excitation as well as ionisation, and is compared below with one electron
+  in the same field, read the same way, and with the same paper's measurement.
+
+**Xenon against RMT** (TC-1093, TC-1094): one 5p electron of the model potential at
+RMT's ionisation energy (and at its own, 0.18 % deeper), with m = 0 and m = 1, in the
+field RMT wrote, read as RMT's ground-state survival at 3000 au
+({func}`~optmat.gas.ionisation_validation.xenon_rmt_ratios`), and the default's
+depletion in the same pulse ({func}`~optmat.gas.ionisation_validation.xenon_survival`):
+
+<!-- ionisation-rate-xenon-rmt:start -->
+| Label (1e14 W/cm2) | 5p energy (au) | RMT, P | One electron, m = 0 | m = 1 | ln P / ln P_0 | ln P / (2 ln P_0 + 4 ln P_1) | Default / RMT (-ln P) |
+|---|---|---|---|---|---|---|---|
+| 1.1 | -0.444 | 0.8118 | 0.7170 | 0.9797 | 0.63 | 0.279 | 1.54 |
+| 1.3 | -0.444 | 0.7146 | 0.5772 | 0.9623 | 0.61 | 0.268 | 1.66 |
+| 1.5 | -0.444 | 0.6228 | 0.4175 | 0.9379 | 0.54 | 0.236 | 1.83 |
+| 1.7 | -0.444 | 0.5057 | 0.3079 | 0.9047 | 0.58 | 0.247 | 1.82 |
+| 1.9 | -0.444 | 0.4219 | 0.1967 | 0.8695 | 0.53 | 0.226 | 1.95 |
+| 2.2 | -0.444 | 0.2806 | 0.1117 | 0.8039 | 0.58 | 0.242 | 1.92 |
+| 2.5 | -0.444 | 0.2076 | 0.0584 | 0.7302 | 0.55 | 0.227 | 2.09 |
+| 1.1 | -0.4448 | 0.8118 | 0.7220 | 0.9802 | 0.64 | 0.285 |  |
+| 1.5 | -0.4448 | 0.6228 | 0.4258 | 0.9394 | 0.55 | 0.242 |  |
+| 2.5 | -0.4448 | 0.2076 | 0.0605 | 0.7340 | 0.56 | 0.230 |  |
+<!-- ionisation-rate-xenon-rmt:end -->
+
+- **RMT's atom is depleted like 0.53 to 0.64 of one m = 0 electron**, and 0.23 to 0.29
+  of the shell's six electrons taken as independent. The default, whose 1.5 electrons
+  come from Wallace et al.'s yields (about 1.1 of one m = 0 electron), depletes 1.5 to
+  2.1 times as much as RMT, more at higher intensity.
+- **The measurement disagrees with RMT.** Hartmann et al.'s measured abundance of
+  neutral xenon (760 nm, 4.5 fs measured) is below RMT's survival up to 1.9e14 W/cm²
+  (0.77 against 0.81 near 1.1e14, 0.52 against 0.62 at 1.5e14) and about equal to it
+  from 2.3e14. The default's depletion at the peak intensity (an average over the
+  focus would lower it) is 0.96 to 1.13 of the measured one up to 1.6e14 W/cm² and 1.4
+  to 1.8 times it above, where the average over the focus matters most:
+
+<!-- ionisation-rate-xenon-measured:start -->
+| I (W/cm2) | Measured, neutral | -ln P | Default, -ln P | Default / measured |
+|---|---|---|---|---|
+| 2.50e+14 | 0.128 | 2.056 | 2.800 | 1.36 |
+| 2.48e+14 | 0.205 | 1.585 | 2.745 | 1.73 |
+| 2.33e+14 | 0.260 | 1.347 | 2.376 | 1.76 |
+| 1.91e+14 | 0.357 | 1.029 | 1.459 | 1.42 |
+| 1.62e+14 | 0.433 | 0.836 | 0.931 | 1.11 |
+| 1.50e+14 | 0.518 | 0.659 | 0.744 | 1.13 |
+| 1.39e+14 | 0.595 | 0.520 | 0.585 | 1.13 |
+| 1.26e+14 | 0.661 | 0.414 | 0.425 | 1.03 |
+| 1.10e+14 | 0.767 | 0.265 | 0.278 | 1.05 |
+| 9.45e+13 | 0.847 | 0.167 | 0.160 | 0.96 |
+<!-- ionisation-rate-xenon-measured:end -->
+
+  The intensities are inferred from the beam's average power, uncertain by up to 11 %
+  (a factor of about 1.7 in the rate here), and the abundances are estimated from
+  absorption cross sections. RMT depletes less than both measurements, Wallace et
+  al.'s and this one (up to 1.9e14 W/cm²); its ion channels are frozen Hartree-Fock states, and RMT does not ionise
+  twice (the paper's own caveat at high intensity). The default's 1.5 and its
+  uncertainty factor of 3 stand: the gap to RMT lies within that factor, and the
+  measurements do not support moving towards it.
 
 ## Static rates
 

@@ -108,7 +108,7 @@ def extract() -> dict[str, list[Point]]:
         files[stem] = _six_fs(family)
     for m in (0, 1):
         files[f"Ar/{SOURCE}__static_Ar_m{m}.csv"] = _static(m)
-    return files | _scans()
+    return files | _scans() | _xe_rmt()
 
 
 def _scans() -> dict[str, list[Point]]:
@@ -374,6 +374,17 @@ WALLACE_XE_TABLES = {
 }
 
 
+XE_RMT_TABLE = "xe_rmt/results.csv"
+XE_RMT_COLUMN = "P_ground_3000"  # the 5p population at 3000 au, RMT's end of run
+XE_RMT_SETS = {"": "base", "_unscaled": "unscaled"}  # dataset suffix: group of runs
+XE_RMT_ENERGIES = {"base": -0.444, "unscaled": -0.4448128882}  # au, the 5p
+XE_RMT_SETTLED = 1.1e-5  # P at 1500 au against 3000 au, relative (at most 1.005e-5)
+# The convergence runs at 1.5 and 2.5e14 W/cm2 (m = 0); A2's inner grid moves the 5p
+# energy (to -0.443953 au), so it is a check of the energy, not of the convergence.
+XE_RMT_CONVERGENCE = ("1.5", "2.5")
+XE_RMT_NOT_CONVERGENCE = ("_a2grid",)
+
+
 def _six_fs_runs(table: str = SIX_FS_TABLE) -> dict[str, dict[str, str]]:
     """Return the completed runs of a scan's table by name."""
     rows = _rows(table)
@@ -485,6 +496,85 @@ def wallace_uncertainty(
             None if value is None or not own > 10 * drift else max(value, drift / own)
         )
     return result
+
+
+def xe_rmt_dataset(m: int, suffix: str) -> str:
+    """Return the dataset id of part N's xenon 5p survival for one m and potential."""
+    return f"ground_survival_rmtpulse_m{m}{suffix}_Xe"
+
+
+def _xe_rmt_rows() -> list[dict[str, str]]:
+    """Return part N's rows, after checking each run is done and settled."""
+    rows = _rows(XE_RMT_TABLE)
+    for row in rows:
+        if row["done"] != "True" or row["exit"] != "0":
+            msg = f"{row['name']}: not complete"
+            raise ValueError(msg)
+        if row["group"] in XE_RMT_ENERGIES:
+            energy = XE_RMT_ENERGIES[row["group"]]
+            if abs(float(row["E_5p"]) - energy) > 1e-9:
+                msg = f"{row['name']}: the 5p at {row['E_5p']} au, not {energy}"
+                raise ValueError(msg)
+            if abs(float(row["settle_1500_3000_rel"])) > XE_RMT_SETTLED:
+                msg = f"{row['name']}: not settled by 1500 au"
+                raise ValueError(msg)
+    return rows
+
+
+def _xe_rmt() -> dict[str, list[Point]]:
+    """Return part N's 5p survival at 3000 au, by m and potential, rows by label."""
+    rows = _xe_rmt_rows()
+    files = {}
+    for suffix, group in XE_RMT_SETS.items():
+        for m in (0, 1):
+            points = []
+            for row in rows:
+                if row["group"] != group or row["m"] != str(m):
+                    continue
+                value = row[XE_RMT_COLUMN].strip()
+                float(value)
+                cells = (XE_RMT_TABLE, row["name"], f"label {row['label']}")
+                printed = " | ".join((*cells, f"{XE_RMT_COLUMN} {value}"))
+                x = f"{row['label']}e14"
+                points.append(Point(row["label"], x, value, "", printed))
+            files[f"Xe/{SOURCE}__{xe_rmt_dataset(m, suffix)}.csv"] = points
+    return files
+
+
+def xe_rmt_uncertainty(m: int, suffix: str) -> dict[str, float]:
+    """Return the relative uncertainty of part N's survival P, by row.
+
+    The largest relative change of the depletion 1 - P among the convergence runs at
+    the convergence intensity nearer the row's (:data:`XE_RMT_CONVERGENCE`, m = 0),
+    carried to P: u_D (1 - P) / P. The m = 1 runs and the unscaled potential take the
+    same u_D.
+    """
+    rows = _xe_rmt_rows()
+    change = {}
+    for label in XE_RMT_CONVERGENCE:
+        base = next(
+            r
+            for r in rows
+            if r["group"] == "base" and r["m"] == "0" and r["label"] == label
+        )
+        depletion = 1 - float(base[XE_RMT_COLUMN])
+        change[label] = max(
+            abs((1 - float(r[XE_RMT_COLUMN])) / depletion - 1)
+            for r in rows
+            if r["group"] == "conv"
+            and r["label"] == label
+            and not r["name"].endswith(XE_RMT_NOT_CONVERGENCE)
+        )
+    out = {}
+    for row in rows:
+        if row["group"] != XE_RMT_SETS[suffix] or row["m"] != str(m):
+            continue
+        nearest = min(
+            XE_RMT_CONVERGENCE, key=lambda c: abs(float(c) - float(row["label"]))
+        )
+        survival = float(row[XE_RMT_COLUMN])
+        out[row["label"]] = change[nearest] * (1 - survival) / survival
+    return out
 
 
 def he_two_electron_dataset(setup: str) -> str:

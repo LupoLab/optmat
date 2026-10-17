@@ -168,7 +168,16 @@ the whole atom in A2's 6 fs pulse at 390 nm, 5.69e14 and 3.68e14 W/cm^2 (and BOX
 <= 2 at 5.69e14); hacc_normloss_gauss6_390nm_He: haCC's helium in the same pulse;
 normloss_ and ionised_ipmatched_390nm_*: one electron at three ionisation energies.
 Convergence: two electrons 5.9 % (the box), haCC 2.1 %, one electron 1.7 % (ionised
-fraction) and 5 % (norm-loss, the box)."""
+fraction) and 5 % (norm-loss, the box). The norm-loss of two electrons depends on the
+box by construction (each larger box keeps another Rydberg shell bound), while haCC's
+does not (its bound states are converged at 40 bohr): the two measure different things,
+and the two-electron basis lies about 3 % above its angular limit. The matched,
+box-converged measures are travers_2026_pyroraptor's (TC-1092).
+
+XENON IN RMT'S PULSE (part N; October 2026; TC-1093). ground_survival_rmtpulse_m{0,1}_Xe
+and _unscaled: the 5p population at 3000 au of one electron in hartmann_2022's field, at
+its seven intensities (the RMT ground state's energy, -0.444 au, and part G's own,
+-0.4448129 au, at three); hartmann_2022's measure, for the atom against one electron."""
 
 [[datasets]]
 id = "chi_gauss_Ar_m0"
@@ -2787,3 +2796,139 @@ electrons = "one active electron"
 potential = "Tong and Lin 2005, Table 1, He: V = -(1 + 1.231 exp(-0.662 r) - 1.325 r exp(-1.236 r) - 0.231 exp(-0.480 r))/r"
 method = "TDSE, tRecX, velocity gauge, irECS"
 model_ionization_energy_au = 0.9038011
+
+[[datasets]]
+id = "ground_survival_rmtpulse_m0_Xe"
+material = "Xe"
+file = "Xe/travers_2026_trecx__ground_survival_rmtpulse_m0_Xe.csv"
+table = "data/external/trecx/xe_rmt/results.csv"
+quantity = "ground_state_survival"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Xe 5p, m = 0, one active electron in zhang_2014 Table I (Tong and Lin's form) with part G's refined inner grid, Eta 30, BOX 80, irECS angle 0.3, cutEnergy 100, fixStep 0.00136 au, tRecX a987d7c (OccDual): the potential's short-range terms scaled by beta = 0.9997362280 so that the 5p is at -0.444000 au, RMT's ground state's energy (hartmann_2022's GS_Energy_desired), at its seven intensities, 1.1 to 2.5e14 W/cm2. The population of the field-free 5p (column P_ground_3000) at 3000 au in hartmann_2022's field (the field RMT wrote), the measure of hartmann_2022's rmt_ground_survival_Xe; runs xe_m{m}_I<label>{'_unsc' if suffix else ''}. Uncertainty: the m = 0 convergence runs' change of 1 - P at the nearer of 1.5 and 2.5e14 W/cm2 (Eta 40, 50, radial elements, order, BOX 120, step x 2/3, ECS angle 0.2, operator threshold, cutEnergy 150; at most 0.43 %, cutEnergy), carried to P as u (1 - P)/P. The other bound states (n <= 10) hold 2 to 20 % of the depletion, most at the seven-photon resonance at 1.7e14 W/cm2. The survival of ONE electron in this orbital, not of the atom."
+[datasets.uncertainty]
+relative_rows = { "1.1" = 0.00169, "1.3" = 0.00313, "1.5" = 0.00596, "1.7" = 0.00961, "1.9" = 0.0175, "2.2" = 0.00852, "2.5" = 0.0173 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 759.4
+pulse_fs = 5.297
+pulse_fs_definition = "the full width at half maximum of the intensity, w sqrt(2 ln 2) with the field's 1/e half-width w = 186 au, as hartmann_2022"
+pulse_cycles = 2.09
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "electric field"
+cep = 0
+cep_definition = "E(t) = E0 exp(-((t - 900)/186)^2) cos(0.06 (t - 900)), t in au, on [0, 3000] au, as A(t) = -int_0^t E dt' from a file (velocity gauge): hartmann_2022's field"
+intensity_definition = "I = (E0 / 0.05336 au)^2 x 1e14 W/cm2, hartmann_2022's convention; 0.076 % above E0 = sqrt(I / 3.50945e16 W/cm2)"
+read_at = "t = 3000 au, the end of hartmann_2022's runs (2100 au after the pulse's peak); equal at 1500 au to 1.1e-5"
+measure = "the population of the field-free 5p state, |<5p, m | psi(t)>|^2 (OccDual), what irECS absorbed counting as gone"
+orbital = "5p"
+m = 0
+electrons = "one active electron"
+potential = "zhang_2014 Table I (Tong and Lin's form): Z_c = 1, a_1 ... a_6 = 51.356, 2.112, -99.927, 3.737, 1.644, 0.431, the terms other than Z_c scaled by beta = 0.9997362280"
+model_ionization_energy_au = 0.444
+method = "TDSE, tRecX, velocity gauge, irECS"
+
+[[datasets]]
+id = "ground_survival_rmtpulse_m1_Xe"
+material = "Xe"
+file = "Xe/travers_2026_trecx__ground_survival_rmtpulse_m1_Xe.csv"
+table = "data/external/trecx/xe_rmt/results.csv"
+quantity = "ground_state_survival"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Xe 5p, m = 1, one active electron in zhang_2014 Table I (Tong and Lin's form) with part G's refined inner grid, Eta 30, BOX 80, irECS angle 0.3, cutEnergy 100, fixStep 0.00136 au, tRecX a987d7c (OccDual): the potential's short-range terms scaled by beta = 0.9997362280 so that the 5p is at -0.444000 au, RMT's ground state's energy (hartmann_2022's GS_Energy_desired), at its seven intensities, 1.1 to 2.5e14 W/cm2. The population of the field-free 5p (column P_ground_3000) at 3000 au in hartmann_2022's field (the field RMT wrote), the measure of hartmann_2022's rmt_ground_survival_Xe; runs xe_m{m}_I<label>{'_unsc' if suffix else ''}. Uncertainty: the m = 0 convergence runs' change of 1 - P (no m = 1 runs of their own) at the nearer of 1.5 and 2.5e14 W/cm2 (Eta 40, 50, radial elements, order, BOX 120, step x 2/3, ECS angle 0.2, operator threshold, cutEnergy 150; at most 0.43 %, cutEnergy), carried to P as u (1 - P)/P. The other bound states (n <= 10) hold 2 to 20 % of the depletion, most at the seven-photon resonance at 1.7e14 W/cm2. The survival of ONE electron in this orbital, not of the atom."
+[datasets.uncertainty]
+relative_rows = { "1.1" = 8.88e-05, "1.3" = 0.000167, "1.5" = 0.000283, "1.7" = 0.00045, "1.9" = 0.000642, "2.2" = 0.000261, "2.5" = 0.000396 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 759.4
+pulse_fs = 5.297
+pulse_fs_definition = "the full width at half maximum of the intensity, w sqrt(2 ln 2) with the field's 1/e half-width w = 186 au, as hartmann_2022"
+pulse_cycles = 2.09
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "electric field"
+cep = 0
+cep_definition = "E(t) = E0 exp(-((t - 900)/186)^2) cos(0.06 (t - 900)), t in au, on [0, 3000] au, as A(t) = -int_0^t E dt' from a file (velocity gauge): hartmann_2022's field"
+intensity_definition = "I = (E0 / 0.05336 au)^2 x 1e14 W/cm2, hartmann_2022's convention; 0.076 % above E0 = sqrt(I / 3.50945e16 W/cm2)"
+read_at = "t = 3000 au, the end of hartmann_2022's runs (2100 au after the pulse's peak); equal at 1500 au to 1.1e-5"
+measure = "the population of the field-free 5p state, |<5p, m | psi(t)>|^2 (OccDual), what irECS absorbed counting as gone"
+orbital = "5p"
+m = 1
+electrons = "one active electron"
+potential = "zhang_2014 Table I (Tong and Lin's form): Z_c = 1, a_1 ... a_6 = 51.356, 2.112, -99.927, 3.737, 1.644, 0.431, the terms other than Z_c scaled by beta = 0.9997362280"
+model_ionization_energy_au = 0.444
+method = "TDSE, tRecX, velocity gauge, irECS"
+
+[[datasets]]
+id = "ground_survival_rmtpulse_m0_unscaled_Xe"
+material = "Xe"
+file = "Xe/travers_2026_trecx__ground_survival_rmtpulse_m0_unscaled_Xe.csv"
+table = "data/external/trecx/xe_rmt/results.csv"
+quantity = "ground_state_survival"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Xe 5p, m = 0, one active electron in zhang_2014 Table I (Tong and Lin's form) with part G's refined inner grid, Eta 30, BOX 80, irECS angle 0.3, cutEnergy 100, fixStep 0.00136 au, tRecX a987d7c (OccDual): part G's own potential (5p at -0.4448129 au), at 1.1, 1.5 and 2.5e14 W/cm2, to show the effect of the 0.18 % in I_p. The population of the field-free 5p (column P_ground_3000) at 3000 au in hartmann_2022's field (the field RMT wrote), the measure of hartmann_2022's rmt_ground_survival_Xe; runs xe_m{m}_I<label>{'_unsc' if suffix else ''}. Uncertainty: the m = 0 convergence runs' change of 1 - P at the nearer of 1.5 and 2.5e14 W/cm2 (Eta 40, 50, radial elements, order, BOX 120, step x 2/3, ECS angle 0.2, operator threshold, cutEnergy 150; at most 0.43 %, cutEnergy), carried to P as u (1 - P)/P. The other bound states (n <= 10) hold 2 to 20 % of the depletion, most at the seven-photon resonance at 1.7e14 W/cm2. The survival of ONE electron in this orbital, not of the atom."
+[datasets.uncertainty]
+relative_rows = { "1.1" = 0.00165, "1.5" = 0.00576, "2.5" = 0.0166 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 759.4
+pulse_fs = 5.297
+pulse_fs_definition = "the full width at half maximum of the intensity, w sqrt(2 ln 2) with the field's 1/e half-width w = 186 au, as hartmann_2022"
+pulse_cycles = 2.09
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "electric field"
+cep = 0
+cep_definition = "E(t) = E0 exp(-((t - 900)/186)^2) cos(0.06 (t - 900)), t in au, on [0, 3000] au, as A(t) = -int_0^t E dt' from a file (velocity gauge): hartmann_2022's field"
+intensity_definition = "I = (E0 / 0.05336 au)^2 x 1e14 W/cm2, hartmann_2022's convention; 0.076 % above E0 = sqrt(I / 3.50945e16 W/cm2)"
+read_at = "t = 3000 au, the end of hartmann_2022's runs (2100 au after the pulse's peak); equal at 1500 au to 1.1e-5"
+measure = "the population of the field-free 5p state, |<5p, m | psi(t)>|^2 (OccDual), what irECS absorbed counting as gone"
+orbital = "5p"
+m = 0
+electrons = "one active electron"
+potential = "zhang_2014 Table I (Tong and Lin's form): Z_c = 1, a_1 ... a_6 = 51.356, 2.112, -99.927, 3.737, 1.644, 0.431 (unscaled)"
+model_ionization_energy_au = 0.4448129
+method = "TDSE, tRecX, velocity gauge, irECS"
+
+[[datasets]]
+id = "ground_survival_rmtpulse_m1_unscaled_Xe"
+material = "Xe"
+file = "Xe/travers_2026_trecx__ground_survival_rmtpulse_m1_unscaled_Xe.csv"
+table = "data/external/trecx/xe_rmt/results.csv"
+quantity = "ground_state_survival"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "Xe 5p, m = 1, one active electron in zhang_2014 Table I (Tong and Lin's form) with part G's refined inner grid, Eta 30, BOX 80, irECS angle 0.3, cutEnergy 100, fixStep 0.00136 au, tRecX a987d7c (OccDual): part G's own potential (5p at -0.4448129 au), at 1.1, 1.5 and 2.5e14 W/cm2, to show the effect of the 0.18 % in I_p. The population of the field-free 5p (column P_ground_3000) at 3000 au in hartmann_2022's field (the field RMT wrote), the measure of hartmann_2022's rmt_ground_survival_Xe; runs xe_m{m}_I<label>{'_unsc' if suffix else ''}. Uncertainty: the m = 0 convergence runs' change of 1 - P (no m = 1 runs of their own) at the nearer of 1.5 and 2.5e14 W/cm2 (Eta 40, 50, radial elements, order, BOX 120, step x 2/3, ECS angle 0.2, operator threshold, cutEnergy 150; at most 0.43 %, cutEnergy), carried to P as u (1 - P)/P. The other bound states (n <= 10) hold 2 to 20 % of the depletion, most at the seven-photon resonance at 1.7e14 W/cm2. The survival of ONE electron in this orbital, not of the atom."
+[datasets.uncertainty]
+relative_rows = { "1.1" = 8.63e-05, "1.5" = 0.000276, "2.5" = 0.000388 }
+level = "bound"
+[datasets.parameters]
+wavelength_nm = 759.4
+pulse_fs = 5.297
+pulse_fs_definition = "the full width at half maximum of the intensity, w sqrt(2 ln 2) with the field's 1/e half-width w = 186 au, as hartmann_2022"
+pulse_cycles = 2.09
+polarization = "linear"
+pulse_envelope = "gaussian"
+envelope_of = "electric field"
+cep = 0
+cep_definition = "E(t) = E0 exp(-((t - 900)/186)^2) cos(0.06 (t - 900)), t in au, on [0, 3000] au, as A(t) = -int_0^t E dt' from a file (velocity gauge): hartmann_2022's field"
+intensity_definition = "I = (E0 / 0.05336 au)^2 x 1e14 W/cm2, hartmann_2022's convention; 0.076 % above E0 = sqrt(I / 3.50945e16 W/cm2)"
+read_at = "t = 3000 au, the end of hartmann_2022's runs (2100 au after the pulse's peak); equal at 1500 au to 1.1e-5"
+measure = "the population of the field-free 5p state, |<5p, m | psi(t)>|^2 (OccDual), what irECS absorbed counting as gone"
+orbital = "5p"
+m = 1
+electrons = "one active electron"
+potential = "zhang_2014 Table I (Tong and Lin's form): Z_c = 1, a_1 ... a_6 = 51.356, 2.112, -99.927, 3.737, 1.644, 0.431 (unscaled)"
+model_ionization_energy_au = 0.4448129
+method = "TDSE, tRecX, velocity gauge, irECS"

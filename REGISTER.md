@@ -27883,7 +27883,8 @@ tabulate (the table model clamps outside its range, so only in-range points coun
 - **Correction:** since TC-848 the manual's helium table labelled the static Coulomb
   factor's column `default`; it now has the default's (frequency-dependent) column and
   the static factor's beside it.
-- **Status:** verified (2026-10-11). Closes part K of the runs.
+- **Status:** verified (2026-10-11). Closes part K of the runs. Corrected (2026-10-17)
+  by TC-1092: the norm-losses compared here are not one measure.
 
 
 ## TC-1051 travers_2026_trecx_two_photon, run 5b: haCC's 1s2s resolved; OEP 8's weak-field form and helium's strength confirmed (2026-10-11)
@@ -29465,3 +29466,130 @@ tabulate (the table model clamps outside its range, so only in-range points coun
   as a missing value and gives NaN (`test_a_gap_between_intervals_warns`,
   `tests/test_solid_tables.py`). No value at a positive wavelength changes.
 - **Status:** decided (2026-10-16).
+
+## TC-1092 travers_2026_pyroraptor: helium on matched measures; TC-1050's haCC and atom ratios corrected (2026-10-17)
+
+- **Where:** `src/optmat/data/sources/travers_2026_pyroraptor.toml` (nine datasets),
+  `src/optmat/data/external/pyroraptor/` (the four result tables, `PROVENANCE.md`, the
+  converter and the records' sha256), `tools/extract/travers_2026_pyroraptor.py`,
+  `optmat.gas.ionisation_validation` (`HELIUM_MATCHED`, `YieldRatio`,
+  `helium_matched_ratios`), `tools/ionisation_rate_tables.py`
+  (`ionisation-rate-helium-matched`), the manual's laser and static pages,
+  `travers_2026_trecx.toml` (part K's notes), `src/optmat/data/gas/ionisation_rates.toml`
+  (helium's uncertainty text), tests.
+- **Transcribed:** J. C. Travers's pyroraptor runs of 8 to 14 October 2026, tier 3: helium
+  with both electrons active, haCC with one and with five He+ channels, and one electron
+  of Tong and Lin's potential, in part K's 390 nm pulse (A2's 6 fs Gaussian; 3.684031e14
+  and 5.68981e14 W/cm2), read 1000 au after the pulse as N0 - P(ground) - P(bound, n <=
+  4) ("above4": ionisation plus excitation to n >= 5) and the same above n <= 5; and haCC
+  in Sato et al.'s 800 nm sin^2 pulse with their measure (1 - P(both inside 20 bohr)).
+  Two electrons (inner = 2, R0 = 97 bohr) 8.464e-4 and 7.244e-3; haCC(1) 8.092e-4 and
+  6.985e-3; haCC(5) 8.277e-4 and 7.150e-3; one electron 5.119e-4 and 4.504e-3. The
+  tables were written from the runs' JSON records by a converter kept beside them, every
+  row checked against its record (112 rows).
+- **Checked:**
+  - The measures are converged in the box: the two-electron above4 changes by 0.03 % and
+    0.01 % from R0 = 78 to 97 bohr, while 1 - P(bound) falls by 3.6 % as each box binds
+    another shell; haCC's above4 and above5 agree to 0.01 % at R0 = 40, 60 and 80.
+  - The three analyses cut at n by the same rule, n = round(1/sqrt(-2E)) (the runs'
+    scripts). pyroraptor's reports compared haCC's above5 (7.113e-4; their "ionisation
+    plus n >= 5") with the two-electron and one-electron above4: one shell apart. Their
+    haCC deficit at 390 nm (8 to 13 %), and its contrast with 800 nm, came from that.
+    pyroraptor confirmed and corrected it on 17 October 2026 (merged at `295a255b`):
+    the deficit, its frozen-core interpretation and the "not seen at 800 nm" statement
+    are withdrawn; its corrected haCC(1) and haCC(5) above4 values are those here.
+  - The 390 nm pulse is the same in all three: the haCC records' max |A| matches the
+    intensity to 1e-4, and the one-electron driver uses the same max |A|.
+  - haCC at 800 nm reproduces the report's values (2.961e-4, 1.5445e-2, 0.1536 and
+    3.023e-4, 1.5825e-2, 0.1578).
+- **Doubt:** the two-electron basis (inner = 2) lies above its angular limit by 3.1 %,
+  from an inner-arm ladder of the absorbed norm-loss at BOX 40 and 3.684e14 W/cm2
+  (inner 2 -> 3 -> 4: -0.97 %, -0.67 %, extrapolated geometrically); it was not run at
+  5.69e14 nor on above4, and is the datasets' stated uncertainty, an excess. True
+  ionisation without the Rydberg shells is not converged in any of the boxes.
+- **Finding** (`helium_matched_ratios`, `ionisation-rate-helium-matched`):
+  - The atom over one electron at the same ionisation energy: 1.65 and 1.61 (1.60 and
+    1.56 at the angular limit), not TC-1050's 1.71 and 1.79, which set the two-electron
+    norm-loss (ionisation plus the Rydberg shells beyond BOX 40) against one electron's.
+    Sato et al.'s helium at 800 nm gives 1.71 to 1.53 (TC-860).
+  - haCC(5) is 0.978 and 0.987 of the two electrons (0.979 and 0.990 above n <= 5), and
+    0.998, 0.996 and 0.981 of MCTDHF at 800 nm; haCC(1) 0.956 and 0.964, and 0.978,
+    0.972 and 0.955. TC-1050's 0.76 to 0.81 set haCC's norm-loss, which is ionisation
+    alone (its bound states are converged at 40 bohr), against the two-electron one:
+    haCC's helium is not low, and the factor 1.25 between haCC and Parker et al. (TC-848)
+    was the measure's.
+  - Parker et al.'s rate integrated over the pulse is 1.003 and 0.966 of the two
+    electrons (about 1.03 and 1.00 at the angular limit): confirmed, as TC-1050 found;
+    the default's N_eff of 1.47 stands.
+- **Correction:** TC-1050's finding that haCC's helium is 0.76 to 0.81 of the exact
+  yield, and the atom 1.71 to 1.79 of one electron, is withdrawn; the manual (laser
+  page, the argon bullet of the static page), part K's notes in `travers_2026_trecx` and
+  helium's uncertainty text now give the matched values. The part K datasets and their
+  table are unchanged: they are what was run.
+- **Status:** corrected (2026-10-17).
+
+## TC-1093 travers_2026_trecx part N: one electron of xenon in RMT's field; RMT's atom against it and the default (2026-10-17)
+
+- **Where:** `travers_2026_trecx.toml` (`ground_survival_rmtpulse_m{0,1}_Xe`, `_unscaled`),
+  `src/optmat/data/external/trecx/xe_rmt/` (`results.csv`, `manifest.csv`, `tables.md`,
+  the inputs; `PROVENANCE.md`), `tools/extract/travers_2026_trecx.py`
+  (`xe_rmt_uncertainty`), `optmat.gas.ionisation_validation` (`XENON_RMT`,
+  `SurvivalRatio`, `xenon_rmt_ratios`, `XENON_SURVIVAL`, `xenon_survival`; the
+  `depletion` quantity of `RateComparison`), `tools/ionisation_rate_tables.py`
+  (`ionisation-rate-xenon-rmt`), the manual's static page, xenon's reasons in
+  `ionisation_rates.toml`, tests.
+- **Transcribed:** J. C. Travers's tRecX runs of 12 to 15 October 2026 (part N), tier 3:
+  xenon 5p, m = 0 and m = 1, in part G's potential scaled by beta = 0.9997362280 to RMT's
+  -0.444 au, and unscaled (-0.4448129 au) at 1.1, 1.5 and 2.5e14 W/cm2, in the field RMT
+  wrote (`hartmann_2022`, TC-1059: E(t) = E0 exp(-((t - 900)/186)^2) cos(0.06 (t - 900))
+  au, E0 = 0.05336 sqrt(I/1e14)), read as RMT's measure, the 5p population at 3000 au:
+  m = 0 0.7170 to 0.0584, m = 1 0.9797 to 0.7302.
+- **Checked:** every run done; the 5p energy -0.44400000012 au (unscaled
+  -0.4448128882); the pulse file reproduces the formula to 6e-8 E0, A(3000) = -1.2e-10
+  E0; the population at 1500 au equals that at 3000 au to 1.005e-5; convergence at 1.5
+  and 2.5e14 (m = 0): the depletion moves by at most 0.43 % (cutEnergy 150), the stated
+  uncertainty carried to P; no field, P = 1 to every digit. The table agrees with the
+  runs' report to the last printed digit.
+- **Finding** (`xenon_rmt_ratios`, `xenon_survival`, `ionisation-rate-xenon-rmt`):
+  - RMT's atom depletes like 0.53 to 0.63 of one m = 0 electron (ln P / ln P_0), 0.23 to
+    0.28 of the shell's six electrons taken as independent; at the potential's own
+    ionisation energy 0.56 to 0.64. 0.18 % in the ionisation energy moves the depletion
+    by 0.2 to 2.7 %.
+  - The default (1.5 electrons, from Wallace et al.'s yields: about 1.1 of one m = 0
+    electron, TC-849) depletes 1.54 to 2.09 times as much as RMT (-ln P, at the field's
+    intensity, 0.076 % below RMT's label), more at higher intensity.
+  - RMT depletes less than both measurements of xenon in few-cycle pulses: Wallace et
+    al.'s (through the default) and Hartmann et al.'s own (TC-1094, up to 1.9e14 W/cm2).
+    Its ion states are the frozen Hartree-Fock 4d^-1, 5s^-1 and 5p^-1, and it has no
+    double ionisation.
+- **Decision:** xenon's N_eff (1.5) and uncertainty factor (3) are unchanged: the gap to
+  RMT lies within the factor, and the measurements do not support moving towards it.
+  The comparison is recorded in xenon's uncertainty text and on the static page.
+- **Status:** decided (2026-10-17).
+
+## TC-1094 hartmann_2022: the measured neutral abundance of xenon (2026-10-17)
+
+- **Where:** `hartmann_2022.toml` (`measured_neutral_abundance_Xe`; the notes),
+  `tools/extract/hartmann_2022.py` (`measured`), `optmat.gas.ionisation_validation`
+  (`XENON_SURVIVAL`), `tools/ionisation_rate_tables.py`
+  (`ionisation-rate-xenon-measured`), the manual's static page, tests.
+- **Transcribed:** the authors' archive (`data/experimental/gs_pop.csv`, the paper's
+  Fig. 5(a)): the relative abundance of neutral xenon, `pop_xe0`, at ten peak
+  intensities from 0.945 to 2.502e14 W/cm2, as printed (0.8465 to 0.1279); the column of
+  `ground_state_survival` (the population left in the ground state, here measured
+  through the neutral's 4d - 6p line).
+- **Checked:** Xe, Xe+ and Xe2+ sum to 1 in every row (rounding); the paper's
+  statements quoted in the record (p. 2: the 4.5 fs d-scan FWHM; p. 4: the intensities
+  from average power, up to 11 %, and the simulations' systematic overestimation of
+  Xe+; Fig. 5(a), p. 6).
+- **Doubt:** not stated: the delay at which the abundances were read, the polarisation,
+  the NIR's intensity over the XUV-probed volume, and the abundances' uncertainty. The
+  record states each as not stated.
+- **Finding** (`xenon_survival`, `ionisation-rate-xenon-measured`): the default's
+  depletion at the peak intensity, in a 4.5 fs pulse at 760 nm, is 0.96 to 1.13 of the
+  measured up to 1.6e14 W/cm2 and 1.4 to 1.8 above, where the average over the focus
+  (not modelled) lowers the measured depletion most. The measured survival is below
+  RMT's up to 1.9e14 W/cm2 (0.767 at 1.10e14 against RMT's 0.812 at 1.1e14; 0.518
+  against 0.623 at 1.5e14) and about equal from 2.3e14. With up to 11 % in the intensity
+  (a factor of about 1.7 in the rate) it supports the default's xenon, not RMT's.
+- **Status:** verified (2026-10-17).

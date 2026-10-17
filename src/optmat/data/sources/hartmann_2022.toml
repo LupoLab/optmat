@@ -53,10 +53,18 @@ and is immaterial by the README's statement. Its complement is depletion: ionisa
 and excitation together. The paper's Fig. 5(a) compares it with the measured abundance \
 of neutral xenon.
 
-NOT TAKEN: the experimental abundances of Xe, Xe+ and Xe2+ (Fig. 5(a); \
-data/experimental/gs_pop.csv), estimated from line strengths and cross sections, the \
-intensities 'inferred from average beam power with an uncertainty of up to 11%' (p. 4), \
-and the measured 4.5 fs pulse; the line-shape parameters and dipoles (no quantity).
+TAKEN TOO (TC-1094): the experiment's relative abundance of neutral xenon \
+(data/experimental/gs_pop.csv, pop_xe0; Fig. 5(a)), 'estimations based on the line \
+strength and cross sections' of the neutral's 4d^10 - 4d5/2^-1 6p transition (the \
+caption), normalised with Xe+ and Xe2+ to one, at ten peak intensities 'inferred from \
+average beam power with an uncertainty of up to 11%' (p. 4), in the measured 4.5 fs \
+pulse (d-scan, p. 2). The paper: 'this estimated abundance of Xe+ in the experimental \
+results agrees well with the values extracted directly from the RMT calculations, \
+although there is a systematic overestimation in the simulations' (p. 4). Not stated: \
+the delay at which the abundances were read, the polarisation, and the distribution of \
+the NIR's intensity over the XUV-probed volume. NOT TAKEN: the Xe+ and Xe2+ \
+abundances (no quantity for a charge-state fraction), the line-shape parameters and \
+dipoles (no quantity).
 
 USE: a many-electron calculation of xenon's depletion in a stated pulse, for a \
 one-electron calculation in the same field and with the same measure (part N of the \
@@ -89,3 +97,27 @@ measure = "the population of the neutral atom's field-free ground state at the e
 method = "RMT, non-relativistic, Hartree-Fock orbitals to 5p, 4d^-1, 5s^-1 and 5p^-1 continuum channels to total L = 40, M = 0; the ground state's energy set to -0.444 au relative to the ion (12.08 eV); no double ionisation; an attosecond XUV pulse (61 eV, 0.2e14 W/cm2) also present"
 electrons = "all: the ion's 4d, 5s and 5p hole states (Hartree-Fock orbitals) with one continuum electron, antisymmetrised (R-matrix)"
 model_ionization_energy_au = 0.444
+
+[[datasets]]
+id = "measured_neutral_abundance_Xe"
+material = "Xe"
+file = "Xe/hartmann_2022__measured_neutral_abundance_Xe.csv"
+table = "data/ATAS_xenon-v1.1.zip:data/experimental/gs_pop.csv"
+quantity = "ground_state_survival"
+unit = "1"
+abscissa = "intensity"
+abscissa_unit = "W/cm2"
+use = "check"
+notes = "The experiment's relative abundance of neutral (ground-state) xenon after strong-field ionisation by the NIR, 0.847 at 0.94e14 to 0.128 at 2.50e14 W/cm2: the path-length-density product of the neutral's 4d^10 - 4d5/2^-1 6p line over the sum with Xe+ and Xe2+'s (Fig. 5(a), p. 6; the record's notes), in an 18 mbar (backing) xenon cell. An average over the target: the NIR's intensity distribution over the XUV-probed volume is not stated. The intensities are peak intensities inferred from the average beam power, uncertain by up to 11 % (p. 4); the abundances' uncertainty is not stated."
+[datasets.uncertainty]
+level = "not stated"
+[datasets.parameters]
+wavelength_nm = 760
+pulse_fs = 4.5
+pulse_fs_definition = "full width at half maximum, measured by d-scan (p. 2)"
+polarization = "not stated"
+cep = "not stated: short-term stable, drifting over longer times (p. 2)"
+intensity_definition = "peak intensity inferred from the average beam power, uncertainty up to 11 % (p. 4)"
+read_at = "not stated: from the absorbance of the XUV probe after the NIR (Fig. 5(a)); the delay is not given"
+measure = "the relative abundance of neutral xenon, from the optical density and cross section of its 4d - 6p line, normalised with Xe+ and Xe2+ to one"
+method = "attosecond transient absorption spectroscopy, 760 nm few-cycle NIR pump and 61 eV attosecond XUV probe"

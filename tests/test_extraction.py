@@ -114,6 +114,30 @@ def test_the_trecx_two_photon_files_and_uncertainties_match_the_archive():
             assert expected == pytest.approx(value, rel=0.01, abs=0.0), (dataset, row)
 
 
+def test_the_pyroraptor_files_and_uncertainties_match_the_archived_tables():
+    # pyroraptor's helium runs are archived in data/external/pyroraptor, not the
+    # library; the stated uncertainties are the script's rule, and its checks are what
+    # the record says of the runs (TC-1092).
+    library = _load(TOOLS / "_library.py")
+    script = _load(TOOLS / "travers_2026_pyroraptor.py")
+    for relative, points in script.extract().items():
+        committed = library.path(relative).read_text(encoding="utf-8")
+        assert committed == _render(relative, points), relative
+    script.checks()
+    by_id = {d.id: d for d in sources()["travers_2026_pyroraptor"].datasets}
+    computed = script.uncertainties()
+    assert set(computed) == set(by_id)
+    for dataset, rows in computed.items():
+        stated = by_id[dataset].uncertainty.relative_rows
+        assert set(stated) == set(rows), dataset
+        for row, value in rows.items():
+            # Stated to three figures (two below 1e-3).
+            assert stated[row] == pytest.approx(value, rel=0.01, abs=5e-6), (
+                dataset,
+                row,
+            )
+
+
 def test_the_trecx_files_and_uncertainties_match_the_archived_tables():
     # The tRecX calculations are archived in data/external/trecx, not the library, so
     # their extraction runs without it; the stated uncertainties of the 6 fs ionised
@@ -216,6 +240,11 @@ def test_the_trecx_files_and_uncertainties_match_the_archived_tables():
     rules += [
         (script.hacc_dataset(setup), script.hacc_uncertainty(setup))
         for setup in script.HACC_RUNS
+    ]
+    rules += [
+        (script.xe_rmt_dataset(m, suffix), script.xe_rmt_uncertainty(m, suffix))
+        for suffix in script.XE_RMT_SETS
+        for m in (0, 1)
     ]
     rules += [
         (f"static_{target}", script.kr_xe_static_uncertainty(material))

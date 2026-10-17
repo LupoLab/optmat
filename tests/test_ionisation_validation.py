@@ -895,7 +895,8 @@ def test_helium_with_two_electrons_at_390_nm():
     # at the same ionisation energy (norm-loss 1000 au after the pulse, BOX 40): 1.71
     # and 1.79; with |m| <= 2, 1.72. haCC's helium over one electron 1.30 and 1.41,
     # 0.76 and 0.79 of the two-electron yield. Parker et al.'s rate integrated over the
-    # pulse: 7.00e-3 and 8.49e-4, within 1 to 5 % of the two-electron yield.
+    # pulse: 7.00e-3 and 8.49e-4, within 1 to 5 % of the two-electron yield. The
+    # norm-losses are not one measure (TC-1092; test_helium_on_matched_measures).
     ratios = {
         r.reference.split("/")[1]: r for r in validation.helium_two_electron_ratios()
     }
@@ -910,3 +911,73 @@ def test_helium_with_two_electrons_at_390_nm():
     parker = [validation.parker_pulse_yield(i, 6e-15, 390) for i in two.intensity]
     assert parker == pytest.approx([7.000e-3, 8.491e-4], rel=0.002, abs=0.0)
     assert two.atom / np.array(parker) == pytest.approx([1.047, 1.016], abs=0.005)
+
+
+def test_helium_on_matched_measures():
+    # TC-1092: on the population above n <= 4 (or 5) 1000 au after A2's 390 nm pulse,
+    # box-converged, the atom is 1.65 and 1.61 of one electron; haCC(1) 0.956 and
+    # 0.964 of the atom, haCC(5) 0.978 and 0.987; above n <= 5 the same to 0.01. At
+    # 800 nm haCC(5) is 0.98 to 1.00 of Sato et al.'s MCTDHF, haCC(1) 0.95 to 0.98.
+    # Parker et al.'s rate over the pulse is 1.00 and 0.97 of the atom. Tolerances: the
+    # third figure of the ratios the record and the manual quote.
+    ratios = {r.reference.split("/")[1]: r for r in validation.helium_matched_ratios()}
+    assert set(ratios) == {k.split("/")[1] for k in validation.HELIUM_MATCHED}
+    two = ratios["twoelectron_above4_gauss6_390nm_He"]
+    assert two.ratio == pytest.approx([1.653, 1.608], abs=0.001)
+    # Small yields: the rate form is the plain ratio to 0.2 %.
+    assert two.rate_ratio == pytest.approx(two.ratio, rel=0.002, abs=0.0)
+    expected = {
+        "hacc1_above4_gauss6_390nm_He": [0.956, 0.964],
+        "hacc5_above4_gauss6_390nm_He": [0.978, 0.987],
+        "hacc1_above5_gauss6_390nm_He": [0.962, 0.966],
+        "hacc5_above5_gauss6_390nm_He": [0.979, 0.990],
+        "hacc1_outside20_sin2_800nm_He": [0.978, 0.972, 0.955],
+        "hacc5_outside20_sin2_800nm_He": [0.998, 0.996, 0.981],
+    }
+    for key, values in expected.items():
+        assert ratios[key].ratio == pytest.approx(values, abs=0.001), key
+    # At 1.4e15 W/cm2 the yield is 0.16: the rate form departs from the ratio.
+    assert ratios["hacc5_outside20_sin2_800nm_He"].rate_ratio[2] == pytest.approx(
+        0.979, abs=0.001
+    )
+    parker = [validation.parker_pulse_yield(i, 6e-15, 390) for i in two.intensity]
+    assert np.array(parker) / two.value == pytest.approx([1.003, 0.966], abs=0.001)
+
+
+def test_xenon_against_rmt():
+    # TC-1093: RMT's ground-state survival over one 5p electron's in the same field,
+    # ln P / ln P_0: 0.63 to 0.53; over six independent electrons 0.28 to 0.23; at the
+    # potential's own ionisation energy 0.64, 0.56, 0.56. Tolerances: as quoted.
+    scaled, unscaled = validation.xenon_rmt_ratios()
+    assert scaled.reference == "hartmann_2022/rmt_ground_survival_Xe"
+    assert scaled.intensity / 1e18 == pytest.approx([1.1, 1.3, 1.5, 1.7, 1.9, 2.2, 2.5])
+    assert scaled.per_m0 == pytest.approx(
+        [0.627, 0.612, 0.542, 0.579, 0.531, 0.580, 0.554], abs=0.001
+    )
+    assert scaled.per_shell == pytest.approx(
+        [0.279, 0.268, 0.236, 0.247, 0.226, 0.242, 0.227], abs=0.001
+    )
+    assert unscaled.reference.endswith("@unscaled")
+    assert unscaled.intensity / 1e18 == pytest.approx([1.1, 1.5, 2.5])
+    assert unscaled.atom == pytest.approx(scaled.atom[[0, 2, 6]])
+    assert unscaled.per_m0 == pytest.approx([0.640, 0.555, 0.560], abs=0.001)
+
+
+def test_xenon_survival_against_the_default():
+    # TC-1093, TC-1094: the default's depletion -ln P over RMT's, 1.54 to 2.09, and over
+    # the measured neutral abundance's, 0.96 to 1.76. RMT's labels are of the field,
+    # E0 = 0.05336 sqrt(I/1e14) au: 0.076 % below the standard intensity.
+    rmt, measured = validation.xenon_survival()
+    assert rmt.quantity == measured.quantity == "depletion"
+    assert rmt.ratio == pytest.approx(
+        [1.54, 1.66, 1.83, 1.82, 1.95, 1.92, 2.09], abs=0.01
+    )
+    assert measured.ratio == pytest.approx(
+        [1.36, 1.73, 1.76, 1.42, 1.11, 1.13, 1.13, 1.03, 1.05, 0.96], abs=0.01
+    )
+    # Without the conversion the first point's depletion would be 0.076 % x (the
+    # yield's intensity exponent) higher; with it the model sees the field RMT used.
+    model = ionisation_rate_model("Xe", 759.4e-9)
+    label = -math.log1p(-validation.pulse_yield(model, 1.1e18, 5.297e-15))
+    assert rmt.predicted[0] < label
+    assert rmt.predicted[0] == pytest.approx(label, rel=0.01, abs=0.0)

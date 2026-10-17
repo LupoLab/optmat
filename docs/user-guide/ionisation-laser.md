@@ -30,7 +30,7 @@ labelled `default` until TC-1050).
 | 390 nm | 1.40e+15 | 0.79 | 1.62e-03 | 1.11 | 1.31 | 0.92 | 0.67 |
 <!-- ionisation-rate-helium:end -->
 
-**Two electrons at 390 nm** (TC-1050): helium with both electrons active in tRecX,
+**Two electrons at 390 nm** (TC-1050, TC-1092): helium with both electrons active in tRecX,
 A2's 6 fs pulse at 390 nm, against haCC's helium (one ion channel) and one electron at
 the same ionisation energy, all read as the norm-loss 1000 au after the pulse
 ({func}`~optmat.gas.ionisation_validation.helium_two_electron_ratios`), and Parker et
@@ -48,21 +48,60 @@ al.'s rate integrated over the same pulse
 | `twoelectron_normloss_gauss6_390nm_He_box60` | 5.69e+14 | 0.006901 |  |  | 0.007 | 0.99 |
 <!-- ionisation-rate-helium-two-electron:end -->
 
-- **The atom ionises like 1.7 to 1.8 electrons** of the one-electron model at its own
-  ionisation energy (1.69 with both boxes enlarged), as Sato et al.'s converged
-  two-electron helium at 800 nm (1.53 to 1.71; TC-860).
-- **Parker et al.'s rate is confirmed:** integrated over the pulse it is within 1 to 5 %
-  of the two-electron yield (0.99 with BOX 60). The default's $N_\text{eff}$ of 1.47,
-  set from their static rates, stands.
-- **haCC's helium is low**, 0.76 to 0.79 of the two-electron yield (0.81 at the larger
-  boxes), although converged in its angular momentum, its box and its ion channels (the
-  He+ n = 2 channels add 2 %): the 1.25 between haCC and Parker et al. at 390 nm was
-  haCC's. Whether the same holds for haCC's argon with the Ar_qz data is not known;
-  argon's published all-electron calculations (0.87 to 1.10 of one electron; TC-860)
-  sit above haCC's 0.76 to 0.87.
-- **Convergence:** the two-electron yield changes by 5.9 % from BOX 40 to 60 and by 2 %
-  or less with the step, l and |m|; one electron's norm-loss by 5 % from BOX 40 to 80,
-  so the ratio hardly moves (1.71 to 1.69). BOX 80 for two electrons was not run.
+- **These norm-losses are not one measure.** The two-electron norm-loss falls as the
+  box grows (5.9 % from BOX 40 to 60), because each larger box keeps another Rydberg
+  shell bound; haCC's bound states are converged at 40 bohr, so its norm-loss is the
+  ionisation alone. The ratios above therefore set ionisation plus Rydberg excitation
+  against ionisation, and the two-electron basis lies about 3 % above its angular limit
+  (TC-1092). They are kept as the record of these runs; the comparison is below.
+
+**Matched measures** (TC-1092): the same atom with both electrons active, haCC with one
+ion channel (haCC(1)) and with the five n ≤ 2 channels (haCC(5)), and one electron, in
+the same pulse, read as the population above the bound shells n ≤ 4 (ionisation plus
+excitation to n ≥ 5) or n ≤ 5, 1000 au after the pulse: measures converged in the box
+(`travers_2026_pyroraptor`). At 800 nm, haCC against Sato et al.'s MCTDHF in their
+pulse and with their measure
+({func}`~optmat.gas.ionisation_validation.helium_matched_ratios`):
+
+<!-- ionisation-rate-helium-matched:start -->
+| Calculation | Against | I (W/cm2) | Yield | Against's | Ratio | ln(1 - Y) ratio |
+|---|---|---|---|---|---|---|
+| `twoelectron_above4_gauss6_390nm_He` | `travers_2026_pyroraptor/sae_above4_gauss6_390nm_He` | 3.68e+14 | 0.0008464 | 0.0005119 | 1.653 | 1.654 |
+| `twoelectron_above4_gauss6_390nm_He` | `travers_2026_pyroraptor/sae_above4_gauss6_390nm_He` | 5.69e+14 | 0.007244 | 0.004504 | 1.608 | 1.611 |
+| `hacc1_above4_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He` | 3.68e+14 | 0.0008092 | 0.0008464 | 0.956 | 0.956 |
+| `hacc1_above4_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He` | 5.69e+14 | 0.006985 | 0.007244 | 0.964 | 0.964 |
+| `hacc5_above4_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He` | 3.68e+14 | 0.0008277 | 0.0008464 | 0.978 | 0.978 |
+| `hacc5_above4_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He` | 5.69e+14 | 0.00715 | 0.007244 | 0.987 | 0.987 |
+| `hacc1_above5_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above5_gauss6_390nm_He` | 3.68e+14 | 0.0007113 | 0.0007396 | 0.962 | 0.962 |
+| `hacc1_above5_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above5_gauss6_390nm_He` | 5.69e+14 | 0.006513 | 0.006742 | 0.966 | 0.966 |
+| `hacc5_above5_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above5_gauss6_390nm_He` | 3.68e+14 | 0.0007242 | 0.0007396 | 0.979 | 0.979 |
+| `hacc5_above5_gauss6_390nm_He` | `travers_2026_pyroraptor/twoelectron_above5_gauss6_390nm_He` | 5.69e+14 | 0.006672 | 0.006742 | 0.990 | 0.990 |
+| `hacc1_outside20_sin2_800nm_He` | `sato_2016/fig6_casscf_He_800nm` | 4.00e+14 | 0.0002961 | 0.0003029 | 0.978 | 0.978 |
+| `hacc1_outside20_sin2_800nm_He` | `sato_2016/fig6_casscf_He_800nm` | 8.00e+14 | 0.01545 | 0.01589 | 0.972 | 0.972 |
+| `hacc1_outside20_sin2_800nm_He` | `sato_2016/fig6_casscf_He_800nm` | 1.40e+15 | 0.1536 | 0.1608 | 0.955 | 0.951 |
+| `hacc5_outside20_sin2_800nm_He` | `sato_2016/fig6_casscf_He_800nm` | 4.00e+14 | 0.0003023 | 0.0003029 | 0.998 | 0.998 |
+| `hacc5_outside20_sin2_800nm_He` | `sato_2016/fig6_casscf_He_800nm` | 8.00e+14 | 0.01583 | 0.01589 | 0.996 | 0.996 |
+| `hacc5_outside20_sin2_800nm_He` | `sato_2016/fig6_casscf_He_800nm` | 1.40e+15 | 0.1578 | 0.1608 | 0.981 | 0.979 |
+| Parker et al.'s rate over the pulse | `travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He` | 3.68e+14 | 0.0008491 | 0.0008464 | 1.003 | 1.003 |
+| Parker et al.'s rate over the pulse | `travers_2026_pyroraptor/twoelectron_above4_gauss6_390nm_He` | 5.69e+14 | 0.007 | 0.007244 | 0.966 | 0.966 |
+<!-- ionisation-rate-helium-matched:end -->
+
+- **The atom ionises like 1.6 electrons** of one electron at its own ionisation energy:
+  1.65 and 1.61, or 1.60 and 1.56 at the two-electron calculation's angular limit (3.1
+  % lower). Sato et al.'s converged helium at 800 nm gives 1.71 to 1.53, falling with
+  the intensity (TC-860). A single number for helium is uncertain by about 10 %.
+- **Parker et al.'s rate is confirmed:** integrated over the pulse it is 1.00 and 0.97
+  of the two-electron yield (1.03 and 1.00 at the angular limit). The default's
+  $N_\text{eff}$ of 1.47, set from their static rates, stands.
+- **haCC's helium is within a few per cent of the exact atom:** haCC(5) is 0.98 and
+  0.99 of the two-electron calculation at 390 nm (above the angular limit by about the
+  calculation's 3 %) and 0.98 to 1.00 of MCTDHF at 800 nm; haCC(1) 0.96 at 390 nm and
+  0.95 to 0.98 at 800 nm. The 0.76 to 0.79 above, and the factor 1.25 between haCC's
+  norm-loss and Parker et al.'s rate (TC-848), came from the measure, not from haCC.
+  Whether haCC's argon with the Ar_qz data is as close is not known.
+- **Convergence:** the populations above n ≤ 4 change by 0.03 % from R0 = 78 to 97 bohr
+  (two electrons) and by 0.3 % among haCC's numerical variations; the two-electron
+  calculation's angular basis (3.1 %) is the largest uncertainty.
 
 ## All-electron rates at 390 nm
 
