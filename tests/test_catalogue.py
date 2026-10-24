@@ -108,12 +108,16 @@ ionisation_rate_model("Ar", 800e-9)
 ionisation_parameters("Ar")
 raman_response("N2", 293.15)
 transport_model("Ar")
-print(optmat.datasets.sources.cache_info().currsize)
+from optmat.gas.molecular_ionisation_rates import molecular_rate_model
+molecular_rate_model("N2", 800e-9)
+from optmat.gas.models.fitted import fitted_models as fits
+print(optmat.datasets.sources.cache_info().currsize, fits.cache_info().currsize)
 """
     result = subprocess.run(
         [sys.executable, "-c", code], capture_output=True, text=True, check=True
     )
-    assert result.stdout.strip() == "0"
+    # Neither the catalogue nor every gas's fit (each with its absorption term).
+    assert result.stdout.split() == ["0", "0"]
 
 
 @pytest.mark.parametrize(

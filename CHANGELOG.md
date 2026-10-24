@@ -7,6 +7,12 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+### Changed
+
+- `gas.ionisation.ionisation_parameters` and the compact models read their gas's own
+  fitted model, not all fifteen with their absorption terms (no value changed):
+  `ionisation_parameters("He")` takes half the time it did.
+
 ## 0.9.0 (2026-10-24)
 
 Models read only the data they need, so start-up is seconds to tens of seconds faster
