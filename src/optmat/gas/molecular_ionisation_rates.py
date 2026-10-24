@@ -164,6 +164,7 @@ __all__ = [
     "MolecularRateModel",
     "isotropic_structure_factors",
     "moadk_rate_au",
+    "molecular_rate_coverage",
     "molecular_rate_model",
     "molecular_rate_models",
 ]
@@ -1525,6 +1526,24 @@ def _rate_model(name: str, gas: Gas) -> MolecularRateModel:
             **_status(entry, f"{name}/{listed}", default),
         )
     return replace(_build(name, model, gas), **_status(model, name, default))
+
+
+def molecular_rate_coverage() -> dict[str, tuple[Gas, ...]]:
+    """Return the gases each molecular rate model covers, building none of them.
+
+    Returns
+    -------
+    dict of str to tuple of Gas
+        Each model of :func:`molecular_rate_models` and its gases, in file order,
+        read from ``molecular_ionisation_rates.toml`` alone; the ``default`` model's
+        are the molecules optmat gives an ionisation rate for.
+
+    Examples
+    --------
+    >>> [gas.value for gas in molecular_rate_coverage()["ppt_talebpour"]]
+    ['D2', 'N2', 'O2']
+    """
+    return {name: tuple(_covered(name)) for name in _models_table()}
 
 
 @functools.cache

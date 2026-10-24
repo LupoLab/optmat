@@ -144,6 +144,7 @@ __all__ = [
     "coulomb_factor",
     "cycle_average",
     "cycle_average_factor",
+    "ionisation_rate_coverage",
     "ionisation_rate_model",
     "ionisation_rate_models",
     "keldysh_parameter",
@@ -3045,6 +3046,24 @@ def _rate_model(name: str, gas: Gas) -> IonisationRateModel:
         status=status,
         status_reason=reason,
     )
+
+
+def ionisation_rate_coverage() -> dict[str, tuple[Gas, ...]]:
+    """Return the gases each atomic rate model covers, building none of them.
+
+    Returns
+    -------
+    dict of str to tuple of Gas
+        Each model of :func:`ionisation_rate_models` and its gases, in file order,
+        read from ``ionisation_rates.toml`` alone; the ``default`` model's are the
+        atoms optmat gives an ionisation rate for.
+
+    Examples
+    --------
+    >>> [gas.value for gas in ionisation_rate_coverage()["default"]]
+    ['He', 'Ne', 'Ar', 'Kr', 'Xe']
+    """
+    return {name: _covered(name) for name in _models_table()}
 
 
 @functools.cache
