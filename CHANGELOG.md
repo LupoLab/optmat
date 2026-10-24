@@ -7,7 +7,12 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
-No recommended value or model changed.
+## 0.9.0 (2026-10-24)
+
+Models read only the data they need, so start-up is seconds to tens of seconds faster
+on a cold disk, and helium and xenon gain validation data. No recommended value or model
+changed. `Source.datasets` is no longer a constructor field (see *Changed*), hence the
+minor version.
 
 ### Added
 
