@@ -70,3 +70,26 @@ def test_scalar_wavelength_gives_a_zero_dimensional_array():
     value = refractivity("He", 800e-9)
     assert isinstance(value, np.ndarray)
     assert value.shape == ()
+
+
+def test_one_fit_or_published_formula_is_read_by_its_name(tmp_path, monkeypatch):
+    from optmat.gas.models import fitted, formulas  # noqa: PLC0415
+
+    assert fitted.fitted_model("fit/He") is fitted.fitted_models()["fit/He"]
+    assert (
+        formulas.published_model("bideau_mehu_1981/sellmeier_Ar")
+        == formulas.published_models()["bideau_mehu_1981/sellmeier_Ar"]
+    )
+    for missing in ("He", "fit/no_such_gas"):
+        with pytest.raises(KeyError, match=missing):
+            fitted.fitted_model(missing)
+    for missing in ("no_such_source/x", "bideau_mehu_1981/no_such_formula"):
+        with pytest.raises(KeyError, match=missing):
+            formulas.published_model(missing)
+    # A stored fit whose record names another fit is refused.
+    directory = tmp_path / "models" / "fitted"
+    directory.mkdir(parents=True)
+    (directory / "Ne.json").write_text('{"name": "He"}', encoding="utf-8")
+    monkeypatch.setattr(fitted, "GAS_DATA_DIRECTORY", tmp_path)
+    with pytest.raises(OptmatError, match="named 'He', not its file name"):
+        fitted.fitted_model.__wrapped__("fit/Ne")
