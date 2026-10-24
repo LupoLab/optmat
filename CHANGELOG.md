@@ -20,6 +20,32 @@ No recommended value or model changed.
   neutral abundance (`hartmann_2022`), and `xenon_rmt_ratios` and `xenon_survival`.
 - The curated data are now 762 source records: 8481 datasets and 197,804 values, 259
   errata and 780 published formulas.
+- `gas.ionisation_rates.ionisation_rate_coverage` and
+  `gas.molecular_ionisation_rates.molecular_rate_coverage`: the gases each rate model
+  covers, read from the rates file without building a model, so a caller can tell an
+  atom from a molecule.
+- `gas.models.fitted.fitted_model(name)` and `gas.models.formulas.published_model(name)`:
+  one gas model, reading only its own record.
+- `Source.dataset(id)` and `load_source(path, defer=True)`: a source's datasets are
+  built, and their data files read, when first asked for.
+- A catalogue index, `data/catalogue_index.json`, written by
+  `tools/catalogue_index.py`: which record holds the datasets and formulas of each
+  material and quantity. It is checked against the records on first use; an out-of-date
+  index raises the new `CatalogueIndexWarning` and the records are read instead.
+
+### Changed
+
+- The models read only the data they need (no value changed). A model that needed a
+  few datasets read the whole catalogue (8,300 files), and a gas's model built every
+  gas's: `molecular_rate_model("N2")` read 8,671 files and now reads 35,
+  `ionisation_rate_model("He")` 339 and now 34, gas `default_model("He")` 195 and now
+  28, `air_model()` 799 and now 19, and the SiO2 models 3,964 and now 92. Datasets are
+  looked up by key, each gas's model, rate and parameters are built on demand, searches
+  by material, quantity or formula use the index, and a source's data files are read
+  only for the datasets used. Cold starts, where every file opened is read from disk
+  or scanned, are seconds to tens of seconds shorter.
+- `Source.datasets` is a cached property built from the new `Source.entries` (the
+  record's dataset tables), no longer a constructor field.
 
 ### Fixed
 
