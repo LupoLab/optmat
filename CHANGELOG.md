@@ -7,6 +7,10 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+## 0.9.1 (2026-10-24)
+
+A faster start-up for ionisation rates. No value, model or stored fit changed.
+
 ### Changed
 
 - `gas.ionisation.ionisation_parameters` and the compact models read their gas's own
