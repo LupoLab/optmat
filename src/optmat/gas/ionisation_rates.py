@@ -144,6 +144,7 @@ __all__ = [
     "coulomb_factor",
     "cycle_average",
     "cycle_average_factor",
+    "ionisation_rate_coverage",
     "ionisation_rate_model",
     "ionisation_rate_models",
     "keldysh_parameter",
@@ -2989,6 +2990,83 @@ def _build(
 
 
 @functools.cache
+def _models_table() -> dict[str, Mapping[str, Any]]:
+    """Read the models of ``ionisation_rates.toml``.
+
+    Returns
+    -------
+    dict of str to mapping
+        Each model's table, by name.
+    """
+    with IONISATION_RATES_FILE.open("rb") as handle:
+        table = tomllib.load(handle)
+    return {str(name): model for name, model in table["models"].items()}
+
+
+def _covered(name: str) -> tuple[Gas, ...]:
+    """Return the gases a model covers.
+
+    Parameters
+    ----------
+    name : str
+        A model of ``ionisation_rates.toml``.
+
+    Returns
+    -------
+    tuple of Gas
+        Its gases, in the file's order.
+    """
+    return tuple(as_gas(gas) for gas in _models_table()[name]["gases"])
+
+
+@functools.cache
+def _rate_model(name: str, gas: Gas) -> IonisationRateModel:
+    """Build one model of one gas, reading only the datasets it cites.
+
+    Parameters
+    ----------
+    name : str
+        A model of ``ionisation_rates.toml``.
+    gas : Gas
+        A gas it covers.
+
+    Returns
+    -------
+    IonisationRateModel
+        The model at 800 nm, with its status.
+    """
+    model = _models_table()[name]
+    # The default is validated (Kr and Xe with their suggested constant, which
+    # Wallace et al.'s yields test); the literature forms are kept for comparison.
+    status, reason = parse_status(
+        model, name, default="validated" if name == "default" else "comparison"
+    )
+    return replace(
+        _build(gas, name, model, _catalogue.by_key()),
+        status=status,
+        status_reason=reason,
+    )
+
+
+def ionisation_rate_coverage() -> dict[str, tuple[Gas, ...]]:
+    """Return the gases each atomic rate model covers, building none of them.
+
+    Returns
+    -------
+    dict of str to tuple of Gas
+        Each model of :func:`ionisation_rate_models` and its gases, in file order,
+        read from ``ionisation_rates.toml`` alone; the ``default`` model's are the
+        atoms optmat gives an ionisation rate for.
+
+    Examples
+    --------
+    >>> [gas.value for gas in ionisation_rate_coverage()["default"]]
+    ['He', 'Ne', 'Ar', 'Kr', 'Xe']
+    """
+    return {name: _covered(name) for name in _models_table()}
+
+
+@functools.cache
 def ionisation_rate_models() -> dict[str, dict[Gas, IonisationRateModel]]:
     """Return every named model of every gas it covers, at 800 nm.
 
@@ -2998,25 +3076,10 @@ def ionisation_rate_models() -> dict[str, dict[Gas, IonisationRateModel]]:
         The models by name and gas; :meth:`IonisationRateModel.at_wavelength` moves
         one to another wavelength.
     """
-    with IONISATION_RATES_FILE.open("rb") as handle:
-        table = tomllib.load(handle)
-    by_key = _catalogue.by_key()
-    built = {}
-    for name, model in table["models"].items():
-        # The default is validated (Kr and Xe with their suggested constant, which
-        # Wallace et al.'s yields test); the literature forms are kept for comparison.
-        status, reason = parse_status(
-            model, str(name), default="validated" if name == "default" else "comparison"
-        )
-        built[str(name)] = {
-            as_gas(gas): replace(
-                _build(as_gas(gas), str(name), model, by_key),
-                status=status,
-                status_reason=reason,
-            )
-            for gas in model["gases"]
-        }
-    return built
+    return {
+        name: {gas: _rate_model(name, gas) for gas in _covered(name)}
+        for name in _models_table()
+    }
 
 
 def ionisation_rate_model(
@@ -3061,12 +3124,12 @@ def ionisation_rate_model(
     >>> f"{float(rate):.2e}"
     '2.79e-06'
     """
-    models = ionisation_rate_models()
+    models = _models_table()
     if model not in models:
         msg = f"no ionisation-rate model {model!r}; the models are {sorted(models)}"
         raise DataError(msg)
     species = as_gas(gas)
-    if species not in models[model]:
+    if species not in _covered(model):
         msg = f"the ionisation-rate model {model!r} does not cover {species.value}"
         raise DataError(msg)
-    return models[model][species].at_wavelength(wavelength)
+    return _rate_model(model, species).at_wavelength(wavelength)

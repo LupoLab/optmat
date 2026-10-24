@@ -43,8 +43,9 @@ import numpy as np
 from jaxtyping import Float
 from scipy.optimize import least_squares
 
+from optmat import _catalogue
 from optmat.constants import AU_POLARIZABILITY, BOHR_RADIUS
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError
 from optmat.gas import GAS_DATA_DIRECTORY, reduction
 from optmat.gas.absorption import MeasuredAbsorption, measured_absorption
@@ -463,7 +464,7 @@ def _interval_terms(spec: object, path: Path) -> tuple[tuple[str, float, float],
     if not isinstance(spec, Mapping) or "dataset" not in spec:
         msg = f"{path.name}: fixed_intervals needs a dataset"
         raise DataError(msg)
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     key = str(spec["dataset"])
     if (
         key not in by_key
@@ -514,7 +515,7 @@ def load_config(name: str | Path) -> FitConfig:
     raw = path.read_bytes()
     record = tomllib.loads(raw.decode("utf-8"))
     model = record["model"]
-    known = {d.key for d in datasets()}
+    known = _catalogue.by_key()
     allowed = {"gas", "description", "range_nm", "model", "fitted", "validators"}
     unknown_keys = set(record) - allowed
     if unknown_keys:
@@ -599,7 +600,7 @@ def load_config(name: str | Path) -> FitConfig:
         )
         for entry in record.get("validators", [])
     )
-    unknown = {v.key for v in validators} - known
+    unknown = {v.key for v in validators if v.key not in known}
     if unknown:
         msg = f"{path.name}: unknown validator datasets {sorted(unknown)}"
         raise DataError(msg)
@@ -967,7 +968,7 @@ def observations(config: FitConfig) -> tuple[Observation, ...]:
     tuple of Observation
         One per fitted dataset.
     """
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     return tuple(
         _ratio(by_key[o.key], o, config.gas)
         if by_key[o.key].quantity == "phase_match_density_ratio"
@@ -1526,7 +1527,7 @@ def _validator_observations(config: FitConfig) -> dict[str, Observation | str]:
         Per validator, its observation at its stated uncertainty alone, or the reason
         it has none (a quantity with no comparison yet).
     """
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     found: dict[str, Observation | str] = {}
     for validator in config.validators:
         key = validator.key

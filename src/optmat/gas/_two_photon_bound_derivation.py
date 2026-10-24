@@ -34,8 +34,9 @@ from typing import Any, Final
 
 import numpy as np
 
+from optmat import _catalogue
 from optmat.constants import HBAR
-from optmat.datasets import DATA_DIRECTORY, Dataset, datasets, sources
+from optmat.datasets import DATA_DIRECTORY, Dataset
 from optmat.exceptions import DataError
 from optmat.gas.gases import as_gas
 from optmat.gas.ionisation import _ENERGY_UNITS
@@ -75,16 +76,15 @@ def _selection() -> dict[str, Any]:
         return tomllib.load(f)
 
 
-@functools.cache
-def _by_key() -> dict[str, Dataset]:
+def _by_key() -> Mapping[str, Dataset]:
     """Return the curated datasets, by key.
 
     Returns
     -------
-    dict of str to Dataset
-        Every dataset.
+    Mapping of str to Dataset
+        Every dataset, read on lookup.
     """
-    return {d.key: d for d in datasets()}
+    return _catalogue.by_key()
 
 
 def _dataset(key: str) -> Dataset:
@@ -240,7 +240,7 @@ def _strength(
         row=entry["row"],
         source=dataset.source,
         kind="measured"
-        if sources()[dataset.source].kind == "measurement"
+        if _catalogue.source(dataset.source).kind == "measurement"
         else "calculated",
         delta=delta,
         sigma0=sigma0,

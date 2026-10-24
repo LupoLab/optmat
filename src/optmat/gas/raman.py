@@ -1825,21 +1825,34 @@ def _parameters(
 
 
 @functools.cache
-def _all_parameters() -> dict[Gas, RamanParameters]:
-    """Build every gas's Raman parameters from ``raman.toml``.
+def _entries() -> dict[Gas, Mapping[str, object]]:
+    """Read ``raman.toml``.
 
     Returns
     -------
-    dict of Gas to RamanParameters
-        By gas.
+    dict of Gas to mapping
+        Each gas's entry.
     """
     with RAMAN_FILE.open("rb") as handle:
         table = tomllib.load(handle)
-    by_key = _catalogue.by_key()
-    return {
-        as_gas(name): _parameters(as_gas(name), entry, by_key)
-        for name, entry in table.items()
-    }
+    return {as_gas(name): entry for name, entry in table.items()}
+
+
+@functools.cache
+def _gas_parameters(species: Gas) -> RamanParameters:
+    """Build one gas's Raman parameters, reading only the datasets it cites.
+
+    Parameters
+    ----------
+    species : Gas
+        A gas of ``raman.toml``.
+
+    Returns
+    -------
+    RamanParameters
+        Its bands.
+    """
+    return _parameters(species, _entries()[species], _catalogue.by_key())
 
 
 def raman_parameters(gas: Gas | str) -> RamanParameters:
@@ -1861,11 +1874,10 @@ def raman_parameters(gas: Gas | str) -> RamanParameters:
         If the gas has none (an atom, or a molecule not yet curated).
     """
     species = as_gas(gas)
-    parameters = _all_parameters()
-    if species not in parameters:
+    if species not in _entries():
         msg = f"no Raman parameters for {species.value}"
         raise DataError(msg)
-    return parameters[species]
+    return _gas_parameters(species)
 
 
 @dataclass(frozen=True)

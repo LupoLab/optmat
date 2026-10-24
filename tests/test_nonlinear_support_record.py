@@ -24,6 +24,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+from optmat import _catalogue
 from optmat.constants import HBAR, C
 from optmat.exceptions import DataError
 from optmat.gas import _nonlinear_support as derivation
@@ -72,7 +73,7 @@ def _nm(wavenumber: float, photons: float = 1.0) -> float:
 
 def _printed(key: str) -> float:
     source, _, ident = key.partition("/")
-    dataset = next(d for d in derivation.datasets() if d.key == key)
+    dataset = _catalogue.dataset(key)
     assert dataset.source == source
     assert dataset.id == ident
     return float(dataset.values[0])
@@ -304,8 +305,7 @@ def test_a_band_origin_is_the_sum_of_its_chain_of_0_0_bands(gas, name, chain):
     keys = tuple(f"nist_webbook_2026/state_{s}" for s in chain)
     assert limit.kind == "band_origin"
     assert limit.datasets == keys
-    datasets = {d.key: d for d in derivation.datasets()}
-    total = sum(float(datasets[k].parameters["nu00_cm1"]) for k in keys)  # pyright: ignore[reportArgumentType]
+    total = sum(float(_catalogue.dataset(k).parameters["nu00_cm1"]) for k in keys)  # pyright: ignore[reportArgumentType]
     assert limit.wavenumber == pytest.approx(100 * total, rel=RTOL, abs=0.0)
     assert not limit.uncertainty.stated
     assert any("hot-band" in q for q in limit.qualifications)
@@ -707,7 +707,7 @@ def test_a_gas_without_a_selection_is_an_error(monkeypatch):
 
 
 def test_a_level_must_be_one_value_in_cm1_and_a_band_needs_its_origin():
-    datasets = {d.key: d for d in derivation.datasets()}
+    datasets = _catalogue.by_key()
     key = "nist_asd_2026/level_Ar_odd_J1"
     wrong = {key: dataclasses.replace(datasets[key], unit="eV")}
     with pytest.raises(DataError, match="one level in cm-1"):

@@ -17,7 +17,7 @@ from optmat.solid import kerr
 
 
 @pytest.fixture
-def sample(tmp_path, monkeypatch):
+def sample(tmp_path, monkeypatch, curated):
     wavelength = np.array([400, 500, 600, 800, 1000, 1200], dtype=float)
     energy = 2 * np.pi * HBAR * C / (wavelength * 1e-9 * E_CHARGE)
     points = [
@@ -33,7 +33,7 @@ def sample(tmp_path, monkeypatch):
         encoding="utf-8",
     )
     sample = load_source(path).datasets[0]
-    monkeypatch.setattr(kerr, "datasets", lambda: (sample,))
+    curated(sample)
     return sample
 
 
@@ -51,15 +51,16 @@ def test_pulse_metadata_is_required_only_for_pulse_weighting(sample):
 
 
 def test_kerr_observations_require_self_coefficients_and_uncertainty(
-    sample, monkeypatch
+    sample, monkeypatch, curated
 ):
     changed = dataclasses.replace(
         sample, parameters={"part": "total", "coefficient": "probe"}
     )
-    monkeypatch.setattr(kerr, "datasets", lambda: (changed,))
+    curated(changed)
     with pytest.raises(DataError, match="only self coefficients"):
         kerr.points(kerr.KerrOptions(sample.key, raman="full"))
     changed = dataclasses.replace(sample, uncertainty=Uncertainty())
+    curated(changed)
     with pytest.raises(DataError, match="points without an uncertainty"):
         kerr.points(kerr.KerrOptions(sample.key, raman="full"))
     supplied = kerr.points(kerr.KerrOptions(sample.key, raman="full", sigma=0.02))
@@ -72,6 +73,7 @@ def test_kerr_observations_require_self_coefficients_and_uncertainty(
         unit="m2/V2",
         parameters=sample.parameters | {"definition": "synthetic"},
     )
+    curated(changed)
     with pytest.raises(DataError, match="is not converted"):
         kerr.points(kerr.KerrOptions(sample.key, raman="full"))
 
@@ -135,7 +137,7 @@ def test_synthetic_kerr_fit_with_fraction_prior_round_trips(
 
 
 def test_gain_observations_require_gain_units_pump_shift_and_errors(
-    sample, monkeypatch
+    sample, monkeypatch, curated
 ):
     with pytest.raises(DataError, match="one raman_gain"):
         kerr.gain_points(kerr.GainOptions(sample.key))
@@ -149,12 +151,13 @@ def test_gain_observations_require_gain_units_pump_shift_and_errors(
         sigmas=("",),
         parameters={"transition": "synthetic"},
     )
-    monkeypatch.setattr(kerr, "datasets", lambda: (gain,))
+    curated(gain)
     with pytest.raises(DataError, match=r"parameters\.pump_nm"):
         kerr.gain_points(kerr.GainOptions(gain.key))
     gain = dataclasses.replace(
         gain, parameters={"transition": "synthetic", "pump_nm": 500}
     )
+    curated(gain)
     with pytest.raises(DataError, match=r"parameters\.shift_cm1"):
         kerr.gain_points(kerr.GainOptions(gain.key))
     gain = dataclasses.replace(
@@ -162,6 +165,7 @@ def test_gain_observations_require_gain_units_pump_shift_and_errors(
         parameters={"transition": "synthetic", "pump_nm": 500, "shift_cm1": 440},
         uncertainty=Uncertainty(),
     )
+    curated(gain)
     with pytest.raises(DataError, match="no uncertainty"):
         kerr.gain_points(kerr.GainOptions(gain.key))
     point = kerr.gain_points(kerr.GainOptions(gain.key, sigma=0.1))

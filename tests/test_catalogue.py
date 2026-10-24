@@ -11,19 +11,18 @@ import numpy as np
 import pytest
 
 from optmat import _catalogue
-from optmat.datasets import datasets, sources
+from optmat.datasets import DATA_DIRECTORY, datasets, load_source, sources
+from optmat.exceptions import DataError
 
 
 @pytest.fixture
-def unloaded(monkeypatch):
-    # Read records as a fresh process would, before the catalogue is loaded.
-    class Empty:
-        currsize = 0
-
-    monkeypatch.setattr(_catalogue.sources, "cache_info", Empty)
+def unloaded():
+    # Read records as a fresh process would, before any record is read.
     _catalogue.source.cache_clear()
+    sources.cache_clear()
     yield
     _catalogue.source.cache_clear()
+    sources.cache_clear()
 
 
 def _same(alone, catalogued):
@@ -39,15 +38,14 @@ def _same(alone, catalogued):
 
 @pytest.mark.parametrize("source_id", ["ogawa_1958", "malitson_1965", "huber_1974"])
 def test_a_record_read_alone_is_the_catalogues(unloaded, source_id):
+    # The catalogue takes the record already read rather than reading it again, and
+    # that record is what the loader reads from the file.
     alone = _catalogue.source(source_id)
-    catalogued = sources()[source_id]
-    assert alone is not catalogued
-    assert (alone.citation, alone.formulas) == (
-        catalogued.citation,
-        catalogued.formulas,
-    )
-    assert len(alone.datasets) == len(catalogued.datasets)
-    for one, other in zip(alone.datasets, catalogued.datasets, strict=True):
+    assert sources()[source_id] is alone
+    loaded = load_source(DATA_DIRECTORY / "sources" / f"{source_id}.toml")
+    assert (alone.citation, alone.formulas) == (loaded.citation, loaded.formulas)
+    assert len(alone.datasets) == len(loaded.datasets)
+    for one, other in zip(alone.datasets, loaded.datasets, strict=True):
         _same(one, other)
 
 
@@ -63,7 +61,6 @@ def test_missing_records_and_datasets_raise_key_errors(unloaded):
 
 def test_a_loaded_catalogue_serves_its_own_records():
     catalogued = sources()["ogawa_1958"]
-    _catalogue.source.cache_clear()
     assert _catalogue.source("ogawa_1958") is catalogued
     assert _catalogue.records()["ogawa_1958"] is catalogued
 
@@ -84,8 +81,8 @@ def test_lookups_by_key_filter_as_the_catalogue_does():
 
 
 def test_the_formula_records_are_every_record_with_formulas():
-    # Only the records with a [[formulas]] table are read; they must be exactly the
-    # sources with formulas, in the catalogue's order.
+    # Only the records the index lists with formulas are read; they must be exactly
+    # the sources with formulas, in the catalogue's order.
     expected = [s.id for s in sources().values() if s.formulas]
     assert [s.id for s in _catalogue.formula_sources()] == expected
 
@@ -123,9 +120,11 @@ print(optmat.datasets.sources.cache_info().currsize)
     "quantity", ["mole_fraction", "refractivity", "mixture_compressibility_factor"]
 )
 def test_the_datasets_of_a_quantity_are_the_catalogues(quantity):
-    # Only the records whose text sets the quantity are read; they must hold exactly
-    # the catalogue's datasets of it, in its order.
-    expected = [d.key for d in datasets(quantity=quantity)]
+    # Only the records the index lists for the quantity are read; they must hold
+    # exactly the catalogue's datasets of it, in its order.
+    expected = [
+        d.key for s in sources().values() for d in s.datasets if d.quantity == quantity
+    ]
     assert [d.key for d in _catalogue.quantity_datasets(quantity)] == expected
 
 
@@ -153,3 +152,27 @@ print(optmat.datasets.sources.cache_info().currsize,
         [sys.executable, "-c", code], capture_output=True, text=True, check=True
     )
     assert result.stdout.split() == ["0", "0"]
+
+
+def test_a_dataset_is_built_once_and_shared_with_its_sources_datasets(unloaded):
+    record = _catalogue.source("ogawa_1958")
+    alone = record.dataset("absolute")
+    assert _catalogue.dataset("ogawa_1958/absolute") is alone
+    assert alone in record.datasets
+    assert record.datasets[record.datasets.index(alone)] is alone
+
+
+def test_a_deferred_record_raises_when_its_malformed_dataset_is_used(tmp_path):
+    path = tmp_path / "synthetic.toml"
+    path.write_text(
+        'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="bad"\n'
+        'material="He"\nquantity="refractivity"\ndensity="liquid"\npoints=[["a","1","1"]]\n',
+        encoding="utf-8",
+    )
+    deferred = load_source(path, defer=True)
+    with pytest.raises(DataError, match="unknown density convention"):
+        deferred.dataset("bad")
+    with pytest.raises(DataError, match="unknown density convention"):
+        load_source(path)
+    with pytest.raises(KeyError, match="synthetic/missing"):
+        deferred.dataset("missing")

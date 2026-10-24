@@ -27,8 +27,9 @@ from typing import Any, Final
 
 import numpy as np
 
+from optmat import _catalogue
 from optmat.constants import HBAR, C
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError
 from optmat.gas import GAS_DATA_DIRECTORY
 from optmat.gas.gases import Gas, as_gas
@@ -184,7 +185,7 @@ def fitted_points(gas: Gas | str) -> list[tuple[SupportPoint, float]]:
         raise DataError(msg)
     counts = model.record["dataset_chi2"]
     assert isinstance(counts, Mapping)
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     out: list[tuple[SupportPoint, float]] = []
     largest = 0.0
     for options in config.fitted:
@@ -628,7 +629,7 @@ def derive_support(gas: Gas | str) -> HyperpolarizabilitySupport:
     points = [p for p, _ in pairs]
     w2 = [v for _, v in pairs]
     max_w2, max_w2_witnesses = _extent(points, w2)
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     limits: dict[str, SupportLimit | None] = {}
     for name in ("e1", "e2", "e2_any"):
         spec = entry.get(name)

@@ -7,13 +7,14 @@
 :func:`optmat.datasets.sources` loads every source record and its data files, which
 takes seconds; most models need a few records. These read one record with
 :func:`optmat.datasets.load_source`, the loader the catalogue uses, so a record read
-here is the catalogue's own. Once the catalogue is loaded they take its records.
+here is the catalogue's own. Each record is read once per process: the catalogue,
+when loaded, takes the records already read here.
 """
 
 import functools
-import re
 from collections.abc import Iterator, Mapping
 
+from optmat._index import sources_with_formulas
 from optmat.datasets import (
     DATA_DIRECTORY,
     Dataset,
@@ -39,23 +40,21 @@ def source(source_id: str) -> Source:
     Returns
     -------
     Source
-        The source, with its datasets read and errata applied.
+        The source, errata applied; each dataset is built when first asked for.
 
     Raises
     ------
     KeyError
         If there is no such record.
     """
-    if sources.cache_info().currsize:
-        return sources()[source_id]
     path = _SOURCES / f"{source_id}.toml"
     if not path.is_file():
         raise KeyError(source_id)
-    return load_source(path)
+    return load_source(path, defer=True)
 
 
 def dataset(key: str) -> Dataset:
-    """Return one curated dataset, loading only its source's record.
+    """Return one curated dataset, reading only its source's record and its data file.
 
     Parameters
     ----------
@@ -72,14 +71,11 @@ def dataset(key: str) -> Dataset:
     KeyError
         If there is no such dataset.
     """
+    source_id, _, dataset_id = key.partition("/")
     try:
-        record = source(key.split("/", 1)[0])
+        return source(source_id).dataset(dataset_id)
     except KeyError:
         raise KeyError(key) from None
-    for found in record.datasets:
-        if found.key == key:
-            return found
-    raise KeyError(key)
 
 
 class _Records(Mapping[str, Source]):
@@ -226,31 +222,30 @@ def by_key(
 
 
 @functools.cache
-def formula_sources() -> tuple[Source, ...]:
-    """Return every curated source that records published formulas, in source order.
+def formula_sources(materials: frozenset[str] | None = None) -> tuple[Source, ...]:
+    """Return the curated sources that record published formulas, in source order.
 
-    Only the records whose text has a ``[[formulas]]`` table are read (a note may
-    mention one; a record read without formulas is left out).
+    Only the records the catalogue's index lists with formulas are read.
+
+    Parameters
+    ----------
+    materials : frozenset of str, optional
+        Only the sources with a formula of one of these material ids.
 
     Returns
     -------
     tuple of Source
         The sources, in the catalogue's order.
     """
-    candidates = (
-        source(path.stem)
-        for path in sorted(_SOURCES.glob("*.toml"))
-        if "[[formulas]]" in path.read_text(encoding="utf-8")
-    )
-    return tuple(record for record in candidates if record.formulas)
+    return tuple(source(s) for s in sources_with_formulas(materials))
 
 
 @functools.cache
 def quantity_datasets(quantity: str) -> tuple[Dataset, ...]:
     """Return the curated datasets of one quantity, reading only the records with it.
 
-    ``quantity_datasets(q)`` is ``datasets(quantity=q)`` without loading every record:
-    only the records whose text sets ``quantity = "<q>"`` are read.
+    ``quantity_datasets(q)`` is ``datasets(quantity=q)``, which reads only the records
+    the catalogue's index lists for the quantity.
 
     Parameters
     ----------
@@ -267,11 +262,4 @@ def quantity_datasets(quantity: str) -> tuple[Dataset, ...]:
     >>> {d.quantity for d in quantity_datasets("mole_fraction")}
     {'mole_fraction'}
     """
-    pattern = re.compile(rf'quantity\s*=\s*"{re.escape(quantity)}"')
-    return tuple(
-        found
-        for path in sorted(_SOURCES.glob("*.toml"))
-        if pattern.search(path.read_text(encoding="utf-8"))
-        for found in source(path.stem).datasets
-        if found.quantity == quantity
-    )
+    return datasets(quantity=quantity)

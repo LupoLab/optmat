@@ -41,8 +41,8 @@ import numpy as np
 from jaxtyping import Float
 from numpy.typing import ArrayLike
 
+from optmat import _catalogue
 from optmat.constants import C
-from optmat.datasets import datasets
 from optmat.exceptions import DataError
 from optmat.identity import Identified, source_ids
 from optmat.solid.kerr import KerrModel, kerr_models
@@ -244,7 +244,7 @@ class SilicaNonlinearBundle(Identified):
         GainCheck
             At their pump and shift, with the bundle's total n2 and f_R.
         """
-        record = next(d for d in datasets() if d.key == _GAIN_RECORD)
+        record = _catalogue.dataset(_GAIN_RECORD)
         pump = float(str(record.parameters["pump_nm"])) * 1e-9
         shift = float(str(record.parameters["shift_cm1"]))
         n2 = float(self.n2(pump))

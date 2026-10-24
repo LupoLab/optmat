@@ -23,8 +23,9 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from optmat import _catalogue
 from optmat.constants import EPS0, K_B, C
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import ModelRangeWarning
 from optmat.gas.linewidths import AMAGAT
 from optmat.gas.raman import raman_parameters
@@ -135,8 +136,7 @@ def dataset(key: str) -> Dataset:
     Dataset
         The dataset.
     """
-    (found,) = (d for d in datasets() if d.key == key)
-    return found
+    return _catalogue.dataset(key)
 
 
 def _response_gain(

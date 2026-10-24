@@ -41,8 +41,9 @@ from typing import Any, Final
 
 import numpy as np
 
+from optmat import _catalogue
 from optmat.constants import HBAR
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError
 from optmat.gas.gases import as_gas
 from optmat.gas.ionisation import _ENERGY_UNITS
@@ -83,7 +84,7 @@ def _datasets(keys: Sequence[str]) -> list[Dataset]:
     DataError
         If one does not exist.
     """
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     missing = [k for k in keys if k not in by_key]
     if missing:
         msg = f"two_photon.toml names unknown datasets {missing}"

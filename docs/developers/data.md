@@ -19,7 +19,12 @@ define the required evidence; this page gathers the workflow.
 4. Express corrections as errata with the printed value, replacement, reason and
    evidence. Re-run extraction to change a data file; never hand-edit it.
 5. Add {doc}`register` entries for the transcription, checks, corrections and doubts.
-6. Run the extraction lane and full {doc}`testing` gate. If the data affect a fit,
+6. Rewrite the catalogue index with `uv run python tools/catalogue_index.py`. The
+   index, `src/optmat/data/catalogue_index.json`, tells a search by material,
+   quantity or formula which records to read; a test fails until it matches the
+   records, after any edit to one. An installed copy whose index is out of date warns
+   and reads the records themselves.
+7. Run the extraction lane and full {doc}`testing` gate. If the data affect a fit,
    also follow {doc}`fitting`.
 
 ## Reproducing extraction

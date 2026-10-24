@@ -83,12 +83,14 @@ def test_reloading_a_fit_detects_changed_absorption_provenance(monkeypatch):
         fitted._absorption(record)
 
 
-def test_continua_require_photon_energies_and_supported_quantities(sample, monkeypatch):
-    monkeypatch.setattr(euv, "datasets", lambda gas: (sample,))
+def test_continua_require_photon_energies_and_supported_quantities(
+    sample, monkeypatch, curated
+):
+    curated(sample)
     with pytest.raises(DataError, match="needs photon energies in eV"):
         euv._continuum_part({"dataset": sample.key}, Gas.Ar)
     energy = dataclasses.replace(sample, abscissa_unit="eV")
-    monkeypatch.setattr(euv, "datasets", lambda gas: (energy,))
+    curated(energy)
     with pytest.raises(DataError, match="not a continuum"):
         euv._continuum_part({"dataset": sample.key}, Gas.Ar)
     with pytest.raises(ValueError, match="energies must increase"):
@@ -194,7 +196,7 @@ def test_unavailable_phase_matching_partner_is_omitted_and_missing_state_is_reje
 
 
 def test_a_listed_euv_strength_equal_to_the_total_adds_no_pseudo_line(
-    sample, monkeypatch
+    sample, monkeypatch, curated
 ):
     listed = dataclasses.replace(
         sample, quantity="oscillator_strength", unit="1", abscissa_unit="eV"
@@ -202,7 +204,7 @@ def test_a_listed_euv_strength_equal_to_the_total_adds_no_pseudo_line(
     total = dataclasses.replace(
         listed, id="total", rows=("0",), abscissae=("1",), values=("3",), sigmas=("",)
     )
-    monkeypatch.setattr(euv, "datasets", lambda gas: (listed, total))
+    curated(listed, total)
     terms = euv._lines({"dataset": listed.key, "total": total.key}, Gas.Ar)
     assert len(terms) == 2
     assert sum(f for _, f in terms) == 3

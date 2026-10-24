@@ -112,9 +112,9 @@ def test_systematic_scale_prior_and_fixed_sum_terms_enter_residuals(config):
 
 
 def test_observation_window_shape_uncertainty_and_missing_reference(
-    sample, config, monkeypatch
+    sample, config, monkeypatch, curated
 ):
-    monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
+    curated(sample)
     options = DatasetOptions(
         sample.key,
         range_nm=(750, 1250),
@@ -139,7 +139,7 @@ def test_observation_window_shape_uncertainty_and_missing_reference(
 
 
 def test_validator_report_retains_unsupported_quantities_and_filters_moments(
-    sample, config, monkeypatch
+    sample, config, monkeypatch, curated
 ):
     moment = dataclasses.replace(
         sample,
@@ -171,7 +171,7 @@ def test_validator_report_retains_unsupported_quantities_and_filters_moments(
         labels=("one",),
     )
     result = fitting.FitResult(config, model, np.array([2.0]), np.array([[0.01]]))
-    monkeypatch.setattr(fitting, "datasets", lambda: (sample, moment, unsupported))
+    curated(sample, moment, unsupported)
     report = fitting.validation(result)
     assert report[moment.key]["n"] == 1
     assert report[moment.key]["chi2"] == pytest.approx(4.0, rel=3e-15, abs=0.0)
@@ -213,9 +213,9 @@ CONFIG = (
     ],
 )
 def test_invalid_fit_configuration_is_rejected_before_optimisation(
-    tmp_path, monkeypatch, sample, text, message
+    tmp_path, monkeypatch, sample, text, message, curated
 ):
-    monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
+    curated(sample)
     path = tmp_path / "fit.toml"
     path.write_text(text, encoding="utf-8")
     with pytest.raises(DataError, match=message):
@@ -223,9 +223,9 @@ def test_invalid_fit_configuration_is_rejected_before_optimisation(
 
 
 def test_serialised_fit_preserves_provenance_prediction_and_uncertainty(
-    tmp_path, sample, monkeypatch
+    tmp_path, sample, monkeypatch, curated
 ):
-    monkeypatch.setattr(fitting, "datasets", lambda: (sample,))
+    curated(sample)
     path = tmp_path / "synthetic.toml"
     path.write_text(CONFIG + '[[fitted]]\nkey="synthetic/alpha"\n', encoding="utf-8")
     config = fitting.load_config(path)
@@ -256,7 +256,7 @@ def test_serialised_fit_preserves_provenance_prediction_and_uncertainty(
 
 
 def test_ratio_validators_keep_orientation_and_require_uncertainty(
-    sample, config, monkeypatch
+    sample, config, monkeypatch, curated
 ):
     ratio = dataclasses.replace(
         sample,
@@ -272,7 +272,7 @@ def test_ratio_validators_keep_orientation_and_require_uncertainty(
             DatasetOptions(ratio.key),
             Gas.He,
         )
-    monkeypatch.setattr(fitting, "datasets", lambda: (ratio,))
+    curated(ratio)
     result = fit(
         config,
         [
@@ -306,6 +306,7 @@ def test_ratio_validators_keep_orientation_and_require_uncertainty(
             material="Ar" if reverse else "He",
             parameters={"reference_material": "He" if reverse else "Ar", "harmonic": 2},
         )
+        curated(ratio)
         report = fitting.validation(result)[ratio.key]
         assert report["n"] == 2
         predicted = (

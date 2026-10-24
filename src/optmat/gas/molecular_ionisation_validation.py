@@ -31,8 +31,9 @@ import numpy as np
 from jaxtyping import Float
 from scipy import interpolate
 
+from optmat import _catalogue
 from optmat.constants import AU_ANGULAR_FREQUENCY, AU_FIELD
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError, ModelRangeWarning
 from optmat.gas.gases import Gas, as_gas
 from optmat.gas.molecular_ionisation_rates import molecular_rate_model
@@ -337,7 +338,7 @@ def orientation_averaged_rates(
         )
         raise DataError(msg)
     label = REFERENCES[reference][species.value][1]
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     found = _found(reference, species.value, by_key)
     angles = np.array(sorted(found))
     tables = [_usable(by_key[found[angle]]) for angle in angles]
@@ -405,7 +406,7 @@ def _saenz_ratio() -> tuple[Float[np.ndarray, " n"], Float[np.ndarray, " n"]]:
         The fields, atomic units, and the ratio: saenz_2002 Table I row (a), v = 0,
         over Saenz's fixed-nuclei rates at 1.4 bohr as majety_2015 reprints them.
     """
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     averaged = by_key["saenz_2002/tableI_a_v0"]
     fixed = by_key["majety_2015/table2_parallel_saenz_2000_H2"]
     fixed_rows, fixed_values = _usable(fixed)

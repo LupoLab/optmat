@@ -20,8 +20,8 @@ from collections.abc import Mapping
 
 import numpy as np
 
+from optmat._catalogue import records as sources_of
 from optmat.constants import C
-from optmat.datasets import sources as sources_of
 from optmat.exceptions import DataError
 from optmat.gas.raman_response_validation import ResponseComparison, dataset, quiet
 from optmat.solid.raman_response import silica_raman_responses

@@ -33,7 +33,7 @@ from optmat.gas.infrared import (  # pyright: ignore[reportPrivateUsage]
 from optmat.gas.models._defaults import curated_status
 from optmat.gas.models.oscillator import OscillatorModel
 
-__all__ = ["FittedModel", "TemperatureCoefficient", "fitted_models"]
+__all__ = ["FittedModel", "TemperatureCoefficient", "fitted_model", "fitted_models"]
 
 
 @dataclass(frozen=True)
@@ -539,6 +539,70 @@ def _absorption(record: Mapping[str, object]) -> MeasuredAbsorption | None:
 
 
 @functools.cache
+def fitted_model(name: str) -> FittedModel:
+    """Return one stored fitted model, reading only its record.
+
+    Parameters
+    ----------
+    name : str
+        The model's name, ``fit/<name>``.
+
+    Returns
+    -------
+    FittedModel
+        The model.
+
+    Raises
+    ------
+    KeyError
+        If no fit is stored under that name.
+    DataError
+        If the stored record names another fit.
+    """
+    stem = name.removeprefix("fit/")
+    path = GAS_DATA_DIRECTORY / "models" / "fitted" / f"{stem}.json"
+    if stem == name or not path.is_file():
+        raise KeyError(name)
+    record = json.loads(path.read_text(encoding="utf-8"))
+    if record["name"] != stem:
+        msg = f"{path.name}: the fit is named {record['name']!r}, not its file name"
+        raise DataError(msg)
+    # A fit with the derived windows (OEP 3) records its qualified intervals;
+    # otherwise its one interval is range_nm.
+    spans = record.get("intervals_nm", [record["range_nm"]])
+    intervals = tuple((float(a) * 1e-9, float(b) * 1e-9) for a, b in spans)
+    # The covariance covers every fitted strength and each effective term's
+    # energy; the fixed (infrared) terms come last and are outside it.
+    n_fixed = int(record.get("n_fixed", 0))
+    n_terms = len(record["labels"]) - n_fixed
+    n_lines = n_terms - (len(record["covariance"]) - n_terms)
+    gas = as_gas(record["gas"])
+    status, reason = curated_status(gas, name)
+    return FittedModel(
+        gas=gas,
+        name=name,
+        status=status,
+        status_reason=reason,
+        citation=f"fitted here ({record['name']}.toml, sha256 "
+        f"{record['config_sha256'][:12]})",
+        wavelength_range=(intervals[0][0], intervals[-1][1]),
+        intervals=intervals,
+        kind="fitted",
+        strengths=tuple(record["strengths"]),
+        energies=tuple(record["energies_hartree"]),
+        labels=tuple(record["labels"]),
+        offset_au=float(record.get("chi0_au", 0.0)),
+        retardation_au=float(record.get("retardation_au", 0.0)),
+        absorption=_absorption(record),
+        n_lines=n_lines,
+        n_fixed=n_fixed,
+        covariance=np.array(record["covariance"]),
+        reduced_chi2=record["chi2"] / max(record["dof"], 1),
+        record=record,
+    )
+
+
+@functools.cache
 def fitted_models() -> dict[str, FittedModel]:
     """Return every stored fitted model, by name.
 
@@ -547,41 +611,5 @@ def fitted_models() -> dict[str, FittedModel]:
     dict of str to FittedModel
         Models named ``fit/<name>``.
     """
-    models = {}
-    for path in sorted((GAS_DATA_DIRECTORY / "models" / "fitted").glob("*.json")):
-        record = json.loads(path.read_text(encoding="utf-8"))
-        # A fit with the derived windows (OEP 3) records its qualified intervals;
-        # otherwise its one interval is range_nm.
-        spans = record.get("intervals_nm", [record["range_nm"]])
-        intervals = tuple((float(a) * 1e-9, float(b) * 1e-9) for a, b in spans)
-        # The covariance covers every fitted strength and each effective term's
-        # energy; the fixed (infrared) terms come last and are outside it.
-        n_fixed = int(record.get("n_fixed", 0))
-        n_terms = len(record["labels"]) - n_fixed
-        n_lines = n_terms - (len(record["covariance"]) - n_terms)
-        gas = as_gas(record["gas"])
-        name = f"fit/{record['name']}"
-        status, reason = curated_status(gas, name)
-        models[name] = FittedModel(
-            gas=gas,
-            name=name,
-            status=status,
-            status_reason=reason,
-            citation=f"fitted here ({record['name']}.toml, sha256 "
-            f"{record['config_sha256'][:12]})",
-            wavelength_range=(intervals[0][0], intervals[-1][1]),
-            intervals=intervals,
-            kind="fitted",
-            strengths=tuple(record["strengths"]),
-            energies=tuple(record["energies_hartree"]),
-            labels=tuple(record["labels"]),
-            offset_au=float(record.get("chi0_au", 0.0)),
-            retardation_au=float(record.get("retardation_au", 0.0)),
-            absorption=_absorption(record),
-            n_lines=n_lines,
-            n_fixed=n_fixed,
-            covariance=np.array(record["covariance"]),
-            reduced_chi2=record["chi2"] / max(record["dof"], 1),
-            record=record,
-        )
-    return models
+    paths = sorted((GAS_DATA_DIRECTORY / "models" / "fitted").glob("*.json"))
+    return {f"fit/{p.stem}": fitted_model(f"fit/{p.stem}") for p in paths}

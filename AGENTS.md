@@ -48,6 +48,7 @@ concerns physics or the reading of a paper rather than style, ask rather than gu
 | Tests with the 100% statement and branch coverage gate | `uv run poe coverage-check` |
 | Copyright and licence of every file | `uv run poe reuse` |
 | Preview provisional register renumbering against main | `uv run poe register-sync` |
+| Rewrite the catalogue index after adding or editing a source record | `uv run python tools/catalogue_index.py` |
 | Re-run the extraction against the paper library | `PAPER_LIBRARY=<path> uv run poe test-library` |
 | Re-run every stored fit and compare | `uv run poe test-fits` |
 | Build the wheel and sdist and install them offline (the release test) | `uv run poe test-release` |
@@ -325,7 +326,9 @@ The long form is [OEP 0](docs/oeps/oep-0000-process.md); the index is
   3. The data files (written by the script).
   4. Errata with evidence.
   5. A register entry.
-  6. `poe test-library` and the gate.
+  6. The catalogue index, `uv run python tools/catalogue_index.py` (after any edit to
+     a record; ⚙ `tests/test_catalogue_index.py`).
+  7. `poe test-library` and the gate.
 
   If the source changes a fit, see *Definition of done*.
 - **A new gas:**

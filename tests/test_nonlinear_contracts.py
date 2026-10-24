@@ -123,9 +123,9 @@ def test_nonlinear_dataset_options_are_validated(entry, message):
 
 
 def test_synthetic_fit_recovers_dispersion_with_a_systematic_scale_prior(
-    sample, monkeypatch, tmp_path
+    sample, monkeypatch, tmp_path, curated
 ):
-    monkeypatch.setattr(nonlinear, "datasets", lambda: (sample,))
+    curated(sample)
     path = tmp_path / "fit.toml"
     text = (
         'gas="He"\nrange_nm=[400,1500]\n'
@@ -147,7 +147,7 @@ def test_synthetic_fit_recovers_dispersion_with_a_systematic_scale_prior(
         4 * (1e7 / 400) ** 2, rel=2e-15, abs=0.0
     )
     unstated = dataclasses.replace(sample, uncertainty=Uncertainty())
-    monkeypatch.setattr(nonlinear, "datasets", lambda: (unstated,))
+    curated(unstated)
     with pytest.raises(DataError, match="fitted value needs an uncertainty"):
         nonlinear.fit_hyperpolarizability(config)
     path.write_text("typo=1\n" + text, encoding="utf-8")

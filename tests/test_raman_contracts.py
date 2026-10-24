@@ -239,7 +239,7 @@ def test_dicke_plus_linear_law_and_scalar_transition_assembly(source, monkeypatc
     with pytest.raises(DataError, match="rotational band needs"):
         raman._parameters(raman.Gas.H2, {"rotational": {}}, {})
     with monkeypatch.context() as isolated:
-        isolated.setattr(raman, "_all_parameters", lambda: {})
+        isolated.setattr(raman, "_entries", lambda: {})
         with pytest.raises(DataError, match="no Raman parameters"):
             raman.raman_parameters("Ar")
     other = dataclasses.replace(base, id="other", rows=("c", "d"))

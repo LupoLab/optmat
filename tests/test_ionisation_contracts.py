@@ -272,7 +272,9 @@ def test_molecular_assembly_rejects_missing_structures_and_effective_charge(
         molecular._build("synthetic", {"form": "ppt"}, Gas.N2)
 
 
-def test_vibrational_validation_joins_only_shared_field_rows(sample, monkeypatch):
+def test_vibrational_validation_joins_only_shared_field_rows(
+    sample, monkeypatch, curated
+):
     fixed = dataclasses.replace(
         sample,
         source="majety_2015",
@@ -287,7 +289,7 @@ def test_vibrational_validation_joins_only_shared_field_rows(sample, monkeypatch
         rows=("0.2", "0.3"),
         values=("6", "99"),
     )
-    monkeypatch.setattr(validation, "datasets", lambda: (fixed, averaged))
+    curated(fixed, averaged)
     fields, ratios = validation._saenz_ratio()
     np.testing.assert_array_equal(fields, [0.2])
     np.testing.assert_array_equal(ratios, [2.0])
