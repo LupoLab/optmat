@@ -328,9 +328,9 @@ def electronic_static_polarizability(gas: Gas | str) -> tuple[float, float, str]
         the model's name.
     """
     # Loaded here: the fitted models bring the whole dispersion chain.
-    from optmat.gas.models.fitted import FittedModel, fitted_models  # noqa: PLC0415
+    from optmat.gas.models.fitted import FittedModel, fitted_model  # noqa: PLC0415
 
-    model: FittedModel = fitted_models()[f"fit/{as_gas(gas).value}"]
+    model: FittedModel = fitted_model(f"fit/{as_gas(gas).value}")
     n_fitted = len(model.strengths) - model.n_fixed
     strengths = np.asarray(model.strengths[:n_fitted])
     energies = np.asarray(model.energies[:n_fitted])

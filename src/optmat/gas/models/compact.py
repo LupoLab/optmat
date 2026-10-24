@@ -51,7 +51,7 @@ from optmat.gas.eos import number_density
 from optmat.gas.gases import Gas, as_gas
 from optmat.gas.infrared import gauss_rule
 from optmat.gas.models._defaults import defaults
-from optmat.gas.models.fitted import FittedModel, fitted_models
+from optmat.gas.models.fitted import FittedModel, fitted_model
 from optmat.identity import FrozenMapping
 
 __all__ = [
@@ -1179,7 +1179,7 @@ class CompactModel(FittedModel):
         """
         note = super()._gap_note(wavelength)
         values = np.ravel(np.asarray(wavelength, dtype=float))
-        parent = fitted_models()[self.parent]
+        parent = fitted_model(self.parent)
         theirs = ~_validity.outside(values, parent.intervals)
         if np.any(theirs & _validity.outside(values, self.intervals)):
             note += f"; {self.parent} is qualified there"
@@ -1193,7 +1193,7 @@ class CompactModel(FittedModel):
         tuple of str
             Sorted source ids.
         """
-        return fitted_models()[self.parent]._sources()
+        return fitted_model(self.parent)._sources()
 
 
 @functools.cache
@@ -1208,7 +1208,7 @@ def compact_models() -> dict[str, CompactModel]:
     models = {}
     for path in sorted(COMPACT_MODEL_DIRECTORY.glob("*.json")):
         record = json.loads(path.read_text(encoding="utf-8"))
-        parent = fitted_models()[record["parent"]]
+        parent = fitted_model(record["parent"])
         n_terms = len(parent.strengths) - parent.n_fixed + parent.n_rotational
         labels = [
             "compact (the parent's)" if kept else "compact" for kept in record["kept"]
@@ -1291,7 +1291,7 @@ def reproduction(model: CompactModel) -> dict[str, dict[str, float]]:
     # Imported here: the fitting code loads every dataset.
     from optmat.gas import fitting  # noqa: PLC0415
 
-    parent = fitted_models()[model.parent]
+    parent = fitted_model(model.parent)
     config = fitting.load_config(str(parent.record["name"]))
     start = len(model.strengths) - model.n_fixed + model.n_rotational
     compact = dataclasses.replace(
@@ -1569,7 +1569,7 @@ def _stated_error(
         largest difference in ``beta_2`` over the largest ``|beta_2|``, on the check
         grid over every interval.
     """
-    parent = fitted_models()[model.parent]
+    parent = fitted_model(model.parent)
 
     def sellmeier(x: Float[np.ndarray, " n"]) -> Float[np.ndarray, " n"]:
         """Return the Sellmeier form's ``n - 1``.
@@ -1696,7 +1696,7 @@ def coefficients(
         model=name,
         parent=model.parent,
         model_digest=model.identity.digest,
-        parent_digest=fitted_models()[model.parent].identity.digest,
+        parent_digest=fitted_model(model.parent).identity.digest,
         form=form,
         labels=tuple(model.labels[k] for k in order),
         kinds=tuple(str(x) for x in kinds),
