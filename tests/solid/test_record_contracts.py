@@ -101,7 +101,9 @@ def test_table_configuration_requires_segments_and_provenance(tmp_path, body, me
         tables.load_table(path)
 
 
-def test_air_and_thermo_optic_corrections_have_the_right_direction(pair, monkeypatch):
+def test_air_and_thermo_optic_corrections_have_the_right_direction(
+    pair, monkeypatch, curated
+):
     first, _ = pair
     first = dataclasses.replace(
         first,
@@ -116,7 +118,7 @@ def test_air_and_thermo_optic_corrections_have_the_right_direction(pair, monkeyp
         parameters={},
         values=("0.0001", "0.0002", "0.0003"),
     )
-    monkeypatch.setattr(fitting, "datasets", lambda: (first, coefficient))
+    curated(first, coefficient)
     options = fitting.DatasetOptions(
         first.key,
         thermo_optic=coefficient.key,
@@ -145,23 +147,19 @@ def test_air_and_thermo_optic_corrections_have_the_right_direction(pair, monkeyp
         fitting._observations(dataclasses.replace(options, temperature_k=None))
     with pytest.raises(DataError, match="thermo_optic needs"):
         fitting._observations(dataclasses.replace(options, thermo_optic=first.key))
-    monkeypatch.setattr(
-        fitting,
-        "datasets",
-        lambda: (dataclasses.replace(first, parameters={"index_medium": "air"}),),
-    )
+    curated(dataclasses.replace(first, parameters={"index_medium": "air"}))
     with pytest.raises(DataError, match="needs air_temperature_k"):
         fitting._observations(fitting.DatasetOptions(first.key))
 
 
 def test_log_extinction_filters_nonpositive_values_and_uses_relative_errors(
-    pair, monkeypatch
+    pair, monkeypatch, curated
 ):
     _, second = pair
     second = dataclasses.replace(
         second, values=("-1", "0.01", "0.02"), uncertainty=Uncertainty(relative=0.1)
     )
-    monkeypatch.setattr(fitting, "datasets", lambda: (second,))
+    curated(second)
     obs = fitting._observations(fitting.DatasetOptions(second.key, offset_sigma=1.0))
     np.testing.assert_allclose(obs.value, np.log([0.01, 0.02]), rtol=2e-15, atol=0)
     np.testing.assert_allclose(obs.sigma, [0.1, 0.1], rtol=2e-15, atol=0)
@@ -171,15 +169,16 @@ def test_log_extinction_filters_nonpositive_values_and_uses_relative_errors(
 
 
 def test_unfittable_or_unweighted_points_require_an_explicit_decision(
-    pair, monkeypatch
+    pair, monkeypatch, curated
 ):
     first, _ = pair
-    monkeypatch.setattr(fitting, "datasets", lambda: (first,))
+    curated(first)
     with pytest.raises(DataError, match="points without an uncertainty"):
         fitting._observations(fitting.DatasetOptions(first.key))
     obs = fitting._observations(fitting.DatasetOptions(first.key, sigma=0.01))
     np.testing.assert_array_equal(obs.sigma, [0.01, 0.01, 0.01])
     first = dataclasses.replace(first, quantity="permittivity_real")
+    curated(first)
     with pytest.raises(DataError, match="cannot be fitted"):
         fitting._observations(fitting.DatasetOptions(first.key, sigma=0.01))
 
@@ -216,7 +215,7 @@ def test_solid_selection_requires_an_available_model_and_appropriate_axis(monkey
 
 
 def test_index_deviations_add_the_reference_and_unknown_starts_are_rejected(
-    pair, monkeypatch
+    pair, monkeypatch, curated
 ):
     from optmat.solid.models.formulas import FormulaModel  # noqa: PLC0415
 
@@ -239,7 +238,7 @@ def test_index_deviations_add_the_reference_and_unknown_starts_are_rejected(
     monkeypatch.setattr(
         fitting, "published_models", lambda: {reference.name: reference}
     )
-    monkeypatch.setattr(fitting, "datasets", lambda: (deviation,))
+    curated(deviation)
     obs = fitting._observations(
         fitting.DatasetOptions(first.key, reference=reference.name, sigma=0.01)
     )
@@ -325,7 +324,7 @@ def test_fitting_absorption_and_index_with_parameter_priors_uses_both_components
 
 
 def test_solid_fit_inflates_covariance_when_scatter_exceeds_stated_errors(
-    tmp_path, monkeypatch
+    tmp_path, monkeypatch, curated
 ):
     path = tmp_path / "synthetic.toml"
     path.write_text(
@@ -338,8 +337,7 @@ def test_solid_fit_inflates_covariance_when_scatter_exceeds_stated_errors(
     )
     source = load_source(path)
     dataset = source.datasets[0]
-    monkeypatch.setattr(fitting, "sources", lambda: {source.id: source})
-    monkeypatch.setattr(fitting, "datasets", lambda: (dataset,))
+    curated(dataset, records=(source,))
     config = fitting.FitConfig(
         "synthetic",
         "SiO2",
@@ -351,6 +349,7 @@ def test_solid_fit_inflates_covariance_when_scatter_exceeds_stated_errors(
     )
     first = fitting.fit(config)
     dataset = dataclasses.replace(dataset, values=("1.498", "1.502"))
+    curated(dataset, records=(source,))
     wider = fitting.fit(config)
     # Equal weights at one wavelength put the fitted index at their arithmetic mean.
     # Double symmetric scatter: same optimum, four times the Birge variance.

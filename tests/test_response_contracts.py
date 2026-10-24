@@ -132,7 +132,11 @@ def test_validation_reports_require_the_named_source_formula(tmp_path, monkeypat
     path = tmp_path / "synthetic.toml"
     path.write_text('citation="synthetic"\nkind="theory"\n', encoding="utf-8")
     source = load_source(path)
-    monkeypatch.setattr(ionisation_validation, "sources", lambda: {"synthetic": source})
+    monkeypatch.setattr(
+        ionisation_validation._catalogue,
+        "source",
+        lambda source_id: {"synthetic": source}[source_id],
+    )
     with pytest.raises(DataError, match="has no formula"):
         ionisation_validation._coefficients("synthetic", "missing")
     source = dataclasses.replace(

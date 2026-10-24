@@ -128,8 +128,8 @@ import numpy as np
 from jaxtyping import Float
 from numpy.typing import ArrayLike
 
+from optmat import _catalogue
 from optmat.constants import AU_ANGULAR_FREQUENCY, AU_ENERGY, AU_FIELD, HBAR, C
-from optmat.datasets import datasets
 from optmat.exceptions import DataError, ModelRangeWarning
 from optmat.gas import GAS_DATA_DIRECTORY
 from optmat.gas._tunnelling import isotropic_structure_factors
@@ -1354,7 +1354,7 @@ def _build_molecular(
         raise DataError(msg)
     structure = parameters.structure[tabulation]
     reference = str(entry["ionization_energy"])
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     dataset, row = _row(by_key, reference)
     energy, _ = _energy(dataset, row)
     kind = str(dataset.parameters.get("kind", "not stated"))

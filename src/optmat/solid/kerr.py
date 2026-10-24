@@ -52,8 +52,9 @@ import numpy as np
 from jaxtyping import Float
 from numpy.typing import ArrayLike
 
+from optmat import _catalogue
 from optmat.constants import E_CHARGE, HBAR, C
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError, ModelRangeWarning
 from optmat.identity import Identified
 from optmat.solid import SOLID_DATA_DIRECTORY
@@ -376,7 +377,7 @@ def load_config(name: str | Path) -> KerrConfig:
                 sigma=None if "sigma" not in entry else float(entry["sigma"]),
             )
         )
-    known = {d.key for d in datasets()}
+    known = _catalogue.by_key()
     for options in (*fitted, *validators, *gains):
         if options.key not in known:
             msg = f"{path.name}: unknown dataset {options.key}"
@@ -483,7 +484,7 @@ def points(options: KerrOptions) -> Points:
     DataError
         If a point lacks an uncertainty or a pulse length it needs.
     """
-    (dataset,) = (d for d in datasets() if d.key == options.key)
+    dataset = _catalogue.dataset(options.key)
     wavelength = dataset.vacuum_wavelength()
     value = _in_m2_per_w(dataset, wavelength)
     stated = dataset.standard_uncertainty() / np.abs(dataset.scaled_values())
@@ -580,7 +581,7 @@ def gain_points(options: GainOptions) -> GainPoints:
     """
     from optmat.solid.raman_response import silica_raman_responses  # noqa: PLC0415
 
-    (dataset,) = (d for d in datasets() if d.key == options.key)
+    dataset = _catalogue.dataset(options.key)
     unit = {"cm/W": 1e-2, "m/W": 1.0}.get(dataset.unit)
     if dataset.quantity != "raman_gain" or unit is None or len(dataset) != 1:
         msg = f"{dataset.key}: one raman_gain in cm/W or m/W is expected"

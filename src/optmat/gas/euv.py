@@ -48,6 +48,7 @@ from typing import Final
 import numpy as np
 from jaxtyping import Complex, Float
 
+from optmat import _catalogue
 from optmat.conditions import ONE_ATM_0C, State
 from optmat.constants import (
     AU_ANGULAR_FREQUENCY,
@@ -59,7 +60,7 @@ from optmat.constants import (
     M_E,
     C,
 )
-from optmat.datasets import DATA_DIRECTORY, datasets
+from optmat.datasets import DATA_DIRECTORY
 from optmat.exceptions import DataError
 from optmat.gas import GAS_DATA_DIRECTORY
 from optmat.gas.eos import number_density
@@ -419,7 +420,7 @@ def _continuum_part(
             2.0 * f2 / (np.pi * energies)
         )  # Im alpha = f2/omega^2 = pi g/(2 omega)
     else:
-        (dataset,) = [d for d in datasets(gas) if d.key == entry["dataset"]]
+        dataset = _catalogue.by_key(gas)[str(entry["dataset"])]
         if dataset.abscissa_unit != "eV":
             msg = f"{dataset.key}: a continuum needs photon energies in eV"
             raise DataError(msg)
@@ -536,7 +537,7 @@ def _lines(config: Mapping[str, object], gas: Gas) -> list[tuple[float, float]]:
     list of tuple
         ``(energy in hartree, f)``.
     """
-    by_key = {d.key: d for d in datasets(gas)}
+    by_key = _catalogue.by_key(gas)
     if "dataset" in config:
         listed = by_key[str(config["dataset"])]
         energies = listed.abscissa_values() / EV_PER_HARTREE
@@ -593,7 +594,7 @@ def euv_model(gas: Gas | str) -> ComplexModel:
         continuum_density=density,
     )
     constraint = config["constraint"]
-    (target_data,) = [d for d in datasets(gas) if d.key == constraint["dataset"]]
+    target_data = _catalogue.by_key(gas)[str(constraint["dataset"])]
     row = target_data.rows.index(str(constraint["row"]))
     target = float(target_data.scaled_values()[row])
     order_k = float(constraint.get("k", constraint["row"]))

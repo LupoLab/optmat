@@ -11,19 +11,17 @@ import numpy as np
 import pytest
 
 from optmat import _catalogue
-from optmat.datasets import datasets, sources
+from optmat.datasets import DATA_DIRECTORY, datasets, load_source, sources
 
 
 @pytest.fixture
-def unloaded(monkeypatch):
-    # Read records as a fresh process would, before the catalogue is loaded.
-    class Empty:
-        currsize = 0
-
-    monkeypatch.setattr(_catalogue.sources, "cache_info", Empty)
+def unloaded():
+    # Read records as a fresh process would, before any record is read.
     _catalogue.source.cache_clear()
+    sources.cache_clear()
     yield
     _catalogue.source.cache_clear()
+    sources.cache_clear()
 
 
 def _same(alone, catalogued):
@@ -39,15 +37,14 @@ def _same(alone, catalogued):
 
 @pytest.mark.parametrize("source_id", ["ogawa_1958", "malitson_1965", "huber_1974"])
 def test_a_record_read_alone_is_the_catalogues(unloaded, source_id):
+    # The catalogue takes the record already read rather than reading it again, and
+    # that record is what the loader reads from the file.
     alone = _catalogue.source(source_id)
-    catalogued = sources()[source_id]
-    assert alone is not catalogued
-    assert (alone.citation, alone.formulas) == (
-        catalogued.citation,
-        catalogued.formulas,
-    )
-    assert len(alone.datasets) == len(catalogued.datasets)
-    for one, other in zip(alone.datasets, catalogued.datasets, strict=True):
+    assert sources()[source_id] is alone
+    loaded = load_source(DATA_DIRECTORY / "sources" / f"{source_id}.toml")
+    assert (alone.citation, alone.formulas) == (loaded.citation, loaded.formulas)
+    assert len(alone.datasets) == len(loaded.datasets)
+    for one, other in zip(alone.datasets, loaded.datasets, strict=True):
         _same(one, other)
 
 
@@ -63,7 +60,6 @@ def test_missing_records_and_datasets_raise_key_errors(unloaded):
 
 def test_a_loaded_catalogue_serves_its_own_records():
     catalogued = sources()["ogawa_1958"]
-    _catalogue.source.cache_clear()
     assert _catalogue.source("ogawa_1958") is catalogued
     assert _catalogue.records()["ogawa_1958"] is catalogued
 

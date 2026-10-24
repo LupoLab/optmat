@@ -40,6 +40,7 @@ import numpy as np
 from jaxtyping import Float
 from numpy.typing import ArrayLike
 
+from optmat import _catalogue
 from optmat.constants import (
     AU_ANGULAR_FREQUENCY,
     AU_ENERGY,
@@ -49,7 +50,7 @@ from optmat.constants import (
     M_E,
     C,
 )
-from optmat.datasets import Dataset, datasets, sources
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError, ModelRangeWarning
 from optmat.gas.gases import Gas, as_gas
 from optmat.gas.ionisation_rates import IonisationRateModel, ionisation_rate_model
@@ -560,15 +561,15 @@ def focal_average(
     return np.concatenate([[0.0], np.cumsum(steps)]) + local[0] / slope
 
 
-def _by_key() -> dict[str, Dataset]:
+def _by_key() -> Mapping[str, Dataset]:
     """Return the curated datasets by key.
 
     Returns
     -------
-    dict of str to Dataset
-        Every dataset.
+    Mapping of str to Dataset
+        Every dataset, read on lookup.
     """
-    return {d.key: d for d in datasets()}
+    return _catalogue.by_key()
 
 
 def _numbers(
@@ -666,7 +667,7 @@ def _coefficients(source: str, formula: str) -> dict[str, float]:
     DataError
         If the record has no such formula.
     """
-    for entry in sources()[source].formulas:
+    for entry in _catalogue.source(source).formulas:
         if entry["id"] == formula:
             table = entry["coefficients"]
             assert isinstance(table, Mapping)

@@ -1262,8 +1262,11 @@ def sources() -> dict[str, Source]:
     >>> "huber_1974" in sources()
     True
     """
+    # A record read alone is reused, so that no record is read twice.
+    from optmat._catalogue import source  # noqa: PLC0415 - it imports this module
+
     return {
-        path.stem: load_source(path)
+        path.stem: source(path.stem)
         for path in sorted((DATA_DIRECTORY / "sources").glob("*.toml"))
     }
 

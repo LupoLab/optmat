@@ -42,9 +42,9 @@ from jaxtyping import Float
 from numpy.typing import ArrayLike
 from scipy import optimize
 
+from optmat import _catalogue
 from optmat.conditions import State
 from optmat.constants import K_B, N_A
-from optmat.datasets import datasets
 from optmat.exceptions import DataError, ModelRangeWarning, OptmatError, StateError
 from optmat.gas import GAS_DATA_DIRECTORY
 from optmat.gas.composition import REDUCED, composition
@@ -142,7 +142,7 @@ def _pair_records() -> dict[tuple[str, str], Mapping[str, Any]]:
     """
     with PAIRS_FILE.open("rb") as handle:
         record = tomllib.load(handle)
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     out = {}
     for name, entry in record["pairs"].items():
         species, partner = (as_gas(s).value for s in name.split("-"))
@@ -277,7 +277,7 @@ def _cross_table(key: str) -> tuple[np.ndarray, np.ndarray, bool]:
         Temperatures (K, ascending), the values (m^3/mol), and whether they are the
         excess E rather than B_12.
     """
-    dataset = {d.key: d for d in datasets()}[key]
+    dataset = _catalogue.dataset(key)
     temperatures = dataset.abscissa_values()
     order = np.argsort(temperatures)
     temperatures = temperatures[order]

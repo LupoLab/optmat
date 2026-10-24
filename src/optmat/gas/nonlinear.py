@@ -61,6 +61,7 @@ from typing import Any, ClassVar, Final
 import numpy as np
 from jaxtyping import Float
 
+from optmat import _catalogue
 from optmat._catalogue import records
 from optmat.conditions import State
 from optmat.constants import (
@@ -71,7 +72,7 @@ from optmat.constants import (
     K_B,
     C,
 )
-from optmat.datasets import Dataset, datasets
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError, ModelRangeWarning
 from optmat.gas import GAS_DATA_DIRECTORY, reduction
 from optmat.gas.eos import number_density
@@ -415,7 +416,7 @@ def _vibrational_rotational(
             formula = np.where(nu > 0, g / nu**2 + h / nu**4, 0.0)
         correction = correction + formula / AU_HYPERPOLARIZABILITY
     if options.subtract_dataset:
-        vr = {d.key: d for d in datasets()}[options.subtract_dataset]
+        vr = _catalogue.dataset(options.subtract_dataset)
         lookup = dict(
             zip(
                 np.round(vr.vacuum_wavelength() * 1e9, 2),
@@ -610,7 +611,7 @@ def _options(entry: object, where: str) -> NonlinearOptions:
         msg = f"{where}: unknown keys {sorted(unknown)}"
         raise DataError(msg)
     key = str(entry["key"])
-    if key not in {d.key for d in datasets()}:
+    if key not in _catalogue.by_key():
         msg = f"{where}: unknown dataset {key!r}"
         raise DataError(msg)
     window = entry.get("range_nm", [0.0, "inf"])
@@ -775,7 +776,7 @@ def _observations(options: Sequence[NonlinearOptions]) -> list[NonlinearObservat
     list of NonlinearObservation
         The observations.
     """
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     return [gamma_observation(by_key[o.key], o) for o in options]
 
 
@@ -945,7 +946,7 @@ def validation(result: NonlinearFit) -> dict[str, dict[str, float | int | str]]:
         chi-squared where uncertainties are stated; or a note.
     """
     report: dict[str, dict[str, float | int | str]] = {}
-    by_key = {d.key: d for d in datasets()}
+    by_key = _catalogue.by_key()
     for options in result.config.validators:
         try:
             obs = gamma_observation(by_key[options.key], options)

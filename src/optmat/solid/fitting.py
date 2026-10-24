@@ -37,9 +37,10 @@ import numpy as np
 from jaxtyping import Float
 from scipy import optimize
 
+from optmat import _catalogue
 from optmat.conditions import State, air_refractivity
 from optmat.constants import E_CHARGE, HBAR, STD_ATMOSPHERE, C
-from optmat.datasets import Dataset, datasets, sources
+from optmat.datasets import Dataset
 from optmat.exceptions import DataError
 from optmat.solid import SOLID_DATA_DIRECTORY
 from optmat.solid.models.base import complex_index
@@ -241,7 +242,7 @@ def load_config(name: str | Path) -> FitConfig:
         raise DataError(msg)
     fitted = tuple(_options(e, path.name) for e in record.get("fitted", []))
     validators = tuple(_options(e, path.name) for e in record.get("validators", []))
-    known = {d.key for d in datasets()}
+    known = _catalogue.by_key()
     for options in (*fitted, *validators):
         if options.key not in known:
             msg = f"{path.name}: unknown dataset {options.key}"
@@ -345,7 +346,7 @@ def _temperature_shift(
     DataError
         If a temperature is missing or the named dataset is not a thermo-optic one.
     """
-    coefficient = next((d for d in datasets() if d.key == options.thermo_optic), None)
+    coefficient = _catalogue.by_key().get(options.thermo_optic)
     sample = dataset.parameters.get("temperature_k")
     if (
         coefficient is None
@@ -382,7 +383,7 @@ def _observations(options: DatasetOptions) -> _Observations:
     DataError
         If the dataset's quantity cannot be fitted or a point has no uncertainty.
     """
-    dataset: Dataset = next(d for d in datasets() if d.key == options.key)
+    dataset: Dataset = _catalogue.dataset(options.key)
     wavelength = dataset.vacuum_wavelength()
     values = dataset.scaled_values()
     stated = dataset.standard_uncertainty()
@@ -524,7 +525,7 @@ def _start(config: FitConfig) -> tuple[tuple[str, ...], dict[str, float]]:
         of the start model's.
     """
     source, _, formula = config.start.partition("/")
-    record = sources().get(source)
+    record = _catalogue.records().get(source)
     entries = [] if record is None else record.formulas
     terms = next((f.get("terms") for f in entries if f.get("id") == formula), None)
     if not isinstance(terms, Mapping) or "attributes" not in terms:

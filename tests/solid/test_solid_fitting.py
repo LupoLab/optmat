@@ -189,14 +189,14 @@ def test_an_absorption_coefficient_is_fitted_as_k():
     assert observed.component == "log_k"
 
 
-def test_a_decadic_absorption_coefficient_per_metre_is_converted(monkeypatch):
+def test_a_decadic_absorption_coefficient_per_metre_is_converted(monkeypatch, curated):
     # The same values read as a base-10 alpha in m-1 give k ln(10) / 100 times.
     dataset = next(d for d in datasets() if d.key == "schinke_2015/alpha_295K")
     decadic = dataclasses.replace(
         dataset, unit="m-1", parameters={**dataset.parameters, "base": "10"}
     )
     natural = _observations(DatasetOptions(key=dataset.key))
-    monkeypatch.setattr(fitting, "datasets", lambda: [decadic])
+    curated(decadic)
     converted = _observations(DatasetOptions(key=dataset.key))
     np.testing.assert_allclose(
         converted.value - natural.value, np.log(np.log(10) / 100), rtol=1e-12

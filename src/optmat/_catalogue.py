@@ -7,7 +7,8 @@
 :func:`optmat.datasets.sources` loads every source record and its data files, which
 takes seconds; most models need a few records. These read one record with
 :func:`optmat.datasets.load_source`, the loader the catalogue uses, so a record read
-here is the catalogue's own. Once the catalogue is loaded they take its records.
+here is the catalogue's own. Each record is read once per process: the catalogue,
+when loaded, takes the records already read here.
 """
 
 import functools
@@ -46,8 +47,6 @@ def source(source_id: str) -> Source:
     KeyError
         If there is no such record.
     """
-    if sources.cache_info().currsize:
-        return sources()[source_id]
     path = _SOURCES / f"{source_id}.toml"
     if not path.is_file():
         raise KeyError(source_id)
