@@ -40,7 +40,7 @@ def source(source_id: str) -> Source:
     Returns
     -------
     Source
-        The source, with its datasets read and errata applied.
+        The source, errata applied; each dataset is built when first asked for.
 
     Raises
     ------
@@ -50,11 +50,11 @@ def source(source_id: str) -> Source:
     path = _SOURCES / f"{source_id}.toml"
     if not path.is_file():
         raise KeyError(source_id)
-    return load_source(path)
+    return load_source(path, defer=True)
 
 
 def dataset(key: str) -> Dataset:
-    """Return one curated dataset, loading only its source's record.
+    """Return one curated dataset, reading only its source's record and its data file.
 
     Parameters
     ----------
@@ -71,14 +71,11 @@ def dataset(key: str) -> Dataset:
     KeyError
         If there is no such dataset.
     """
+    source_id, _, dataset_id = key.partition("/")
     try:
-        record = source(key.split("/", 1)[0])
+        return source(source_id).dataset(dataset_id)
     except KeyError:
         raise KeyError(key) from None
-    for found in record.datasets:
-        if found.key == key:
-            return found
-    raise KeyError(key)
 
 
 class _Records(Mapping[str, Source]):

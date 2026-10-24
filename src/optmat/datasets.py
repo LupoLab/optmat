@@ -702,6 +702,10 @@ class Dataset:
 class Source:
     """One source of values: its citation, provenance and datasets.
 
+    A dataset is built, and its data file read, when it is first asked for
+    (:attr:`datasets` builds them all, :meth:`dataset` one), so the record's
+    citation, errata and formulas cost no data file.
+
     Attributes
     ----------
     id : str
@@ -720,8 +724,8 @@ class Source:
         How the values were obtained.
     notes : str
         Anything else a reader needs.
-    datasets : tuple of Dataset
-        The datasets, errata applied.
+    entries : tuple of dict
+        The record's dataset entries, as recorded (``[[datasets]]``).
     errata : tuple of Erratum
         The corrections applied.
     formulas : tuple of dict
@@ -737,9 +741,48 @@ class Source:
     kind: str
     technique: str
     notes: str
-    datasets: tuple[Dataset, ...]
+    entries: tuple[Mapping[str, object], ...]
     errata: tuple[Erratum, ...]
     formulas: tuple[Mapping[str, object], ...] = ()
+
+    @functools.cached_property
+    def datasets(self) -> tuple[Dataset, ...]:
+        """The datasets, errata applied, in the record's order.
+
+        Returns
+        -------
+        tuple of Dataset
+            Every dataset of the source.
+        """
+        return tuple(self.dataset(str(entry["id"])) for entry in self.entries)
+
+    def dataset(self, dataset_id: str) -> Dataset:
+        """Return one dataset, reading only its data file.
+
+        Parameters
+        ----------
+        dataset_id : str
+            The dataset's id within the source.
+
+        Returns
+        -------
+        Dataset
+            The dataset, errata applied; the same object on every call.
+
+        Raises
+        ------
+        KeyError
+            If the source has no such dataset.
+        DataError
+            If its entry or data file is malformed.
+        """
+        built: dict[str, Dataset] = self.__dict__.setdefault("_built", {})
+        if dataset_id not in built:
+            entry = next((e for e in self.entries if str(e["id"]) == dataset_id), None)
+            if entry is None:
+                raise KeyError(f"{self.id}/{dataset_id}")
+            built[dataset_id] = _dataset(self.id, entry, self.errata)
+        return built[dataset_id]
 
 
 def _number(text: str) -> float:
@@ -1195,18 +1238,22 @@ def _corrected_formula(entry: Mapping[str, object], where: str) -> Mapping[str, 
     return {**entry, "coefficients": coefficients}
 
 
-def load_source(path: Path) -> Source:
+def load_source(path: Path, *, defer: bool = False) -> Source:
     """Load one source record and its datasets.
 
     Parameters
     ----------
     path : pathlib.Path
         The record, ``data/sources/<source>.toml``.
+    defer : bool, optional
+        Build each dataset, and read its data file, only when it is first asked for,
+        as the catalogue does; a malformed dataset then raises there. By default every
+        dataset is built and checked here.
 
     Returns
     -------
     Source
-        The source, with its datasets read and errata applied.
+        The source, with its datasets read (unless deferred) and errata applied.
 
     Raises
     ------
@@ -1228,7 +1275,7 @@ def load_source(path: Path) -> Source:
     if len(set(dataset_ids)) != len(dataset_ids):
         msg = f"{source_id}: duplicate dataset ids"
         raise DataError(msg)
-    return Source(
+    loaded = Source(
         id=source_id,
         citation=record["citation"],
         doi=record.get("doi", ""),
@@ -1237,15 +1284,16 @@ def load_source(path: Path) -> Source:
         kind=record["kind"],
         technique=record.get("technique", ""),
         notes=record.get("notes", ""),
-        datasets=tuple(
-            _dataset(source_id, entry, errata) for entry in record.get("datasets", [])
-        ),
+        entries=tuple(record.get("datasets", [])),
         errata=errata,
         formulas=tuple(
             _corrected_formula(entry, f"{source_id}/{entry.get('id', '?')}")
             for entry in record.get("formulas", [])
         ),
     )
+    if not defer:
+        _ = loaded.datasets
+    return loaded
 
 
 @functools.cache
@@ -1303,10 +1351,11 @@ def datasets(
         from optmat._index import sources_with  # noqa: PLC0415 - as above
 
         records = tuple(source(s) for s in sources_with(wanted, quantity))
+    # Only the matching datasets are built, from their entries.
     return tuple(
-        dataset
+        record.dataset(str(entry["id"]))
         for record in records
-        for dataset in record.datasets
-        if (wanted is None or dataset.material == wanted)
-        and (quantity is None or dataset.quantity == quantity)
+        for entry in record.entries
+        if (wanted is None or entry.get("material") == wanted)
+        and (quantity is None or entry.get("quantity") == quantity)
     )

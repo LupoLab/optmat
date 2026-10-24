@@ -12,6 +12,7 @@ import pytest
 
 from optmat import _catalogue
 from optmat.datasets import DATA_DIRECTORY, datasets, load_source, sources
+from optmat.exceptions import DataError
 
 
 @pytest.fixture
@@ -151,3 +152,27 @@ print(optmat.datasets.sources.cache_info().currsize,
         [sys.executable, "-c", code], capture_output=True, text=True, check=True
     )
     assert result.stdout.split() == ["0", "0"]
+
+
+def test_a_dataset_is_built_once_and_shared_with_its_sources_datasets(unloaded):
+    record = _catalogue.source("ogawa_1958")
+    alone = record.dataset("absolute")
+    assert _catalogue.dataset("ogawa_1958/absolute") is alone
+    assert alone in record.datasets
+    assert record.datasets[record.datasets.index(alone)] is alone
+
+
+def test_a_deferred_record_raises_when_its_malformed_dataset_is_used(tmp_path):
+    path = tmp_path / "synthetic.toml"
+    path.write_text(
+        'citation="synthetic"\nkind="theory"\n[[datasets]]\nid="bad"\n'
+        'material="He"\nquantity="refractivity"\ndensity="liquid"\npoints=[["a","1","1"]]\n',
+        encoding="utf-8",
+    )
+    deferred = load_source(path, defer=True)
+    with pytest.raises(DataError, match="unknown density convention"):
+        deferred.dataset("bad")
+    with pytest.raises(DataError, match="unknown density convention"):
+        load_source(path)
+    with pytest.raises(KeyError, match="synthetic/missing"):
+        deferred.dataset("missing")
