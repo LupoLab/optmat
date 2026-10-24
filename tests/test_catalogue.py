@@ -80,8 +80,8 @@ def test_lookups_by_key_filter_as_the_catalogue_does():
 
 
 def test_the_formula_records_are_every_record_with_formulas():
-    # Only the records with a [[formulas]] table are read; they must be exactly the
-    # sources with formulas, in the catalogue's order.
+    # Only the records the index lists with formulas are read; they must be exactly
+    # the sources with formulas, in the catalogue's order.
     expected = [s.id for s in sources().values() if s.formulas]
     assert [s.id for s in _catalogue.formula_sources()] == expected
 
@@ -119,9 +119,11 @@ print(optmat.datasets.sources.cache_info().currsize)
     "quantity", ["mole_fraction", "refractivity", "mixture_compressibility_factor"]
 )
 def test_the_datasets_of_a_quantity_are_the_catalogues(quantity):
-    # Only the records whose text sets the quantity are read; they must hold exactly
-    # the catalogue's datasets of it, in its order.
-    expected = [d.key for d in datasets(quantity=quantity)]
+    # Only the records the index lists for the quantity are read; they must hold
+    # exactly the catalogue's datasets of it, in its order.
+    expected = [
+        d.key for s in sources().values() for d in s.datasets if d.quantity == quantity
+    ]
     assert [d.key for d in _catalogue.quantity_datasets(quantity)] == expected
 
 

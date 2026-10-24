@@ -12,9 +12,9 @@ when loaded, takes the records already read here.
 """
 
 import functools
-import re
 from collections.abc import Iterator, Mapping
 
+from optmat._index import sources_with_formulas
 from optmat.datasets import (
     DATA_DIRECTORY,
     Dataset,
@@ -225,31 +225,30 @@ def by_key(
 
 
 @functools.cache
-def formula_sources() -> tuple[Source, ...]:
-    """Return every curated source that records published formulas, in source order.
+def formula_sources(materials: frozenset[str] | None = None) -> tuple[Source, ...]:
+    """Return the curated sources that record published formulas, in source order.
 
-    Only the records whose text has a ``[[formulas]]`` table are read (a note may
-    mention one; a record read without formulas is left out).
+    Only the records the catalogue's index lists with formulas are read.
+
+    Parameters
+    ----------
+    materials : frozenset of str, optional
+        Only the sources with a formula of one of these material ids.
 
     Returns
     -------
     tuple of Source
         The sources, in the catalogue's order.
     """
-    candidates = (
-        source(path.stem)
-        for path in sorted(_SOURCES.glob("*.toml"))
-        if "[[formulas]]" in path.read_text(encoding="utf-8")
-    )
-    return tuple(record for record in candidates if record.formulas)
+    return tuple(source(s) for s in sources_with_formulas(materials))
 
 
 @functools.cache
 def quantity_datasets(quantity: str) -> tuple[Dataset, ...]:
     """Return the curated datasets of one quantity, reading only the records with it.
 
-    ``quantity_datasets(q)`` is ``datasets(quantity=q)`` without loading every record:
-    only the records whose text sets ``quantity = "<q>"`` are read.
+    ``quantity_datasets(q)`` is ``datasets(quantity=q)``, which reads only the records
+    the catalogue's index lists for the quantity.
 
     Parameters
     ----------
@@ -266,11 +265,4 @@ def quantity_datasets(quantity: str) -> tuple[Dataset, ...]:
     >>> {d.quantity for d in quantity_datasets("mole_fraction")}
     {'mole_fraction'}
     """
-    pattern = re.compile(rf'quantity\s*=\s*"{re.escape(quantity)}"')
-    return tuple(
-        found
-        for path in sorted(_SOURCES.glob("*.toml"))
-        if pattern.search(path.read_text(encoding="utf-8"))
-        for found in source(path.stem).datasets
-        if found.quantity == quantity
-    )
+    return datasets(quantity=quantity)

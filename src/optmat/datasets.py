@@ -1295,10 +1295,18 @@ def datasets(
     True
     """
     wanted = None if material is None else as_material(material)
+    if wanted is None and quantity is None:
+        records = tuple(sources().values())
+    else:
+        # A search reads only the records the index lists for it.
+        from optmat._catalogue import source  # noqa: PLC0415 - it imports this module
+        from optmat._index import sources_with  # noqa: PLC0415 - as above
+
+        records = tuple(source(s) for s in sources_with(wanted, quantity))
     return tuple(
         dataset
-        for source in sources().values()
-        for dataset in source.datasets
+        for record in records
+        for dataset in record.datasets
         if (wanted is None or dataset.material == wanted)
         and (quantity is None or dataset.quantity == quantity)
     )

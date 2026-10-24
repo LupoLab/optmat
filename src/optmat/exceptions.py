@@ -10,6 +10,7 @@ catch the package's refusals without catching unrelated ones.
 
 __all__ = [
     "ArgumentError",
+    "CatalogueIndexWarning",
     "DataError",
     "ModelAbsorptionWarning",
     "ModelRangeWarning",
@@ -49,4 +50,12 @@ class ModelAbsorptionWarning(UserWarning):
     The real polarizability or ``n - 1`` alone then leaves out the absorption: use
     :meth:`~optmat.gas.models.base.Model.complex_polarizability` or
     :meth:`~optmat.gas.models.base.Model.refractive_index`.
+    """
+
+
+class CatalogueIndexWarning(UserWarning):
+    """The catalogue's index disagrees with the source records, which are used instead.
+
+    The index only speeds up searches; a stale one is regenerated with
+    ``tools/catalogue_index.py`` in a source checkout.
     """

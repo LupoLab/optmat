@@ -750,7 +750,7 @@ def published_models() -> dict[str, Model]:
     return curated(
         {
             f"{source.id}/{entry['id']}": _model(source.id, source.citation, entry)
-            for source in formula_sources()
+            for source in formula_sources(frozenset(solids))
             for entry in source.formulas
             if entry.get("form") in FORMS and str(entry.get("material")) in solids
         }

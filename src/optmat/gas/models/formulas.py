@@ -525,7 +525,7 @@ def published_models() -> dict[str, FormulaModel]:
     """
     return {
         f"{source.id}/{entry['id']}": _model(source.id, source.citation, entry)
-        for source in formula_sources()
+        for source in formula_sources(frozenset(g.value for g in Gas))
         for entry in source.formulas
         # The gas forms only: a solid's formulas are optmat.solid's (TC-318).
         if "form" in entry and str(entry.get("material")) in set(Gas)
