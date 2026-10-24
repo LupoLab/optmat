@@ -1468,6 +1468,66 @@ def _build(name: str, model: Mapping[str, object], gas: Gas) -> MolecularRateMod
 
 
 @functools.cache
+def _models_table() -> dict[str, Mapping[str, Any]]:
+    """Read the models of ``molecular_ionisation_rates.toml``.
+
+    Returns
+    -------
+    dict of str to mapping
+        Each model's table, by name.
+    """
+    with MOLECULAR_RATES_FILE.open("rb") as handle:
+        models = tomllib.load(handle)["models"]
+    return {str(name): model for name, model in models.items()}
+
+
+def _covered(name: str) -> dict[Gas, str]:
+    """Return the molecules a model covers.
+
+    Parameters
+    ----------
+    name : str
+        A model of ``molecular_ionisation_rates.toml``.
+
+    Returns
+    -------
+    dict of Gas to str
+        Each molecule and its name in the file, in the file's order.
+    """
+    return {as_gas(gas): str(gas) for gas in _models_table()[name]["gases"]}
+
+
+@functools.cache
+def _rate_model(name: str, gas: Gas) -> MolecularRateModel:
+    """Build one model of one molecule, reading only the datasets it cites.
+
+    Parameters
+    ----------
+    name : str
+        A model of ``molecular_ionisation_rates.toml``.
+    gas : Gas
+        A molecule it covers.
+
+    Returns
+    -------
+    MolecularRateModel
+        The model at 800 nm, with its status.
+    """
+    model = _models_table()[name]
+    # optmat's rate is validated where the data do not say otherwise; the forms of
+    # the literature are kept for comparison (TC-673).
+    default = "validated" if name == "default" else "comparison"
+    if model["form"] == "molecular":
+        listed = _covered(name)[gas]
+        entry = model["gases"][listed]
+        return replace(
+            _build_molecular(name, model, gas, entry),
+            **_status(entry, f"{name}/{listed}", default),
+        )
+    return replace(_build(name, model, gas), **_status(model, name, default))
+
+
+@functools.cache
 def molecular_rate_models() -> dict[str, dict[Gas, MolecularRateModel]]:
     """Return every named molecular rate model, at 800 nm.
 
@@ -1482,30 +1542,10 @@ def molecular_rate_models() -> dict[str, dict[Gas, MolecularRateModel]]:
     ['adk_hydrogenic', 'default', 'moadk_tong_2002', 'moadk_zhao_2010',
      'moadk_zhao_2017', 'ppt_talebpour', 'ppt_talebpour_ilkov']
     """
-    with MOLECULAR_RATES_FILE.open("rb") as handle:
-        models = tomllib.load(handle)["models"]
-    built: dict[str, dict[Gas, MolecularRateModel]] = {}
-    for name, model in models.items():
-        # optmat's rate is validated where the data do not say otherwise; the forms of
-        # the literature are kept for comparison (TC-673).
-        default = "validated" if name == "default" else "comparison"
-        if model["form"] == "molecular":
-            built[name] = {
-                as_gas(gas): replace(
-                    _build_molecular(name, model, as_gas(gas), entry),
-                    **_status(entry, f"{name}/{gas}", default),
-                )
-                for gas, entry in model["gases"].items()
-            }
-        else:
-            built[name] = {
-                as_gas(gas): replace(
-                    _build(name, model, as_gas(gas)),
-                    **_status(model, name, default),
-                )
-                for gas in model["gases"]
-            }
-    return built
+    return {
+        name: {gas: _rate_model(name, gas) for gas in _covered(name)}
+        for name in _models_table()
+    }
 
 
 def _status(entry: Mapping[str, object], where: str, default: Status) -> dict[str, str]:
@@ -1569,13 +1609,14 @@ def molecular_rate_model(
     >>> nitrogen.form, nitrogen.electrons, nitrogen.ionization_energy_kind
     ('molecular', 2.0, 'vertical')
     """
-    models = molecular_rate_models()
+    models = _models_table()
     if model not in models:
         msg = f"unknown molecular rate model {model!r}; the models are {sorted(models)}"
         raise DataError(msg)
     species = as_gas(gas)
-    if species not in models[model]:
-        given = ", ".join(sorted(g.value for g in models[model]))
+    covered = _covered(model)
+    if species not in covered:
+        given = ", ".join(sorted(g.value for g in covered))
         msg = f"the model {model} is not given for {species.value}; it is for {given}"
         raise DataError(msg)
-    return models[model][species].at_wavelength(wavelength)
+    return _rate_model(model, species).at_wavelength(wavelength)

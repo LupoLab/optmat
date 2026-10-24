@@ -12,7 +12,7 @@ The recommended model of each gas is chosen, with its reason, in
 """
 
 import functools
-from collections.abc import Callable, Mapping
+from collections.abc import Callable
 from typing import Final
 
 import numpy as np
@@ -27,8 +27,8 @@ from optmat.gas.models._defaults import DEFAULTS_FILE
 from optmat.gas.models._defaults import defaults as _defaults
 from optmat.gas.models.base import Model
 from optmat.gas.models.compact import compact_models
-from optmat.gas.models.fitted import fitted_models
-from optmat.gas.models.formulas import published_models
+from optmat.gas.models.fitted import fitted_model, fitted_models
+from optmat.gas.models.formulas import published_model, published_models
 
 __all__ = [
     "DEFAULTS_FILE",
@@ -40,13 +40,13 @@ __all__ = [
 ]
 
 
-_REGISTRIES: Final[dict[str, Callable[[], Mapping[str, Model]]]] = {
-    "fit": fitted_models,
-    "compact": compact_models,
-    "refractiveindex.info": database_models,
+_LOOKUPS: Final[dict[str, Callable[[str], Model]]] = {
+    "fit": fitted_model,
+    "compact": lambda name: compact_models()[name],
+    "refractiveindex.info": lambda name: database_models()[name],
 }
-"""The registry that holds each prefix of a name; any other name is a published
-formula's (``<source>/<formula>``)."""
+"""How a name of each prefix is found; any other name is a published formula's
+(``<source>/<formula>``). A fit reads only its own record."""
 
 
 @functools.cache
@@ -109,11 +109,11 @@ def model(name: str) -> Model:
     OptmatError
         If no model has that name.
     """
-    # Only the registry that holds the name is built: the published formulas read the
-    # whole source catalogue, which takes seconds, and a fit's lookup does not need it.
-    registry = _REGISTRIES.get(name.split("/", 1)[0], published_models)
+    # Only the registry that holds the name is consulted, and a fit or a published
+    # formula reads only its own record (TC-810).
+    lookup = _LOOKUPS.get(name.split("/", 1)[0], published_model)
     try:
-        return registry()[name]
+        return lookup(name)
     except KeyError as exc:
         msg = f"no model named {name!r}"
         raise OptmatError(msg) from exc

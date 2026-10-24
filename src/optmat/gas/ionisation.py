@@ -761,21 +761,34 @@ def _parameters(
 
 
 @functools.cache
-def _all_parameters() -> dict[Gas, IonisationParameters]:
-    """Build every gas's parameters from ``ionisation.toml``.
+def _entries() -> dict[Gas, Mapping[str, object]]:
+    """Read ``ionisation.toml``.
 
     Returns
     -------
-    dict of Gas to IonisationParameters
-        The parameters by gas.
+    dict of Gas to mapping
+        Each gas's entry.
     """
     with IONISATION_FILE.open("rb") as handle:
         table = tomllib.load(handle)
-    by_key = _catalogue.by_key()
-    return {
-        as_gas(name): _parameters(as_gas(name), entry, by_key)
-        for name, entry in table.items()
-    }
+    return {as_gas(name): entry for name, entry in table.items()}
+
+
+@functools.cache
+def _gas_parameters(species: Gas) -> IonisationParameters:
+    """Build one gas's parameters, reading only the datasets it cites.
+
+    Parameters
+    ----------
+    species : Gas
+        A gas of ``ionisation.toml``.
+
+    Returns
+    -------
+    IonisationParameters
+        Its parameters.
+    """
+    return _parameters(species, _entries()[species], _catalogue.by_key())
 
 
 def ionisation_parameters(gas: Gas | str) -> IonisationParameters:
@@ -797,8 +810,7 @@ def ionisation_parameters(gas: Gas | str) -> IonisationParameters:
         If the gas has no ionisation parameters.
     """
     species = as_gas(gas)
-    parameters = _all_parameters()
-    if species not in parameters:
+    if species not in _entries():
         msg = f"no ionisation parameters for {species.value}"
         raise DataError(msg)
-    return parameters[species]
+    return _gas_parameters(species)

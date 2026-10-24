@@ -46,7 +46,7 @@ from typing import Any, ClassVar, Final
 import numpy as np
 from jaxtyping import Complex, Float
 
-from optmat._catalogue import formula_sources
+from optmat._catalogue import formula_sources, source
 from optmat.conditions import State
 from optmat.constants import (
     AU_ANGULAR_FREQUENCY,
@@ -67,7 +67,7 @@ from optmat.gas.lorentz_lorenz import (
 from optmat.gas.models._defaults import curated_status
 from optmat.gas.models.base import Model
 
-__all__ = ["FORMS", "FormulaModel", "published_models"]
+__all__ = ["FORMS", "FormulaModel", "published_model", "published_models"]
 
 FORMS: Final = frozenset(
     {
@@ -465,6 +465,47 @@ def _model(source_id: str, citation: str, entry: Mapping[str, object]) -> Formul
         ideal=entry.get("density") == "ideal",
         energy_scale=_ENERGY_UNITS[str(entry.get("energy_unit", "hartree"))],
     )
+
+
+def published_model(name: str) -> FormulaModel:
+    """Return one gas formula model, reading only its source's record.
+
+    :func:`published_models` reads every record with formulas; a lookup by name needs
+    one.
+
+    Parameters
+    ----------
+    name : str
+        ``<source>/<formula>``.
+
+    Returns
+    -------
+    FormulaModel
+        The model, the same as :func:`published_models` holds under that name.
+
+    Raises
+    ------
+    KeyError
+        If no gas formula has that name.
+
+    Examples
+    --------
+    >>> published_model("bideau_mehu_1981/sellmeier_Ar").gas.value
+    'Ar'
+    """
+    source_id, _, formula_id = name.partition("/")
+    try:
+        record = source(source_id)
+    except KeyError:
+        raise KeyError(name) from None
+    for entry in record.formulas:
+        if (
+            entry.get("id") == formula_id
+            and "form" in entry
+            and str(entry.get("material")) in set(Gas)
+        ):
+            return _model(record.id, record.citation, entry)
+    raise KeyError(name)
 
 
 @functools.cache
