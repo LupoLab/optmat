@@ -20,10 +20,10 @@ jobs:
       id-token: write   # the OIDC token that PyPI's trusted publishing exchanges
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0   # hatch-vcs derives the version from the tag
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v7
       - run: uv python install 3.14
       - name: Build the sdist and the wheel
         run: uv build
