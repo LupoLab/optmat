@@ -51,6 +51,7 @@ concerns physics or the reading of a paper rather than style, ask rather than gu
 | Tests with the 100% statement and branch coverage gate | `uv run poe coverage-check` |
 | Copyright and licence of every file | `uv run poe reuse` |
 | Preview provisional register renumbering against main | `uv run poe register-sync` |
+| Check the pending release notes, or print the changelog they would make | `uv run poe changelog-check`, `uv run poe changelog-preview` |
 | Rewrite the catalogue index after adding or editing a source record | `uv run python tools/catalogue_index.py` |
 | Re-run the extraction against the paper library | `PAPER_LIBRARY=<path> uv run poe test-library` |
 | Re-run every stored fit and compare | `uv run poe test-fits` |
@@ -80,13 +81,15 @@ Environment variables used by the tools only (the package itself needs none):
 5. `numpydoc lint`;
 6. `codespell`;
 7. `reuse lint`: every file states its copyright and licence;
-8. `poe coverage-check`: `pytest` (doctests included) on every core
+8. `poe changelog-check`: the release-note fragments and the changelog's structure
+   validate;
+9. `poe coverage-check`: `pytest` (doctests included) on every core
    (`pytest-xdist`, `-n auto --dist loadfile`) under `pytest-cov`, requiring **100%
    statement and branch coverage** across `src/optmat/`, including the workers and
    ordinary-Python subprocesses (coverage's subprocess patch);
-9. `sphinx-build -W -n --keep-going` (the gallery executes).
+10. `sphinx-build -W -n --keep-going` (the gallery executes).
 
-All nine must pass. CI runs exactly this sequence on every push and pull request; if
+All ten must pass. CI runs exactly this sequence on every push and pull request; if
 you change one, change the other in the same commit. There is no other safety net: CI
 runs only what `poe check` runs, so the lanes below are still run by hand. Do not
 declare work finished while a step fails, and never suppress a check to make it pass.
@@ -127,7 +130,9 @@ Also, before merging:
   changes.
 
 New functionality is not done until it is **tested**, **documented in the manual** as
-well as in docstrings, **recorded in the register** (below) and noted in `CHANGELOG.md`.
+well as in docstrings, **recorded in the register** (below) and noted in a `changelog.d/` fragment
+([format](changelog.d/README.md)). The rolling release pull request collects the fragments
+into `CHANGELOG.md`; other pull requests do not edit that shared file.
 Functionality built from an enhancement proposal is also not done until its phase report
 is appended to the OEP (below). In your summary, say what you verified against a primary
 source and what you could not.
@@ -302,7 +307,7 @@ The long form is [OEP 0](docs/oeps/oep-0000-process.md); the index is
   - each manual page the OEP produced ends with a link to it;
   - its open questions move to issues or to `open` register entries;
   - its tracking issue closes;
-  - the `CHANGELOG.md` line cites it.
+  - its release-note fragment cites it.
 
   A final OEP is history: the manual describes current behaviour.
 
@@ -426,7 +431,8 @@ The manual's conventions pages are the long form.
 - **Dependencies:** managed with uv (`uv add`; never `pip install` into the environment).
   Ask before adding one. The floors in `pyproject.toml` are the oldest versions the code
   needs, not the newest available: do not raise one without a reason (an API, a fixed
-  bug, a value the tests reproduce), recorded in `CHANGELOG.md`. CI tests the floors.
+  bug, a value the tests reproduce), recorded in a release-note fragment. CI tests the
+  floors.
 - **Text files are UTF-8, said explicitly:** every text-mode `open`, `Path.open`,
   `gzip.open`, `read_text` and `write_text` passes `encoding="utf-8"` ⚙
   (`tests/test_encoding.py`); Windows otherwise decodes with its code page.
@@ -484,7 +490,7 @@ The manual's conventions pages are the long form.
 - **Commits:** small, logical, with descriptive messages. Stage deliberately
   (`git add <paths>`).
 - **Versions:** never tag, release or change a version by hand; versions come from git
-  tags.
+  tags, and a release follows [*Releasing*](docs/developers/releasing.md).
 - **Coding agents:**
   - merge, push, tag or release only when asked or authorised, and do not ask again for
     an already authorised action;

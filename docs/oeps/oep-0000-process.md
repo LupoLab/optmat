@@ -274,7 +274,7 @@ In the pull request that sets `Final`:
 - fix the relative links the move breaks;
 - remove its roadmap link;
 - close its tracking issue;
-- cite the OEP in the `CHANGELOG.md` line.
+- cite the OEP in its release-note fragment.
 
 A Final OEP is a historical record. It is not updated to follow later changes to the
 code; the manual describes current behaviour. Only errata and a "Superseded-by" note are
@@ -369,7 +369,7 @@ an assumption that had to be invented is said plainly.
 | Manual (`docs/`) | How the functionality works and how to use it, as it is now |
 | {doc}`Roadmap <../roadmap>` | The status lists of accepted and draft OEPs |
 | [Issues](https://github.com/LupoLab/optmat/issues) | Planned work: ideas and known gaps, and each OEP's tracking issue |
-| `CHANGELOG.md` | What changed in each release, citing the OEP |
+| `CHANGELOG.md` | What changed in each release, collected from `changelog.d/` fragments, citing the OEP |
 
 The theory of an OEP moves into the manual when it is implemented. The manual page
 carries the derivation in its current form, and the OEP remains the record of the
@@ -392,3 +392,5 @@ pull request that edits this document and adds a line to its history.
 - 2026-11-04: The solprop fixtures under `tests/data/` are frozen history, since solprop
   takes these values from optmat; the *Downstream* rule now links the solprop issue or
   SEP instead.
+- 2026-11-04: A change's release note starts as a `changelog.d/` fragment, as in solprop;
+  the rolling release pull request collects them into `CHANGELOG.md`.

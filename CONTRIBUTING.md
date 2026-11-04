@@ -206,7 +206,9 @@ motivated it in the register.
    standards (for people and coding agents alike).
 4. Keep the change to the task. Add tests with the code, document new functionality in
    the manual as well as in docstrings, add register entries for data and model
-   changes, and add a line to `CHANGELOG.md` under `Unreleased`.
+   changes, and add a release-note fragment under `changelog.d/` for a notable change,
+   following [its format](changelog.d/README.md). Leave `CHANGELOG.md` to the rolling
+   release pull request, which collects the fragments after merges.
 5. Run `uv run poe check`; with data or fit changes also `poe test-library` (if you
    have the library) and `poe test-fits`. A change to the documentation alone, including
    a new or edited OEP, runs the shorter checks listed in [`AGENTS.md`](AGENTS.md),
@@ -231,7 +233,7 @@ A pull request is ready to merge when:
   available;
 - a changed fit states why, with the numbers, and its robustness record and tested
   documentation tables are regenerated;
-- the manual, docstrings and changelog line are present;
+- the manual, docstrings and release-note fragment are present;
 - a pull request that implements a phase of an OEP appends the phase report to the OEP
   and updates its header, index entry and history. The one that completes it archives
   the OEP and links it from the manual pages it produced;
