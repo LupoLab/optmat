@@ -19,4 +19,14 @@ build:
       - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --frozen --all-extras
     build:
       html:
-        - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html
+        # Diagnostic, not for merging: stop before Read the Docs' 15-minute limit, so that
+        # the log survives, with elapsed seconds on each line and a probe of load and memory.
+        - nproc; free -m; cat /proc/loadavg
+        - |
+          set -o pipefail
+          (while sleep 60; do echo "[probe] $(cat /proc/loadavg) $(free -m | sed -n 2p)"; done) &
+          probe=$!
+          PYTHONUNBUFFERED=1 UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH timeout -k 10 840 uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html 2>&1 | perl -pe 'BEGIN{$|=1;$t=time} printf "%5d ", time-$t'
+          status=$?
+          kill $probe
+          exit $status
