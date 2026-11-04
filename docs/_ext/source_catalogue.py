@@ -43,6 +43,9 @@ def render_record(source_id: str, record: dict[str, Any]) -> str:
     quantities = sorted({d["quantity"] for d in datasets})
     title = source_id
     parts = [
+        # Reached through the alphabetical index, not the navigation tree: see
+        # generate_catalogue.
+        ":orphan:",
         title + "\n" + "=" * len(title),
         _paragraph(record["citation"]),
         f"`Source record <{RECORD_URL}{quote(source_id)}.toml>`__ · "
@@ -154,9 +157,9 @@ def generate_catalogue(records_dir: Path, output_dir: Path) -> tuple[str, ...]:
     ]
     for letter, entries in groups.items():
         index.extend([letter + "\n" + "-" * len(letter), "\n\n".join(entries)])
-    index.append(
-        ".. toctree::\n   :hidden:\n\n" + "\n".join("   " + s for s in records)
-    )
+    # The index links each record but lists none in a toctree. Sphinx copies the whole
+    # navigation tree for every page it writes, so several hundred records there made
+    # up about two thirds of the build's time.
     pages["index"] = "\n\n".join(index) + "\n"
     for name, content in pages.items():
         path = output_dir / (name + ".rst")
