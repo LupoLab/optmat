@@ -60,3 +60,18 @@ def test_the_citation_names_the_latest_release():
         _scalar(citation, "version"),
         _scalar(citation, "date-released"),
     ) == released[0]
+
+
+def test_changelog_links_resolve_in_the_manual():
+    # A fragment's link first reaches the manual when the release pull request collects
+    # it, and a broken one then fails the documentation build, so check it here.
+    include = (ROOT / "docs/changelog.md").read_text(encoding="utf-8")
+    assert ":relative-docs: docs/" in include
+    notes = [ROOT / "CHANGELOG.md", *(ROOT / "changelog.d").glob("*.*.md")]
+    for path in notes:
+        text = path.read_text(encoding="utf-8")
+        for target in re.findall(r"\]\(([^)#\s]+)[^)]*\)", text):
+            if re.match(r"[a-z]+:", target):
+                continue
+            assert target.startswith("docs/"), f"{path.name}: {target}"
+            assert (ROOT / target).is_file(), f"{path.name}: {target}"
