@@ -7,7 +7,8 @@ uv run poe check
 ```
 
 It runs formatting and lint checks, basedpyright, numpydoc, spelling, the copyright and
-licence check (`reuse lint`), the tests under the coverage gate, and Sphinx with
+licence check (`reuse lint`), the release-note check, the tests under the coverage gate,
+and Sphinx with
 warnings treated as errors. The gallery executes during the build. CI
 (`.github/workflows/ci.yml`) runs the same gate on Linux and macOS for every push and
 pull request, the tests on Windows, and the tests on Python 3.12 with the lowest
@@ -56,7 +57,7 @@ Regenerate both golden files after a reviewed model change:
 uv run python tools/golden_models.py
 ```
 
-Review the numerical and identity changes together, update the changelog and raise
+Review the numerical and identity changes together, add a release-note fragment and raise
 the relevant `EVALUATION_VERSION` when evaluation changes. A failed digest check
 requires diagnosis: it does not by itself establish a scientific change.
 

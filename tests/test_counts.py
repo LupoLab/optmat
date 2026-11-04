@@ -4,9 +4,10 @@
 
 """The counts of curated records on the front pages are today's.
 
-``README.md``, the functionality overview and the changelog state how many source
-records, datasets, values, errata and published formulas there are, and how many of
-them hold data of solids. When a record is added, update the numbers there.
+``README.md`` and the functionality overview state how many source records, datasets,
+values, errata and published formulas there are, and how many of them hold data of
+solids. When a record is added, update the numbers there. A release states them in the
+changelog (``docs/developers/releasing.md``); ordinary changes do not edit that file.
 """
 
 import re
@@ -18,7 +19,6 @@ from optmat.datasets import sources
 from optmat.materials import material
 
 ROOT = Path(__file__).parents[1]
-PAGES = ("README.md", "docs/introduction/overview.md", "CHANGELOG.md")
 
 
 def _text(page: str) -> str:
@@ -53,7 +53,3 @@ def test_the_front_pages_counts_are_current(page):
     text = _text(page)
     for statement in _counts().values():
         assert statement in text, (page, statement)
-
-
-def test_the_changelogs_counts_are_current():
-    assert _counts()["records"] in _text("CHANGELOG.md")

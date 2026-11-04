@@ -102,7 +102,7 @@ packages = ["src/optmat"]
 # .gitignore, so tools' local state that a global ignore hides (agents' worktrees under
 # .claude/) is excluded here (OEP 1, Phase 5; TC-789).
 [tool.hatch.build.targets.sdist]
-exclude = ["/.claude", "/.codex"]
+exclude = ["/.claude", "/.codex", "/changelog.d"]
 
 # ------------------------------------------------------------------------------ ruff
 [tool.ruff]
@@ -213,9 +213,12 @@ coverage-fits = "pytest -m fits -n auto --dist load --cov --cov-report=term-miss
 coverage-library = "pytest -m library -n auto --dist load --cov --cov-report=term-missing:skip-covered --cov-report=html:build/coverage/library --cov-fail-under=0"
 reuse      = "reuse lint"
 register-sync = "python tools/register_sync.py"
+changelog-check = "python tools/release_notes.py check"
+changelog-preview = "python tools/release_notes.py preview"
+changelog-collect = "python tools/release_notes.py collect"
 docs       = "sphinx-build -b html -W -n --keep-going docs docs/_build/html"
 docs-clean = "rm -rf docs/_build docs/auto_gallery docs/api/generated docs/generated"
 
 [tool.poe.tasks.check]
-sequence = ["lint-fix", "fmt", "lint", "types", "docstrings", "spell", "reuse", "coverage-check", "docs"]
+sequence = ["lint-fix", "fmt", "lint", "types", "docstrings", "spell", "reuse", "changelog-check", "coverage-check", "docs"]
 help = "The definition-of-done gate, in order."

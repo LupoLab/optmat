@@ -3,7 +3,8 @@
 All notable changes are recorded here, in the style of
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). The review register
 (`REGISTER.md`) records the changes to data and models in detail. Versions before
-0.8.0 were internal and were not published.
+0.8.0 were internal and were not published. A change's note starts as a fragment under
+`changelog.d/`, and the rolling release pull request collects them here.
 
 ## Unreleased
 
