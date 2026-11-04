@@ -373,8 +373,9 @@ def fit_overview(name: str, *, xlim: tuple[float, float]) -> Figure:
 def solprop_defaults() -> dict[str, Model]:
     """Return solprop's former default formula for each gas fitted here.
 
-    From before solprop took its gases from optmat. The mapping is the one ``tests/test_solprop_parity.py`` checks (TC-100);
-    solprop read Ermolov's helium coefficients at 1 atm, so that model is re-referred.
+    From before solprop took its gases from optmat. The mapping is the one
+    ``tests/test_solprop_parity.py`` checks (TC-100); solprop read Ermolov's helium
+    coefficients at 1 atm, so that model is re-referred.
 
     Returns
     -------
@@ -407,9 +408,9 @@ def solprop_defaults() -> dict[str, Model]:
 def solprop_gamma() -> dict[str, float]:
     """Return solprop's former third-order coefficient of each gas as gamma_T (au).
 
-    Before it took them from optmat, solprop used one ``gamma3 = gamma_T / (6 eps0)`` per
-    gas for every process and wavelength; the values are the frozen fixture
-    ``tests/data/solprop_gamma3.json``.
+    Before it took them from optmat, solprop used one
+    ``gamma3 = gamma_T / (6 eps0)`` per gas for every process and wavelength; the values
+    are the frozen fixture ``tests/data/solprop_gamma3.json``.
 
     Returns
     -------
