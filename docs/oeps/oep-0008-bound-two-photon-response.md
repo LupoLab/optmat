@@ -244,8 +244,8 @@ Its own fallback is to report the evaluator as deferred to a later proposal. Thi
 that proposal. It answers Q9 for the bound levels. It takes up Q7 and Q8 where they
 concern the bound levels. OEP 6 is Final with Phases 1 and 2a implemented (TC-1053).
 
-**The roadmap item answered:** OEP 6's Phase 2 evaluator, and the "bound resonances"
-deferred by the paired solprop proposal.
+**The work answered:** OEP 6's Phase 2 evaluator, and the "bound resonances"
+deferred by the paired solprop proposal, [SEP 17](https://solprop.readthedocs.io/en/latest/dev/seps/sep-0017-gas-two-photon-ionisation.html).
 
 ### 4. Theory
 
@@ -792,7 +792,7 @@ additional cross-check failure stated; the dispersive response is unvalidated. T
     one-electron model's ¹D/¹S ratio, 0.45, favours the per-level reading (0.70) over
     one component (0.14), weakly. Its absolute strengths are 2–3 times the correlated
     calculations', so argon stays unresolved;
-  - the measurements on the roadmap's papers-wanted list.
+  - the measurements on the {doc}`papers-wanted page <../wanted>`.
 - **Argon, qualified on calculated strengths** (Q7, resolved). The convention is settled
   by xenon (TC-952), and the correlated calculations agree well.
   - **The reference** is henriksson_2005's J-resolved TDDHF strength per level: J = 2 at
@@ -1113,7 +1113,8 @@ in propagation*. It covers:
 
 General frequency-dependent/two-colour dynamics (Q8), strong-field multilevel
 qualification (Q9), and the continuum's time dependence (Q6) are not silently added to
-these phases. They remain on the roadmap. Approval of Q8–Q10 resolves the initial
+these phases. They remain open in the issues ([#10](https://github.com/LupoLab/optmat/issues/10), [#11](https://github.com/LupoLab/optmat/issues/11)).
+Approval of Q8–Q10 resolves the initial
 scope and data choices, not those scientific extensions or acceptance of the whole OEP.
 
 ### 13. Open questions
@@ -1305,3 +1306,4 @@ None yet.
   candidate. No new phase, OEP or SEP is created; status remains Draft; Reviewed.
 - 2026-10-12: Argon's radiative widths, quenching and photoionisation at the drive curated (TC-1068).
 - 2026-10-12: Argon's quenching reconciled and its photoionisation scale questioned (TC-1074).
+- 2026-11-04: Tracking issue opened, [#36](https://github.com/LupoLab/optmat/issues/36). The roadmap's references became links to the issues, the papers-wanted page and SEP 17.

@@ -82,8 +82,7 @@ their inputs.
 - the photoionisation of most excited levels;
 - the higher members of every series, which have positions but no strengths.
 
-These are listed among the papers the curation requests (*Papers and data we are
-looking for*, on the roadmap).
+These are listed among the papers the curation requests ({doc}`/wanted`).
 
 
 See {doc}`/oeps/archive/oep-0006-two-photon-ionisation` for the completed proposal and its phase reports.

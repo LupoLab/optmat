@@ -659,3 +659,4 @@ None yet.
 
 - 2026-10-09: Drafted, after the curation of TC-954 to TC-981.
 - 2026-10-09: Q1 and Q2 resolved by the maintainer, as recommended (TC-982).
+- 2026-11-04: Tracking issue opened, [#35](https://github.com/LupoLab/optmat/issues/35).
