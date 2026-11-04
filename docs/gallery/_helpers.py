@@ -371,10 +371,11 @@ def fit_overview(name: str, *, xlim: tuple[float, float]) -> Figure:
 
 
 def solprop_defaults() -> dict[str, Model]:
-    """Return solprop's current default formula for each gas fitted here.
+    """Return solprop's former default formula for each gas fitted here.
 
-    The mapping is the one ``tests/test_solprop_parity.py`` checks (TC-100);
-    solprop reads Ermolov's helium coefficients at 1 atm, so that model is re-referred.
+    From before solprop took its gases from optmat. The mapping is the one
+    ``tests/test_solprop_parity.py`` checks (TC-100); solprop read Ermolov's helium
+    coefficients at 1 atm, so that model is re-referred.
 
     Returns
     -------
@@ -395,7 +396,7 @@ def solprop_defaults() -> dict[str, Model]:
         "Xe": formulas["borzsonyi_2008/sellmeier_Xe"],
         "N2": formulas["borzsonyi_2008/sellmeier_N2"],
         "H2": formulas["peck_1977/eq7"],
-        # solprop applies the hydrogen formula to deuterium (Orr 1936).
+        # solprop applied the hydrogen formula to deuterium (Orr 1936).
         "D2": formulas["peck_1977/eq7"],
         "O2": formulas["kren_2011/kren_O2"],
         "CH4": formulas["he_2021/CH4"],
@@ -405,11 +406,11 @@ def solprop_defaults() -> dict[str, Model]:
 
 
 def solprop_gamma() -> dict[str, float]:
-    """Return solprop's current third-order coefficient of each gas as gamma_T (au).
+    """Return solprop's former third-order coefficient of each gas as gamma_T (au).
 
-    solprop uses one frozen ``gamma3 = gamma_T / (6 eps0)`` per gas for every process
-    and wavelength; the values are the fixture ``tests/data/solprop_gamma3.json``
-    (``tools/solprop_gamma3.py``, run in solprop's environment).
+    Before it took them from optmat, solprop used one
+    ``gamma3 = gamma_T / (6 eps0)`` per gas for every process and wavelength; the values
+    are the frozen fixture ``tests/data/solprop_gamma3.json``.
 
     Returns
     -------

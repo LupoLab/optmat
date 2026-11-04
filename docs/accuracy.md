@@ -255,7 +255,7 @@ outside this project.
 
 ## What would improve it
 
-The papers listed on the {doc}`roadmap` under *Papers and data we are looking for*:
+The papers listed under {doc}`wanted`:
 the vacuum-ultraviolet refractometry of the 1960s-70s, converged ab initio dispersion
 and magnetic susceptibilities for krypton and xenon, and more dispersion and infrared
 data for the polyatomic gases.

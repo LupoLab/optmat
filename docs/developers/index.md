@@ -30,8 +30,8 @@ fits, packaging, and public interfaces.
 For a data contribution, read {doc}`/data` and {doc}`/register`, then follow
 {doc}`/contributing`. For model work, first read the relevant scientific chapter
 in the {doc}`/user-guide/index`; {doc}`/fitting` explains the gas dispersion fits.
-A major change follows the enhancement-proposal process. The roadmap records
-accepted proposals, drafts, and remaining work.
+A major change follows the enhancement-proposal process. The roadmap lists accepted
+and draft proposals, and planned work is in the [issues](https://github.com/LupoLab/optmat/issues).
 
 ```{toctree}
 :maxdepth: 1
@@ -45,6 +45,7 @@ register
 releasing
 ../oeps/index
 ../roadmap
+../wanted
 ```
 
 ## Package architecture
