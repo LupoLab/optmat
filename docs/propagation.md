@@ -245,5 +245,30 @@ chi = mixture_optics(["He", "Ne"]).susceptibility(800e-9, densities)
 assert he_ne.status == "validated" and float(chi.real) > 0
 ```
 
+## solprop
+
+The pulse-propagation code [solprop](https://github.com/LupoLab/solprop) is the worked
+example of this interface: it takes its gases, gas mixtures, glasses and metals from
+optmat. Its manual shows the other side, in [Materials](https://solprop.readthedocs.io/en/latest/guide/media/materials.html),
+[Material selection](https://solprop.readthedocs.io/en/latest/guide/media/material-selection.html) and
+[Raman data](https://solprop.readthedocs.io/en/latest/guide/media/raman-data.html).
+
+The boundary between the two is recorded in its enhancement proposals:
+
+- [SEP 3](https://solprop.readthedocs.io/en/latest/dev/seps/archive/sep-0003-optmat-materials.html) moved its materials, Raman
+  responses and ionisation rates to optmat, on the preparation of OEP 1;
+- [SEP 6](https://solprop.readthedocs.io/en/latest/dev/seps/archive/sep-0006-dispersive-nonlinearity.html), its frequency-dependent
+  third-order response, reads where the fits are supported from
+  `HyperpolarizabilityModel.support` ({doc}`OEP 5 <oeps/archive/oep-0005-hyperpolarizability-support>`);
+- [SEP 11](https://solprop.readthedocs.io/en/latest/dev/seps/sep-0011-finite-density-gas-index.html), a draft, is the propagation side
+  of the finite-density mixture law ({doc}`OEP 4 <oeps/archive/oep-0004-mixture-index>`);
+- [SEP 17](https://solprop.readthedocs.io/en/latest/dev/seps/sep-0017-gas-two-photon-ionisation.html), its two-photon continuum
+  response, uses the coefficients of {doc}`OEP 6 <oeps/archive/oep-0006-two-photon-ionisation>`.
+
+optmat supplies material properties and basic data; solprop owns the resulting
+polarisation, electron accounting, plasma coupling and propagation energy balance
+(TC-1057). What each is waiting for from the other is in the issues carrying the
+[`solprop` label](https://github.com/LupoLab/optmat/issues?q=is%3Aissue+label%3Asolprop). optmat never depends on solprop.
+
 This page documents what [OEP 1](oeps/archive/oep-0001-propagation-interface.md)
 proposed and implemented: its theory, decisions and phase reports are the record.

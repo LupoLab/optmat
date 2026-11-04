@@ -17,10 +17,9 @@ are archived and linked from the manual pages they produced.
 OEPs start from [the template](template.md). Every OEP is reviewed by at least one human
 and one frontier AI model before it is accepted.
 
-The {doc}`roadmap <../roadmap>` lists, in order:
-1. accepted and in-progress OEPs;
-2. drafts under discussion;
-3. informal work not fully covered by a proposal.
+The {doc}`roadmap <../roadmap>` lists accepted and in-progress OEPs, then drafts under
+discussion. Each has a tracking issue, and other planned work is in the
+[issues](https://github.com/LupoLab/optmat/issues).
 
 ## Open
 

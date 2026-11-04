@@ -16,7 +16,8 @@ Choose the workflow for your change:
   just as welcome. A propagation that goes wrong with the right values belongs with
   [solprop](https://github.com/LupoLab/solprop/issues).
 - **Offer a paper or data** that optmat lacks with the
-  [source form](https://github.com/LupoLab/optmat/issues/new?template=offer_a_source.yml).
+  [source form](https://github.com/LupoLab/optmat/issues/new?template=offer_a_source.yml);
+  {doc}`wanted` lists what would help most.
 - **Plan work** in an [issue](https://github.com/LupoLab/optmat/issues). `CONTRIBUTING.md`
   says what to check first, the sections to use and the labels.
 - **Add or correct data** through a source record, an extraction script that writes the

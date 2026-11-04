@@ -143,7 +143,12 @@ against measured gains ({doc}`/raman`).
   (copper to 56 µm), aluminium from 0.8 nm to 200 µm, as curated tables joined by
   range.
 
-Where the package goes next is on the {doc}`/roadmap`:
+optmat is the materials library behind the pulse-propagation code
+[solprop](https://github.com/LupoLab/solprop); {doc}`/propagation` gathers what such a
+code calls.
+
+Where the package goes next is in the [issues](https://github.com/LupoLab/optmat/issues), with the enhancement proposals
+on the {doc}`/roadmap`:
 - the models of the other solids, and their two-photon absorption, ionisation and
   damage;
 - the molecules in the extreme ultraviolet;

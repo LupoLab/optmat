@@ -153,8 +153,9 @@ simulations.
 - **Every published formula** of the curated sources, available by name for
   comparison.
 
-The [roadmap](https://optmat.readthedocs.io/en/latest/roadmap.html) describes what comes
-next:
+The [issues](https://github.com/LupoLab/optmat/issues) track what comes next, and the
+[roadmap](https://optmat.readthedocs.io/en/latest/roadmap.html) lists the enhancement
+proposals:
 - the models of the other solids, and their two-photon absorption, ionisation and
   damage;
 - the molecules in the extreme ultraviolet;

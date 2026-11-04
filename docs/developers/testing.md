@@ -88,7 +88,8 @@ are regression tolerances, not scientific error bars or guarantees on every plat
 Mutation tests verify that these checks reject changed model parameters, versions,
 metadata, outputs, dataset selections, scales and objective values, while accepting
 round-off. The stored models and runtime identity hashes are not rounded or rewritten
-to make the tests pass. Broader platform verification remains in {doc}`/roadmap`.
+to make the tests pass. Broader platform verification remains open
+([#30](https://github.com/LupoLab/optmat/issues/30)).
 
 `tests/solid/test_solid_fitting.py` compares each fresh solid fit (`fit/SiO2`,
 `fit/Si`) with its stored record in the same way (TC-1089):
