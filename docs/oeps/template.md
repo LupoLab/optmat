@@ -6,9 +6,9 @@ index, and replace every placeholder. Keep the headings: the parts and their ord
 the same in every OEP. Delete the italic guidance as you write each section. The process
 is OEP 0 (oep-0000-process.md); read it first.
 Add the draft to the OEP index and its toctree, and to the roadmap's Draft enhancement
-proposals section after the accepted proposals. Remove informal roadmap items only when
-fully covered by this proposal; for partial coverage, link the OEP and retain the
-uncovered work explicitly. Keep these entries current when the scope or status changes.
+proposals section after the accepted proposals. Search the open issues for what it touches
+and open its tracking issue (OEP 0, section 6). Keep these entries current when the scope
+or status changes.
 -->
 
 | | |
@@ -50,7 +50,7 @@ what is not, including tempting adjacent work.*
 *What optmat does today in this area:*
 - *links to the manual pages and the modules involved;*
 - *the register entries that bear on it, cited by number;*
-- *the roadmap item this answers, if any;*
+- *the open issues it will fix or that must be resolved first, here and in solprop;*
 - *the prior OEPs it builds on.*
 
 ### 4. Theory
@@ -105,7 +105,7 @@ plan. Cover as applicable:*
 - *reproductions of printed values;*
 - *sum rules and invariants;*
 - *independent measurements or calculations held out as validators;*
-- *parity with solprop where it consumes the result.*
+- *how solprop's qualification is affected where it consumes the result.*
 
 *For each, the quantity compared and what will set the tolerance.*
 
@@ -120,7 +120,7 @@ belongs.*
 - *changed recommended values or defaults, and the size of the change;*
 - *stored fits that must be re-run;*
 - *breaking changes to the public interface;*
-- *the solprop parity fixtures;*
+- *what solprop consumes, and the solprop issue or SEP that bears on it;*
 - *register entries that are superseded.*
 
 ### 11. Alternatives considered
