@@ -154,20 +154,23 @@ the header. `tests/test_proposals.py` checks this.
    Leave Part II empty, and start Part III with the date drafted.
 3. Add the OEP to the index table, the index's toctree and the *Draft enhancement
    proposals* section of the {doc}`roadmap <../roadmap>`, after the accepted proposals.
-   Review the informal roadmap items in the same change:
-   - remove an item only when the OEP covers it in full;
-   - for partial coverage, link the OEP, state what it covers and keep the remaining
-     work.
-
-   Discussion of a possible future extension does not count as coverage.
-4. Open a pull request on a branch named `docs/oep-NNNN-short-slug`. A draft merges
+4. Search the open [issues](https://github.com/LupoLab/optmat/issues) for anything the
+   OEP touches, and solprop's where it consumes the result, and list what you find in its
+   *Context* section: the issues it will fix, and those that must be resolved first. An
+   issue stays open until the OEP that covers it is `Final`; for partial coverage, link
+   the OEP from the issue and state what it leaves. Discussion of a possible future
+   extension does not count as coverage.
+5. Open the OEP's tracking issue, titled `OEP N: <title>` and labelled `oep` with a type,
+   a priority and any area that fits. It links the OEP and the issues found, and says
+   where the OEP stands and what comes next. Name the issue in the OEP's Part III.
+6. Open a pull request on a branch named `docs/oep-NNNN-short-slug`. A draft merges
    early, once it is coherent rather than once it is agreed, so that it appears in the
    manual and can be discussed.
 
 Revising a draft is free: edit it in place in further pull requests, and add a line to
 Part III for each substantial revision. Whenever its scope changes, update its roadmap
-summary and the informal items, and restore work that the revised scope no longer
-covers.
+summary and its tracking issue, and open an issue for work that the revised scope no
+longer covers.
 
 ### Review
 
@@ -222,9 +225,10 @@ The maintainers accept an OEP in a pull request that:
   the roadmap.
 
 A rejection or deferral records the reasons in the OEP, removes its proposal listing from
-the roadmap and restores any still-relevant informal work that it had replaced. The same
-roadmap update applies on withdrawal. For supersession, reconcile the work with the
-replacement OEP's scope.
+the roadmap and opens an issue for any still-relevant work that it had covered. The same
+update applies on withdrawal. For supersession, reconcile the work with the replacement
+OEP's scope. The tracking issue closes on rejection, withdrawal or supersession; a
+deferred OEP keeps it open.
 
 From acceptance, Part I is frozen. A deviation found during implementation is recorded
 in the phase report (§8), not edited into the proposal. A change large enough to
@@ -260,8 +264,8 @@ An OEP becomes `Final` when:
 - every phase is merged and reported;
 - the manual documents it, and each manual page it produced ends with a link to the OEP;
 - its data and models have their register entries;
-- the open questions left are moved to the roadmap, to issues or to `open` register
-  entries, and named in the last report.
+- the open questions left are moved to issues or to `open` register entries, and named
+  in the last report.
 
 In the pull request that sets `Final`:
 - fill in **Manual pages**;
@@ -269,7 +273,8 @@ In the pull request that sets `Final`:
 - move its index row to the archived table, and its toctree entry to the archive index;
 - fix the relative links the move breaks;
 - remove its roadmap link;
-- cite the OEP in the `CHANGELOG.md` line.
+- close its tracking issue;
+- cite the OEP in its release-note fragment.
 
 A Final OEP is a historical record. It is not updated to follow later changes to the
 code; the manual describes current behaviour. Only errata and a "Superseded-by" note are
@@ -322,8 +327,9 @@ checked against the paper before acceptance, never written from memory.
   comment. The manual's tables are tested against the stored fits where they quote them.
 - **Fits.** A phase that changes a fit, or the data a fit uses, re-runs the fits,
   robustness records and fit tests as `AGENTS.md` requires, and says what changed.
-- **Downstream.** A change that solprop consumes updates the solprop parity fixtures
-  under `tests/data/`, and its report says so.
+- **Downstream.** A change that solprop consumes says so in its report and links the
+  solprop issue or SEP that bears on it, or opens an issue there. The solprop fixtures
+  under `tests/data/` are frozen history and are not updated.
 - **Documentation.** Comments on the physics and the sources, docstrings with units and
   ranges on every public name, and a manual page with the background and a worked
   example. Where it helps, a gallery example.
@@ -348,7 +354,7 @@ the finished code is kept. Each report states:
   their primary source, and which could not be.
 - **Limitations:** cases refused, and ranges or materials not qualified.
 - **Open questions**, numbered Q1, Q2, … through the whole OEP, each with its owner or
-  destination: the next phase, the roadmap, an issue or a register entry.
+  destination: the next phase, an issue or a register entry.
 - **Handoff:** what the next phase needs to know.
 
 A report is written honestly. A check that failed, a test left weaker than planned, or
@@ -361,8 +367,9 @@ an assumption that had to be invented is said plainly.
 | OEP | The proposal, and the history of how it was implemented and verified |
 | Register (`REGISTER.md`) | The facts about data and models: sources, errata, fit decisions, findings and open questions, cited as TC-n |
 | Manual (`docs/`) | How the functionality works and how to use it, as it is now |
-| {doc}`Roadmap <../roadmap>` | Open work: accepted and draft OEPs, then ideas and known gaps not fully covered by one |
-| `CHANGELOG.md` | What changed in each release, citing the OEP |
+| {doc}`Roadmap <../roadmap>` | The status lists of accepted and draft OEPs |
+| [Issues](https://github.com/LupoLab/optmat/issues) | Planned work: ideas and known gaps, and each OEP's tracking issue |
+| `CHANGELOG.md` | What changed in each release, collected from `changelog.d/` fragments, citing the OEP |
 
 The theory of an OEP moves into the manual when it is implemented. The manual page
 carries the derivation in its current form, and the OEP remains the record of the
@@ -377,3 +384,13 @@ pull request that edits this document and adds a line to its history.
 
 - 2026-09-29: Drafted and adopted. Modelled on solprop's SEP 0, with the parts that
   concern a data library: primary sources, the register, fits and validators.
+- 2026-11-04: Planned work goes in GitHub issues, not on the roadmap, whose informal items
+  move to issues, and work an OEP gives back goes in an issue. Each OEP has a tracking
+  issue, and a draft lists the open issues it touches. This follows solprop's SEP 0 and
+  was decided by the maintainers as a change to this document, without a Process OEP
+  (§2, §10).
+- 2026-11-04: The solprop fixtures under `tests/data/` are frozen history, since solprop
+  takes these values from optmat; the *Downstream* rule now links the solprop issue or
+  SEP instead.
+- 2026-11-04: A change's release note starts as a `changelog.d/` fragment, as in solprop;
+  the rolling release pull request collects them into `CHANGELOG.md`.

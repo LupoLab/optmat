@@ -7,7 +7,8 @@ uv run poe check
 ```
 
 It runs formatting and lint checks, basedpyright, numpydoc, spelling, the copyright and
-licence check (`reuse lint`), the tests under the coverage gate, and Sphinx with
+licence check (`reuse lint`), the release-note check, the tests under the coverage gate,
+and Sphinx with
 warnings treated as errors. The gallery executes during the build. CI
 (`.github/workflows/ci.yml`) runs the same gate on Linux and macOS for every push and
 pull request, the tests on Windows, and the tests on Python 3.12 with the lowest
@@ -22,12 +23,13 @@ The commands and requirements in
 | Extracted data | `PAPER_LIBRARY=<path> uv run poe test-library` |
 | Fits, fitting code or data used by a fit | Refit, regenerate robustness and derived records as described in {doc}`fitting`, then `uv run poe test-fits` |
 | Packaging, data layout or public interfaces | `uv run poe test-release` |
-| Documentation | `uv run poe docs`, relevant snippet and generated-table tests, and the full gate |
+| Documentation alone | The shorter checks below |
 
-A proposal-only change uses the shorter gate specified in the working rules
-(`AGENTS.md`): diff whitespace, spelling,
-proposal and register tests, and the documentation build. This exception does not
-apply when implementation changes accompany a proposal.
+A documentation-only change, including a new or edited OEP, uses the shorter gate
+specified in the working rules (`AGENTS.md`): diff whitespace, spelling, the proposal and
+register tests, the tests that read the pages it changes, and the documentation build.
+The exception is based on content: it does not apply when a change also touches code,
+tests, data, a gallery script or tooling.
 
 Tests run in parallel in the gate and must be independent of order and share no
 writable output. Use `tmp_path` for test output. A focused invocation such as
@@ -55,7 +57,7 @@ Regenerate both golden files after a reviewed model change:
 uv run python tools/golden_models.py
 ```
 
-Review the numerical and identity changes together, update the changelog and raise
+Review the numerical and identity changes together, add a release-note fragment and raise
 the relevant `EVALUATION_VERSION` when evaluation changes. A failed digest check
 requires diagnosis: it does not by itself establish a scientific change.
 

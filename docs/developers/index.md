@@ -42,6 +42,7 @@ data
 fitting
 documentation
 register
+releasing
 ../oeps/index
 ../roadmap
 ```
