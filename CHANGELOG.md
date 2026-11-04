@@ -8,6 +8,13 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+### Changed
+
+- Contributors add a release note as a fragment under `changelog.d/` instead of editing
+  this file; a rolling draft pull request collects them, and
+  [*Releasing*](docs/developers/releasing.md) describes a release from it. No value, model
+  or public name changed.
+
 ## 0.9.1 (2026-10-24)
 
 A faster start-up for ionisation rates. No value, model or stored fit changed.
