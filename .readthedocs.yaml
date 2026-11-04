@@ -21,19 +21,20 @@ build:
       html:
         # Diagnostic, not for merging: the build writes to a file while the foreground loop
         # reports progress, so the log survives; at 780 s it dumps the Python stacks and stops.
+        # Read the Docs wraps a command in single quotes, so it must hold none.
         - nproc; free -m; cat /proc/loadavg
         - |
           log=/tmp/sphinx.log
           : > $log
           (PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html > $log 2>&1; echo "sphinx exit $?" >> $log) &
           n=0
-          while [ $n -lt 780 ] && ! grep -q '^sphinx exit ' $log; do
+          while [ $n -lt 780 ] && ! grep -q "^sphinx exit " $log; do
             sleep 20
             n=$((n+20))
-            echo "[$n] load $(cut -d' ' -f1-3 /proc/loadavg) mem $(free -m | sed -n 2p | tr -s ' ' | cut -d' ' -f3,7) lines $(wc -l < $log) | $(tail -n 1 $log | tail -c 90)"
+            echo "[$n] load $(cut -d" " -f1-3 /proc/loadavg) mem $(free -m | sed -n 2p | tr -s " " | cut -d" " -f3,7) lines $(wc -l < $log) | $(tail -n 1 $log | tail -c 90)"
           done
           ps -eo pid,ppid,stat,etimes,time,pcpu,rss,args --sort=-pcpu | head -12 | cut -c1-170
-          pkill -ABRT -f '[b]in/sphinx-build' && sleep 3
+          pkill -ABRT -f "[b]in/sphinx-build" && sleep 3
           echo "=== log"
           cat $log
           exit 1
