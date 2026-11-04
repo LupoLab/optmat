@@ -9,7 +9,8 @@ The coding standards are conventional; **the data rules and the review register 
 not negotiable.**
 
 **Read first:**
-- [`CONTRIBUTING.md`](CONTRIBUTING.md): the short guide.
+- [`CONTRIBUTING.md`](CONTRIBUTING.md): the short guide, and the standard for issues and
+  pull requests.
 - The manual pages *The curated data* (`docs/data.md`) and *The review register*
   (`docs/register.md`): the long form of the data format and of the register.
 - [OEP 0](docs/oeps/oep-0000-process.md), when the work is a major change: the
@@ -32,6 +33,8 @@ concerns physics or the reading of a paper rather than style, ask rather than gu
 | Data | `src/optmat/data/`: `sources/` (one record per paper), `values/<family>/<material>/` (extracted values), `external/` (third-party files), `materials.toml` (the material registry), `gas/` and `solid/` (model configurations and stored fits) |
 | Register | [`REGISTER.md`](REGISTER.md): the review register, cited as `TC-n` |
 | Enhancement proposals | `docs/oeps/`: OEPs for major changes; the process is OEP 0 (`oep-0000-process.md`), the form `template.md` |
+| Planned work | [GitHub issues](https://github.com/LupoLab/optmat/issues): open work goes in an issue, not on the roadmap, which lists only OEPs. [`CONTRIBUTING.md`](CONTRIBUTING.md) says how to write an issue and how to label an issue or a pull request |
+| Downstream | [solprop](https://github.com/LupoLab/solprop), the pulse-propagation code, depends on optmat from PyPI and builds on the interface of the manual page *Using optmat from a propagation code* ([its issues](https://github.com/LupoLab/solprop/issues), [its SEPs](https://solprop.readthedocs.io/en/latest/dev/seps/index.html)). optmat never depends on solprop |
 | Python | 3.12 or later (`requires-python`); development, the lock and the gate on 3.14 |
 | Licences | Code, source records and fits MIT; prose and figures CC-BY-4.0; published data (`data/values/`, `data/external/`) remain the publishers', shipped under the third-party data notice (`REUSE.toml`, `LICENSES/LicenseRef-optmat-third-party.txt`) |
 | CI | [`.github/workflows/ci.yml`](.github/workflows/ci.yml): the gate below on Linux and macOS, the tests on Windows, and the tests on Python 3.12 with the lowest supported dependencies |
@@ -129,14 +132,48 @@ Functionality built from an enhancement proposal is also not done until its phas
 is appended to the OEP (below). In your summary, say what you verified against a primary
 source and what you could not.
 
-**Proposal-only changes.** A change that only adds or edits OEPs, their index or their
-roadmap entries does not need the full gate. Run instead:
+**Documentation-only changes**, including adding or editing OEPs, their index or their
+roadmap entries, do not need the full gate. Run instead:
 - `git diff --check`;
 - `uv run codespell` on the changed files, and `uv run poe reuse` if files were added;
-- `uv run pytest tests/test_proposals.py tests/test_register.py`;
+- `uv run pytest tests/test_proposals.py tests/test_register.py`, and the tests that read
+  a page you changed (the `tests/test_*_page.py` of an accuracy page, the snippets' tests,
+  `tests/test_counts.py` for a front page);
 - `uv run poe docs`.
 
+The exception is based on content, not on a file's location. A change to code, tests,
+data, fixtures, a gallery script, dependencies, build configuration or tooling takes the
+full gate, and so does a mixed change. Report the checks actually run.
+
 ---
+
+## Working agreement
+
+- **Agree the plan for large changes.** A major change starts from an accepted OEP (below).
+  Any other change that touches more than a couple of files or alters a public signature
+  starts from an issue or a short agreed plan; a focused fix, a new source or a
+  documentation update does not need one.
+- **Stay in scope.** No refactoring, renaming or reformatting unrelated to the task.
+- **Open an issue for what you find.** Whatever you notice while working and do not fix
+  in the change in hand (a bug, a wrong statement, a missing test, a slow path) gets an
+  issue straight away, so that it outlives the work in hand and the branch. Do not wait to
+  be asked, and write it as [`CONTRIBUTING.md`](CONTRIBUTING.md) says, searching first. If
+  you plan to fix it yourself, open it all the same and keep it in your own plan too. A
+  doubt about data or a model also gets its `open` register entry.
+- **Connect a fix to its issue.** When you fix something you noticed, search the issues
+  for it, and solprop's if it consumes the result. If the change closes one of optmat's,
+  say `Closes #N` in the pull request; if it only goes part of the way or bears on one,
+  comment there on what changed and what is left, and do not close it. `Closes` acts only
+  on a pull request based on `main` in the same repository: after a stacked pull request
+  or a local merge reaches `main`, or for an issue in solprop, close or update it by hand,
+  naming the commit.
+- **Report failure honestly.** A check that fails, a test you could not make pass, an
+  assumption you had to invent: say it plainly. Silent partial completion is worse than an
+  admitted gap.
+- **The public tree stands alone.** No local paths, host names, private notes or links to
+  them, and no development identifiers, in code, tests, data, docs, the changelog, issues
+  or pull requests. Register numbers (`TC-n`) are public and are cited freely; the paper
+  library's contents are not, so cite a paper rather than pasting its text or tables.
 
 ## The review register
 
@@ -208,9 +245,12 @@ The long form is [OEP 0](docs/oeps/oep-0000-process.md); the index is
   - Copy `docs/oeps/template.md` to `oep-NNNN-short-slug.md`, with the next free number.
   - Add it to the index, and to the roadmap's draft section (after the accepted
     proposals).
-  - Merge it early as `Draft`, from a `docs/oep-NNNN-…` branch.
-  - Remove an informal roadmap item only if the OEP covers it fully. Otherwise link the
-    OEP, state the partial coverage and keep the remaining work.
+  - List in its *Context* the open issues it will fix or that must be resolved first
+    (search them, and solprop's if it consumes the result).
+  - Open its tracking issue (OEP 0), and merge it early as `Draft`, from a
+    `docs/oep-NNNN-…` branch.
+  - Close an issue the OEP covers fully only when the OEP is `Final`. Otherwise link the
+    OEP from the issue and state what it leaves.
   - Reconcile these entries whenever the scope or status changes.
 - **An OEP stands alone.** It may cite:
   - optmat's and solprop's own docs, code, tests and proposals, and commits on their
@@ -260,7 +300,8 @@ The long form is [OEP 0](docs/oeps/oep-0000-process.md); the index is
   Report failures and gaps plainly.
 - **Finishing.** At `Final`:
   - each manual page the OEP produced ends with a link to it;
-  - its open questions move to the roadmap, to issues or to `open` register entries;
+  - its open questions move to issues or to `open` register entries;
+  - its tracking issue closes;
   - the `CHANGELOG.md` line cites it.
 
   A final OEP is history: the manual describes current behaviour.
@@ -399,6 +440,10 @@ The manual's conventions pages are the long form.
   copyright, and its `PROVENANCE.md` states the publisher's terms, or that it states
   none. **The package is self-contained:** it never downloads data at run time; what a
   model needs is shipped with it.
+- **Frozen fixtures:** `tests/data/solprop_*.json` record what solprop held before it
+  moved to optmat, and are neither edited nor regenerated: solprop now takes these values
+  from optmat, so re-running `tools/solprop_*.py` would compare optmat with itself. A
+  change to a model does not touch them.
 - **Generated files are never hand-edited;** re-run what writes them:
   - `uv.lock` (uv);
   - the docs build: `docs/_build/`, `docs/auto_gallery/`, `docs/api/generated/`,
@@ -409,8 +454,7 @@ The manual's conventions pages are the long form.
     `data/gas/` and `data/solid/` (`tools/fit/`);
   - test fixtures: `tests/data/public_api.json` (`tools/public_api.py`),
     `golden_models.json` and `golden_raman_identities.json` (`tools/golden_models.py`),
-    `solprop_*.json` (`tools/solprop_*.py`), `luna_master.json`
-    (`tools/luna_reference.jl`);
+    `luna_master.json` (`tools/luna_reference.jl`);
   - the manual's tables written by `--update-docs` (`tools/fit/nonlinear_support.py`,
     `tools/two_photon_tables.py`).
 
@@ -418,13 +462,16 @@ The manual's conventions pages are the long form.
 
 - **Branches and worktrees:** all development happens on a topic branch in its own
   worktree. Create them without asking: name the branch for its topic (`data/<source>`,
-  `fit/<gas>`, `fix/...`, `feature/...`, `docs/...`; `docs/oep-NNNN-…` for an OEP draft
-  and `feature/oep-NNNN-…` for each of its phases) and put the worktree under
+  `fit/<gas>`, `fix/...`, `feature/...`, `docs/...`, `chore/...`; `docs/oep-NNNN-…` for
+  an OEP draft and `feature/oep-NNNN-…` for each of its phases) and put the worktree under
   `.claude/worktrees/` (ignored), or where your tool puts its worktrees. Continue in an
   existing branch/worktree when asked to. **The main checkout stays on `main`, clean:**
   other local projects build against it, so never edit files, switch branches or leave
-  work in it; its one use is to merge a finished branch. Changes reach GitHub as pull
-  requests, which CI checks.
+  work in it; its one use is to merge a finished branch. Changes reach `main` as pull
+  requests with green CI, or by a local merge when the maintainers ask for one.
+- **Before opening an issue or a pull request,** read [`CONTRIBUTING.md`](CONTRIBUTING.md):
+  search the issues, the pull requests and the OEPs, link what is related, and follow its
+  sections and labels.
 - **Review:** a pull request that changes data or models is reviewed for:
   - its register entries, and its errata with their evidence;
   - its extraction reproducing the files;
@@ -439,12 +486,11 @@ The manual's conventions pages are the long form.
 - **Versions:** never tag, release or change a version by hand; versions come from git
   tags.
 - **Coding agents:**
-  - never push;
+  - merge, push, tag or release only when asked or authorised, and do not ask again for
+    an already authorised action;
   - never run a destructive or history-rewriting command (`git reset --hard`,
     `git checkout .`, `git restore` over uncommitted changes, `git clean`,
     `git stash drop`, `git branch -D`, `git worktree remove --force`,
     `git commit --amend`, `git rebase`, a force push): these can destroy work that is
     not yours;
-  - create branches and worktrees freely (above); `fetch`, `pull` and `merge` into
-    `main` only when asked or authorised, and do not ask again for an already
-    authorised action.
+  - create branches and worktrees freely (above).

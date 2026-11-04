@@ -22,12 +22,13 @@ The commands and requirements in
 | Extracted data | `PAPER_LIBRARY=<path> uv run poe test-library` |
 | Fits, fitting code or data used by a fit | Refit, regenerate robustness and derived records as described in {doc}`fitting`, then `uv run poe test-fits` |
 | Packaging, data layout or public interfaces | `uv run poe test-release` |
-| Documentation | `uv run poe docs`, relevant snippet and generated-table tests, and the full gate |
+| Documentation alone | The shorter checks below |
 
-A proposal-only change uses the shorter gate specified in the working rules
-(`AGENTS.md`): diff whitespace, spelling,
-proposal and register tests, and the documentation build. This exception does not
-apply when implementation changes accompany a proposal.
+A documentation-only change, including a new or edited OEP, uses the shorter gate
+specified in the working rules (`AGENTS.md`): diff whitespace, spelling, the proposal and
+register tests, the tests that read the pages it changes, and the documentation build.
+The exception is based on content: it does not apply when a change also touches code,
+tests, data, a gallery script or tooling.
 
 Tests run in parallel in the gate and must be independent of order and share no
 writable output. Use `tmp_path` for test output. A focused invocation such as

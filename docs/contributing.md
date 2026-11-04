@@ -9,9 +9,16 @@ documentation fixes are all welcome.
 
 Choose the workflow for your change:
 
-- **Report a problem with a value** by opening an issue: which value, what you expected,
-  and what you compared against (a paper with its table or page, an independent
-  calculation), at what conditions. A suspected misprint in a paper is just as welcome.
+- **Report a problem with a value** with the
+  [report form](https://github.com/LupoLab/optmat/issues/new?template=report_a_value.yml):
+  which value, what you expected, and what you compared against (a paper with its table or
+  page, an independent calculation), at what conditions. A suspected misprint in a paper is
+  just as welcome. A propagation that goes wrong with the right values belongs with
+  [solprop](https://github.com/LupoLab/solprop/issues).
+- **Offer a paper or data** that optmat lacks with the
+  [source form](https://github.com/LupoLab/optmat/issues/new?template=offer_a_source.yml).
+- **Plan work** in an [issue](https://github.com/LupoLab/optmat/issues). `CONTRIBUTING.md`
+  says what to check first, the sections to use and the labels.
 - **Add or correct data** through a source record, an extraction script that writes the
   values exactly as printed, errata with their evidence for any misprint, and an entry
   in the review register ({doc}`register`). The format is on {doc}`data`; the workflow is in {doc}`/developers/data`.
@@ -33,9 +40,9 @@ Every change passes the full gate, `uv run poe check`: lint, format, types, docs
 spelling, copyright and licence (`reuse lint`), the tests with 100 % statement and branch
 coverage of the package, and this manual's build. The coverage scope and additional
 verification lanes are described on
-{doc}`/developers/testing`. Proposal-only changes use the shorter gate specified
+{doc}`/developers/testing`. Documentation-only changes use the shorter gate specified
 in the working rules.
-Prefer topic branches and separate worktrees; agents confirm their creation or switching
-with the maintainer. Concurrent register entries are reconciled before integration as
+Work on a topic branch in its own worktree; agents create both without asking. Concurrent
+register entries are reconciled before integration as
 described on {doc}`/developers/register`. Contributions are licensed under the
 project's MIT licence.
