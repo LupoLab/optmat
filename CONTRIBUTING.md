@@ -54,7 +54,7 @@ A wrong value belongs here. A propagation that goes wrong with the right values 
 with [solprop](https://github.com/LupoLab/solprop/issues); if you cannot tell which it
 is, open it in either and it will be moved.
 
-That is all a report needs. A maintainer fills in the rest.
+That is all a report needs. The maintainers fill in the rest.
 
 ## Writing an issue
 
@@ -123,7 +123,7 @@ carries:
 - `oep` on an OEP's tracking issue, `solprop` if it was found through solprop or solprop
   needs it, and `good first issue` if it needs no physics judgement and no paper library.
 
-If you cannot set labels, suggest them in the text and a maintainer will.
+If you cannot set labels, suggest them in the text and the maintainers will.
 
 ## Setting up
 
@@ -215,8 +215,8 @@ motivated it in the register.
    assumed, skipped or could not check. Search again first, since work may have appeared
    while you were busy. Link the issue it closes (`Closes #N`) and any issue, pull request
    or OEP it overlaps with or depends on, here or in solprop, and give it a label or two:
-   its type and, where one fits, its area, as for an issue. If you cannot set labels, a
-   maintainer will.
+   its type and, where one fits, its area, as for an issue. If you cannot set labels, the
+   maintainers will.
 
 ## Review checklist
 
