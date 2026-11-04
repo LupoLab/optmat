@@ -55,6 +55,11 @@ index and one stable page per source identifier under `docs/generated/sources/`.
 Those files are ignored by Git, and unchanged pages are not rewritten. Deleted
 source records lose their generated page at the next build.
 
+The record pages are reached through the index and are not in any toctree. Sphinx
+copies the whole navigation tree for every page it writes, so listing them there, even
+hidden, took about two thirds of the build's time. A new kind of page generated in the
+hundreds should stay out of the tree in the same way.
+
 Edit the source record to correct its metadata, following the data and register
 rules. Do not edit the generated catalogue. Notes, formula-only and notes-only
 records, missing DOIs, Unicode and punctuation are supported without a second

@@ -129,10 +129,6 @@ html_static_path = ["_static"]
 
 
 def _edit_page_context(_app, pagename, _templatename, context, _doctree):
-    # Browse individual records in the alphabetical index; keep the data chapters
-    # visible instead of expanding all source records in every page's sidebar.
-    if pagename.startswith("generated/sources/"):
-        context["theme_navigation_depth"] = 2
     # Generated pages have no source file in GitHub to edit.
     if pagename.startswith(
         ("auto_gallery/", "api/generated/", "generated/")
