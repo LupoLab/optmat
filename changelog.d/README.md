@@ -16,7 +16,9 @@ Write one entry without a heading or leading bullet. Describe the observable cha
 including migration instructions for a break, and say whether a recommended value moved.
 Cite register entries as `TC-n` and OEPs by number; `poe register-sync` renumbers a
 fragment's citations with the rest of the branch, and `tests/test_register.py` checks
-them. Markdown links are relative to the root `CHANGELOG.md`, where the text will appear.
+them. Markdown links are relative to the root `CHANGELOG.md`, where the text will appear,
+and must point to a page under `docs/`, since the manual includes the changelog; use a full
+URL for anything else. `tests/test_release_metadata.py` checks them.
 Use a unique slug to avoid conflicts. A later correction can edit the original fragment
 while it is still pending.
 

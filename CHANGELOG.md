@@ -17,6 +17,7 @@ All notable changes are recorded here, in the style of
 
 ### Fixed
 
+- A release note can link a page of the manual: the manual's changelog page now resolves links from the repository root, as `changelog.d/README.md` says. No value, model or public name changed.
 - The manual builds in less than half the time: source record pages are no longer in the navigation tree. They keep their URLs and stay in search, and are reached through the alphabetical source index, so they no longer have a sidebar or previous and next links. No recommended value moved.
 
 ## 0.9.1 (2026-10-24)
