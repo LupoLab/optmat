@@ -19,6 +19,24 @@ build:
       - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --frozen --all-extras
     build:
       html:
-        # The build's output goes to a file and is printed at the end. Sent straight to Read
-        # the Docs since late October, the same build runs past its time limit (see #40).
-        - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html > /tmp/sphinx.log 2>&1; status=$?; cat /tmp/sphinx.log; exit $status
+        # Diagnostic, not for merging: the output goes to Read the Docs as in the failing
+        # config and is copied to a file, with a monitor, and everything stops at 780 s.
+        # Read the Docs wraps a command in single quotes, so it must hold none.
+        - nproc; free -m; cat /proc/loadavg
+        - |
+          log=/tmp/sphinx.log
+          probe=/tmp/probe.log
+          : > $log
+          : > $probe
+          (n=0; while [ $n -lt 900 ]; do sleep 20; n=$((n+20)); echo "[$n] load $(cut -d" " -f1-3 /proc/loadavg) mem $(free -m | sed -n 2p | tr -s " " | cut -d" " -f3,7) lines $(wc -l < $log) | $(tail -n 1 $log | tail -c 80) | $(pgrep -f "[b]in/sphinx-build" | head -1 | xargs -r -I P sh -c "cut -d\" \" -f3 /proc/P/stat; cat /proc/P/wchan" | tr "\n" " ")" >> $probe; done) > /dev/null 2>&1 &
+          sampler=$!
+          (sleep 780; ps -eo pid,ppid,stat,wchan:20,etimes,time,pcpu,rss,args --sort=-pcpu | head -12 | cut -c1-170 >> $probe; pkill -ABRT -f "[b]in/sphinx-build"; sleep 3; pkill -f "[b]in/sphinx-build"; sleep 3; pkill tee) > /dev/null 2>&1 &
+          killer=$!
+          PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html 2>&1 | tee $log
+          echo "=== finished"
+          kill $sampler $killer
+          echo "=== probe"
+          cat $probe
+          echo "=== tail of the copy"
+          tail -n 60 $log
+          exit 1
