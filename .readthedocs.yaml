@@ -19,11 +19,21 @@ build:
       - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --frozen --all-extras
     build:
       html:
-        # Diagnostic, not for merging: stop before Read the Docs' 15-minute limit, so that
-        # the log survives, with elapsed seconds on each line and a probe of load and memory.
+        # Diagnostic, not for merging: the build writes to a file while the foreground loop
+        # reports progress, so the log survives; at 780 s it dumps the Python stacks and stops.
         - nproc; free -m; cat /proc/loadavg
         - |
-          (while sleep 60; do echo "[probe] $(cat /proc/loadavg) $(free -m | sed -n 2p)"; done) &
-          probe=$!
-          PYTHONUNBUFFERED=1 UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH timeout -k 10 840 uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html 2>&1 | perl -pe 'BEGIN{$|=1;$t=time} printf "%5d ", time-$t'
-          kill $probe
+          log=/tmp/sphinx.log
+          : > $log
+          (PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv run --frozen sphinx-build -b html -W -n --keep-going docs $READTHEDOCS_OUTPUT/html > $log 2>&1; echo "sphinx exit $?" >> $log) &
+          n=0
+          while [ $n -lt 780 ] && ! grep -q '^sphinx exit ' $log; do
+            sleep 20
+            n=$((n+20))
+            echo "[$n] load $(cut -d' ' -f1-3 /proc/loadavg) mem $(free -m | sed -n 2p | tr -s ' ' | cut -d' ' -f3,7) lines $(wc -l < $log) | $(tail -n 1 $log | tail -c 90)"
+          done
+          ps -eo pid,ppid,stat,etimes,time,pcpu,rss,args --sort=-pcpu | head -12 | cut -c1-170
+          pkill -ABRT -f '[b]in/sphinx-build' && sleep 3
+          echo "=== log"
+          cat $log
+          exit 1
