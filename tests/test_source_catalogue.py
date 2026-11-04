@@ -30,9 +30,13 @@ def test_every_source_and_entry_appears_once(tmp_path):
     assert catalogue.generate_catalogue(records_dir, tmp_path) == tuple(records)
     assert {p.stem for p in tmp_path.glob("*.rst")} == {*records, "index"}
     index = (tmp_path / "index.rst").read_text(encoding="utf-8")
-    assert re.findall(r"^   ([a-z0-9_]+)$", index, re.MULTILINE) == list(records)
+    assert re.findall(r"^:doc:`([a-z0-9_]+)`", index, re.MULTILINE) == list(records)
+    # Records stay out of the navigation tree, which Sphinx copies for every page
+    # it writes: there they took about two thirds of the build's time.
+    assert "toctree" not in index
     for source_id, record in records.items():
         page = (tmp_path / f"{source_id}.rst").read_text(encoding="utf-8")
+        assert page.startswith(":orphan:\n")
         # These blocks retain structured metadata exactly, including corrections;
         # code blocks do not reinterpret punctuation as Markdown or mathematics.
         blocks = re.findall(r"\.\. code-block:: text\n\n((?:   .*\n?)+)", page)
