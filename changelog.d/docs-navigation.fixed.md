@@ -1,1 +1,1 @@
-The manual builds in about a third of the time: source record pages are no longer in the navigation tree. They keep their URLs and stay in search, and are reached through the alphabetical source index, so they no longer have a sidebar or previous and next links. No recommended value moved.
+The manual builds in less than half the time: source record pages are no longer in the navigation tree. They keep their URLs and stay in search, and are reached through the alphabetical source index, so they no longer have a sidebar or previous and next links. No recommended value moved.
