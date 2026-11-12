@@ -126,7 +126,8 @@ def test_bbo_reproduces_the_type_one_shg_angle_of_800_nm():
 
 
 def test_bbo_loses_its_birefringence_at_4_62_um():
-    # n_o = n_e at 4.62 um, as printed (p. 1415): negative uniaxial below, positive above.
+    # n_o = n_e at 4.62 um, as printed (p. 1415): negative uniaxial below it,
+    # positive above.
     assert _bbo_index("o", 4.60e-6) > _bbo_index("e", 4.60e-6)
     assert _bbo_index("o", 4.64e-6) < _bbo_index("e", 4.64e-6)
 
