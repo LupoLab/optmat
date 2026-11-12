@@ -1,0 +1,63 @@
+citation = "G. Tamošauskas, G. Beresnevičius, D. Gadonas and A. Dubietis, \"Transmittance and phase matching of BBO crystal in the 3-5 um range and its application for the characterization of mid-infrared laser pulses\", Opt. Mater. Express 8, 1410 (2018)"
+doi = "10.1364/ome.8.001410"
+library = "Tamosauskas_2018_TransmittancePhaseMatching"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A Sellmeier fit to a constructed index dataset (Sec. 3, p. 1414): ordinary \
+indices derived from measured type I and extraordinary indices from measured type II \
+sum-frequency phase-matching angles (800 nm mixed with 1.14-2.41 um from an OPA, from \
+Light Conversion's database of more than 600 tuning curves, and with 2.8-5.2 um DFG \
+pulses measured in this work in 200 um crystals cut at theta = 29.2 and 30 degrees); \
+the directly measured indices of 0.25365-2.3253 um tabulated by Nikogosyan (ref. [4]); \
+values down to 204.8 nm from Kato's fitting rule (ref. [26]); and values down to 188 nm \
+from Light Conversion's ultraviolet sum-frequency tuning curves. Three idealised \
+oscillators, one placed a priori in the mid-infrared and two in the ultraviolet."""
+notes = """Journal pages 1410-1418 are pdf pages 1-9. Identity checked against the first page. \
+The coefficients of Eq. (1) (p. 1414) were read from the rendered page and checked against \
+the PDF's text layer (2026-11-12).
+
+WHAT IS HERE. No tabulated indices: Eq. (1) only, with Figs. 2-3 comparing it with the \
+formulas of Eimerl et al. (ref. [1]), Nikogosyan (ref. [4]) and Zhang et al. (ref. [24]). \
+'The refined dispersion curves fit the directly measured ordinary and extraordinary \
+refractive index values in the 0.25365 - 2.3253 um range, as tabulated in [4], with a \
+remarkable accuracy better than 4 x 10^-5' (pp. 1414-1415). 'The evaluated differences \
+between the calculated and measured phase matching angles do not exceed 0.2 degrees in \
+the 0.8 - 1.74 um range and 0.4 degrees for the rest of the wavelengths up to 5.2 um for \
+both types of phase matching' (p. 1416). n_o = n_e at 4.62 um (p. 1415), confirmed \
+between crossed polarizers (Fig. 4).
+
+AIR OR VACUUM. Not stated, for the wavelength or the index; the dataset mixes \
+phase-matching angles (which depend on index differences only) and literature indices. \
+Recorded as vacuum wavelengths and an absolute index, as printed (TC-1095).
+
+TEMPERATURE. Not stated (room temperature, by the measurements described)."""
+
+[[formulas]]
+id = "sellmeier_o"
+form = "n2_sellmeier"
+terms = { B = ["0.90291", "0.83155", "0.76536"], C = ["0.003926", "0.018786", "60.01"] }
+range_nm = [188.0, 5200.0]
+material = "BBO"
+parameters = { axis = "o" }
+equation = "Eq. (1), p. 1414, first line (n_o)"
+printed = "n_o^2(lambda) = 1 + 0.90291 lambda^2/(lambda^2 - 0.003926) + 0.83155 lambda^2/(lambda^2 - 0.018786) + 0.76536 lambda^2/(lambda^2 - 60.01)"
+variable = "lambda: wavelength in um (the medium is not stated)"
+range = "0.188-5.2 um, 'the full transparency range' (p. 1414)"
+coefficients = { B1 = "0.90291", B2 = "0.83155", B3 = "0.76536", C1 = "0.003926", C2 = "0.018786", C3 = "60.01" }
+check = "With the extraordinary formula, type I SHG of 800 nm phase-matches at theta = 29.21 degrees inside the crystal (1/n_o(800 nm)^2 = cos^2(theta)/n_o(400 nm)^2 + sin^2(theta)/n_e(400 nm)^2), against the paper's type I crystal cut of 29.2 degrees, calibrated on that very interaction (p. 1413). n_o = n_e at 4.62 um (printed p. 1415). Against Eimerl et al.'s directly measured n_o (eimerl1987optical, Table I, 404.66-1014.0 nm, minimum deviation): 8.3e-4 lower on average, at most 9.2e-4. Checked 2026-11-12 (TC-1095)."
+notes = "Ordinary ray. The C_i are printed in um^2 (the squared pole wavelengths). Fitted, with the extraordinary formula, to the dataset described in the technique."
+
+[[formulas]]
+id = "sellmeier_e"
+form = "n2_sellmeier"
+terms = { B = ["1.151075", "0.21803", "0.656"], C = ["0.007142", "0.02259", "263"] }
+range_nm = [188.0, 5200.0]
+material = "BBO"
+parameters = { axis = "e" }
+equation = "Eq. (1), p. 1414, second line (n_e)"
+printed = "n_e^2(lambda) = 1 + 1.151075 lambda^2/(lambda^2 - 0.007142) + 0.21803 lambda^2/(lambda^2 - 0.02259) + 0.656 lambda^2/(lambda^2 - 263)"
+variable = "lambda: wavelength in um (the medium is not stated)"
+range = "0.188-5.2 um, 'the full transparency range' (p. 1414)"
+coefficients = { B1 = "1.151075", B2 = "0.21803", B3 = "0.656", C1 = "0.007142", C2 = "0.02259", C3 = "263" }
+check = "See sellmeier_o for the phase-matching check. Against Eimerl et al.'s directly measured n_e (Table I, 404.66-1014.0 nm): 7.4e-4 lower on average, at most 8.6e-4. Checked 2026-11-12 (TC-1095)."
+notes = "Principal extraordinary index (light polarised along the optic axis). BBO is negative uniaxial (n_e < n_o) below 4.62 um."

@@ -1,7 +1,7 @@
 # The window crystals
 
 CaF2, MgF2, BaF2 and sapphire (`Al2O3`) are the window and substrate crystals of
-ultrafast optics, and N-BK7 its commonest glass. Each recommended model is the Sellmeier
+ultrafast optics, N-BK7 its commonest glass, and BBO its commonest nonlinear crystal. Each recommended model is the Sellmeier
 formula of its source, made absolute (TC-545, TC-546, TC-651). This page explains the
 reference-medium corrections, source agreement and temperature limits. Read
 {doc}`solid` for the common interface and {doc}`/quickstart` for a first calculation.
@@ -29,6 +29,8 @@ models("CaF2")  # every model of CaF2, by name
 | Al2O3 | o | `weber_2003/sellmeier_o` | 220-5001 | 20 °C | room air (inferred) | 1.77475 | 1.75616 |
 | Al2O3 | e | `weber_2003/sellmeier_e` | 220-5001 | 20 °C | room air (inferred) | 1.76655 | 1.74828 |
 | N-BK7 |  | `schott_2023/sellmeier` | 313-2326 | 20 °C, catalogue | air, 1013.3 hPa | 1.52184 | 1.50791 |
+| BBO | o | `tamosauskas_2018/sellmeier_o` | 188-5200 | not stated | not stated (read as absolute) | 1.67727 | 1.65559 |
+| BBO | e | `tamosauskas_2018/sellmeier_e` | 188-5200 | not stated | not stated (read as absolute) | 1.55692 | 1.54270 |
 <!-- crystals:end -->
 
 **Relative to a gas, made absolute.** A prism refractometer measures the index relative
@@ -79,6 +81,18 @@ The papers state their accuracy as follows:
 CaF2 near room temperature, dn/dT is about −1.1e-5 per K: 4 K moves n by 4e-5, more
 than the formulas' uncertainty. `daimon_2002/sellmeier_25C` gives CaF2 at 25 °C, and
 Daimon's measured dn/dT is `daimon_2002/dndt`.
+
+**BBO, a nonlinear crystal.** β-barium borate's two rays are Tamošauskas et al.'s
+2018 Sellmeier formulas (TC-1095), fitted over its whole transparency range,
+188 nm-5.2 µm, to directly measured indices and to indices derived from type I and
+type II phase-matching angles. They reproduce the type I SHG angle of 800 nm (29.21°
+against the 29.2° cut calibrated on it). The paper states neither the temperature nor
+the medium; the formulas are read as absolute indices at vacuum wavelengths. Eimerl et
+al.'s 1987 minimum-deviation indices (404-1014 nm) lie 7-9e-4 above both rays, while the
+birefringence agrees within 2.6e-4: use these formulas for phase matching and
+dispersion, and treat the absolute index as uncertain at the 1e-3 level. Only the
+principal indices are curated; the extraordinary index at an angle θ to the optic
+axis follows from 1/n(θ)² = cos²θ/n_o² + sin²θ/n_e².
 
 **Not yet recommended:** CaF2 beyond 2.33 µm. Use `malitson_1963/sellmeier` (to
 9.7 µm); Daimon's infrared term is weakly determined.

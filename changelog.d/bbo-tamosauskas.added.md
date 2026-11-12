@@ -1,0 +1,1 @@
+BBO's ordinary and extraordinary indices: Tamošauskas et al.'s 2018 Sellmeier formulas over 188 nm-5.2 µm (`tamosauskas_2018/sellmeier_o`, `_e`), now the recommended models, `default_model("BBO", "o")` and `default_model("BBO", "e")` (TC-1095). See [the crystals page](docs/crystals.md).

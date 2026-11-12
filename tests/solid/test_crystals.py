@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-"""The window crystals' recommended models (TC-545, TC-546)."""
+"""The crystals' recommended models (TC-545, TC-546, TC-1095)."""
 
 import dataclasses
 import json
@@ -108,3 +108,29 @@ def test_solprop_uses_the_coefficients_as_absolute_indices():
         ours = np.real(chosen.refractive_index(wavelength[inside]))
         difference = ours - np.asarray(entry["n"])[inside]
         assert low < difference.min() and difference.max() < high, key
+
+
+def _bbo_index(axis, wavelength):
+    return float(np.real(default_model("BBO", axis).refractive_index(wavelength)))
+
+
+def test_bbo_reproduces_the_type_one_shg_angle_of_800_nm():
+    # Tamosauskas et al. calibrated their type I crystal's 29.2 degree cut on SHG of
+    # 800 nm (p. 1413) and state their angles within 0.2 degrees of the measured ones
+    # over 0.8-1.74 um (p. 1416); that is the tolerance (TC-1095).
+    n_fundamental = _bbo_index("o", 800e-9)
+    n_o, n_e = _bbo_index("o", 400e-9), _bbo_index("e", 400e-9)
+    sin2 = (n_fundamental**-2 - n_o**-2) / (n_e**-2 - n_o**-2)
+    theta = np.degrees(np.arcsin(np.sqrt(sin2)))
+    assert theta == pytest.approx(29.2, abs=0.2)
+
+
+def test_bbo_loses_its_birefringence_at_4_62_um():
+    # n_o = n_e at 4.62 um, as printed (p. 1415): negative uniaxial below, positive above.
+    assert _bbo_index("o", 4.60e-6) > _bbo_index("e", 4.60e-6)
+    assert _bbo_index("o", 4.64e-6) < _bbo_index("e", 4.64e-6)
+
+
+def test_bbo_needs_its_axis():
+    with pytest.raises(OptmatError, match="give the axis"):
+        default_model("BBO")
