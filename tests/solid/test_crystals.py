@@ -115,14 +115,15 @@ def _bbo_index(axis, wavelength):
 
 
 def test_bbo_reproduces_the_type_one_shg_angle_of_800_nm():
-    # Tamosauskas et al. calibrated their type I crystal's 29.2 degree cut on SHG of
-    # 800 nm (p. 1413) and state their angles within 0.2 degrees of the measured ones
-    # over 0.8-1.74 um (p. 1416); that is the tolerance (TC-1095).
+    # Consistent with the paper's nominal 29.2 degree type I cut for 800 nm SHG
+    # (p. 1413), within the 0.2 degrees its angles are stated to hold over 0.8-1.74 um
+    # (p. 1416); and pinned at the recorded 29.23 degrees as a regression (TC-1095).
     n_fundamental = _bbo_index("o", 800e-9)
     n_o, n_e = _bbo_index("o", 400e-9), _bbo_index("e", 400e-9)
     sin2 = (n_fundamental**-2 - n_o**-2) / (n_e**-2 - n_o**-2)
     theta = np.degrees(np.arcsin(np.sqrt(sin2)))
     assert theta == pytest.approx(29.2, abs=0.2)
+    assert theta == pytest.approx(29.23, abs=0.005)
 
 
 def test_bbo_loses_its_birefringence_at_4_62_um():

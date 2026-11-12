@@ -29597,32 +29597,40 @@ tabulate (the table model clamps outside its range, so only in-range points coun
 ## TC-1095 tamosauskas_2018: BBO's ordinary and extraordinary Sellmeier formulas (2026-11-12)
 
 - **Where:** `data/sources/tamosauskas_2018.toml` (`sellmeier_o`, `sellmeier_e`),
-  `data/solid/defaults.toml` (`[BBO]`), `docs/crystals.md`,
+  `data/solid/defaults.toml` (`[BBO]`), `docs/crystals.md`, the front pages,
   `tests/solid/test_crystals.py`.
 - **Transcribed:** Eq. (1), p. 1414: three-term Sellmeier formulas of n_o and n_e, λ in
-  µm, C_i in µm², over 0.188-5.2 µm. Read from the rendered page and checked
-  digit by digit against the PDF's text layer (the library had not yet processed the
-  paper, so its tables and quote check were not available).
-- **Medium and temperature:** neither is stated. The dataset combines indices derived
-  from phase-matching angles (which fix index differences, not absolute values) with
-  literature indices. The formulas are recorded as printed: absolute indices at vacuum
-  wavelengths. Read relative to air, they would rise by about 4.5e-4.
+  µm, C_i in µm², over 0.188-5.2 µm. Read from the rendered page and checked digit by
+  digit against the PDF's text layer (the library holds the paper but had not yet
+  extracted its text).
+- **Uncertainty (stated):** the formulas fit the directly measured indices tabulated by
+  Chen et al. (ref. [4], *Nonlinear Optical Borate Crystals*, 2012; 0.25365-2.3253 µm)
+  'with a remarkable accuracy better than 4 x 10^-5' (pp. 1414-1415), and give
+  phase-matching angles within 0.2° of the measured ones over 0.8-1.74 µm and 0.4°
+  beyond, to 5.2 µm (p. 1416); no confidence level is stated.
+- **Doubt:** neither the medium nor the temperature is stated. The anchor indices are
+  prism indices at mercury lines (the range's end points are Hg air wavelengths), which
+  are relative to room air at air wavelengths. As for the NBS prism papers (TC-546), the
+  formulas are read as relative to room air at standard-air wavelengths, at an assumed
+  20 °C, and made absolute with Edlén's air. Read as absolute at vacuum wavelengths, n
+  would be about 4.5e-4 lower. The maintainer chose the air reading (2026-11-12).
 - **Checked:**
-  - Type I SHG of 800 nm phase-matches at θ = 29.21° inside the crystal, against the
-    29.2° cut of the paper's type I crystal, whose orientation was calibrated on that
-    interaction (p. 1413). The paper states its calculated phase-matching angles within
-    0.2° of the measured ones over 0.8-1.74 µm and within 0.4° up to 5.2 µm (p. 1416).
-  - n_o = n_e at 4.62 µm (stated p. 1415; the formulas give it).
+  - Type I SHG of 800 nm (vacuum) phase-matches at θ = 29.23° (29.21° with the
+    absolute reading), consistent with the nominal 29.2° cut of the paper's type I
+    crystal for 800 nm SHG (p. 1413). Not an independent check: the paper used computed
+    SHG angles as references to calibrate the crystals' orientation.
+  - n_o = n_e at 4.62 µm (stated p. 1415; the formulas give 4.624 µm).
   - Against Eimerl et al. 1987 (`eimerl1987optical`, Table I, minimum deviation,
-    404.66-1014.0 nm, 13 lines; the table image checked): Tamošauskas lies below on
-    both rays, by 8.3e-4 on average (at most 9.2e-4) for n_o and 7.4e-4 (at most
-    8.6e-4) for n_e. Most of the offset is common to the two rays: the birefringence
-    n_o - n_e agrees within 2.6e-4. It is not the air correction alone (about 4.5e-4). The paper
-    states agreement within 4e-5 with the indices Nikogosyan tabulates (ref. [4],
-    0.25365-2.3253 µm), which are not in the library.
+    404.66-1014.0 nm, 13 lines, read as air wavelengths and indices relative to air;
+    the table image checked), compared like for like with the formulas as printed: they
+    lie below on both rays, by 8.3e-4 on average (at most 9.2e-4) for n_o and 7.4e-4
+    (at most 8.6e-4) for n_e. Most of the offset is common to the rays: the
+    birefringence agrees within 2.6e-4. The air correction does not enter this
+    comparison; under the absolute reading the gap would be about 1.3e-3.
 - **Decision:** the recommended model of BBO, both axes, for nonlinear optics, where
-  the phase matching (index differences and dispersion) matters more than the absolute
-  index; it is the only BBO formula optmat curates and covers 188 nm-5.2 µm.
-- **Open:** the 7-9e-4 offset from Eimerl's directly measured indices; Nikogosyan's
-  tabulation and Zhang et al. (2000) would settle it, and neither is in the library.
-- **Status:** open.
+  index differences and dispersion matter more than the absolute index. A first
+  default for a registered material, added by the recipe; the maintainer judged that it
+  needs no OEP (2026-11-12).
+- **Status:** decided (2026-11-12). Open: the 7-9e-4 offset from Eimerl's indices;
+  Chen et al.'s tabulation and Zhang et al. (2000) would settle it, and neither is in
+  the library.
