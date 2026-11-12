@@ -99,8 +99,8 @@ against measured gains ({doc}`/raman`).
 
 ## Available data and models
 
-- **The curated records:** 762 source records: 8481 datasets and 197,804 values, 259
-  errata and 780 published formulas.
+- **The curated records:** 763 source records: 8481 datasets and 197,804 values, 259
+  errata and 782 published formulas.
 - **15 gases:** He, Ne, Ar, Kr, Xe, H2, D2, N2, O2, CO, CO2, CH4, SF6, N2O and O3.
   - A fitted refractive-index model for every gas:
     - helium and argon at the accuracy of ab initio theory;
