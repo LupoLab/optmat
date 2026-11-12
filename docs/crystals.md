@@ -68,7 +68,7 @@ reference-medium correction (TC-545, TC-546).
   transmittance. `BK7` (the older catalogue glass) and `N-BK7` are distinct materials.
 
 **How well each formula holds its paper.** With its reference gas removed, each formula
-reproduces its paper's table (`tests/solid/test_crystals.py`):
+reproduces its paper's table (`tests/solid/test_crystals.py`; BBO's paper prints none):
 - Daimon's reproduces the 69 measured indices within 1.9e-6 (rms 6e-7).
 - Dodge's and Malitson's reproduce their computed columns to the printed digit, apart
   from a few printed values their authors do not explain (TC-546).
@@ -78,7 +78,8 @@ The papers state their accuracy as follows:
 - Dodge: "better than 2e-5";
 - Malitson: 2e-5 to 3e-5.
 
-**Temperature.** Each model is at its paper's temperature, between 19 and 25 °C. For
+**Temperature.** Each model is at its paper's temperature, between 19 and 25 °C (BBO's, not stated,
+is taken as 20 °C). For
 CaF2 near room temperature, dn/dT is about −1.1e-5 per K: 4 K moves n by 4e-5, more
 than the formulas' uncertainty. `daimon_2002/sellmeier_25C` gives CaF2 at 25 °C, and
 Daimon's measured dn/dT is `daimon_2002/dndt`.
@@ -90,7 +91,7 @@ and type II phase-matching angles. They give the type I SHG angle of 800 nm as 2
 consistent with the paper's nominal 29.2° cut. The paper states neither the medium nor
 the temperature; like the prism indices it is anchored to, the formulas are read as
 relative to room air at standard-air wavelengths (at an assumed 20 °C) and made
-absolute. Eimerl et al.'s 1987 minimum-deviation indices (404-1014 nm) lie 7-9e-4
+absolute. Eimerl et al.'s 1987 minimum-deviation indices (404-1014 nm) lie 6-9e-4
 above both rays, compared like for like, while the birefringence agrees within 2.6e-4:
 use these formulas for phase matching and dispersion, and treat the absolute index as
 uncertain at the 1e-3 level. Only the

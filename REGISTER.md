@@ -29601,15 +29601,16 @@ tabulate (the table model clamps outside its range, so only in-range points coun
   `tests/solid/test_crystals.py`.
 - **Transcribed:** Eq. (1), p. 1414: three-term Sellmeier formulas of n_o and n_e, λ in
   µm, C_i in µm², over 0.188-5.2 µm. Read from the rendered page and checked digit by
-  digit against the PDF's text layer (the library holds the paper but had not yet
-  extracted its text).
+  digit against the PDF's text layer (the library holds the paper with a
+  registry-confirmed DOI, but its reading was not complete: no tables, status
+  disputed; so its tables and quote check were not used).
 - **Uncertainty (stated):** the formulas fit the directly measured indices tabulated by
   Chen et al. (ref. [4], *Nonlinear Optical Borate Crystals*, 2012; 0.25365-2.3253 µm)
   'with a remarkable accuracy better than 4 x 10^-5' (pp. 1414-1415), and give
   phase-matching angles within 0.2° of the measured ones over 0.8-1.74 µm and 0.4°
   beyond, to 5.2 µm (p. 1416); no confidence level is stated.
 - **Doubt:** neither the medium nor the temperature is stated. The anchor indices are
-  prism indices at mercury lines (the range's end points are Hg air wavelengths), which
+  directly measured, presumably prism indices at mercury lines (the range's end points are Hg air wavelengths), which
   are relative to room air at air wavelengths. As for the NBS prism papers (TC-546), the
   formulas are read as relative to room air at standard-air wavelengths, at an assumed
   20 °C, and made absolute with Edlén's air. Read as absolute at vacuum wavelengths, n
@@ -29617,8 +29618,9 @@ tabulate (the table model clamps outside its range, so only in-range points coun
 - **Checked:**
   - Type I SHG of 800 nm (vacuum) phase-matches at θ = 29.23° (29.21° with the
     absolute reading), consistent with the nominal 29.2° cut of the paper's type I
-    crystal for 800 nm SHG (p. 1413). Not an independent check: the paper used computed
-    SHG angles as references to calibrate the crystals' orientation.
+    crystal for 800 nm SHG (p. 1413). Not an independent check: the paper used the SHG
+    phase-matching angles at 800 nm as references to calibrate the crystals'
+    orientation (presumably computed ones).
   - n_o = n_e at 4.62 µm (stated p. 1415; the formulas give 4.624 µm).
   - Against Eimerl et al. 1987 (`eimerl1987optical`, Table I, minimum deviation,
     404.66-1014.0 nm, 13 lines, read as air wavelengths and indices relative to air;
@@ -29631,6 +29633,6 @@ tabulate (the table model clamps outside its range, so only in-range points coun
   index differences and dispersion matter more than the absolute index. A first
   default for a registered material, added by the recipe; the maintainer judged that it
   needs no OEP (2026-11-12).
-- **Status:** decided (2026-11-12). Open: the 7-9e-4 offset from Eimerl's indices;
+- **Status:** decided (2026-11-12). Open: the 6-9e-4 offset from Eimerl's indices;
   Chen et al.'s tabulation and Zhang et al. (2000) would settle it, and neither is in
   the library.
