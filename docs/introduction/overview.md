@@ -99,8 +99,8 @@ against measured gains ({doc}`/raman`).
 
 ## Available data and models
 
-- **The curated records:** 762 source records: 8481 datasets and 197,804 values, 259
-  errata and 780 published formulas.
+- **The curated records:** 763 source records: 8481 datasets and 197,804 values, 259
+  errata and 782 published formulas.
 - **15 gases:** He, Ne, Ar, Kr, Xe, H2, D2, N2, O2, CO, CO2, CH4, SF6, N2O and O3.
   - A fitted refractive-index model for every gas:
     - helium and argon at the accuracy of ab initio theory;
@@ -137,8 +137,9 @@ against measured gains ({doc}`/raman`).
 - **Crystalline silicon** ({doc}`/silicon`): its complex index from 31 nm to 143 µm at
   20 °C, Franta et al.'s universal dispersion model refitted to the absolute
   refractometry and the measured absorption edge.
-- **The window crystals and N-BK7** ({doc}`/crystals`): CaF2, MgF2, BaF2, sapphire and
-  SCHOTT's N-BK7, each its source's Sellmeier formula made absolute.
+- **The window crystals, N-BK7 and BBO** ({doc}`/crystals`): CaF2, MgF2, BaF2,
+  sapphire, SCHOTT's N-BK7 and the nonlinear crystal BBO, each its source's Sellmeier
+  formula made absolute.
 - **The metals** ({doc}`/metals`): silver, gold and copper from 3-4 nm to 12.4 µm
   (copper to 56 µm), aluminium from 0.8 nm to 200 µm, as curated tables joined by
   range.

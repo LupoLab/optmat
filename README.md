@@ -105,7 +105,7 @@ simulations.
 
 ## What is there now
 
-- **762 source records:** 8481 datasets and 197,804 values, 259 errata and 780
+- **763 source records:** 8481 datasets and 197,804 values, 259 errata and 782
   published formulas.
 - **15 gases:** He, Ne, Ar, Kr, Xe, H2, D2, N2, O2, CO, CO2, CH4, SF6, N2O and O3.
   - **A fitted model of the refractive index for every gas:**
@@ -143,10 +143,10 @@ simulations.
 - **Crystalline silicon:** its complex index from 31 nm to 143 µm at 20 °C, Franta
   et al.'s universal dispersion model refitted to the absolute refractometry (to
   1.4e-4 from 1.2 to 5.5 µm) and the measured absorption edge.
-- **The window crystals and N-BK7:** CaF2, MgF2 and sapphire (both rays), BaF2 and
-  SCHOTT's N-BK7, each its source's Sellmeier formula made absolute (the prism and
-  catalogue indices are relative to air or nitrogen, which the formulas in common use
-  ignore: about 4e-4 in n).
+- **The window crystals, N-BK7 and BBO:** CaF2, MgF2 and sapphire (both rays), BaF2,
+  SCHOTT's N-BK7 and the nonlinear crystal BBO (both rays), each its source's
+  Sellmeier formula made absolute (the prism and catalogue indices are relative to air
+  or nitrogen, which the formulas in common use ignore: about 4e-4 in n).
 - **The metals:** silver, gold and copper from the soft x-ray range (3-4 nm) to
   12.4 µm (copper to 56 µm), aluminium from 0.8 nm to 200 µm, as curated tables joined
   by range.

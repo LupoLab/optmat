@@ -1,0 +1,85 @@
+citation = "G. Tamošauskas, G. Beresnevičius, D. Gadonas and A. Dubietis, \"Transmittance and phase matching of BBO crystal in the 3-5 um range and its application for the characterization of mid-infrared laser pulses\", Opt. Mater. Express 8, 1410 (2018)"  # codespell:ignore mater
+doi = "10.1364/ome.8.001410"
+library = "Tamosauskas_2018_TransmittancePhaseMatching"
+identity = "VALIDATED"
+kind = "fit"
+technique = """A Sellmeier fit to a constructed index dataset (Sec. 3, p. 1414): ordinary \
+indices derived from measured type I and extraordinary indices from measured type II \
+sum-frequency phase-matching angles (800 nm mixed with an OPA's output, 1.142-2.412 um \
+for type I and 1.140-1.571 um for type II, from Light Conversion's database of more than \
+600 tuning curves; and with 2.8-5.2 um DFG pulses measured in this work in 200 um \
+crystals cut at theta = 29.2 and 30 degrees, p. 1413); the directly measured indices of \
+0.25365-2.3253 um tabulated by Chen et al. (ref. [4], Nonlinear Optical Borate \
+Crystals, Wiley-VCH, 2012, printed 'Wiley-WCH'); values down to 204.8 nm from Kato's fitting rule (ref. [26]); and \
+values down to 188 nm from Light Conversion's ultraviolet sum-frequency tuning curves. \
+Three idealised oscillators, one placed a priori in the mid-infrared and two in the \
+ultraviolet. A phase-matching angle fixes a combination of indices, not one index, so \
+the indices derived from the angles are not independent absolute measurements."""
+notes = """Journal pages 1410-1418 are pdf pages 1-9. Identity checked against the first page; \
+the library holds the paper (registry-confirmed DOI), but its reading was not complete \
+(no tables; status disputed), so its tables and quote check were not used. The coefficients of Eq. (1) (p. 1414) were read from the \
+rendered page and checked digit by digit against the PDF's text layer (2026-11-12).
+
+WHAT IS HERE. No tabulated indices: Eq. (1) only, with Figs. 2-3 comparing it with the \
+formulas of Eimerl et al. (ref. [1]), Chen et al. (ref. [4]) and Zhang et al. (ref. \
+[24]). '... the refined dispersion curves fit the directly measured ordinary and \
+extraordinary refractive index values in the 0.25365 - 2.3253 um range, as tabulated in \
+[4], with a remarkable accuracy better than 4 x 10^-5' (pp. 1414-1415). 'The evaluated \
+differences between the calculated and measured phase matching angles do not exceed 0.2 \
+degrees in the 0.8 - 1.74 um range and 0.4 degrees for the rest of the wavelengths up to \
+5.2 um for both types of phase matching' (p. 1416). n_o = n_e at 4.62 um (p. 1415), \
+confirmed between crossed polarizers (Fig. 4).
+
+AIR OR VACUUM. Not stated, for the wavelength or the index. The formula's anchor, which \
+it fits to 4e-5, is the directly measured prism indices of 0.25365-2.3253 um tabulated by \
+Chen et al.; both end points are mercury lines at their air wavelengths, and such indices \
+are relative to the room air. As for the NBS prism papers (TC-546), the formula is read \
+as relative to room air at standard-air wavelengths and made absolute with Edlen's air \
+(TC-1095). This is an inference from the anchor data, not a statement of the paper; read \
+as absolute at vacuum wavelengths the index would be about 4.5e-4 lower.
+
+TEMPERATURE. Not stated; the measurements described are at room temperature, taken as \
+20 C (an assumption, recorded as such; dn/dT of BBO is of order 1e-5 per K, so a few \
+kelvin move n by a few 1e-5)."""
+
+[[formulas]]
+id = "sellmeier_o"
+form = "n2_sellmeier"
+terms = { B = ["0.90291", "0.83155", "0.76536"], C = ["0.003926", "0.018786", "60.01"] }
+# Standard-air wavelengths and an index relative to room air at 20 C: inferred from
+# the anchor data (prism indices at mercury lines), not stated (see notes, TC-1095).
+wavelength_medium = "standard_air"
+index_medium = "air"
+air_temperature_k = 293.15
+# The vacuum wavelengths of 0.188-5.2 um in standard air.
+range_nm = [188.06, 5201.42]
+material = "BBO"
+parameters = { axis = "o", temperature_k = 293.15 }
+equation = "Eq. (1), p. 1414, first line (n_o)"
+printed = "n_o^2(lambda) = 1 + 0.90291 lambda^2/(lambda^2 - 0.003926) + 0.83155 lambda^2/(lambda^2 - 0.018786) + 0.76536 lambda^2/(lambda^2 - 60.01)"
+variable = "lambda: wavelength in um (the medium is not stated; read as standard air, see the source notes)"
+range = "0.188-5.2 um, 'the full transparency range' (p. 1414)"
+coefficients = { B1 = "0.90291", B2 = "0.83155", B3 = "0.76536", C1 = "0.003926", C2 = "0.018786", C3 = "60.01" }
+check = "With the extraordinary formula, made absolute, type I SHG of 800 nm (vacuum) phase-matches at theta = 29.23 degrees inside the crystal (29.21 with the formulas read as absolute at vacuum wavelengths), consistent with the paper's nominal 29.2 degree type I cut for 800 nm SHG (p. 1413); not an independent check, since that reference angle was itself presumably computed from earlier dispersion equations. n_o = n_e at 4.62 um (printed p. 1415). Against Eimerl et al.'s directly measured n_o (eimerl1987optical, Table I, 404.66-1014.0 nm, minimum deviation, at air wavelengths and relative to air), compared like for like with this formula as printed: 8.3e-4 lower on average, at most 9.2e-4. Checked 2026-11-12 (TC-1095)."
+notes = "Ordinary ray. The C_i are printed in um^2 (the squared pole wavelengths). Fitted, with the extraordinary formula, to the dataset described in the technique."
+
+[[formulas]]
+id = "sellmeier_e"
+form = "n2_sellmeier"
+terms = { B = ["1.151075", "0.21803", "0.656"], C = ["0.007142", "0.02259", "263"] }
+# Standard-air wavelengths and an index relative to room air at 20 C: inferred from
+# the anchor data (prism indices at mercury lines), not stated (see notes, TC-1095).
+wavelength_medium = "standard_air"
+index_medium = "air"
+air_temperature_k = 293.15
+# The vacuum wavelengths of 0.188-5.2 um in standard air.
+range_nm = [188.06, 5201.42]
+material = "BBO"
+parameters = { axis = "e", temperature_k = 293.15 }
+equation = "Eq. (1), p. 1414, second line (n_e)"
+printed = "n_e^2(lambda) = 1 + 1.151075 lambda^2/(lambda^2 - 0.007142) + 0.21803 lambda^2/(lambda^2 - 0.02259) + 0.656 lambda^2/(lambda^2 - 263)"
+variable = "lambda: wavelength in um (the medium is not stated; read as standard air, see the source notes)"
+range = "0.188-5.2 um, 'the full transparency range' (p. 1414)"
+coefficients = { B1 = "1.151075", B2 = "0.21803", B3 = "0.656", C1 = "0.007142", C2 = "0.02259", C3 = "263" }
+check = "See sellmeier_o for the phase-matching check. Against Eimerl et al.'s directly measured n_e (Table I, 404.66-1014.0 nm, air wavelengths, relative to air), like for like: 7.4e-4 lower on average, at most 8.6e-4; the birefringence n_o - n_e agrees within 2.6e-4. Checked 2026-11-12 (TC-1095)."
+notes = "Principal extraordinary index (light polarised along the optic axis). BBO is negative uniaxial (n_e < n_o) below 4.62 um."

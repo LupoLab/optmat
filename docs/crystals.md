@@ -1,8 +1,9 @@
 # The window crystals
 
 CaF2, MgF2, BaF2 and sapphire (`Al2O3`) are the window and substrate crystals of
-ultrafast optics, and N-BK7 its commonest glass. Each recommended model is the Sellmeier
-formula of its source, made absolute (TC-545, TC-546, TC-651). This page explains the
+ultrafast optics, N-BK7 its commonest glass, and BBO its commonest nonlinear crystal.
+Each recommended model is the Sellmeier formula of its source, made absolute (TC-545,
+TC-546, TC-651, TC-1095). This page explains the
 reference-medium corrections, source agreement and temperature limits. Read
 {doc}`solid` for the common interface and {doc}`/quickstart` for a first calculation.
 
@@ -29,6 +30,8 @@ models("CaF2")  # every model of CaF2, by name
 | Al2O3 | o | `weber_2003/sellmeier_o` | 220-5001 | 20 °C | room air (inferred) | 1.77475 | 1.75616 |
 | Al2O3 | e | `weber_2003/sellmeier_e` | 220-5001 | 20 °C | room air (inferred) | 1.76655 | 1.74828 |
 | N-BK7 |  | `schott_2023/sellmeier` | 313-2326 | 20 °C, catalogue | air, 1013.3 hPa | 1.52184 | 1.50791 |
+| BBO | o | `tamosauskas_2018/sellmeier_o` | 188-5201 | not stated (20 °C assumed) | room air (inferred) | 1.67774 | 1.65604 |
+| BBO | e | `tamosauskas_2018/sellmeier_e` | 188-5201 | not stated (20 °C assumed) | room air (inferred) | 1.55735 | 1.54312 |
 <!-- crystals:end -->
 
 **Relative to a gas, made absolute.** A prism refractometer measures the index relative
@@ -65,7 +68,7 @@ reference-medium correction (TC-545, TC-546).
   transmittance. `BK7` (the older catalogue glass) and `N-BK7` are distinct materials.
 
 **How well each formula holds its paper.** With its reference gas removed, each formula
-reproduces its paper's table (`tests/solid/test_crystals.py`):
+reproduces its paper's table (`tests/solid/test_crystals.py`; BBO's paper prints none):
 - Daimon's reproduces the 69 measured indices within 1.9e-6 (rms 6e-7).
 - Dodge's and Malitson's reproduce their computed columns to the printed digit, apart
   from a few printed values their authors do not explain (TC-546).
@@ -75,10 +78,25 @@ The papers state their accuracy as follows:
 - Dodge: "better than 2e-5";
 - Malitson: 2e-5 to 3e-5.
 
-**Temperature.** Each model is at its paper's temperature, between 19 and 25 °C. For
+**Temperature.** Each model is at its paper's temperature, between 19 and 25 °C (BBO's, not stated,
+is taken as 20 °C). For
 CaF2 near room temperature, dn/dT is about −1.1e-5 per K: 4 K moves n by 4e-5, more
 than the formulas' uncertainty. `daimon_2002/sellmeier_25C` gives CaF2 at 25 °C, and
 Daimon's measured dn/dT is `daimon_2002/dndt`.
+
+**BBO, a nonlinear crystal.** β-barium borate's two rays are Tamošauskas et al.'s
+2018 Sellmeier formulas (TC-1095), fitted over its whole transparency range,
+188 nm-5.2 µm, to directly measured prism indices and to indices derived from type I
+and type II phase-matching angles. They give the type I SHG angle of 800 nm as 29.23°,
+consistent with the paper's nominal 29.2° cut. The paper states neither the medium nor
+the temperature; like the prism indices it is anchored to, the formulas are read as
+relative to room air at standard-air wavelengths (at an assumed 20 °C) and made
+absolute. Eimerl et al.'s 1987 minimum-deviation indices (404-1014 nm) lie 6-9e-4
+above both rays, compared like for like, while the birefringence agrees within 2.6e-4:
+use these formulas for phase matching and dispersion, and treat the absolute index as
+uncertain at the 1e-3 level. Only the
+principal indices are curated; the extraordinary index at an angle θ to the optic
+axis follows from 1/n(θ)² = cos²θ/n_o² + sin²θ/n_e².
 
 **Not yet recommended:** CaF2 beyond 2.33 µm. Use `malitson_1963/sellmeier` (to
 9.7 µm); Daimon's infrared term is weakly determined.
