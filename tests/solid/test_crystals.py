@@ -117,7 +117,8 @@ def _bbo_index(axis, wavelength):
 def test_bbo_reproduces_the_type_one_shg_angle_of_800_nm():
     # Consistent with the paper's nominal 29.2 degree type I cut for 800 nm SHG
     # (p. 1413), within the 0.2 degrees its angles are stated to hold over 0.8-1.74 um
-    # (p. 1416); and pinned at 29.226 degrees (29.211 under the absolute reading) as a regression (TC-1095).
+    # (p. 1416); and pinned at 29.226 degrees (29.211 under the absolute reading) as
+    # a regression (TC-1095).
     n_fundamental = _bbo_index("o", 800e-9)
     n_o, n_e = _bbo_index("o", 400e-9), _bbo_index("e", 400e-9)
     sin2 = (n_fundamental**-2 - n_o**-2) / (n_e**-2 - n_o**-2)
