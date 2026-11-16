@@ -29593,3 +29593,30 @@ tabulate (the table model clamps outside its range, so only in-range points coun
   against 0.623 at 1.5e14) and about equal from 2.3e14. With up to 11 % in the intensity
   (a factor of about 1.7 in the rate) it supports the default's xenon, not RMT's.
 - **Status:** verified (2026-10-17).
+
+## TC-1095 CoolProp without superancillaries: the same densities, a seventh of the load (2026-11-16)
+
+- **Where:** `optmat.gas.eos` (`_coolprop`, `_quiet_stdout`, `_update_gas`),
+  `tests/test_coolprop_loading.py`.
+- **Claim:** CoolProp 8.0.0 builds the superancillaries of all of its fluids (about 120)
+  when it first loads, which is 0.43 s of its 0.46 s load (measured on an Apple M-series
+  laptop; `COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY`, read in `FluidLibrary.h` as the
+  fluids are parsed, skips them: 0.067 s). optmat sets that variable before it imports
+  CoolProp, unless it is already set, and hides CoolProp's notice of it on standard
+  output. Without superancillaries CoolProp finds a pressure-temperature state's phase
+  with a saturation solve that refuses pressures under its triple point's, which the
+  phase domain reaches just above the triple point (every gas's
+  `test_the_inverse_round_trips_across_the_domain` failed there); below the critical
+  temperature, where every caller has already checked that the state is the vapour,
+  optmat now tells CoolProp so (`iphase_gas`).
+- **Checked:** every gas with an equation, 12 temperatures from its triple point to
+  600 K and a fixed grid of 40 pressures from 100 Pa to 200 bar within the domain (5924
+  states) and 56 saturation pressures, against optmat 0.9.1 (superancillaries, phase
+  found by CoolProp): every density bitwise the same; the imposed phase alone changes
+  nothing. The saturation pressures, and so the domain's top, move by at most 3.3e-11,
+  except oxygen's at its triple point (146 Pa), 2.0e-9: the tolerance of CoolProp's
+  saturation solve, which they come from without superancillaries.
+- **Decided:** `EVALUATION_VERSION` is not raised: no density, pressure or speed of
+  sound a model evaluates changes; only where the domain ends moves, by the amounts
+  above.
+- **Status:** decided (2026-11-16).

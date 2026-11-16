@@ -10,7 +10,11 @@ paper. To compare measurements, the package turns each one into a per-particle
 quantity, which needs the number density the author actually meant.
 
 Real-gas densities come from CoolProp's Helmholtz-energy equations of state, imported
-lazily because CoolProp takes about a second to load. :func:`equation_of_state` returns
+lazily, and without its superancillaries unless they were asked for (TC-1095): building
+them for every one of its fluids is most of CoolProp's load time (0.43 s of 0.46 s), and
+the densities and saturation pressures optmat reads agree with or without them to
+rounding. Set ``COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY`` yourself, or import
+CoolProp before optmat loads it, to decide otherwise. :func:`equation_of_state` returns
 a gas's equation as an object with an identity: its forward law
 ``N = p / (Z k_B T)``, its inverse (the pressure at a number density and temperature),
 its speed of sound, its molar mass and its phase domain (OEP 1, section 4.2).
@@ -33,8 +37,14 @@ offset.
 """
 
 import atexit
+import contextlib
+import ctypes
 import functools
+import os
+import sys
+from collections.abc import Iterator
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, ClassVar, Final
 
 import numpy as np
@@ -106,9 +116,53 @@ def ideal_number_density(state: State) -> float:
     return state.pressure / (K_B * state.temperature)
 
 
+_NO_SUPERANCILLARIES: Final = "COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY"
+"""CoolProp's switch, read once as it loads its fluids, that skips superancillaries."""
+
+
+@contextlib.contextmanager
+def _quiet_stdout() -> Iterator[None]:
+    """Send what native code writes to standard output nowhere for the block.
+
+    CoolProp announces on standard output that superancillaries are disabled. The
+    file descriptor itself is redirected, since the line comes from C++, and C's
+    buffers are flushed before it is restored. Without a usable descriptor 1 the block
+    runs as it is.
+
+    - Yields: nothing.
+    """
+    try:
+        sys.stdout.flush()
+        saved = os.dup(1)
+    except (AttributeError, OSError, ValueError):
+        yield
+        return
+    try:
+        with Path(os.devnull).open("wb") as sink:
+            os.dup2(sink.fileno(), 1)
+            try:
+                yield
+            finally:
+                _flush_c_streams()
+    finally:
+        os.dup2(saved, 1)
+        os.close(saved)
+
+
+def _flush_c_streams() -> None:
+    """Flush C's output buffers (``fflush(NULL)``), where the C library can be found."""
+    with contextlib.suppress(AttributeError, OSError):
+        library = ctypes.CDLL(None) if os.name == "posix" else ctypes.cdll.ucrtbase
+        library.fflush(None)
+
+
 @functools.cache
 def _coolprop() -> Any:
-    """Return CoolProp's module, imported on first use.
+    """Return CoolProp's module, imported on first use, without superancillaries.
+
+    Unless :data:`_NO_SUPERANCILLARIES` is already set, it is set before the import,
+    which loads CoolProp's fluids, and CoolProp's notice of it is not printed.
+    CoolProp imported earlier keeps the fluids it loaded.
 
     Returns
     -------
@@ -120,8 +174,11 @@ def _coolprop() -> Any:
     ImportError
         Without the ``gas`` extra.
     """
+    asked = _NO_SUPERANCILLARIES in os.environ
+    os.environ.setdefault(_NO_SUPERANCILLARIES, "1")
     try:
-        import CoolProp.CoolProp as coolprop  # noqa: N813, PLC0415 - import cost
+        with contextlib.nullcontext() if asked else _quiet_stdout():
+            import CoolProp.CoolProp as coolprop  # noqa: N813, PLC0415 - import cost
     except ImportError as exc:
         msg = "real-gas densities need CoolProp: install optmat[gas]"
         raise ImportError(msg) from exc
@@ -158,6 +215,36 @@ def _release() -> None:
 atexit.register(_release)
 
 
+def _update_gas(backend: Any, pressure: float, temperature: float) -> None:
+    """Set a CoolProp state to a pressure and temperature of the gas.
+
+    Below the critical temperature the state is the vapour: every caller has checked it
+    against the phase domain, or keeps within it. CoolProp is told so, rather than
+    finding the phase itself; without superancillaries it would find it with a
+    saturation solve that refuses pressures under its triple point's, which the domain
+    reaches just above the triple point (TC-1095). Above the critical temperature there
+    is no saturation to find, and CoolProp solves as it always has.
+
+    Parameters
+    ----------
+    backend : CoolProp.AbstractState
+        The fluid's state, updated in place.
+    pressure : float
+        Pa.
+    temperature : float
+        K.
+    """
+    coolprop = _coolprop()
+    if temperature >= backend.T_critical():
+        backend.update(coolprop.PT_INPUTS, pressure, temperature)
+        return
+    backend.specify_phase(coolprop.iphase_gas)
+    try:
+        backend.update(coolprop.PT_INPUTS, pressure, temperature)
+    finally:
+        backend.unspecify_phase()
+
+
 @functools.cache
 def _compressibility(fluid: str, pressure: float, temperature: float) -> float:
     """Return the compressibility factor at a state, unchecked (cached).
@@ -178,7 +265,7 @@ def _compressibility(fluid: str, pressure: float, temperature: float) -> float:
     """
     backend = _abstract_state(fluid)
     try:
-        backend.update(_coolprop().PT_INPUTS, pressure, temperature)
+        _update_gas(backend, pressure, temperature)
     except ValueError as exc:
         msg = (
             f"no equation-of-state solution for {fluid} at {pressure} Pa and "
@@ -476,7 +563,7 @@ class EquationOfState(Identified):
         """
         self._check(state)
         backend = _abstract_state(self.fluid)
-        backend.update(_coolprop().PT_INPUTS, state.pressure, state.temperature)
+        _update_gas(backend, state.pressure, state.temperature)
         return float(backend.speed_sound())
 
     def _density_at(self, pressure_value: float, temperature: float) -> float:
