@@ -8,6 +8,40 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+## 0.10.0 (2026-11-17)
+
+BBO gains recommended models of both rays, and the first real-gas density loads
+CoolProp in 0.07 s instead of 0.46 s. No existing recommended value or model changed,
+but the identity of every equation of state, and of the mixture, transport and air
+models built on one, changes (`EVALUATION_VERSION` 2), hence the minor version. The
+records now number 763 source records with 8481 datasets and 197,804 values, 259 errata
+and 782 published formulas.
+
+### Added
+
+- BBO's ordinary and extraordinary indices: Tamošauskas et al.'s 2018 Sellmeier formulas over 188 nm-5.2 µm (`tamosauskas_2018/sellmeier_o`, `_e`), now the recommended models, `default_model("BBO", "o")` and `default_model("BBO", "e")`. The paper states no medium; like the prism indices they are anchored to, the formulas are read as relative to room air at standard-air wavelengths and made absolute, so the model lies about 4.5e-4 above the printed formula evaluated directly (TC-1095). See [the crystals page](docs/crystals.md).
+
+### Changed
+
+- Contributors add a release note as a fragment under `changelog.d/` instead of editing
+  this file; a rolling draft pull request collects them, and
+  [*Releasing*](docs/developers/releasing.md) describes a release from it. No value, model
+  or public name changed.
+- CoolProp is loaded without the superancillaries it builds for all of its fluids, unless
+  `COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY` is already set or CoolProp was imported
+  first: the first real-gas density takes 0.07 s instead of 0.46 s. No density at a given
+  state changed and no recommended value moved, but the identity of every equation of
+  state, and of the mixture, transport and air models built on one, changes: the
+  equation-of-state `EVALUATION_VERSION` is now 2. A gas's critical temperature is now its
+  equation's stated value (oxygen 154.581 K instead of 154.599 K; others within 2e-5), and
+  saturation pressures, so where a gas's domain ends, move by at most 7e-11 more than 1 K
+  below the critical point and by up to 7e-8 within it (TC-1096).
+
+### Fixed
+
+- A release note can link a page of the manual: the manual's changelog page now resolves links from the repository root, as `changelog.d/README.md` says. No value, model or public name changed.
+- The manual builds in less than half the time: source record pages are no longer in the navigation tree. They keep their URLs and stay in search, and are reached through the alphabetical source index, so they no longer have a sidebar or previous and next links. No recommended value moved.
+
 ## 0.9.1 (2026-10-24)
 
 A faster start-up for ionisation rates. No value, model or stored fit changed.
