@@ -147,7 +147,7 @@ The pages {doc}`ionisation`, {doc}`ionisation_rates` and
 
 ## Solids
 
-Fused silica, the window crystals, N-BK7 and the metals have recommended models. A
+Fused silica, the window crystals, N-BK7, BBO and the metals have recommended models. A
 solid's index is at its reference temperature, and needs no state:
 
 ```python
