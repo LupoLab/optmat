@@ -37,7 +37,7 @@ publication (argon's, 5.7 ppm from CODATA's).
 superancillaries CoolProp would otherwise build for every one of its fluids: they are
 most of its load time (0.46 s against 0.07 s), and no density optmat reads changes
 without them. Saturation pressures, and so where a gas's domain ends, move by at most
-3 × 10⁻¹¹, oxygen's at its triple point by 2 × 10⁻⁹ (TC-1095). Set
+3 × 10⁻¹¹, oxygen's at its triple point by 2 × 10⁻⁹ (TC-1096). Set
 `COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY` yourself, or import CoolProp before optmat
 does, to choose otherwise; the variable is read once, when CoolProp loads.
 

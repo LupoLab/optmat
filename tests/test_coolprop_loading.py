@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-"""CoolProp loaded without superancillaries: the same values, quietly (TC-1095).
+"""CoolProp loaded without superancillaries: the same values, quietly (TC-1096).
 
 optmat loads CoolProp without the superancillaries it would build for every fluid. The
 densities and saturation pressures optmat reads must agree with those of a CoolProp
@@ -94,6 +94,30 @@ else:
 def test_coolprop_is_loaded_without_superancillaries_and_says_nothing():
     # Standard output holds the probe's word alone: CoolProp's notice is not there.
     assert _run(_PROBE, superancillaries=False).split() == ["without"]
+
+
+def test_child_processes_do_not_inherit_the_switch():
+    # A child would take an inherited switch for the user's and print CoolProp's notice.
+    code = _PROBE + "import os; print(os.environ.get('" + _SWITCH + "'))\n"
+    assert _run(code, superancillaries=False).split() == ["without", "None"]
+
+
+_EARLIER_OUTPUT = """
+import ctypes
+from optmat.gas import eos
+libc = ctypes.CDLL(None)
+libc.printf(b"before\\n")
+with eos._quiet_stdout():
+    libc.printf(b"hidden\\n")
+libc.printf(b"after\\n")
+libc.fflush(None)
+"""
+
+
+@pytest.mark.skipif(os.name != "posix", reason="libc's printf is reached through POSIX")
+def test_native_output_written_before_the_block_is_kept():
+    # Buffered in C (standard output is a pipe) until the block flushes it first.
+    assert _run(_EARLIER_OUTPUT, superancillaries=False).split() == ["before", "after"]
 
 
 def test_a_coolprop_already_loaded_keeps_its_superancillaries():

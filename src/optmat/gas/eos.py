@@ -10,7 +10,7 @@ paper. To compare measurements, the package turns each one into a per-particle
 quantity, which needs the number density the author actually meant.
 
 Real-gas densities come from CoolProp's Helmholtz-energy equations of state, imported
-lazily, and without its superancillaries unless they were asked for (TC-1095): building
+lazily, and without its superancillaries unless they were asked for (TC-1096): building
 them for every one of its fluids is most of CoolProp's load time (0.43 s of 0.46 s), and
 the densities and saturation pressures optmat reads agree with or without them to
 rounding. Set ``COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY`` yourself, or import
@@ -125,14 +125,15 @@ def _quiet_stdout() -> Iterator[None]:
     """Send what native code writes to standard output nowhere for the block.
 
     CoolProp announces on standard output that superancillaries are disabled. The
-    file descriptor itself is redirected, since the line comes from C++, and C's
-    buffers are flushed before it is restored. Without a usable descriptor 1 the block
-    runs as it is.
+    file descriptor itself is redirected, since the line comes from C++. C's buffers are
+    flushed before it is redirected, so that earlier output still reaches it, and again
+    before it is restored. Without a usable descriptor 1 the block runs as it is.
 
     - Yields: nothing.
     """
     try:
         sys.stdout.flush()
+        _flush_c_streams()
         saved = os.dup(1)
     except (AttributeError, OSError, ValueError):
         yield
@@ -160,9 +161,10 @@ def _flush_c_streams() -> None:
 def _coolprop() -> Any:
     """Return CoolProp's module, imported on first use, without superancillaries.
 
-    Unless :data:`_NO_SUPERANCILLARIES` is already set, it is set before the import,
-    which loads CoolProp's fluids, and CoolProp's notice of it is not printed.
-    CoolProp imported earlier keeps the fluids it loaded.
+    Unless :data:`_NO_SUPERANCILLARIES` is already set, it is set for the import alone,
+    which loads CoolProp's fluids, and CoolProp's notice of it is not printed; it is
+    removed again so that child processes do not inherit it. CoolProp imported earlier
+    keeps the fluids it loaded.
 
     Returns
     -------
@@ -175,14 +177,27 @@ def _coolprop() -> Any:
         Without the ``gas`` extra.
     """
     asked = _NO_SUPERANCILLARIES in os.environ
-    os.environ.setdefault(_NO_SUPERANCILLARIES, "1")
     try:
-        with contextlib.nullcontext() if asked else _quiet_stdout():
+        with contextlib.nullcontext() if asked else _without_superancillaries():
             import CoolProp.CoolProp as coolprop  # noqa: N813, PLC0415 - import cost
     except ImportError as exc:
         msg = "real-gas densities need CoolProp: install optmat[gas]"
         raise ImportError(msg) from exc
     return coolprop
+
+
+@contextlib.contextmanager
+def _without_superancillaries() -> Iterator[None]:
+    """Set :data:`_NO_SUPERANCILLARIES` for the block, with standard output quiet.
+
+    - Yields: nothing.
+    """
+    os.environ[_NO_SUPERANCILLARIES] = "1"
+    try:
+        with _quiet_stdout():
+            yield
+    finally:
+        del os.environ[_NO_SUPERANCILLARIES]
 
 
 @functools.cache
@@ -222,7 +237,7 @@ def _update_gas(backend: Any, pressure: float, temperature: float) -> None:
     against the phase domain, or keeps within it. CoolProp is told so, rather than
     finding the phase itself; without superancillaries it would find it with a
     saturation solve that refuses pressures under its triple point's, which the domain
-    reaches just above the triple point (TC-1095). Above the critical temperature there
+    reaches just above the triple point (TC-1096). Above the critical temperature there
     is no saturation to find, and CoolProp solves as it always has.
 
     Parameters
