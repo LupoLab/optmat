@@ -12,8 +12,9 @@ quantity, which needs the number density the author actually meant.
 Real-gas densities come from CoolProp's Helmholtz-energy equations of state, imported
 lazily, and without its superancillaries unless they were asked for (TC-1096): building
 them for every one of its fluids is most of CoolProp's load time (0.43 s of 0.46 s), and
-the densities and saturation pressures optmat reads agree with or without them to
-rounding. Set ``COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY`` yourself, or import
+no density optmat reads changes without them; the critical temperature is the
+equation's stated one, and saturation pressures agree to rounding except close to it.
+Set ``COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY`` yourself, or import
 CoolProp before optmat loads it, to decide otherwise. :func:`equation_of_state` returns
 a gas's equation as an object with an identity: its forward law
 ``N = p / (Z k_B T)``, its inverse (the pressure at a number density and temperature),
@@ -70,7 +71,7 @@ __all__ = [
     "pressure",
 ]
 
-EVALUATION_VERSION: Final = 1
+EVALUATION_VERSION: Final = 2
 """The version of this module's evaluation code, in the identity of every model that
 evaluates through it; raised whenever the code changes its output (OEP 1, section 4.8).
 """
