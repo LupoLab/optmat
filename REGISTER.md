@@ -29636,3 +29636,45 @@ tabulate (the table model clamps outside its range, so only in-range points coun
 - **Status:** decided (2026-11-12). Open: the 6-9e-4 offset from Eimerl's indices;
   Chen et al.'s tabulation and Zhang et al. (2000) would settle it, and neither is in
   the library.
+
+## TC-1096 CoolProp without superancillaries: the same densities, a seventh of the load (2026-11-16)
+
+- **Where:** `optmat.gas.eos` (`_coolprop`, `_quiet_stdout`, `_update_gas`,
+  `EVALUATION_VERSION`), `tests/test_coolprop_loading.py`,
+  `tests/data/golden_models.json`.
+- **Claim:** CoolProp 8.0.0 builds the superancillaries of all of its fluids (about 120)
+  when it first loads, which is 0.43 s of its 0.46 s load (measured on an Apple M-series
+  laptop; `COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY`, read in `FluidLibrary.h` as the
+  fluids are parsed, skips them: 0.067 s). optmat sets that variable for its import of
+  CoolProp, unless it is already set, removes it again so that child processes do not
+  take it for the user's, and hides CoolProp's notice of it on standard output. Without
+  superancillaries CoolProp finds a pressure-temperature state's phase with a
+  saturation solve that refuses pressures under its triple point's, which the phase
+  domain reaches just above the triple point (every gas's
+  `test_the_inverse_round_trips_across_the_domain` failed there); below the critical
+  temperature, where every caller has already checked that the state is the vapour,
+  optmat now tells CoolProp so (`iphase_gas`).
+- **Checked:** against optmat 0.9.1 (superancillaries, phase found by CoolProp).
+  - Densities: every gas with an equation, 12 temperatures from its triple point to
+    600 K and a fixed grid of 40 pressures from 100 Pa to 200 bar within the domain
+    (5924 states): every density bitwise the same; the imposed phase alone changes
+    nothing.
+  - The critical temperature: CoolProp reports the equation's stated critical
+    temperature instead of the critical point of its superancillary, which is where
+    the equation's coexistence actually ends. Oxygen's moves from 154.599 K to the
+    published 154.581 K (1.2e-4), hydrogen's by 2.0e-5, the others' by at most 2.1e-6.
+    Oxygen between the two is now supercritical: its domain there ends at the
+    equation's 800 bar, not at the vapour pressure (about 50 bar).
+  - Saturation pressures, and so the domain's top: 300 temperatures per gas, denser
+    towards the critical point. More than 1 K below it they move by at most 7.1e-11
+    (oxygen's at its triple point, 146 Pa, by 2.0e-9); within 1 K by at most 6.5e-8
+    (hydrogen, 0.7 mK below it), the tolerance of CoolProp's saturation solve, which
+    they now come from. Within 60 µK of helium's critical point and 4.4 µK of SF6's the
+    solve is worse than 1e-6 (helium's 1 % at 2 µK, SF6's 2.2e-4) or, for helium within
+    40 µK, raises CoolProp's own `ValueError` rather than a `StateError`.
+- **Decided:** `EVALUATION_VERSION` of `optmat.gas.eos` is raised to 2 (the maintainer,
+  2026-11-17): the critical temperature is a field of every equation's identity, so the
+  identities change anyway, and the domain moves near the critical points. 57 golden
+  identities were re-recorded (equations of state, their mixtures, transport and air
+  models); no golden value changed.
+- **Status:** decided (2026-11-17).
