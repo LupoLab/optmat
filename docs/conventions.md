@@ -33,6 +33,17 @@ it with its identity (CoolProp's version, the fluid and the equation's reference
 CODATA's $k_B$, not the equation's mass density, which carries the gas constant of its
 publication (argon's, 5.7 ppm from CODATA's).
 
+**Loading CoolProp.** optmat imports CoolProp on the first real-gas density, without the
+superancillaries CoolProp would otherwise build for every one of its fluids: they are
+most of its load time (0.46 s against 0.07 s), and no density at a given state changes
+without them. A gas's critical temperature is then its equation's stated value (oxygen's
+154.581 K, not the 154.599 K where its coexistence ends), and saturation pressures, so
+where a gas's domain ends, come from CoolProp's saturation solve: within 7 × 10⁻¹¹ of the
+superancillaries' more than 1 K below the critical point, and to 7 × 10⁻⁸ within it, but
+not within some tens of microkelvin of it (TC-1096). Set
+`COOLPROP_DISABLE_SUPERANCILLARIES_ENTIRELY` yourself, or import CoolProp before optmat
+does, to choose otherwise; the variable is read once, when CoolProp loads.
+
 **The molar mass.** `molar_mass` is the molar mass the backend's equation uses, kg/mol:
 the one its mass density and its speed of sound are formed with, for a propagation
 code's mass terms. The number densities do not use it. For the pseudo-pure dry air of
