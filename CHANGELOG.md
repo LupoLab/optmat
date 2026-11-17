@@ -8,6 +8,15 @@ All notable changes are recorded here, in the style of
 
 ## Unreleased
 
+## 0.10.0 (2026-11-17)
+
+BBO gains recommended models of both rays, and the first real-gas density loads
+CoolProp in 0.07 s instead of 0.46 s. No existing recommended value or model changed,
+but the identity of every equation of state, and of the mixture, transport and air
+models built on one, changes (`EVALUATION_VERSION` 2), hence the minor version. The
+records now number 763 source records with 8481 datasets and 197,804 values, 259 errata
+and 782 published formulas.
+
 ### Added
 
 - BBO's ordinary and extraordinary indices: Tamošauskas et al.'s 2018 Sellmeier formulas over 188 nm-5.2 µm (`tamosauskas_2018/sellmeier_o`, `_e`), now the recommended models, `default_model("BBO", "o")` and `default_model("BBO", "e")`. The paper states no medium; like the prism indices they are anchored to, the formulas are read as relative to room air at standard-air wavelengths and made absolute, so the model lies about 4.5e-4 above the printed formula evaluated directly (TC-1095). See [the crystals page](docs/crystals.md).
